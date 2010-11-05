@@ -60,4 +60,4 @@ load your classes if you follow the autoloader interoperability
 standards proposed above. It is the current recommended way to load PHP
 5.3 classes that follow these standards.
 
-* http://gist.github.com/221634
+* [http://gist.github.com/221634](http://gist.github.com/221634)
