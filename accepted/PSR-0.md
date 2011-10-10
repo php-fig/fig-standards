@@ -55,9 +55,10 @@ proposed standards are autoloaded.
 
 ## SplClassLoader Implementation
 
-The following gist is a sample SplClassLoader implementation that can
+The following are sample SplClassLoader implementations that can
 load your classes if you follow the autoloader interoperability
-standards proposed above. It is the current recommended way to load PHP
+standards proposed above. They are the current recommended ways to load PHP
 5.3 classes that follow these standards.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
+* [https://github.com/metagoto/splclassloader](https://github.com/metagoto/splclassloader)
