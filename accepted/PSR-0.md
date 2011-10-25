@@ -9,7 +9,7 @@ to for autoloader interoperability.
 * Each namespace separator is converted to a DIRECTORY_SEPARATOR when
   loading from the file system.
 * Each "\_" character in the CLASS NAME is converted to a 
-  DIRECTORY_SEPARATOR. The "\_" character has no special meaning in the 
+  DIRECTORY\_SEPARATOR. The "\_" character has no special meaning in the 
   namespace.
 * The fully-qualified namespace and class is suffixed with ".php" when
   loading from the file system.
