@@ -1,3 +1,12 @@
+<!--
+
+*Notice*
+
+This is not a fully functional phpunit configuration file and will not configure PHPunit to run properly. 
+This file is just an example how to configure the Psr-0 Compatibility Testsuite.
+
+-->
+
 <phpunit strict="true"
          verbose="true"
 >
