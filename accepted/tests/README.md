@@ -5,7 +5,7 @@ PSR-0 Compatibility Testsuite
 Purpose
 =======
 The PSR-0 compatibility test suite shall help you to easily and fast verify the compatability of your project 
-directory and namespace structure to the PSR-0 standard[1].
+directory and namespace structure to the [PSR-0 standard][1].
 
 
 Installation
@@ -18,7 +18,7 @@ This might be the test directory of your project.
     $> git clone git://github.com/php-fig/fig-standards.git tests/fig-standards
 
 Due to the architecture of the test suite there is a dependency to a DirectoryScanner (see section Dependencies).
-If you already installed the *DirectoryScanner* from the *pear.netpirates.net*[2] PEAR channel you just have to
+If you already installed the *DirectoryScanner* from the [*pear.netpirates.net*][2] PEAR channel you just have to
 make sure your project does find it on demand. 
 Otherwise change just run *install.sh* in the *accepted/tests* directory and the test suite will take care of this.
 
@@ -31,7 +31,7 @@ Setting up
 ----------
 Once the sources are on your machine, you now have to tell PHPunit to run the suite. Therefore an example 
 phpunit.xml.dist file is shipped with the sources. The following list is the set of mandatory and optional settings 
-to configure the DirectoryScanner. Modify them to meet the requirements of your project.
+to configure the *DirectoryScanner*. Modify them to meet the requirements of your project.
 
 * (mandatory) _Psr0_ProjectRootNamespace_
   Root namespace of your project (e.g. Liip)..
@@ -64,10 +64,10 @@ after a checkout described as above.
 Dependencies
 ============
 Since the PSR-0 compatibility tests depend on a static code analysis it is necessary to scan each file for its 
-class and namespace name. Arne Blankerts *DirectoryScanner*[3] was the perfect library for this. Kudos to him.
+class and namespace name. Arne Blankerts [*DirectoryScanner*][3] was the perfect library for this. Kudos to him.
 
 Links
 =====
-[1] http://groups.google.com/group/php-standards
-[2] http://pear.netpirates.net
-[3] https://github.com/theseer/DirectoryScanner
+[1]: http://groups.google.com/group/php-standards
+[2]: http://pear.netpirates.net
+[3]: https://github.com/theseer/DirectoryScanner
