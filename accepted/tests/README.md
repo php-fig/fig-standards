@@ -15,7 +15,8 @@ Getting the sources
 The installation is pretty simple just clone the sources to your favorite directory. 
 This might be the test directory of your project.
 
-    $> git clone git://github.com/php-fig/fig-standards.git tests/fig-standards
+    $> cd $PROJECT_HOME
+    $> git clone git://github.com/lapistano/fig-standards.git tests/fig-standards
 
 Due to the architecture of the test suite there is a dependency to a DirectoryScanner (see section Dependencies).
 If you already installed the *DirectoryScanner* from the [*pear.netpirates.net*][2] PEAR channel you just have to
