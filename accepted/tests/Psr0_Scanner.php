@@ -16,7 +16,7 @@ class Psr0_Scanner
     protected $registry = array();
     protected $errors = array();
 
-    public function __construct($includes, $excludes)
+    public function __construct($includes = '' , $excludes = '')
     {
         $this->includes = $includes;
         $this->excludes = $excludes;
@@ -61,6 +61,29 @@ class Psr0_Scanner
     {
         return $this->errors;
     }
+
+    /**
+     * Translates a classname to a filename according to the rules of PSR-0.
+     *
+     * This method is a clone of the autoload() function accepted to be the reference
+     * implementation to autoload classes following the PSR-0 FIG standard.
+     *
+     * @param string $className
+     * @return string
+     * @link https://github.com/php-fig/fig-standards
+     */
+    public static function translateClassToFilename($className)
+    {
+        $className = ltrim($className, '\\');
+        $fileName  = '';
+        $namespace = '';
+        if ($lastNsPos = strripos($className, '\\')) {
+            $namespace = substr($className, 0, $lastNsPos);
+            $className = substr($className, $lastNsPos + 1);
+            $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+        }
+        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+        return $fileName;
 
 
     /**
