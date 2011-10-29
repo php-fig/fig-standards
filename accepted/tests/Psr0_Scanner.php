@@ -16,7 +16,7 @@ class Psr0_Scanner
     protected $registry = array();
     protected $errors = array();
 
-    public function __construct($includes = '' , $excludes = '')
+    public function __construct($includes = '', $excludes = '')
     {
         $this->includes = $includes;
         $this->excludes = $excludes;
@@ -57,8 +57,11 @@ class Psr0_Scanner
      *
      * @return array
      */
-    public function getErrors()
+    public function getErrors($type = '')
     {
+        if (!empty($type) && isset($this->errors[$type])) {
+            return $this->errors[$type];
+        }
         return $this->errors;
     }
 
