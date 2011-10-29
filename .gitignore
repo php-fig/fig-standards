@@ -1,3 +1,4 @@
 .buildpath
 .project
 .settings/
+vendor/
