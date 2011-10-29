@@ -39,11 +39,9 @@ to configure the *DirectoryScanner*. Modify them to meet the requirements of you
 
 * (mandatory) __Psr0_ScannerStartDir__
   represents the absolute or relative path to your source files (e.g. ../src/).
-  See [DirectoryScanner on GitHub][4] for further information.
 
 * (optional) __Psr0_ScannerInclude__
   is a colon separated set of patterns which directories/files are to be recognized when scanning.
-  See [DirectoryScanner on GitHub][4] for further information.
 
 * (optional) __Psr0_ScannerExclude__
   is a colon separated set of patterns which directories/files are to be ignored when scanning.
@@ -52,10 +50,10 @@ to configure the *DirectoryScanner*. Modify them to meet the requirements of you
     
       */vendor/*:*/Test/*
   
-  See [DirectoryScanner on GitHub][4] for further information.
+See [*DirectoryScanner*][3] on GitHub for further information.
   
 To make PHPUnit aware of the PSR-0 Compataibility Testsuite you have to add the *Psr0_CompatibilityTest.php* to the 
-*<testsuite>* section of your phpunit configuration. The examle assumes that the test file is in the original location 
+*\<testsuite\>* section of your phpunit configuration. The examle assumes that the test file is in the original location 
 after a checkout described as above.
 
     …
@@ -72,4 +70,3 @@ Links
 [1]: http://groups.google.com/group/php-standards
 [2]: http://pear.netpirates.net
 [3]: https://github.com/theseer/DirectoryScanner
-[4]: https://github.com/theseer/DirectoryScanner
