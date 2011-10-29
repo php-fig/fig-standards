@@ -59,7 +59,7 @@ class psr0_CompatibilityTest extends \PHPUnit_Framework_TestCase
      */
     public function testReadErrorsOccured()
     {
-        $errors = self::$psr0->getErrors('NotReadable');
+        $errors = static::$psr0->getErrors('NotReadable');
         $this->assertEmpty(
             $errors,
             "The following files could not been readed probably due to missing access permissions:\n\n".
@@ -81,11 +81,11 @@ class psr0_CompatibilityTest extends \PHPUnit_Framework_TestCase
     public static function psr0CompatibilityDataprovider()
     {
         // preparations
-        self::$psr0 = new Psr0_Scanner(
+        static::$psr0 = new Psr0_Scanner(
             defined('Psr0_ScannerInclude') ? Psr0_ScannerInclude : '',
             defined('Psr0_ScannerExclude') ? Psr0_ScannerExclude : ''
         );
 
-        return self::$psr0->scan(Psr0_ScannerStartDir);
+        return static::$psr0->scan(Psr0_ScannerStartDir);
     }
 }
