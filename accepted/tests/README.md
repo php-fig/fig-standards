@@ -33,25 +33,25 @@ Once the sources are on your machine, you now have to tell PHPunit to run the su
 phpunit.xml.dist file is shipped with the sources. The following list is the set of mandatory and optional settings 
 to configure the *DirectoryScanner*. Modify them to meet the requirements of your project.
 
-* (mandatory) _Psr0_ProjectRootNamespace_
-  Root namespace of your project (e.g. Liip)..
+* (mandatory) __Psr0_ProjectRootNamespace__
+  is the root namespace of your project (e.g. Liip)..
 
-* (mandatory) _Psr0_ScannerStartDir_
-  Absolute or relative path to your source files (e.g. ../src/).
-  See https://github.com/theseer/DirectoryScanner for further information.
+* (mandatory) __Psr0_ScannerStartDir__
+  represents the absolute or relative path to your source files (e.g. ../src/).
+  See [DirectoryScanner on GitHub][4] for further information.
 
-* (optional) _Psr0_ScannerInclude_
-  Colon separated set of patterns which directories/files are to be recognized when scanning.
-  See https://github.com/theseer/DirectoryScanner for further information.
+* (optional) __Psr0_ScannerInclude__
+  is a colon separated set of patterns which directories/files are to be recognized when scanning.
+  See [DirectoryScanner on GitHub][4] for further information.
 
-* (optional) _Psr0_ScannerExclude_
-  Colon separated set of patterns which directories/files are to be ignored when scanning.
+* (optional) __Psr0_ScannerExclude__
+  is a colon separated set of patterns which directories/files are to be ignored when scanning.
   You usually want to exclude the directories containing the tests and 3rd party source probably located in a
   vendor directory. This combines into the string shown in the floowing example:
     
       */vendor/*:*/Test/*
   
-  See https://github.com/theseer/DirectoryScanner for further information.
+  See [DirectoryScanner on GitHub][4] for further information.
   
 To make PHPUnit aware of the PSR-0 Compataibility Testsuite you have to add the *Psr0_CompatibilityTest.php* to the 
 *<testsuite>* section of your phpunit configuration. The examle assumes that the test file is in the original location 
@@ -71,3 +71,4 @@ Links
 [1]: http://groups.google.com/group/php-standards
 [2]: http://pear.netpirates.net
 [3]: https://github.com/theseer/DirectoryScanner
+[4]: https://github.com/theseer/DirectoryScanner
