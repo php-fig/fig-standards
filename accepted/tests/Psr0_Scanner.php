@@ -84,7 +84,7 @@ class Psr0_Scanner
         }
         $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
         return $fileName;
-
+    }
 
     /**
      * Greps namespaces and classnames from the given file
