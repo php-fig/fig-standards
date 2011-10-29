@@ -13,29 +13,27 @@ This file is just an example how to configure the Psr-0 Compatibility Testsuite.
 
     <!-- PSR-0 test configuration 
     
-        * (mandatory) Psr0_ProjectRootNamespace
-          Root namespace of your project (e.g. Liip)..
+        * (mandatory) __Psr0_ProjectRootNamespaces__
+          is a colon separates list of the root namespaces used in your project (e.g. Liip:Jns)..
         
-        * (mandatory) Psr0_ScannerStartDir
-          Absolute or relative path to your source files (e.g. ../src/).
-          See https://github.com/theseer/DirectoryScanner for further information.
+        * (mandatory) __Psr0_ScannerStartDir__
+          represents the absolute or relative path to your source files (e.g. ../src/).
         
-        * (optional) Psr0_ScannerInclude
-          Colon separated set of patterns which directories/files are to be recognized when scanning.
-          See https://github.com/theseer/DirectoryScanner for further information.
+        * (optional) __Psr0_ScannerInclude__
+          is a colon separated set of patterns which directories/files are to be recognized when scanning.
         
-        * (optional) Psr0_ScannerExclude
-          Colon separated set of patterns which directories/files are to be ignored when scanning.
+        * (optional) __Psr0_ScannerExclude__
+          is a colon separated set of patterns which directories/files are to be ignored when scanning.
           You usually want to exclude the directories containing the tests and 3rd party source probably located in a
           vendor directory. This combines into the string shown in the floowing example:
             
               */vendor/*:*/Test/*
           
-          See https://github.com/theseer/DirectoryScanner for further information.
+        See [*DirectoryScanner*][3] on GitHub for further information.
     
     -->
     <php>
-        <const name="Psr0_ProjectRootNamespace" value="PROJECT_ROOT_NAMESPACE"/>
+        <const name="Psr0_ProjectRootNamespaces" value="PROJECT_ROOT_NAMESPACES"/>
         <const name="Psr0_ScannerStartDir" value="../src"/>
         <const name="Psr0_ScannerInclude" value="*.php"/>
         <const name="Psr0_ScannerExclude" value="*/vendor/*:*/Test/*"/>

@@ -20,15 +20,35 @@ class psr0_CompatibilityTest extends \PHPUnit_Framework_TestCase
     protected static $psr0;
 
     /**
+     * Normalize given filename to a relative path.
+     *
+     * @param string $filename
+     * @return string
+     */
+    protected function normalizeFilename($filename)
+    {
+        $pattern = array();
+        $namespaces = explode(':', Psr0_ProjectRootNamespaces);
+
+        if (empty($namespaces)) {
+            return $filename;
+        }
+
+        foreach ($namespaces as $namespace) {
+            $pattern[] = "(^.*?(" . $namespace . ".*)$)";
+        }
+
+        $filename = preg_replace($pattern, '$1', $filename, 1);
+        return $filename;
+    }
+
+    /**
      * @dataProvider psr0CompatibilityDataprovider
      */
     public function testPsr0Compatability($filename, $classname)
     {
-        $pattern = "(^.*?(" . Psr0_ProjectRootNamespace . ".*)$)";
-        $filename = preg_replace($pattern, '$1', $filename, 1);
-
         $this->assertEquals(
-            $filename,
+            $this->normalizeFilename($filename),
             Psr0_Scanner::translateClassToFilename($classname),
             'The classname does not translate correctly into a PSR-0 compatible filename.'
         );

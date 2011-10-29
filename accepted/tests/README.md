@@ -34,8 +34,8 @@ Once the sources are on your machine, you now have to tell PHPunit to run the su
 phpunit.xml.dist file is shipped with the sources. The following list is the set of mandatory and optional settings 
 to configure the *DirectoryScanner*. Modify them to meet the requirements of your project.
 
-* (mandatory) __Psr0_ProjectRootNamespace__
-  is the root namespace of your project (e.g. Liip)..
+* (mandatory) __Psr0_ProjectRootNamespaces__
+  is a colon separates list of the root namespaces used in your project (e.g. Liip:Jns)..
 
 * (mandatory) __Psr0_ScannerStartDir__
   represents the absolute or relative path to your source files (e.g. ../src/).

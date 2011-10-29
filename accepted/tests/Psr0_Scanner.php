@@ -113,7 +113,7 @@ class Psr0_Scanner
             }
 
             // find class declarations
-            preg_match('(^\s*?class\s+([^\s]+)(?:extends|implements)?\s+[^{]*)m', $line, $matches);
+            preg_match('(^\s*?(?:class|interface)\s+([^\s]+)(?:extends|implements)?\s+[^{]*)m', $line, $matches);
             if (isset($matches[1])) {
                 $this->registry[$namespace][] = array(
                      'classname' => $matches[1],
