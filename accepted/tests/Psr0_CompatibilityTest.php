@@ -62,8 +62,8 @@ class psr0_CompatibilityTest extends \PHPUnit_Framework_TestCase
     {
         // preparations
         self::$psr0 = new Psr0_Scanner(
-            defined(Psr0_ScannerInclude) ? Psr0_ScannerInclude : '',
-            defined(Psr0_ScannerExclude) ? Psr0_ScannerExclude : ''
+            defined('Psr0_ScannerInclude') ? Psr0_ScannerInclude : '',
+            defined('Psr0_ScannerExclude') ? Psr0_ScannerExclude : ''
         );
 
         return self::$psr0->scan(Psr0_ScannerStartDir);
