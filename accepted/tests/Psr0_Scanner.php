@@ -104,7 +104,16 @@ class Psr0_Scanner
      */
     protected function initScanner()
     {
-        require __DIR__ . '/vendor/TheSeer/DirectoryScanner/autoload.php';
+        if(! class_exists('\TheSeer\DirectoryScanner\DirectoryScanner', true)) {
+            $dirScanner = __DIR__ . '/vendor/TheSeer/DirectoryScanner/autoload.php';
+            if (!file_exists($dirScanner)) {
+                throw new \BadFunctionCallException(
+                    'Cannot find directory scanner mandatory for PSR-0 cpmatibility tests. '.
+                    'Please run install.sh in the test root directory.'
+                );
+            }
+            require $dirScanner;
+        }
 
         $scanner = new \TheSeer\DirectoryScanner\DirectoryScanner;
         $this->registerExclusions($scanner);
