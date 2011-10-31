@@ -49,7 +49,7 @@ class CompatibilityTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $this->normalizeFilename($filename),
-            Psr0_Scanner::translateClassToFilename($classname),
+            Scanner::translateClassToFilename($classname),
             'The classname does not translate correctly into a PSR-0 compatible filename.'
         );
     }

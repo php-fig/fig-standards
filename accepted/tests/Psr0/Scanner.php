@@ -131,10 +131,10 @@ class Scanner
     protected function initScanner()
     {
         if(! class_exists('\TheSeer\DirectoryScanner\DirectoryScanner', true)) {
-            $dirScanner = __DIR__ . '/vendor/TheSeer/DirectoryScanner/autoload.php';
+            $dirScanner = __DIR__ . '/../vendor/TheSeer/DirectoryScanner/autoload.php';
             if (!file_exists($dirScanner)) {
                 throw new \BadFunctionCallException(
-                    'Cannot find directory scanner mandatory for PSR-0 cpmatibility tests. '.
+                    'Cannot find directory scanner mandatory for PSR-0 compatibility tests. '.
                     'Please run install.sh in the test root directory.'
                 );
             }
