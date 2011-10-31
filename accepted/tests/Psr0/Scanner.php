@@ -7,7 +7,7 @@
  *
  */
 
-namespace figStandards\PSR0\Compatibility;
+namespace figStandards\accepted\tests\Psr0;
 
 class Psr0_Scanner
 {
@@ -153,7 +153,8 @@ class Psr0_Scanner
      *
      * @param DirectoryScanner $scanner
      */
-    protected function registerExclusions(\TheSeer\DirectoryScanner\DirectoryScanner $scanner) {
+    protected function registerExclusions(\TheSeer\DirectoryScanner\DirectoryScanner $scanner)
+    {
         if (!empty($this->excludes)) {
             $exclusions = explode(":", $this->excludes);
             $scanner->setExcludes($exclusions);
@@ -165,7 +166,8 @@ class Psr0_Scanner
      *
      * @param DirectoryScanner $scanner
      */
-    protected function registerInclusions(\TheSeer\DirectoryScanner\DirectoryScanner $scanner) {
+    protected function registerInclusions(\TheSeer\DirectoryScanner\DirectoryScanner $scanner)
+    {
         if (!empty($this->includes)) {
             $inclusions = explode(":", $this->includes);
             $scanner->setIncludes($inclusions);

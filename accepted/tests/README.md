@@ -25,7 +25,7 @@ Otherwise change just run *install.sh* in the *accepted/tests* directory and the
 
     $> /bin/sh install.sh
     
-This clones the *DirectoryScanner* from github so a functional internet connection is mandatory for tihs action.
+This clones the *DirectoryScanner* from github so a functional internet connection is mandatory for this action.
 After you ran *install.sh* you'll find the sources in the newly created *accepted/tests/vendor* directory.
 
 Setting up
@@ -46,18 +46,18 @@ to configure the *DirectoryScanner*. Modify them to meet the requirements of you
 * (optional) __Psr0_ScannerExclude__
   is a colon separated set of patterns which directories/files are to be ignored when scanning.
   You usually want to exclude the directories containing the tests and 3rd party source probably located in a
-  vendor directory. This combines into the string shown in the floowing example:
+  vendor directory. This combines into the string shown in the folowing example:
     
       */vendor/*:*/Test/*
   
 See [*DirectoryScanner*][3] on GitHub for further information.
   
 To make PHPUnit aware of the PSR-0 Compataibility Testsuite you have to add the *Psr0_CompatibilityTest.php* to the 
-*\<testsuite\>* section of your phpunit configuration. The examle assumes that the test file is in the original location 
+*\<testsuite\>* section of your phpunit configuration. The example assumes that the test file is in the original location 
 after a checkout described as above.
 
     …
-    <file>../tests/fig-standards/accepted/tests/Psr0_CompatibilityTest.php</file>
+    <file>../tests/fig-standards/accepted/tests/Psr0/CompatibilityTest.php</file>
     …
 
 Dependencies

@@ -6,11 +6,11 @@
  * @copyright 2011 by Bastian Feder
  *
  */
-namespace figStandards\PSR0\Compatibility;
+namespace figStandards\accepted\tests\Psr0;
 
 require __DIR__ . '/Psr0_Scanner.php';
 
-class psr0_CompatibilityTest extends \PHPUnit_Framework_TestCase
+class Psr0_CompatibilityTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Contains the result of the directory scan.
