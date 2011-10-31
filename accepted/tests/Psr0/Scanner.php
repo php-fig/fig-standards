@@ -9,7 +9,7 @@
 
 namespace figStandards\accepted\tests\Psr0;
 
-class Psr0_Scanner
+class Scanner
 {
     protected $includes = '';
     protected $excludes = '';

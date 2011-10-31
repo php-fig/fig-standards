@@ -8,9 +8,9 @@
  */
 namespace figStandards\accepted\tests\Psr0;
 
-require __DIR__ . '/Psr0_Scanner.php';
+require __DIR__ . '/Scanner.php';
 
-class Psr0_CompatibilityTest extends \PHPUnit_Framework_TestCase
+class CompatibilityTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Contains the result of the directory scan.
@@ -81,7 +81,7 @@ class Psr0_CompatibilityTest extends \PHPUnit_Framework_TestCase
     public static function psr0CompatibilityDataprovider()
     {
         // preparations
-        static::$psr0 = new Psr0_Scanner(
+        static::$psr0 = new Scanner(
             defined('Psr0_ScannerInclude') ? Psr0_ScannerInclude : '',
             defined('Psr0_ScannerExclude') ? Psr0_ScannerExclude : ''
         );
