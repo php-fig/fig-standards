@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ruleset name="PSR-0 Compatabitlity">
+ <description>Compatibility check for a project being PSR-0 compatible.</description>
+</ruleset>
