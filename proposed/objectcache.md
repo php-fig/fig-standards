@@ -22,7 +22,7 @@ To fix this, this document proposes a very simple standard interface.
 
 ## The interface
 
-    namespace PHP;
+    namespace PSR;
 
     interface ObjectCache {
 
