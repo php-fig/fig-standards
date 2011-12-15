@@ -59,6 +59,15 @@ To fix this, this document proposes a very simple standard interface.
          * @return void
          */
         function unset($key);
+        
+        
+        /**
+         * Check if the key exists in the cache.
+         *
+         * @param string $key
+         * @return boolean
+         */
+        function exists($key);
 
     }
 
