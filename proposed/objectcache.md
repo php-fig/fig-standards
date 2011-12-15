@@ -4,7 +4,7 @@ Many PHP frameworks define a PHP persistant object cache with various features.
 An object cache is something that may be useful in many parts of an
 application, and thus may be injected in quite a bit of subsystems.
 
-Examples of this can be found in the Doctrine source as 
+Examples of this can be found in the Doctrine source as
 Doctrine\_Cache\_Interface, and in The Zend Framework source as
 \Zend\Cache\Backend.
 
@@ -27,44 +27,48 @@ To fix this, this document proposes a very simple standard interface.
     interface ObjectCache {
 
         /**
-         * Stores a new value in the cache. 
+         * Stores a new value in the cache.
          *
-         * The key must be provided as a string, the value may be any serializable 
+         * The key must be provided as a string, the value may be any serializable
          * PHP value.
+         *
+         * The $ttl represents the time the cache entry is valid for. This value
+         * should be treated as advisory, and may be ignored by implementations
          *
          * @param string $key
          * @param mixed $value
+         * @param int $ttl
          * @return void
          */
-        function store($key, $value); 
+        function set($key, $value, $ttl = null);
 
         /**
          * Fetches an object from the cache.
          *
-         * If the object did not exist, this method must return null. 
+         * If the object did not exist, this method must return null.
          *
-         * @param string $key 
+         * @param string $key
          * @return mixed
          */
-        function fetch($key);
+        function get($key);
 
         /**
-         * Deletes an item from the cache. 
-         * 
-         * @param string $key 
+         * Deletes an item from the cache.
+         *
+         * @param string $key
          * @return void
          */
-        function delete($key);
+        function unset($key);
 
     }
 
 ## Notes
 
 * This document does not define how to handle error conditions, such as the
-  inability to store an item, due to for example a backend being down. 
+  inability to store an item, due to for example a backend being down.
 * There is no distinction between fetching a 'null' value, or an item not
   existing in the cache backend. It is up to the calling code to work around
   this, if needed.
 * This document does not define what constitutes valid keys. Backends may have
   restrictions around this. It is recommended for the calling code to use
-  sane keys, and possibly run a hash function if needed. 
+  sane keys, and possibly run a hash function if needed.
