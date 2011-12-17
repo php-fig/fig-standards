@@ -69,6 +69,16 @@ To fix this, this document proposes a very simple standard interface.
          */
         function exists($key);
 
+        /**
+         * Clears the entire cache.
+         *
+         * Implementations may choose to ignore this. What happens in this case
+         * is up to the implementor.
+         *
+         * @return void
+         */
+        function clear();
+
     }
 
 ## Notes
