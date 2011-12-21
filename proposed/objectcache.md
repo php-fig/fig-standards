@@ -55,10 +55,12 @@ To fix this, this document proposes a very simple standard interface.
         /**
          * Deletes an item from the cache.
          *
+         * This method must succeed, even if the item did not exist.
+         *
          * @param string $key
          * @return void
          */
-        function unset($key);
+        function delete($key);
         
         
         /**
@@ -126,7 +128,7 @@ For these cases the Multiple interface may be implemented.
          * @param array $key
          * @return void 
          */
-        function unsetMultiple($keys);
+        function deleteMultiple($keys);
 
         /**
          * Check for multiple items if they appear in the cache.
@@ -140,6 +142,12 @@ For these cases the Multiple interface may be implemented.
         function existsMultiple($keys);
 
     }
+
+If the backend does not natively implement bulk operations, it can still
+be easily emulated. The following trait may serve as an example:
+
+trait 
+
 
 ## Notes
 
