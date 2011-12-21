@@ -146,8 +146,82 @@ For these cases the Multiple interface may be implemented.
 If the backend does not natively implement bulk operations, it can still
 be easily emulated. The following trait may serve as an example:
 
-trait 
+    trait EmulateMultiple {
 
+        /**
+         * Stores multiple items in the cache at once.
+         *
+         * The items must be provided as an associative array. 
+         *
+         * The $ttl represents the time the cache entry is valid for. This value
+         * should be treated as advisory, and may be ignored by implementations
+         *
+         * @param array $items
+         * @param int $ttl
+         * @return void
+         */
+        public function setMultiple(array $items, $ttl = null) {
+
+            foreach($items as $key=>$value) {
+                $this->set($key, $value, $ttl);
+            }
+
+        }
+
+        /**
+         * Fetches multiple items from the cache.
+         *
+         * The returned structure must be an associative array. If items were
+         * not found in the cache, they should not be included in the array. 
+         *
+         * This means that if none of the items are found, this method must 
+         * return an empty array. 
+         *
+         * @param string $keys
+         * @return array 
+         */
+        public function getMultiple($keys) {
+
+            return array_map(
+                array($this, 'get'),
+                $keys
+            );
+
+        }
+
+        /**
+         * Deletes multiple items from the cache at once.
+         *
+         * @param array $key
+         * @return void 
+         */
+        public function deleteMultiple($keys) {
+
+            foreach($keys as $key) {
+                $this->delete($key);
+            }
+
+        }
+
+        /**
+         * Check for multiple items if they appear in the cache.
+         *
+         * All items must be returned as an array. And each must array value
+         * must either be set to true, or false.
+         *
+         * @param array $keys
+         * @return array
+         */
+        public function existsMultiple($keys) {
+
+            return array_map(
+                array($this, 'exists'),
+                $keys
+            );
+
+        }
+
+    }
 
 ## Notes
 
