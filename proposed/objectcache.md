@@ -20,11 +20,11 @@ they wish to support.
 
 To fix this, this document proposes a very simple standard interface.
 
-## The interface
+## The base interface
 
-    namespace PSR;
+    namespace PSR\Cache;
 
-    interface ObjectCache {
+    interface Base {
 
         /**
          * Stores a new value in the cache.
@@ -81,13 +81,74 @@ To fix this, this document proposes a very simple standard interface.
 
     }
 
+## Bulk operations
+
+For some cases it's beneficial to request multiple objects at once. One big
+benefit is that requests can be pipelined, thus reducing latency. 
+
+For these cases the Multiple interface may be implemented.
+
+    namespace PSR\Cache;
+
+    interface Multiple extends Base {
+
+        /**
+         * Stores multiple items in the cache at once.
+         *
+         * The items must be provided as an associative array. 
+         *
+         * The $ttl represents the time the cache entry is valid for. This value
+         * should be treated as advisory, and may be ignored by implementations
+         *
+         * @param array $items
+         * @param int $ttl
+         * @return void
+         */
+        function setMultiple(array $items, $ttl = null);
+
+        /**
+         * Fetches multiple items from the cache.
+         *
+         * The returned structure must be an associative array. If items were
+         * not found in the cache, they should not be included in the array. 
+         *
+         * This means that if none of the items are found, this method must 
+         * return an empty array. 
+         *
+         * @param string $keys
+         * @return array 
+         */
+        function getMultiple($keys);
+
+        /**
+         * Deletes multiple items from the cache at once.
+         *
+         * @param array $key
+         * @return void 
+         */
+        function unsetMultiple($keys);
+
+        /**
+         * Check for multiple items if they appear in the cache.
+         *
+         * All items must be returned as an array. And each must array value
+         * must either be set to true, or false.
+         *
+         * @param array $keys
+         * @return array
+         */
+        function existsMultiple($keys);
+
+    }
+
 ## Notes
 
 * This document does not define how to handle error conditions, such as the
   inability to store an item, due to for example a backend being down.
-* There is no distinction between fetching a 'null' value, or an item not
-  existing in the cache backend. It is up to the calling code to work around
-  this, if needed.
 * This document does not define what constitutes valid keys. Backends may have
   restrictions around this. It is recommended for the calling code to use
   sane keys, and possibly run a hash function if needed.
+
+## Todo
+
+
