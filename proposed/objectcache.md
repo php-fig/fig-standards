@@ -29,18 +29,22 @@ To fix this, this document proposes a very simple standard interface.
         /**
          * Stores a new value in the cache.
          *
-         * The key must be provided as a string, the value may be any serializable
-         * PHP value.
+         * The key must be provided as a string, the value may be any
+         * serializable PHP value.
          *
-         * The $ttl represents the time the cache entry is valid for. This value
-         * should be treated as advisory, and may be ignored by implementations
+         * The options array can be used to specify additional behaviour for
+         * storing the item. Currently only the 'ttl' option is defined.
+         *
+         * The ttl option represents the time the cache entry is valid for. This
+         * value should be treated as advisory, and may be ignored by
+         * implementations.
          *
          * @param string $key
          * @param mixed $value
-         * @param int $ttl
+         * @param array $options
          * @return void
          */
-        function set($key, $value, $ttl = null);
+        function set($key, $value, array $options = array());
 
         /**
          * Fetches an object from the cache.
@@ -97,16 +101,13 @@ For these cases the Multiple interface may be implemented.
         /**
          * Stores multiple items in the cache at once.
          *
-         * The items must be provided as an associative array. 
-         *
-         * The $ttl represents the time the cache entry is valid for. This value
-         * should be treated as advisory, and may be ignored by implementations
+         * The items must be provided as an associative array.
          *
          * @param array $items
-         * @param int $ttl
+         * @param array $options
          * @return void
          */
-        function setMultiple(array $items, $ttl = null);
+        function setMultiple(array $items, array $options = array());
 
         /**
          * Fetches multiple items from the cache.
@@ -151,19 +152,16 @@ be easily emulated. The following trait may serve as an example:
         /**
          * Stores multiple items in the cache at once.
          *
-         * The items must be provided as an associative array. 
-         *
-         * The $ttl represents the time the cache entry is valid for. This value
-         * should be treated as advisory, and may be ignored by implementations
-         *
+         * The items must be provided as an associative array.
+         * 
          * @param array $items
          * @param int $ttl
          * @return void
          */
-        public function setMultiple(array $items, $ttl = null) {
+        public function setMultiple(array $items, array $options = array()) {
 
             foreach($items as $key=>$value) {
-                $this->set($key, $value, $ttl);
+                $this->set($key, $value, $options);
             }
 
         }
