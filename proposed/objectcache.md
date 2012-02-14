@@ -32,19 +32,17 @@ To fix this, this document proposes a very simple standard interface.
          * The key must be provided as a string, the value may be any
          * serializable PHP value.
          *
-         * The options array can be used to specify additional behaviour for
-         * storing the item. Currently only the 'ttl' option is defined.
+         * Use the $ttl argument to specify how long the cache is valid for.
+         * The time-to-live is specified in seconds.
          *
-         * The ttl option represents the time the cache entry is valid for. This
-         * value should be treated as advisory, and may be ignored by
-         * implementations.
+         * If $ttl is not specified, the implementation may choose a default.
          *
          * @param string $key
          * @param mixed $value
-         * @param array $options
+         * @param int $ttl
          * @return void
          */
-        function set($key, $value, array $options = array());
+        function set($key, $value, $ttl = null);
 
         /**
          * Fetches an object from the cache.
@@ -65,8 +63,8 @@ To fix this, this document proposes a very simple standard interface.
          * @return void
          */
         function delete($key);
-        
-        
+
+
         /**
          * Check if the key exists in the cache.
          *
@@ -75,22 +73,12 @@ To fix this, this document proposes a very simple standard interface.
          */
         function exists($key);
 
-        /**
-         * Clears the entire cache.
-         *
-         * Implementations may choose to ignore this. What happens in this case
-         * is up to the implementor.
-         *
-         * @return void
-         */
-        function clear();
-
     }
 
 ## Bulk operations
 
 For some cases it's beneficial to request multiple objects at once. One big
-benefit is that requests can be pipelined, thus reducing latency. 
+benefit is that requests can be pipelined, thus reducing latency.
 
 For these cases the Multiple interface may be implemented.
 
@@ -104,22 +92,22 @@ For these cases the Multiple interface may be implemented.
          * The items must be provided as an associative array.
          *
          * @param array $items
-         * @param array $options
+         * @param int $ttl
          * @return void
          */
-        function setMultiple(array $items, array $options = array());
+        function setMultiple(array $items, $ttl = null);
 
         /**
          * Fetches multiple items from the cache.
          *
          * The returned structure must be an associative array. If items were
-         * not found in the cache, they should not be included in the array. 
+         * not found in the cache, they should not be included in the array.
          *
-         * This means that if none of the items are found, this method must 
-         * return an empty array. 
+         * This means that if none of the items are found, this method must
+         * return an empty array.
          *
          * @param string $keys
-         * @return array 
+         * @return array
          */
         function getMultiple($keys);
 
@@ -127,7 +115,7 @@ For these cases the Multiple interface may be implemented.
          * Deletes multiple items from the cache at once.
          *
          * @param array $key
-         * @return void 
+         * @return void
          */
         function deleteMultiple($keys);
 
@@ -145,7 +133,9 @@ For these cases the Multiple interface may be implemented.
     }
 
 If the backend does not natively implement bulk operations, it can still
-be easily emulated. The following trait may serve as an example:
+be easily emulated. The following trait could be used as an example to emulate
+this. Note that this is only an example, and should not be considered as part
+of the specification.
 
     trait EmulateMultiple {
 
@@ -153,15 +143,15 @@ be easily emulated. The following trait may serve as an example:
          * Stores multiple items in the cache at once.
          *
          * The items must be provided as an associative array.
-         * 
+         *
          * @param array $items
          * @param int $ttl
          * @return void
          */
-        public function setMultiple(array $items, array $options = array()) {
+        public function setMultiple(array $items, $ttl = null) {
 
             foreach($items as $key=>$value) {
-                $this->set($key, $value, $options);
+                $this->set($key, $value, $ttl);
             }
 
         }
@@ -170,13 +160,13 @@ be easily emulated. The following trait may serve as an example:
          * Fetches multiple items from the cache.
          *
          * The returned structure must be an associative array. If items were
-         * not found in the cache, they should not be included in the array. 
+         * not found in the cache, they should not be included in the array.
          *
-         * This means that if none of the items are found, this method must 
-         * return an empty array. 
+         * This means that if none of the items are found, this method must
+         * return an empty array.
          *
          * @param string $keys
-         * @return array 
+         * @return array
          */
         public function getMultiple($keys) {
 
@@ -191,7 +181,7 @@ be easily emulated. The following trait may serve as an example:
          * Deletes multiple items from the cache at once.
          *
          * @param array $key
-         * @return void 
+         * @return void
          */
         public function deleteMultiple($keys) {
 
