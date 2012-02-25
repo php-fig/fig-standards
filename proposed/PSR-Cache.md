@@ -1,6 +1,14 @@
 ##Introduction
+
+
 ##Goal
-##Interface
+
+The goal of this PSR is to allow developers to create cache-aware libraries that can be integrated into existing frameworks and systems without the need for custom development.
+
+
+
+##Interfaces
+
 ###CacheFactory
 
     namespace PSR\Cache;
@@ -51,9 +59,15 @@
     }
 
 ##Examples
+
 ##Extensions
+
 ###Namespaces
+
+
+
 ###Tags
+
 ###Drivers
 
     namespace PSR\Cache;
