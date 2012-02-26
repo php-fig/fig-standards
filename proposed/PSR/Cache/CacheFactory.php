@@ -5,8 +5,8 @@ interface CacheFactory
 {
     /**
      *
-     * @param string $key
-     * @return CacheItem
+     * @param string $key
+     * @return CacheItem
      */
     function getCache($key);
 }

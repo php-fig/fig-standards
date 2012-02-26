@@ -5,7 +5,7 @@ interface CacheItem
     /**
      *
      * @return mixed
-     */       
+     */
     function get();
 
     /**
@@ -13,7 +13,7 @@ interface CacheItem
      * @param mixed $value
      * @param int $ttl
      * @return bool
-     */        
+     */
     function set($value, $ttl = null);
 
     /**
