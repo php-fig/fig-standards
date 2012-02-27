@@ -1,15 +1,26 @@
-##Introduction
+## Introduction
 
 
-##Goal
+## Goal
 
 The goal of this PSR is to allow developers to create cache-aware libraries that can be integrated into existing frameworks and systems without the need for custom development.
 
 
 
-##Interfaces
+## Standard
 
-###CacheFactory
+### Definitions
+
+* Data - 
+* TTL - 
+* Expiration - 
+* Key - 
+* Miss - 
+
+
+### Interfaces
+
+#### CacheFactory
 
     namespace PSR\Cache;
 
@@ -25,7 +36,7 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
     }
 
 
-###CacheItem
+#### CacheItem
 
     namespace PSR\Cache;
 
@@ -57,18 +68,51 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
          */
         function clear();
     }
+    
 
-##Examples
+## Examples
 
-##Extensions
-
-###Namespaces
-
+## Extensions
 
 
-###Tags
+### Multiple
 
-###Drivers
+#### CacheIteratorFactory    
+    
+    namespace PSR\Cache;
+
+    interface CacheIteratorFactory extends CacheFactory 
+    {
+
+        /**
+         *
+         * @param array $key
+         * @return CacheIterator
+         */
+        function getCacheIterator($keys);
+    }    
+        
+#### CacheIterator
+
+    namespace PSR\Cache;
+    
+    interface CacheIterator extends \Iterator
+    {
+    
+    }
+
+
+### Group Invalidation
+
+
+#### Namespaces
+
+#### Tags
+
+#### Stacks
+
+
+### Drivers
 
     namespace PSR\Cache;
 
