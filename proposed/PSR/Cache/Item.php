@@ -8,7 +8,7 @@ namespace PSR\Cache;
  * should be associated with a specific key, which can be set according to the
  * implementing system and is typically passed by the CacheFactory object.
  */
-interface Item 
+interface Item
 {
     /**
      * Returns the key for the current cache item.
@@ -17,7 +17,7 @@ interface Item
      * the higher level callers when needed. If no key is set false should be
      * returned.
      *
-     * 
+     *
      * @return string|false
      */
     function getKey();
@@ -60,7 +60,7 @@ interface Item
 
     /**
      * Validates the current state of the item in the cache.
-     * 
+     *
      * An item is considered a miss when it does not exist or has passed it's
      * expiration. Individual libraries or systems can define additional miss
      * conditions.
