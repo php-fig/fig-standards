@@ -1,12 +1,12 @@
 namespace PSR\Cache;
 
 /**
- * An iterator of CacheItems.
+ * An iterator of Cache\Items.
  *
- * The CacheIterator provides a way to loop through CacheItems, particularly
+ * The Cache\Iterator provides a way to loop through Cache\Items, particularly
  * those returned by bulk operations.
  */
-interface CacheIterator extends \Iterator
+interface Iterator extends \Iterator
 {
 
 }

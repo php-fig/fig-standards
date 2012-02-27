@@ -1,15 +1,14 @@
 namespace PSR\Cache;
 
-
 /**
- * CacheItem defines an interface for interacting with objects inside a cache.
+ * Cache\Item defines an interface for interacting with objects inside a cache.
  *
- * The CacheItem interface defines an item inside a cache system, which can be
- * filled with any PHP value capable of being serialized. Each item CacheItem
+ * The Cache\Item interface defines an item inside a cache system, which can be
+ * filled with any PHP value capable of being serialized. Each item Cache\Item
  * should be associated with a specific key, which can be set according to the
  * implementing system and is typically passed by the CacheFactory object.
  */
-interface CacheItem 
+interface Item 
 {
     /**
      * Returns the key for the current cache item.

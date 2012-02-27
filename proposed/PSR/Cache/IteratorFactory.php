@@ -3,16 +3,16 @@ namespace PSR\Cache;
 /**
  * Retrieves multiple items from the cache.
  *
- * CacheIteratorFactory allows multiple cache items to be retrieved at once and
- * returns them in a CacheIterator. This factory should also be able to return
- * cache objects on an individual basis using the CacheFactory interface.
+ * IteratorFactory allows multiple cache items to be retrieved at once and
+ * returns them in a Cache\Iterator. This factory should also be able to return
+ * cache objects on an individual basis using the Cache\Factory interface.
  */
-interface CacheIteratorFactory extends CacheFactory 
+interface IteratorFactory extends Factory 
 {
     /**
      *
      * @param array $key
-     * @return CacheIterator
+     * @return PSR\Cache\Iterator
      */
     function getCacheIterator($keys);
 }

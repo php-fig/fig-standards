@@ -1,15 +1,15 @@
 namespace PSR\Cache;
 
 /**
- * CacheFactory generates CacheItem objects.
+ * Cache\Factory generates Cache\Item objects.
  */
-interface CacheFactory 
+interface Factory 
 {
     /**
-     * Returns objects which implement the CacheItem interface.
+     * Returns objects which implement the Cache\Item interface.
      * 
      * @param string $key
-     * @return CacheItem
+     * @return PSR\Cache\Item
      */
     function getCache($key);
 }
