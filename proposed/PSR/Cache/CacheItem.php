@@ -12,6 +12,18 @@ namespace PSR\Cache;
 interface CacheItem 
 {
     /**
+     * Returns the key for the current cache item.
+     *
+     * The key is loaded by the implementing library, but should be available to
+     * the higher level callers when needed. If no key is set false should be
+     * returned.
+     *
+     * 
+     * @return string|false
+     */
+    function getKey();
+
+    /**
      * Retrieves the item from the cache associated with this objects key.
      *
      * Value returned must be identical to the value original stored by set().
