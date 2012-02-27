@@ -14,7 +14,7 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
 
 *    TTL - The Time To Live (TTL) of an item is the amount of time between when that item is stored and it is considered stale. The TTL is normally defined by an integer representing time in seconds, or a DateInterval object.  
  
- *    Expiration - The actual time when an item is set to go stale. This it typically calculated by adding the TTL to the time when an object is stored, but can also be explicitly set with DateTime object.
+*    Expiration - The actual time when an item is set to go stale. This it typically calculated by adding the TTL to the time when an object is stored, but can also be explicitly set with DateTime object.
     
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at 1:35:00.
    
