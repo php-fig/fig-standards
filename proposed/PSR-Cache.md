@@ -18,7 +18,7 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
     
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at 1:35:00.
    
-*    Key - A string that uniquely identifies the cached item. Implementing Libraries are responsible for any encoding or escaping requires by their backends, but must be able to supply the original key if needed. Keys should be no longer than 255 charactors and should not contain the special charactors listed:
+*    Key - A string that uniquely identifies the cached item. Implementing Libraries are responsible for any encoding or escaping requires by their backends, but must be able to supply the original key if needed. Keys should be no longer than 1024 characters and should not contain the special characters listed:
 
 	{}()/\@
 
@@ -62,22 +62,48 @@ namespace PSR\Cache;
 /**
  * Cache\Pool generates Cache\Item objects.
  */
-interface Pool
+interface Factory
 {
     /**
      * Returns objects which implement the Cache\Item interface.
+     *
+     * Provided key must be unique for each item in the cache. Implementing
+     * Libraries are responsible for any encoding or escaping required by their
+     * backends, but must be able to supply the original key if needed. Keys
+     * should be no longer than 1024 characters and should not contain the
+     * special characters listed:
+     *  {}()/\@
      *
      * @param string $key
      * @return PSR\Cache\Item
      */
     function getCache($key);
+
+    /**
+     * Returns a group of cache objects as a Cache\Iterator
+     *
+     * Bulk lookups can often by steamlined by backend cache systems. The
+     * returned iterator will contain a Cache\Item for each key passed.
+     *
+     * @param array $key
+     * @return PSR\Cache\Iterator
+     */
+    function getCacheIterator($keys);
+
+    /**
+     * Empties the cache pool of all items.
+     *
+     * @return bool
+     */
+    function empty();
+
 }
 ```
 
 
 ### Cache\Item
 
-The Cache\Item object encapsulates the storage and retrieval of cache items.
+The Cache\Item object encapsulates the storage and retrieval of cache items. Each Cache\Item is already associated with a Key (how is the responsibility of the Implementing Library).
 
 ```php
 namespace PSR\Cache;
@@ -88,7 +114,7 @@ namespace PSR\Cache;
  * The Cache\Item interface defines an item inside a cache system, which can be
  * filled with any PHP value capable of being serialized. Each item Cache\Item
  * should be associated with a specific key, which can be set according to the
- * implementing system and is typically passed by the CacheFactory object.
+ * implementing system and is typically passed by the Cache\Pool object.
  */
 interface Item
 {
@@ -98,7 +124,6 @@ interface Item
      * The key is loaded by the implementing library, but should be available to
      * the higher level callers when needed. If no key is set false should be
      * returned.
-     *
      *
      * @return string|false
      */
@@ -112,7 +137,7 @@ interface Item
      * If the cache is empty then null should be returned. However, null is also
      * a valid cache item, so the isMiss function should be used to check
      * validity.
-     * 
+     *
      * @return mixed
      */
     function get();
@@ -154,11 +179,12 @@ interface Item
     /**
      * Removes the current key from the cache.
      *
-     * Returns true if the item was successfully removed.
+     * Returns true if the item is no longer present (either because it was
+     * removed or was not present to begin with).
      *
      * @return bool
      */
-    function clear();
+    function remove();
 }
 ```
 
@@ -239,6 +265,7 @@ interface StackableItem extends \PSR\Cache\Item
 {
 
 }
+
 ```
 
 
@@ -256,8 +283,8 @@ namespace PSR\Cache\Extensions;
  * Cache\Extensions\TaggablePool extends Cache\Pool to provide tagging support.
  *
  * The Cache\Extensions\TaggablePool interface adds support for returning
- * Cache\ExtensionsTaggbleItem objects, as well as clearing the pool of tagged
- * Items. 
+ * Cache\Extensions\TaggbleItem objects, as well as clearing the pool of tagged
+ * Items.
  */
 interface TaggablePool extends \PSR\Cache\Pool
 {
@@ -298,4 +325,5 @@ interface TaggableItem extends \PSR\Cache\Item
      */
     function setTags(array $tags = array());
 }
+
 ```

@@ -6,7 +6,7 @@ namespace PSR\Cache;
  * The Cache\Item interface defines an item inside a cache system, which can be
  * filled with any PHP value capable of being serialized. Each item Cache\Item
  * should be associated with a specific key, which can be set according to the
- * implementing system and is typically passed by the CacheFactory object.
+ * implementing system and is typically passed by the Cache\Pool object.
  */
 interface Item
 {
@@ -16,7 +16,6 @@ interface Item
      * The key is loaded by the implementing library, but should be available to
      * the higher level callers when needed. If no key is set false should be
      * returned.
-     *
      *
      * @return string|false
      */
@@ -30,7 +29,7 @@ interface Item
      * If the cache is empty then null should be returned. However, null is also
      * a valid cache item, so the isMiss function should be used to check
      * validity.
-     * 
+     *
      * @return mixed
      */
     function get();
@@ -77,5 +76,5 @@ interface Item
      *
      * @return bool
      */
-    function clear();
+    function remove();
 }
