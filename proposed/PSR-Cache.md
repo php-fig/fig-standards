@@ -52,9 +52,7 @@ All data passed into the Implementing Library must be returned exactly as passed
 
 The main focus of the Cache\Pool object is to accept a key from the Calling Library and return the associated Cache\Item object. The majority of the Pool object's implementation is up to the Implementing Library, including all configuration, initialization and the injection itself into the Calling Library.
 
-Items can be retrieved from the Cache\Pool either individually or as a group operation.
-
-The Cache\IteratorFactory is an extension of the Cache\Factory class which is capable of performing bulk operations. While it can be used for retrieving individual items, it also defines a "getCacheIterator" function which takes an array of keys and returns a Cache\Iterator object.
+Items can be retrieved from the Cache\Pool either individually or as a group operation, either by using the getCache or getCacheIterator functions.
 
 ```php
 namespace PSR\Cache;
@@ -80,13 +78,13 @@ interface Factory
     function getCache($key);
 
     /**
-     * Returns a group of cache objects as a Cache\Iterator
+     * Returns a group of cache objects as an \Iterator
      *
      * Bulk lookups can often by steamlined by backend cache systems. The
      * returned iterator will contain a Cache\Item for each key passed.
      *
      * @param array $key
-     * @return PSR\Cache\Iterator
+     * @return \Iterator
      */
     function getCacheIterator($keys);
 
@@ -185,27 +183,6 @@ interface Item
      * @return bool
      */
     function remove();
-}
-```
-
-
-### Cache\Iterator
-
-The Cache\Iterator is a collection of Cache\Item objects. This class allows Calling Libraries to iterate through each cache item, which allows developers to take actions based on the individual status of each item while still letting the Implementing Library utilize bulk operations where appropriate in the back end.
-
-
-```php
-namespace PSR\Cache;
-
-/**
- * An iterator of Cache\Items.
- *
- * The Cache\Iterator provides a way to loop through Cache\Items, particularly
- * those returned by bulk operations.
- */
-interface Iterator extends \Iterator
-{
-
 }
 ```
 
