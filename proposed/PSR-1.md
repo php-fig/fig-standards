@@ -5,17 +5,17 @@ Rules
 -----
 
 * PHP code should be delimited by standard PHP tags. Short tags, ASP tags and script tags are not allowed.
-* Files that contain only PHP code should ommit the closing tag "?>" in order to avoid accidental injection of escape characters
+* Files that contain only PHP code should omit the closing tag "?>" in order to avoid accidental injection of escape characters.
 * Indentation consists of 4 spaces, tabs are not allowed.
 * Don't put spaces after opening parenthesis and before closing parenthesis.
 * After language keywords (if, else, while, switch, etc.) add a single space before the opening parenthesis.
 * Don't add trailing spaces after braces, parenthesis or line endings.
 * Native PHP types should be lowercase (false, null, true, array, etc.).
 * Use camelCase for variable, function and method names. Don't use underscores.
-* Use uppercase for constants, separe words with underscores.
+* Use uppercase for constants, separate words with underscores.
 * Class, method and function declarations should have braces on a new line.
 * Conditional statements should have braces on the same line, with a single space before the brace.
-* When there are no parameters for the constructor method, ommit the parenthesis.
+* When there are no parameters for the constructor method, omit the parenthesis.
 * Wrap operators with a single space (==, !=, &&).
 * A string that does not contain variable substitution should use single quotes.
 * A string that contains variable substitution should use double quotes. If the variable to be substituted is an array index, braces should be used. Never concatenate for this.
