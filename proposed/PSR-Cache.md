@@ -18,7 +18,9 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
     
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at 1:35:00.
    
-*    Key - A string that uniquely identifies the cached item. There are no restrictions on keys, with any escaping or normalizing occurring invisibly to the user by the implementing library.
+*    Key - A string that uniquely identifies the cached item. There are no restrictions on keys, with any escaping or normalizing occurring invisibly to the user by the implementing library. Keys should be no longer than 255 charactors and should not contain the special charactors listed:
+
+	{}()/\@
 
 *    Miss - An item is considered missing from the cache when it isn't there or has expired. Additional "miss" conditions can be defined by the implementing library, however the current ones can not be ignored (at no point should an expired item not be considered a miss).
 
@@ -35,7 +37,7 @@ Acceptable data includes all PHP data types-
 *    Integers - Positive, negative and large integers (>32 bit).
 *    Floats - Positive, negative and large.
 *    Boolean- true, false.
-*    Null
+*    Null - not a wrapper or object, but the actual null value.
 *    Arrays - indexed, associative and multidimensional.
 *    Object - those that support the PHP serialize functionality.
 
@@ -44,7 +46,7 @@ All data passed into the Implementing Library must be returned exactly as passed
 
 ## Single Objects
 
-### Factory
+### Cache\Factory
 
 The main focus of the Cache\Factory object is to accept a key from the Calling Library and return the associated Cache\Item object. The majority of the Factory object's implementation is up to the Implementing Library, including all configuration, initialization and the injection itself into the Calling Library.
 
@@ -67,7 +69,7 @@ interface Factory
 }
 ```
 
-### Item
+### Cache\Item
 
 The Cache\Item object encapsulates the storage and retrieval of cache items.
 
@@ -157,7 +159,7 @@ interface Item
 
 ## Bulk Objects 
  
-### IteratorFactory    
+### Cache\IteratorFactory    
 
 The Cache\IteratorFactory is an extension of the Cache\Factory class which is capable of performing bulk operations. While it can be used for retrieving individual items, it also defines a "getCacheIterator" function which takes an array of keys and returns a Cache\Iterator object.
 
@@ -184,7 +186,7 @@ interface IteratorFactory extends Factory
 ```
 
 
-### Iterator
+### Cache\Iterator
 
 The Cache\Iterator is a collection of Cache\Item objects, typically returned by the Cache\IteratorFactory. This class allows Calling Libraries to iterate through each cache item, which allows developers to take actions based on the individual status of each item while still letting the Implementing Library utilize bulk operations where appropriate in the back end.
 
@@ -204,45 +206,51 @@ interface Iterator extends \Iterator
 }
 ```
 
+
 ## Extensions
+
+
+
 
 ### Group Invalidation
 
 #### Namespaces
 
+Namespaces can be used to seperate the storage of different systems in the cache. This allows different sections to be cleared on an individual level, while also preventing overlapping keys.
+
+Supporting namespaces is out of the scope of this standard, but can easily be accomplished by the Implementing Library as part of the Cache\Factory. Different Cache\Factory objects can be assigned namespaces and then get injected into their respective Calling Libraries, and those libraries will not need to treat them any differently.
+
+
 #### Tags
+
+##### Cache\Extensions\TaggableItem
+
+```php
+namespace PSR\Cache\Extensions;
+
+/**
+ * Cache\Extensions\TaggableItem extends Cache\Item to provide tagging support.
+ *
+ * The Cache\Extensions\TaggableItem interface adds support for tagging to the
+ * base Cache\Item interface. Items can be added to multiple categories (called
+ * tags) that can be used for group invalidation.
+ */
+interface TaggableItem extends \PSR\Cache\Item
+{
+    /**
+     * Sets the tags for the current item.
+     *
+     * Accepts an array of strings for the item to be tagged with. The tags
+     * passed should overwrite any existing tags, and passing an empty array
+     * will cause all tags to be removed. Changes to an Item's tags are not
+     * guaranteed to persist unless the "set" function is called.
+     *
+     * @return void
+     */
+    function setTags(array $tags = array());
+}
+```
+
 
 #### Stacks
 
-
-
-
-### Drivers
-
-    namespace PSR\Cache;
-
-    interface Driver
-    {    
-        /**
-         *
-         * @param array $key
-         * @return array|false
-         */        
-        function retrieve($key);
-
-        /**
-         *
-         * @param array $key
-         * @param array $data
-         * @param int $expiration
-         * @return bool
-         */        
-        function store($key, $data, $ttl);
-
-        /**
-         *
-         * @param null|array $key
-         * @return bool
-         */
-        function clear($key = null);
-    }
