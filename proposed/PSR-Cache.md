@@ -46,18 +46,21 @@ All data passed into the Implementing Library must be returned exactly as passed
 
 ## Single Objects
 
-### Cache\Factory
+### Cache\Pool
 
-The main focus of the Cache\Factory object is to accept a key from the Calling Library and return the associated Cache\Item object. The majority of the Factory object's implementation is up to the Implementing Library, including all configuration, initialization and the injection itself into the Calling Library.
+The main focus of the Cache\Pool object is to accept a key from the Calling Library and return the associated Cache\Item object. The majority of the Pool object's implementation is up to the Implementing Library, including all configuration, initialization and the injection itself into the Calling Library.
 
+Items can be retrieved from the Cache\Pool either individually or as a group operation.
+
+The Cache\IteratorFactory is an extension of the Cache\Factory class which is capable of performing bulk operations. While it can be used for retrieving individual items, it also defines a "getCacheIterator" function which takes an array of keys and returns a Cache\Iterator object.
 
 ```php
 namespace PSR\Cache;
 
 /**
- * Cache\Factory generates Cache\Item objects.
+ * Cache\Pool generates Cache\Item objects.
  */
-interface Factory
+interface Pool
 {
     /**
      * Returns objects which implement the Cache\Item interface.
@@ -156,39 +159,9 @@ interface Item
 }
 ```
 
-
-## Bulk Objects 
- 
-### Cache\IteratorFactory    
-
-The Cache\IteratorFactory is an extension of the Cache\Factory class which is capable of performing bulk operations. While it can be used for retrieving individual items, it also defines a "getCacheIterator" function which takes an array of keys and returns a Cache\Iterator object.
-
-
-```php
-namespace PSR\Cache;
-
-/**
- * Retrieves multiple items from the cache.
- *
- * IteratorFactory allows multiple cache items to be retrieved at once and
- * returns them in a Cache\Iterator. This factory should also be able to return
- * cache objects on an individual basis using the Cache\Factory interface.
- */
-interface IteratorFactory extends Factory
-{
-    /**
-     *
-     * @param array $key
-     * @return PSR\Cache\Iterator
-     */
-    function getCacheIterator($keys);
-}
-```
-
-
 ### Cache\Iterator
 
-The Cache\Iterator is a collection of Cache\Item objects, typically returned by the Cache\IteratorFactory. This class allows Calling Libraries to iterate through each cache item, which allows developers to take actions based on the individual status of each item while still letting the Implementing Library utilize bulk operations where appropriate in the back end.
+The Cache\Iterator is a collection of Cache\Item objects. This class allows Calling Libraries to iterate through each cache item, which allows developers to take actions based on the individual status of each item while still letting the Implementing Library utilize bulk operations where appropriate in the back end.
 
 
 ```php
@@ -209,21 +182,47 @@ interface Iterator extends \Iterator
 
 ## Extensions
 
+Extensions are optional which do not need to be implemented by the Implementing Library but which may provide useful functionality or insights. Calling Libraries should not rely on any of the functionality below, but can use any relevant interfaces.
 
 
-
-### Group Invalidation
-
-#### Namespaces
+### Namespaces
 
 Namespaces can be used to seperate the storage of different systems in the cache. This allows different sections to be cleared on an individual level, while also preventing overlapping keys.
 
 Supporting namespaces is out of the scope of this standard, but can easily be accomplished by the Implementing Library as part of the Cache\Factory. Different Cache\Factory objects can be assigned namespaces and then get injected into their respective Calling Libraries, and those libraries will not need to treat them any differently.
 
+#### Stacks
 
-#### Tags
 
-##### Cache\Extensions\TaggableItem
+### Tags
+
+Tagging interfaces are provided for completeness, but developers should note the difficulty in providing a consistant high performance tagging solution.
+
+#### Cache\Extensions\TaggablePool
+
+```php
+namespace PSR\Cache\Extensions;
+
+/**
+ * Cache\Extensions\TaggablePool extends Cache\Pool to provide tagging support.
+ *
+ * The Cache\Extensions\TaggablePool interface adds support for returning
+ * Cache\ExtensionsTaggbleItem objects, as well as clearing the pool of tagged
+ * Items. 
+ */
+interface TaggablePool extends \PSR\Cache\Pool
+{
+    /**
+     * Clears the cache of all items with the specified tag.
+     *
+     * @param string
+     * @return bool
+     */
+    function clearByTag($tag);
+}
+```
+
+#### Cache\Extensions\TaggableItem
 
 ```php
 namespace PSR\Cache\Extensions;
@@ -252,5 +251,4 @@ interface TaggableItem extends \PSR\Cache\Item
 ```
 
 
-#### Stacks
 
