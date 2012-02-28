@@ -18,7 +18,7 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
     
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at 1:35:00.
    
-*    Key - A string that uniquely identifies the cached item. There are no restrictions on keys, with any escaping or normalizing occurring invisibly to the user by the implementing library. Keys should be no longer than 255 charactors and should not contain the special charactors listed:
+*    Key - A string that uniquely identifies the cached item. Implementing Libraries are responsible for any encoding or escaping requires by their backends, but must be able to supply the original key if needed. Keys should be no longer than 255 charactors and should not contain the special charactors listed:
 
 	{}()/\@
 
@@ -30,6 +30,7 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
 
 
 ## Data    
+
 
 Acceptable data includes all PHP data types-
 
@@ -44,7 +45,8 @@ Acceptable data includes all PHP data types-
 All data passed into the Implementing Library must be returned exactly as passed. If this is not possible for whatever reason than it is preferable to respond with a cache miss than with corrupted data.
 
 
-## Single Objects
+## Interfaces
+
 
 ### Cache\Pool
 
@@ -71,6 +73,7 @@ interface Pool
     function getCache($key);
 }
 ```
+
 
 ### Cache\Item
 
@@ -159,6 +162,7 @@ interface Item
 }
 ```
 
+
 ### Cache\Iterator
 
 The Cache\Iterator is a collection of Cache\Item objects. This class allows Calling Libraries to iterate through each cache item, which allows developers to take actions based on the individual status of each item while still letting the Implementing Library utilize bulk operations where appropriate in the back end.
@@ -182,7 +186,7 @@ interface Iterator extends \Iterator
 
 ## Extensions
 
-Extensions are optional which do not need to be implemented by the Implementing Library but which may provide useful functionality or insights. Calling Libraries should not rely on any of the functionality below, but can use any relevant interfaces.
+Extensions are optional which do not need to be implemented by the Implementing Library but which may provide useful functionality or insights. Calling Libraries should not rely on any of the functionality below, but can use any relevant interfaces. These extensions primarily exist to show how the existing standard can be extending by interested developers
 
 
 ### Namespaces
@@ -191,12 +195,57 @@ Namespaces can be used to seperate the storage of different systems in the cache
 
 Supporting namespaces is out of the scope of this standard, but can easily be accomplished by the Implementing Library as part of the Cache\Factory. Different Cache\Factory objects can be assigned namespaces and then get injected into their respective Calling Libraries, and those libraries will not need to treat them any differently.
 
-#### Stacks
+
+### Stacks
+
+Stacks are a special kind of grouping system that allow cache items to be nested, similar to how folders are nested in filesystems. Stacks work by adding a special charactor to Keys, the slash, which tells the Implementing Library where the nesting points out. If no nesting is used, Stacks behave exactly like the standard Cache interfaces.
+
+> An example key may look like "Users/Bob/Friends", "Users/Bob/Friends/Active" or just "Users/Bob". The special thing about Stacks is that clearing out "Users/Bob" also clears out "Users/Bob/Friends" and "Users/Bob/Friends/Active". 
+
+
+#### StackablePool
+
+```php
+namespace PSR\Cache\Extensions;
+
+/**
+ * Cache\Extensions\StackablePool extends Cache\Pool to provide stacking support.
+ *
+ * The Cache\Extensions\StackablePool interface adds support for returning
+ * Cache\Extensions\StackableItem objects. This works primarily by defining the
+ * Key to use a slash as a delimiter, similar to a filesystem, to nest keys.
+ * When a StackableItem is cleared it also clears the items nested beneath it.
+ */
+interface StackablePool extends \PSR\Cache\Pool
+{
+
+}
+```
+
+
+#### StackableItem
+
+```php
+namespace PSR\Cache\Extensions;
+
+/**
+ * Cache\Extensions\StackableItem extends Cache\Item to provide stacking support.
+ *
+ * The Cache\Extensions\StackableItem interface adds support for stacking to the
+ * base Cache\Item interface. When a StackableItem is cleared it also clears the
+ * items nested beneath it.
+ */
+interface StackableItem extends \PSR\Cache\Item
+{
+
+}
+```
 
 
 ### Tags
 
 Tagging interfaces are provided for completeness, but developers should note the difficulty in providing a consistant high performance tagging solution.
+
 
 #### Cache\Extensions\TaggablePool
 
@@ -221,6 +270,7 @@ interface TaggablePool extends \PSR\Cache\Pool
     function clearByTag($tag);
 }
 ```
+
 
 #### Cache\Extensions\TaggableItem
 
@@ -249,6 +299,3 @@ interface TaggableItem extends \PSR\Cache\Item
     function setTags(array $tags = array());
 }
 ```
-
-
-
