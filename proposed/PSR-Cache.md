@@ -212,7 +212,7 @@ interface Iterator extends \Iterator
 
 ## Extensions
 
-Extensions are optional which do not need to be implemented by the Implementing Library but which may provide useful functionality or insights. Calling Libraries should not rely on any of the functionality below, but can use any relevant interfaces. These extensions primarily exist to show how the existing standard can be extending by interested developers
+Extensions are optional which do not need to be implemented by the Implementing Library but which may provide useful functionality or insights. Calling Libraries should not rely on any of the functionality below, but can use any relevant interfaces. These extensions primarily exist to show how the existing standard can be extending by interested developers while still meeting the guidelines of this standard.
 
 
 ### Namespaces
