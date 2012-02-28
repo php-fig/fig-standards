@@ -72,7 +72,8 @@ interface Item
     /**
      * Removes the current key from the cache.
      *
-     * Returns true if the item was successfully removed.
+     * Returns true if the item is no longer present (either because it was
+     * removed or was not present to begin with).
      *
      * @return bool
      */

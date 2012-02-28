@@ -22,6 +22,10 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
 
 *    Miss - An item is considered missing from the cache when it isn't there or has expired. Additional "miss" conditions can be defined by the implementing library, however the current ones can not be ignored (at no point should an expired item not be considered a miss).
 
+*    Calling Library - The library that actually needs the cache services, this library will expect an object that fits the interfaces below but will have no knowledge of how they're actually implemented.
+
+*    Implementing Library - Responsible for implementing the interface, this is the library that provides caching services to anyone who calls it.
+
 
 ## Data    
 
@@ -35,10 +39,14 @@ Acceptable data includes all PHP data types-
 *    Arrays - indexed, associative and multidimensional.
 *    Object - those that support the PHP serialize functionality.
 
+All data passed into the Implementing Library must be returned exactly as passed. If this is not possible for whatever reason than it is preferable to respond with a cache miss than with corrupted data.
+
 
 ## Single Objects
 
 ### Factory
+
+The main focus of the Cache\Factory object is to accept a key from the Calling Library and return the associated Cache\Item object. The majority of the Factory object's implementation is up to the Implementing Library, including all configuration, initialization and the injection itself into the Calling Library.
 
 
 ```php
@@ -60,6 +68,8 @@ interface Factory
 ```
 
 ### Item
+
+The Cache\Item object encapsulates the storage and retrieval of cache items.
 
 ```php
 namespace PSR\Cache;
@@ -149,6 +159,9 @@ interface Item
  
 ### IteratorFactory    
 
+The Cache\IteratorFactory is an extension of the Cache\Factory class which is capable of performing bulk operations. While it can be used for retrieving individual items, it also defines a "getCacheIterator" function which takes an array of keys and returns a Cache\Iterator object.
+
+
 ```php
 namespace PSR\Cache;
 
@@ -172,6 +185,9 @@ interface IteratorFactory extends Factory
 
 
 ### Iterator
+
+The Cache\Iterator is a collection of Cache\Item objects, typically returned by the Cache\IteratorFactory. This class allows Calling Libraries to iterate through each cache item, which allows developers to take actions based on the individual status of each item while still letting the Implementing Library utilize bulk operations where appropriate in the back end.
+
 
 ```php
 namespace PSR\Cache;
