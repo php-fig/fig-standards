@@ -21,15 +21,15 @@ interface Factory
     function getCache($key);
 
     /**
-     * Returns a group of cache objects as a Cache\Iterator
+     * Returns a group of cache objects as a Cache\Iterator
      *
      * Bulk lookups can often by steamlined by backend cache systems. The
      * returned iterator will contain a Cache\Item for each key passed.
      *
-     * @param array $key
-     * @return PSR\Cache\Iterator
-     */
-    function getCacheIterator($keys);
+     * @param array $key
+     * @return PSR\Cache\Iterator
+     */
+    function getCacheIterator($keys);
 
     /**
      * Empties the cache pool of all items.
