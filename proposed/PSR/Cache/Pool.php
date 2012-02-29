@@ -3,7 +3,7 @@ namespace PSR\Cache;
 /**
  * Cache\Pool generates Cache\Item objects.
  */
-interface Factory
+interface Pool
 {
     /**
      * Returns objects which implement the Cache\Item interface.
@@ -11,8 +11,8 @@ interface Factory
      * Provided key must be unique for each item in the cache. Implementing
      * Libraries are responsible for any encoding or escaping required by their
      * backends, but must be able to supply the original key if needed. Keys
-     * should be no longer than 1024 charactors and should not contain the
-     * special charactors listed:
+     * should be no longer than 1024 characters and should not contain the
+     * special characters listed:
      *  {}()/\@
      *
      * @param string $key
@@ -21,13 +21,13 @@ interface Factory
     function getCache($key);
 
     /**
-     * Returns a group of cache objects as a Cache\Iterator
+     * Returns a group of cache objects as an \Iterator
      *
      * Bulk lookups can often by steamlined by backend cache systems. The
      * returned iterator will contain a Cache\Item for each key passed.
      *
      * @param array $key
-     * @return PSR\Cache\Iterator
+     * @return \Iterator
      */
     function getCacheIterator($keys);
 
