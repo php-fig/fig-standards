@@ -12,7 +12,7 @@ interface TaggablePool extends \PSR\Cache\Pool
     /**
      * Clears the cache of all items with the specified tag.
      *
-     * @param string
+     * @param string $tag
      * @return bool
      */
     function clearByTag($tag);

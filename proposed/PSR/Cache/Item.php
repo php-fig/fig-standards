@@ -13,9 +13,8 @@ interface Item
     /**
      * Returns the key for the current cache item.
      *
-     * The key is loaded by the implementing library, but should be available to
-     * the higher level callers when needed. If no key is set false should be
-     * returned.
+     * The key is loaded by the Implementing Library, but should be available to
+     * the higher level callers when needed.
      *
      * @return string|false
      */
@@ -38,7 +37,7 @@ interface Item
      * Stores a value into the cache.
      *
      * The $value argument can be any item that can be serialized by PHP, although
-     * the method of serialization is left up to the implementation.
+     * the method of serialization is left up to the  Implementing Library.
      *
      * The $ttl can be defined in a number of ways. As an integer or
      * DateInverval object the argument defines how long before the cache should
@@ -47,7 +46,7 @@ interface Item
      * passed, but should not use a longer one.
      *
      * If no $ttl is passed then the item can be stored indefinitely or a
-     * default value can be set by the implementation.
+     * default value can be set by the Implementing Library.
      *
      * Returns true if the item was successfully stored.
      *
@@ -60,9 +59,8 @@ interface Item
     /**
      * Validates the current state of the item in the cache.
      *
-     * An item is considered a miss when it does not exist or has passed it's
-     * expiration. Individual libraries or systems can define additional miss
-     * conditions.
+     * An item is considered a miss when it does not exist or has passed its
+     * expiration.Implementing Library can define additional miss conditions.
      *
      * @return bool
      */

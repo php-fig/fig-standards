@@ -11,8 +11,7 @@ interface Pool
      * Provided key must be unique for each item in the cache. Implementing
      * Libraries are responsible for any encoding or escaping required by their
      * backends, but must be able to supply the original key if needed. Keys
-     * should be no longer than 1024 characters and should not contain the
-     * special characters listed:
+     * should not contain the special characters listed:
      *  {}()/\@
      *
      * @param string $key
@@ -26,7 +25,7 @@ interface Pool
      * Bulk lookups can often by steamlined by backend cache systems. The
      * returned iterator will contain a Cache\Item for each key passed.
      *
-     * @param array $key
+     * @param array $keys
      * @return \Iterator
      */
     function getCacheIterator($keys);

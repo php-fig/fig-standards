@@ -17,6 +17,7 @@ interface TaggableItem extends \PSR\Cache\Item
      * will cause all tags to be removed. Changes to an Item's tags are not
      * guaranteed to persist unless the "set" function is called.
      *
+     * @param array $tags
      * @return void
      */
     function setTags(array $tags = array());

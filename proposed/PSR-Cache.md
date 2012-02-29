@@ -1,6 +1,6 @@
 ## Introduction
 
-Caching is a common way to improve the performance of any project, making caching libraries one of the most common features of many frameworks and libraries. This has lead to a situation where many libraries roll their own caching libraries, with various levels of functionality, causing developers to have to learn multiple systems which may or may not provide the functionality they need. In addition, the developers of caching libraries themselves face a choice between only supporting a limited number of frameworks or creating a large number of adapter classes.
+Caching is a common way to improve the performance of any project, making caching libraries one of the most common features of many frameworks and libraries. This has lead to a situation where many libraries roll their own caching libraries, with various levels of functionality. These differences are causing developers to have to learn multiple systems which may or may not provide the functionality they need. In addition, the developers of caching libraries themselves face a choice between only supporting a limited number of frameworks or creating a large number of adapter classes.
 
 A common interface for caching systems will solve these problems. Library and framework developers can count on the caching systems working the way they're expecting, while the developers of caching systems will only have to implement a single set of interfaces rather than a whole assortment of adapters.
 
@@ -13,20 +13,20 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
 ## Definitions
 
 *    TTL - The Time To Live (TTL) of an item is the amount of time between when that item is stored and it is considered stale. The TTL is normally defined by an integer representing time in seconds, or a DateInterval object.  
- 
+  
 *    Expiration - The actual time when an item is set to go stale. This it typically calculated by adding the TTL to the time when an object is stored, but can also be explicitly set with DateTime object.
-    
-    An item with a 300 second TTL stored at 1:30:00 will have an expiration at 1:35:00.
    
-*    Key - A string that uniquely identifies the cached item. Implementing Libraries are responsible for any encoding or escaping requires by their backends, but must be able to supply the original key if needed. Keys should be no longer than 1024 characters and should not contain the special characters listed:
+    An item with a 300 second TTL stored at 1:30:00 will have an expiration at 1:35:00.
+    
+*    Key - A string that uniquely identifies the cached item. Implementing Libraries are responsible for any encoding or escaping required by their backends, but must be able to supply the original key if needed. Keys should not contain the special characters listed:
 
 	{}()/\@
 
-*    Miss - An item is considered missing from the cache when it isn't there or has expired. Additional "miss" conditions can be defined by the implementing library, however the current ones can not be ignored (at no point should an expired item not be considered a miss).
+*    Miss - An item is considered missing from the cache when it isn't there or has an expiration in the past. Additional Miss conditions can be defined by the Implementing Library as long as these conditions are met (at no point should an expired item not be considered a miss).
 
-*    Calling Library - The library that actually needs the cache services, this library will expect an object that fits the interfaces below but will have no knowledge of how they're actually implemented.
+*    Calling Library - The library or code that actually needs the cache services. This library will utilize caching services that implement this standard's interfaces, but will otherwise have no knowledge of the implementation of those caching services.
 
-*    Implementing Library - Responsible for implementing the interface, this is the library that provides caching services to anyone who calls it.
+*    Implementing Library - This library is responsible for implementing this standard in order to provide caching services to any Calling Library. The Implmenting Library must provide classes which implement the Cache\Pool and Cache\Item interfaces.
 
 
 ## Data    
@@ -42,7 +42,7 @@ Acceptable data includes all PHP data types-
 *    Arrays - indexed, associative and multidimensional.
 *    Object - those that support the PHP serialize functionality.
 
-All data passed into the Implementing Library must be returned exactly as passed. If this is not possible for whatever reason than it is preferable to respond with a cache miss than with corrupted data.
+All data passed into the Implementing Library must be returned exactly as passed. If this is not possible for whatever reason then it is preferable to respond with a cache miss than with corrupted data.
 
 
 ## Interfaces
@@ -52,7 +52,7 @@ All data passed into the Implementing Library must be returned exactly as passed
 
 The main focus of the Cache\Pool object is to accept a key from the Calling Library and return the associated Cache\Item object. The majority of the Pool object's implementation is up to the Implementing Library, including all configuration, initialization and the injection itself into the Calling Library.
 
-Items can be retrieved from the Cache\Pool either individually or as a group operation, either by using the getCache or getCacheIterator functions.
+Items can be retrieved from the Cache\Pool individually using the getCache function, or in groups by retrieving an Iterator object from the getCacheIterator function. 
 
 ```php
 namespace PSR\Cache;
@@ -68,8 +68,7 @@ interface Pool
      * Provided key must be unique for each item in the cache. Implementing
      * Libraries are responsible for any encoding or escaping required by their
      * backends, but must be able to supply the original key if needed. Keys
-     * should be no longer than 1024 characters and should not contain the
-     * special characters listed:
+     * should not contain the special characters listed:
      *  {}()/\@
      *
      * @param string $key
@@ -83,7 +82,7 @@ interface Pool
      * Bulk lookups can often by steamlined by backend cache systems. The
      * returned iterator will contain a Cache\Item for each key passed.
      *
-     * @param array $key
+     * @param array $keys
      * @return \Iterator
      */
     function getCacheIterator($keys);
@@ -101,7 +100,7 @@ interface Pool
 
 ### Cache\Item
 
-The Cache\Item object encapsulates the storage and retrieval of cache items. Each Cache\Item is already associated with a Key (how is the responsibility of the Implementing Library).
+The Cache\Item object encapsulates the storage and retrieval of cache items. Each Cache\Item is generated by a Cache\Pool, which is responsible for any required setup as well as associating the object with a unique Key (how this is accomplished is the responsibility of the Implementing Library). Cache\Item objects can store and retrieve any type of PHP value defined in the Data section of this document.
 
 ```php
 namespace PSR\Cache;
@@ -119,11 +118,10 @@ interface Item
     /**
      * Returns the key for the current cache item.
      *
-     * The key is loaded by the implementing library, but should be available to
-     * the higher level callers when needed. If no key is set false should be
-     * returned.
+     * The key is loaded by the Implementing Library, but should be available to
+     * the higher level callers when needed.
      *
-     * @return string|false
+     * @return string
      */
     function getKey();
 
@@ -144,7 +142,7 @@ interface Item
      * Stores a value into the cache.
      *
      * The $value argument can be any item that can be serialized by PHP, although
-     * the method of serialization is left up to the implementation.
+     * the method of serialization is left up to the  Implementing Library.
      *
      * The $ttl can be defined in a number of ways. As an integer or
      * DateInverval object the argument defines how long before the cache should
@@ -153,7 +151,7 @@ interface Item
      * passed, but should not use a longer one.
      *
      * If no $ttl is passed then the item can be stored indefinitely or a
-     * default value can be set by the implementation.
+     * default value can be set by the Implementing Library.
      *
      * Returns true if the item was successfully stored.
      *
@@ -166,9 +164,8 @@ interface Item
     /**
      * Validates the current state of the item in the cache.
      *
-     * An item is considered a miss when it does not exist or has passed it's
-     * expiration. Individual libraries or systems can define additional miss
-     * conditions.
+     * An item is considered a miss when it does not exist or has passed its
+     * expiration. Implementing Library can define additional miss conditions.
      *
      * @return bool
      */
@@ -189,14 +186,14 @@ interface Item
 
 ## Extensions
 
-Extensions are optional which do not need to be implemented by the Implementing Library but which may provide useful functionality or insights. Calling Libraries should not rely on any of the functionality below, but can use any relevant interfaces. These extensions primarily exist to show how the existing standard can be extending by interested developers while still meeting the guidelines of this standard.
+Extensions are optional features which do not need to be provided by the Implementing Library but which may provide useful functionality or insights. Calling Libraries should not rely on any extension being present, but can use the relevant interfaces to test for functionality. These extensions primarily exist to show how extending this standard can be done by interested developers.
 
 
 ### Namespaces
 
 Namespaces can be used to seperate the storage of different systems in the cache. This allows different sections to be cleared on an individual level, while also preventing overlapping keys.
 
-Supporting namespaces is out of the scope of this standard, but can easily be accomplished by the Implementing Library as part of the Cache\Factory. Different Cache\Factory objects can be assigned namespaces and then get injected into their respective Calling Libraries, and those libraries will not need to treat them any differently.
+Supporting namespaces is out of the scope of this standard, but can easily be accomplished by the Implementing Library as part of the Cache\Pool. Different Cache\Pool objects can be assigned namespaces and then get injected into their respective Calling Libraries, and those libraries will not need to treat them any differently.
 
 
 ### Stacks
@@ -268,7 +265,7 @@ interface TaggablePool extends \PSR\Cache\Pool
     /**
      * Clears the cache of all items with the specified tag.
      *
-     * @param string
+     * @param string $tag
      * @return bool
      */
     function clearByTag($tag);
@@ -298,9 +295,11 @@ interface TaggableItem extends \PSR\Cache\Item
      * will cause all tags to be removed. Changes to an Item's tags are not
      * guaranteed to persist unless the "set" function is called.
      *
+     * @param array $tags
      * @return void
      */
     function setTags(array $tags = array());
 }
+
 
 ```
