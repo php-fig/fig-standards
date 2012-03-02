@@ -93,7 +93,7 @@ interface Pool
      *
      * @return bool
      */
-    function empty();
+    function flush();
 
 }
 ```
