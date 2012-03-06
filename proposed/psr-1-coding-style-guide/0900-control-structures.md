@@ -134,7 +134,7 @@ A `foreach` statement looks like the following.  Note the placement of parenthes
 Formatting of Conditions
 ------------------------
 
-Conditon sets for `if`, `switch`, etc. statements should fit on one line.  If the set of conditions cannot fit on one line, extract the conditions into an explaining variable and use that variable as the condition.  For example, the following long condition set ...
+Condition sets for `if`, `switch`, etc. statements should fit on one line.  If the set of conditions cannot fit on one line, extract the conditions into an explaining variable and use that variable as the condition.  For example, the following long condition set ...
 
     if (($condition1 && $condition2 && very_long_function_name())
         || $condition3 || $condition4) {

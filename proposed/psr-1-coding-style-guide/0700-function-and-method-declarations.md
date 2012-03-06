@@ -25,7 +25,7 @@ Strongly consider using static class methods rather than functions; this will he
 Methods
 -------
 
-Class methods are always be prefixed with an explicit vsibility keyword:
+Class methods are always be prefixed with an explicit visibility keyword:
 
     <?php
     public function fooBarBaz($arg1, $arg2, $arg3 = [], $arg4 = null)
