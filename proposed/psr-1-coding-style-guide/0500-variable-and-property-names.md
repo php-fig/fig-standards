@@ -1,11 +1,19 @@
 Variable And Property Names
 ===========================
 
-This guide expressly avoids any requirement regarding the use of `$StudlyCase`, `$camelCase`, or `$under_score` variable and property names.  It is often the case that variable names map directly field names in external data sources. Changing between naming conventions when changing contexts merely to suit a style guide would be counterproductive in such cases.
+This guide expressly avoids any requirement regarding the use of
+`$StudlyCase`, `$camelCase`, or `$under_score` variable and property names. It
+is often the case that variable names map directly field names in external
+data sources. Changing between naming conventions when changing contexts
+merely to suit a style guide would be counterproductive in such cases.
 
-Some projects prefix function and method names with a single underscore to indicate a protected or private visibility. This guide discourages but does not disallow that practice.
+Some projects prefix function and method names with a single underscore to
+indicate a protected or private visibility. This guide discourages but does
+not disallow that practice.
 
-Whatever naming convention is used should be applied consistently within a reasonable scope. That scope may be vendor-level, package-level, class-level, or function-level.
+Whatever naming convention is used should be applied consistently within a
+reasonable scope. That scope may be vendor-level, package-level, class-level,
+or function-level.
 
 Class properties should explictly note the visibility keyword.
 

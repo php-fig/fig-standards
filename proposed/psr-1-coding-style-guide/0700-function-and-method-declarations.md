@@ -3,13 +3,16 @@ Function And Method Declarations
 
 Function and method names are in `camelCase`.
 
-Some projects prefix function and method names with a single underscore to indicate a protected or private visibility. This guide discourages but does not disallow that practice.
+Some projects prefix function and method names with a single underscore to
+indicate a protected or private visibility. This guide discourages but does
+not disallow that practice.
 
 
 Functions
 ---------
 
-A function declaration looks like the following. Note the placement of parentheses, commas, spaces, and braces:
+A function declaration looks like the following. Note the placement of
+parentheses, commas, spaces, and braces:
 
     <?php
     namespace Vendor\Package;
@@ -20,7 +23,8 @@ A function declaration looks like the following. Note the placement of parenthes
 
 All functions are namespaced; global functions are disallowed.
 
-Strongly consider using static class methods rather than functions; this will help support autoloading.
+Strongly consider using static class methods rather than functions; this will
+help support autoloading.
 
 Methods
 -------
@@ -47,7 +51,9 @@ Arguments
 
 Arguments with default values always go at the end of the argument list.
 
-Argument lists that exceed the line length limit may be split across subsequent indented lines. There is only one argument per line. The closing parenthesis and opening brace are placed together on their own line.
+Argument lists that exceed the line length limit may be split across
+subsequent indented lines. There is only one argument per line. The closing
+parenthesis and opening brace are placed together on their own line.
 
     <?php
     static public function fooBarBaz(
@@ -62,10 +68,14 @@ Argument lists that exceed the line length limit may be split across subsequent 
 Anonymous Functions and Closures
 --------------------------------
 
-Declaration of anonymous functions looks like this; note the placement of parentheses, commas, spaces and braces:
+Declaration of anonymous functions looks like this; note the placement of
+parentheses, commas, spaces and braces:
 
     $foo = function ($bar, $baz) use ($zim, $gir) {
         // body of the function
     };
 
-This is a departure from the "normal" function and method declaration. Because `function` is a keyword, it gets a space after it; the same is true for `use`. The opening brace goes on the same line as the declaration; the body is indented once; and the closing brace goes on its own outdented line.
+This is a departure from the "normal" function and method declaration. Because
+`function` is a keyword, it gets a space after it; the same is true for `use`.
+The opening brace goes on the same line as the declaration; the body is
+indented once; and the closing brace goes on its own outdented line.
