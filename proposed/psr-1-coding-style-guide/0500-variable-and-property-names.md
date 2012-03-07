@@ -15,7 +15,7 @@ Whatever naming convention is used should be applied consistently within a
 reasonable scope. That scope may be vendor-level, package-level, class-level,
 or function-level.
 
-Class properties should explictly note the visibility keyword.
+Class properties should explicitly note the visibility keyword.
 
     <?php
     namespace Vendor\Package;
