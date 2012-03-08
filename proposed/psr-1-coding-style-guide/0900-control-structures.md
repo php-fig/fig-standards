@@ -149,6 +149,22 @@ parentheses, spaces, and braces.
     }
 
 
+`try catch`
+-----------
+
+A `try catch` block looks like the following. Note the placement of
+parentheses, spaces, and braces.
+
+    <?php
+    try {
+        // try body
+    } catch (FirstExceptionType $e) {
+        // catch body
+    } catch (OtherExceptionType $e) {
+        // catch body
+    }
+
+
 Formatting of Conditions
 ------------------------
 
