@@ -1,11 +1,15 @@
 Indenting and Line Length
 =========================
 
-Use an indent of 4 spaces; do not use tabs. The use of spaces helps to avoid
+Indenting
+---------
+
+Use an indent of 4 spaces. Do not use tabs. The use of spaces helps to avoid
 problems with diffs, patches, history, and annotations, and provides
 fine-grained sub-indentation when aligning elements on consecutive lines.
 
-Do not add trailing spaces at the end of lines.
+Line Length
+-----------
 
 Lines should be limited to 75-85 characters in length. This is based on known
 human cognitive limitations, not the technical limitations of screen windows
@@ -30,3 +34,12 @@ Some further insight into the 75-85 characters rule:
 
 -- "Line Length, Volume, and Density"
    <http://paul-m-jones.com/archives/276>
+
+
+Other Considerations
+--------------------
+
+Code blocks may have as many blank lines as needed to increase readability
+and comprehension.
+
+Do not add trailing spaces at the end of lines.
