@@ -14,6 +14,7 @@ Operators should have one space on either side.
 Similarly, `!` operator should have a space between it and the
 expression it is negating.
 
+    <?php
     if (! $expression) {
         // ...
     }
@@ -26,6 +27,7 @@ Increment/decrement operators should have no space separation:
 
 Casts should have a space between the type and the variable.
 
+    <?php
     $foo = (bool) $bar;
 
 
@@ -37,6 +39,7 @@ expression cannot fit on one line, extract the expression into an explaining
 variable and use that variable as the expression. For example, the following
 long expression ...
 
+    <?php
     if (($expression1 && $expression2 && veryLongFunctionName())
         || $expression3 || $expression4) {
         // perform some action
@@ -44,6 +47,7 @@ long expression ...
 
 ... should be rewritten as:
 
+    <?php
     $set1 = $expression1 && $expression2 && veryLongFunctionName();
     if ($set1 || $expression3 || $expression4) {
         // perform some action
@@ -54,6 +58,7 @@ readability, split the expression onto several subsequent lines at the `&&`
 and `||` operators. Operators should align with the equals sign so that the
 expressions themselves are also aligned.
 
+    <?php
     $set1 = $expression1
          && $expression2
          && veryLongFunctionName();
