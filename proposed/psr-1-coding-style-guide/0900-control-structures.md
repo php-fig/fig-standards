@@ -149,8 +149,8 @@ parentheses, spaces, and braces.
     }
 
 
-`try catch`
------------
+`try`, `catch`
+--------------
 
 A `try catch` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
