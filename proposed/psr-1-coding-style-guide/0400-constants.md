@@ -8,13 +8,22 @@ underscore separators.
 
     <?php
     namespace Vendor\Package;
+    
     class ClassName
     {
-        const SOME_CONSTANT_NAME = 'constant value';
+        const CONSTANT_NAME = 'constant value';
     }
     
-Global constants are discouraged; when present, they must be prefixed with the
-vendor and package name to deconflict with constants from other sources.
+Global constants are strongly discouraged. Instead, create namespaced
+constants for the vendor and package:
 
-    define('VENDOR_PACKAGE_CONSTANT_NAME', 'constant value');
+    <?php
+    namespace Vendor\Package;
+    const CONSTANT_NAME = 'constant_value';
+    
+If a global constant is absolutely unavoidable, prefix it with the vendor and
+package name:
+
+    <?php
+    define('VENDOR_PACKAGE_CONSTANT_NAME', 'constant_value');
 
