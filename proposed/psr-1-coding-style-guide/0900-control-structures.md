@@ -1,6 +1,7 @@
 Control Structures
 ==================
 
+
 `include`, `include_once`, `require`, `require_once`
 ----------------------------------------------------
 
@@ -25,21 +26,21 @@ An `if` statement looks like the following. Note the placement of parentheses,
 spaces, and braces:
 
     <?php
-    if ($condition1 || ($condition2 && $condition3)) {
+    if ($expression1 || ($expression2 && $expression3)) {
         echo "First case";
-    } elseif (! $condition4 && ! $condition5) {
+    } elseif (! $expression4 && ! $expression5) {
         echo "Second case";
     } else {
         echo "Default case";
     }
 
-Always use braces to enclose the body of the statement. This standardizes
+Always use braces to enclose the body of the statements. This standardizes
 how they look and reduces the likelihood of introducing errors as new lines
 get added to the body.
 
-Do not perform variable assignment within `if` or `elseif` conditions. This
+Do not perform variable assignment within `if` or `elseif` expressions. This
 reduces the difficulty of determining if the intent was to assign or to check
-equivalence. E.g., this ...
+equivalence. For example, this ...
 
     <?php
     if ($value = foo()) {
@@ -64,7 +65,7 @@ statements; and the presence of a `// no break` comment when a break is
 intentionally omitted.
 
     <?php
-    switch ($condition) {
+    switch ($expression) {
         
         case 1:
             echo "First case";
@@ -80,9 +81,9 @@ intentionally omitted.
         
     }
 
-Do not perform variable assignment within `switch` conditions. This reduces
+Do not perform variable assignment within `switch` expressions. This reduces
 the difficulty of determining if the intent was to assign or to check
-equivalence. E.g., this ...
+equivalence. For example, this ...
 
     <?php
     switch ($value = foo()) {
@@ -104,8 +105,8 @@ A `while` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
     <?php
-    while ($condition) {
-        echo "Condition is true";
+    while ($expression) {
+        echo "Expression is true";
     }
 
 Similarly, a `do while` statement looks like the following. Note the placement
@@ -113,14 +114,14 @@ of parentheses, spaces, and braces.
 
     <?php
     do {
-        echo "Condition is true";
-    } while ($condition);
+        echo "Expression is true";
+    } while ($expression);
 
 Always use braces to enclose the body of the statement. This standardizes how
-they look and reduces the likelihood of introducing errors as new lines get
+it looks and reduces the likelihood of introducing errors as new lines get
 added to the body.
 
-It it acceptable to perform assignment within `while` conditions.
+It is acceptable to perform assignment within `while` expressions.
 
 
 `for`
@@ -134,7 +135,7 @@ spaces, and braces.
         echo $i;
     }
     
-It is acceptable to perform assignment within `for` conditions.
+It is acceptable to perform assignment within `for` expressions.
 
 
 `foreach`
@@ -164,6 +165,9 @@ parentheses, spaces, and braces.
         // catch body
     }
 
+Always use braces to enclose the body of the statements. This standardizes
+how they look and reduces the likelihood of introducing errors as new lines
+get added to the body.
 
 Interweaving Non-PHP Output
 ---------------------------
