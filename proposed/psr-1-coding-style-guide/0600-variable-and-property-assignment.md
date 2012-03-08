@@ -18,13 +18,9 @@ sign:
 Multi-Line Assignment
 ---------------------
 
-<<<<<<< HEAD
-Assigments may be split onto several lines when the line length limit is
-exceeded. The equal sign has to be positioned onto the following line, and
+Assignments may be split onto several lines when the line length limit is
+exceeded. The equals sign has to be positioned onto the following line, and
 indented once.
-=======
-Assignments may be split onto several lines when the line length limit is exceeded. The equal sign has to be positioned onto the following line, and indented once.
->>>>>>> 550dc72bdc5e4b75eeac84e5d381c92a1dae3e98
 
     $this->longArrayPropertyName[$this->someOtherPropertyValue]
         = $object->getFunctionResult(ClassName::CONSTANT_VALUE);
@@ -34,11 +30,11 @@ operator with the equals:
 
     $foo = 'prefix string '
          . $object->getSomeStringResult()
-         . 'suffix string';
+         . ' suffix string';
 
     $bar .= 'prefix string '
           . $object->getSomeStringResult()
-          . 'suffix string';
+          . ' suffix string';
 
 
 Ternary Assignment
@@ -48,11 +44,11 @@ Ternary assignments may be split onto subsequent lines when the exceed the
 line length limit, or when the would be more readable. Align the question mark
 and colon with the equals sign.
 
-    $foo = ($condition1 && $condition2)
+    $foo = ($expression1 && $expression2)
          ? $foo
          : $bar;
 
-    $bar = ($condition3 && $condition4)
+    $bar = ($expression3 && $expression4)
          ? $a_very_long_variable_name
          : $bar;
 
@@ -73,7 +69,8 @@ the operator:
 Array Assignment
 ----------------
 
-Array assignments may be split across subsequent lines; they should be
+Array assignments may be split across subsequent lines if they would otherwise
+break the line length limit, or if it would improve readability. They should be
 indented once per array, and should be aligned on the `=>` double arrow. The
 last value in each array should have a trailing comma; this is valid syntax
 and reduces the chance of syntax violations when adding new elements.
