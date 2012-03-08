@@ -17,5 +17,5 @@ particular limited context does not mean the remainder of the codebase under
 consideration is not PSR-1 compliant; instead, it is to be recognized as a
 regrettable but necessary departure from the guide for that one circumstance.
 
-This guide owes a debt to the Horde project, the PEAR project, and the many
-other projects from which it originates.
+This guide is derived from commonalities between Horde, PEAR, Solar, Symfony,
+Zend, and other projects.
