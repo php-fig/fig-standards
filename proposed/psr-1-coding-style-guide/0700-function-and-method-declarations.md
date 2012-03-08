@@ -17,7 +17,7 @@ parentheses, commas, spaces, and braces:
     <?php
     namespace Vendor\Package;
     
-    function fooBarBaz($arg1, $arg2, $arg3 = [], $arg4 = null)
+    function fooBarBaz($arg1, &$arg2, $arg3 = [], $arg4 = null)
     {
         // function body
     }
@@ -41,7 +41,7 @@ Methods
 Class methods are always be prefixed with an explicit visibility keyword:
 
     <?php
-    public function fooBarBaz($arg1, $arg2, $arg3 = [], $arg4 = null)
+    public function fooBarBaz($arg1, &$arg2, $arg3 = [], $arg4 = null)
     {
         // function body
     }
@@ -49,7 +49,7 @@ Class methods are always be prefixed with an explicit visibility keyword:
 Static methods always have the `static` keyword before the visibility keyword:
 
     <?php
-    static public function fooBarBaz($arg1, $arg2, $arg3 = [], $arg4 = null)
+    static public function fooBarBaz($arg1, &$arg2, $arg3 = [], $arg4 = null)
     {
         // function body
     }
@@ -67,7 +67,7 @@ parenthesis and opening brace are placed together on their own line.
     <?php
     static public function fooBarBaz(
         ClassTypeHint $arg1,
-        AnotherTypeHint $arg2,
+        &$arg2,
         array $arg3 = [],
         $arg4 = null
     ) {
