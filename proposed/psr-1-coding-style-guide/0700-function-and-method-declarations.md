@@ -16,13 +16,14 @@ parentheses, commas, spaces, and braces:
 
     <?php
     namespace Vendor\Package;
+    
     function fooBarBaz($arg1, $arg2, $arg3 = [], $arg4 = null)
     {
         // function body
     }
 
-Strongly consider using static class methods rather than functions; this will
-help support autoloading.
+This guide encourages using static class methods rather than functions; doing
+so helps to support autoloading.
 
 Global functions are strongly discouraged. If a global function is
 unavoidable, prefix it with the vendor and package name.
