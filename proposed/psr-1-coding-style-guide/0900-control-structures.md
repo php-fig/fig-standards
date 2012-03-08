@@ -33,7 +33,7 @@ spaces, and braces:
         echo "Default case";
     }
 
-Always use braces to enclose the body of the `if` statement. This standardizes
+Always use braces to enclose the body of the statement. This standardizes
 how they look and reduces the likelihood of introducing errors as new lines
 get added to the body.
 
@@ -116,9 +116,9 @@ of parentheses, spaces, and braces.
         echo "Condition is true";
     } while ($condition);
 
-Always use braces to enclose the body of the `while` statement. This
-standardizes how they look and reduces the likelihood of introducing errors as
-new lines get added to the body.
+Always use braces to enclose the body of the statement. This standardizes how
+they look and reduces the likelihood of introducing errors as new lines get
+added to the body.
 
 It it acceptable to perform assignment within `while` conditions.
 
@@ -162,50 +162,6 @@ parentheses, spaces, and braces.
         // catch body
     } catch (OtherExceptionType $e) {
         // catch body
-    }
-
-
-Formatting of Conditions
-------------------------
-
-Condition sets for `if`, `switch`, etc. statements should fit on one line. If
-the set of conditions cannot fit on one line, extract the conditions into an
-explaining variable and use that variable as the condition. For example, the
-following long condition set ...
-
-    if (($condition1 && $condition2 && very_long_function_name())
-        || $condition3 || $condition4) {
-        // perform some action
-    }
-
-... should be rewritten as:
-
-    $set1 = $condition1 && $condition2 && veryLongFunctionName();
-    if ($set1 || $condition3 || $condition4) {
-        // perform some action
-    }
-
-If the set of conditions still cannot fit on one line, or if it would improve
-readability, split the condition onto several subsequent lines at the `&&` and
-`||` operators. Operators should align with the equals sign so that the
-conditions themselves are also aligned.
-
-    $set1 = $condition1
-         && $condition2
-         && veryLongFunctionName();
-    
-    $set2 = $condition3
-         || $condition4;
-    
-    if ($set1 || $set2) {
-        // perform some action;
-    }
-    
-The `!` operator should have a space between it and the condition it is
-negating.
-
-    if (! $condition) {
-        // ...
     }
 
 
