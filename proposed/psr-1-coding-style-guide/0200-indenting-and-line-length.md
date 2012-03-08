@@ -5,6 +5,8 @@ Use an indent of 4 spaces; do not use tabs. The use of spaces helps to avoid
 problems with diffs, patches, history, and annotations, and provides
 fine-grained sub-indentation when aligning elements on consecutive lines.
 
+Do not add trailing spaces at the end of lines.
+
 Lines should be limited to 75-85 characters in length. This is based on known
 human cognitive limitations, not the technical limitations of screen windows
 or text editors. When necessary, it is allowed to split a single statement
