@@ -4,18 +4,19 @@ Operators and Expressions
 Operators
 ---------
 
-Operators should have one space on either side.
+Operators should have one space before and after. Opening parentheses have no
+space after, and closing parentheses have no space before.
 
     <?php
-    $a = $b + $c;
-    $d = $e . $f;
-    $g = $h && $i;
+    $a   = ($b + $c) * ($d / ($e - $f));
+    $foo = $bar . $baz;
+    $zim = $gir && $irk;
 
-Similarly, `!` operator should have a space between it and the
-expression it is negating.
+The `!` operator should have a space between it and the expression it is
+negating.
 
     <?php
-    if (! $expression) {
+    if (! $object instanceof $class) {
         // ...
     }
 
