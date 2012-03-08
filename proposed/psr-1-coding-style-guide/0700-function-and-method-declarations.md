@@ -21,10 +21,18 @@ parentheses, commas, spaces, and braces:
         // function body
     }
 
-All functions are namespaced; global functions are disallowed.
-
 Strongly consider using static class methods rather than functions; this will
 help support autoloading.
+
+Global functions are strongly discouraged. If a global function is
+unavoidable, prefix it with the vendor and package name.
+
+    <?php
+    function Vendor_Package_FunctionName()
+    {
+        // function body
+    }
+
 
 Methods
 -------
