@@ -1,7 +1,7 @@
 Variable And Property Names
 ===========================
 
-This guide expressly avoids any requirement regarding the use of
+This guide expressly avoids any recommendation regarding the use of
 `$StudlyCase`, `$camelCase`, or `$under_score` variable and property names. It
 is often the case that variable names map directly field names in external
 data sources. Changing between naming conventions when changing contexts
