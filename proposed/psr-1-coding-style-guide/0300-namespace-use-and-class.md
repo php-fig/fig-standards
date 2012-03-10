@@ -3,8 +3,7 @@
 
 All namespaces and classes should be named with PSR-0 in mind. This means each
 class should be in a file by itself, and should be in a namespace of at least
-two levels: a top-level vendor name, and a second-level package name within
-that vendor.
+one level: a top-level vendor name.
 
 Class names are always in `StudlyCase`. The class declaration should have one
 empty line above it. The opening and closing braces for the class go on their
@@ -18,11 +17,12 @@ own line.
         // constants, properties, methods
     }
 
-The `use` declarations go immediately after the namespace declaration with no
+The `use` declarations go immediately after the namespace declaration with one
 line separating them. There should be one `use` keyword per declaration.
 
     <?php
     namespace Vendor\Package;
+    
     use FooClass;
     use BarClass as Bar;
     use OtherVendor\OtherPackage\BazClass;
@@ -39,6 +39,7 @@ List only one interface per line.
 
     <?php
     namespace Vendor\Package;
+    
     use FooClass;
     use BarClass as Bar;
     use OtherVendor\OtherPackage\BazClass;
