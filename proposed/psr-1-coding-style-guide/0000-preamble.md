@@ -18,4 +18,4 @@ consideration is not PSR-1 compliant; instead, it is to be recognized as a
 regrettable but necessary departure from the guide for that one circumstance.
 
 This guide is derived from commonalities between Horde, PEAR, Solar, Symfony,
-Zend, and other projects.
+Zend Framework, and other projects.
