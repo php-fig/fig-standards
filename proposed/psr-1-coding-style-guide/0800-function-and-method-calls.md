@@ -47,7 +47,7 @@ The same applies to nested function calls and arrays.
 
 Using a fluent API may lead to several function calls on the same object in a
 row. Split subsequent calls onto separate lines; indent the subsequent lines
-to align the "->" arrows.
+to align the `->` arrows.
 
     $object->foo('value1', 'value2')
            ->bar(42, 88)
