@@ -40,8 +40,8 @@ when present, goes before the visibility declaration.
     
     class ClassName
     {
-        public $property = null;
-        static public $static = null;
+        public $foo = null;
+        static public $bar = null;
     }
 
 
