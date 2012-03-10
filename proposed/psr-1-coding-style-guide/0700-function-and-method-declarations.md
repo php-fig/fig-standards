@@ -84,7 +84,7 @@ parentheses, commas, spaces and braces:
         // body of the function
     };
 
-This is a departure from the "normal" function and method declaration. Because
+This is a departure from the non-anonymous function declaration. Because
 `function` is a keyword, it gets a space after it; the same is true for `use`.
 The opening brace goes on the same line as the declaration; the body is
 indented once; and the closing brace goes on its own outdented line.
