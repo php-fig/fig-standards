@@ -24,7 +24,7 @@ is often the case that variable names map directly field names in external
 data sources. Changing between naming conventions when changing contexts
 merely to suit a style guide would be counterproductive in such cases.
 
-Some projects prefix property names with a single underscore to indicate a
+Some projects prefix property names with a single underscore to indicate
 protected or private visibility. This guide discourages but does not disallow
 that practice.
 
@@ -45,13 +45,13 @@ when present, goes before the visibility declaration.
     }
 
 
-Method Declarations
-===================
+Methods
+-------
 
-Declare method names in `camelCase()`.
+Declare method names in `camelCase()` with no space after the method name.
 
-N.b.: Some projects prefix function and method names with a single underscore
-to indicate a protected or private visibility. This guide discourages but does
+Some projects prefix function and method names with a single underscore to
+indicate protected or private visibility. This guide discourages but does
 not disallow that practice.
 
 A method declaration looks like the following. Note the placement of
