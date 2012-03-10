@@ -1,5 +1,5 @@
-Indenting and Line Length
-=========================
+Indenting and Lines
+===================
 
 Indenting
 ---------

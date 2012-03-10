@@ -12,6 +12,7 @@ The general rules for control structures are as follows:
 - body is indented once
 - closing brace on its own line, outdented once from the body
 
+
 `if`, `elseif`, `else`
 ----------------------
 
@@ -162,37 +163,3 @@ parentheses, spaces, and braces.
 Always use braces to enclose the body of the statements. This standardizes
 how they look and reduces the likelihood of introducing errors as new lines
 get added to the body.
-
-Interweaving Non-PHP Output
----------------------------
-
-Interweaving PHP and non-PHP using braces is discouraged:
-
-    <?php if ($is_true) { ?>
-        direct output
-    <?php } ?>
-
-Instead, use the alternative syntax for control structures:
-
-    <?php if ($is_true): ?>
-        direct output
-    <?php endif; ?>
-    
-<http://php.net/manual/en/control-structures.alternative-syntax.php>
-
-
-`include`, `include_once`, `require`, `require_once`
-----------------------------------------------------
-
-The `include` (et al.) structures are keywords, not functions. Do not use
-parentheses around the filename.
-
-    <?php
-    // incorrect
-    include ('/path/to/file.php');
-    
-    // correct
-    include '/path/to/file.php';
-
-Class files should not use `include` (et al.) to load other classes; let the
-autoloader load the classes as needed.

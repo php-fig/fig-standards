@@ -5,10 +5,9 @@ All namespaces and classes should be named with PSR-0 in mind. This means each
 class should be in a file by itself, and should be in a namespace of at least
 one level: a top-level vendor name.
 
-Namespace names are always in `StudlyCase`. The `namespace` line should have
-one blank line after it.
+The `namespace` line should have one blank line after it.
 
-The `use` declarations go after the `namespace` declaration. There should be
+All `use` declarations go after the `namespace` declaration. There should be
 one `use` keyword per declaration.
 
     <?php
@@ -29,11 +28,6 @@ class go on their own line.
     use FooClass;
     use BarClass as Bar;
     use OtherVendor\OtherPackage\BazClass;
-
-    class ClassName
-    {
-        // constants, properties, methods
-    }
 
     class ClassName
     {
@@ -62,4 +56,3 @@ interface per line.
     {
         // constants, properties, methods
     }
-
