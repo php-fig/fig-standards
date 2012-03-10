@@ -6,11 +6,13 @@ Single Assignment
 
 Assignment looks like the following.
 
+    <?php
     $foo = 'value';
 
 To support readability, contiguous assignments may be aligned on the equals
 sign:
 
+    <?php
     $short  = fooBar($baz);
     $longer = dibGir($zim);
 
@@ -22,12 +24,14 @@ Assignments may be split onto several lines when the line length limit is
 exceeded. The equals sign has to be positioned onto the following line, and
 indented once.
 
+    <?php
     $this->longArrayPropertyName[$this->someOtherPropertyValue]
         = $object->getFunctionResult(ClassName::CONSTANT_VALUE);
 
 Similarly, when concatenating strings across multiple lines, align the dot
 operator with the equals:
 
+    <?php
     $foo = 'prefix string '
          . $object->getSomeStringResult()
          . ' suffix string';
@@ -43,7 +47,8 @@ Ternary Assignment
 Ternary assignments may be split onto subsequent lines when the exceed the
 line length limit, or when the would be more readable. Align the question mark
 and colon with the equals sign.
-
+    
+    <?php
     $foo = ($expression1 && $expression2)
          ? $foo
          : $bar;
@@ -59,6 +64,7 @@ Assignment By Reference
 When assigning by reference, the `&` should be attached to the variable, not
 the operator:
 
+    <?php
     // incorrect
     $foo =& $bar;
     
@@ -84,3 +90,19 @@ and reduces the chance of syntax violations when adding new elements.
         'irk'      => 'doom',
     ];
 
+
+Substitution and Interpolation
+------------------------------
+
+When substituting or interpolating variables into a string, use either of the
+following forms.
+
+    <?php
+    $foo = "Hello $world";
+    $foo = "Hello {$world}";
+
+For consistency, this form is discouraged:
+
+    <?php
+    // incorrect
+    $foo = "Hello ${world}";
