@@ -11,12 +11,12 @@ fine-grained sub-indentation when aligning elements on consecutive lines.
 Line Length
 -----------
 
-Lines should be limited to 75-85 characters in length. This is based on known
+Lines should be limited to 80 characters in length. This is based on known
 human cognitive limitations, not the technical limitations of screen windows
 or text editors. When necessary, it is allowed to split a single statement
 across subsequent lines, per rules noted elsewhere in this guide.
 
-Some further insight into the 75-85 characters rule:
+Some further insight into the 80 characters rule:
 
 > How many words per line can a person scan, and still be able to grasp the
 > content of the line in the context of the surrounding lines? Printing and
@@ -32,7 +32,7 @@ Some further insight into the 75-85 characters rule:
 > strings of text, not about the technical considerations of terminals and
 > text-editors.
 
--- "Line Length, Volume, and Density"
+-- Line Length, Volume, and Density,
    <http://paul-m-jones.com/archives/276>
 
 
