@@ -1,23 +1,16 @@
 Control Structures
 ==================
 
+The general rules for control structures are as follows:
 
-`include`, `include_once`, `require`, `require_once`
-----------------------------------------------------
-
-The `include` (et al.) structures are keywords, not functions. Do not use
-parentheses around the filename.
-
-    <?php
-    // incorrect
-    include("/path/to/file.php");
-    
-    // correct
-    include "path/to/file.php";
-
-Class files should not use `include` (et al.) to load other classes; let the
-autoloader load the classes as needed.
-
+- one space after the control structure keyword
+- no space after the opening parenthesis
+- no space before the closing parenthesis
+- one space between operators and expressions
+- one space after the closing parenthesis
+- opening brace on the same line as the keyword
+- body is indented once
+- closing brace on its own line, outdented once from the body
 
 `if`, `elseif`, `else`
 ----------------------
@@ -27,12 +20,17 @@ spaces, and braces:
 
     <?php
     if ($expression1 || ($expression2 && $expression3)) {
-        echo "First case";
+        echo 'First case';
     } elseif (! $expression4 && ! $expression5) {
-        echo "Second case";
+        echo 'Second case';
     } else {
-        echo "Default case";
+        echo 'Default case';
     }
+
+N.b.: There appears to be no consistency between projects, and often not even
+within the same project, on the use of `else if` vs `elseif`. This guide
+encourages the use of `elseif` so that all control structures look like single
+words.
 
 Always use braces to enclose the body of the statements. This standardizes
 how they look and reduces the likelihood of introducing errors as new lines
@@ -44,7 +42,7 @@ equivalence. For example, this ...
 
     <?php
     if ($value = foo()) {
-        echo "True";
+        echo 'True';
     }
 
 ... should be replaced with this, to clarify the intent:
@@ -52,7 +50,7 @@ equivalence. For example, this ...
     <?php
     $value = foo();
     if ($value) {
-        echo "True";
+        echo 'True';
     }
 
     
@@ -66,19 +64,15 @@ intentionally omitted.
 
     <?php
     switch ($expression) {
-        
         case 1:
-            echo "First case";
+            echo 'First case';
         break;
-
         case 2:
-            echo "Second case";
+            echo 'Second case';
             // no break
-        
         default:
-            echo "Default case";
+            echo 'Default case';
         break;
-        
     }
 
 Do not perform variable assignment within `switch` expressions. This reduces
@@ -106,7 +100,7 @@ parentheses, spaces, and braces.
 
     <?php
     while ($expression) {
-        echo "Expression is true";
+        echo 'Expression is true';
     }
 
 Similarly, a `do while` statement looks like the following. Note the placement
@@ -114,7 +108,7 @@ of parentheses, spaces, and braces.
 
     <?php
     do {
-        echo "Expression is true";
+        echo 'Expression is true';
     } while ($expression);
 
 Always use braces to enclose the body of the statement. This standardizes how
@@ -185,3 +179,20 @@ Instead, use the alternative syntax for control structures:
     <?php endif; ?>
     
 <http://php.net/manual/en/control-structures.alternative-syntax.php>
+
+
+`include`, `include_once`, `require`, `require_once`
+----------------------------------------------------
+
+The `include` (et al.) structures are keywords, not functions. Do not use
+parentheses around the filename.
+
+    <?php
+    // incorrect
+    include ('/path/to/file.php');
+    
+    // correct
+    include '/path/to/file.php';
+
+Class files should not use `include` (et al.) to load other classes; let the
+autoloader load the classes as needed.
