@@ -12,21 +12,21 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
 
 ## Definitions
 
-*    TTL - The Time To Live (TTL) of an item is the amount of time between when that item is stored and it is considered stale. The TTL is normally defined by an integer representing time in seconds, or a DateInterval object.  
+*    **TTL** - The Time To Live (TTL) of an item is the amount of time between when that item is stored and it is considered stale. The TTL is normally defined by an integer representing time in seconds, or a DateInterval object.  
   
-*    Expiration - The actual time when an item is set to go stale. This it typically calculated by adding the TTL to the time when an object is stored, but can also be explicitly set with DateTime object.
+*    **Expiration** - The actual time when an item is set to go stale. This it typically calculated by adding the TTL to the time when an object is stored, but can also be explicitly set with DateTime object.
    
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at 1:35:00.
     
-*    Key - A string that uniquely identifies the cached item. Implementing Libraries are responsible for any encoding or escaping required by their backends, but must be able to supply the original key if needed. Keys should not contain the special characters listed:
+*    **Key** - A string that uniquely identifies the cached item. Implementing Libraries are responsible for any encoding or escaping required by their backends, but must be able to supply the original key if needed. Keys should not contain the special characters listed:
 
 	{}()/\@
 
-*    Miss - An item is considered missing from the cache when it isn't there or has an expiration in the past. Additional Miss conditions can be defined by the Implementing Library as long as these conditions are met (at no point should an expired item not be considered a miss).
+*    **Miss** - An item is considered missing from the cache when it isn't there or has an expiration in the past. Additional Miss conditions can be defined by the Implementing Library as long as these conditions are met (at no point should an expired item not be considered a miss).
 
-*    Calling Library - The library or code that actually needs the cache services. This library will utilize caching services that implement this standard's interfaces, but will otherwise have no knowledge of the implementation of those caching services.
+*    **Calling Library** - The library or code that actually needs the cache services. This library will utilize caching services that implement this standard's interfaces, but will otherwise have no knowledge of the implementation of those caching services.
 
-*    Implementing Library - This library is responsible for implementing this standard in order to provide caching services to any Calling Library. The Implmenting Library must provide classes which implement the Cache\Pool and Cache\Item interfaces.
+*    **Implementing Library** - This library is responsible for implementing this standard in order to provide caching services to any Calling Library. The Implmenting Library must provide classes which implement the Cache\Pool and Cache\Item interfaces.
 
 
 ## Data    
@@ -34,13 +34,13 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
 
 Acceptable data includes all PHP data types-
 
-*    Strings - Simple, complex and large strings of any encoding.
-*    Integers - Positive, negative and large integers (>32 bit).
-*    Floats - Positive, negative and large.
-*    Boolean- true, false.
-*    Null - not a wrapper or object, but the actual null value.
-*    Arrays - indexed, associative and multidimensional.
-*    Object - those that support the PHP serialize functionality.
+*    **Strings** - Simple, complex and large strings of any encoding.
+*    **Integers** - Positive, negative and large integers (>32 bit).
+*    **Floats** - Positive, negative and large.
+*    **Boolean**- true, false.
+*    **Null** - not a wrapper or object, but the actual null value.
+*    **Arrays** - indexed, associative and multidimensional.
+*    **Object** - those that support the PHP serialize functionality.
 
 All data passed into the Implementing Library must be returned exactly as passed. If this is not possible for whatever reason then it is preferable to respond with a cache miss than with corrupted data.
 
