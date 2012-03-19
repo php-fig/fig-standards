@@ -1,45 +1,35 @@
 Indenting and Lines
 ===================
 
+
 Indenting
 ---------
 
 Use an indent of 4 spaces. Do not use tabs. The use of spaces helps to avoid
 problems with diffs, patches, history, and annotations, and provides
-fine-grained sub-indentation when aligning elements on consecutive lines.
+fine-grained sub-indentation for inter-line alignment.
+
 
 Line Length
 -----------
 
-Lines should be limited to 80 characters in length. This is based on known
-human cognitive limitations, not the technical limitations of screen windows
-or text editors. When necessary, it is allowed to split a single statement
-across subsequent lines, per rules noted elsewhere in this guide.
-
-Some further insight into the 80 characters rule:
-
-> How many words per line can a person scan, and still be able to grasp the
-> content of the line in the context of the surrounding lines? Printing and
-> publishing typographers figured out a long time ago that most people can
-> read no more than 10 to 12 words per line before they have trouble
-> differentiating lines from each other. (A “word” is counted as five
-> characters on average.) Even allowing for a 25% to 50% increase, that
-> brings us up to 15 words. Times 5 characters per word, that means 75
-> characters on a line.
-> 
-> So the style guide limitation on line length is not exactly arbitrary. It
-> is about the developer’s ability to effectively scan and comprehend
-> strings of text, not about the technical considerations of terminals and
-> text-editors.
-
--- Line Length, Volume, and Density,
-   <http://paul-m-jones.com/archives/276>
+There is no hard limit on line length. The soft limit on line length is 120
+characters; automated style checkers should warn but not error at the soft
+limit. This guide strongly encourages lines no longer than 80 characters, and
+encourages splitting longer lines into multiple subsequent lines of no more
+than 80 characters each.
 
 
-Other Considerations
---------------------
+Line Endings
+------------
 
-Code blocks may have as many blank lines as needed to increase readability
-and comprehension.
+Use the Unix LF (linefeed) line ending on all PHP files.
 
 Do not add trailing spaces at the end of lines.
+
+
+Blank Lines
+-----------
+
+Blank lines may be added to improve readability and to indicate related blocks of logic.
+
