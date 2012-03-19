@@ -1,17 +1,16 @@
 Introduction
 ============
 
-The intent of this guide is not to dictate an abritrary set of requirements,
-but to reduce cognitive friction when scanning code from different projects by
-enumerating a shared set of rules and expectations. It is derived from
-commonalities among the various member projects.
+The intent of this guide is to reduce cognitive friction when scanning code
+from different projects by enumerating a shared set of rules and expectations.
+It is derived from commonalities among the various member projects.
 
 
 Overview
 --------
 
-The following is an overview of the rules; please review the remainder of this
-guide for details.
+Please review the remainder of this guide for details on each of the following
+points.
 
 - Use only `<?php` and `<?=` opening tags for PHP code; leave out the closing
   `?>` tag when the file contains only PHP code.
