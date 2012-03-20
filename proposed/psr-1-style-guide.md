@@ -32,10 +32,11 @@ points.
   next line, and closing braces go on their own line.
 
 - Declare visibility on all properties and methods; `static` declarations come
-  before the visibility declaration; `final` declarations come before `static`
-  and visibility.
+  before the visibility declaration; `abstract` and `final` declarations come
+  before `static` and visibility.
   
-- Control structure keywords have one space after them; function calls do not.
+- Control structure keywords have one space after them; function and method
+  calls do not.
 
 - Opening braces for control structures go on the same line, and closing
   braces go on their own line.
@@ -170,11 +171,11 @@ style guide would be counterproductive in such cases.
 
 Whatever naming convention is used must be applied consistently within a
 reasonable scope. That scope may be vendor-level, package-level, class-level,
-or function-level.
+or method-level.
 
-Prefix all properties with a visibility declaration. Some projects prefix
-property names with a single underscore to indicate protected or private
-visibility; this guide discourages but does not disallow that practice.
+Declare visibility on all properties. Some projects prefix property names with
+a single underscore to indicate protected or private visibility; this guide
+discourages but does not disallow that practice.
 
 A property declaration looks like the following.
 
@@ -194,10 +195,9 @@ Declare method names in `camelCase()` with no space after the method name. The
 opening and closing braces go on their own line. There is no space after the
 opening parenthesis, and there is no space before the closing parenthesis.
 
-Prefix all methods with a visibility declaration. Some projects prefix
-function and method names with a single underscore to indicate protected or
-private visibility; this guide discourages but does not disallow that
-practice.
+Declare visibility on all methods. Some projects prefix method names with a
+single underscore to indicate protected or private visibility; this guide
+discourages but does not disallow that practice.
 
 A method declaration looks like the following. Note the placement of
 parentheses, commas, spaces, and braces:
