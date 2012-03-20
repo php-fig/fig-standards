@@ -2,7 +2,7 @@ Introduction
 ============
 
 The intent of this guide is to reduce cognitive friction when scanning code
-from different projects. It does so by enumerating a shared set of rules and
+from different authors. It does so by enumerating a shared set of rules and
 expectations about how to format PHP code. This guide is derived from
 commonalities among the various member projects.
 
