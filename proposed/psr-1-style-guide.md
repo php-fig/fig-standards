@@ -250,8 +250,8 @@ closing parenthesis and opening brace are placed together on their own line.
     }
 
 
-`abstract`, `static` and `final`
---------------------
+`static`, `abstract`, and `final`
+---------------------------------
 
 When present, the `static` declaration precedes the visibility declaration.
 This aids in differentiating static properties and methods from instance
