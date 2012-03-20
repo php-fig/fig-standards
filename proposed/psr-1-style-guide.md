@@ -32,7 +32,7 @@ points.
   next line, and closing braces go on their own line.
 
 - Declare visibility on all properties and methods; `static` declarations come
-  before the visbility declaration; `final` declarations come before `static`
+  before the visibility declaration; `final` declarations come before `static`
   and visibility.
   
 - Control structure keywords have one space after them; function calls do not.
@@ -88,7 +88,7 @@ of logic.
 `namespace`, `use`, and `class`
 ===============================
 
-> N.b.: Formal mamespaces were introduced in PHP 5.3. Code written for 5.2.x
+> N.b.: Formal namespaces were introduced in PHP 5.3. Code written for 5.2.x
 > and before must use the pseudo-namespacing convention of `Vendor_`
 > prefixes on class names. Code written for PHP 5.3 and after must use
 > formal namespaces.
