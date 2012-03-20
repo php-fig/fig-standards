@@ -68,7 +68,7 @@ Lines
 
 There is no hard limit on line length. The soft limit on line length is 120
 characters; automated style checkers must warn but not error at the soft
-limit. This guide strongly encourages lines no longer than 80 characters, and
+limit. This guide encourages lines no longer than 80 characters, and
 encourages splitting longer lines into multiple subsequent lines of no more
 than 80 characters each.
 
