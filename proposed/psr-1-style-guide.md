@@ -2,8 +2,9 @@ Introduction
 ============
 
 The intent of this guide is to reduce cognitive friction when scanning code
-from different projects by enumerating a shared set of rules and expectations.
-It is derived from commonalities among the various member projects.
+from different projects by enumerating a shared set of rules and expectations
+about how to format PHP code. It is derived from commonalities among the
+various member projects.
 
 
 Overview
@@ -74,14 +75,14 @@ than 80 characters each.
 Line Endings
 ------------
 
-Use the Unix LF (linefeed) line ending on all PHP files.
-
-Do not add trailing spaces at the end of lines.
+Use the Unix LF (linefeed) line ending on all PHP files. Do not add trailing
+spaces at the end of lines.
 
 Blank Lines
 -----------
 
-Blank lines may be added to improve readability and to indicate related blocks of logic.
+Blank lines may be added to improve readability and to indicate related blocks
+of logic.
 
 
 `namespace`, `use`, and `class`
@@ -249,15 +250,15 @@ closing parenthesis and opening brace are placed together on their own line.
     }
 
 
-`static` and `final`
+`abstract`, `static` and `final`
 --------------------
 
 When present, the `static` declaration precedes the visibility declaration.
 This aids in differentiating static properties and methods from instance
 properties and methods.
 
-When present, the `final` declaration precedes both the `static` and
-visibility declarations.
+When present, the `abstract` and `final` declarations precede both the
+`static` and visibility declarations.
 
     <?php
     namespace Vendor\Package;
@@ -271,10 +272,7 @@ visibility declarations.
             // method body
         }
         
-        final private zim()
-        {
-            // method body
-        }
+        abstract protected zim();
     }
 
 
@@ -299,7 +297,8 @@ lines get added to the body.
 ----------------------
 
 An `if` structure looks like the following. Note the placement of parentheses,
-spaces, and braces, and that `else` and `elseif` are on the same line as the closing brace from the earlier body.
+spaces, and braces; and that `else` and `elseif` are on the same line as the
+closing brace from the earlier body.
 
     <?php
     if ($expr1) {
