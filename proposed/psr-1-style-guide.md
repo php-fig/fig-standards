@@ -31,9 +31,8 @@ points.
 - Declare method names in `camelCase`; opening braces for methods go on the
   next line, and closing braces go on their own line.
 
-- Declare visibility on all properties and methods; `static` declarations come
-  before the visibility declaration; `abstract` and `final` declarations come
-  before `static` and visibility.
+- Declare visibility on all properties and methods; declare `abstract` and
+  `final` before the visibility, and declare `static` after the visibility.
   
 - Control structure keywords have one space after them; function and method
   calls do not.
@@ -83,7 +82,7 @@ Blank Lines
 -----------
 
 Blank lines may be added to improve readability and to indicate related blocks
-of logic.
+of code.
 
 
 `namespace`, `use`, and `class`
@@ -113,7 +112,6 @@ name.
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 use FooClass;
@@ -131,7 +129,6 @@ subsequent line is indented once. List only one interface per line.
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 use FooClass;
@@ -151,6 +148,9 @@ class ClassName extends ParentClass implements
 Class Constants, Properties, and Methods
 ========================================
 
+> N.b.: The term "class" refers to all classes, interfaces, and traits.
+
+
 Constants
 ---------
 
@@ -158,7 +158,6 @@ Class constants are all upper case with underscore separators.
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 class ClassName
@@ -188,7 +187,6 @@ A property declaration looks like the following.
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 class ClassName
@@ -213,7 +211,6 @@ parentheses, commas, spaces, and braces:
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 class ClassName
@@ -233,7 +230,6 @@ list.
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 class ClassName
@@ -251,7 +247,6 @@ closing parenthesis and opening brace are placed together on their own line.
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 class ClassName
@@ -266,31 +261,28 @@ class ClassName
 }
 ```
 
-`static`, `abstract`, and `final`
+`abstract`, `final`, and `static`
 ---------------------------------
 
-When present, the `static` declaration precedes the visibility declaration.
-This aids in differentiating static properties and methods from instance
-properties and methods.
+When present, the `abstract` and `final` declarations precede the
+visibility declaration.
 
-When present, the `abstract` and `final` declarations precede both the
-`static` and visibility declarations.
+When present, the `static` declaration comes after the visibility declaration.
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 class ClassName
 {
-    static protected $foo;
+    protected static $foo;
 
-    final static public bar()
+    abstract protected zim();
+
+    final public static bar()
     {
         // method body
     }
-
-    abstract protected zim();
 }
 ```
 
