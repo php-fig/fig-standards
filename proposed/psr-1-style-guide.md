@@ -309,7 +309,6 @@ closing brace from the earlier body.
 
 ```php
 <?php
-
 if ($expr1) {
     // if body
 } elseif ($expr2) {
@@ -334,7 +333,6 @@ the presence of a `// no break` comment when a break is intentionally omitted.
 
 ```php
 <?php
-
 switch ($expr) {
     case 1:
         echo 'First case';
@@ -356,7 +354,6 @@ parentheses, spaces, and braces.
 
 ```php
 <?php
-
 while ($expr) {
     // structure body
 }
@@ -367,7 +364,6 @@ of parentheses, spaces, and braces.
 
 ```php
 <?php
-
 do {
     // structure body;
 } while ($expr);
@@ -381,7 +377,6 @@ spaces, and braces.
 
 ```php
 <?php
-    
 for ($i = 0; $i < 10; $i++) {
     // for body
 }
@@ -395,7 +390,6 @@ parentheses, spaces, and braces.
 
 ```php
 <?php
-    
 foreach ($iterable as $key => $value) {
     // foreach body
 }
@@ -409,7 +403,6 @@ parentheses, spaces, and braces.
 
 ```php
 <?php
-    
 try {
     // try body
 } catch (FirstExceptionType $e) {
