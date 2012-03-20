@@ -2,9 +2,9 @@ Introduction
 ============
 
 The intent of this guide is to reduce cognitive friction when scanning code
-from different projects by enumerating a shared set of rules and expectations
-about how to format PHP code. It is derived from commonalities among the
-various member projects.
+from different projects. It does so by enumerating a shared set of rules and
+expectations about how to format PHP code. This guide is derived from
+commonalities among the various member projects.
 
 
 Overview
@@ -164,7 +164,7 @@ Properties
 
 This guide expressly avoids any recommendation regarding the use of
 `$StudlyCaps`, `$camelCase`, or `$under_score` property names. It is often the
-case that variable names map directly to field names in external data sources.
+case that property names map directly to field names in external data sources.
 Changing between naming conventions when changing contexts merely to suit a
 style guide would be counterproductive in such cases.
 
