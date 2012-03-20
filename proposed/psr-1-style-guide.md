@@ -111,37 +111,42 @@ class go on their own line.
 The `extends` and `implements` keywords are on the same line as the class
 name.
 
-    <?php
-    namespace Vendor\Package;
-    
-    use FooClass;
-    use BarClass as Bar;
-    use OtherVendor\OtherPackage\BazClass;
-    
-    class ClassName extends ParentClass implements InterfaceName
-    {
-        // constants, properties, methods
-    }
+```php
+<?php
+
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class ClassName extends ParentClass implements InterfaceName
+{
+    // constants, properties, methods
+}
+```
 
 Lists of `implements` may be split across multiple lines, where each
 subsequent line is indented once. List only one interface per line.
 
-    <?php
-    namespace Vendor\Package;
-    
-    use FooClass;
-    use BarClass as Bar;
-    use OtherVendor\OtherPackage\BazClass;
-    
-    class ClassName extends ParentClass implements
-        InterfaceName,
-        AnotherInterfaceName,
-        YetAnotherInterface,
-        InterfaceInterface
-    {
-        // constants, properties, methods
-    }
+```php
+<?php
 
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class ClassName extends ParentClass implements
+    InterfaceName,
+    AnotherInterfaceName,
+    YetAnotherInterface,
+    InterfaceInterface
+{
+    // constants, properties, methods
+}
+```
 
 Class Constants, Properties, and Methods
 ========================================
@@ -151,14 +156,16 @@ Constants
 
 Class constants are all upper case with underscore separators.
 
-    <?php
-    namespace Vendor\Package;
+```php
+<?php
 
-    class ClassName
-    {
-        const CONSTANT_NAME = 'constant value';
-    }
+namespace Vendor\Package;
 
+class ClassName
+{
+    const CONSTANT_NAME = 'constant value';
+}
+```
 
 Properties
 ----------
@@ -179,14 +186,16 @@ discourages but does not disallow that practice.
 
 A property declaration looks like the following.
 
-    <?php
-    namespace Vendor\Package;
-    
-    class ClassName
-    {
-        public $foo = null;
-    }
+```php
+<?php
 
+namespace Vendor\Package;
+
+class ClassName
+{
+    public $foo = null;
+}
+```
 
 Methods
 -------
@@ -202,17 +211,19 @@ discourages but does not disallow that practice.
 A method declaration looks like the following. Note the placement of
 parentheses, commas, spaces, and braces:
 
-    <?php
-    namespace Vendor\Package;
-    
-    class ClassName
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function fooBarBaz($arg1, &$arg2, $arg3 = [])
     {
-        public function fooBarBaz($arg1, &$arg2, $arg3 = [])
-        {
-            // method body
-        }
+        // method body
     }
-    
+}
+```    
 
 Method Arguments
 ----------------
@@ -220,35 +231,40 @@ Method Arguments
 Method arguments with default values always go at the end of the argument
 list.
 
-    <?php
-    namespace Vendor\Package;
-    
-    class ClassName
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function foo($arg1, $arg2, $arg3 = [])
     {
-        public function foo($arg1, $arg2, $arg3 = [])
-        {
-            // method body
-        }
+        // method body
     }
+}
+```
     
 Argument lists may be split across subsequent indented lines; list only one
 argument per line. When the argument list is split across multiple lines, the
 closing parenthesis and opening brace are placed together on their own line.
 
-    <?php
-    namespace Vendor\Package;
-    
-    class ClassName
-    {
-        public function aVeryLongMethodName(
-            ClassTypeHint $arg1,
-            &$arg2,
-            array $arg3 = []
-        ) {
-            // method body
-        }
-    }
+```php
+<?php
 
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function aVeryLongMethodName(
+        ClassTypeHint $arg1,
+        &$arg2,
+        array $arg3 = []
+    ) {
+        // method body
+    }
+}
+```
 
 `static`, `abstract`, and `final`
 ---------------------------------
@@ -260,21 +276,23 @@ properties and methods.
 When present, the `abstract` and `final` declarations precede both the
 `static` and visibility declarations.
 
-    <?php
-    namespace Vendor\Package;
-    
-    class ClassName
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    static protected $foo;
+
+    final static public bar()
     {
-        static protected $foo;
-        
-        final static public bar()
-        {
-            // method body
-        }
-        
-        abstract protected zim();
+        // method body
     }
 
+    abstract protected zim();
+}
+```
 
 Control Structures
 ==================
@@ -300,14 +318,17 @@ An `if` structure looks like the following. Note the placement of parentheses,
 spaces, and braces; and that `else` and `elseif` are on the same line as the
 closing brace from the earlier body.
 
-    <?php
-    if ($expr1) {
-        // if body
-    } elseif ($expr2) {
-        // elseif body
-    } else {
-        // else body;
-    }
+```php
+<?php
+
+if ($expr1) {
+    // if body
+} elseif ($expr2) {
+    // elseif body
+} else {
+    // else body;
+}
+```
 
 > N.b.: There appears to be no consistency between projects, and often not
 > even within the same project, on the use of `else if` vs `elseif`. This
@@ -322,19 +343,21 @@ A `switch` structure looks like the following. Note the placement of
 parentheses, spaces, and braces; the indent levels for `case` and `break`; and
 the presence of a `// no break` comment when a break is intentionally omitted.
 
-    <?php
-    switch ($expr) {
-        case 1:
-            echo 'First case';
-        break;
-        case 2:
-            echo 'Second case';
-            // no break
-        default:
-            echo 'Default case';
-        break;
-    }
+```php
+<?php
 
+switch ($expr) {
+    case 1:
+        echo 'First case';
+    break;
+    case 2:
+        echo 'Second case';
+        // no break
+    default:
+        echo 'Default case';
+    break;
+}
+```
 
 `while`, `do while`
 -------------------
@@ -342,19 +365,24 @@ the presence of a `// no break` comment when a break is intentionally omitted.
 A `while` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
-    <?php
-    while ($expr) {
-        // structure body
-    }
+```php
+<?php
+
+while ($expr) {
+    // structure body
+}
+```
 
 Similarly, a `do while` statement looks like the following. Note the placement
 of parentheses, spaces, and braces.
 
-    <?php
-    do {
-        // structure body;
-    } while ($expr);
+```php
+<?php
 
+do {
+    // structure body;
+} while ($expr);
+```
 
 `for`
 -----
@@ -362,11 +390,13 @@ of parentheses, spaces, and braces.
 A `for` statement looks like the following. Note the placement of parentheses,
 spaces, and braces.
 
-    <?php
-    for ($i = 0; $i < 10; $i++) {
-        // for body
-    }
+```php
+<?php
     
+for ($i = 0; $i < 10; $i++) {
+    // for body
+}
+```
 
 `foreach`
 ---------
@@ -374,11 +404,13 @@ spaces, and braces.
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
-    <?php
-    foreach ($iterable as $key => $value) {
-        // foreach body
-    }
-
+```php
+<?php
+    
+foreach ($iterable as $key => $value) {
+    // foreach body
+}
+```
 
 `try`, `catch`
 --------------
@@ -386,15 +418,17 @@ parentheses, spaces, and braces.
 A `try catch` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
-    <?php
-    try {
-        // try body
-    } catch (FirstExceptionType $e) {
-        // catch body
-    } catch (OtherExceptionType $e) {
-        // catch body
-    }
-
+```php
+<?php
+    
+try {
+    // try body
+} catch (FirstExceptionType $e) {
+    // catch body
+} catch (OtherExceptionType $e) {
+    // catch body
+}
+```
 
 Conclusion
 ==========
