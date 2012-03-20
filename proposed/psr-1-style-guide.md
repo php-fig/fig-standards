@@ -341,13 +341,13 @@ the presence of a `// no break` comment when a break is intentionally omitted.
 switch ($expr) {
     case 1:
         echo 'First case';
-    break;
+        break;
     case 2:
         echo 'Second case';
         // no break
     default:
         echo 'Default case';
-    break;
+        break;
 }
 ```
 
