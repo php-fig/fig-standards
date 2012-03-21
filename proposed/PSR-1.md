@@ -1,5 +1,5 @@
-Introduction
-============
+PSR-1 Coding Style Guide
+========================
 
 The intent of this guide is to reduce cognitive friction when scanning code
 from different authors. It does so by enumerating a shared set of rules and
@@ -45,7 +45,7 @@ points.
 
 
 PHP Tags
-========
+--------
 
 Use the long `<?php ?>` tags for PHP code. Use of short-echo `<?= ?>` tags is
 also allowed. Do not use the other tag variations.
@@ -54,17 +54,15 @@ In files that contain only PHP, leave out the closing `?>` tag.
 
 
 Indenting and Lines
-===================
+-------------------
 
-Indenting
----------
+### Indenting
 
 Use an indent of 4 spaces. Do not use tabs. The use of spaces helps to avoid
 problems with diffs, patches, history, and annotations, and provides
 fine-grained sub-indentation for inter-line alignment.
 
-Lines
------
+### Lines
 
 There is no hard limit on line length. The soft limit on line length is 120
 characters; automated style checkers must warn but not error at the soft
@@ -83,7 +81,7 @@ Use at most one statement per line.
 
 
 `namespace`, `use`, and `class`
-===============================
+-------------------------------
 
 > N.b.: Formal namespaces were introduced in PHP 5.3. Code written for 5.2.x
 > and before must use the pseudo-namespacing convention of `Vendor_`
@@ -143,13 +141,12 @@ class ClassName extends ParentClass implements
 ```
 
 Class Constants, Properties, and Methods
-========================================
+----------------------------------------
 
 > N.b.: The term "class" refers to all classes, interfaces, and traits.
 
 
-Constants
----------
+### Constants
 
 Class constants are all upper case with underscore separators.
 
@@ -163,8 +160,7 @@ class ClassName
 }
 ```
 
-Properties
-----------
+### Properties
 
 This guide expressly avoids any recommendation regarding the use of
 `$StudlyCaps`, `$camelCase`, or `$under_score` property names. It is often the
@@ -192,8 +188,7 @@ class ClassName
 }
 ```
 
-Methods
--------
+### Methods
 
 Declare method names in `camelCase()` with no space after the method name. The
 opening and closing braces go on their own line. There is no space after the
@@ -219,8 +214,7 @@ class ClassName
 }
 ```    
 
-Method Arguments
-----------------
+### Method Arguments
 
 Method arguments with default values always go at the end of the argument
 list.
@@ -258,8 +252,7 @@ class ClassName
 }
 ```
 
-`abstract`, `final`, and `static`
----------------------------------
+### `abstract`, `final`, and `static`
 
 When present, the `abstract` and `final` declarations precede the
 visibility declaration.
@@ -284,7 +277,7 @@ class ClassName
 ```
 
 Control Structures
-==================
+------------------
 
 The general style rules for control structures are as follows:
 
@@ -300,8 +293,7 @@ the structures look, and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
 
-`if`, `elseif`, `else`
-----------------------
+### `if`, `elseif`, `else`
 
 An `if` structure looks like the following. Note the placement of parentheses,
 spaces, and braces; and that `else` and `elseif` are on the same line as the
@@ -324,8 +316,7 @@ if ($expr1) {
 > like single words.
 
 
-`switch`, `case`
-----------------    
+### `switch`, `case`
 
 A `switch` structure looks like the following. Note the placement of
 parentheses, spaces, and braces; the indent levels for `case` and `break`; and
@@ -346,8 +337,7 @@ switch ($expr) {
 }
 ```
 
-`while`, `do while`
--------------------
+### `while`, `do while`
 
 A `while` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -369,8 +359,7 @@ do {
 } while ($expr);
 ```
 
-`for`
------
+### `for`
 
 A `for` statement looks like the following. Note the placement of parentheses,
 spaces, and braces.
@@ -382,8 +371,7 @@ for ($i = 0; $i < 10; $i++) {
 }
 ```
 
-`foreach`
----------
+### `foreach`
     
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -395,8 +383,7 @@ foreach ($iterable as $key => $value) {
 }
 ```
 
-`try`, `catch`
---------------
+### `try`, `catch`
 
 A `try catch` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -413,7 +400,7 @@ try {
 ```
 
 Conclusion
-==========
+----------
 
 There are many points of style and practice intentionally omitted by this
 guide. Future recommendations may extend and revise the guide.
