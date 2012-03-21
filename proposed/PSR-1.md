@@ -225,7 +225,7 @@ namespace Vendor\Package;
 
 class ClassName
 {
-    public function foo($arg1, $arg2, $arg3 = [])
+    public function foo($arg1, &$arg2, $arg3 = [])
     {
         // method body
     }
