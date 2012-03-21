@@ -19,7 +19,7 @@ points.
 - Use 4 spaces for indenting, not tabs.
 
 - There is no hard limit on line length; the soft limit is 120 characters;
-  lines of 80 characters or less are strongly encouraged. Do not add trailing
+  lines of 80 characters or less are encouraged. Do not add trailing
   whitespace at the end of lines. Use Unix line endings (LF).
 
 - Namespace all classes; place one blank line after the `namespace`
@@ -172,9 +172,10 @@ Whatever naming convention is used must be applied consistently within a
 reasonable scope. That scope may be vendor-level, package-level, class-level,
 or method-level.
 
-Declare visibility on all properties. Some projects prefix property names with
-a single underscore to indicate protected or private visibility; this guide
-discourages but does not disallow that practice.
+Declare visibility on all properties; do not use `var` to declare a property,
+and declare only one property per statement. Some projects prefix property
+names with a single underscore to indicate protected or private visibility;
+this guide discourages but does not disallow that practice.
 
 A property declaration looks like the following.
 
