@@ -50,8 +50,8 @@ Voting Representatives
 - Matthew Weier O'Phinney
     - Zend Framework, Zend Framework 2
 
-- ?
-    - PhpBB
+- Nils Adermann
+    - phpBB
 
 - ?
     - Joomla
