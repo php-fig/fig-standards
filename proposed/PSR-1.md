@@ -44,8 +44,10 @@ points.
   closing parentheses for control structures have no space before.
 
 
-PHP Tags
---------
+General
+-------
+
+### PHP Tags
 
 Use the long `<?php ?>` tags for PHP code. Use of short-echo `<?= ?>` tags is
 also allowed. Do not use the other tag variations.
@@ -53,14 +55,20 @@ also allowed. Do not use the other tag variations.
 In files that contain only PHP, leave out the closing `?>` tag.
 
 
-Indenting and Lines
--------------------
+### Character Encoding
+
+Use only UTF-8 (no BOM) for PHP code. Do not use other character encodings.
+
 
 ### Indenting
 
-Use an indent of 4 spaces. Do not use tabs. The use of spaces helps to avoid
-problems with diffs, patches, history, and annotations, and provides
-fine-grained sub-indentation for inter-line alignment.
+Use an indent of 4 spaces. Do not use tabs.
+
+> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
+> problems with diffs, patches, history, and annotations. The use of spaces
+> also makes it easy to insert fine-grained sub-indentation for inter-line 
+> alignment.
+
 
 ### Lines
 
