@@ -26,6 +26,7 @@ A single interface is proposed
          * @param mixed $content Content of the request, can be empty.
          * @param array $headers Array of Headers, header Name is the key.
          * @param array $options Vendor specific options to activate specific features.
+         * @throws HttpException If no response can be created an exception should be thrown.
          * @return Response
          */
         public function request($method, $url, $content = null, array $headers = array(), array $options = array());
@@ -77,6 +78,15 @@ A value objects come with this interface, the Response which is returned from th
          * @return string|array|null
          */
         public function getHeader($name);
+    }
+    
+Also an exception is shipped:
+
+    <?php
+    namespace PSR\Http\Client;
+    
+    class HttpException extends \RuntimeException
+    {
     }
 
 ## Sample code
