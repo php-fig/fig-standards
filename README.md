@@ -5,11 +5,14 @@ Repository for maintaining Framework Interop Group specification proposals.
 
 To propose a standards recommendation (PSR):
 
-- fork this repo, add the PSR in `proposed/`, and send a pull request; or,
+- fork this repo, create a branch, checkout that branch, add the PSR in
+  `proposed/`, push the branch to Github, and send a pull request; or,
+
 - create a ticket to start a discussion on Github; or,
+
 - start a conversation on the [mailing list][].
 
-[mailing list]: https://groups.google.com/forum/?fromgroups#!forum/php-standards
+[mailing list]: http://groups.google.com/group/php-standards/
 
 
 Voting Representatives
@@ -18,14 +21,20 @@ Voting Representatives
 - Nate Abele
     - Lithium
 
-- Brett Bieber
-    - PEAR, PEAR2
-    
+- Nils Adermann
+    - PhpBB
+
 - Guilherme Blanco
     - Doctrine, Doctrine2, et al.
 
+- David Coallier
+    - PEAR, PEAR2
+    
 - Paul Dragoonis
     - PPI, PPI2
+
+- Cal Evans
+    - the community at large
 
 - Paul M. Jones
     - Solar Framework
@@ -34,8 +43,17 @@ Voting Representatives
 - Larry Garfield
     - Drupal
 
+- Louis Landry
+    - Joomla
+
+- Robert Lemke
+    - FLOW3
+
 - Larry Masters
     - CakePHP, CakePHP 2
+
+- Evert Pot
+    - SabreDAV
 
 - Fabien Potencier:
     - Symfony, Symfony2
@@ -50,11 +68,8 @@ Voting Representatives
 - Matthew Weier O'Phinney
     - Zend Framework, Zend Framework 2
 
-- ?
-    - PhpBB
-
-- ?
-    - Joomla
+- David Zülke
+    - Agavi
 
 
 Non-Voting
@@ -64,10 +79,8 @@ Non-Voting
     - Swiftlet
 
 - Jordi Boggiano
-    - Composer
-    - Monolog
-    - Packagist
+    - Composer, Packagist
 
-- Drak
+- Karma Dordrak
     - Zikula
 
