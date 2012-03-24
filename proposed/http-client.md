@@ -23,7 +23,7 @@ A single interface is proposed
          * 
          * @param string $method HTTP method, uppercase
          * @param string $url Url to send HTTP request to
-         * @param mixed $content Content of the request, can be empty.
+         * @param string $content Content of the request, can be empty.
          * @param array $headers Array of Headers, header Name is the key.
          * @param array $options Vendor specific options to activate specific features.
          * @throws HttpException If no response can be created an exception should be thrown.
