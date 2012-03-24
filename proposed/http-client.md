@@ -65,6 +65,11 @@ A value objects come with this interface, the Response which is returned from th
         
         /**
          * Return all headers of this response.
+         * 
+         * Header names are returned as lower-case keys. Their values are returned
+         * in an array themselves to support multiple occurances of headers.
+         * 
+         * @example array(array("content-type" => array("text/html"))
          *
          * @return array
          */
@@ -73,9 +78,9 @@ A value objects come with this interface, the Response which is returned from th
         /**
          * Return a specified header of this response or null if not found,
          *
-         * Returns an array if multiple occurances of a header are returned.
+         * Returns an array no matter if single or multiple occurances of a header exist.
          *
-         * @return string|array|null
+         * @return array|null
          */
         public function getHeader($name);
     }
