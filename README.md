@@ -40,11 +40,11 @@ Voting Representatives
     - Solar Framework
     - Aura Project
 
+- Andrew Eddie
+    - Joomla
+
 - Larry Garfield
     - Drupal
-
-- Louis Landry
-    - Joomla
 
 - Robert Lemke
     - FLOW3
