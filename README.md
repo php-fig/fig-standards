@@ -23,11 +23,17 @@ Requesting Membership
 You **do not** need to be a voting member to participate in discussion on
 the [mailing list][].
 
-To become a voting member, you must send an email to the [mailing list][] with
-your name, the name of (and link to) the project you represent, and other
-details you feel are relevant. Current members will vote on your request. Do
-not combine separate membership requests in a single thread; one request per
-thread, please.
+To become a voting member, you must send an email to the [mailing list][].
+
+- The subject line should read: `Membership Request: {$your_name} ({$project_name})`
+
+- The body should include your name, the name of (and link to) the project you
+  represent, and other details you feel are relevant.
+  
+Current members will vote on your request.
+
+Do not combine separate membership requests in a single thread; one request
+per thread, please.
 
 
 Voting Members
@@ -67,9 +73,6 @@ Voting Members
 - Larry Masters
     - CakePHP, CakePHP 2
 
-- Evert Pot
-    - SabreDAV
-
 - Fabien Potencier:
     - Symfony, Symfony2
 
@@ -90,11 +93,14 @@ Voting Members
 Non-Voting
 ----------
 
-- Elbert Foo
-    - Swiftlet
-
 - Jordi Boggiano
     - Composer, Packagist
+
+- Evert Pot
+    - SabreDAV
+
+- Elbert Foo
+    - Swiftlet
 
 - Karma Dordrak
     - Zikula
