@@ -51,6 +51,9 @@ Voting Members
 - David Coallier
     - PEAR, PEAR2
     
+- Karma Dordrak
+    - Zikula
+
 - Paul Dragoonis
     - PPI, PPI2
 
@@ -101,7 +104,4 @@ Non-Voting
 
 - Elbert Foo
     - Swiftlet
-
-- Karma Dordrak
-    - Zikula
 
