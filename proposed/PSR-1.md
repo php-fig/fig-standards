@@ -418,8 +418,26 @@ try {
 Conclusion
 ----------
 
-There are many points of style and practice intentionally omitted by this
-guide. Future recommendations may extend and revise the guide.
+There are many elements of style and practice intentionally omitted by this
+guide; these include but are not limited to:
+
+- Declaration of global variables and global constants
+
+- Declaration of functions outside classes, including anonymous functions
+  and closures
+
+- Operators and assignment
+
+- Inter-line alignment
+
+- Comments and documentation blocks
+
+- Class name prefixes and suffixes
+
+- Best practices
+
+Future PSRs may revise and extend this guide to address those or other
+elements of style and practice.
 
 
 Appendices
