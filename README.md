@@ -76,6 +76,9 @@ Voting Members
 - Larry Masters
     - CakePHP, CakePHP 2
 
+- Evert Pot
+    - SabreDAV
+
 - Fabien Potencier:
     - Symfony, Symfony2
 
@@ -98,9 +101,6 @@ Non-Voting
 
 - Jordi Boggiano
     - Composer, Packagist
-
-- Evert Pot
-    - SabreDAV
 
 - Elbert Foo
     - Swiftlet
