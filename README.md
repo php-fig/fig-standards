@@ -39,6 +39,8 @@ per thread, please.
 Voting Members
 --------------
 
+Count: 18
+
 - Nate Abele
     - Lithium
 
