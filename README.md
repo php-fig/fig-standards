@@ -39,6 +39,8 @@ per thread, please.
 Voting Members
 --------------
 
+Count: 18
+
 - Nate Abele
     - Lithium
 
@@ -51,6 +53,9 @@ Voting Members
 - David Coallier
     - PEAR, PEAR2
     
+- Karma Dordrak
+    - Zikula
+
 - Paul Dragoonis
     - PPI, PPI2
 
@@ -72,6 +77,9 @@ Voting Members
 
 - Larry Masters
     - CakePHP, CakePHP 2
+
+- Evert Pot
+    - SabreDAV
 
 - Fabien Potencier:
     - Symfony, Symfony2
@@ -96,12 +104,6 @@ Non-Voting
 - Jordi Boggiano
     - Composer, Packagist
 
-- Evert Pot
-    - SabreDAV
-
 - Elbert Foo
     - Swiftlet
-
-- Karma Dordrak
-    - Zikula
 
