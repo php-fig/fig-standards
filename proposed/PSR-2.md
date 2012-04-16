@@ -1,7 +1,7 @@
 The following describes the mandatory requirements that must be adhered
 to for autoloader interoperability.
 
-Mandatory default behavior
+Mandatory
 ---------
 
 * A fully-qualified namespace and class must have the following
@@ -10,25 +10,16 @@ Mandatory default behavior
 * Each namespace can have as many sub-namespaces as it wishes.
 * Each namespace separator is converted to a `DIRECTORY_SEPARATOR` when
   loading from the file system.
+* Each "\_" character in the CLASS NAME is converted to a 
+  `DIRECTORY_SEPARATOR`. The "\_" character has no special meaning in the 
+  namespace.
 * The fully-qualified namespace and class is suffixed with ".php" when
   loading from the file system.
 * Alphabetic characters in vendor names, namespaces, and class names may
   be of any combination of lower case and upper case.
 * Namespace and class name is case sensitive as inherited from most
   file systems.
-* If file is not present a fatal error is emitted.
-
-
-The following describes opt-in alternative behavior. Support for alternative
-behavior is optional. Suggested way of enabling this is by means of [class]
-constants used when registering autoloader, see class example bellow.
-
-Opt-In alternative behavior
----------
-* PSR_0_PEAR_COMPAT: Each "\_" character in the CLASS NAME is
-  converted to a `DIRECTORY_SEPARATOR`. The "\_" character has no
-  special meaning in the namespace.
-* PSR_2_FILECHECK: Adds checks to see if file exists, if not returns false.
+* If file is not present false is returned.
 
 Examples
 --------
@@ -40,12 +31,7 @@ Examples
 
 Underscores in Namespaces and Class Names
 -----------------------------------------
-Default PSR-2 behavior:
-* `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class_Name.php`
-* `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class_Name.php`
 
-
-Using PSR_0_PEAR_COMPAT mode:
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
 
@@ -54,7 +40,7 @@ painless autoloader interoperability. You can test that you are
 following these standards by utilizing this sample SplClassLoader
 implementation which is able to load PHP 5.3 classes.
 
-Example Minimal Implementation
+Example Implementation
 ----------------------
 
 Below is an example function to simply demonstrate how the above
@@ -77,59 +63,45 @@ proposed standards are autoloaded.
         require $fileName;
     }
 
+SplClassLoader Implementation
+-----------------------------
+
+The following gist is a sample SplClassLoader implementation that can
+load your classes if you follow the autoloader interoperability
+standards proposed above. It is the current recommended way to load PHP
+5.3 classes that follow these standards.
+
+* [http://gist.github.com/221634](http://gist.github.com/221634)
 
 Example Class Implementation
 ----------------------
 
     <?php
     
-    class Loader
+    class ClassLoader
     {
-        /**
-         * Mode for enabling PEAR autoloader compatibility (and PSR-0 compat)
-         *
-         * @var int
-         */
-        const PSR_0_PEAR_COMPAT = 1;
-    
-        /**
-         * Mode to check if file exists before loading class name that matches prefix
-         *
-         * @var int
-         */
-        const PSR_2_FILECHECK = 2;
-    
         /**
          * @var array Contains namespace/class prefix as key and sub path as value
          */
         protected $paths;
     
         /**
-         * @var int
-         */
-        protected $mode;
-    
-        /**
          * Construct a loader instance
          *
          * @param array $paths Containing class/namespace prefix as key and sub path as value
-         * @param int $mode One or more of of the PSR_ constants, these are opt-in
          */
-        public function __construct( array $paths, $mode = 0 )
+        public function __construct( array $paths )
         {
             $this->paths = $paths;
-            $this->mode = $mode;
         }
     
         /**
          * Load classes/interfaces following PSR-0 naming
          *
          * @param string $className
-         * @param bool $returnFileName For testing, returns file name instead of loading it
-         * @return null|boolean|string Null if no match is found, bool if match and found/not found,
-         *                             string if $returnFileName is true.
+         * @return null|boolean Null if no match is found, bool if match and found/not found.
          */
-        public function load( $className, $returnFileName = false )
+        public function load( $className )
         {
             if ( $className[0] === '\\' )
                 $className = substr( $className, 1 );
@@ -139,39 +111,24 @@ Example Class Implementation
                 if ( strpos( $className, $prefix ) !== 0 )
                     continue;
     
-                if ( $this->mode & self::PSR_0_PEAR_COMPAT ) // PSR-0 / PEAR compat
-                {
-                    $lastNsPos = strripos( $className, '\\' );
-                    $prefixLen = strlen( $prefix ) + 1;
-                    $fileName = $subPath . DIRECTORY_SEPARATOR;
+                $lastNsPos = strripos( $className, '\\' );
+                $prefixLen = strlen( $prefix ) + 1;
+                $fileName = $subPath . DIRECTORY_SEPARATOR;
     
-                    if ( $lastNsPos > $prefixLen )
-                    {
-                        // Replacing '\' to '/' in namespace part
-                        $fileName .= substr(
-                            strtr( substr( $className, 0, $lastNsPos ), '\\', DIRECTORY_SEPARATOR ),
-                            $prefixLen
-                        ) . DIRECTORY_SEPARATOR;
-                    }
-    
-                    // Replacing '_' to '/' in className part and append '.php'
-                    $fileName .= str_replace( '_', DIRECTORY_SEPARATOR, substr( $className, $lastNsPos + 1 ) ) . '.php';
-                }
-                else // PSR-2 Default
+                if ( $lastNsPos > $prefixLen )
                 {
-                     // Replace prefix with sub path if different
-                    if ( $prefix === $subPath )
-                        $fileName = strtr( $className, '\\', DIRECTORY_SEPARATOR ) . '.php';
-                    else
-                        $fileName = $subPath . DIRECTORY_SEPARATOR .
-                                    substr( strtr( $className, '\\', DIRECTORY_SEPARATOR ), strlen( $prefix ) +1 ) . '.php';
+                    // Replacing '\' to '/' in namespace part
+                    $fileName .= substr(
+                        strtr( substr( $className, 0, $lastNsPos ), '\\', DIRECTORY_SEPARATOR ),
+                        $prefixLen
+                    ) . DIRECTORY_SEPARATOR;
                 }
     
-                if ( ( $this->mode & self::PSR_2_FILECHECK ) && !is_file( $fileName ) )
+                // Replacing '_' to '/' in className part and append '.php'
+                $fileName .= str_replace( '_', DIRECTORY_SEPARATOR, substr( $className, $lastNsPos + 1 ) ) . '.php';
+    
+                if ( ( $fileName = stream_resolve_include_path( $fileName ) ) === false )
                     return false;
-    
-                if ( $returnFileName )
-                    return $fileName;
     
                 require $fileName;
                 return true;
