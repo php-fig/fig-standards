@@ -39,71 +39,42 @@ per thread, please.
 Voting Members
 --------------
 
-Count: 18
+1. Nate Abele: Lithium
 
-- Nate Abele
-    - Lithium
+1. Nils Adermann: PhpBB
 
-- Nils Adermann
-    - PhpBB
-
-- Guilherme Blanco
-    - Doctrine, Doctrine2, et al.
-
-- David Coallier
-    - PEAR, PEAR2
+1. Brett Bieber: PEAR, PEAR2
     
-- Karma Dordrak
-    - Zikula
+1. Guilherme Blanco: Doctrine, Doctrine2, et al.
 
-- Paul Dragoonis
-    - PPI, PPI2
+1. Jordi Boggiano: Composer, Packagist
 
-- Cal Evans
-    - the community at large
+1. Karma Dordrak: Zikula
 
-- Paul M. Jones
-    - Solar Framework
-    - Aura Project
+1. Paul Dragoonis: PPI, PPI2
 
-- Andrew Eddie
-    - Joomla
+1. William Durand: Propel, Propel 2
 
-- Larry Garfield
-    - Drupal
+1. Cal Evans: the community at large
 
-- Robert Lemke
-    - FLOW3
+1. Paul M. Jones: Solar Framework, Aura Project
 
-- Larry Masters
-    - CakePHP, CakePHP 2
+1. Andrew Eddie: Joomla
 
-- Evert Pot
-    - SabreDAV
+1. Larry Garfield: Drupal
 
-- Fabien Potencier:
-    - Symfony, Symfony2
+1. Robert Lemke: FLOW3
 
-- Andre Romcke
-    - eZ Publish
+1. Larry Masters: CakePHP, CakePHP 2
 
-- Paul Scott
-    - Chisimba
-    - C4
+1. Evert Pot: SabreDAV
 
-- Matthew Weier O'Phinney
-    - Zend Framework, Zend Framework 2
+1. Fabien Potencier: Symfony, Symfony2
 
-- David Zülke
-    - Agavi
+1. Andre Romcke: eZ Publish
 
+1. Paul Scott: Chisimba, C4
 
-Non-Voting
-----------
+1. Matthew Weier O'Phinney: Zend Framework, Zend Framework 2
 
-- Jordi Boggiano
-    - Composer, Packagist
-
-- Elbert Foo
-    - Swiftlet
-
+1. David Zülke: Agavi
