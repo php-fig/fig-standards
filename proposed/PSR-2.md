@@ -118,9 +118,10 @@ Example Class Implementation
                 if ( $lastNsPos > $prefixLen )
                 {
                     // Replacing '\' to '/' in namespace part
-                    $fileName .= substr(
-                        strtr( substr( $className, 0, $lastNsPos ), '\\', DIRECTORY_SEPARATOR ),
-                        $prefixLen
+                    $fileName .= str_replace(
+                        '\\',
+                        DIRECTORY_SEPARATOR,
+                        substr( $className, $prefixLen, $lastNsPos - $prefixLen )
                     ) . DIRECTORY_SEPARATOR;
                 }
     
