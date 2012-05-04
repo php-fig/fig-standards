@@ -277,9 +277,9 @@ The general style rules for control structures are as follows:
 - no space before the closing parenthesis
 - one space between the closing parenthesis and the opening brace
 - structure body indented once
-- closing brace on its own line, outdented once from the body
+- closing brace on the line after the body, outdented once from the body
 
-Always use braces to enclose the body of each structure. This standardizes how
+**Always use braces to enclose the body of each structure.** This standardizes how
 the structures look, and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
