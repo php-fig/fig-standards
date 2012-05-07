@@ -15,8 +15,8 @@ the benefit of this guide is not in the rules themselves, but in the sharing
 of those rules.
 
 
-Overview
---------
+1. Overview
+-----------
 
 - Follow [PSR-1][].
 
@@ -47,20 +47,41 @@ Overview
   closing parentheses for control structures have no space before.
 
 
-General
--------
+2. General
+----------
 
-### Basic Coding Standard
+### 2.1 Basic Coding Standard
 
 Follow all rules outlined in PSR-1 "Basic Coding Standard".
 
 
-### Closing Tag
+### 2.2 Files
+
+Use the Unix LF (linefeed) line ending on all PHP files.
+
+End each file with a single blank line.
 
 In files that contain only PHP, omit the closing `?>` tag.
 
+### 2.3 Lines
 
-### Indenting
+There is no hard limit on line length.
+
+The soft limit on line length is 120 characters; automated style checkers must
+warn but not error at the soft limit.
+
+This guide encourages lines no longer than 80 characters, and encourages
+splitting longer lines into multiple subsequent lines of no more than 80
+characters each.
+
+Do not add trailing spaces at the end of lines.
+
+Blank lines may be added to improve readability and to indicate related
+blocks of code.
+
+Use at most one statement per line.
+
+### 2.4 Indenting
 
 Use an indent of 4 spaces. Do not use tabs.
 
@@ -70,28 +91,8 @@ Use an indent of 4 spaces. Do not use tabs.
 > alignment.
 
 
-### Lines
-
-There is no hard limit on line length. The soft limit on line length is 120
-characters; automated style checkers must warn but not error at the soft
-limit. This guide encourages lines no longer than 80 characters, and
-encourages splitting longer lines into multiple subsequent lines of no more
-than 80 characters each.
-
-Use the Unix LF (linefeed) line ending on all PHP files.
-
-Do not add trailing spaces at the end of lines.
-
-Blank lines may be added to improve readability and to indicate related blocks
-of code.
-
-Use at most one statement per line.
-
-End each file with a single blank line.
-
-
-`namespace` and `use`
----------------------
+3. Namespace and Use Declarations
+---------------------------------
 
 Place one blank line after the `namespace` declaration.
 
@@ -99,7 +100,8 @@ All `use` declarations go after the `namespace` declaration. There is one
 `use` keyword per declaration.
 
 Place one blank line after the `use` block.
-    
+
+For example:
 
 ```php
 <?php
@@ -114,10 +116,12 @@ use OtherVendor\OtherPackage\BazClass;
 ```
 
 
-Classes, Properties, and Methods
---------------------------------
+4. Classes, Properties, and Methods
+-----------------------------------
 
-> N.b.: The term "class" refers to all classes, interfaces, and traits.
+The term "class" refers to all classes, interfaces, and traits.
+
+### 4.1. Extends and Implements
 
 Declare `extends` and `implements` keywords on the same line as the class
 name.
@@ -159,7 +163,7 @@ class ClassName extends ParentClass implements
 }
 ```
 
-### Properties
+### 4.2. Properties
 
 Declare visibility on all properties. Do not use `var` to declare a property.
 Declare only one property per statement.
@@ -176,7 +180,7 @@ class ClassName
 }
 ```
 
-### Methods
+### 4.3 Methods
 
 Declare visibility on all methods.
 
@@ -204,7 +208,7 @@ class ClassName
 }
 ```    
 
-### Method Arguments
+### 4.3 Method Arguments
 
 Method arguments with default values always go at the end of the argument
 list.
@@ -242,7 +246,7 @@ class ClassName
 }
 ```
 
-### `abstract`, `final`, and `static`
+### 4.4. `abstract`, `final`, and `static`
 
 When present, the `abstract` and `final` declarations precede the visibility
 declaration.
@@ -267,8 +271,8 @@ class ClassName
 ```
 
 
-Control Structures
-------------------
+5. Control Structures
+---------------------
 
 The general style rules for control structures are as follows:
 
@@ -284,7 +288,7 @@ the structures look, and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
 
-### `if`, `elseif`, `else`
+### 5.1. `if`, `elseif`, `else`
 
 An `if` structure looks like the following. Note the placement of parentheses,
 spaces, and braces; and that `else` and `elseif` are on the same line as the
@@ -307,7 +311,7 @@ if ($expr1) {
 > like single words.
 
 
-### `switch`, `case`
+### 5.2. `switch`, `case`
 
 A `switch` structure looks like the following. Note the placement of
 parentheses, spaces, and braces; the indent levels for `case` and `break`; and
@@ -328,7 +332,7 @@ switch ($expr) {
 }
 ```
 
-### `while`, `do while`
+### 5.3 `while`, `do while`
 
 A `while` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -350,7 +354,7 @@ do {
 } while ($expr);
 ```
 
-### `for`
+### 5.4. `for`
 
 A `for` statement looks like the following. Note the placement of parentheses,
 spaces, and braces.
@@ -362,7 +366,7 @@ for ($i = 0; $i < 10; $i++) {
 }
 ```
 
-### `foreach`
+### 5.5. `foreach`
     
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -374,7 +378,7 @@ foreach ($iterable as $key => $value) {
 }
 ```
 
-### `try`, `catch`
+### 5.6. `try`, `catch`
 
 A `try catch` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -390,8 +394,8 @@ try {
 }
 ```
 
-Conclusion
-----------
+6. Conclusion
+--------------
 
 There are many elements of style and practice intentionally omitted by this
 guide; these include but are not limited to:
@@ -415,10 +419,10 @@ Future PSRs may revise and extend this guide to address those or other
 elements of style and practice.
 
 
-Appendices
-----------
+7. Appendices
+-------------
 
-### Survey Data
+### 7.1 Survey Data
 
     url,http://www.horde.org/apps/horde/docs/CODING_STANDARDS,http://pear.php.net/manual/en/standards.php,http://solarphp.com/manual/appendix-standards.style,http://framework.zend.com/manual/en/coding-standard.html,http://symfony.com/doc/2.0/contributing/code/standards.html,http://www.ppi.io/docs/coding-standards.html,https://github.com/ezsystems/ezp-next/wiki/codingstandards,http://book.cakephp.org/2.0/en/contributing/cakephp-coding-conventions.html,https://github.com/UnionOfRAD/lithium/wiki/Spec%3A-Coding,http://drupal.org/coding-standards,http://code.google.com/p/sabredav/,http://area51.phpbb.com/docs/31x/coding-guidelines.html,https://docs.google.com/a/zikula.org/document/edit?authkey=CPCU0Us&hgd=1&id=1fcqb93Sn-hR9c0mkN6m_tyWnmEvoswKBtSc0tKkZmJA,http://www.chisimba.com,n/a,https://github.com/Respect/project-info/blob/master/coding-standards-sample.php,n/a,Object Calisthenics for PHP,http://doc.nette.org/en/coding-standard,http://flow3.typo3.org,https://github.com/propelorm/Propel2/wiki/Coding-Standards,http://developer.joomla.org/coding-standards.html
     voting,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,no,no,?,yes,no,yes
@@ -445,7 +449,7 @@ Appendices
     class_method_control_brace,next/next/same,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/next,same/same/same,same/same/same,same/same/same,same/same/same,next/next/next,next/next/same,next/same/same,next/next/next,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/same,next/next/next
 
 
-### Survey Results
+### 7.2 Survey Results
 
     indent_type:
         tab: 7

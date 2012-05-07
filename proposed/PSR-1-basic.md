@@ -1,9 +1,12 @@
 Basic Coding Standard
 =====================
 
+This section of the standard comprises what should be considered the mandatory
+styling elements that are required to ensure a high level of technical
+interoperability between shared PHP code.
 
-Overview
---------
+1. Overview
+-----------
 
 - Use only <?php and <?= tags.
 
@@ -16,26 +19,21 @@ Overview
 - Declare method names in `camelCase`.
 
 
-General
--------
+2. Files
+--------
 
-### PHP Tags
+### 2.1. PHP Tags
 
 Use the long `<?php ?>` tags for PHP code. Use of short-echo `<?= ?>` tags is
 also allowed. Do not use the other tag variations.
 
-### Character Encoding
+### 2.2. Character Encoding
 
 Use only UTF-8 (no BOM) for PHP code. Do not use other character encodings.
 
 
-`namespace` and `class`
------------------------
-
-> N.b.: Formal namespaces were introduced in PHP 5.3. Code written for 5.2.x
-> and before must use the pseudo-namespacing convention of `Vendor_`
-> prefixes on class names. Code written for PHP 5.3 and after must use
-> formal namespaces.
+3. Namespace and Class Names
+----------------------------
 
 All namespaces and classes are to be named with [PSR-0][] in mind. This means
 each class is in a file by itself, and is in a namespace of at least one
@@ -45,18 +43,53 @@ level: a top-level vendor name.
 
 Declare class names in `StudlyCaps`.
 
+For example:
 
-Class Constants, Properties, and Methods
-----------------------------------------
+```php
+<?php
+// PHP 5.3 and later:
+namespace Vendor\Model;
 
-> N.b.: The term "class" refers to all classes, interfaces, and traits.
+class Foo
+{
+}
+```
 
-### Constants
+Formal namespaces were introduced in PHP 5.3. Code written for 5.2.x
+and before must use the pseudo-namespacing convention of `Vendor_`
+prefixes on class names. Code written for PHP 5.3 and after must use
+formal namespaces.
 
-Declare class in all upper case with underscore separators; e.g.,
-`CONSTANT_NAME`.
+```php
+<?php
+// PHP 5.2.x and earlier:
+class Vendor_Model_Foo
+{
+}
+```
 
-### Properties
+4. Class Constants, Properties, and Methods
+-------------------------------------------
+
+The term "class" refers to all classes, interfaces, and traits.
+
+
+### 4.1. Constants
+
+Declare class in all upper case with underscore separators. For example:
+
+```php
+<?php
+namespace Vendor\Model;
+
+class Foo
+{
+    const VERSION;
+    const DATE_APPROVED;
+}
+```
+
+### 4.2. Properties
 
 This guide expressly avoids any recommendation regarding the use of
 `$StudlyCaps`, `$camelCase`, or `$under_score` property names.
@@ -69,6 +102,6 @@ Whatever naming convention is used must be applied consistently within a
 reasonable scope. That scope may be vendor-level, package-level, class-level,
 or method-level.
 
-### Methods
+### 4.3. Methods
 
 Declare method names in `camelCase()`.
