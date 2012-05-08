@@ -76,7 +76,7 @@ The term "class" refers to all classes, interfaces, and traits.
 
 ### 4.1. Constants
 
-Declare class in all upper case with underscore separators. For example:
+Declare class constants in all upper case with underscore separators. For example:
 
 ```php
 <?php
