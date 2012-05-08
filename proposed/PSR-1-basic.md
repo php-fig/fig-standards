@@ -8,7 +8,7 @@ interoperability between shared PHP code.
 1. Overview
 -----------
 
-- Use only <?php and <?= tags.
+- Use only `<?php` and `<?=` tags.
 
 - Use only UTF-8 (no BOM) for PHP code.
 
