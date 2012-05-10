@@ -44,7 +44,7 @@ declaring classes, functions, constants, etc., *merely from including the file*.
 use of `require` or `include`, connecting to external services, modifying ini
 settings, emitting errors or exceptions, and so on.
 
-An example of a file with "side effects":
+An example of a file with side effects:
 
 ```php
 <?php
