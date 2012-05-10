@@ -1,22 +1,35 @@
 Basic Coding Standard
 =====================
 
-This section of the standard comprises what should be considered the mandatory
-styling elements that are required to ensure a high level of technical
+This section of the standard comprises what should be considered the standard
+coding elements that are required to ensure a high level of technical
 interoperability between shared PHP code.
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119][].
+
+[RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+
 
 1. Overview
 -----------
 
-- Use only `<?php` and `<?=` tags.
+- Files MUST use only `<?php` and `<?=` tags.
 
-- Use only UTF-8 (no BOM) for PHP code.
+- Files MUST use only UTF-8 (no BOM) for PHP code.
 
-- Declare class names in `StudlyCaps`.
+- Files SHOULD either declare symbols or cause side-effects, but SHOULD NOT do
+  both.
 
-- Declare class constants in all upper case with underscore separators.
+- Namespaces and classes MUST follow [PSR-0][].
 
-- Declare method names in `camelCase`.
+- Class names MUST be declared in `StudlyCaps`.
+
+- Class constants MUST be declared in all upper case with underscore separators.
+
+- Method names MUST be declared in `camelCase`.
 
 
 2. Files
@@ -24,18 +37,18 @@ interoperability between shared PHP code.
 
 ### 2.1. PHP Tags
 
-Use the long `<?php ?>` tags for PHP code. Use of short-echo `<?= ?>` tags is
-also allowed. Do not use the other tag variations.
+PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
+MUST NOT use the other tag variations.
 
 ### 2.2. Character Encoding
 
-Use only UTF-8 (no BOM) for PHP code. Do not use other character encodings.
+PHP code MUST use only UTF-8 (no BOM); it MUST NOT use other character encodings.
 
 ### 2.3. Side Effects
 
-A file should *either* declare new symbols (classes, functions, constants,
-etc.) and have no other side effects, *or* it should execute logic with side
-effects, but *not both*.
+A file SHOULD declare new symbols (classes, functions, constants,
+etc.) and cause no other side effects, or it SHOULD execute logic with side
+effects, but SHOULD NOT do both.
 
 The phrase "side effects" means execution of logic not directly related to
 declaring classes, functions, constants, etc., *merely from including the
@@ -91,13 +104,12 @@ if (! function_exists('bar')) {
 3. Namespace and Class Names
 ----------------------------
 
-All namespaces and classes are to be named with [PSR-0][] in mind. This means
-each class is in a file by itself, and is in a namespace of at least one
-level: a top-level vendor name.
+Namespaces and classes MUST follow [PSR-0][].
 
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+This means each class is in a file by itself, and is in a namespace of at
+least one level: a top-level vendor name.
 
-Declare class names in `StudlyCaps`.
+Class names MUST be declared in `StudlyCaps`.
 
 For example:
 
@@ -112,8 +124,8 @@ class Foo
 ```
 
 Formal namespaces were introduced in PHP 5.3. Code written for 5.2.x
-and before must use the pseudo-namespacing convention of `Vendor_`
-prefixes on class names. Code written for PHP 5.3 and after must use
+and before MUST use the pseudo-namespacing convention of `Vendor_`
+prefixes on class names. Code written for PHP 5.3 and after MUST use
 formal namespaces.
 
 ```php
@@ -129,10 +141,10 @@ class Vendor_Model_Foo
 
 The term "class" refers to all classes, interfaces, and traits.
 
-
 ### 4.1. Constants
 
-Declare class constants in all upper case with underscore separators. For example:
+Class constants MUST be declared in all upper case with underscore separators.
+For example:
 
 ```php
 <?php
@@ -147,13 +159,13 @@ class Foo
 
 ### 4.2. Properties
 
-This guide expressly avoids any recommendation regarding the use of
+This guide intentionally avoids any recommendation regarding the use of
 `$StudlyCaps`, `$camelCase`, or `$under_score` property names.
 
-Whatever naming convention is used must be applied consistently within a
+Whatever naming convention is used SHOULD be applied consistently within a
 reasonable scope. That scope may be vendor-level, package-level, class-level,
 or method-level.
 
 ### 4.3. Methods
 
-Declare method names in `camelCase()`.
+Method names MUST be declared in `camelCase()`.
