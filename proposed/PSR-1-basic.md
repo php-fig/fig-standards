@@ -143,10 +143,6 @@ class Foo
 This guide expressly avoids any recommendation regarding the use of
 `$StudlyCaps`, `$camelCase`, or `$under_score` property names.
 
-Some projects prefix property names with a single underscore to indicate
-protected or private visibility; this guide discourages but does not disallow
-that practice.
-
 Whatever naming convention is used must be applied consistently within a
 reasonable scope. That scope may be vendor-level, package-level, class-level,
 or method-level.
