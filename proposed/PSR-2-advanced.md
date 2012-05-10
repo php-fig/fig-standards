@@ -168,6 +168,10 @@ class ClassName extends ParentClass implements
 Declare visibility on all properties. Do not use `var` to declare a property.
 Declare only one property per statement.
 
+> N.b. Some projects prefix property names with a single underscore to indicate
+> protected or private visibility. This guide discourages but does not
+> disallow that practice.
+
 A property declaration looks like the following.
 
 ```php
