@@ -31,6 +31,55 @@ also allowed. Do not use the other tag variations.
 
 Use only UTF-8 (no BOM) for PHP code. Do not use other character encodings.
 
+### 2.3. Side Effects
+
+A file should *either* declare new symbols (classes, functions, constants,
+etc.) and have no other side effects, *or* it should execute logic with side
+effects, but *not* both.
+
+The phrase "side effects" means execution of logic not directly related to
+declaring classes, functions, constants, etc., *merely from including the file*.
+
+"Side effects" include but are not limited to: generating output, explicit
+use of `require` or `include`, connecting to external services, modifying ini
+settings, emitting errors or exceptions, and so on.
+
+An example of a file with "side effects":
+
+```php
+<?php
+// side effect: change ini settings
+ini_set('error_reporting', E_ALL);
+
+// side effect: loads a file
+include "file.php";
+
+// declaration (not a side effect)
+function foo()
+{
+    // function body
+}
+```
+
+An example of a file with no side effects:
+
+```php
+<?php
+// conditional declaration is *not* a side effect
+if (! function_exists('foo')) {
+    function foo()
+    {
+        // function body
+    }
+}
+
+// declaration
+function bar()
+{
+    // function body
+}
+```
+
 
 3. Namespace and Class Names
 ----------------------------
