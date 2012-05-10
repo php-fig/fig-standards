@@ -35,16 +35,19 @@ Use only UTF-8 (no BOM) for PHP code. Do not use other character encodings.
 
 A file should *either* declare new symbols (classes, functions, constants,
 etc.) and have no other side effects, *or* it should execute logic with side
-effects, but *not* both.
+effects, but *not both*.
 
 The phrase "side effects" means execution of logic not directly related to
-declaring classes, functions, constants, etc., *merely from including the file*.
+declaring classes, functions, constants, etc., *merely from including the
+file*.
 
 "Side effects" include but are not limited to: generating output, explicit
 use of `require` or `include`, connecting to external services, modifying ini
-settings, emitting errors or exceptions, and so on.
+settings, emitting errors or exceptions, modifying global or static variables,
+reading from or writing to a file, and so on.
 
-An example of a file with side effects:
+The following is an example of a file with both declarations and side effects;
+i.e, an example of what to avoid:
 
 ```php
 <?php
@@ -54,29 +57,33 @@ ini_set('error_reporting', E_ALL);
 // side effect: loads a file
 include "file.php";
 
-// declaration (not a side effect)
+// side effect: generates output
+echo "<html>\n";
+
+// declaration
 function foo()
 {
     // function body
 }
 ```
 
-An example of a file with no side effects:
+The following example is of a file that contains declarations without side
+effects; i.e., an example of what to emulate:
 
 ```php
 <?php
+// declaration
+function foo()
+{
+    // function body
+}
+
 // conditional declaration is *not* a side effect
-if (! function_exists('foo')) {
-    function foo()
+if (! function_exists('bar')) {
+    function bar()
     {
         // function body
     }
-}
-
-// declaration
-function bar()
-{
-    // function body
 }
 ```
 
