@@ -14,37 +14,46 @@ helps to have one set of guidelines to be used among all those projects. Thus,
 the benefit of this guide is not in the rules themselves, but in the sharing
 of those rules.
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119][].
+
+[RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+[PSR-1]: http://example.com
+
 
 1. Overview
 -----------
 
-- Follow [PSR-1][].
+- Code MUST follow [PSR-1][].
 
-- Use 4 spaces for indenting, not tabs.
+- Code MUST use 4 spaces for indenting, not tabs.
 
-- There is no hard limit on line length; the soft limit is 120 characters;
-  lines of 80 characters or less are encouraged.
+- There MUST NOT be a hard limit on line length; the soft limit MUST be 120
+  characters; lines SHOULD be 80 characters or less.
 
-- Place one blank line after the `namespace` declaration, and one blank line
-  after the block of `use` declarations.
+- There MUST be one blank line after the `namespace` declaration, and there
+  MUST be one blank line after the block of `use` declarations.
 
-- Opening braces for classes go on the next line, and closing braces go on
-  their own line.
+- Opening braces for classes MUST go on the next line, and closing braces MUST
+  go on the next line after the body.
 
-- Opening braces for methods go on the next line, and closing braces go on
-  their own line.
+- Opening braces for methods MUST go on the next line, and closing braces MUST
+  go on the next line after the body.
 
-- Declare visibility on all properties and methods; declare `abstract` and
-  `final` before the visibility, and declare `static` after the visibility.
+- Visibility MUST be declared on all properties and methods; `abstract` and
+  `final` MUST be declared before the visibility; `static` MUST be declared
+  after the visibility.
   
-- Control structure keywords have one space after them; function and method
-  calls do not.
+- Control structure keywords MUST have one space after them; function and
+  method calls MUST NOT.
 
-- Opening braces for control structures go on the same line, and closing
-  braces go on their own line.
+- Opening braces for control structures MUST go on the same line, and closing
+  braces MUST go on the next line after the body.
 
-- Opening parentheses for control structures have no space after them, and
-  closing parentheses for control structures have no space before.
+- Opening parentheses for control structures MUST NOT have a space after them,
+  and closing parentheses for control structures MUST NOT have a space before.
 
 
 2. General
@@ -52,38 +61,37 @@ of those rules.
 
 ### 2.1 Basic Coding Standard
 
-Follow all rules outlined in PSR-1 "Basic Coding Standard".
+MUST follow all rules outlined in PSR-1 "Basic Coding Standard".
 
 
 ### 2.2 Files
 
-Use the Unix LF (linefeed) line ending on all PHP files.
+All PHP files MUST use the Unix LF (linefeed) line ending.
 
-End each file with a single blank line.
+All PHP files MUST end with a single blank line.
 
-In files that contain only PHP, omit the closing `?>` tag.
+The closing `?>` tag MUST be omitted from files containing only PHP.
 
 ### 2.3 Lines
 
-There is no hard limit on line length.
+There MUST NOT be A hard limit on line length.
 
-The soft limit on line length is 120 characters; automated style checkers must
-warn but not error at the soft limit.
+The soft limit on line length MUST be 120 characters; automated style checkers
+MUST warn but MUST NOT error at the soft limit.
 
-This guide encourages lines no longer than 80 characters, and encourages
-splitting longer lines into multiple subsequent lines of no more than 80
-characters each.
+Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
+be split into multiple subsequent lines of no more than 80 characters each.
 
-Do not add trailing spaces at the end of lines.
+There MUST NOT be trailing whitespace at the end of non-blank lines.
 
-Blank lines may be added to improve readability and to indicate related
+Blank lines MAY be added to improve readability and to indicate related
 blocks of code.
 
-Use at most one statement per line.
+There MUST NOT be more than one statement per line.
 
 ### 2.4 Indenting
 
-Use an indent of 4 spaces. Do not use tabs.
+Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
 > N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
 > problems with diffs, patches, history, and annotations. The use of spaces
@@ -94,12 +102,13 @@ Use an indent of 4 spaces. Do not use tabs.
 3. Namespace and Use Declarations
 ---------------------------------
 
-Place one blank line after the `namespace` declaration.
+There MUST be one blank line after the `namespace` declaration.
 
-All `use` declarations go after the `namespace` declaration. There is one
-`use` keyword per declaration.
+All `use` declarations MUST go after the `namespace` declaration.
 
-Place one blank line after the `use` block.
+There MUST be one `use` keyword per declaration.
+
+There MUST be one blank line after the `use` block.
 
 For example:
 
@@ -123,10 +132,11 @@ The term "class" refers to all classes, interfaces, and traits.
 
 ### 4.1. Extends and Implements
 
-Declare `extends` and `implements` keywords on the same line as the class
-name.
+The `extends` and `implements` keywords MUST be declared on the same line as
+the class name.
 
-The opening and closing braces for the class go on their own line.
+The opening brace for the class go MUST go on its own line; the closing brace
+for the class MUST go on the next line after the body.
 
 ```php
 <?php
@@ -142,8 +152,9 @@ class ClassName extends ParentClass implements InterfaceName
 }
 ```
 
-Lists of `implements` may be split across multiple lines, where each
-subsequent line is indented once. List only one interface per line.
+Lists of `implements` MAY be split across multiple lines, where each
+subsequent line is indented once. When doing so, there MUST be only one
+interface per line.
 
 ```php
 <?php
@@ -165,12 +176,14 @@ class ClassName extends ParentClass implements
 
 ### 4.2. Properties
 
-Declare visibility on all properties. Do not use `var` to declare a property.
-Declare only one property per statement.
+Visibility MUST be declared on all properties.
 
-> N.b. Some projects prefix property names with a single underscore to indicate
-> protected or private visibility. This guide discourages but does not
-> disallow that practice.
+The `var` keyword MUST NOT be used to declare a property.
+
+There MUST NOT be more than one property declared per statement.
+
+Property names SHOULD NOT be prefixed with a single underscore to indicate
+protected or private visibility.
 
 A property declaration looks like the following.
 
@@ -186,15 +199,15 @@ class ClassName
 
 ### 4.3 Methods
 
-Declare visibility on all methods.
+Visibility MUST be declared on all methods.
 
-> N.b. Some projects prefix method names with a single underscore to indicate
-> protected or private visibility. This guide discourages but does not
-> disallow that practice.
+Method names SHOULD NOT be prefixed with a single underscore to indicate
+protected or private visibility.
 
-Declare methods with no space after the method name. The opening and closing
-braces go on their own line. There is no space after the opening parenthesis,
-and there is no space before the closing parenthesis.
+Method names MUST NOT be declared with a space after the method name. The
+opening brace MUST go on its own line, and the closing brace MUST go on the
+next line following the body. There MUST NOT be a space after the opening
+parenthesis, and there MUST NOT be a space before the closing parenthesis.
 
 A method declaration looks like the following. Note the placement of
 parentheses, commas, spaces, and braces:
@@ -214,7 +227,10 @@ class ClassName
 
 ### 4.3 Method Arguments
 
-Method arguments with default values always go at the end of the argument
+In the argument list, there MUST NOT be a space before each comma, and there
+MUST be one space after each comma.
+
+Method arguments with default values MUST go at the end of the argument
 list.
 
 ```php
@@ -230,9 +246,12 @@ class ClassName
 }
 ```
 
-Argument lists may be split across subsequent indented lines; list only one
-argument per line. When the argument list is split across multiple lines, the
-closing parenthesis and opening brace are placed together on their own line.
+Argument lists MAY be split across subsequent indented lines; when doing do,
+there MUST be only one argument per line.
+
+When the argument list is split across multiple lines, the closing parenthesis
+and opening brace MUST be placed together on their own line with one space
+between them.
 
 ```php
 <?php
@@ -252,10 +271,11 @@ class ClassName
 
 ### 4.4. `abstract`, `final`, and `static`
 
-When present, the `abstract` and `final` declarations precede the visibility
-declaration.
+When present, the `abstract` and `final` declarations MUST precede the
+visibility declaration.
 
-When present, the `static` declaration comes after the visibility declaration.
+When present, the `static` declaration MUST come after the visibility
+declaration.
 
 ```php
 <?php
@@ -274,20 +294,35 @@ class ClassName
 }
 ```
 
+### 4.4 Method Calls
+
+When making a method call, there MUST NOT be a space between the
+method or function name and the opening parenthesis, there MUST NOT be a space
+after the opening parenthesis, and there MUST NOT be a space before the
+closing parenthesis. In the argument list, there MUST NOT be a space before
+each comma, and there MUST be one space after each comma.  
+
+```php
+<?php
+$object->foo($arg1, $arg2, $arg3);
+ClassName::bar($arg4, $arg5);
+```
+
 
 5. Control Structures
 ---------------------
 
 The general style rules for control structures are as follows:
 
-- one space after the control structure keyword
-- no space after the opening parenthesis
-- no space before the closing parenthesis
-- one space between the closing parenthesis and the opening brace
-- structure body indented once
-- closing brace on the line after the body, outdented once from the body
+- There MUST be one space after the control structure keyword
+- There MUST NOT be a space after the opening parenthesis
+- There MUST NOT be a space before the closing parenthesis
+- There MUST be one space between the closing parenthesis and the opening
+  brace
+- The structure body MUST be indented once
+- The closing brace MUST be on the next line after the body
 
-**Always use braces to enclose the body of each structure.** This standardizes how
+The body of each structure MUST be enclosed by braces. This standardizes how
 the structures look, and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
@@ -309,17 +344,14 @@ if ($expr1) {
 }
 ```
 
-> N.b.: There appears to be no consistency between projects, and often not
-> even within the same project, on the use of `else if` vs `elseif`. This
-> guide encourages the use of `elseif` so that all control structures look
-> like single words.
+The keyword `elseif` SHOULD be used instead of `else if` so that all control
+keywords looks like single words.
 
 
 ### 5.2. `switch`, `case`
 
 A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces; the indent levels for `case` and `break`; and
-the presence of a `// no break` comment when a break is intentionally omitted.
+parentheses, spaces, and braces.
 
 ```php
 <?php
@@ -335,6 +367,11 @@ switch ($expr) {
         break;
 }
 ```
+
+The `case` statement MUST be indented once from `switch`, and the `break`
+statement MUST be indented at the same level as the `case` body. There MUST be
+a `// no break` comment when a break is intentionally omitted.
+
 
 ### 5.3 `while`, `do while`
 
@@ -419,8 +456,8 @@ guide; these include but are not limited to:
 
 - Best practices
 
-Future PSRs may revise and extend this guide to address those or other
-elements of style and practice.
+Future recommendations MAY revise and extend this guide to address those or
+other elements of style and practice.
 
 
 7. Appendices
