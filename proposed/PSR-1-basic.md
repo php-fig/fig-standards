@@ -18,7 +18,7 @@ interpreted as described in [RFC 2119][].
 
 - Files MUST use only `<?php` and `<?=` tags.
 
-- Files MUST use only UTF-8 (no BOM) for PHP code.
+- Files MUST use only UTF-8 without BOM for PHP code.
 
 - Files SHOULD either declare symbols or cause side-effects, but SHOULD NOT do
   both.
@@ -42,7 +42,7 @@ MUST NOT use the other tag variations.
 
 ### 2.2. Character Encoding
 
-PHP code MUST use only UTF-8 (no BOM); it MUST NOT use other character encodings.
+PHP code MUST use only UTF-8 without BOM.
 
 ### 2.3. Side Effects
 

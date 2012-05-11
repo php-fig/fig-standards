@@ -92,8 +92,7 @@ class Foo extends Bar implements FooInterface
 
 ### 2.1 Basic Coding Standard
 
-MUST follow all rules outlined in PSR-1 "Basic Coding Standard".
-
+Code MUST follow all rules outlined in [PSR-1][].
 
 ### 2.2 Files
 
