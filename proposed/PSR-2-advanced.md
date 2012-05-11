@@ -133,9 +133,10 @@ Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 3. Namespace and Use Declarations
 ---------------------------------
 
-There MUST be one blank line after the `namespace` declaration.
+When present, there MUST be one blank line after the `namespace` declaration.
 
-All `use` declarations MUST go after the `namespace` declaration.
+When present, all `use` declarations MUST go after the `namespace`
+declaration.
 
 There MUST be one `use` keyword per declaration.
 
@@ -491,10 +492,13 @@ Future recommendations MAY revise and extend this guide to address those or
 other elements of style and practice.
 
 
-7. Appendices
--------------
+Appendix A: Survey
+------------------
 
-### 7.1 Survey Data
+In writing this style guide, the group took a survey of member projects to
+determine common practices.  The survey is retained herein for posterity.
+
+### A.1 Survey Data
 
     url,http://www.horde.org/apps/horde/docs/CODING_STANDARDS,http://pear.php.net/manual/en/standards.php,http://solarphp.com/manual/appendix-standards.style,http://framework.zend.com/manual/en/coding-standard.html,http://symfony.com/doc/2.0/contributing/code/standards.html,http://www.ppi.io/docs/coding-standards.html,https://github.com/ezsystems/ezp-next/wiki/codingstandards,http://book.cakephp.org/2.0/en/contributing/cakephp-coding-conventions.html,https://github.com/UnionOfRAD/lithium/wiki/Spec%3A-Coding,http://drupal.org/coding-standards,http://code.google.com/p/sabredav/,http://area51.phpbb.com/docs/31x/coding-guidelines.html,https://docs.google.com/a/zikula.org/document/edit?authkey=CPCU0Us&hgd=1&id=1fcqb93Sn-hR9c0mkN6m_tyWnmEvoswKBtSc0tKkZmJA,http://www.chisimba.com,n/a,https://github.com/Respect/project-info/blob/master/coding-standards-sample.php,n/a,Object Calisthenics for PHP,http://doc.nette.org/en/coding-standard,http://flow3.typo3.org,https://github.com/propelorm/Propel2/wiki/Coding-Standards,http://developer.joomla.org/coding-standards.html
     voting,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,no,no,?,yes,no,yes
@@ -520,7 +524,7 @@ other elements of style and practice.
     blank_line_after_php,no,no,no,no,yes,no,no,no,no,yes,yes,no,no,yes,?,yes,yes,no,yes,no,yes,no
     class_method_control_brace,next/next/same,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/next,same/same/same,same/same/same,same/same/same,same/same/same,next/next/next,next/next/same,next/same/same,next/next/next,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/same,next/next/next
 
-### 7.2 Survey Legend
+### A.2 Survey Legend
 
 **`indent_type`**: The type of indenting. `tab` = "Use a tab", `2` or `4` =
 "number of spaces"
@@ -583,7 +587,7 @@ parenthesis? `yes` = `if ( $expr )`, `no` = `if ($expr)`.
 **`class_method_control_brace`**: A summary of what line the opening braces go
 on for classes, methods, and control structures.
 
-### 7.3 Survey Results
+### A.3 Survey Results
 
     indent_type:
         tab: 7
