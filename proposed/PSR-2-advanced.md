@@ -55,6 +55,38 @@ interpreted as described in [RFC 2119][].
 - Opening parentheses for control structures MUST NOT have a space after them,
   and closing parentheses for control structures MUST NOT have a space before.
 
+### 1.1 Example
+
+This example encompasses some of the rules below as a quick overview:
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use FooInterface;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class Foo extends Bar implements FooInterface
+{
+    public function sampleFunction($a, $b = null)
+    {
+        if ($a === $b) {
+            bar();
+        } elseif ($a > $b) {
+            $foo->bar($arg1);
+        } else {
+            BazClass::bar($arg2, $arg3);
+        }
+    }
+
+    final public static function bar()
+    {
+        // method body
+    }
+}
+```
 
 2. General
 ----------
