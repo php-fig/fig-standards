@@ -111,6 +111,8 @@ least one level: a top-level vendor name.
 
 Class names MUST be declared in `StudlyCaps`.
 
+Code written for PHP 5.3 and after MUST use formal namespaces.
+
 For example:
 
 ```php
@@ -123,10 +125,8 @@ class Foo
 }
 ```
 
-Formal namespaces were introduced in PHP 5.3. Code written for 5.2.x
-and before MUST use the pseudo-namespacing convention of `Vendor_`
-prefixes on class names. Code written for PHP 5.3 and after MUST use
-formal namespaces.
+Code written for 5.2.x and before SHOULD use the pseudo-namespacing convention
+of `Vendor_` prefixes on class names.
 
 ```php
 <?php
