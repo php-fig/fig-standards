@@ -525,66 +525,68 @@ determine common practices.  The survey is retained herein for posterity.
 
 ### A.2 Survey Legend
 
-**`indent_type`**: The type of indenting. `tab` = "Use a tab", `2` or `4` =
-"number of spaces"
+`indent_type`:
+The type of indenting. `tab` = "Use a tab", `2` or `4` = "number of spaces"
 
-**`line_length_limit_soft`**: The "soft" line length limit, in characters. `?`
-= not discernible or no response, `no` means no limit.
+`line_length_limit_soft`:
+The "soft" line length limit, in characters. `?` = not discernible or no response, `no` means no limit.
 
-**`line_length_limit_hard`**: The "hard" line length limit, in characters. `?`
-= not discernible or no response, `no` means no limit.
+`line_length_limit_hard`:
+The "hard" line length limit, in characters. `?` = not discernible or no response, `no` means no limit.
 
-**`class_names`**: How classes are named. `lower` = lowercase only,
-`lower_under` = lowercase with underscore separators, `studly` = StudlyCase.
+`class_names`:
+How classes are named. `lower` = lowercase only, `lower_under` = lowercase with underscore separators, `studly` = StudlyCase.
 
-**`class_brace_line`**: Does the opening brace for a class go on the `same`
-line as the class keyword, or on the `next` line after it?
+`class_brace_line`:
+Does the opening brace for a class go on the `same` line as the class keyword, or on the `next` line after it?
 
-**`constant_names`**: How are class constants named? `upper` = Uppercase with
-underscore separators.
+`constant_names`:
+How are class constants named? `upper` = Uppercase with underscore separators.
 
-**`true_false_null`**: Are the `true`, `false`, and `null` keywords spelled as
-all `lower` case, or all `upper` case?
+`true_false_null`:
+Are the `true`, `false`, and `null` keywords spelled as all `lower` case, or all `upper` case?
 
-**`method_names`**: How are methods named? `camel` = `camelCase`,
-`lower_under` = lowercase with underscore separators.
+`method_names`:
+How are methods named? `camel` = `camelCase`, `lower_under` = lowercase with underscore separators.
 
-**`method_brace_line`**: Does the opening brace for a method go on the `same`
-line as the method name, or on the `next` line?
+`method_brace_line`:
+Does the opening brace for a method go on the `same` line as the method name, or on the `next` line?
 
-**`control_brace_line`**: Does the opening brace for a control structure go on
-the `same` line, or on the `next` line?
+`control_brace_line`:
+Does the opening brace for a control structure go on the `same` line, or on the `next` line?
 
-**`control_space_after`**: Is there a space after the control structure
-keyword?
+`control_space_after`:
+Is there a space after the control structure keyword?
 
-**`always_use_control_braces`**: Do control structures always use braces?
+`always_use_control_braces`:
+Do control structures always use braces?
 
-**`else_elseif_line`**: When using `else` or `elseif`, does it go on the
-`same` line as the previous closing brace, or does it go on the `next` line?
+`else_elseif_line`:
+When using `else` or `elseif`, does it go on the `same` line as the previous closing brace, or does it go on the `next` line?
 
-**`case_break_indent_from_switch`**: How many times are `case` and `break`
-indented from an opening `switch` statement?
+`case_break_indent_from_switch`:
+How many times are `case` and `break` indented from an opening `switch` statement?
 
-**`function_space_after`**: Do function calls have a space after the function
-name and before the opening parenthesis?
+`function_space_after`:
+Do function calls have a space after the function name and before the opening parenthesis?
 
-**`closing_php_tag_required`**: In files containing only PHP, is the closing
-`?>` tag required?
+`closing_php_tag_required`:
+In files containing only PHP, is the closing `?>` tag required?
 
-**`line_endings`**: What type of line ending is used?
+`line_endings`:
+What type of line ending is used?
 
-**`static_or_visibility_first`**: When declaring a method, does `static` come
-first, or does the visibility come first?
+`static_or_visibility_first`:
+When declaring a method, does `static` come first, or does the visibility come first?
 
-**`control_space_parens`**: In a control structure expression, is there a
-space after the opening parenthesis and a space before the closing
-parenthesis? `yes` = `if ( $expr )`, `no` = `if ($expr)`.
+`control_space_parens`:
+In a control structure expression, is there a space after the opening parenthesis and a space before the closing parenthesis? `yes` = `if ( $expr )`, `no` = `if ($expr)`.
 
-**`blank_line_after_php`**: Is there a blank line after the opening PHP tag?
+`blank_line_after_php`:
+Is there a blank line after the opening PHP tag?
 
-**`class_method_control_brace`**: A summary of what line the opening braces go
-on for classes, methods, and control structures.
+`class_method_control_brace`:
+A summary of what line the opening braces go on for classes, methods, and control structures.
 
 ### A.3 Survey Results
 
