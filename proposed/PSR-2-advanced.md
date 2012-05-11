@@ -61,7 +61,6 @@ This example encompasses some of the rules below as a quick overview:
 
 ```php
 <?php
-
 namespace Vendor\Package;
 
 use FooInterface;
@@ -178,7 +177,7 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-class ClassName extends ParentClass implements InterfaceName
+class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
     // constants, properties, methods
 }
@@ -197,10 +196,9 @@ use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
 class ClassName extends ParentClass implements
-    InterfaceName,
-    AnotherInterfaceName,
-    YetAnotherInterface,
-    InterfaceInterface
+    \ArrayAccess,
+    \Countable,
+    \Serializable
 {
     // constants, properties, methods
 }
