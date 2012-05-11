@@ -1,5 +1,5 @@
-Advanced Coding Style
-=====================
+Coding Style Guide
+==================
 
 This guide extends and expands on [PSR-1][], the basic coding standard.
 
@@ -8,11 +8,10 @@ from different authors. It does so by enumerating a shared set of rules and
 expectations about how to format PHP code.
 
 The style rules herein are derived from commonalities among the various member
-projects. If one project has its own style guide, that's fine for that
-project. But when various authors collaborate across multiple projects, it
-helps to have one set of guidelines to be used among all those projects. Thus,
-the benefit of this guide is not in the rules themselves, but in the sharing
-of those rules.
+projects. When various authors collaborate across multiple projects, it helps
+to have one set of guidelines to be used among all those projects. Thus, the
+benefit of this guide is not in the rules themselves, but in the sharing of
+those rules.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -104,7 +103,7 @@ The closing `?>` tag MUST be omitted from files containing only PHP.
 
 ### 2.3 Lines
 
-There MUST NOT be A hard limit on line length.
+There MUST NOT be a hard limit on line length.
 
 The soft limit on line length MUST be 120 characters; automated style checkers
 MUST warn but MUST NOT error at the soft limit.
@@ -127,6 +126,15 @@ Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 > problems with diffs, patches, history, and annotations. The use of spaces
 > also makes it easy to insert fine-grained sub-indentation for inter-line 
 > alignment.
+
+### 2.5 Keywords and True/False/Null
+
+PHP [keywords][] MUST be in lower case.
+
+The PHP constants `true`, `false`, and `null` MUST be in lower case.
+
+[keywords]: http://php.net/manual/en/reserved.keywords.php
+
 
 
 3. Namespace and Use Declarations
@@ -387,12 +395,17 @@ parentheses, spaces, and braces.
 ```php
 <?php
 switch ($expr) {
-    case 1:
-        echo 'First case';
+    case 0:
+        echo 'First case, with a break';
         break;
-    case 2:
-        echo 'Second case';
+    case 1:
+        echo 'Second case, which falls through';
         // no break
+    case 2:
+    case 3:
+    case 4:
+        echo 'Third case, return instead of break';
+        return;
     default:
         echo 'Default case';
         break;
@@ -400,8 +413,9 @@ switch ($expr) {
 ```
 
 The `case` statement MUST be indented once from `switch`, and the `break`
-statement MUST be indented at the same level as the `case` body. There MUST be
-a `// no break` comment when a break is intentionally omitted.
+keyword (or other terminating keyword) MUST be indented at the same level as
+the `case` body. There MUST be a comment such as `// no break` when
+continuation or fall-through is intentional.
 
 
 ### 5.3 `while`, `do while`
