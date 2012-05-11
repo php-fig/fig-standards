@@ -46,8 +46,8 @@ interpreted as described in [RFC 2119][].
   `final` MUST be declared before the visibility; `static` MUST be declared
   after the visibility.
   
-- Control structure keywords MUST have one space after them; function and
-  method calls MUST NOT.
+- Control structure keywords MUST have one space after them; method and
+  function calls MUST NOT.
 
 - Opening braces for control structures MUST go on the same line, and closing
   braces MUST go on the next line after the body.
@@ -294,18 +294,19 @@ class ClassName
 }
 ```
 
-### 4.4 Method Calls
+### 4.4 Method and Function Calls
 
-When making a method call, there MUST NOT be a space between the
+When making a method or function call, there MUST NOT be a space between the
 method or function name and the opening parenthesis, there MUST NOT be a space
 after the opening parenthesis, and there MUST NOT be a space before the
 closing parenthesis. In the argument list, there MUST NOT be a space before
-each comma, and there MUST be one space after each comma.  
+each comma, and there MUST be one space after each comma.
 
 ```php
 <?php
-$object->foo($arg1, $arg2, $arg3);
-ClassName::bar($arg4, $arg5);
+bar();
+$foo->bar($arg1);
+Foo::bar($arg2, $arg3);
 ```
 
 
