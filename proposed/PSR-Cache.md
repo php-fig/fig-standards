@@ -255,7 +255,7 @@ any differently.
 Stacks are a special kind of grouping system that allow cache items to be
 nested, similar to how folders are nested in filesystems. Stacks work by adding
 a special character to Keys, the slash, which tells the Implementing Library
-where the nesting points out. If no nesting is used, Stacks behave exactly like
+where the nesting points are. If no nesting is used, Stacks behave exactly like
 the standard Cache interfaces.
 
 > An example key may look like "Users/Bob/Friends", "Users/Bob/Friends/Active"
