@@ -319,7 +319,7 @@ declaration.
 <?php
 namespace Vendor\Package;
 
-class ClassName
+abstract class ClassName
 {
     protected static $foo;
 
