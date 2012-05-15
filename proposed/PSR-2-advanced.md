@@ -192,8 +192,8 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 ```
 
 Lists of `implements` MAY be split across multiple lines, where each
-subsequent line is indented once. When doing so, there MUST be only one
-interface per line.
+subsequent line is indented once. When doing so, the first item in the list
+MUST be on the next line, and there MUST be only one interface per line.
 
 ```php
 <?php
@@ -285,7 +285,8 @@ class ClassName
 ```
 
 Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing do, there MUST be only one argument per line.
+is indented once. When doing so, the first item in the list MUST be on the
+next line, and there MUST be only one argument per line.
 
 When the argument list is split across multiple lines, the closing parenthesis
 and opening brace MUST be placed together on their own line with one space
@@ -348,8 +349,8 @@ Foo::bar($arg2, $arg3);
 ```
 
 Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, there MUST be only one argument or variable
-per line.
+is indented once. When doing so, the first item in the list MUST be on the
+next line, and there MUST be only one argument per line.
 
 ```php
 <?php
@@ -526,8 +527,9 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
 ```
 
 Argument lists and variable lists MAY be split across multiple lines, where
-each subsequent line is indented once. When doing so, there MUST be only one
-argument or variable per line.
+each subsequent line is indented once. When doing so, the first item in the
+list MUST be on the next line, and there MUST be only one argument or variable
+per line.
 
 When the ending list (whether or arguments or variables) is split across
 multiple lines, the closing parenthesis and opening brace MUST be placed
