@@ -284,8 +284,8 @@ class ClassName
 }
 ```
 
-Argument lists MAY be split across subsequent indented lines; when doing do,
-there MUST be only one argument per line.
+Argument lists MAY be split across multiple lines, where each subsequent line
+is indented once. When doing do, there MUST be only one argument per line.
 
 When the argument list is split across multiple lines, the closing parenthesis
 and opening brace MUST be placed together on their own line with one space
@@ -347,6 +347,18 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
+Argument lists MAY be split across multiple lines, where each subsequent line
+is indented once. When doing so, there MUST be only one argument or variable
+per line.
+
+```php
+<?php
+$foo->bar(
+   $longArgument,
+   $longerArgument,
+   $muchLongerArgument
+);
+```
 
 5. Control Structures
 ---------------------
@@ -513,8 +525,9 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
 };
 ```
 
-Argument lists and variable lists MAY be split across lines; when doing so,
-there MUST be only one argument or variable per line.
+Argument lists and variable lists MAY be split across multiple lines, where
+each subsequent line is indented once. When doing so, there MUST be only one
+argument or variable per line.
 
 When the ending list (whether or arguments or variables) is split across
 multiple lines, the closing parenthesis and opening brace MUST be placed
