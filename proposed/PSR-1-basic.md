@@ -152,8 +152,8 @@ namespace Vendor\Model;
 
 class Foo
 {
-    const VERSION;
-    const DATE_APPROVED;
+    const VERSION = '1.0';
+    const DATE_APPROVED = '2012-06-01';
 }
 ```
 
