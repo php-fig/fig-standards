@@ -20,8 +20,9 @@ interpreted as described in [RFC 2119][].
 
 - Files MUST use only UTF-8 without BOM for PHP code.
 
-- Files SHOULD either declare symbols or cause side-effects, but SHOULD NOT do
-  both.
+- Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
+  *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
+  but SHOULD NOT do both.
 
 - Namespaces and classes MUST follow [PSR-0][].
 
