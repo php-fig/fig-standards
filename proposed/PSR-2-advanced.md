@@ -585,6 +585,21 @@ $shortArgs_longVars = function ($arg) use (
 };
 ```
 
+Note that the formatting rules also apply when the closure is used directly
+in a function or method call as an argument.
+
+```php
+<?php
+$foo->bar(
+    $arg1,
+    function ($arg2) use ($var1) {
+        // body
+    },
+    $arg3
+);
+```
+
+
 7. Conclusion
 --------------
 
