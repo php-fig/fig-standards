@@ -403,7 +403,11 @@ keywords looks like single words.
 ### 5.2. `switch`, `case`
 
 A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces.
+parentheses, spaces, and braces. The `case` statement MUST be indented once
+from `switch`, and the `break` keyword (or other terminating keyword) MUST be
+indented at the same level as the `case` body. There MUST be a comment such as
+`// no break` when continuation or fall-through is intentional in a non-empty
+`case` body.
 
 ```php
 <?php
@@ -424,11 +428,6 @@ switch ($expr) {
         break;
 }
 ```
-
-The `case` statement MUST be indented once from `switch`, and the `break`
-keyword (or other terminating keyword) MUST be indented at the same level as
-the `case` body. There MUST be a comment such as `// no break` when
-continuation or fall-through is intentional.
 
 
 ### 5.3 `while`, `do while`
