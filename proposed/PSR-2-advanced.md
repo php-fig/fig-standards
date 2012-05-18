@@ -406,8 +406,7 @@ A `switch` structure looks like the following. Note the placement of
 parentheses, spaces, and braces. The `case` statement MUST be indented once
 from `switch`, and the `break` keyword (or other terminating keyword) MUST be
 indented at the same level as the `case` body. There MUST be a comment such as
-`// no break` when continuation or fall-through is intentional in a non-empty
-`case` body.
+`// no break` when fall-through is intentional in a non-empty `case` body.
 
 ```php
 <?php
