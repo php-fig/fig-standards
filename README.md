@@ -41,7 +41,7 @@ Voting Members
 
 1. Nate Abele: Lithium
 
-1. Nils Adermann: PhpBB
+1. Nils Adermann: phpBB
 
 1. Brett Bieber: PEAR, PEAR2
     
