@@ -40,7 +40,7 @@ interface Item
      * the method of serialization is left up to the  Implementing Library.
      *
      * The $ttl can be defined in a number of ways. As an integer or
-     * DateInverval object the argument defines how long before the cache should
+     * DateInterval object the argument defines how long before the cache should
      * expire. As a DateTime object the argument defines the actual expiration
      * time of the object. Implementations are allowed to use a lower time than
      * passed, but should not use a longer one.
