@@ -321,7 +321,7 @@ namespace PSR\Cache\Extensions;
  * Cache\Extensions\TaggablePool extends Cache\Pool to provide tagging support.
  *
  * The Cache\Extensions\TaggablePool interface adds support for returning
- * Cache\Extensions\TaggbleItem objects, as well as clearing the pool of tagged
+ * Cache\Extensions\TaggableItem objects, as well as clearing the pool of tagged
  * Items.
  */
 interface TaggablePool extends \PSR\Cache\Pool
