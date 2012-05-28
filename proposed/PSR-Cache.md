@@ -61,7 +61,7 @@ Cache\Item interfaces.
 ## Data
 
 
-Acceptable data includes all PHP data types-
+Acceptable data includes all serializable PHP data types-
 
 *    **Strings** - Simple, complex and large strings of any encoding.
 *    **Integers** - Positive, negative and large integers (>32 bit).
