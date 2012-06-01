@@ -17,7 +17,7 @@ interface TaggableItem extends \PSR\Cache\Item
      * Accepts an array of strings for the item to be tagged with. The tags
      * passed should overwrite any existing tags, and passing an empty array
      * will cause all tags to be removed. Changes to an Item's tags are not
-     * guaranteed to persist unless the "set" function is called.
+     * guaranteed to persist unless Item::set() method is called.
      *
      * @param array $tags
      * @return void
