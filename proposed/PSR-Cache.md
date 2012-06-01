@@ -255,12 +255,12 @@ any differently.
 Stacks are a special kind of grouping system that allow cache items to be
 nested, similar to how folders are nested in filesystems. Stacks work by adding
 a special character to Keys, the slash, which tells the Implementing Library
-where the nesting points are. If no nesting is used, Stacks behave exactly like
-the standard Cache interfaces.
+where the nesting points are. If the first charactor of the key is not a slash,
+Stacks behaves exactly like the standard Cache interfaces.
 
-> An example key may look like "Users/Bob/Friends", "Users/Bob/Friends/Active"
-or just "Users/Bob". The special thing about Stacks is that clearing out
-"Users/Bob" also clears out "Users/Bob/Friends" and "Users/Bob/Friends/Active".
+> An example key may look like "/Users/Bob/Friends", "/Users/Bob/Friends/Active"
+or just "/Users/Bob". The special thing about Stacks is that clearing out
+"/Users/Bob" also clears out "/Users/Bob/Friends" and "/Users/Bob/Friends/Active".
 
 
 #### StackablePool
