@@ -2,14 +2,14 @@ Module Identification
 =====================
 
 This standard declares an unique identification of modules to not run into
-conflicts with multiple packages and versions.
+conflicts with multiple packages and versions. This PSR
+adapts the maven specifications described in [Maven specification][].
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [Maven specification]: http://docs.codehaus.org/display/MAVEN/Dependency+Mediation+and+Conflict+Resolution
 
 
