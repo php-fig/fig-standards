@@ -10,7 +10,7 @@ interpreted as described in [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-
+[Semver]: http://semver.org/
 
 1. Overview
 -----------
@@ -136,12 +136,8 @@ A module will always be identified by VendorID and ModuleID.
 To identify multiple builds of the same module the version numbering is used.
 
 Version number MUST follow the following international convention:
-<major>[.<minor>[.<fixlevel>]][-extra]
-where
-<major> is [0-9]+
-<minor> is [0-9]+
-<fixlevel> is [0-9]+
-<extra> is .+
+<major>.<minor>.<fixlevel>-extra
+<major>.<minor>.<fixlevel>+extra
 
 A module identification without version number MUST be used as "The module in any
 (possibly the newest) version that is found". It MUST not be used as "Every module
@@ -151,100 +147,23 @@ version".
 5. Version rules
 ----------------
 
-### 5.1 Version increments
+The version semantics follows the specification of [Semver][] with the following
+extension:
 
-If a newer version contains bugfixes that do not break the API the fixlevel SHOULD
-be increased.
+The word snapshot is used for the following build types:
 
-If a newer version contains some API changes or new features the minor version number
-SHOULD be increased.
+- development builds that may not be covered by version control (builds from local workspaces
+  with uncommited changes)
+- nightly builds
+- builds from build tools or continuous integration servers prior tagging a version
 
-If a newer version contains a complete rewrite the major version number SHOULD
-be increased.
+The snapshots SHOULD be named in the following way:
+    1.0.0-dev.<timestamp>
+Where timestamp (in GMT timezone) is:
+    YYYYMMDDhhmmss
 
-### 5.2 The extra information
-
-The extra information MAY contain any information on the product, for example the
-version system tag. Some of the extra information are expected by the release cycle.
-
-The extra information SHOULD be lower cased instead of those having special meanings:
-- ALPHA
-- BETA
-- RC
-- SNAPSHOT
-
-### 5.3 ALPHA
-
-Extra information in the format "ALPHA-[0-9]*" MUST be used for versions
-that are missing major features and still very unstable. The version number
-is meant as the target version for the next release.
-
-Example:
-2.0.0-ALPHA-3 is the 3rd alpha build of the upcoming 2.0.0 release.
-
-### 5.4 BETA
-
-Extra information in the format "BETA-[0-9]*" MUST be used for versions that are
-containing all major features but MAY still have bugs and MAY still be unstable.
-
-Example:
-1.4.4-BETA-1 is the 1st beta build of the upcoming 1.4.4 maintenance release.
-
-### 5.5 RC
-
-Extra information in the format "RC-[0-9]*" MUST be used for versions that represent
-a release candidate. That is a version known to be very stable and to be tested
-as the upcoming release. It MAY be tagged/rebuilt as the release version without
-additional changes.
-
-Example:
-3.0.0-RC-4 is the 4th release candidate and is identical to 3.0.0 final release
-because no more bugs were reported.
-
-### 5.6 SNAPSHOT
-
-Extra information in the format "SNAPSHOT-[0-9]*" MUST be used for snapshot builds.
-
-Snapshot builds are known to be unstable. They MAY not be built from version system.
-
-Examples for situations a SNAPSHOT is built:
-- daily build cycle from trunk
-- built from dveeloper workstation including uncommited changes
-- pre-release built from CI tools to test against before tagging.
-
-### 5.7 Version ordering
-
-Examples of version ordering:
-    0.9.9-pre-release
-    1
-    1.0
-    1.8-rev4711
-    1.8.3
-    1.8.4-commit1456
-    1.9-SNAPSHOT
-    2.0-ALPHA
-    2.0-BETA
-    2.0-BETA-1
-    2.0-RC-1
-    2.0-RC-2
-    2.0-RC-3-SNAPSHOT-1 (*)
-    2.0-RC-3-SNAPSHOT-2 (*)
-    2.0-RC-3
-    2.0-SNAPSHOT-1 (*)
-    2.0-SNAPSHOT-2 (*)
-    2.0
-    2.1
-
-(*) SNAPSHOT versions SHOULD never be part of the version ordering. An implementor SHOULD
-prefer release versions and only use the newest SNAPSHOT versions if they are requested
-by the user (while installing or while requesting a dependency).
-
-If using SNAPSHOT versions they MUST be always lower than their targeting version as seen above).
-
-As soon as the SNAPSHOT reaches the final version no more new SNAPSHOT versions are allowed.
-Instead as soon as the SNAPSHOT results in a release version number SHOULD be incremented (in case
-of ALPHA/BETA/RC the extra information can be increased and in case of final releases the
-fixlevel/minor/major can be increased).
+Following [Semver][] snapshots will be greater than release candidates and less than the
+final released version: 1.0.0-rc.1 < 1.0.0-snapshot.20120903101744 < 1.0.0
 
 
 6. Namespace mapping
