@@ -245,3 +245,27 @@ As soon as the SNAPSHOT reaches the final version no more new SNAPSHOT versions 
 Instead as soon as the SNAPSHOT results in a release version number SHOULD be incremented (in case
 of ALPHA/BETA/RC the extra information can be increased and in case of final releases the
 fixlevel/minor/major can be increased).
+
+
+6. Namespace mapping
+--------------------
+
+The VendorID MUST be leading to the namespace name as described in [PSR-0][].
+
+The ModuleID SHOULD be used as the modules namespace below the Vendor namespace if
+there are multiple modules published with the same VendorID.
+
+For internet domains used as VendorID the [PSR-0][] is extended in the following
+way:
+- The dots are replaced by namespace separator (backslash).
+- The internet domain is used in reverse order
+
+Examples:
+    VendorID = Zend; ModuleID = Framework-Full; Namespace = \Zend
+    VendorID = Zend; ModuleID = Framework-Minimal; Namespace = \Zend
+    VendorID = Zend; ModuleID = Acl; Namespace = \Zend\Acl
+    VendorID = Doctrine; ModuleID = Common; Namespace \Doctrine\Common
+    VendorID = mycompany.net; ModuleID = WebLibrary; Namespace \net\mycompany\WebLibrary
+
+
+    
