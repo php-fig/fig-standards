@@ -18,7 +18,11 @@ interpreted as described in [RFC 2119][].
 1. Overview
 -----------
 
-TODO
+- A range without using the special characters MUST be mapped to the
+  concrete version.
+- The wildcard "*" can be used to match a range of versions in a short way.
+- Multiple rules MUST be separated by comma.
+- The operators ">=, ">", "<=", "<" MUST be used to specify a version range.
 
 
 2. Concrete version
@@ -28,7 +32,7 @@ If no special character is used the version specifies a concrete version number.
 
 Example:
 "2.5.5" means "exactly version 2.5.5"
-"2.5.4-RC-3" means "exactly the third release candidate from 2.5.4"
+"2.5.4-rc.3" means "exactly the third release candidate from 2.5.4"
 
 3. Wildcards
 ------------
@@ -42,7 +46,7 @@ In technical words: "1.0.*" means ">=1.0,<1.1"
 Wildcards will match versions with extra information.
 
 Example:
-"1.0.*" will match "1.0.5-RC-5"
+"1.0.*" will match "1.0.5-rc.5"
 
 4. Ranges
 ---------
