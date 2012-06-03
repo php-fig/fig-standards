@@ -135,7 +135,7 @@ A module will always be identified by VendorID and ModuleID.
 
 To identify multiple builds of the same module the version numbering is used.
 
-Version number MUST follow the following international convention:
+Version number MUST follow the following convention from [Semver][]:
 <major>.<minor>.<fixlevel>-extra
 <major>.<minor>.<fixlevel>+extra
 
