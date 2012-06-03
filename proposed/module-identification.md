@@ -158,7 +158,7 @@ The word snapshot is used for the following build types:
 - builds from build tools or continuous integration servers prior tagging a version
 
 The snapshots SHOULD be named in the following way:
-    1.0.0-dev.<timestamp>
+    1.0.0-snapshot.<timestamp>
 Where timestamp (in GMT timezone) is:
     YYYYMMDDhhmmss
 
