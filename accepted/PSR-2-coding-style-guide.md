@@ -333,7 +333,7 @@ abstract class ClassName
 }
 ```
 
-### 4.4 Method and Function Calls
+### 4.5 Method and Function Calls
 
 When making a method or function call, there MUST NOT be a space between the
 method or function name and the opening parenthesis, there MUST NOT be a space
