@@ -397,7 +397,7 @@ if ($expr1) {
 ```
 
 The keyword `elseif` SHOULD be used instead of `else if` so that all control
-keywords looks like single words.
+keywords look like single words.
 
 
 ### 5.2. `switch`, `case`
