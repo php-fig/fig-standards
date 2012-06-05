@@ -54,7 +54,7 @@ interpreted as described in [RFC 2119][].
 - Opening parentheses for control structures MUST NOT have a space after them,
   and closing parentheses for control structures MUST NOT have a space before.
 
-### 1.1 Example
+### 1.1. Example
 
 This example encompasses some of the rules below as a quick overview:
 
@@ -101,7 +101,7 @@ All PHP files MUST end with a single blank line.
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
-### 2.3 Lines
+### 2.3. Lines
 
 There MUST NOT be a hard limit on line length.
 
@@ -118,7 +118,7 @@ blocks of code.
 
 There MUST NOT be more than one statement per line.
 
-### 2.4 Indenting
+### 2.4. Indenting
 
 Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
@@ -127,7 +127,7 @@ Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 > also makes it easy to insert fine-grained sub-indentation for inter-line 
 > alignment.
 
-### 2.5 Keywords and True/False/Null
+### 2.5. Keywords and True/False/Null
 
 PHP [keywords][] MUST be in lower case.
 
@@ -235,7 +235,7 @@ class ClassName
 }
 ```
 
-### 4.3 Methods
+### 4.3. Methods
 
 Visibility MUST be declared on all methods.
 
@@ -429,7 +429,7 @@ switch ($expr) {
 ```
 
 
-### 5.3 `while`, `do while`
+### 5.3. `while`, `do while`
 
 A `while` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -622,13 +622,13 @@ Future recommendations MAY revise and extend this guide to address those or
 other elements of style and practice.
 
 
-Appendix A: Survey
+Appendix A. Survey
 ------------------
 
 In writing this style guide, the group took a survey of member projects to
 determine common practices.  The survey is retained herein for posterity.
 
-### A.1 Survey Data
+### A.1. Survey Data
 
     url,http://www.horde.org/apps/horde/docs/CODING_STANDARDS,http://pear.php.net/manual/en/standards.php,http://solarphp.com/manual/appendix-standards.style,http://framework.zend.com/manual/en/coding-standard.html,http://symfony.com/doc/2.0/contributing/code/standards.html,http://www.ppi.io/docs/coding-standards.html,https://github.com/ezsystems/ezp-next/wiki/codingstandards,http://book.cakephp.org/2.0/en/contributing/cakephp-coding-conventions.html,https://github.com/UnionOfRAD/lithium/wiki/Spec%3A-Coding,http://drupal.org/coding-standards,http://code.google.com/p/sabredav/,http://area51.phpbb.com/docs/31x/coding-guidelines.html,https://docs.google.com/a/zikula.org/document/edit?authkey=CPCU0Us&hgd=1&id=1fcqb93Sn-hR9c0mkN6m_tyWnmEvoswKBtSc0tKkZmJA,http://www.chisimba.com,n/a,https://github.com/Respect/project-info/blob/master/coding-standards-sample.php,n/a,Object Calisthenics for PHP,http://doc.nette.org/en/coding-standard,http://flow3.typo3.org,https://github.com/propelorm/Propel2/wiki/Coding-Standards,http://developer.joomla.org/coding-standards.html
     voting,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,no,no,?,yes,no,yes
@@ -654,7 +654,7 @@ determine common practices.  The survey is retained herein for posterity.
     blank_line_after_php,no,no,no,no,yes,no,no,no,no,yes,yes,no,no,yes,?,yes,yes,no,yes,no,yes,no
     class_method_control_brace,next/next/same,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/next,same/same/same,same/same/same,same/same/same,same/same/same,next/next/next,next/next/same,next/same/same,next/next/next,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/same,next/next/next
 
-### A.2 Survey Legend
+### A.2. Survey Legend
 
 `indent_type`:
 The type of indenting. `tab` = "Use a tab", `2` or `4` = "number of spaces"
@@ -719,7 +719,7 @@ Is there a blank line after the opening PHP tag?
 `class_method_control_brace`:
 A summary of what line the opening braces go on for classes, methods, and control structures.
 
-### A.3 Survey Results
+### A.3. Survey Results
 
     indent_type:
         tab: 7
