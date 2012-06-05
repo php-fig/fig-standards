@@ -75,7 +75,7 @@ Voting Members
 
 1. Paul Scott: Chisimba, C4
 
-1. Paul Sturgeon: PyroCMS
+1. Phil Sturgeon: PyroCMS
 
 1. Matthew Weier O'Phinney: Zend Framework, Zend Framework 2
 
