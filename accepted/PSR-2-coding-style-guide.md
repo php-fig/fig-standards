@@ -263,7 +263,7 @@ class ClassName
 }
 ```    
 
-### 4.3 Method Arguments
+### 4.4. Method Arguments
 
 In the argument list, there MUST NOT be a space before each comma, and there
 MUST be one space after each comma.
@@ -308,7 +308,7 @@ class ClassName
 }
 ```
 
-### 4.4. `abstract`, `final`, and `static`
+### 4.5. `abstract`, `final`, and `static`
 
 When present, the `abstract` and `final` declarations MUST precede the
 visibility declaration.
@@ -333,7 +333,7 @@ abstract class ClassName
 }
 ```
 
-### 4.5 Method and Function Calls
+### 4.6. Method and Function Calls
 
 When making a method or function call, there MUST NOT be a space between the
 method or function name and the opening parenthesis, there MUST NOT be a space
