@@ -55,13 +55,13 @@ Voting Members
 
 1. William Durand: Propel, Propel 2
 
-1. Cal Evans: the community at large
-
-1. Paul M. Jones: Solar Framework, Aura Project
-
 1. Andrew Eddie: Joomla
 
+1. Cal Evans: the community at large
+
 1. Larry Garfield: Drupal
+
+1. Paul M. Jones: Solar Framework, Aura Project
 
 1. Robert Lemke: FLOW3
 
@@ -74,6 +74,8 @@ Voting Members
 1. Andre Romcke: eZ Publish
 
 1. Paul Scott: Chisimba, C4
+
+1. Paul Sturgeon: PyroCMS
 
 1. Matthew Weier O'Phinney: Zend Framework, Zend Framework 2
 
