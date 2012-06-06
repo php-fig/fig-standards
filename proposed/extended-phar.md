@@ -12,6 +12,7 @@ interpreted as described in [RFC 2119][].
 [RFC 3339]: http://www.ietf.org/rfc/rfc3339.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [module-identification]: https://github.com/mepeisen/fig-standards/blob/master/proposed/module-identification.md
+[composer.json]: http://getcomposer.org/doc/04-schema.md#json-schema
 
 
 1. Overview
@@ -83,12 +84,24 @@ or tool but do not have any technical reason. They can be silently ignored.
     
 If there is any additional key in this section it SHOULD be silently ignored.
 
+### 2.3 Composer
 
-### 2.2 Module extensions
+If the PHP-INF/manifest.ini is not found or if it contains a type field with the following
+content the module identification becomes optional/ obselete:
+
+     [module]
+     type = composer
+
+Instead a [composer.json][] is used that is located in the root directory of the phar-file.
+Notice that composer.json introduces a ways for autoloading. That must be respected for
+composer phar files.
+
+### 2.4 Module extensions
 
 Extensions MUST be specified by adding a extension section in the modules ini file. This extension
 section contains names and types of the extensions that are present in the manifest and phar file
-at all.
+at all. The autoloading in this example is only used to show the way extensions behave. See the
+phar autoloading PSR for details.
 
     [extensions]
     list = autoload, x_encryption, packager, seal, x_zend, x_flow3
@@ -373,6 +386,9 @@ If the path changed (f.e. the application was installed to a newer path) the cac
 
 Implementors MAY choose to cache/serialize the ExtensionInterface objects. Thus every module providing an extension
 MUST be aware of serialization.
+
+If the phar file is already unpacked (for example during development time in IDE workspaces) the caching and
+management of the module SHOULD be the same.
 
 
 5. Loading order
