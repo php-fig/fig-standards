@@ -11,6 +11,7 @@ interpreted as described in [RFC 2119][].
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [Semver]: http://semver.org/
+[Composer]: http://getcomposer.org/doc
 
 1. Overview
 -----------
@@ -21,39 +22,48 @@ interpreted as described in [RFC 2119][].
 
 - Modules MUST have a name unique within their VendorID.
 
-- The modules name shall be short and reasonable.
+- The modules name SHALL be short and reasonable.
 
-- The version number MUST be part of the modules identification.
+- The version number MUST be part of the modules identification and
+  MUST follow [Semver][].
 
-- An additional classifier shall be used to divide different bundles of the
-  same module.
+### 1.1 Examples
 
-### 1.1 Example
-
-Vendor ID = Zend
-Module ID = Framework
-Version = 2.1
+    VendorID = Zend
+    ModuleID = Framework
+    Version = 2.1.0
+    
+    VendorId = org.mycompany
+    ModuleId = WebsiteLibrary
+    Version = 1.0.0-beta.2
+    
+    VendorId = SomeVendor
+    ModuleId = SomeModule
+    Version = 2.4.1-snapshot.1
 
 
 2. Wording
 ----------
 
-### 2.1 Module
+### 2.1 Module/ Package
 
-A module is a bundled package of files (f.e. php classes, php scripts, documents, web files,
+A module or package is a bundled package of files (f.e. php classes, php scripts, documents, web files,
 templates).
 
-The following wording for types of modules is used:
+The following wording for types of modules is used (see [Composer][]):
 - "Library" is a bundle of php classes.
+- "Metapackage" is a bundle of other libraries that does not have any php classes on its own.
+- "Installer" is a package to extend the installer functionality and tell the installer how
+  to handle a specific module type.
 - "Application" is set of classes and scripts that provides user access (f.e. cli, web)
 
 ### 2.2 Vendor
 
-A vendor is a  unique identification of a modules author. See [PSR-0][].
+A vendor is a unique identification of a modules author. See [PSR-0][].
 
 ### 2.3 Module Identification
 
-The set of rules to identify a module.
+The unique identification of a module. A set of rules for identifying a module.
 
 ### 2.4 Framework
 
@@ -103,8 +113,8 @@ Module names SHOULD be short and responsible.
 
 ### 4.1 VendorID
 
-A VendorID MUST be unique. The VendorID MUST either be a well known project name or
-an internet domain.
+A VendorID SHOULD be unique. The VendorID SHOULD either be a well known project name or
+an internet domain or any other namespace compatible name.
 
 In case of well known project names the VendorID MUST match the following rule:
 [A-Za-z][A-Za-z0-9]*
@@ -112,7 +122,7 @@ See [PSR-0][].
 
 In case of internet domains the VendorID must match the following rules:
 - lower cased
-- only of a subset that will be allowed in php namespaces.
+- only of a subset that will be allowed in php namespaces and by namespace mappings.
 
 ### 4.2 ModuleID
 
@@ -121,7 +131,7 @@ VendorID.
 
 The ModuleID SHALL be short and reasonable.
 
-The ModuleID MUST only match the following rule:
+The ModuleID MUST match the following rule:
 [a-zA-Z][a-zA-Z_0-9]*
 See examples in [PSR-0][].
 
@@ -138,10 +148,6 @@ To identify multiple builds of the same module the version numbering is used.
 Version number MUST follow the following convention from [Semver][]:
 <major>.<minor>.<fixlevel>-extra
 <major>.<minor>.<fixlevel>+extra
-
-A module identification without version number MUST be used as "The module in any
-(possibly the newest) version that is found". It MUST not be used as "Every module
-version".
 
 
 5. Version rules
@@ -164,6 +170,15 @@ Where timestamp (in GMT timezone) is:
 
 Following [Semver][] snapshots will be greater than release candidates and less than the
 final released version: 1.0.0-rc.1 < 1.0.0-snapshot.20120903101744 < 1.0.0
+
+The [Semver][] rules say that the extra is compared lexically (see rule #12). You may use
+any string, for example "1.0.0-revision.3224" or "1.0.0-build.3344" in your version number
+but be aware that:
+- using names other than "alpha", "beta", "rc" and "snapshot" may confuse people.
+- build tools may order your version on wrong positions.
+
+To have a build number applied to a stable release you can use the plus sign, for example:
+"1.0.0+build.3344". See examples in [SemVer][] rule #12.
 
 
 6. Namespace mapping
