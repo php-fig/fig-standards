@@ -64,9 +64,9 @@ Multiple ranges are separated by comma:
 
 Examples of valid ranges:
 - >=1.0
-- >=1.0,<1.1
+- >=1.0, <1.1
 - <1.0
-- >=1.0,<1.1,>=1.2
+- >=1.0, <1.1, >=1.2
 
 The last example starts from version 1.0 but excludes any 1.1.* version because of known
 problems. 
