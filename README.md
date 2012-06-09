@@ -69,6 +69,8 @@ Voting Members
 
 1. Evert Pot: SabreDAV
 
+1. Ryan Parman: Amazon Web Services SDK
+
 1. Fabien Potencier: Symfony, Symfony2
 
 1. Andre Romcke: eZ Publish
