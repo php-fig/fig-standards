@@ -77,6 +77,8 @@ Voting Members
 
 1. Phil Sturgeon: PyroCMS
 
+1. Kris Wallsmith: Assetic, Buzz
+
 1. Matthew Weier O'Phinney: Zend Framework, Zend Framework 2
 
 1. David Zülke: Agavi
