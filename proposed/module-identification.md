@@ -10,7 +10,7 @@ interpreted as described in [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[Semver]: http://semver.org/
+[Semver 2.0.0-rc.1]: https://github.com/mojombo/semver/blob/3c7f2e8df747ea0ca15208fdfc90e3275240184f/semver.md
 [Composer]: http://getcomposer.org/doc
 
 1. Overview
@@ -25,7 +25,7 @@ interpreted as described in [RFC 2119][].
 - The modules name SHALL be short and reasonable.
 
 - The version number MUST be part of the modules identification and
-  MUST follow [Semver][].
+  MUST follow [Semver 2.0.0-rc.1][].
 
 ### 1.1 Examples
 
@@ -39,7 +39,7 @@ interpreted as described in [RFC 2119][].
     
     VendorId = SomeVendor
     ModuleId = SomeModule
-    Version = 2.4.1-snapshot.1
+    Version = 2.4.1-dev.1
 
 
 2. Wording
@@ -76,9 +76,9 @@ bundles a huge set of library modules that MAY be used within framework B.
 
 A version is a specific build for a module. It is identified by the version number.
 
-Snapshots are a special kind of version that is explained below. They may be used in
-- developer builds
-- revision builds
+Development builds are a special kind of version that is explained below. They may be used in
+- builds from developers workstations that may contain resources outside version control
+- non-tagged builds
 - daily builds
 - pre-release/pre-tagging testing build (f.e. on continuous integration servers)
 
@@ -145,7 +145,7 @@ A module will always be identified by VendorID and ModuleID.
 
 To identify multiple builds of the same module the version numbering is used.
 
-Version number MUST follow the following convention from [Semver][]:
+Version number MUST follow the following convention from [Semver 2.0.0-rc.1][]:
 <major>.<minor>.<fixlevel>-extra
 <major>.<minor>.<fixlevel>+extra
 
@@ -153,32 +153,27 @@ Version number MUST follow the following convention from [Semver][]:
 5. Version rules
 ----------------
 
-The version semantics follows the specification of [Semver][] with the following
-extension:
+The version semantics follows the specification of [Semver 2.0.0-rc.1][] with the following
+extension for development builds:
 
-The word snapshot is used for the following build types:
-
-- development builds that may not be covered by version control (builds from local workspaces
-  with uncommited changes)
-- nightly builds
-- builds from build tools or continuous integration servers prior tagging a version
-
-The snapshots SHOULD be named in the following way:
-    1.0.0-snapshot.<timestamp>
+The dev SHOULD be named in the following way:
+    1.0.0-dev.<timestamp>
 Where timestamp (in GMT timezone) is:
     YYYYMMDDhhmmss
 
-Following [Semver][] snapshots will be greater than release candidates and less than the
-final released version: 1.0.0-rc.1 < 1.0.0-snapshot.20120903101744 < 1.0.0
+Developer builds SHOULD not be respected while ordering/comparing versions. A packager/
+repository implementation SHOULD let the user choose which staging to use. It SHOULD always
+prefer release builds prior development builds.
 
-The [Semver][] rules say that the extra is compared lexically (see rule #12). You may use
+The [Semver 2.0.0-rc.1][] rules say that the extra is compared lexically (see rule #12). You may use
 any string, for example "1.0.0-revision.3224" or "1.0.0-build.3344" in your version number
 but be aware that:
-- using names other than "alpha", "beta", "rc" and "snapshot" may confuse people.
+- using names other than "alpha", "beta", "rc" and "dev" may confuse people and may break frameworks
+  and package managers.
 - build tools may order your version on wrong positions.
 
 To have a build number applied to a stable release you can use the plus sign, for example:
-"1.0.0+build.3344". See examples in [SemVer][] rule #12.
+"1.0.0+build.3344". See examples in [Semver 2.0.0-rc.1][] rule #11.
 
 
 6. Namespace mapping
