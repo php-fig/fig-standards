@@ -20,7 +20,7 @@ interpreted as described in [RFC 2119][].
 
 - All file names MUST be case sensitive.
 
-- Extensions on PHAR files MUST be fully compatible to original PHAR file format. 
+- Extensions on PHAR packages MUST be fully compatible to original PHAR file format. 
 
 - Extensions are located as files within the folder /PHP-INF.
 
@@ -35,6 +35,10 @@ interpreted as described in [RFC 2119][].
 ### 2.1. The manifest file location
 
 The manifest file MUST always be present and located in /PHP-INF/MANIFEST.INI
+or as a file [composer.json][] in root folder.
+
+PHP-INF is chosen because it is incompatible to [PSR-0] and cannot conflict with
+classes inside a package.
 
 If the manifest file is not found within a phar this phar is not an extended phar
 although it MAY contain other files inside the PHP-INF folder.
@@ -47,13 +51,13 @@ The details about the modules identification are covered by [module-identificati
 Example:
 
     [module]
-    groupid = net.myvendor
+    vendorid = net.myvendor
     moduleid = MyUserLib
     version = 1.4.0
     classifier = phar
     manifest.version = 1.0
     
-The groupid, moduleid and version are required. The classifier is optional and defaults to
+The vendorid, moduleid and version are required. The classifier is optional and defaults to
 "phar".
 
 The manifest version is optional but MUST NOT be any other value than the default "1.0".
@@ -65,7 +69,7 @@ The following values are optional to describe the module. They MAY be displayed 
 or tool but do not have any technical reason. They can be silently ignored.
 
     [module]
-    groupid = net.myvendor
+    vendorid = net.myvendor
     moduleid = MyUserLib
     version = 1.4.0
     classifier = phar
@@ -86,34 +90,31 @@ If there is any additional key in this section it SHOULD be silently ignored.
 
 ### 2.3 Composer
 
-If the PHP-INF/manifest.ini is not found or if it contains a type field with the following
-content the module identification becomes optional/ obselete:
+If there is a [composer.json][] it is preferred for reading the module identification or
+dependencies. A PHP-INF/MANIFEST.INI MAY provide some additional information on top of this
+and MUST use the following content in module section:
 
      [module]
      type = composer
-
-Instead a [composer.json][] is used that is located in the root directory of the phar-file.
-Notice that composer.json introduces a ways for autoloading. That must be respected for
-composer phar files.
 
 ### 2.4 Module extensions
 
 Extensions MUST be specified by adding a extension section in the modules ini file. This extension
 section contains names and types of the extensions that are present in the manifest and phar file
 at all. The autoloading in this example is only used to show the way extensions behave. See the
-phar autoloading PSR for details.
+phar autoloading PSR or [composer.json][] for details on declaring autoloading in phar files.
 
     [extensions]
     list = autoload, x_encryption, packager, seal, x_zend, x_flow3
     required = autoload, packager, x_encryption
     
-    autoload.extension_name = net.php.psr.phar:autoload-extension
+    autoload.extension_name = psr:autoload-extension
     autoload.extension_spec_version = 1.0
     autoload.extension_impl = com.mycompany:autoload:[0.9,1.4):phar
     
-    packager.extension_name = net.php.psr.phar:packager-extension
+    packager.extension_name = psr:packager-extension
     packager.extension_spec_version = 1.4
-    packager.extension_impl = net.php.psr.phar:packager-extension:[1.4,):phar
+    packager.extension_impl = psr:packager-extension:[1.4,):phar
     
     # etc. each extension requires an extension_name and an extension_spec_version
     
@@ -146,7 +147,7 @@ values.
 
 Example:
 - To apply an autoloading the extension "autoload" is introduced by another PSR based on [PSR-0][].
-- The implementor first looks at the extension_name leading to "net.php.psr.phar:autoload-extension" and this
+- The implementor first looks at the extension_name leading to "psr:autoload-extension" and this
   resolves to "autoload" extension.
 - The implementor know reads "autoload.extension_spec_version" and "autoload.extension_impl" and tries to
   initialize an autoloading.
@@ -184,7 +185,7 @@ Example:
     extends = true
     
     [extension]
-    spec.name = net.php.psr.phar:autoload-extension
+    spec.name = psr:autoload-extension
     spec.version = [1,0,1.1]
     class = net\\myvendor\\ExtensionLoader
     init = boot/init.php
@@ -199,7 +200,7 @@ from root path of the phar file and can be used to load the classes of the exten
 ----------------------
 
 All API classes are part of the following module:
-groupId = net.php.psr
+vendorId = PSR
 moduleId = PharApi
 version = 1.0 
 classifier = phar
@@ -211,7 +212,7 @@ module registry.
 
     <?php
     
-    namespace net\php\psr\phar;
+    namespace PSR\PharApi;
     
     class ModuleRegistry {
     
@@ -223,7 +224,7 @@ module registry.
         
         /**
          * Returns the registry instance.
-         * @return \net\php\psr\phar\ModuleRegistryInterface
+         * @return \PSR\PharApi\ModuleRegistryInterface
          */
         public static function instance() {
             // ... any implementation.
@@ -235,7 +236,7 @@ module registry.
 
     <?php
     
-    namespace net\php\psr\phar;
+    namespace PSR\PharApi;
     
     /**
      * Interface to access the modules loaded at runtime.
@@ -244,29 +245,52 @@ module registry.
         
         /**
          * Lists all available modules.
-         * @return array(\net\php\psr\phar\ModuleInterface)
+         * @return array(\PSR\PharApi\ModuleInterface)
          */
         public function listModules();
         
         /**
          * Lists all active modules.
-         * @return array(\net\php\psr\phar\ModuleInterface)
+         * @return array(\PSR\PharApi\ModuleInterface)
          */
         public function listActiveModules();
         
         /**
          * Lists all inactive modules.
-         * @return array(\net\php\psr\phar\ModuleInterface)
+         * @return array(\PSR\PharApi\ModuleInterface)
+         * @throws \Exception may be thrown on errors or access denied situations.
          */
         public function listInactiveModules();
         
         /**
-         * Returns the module with given group id and module id.
-         * @param $groupId the group id.
-         * @param $moduleId the module id.
-         * @return \net\php\psr\phar\ModuleInterface The module id or null if the module is not available.
+         * Tries to activate given module.
+         * @param \PSR\PharApi\ModuleInterface $module the module being activated.
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */ 
+        public function activateModule(\PSR\PharApi\ModuleInterface $module);
+        
+        /**
+         * Tries to deactivate given module.
+         * @param \PSR\PharApi\ModuleInterface $module the module being deactivated.
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */ 
+        public function deactivateModule(\PSR\PharApi\ModuleInterface $module);
+        
+        /**
+         * Returns the module with given vendor id and module id.
+         * @param string $vendorId the vendor id.
+         * @param string $moduleId the module id.
+         * @return \PSR\PharApi\ModuleInterface The module id or null if the module is not available.
+         * If the callee is not allowed to access given module this method will return null.
          */
-        public function getModule($groupId, $moduleId);
+        public function getModule($vendorId, $moduleId);
+        
+        /**
+         * Parses a version string.
+         * @param string $versionString the version in SemVer String format
+         * @return \PSR\PharApi\VersionInterface version or null if it cannot be parsed/ is illegal.
+         */
+        public function parseVersion($versionString);
         
     }
     
@@ -274,7 +298,7 @@ module registry.
 
     <?php
     
-    namespace net\php\psr\phar;
+    namespace PSR\PharApi;
     
     /**
      * Interface to access the modules.
@@ -288,10 +312,10 @@ module registry.
         public function isActive();
         
         /**
-         * Returns the group id of this module.
+         * Returns the vendor id of this module.
          * @return string
          */
-        public function getGroupId();
+        public function getVendorId();
         
         /**
          * Returns the module id of this module.
@@ -301,7 +325,7 @@ module registry.
         
         /**
          * Returns the version of this module.
-         * @return \net\php\psr\phar\VersionInterface
+         * @return \PSR\PharApi\VersionInterface
          */
         public function getVersion();
         
@@ -313,15 +337,23 @@ module registry.
         
         /**
          * Returns the version of the manifest.
-         * @return \net\php\psr\phar\VersionInterface
+         * @return \PSR\PharApi\VersionInterface
          */
         public function getManifestVersion();
         
         /**
          * Returns the manifest.
-         * @return array The manifest file as returned by parse_ini_file($content, true)
+         * @return array The manifest file as returned by parse_ini_file($content, true); null if
+         * there is no manifest file.
          */
         public function getManifest();
+        
+        /**
+         * Returns the composer.json contents.
+         * @return Object the object as returned from json_decode($content); null if there is
+         * no composer.json file.
+         */
+        public function getComposer();
         
         /**
          * Returns the path to the phar file.
@@ -335,6 +367,10 @@ module registry.
 
 ### 3.3 extension interface
 
+    <?php
+    
+    namespace PSR\PharApi;
+
     /**
      * This interface is intended to be implemented by extensions.
      * See "PHP-INF/MANIFEST.MF", section "[extension]", key "class".
@@ -345,12 +381,12 @@ module registry.
         
         /**
          * Loads the given module and performs the code to activate this extension on given module.
-         * @param \net\php\psr\phar\ModuleInterface $module The module to be loaded.
+         * @param \PSR\PharApi\ModuleInterface $module The module to be loaded.
          * @throws \Exception thrown of something goes wrong. The loader will assume that
          * the extension could not loaded. For optional extensions the extension itself will be ignored.
          * For required extensions the whole module is failing and cannot be loaded.
          */
-        public function load(\net\php\psr\phar\ModuleInterface $module);
+        public function load(\PSR\PharApi\ModuleInterface $module);
         
         /**
          * This method is called once the modules are loaded and every extension is loaded.
@@ -365,6 +401,203 @@ module registry.
         public function stopping();
         
     }
+
+### 3.4 version interface
+    
+    <?php
+    
+    namespace PSR\PharApi;
+    
+    /**
+     * This interface represents a parsed version.
+     */
+    interface VersionInterface {
+    
+        /**
+         * Returns the major version part.
+         * @return integer non-negative version number
+         */
+        public function getMajor();
+        
+        /**
+         * Returns the minor version part.
+         * @return integer non-negative version number
+         */
+        public function getMinor();
+        
+        /**
+         * Returns the path version part.
+         * @return integer non-negative version number
+         */
+        public function getPatch();
+        
+        /**
+         * Returns the extra information (including the minus or plus sign); returns everything
+         * after the patch number.
+         * @return string
+         */
+        public function getExtra();
+        
+        /**
+         * Returns true if this is a pre release version.
+         * @return true if getMajor is zero.
+         */
+        public function isPreRelease();
+        
+        /**
+         * Returns true if this is an alpha version.
+         * @return true for alpha versions.
+         */
+        public function isAlpha();
+        
+        /**
+         * Returns true if this is a beta version.
+         * @return true for beta versions.
+         */
+        public function isBeta();
+        
+        /**
+         * Returns true if this is a release candidate version.
+         * @return true for release candidate versions.
+         */
+        public function isRC();
+        
+        /**
+         * Returns true if this is a stable version.
+         * @return true for stable versions (non-pre-release, non-alpha, non-beta, non-rc, non-dev).
+         */
+        public function isStable();
+        
+        /**
+         * Returns true if this is a development version.
+         * @return true for development versions.
+         */
+        public function isDev();
+        
+        /**
+         * Skip comparing the extra part of the version number. Will only compare the
+         * major.minor.patch.
+         * @see #compareTo
+         */
+        const COMPARE_WITHOUT_EXTRA = 1;
+        
+        /**
+         * Treats dev versions as regular versions. If this flag is not used dev versions are
+         * directly passed to version_compare and will be considered lower than their release
+         * counterparts.
+         * @see #compareTo
+         */
+        const COMPARE_TREAT_DEV_AS_REGULAR = 2;
+        
+        /**
+         * Compares two version numbers; synonym for version_compare($this->toString(), $other->toString())
+         * @param \PSR\PharApi\VersionInterface $other The other version.
+         * @return 0 if both are identical; -1 if this version is lower than the other; 1 if this version is higher
+         * than the other.
+         */
+        public function compareTo(\PSR\PharApi\VersionInterface $other, $mode = 0);
+        
+        /**
+         * Returns the string format for this version.
+         * @return string variant for this version.
+         */
+        public function toString();
+    
+    }
+
+### 3.5 repository interface
+
+    <?php
+    
+    namespace PSR\PharApi;
+    
+    /**
+     * This interface provides access to search and find modules.
+     * It is an optional interface that may be implemented by a module
+     * registry.
+     */
+    interface RepositoryInterface {
+        
+        /**
+         * Lists all available vendors.
+         * @param int $start the start index
+         * @param int $limit maximum amount of results to be returned.
+         * @return array(string)
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */
+        public function listVendors($start = 0, $limit = -1);
+        
+        /**
+         * Lists all available modules for a vendor.
+         * @param string $vendorId
+         * @param int $start the start index
+         * @param int $limit maximum amount of results to be returned.
+         * @return array(\PSR\PharApi\ModuleInterface)
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */
+        public function listModules($vendorId, $start = 0, $limit = -1);
+        
+        /**
+         * Lists all known versions of a module sorted by version number; the newest version is returned on top of the array.
+         * @param \PSR\PharApi\ModuleInterface $module
+         * @param int $start the start index
+         * @param int $limit maximum amount of results to be returned.
+         * @return array(\PSR\PharApi\VersionInterface)
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */
+        public function listModuleVersions(\PSR\PharApi\ModuleInterface $module, $start = 0, $limit = -1);
+        
+        /**
+         * Lists all known versions for multiple modules.
+         * @param array(\PSR\PharApi\ModuleInterface) $modules
+         * @param int $limit maximum amount of results to be returned. (per module)
+         * @return array(string=>array(string=>array(\PSR\PharApi\VersionInterface)) first key is the vendor id; second key is the module id
+         * and the array is ordered as described in method listModuleVersion).
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */
+        public function listModulesVersions(array $modules, $limit = -1);
+        
+        /**
+         * Trys to install given module. If the module is already installed an upgrade may be
+         * performed.
+         * @param \PSR\PharApi\ModuleInterface $module the module to be installed.
+         * @param \PSR\PharApi\VersionInterface $version the version to be installed.
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */
+        public function install(\PSR\PharApi\ModuleInterface $module, \PSR\PharApi\VersionInterface $version);
+        
+        /**
+         * Trys to uninstall given module.
+         * @param \PSR\PharApi\ModuleInterface $module the module to be uninstalled.
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */
+        public function install(\PSR\PharApi\ModuleInterface $module);
+        
+        /**
+         * Finds a module by packaging type.
+         * @param string $packageType the packaging type as defined by composer.
+         * @param int $start the start index
+         * @param int $limit maximum amount of results to be returned.
+         * @return array(\PSR\PharApi\ModuleInterface) the modules that were found.
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */
+        public function findByPackageType($packageType, $start = 0, $limit = -1);
+        
+        /**
+         * Finds a module by packaging type and tag. Notice that not all repositories
+         * may support tagging modules with a certain tag name.
+         * @param string $packageType the packaging type as defined by composer; null to
+         * only search by tag names and not by packaging type.
+         * @param string $tag the tag name (f.e. "database")
+         * @param int $start the start index
+         * @param int $limit maximum amount of results to be returned.
+         * @return array(\PSR\PharApi\ModuleInterface) the modules that were found.
+         * @throws \Exception may be thrown on errors or access denied situations.
+         */
+        public function findByTag($packageType, $tag, $start = 0, $limit = -1);
+        
+    }
+
 
     
 4. Caching
