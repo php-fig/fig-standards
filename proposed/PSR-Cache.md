@@ -86,9 +86,9 @@ Library and return the associated Cache\Item object. The majority of the Pool
 object's implementation is up to the Implementing Library, including all
 configuration, initialization and the injection itself into the Calling Library.
 
-Items can be retrieved from the Cache\Pool individually using the getCache
+Items can be retrieved from the Cache\Pool individually using the getItem
 function, or in groups by retrieving an Iterator object from the
-getCacheIterator function.
+getItemIterator function.
 
 ```php
 <?php
@@ -111,7 +111,7 @@ interface Pool
      * @param string $key
      * @return PSR\Cache\Item
      */
-    function getCache($key);
+    function getItem($key);
 
     /**
      * Returns a group of cache objects as an \Iterator
@@ -122,7 +122,7 @@ interface Pool
      * @param array $keys
      * @return \Iterator
      */
-    function getCacheIterator($keys);
+    function getItemIterator($keys);
 
     /**
      * Empties the cache pool of all items.

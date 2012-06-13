@@ -19,7 +19,7 @@ interface Pool
      * @param string $key
      * @return PSR\Cache\Item
      */
-    function getCache($key);
+    function getItem($key);
 
     /**
      * Returns a group of cache objects as an \Iterator
@@ -30,7 +30,7 @@ interface Pool
      * @param array $keys
      * @return \Iterator
      */
-    function getCacheIterator($keys);
+    function getItemIterator($keys);
 
     /**
      * Empties the cache pool of all items.
