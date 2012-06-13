@@ -54,7 +54,7 @@ implementation of those caching services.
 
 *    **Implementing Library** - This library is responsible for implementing
 this standard in order to provide caching services to any Calling Library. The
-Implmenting Library must provide classes which implement the Cache\Pool and
+Implementing Library must provide classes which implement the Cache\Pool and
 Cache\Item interfaces.
 
 
@@ -116,7 +116,7 @@ interface Pool
     /**
      * Returns a group of cache objects as an \Iterator
      *
-     * Bulk lookups can often by steamlined by backend cache systems. The
+     * Bulk lookups can often by streamlined by backend cache systems. The
      * returned iterator will contain a Cache\Item for each key passed.
      *
      * @param array $keys
@@ -239,7 +239,7 @@ exist to show how extending this standard can be done by interested developers.
 
 ### Namespaces
 
-Namespaces can be used to seperate the storage of different systems in the
+Namespaces can be used to separate the storage of different systems in the
 cache. This allows different sections to be cleared on an individual level,
 while also preventing overlapping keys.
 
@@ -255,7 +255,7 @@ any differently.
 Stacks are a special kind of grouping system that allow cache items to be
 nested, similar to how folders are nested in filesystems. Stacks work by adding
 a special character to Keys, the slash, which tells the Implementing Library
-where the nesting points are. If the first charactor of the key is not a slash,
+where the nesting points are. If the first character of the key is not a slash,
 Stacks behaves exactly like the standard Cache interfaces.
 
 > An example key may look like "/Users/Bob/Friends", "/Users/Bob/Friends/Active"
@@ -308,7 +308,7 @@ interface StackableItem extends \PSR\Cache\Item
 ### Tags
 
 Tagging interfaces are provided for completeness, but developers should note the
-difficulty in providing a consistant high performance tagging solution.
+difficulty in providing a consistent high performance tagging solution.
 
 
 #### Cache\Extensions\TaggablePool
