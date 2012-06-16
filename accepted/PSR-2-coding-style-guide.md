@@ -27,7 +27,7 @@ interpreted as described in [RFC 2119][].
 
 - Code MUST follow [PSR-1][].
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- Code MUST use tabs for indenting, not spaces.
 
 - There MUST NOT be a hard limit on line length; the soft limit MUST be 120
   characters; lines SHOULD be 80 characters or less.
@@ -120,12 +120,10 @@ There MUST NOT be more than one statement per line.
 
 ### 2.4. Indenting
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+Code MUST use an indent of tabs, and MUST NOT use spaces for indenting.
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
+> N.b.: Using only tabs, and not mixing tabs with spaces, helps to avoid
+> problems with diffs, patches, history, and annotations.
 
 ### 2.5. Keywords and True/False/Null
 
@@ -248,7 +246,7 @@ next line following the body. There MUST NOT be a space after the opening
 parenthesis, and there MUST NOT be a space before the closing parenthesis.
 
 A method declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+parentheses, commas, tabs, and braces:
 
 ```php
 <?php
@@ -382,7 +380,7 @@ lines get added to the body.
 ### 5.1. `if`, `elseif`, `else`
 
 An `if` structure looks like the following. Note the placement of parentheses,
-spaces, and braces; and that `else` and `elseif` are on the same line as the
+tabs, and braces; and that `else` and `elseif` are on the same line as the
 closing brace from the earlier body.
 
 ```php
@@ -403,7 +401,7 @@ keywords look like single words.
 ### 5.2. `switch`, `case`
 
 A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces. The `case` statement MUST be indented once
+parentheses, tabs, and braces. The `case` statement MUST be indented once
 from `switch`, and the `break` keyword (or other terminating keyword) MUST be
 indented at the same level as the `case` body. There MUST be a comment such as
 `// no break` when fall-through is intentional in a non-empty `case` body.
@@ -432,7 +430,7 @@ switch ($expr) {
 ### 5.3. `while`, `do while`
 
 A `while` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+parentheses, tabs, and braces.
 
 ```php
 <?php
@@ -442,7 +440,7 @@ while ($expr) {
 ```
 
 Similarly, a `do while` statement looks like the following. Note the placement
-of parentheses, spaces, and braces.
+of parentheses, tabs, and braces.
 
 ```php
 <?php
@@ -454,7 +452,7 @@ do {
 ### 5.4. `for`
 
 A `for` statement looks like the following. Note the placement of parentheses,
-spaces, and braces.
+tabs, and braces.
 
 ```php
 <?php
@@ -466,7 +464,7 @@ for ($i = 0; $i < 10; $i++) {
 ### 5.5. `foreach`
     
 A `foreach` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+parentheses, tabs, and braces.
 
 ```php
 <?php
@@ -478,7 +476,7 @@ foreach ($iterable as $key => $value) {
 ### 5.6. `try`, `catch`
 
 A `try catch` block looks like the following. Note the placement of
-parentheses, spaces, and braces.
+parentheses, tabs, and braces.
 
 ```php
 <?php
@@ -511,7 +509,7 @@ Closure arguments with default values MUST go at the end of the argument
 list.
 
 A closure declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+parentheses, commas, tabs, and braces:
 
 ```php
 <?php
@@ -632,7 +630,7 @@ determine common practices.  The survey is retained herein for posterity.
 
     url,http://www.horde.org/apps/horde/docs/CODING_STANDARDS,http://pear.php.net/manual/en/standards.php,http://solarphp.com/manual/appendix-standards.style,http://framework.zend.com/manual/en/coding-standard.html,http://symfony.com/doc/2.0/contributing/code/standards.html,http://www.ppi.io/docs/coding-standards.html,https://github.com/ezsystems/ezp-next/wiki/codingstandards,http://book.cakephp.org/2.0/en/contributing/cakephp-coding-conventions.html,https://github.com/UnionOfRAD/lithium/wiki/Spec%3A-Coding,http://drupal.org/coding-standards,http://code.google.com/p/sabredav/,http://area51.phpbb.com/docs/31x/coding-guidelines.html,https://docs.google.com/a/zikula.org/document/edit?authkey=CPCU0Us&hgd=1&id=1fcqb93Sn-hR9c0mkN6m_tyWnmEvoswKBtSc0tKkZmJA,http://www.chisimba.com,n/a,https://github.com/Respect/project-info/blob/master/coding-standards-sample.php,n/a,Object Calisthenics for PHP,http://doc.nette.org/en/coding-standard,http://flow3.typo3.org,https://github.com/propelorm/Propel2/wiki/Coding-Standards,http://developer.joomla.org/coding-standards.html
     voting,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,no,no,?,yes,no,yes
-    indent_type,4,4,4,4,4,tab,4,tab,tab,2,4,tab,4,4,4,4,4,4,tab,tab,4,tab
+    indent_type,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab,tab
     line_length_limit_soft,75,75,75,75,no,85,120,120,80,80,80,no,100,80,80,?,?,120,80,120,no,150
     line_length_limit_hard,85,85,85,85,no,no,no,no,100,?,no,no,no,100,100,?,120,120,no,no,no,no
     class_names,studly,studly,studly,studly,studly,studly,studly,studly,studly,studly,studly,lower_under,studly,lower,studly,studly,studly,studly,?,studly,studly,studly
@@ -657,7 +655,7 @@ determine common practices.  The survey is retained herein for posterity.
 ### A.2. Survey Legend
 
 `indent_type`:
-The type of indenting. `tab` = "Use a tab", `2` or `4` = "number of spaces"
+The type of indenting. `tab` = "Use a tab"
 
 `line_length_limit_soft`:
 The "soft" line length limit, in characters. `?` = not discernible or no response, `no` means no limit.
@@ -722,9 +720,7 @@ A summary of what line the opening braces go on for classes, methods, and contro
 ### A.3. Survey Results
 
     indent_type:
-        tab: 7
-        2: 1
-        4: 14
+        tab: 999999999999999
     line_length_limit_soft:
         ?: 2
         no: 3
