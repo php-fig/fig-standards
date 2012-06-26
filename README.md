@@ -14,7 +14,7 @@ To propose a standards recommendation (PSR):
 
 - start a conversation on the [mailing list][].
 
-[mailing list]: http://groups.google.com/group/php-standards/
+[mailing list]: http://groups.google.com/group/php-fig/
 
 
 Requesting Membership
