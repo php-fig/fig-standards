@@ -67,9 +67,9 @@ Voting Members
 
 1. Larry Masters: CakePHP, CakePHP 2
 
-1. Evert Pot: SabreDAV
-
 1. Ryan Parman: Amazon Web Services SDK
+
+1. Evert Pot: SabreDAV
 
 1. Fabien Potencier: Symfony, Symfony2
 
