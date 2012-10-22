@@ -11,6 +11,11 @@ often including APC, Memcached and many others.
 This document proposes a very simple standard interface. It is meant to cover
 *just* the base functionality most cache libraries provide.
 
+We realize that this interface will not cover every usecase, nor do we expect
+this to be the case. We hope for the cache providers that already have an
+existing implementation and wish to not break backwards compatibility, an
+adapter can be provided for compatibility with this standard.
+
 1. The base interface
 ---------------------
 
@@ -71,7 +76,8 @@ interface Base {
 }
 ```
 
-## Bulk operations
+2. Bulk Operations
+------------------
 
 For some cases it's beneficial to request multiple objects at once. One big
 benefit is that requests can be pipelined, thus reducing latency.
@@ -214,7 +220,8 @@ trait EmulateMultiple {
 }
 ```
 
-## Notes
+3. Notes
+--------
 
 * This document does not define how to handle error conditions, such as the
   inability to store an item, due to for example a backend being down.
