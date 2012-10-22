@@ -1,4 +1,5 @@
-## Introduction
+Cache Interface
+===============
 
 Many PHP frameworks define a PHP persistant object cache with various features.
 An object cache is something that may be useful in many parts of an
@@ -20,60 +21,65 @@ they wish to support.
 
 To fix this, this document proposes a very simple standard interface.
 
-## The base interface
+1. The base interface
+---------------------
 
-    namespace PSR\Cache;
+```php
+namespace PSR\Cache;
 
-    interface Base {
+interface Base {
 
-        /**
-         * Stores a new value in the cache.
-         *
-         * The key must be provided as a string, the value may be any
-         * serializable PHP value.
-         *
-         * Use the $ttl argument to specify how long the cache is valid for.
-         * The time-to-live is specified in seconds.
-         *
-         * If $ttl is not specified, the implementation may choose a default.
-         *
-         * @param string $key
-         * @param mixed $value
-         * @param int $ttl
-         * @return void
-         */
-        function set($key, $value, $ttl = null);
+    /**
+     * Stores a new value in the cache.
+     *
+     * The key must be provided as a string, the value may be any
+     * serializable PHP value.
+     *
+     * Use the $ttl argument to specify how long the cache is valid for.
+     * The time-to-live is specified in seconds.
+     *
+     * If $ttl is not specified, the implementation may choose a default.
+     * The $ttl argument should be considered a 'suggestion'. The
+     * implementation may ignore it.
+     *
+     * @param string $key
+     * @param mixed $value
+     * @param int $ttl
+     * @return void
+     */
+    function set($key, $value, $ttl = null);
 
-        /**
-         * Fetches an object from the cache.
-         *
-         * If the object did not exist, this method must return null.
-         *
-         * @param string $key
-         * @return mixed
-         */
-        function get($key);
+    /**
+     * Fetches an object from the cache.
+     *
+     * If the object did not exist, this method must return null.
+     *
+     * @param string $key
+     * @return mixed
+     */
+    function get($key);
 
-        /**
-         * Deletes an item from the cache.
-         *
-         * This method must succeed, even if the item did not exist.
-         *
-         * @param string $key
-         * @return void
-         */
-        function delete($key);
+    /**
+     * Deletes an item from the cache.
+     *
+     * This method must succeed, even if the item did not exist.
+     *
+     * @param string $key
+     * @return void
+     */
+    function delete($key);
 
 
-        /**
-         * Check if the key exists in the cache.
-         *
-         * @param string $key
-         * @return boolean
-         */
-        function exists($key);
+    /**
+     * Check if the key exists in the cache.
+     *
+     * @param string $key
+     * @return boolean
+     */
+    function exists($key);
 
-    }
+}
+```
 
 ## Bulk operations
 
@@ -82,134 +88,141 @@ benefit is that requests can be pipelined, thus reducing latency.
 
 For these cases the Multiple interface may be implemented.
 
-    namespace PSR\Cache;
+```php
+namespace PSR\Cache;
 
-    interface Multiple extends Base {
+interface Multiple extends Base {
 
-        /**
-         * Stores multiple items in the cache at once.
-         *
-         * The items must be provided as an associative array.
-         *
-         * @param array $items
-         * @param int $ttl
-         * @return void
-         */
-        function setMultiple(array $items, $ttl = null);
+    /**
+     * Stores multiple items in the cache at once.
+     *
+     * The items must be provided as an associative array.
+     *
+     * @param array $items
+     * @param int $ttl
+     * @return void
+     */
+    function setMultiple(array $items, $ttl = null);
 
-        /**
-         * Fetches multiple items from the cache.
-         *
-         * The returned structure must be an associative array. If items were
-         * not found in the cache, they should not be included in the array.
-         *
-         * This means that if none of the items are found, this method must
-         * return an empty array.
-         *
-         * @param string $keys
-         * @return array
-         */
-        function getMultiple($keys);
+    /**
+     * Fetches multiple items from the cache.
+     *
+     * The returned structure must be an associative array. If items were
+     * not found in the cache, they should not be included in the array.
+     *
+     * This means that if none of the items are found, this method must
+     * return an empty array.
+     *
+     * @param string $keys
+     * @return array
+     */
+    function getMultiple($keys);
 
-        /**
-         * Deletes multiple items from the cache at once.
-         *
-         * @param array $key
-         * @return void
-         */
-        function deleteMultiple($keys);
+    /**
+     * Deletes multiple items from the cache at once.
+     *
+     * @param array $key
+     * @return void
+     */
+    function deleteMultiple($keys);
 
-        /**
-         * Check for multiple items if they appear in the cache.
-         *
-         * All items must be returned as an array. And each must array value
-         * must either be set to true, or false.
-         *
-         * @param array $keys
-         * @return array
-         */
-        function existsMultiple($keys);
+    /**
+     * Check for multiple items if they appear in the cache.
+     *
+     * All items must be returned as an array. And each must array value
+     * must either be set to true, or false.
+     *
+     * @param array $keys
+     * @return array
+     */
+    function existsMultiple($keys);
 
-    }
+}
+```
 
 If the backend does not natively implement bulk operations, it can still
 be easily emulated. The following trait could be used as an example to emulate
-this. Note that this is only an example, and should not be considered as part
-of the specification.
+this. 
 
-    trait EmulateMultiple {
+**Note that this trait is strictly an example, and MUST NOT be considered as
+part of the standard.**
 
-        /**
-         * Stores multiple items in the cache at once.
-         *
-         * The items must be provided as an associative array.
-         *
-         * @param array $items
-         * @param int $ttl
-         * @return void
-         */
-        public function setMultiple(array $items, $ttl = null) {
+```php
 
-            foreach($items as $key=>$value) {
-                $this->set($key, $value, $ttl);
-            }
+trait EmulateMultiple {
 
-        }
+    /**
+     * Stores multiple items in the cache at once.
+     *
+     * The items must be provided as an associative array.
+     *
+     * @param array $items
+     * @param int $ttl
+     * @return void
+     */
+    public function setMultiple(array $items, $ttl = null) {
 
-        /**
-         * Fetches multiple items from the cache.
-         *
-         * The returned structure must be an associative array. If items were
-         * not found in the cache, they should not be included in the array.
-         *
-         * This means that if none of the items are found, this method must
-         * return an empty array.
-         *
-         * @param string $keys
-         * @return array
-         */
-        public function getMultiple($keys) {
-
-            return array_map(
-                array($this, 'get'),
-                $keys
-            );
-
-        }
-
-        /**
-         * Deletes multiple items from the cache at once.
-         *
-         * @param array $key
-         * @return void
-         */
-        public function deleteMultiple($keys) {
-
-            foreach($keys as $key) {
-                $this->delete($key);
-            }
-
-        }
-
-        /**
-         * Check for multiple items if they appear in the cache.
-         *
-         * All items must be returned as an array. And each must array value
-         * must either be set to true, or false.
-         *
-         * @param array $keys
-         * @return array
-         */
-        public function existsMultiple($keys) {
-
-            return array_map(
-                array($this, 'exists'),
-                $keys
-            );
-
+        foreach($items as $key=>$value) {
+            $this->set($key, $value, $ttl);
         }
 
     }
+
+    /**
+     * Fetches multiple items from the cache.
+     *
+     * The returned structure must be an associative array. If items were
+     * not found in the cache, they should not be included in the array.
+     *
+     * This means that if none of the items are found, this method must
+     * return an empty array.
+     *
+     * @param string $keys
+     * @return array
+     */
+    public function getMultiple($keys) {
+
+        return array_map(
+            array($this, 'get'),
+            $keys
+        );
+
+    }
+
+    /**
+     * Deletes multiple items from the cache at once.
+     *
+     * @param array $key
+     * @return void
+     */
+    public function deleteMultiple($keys) {
+
+        foreach($keys as $key) {
+            $this->delete($key);
+        }
+
+    }
+
+    /**
+     * Check for multiple items if they appear in the cache.
+     *
+     * All items must be returned as an array. And each must array value
+     * must either be set to true, or false.
+     *
+     * @param array $keys
+     * @return array
+     */
+    public function existsMultiple($keys) {
+
+        return array_map(
+            array($this, 'exists'),
+            $keys
+        );
+
+    }
+
+}
+```
 
 ## Notes
 
@@ -218,7 +231,3 @@ of the specification.
 * This document does not define what constitutes valid keys. Backends may have
   restrictions around this. It is recommended for the calling code to use
   sane keys, and possibly run a hash function if needed.
-
-## Todo
-
-
