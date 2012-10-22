@@ -1,25 +1,15 @@
 Cache Interface
 ===============
 
-Many PHP frameworks define a PHP persistant object cache with various features.
+Many PHP frameworks define a PHP persistent object cache with various features.
 An object cache is something that may be useful in many parts of an
 application, and thus may be injected in quite a bit of subsystems.
 
-Examples of this can be found in the Doctrine source as
-Doctrine\_Cache\_Interface, and in The Zend Framework source as
-\Zend\Cache\Backend.
+Many existing frameworks, libraries and applications redefine these systems,
+often including APC, Memcached and many others.
 
-Both of these then implement their respective interfaces for various types
-of common storage systems, including APC shared memory, memcached and the
-filesystem.
-
-When a user wants to use multiple frameworks, they are stuck configuring
-multiple systems. In addition, library writers that wish to allow users to
-leverage an existing caching layer, are stuck providing yet another
-implementation, or providing a range of adapters for each of the frameworks
-they wish to support.
-
-To fix this, this document proposes a very simple standard interface.
+This document proposes a very simple standard interface. It is meant to cover
+*just* the base functionality most cache libraries provide.
 
 1. The base interface
 ---------------------
