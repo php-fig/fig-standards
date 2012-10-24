@@ -22,7 +22,8 @@ adapter can be provided for compatibility with this standard.
 ```php
 namespace PSR\Cache;
 
-interface Base {
+interface Base
+{
 
     /**
      * Stores a new value in the cache.
@@ -42,7 +43,7 @@ interface Base {
      * @param int $ttl
      * @return void
      */
-    function set($key, $value, $ttl = null);
+    public function set($key, $value, $ttl = null);
 
     /**
      * Fetches an object from the cache.
@@ -52,7 +53,7 @@ interface Base {
      * @param string $key
      * @return mixed
      */
-    function get($key);
+    public function get($key);
 
     /**
      * Deletes an item from the cache.
@@ -62,7 +63,7 @@ interface Base {
      * @param string $key
      * @return void
      */
-    function delete($key);
+    public function delete($key);
 
 
     /**
@@ -71,7 +72,7 @@ interface Base {
      * @param string $key
      * @return boolean
      */
-    function exists($key);
+    public function exists($key);
 
 }
 ```
@@ -87,7 +88,8 @@ For these cases the Multiple interface may be implemented.
 ```php
 namespace PSR\Cache;
 
-interface Multiple extends Base {
+interface Multiple extends Base
+{
 
     /**
      * Stores multiple items in the cache at once.
@@ -98,7 +100,7 @@ interface Multiple extends Base {
      * @param int $ttl
      * @return void
      */
-    function setMultiple(array $items, $ttl = null);
+    public function setMultiple(array $items, $ttl = null);
 
     /**
      * Fetches multiple items from the cache.
@@ -112,7 +114,7 @@ interface Multiple extends Base {
      * @param string $keys
      * @return array
      */
-    function getMultiple($keys);
+    public function getMultiple($keys);
 
     /**
      * Deletes multiple items from the cache at once.
@@ -120,7 +122,7 @@ interface Multiple extends Base {
      * @param array $key
      * @return void
      */
-    function deleteMultiple($keys);
+    public function deleteMultiple($keys);
 
     /**
      * Check for multiple items if they appear in the cache.
@@ -131,7 +133,7 @@ interface Multiple extends Base {
      * @param array $keys
      * @return array
      */
-    function existsMultiple($keys);
+    public function existsMultiple($keys);
 
 }
 ```
@@ -145,7 +147,8 @@ part of the standard.**
 
 ```php
 
-trait EmulateMultiple {
+trait EmulateMultiple
+{
 
     /**
      * Stores multiple items in the cache at once.
@@ -156,7 +159,8 @@ trait EmulateMultiple {
      * @param int $ttl
      * @return void
      */
-    public function setMultiple(array $items, $ttl = null) {
+    public function setMultiple(array $items, $ttl = null)
+    {
 
         foreach($items as $key=>$value) {
             $this->set($key, $value, $ttl);
@@ -176,7 +180,8 @@ trait EmulateMultiple {
      * @param string $keys
      * @return array
      */
-    public function getMultiple($keys) {
+    public function getMultiple($keys)
+    {
 
         return array_map(
             array($this, 'get'),
@@ -191,7 +196,8 @@ trait EmulateMultiple {
      * @param array $key
      * @return void
      */
-    public function deleteMultiple($keys) {
+    public function deleteMultiple($keys)
+    {
 
         foreach($keys as $key) {
             $this->delete($key);
@@ -208,7 +214,8 @@ trait EmulateMultiple {
      * @param array $keys
      * @return array
      */
-    public function existsMultiple($keys) {
+    public function existsMultiple($keys)
+    {
 
         return array_map(
             array($this, 'exists'),
