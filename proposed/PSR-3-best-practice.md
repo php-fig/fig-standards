@@ -28,7 +28,7 @@ ob_end_clean();
 
 echo 'end of site';
 
-?>
+/* EOF */
 ```
 
 Now the good one:
@@ -53,5 +53,5 @@ $content .= 'end of site';
 // Finally send to the browser
 echo $content;
 
-?>
+/* EOF */
 ```
