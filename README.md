@@ -67,6 +67,8 @@ Voting Members
 
 1. Larry Masters: CakePHP, CakePHP 2
 
+1. John Mertic: SugarCRM
+
 1. Ryan Parman: Amazon Web Services SDK
 
 1. Evert Pot: SabreDAV
@@ -79,7 +81,11 @@ Voting Members
 
 1. Phil Sturgeon: PyroCMS
 
+1. Lukas Smith: Jackalope
+
 1. Kris Wallsmith: Assetic, Buzz
+
+1. Mike van Riel: phpDocumentor
 
 1. Matthew Weier O'Phinney: Zend Framework, Zend Framework 2
 
