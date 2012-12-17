@@ -3,9 +3,8 @@ Coding Style Guide
 
 Questa guida estende ed integra il [PSR-1][], lo standard elementare di scrittura del codice.
 
-L'intento di questa guida è di ridurre
-The intent of this guide is to reduce l'attrito cognitivo quando il codice
-viene esaminato da diversi autori. Tutto questo è ottenuto grazie a una serie
+L'intento di questa guida è di ridurre l'attrito cognitivo quando il codice
+viene esaminato da diversi autori. Tutto questo è ottenuto grazie ad una serie
 di regole e aspettative condivise su come formattare il codice PHP.
 
 Le regole di stile qui riportate sono derivate dalla condivisione tra i vari
