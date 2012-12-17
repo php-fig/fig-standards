@@ -1,62 +1,65 @@
 Coding Style Guide
 ==================
 
-This guide extends and expands on [PSR-1][], the basic coding standard.
+Questa guida estende ed integra il [PSR-1][], lo standard elementare di scrittura del codice.
 
-The intent of this guide is to reduce cognitive friction when scanning code
-from different authors. It does so by enumerating a shared set of rules and
-expectations about how to format PHP code.
+L'intento di questa guida è di ridurre
+The intent of this guide is to reduce l'attrito cognitivo quando il codice
+viene esaminato da diversi autori. Tutto questo è ottenuto grazie a una serie
+di regole e aspettative condivise su come formattare il codice PHP.
 
-The style rules herein are derived from commonalities among the various member
-projects. When various authors collaborate across multiple projects, it helps
-to have one set of guidelines to be used among all those projects. Thus, the
-benefit of this guide is not in the rules themselves, but in the sharing of
-those rules.
+Le regole di stile qui riportate sono derivate dalla condivisione tra i vari
+membri di progetti differenti. Quando vari autori collaborano su progetti multipli,
+è di grande aiuto avere un insieme di linee guida da usare in tutti i progetti.
+Perciò il beneficio di questa guida non è determinato dalle regole in sé, ma dalla
+condivisione delle stesse.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+Le parole "DEVE/DEVONO/NECESSARIO(I)" ("MUST", "SHALL" O "REQUIRED"),
+"NON DEVE/NON DEVONO" ("MUST NOT" O "SHALL NOT"), "DOVREBBE/DOVREBBERO/RACCOMANDATO(I)"
+("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUO'/POSSONO" ("MAY") e
+"OPZIONALE" ("OPTIONAL") in questo documento devono essere interpretate come
+descritto nella [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 
 
-1. Overview
+1. Panoramica
 -----------
 
-- Code MUST follow [PSR-1][].
+- Il codice DEVE seguire il [PSR-1][].
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- Il codice DEVE usare 4 spazi per l'indentazione, non le tabulazioni.
 
-- There MUST NOT be a hard limit on line length; the soft limit MUST be 120
-  characters; lines SHOULD be 80 characters or less.
+- NON DEVE esserci un limite rigido alla lunghezza della riga; il limite
+  debole DEVE essere di 120 caratteri; le righe DOVREBBERO essere di 80 caratteri o meno.
 
-- There MUST be one blank line after the `namespace` declaration, and there
-  MUST be one blank line after the block of `use` declarations.
+- Ci DEVE essere una riga vuota dopo la dichiarazione del `namespace`, e ci
+  DEVE essere una riga vuota dopo il blocco delle dichiarazioni `use`.
 
-- Opening braces for classes MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- Le graffe di apertura per le classi DEVE andare su una nuova riga, e le graffe di chiusura DEVONO
+  andare su una nuova linea dopo il corpo.
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- Le graffe di apertura per i metodi DEVONO andare su una nuova riga, e le graffe di chiusura DEVONO
+  andare su una nuova linea dopo il corpo.
 
-- Visibility MUST be declared on all properties and methods; `abstract` and
-  `final` MUST be declared before the visibility; `static` MUST be declared
-  after the visibility.
+- La visibilità DEVE essere dichiarata su tutte le proprietà e i metodi; `abstract` e
+  `final` DEVONO essere dichiarate prima della visibilità; `static` DEVE essere dichiarata dopo
+  la visibilità.
   
-- Control structure keywords MUST have one space after them; method and
-  function calls MUST NOT.
+- Le keyword delle strutture di controllo DEVONO avere uno spazio a seguire; i metodi e le chiamate
+  a funzioni NON DEVONO.
 
-- Opening braces for control structures MUST go on the same line, and closing
-  braces MUST go on the next line after the body.
+- Le graffe di apertura per le strutture di controllo DEVONO andare sulla stessa riga, e le graffe
+  di chiusura DEVONO andare su una nuova riga dopo il corpo.
 
-- Opening parentheses for control structures MUST NOT have a space after them,
-  and closing parentheses for control structures MUST NOT have a space before.
+- Le graffe di apertura per le strutture di controllo NON DEVONO avere uno spazio a seguire, e le graffe
+  di chiusura per le strutture di controllo NON DEVONO avere uno spazio a precedere.
 
-### 1.1. Example
+### 1.1. Esempio
 
-This example encompasses some of the rules below as a quick overview:
+Questo esempio comprende alcune delle regole riportate come panoramica:
 
 ```php
 <?php
@@ -64,11 +67,11 @@ namespace Vendor\Package;
 
 use FooInterface;
 use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use AltroVendor\AltroPackage\BazClass;
 
 class Foo extends Bar implements FooInterface
 {
-    public function sampleFunction($a, $b = null)
+    public function metodoEsempio($a, $b = null)
     {
         if ($a === $b) {
             bar();
@@ -81,75 +84,77 @@ class Foo extends Bar implements FooInterface
 
     final public static function bar()
     {
-        // method body
+        // corpo del metodo
     }
 }
 ```
 
-2. General
-----------
+2. Regole Generali
+-------------------
 
-### 2.1 Basic Coding Standard
+### 2.1 Standard elementare di scrittura codice
 
-Code MUST follow all rules outlined in [PSR-1][].
+Il codice DEVE seguire tutte le regole delineane nel [PSR-1][].
 
-### 2.2 Files
+### 2.2 I file
 
-All PHP files MUST use the Unix LF (linefeed) line ending.
+Tutti i file PHP DEVONO usare lo Unix LF (linefeed) per terminare la riga.
 
-All PHP files MUST end with a single blank line.
+Tutti i file PHP DEVONO finire con una singola riga vuota.
 
-The closing `?>` tag MUST be omitted from files containing only PHP.
+Il tag `?>` di chiusura DEVE essere omesso dai file che contengono soltanto PHP.
 
-### 2.3. Lines
+### 2.3. Le righe
 
-There MUST NOT be a hard limit on line length.
+NON DEVE esserci un limite rigito nella lunghezza delle righe.
 
-The soft limit on line length MUST be 120 characters; automated style checkers
-MUST warn but MUST NOT error at the soft limit.
+Il limite debole sulla lunghezza delle righe DEVE essere di 120 caratteri; correttori
+automatici di sile DEVONO avvertire ma NON DEVONO andare in errore al raggiungimento
+del limite debole.
 
-Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
-be split into multiple subsequent lines of no more than 80 characters each.
+Le righe NON DOVREBBERO essere più lunghe di 80 caratteri; righe più lunghe DOVREBBERO
+essere divise in righe multiple successive, ognuna lunga non più di 80 caratteri.
 
-There MUST NOT be trailing whitespace at the end of non-blank lines.
+NON DEVONO esserci spazi alla fine di righe non vuote.
 
-Blank lines MAY be added to improve readability and to indicate related
-blocks of code.
+Righe vuote POSSONO essere aggiunte per migliorare la leggibilità e per indicare
+blocchi di codice correlati.
 
-There MUST NOT be more than one statement per line.
+NON PUO' esserci più di una dichiarazione per riga.
 
-### 2.4. Indenting
+### 2.4. Indentazione
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+Il codice DEVE usare un'indentazione di 4 spazi, e NON DEVE usare tabulazioni per
+l'indentazione.
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
+> N.b.: Usando soltanto spazi, senza mischiare spazi e tabulazioni, aiuta
+> ad evitare con i diff, le patch, la cronologia e le annotazioni. L'uso di
+> spazi rende peraltro facile l'inserimento di sotto-indentazione a grana fine
+> per l'allineamento inter-riga.
 
-### 2.5. Keywords and True/False/Null
+### 2.5. Keyword e True/False/Null
 
-PHP [keywords][] MUST be in lower case.
+Le [keywords][] PHP DEVONO essere minuscole.
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
+Le costanti PHP `true`, `false`, e `null` DEVONO essere minuscole.
 
 [keywords]: http://php.net/manual/en/reserved.keywords.php
 
 
 
-3. Namespace and Use Declarations
+3. Namespace e dichiarazioni Use
 ---------------------------------
 
-When present, there MUST be one blank line after the `namespace` declaration.
+Quando presente, DEVE esserci una linea vuota dopo la dichiarazione `namespace`.
 
-When present, all `use` declarations MUST go after the `namespace`
-declaration.
+Quando presenti, tutte le dichiarazioni `use` DEVONO andare dopo la dichiarazione
+`namespace`.
 
-There MUST be one `use` keyword per declaration.
+Ci DEVE essere una keyword `use` per dichiarazione.
 
-There MUST be one blank line after the `use` block.
+Ci DEVE essere una riga vuota dopo il blocco `use`.
 
-For example:
+Per esempio:
 
 ```php
 <?php
@@ -157,25 +162,25 @@ namespace Vendor\Package;
 
 use FooClass;
 use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use AltroVendor\AltroPackage\BazClass;
 
-// ... additional PHP code ...
+// ... ulteriore codice PHP ...
 
 ```
 
 
-4. Classes, Properties, and Methods
------------------------------------
+4. Classi, Propertà e Metodi
+-----------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+Il termine "classe" si riferisce a tutte le classi, interfacce e trait.
 
-### 4.1. Extends and Implements
+### 4.1. Extends e Implements
 
-The `extends` and `implements` keywords MUST be declared on the same line as
-the class name.
+Le keyword `extends` e `implements` DEVONO essere dichiarate sulla stessa riga in cui si trova il nome
+della classe.
 
-The opening brace for the class MUST go on its own line; the closing brace
-for the class MUST go on the next line after the body.
+La graffa di apertura della classe DEVE andare su una nuova riga; la graffa
+di chiusura per la classe DEVE andare su una nuova riga dopo il corpo.
 
 ```php
 <?php
@@ -183,17 +188,18 @@ namespace Vendor\Package;
 
 use FooClass;
 use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use AltroVendor\AltroPackage\BazClass;
 
 class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
-    // constants, properties, methods
+    // costanti, proprietà, metodi
 }
 ```
 
-Lists of `implements` MAY be split across multiple lines, where each
-subsequent line is indented once. When doing so, the first item in the list
-MUST be on the next line, and there MUST be only one interface per line.
+Liste di `implements` POSSONO essere divise su righe multiple, dove ogni
+linea seguente è indentata una volta. In questo caso, il primo elemento
+nella lista DEVE andare su una nuova riga e ci DEVE essere una sola interfaccia
+per riga.
 
 ```php
 <?php
@@ -201,29 +207,29 @@ namespace Vendor\Package;
 
 use FooClass;
 use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use AltroVendor\AltroPackage\BazClass;
 
 class ClassName extends ParentClass implements
     \ArrayAccess,
     \Countable,
     \Serializable
 {
-    // constants, properties, methods
+    // costanti, proprietà, metodi
 }
 ```
 
-### 4.2. Properties
+### 4.2. Proprietà
 
-Visibility MUST be declared on all properties.
+La visibilità DEVE essere dichiarata su tutte le proprietà.
 
-The `var` keyword MUST NOT be used to declare a property.
+La keyword `var` NON DEVE essere usata per dichiarare una proprietà.
 
-There MUST NOT be more than one property declared per statement.
+NON PUO' esserci più di una proprietà per dichiarazione.
 
-Property names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+I nomi delle proprietà NON DOVREBBERO avere un underscore come prefisso ad indicare
+visibilità protetta o privata.
 
-A property declaration looks like the following.
+La dichiarazione di una proprietà dovrebbe essere simile alla seguente:
 
 ```php
 <?php
@@ -235,62 +241,64 @@ class ClassName
 }
 ```
 
-### 4.3. Methods
+### 4.3. Metodi
 
-Visibility MUST be declared on all methods.
+La visibilità DEVE essere dichiarata su tutti i metodi.
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+I nomi dei metodi NON DOVREBBERO avere un singolo underscore come prefisso
+per indicare visibilità protetta o privata.
 
-Method names MUST NOT be declared with a space after the method name. The
-opening brace MUST go on its own line, and the closing brace MUST go on the
-next line following the body. There MUST NOT be a space after the opening
-parenthesis, and there MUST NOT be a space before the closing parenthesis.
+I nomi dei metodi NON DEVONO essere dichiarati con uno spazio dopo il nome
+del metodo. La graffa di apertura DEVE andare su una nuova riga, e la
+graffa di chiusura DEVE andare su una nuova riga dopo il corpo.
+NON DEVE esserci uno spazio dopo la parentesi di apertura, e NON DEVE esserci
+uno spazio prima della parentesi di chiusura.
 
-A method declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+La dichiarazione di un metodo dovrebbe essere simile alla seguente.
+Da notare il posizionamento delle parentesi, delle virgole, degli spazi e
+delle graffe:
 
 ```php
 <?php
 namespace Vendor\Package;
 
-class ClassName
+class NomeClass
 {
     public function fooBarBaz($arg1, &$arg2, $arg3 = [])
     {
-        // method body
+        // corpo del metodo
     }
 }
 ```    
 
-### 4.4. Method Arguments
+### 4.4. Argomenti dei metodi
 
-In the argument list, there MUST NOT be a space before each comma, and there
-MUST be one space after each comma.
+Nella lista di argomenti, NON PUO' esserci uno spazio prima di ogni virgola, ma
+DEVE esserci uno spazio dopo ogni virgola.
 
-Method arguments with default values MUST go at the end of the argument
-list.
+Gli argomenti dei metodi con valori di default DEVONO andare alla fine della lista
+di argomenti.
 
 ```php
 <?php
 namespace Vendor\Package;
 
-class ClassName
+class NomeClasse
 {
     public function foo($arg1, &$arg2, $arg3 = [])
     {
-        // method body
+        // corpo del metodo
     }
 }
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+Le liste di argomenti POSSONO essere divise su righe multiple, dove ogni riga
+seguente è indentata una volta. In questo caso, il primo elemento della lista
+DEVE essere su una nuova riga e ci DEVE essere un solo argomento per riga.
 
-When the argument list is split across multiple lines, the closing parenthesis
-and opening brace MUST be placed together on their own line with one space
-between them.
+Quando la lista di argomenti è divisa su righe multiple, le parentesi di chiusura
+e la graffa di apertura DEVONO essere sulla stessa riga con uno spazio a
+separarle.
 
 ```php
 <?php
@@ -303,24 +311,24 @@ class ClassName
         &$arg2,
         array $arg3 = []
     ) {
-        // method body
+        // corpo del metodo
     }
 }
 ```
 
-### 4.5. `abstract`, `final`, and `static`
+### 4.5. `abstract`, `final`, r `static`
 
-When present, the `abstract` and `final` declarations MUST precede the
-visibility declaration.
+Quando presente, le dichiarazioni `abstract` e `final` DEVONO precedere
+le dichiarazioni di visibilità.
 
-When present, the `static` declaration MUST come after the visibility
-declaration.
+Quando presente, la dichiarazione `static` DEVE andare dopo la dichiarazione
+di visibilità.
 
 ```php
 <?php
 namespace Vendor\Package;
 
-abstract class ClassName
+abstract class NomeClasse
 {
     protected static $foo;
 
@@ -328,12 +336,12 @@ abstract class ClassName
 
     final public static function bar()
     {
-        // method body
+        // corpo del metodo
     }
 }
 ```
 
-### 4.6. Method and Function Calls
+### 4.6. Chiamate a metodi e funzioni
 
 When making a method or function call, there MUST NOT be a space between the
 method or function name and the opening parenthesis, there MUST NOT be a space

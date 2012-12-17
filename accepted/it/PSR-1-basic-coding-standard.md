@@ -1,124 +1,127 @@
-Basic Coding Standard
-=====================
+Standard elementari per la scrittura del codice
+================================================
 
-This section of the standard comprises what should be considered the standard
-coding elements that are required to ensure a high level of technical
-interoperability between shared PHP code.
+Questa sezione dello standard contiene quelli che dovrebbero essere considerati
+elementi standard per la scrittura del codice, necessari per garantire un alto
+livello di interoperabilità tra parti di codice PHP condivise.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+Le parole "DEVE/DEVONO/NECESSARIO(I)" ("MUST", "SHALL" O "REQUIRED"),
+"NON DEVE/NON DEVONO" ("MUST NOT" O "SHALL NOT"), "DOVREBBE/DOVREBBERO/RACCOMANDATO(I)"
+("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUO'/POSSONO" ("MAY") e
+"OPZIONALE" ("OPTIONAL") in questo documento devono essere interpretate come
+descritto nella [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 
 
-1. Overview
------------
+1. Panoramica
+--------------
 
-- Files MUST use only `<?php` and `<?=` tags.
+- Nei file si DEVONO usare soltanto le tag `<?php` o `<?=`.
 
-- Files MUST use only UTF-8 without BOM for PHP code.
+- I file DEVONO usare soltanto UTF-8 senza BOM per il codice PHP.
 
-- Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
-  *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
-  but SHOULD NOT do both.
+- I file DOVREBBERO *o* dichiarare i simboli (classi, funzioni, costanti, etc.)
+  *o* causare effetti collaterali (es. generare output, cambiare le impostazioni .ini, etc.)
+  ma NON DOVREBBERO fare entrambe le cose.
 
-- Namespaces and classes MUST follow [PSR-0][].
+- I namespace e i nomi delle classi DEVONO seguire il [PSR-0][].
 
-- Class names MUST be declared in `StudlyCaps`.
+- I nomi delle classi DEVONO essere dichiarati in `StudlyCaps`.
 
-- Class constants MUST be declared in all upper case with underscore separators.
+- Le costanti di classe DEVONO  essere dichiarate tutte maiuscole con underscore come separatore.
 
-- Method names MUST be declared in `camelCase`.
+- I nomi dei metodi DEVONO essere dichiarati in `camelCase`.
 
 
-2. Files
+2. I file
 --------
 
-### 2.1. PHP Tags
+### 2.1. Tag PHP
 
-PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
-MUST NOT use the other tag variations.
+Nal codice PHP si DEVE usare la versione lunga dei tag `<?php ?>` o la versione
+dei tag short-echo `<?= ?>`; NON DEVONO essere usate altre varianti dei tag.
 
-### 2.2. Character Encoding
+### 2.2. Codifica dei caratteri
 
-PHP code MUST use only UTF-8 without BOM.
+Per il codice PHP si DEVE usare soltanto UTF-8 senza BOM.
 
-### 2.3. Side Effects
+### 2.3. Effetti collaterali
 
-A file SHOULD declare new symbols (classes, functions, constants,
-etc.) and cause no other side effects, or it SHOULD execute logic with side
-effects, but SHOULD NOT do both.
+Un file DOVREBBE dichiarare nuovi simboli (classi, funzioni, costanti,
+etc.) senza causare altri effetti collaterali, oppure DOVREBBE eseguire logica
+con effetti collaterali, ma NON DOVREBBE fare entrambe le cose.
 
-The phrase "side effects" means execution of logic not directly related to
-declaring classes, functions, constants, etc., *merely from including the
-file*.
+Con l'espressione "effetti collaterali" si intende l'esecuzione di logica non
+direttamente correlata alla dichiarazione delle classi, delle funzioni, delle
+costanti, etc., *al di fuori dell'inclusione del file*.
 
-"Side effects" include but are not limited to: generating output, explicit
-use of `require` or `include`, connecting to external services, modifying ini
-settings, emitting errors or exceptions, modifying global or static variables,
-reading from or writing to a file, and so on.
+Gli "effetti collaterali" includono, ma non sono limitati a, le seguenti cose:
+generazione di output, uso esplicito di `require` o `include`, connessione a
+servizi esterni, modifica delle impostazioni ini, emissione di errori o eccezioni,
+modifica di variabili globali o statiche, lettura o scrittura di file, e così via.
 
-The following is an example of a file with both declarations and side effects;
-i.e, an example of what to avoid:
+Di seguito un esempio con un file in cui sono presenti sia dichiarazioni che effetti
+collaterali; ecco un esempio di quello che va evitato:
 
 ```php
 <?php
-// side effect: change ini settings
+// effetto collaterale: cambiare le impostazioni ini
 ini_set('error_reporting', E_ALL);
 
-// side effect: loads a file
+// effetto collaterale: carica un file
 include "file.php";
 
-// side effect: generates output
+// effetto collatarale: generazione di output
 echo "<html>\n";
 
-// declaration
+// dichiarazione
 function foo()
 {
-    // function body
+    // corpo della funzione
 }
 ```
 
-The following example is of a file that contains declarations without side
-effects; i.e., an example of what to emulate:
+L'esempio che segue è un file che contiene dichiarazioni senza effetti
+collaterali; ecco un esempio da imitare:
 
 ```php
 <?php
-// declaration
+// dichiarazione
 function foo()
 {
     // function body
 }
 
-// conditional declaration is *not* a side effect
+// una dichiarazione condizionale *non* è un effetto collaterale
 if (! function_exists('bar')) {
     function bar()
     {
-        // function body
+        // corpo della funzione
     }
 }
 ```
 
 
-3. Namespace and Class Names
+3. Namespace e Nomi delle Classi
 ----------------------------
 
-Namespaces and classes MUST follow [PSR-0][].
+I Namespace e i Nomi delle Classi DEVONO seguire il [PSR-0][].
 
-This means each class is in a file by itself, and is in a namespace of at
-least one level: a top-level vendor name.
+Questo significa che ogni classe deve essere contenuta in un singolo file
+e il suo namespace deve essere di almeno un livello: il primo livello del
+nome del vendor.
 
-Class names MUST be declared in `StudlyCaps`.
+I Nomi delle Classi DEVONO essere dichiarati in `StudlyCaps`.
 
-Code written for PHP 5.3 and after MUST use formal namespaces.
+Il codice scritto per PHP 5.3 e versioni successive DEVE usare namespace formali.
 
-For example:
+Per esempio:
 
 ```php
 <?php
-// PHP 5.3 and later:
+// PHP 5.3 e successive:
 namespace Vendor\Model;
 
 class Foo
@@ -126,26 +129,27 @@ class Foo
 }
 ```
 
-Code written for 5.2.x and before SHOULD use the pseudo-namespacing convention
-of `Vendor_` prefixes on class names.
+Codice scritto per le versioni 5.2.x e precedenti DOVREBBE usare la convenzione
+di pseudo-namespace con il prefisso `Vendor_` nei nomi delle classi.
 
 ```php
 <?php
-// PHP 5.2.x and earlier:
+// PHP 5.2.x e precedenti:
 class Vendor_Model_Foo
 {
 }
 ```
 
-4. Class Constants, Properties, and Methods
+4. Costanti di Classe, Proprietà, e Metodi
 -------------------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+Il termine "classe" si riferisce a tutte le classi, interfacce e trait.
 
-### 4.1. Constants
+### 4.1. Costanti
 
-Class constants MUST be declared in all upper case with underscore separators.
-For example:
+Le costanti di classe DEVONO essere dichiarate tutte maiuscole con undescore
+come separatori.
+Per esempio:
 
 ```php
 <?php
@@ -153,20 +157,21 @@ namespace Vendor\Model;
 
 class Foo
 {
-    const VERSION = '1.0';
-    const DATE_APPROVED = '2012-06-01';
+    const VERSIONE = '1.0';
+    const DATA_APPROVAZIONE = '2012-06-01';
 }
 ```
 
-### 4.2. Properties
+### 4.2. Proprietà
 
-This guide intentionally avoids any recommendation regarding the use of
-`$StudlyCaps`, `$camelCase`, or `$under_score` property names.
+Questa guida evita intenzionalmente qualsiasi raccomandazione a proposito
+dell'uso di `$StudlyCaps`, `$camelCase`, o `$under_score` per i nomi delle
+proprietà.
 
-Whatever naming convention is used SHOULD be applied consistently within a
-reasonable scope. That scope may be vendor-level, package-level, class-level,
-or method-level.
+Qualsiasi sia la convenzione usata per i nomi, questa DOVREBBE essere applicata
+in modo consistente ad un livello ragionevole di visibilità. La visibilità
+potrebbe essere a livello di vendor, di pacchetto, di classe o di metodo.
 
-### 4.3. Methods
+### 4.3. Metodi
 
-Method names MUST be declared in `camelCase()`.
+I nomi dei metodi DEVONO essere dichiarati in `camelCase()`.
