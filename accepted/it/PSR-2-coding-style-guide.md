@@ -1,5 +1,5 @@
-Coding Style Guide
-==================
+Guida allo stile di scrittura del codice
+=========================================
 
 Questa guida estende ed integra il [PSR-1][], lo standard elementare di scrittura del codice.
 
