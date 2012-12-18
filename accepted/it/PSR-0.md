@@ -42,7 +42,7 @@ Esempio di implementazione
 ---------------------------
 
 Di seguito una funzione per dimostrare im modo semplice come gli standard
-proposti in precedenza permettano il caricamente automatico delle classi.
+proposti in precedenza permettano il caricamento automatico delle classi.
 
 ```php
 <?php

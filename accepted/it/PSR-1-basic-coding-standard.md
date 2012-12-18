@@ -57,7 +57,7 @@ Con l'espressione "effetti collaterali" si intende l'esecuzione di logica non
 direttamente correlata alla dichiarazione delle classi, delle funzioni, delle
 costanti, etc., *al di fuori dell'inclusione del file*.
 
-Gli "effetti collaterali" includono, ma non sono limitati a, le seguenti cose:
+Gli "effetti collaterali" includono, ma non sono limitati ai seguenti casi:
 generazione di output, uso esplicito di `require` o `include`, connessione a
 servizi esterni, modifica delle impostazioni ini, emissione di errori o eccezioni,
 modifica di variabili globali o statiche, lettura o scrittura di file, e così via.
