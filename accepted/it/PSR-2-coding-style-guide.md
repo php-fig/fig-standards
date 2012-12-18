@@ -8,7 +8,7 @@ viene esaminato da diversi autori. Tutto questo è ottenuto grazie ad una serie
 di regole e aspettative condivise su come formattare il codice PHP.
 
 Le regole di stile qui riportate sono derivate dalla condivisione tra i vari
-membri di progetti differenti. Quando vari autori collaborano su progetti multipli,
+progetti membro. Quando vari autori collaborano su progetti multipli,
 è di grande aiuto avere un insieme di linee guida da usare in tutti i progetti.
 Perciò il beneficio di questa guida non è determinato dalle regole in sé, ma dalla
 condivisione delle stesse.
@@ -34,8 +34,8 @@ descritto nella [RFC 2119][].
 - NON DEVE esserci un limite rigido alla lunghezza della riga; il limite
   debole DEVE essere di 120 caratteri; le righe DOVREBBERO essere di 80 caratteri o meno.
 
-- Ci DEVE essere una riga vuota dopo la dichiarazione del `namespace`, e ci
-  DEVE essere una riga vuota dopo il blocco delle dichiarazioni `use`.
+- DEVE esserci una riga vuota dopo la dichiarazione del `namespace`, e
+  DEVE esserci una riga vuota dopo il blocco delle dichiarazioni `use`.
 
 - La graffa di apertura per le classi DEVE andare sulla riga seguente, e la graffa di chiusura DEVE
   andare su una nuova riga dopo il corpo.
@@ -149,9 +149,9 @@ Quando presente, DEVE esserci una riga vuota dopo la dichiarazione `namespace`.
 Quando presenti, tutte le dichiarazioni `use` DEVONO andare dopo la dichiarazione
 `namespace`.
 
-Ci DEVE essere una keyword `use` per dichiarazione.
+DEVE esserci una keyword `use` per dichiarazione.
 
-Ci DEVE essere una riga vuota dopo il blocco `use`.
+DEVE esserci una riga vuota dopo il blocco `use`.
 
 Per esempio:
 
@@ -533,109 +533,109 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
 };
 ```
 
-Argument lists and variable lists MAY be split across multiple lines, where
-each subsequent line is indented once. When doing so, the first item in the
-list MUST be on the next line, and there MUST be only one argument or variable
-per line.
+Le liste di argomenti e variabili POSSONO essere divise su righe multiple,
+dove ogni riga seguente è indentata una volta. In questo caso, il primo
+elemento nella lista DEVE essere sulla riga seguente e DEVE esserci un solo
+argomento o variabile per riga.
 
-When the ending list (whether or arguments or variables) is split across
-multiple lines, the closing parenthesis and opening brace MUST be placed
-together on their own line with one space between them.
+Quando la lista di chiusura (di argomenti o variabili) è divisa su righe multiple,
+la parentesi di chiusura e la graffa di apertura DEVONO essere posizionate
+insieme su una nuova riga con uno spazio a separarle.
 
-The following are examples of closures with and without argument lists and
-variable lists split across multiple lines.
+Quello che segue è un esemnpio di closure con e senza liste di argomenti e liste di variabili
+variabili divise su righe multiple.
 
 ```php
 <?php
 $longArgs_noVars = function (
-    $longArgument,
-    $longerArgument,
-    $muchLongerArgument
+    $argomentoLungo,
+    $argomentoPiuLungo,
+    $argomentoAncoraPiuLungo
 ) {
    // body
 };
 
 $noArgs_longVars = function () use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $variabileLunga1,
+    $variabilePiuLunga2,
+    $variabileAncoraPiuLunga3
 ) {
    // body
 };
 
 $longArgs_longVars = function (
-    $longArgument,
-    $longerArgument,
-    $muchLongerArgument
+    $argomentoLungo,
+    $argomentoPiuLungo,
+    $argomentoAncoraPiuLungo
 ) use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $variabileLunga1,
+    $variabilePiuLunga2,
+    $variabileAncoraPiuLunga3
 ) {
    // body
 };
 
 $longArgs_shortVars = function (
-    $longArgument,
-    $longerArgument,
-    $muchLongerArgument
+    $argomentoLungo,
+    $argomentoPiuLungo,
+    $argomentoAncoraPiuLungo
 ) use ($var1) {
    // body
 };
 
 $shortArgs_longVars = function ($arg) use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $variabileLunga1,
+    $variabilePiuLunga2,
+    $variabileAncoraPiuLunga3
 ) {
    // body
 };
 ```
-
-Note that the formatting rules also apply when the closure is used directly
-in a function or method call as an argument.
+Da notare che le regole di formattazione si applicano anche quando la closure
+è usata direttamente in una chiamata a funzione o metodo come argomento.
 
 ```php
 <?php
 $foo->bar(
     $arg1,
     function ($arg2) use ($var1) {
-        // body
+        // corpo
     },
     $arg3
 );
 ```
 
 
-7. Conclusion
---------------
+7. Conclusioni
+----------------
 
-There are many elements of style and practice intentionally omitted by this
-guide. These include but are not limited to:
+Ci sono molti elementi di stile e pratiche tralasciate intenzionalmente da
+questa guida. Questi includono, ma non sono limitati a:
 
-- Declaration of global variables and global constants
+- Dichiarazioni di variabili globali e globali costanti
 
-- Declaration of functions
+- Dichiarazione di funzioni
 
-- Operators and assignment
+- Operatori e assegnazioni
 
-- Inter-line alignment
+- Allineamento inter-riga
 
-- Comments and documentation blocks
+- Commenti e blocchi di documentazione
 
-- Class name prefixes and suffixes
+- Prefissi e suffissi dei nomi delle classi
 
-- Best practices
+- Pratiche consigliate
 
-Future recommendations MAY revise and extend this guide to address those or
-other elements of style and practice.
+Raccomandazioni future POSSONO rivedere ed estendere questa guida per parlare di
+questi o altri elementi di stile e pratiche.
 
 
-Appendix A. Survey
-------------------
+Appendix A. Sondaggio
+----------------------
 
-In writing this style guide, the group took a survey of member projects to
-determine common practices.  The survey is retained herein for posterity.
+Nello scrivere questa guida di sitle, il gruppo ha tenuto un sondaggio tra i
+progetti-membro per determinare le pratiche comuni. Il sondaggio è riportato qui
+di seguito a beneficio futuro.
 
 ### A.1. Survey Data
 
