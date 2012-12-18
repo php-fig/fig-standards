@@ -126,8 +126,8 @@ NON PUO' esserci più di una dichiarazione per riga.
 Il codice DEVE usare un'indentazione di 4 spazi, e NON DEVE usare tabulazioni per
 l'indentazione.
 
-> N.b.: Usando soltanto spazi, senza mischiare spazi e tabulazioni, aiuta
-> ad evitare con i diff, le patch, la cronologia e le annotazioni. L'uso di
+> N.b.: L'uso dei soli spazi, senza mischiare spazi e tabulazioni, aiuta
+> ad evitare problemi con i diff, le patch, la cronologia e le annotazioni. L'uso di
 > spazi rende peraltro facile l'inserimento di sotto-indentazione a grana fine
 > per l'allineamento inter-riga.
 
