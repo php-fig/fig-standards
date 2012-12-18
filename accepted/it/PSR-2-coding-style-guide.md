@@ -7,10 +7,10 @@ L'intento di questa guida è di ridurre l'attrito cognitivo quando il codice
 viene esaminato da diversi autori. Tutto questo è ottenuto grazie ad una serie
 di regole e aspettative condivise su come formattare il codice PHP.
 
-Le regole di stile qui riportate sono derivate dalla condivisione tra i vari
-progetti membro. Quando vari autori collaborano su progetti multipli,
+Le regole di stile qui riportate derivano dalla condivisione tra i vari
+membri del progetto. Quando vari autori collaborano su progetti multipli,
 è di grande aiuto avere un insieme di linee guida da usare in tutti i progetti.
-Perciò il beneficio di questa guida non è determinato dalle regole in sé, ma dalla
+Il beneficio di questa guida non è determinato dalle regole in sé, ma dalla
 condivisione delle stesse.
 
 Le parole "DEVE/DEVONO/NECESSARIO(I)" ("MUST", "SHALL" O "REQUIRED"),
