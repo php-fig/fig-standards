@@ -37,11 +37,11 @@ descritto nella [RFC 2119][].
 - Ci DEVE essere una riga vuota dopo la dichiarazione del `namespace`, e ci
   DEVE essere una riga vuota dopo il blocco delle dichiarazioni `use`.
 
-- Le graffe di apertura per le classi DEVE andare su una nuova riga, e le graffe di chiusura DEVONO
-  andare su una nuova linea dopo il corpo.
+- La graffa di apertura per le classi DEVE andare sulla riga seguente, e la graffa di chiusura DEVE
+  andare su una nuova riga dopo il corpo.
 
-- Le graffe di apertura per i metodi DEVONO andare su una nuova riga, e le graffe di chiusura DEVONO
-  andare su una nuova linea dopo il corpo.
+- La graffa di apertura per i metodi DEVE andare sulla riga seguente, e la graffa di chiusura DEVE
+  andare su una nuova riga dopo il corpo.
 
 - La visibilità DEVE essere dichiarata su tutte le proprietà e i metodi; `abstract` e
   `final` DEVONO essere dichiarate prima della visibilità; `static` DEVE essere dichiarata dopo
@@ -50,11 +50,11 @@ descritto nella [RFC 2119][].
 - Le keyword delle strutture di controllo DEVONO avere uno spazio a seguire; i metodi e le chiamate
   a funzioni NON DEVONO.
 
-- Le graffe di apertura per le strutture di controllo DEVONO andare sulla stessa riga, e le graffe
+- La graffe di apertura per le strutture di controllo DEVONO andare sulla stessa riga, e le graffe
   di chiusura DEVONO andare su una nuova riga dopo il corpo.
 
-- Le graffe di apertura per le strutture di controllo NON DEVONO avere uno spazio a seguire, e le graffe
-  di chiusura per le strutture di controllo NON DEVONO avere uno spazio a precedere.
+- Le parentesi di apertura per le strutture di controllo NON DEVONO avere uno spazio a seguire, e le
+  parentesi di chiusura per le strutture di controllo NON DEVONO avere uno spazio a precedere.
 
 ### 1.1. Esempio
 
@@ -144,7 +144,7 @@ Le costanti PHP `true`, `false`, e `null` DEVONO essere minuscole.
 3. Namespace e dichiarazioni Use
 ---------------------------------
 
-Quando presente, DEVE esserci una linea vuota dopo la dichiarazione `namespace`.
+Quando presente, DEVE esserci una riga vuota dopo la dichiarazione `namespace`.
 
 Quando presenti, tutte le dichiarazioni `use` DEVONO andare dopo la dichiarazione
 `namespace`.
@@ -196,7 +196,7 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 ```
 
 Liste di `implements` POSSONO essere divise su righe multiple, dove ogni
-linea seguente è indentata una volta. In questo caso, il primo elemento
+riga seguente è indentata una volta. In questo caso, il primo elemento
 nella lista DEVE andare su una nuova riga e ci DEVE essere una sola interfaccia
 per riga.
 
@@ -317,7 +317,7 @@ class ClassName
 
 ### 4.5. `abstract`, `final`, r `static`
 
-Quando presente, le dichiarazioni `abstract` e `final` DEVONO precedere
+Quando presenti, le dichiarazioni `abstract` e `final` DEVONO precedere
 le dichiarazioni di visibilità.
 
 Quando presente, la dichiarazione `static` DEVE andare dopo la dichiarazione
@@ -342,11 +342,11 @@ abstract class NomeClasse
 
 ### 4.6. Chiamate a metodi e funzioni
 
-When making a method or function call, there MUST NOT be a space between the
-method or function name and the opening parenthesis, there MUST NOT be a space
-after the opening parenthesis, and there MUST NOT be a space before the
-closing parenthesis. In the argument list, there MUST NOT be a space before
-each comma, and there MUST be one space after each comma.
+Quando si fa una chiamata a un metodo o a una funzione, NON DEVE esserci uno
+spazio tra il nome del metodo o della funzione e la parentesi di apertura,
+e NON DEVE esserci uno spazio prima della parentesi di chiusura.
+Nella lista di argomenti NON PUO' esserci uno spazio prima di ogni virgola,
+e DEVE esserci uno spazio dopo ogni virgola.
 
 ```php
 <?php
@@ -355,82 +355,82 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+La lista di argomenti PUO' essere divisa su righe multiple, dove ogni riga seguente
+è indentata una volta. In questo caso, il primo elemento nella lista DEVE essere
+sulla riga seguente e DEVE esserci un solo argomento per riga.
 
 ```php
 <?php
 $foo->bar(
-    $longArgument,
-    $longerArgument,
-    $muchLongerArgument
+    $argomentoLungo,
+    $argomentoPiuLungo,
+    $argomentoAncoraPiuLungo
 );
 ```
 
-5. Control Structures
----------------------
+5. Strutture di controllo
+--------------------------
 
-The general style rules for control structures are as follows:
+Le regole generali per le strutture di controllo sono le seguenti:
 
-- There MUST be one space after the control structure keyword
-- There MUST NOT be a space after the opening parenthesis
-- There MUST NOT be a space before the closing parenthesis
-- There MUST be one space between the closing parenthesis and the opening
-  brace
-- The structure body MUST be indented once
-- The closing brace MUST be on the next line after the body
+- DEVE esserci uno spazio dopo la keyword della struttura di controllo
+- NON DEVE esserci uno spazio dopo la parentesi di apertura
+- NON DEVE esserci uno spazio prima della parentesi di chiusura
+- DEVE esserci uno spazio tra la parentesi di chiusura le la graffa di
+  apertura
+- Il corpo della struttura DEVE essere indentato una volta
+- La graffa di chiusura DEVE essere sulla riga seguente, dopo il corpo
 
-The body of each structure MUST be enclosed by braces. This standardizes how
-the structures look, and reduces the likelihood of introducing errors as new
-lines get added to the body.
-
+Il corpo di ogni struttura DEVE essere racchiuso tra graffe. In questo modo
+l'aspetto della struttura è standardizzato, e si riduce la probabilità di
+introdurre errori quando si aggiungono nuove righe al corpo.
 
 ### 5.1. `if`, `elseif`, `else`
 
-An `if` structure looks like the following. Note the placement of parentheses,
-spaces, and braces; and that `else` and `elseif` are on the same line as the
-closing brace from the earlier body.
+Una struttura `if` dovrebbe essere come la seguente. Da notare il posizionamento
+delle parentesi, degli spazi e delle graffe; e il fatto che `else` e `elseif`
+ sono sulla stessa riga in cui si trova la graffa di chiusura del corpo precedente.
 
 ```php
 <?php
 if ($expr1) {
-    // if body
+    // if corpo
 } elseif ($expr2) {
-    // elseif body
+    // elseif corpo
 } else {
-    // else body;
+    // else corpo;
 }
 ```
 
-The keyword `elseif` SHOULD be used instead of `else if` so that all control
-keywords look like single words.
+La keyword `elseif` DOVREBBE essere usata al posto di `else if` affinché tutte
+le keyword delle strutture di controllo siano assimilabili a singola parola.
 
 
 ### 5.2. `switch`, `case`
 
-A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces. The `case` statement MUST be indented once
-from `switch`, and the `break` keyword (or other terminating keyword) MUST be
-indented at the same level as the `case` body. There MUST be a comment such as
-`// no break` when fall-through is intentional in a non-empty `case` body.
+Una struttura `switch` dovrebbe essere come la seguente. Da notare il posizionamento
+delle parentesi, degli spazi e delle graffe. La dichiarazione `case` DEVE essere
+indentata una volta rispetto allo `switch`, mentre la keyword `break` (insieme ad ogni
+altra keyword di chiusura) DEVE essere indentata allo stesso livello del corpo del `case`.
+DEVE esserci un commento come `// no break` quando il passare oltre è intenzionale nel corpo
+di un `case` non vuoto.
 
 ```php
 <?php
 switch ($expr) {
     case 0:
-        echo 'First case, with a break';
+        echo 'Primo caso, con un break';
         break;
     case 1:
-        echo 'Second case, which falls through';
+        echo 'Secondo caso, continua senza break';
         // no break
     case 2:
     case 3:
     case 4:
-        echo 'Third case, return instead of break';
+        echo 'Terzo caso, return al posto di break';
         return;
     default:
-        echo 'Default case';
+        echo 'Caso di default';
         break;
 }
 ```
@@ -438,96 +438,98 @@ switch ($expr) {
 
 ### 5.3. `while`, `do while`
 
-A `while` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Una dichiarazione `while` dovrebbe essere come la seguente. Da notare
+il posizionamento delle parentesi, degli spazi e delle graffe.
 
 ```php
 <?php
 while ($expr) {
-    // structure body
+    // corpo della struttura
 }
 ```
 
-Similarly, a `do while` statement looks like the following. Note the placement
-of parentheses, spaces, and braces.
+In modo simile, una dichiarazione `do while` dovrebbe essere come la seguente.
+Da notare il posizionamento delle parentesi, degli spazi e delle graffe.
 
 ```php
 <?php
 do {
-    // structure body;
+    // corpo della struttura;
 } while ($expr);
 ```
 
 ### 5.4. `for`
 
-A `for` statement looks like the following. Note the placement of parentheses,
-spaces, and braces.
+Una dichiarazione `for`  dovrebbe essere come la seguente. Da notare
+il posizionamento delle parentesi, degli spazi e delle graffe.
 
 ```php
 <?php
 for ($i = 0; $i < 10; $i++) {
-    // for body
+    // corpo del for
 }
 ```
 
 ### 5.5. `foreach`
     
-A `foreach` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Una dichiarazione `foreach`  dovrebbe essere come la seguente. Da notare
+il posizionamento delle parentesi, degli spazi e delle graffe.
 
 ```php
 <?php
 foreach ($iterable as $key => $value) {
-    // foreach body
+    // corpo del foreach
 }
 ```
 
 ### 5.6. `try`, `catch`
 
-A `try catch` block looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Una dichiarazione `try catch`  dovrebbe essere come la seguente. Da notare
+il posizionamento delle parentesi, degli spazi e delle graffe.
 
 ```php
 <?php
 try {
-    // try body
-} catch (FirstExceptionType $e) {
-    // catch body
-} catch (OtherExceptionType $e) {
-    // catch body
+    // corpo del try
+} catch (TipoPrimaEccezione $e) {
+    // corpo del catch
+} catch (TipoAltraEccezione $e) {
+    // corpo del catch
 }
 ```
 
-6. Closures
------------
+6. Le Closure
+--------------
 
-Closures MUST be declared with a space after the `function` keyword, and a
-space before and after the `use` keyword.
+Le closure DEVONO essere dichiarate con uno spazio dopo la keyword `function`
+e uno spazio prima e dopo la keyword `use`.
 
-The opening brace MUST go on the same line, and the closing brace MUST go on
-the next line following the body.
+La graffa di apertura DEVE andare sulla stessa riga e la graffa di chiusura
+DEVE andare sulla riga successiva al corpo.
 
-There MUST NOT be a space after the opening parenthesis of the argument list
-or variable list, and there MUST NOT be a space before the closing parenthesis
-of the argument list or variable list.
+NON DEVE esserci uno spazio dopo la parentesi di apertura della lista di argomenti
+o la lista di variabili e NON DEVE esserci uno spazio prima della parentesi di
+chiusura della lista di argomenti o della lista di variabili.
 
-In the argument list and variable list, there MUST NOT be a space before each
-comma, and there MUST be one space after each comma.
+Nella lista di argomenti e nella lista di variabili NON DEVE esserci uno spazio
+prima di ogni virgola, e DEVE esserci uno spazio dopo ogni virgola.
 
-Closure arguments with default values MUST go at the end of the argument
-list.
+Gli argomenti delle closure con valori di default DEVONO andare alla fine della
+lista di argomenti.
 
-A closure declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+
+La dichiarazione di una closure dovrebbe essere come la seguente. Da notare
+il posizionamento delle parentesi, delle virgole, degli spazi e delle graffe.
+
 
 ```php
 <?php
 $closureWithArgs = function ($arg1, $arg2) {
-    // body
+    // corpo
 };
 
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
-    // body
+    // corpo
 };
 ```
 
