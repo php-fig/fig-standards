@@ -315,7 +315,7 @@ class ClassName
 }
 ```
 
-### 4.5. `abstract`, `final`, r `static`
+### 4.5. `abstract`, `final`, `static`
 
 Quando presenti, le dichiarazioni `abstract` e `final` DEVONO precedere
 le dichiarazioni di visibilità.
