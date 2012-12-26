@@ -101,6 +101,9 @@ Cache proxy MUST send the right data to the drivers, be it in the form of
 serialized `CacheItem` or directly as a `CacheItem` object, depending on the
 capabilities of the used driver.
 
+If the driver does not support serialization then the proxy should use the
+serialization function passed via ``` setSerializer() ``` method.
+
 2. Package
 ----------
 
@@ -372,14 +375,26 @@ interface CacheProxyInterface
 {
 
     /**
-     * Create the proxy that's going to be used by the end-user by adding the
+     * Set the cache driver
      *
      * @param DriverInterface $cacheDriver
+     *
+     * @return CacheProxyInterface
      */
-    public function __construct(DriverInterface $cacheDriver);
+    public function setCacheDriver(DriverInterface $cacheDriver);
 
     /**
-     * Get the default TTL of the instance
+     * Set the custom serializer function which will be used when the
+     * cache driver does not support serialization
+     *
+     * @param callable $serializer
+     *
+     * @return CacheProxyInterface
+     */
+    public function setSerializer($serializer);
+
+    /**
+     * Get the default TTL of the instance in seconds
      *
      * @return int
      */
@@ -390,7 +405,7 @@ interface CacheProxyInterface
      *
      * @param $defaultTtl
      *
-     * @return Driver
+     * @return CacheProxyInterface
      */
     public function setDefaultTtl($defaultTtl);
 
