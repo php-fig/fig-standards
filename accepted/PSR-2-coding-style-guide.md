@@ -48,8 +48,8 @@ interpreted as described in [RFC 2119][].
 - Control structure keywords MUST have one space after them; method and
   function calls MUST NOT.
 
-- Opening braces for control structures MUST go on the same line, and closing
-  braces MUST go on the next line after the body.
+- Opening braces for control structures MUST either go on the same line, or the
+  next; closing braces MUST go on the next line after the body.
 
 - Opening parentheses for control structures MUST NOT have a space after them,
   and closing parentheses for control structures MUST NOT have a space before.
