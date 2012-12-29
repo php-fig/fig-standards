@@ -23,7 +23,7 @@ interpreted as described in [RFC 2119][].
 
 - properties MUST NOT have numeric characters
 - Static properties MUST NOT be publicly visible. 
-- It is RECOMMENDED when declaring static properties the order follows Private, Protected
+- It is RECOMMENDED when declaring static properties the order follows private then protected
 - Order of property Declaration MUST be as follows:
 
     1. Class constants
