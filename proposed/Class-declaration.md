@@ -163,7 +163,7 @@ class BadExample
         $this->bar = $value;
     }
 
-    public function setBar($value)
+    public function setBaz($value)
     {
         $this->bar = $value;
     }
