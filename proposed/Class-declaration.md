@@ -37,7 +37,9 @@ interpreted as described in [RFC 2119][].
 - Magic methods MUST follow property declaration 
 - Static methods MUST follow magic methods and follow Private Protected Public order
 - Final methods MUST follow static methods
-- Abstract methods MUST be declared at the end of the class declration  
+- Interface methods MUST be declared at the end of the class declration before Abstract Methods 
+- Abstract methods MUST be declared at the end of the class declration
+
 
 ### 1.3 Setters and Getters
 
