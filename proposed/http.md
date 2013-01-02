@@ -68,7 +68,7 @@ interface MessageInterface
      *
      * @param string $protocolVersion The HTTP protocol version.
      *
-     * @return MessageInterface A reference to the message.
+     * @return self Reference to the message.
      *
      * @throws InvalidArgumentException When the HTTP protocol version is not valid.
      */
@@ -114,7 +114,7 @@ interface MessageInterface
      * @param string $header Header name.
      * @param string $value  Header value.
      *
-     * @return MessageInterface Reference to the message.
+     * @return self Reference to the message.
      *
      * @throws InvalidArgumentException When the header name or value is not valid.
      */
@@ -132,7 +132,7 @@ interface MessageInterface
      *
      * @param array $headers Headers to set.
      *
-     * @return MessageInterface Reference to the message.
+     * @return self Reference to the message.
      *
      * @throws InvalidArgumentException When part of the header set is not valid.
      */
@@ -152,7 +152,7 @@ interface MessageInterface
      *
      * @param array $headers Headers to add.
      *
-     * @return MessageInterface Reference to the message.
+     * @return self Reference to the message.
      *
      * @throws InvalidArgumentException When part of the header set is not valid.
      */
@@ -202,7 +202,7 @@ interface MessageInterface
      *
      * @param mixed $body Body.
      *
-     * @return MessageInterface Reference to the message.
+     * @return self Reference to the message.
      *
      * @throws InvalidArgumentException When the body is not valid.
      */
@@ -225,13 +225,6 @@ use Psr\Http\Exception\InvalidArgumentException;
 interface RequestInterface extends MessageInterface
 {
     /**
-     * Returns the request as an HTTP string.
-     *
-     * @return string Request as an HTTP string.
-     */
-    public function __toString();
-
-    /**
      * Gets the method.
      *
      * @return string Method.
@@ -243,7 +236,7 @@ interface RequestInterface extends MessageInterface
      *
      * @param string $method Method.
      *
-     * @return RequestInterface Reference to the request.
+     * @return self Reference to the request.
      */
     public function setMethod($method);
 
@@ -259,46 +252,11 @@ interface RequestInterface extends MessageInterface
      *
      * @param string $url URL.
      *
-     * @return RequestInterface Reference to the request.
+     * @return self Reference to the request.
      *
      * @throws InvalidArgumentException If the URL is invalid.
      */
     public function setUrl($url);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return RequestInterface Reference to the request.
-     */
-    public function setProtocolVersion($protocolVersion);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return RequestInterface Reference to the request.
-     */
-    public function setHeader($header, $value);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return RequestInterface Reference to the request.
-     */
-    public function setHeaders(array $headers);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return RequestInterface Reference to the request.
-     */
-    public function addHeaders(array $headers);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return RequestInterface Reference to the request.
-     */
-    public function setBody($body);
 }
 ```
 
@@ -317,20 +275,6 @@ use Psr\Http\Exception\InvalidArgumentException;
 interface ResponseInterface extends MessageInterface
 {
     /**
-     * Returns the response as an HTTP string.
-     *
-     * @return string Response as an HTTP string.
-     */
-    public function __toString();
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return ResponseInterface Reference to the response.
-     */
-    public function setProtocolVersion($protocolVersion);
-
-    /**
      * Gets the response status code.
      *
      * @return string Status code.
@@ -342,7 +286,7 @@ interface ResponseInterface extends MessageInterface
      *
      * @param integer $statusCode Status code.
      *
-     * @return ResponseInterface Reference to the response.
+     * @return self Reference to the response.
      *
      * @throws InvalidArgumentException When the status code is not valid.
      */
@@ -363,36 +307,8 @@ interface ResponseInterface extends MessageInterface
      *
      * @param string $reasonPhrase Reason phrase.
      *
-     * @return ResponseInterface Reference to the response.
+     * @return self Reference to the response.
      */
     public function setReasonPhrase($reasonPhrase);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return ResponseInterface Reference to the response.
-     */
-    public function setHeader($header, $value);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return ResponseInterface Reference to the response.
-     */
-    public function setHeaders(array $headers);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return ResponseInterface Reference to the response.
-     */
-    public function addHeaders(array $headers);
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return ResponseInterface Reference to the response.
-     */
-    public function setBody($body);
 }
 ```
