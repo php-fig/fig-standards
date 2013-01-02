@@ -232,22 +232,6 @@ interface RequestInterface extends MessageInterface
     public function __toString();
 
     /**
-     * Gets the response object that is associated with this request.
-     *
-     * @return ResponseInterface|null Response, or null if not set.
-     */
-    public function getResponse();
-
-    /**
-     * Sets the response object that is associated with this request.
-     *
-     * @param ResponseInterface $response Response.
-     *
-     * @return RequestInterface Reference to the request.
-     */
-    public function setResponse(ResponseInterface $response);
-
-    /**
      * Gets the method.
      *
      * @return string Method.
@@ -338,22 +322,6 @@ interface ResponseInterface extends MessageInterface
      * @return string Response as an HTTP string.
      */
     public function __toString();
-
-    /**
-     * Gets the request object that is associated with this response.
-     *
-     * @return RequestInterface|null Request, or null if not set.
-     */
-    public function getRequest();
-
-    /**
-     * Sets the request object that is associated with this response.
-     *
-     * @param RequestInterface $request Request.
-     *
-     * @return ResponseInterface Reference to the response.
-     */
-    public function setRequest(RequestInterface $request);
 
     /**
      * {@inheritdoc}
