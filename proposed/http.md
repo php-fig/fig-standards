@@ -184,14 +184,16 @@ interface MessageInterface
      * The body SHOULD be one of:
      *
      * - string
-     * - callable that returns a string
      * - object that implements `Serializable`
      * - `SimpleXMLElement`
      * - stream
      * - null
+     * - callable that returns one of the above
      *
      * An implementation MUST reject any other form that it does not know how
      * to turn into a string.
+     *
+     * A callable MUST be called at this point to verify the return type.
      *
      * Anything other than a stream MAY immediately be turned into a string;
      * both forms MUST be stored.
