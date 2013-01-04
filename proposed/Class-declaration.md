@@ -53,7 +53,7 @@ class OrderExample
 {
     const VERSION = '1.4';
 
-    private static $prrivateFoo;
+    private static $privateFoo;
 
     protected static $protectedFoo;
 
