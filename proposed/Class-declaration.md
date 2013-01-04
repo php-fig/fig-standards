@@ -21,16 +21,14 @@ interpreted as described in [RFC 2119][].
 
 ### 1.1 Properties
 
-- Properties MUST NOT have numeric characters
-- Static properties MUST NOT be publicly visible. 
 - It is RECOMMENDED when declaring static properties the order follows private then protected
 - Order of property Declaration MUST be as follows:
 
     1. Class constants
     2. Static properties 
-    3. Private properties 
+    3. Public properties  
     4. Protected properties 
-    5. Public properties 
+    5. Private properties
 
 ### 1.2 Methods
 
