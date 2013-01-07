@@ -33,8 +33,8 @@ interpreted as described in [RFC 2119][].
 ### 1.2 Methods
 
 - Magic methods MUST follow property declaration 
-- Static methods MUST follow magic methods and follow Private Protected Public order
-- Final methods MUST follow static methods
+- Static methods MUST follow magic methods and follow Public Protected Private order
+- Final methods MUST follow static methods and follow Public Protected Private order
 - Interface methods MUST be declared at the end of the class declration before Abstract Methods 
 - Abstract methods MUST be declared at the end of the class declration
 
@@ -49,33 +49,91 @@ interpreted as described in [RFC 2119][].
 ### 2.1 Good Example:
 ```php
 <?php
-class OrderExample
+class OrderExample extends SomeAbstract implements SomeInterface
 {
     const VERSION = '1.4';
 
-    private static $privateFoo;
+    public static $publicFoo;
 
     protected static $protectedFoo;
 
-    public static $publicFoo;
+    private static $privateFoo;
 
-    private $privateBar;
+    public $publicBar;
 
     protected $protectedBar;
 
-    public $publicBar;
-    
+    private $privateBar;
+
     public function __construct()
     {
-        $this->privateBar = false;
+        // do something
+    }
+
+    public function __toString()
+    {
+        return 'string';
     }
     
-    public function __set(
+    public static function somePublicStaticFunction()
+    {
+        // do something
+    }
+
+    protected static function someProtectedStaticFunction()
+    {
+        // do something
+    }
+
+    private static function somePrivateStaticFunction()
+    {
+        // do something
+    }
+
+    final public function somethingFinalPublic()
+    {
+        // do something
+    }
+
+    final protected function somethingFinalProtected()
+    {
+        // do something
+    }
+
+    final private function somethingFinalPrivate()
+    {
+        // do something
+    }
+
+    public function doSomethingPublic()
+    {
+        // do something
+    }
+
+    protected function doSomethingProtected()
+    {
+        // do something
+    }
+
+    private function doSomethingPrivate()
+    {
+        // do something
+    }
+
+    public function fromInterface()
+    {
+        // do something from the interface
+    }
+
+    public function fromAbstract()
+    {
+        // do something from the abstract
+    }
 }
 
 ```
 
-### 2.2 Grouped Setters Example:
+### 2.2 Grouped Setters and Getters Example:
 ```php
 <?php
 class GroupedExample 
@@ -106,7 +164,7 @@ class GroupedExample
 }
 ```
 
-### 2.3 Serial Example:
+### 2.3 Serial Setters and Getters Example:
 ```php
 <?php
 class SerialExample 
