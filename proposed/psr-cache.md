@@ -43,6 +43,9 @@ The cache proxy MUST receive a cache driver which implements
 `Psr\Cache\DriverInterface` and must receive a `Psr\Cache\ItemInterface`
 in order to save it in to the cache driver.
 
+All the `TTL` references in this document are defined as the number of seconds
+until the user of that value will be rendered invalid.
+
 ### 1.2 CacheItem
 
 By `CacheItem` we refer to a object that implements the
@@ -56,7 +59,9 @@ The item MUST store the user value as well as additional metadata for it.
 
 The cache item should also contain a function that allows the user to retrieve
 the remaining TTL of the item in order to better coordinate with its expiry
-time.
+time. In order to provide this functionality, the `CacheItem` SHOULD store
+the timestamp for the save time of the item in the cache so that it can then
+compute the remaining TTL.
 
 ### 1.3 CacheDriver
 
@@ -67,8 +72,8 @@ A driver MUST to be decoupled from the proxy so that it only implements the
 basic operations described in either the `DriverInterface` or in
 `BatchDriverInterface` which extends the first one.
 
-It is the cache proxy MUST serialize the information in the right way if the
-driver doesn't support for serialization.
+It is the cache proxy that MUST serialize the information in the right way if
+the driver doesn't support for serialization.
 
 When saving the cache item the driver SHOULD perform the save operation only
 but other operations MAY be done such as logging / profiling. Other operation
@@ -80,13 +85,8 @@ In case the driver does not implement `BatchDriverInterface` then the
 `CacheProxy` MUST implement the missing functionality so that the end-user has
 the same consistent behavior.
 
-If the cache driver provides only some support for multiple (bulk) operations
-then the driver MUST implement the rest of the missing operations instead of
-the `CacheProxy` in order to keep the driver consistent with the specified
-interface.
-
-The same goes for the drivers that have support only for multiple operations
-and have no or partial support for single operations.
+A `CacheDriver` implementation MUST implement the `BatchDriverInterface` in
+order to provide the same level of operations between driver implementations.
 
 ### 1.4 CacheProxy
 
@@ -103,6 +103,13 @@ capabilities of the used driver.
 
 If the driver does not support serialization then the proxy should use the
 serialization function passed via ``` setSerializer() ``` method.
+
+The `CacheProxy` MUST be able to handle multiple cache drivers. A priority
+based system will dictate which driver order should be used when performing
+the operations on the caching drivers. Adding a new cache driver with the
+same priority as an existing driver must explicitly declare the intention
+of overwriting the existing driver else a `RuntimeException` MUST be risen
+in order to signal the failure of operation.
 
 2. Package
 ----------
@@ -258,11 +265,10 @@ interface DriverInterface
      * Get an entry from the cache
      *
      * @param string $key Entry id
-     * @param boolean|null $exists If the operation was succesfull or not
      *
-     * @return mixed The cached data or FALSE
+     * @return mixed The cached data or null
      */
-    public function get($key, &$exists = null);
+    public function get($key);
 
     /**
      * Removes a cache entry
@@ -314,10 +320,7 @@ interface BatchDriverInterface extends DriverInterface
      * Fetches multiple items from the cache.
      *
      * The returned structure must be an associative array. If items were
-     * not found in the cache, they should not be included in the array.
-     *
-     * This means that if none of the items are found, this method must
-     * return an empty array.
+     * not found in the cache, they will be added as null values.
      *
      * @param array $keys
      *
@@ -346,13 +349,6 @@ interface BatchDriverInterface extends DriverInterface
      */
     public function existsMultiple(array $keys);
 
-    /**
-     * If this driver has support for serialization or not
-     *
-     * @return boolean
-     */
-    public function hasSerializationSupport();
-
 }
 
 ```
@@ -375,13 +371,24 @@ interface CacheProxyInterface
 {
 
     /**
-     * Set the cache driver
+     * Add a new cache driver.
+     *
+     * The priority will dictate which driver order should be used when
+     * performing the operations on the caching drivers.
+     *
+     * If the $overwriteExisting is passed as true then the driver will
+     * overwrite the existing driver which has the same priority as the
+     * driver that's being added.
      *
      * @param DriverInterface $cacheDriver
+     * @param int             $priority
+     * @param boolean         $overwriteExisting
      *
      * @return CacheProxyInterface
+     *
+     @ throws RuntimeException When the driver already exists with same priority but no explicit overwrite was specified
      */
-    public function setCacheDriver(DriverInterface $cacheDriver);
+    public function addCacheDriver(DriverInterface $cacheDriver, $priority = 100, $overwriteExisting = false);
 
     /**
      * Set the custom serializer function which will be used when the
@@ -413,11 +420,10 @@ interface CacheProxyInterface
      * Get cache entry
      *
      * @param string|ItemInterface $key
-     * @param boolean|null $exists
      *
-     * @return ItemInterface
+     * @return ItemInterface|null
      */
-    public function get($key, &$exists = null);
+    public function get($key);
 
     /**
      * Check if a cache entry exists
