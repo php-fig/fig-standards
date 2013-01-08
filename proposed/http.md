@@ -172,8 +172,6 @@ interface MessageInterface
     /**
      * Gets the body as a string.
      *
-     * If the body is a stream, it will be read at this point.
-     *
      * @return string|null Body as a string, or null if not set.
      */
     public function getBodyAsString();
@@ -181,26 +179,13 @@ interface MessageInterface
     /**
      * Sets the body.
      *
-     * The body SHOULD be one of:
-     *
-     * - string
-     * - object that implements `Serializable`
-     * - `SimpleXMLElement`
-     * - stream
-     * - null
-     * - callable that returns one of the above
-     *
-     * An implementation MUST reject any other form that it does not know how
-     * to turn into a string.
-     *
-     * A callable MUST be called at this point to verify the return type.
-     *
-     * Anything other than a stream MAY immediately be turned into a string;
-     * both forms MUST be stored.
-     *
-     * An implementation MUST NOT read a stream at this point.
+     * The body SHOULD be a string, or an object that implements the
+     * `__toString()` method.
      *
      * A null value will remove the existing body.
+     *
+     * An implementation MAY accept other types, but MUST reject anything that
+     * it does not know how to turn into a string.
      *
      * @param mixed $body Body.
      *
