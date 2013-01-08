@@ -279,7 +279,7 @@ interface ResponseInterface extends MessageInterface
     /**
      * Gets the response status code.
      *
-     * @return string Status code.
+     * @return integer Status code.
      */
     public function getStatusCode();
 
