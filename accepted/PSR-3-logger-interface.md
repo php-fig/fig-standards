@@ -134,7 +134,7 @@ Users of loggers are refered to as `user`.
 
 The interfaces and classes described as well as relevant exception classes
 and a test suite to verify your implementation are provided as part of the
-[php-fig/psr-log](https://packagist.org/packages/php-fig/psr-log) package.
+[psr/log](https://packagist.org/packages/psr/log) package.
 
 3. `Psr\Log\LoggerInterface`
 ----------------------------
