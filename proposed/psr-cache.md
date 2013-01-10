@@ -2,8 +2,8 @@ Common Interface for Caching libraries
 ================
 
 
-This document describes a simple yet extensible interface for a cache item,
-a cache driver and a cache proxy.
+This document describes a simple yet extensible interface for a cache item and
+a cache driver.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -31,13 +31,13 @@ improper implementations.
 
 ### 1.1 Quick description
 
-In order to save the user information into the cache driver, a simple cache
+In order to save the user information into a cache system, a simple cache
 item is implemented which facilitates the storing of any and all possible
 information that a user might want to store.
 
-For this, the cache driver implementation MUST be able to handle
-serialization of PHP objects or MUST implement / execute a serialization /
-deserialization of the cache item before saving/retrieving.
+For this, the `Cache` implementation MUST be able to handle serialization
+of PHP objects or MUST implement / execute a serialization / deserialization
+of the cache item before saving/retrieving.
 
 All the `TTL` references in this document are defined as the number of seconds
 until the user of that value will be rendered invalid.
@@ -48,8 +48,8 @@ By `CacheItem` we refer to a object that implements the
 `Psr\Cache\ItemInterface` interface.
 
 Using the cache item approach to save the user that we can guarantee that
-regardles of the driver implementation, the user MUST always be able to
-retrieve the same data he expects to retrieve / saved into the driver.
+regardles of the `Cache` implementation, the user MUST always be able to
+retrieve the same data he expects to retrieve / saved into `Cache`.
 
 The cache item MUST also contain a function that allows the user to retrieve
 the remaining TTL of the item in order to better coordinate with its expiry
@@ -57,26 +57,30 @@ time. In order to provide this functionality, the `CacheItem` MUST store the
 timestamp for the save time of the item in the cache so that it can then
 compute the remaining TTL.
 
-### 1.3 CacheDriver
+### 1.3 Cache
 
-By `CacheDriver` we refer to a object that implements the
-`Psr\Cache\CacheInterface` interface.
+By `Cache` we refer to a object that implements the `Psr\Cache\CacheInterface`
+interface.
 
-When saving the cache item the driver SHOULD perform only the save operation
-but other operations MAY be done such as logging / profiling. Other operation
-types are MAY be done as well but it is RECOMMENDED to keep the driver as
-simple as possible in order to it to be exchanged / used in other projects
-with ease.
+When saving the cache item, it SHOULD perform only the save operation, but
+other operations MAY be done such as logging / profiling. Other operation types
+MAY be done as well but it is RECOMMENDED to keep the implementation as simple
+as possible in order to it to be exchanged / used in other projects with ease.
 
-The `defaultTTL` value MUST be expressed in seconds and will be used when the
-user will not provide a TTL to the value that's saved to the cache system.
-It will also serve as point of reference when the value is not valid for the
-used driver as well as a default value when the `TTL` or `remainingTTL` are
-not present in the `CacheItem` or are damaged.
+If the user doesn't provide a TTL value then the `Cache` MUST set a default
+value that is either configured by the user or, if not available, the maximum
+value allowed by the driver.
 
 It will be the implementation job to define what values are considered valid
 or invalid for the specific driver but the user should be aware of the
 accepted values by the underlying solution.
+
+When saving new values into the cache system, the `Cache` implementation will
+first create a `CacheItem` then store it. Users are allowed to create new
+`CacheItem` objects but their usage is outside of this document scope.
+
+`Cache` MUST return a `CacheItem` when the item is found in the cache and
+`null` when the item is not found.
 
 2. Package
 ----------
@@ -103,22 +107,6 @@ interface ItemInterface
 {
 
     /**
-     * Set the value of the key to store our value under
-     *
-     * @param string $cacheKey
-     *
-     * @return ItemInterface
-     */
-    public function setKey($cacheKey);
-
-    /**
-     * Get the key of the object
-     *
-     * @return string
-     */
-    public function getKey();
-
-    /**
      * Set the value to be stored in the cache
      *
      * @param mixed $cacheValue
@@ -142,13 +130,6 @@ interface ItemInterface
      * @return ItemInterface
      */
     public function setTtl($ttl);
-
-    /**
-     * Get the TTL of the object
-     *
-     * @return int
-     */
-    public function getTtl();
 
     /**
      * Get the remaining time in seconds until the item will expire
@@ -179,26 +160,10 @@ namespace Psr\Cache;
 use Psr\Cache\ItemInterface;
 
 /**
- * This is our cache proxy
+ * This is our cache driver
  */
 interface CacheInterface
 {
-
-    /**
-     * Get the default TTL of the instance in seconds
-     *
-     * @return int
-     */
-    public function getDefaultTtl();
-
-    /**
-     * Set the default TTL of the instance
-     *
-     * @param $defaultTtl
-     *
-     * @return CacheProxyInterface
-     */
-    public function setDefaultTtl($defaultTtl);
 
     /**
      * Get cache entry
@@ -221,11 +186,13 @@ interface CacheInterface
     /**
      * Set a single cache entry
      *
-     * @param ItemInterface $cacheItem
+     * @param string   $key
+     * @param mixed    $value
+     * @param int|null $ttl
      *
      * @return boolean Result of the operation
      */
-    public function set(ItemInterface $cacheItem);
+    public function set($key, $value, $ttl = null);
 
     /**
      * Remove a single cache entry
@@ -237,8 +204,7 @@ interface CacheInterface
     public function remove($key);
 
     /**
-     * Set multiple keys in the cache
-     * If $ttl is not passed then the default TTL is used
+     * Set multiple entries in the cache
      *
      * @param ItemInterface[] $items
      * @param null|int $ttl
@@ -246,7 +212,7 @@ interface CacheInterface
     public function setMultiple(array $items, $ttl = null);
 
     /**
-     * Get multiple keys the cache
+     * Get multiple entries the cache
      *
      * @param string[] $keys
      *
@@ -255,14 +221,14 @@ interface CacheInterface
     public function getMultiple($keys);
 
     /**
-     * Remove multiple keys from the cache
+     * Remove multiple entries from the cache
      *
      * @param string[] $keys
      */
     public function removeMultiple($keys);
 
     /**
-     * Check if multiple keys exists in the cache
+     * Check if multiple entries exists in the cache
      *
      * @param string[] $keys
      *
