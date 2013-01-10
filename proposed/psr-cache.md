@@ -35,13 +35,9 @@ In order to save the user information into the cache driver, a simple cache
 item is implemented which facilitates the storing of any and all possible
 information that a user might want to store.
 
-For this, the cache driver implementation MUST specify if it's able to handle
-native serialization of PHP objects or the cache proxy MUST implement / execute
-a serialization/deserialization of the cache item before saving/retrieving.
-
-The cache proxy MUST receive a cache driver which implements
-`Psr\Cache\DriverInterface` and must receive a `Psr\Cache\ItemInterface`
-in order to save it in to the cache driver.
+For this, the cache driver implementation MUST be able to handle
+serialization of PHP objects or MUST implement / execute a serialization /
+deserialization of the cache item before saving/retrieving.
 
 All the `TTL` references in this document are defined as the number of seconds
 until the user of that value will be rendered invalid.
@@ -57,18 +53,18 @@ retrieve the same data he expects to retrieve / saved into the driver.
 
 The cache item MUST also contain a function that allows the user to retrieve
 the remaining TTL of the item in order to better coordinate with its expiry
-time. In order to provide this functionality, the `CacheItem` SHOULD store
-the timestamp for the save time of the item in the cache so that it can then
+time. In order to provide this functionality, the `CacheItem` MUST store the
+timestamp for the save time of the item in the cache so that it can then
 compute the remaining TTL.
 
-### 1.3 Cache
+### 1.3 CacheDriver
 
 By `CacheDriver` we refer to a object that implements the
 `Psr\Cache\CacheInterface` interface.
 
-When saving the cache item the driver SHOULD perform the save operation only
+When saving the cache item the driver SHOULD perform only the save operation
 but other operations MAY be done such as logging / profiling. Other operation
-types are could be done as well but it is RECOMMENDED to keep the driver as
+types are MAY be done as well but it is RECOMMENDED to keep the driver as
 simple as possible in order to it to be exchanged / used in other projects
 with ease.
 
@@ -87,7 +83,7 @@ accepted values by the underlying solution.
 
 The interfaces and classes described as well as relevant exception classes
 and a test suite to verify your implementation are provided as part of the
-[php-fig/Psr-cache](https://packagist.org/packages/php-fig/psr-cache) package.
+[php-fig/cache](https://packagist.org/packages/php-fig/psr-cache) package.
 
 3. Interfaces
 ----------
@@ -105,6 +101,7 @@ namespace Psr\Cache;
  */
 interface ItemInterface
 {
+
     /**
      * Set the value of the key to store our value under
      *
