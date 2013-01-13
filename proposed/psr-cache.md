@@ -51,12 +51,6 @@ Using the cache item approach to save the user that we can guarantee that
 regardles of the `Cache` implementation, the user MUST always be able to
 retrieve the same data he expects to retrieve / saved into `Cache`.
 
-The cache item MUST also contain a function that allows the user to retrieve
-the remaining TTL of the item in order to better coordinate with its expiry
-time. In order to provide this functionality, the `CacheItem` MUST store the
-timestamp for the save time of the item in the cache so that it can then
-compute the remaining TTL.
-
 ### 1.3 Cache
 
 By `Cache` we refer to a object that implements the `Psr\Cache\CacheInterface`
@@ -111,7 +105,7 @@ interface ItemInterface
      *
      * @param mixed $cacheValue
      *
-     * @return ItemInterface
+     * @return null
      */
     public function setValue($cacheValue);
 
@@ -121,29 +115,6 @@ interface ItemInterface
      * @return mixed
      */
     public function getValue();
-
-    /**
-     * Set the TTL value
-     *
-     * @param int $ttl
-     *
-     * @return ItemInterface
-     */
-    public function setTtl($ttl);
-
-    /**
-     * Get the remaining time in seconds until the item will expire
-     * The implementation should save the expiry time in the item metadata on
-     * save event and then retrieve it from the object metadata and substract
-     * it from the current time
-     *
-     * *Note* certain delays can occur as the save event won't be able to
-     * provide actual save time of when the user called the save method and
-     * the real save time when the driver will save the item
-     *
-     * @return int
-     */
-    public function getRemainingTtl();
 
 }
 
