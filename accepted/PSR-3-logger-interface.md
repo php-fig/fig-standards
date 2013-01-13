@@ -76,7 +76,7 @@ Users of loggers are refered to as `user`.
           $replace['{' . $key . '}'] = $val;
       }
 
-      // interpolate replacement values into the the message and return
+      // interpolate replacement values into the message and return
       return strtr($message, $replace);
   }
 
