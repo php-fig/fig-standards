@@ -56,25 +56,16 @@ retrieve the same data he expects to retrieve / saved into `Cache`.
 By `Cache` we refer to a object that implements the `Psr\Cache\CacheInterface`
 interface.
 
-When saving the cache item, it SHOULD perform only the save operation, but
-other operations MAY be done such as logging / profiling. Other operation types
-MAY be done as well but it is RECOMMENDED to keep the implementation as simple
-as possible in order to it to be exchanged / used in other projects with ease.
-
 If the user doesn't provide a TTL value then the `Cache` MUST set a default
 value that is either configured by the user or, if not available, the maximum
 value allowed by the driver.
 
 It will be the implementation job to define what values are considered valid
-or invalid for the specific driver but the user should be aware of the
-accepted values by the underlying solution.
+or invalid for the specific storage but the user MUST be aware of the accepted
+values by the underlying solution both for TTL values as well as for key names.
 
-When saving new values into the cache system, the `Cache` implementation will
-first create a `CacheItem` then store it. Users are allowed to create new
-`CacheItem` objects but their usage is outside of this document scope.
-
-`Cache` MUST return a `CacheItem` when the item is found in the cache and
-`null` when the item is not found.
+`Cache` MUST return always a `CacheItem` when the item is found in the cache
+and `null` when the item is not found.
 
 2. Package
 ----------
