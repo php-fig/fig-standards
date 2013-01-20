@@ -133,7 +133,7 @@ Users of loggers are refered to as `user`.
 ----------
 
 The interfaces and classes described as well as relevant exception classes
-and a test suite to verify your implementation are provided as part of the
+and a test suite to verify your implementation is provided as part of the
 [psr/log](https://packagist.org/packages/psr/log) package.
 
 3. `Psr\Log\LoggerInterface`
