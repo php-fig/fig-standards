@@ -13,17 +13,6 @@ The final implementations MAY be able to decorate the objects with more
 functionality that the one proposed but they MUST implement the indicated
 interfaces/functionality first.
 
-Also, since this involves caching, which is used to obtain better performance
-from systems, the implementation detail is RECOMMENDED to be as simple and
-fast as possible.
-
-For this reason, this document doesn't describe how tags, namespaces or
-locking problems are addressed as they are OPTIONAL and MAY be implemented by
-each vendor as it sees fit for the specific needs. One of the main reason is
-the lack of support into many existing, at time of this document creation,
-fast key/value storages as well as potential performance issues due to
-improper implementations.
-
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
 1. Specification
@@ -31,25 +20,26 @@ improper implementations.
 
 ### 1.1 Quick description
 
-In order to save the user information into a cache system, a simple cache
-item is implemented which facilitates the storing of any and all possible
+In order to save the user information into a cache system, a simple cache item
+is implemented which facilitates the storing of any and all possible
 information that a user might want to store.
 
-For this, the `Cache` implementation MUST be able to handle serialization
-of PHP objects or MUST implement / execute a serialization / deserialization
-of the cache item before saving/retrieving.
+For this, the `Cache` implementation MUST be able to handle any values that
+a user could store, including and not limited to PHP objects, null values,
+boolean values and so on.
 
 All the `TTL` references in this document are defined as the number of seconds
-until the user of that value will be rendered invalid.
+until the item using it will be rendered invalid/expired/deleted from the
+caching system.
 
 ### 1.2 CacheItem
 
 By `CacheItem` we refer to a object that implements the
 `Psr\Cache\ItemInterface` interface.
 
-Using the cache item approach to save the user that we can guarantee that
-regardles of the `Cache` implementation, the user MUST always be able to
-retrieve the same data he expects to retrieve / saved into `Cache`.
+By using the cache item implementations will guarantee consistency across
+various systems and ensure that the user will always retrieve the expected data
+without performing any additional operations.
 
 ### 1.3 Cache
 
@@ -58,7 +48,7 @@ interface.
 
 If the user doesn't provide a TTL value then the `Cache` MUST set a default
 value that is either configured by the user or, if not available, the maximum
-value allowed by the driver.
+value allowed by cache system.
 
 It will be the implementation job to define what values are considered valid
 or invalid for the specific storage but the user MUST be aware of the accepted
@@ -67,17 +57,10 @@ values by the underlying solution both for TTL values as well as for key names.
 `Cache` MUST return always a `CacheItem` when the item is found in the cache
 and `null` when the item is not found.
 
-2. Package
+2. Interfaces
 ----------
 
-The interfaces and classes described as well as relevant exception classes
-and a test suite to verify your implementation are provided as part of the
-[php-fig/cache](https://packagist.org/packages/php-fig/psr-cache) package.
-
-3. Interfaces
-----------
-
-### 3.1 ItemInterface
+### 2.1 ItemInterface
 
 ```php
 
@@ -111,7 +94,7 @@ interface ItemInterface
 
 ```
 
-### 3.2 CacheInterface
+### 2.2 CacheInterface
 
 ```php
 
@@ -128,6 +111,13 @@ interface CacheInterface
 {
 
     /**
+     * Set default TTL value
+     *
+     * @param int $ttl
+     */
+    public function setDefaultTtl($ttl);
+
+    /**
      * Get cache entry
      *
      * @param string $key
@@ -141,7 +131,7 @@ interface CacheInterface
      *
      * @param string $key
      *
-     * @return boolean
+     * @return Boolean
      */
     public function exists($key);
 
@@ -152,7 +142,7 @@ interface CacheInterface
      * @param mixed    $value
      * @param int|null $ttl
      *
-     * @return boolean Result of the operation
+     * @return Boolean Result of the operation
      */
     public function set($key, $value, $ttl = null);
 
@@ -161,17 +151,9 @@ interface CacheInterface
      *
      * @param string $key
      *
-     * @return boolean Result of the operation
+     * @return Boolean Result of the operation
      */
     public function remove($key);
-
-    /**
-     * Set multiple entries in the cache
-     *
-     * @param ItemInterface[] $items
-     * @param null|int $ttl
-     */
-    public function setMultiple(array $items, $ttl = null);
 
     /**
      * Get multiple entries the cache
@@ -183,21 +165,49 @@ interface CacheInterface
     public function getMultiple($keys);
 
     /**
+     * Check if multiple entries exists in the cache
+     *
+     * @param string[] $keys
+     *
+     * @return Boolean[]
+     */
+    public function existsMultiple($keys);
+
+    /**
+     * Set multiple entries in the cache
+     *
+     * @param ItemInterface[] $items
+     * @param null|int $ttl
+     */
+    public function setMultiple(array $items, $ttl = null);
+
+    /**
      * Remove multiple entries from the cache
      *
      * @param string[] $keys
      */
     public function removeMultiple($keys);
 
-    /**
-     * Check if multiple entries exists in the cache
-     *
-     * @param string[] $keys
-     *
-     * @return boolean[]
-     */
-    public function existsMultiple($keys);
-
 }
 
 ```
+
+
+3. Package
+----------
+
+The interfaces described as well as a test suite to verify your implementation
+are provided as part of the [php-fig/cache](https://packagist.org/packages/php-fig/psr-cache) package.
+
+4. Appendix
+----------
+
+### 4.1 Usage of CacheItem
+
+Since various cache systems / or drivers are not fully capable of storing all
+the nativ data types present in PHP as well as have a consistent return value
+in case the stored value wasn't found that would not conflict otherwise with
+the value stored by the user, the CacheItem approach was used.
+
+This helps implementations store any data type in the cache system then allows
+each implementation do deal with the mentioned shortcomings.
