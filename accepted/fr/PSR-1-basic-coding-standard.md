@@ -17,7 +17,7 @@ Les mots clés "DOIT", "NE DOIT PAS", "REQUIS", "DEVRA", "NE DEVRA PAS", "DEVRAI
 
 - Les fichiers de code PHP DOIVENT être encodé uniquement en UTF-8 sans BOM.
 
-- Files SHOULD *either* declare symbols (classes, functions, constants, etc.) *or* cause side-effects (e.g. generate output, change .ini settings, etc.) but SHOULD NOT do both. //TODO
+- Les fichiers DOIVENT *soit* déclarer des symboles (classes, fonctions, constants, etc.) *soit* causer des effets secondaires (par exemple, générer des sorties, modifier paramètres .ini), mais NE DOIVENT PAS faire les deux.
 
 - Les espaces de noms et les classes DOIVENT suivre [PSR-0][].
 
@@ -27,7 +27,7 @@ Les mots clés "DOIT", "NE DOIT PAS", "REQUIS", "DEVRA", "NE DEVRA PAS", "DEVRAI
 
 - Les noms des méthodes DOIVENT être déclaré comme `camelCase`.
 
-2. Files
+2. Fichiers
 --------
 
 ### 2.1. Les tag's PHP
