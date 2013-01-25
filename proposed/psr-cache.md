@@ -35,7 +35,7 @@ caching system.
 ### 1.2 CacheItem
 
 By `CacheItem` we refer to a object that implements the
-`Psr\Cache\ItemInterface` interface.
+`Psr\Cache\CacheItemInterface` interface.
 
 By using the cache item implementations will guarantee consistency across
 various systems and ensure that the user will always retrieve the expected data
@@ -46,7 +46,7 @@ without performing any additional operations.
 By `Cache` we refer to a object that implements the `Psr\Cache\CacheInterface`
 interface.
 
-If the user doesn't provide a TTL value then the `Cache` MUST set a default
+If the user does not provide a TTL value then the `Cache` MUST set a default
 value that is either configured by the user or, if not available, the maximum
 value allowed by cache system.
 
@@ -60,7 +60,7 @@ and `null` when the item is not found.
 2. Interfaces
 ----------
 
-### 2.1 ItemInterface
+### 2.1 CacheItemInterface
 
 ```php
 
@@ -71,7 +71,7 @@ namespace Psr\Cache;
 /**
  * Interface for caching object
  */
-interface ItemInterface
+interface CacheItemInterface
 {
 
     /**
@@ -102,7 +102,7 @@ interface ItemInterface
 
 namespace Psr\Cache;
 
-use Psr\Cache\ItemInterface;
+use Psr\Cache\CacheItemInterface;
 
 /**
  * This is our cache driver
@@ -122,7 +122,7 @@ interface CacheInterface
      *
      * @param string $key
      *
-     * @return ItemInterface|null
+     * @return CacheItemInterface|null
      */
     public function get($key);
 
@@ -160,7 +160,7 @@ interface CacheInterface
      *
      * @param string[] $keys
      *
-     * @return ItemInterface[]
+     * @return CacheItemInterface[]
      */
     public function getMultiple($keys);
 
@@ -176,7 +176,7 @@ interface CacheInterface
     /**
      * Set multiple entries in the cache
      *
-     * @param ItemInterface[] $items
+     * @param CacheItemInterface[] $items
      * @param null|int $ttl
      */
     public function setMultiple(array $items, $ttl = null);
