@@ -218,3 +218,17 @@ the value stored by the user, the CacheItem approach was used.
 
 This helps implementations store any data type in the cache system then allows
 each implementation do deal with the mentioned shortcomings.
+
+The setter method is present so that insures interoperability across various
+libraries and to provide a common method of setting the value of the returned
+object.
+
+Due to the resons behind usage of cache item, the usage of such object outside
+of retrieving of information from the cache system.
+
+
+### 4.2 CacheInterface
+
+The method ```exists()``` is present in order to facilitate cases where a user
+will want to just check for an item presence rather that fecthing it in case it
+exists.
