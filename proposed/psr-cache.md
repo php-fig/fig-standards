@@ -57,6 +57,10 @@ values by the underlying solution both for TTL values as well as for key names.
 `Cache` MUST return always a `CacheItem` when the item is found in the cache
 and `null` when the item is not found.
 
+For ```setMultiple``` the array MUST be associative where the pair key/value
+will represent the key and value of the item in to be stored in the caching
+engine.
+
 2. Interfaces
 ----------
 
@@ -176,7 +180,7 @@ interface CacheInterface
     /**
      * Set multiple entries in the cache
      *
-     * @param CacheItemInterface[] $items
+     * @param array    $items
      * @param null|int $ttl
      */
     public function setMultiple(array $items, $ttl = null);
@@ -230,5 +234,5 @@ of retrieving of information from the cache system.
 ### 4.2 CacheInterface
 
 The method ```exists()``` is present in order to facilitate cases where a user
-will want to just check for an item presence rather that fecthing it in case it
+will want to just check for an item presence rather that fetching it in case it
 exists.
