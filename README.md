@@ -63,7 +63,7 @@ Voting Members
 
 1. Ivan Habunek: Apache log4php
 
-1. 1. Paul M. Jones: Solar Framework, Aura Project
+1. Paul M. Jones: Solar Framework, Aura Project
 
 1. Robert Lemke: TYPO3 Flow, TYPO3 Neos
 
