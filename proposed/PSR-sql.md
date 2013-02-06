@@ -1,4 +1,5 @@
 SQL Style Guide
+===============
 
 This guide extends and expands on [PSR-2][], the basic coding standard.
 
@@ -23,7 +24,8 @@ interpreted as described in [RFC 2119][].
 ### 2.1 Example
 
 ```SQL
-SELECT ^Sales`.`date`,
+SELECT `Sales`.`id` as SalesId
+    `Sales`.`date`,
     `Sales`.`price`,
     `Sales`.`price` * `Sales`.`quantity` as `earnings`
 
@@ -31,7 +33,7 @@ from ItemSales as Sales,
     Items
 
 where `Sales`.`itemId` = `Items`.`id`
-    and `Items`.`id` = :Items.id
+    and `Items`.`id` = :Items_id
 
 limit :limit.min, :limit.max
 ```
@@ -41,15 +43,21 @@ limit :limit.min, :limit.max
 - `INSERT`, `SELECT`, `CREATE` MUST be written in uppercase
 - `where`, `from`,`and`, `or`, `limit`, `order by`, `join` MUST be written in lowercase
 - `*` MUST not be used. Instead its necessary to make a list of all the required fields
+- There MUST be a line break after every field or table used on `SELECT`, `INSERT` and `from` blocks
+- There MUST be a line break after every condition used on the `where`, `having` and `group by` blocks
 - `as` alias SHOULD be declared
+- The symbol ` SOULD be used around each table and field
 
 ### 2.3 Blocks
+
+Blocks 
+
 
 ### 2.4 Parameters
 
 - Parameters MUST be declared at the end blocks
-- Paramaters MUST be `Table.field = :Table.field` or `field = :field`
-- Parameters `limit` SHOULD be declared using `:limit.min` and `:limit.max`
+- Paramaters MUST be have the name of the field `:field` or `:Table_field` if more than one table uses a field with that name
+- Parameters `limit` SHOULD be declared using `:limit_min` and `:limit_max`
 
 3. PHP SQL variables
 --------------------
