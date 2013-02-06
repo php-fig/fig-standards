@@ -40,9 +40,17 @@ limit :limit.min, :limit.max
 
 ### 2.2 Basic Syntax
 
-- `INSERT`, `SELECT`, `CREATE` MUST be written in uppercase
-- `where`, `from`,`and`, `or`, `limit`, `order by`, `join` MUST be written in lowercase
-- `*` MUST not be used. Instead its necessary to make a list of all the required fields
+> #### 2.2.1 Keywords
+> 
+> The keywords are divided in three types
+> 
+> - Definition keyword: Define the type or query `INSERT`, `SELECT`, `CREATE`, `UPDATE`
+> - Block keyworkds: Are used at most once and separate the query in sections `where`, `from`, `limit`, `order by`, `join`
+> - Operation keywords: Are using inside operations `and`, `or`, `null`
+
+- Definition and block kewyords MUST be written in uppercase
+- Operational keywords MUST be written in lowercase
+- `*` MUST NOT be used. Instead its necessary to make a list of all the required fields
 - There MUST be a line break after every field or table used on `SELECT`, `INSERT` and `from` blocks
 - There MUST be a line break after every condition used on the `where`, `having` and `group by` blocks
 - `as` alias SHOULD be declared
@@ -50,8 +58,10 @@ limit :limit.min, :limit.max
 
 ### 2.3 Blocks
 
-Blocks 
+SQL blocks are to be understood as sections of the query divided by SQL keywords such as `from`, `where`, `order by`, etc.
 
+- There MUST be a line of separation between blocks.
+- Elements inside blocks MUST be indented
 
 ### 2.4 Parameters
 
