@@ -35,7 +35,7 @@ from ItemSales as Sales,
 where `Sales`.`itemId` = `Items`.`id`
     and `Items`.`id` = :Items_id
 
-limit :limit.min, :limit.max
+limit :limit_min, :limit_max
 ```
 
 ### 2.2 Basic Syntax
@@ -48,7 +48,7 @@ limit :limit.min, :limit.max
 > - Block keyworkds: Are used at most once and separate the query in sections `where`, `from`, `limit`, `order by`, `join`
 > - Operation keywords: Are using inside operations `and`, `or`, `null`
 
-- Definition and block kewyords MUST be written in uppercase
+- Definition and block keywords MUST be written in uppercase
 - Operational keywords MUST be written in lowercase
 - `*` MUST NOT be used. Instead its necessary to make a list of all the required fields
 - There MUST be a line break after every field or table used on `SELECT`, `INSERT` and `from` blocks
