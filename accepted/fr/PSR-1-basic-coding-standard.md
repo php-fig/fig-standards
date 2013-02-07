@@ -40,7 +40,13 @@ Le code PHP DOIT utiliser uniquement UTF-8 sans BOM.
 
 ### 2.3. Les effets secondaires
 
-// TODO
+Un fichier DOIT déclarer nouveaux symboles (classes, fonctions, constants, etc.) et ne pas causer d’effets secondaires, ou il DOIT exécuter de la logique avec effets secondaires, mais NE DOIT PAS faire les deux.
+
+La phrase "effets secondaires" signifie l’exécution de la logique qui n’est pas lié directement à la déclaration de classes, fonctions, constantes, etc., *simplement par l’inclusion du fichier.*
+
+Les "effets secondaires" comprennent, mais ne sont pas limités à : générer une sortie, utilisation explicite de `require` ou `include`, connexion à des services externes, modification de paramètres ini, émission de erreurs ou exceptions, modification de variables globales ou statiques, lecture ou écriture dans un fichier et ainsi de suite.
+
+Le code suivant est un exemple d’un fichier avec déclarations et effets secondaires ; c’est-à-dire, un exemple de ce qu’il faut éviter :
 
 ```php
 <?php
