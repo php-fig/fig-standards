@@ -5,6 +5,8 @@ This guide extends and expands on [PSR-2][], the basic coding standard.
 
 The intent of this guide is to avoid common mal practices with SQL handling in PHP.
 
+*Notice: Currently this Guide only intends to help on static queries and lacks of information on dynamic queries*
+
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
@@ -51,17 +53,17 @@ Limit :limit_min, :limit_max
 - Definition keywords MUST be written in UPPERCASE
 - Block keywords MUST be written Capitalized
 - Operational keywords MUST be written in lowercase
-- `*` MUST NOT be used. Instead its necessary to make a list of all the required fields
+- `*` asterisk MUST NOT be used. Instead its necessary to make a list of all the required fields
 - There MUST be a line break after every field or table used on `SELECT`, `INSERT` and `from` blocks
 - There MUST be a line break after every condition used on the `where`, `having` and `group by` blocks
 - `as` alias SHOULD be declared
-- The symbol ` SOULD be used around each table and field
+- ` grave accent SOULD be used around each table and field
 
 ### 2.3 Blocks
 
 SQL blocks are to be understood as sections of the query divided by SQL keywords such as `from`, `where`, `order by`, etc.
 
-- There MUST be a line of separation between blocks.
+- There MUST be a blankl line separating blocks
 - Elements inside blocks MUST be indented
 
 ### 2.4 Parameters
@@ -130,3 +132,21 @@ Try to use joins instead of having multiple queries and joining the information 
 `block_line_separation`: Separate blocks with a blank line
 
 `sql_comments`: Allow SQL comments?
+
+`alias_declaration`: Alias should be declared? `yes` it should be declared, `no` it should not be declared, `?` no recomendation
+
+`grave_accent`: Should grave accent be used? `yes` it should be used, `?` no recomendation
+
+`block_separation`: There must be a blank line of separatation betweeen blocks?
+
+`block_indentation`: Elements inside blocks should be indented?
+
+`sql_file` .sql files MUST NOT be used inside the DOCUMENT ROOT?
+
+`single_quotes` Query declaration MUST use single quotes?
+
+`nowdoc` Query declaration SHOULD use nowdoc?
+
+`readonly_property` When the query is executed inside a class method the query variables SHOULD be stored in private read-only property?
+
+`variable_function_start` When used inside a function, queries SHOULD be declared at the start of the function definition. This will allow to keep the queries separated from the function definition
