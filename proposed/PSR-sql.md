@@ -5,7 +5,14 @@ This guide extends and expands on [PSR-2][], the basic coding standard.
 
 The intent of this guide is to avoid common mal practices with SQL handling in PHP.
 
-*Notice: Currently this Guide only intends to help on static queries and lacks of information on dynamic queries*
+**Notice:**
+
+----
+
+- Currently this Guide only intends to help on static queries and lacks of information on dynamic queries
+- This guide purposely avoids mentioning naming conventions for tables, fields or alias
+
+--- 
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
