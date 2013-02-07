@@ -26,16 +26,16 @@ interpreted as described in [RFC 2119][].
 ```SQL
 SELECT `Sales`.`id` as SalesId
     `Sales`.`date`,
-    `Sales`.`price`,
-    `Sales`.`price` * `Sales`.`quantity` as `earnings`
+    `Items`.`price`,
+    `Items`.`price` * `Sales`.`quantity` as `earnings`
 
-from ItemSales as Sales,
+From ItemSales as Sales,
     Items
 
-where `Sales`.`itemId` = `Items`.`id`
+Where `Sales`.`itemId` = `Items`.`id`
     and `Items`.`id` = :Items_id
 
-limit :limit_min, :limit_max
+Limit :limit_min, :limit_max
 ```
 
 ### 2.2 Basic Syntax
@@ -46,9 +46,10 @@ limit :limit_min, :limit_max
 > 
 > - Definition keyword: Define the type or query `INSERT`, `SELECT`, `CREATE`, `UPDATE`
 > - Block keyworkds: Are used at most once and separate the query in sections `where`, `from`, `limit`, `order by`, `join`
-> - Operation keywords: Are using inside operations `and`, `or`, `null`
+> - Operation keywords: Are using inside operations `and`, `or`, `not`, `null`
 
-- Definition and block keywords MUST be written in uppercase
+- Definition keywords MUST be written in UPPERCASE
+- Block keywords MUST be written Capitalized
 - Operational keywords MUST be written in lowercase
 - `*` MUST NOT be used. Instead its necessary to make a list of all the required fields
 - There MUST be a line break after every field or table used on `SELECT`, `INSERT` and `from` blocks
@@ -66,18 +67,66 @@ SQL blocks are to be understood as sections of the query divided by SQL keywords
 ### 2.4 Parameters
 
 - Parameters MUST be declared at the end blocks
-- Paramaters MUST be have the name of the field `:field` or `:Table_field` if more than one table uses a field with that name
+- Paramaters MUST be have the name of the field `:field` or `:Table_field` if more than one table uses a field using that name
 - Parameters `limit` SHOULD be declared using `:limit_min` and `:limit_max`
 
 3. PHP SQL variables
 --------------------
 
+```PHP
+class ClassName
+{
+    private static $query = <<<'SQL'
+SELECT `Sales`.`id` as SalesId
+    `Sales`.`date`,
+    `Items`.`price`,
+    `Items`.`price` * `Sales`.`quantity` as `earnings`
 
-### 3.1 NOWDOC
+From ItemSales as Sales,
+    Items
+
+Where `Sales`.`itemId` = `Items`.`id`
+    and `Items`.`id` = :Items_id
+
+Limit :limit_min, :limit_max
+SQL;
+}
+```
+
+- .sql files MUST NOT be used inside the DOCUMENT ROOT
+- Query declaration MUST use single quotes
+- Query declaration SHOULD use `nowdoc` for PHP 5.3 using SQL to add syntax higlight functionality
+- When the query is executed inside a class method the query variables SHOULD be stored in private propertys. This will allow to keep the queries separated from the methods definition
+- When used inside a function, queries SHOULD be declared at the beggining of the function definition. This will allow to keep the queries separated from the function definition
 
 4. Best Practices
 -----------------
 
 ### 4.1 Fetch
 
+The PDOStatement::fetchAll method SHOULD NOT be used.
+
+Using this method to fetch large result sets will result in a heavy demand on system and possibly network resources. Rather than retrieving all of the data and manipulating it in PHP, consider using the database server to manipulate the result sets.
+
+The class `PDOStatement` implements the `Transversable` interface which allow it to be used inside loops like `foreach`.
+
 ### 4.2 Join
+
+Try to use joins instead of having multiple queries and joining the information using PHP.
+
+5. Survey
+---------
+
+### 5.1 Survey proposed questions
+
+`keyword_types`: Separate the keywords in types as proposed in 2.2.1
+
+`keywords`: How are the keywords capitalized. `upper` = Uppercase, `lower` = lowercase, `capital` = Uppercase only for the first letter
+
+`asterisk`: Is the use of asterisk permitted? `yes`, `no`
+
+`linebreak_after_field`: Linebreak after declaring a field, conditional or table?
+
+`block_line_separation`: Separate blocks with a blank line
+
+`sql_comments`: Allow SQL comments?
