@@ -36,7 +36,7 @@ interpreted as described in [RFC 2119][].
 SELECT Sales.id as SalesId
     Sales.`date`,
     Items.price,
-    Items.price` * Sales.quantity as earnings
+    Items.price * Sales.quantity as earnings
 
 From ItemSales as Sales,
     Items
@@ -89,7 +89,7 @@ class ClassName
 SELECT Sales.id as SalesId
     Sales.`date`,
     Items.price,
-    Items.price` * Sales.quantity as earnings
+    Items.price * Sales.quantity as earnings
 
 From ItemSales as Sales,
     Items
