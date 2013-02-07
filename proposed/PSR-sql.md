@@ -33,16 +33,16 @@ interpreted as described in [RFC 2119][].
 ### 2.1 Example
 
 ```SQL
-SELECT `Sales`.`id` as SalesId
-    `Sales`.`date`,
-    `Items`.`price`,
-    `Items`.`price` * `Sales`.`quantity` as `earnings`
+SELECT Sales.id as SalesId
+    Sales.`date`,
+    Items.price,
+    Items.price` * Sales.quantity as earnings
 
 From ItemSales as Sales,
     Items
 
-Where `Sales`.`itemId` = `Items`.`id`
-    and `Items`.`id` = :Items_id
+Where Sales.itemId = Items.id
+    and Items.id = :Items_id
 
 Limit :limit_min, :limit_max
 ```
@@ -64,7 +64,7 @@ Limit :limit_min, :limit_max
 - There MUST be a line break after every field or table used on `SELECT`, `INSERT` and `from` blocks
 - There MUST be a line break after every condition used on the `where`, `having` and `group by` blocks
 - `as` alias SHOULD be declared
-- ` grave accent SOULD be used around each table and field
+- Backtick ` SOULD NOT be used around unreserved words. MySQL, Oracle and MSDB escape reserved words differently.
 
 ### 2.3 Blocks
 
@@ -86,16 +86,16 @@ SQL blocks are to be understood as sections of the query divided by SQL keywords
 class ClassName
 {
     private static $query = <<<'SQL'
-SELECT `Sales`.`id` as SalesId
-    `Sales`.`date`,
-    `Items`.`price`,
-    `Items`.`price` * `Sales`.`quantity` as `earnings`
+SELECT Sales.id as SalesId
+    Sales.`date`,
+    Items.price,
+    Items.price` * Sales.quantity as earnings
 
 From ItemSales as Sales,
     Items
 
-Where `Sales`.`itemId` = `Items`.`id`
-    and `Items`.`id` = :Items_id
+Where Sales.itemId = Items.id
+    and Items.id = :Items_id
 
 Limit :limit_min, :limit_max
 SQL;
@@ -142,7 +142,7 @@ Try to use joins instead of having multiple queries and joining the information 
 
 `alias_declaration`: Alias should be declared? `yes` it should be declared, `no` it should not be declared, `?` no recomendation
 
-`grave_accent`: Should grave accent be used? `yes` it should be used, `?` no recomendation
+`backtick`: Use of backtick `always` it SHOULD always be used, `reserved` used only for reserved words
 
 `block_separation`: There must be a blank line of separatation betweeen blocks?
 
