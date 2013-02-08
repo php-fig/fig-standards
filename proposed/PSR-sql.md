@@ -25,7 +25,7 @@ interpreted as described in [RFC 2119][].
 -----------
 
 - Code MUST follow [PSR-2][]
-- PDO MUST be the used driver
+- Code MUST use PDO extension
 
 2. SQL Syntax
 --------------
@@ -47,17 +47,17 @@ Where Sales.itemId = Items.id
 Limit :limit_min, :limit_max
 ```
 
-### 2.2 Basic Syntax
+### 2.2 Keywords
 
-> #### 2.2.1 Keywords
-> 
-> The keywords are divided in three types
-> 
-> - Definition keyword: Define the type or query `INSERT`, `SELECT`, `CREATE`, `UPDATE`
-> - Block keyworkds: Are used at most once and separate the query in sections `where`, `from`, `limit`, `order by`, `join`
-> - Operation keywords: Are using inside operations `and`, `or`, `not`, `null`
-> 
-> Dividing the keywords in types help to organize and understand the query, not all keywords work the same and shouldn't be treated the same.
+The keywords are divided in three types
+ 
+- Definition keyword: Define the type or query `INSERT`, `SELECT`, `CREATE`, `UPDATE`
+- Block keyworkds: Are used at most once and separate the query in sections `where`, `from`, `limit`, `order by`, `join`
+- Operation keywords: Are used inside operations `and`, `or`, `not`, `null`
+
+Dividing the keywords in types help to organize and understand the query, not all keywords work the same and shouldn't be treated the same.
+
+### 2.3 Basic Syntax
 
 - Definition keywords MUST be written in UPPERCASE
 - Block keywords MUST be written Capitalized
@@ -67,7 +67,7 @@ Limit :limit_min, :limit_max
 - Reserved words used on fields or tables MUST alway be escaped.
 - Unreserved words used on fields or tables SHOULD NOT be escaped. MySQL, Oracle and MSDB escape reserved words differently.
 
-### 2.3 Blocks
+### 2.4 Blocks
 
 SQL blocks are to be understood as sections of the query divided by SQL keywords such as `from`, `where`, `order by`, etc.
 
@@ -78,9 +78,9 @@ SQL blocks are to be understood as sections of the query divided by SQL keywords
 
 Organizing the query in blocks and multiple lines improves readability, help the maintenance and debugging.
 
-### 2.4 Parameters
+### 2.5 Parameters
 
-- Paramaters MUST be have the name of the field `:field` or `:Table_field` if more than one table uses a field using that name
+- Paramaters MUST have the name of the field `:fieldname` or `:Tablename_fieldname` if more than one table have a field with that name
 - Parameters SHOULD be declared at the end blocks
 - Parameters `limit` SHOULD be declared using `:limit_min` and `:limit_max`
 
