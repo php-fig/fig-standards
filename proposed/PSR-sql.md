@@ -62,7 +62,7 @@ Dividing the keywords in types help to organize and understand the query, not al
 - Definition keywords MUST be written in UPPERCASE
 - Block keywords MUST be written Capitalized
 - Operational keywords MUST be written in lowercase
-- `*` asterisk MUST NOT be used. Instead its necessary to make a list of all the required fields. This helps redability and avoid redundancy
+- `SELECT *` MUST NOT be used. Instead its necessary to make a list of all the required fields. This helps redability and avoid redundancy
 - `as` keyword MUST NOT be ommited when using alias
 - Reserved words used on fields or tables MUST alway be escaped.
 - Unreserved words used on fields or tables SHOULD NOT be escaped. MySQL, Oracle and MSDB escape reserved words differently.
