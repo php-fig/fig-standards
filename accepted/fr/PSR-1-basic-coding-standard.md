@@ -17,7 +17,7 @@ Les mots clés "DOIT", "NE DOIT PAS", "REQUIS", "DEVRA", "NE DEVRA PAS", "DEVRAI
 
 - Les fichiers de code PHP DOIVENT être encodé uniquement en UTF-8 sans BOM.
 
-- Files SHOULD *either* declare symbols (classes, functions, constants, etc.) *or* cause side-effects (e.g. generate output, change .ini settings, etc.) but SHOULD NOT do both. //TODO
+- Les fichiers DOIVENT *soit* déclarer des symboles (classes, fonctions, constants, etc.) *soit* causer des effets secondaires (par exemple, générer des sorties, modifier paramètres .ini), mais NE DOIVENT PAS faire les deux.
 
 - Les espaces de noms et les classes DOIVENT suivre [PSR-0][].
 
@@ -27,7 +27,7 @@ Les mots clés "DOIT", "NE DOIT PAS", "REQUIS", "DEVRA", "NE DEVRA PAS", "DEVRAI
 
 - Les noms des méthodes DOIVENT être déclaré comme `camelCase`.
 
-2. Files
+2. Fichiers
 --------
 
 ### 2.1. Les tag's PHP
@@ -40,7 +40,13 @@ Le code PHP DOIT utiliser uniquement UTF-8 sans BOM.
 
 ### 2.3. Les effets secondaires
 
-// TODO
+Un fichier DOIT déclarer nouveaux symboles (classes, fonctions, constants, etc.) et ne pas causer d’effets secondaires, ou il DOIT exécuter de la logique avec effets secondaires, mais NE DOIT PAS faire les deux.
+
+La phrase "effets secondaires" signifie l’exécution de la logique qui n’est pas lié directement à la déclaration de classes, fonctions, constantes, etc., *simplement par l’inclusion du fichier.*
+
+Les "effets secondaires" comprennent, mais ne sont pas limités à : générer une sortie, utilisation explicite de `require` ou `include`, connexion à des services externes, modification de paramètres ini, émission de erreurs ou exceptions, modification de variables globales ou statiques, lecture ou écriture dans un fichier et ainsi de suite.
+
+Le code suivant est un exemple d’un fichier avec déclarations et effets secondaires ; c’est-à-dire, un exemple de ce qu’il faut éviter :
 
 ```php
 <?php
