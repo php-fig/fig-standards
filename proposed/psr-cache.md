@@ -79,15 +79,6 @@ interface CacheItemInterface
 {
 
     /**
-     * Set the value to be stored in the cache
-     *
-     * @param mixed $cacheValue
-     *
-     * @return null
-     */
-    public function setValue($cacheValue);
-
-    /**
      * Get the value of the object
      *
      * @return mixed
@@ -131,15 +122,6 @@ interface CacheInterface
     public function get($key);
 
     /**
-     * Check if a cache entry exists
-     *
-     * @param string $key
-     *
-     * @return Boolean
-     */
-    public function exists($key);
-
-    /**
      * Set a single cache entry
      *
      * @param string   $key
@@ -167,15 +149,6 @@ interface CacheInterface
      * @return CacheItemInterface[]
      */
     public function getMultiple($keys);
-
-    /**
-     * Check if multiple entries exists in the cache
-     *
-     * @param string[] $keys
-     *
-     * @return Boolean[]
-     */
-    public function existsMultiple($keys);
 
     /**
      * Set multiple entries in the cache
@@ -231,10 +204,3 @@ The ```CacheItem``` SHOULD NOT be used be used ouside of the scope described
 by this document but this doesn't mean implementations can't use it for more
 specific implementations such as a full OO implementation with other methods
 attached.
-
-
-### 4.2 CacheInterface
-
-The method ```exists()``` is present in order to facilitate cases where a user
-will want to just check for an item presence rather that fetching it in case it
-exists.
