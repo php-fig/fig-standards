@@ -46,6 +46,12 @@ without performing any additional operations.
 By `Cache` we refer to a object that implements the `Psr\Cache\CacheInterface`
 interface.
 
+There are two interfaces which can be used in order to implement a cache driver
+the: ``` CacheInterface ``` and ``` TtlAwareCacheInterface ```.
+
+The ``` TtlAwareCacheInterface ``` will be used when the cache driver supports
+setting a TTL for the item.
+
 If the user does not provide a TTL value then the `Cache` MUST set a default
 value that is either configured by the user or, if not available, the maximum
 value allowed by cache system.
@@ -100,17 +106,10 @@ namespace Psr\Cache;
 use Psr\Cache\CacheItemInterface;
 
 /**
- * This is our cache driver
+ * Interface for the caching driver
  */
 interface CacheInterface
 {
-
-    /**
-     * Set default TTL value
-     *
-     * @param int $ttl
-     */
-    public function setDefaultTtl($ttl);
 
     /**
      * Get cache entry
@@ -126,11 +125,10 @@ interface CacheInterface
      *
      * @param string   $key
      * @param mixed    $value
-     * @param int|null $ttl
      *
      * @return Boolean Result of the operation
      */
-    public function set($key, $value, $ttl = null);
+    public function set($key, $value);
 
     /**
      * Remove a single cache entry
@@ -156,7 +154,7 @@ interface CacheInterface
      * @param array    $items
      * @param null|int $ttl
      */
-    public function setMultiple(array $items, $ttl = null);
+    public function setMultiple(array $items);
 
     /**
      * Remove multiple entries from the cache
@@ -176,6 +174,45 @@ interface CacheInterface
 
 ```
 
+### 2.3 TtlAwareCacheInterface
+
+```php
+
+<?php
+
+namespace Psr\Cache;
+
+use Psr\Cache\CacheItemInterface;
+use Psr\Cache\CacheInterface;
+
+/**
+ * Interface for a cache driver that supports TTLs
+ */
+interface CacheInterface extends CacheInterface
+{
+
+    /**
+     * Set a single cache entry
+     *
+     * @param string   $key
+     * @param mixed    $value
+     * @param int|null $ttl
+     *
+     * @return Boolean Result of the operation
+     */
+    public function set($key, $value, $ttl = null);
+
+    /**
+     * Set multiple entries in the cache
+     *
+     * @param array    $items
+     * @param null|int $ttl
+     */
+    public function setMultiple(array $items, $ttl = null);
+
+}
+
+```
 
 3. Package
 ----------
