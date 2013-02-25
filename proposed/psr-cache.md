@@ -41,6 +41,8 @@ By using the cache item implementations will guarantee consistency across
 various systems and ensure that the user will always retrieve the expected data
 without performing any additional operations.
 
+Refer to the appendix ``` 4.1 Usage of CacheItem ``` for more details on this.
+
 ### 1.3 Cache
 
 By `Cache` we refer to a object that implements the `Psr\Cache\CacheInterface`
@@ -188,7 +190,7 @@ use Psr\Cache\CacheInterface;
 /**
  * Interface for a cache driver that supports TTLs
  */
-interface CacheInterface extends CacheInterface
+interface TtlAwareCacheInterface extends CacheInterface
 {
 
     /**
@@ -233,11 +235,10 @@ the value stored by the user, the CacheItem approach was used.
 This helps implementations store any data type in the cache system then allows
 each implementation do deal with the mentioned shortcomings.
 
-The setter method is present so that ensures interoperability across various
-libraries and to provide a common method of setting the value of the returned
-object.
-
 The ```CacheItem``` SHOULD NOT be used be used ouside of the scope described
 by this document but this doesn't mean implementations can't use it for more
 specific implementations such as a full OO implementation with other methods
 attached.
+
+Since the role of ``` CacheItem ``` is to facilitate the returning of any
+stored value, it will be used only by the getter functions.
