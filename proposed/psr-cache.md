@@ -166,11 +166,11 @@ interface CacheInterface
     public function removeMultiple($keys);
 
     /**
-     * This allows to clear (flush) all the cache contents
+     * This allows to clear all the cache contents
      *
      * return Boolean
      */
-    public function flush();
+    public function clear();
 
 }
 
