@@ -90,6 +90,6 @@ Voting Members
 
 1. Mike van Riel: phpDocumentor
 
-1. Matthew Weier O'Phinney: Zend Framework, Zend Framework 2
+1. ?: Zend Framework
 
 1. David Zülke: Agavi
