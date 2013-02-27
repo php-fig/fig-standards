@@ -3,7 +3,7 @@ Logger Interface
 
 This document describes a common interface for logging libraries.
 
-The main goal is to allow libraries to receive a `Psr\Log\LoggerInterface`
+The main goal is to allow libraries to receive a `Fig\Log\LoggerInterface`
 object and write logs to it in a simple and universal way. Frameworks
 and CMSs that have custom needs MAY extend the interface for their own
 purpose, but SHOULD remain compatible with this document. This ensures
@@ -32,7 +32,7 @@ Users of loggers are refered to as `user`.
 - A ninth method, `log`, accepts a log level as first argument. Calling this
   method with one of the log level constants MUST have the same result as
   calling the level-specific method. Calling this method with a level not
-  defined by this specification MUST throw a `Psr\Log\InvalidArgumentException`
+  defined by this specification MUST throw a `PhpFig\Log\InvalidArgumentException`
   if the implementation does not know about the level. Users SHOULD NOT use a
   custom level without knowing for sure the current implementation supports it.
 
@@ -107,27 +107,27 @@ Users of loggers are refered to as `user`.
 
 ### 1.4 Helper classes and interfaces
 
-- The `Psr\Log\AbstractLogger` class lets you implement the `LoggerInterface`
+- The `PhpFig\Log\AbstractLogger` class lets you implement the `LoggerInterface`
   very easily by extending it and implementing the generic `log` method.
   The other eight methods are forwarding the message and context to it.
 
-- Similarly, using the `Psr\Log\LoggerTrait` only requires you to
+- Similarly, using the `PhpFig\Log\LoggerTrait` only requires you to
   implement the generic `log` method. Note that since traits can not implement
   interfaces, in this case you still have to `implement LoggerInterface`.
 
-- The `Psr\Log\NullLogger` is provided together with the interface. It MAY be
+- The `PhpFig\Log\NullLogger` is provided together with the interface. It MAY be
   used by users of the interface to provide a fall-back "black hole"
   implementation if no logger is given to them. However conditional logging
   may be a better approach if context data creation is expensive.
 
-- The `Psr\Log\LoggerAwareInterface` only contains a
+- The `PhpFig\Log\LoggerAwareInterface` only contains a
   `setLogger(LoggerInterface $logger)` method and can be used by frameworks to
   auto-wire arbitrary instances with a logger.
 
-- The `Psr\Log\LoggerAwareTrait` trait can be used to implement the equivalent
+- The `PhpFig\Log\LoggerAwareTrait` trait can be used to implement the equivalent
   interface easily in any class. It gives you access to `$this->logger`.
 
-- The `Psr\Log\LogLevel` class holds constants for the eight log levels.
+- The `PhpFig\Log\LogLevel` class holds constants for the eight log levels.
 
 2. Package
 ----------
@@ -136,13 +136,13 @@ The interfaces and classes described as well as relevant exception classes
 and a test suite to verify your implementation are provided as part of the
 [psr/log](https://packagist.org/packages/psr/log) package.
 
-3. `Psr\Log\LoggerInterface`
+3. `PhpFig\Log\LoggerInterface`
 ----------------------------
 
 ```php
 <?php
 
-namespace Psr\Log;
+namespace PhpFig\Log;
 
 /**
  * Describes a logger instance
@@ -256,13 +256,13 @@ interface LoggerInterface
 }
 ```
 
-4. `Psr\Log\LoggerAwareInterface`
+4. `PhpFig\Log\LoggerAwareInterface`
 ---------------------------------
 
 ```php
 <?php
 
-namespace Psr\Log;
+namespace PhpFig\Log;
 
 /**
  * Describes a logger-aware instance
@@ -279,13 +279,13 @@ interface LoggerAwareInterface
 }
 ```
 
-5. `Psr\Log\LogLevel`
+5. `PhpFig\Log\LogLevel`
 ---------------------
 
 ```php
 <?php
 
-namespace Psr\Log;
+namespace PhpFig\Log;
 
 /**
  * Describes log levels
