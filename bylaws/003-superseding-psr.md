@@ -11,7 +11,7 @@ established by the [IETF](http://www.rfc-editor.org).
 
 1. Once a PSR is passed, it is -- for all practical purposes -- frozen.
 
-2. Changes to an existing PSR made be made only for the purpose of clarifying
+2. Changes to an existing PSR may be made only for the purpose of clarifying
 the specification, not for adding new features or changing the meaning of the
 PSR in **any** way. These types of changes MUST be discussed on one of the
 sanctioned discussion lists for the group, and MUST have a motion and a second
