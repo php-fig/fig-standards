@@ -45,7 +45,7 @@ interpreted as described in [RFC 2119][].
 - Visibility MUST be declared on all properties and methods; `abstract` and
   `final` MUST be declared before the visibility; `static` MUST be declared
   after the visibility.
-  
+
 - Control structure keywords MUST have one space after them; method and
   function calls MUST NOT.
 
@@ -121,11 +121,12 @@ There MUST NOT be more than one statement per line.
 
 ### 2.4. Indenting
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+Code MAY use 4 spaces or a tab to indent the code but the indent style MUST
+be the same across the project.
 
 > N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
 > problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
+> also makes it easy to insert fine-grained sub-indentation for inter-line
 > alignment.
 
 ### 2.5. Keywords and True/False/Null
@@ -262,7 +263,7 @@ class ClassName
         // method body
     }
 }
-```    
+```
 
 ### 4.4. Method Arguments
 
@@ -465,7 +466,7 @@ for ($i = 0; $i < 10; $i++) {
 ```
 
 ### 5.5. `foreach`
-    
+
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
