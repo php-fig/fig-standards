@@ -25,8 +25,7 @@ must pass through all appropriate [voting protocols](001-voting-protocol.md) ado
 its identifier (e.g., `PSR-0`, `PSR-1`, `PSR-2`, `PSR-3`, ..., `PSR-n`). The
 proposal upon which the PSR is based may cover new ground, or may enhance,
 change or otherwise supercede an existing PSR.
-(For precedent, see [21st amendment to the U.S. Constitution](https://en.wikisource.org/wiki/Additional_amendments_to_the_United_States_Constitution#Amendment_XXI);
-[IETF RFC 1123 Update History](http://www.rfc-editor.org/search/rfc_search_detail.php?rfc=1123).)
+(See [IETF RFC 1123 Update History](http://www.rfc-editor.org/search/rfc_search_detail.php?rfc=1123).)
 
 5. If the intention of a new proposal is to modify (and thereby supersede) an
 existing PSR, the proposal SHOULD clearly explain as much in its introduction.
@@ -38,7 +37,7 @@ the superseded PSR(s) will be clarified (as per paragraph 2) to direct readers
 to the superseding PSR(s).
 
 7. It is possible for one new proposal to update multiple PSRs. (e.g., a future
-`PSR-99` might update both `PSR-1` and `PSR-2`.)
+`PSR-99` might extend or supersede both `PSR-1` and `PSR-2`.)
 
 8. It is possible for multiple proposals to update a single PSR. (e.g., multiple
 authors might work on different ways, or even competing ways, to update an
