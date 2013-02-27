@@ -208,12 +208,13 @@ interface Item
     /**
      * Validates the current state of the item in the cache.
      *
-     * An item is considered a miss when it does not exist or has passed its
-     * expiration. Implementing Library can define additional miss conditions.
+     * Checks the validity of a cache result. If the object is good (is not a 
+     * miss, and meets all the standards set by the Implementing Library) then
+     * this function returns true.
      *
      * @return bool
      */
-    function isMiss();
+    function isValid();
 
     /**
      * Removes the current key from the cache.
