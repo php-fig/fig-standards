@@ -48,21 +48,16 @@ Refer to the appendix ``` 4.1 Usage of CacheItem ``` for more details on this.
 By `Cache` we refer to a object that implements the `Psr\Cache\CacheInterface`
 interface.
 
-There are two interfaces which can be used in order to implement a cache driver
-the: ``` CacheInterface ``` and ``` TtlAwareCacheInterface ```.
-
-The ``` TtlAwareCacheInterface ``` will be used when the cache driver supports
-setting a TTL for the item.
-
 If the user does not provide a TTL value then the `Cache` MUST set a default
 value that is either configured by the user or, if not available, the maximum
-value allowed by cache system.
+value allowed by cache system. If the cache system does not support a TTL
+option then the user specified or the default TTL values will be ignored.
 
 It will be the implementation job to define what values are considered valid
-or invalid for the specific storage but the user MUST be aware of the accepted
-values by the underlying solution both for TTL values as well as for key names.
+or invalid for key names but the user MUST be aware of the accepted values
+by the underlying solution both for TTL values as well as for key names.
 
-`Cache` MUST return always a `CacheItem` when the item is found in the cache
+`Cache` MUST always return a `CacheItem` when the item is found in the cache
 and `null` when the item is not found.
 
 For ```setMultiple``` the array MUST be associative where the pair key/value
@@ -127,10 +122,11 @@ interface CacheInterface
      *
      * @param string   $key
      * @param mixed    $value
+     * @param int|null $ttl
      *
      * @return Boolean Result of the operation
      */
-    public function set($key, $value);
+    public function set($key, $value, $ttl = null);
 
     /**
      * Remove a single cache entry
@@ -156,7 +152,7 @@ interface CacheInterface
      * @param array    $items
      * @param null|int $ttl
      */
-    public function setMultiple(array $items);
+    public function setMultiple(array $items, $ttl = null);
 
     /**
      * Remove multiple entries from the cache
@@ -171,46 +167,6 @@ interface CacheInterface
      * return Boolean
      */
     public function clear();
-
-}
-
-```
-
-### 2.3 TtlAwareCacheInterface
-
-```php
-
-<?php
-
-namespace Psr\Cache;
-
-use Psr\Cache\CacheItemInterface;
-use Psr\Cache\CacheInterface;
-
-/**
- * Interface for a cache driver that supports TTLs
- */
-interface TtlAwareCacheInterface extends CacheInterface
-{
-
-    /**
-     * Set a single cache entry
-     *
-     * @param string   $key
-     * @param mixed    $value
-     * @param int|null $ttl
-     *
-     * @return Boolean Result of the operation
-     */
-    public function set($key, $value, $ttl = null);
-
-    /**
-     * Set multiple entries in the cache
-     *
-     * @param array    $items
-     * @param null|int $ttl
-     */
-    public function setMultiple(array $items, $ttl = null);
 
 }
 
