@@ -54,8 +54,6 @@ is authorised by the PHP project in question to do so.
 The application must be emailed to the main [php-fig mailing list][list] and
 is restricted to one application per email.
 
-    [list]: https://groups.google.com/forum/?fromgroups#!forum/php-fig
-
 The subject of the email must follow the following format:
 
     Membership Request: {$your_name} ({$project_name})
@@ -66,8 +64,6 @@ on behalf of the PHP project believes necessary.
 
 The membership application will be voted upon by the existing Voting Members
 in accordance with the [Voting Protocol bylaw][voting].
-
-    [voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
 
 There are no restrictions on the number of times a PHP project may apply to
 become a Voting Member.
@@ -87,8 +83,6 @@ practical and where this does not conflict with the Voting Member's policies.
 The other Voting Members may seek confirmation through other channels as
 necessary.
 
-    [list]: https://groups.google.com/forum/?fromgroups#!forum/php-fig
-
 A Voting Member may have more than one Project Representative with the
 understanding that this does not confer additional votes and that any conflicts
 in casted votes must be reconciled by the Voting Member prior to their vote
@@ -103,3 +97,6 @@ official public channel. Once such a statement is published, a PHP project
 immediately ceases to be a Voting Member.
 
 A former Voting Member may reapply for membership at any future date.
+
+[list]: https://groups.google.com/forum/?fromgroups#!forum/php-fig
+[voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
