@@ -73,11 +73,9 @@ they represent at any time.
 
 To prevent illegal or erroneous voting, the Voting Representative must be
 confirmed by the Member Project to be authorised to act in such a capacity
-by sending an email to the the main [php-fig mailing list][list] where
-practical and where this does not conflict with the Member Project's policies.
-The other Member Projects may seek confirmation through other channels as
-necessary to prevent fraudulent vote casting. The other Member Projects may
-seek such confirmation at any time during the Voting Representative's term.
+by sending an email to the the main [php-fig mailing list][list]. The other
+Member Projects may seek such confirmation at any time during the Voting
+Representative's term.
 
 In the absence of other channels, PHP-FIG should send a confirmation email to
 a Member Project's mailing list or to a subset of its known contributing
@@ -96,10 +94,10 @@ end of the period of time stated in this email. All dates noted should reference
 a timezone. Where a timezone is not referenced, Coordinated Universal Time (UTC)
 will be assumed.
 
-If, in the judgement of PHP-FIG, a Voting Representative is no longer actively
-representing the best interests of a Member Project, a vote may be taken to
-request a replacement Voting Representative in accordance with the
-[Voting Protocol bylaw][voting].
+If, in the judgement of PHP-FIG, a Voting Representative is acting
+inappropriately and to the detriment of PHP-FIG's ability to meet its objectives
+, a vote may be taken to request a replacement Voting Representative in
+accordance with the [Voting Protocol bylaw][voting].
 
 Resignation Of Member Projects
 ------------------------------
