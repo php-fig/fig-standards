@@ -57,7 +57,9 @@ necessary to include.
 The membership application will be voted upon by the existing Member Projects
 in accordance with the [Voting Protocol bylaw][voting]. PHP-FIG must perform
 checks to ensure that each application is valid and authorised by the PHP
-project that the applicant claims to act on behalf of.
+project that the applicant claims to act on behalf of. Once voting has completed
+and, if the application has been deemed accepted, the PHP project will become a
+Member Project with immediate effect.
 
 There are no restrictions on the number of times a PHP project may apply to
 become a Member Project.
