@@ -88,7 +88,7 @@ A Member Project may not have more than one Voting Representative at a time.
 A Voting Representative may temporarily confer their voting rights onto another
 individual who is authorised by the Member Project which they represent. This
 conferral must be notified to PHP-FIG by the current Voting Representative
-by sending an email to the the main [php-fig mailing list][list]. This email
+by sending an email to the main [php-fig mailing list][list]. This email
 must state the name of the temporary Voting Representative and the period of
 time for which their temporary voting rights will remain valid. All voting
 rights will automatically return to the original Voting Representative at the
