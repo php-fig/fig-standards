@@ -51,11 +51,13 @@ The subject of the email must follow the following format:
 The body of the email should provide details of the PHP project applying for
 membership including its name, URL, the name of the proposed Voting
 Representative, the name of the Voting Representative sponsor and any other
-details that the individual applying
-on behalf of the PHP project believes are necessary to include.
+details that the individual applying on behalf of the PHP project believes are
+necessary to include.
 
 The membership application will be voted upon by the existing Member Projects
-in accordance with the [Voting Protocol bylaw][voting].
+in accordance with the [Voting Protocol bylaw][voting]. PHP-FIG must perform
+checks to ensure that each application is valid and authorised by the PHP
+project that the applicant claims to act on behalf of.
 
 There are no restrictions on the number of times a PHP project may apply to
 become a Member Project.
@@ -76,6 +78,10 @@ practical and where this does not conflict with the Member Project's policies.
 The other Member Projects may seek confirmation through other channels as
 necessary to prevent fraudulent vote casting. The other Member Projects may
 seek such confirmation at any time during the Voting Representative's term.
+
+In the absence of other channels, PHP-FIG should send a confirmation email to
+a Member Project's mailing list or to a subset of its known contributing
+members.
 
 A Member Project may not have more than one Voting Representative at a time.
 
