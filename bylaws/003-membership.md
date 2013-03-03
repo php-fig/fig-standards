@@ -58,7 +58,7 @@ The membership application will be voted upon by the existing Member Projects
 in accordance with the [Voting Protocol bylaw][voting]. PHP-FIG must perform
 checks to ensure that each application is valid and authorised by the PHP
 project that the applicant claims to act on behalf of. Once voting has completed
-and, if the application has been deemed accepted, the PHP project will become a
+and if the application has been deemed accepted, the PHP project will become a
 Member Project with immediate effect.
 
 There are no restrictions on the number of times a PHP project may apply to
@@ -79,10 +79,6 @@ by sending an email to the the main [php-fig mailing list][list]. This email
 may be combined with a Member Application if the applicant has sufficient
 authority. The other Member Projects may seek such confirmation at any time
 during the Voting Representative's term.
-
-In the absence of other channels, PHP-FIG should send a confirmation email to
-a Member Project's mailing list or to a subset of its known contributing
-members.
 
 A Member Project may not have more than one Voting Representative at a time.
 
