@@ -113,7 +113,7 @@ Expulsion Of Member Projects
 ----------------------------
 
 A Member Project may be expelled from PHP-FIG if, in the judgement of PHP-FIG,
-that Member Project has not casted votes in three voting calls or all voting
+that Member Project has not casted votes in three consecutive voting calls or all voting
 calls over a period no less than six months whichever constitutes the greater
 period of time. It is the responsibility of Member Projects to ensure that they
 are actively represented by a Voting Representative.
