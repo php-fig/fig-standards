@@ -57,8 +57,9 @@ It will be the implementation job to define what values are considered valid
 or invalid for key names but the user MUST be aware of the accepted values
 by the underlying solution both for TTL values as well as for key names.
 
-`Cache` MUST always return a `CacheItem` when the item is found in the cache
-and `null` when the item is not found.
+`Cache` MUST always return a `CacheItem` and when the item is found in the
+cache then ```CacheItem::isHit()``` will return and ```CacheItem::isMiss()```
+will return false and the opposite for when the item is not found in driver.
 
 For ```setMultiple``` the array MUST be associative where the pair key/value
 will represent the key and value of the item in to be stored in the caching
@@ -88,6 +89,16 @@ interface CacheItemInterface
      */
     public function getValue();
 
+    /**
+     * Check if the item was found on the driver
+     */
+    public function isHit();
+
+    /**
+     * Check if the item wasn't found on the driver
+     */
+    public function isMiss();
+
 }
 
 ```
@@ -113,7 +124,7 @@ interface CacheInterface
      *
      * @param string $key
      *
-     * @return CacheItemInterface|null
+     * @return CacheItemInterface
      */
     public function get($key);
 
