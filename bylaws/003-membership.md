@@ -96,7 +96,8 @@ will be assumed.
 If, in the judgement of PHP-FIG, a Voting Representative is acting
 inappropriately and to the detriment of PHP-FIG's ability to meet its
 objectives, a vote may be taken to request a replacement Voting Representative in
-accordance with the [Voting Protocol bylaw][voting].
+accordance with the [Voting Protocol bylaw][voting] or to expel the Member
+Project where replacing a Voting Representative is not possible.
 
 Resignation Of Member Projects
 ------------------------------
@@ -112,9 +113,14 @@ Expulsion Of Member Projects
 ----------------------------
 
 A Member Project may be expelled from PHP-FIG if, in the judgement of PHP-FIG,
-that Member Project has not been actively engaged in the group for a period of
-no less than one year. It is the responsibility of Member Projects to ensure
-that they are actively represented by a Voting Representative.
+that Member Project has not casted votes in three voting calls or all voting
+calls over a period no less than six months whichever constitutes the greater
+period of time. It is the responsibility of Member Projects to ensure that they
+are actively represented by a Voting Representative.
+
+A Member Project may also be expelled if their Voting Representative is subject
+to a replacement request from PHP-FIG but a suitable replacement is not
+available.
 
 The expulsion of a Member Project requires a vote in accordance with the
 [Voting Protocol bylaw][voting].
