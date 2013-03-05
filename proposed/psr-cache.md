@@ -1,6 +1,6 @@
 # Specification
 
-## 1.0 Introduction
+### 1.0 Introduction
 
 Caching is a common way to improve the performance of any project, making
 caching libraries one of the most common features of many frameworks and
@@ -176,7 +176,8 @@ interface CacheInterface
      * If the TTL is not null then the TTL value for the Item will be overwritten either by this new TTL value
      * 
      * @param array         $items An array of CacheItem objects, this is for a multiple-set operation.
-     * @param null|integer  $ttl   Optional. If the implementing library has expiration support then the TTL timestamp value is passed in here. 
+     * @param null|integer  $ttl   Optional. If the implementing library has expiration support then the TTL 
+                                   timestamp value is passed in here. 
      * @return boolean The result of the multiple-set operation
      */
     public function setItems($items, $ttl = null);
