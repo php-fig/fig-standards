@@ -187,6 +187,6 @@ interface CacheInterface
 
 This proposal is the result of many months of deliberation, team work and some proposals which can be referenced here:
  
- https://github.com/tedivm/fig-standards/blob/Cache/proposed/PSR-Cache.md
- https://github.com/evert/fig-standards/blob/master/proposed/objectcache.md
- https://github.com/dlsniper/fig-standards/blob/cache-proposal/proposed/psr-cache.md
+ * https://github.com/tedivm/fig-standards/blob/Cache/proposed/PSR-Cache.md
+ * https://github.com/evert/fig-standards/blob/master/proposed/objectcache.md
+ * https://github.com/dlsniper/fig-standards/blob/cache-proposal/proposed/psr-cache.md
