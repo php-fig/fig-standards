@@ -76,6 +76,25 @@ passed. If this is not possible for whatever reason then it is preferable to
 respond with a cache miss than with corrupted data.
 
 
+## Key Concepts
+
+### Pool
+
+The pool represents a collection of items in a caching system. The pool
+conceptually contains all of the items. When you want to get something out of
+the caching system, you use the Pool to create the Item object. A Pool can
+return one Item or many Items, and the pool can be used to empty all of the
+items in the cache.
+
+
+### Items
+
+An item represents a single key/value pair inside of a caching system. It is
+associated with a "key" that can't be changed, and a value that can be set or
+retrieved. The status of the item (hit or miss) is relevant only to that
+particular item.
+
+
 ## Interfaces
 
 
