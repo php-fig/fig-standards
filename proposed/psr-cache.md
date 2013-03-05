@@ -137,18 +137,7 @@ interface CacheInterface
      * @return CacheItem  The newly populated CacheItem class representing the stored data in the cache
      */
     public function getItem($key);
-    
-    /**
-     * This method can be used for re-persistence of an existing cache item after being retrieved from Cache->
-     * It's good if you have an existing CacheItem and just want to change its value then you can stick it back in the cache
-     * If the TTL is not null then the TTL value for the Item will be overwritten either by this new TTL value
-     * 
-     * @param CacheItem     $item   The CacheItem object being passed for persistence in the cache
-     * @param null|integer  $ttl    Optional. If there is an expiration time for this object then this parameter is used.
-     * @return boolean              The result of the set operation
-     */
-    public function setItem(CacheItemInterface $item, $ttl = null);
-    
+
     /**
      * Remove multiple cache items in a single operation
      * 
