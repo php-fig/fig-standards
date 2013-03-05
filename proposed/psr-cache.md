@@ -158,8 +158,7 @@ interface CacheInterface
     public function getItems($keys);
     
     /**
-     * Persistence or re-persistence of multiple CacheItem objects, 
-     * this does not differ from the setItem() method except that it's setting multiple items at once
+     * Persistence or re-persistence of multiple CacheItem objects.
      * If the TTL is not null then the TTL value for the Item will be overwritten either by this new TTL value
      * 
      * @param array         $items An array of CacheItem objects, this is for a multiple-set operation.
