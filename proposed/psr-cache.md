@@ -185,7 +185,7 @@ interface CacheInterface
 
 ### 1.4 Credits
 
-This proposal is the result of many months of deliberation, team work and some proposals which can be referenced here:
+This proposal is the result of many months of deliberation, team work and proposals which can be referenced here:
  
  * https://github.com/tedivm/fig-standards/blob/Cache/proposed/PSR-Cache.md
  * https://github.com/evert/fig-standards/blob/master/proposed/objectcache.md
