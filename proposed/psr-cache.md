@@ -71,7 +71,7 @@ value allowed by cache system. If the cache system does not support a TTL
 option then the user specified or the default TTL values will be ignored.
 
 It will be the implementation job to define what values are considered valid
-or invalid for key names or TTL valus based on what the underlying driver can
+or invalid for key names or TTL values based on what the underlying driver can
 accept but the user MUST be aware of the accepted values for both the TTL
 values as well as for key names.
 
