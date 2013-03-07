@@ -222,7 +222,7 @@ interface Item
      * @param int|DateInterval|DateTime $ttl
      * @return bool
      */
-    function set($value, $ttl = null);
+    function set($value = null, $ttl = null);
 
     /**
      * Validates the current state of the item in the cache.
