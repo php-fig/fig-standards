@@ -83,7 +83,7 @@ respond with a cache miss than with corrupted data.
 The pool represents a collection of items in a caching system. The pool
 conceptually contains all of the items. When you want to get something out of
 the caching system, you use the Pool to create the Item object. A Pool can
-return one Item or many Items, and the pool can be used to empty all of the
+return one Item or many Items, and the pool can be used to clear all of the
 items in the cache.
 
 
@@ -144,12 +144,11 @@ interface Pool
     function getItemIterator($keys);
 
     /**
-     * Empties the cache pool of all items.
+     * Clears the cache pool of all items.
      *
      * @return bool
      */
-    function empty();
-
+    function clear();
 }
 ```
 
