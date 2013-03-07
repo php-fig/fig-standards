@@ -213,7 +213,7 @@ interface CacheInterface
 ----------
 
 The interfaces described as well as a test suite to verify your implementation
-are provided as part of the [php-fig/cache](https://packagist.org/packages/php-fig/psr-cache) package.
+are provided as part of the [psr/cache](https://packagist.org/packages/psr/cache) package.
 
 4. Credits
 ----------
