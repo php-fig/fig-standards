@@ -203,7 +203,7 @@ interface CacheInterface
      *
      * @return boolean The result of the empty operation
      */
-    public function empty();
+    public function clear();
 
 }
 
