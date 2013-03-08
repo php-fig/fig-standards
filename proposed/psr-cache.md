@@ -209,13 +209,17 @@ interface CacheInterface
 
 ```
 
-3. Package
+3. Examples
+-----------
+[Memcached](https://gist.github.com/dragoonis/6b28ae75f141aab552e5)
+
+4. Package
 ----------
 
 The interfaces described as well as a test suite to verify your implementation
 are provided as part of the [psr/cache](https://packagist.org/packages/psr/cache) package.
 
-4. Credits
+5. Credits
 ----------
 
 This proposal is the result of many months of deliberation, team work and proposals which can be referenced here:
