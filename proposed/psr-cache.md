@@ -213,6 +213,7 @@ interface CacheInterface
 -----------
 
 * [Memcached](https://gist.github.com/dragoonis/1c4ea0836097f5fd1fd6)
+* [Redis](https://gist.github.com/dragoonis/ee20463da101cabc7354)
 * [APC](https://gist.github.com/dragoonis/6b28ae75f141aab552e5)
 
 4. Package
