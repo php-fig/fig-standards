@@ -211,8 +211,9 @@ interface CacheInterface
 
 3. Examples
 -----------
-[Memcached](https://gist.github.com/dragoonis/6b28ae75f141aab552e5)
-[APC](https://gist.github.com/dragoonis/6b28ae75f141aab552e5)
+
+* [Memcached](https://gist.github.com/dragoonis/6b28ae75f141aab552e5)
+* [APC](https://gist.github.com/dragoonis/6b28ae75f141aab552e5)
 
 4. Package
 ----------
