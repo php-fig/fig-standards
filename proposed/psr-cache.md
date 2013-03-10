@@ -213,8 +213,8 @@ interface CacheInterface
 -----------
 
 * [PsrCacheItem](https://gist.github.com/dragoonis/3802de3d5780f19c81b6)
-* [Memcached](https://gist.github.com/dragoonis/1c4ea0836097f5fd1fd6)
 * [Redis](https://gist.github.com/dragoonis/ee20463da101cabc7354)
+* [Memcached](https://gist.github.com/dragoonis/1c4ea0836097f5fd1fd6)
 * [APC](https://gist.github.com/dragoonis/6b28ae75f141aab552e5)
 
 4. Package
