@@ -142,7 +142,7 @@ interface CacheInterface
      *
      * @return CacheItem  The newly populated CacheItem class representing the stored data in the cache
      */
-    public function getItem($key);
+    public function get($key);
 
     /**
      * Persisting our data in the cache, uniquely referenced by a key with an optional expiration TTL time.
@@ -173,7 +173,7 @@ interface CacheInterface
      * @return array An array of CacheItem classes.
      *               The resulting array must use the CacheItem's key as the associative key for the array.
      */
-    public function getItems($keys);
+    public function getMultiple($keys);
 
     /**
      * Persistence or re-persistence of multiple CacheItem objects.
@@ -185,7 +185,7 @@ interface CacheInterface
      *
      * @return boolean The result of the multiple-set operation
      */
-    public function setItems($items, $ttl = null);
+    public function setMultiple($items, $ttl = null);
 
     /**
      * Remove multiple cache items in a single operation
@@ -196,7 +196,7 @@ interface CacheInterface
      *               and the result of that operation. The result will be a boolean of true or false
      *               representing if the cache item was removed or not
      */
-    public function removeItems($keys);
+    public function removeMultiple($keys);
 
     /**
      * This will wipe out the entire cache's keys
