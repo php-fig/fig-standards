@@ -176,7 +176,7 @@ interface CacheInterface
     public function getMultiple($keys);
 
     /**
-     * Persistence or re-persistence of multiple CacheItem objects.
+     * Persisting a set of key => value pairs in the cache.
      * If the TTL is not null then the TTL value for the Item will be overwritten either by this new TTL value
      *
      * @param array        $items An array of key => value pairs for a multiple-set operation.
