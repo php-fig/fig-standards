@@ -9,7 +9,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 interpreted as described in [RFC 2119][].
 
 The final implementations MAY be able to decorate the objects with more
-functionality that the one proposed but they MUST implement the indicated
+functionality than the one proposed but they MUST implement the indicated
 interfaces/functionality first.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
@@ -21,7 +21,7 @@ interfaces/functionality first.
 
 Caching is a common way to improve the performance of any project, making
 caching libraries one of the most common features of many frameworks and
-libraries. This has lead to a situation where many libraries roll their own
+libraries. This has led to a situation where many libraries roll their own
 caching libraries, with various levels of functionality. These differences are
 causing developers to have to learn multiple systems which may or may not
 provide the functionality they need. In addition, the developers of caching
@@ -45,7 +45,7 @@ by an integer representing time in seconds.
     1:35:00.
 
 *    **Key** - A string that uniquely identifies the cached item. Implementing
-Libraries are responsible for any encoding or escaping required by their
+libraries are responsible for any encoding or escaping required by their
 backends, but must be able to supply the original key if needed.
 
 ### 1.3 CacheItem
@@ -53,7 +53,7 @@ backends, but must be able to supply the original key if needed.
 By `CacheItem` we refer to a object that implements the
 `Psr\Cache\CacheItemInterface` interface.
 
-By using the cache item implementations will guarantee consistency across
+By using the `CacheItem`, implementations will guarantee consistency across
 various systems and ensure that the user will always retrieve the expected
 data without performing any additional operations.
 
@@ -67,10 +67,10 @@ interface.
 
 If the user does not provide a TTL value then the `Cache` MUST set a default
 value that is either configured by the user or, if not available, the maximum
-value allowed by cache system. If the cache system does not support a TTL
-option then the user specified or the default TTL values will be ignored.
+value allowed by the cache system. If the cache system does not support a TTL
+option then the user specified and default TTL values will be ignored.
 
-It will be the implementation job to define what values are considered valid
+It will be the implementation's job to define what values are considered valid
 or invalid for key names or TTL values based on what the underlying driver can
 accept but the user MUST be aware of the accepted values for both the TTL
 values as well as for key names.
