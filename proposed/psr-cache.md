@@ -176,8 +176,7 @@ interface CacheInterface
     public function getMultiple($keys);
 
     /**
-     * Persisting a set of key => value pairs in the cache.
-     * If the TTL is not null then the TTL value for the Item will be overwritten either by this new TTL value
+     * Persisting a set of key => value pairs in the cache, with an optional TTL.
      *
      * @param array        $items An array of key => value pairs for a multiple-set operation.
      * @param null|integer $ttl   Optional. The TTL value of this item. If no value is sent and the driver supports TTL
