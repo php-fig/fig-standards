@@ -140,7 +140,7 @@ interface CacheInterface
      *
      * @param string $key The unique key of this item in the cache
      *
-     * @return CacheItem  The newly populated CacheItem class representing the stored data in the cache
+     * @return CacheItemInterface The newly populated CacheItem class representing the stored data in the cache
      */
     public function get($key);
 
