@@ -200,7 +200,7 @@ interface CacheInterface
     /**
      * This will wipe out the entire cache's keys
      *
-     * @return boolean The result of the empty operation
+     * @return boolean The result of the clear operation
      */
     public function clear();
 
