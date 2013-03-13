@@ -104,13 +104,6 @@ interface CacheItemInterface
     public function getValue();
 
     /**
-     * Set the value of the item
-     *
-     * @param mixed $value
-     */
-    public function setValue($value);
-
-    /**
      * This boolean value tells us if our cache item is currently in the cache or not
      *
      * @return boolean
