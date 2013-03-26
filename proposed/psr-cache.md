@@ -203,6 +203,25 @@ interface CacheInterface
 
 ```
 
+### 2.3 CacheAwareInterface
+
+``` php
+<?php
+
+namespace Psr\Cache;
+
+interface CacheAwareInterface
+{
+    /**
+     * Sets a cache instance on the object
+     *
+     * @param CacheInterface $cache
+     * @return null
+     */
+    public function setCache(CacheInterface $cache);
+}
+```
+
 3. Examples
 -----------
 
