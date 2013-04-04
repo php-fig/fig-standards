@@ -21,16 +21,16 @@ Mandatory
 Examples
 --------
 
-* `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/Doctrine/Common/IsolatedClassLoader.php`
-* `\Symfony\Core\Request` => `/path/to/project/lib/Symfony/Core/Request.php`
-* `\Zend\Acl` => `/path/to/project/lib/Zend/Acl.php`
-* `\Zend\Mail\Message` => `/path/to/project/lib/Zend/Mail/Message.php`
+* `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/Doctrine/Common/IsolatedClassLoader.php`
+* `\Symfony\Core\Request` => `/path/to/project/Symfony/Core/Request.php`
+* `\Zend\Acl` => `/path/to/project/Zend/Acl.php`
+* `\Zend\Mail\Message` => `/path/to/project/Zend/Mail/Message.php`
 
 Underscores in Namespaces and Class Names
 -----------------------------------------
 
-* `\namespace\package\Class_Name` => `/path/to/project/lib/namespace/package/Class/Name.php`
-* `\namespace\package_name\Class_Name` => `/path/to/project/lib/namespace/package_name/Class/Name.php`
+* `\namespace\package\Class_Name` => `/path/to/project/namespace/package/Class/Name.php`
+* `\namespace\package_name\Class_Name` => `/path/to/project/namespace/package_name/Class/Name.php`
 
 The standards we set here should be the lowest common denominator for
 painless autoloader interoperability. You can test that you are
