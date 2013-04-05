@@ -56,4 +56,3 @@ SplClassLoader实现
 下面的gist是一个SplClassLoader实例可以按照上面建议的自动加载特性来加载类。这也是我们当前推荐在PHP5.3中按照上述标准加载类的方式
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
-
