@@ -50,6 +50,8 @@ Voting Members
 
 1. Jordi Boggiano: Composer, Packagist
 
+1. Pádraic Brady: Zend Framework
+
 1. Karma Dordrak: Zikula
 
 1. Paul Dragoonis: PPI, PPI2
@@ -78,18 +80,14 @@ Voting Members
 
 1. Fabien Potencier: Symfony, Symfony2
 
-1. Andre Romcke: eZ Publish
+1. Mike van Riel: phpDocumentor
 
-1. Paul Scott: Chisimba, C4
+1. Andre Romcke: eZ Publish
 
 1. Phil Sturgeon: PyroCMS
 
 1. Lukas Smith: Jackalope
 
 1. Kris Wallsmith: Assetic, Buzz
-
-1. Mike van Riel: phpDocumentor
-
-1. Pádraic Brady: Zend Framework
 
 1. David Zülke: Agavi
