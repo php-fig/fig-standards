@@ -80,8 +80,6 @@ Voting Members
 
 1. Andre Romcke: eZ Publish
 
-1. Paul Scott: Chisimba, C4
-
 1. Phil Sturgeon: PyroCMS
 
 1. Lukas Smith: Jackalope
