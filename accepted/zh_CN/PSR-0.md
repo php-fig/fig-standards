@@ -3,13 +3,13 @@
 强制性
 ---------
 
-* 一个完全标准的命名空间必须要有一下的格式结构`\<Vendor Name>\(<Namespace>\)*<Class Name>`
+* 一个完全标准的命名空间必须要有以下的格式结构`\<Vendor Name>\(<Namespace>\)*<Class Name>`
 * 命名空间必须有一个顶级的组织名称 ("Vendor Name").
-* 命名空间中可以根据情况决定使用多少个子空间
-* 命名空间中的分隔符当从文件系统加载的时候将被映射为 `DIRECTORY_SEPARATOR` 
-* 命名空间中的类名中的`_`没有特殊含义，也将被作为`DIRECTORY_SEPARATOR`对待. 
-* 命名空间中的类名在从文件系统加载时文件名都需要以`.php`结尾
-* 组织名，空间名，类名都可以随意选择使用大小写英文字符
+* 命名空间中可以根据情况使用任意数量的子空间
+* 从文件系统中加载源文件的时，命名空间中的分隔符将被映射为 `DIRECTORY_SEPARATOR`
+* 命名空间中的类名中的`_`没有特殊含义，也将被作为`DIRECTORY_SEPARATOR`对待.
+* 标准的命名空间和类从文件系统加载源文件时只需要加上`.php`后缀即可
+* 组织名，空间名，类名都可以随意使用大小写英文字符的组合
 
 示例
 --------
@@ -25,7 +25,7 @@
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
 
-以上是我们为实现无痛的自动加载特性设定的最低标准。你可以按照此标准实现一个SplClassLoader在PHP 5.3中去加载类。
+以上是我们为轻松实现自动加载特性设定的最低标准。你可以利用下面这个可以自动加载 PHP 5.3 类的SplClassLoader来测试你的代码是否符合以上这些标准。
 
 实例
 ----------------------
@@ -53,6 +53,6 @@ function autoload($className)
 SplClassLoader实现
 -----------------------------
 
-下面的gist是一个SplClassLoader实例可以按照上面建议的自动加载特性来加载类。这也是我们当前推荐在PHP5.3中按照上述标准加载类的方式
+下面的gist是一个可以按照上面建议的自动加载特性来加载类的SplClassLoader实例。这也是我们当前在PHP5.3中依据以上标准加载类时推荐的方。
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
