@@ -22,8 +22,8 @@ Ejemplos
 El guión bajo en namespaces y nombres de clase
 --------------------------------------------------------
 
-* `\namespace\package\Class_Name` => `/directorio/del/proyecto/lib/vendor/namespace/package/Class/Name.php`
-* `\namespace\package_name\Class_Name` => `/directorio/del/proyecto/lib/vendor/namespace/package_name/Class/Name.php`
+* `\namespace\paquete\Nombre_De_Clase` => `/directorio/del/proyecto/lib/vendor/namespace/package/Class/Name.php`
+* `\namespace\nombre_de_paquete\Nombre_De_Clase` => `/directorio/del/proyecto/lib/vendor/namespace/package_name/Class/Name.php`
 
 Los estándares que establecemos aquí deben ser el mínimo común denominador para la aplicación de la interoperabilidad del autoloader. Puede probar que sigue estas normas mediante la utilización del ejemplo de autoloader SplClassLoader , capaz de cargar clases de PHP 5.3.
 
