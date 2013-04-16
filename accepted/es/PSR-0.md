@@ -14,16 +14,16 @@ Obligatorio
 Ejemplos
 ----------
 
-* `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
-* `\Symfony\Core\Request` => `/path/to/project/lib/vendor/Symfony/Core/Request.php`
-* `\Zend\Acl` => `/path/to/project/lib/vendor/Zend/Acl.php`
-* `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
+* `\Doctrine\Common\IsolatedClassLoader` => `/directorio/del/proyecto/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
+* `\Symfony\Core\Request` => `/directorio/del/proyecto/lib/vendor/Symfony/Core/Request.php`
+* `\Zend\Acl` => `/directorio/del/proyecto/lib/vendor/Zend/Acl.php`
+* `\Zend\Mail\Message` => `/directorio/del/proyecto/lib/vendor/Zend/Mail/Message.php`
 
 El guión bajo en namespaces y nombres de clase
 --------------------------------------------------------
 
-* `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
-* `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
+* `\namespace\package\Class_Name` => `/directorio/del/proyecto/lib/vendor/namespace/package/Class/Name.php`
+* `\namespace\package_name\Class_Name` => `/directorio/del/proyecto/lib/vendor/namespace/package_name/Class/Name.php`
 
 Los estándares que establecemos aquí deben ser el mínimo común denominador para la aplicación de la interoperabilidad del autoloader. Puede probar que sigue estas normas mediante la utilización del ejemplo de autoloader SplClassLoader , capaz de cargar clases de PHP 5.3.
 
