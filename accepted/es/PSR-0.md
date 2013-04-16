@@ -30,7 +30,7 @@ Los estándares que establecemos aquí deben ser el mínimo común denominador p
 Ejemplo de implementación
 ----------------------------
 
-A continuación se muestra una función de ejemplo para demostrar de forma sencilla cómo se cargan de forma automática con la propuesta anterior.
+A continuación se muestra una función de ejemplo para demostrar de forma sencilla cómo se cargan de automáticamente las clases con la propuesta anterior.
 ```php
 <?php
 
