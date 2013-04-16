@@ -1,7 +1,7 @@
 Grupo de interoperatibilidad para Frameworks PHP
 ================================================
 
-La idea detrás de este grupo es la de hablar acerca de los puntos en común entre los diferentes proyectos y encontrar formas de trabajar juntos. Nuestro público principal son el resto de miembros del grupo, pero somos muy conscientes de que el resto de la comunidad PHP nos está observando. Si otros desarrolladores quieren adoptar lo que estamos proponiendo son bienvenidos a hacerlo, pero no es el objetivo del grupo.
+La idea del grupo es la de hablar sobre los puntos en común entre los diferentes proyectos y encontrar formas de trabajar juntos. Nuestro destino principal son el resto de miembros del grupo, pero somos muy conscientes de que el resto de la comunidad PHP nos está observando. Si otros desarrolladores quieren adoptar lo que estamos proponiendo son bienvenidos a hacerlo, pero no es el objetivo del grupo.
 
 Propuesta de una recomendación de estándares
 --------------------------------------------
