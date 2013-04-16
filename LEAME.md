@@ -1,18 +1,14 @@
 Grupo de interoperatibilidad para Frameworks PHP
 ================================================
 
-La idea detrás de este grupo es la de hablar acerca de los puntos en común entre los diferentes proyectos y
-encontrar formas de trabajar juntos. Nuestro público principal son los demás, pero somos muy conscientes de
-que el resto de la comunidad PHP nos está observando. Si otros desarrolladores quieren adoptar lo que estamos
-proponiendo son bienvenidos a hacerlo, pero no es el objetivo del grupo.
+La idea del grupo es hablar sobre los puntos en común entre los diferentes proyectos y encontrar formas de trabajar juntos. Nuestro destino principal son el resto de miembros del grupo, pero somos muy conscientes de que el resto de la comunidad PHP nos está observando. Si otros desarrolladores quieren adoptar lo que estamos proponiendo son bienvenidos a hacerlo, pero no es el objetivo del grupo.
 
 Propuesta de una recomendación de estándares
 --------------------------------------------
 
 Para proponer una recomendación de estándar (PSR en inglés "Proposing a Standards Recommendation"):
 
-- haga un fork de este repositorio, cree una rama, cambie a esa rama, añada la propuesta en la carpeta
-  `proposed/`, haga "push" de la rama a Github y envíenos un "pull request"; o,
+- haga un fork de este repositorio, cree una rama, cambie a esa rama, añada la propuesta en la carpeta `proposed/`, haga "push" de la rama a Github y envíenos un "pull request"; o,
 
 - cree un nuevo ticket para iniciar una discusión en Github; o,
 
@@ -32,7 +28,7 @@ Para convertirse en un miembro con capacidad de voto, debe enviar un email a la 
 - El asunto del mensaje debe ser (en inglés): `Membership Request: {$your_name} ({$project_name})`
 
 - En el cuerpo del mensaje incluya su nombre, el nombre del proyecto (y enlace también) al que representa,
-  y otros detalles que le parezcan relevantes.
+  y otros detalles que le parezcan relevantes (seguramente mejor en inglés).
   
 Actuales miembros que votarán sus peticiones.
 
