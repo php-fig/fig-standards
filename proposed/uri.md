@@ -206,10 +206,13 @@ interface UriInterface
      * Gets the decoded query component containing "key=value" pairs as an
      * associative array.
      *
+     * Implementations MUST treat keys ending with one or more sets of square
+     * brackets ("[...]") optionally containing a value as nested array keys.
+     *
      * For example, the query string:
      *
      * <pre>
-     * key1=value1&key2=value2
+     * key1=value1&key2[key3][]=value2&key2[key3][]=value3
      * </pre>
      *
      * would be returned as:
@@ -217,15 +220,21 @@ interface UriInterface
      * <pre>
      * array(
      *     'key1' => 'value1',
-     *     'key2' => 'value2',
+     *     'key2' => array(
+     *          'key3' => array(
+     *              0 => 'value2',
+     *              1 => 'value3'
+     *          )
+     *     )
      * )
      * </pre>
      *
      * Implementations MUST recognise ampersands ("&") as delimiting symbols,
      * and MAY recognise other characters such as semicolons (";").
      *
-     * If the query string is not purely comprised of "key=value" pairs, an
-     * `UnexpectedValueException` MUST be thrown.
+     * If the query string is empty, or has not been set, an empty array MUST
+     * be returned. Otherwise if the query string is not purely comprised of
+     * "key=value" pairs, an `UnexpectedValueException` MUST be thrown.
      *
      * @return array Query component.
      *
