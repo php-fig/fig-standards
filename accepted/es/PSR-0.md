@@ -57,7 +57,8 @@ El siguiente gist es un ejemplo de implementación de SplClassLoader, que carga 
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
 
-Notas:
+Notas
+------
 
 [^Nota1]: Namespace fully-qualified se trata de un namespace completamente cualificado.
 [^Nota2]: El nombre del proveedor se traduce en inglés como `vendor`.
