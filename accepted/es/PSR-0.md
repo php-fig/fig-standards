@@ -6,8 +6,8 @@ Obligatorio
 * Un namespace fully-qualified y clase debe tener la estructura siguiente `\ <Nombre de proveedor> \ (<Namespace> \) * <Nombre de clase>`. [^1]
 * Cada namespace debe tener un namespace de nivel superior ("Nombre de proveedor").
 * Cada namespace puede tener tantos sub-namespaces como quiera.
-* Cada separador de namespace se convierte en un `DIRECTORY_SEPARATOR` cuando la carga desde el sistema de archivos.
-* Cada carácter `_` en el nombre de la clase se convierte en un `DIRECTORY_SEPARATOR`. El carácter `_` no tiene un significado especial en el namespace. [^2]
+* Cada separador de namespace se convierte en un `DIRECTORY_SEPARATOR` cuando la carga desde el sistema de archivos. [^2]
+* Cada carácter `_` en el nombre de la clase se convierte en un `DIRECTORY_SEPARATOR`. El carácter `_` no tiene un significado especial en el namespace.
 * Al namespace fully-qualified y clase se le añade el sufijo `.php` cuando se cargue desde el sistema de archivos.
 * Los caracteres alfabéticos en los nombres de proveedor, namespaces y nombres de clase pueden contener cualquier combinación de mayúsculas y minúsculas.
 
