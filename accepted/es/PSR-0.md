@@ -3,11 +3,11 @@ A continuación se describen los requisitos obligatorios que deben cumplirse en 
 Obligatorio
 -----------
 
-* Un namespace fully-qualified [^Nota1] y clase debe tener la estructura siguiente `\ <Nombre de proveedor> \ (<Namespace> \) * <Nombre de clase>` [^Nota2].
+* Un namespace fully-qualified y clase debe tener la estructura siguiente `\ <Nombre de proveedor> \ (<Namespace> \) * <Nombre de clase>`. [^1]
 * Cada namespace debe tener un namespace de nivel superior ("Nombre de proveedor").
 * Cada namespace puede tener tantos sub-namespaces como quiera.
-* Cada separador de namespace se convierte en un `DIRECTORY_SEPARATOR` [^Nota3] cuando la carga desde el sistema de archivos.
-* Cada carácter `_` en el nombre de la clase se convierte en un `DIRECTORY_SEPARATOR`. El carácter `_` no tiene un significado especial en el namespace.
+* Cada separador de namespace se convierte en un `DIRECTORY_SEPARATOR` cuando la carga desde el sistema de archivos.
+* Cada carácter `_` en el nombre de la clase se convierte en un `DIRECTORY_SEPARATOR`. El carácter `_` no tiene un significado especial en el namespace. [^2]
 * Al namespace fully-qualified y clase se le añade el sufijo `.php` cuando se cargue desde el sistema de archivos.
 * Los caracteres alfabéticos en los nombres de proveedor, namespaces y nombres de clase pueden contener cualquier combinación de mayúsculas y minúsculas.
 
@@ -60,6 +60,6 @@ El siguiente gist es un ejemplo de implementación de SplClassLoader, que carga 
 Notas
 ------
 
-[^Nota1]: Namespace fully-qualified se trata de un namespace completamente cualificado.
-[^Nota2]: El nombre del proveedor se traduce en inglés como `vendor`.
-[^Nota3]: DIRECTORY_SEPARATOR indica el carácter que indica la separación de directorios en cada sistema operativo. Por ejemplo en *nix u OS X este caracter es la barra `/` mientras en windows se trata de la barra invertida `\`.
+[^1]: Namespace fully-qualified se trata de un namespace completamente cualificado.
+
+[^2]: El nombre del proveedor se traduce en inglés como `vendor`. `DIRECTORY_SEPARATOR` indica el carácter que indica la separación de directorios en cada sistema operativo. Por ejemplo en *nix u OS X este caracter es la barra `/` mientras en windows se trata de la barra invertida `\`.
