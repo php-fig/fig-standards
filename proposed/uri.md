@@ -17,15 +17,96 @@ interpreted as described in [RFC 2119][].
 
 A URI identifies an abstract or physical resource, and is defined in [RFC 3986][].
 
-Three interfaces are defined:
+URIs have the syntax `[scheme:]hierarchical-part[?query][#fragment]`, where
+square brackets "[...]" delineate optional components and the characters ":",
+"?" and "#" stand for themselves.
 
-1. `Psr\Uri\UriInterface` is a base interface that MUST NOT be implemented
-   directly.
-2. `Psr\Uri\OpaqueUriInterface` represents opaque URIs, which are absolute and
-   whose hierarchical part does not begin with a slash character ("/").
-3. `Psr\Uri\HierarchicalUriInterface` represents hiearchical URIs, which are
-   either absolute and whose scheme-specific part begins with a slash ("/"), or
-   relative, that is, a URI that does not specify a scheme.
+Some examples of URIs are:
+
+* `http://php.net/manual/en/`
+* `../../manual/`
+* `mailto:example@example.com`
+* `news:comp.lang.php`
+
+All URIs take one of two forms:
+
+* **Opaque URIs** are absolute and whose hierarchical part does not begin with
+  a slash character ("/").
+
+* **Hierarchial URIs** are either an absolute URI whose scheme-specific part
+  begins with a slash ("/"), or a relative URI, that is, a URI that does not
+  specify a scheme.
+
+Examples of these forms are:
+
+```
+Hierarchical:   foo://example.com:8080/bar?name=ferret#teeth
+                \_/   \__________________/ \_________/ \___/
+                 |             |                |        |
+              scheme   hierarchical part      query   fragment
+                 |   __________|_________   ____|____   _|_
+                / \ /                    \ /         \ /   \
+      Opaque:   urn:example:example:animal?name=ferret#teeth
+```
+
+### 1.2 Opaque URIs
+
+Opaque URIs have the syntax `scheme:hierarchical-part[?query][#fragment]`.
+
+That is:
+
+```
+  urn:example:animal?name=ferret#teeth
+  \_/ \____________/ \_________/ \___/
+   |         |            |        |
+scheme  hierarchical    query   fragment
+            part
+```
+
+Some further examples are:
+
+* `mailto:example@example.com`
+* `news:comp.lang.php`
+* `urn:isbn:096139210x`
+
+### 1.3 Hierarchial URIs
+
+Hierarchical URIs have the syntax `[scheme:][//authority][path][?query][#fragment]`.
+
+The authority component has the syntax `[user-info@]host[:port]`.
+
+That is:
+
+```
+  foo://user:password@example.com:8042/over/there?name=ferret#teeth
+  \_/   \___________/ \_________/ \__/\_________/ \_________/ \___/
+   |          |            |       |       |           |        |
+   |      user info      host     port     |           |        |
+   |    \____________________________/     |           |        |
+   |                  |                    |           |        |
+   |              authority               path         |        |
+   |  \_________________________________________/      |        |
+   |                       |                           |        |
+scheme             hierarchical part                 query   fragment
+```
+
+Some further examples are:
+
+* `http://php.net/manual/en/`
+* `manual/en/language.oop5.interfaces.php`
+* `../../manual/`
+* `file:///~/calendar`
+
+### 1.4 Interfaces
+
+This PSR defines three interfaces:
+
+1. `Psr\Uri\UriInterface`
+2. `Psr\Uri\OpaqueUriInterface`
+3. `Psr\Uri\HierarchicalUriInterface`
+
+`UriInterface` is a base interface and MUST NOT be implemented directly. It MAY
+be type-hinted in situtations where either URI form is acceptable.
 
 Implementors are not expected to provide implementations for both
 `OpaqueUriInterface` and `HierarchicalUriInterface`, but instead provide the
@@ -38,7 +119,7 @@ implements `OpaqueUriInterface` and uses the scheme "urn").
 
 [RFC 3986]: http://tools.ietf.org/html/rfc3986
 
-### 1.2 Modifying URI objects
+### 1.5 Modifying URI objects
 
 The interfaces do not define setters to modify URIs. Implementations MAY choice
 to add these, or instead use constructors/builder objects to create new URIs.
@@ -69,19 +150,6 @@ use Psr\Uri\Exception\UnexpectedValueException;
  * Represents a uniform resource identifier (URI), which identifies an abstract
  * or physical resource.
  *
- * URIs are either opaque or hierarchical, and are represented by
- * `OpaqueUriInterface` and `HierarchicalUriInterface` respectively.
- *
- * Absolute URIs are either opaque or hierarchical. Relative URIs are always
- * hierarchical.
- *
- * Some examples of URIs are:
- *
- * - <samp>http://php.net/manual/en/</samp>
- * - <samp>../../manual/</samp>
- * - <samp>mailto:example@example.com</samp>
- * - <samp>news:comp.lang.php</samp>
- *
  * URIs in string form have the syntax:
  *
  * <pre>
@@ -90,18 +158,6 @@ use Psr\Uri\Exception\UnexpectedValueException;
  *
  * where square brackets "[...]" delineate optional components and the
  * characters ":", "?" and "#" stand for themselves.
- *
- * For example:
- *
- * <pre>
- * Hierarchical:   foo://example.com:8080/bar?name=ferret#teeth
- *                 \_/   \__________________/ \_________/ \___/
- *                  |             |                |        |
- *               scheme   hierarchical part      query   fragment
- *                  |   __________|_________   ____|____   _|_
- *                 / \ /                    \ /         \ /   \
- *       Opaque:   urn:example:example:animal?name=ferret#teeth
- * </pre>
  *
  * This interface MUST NOT be implemented directly, instead use
  * `OpaqueUriInterface` or `HierarchicalUriInterface` as appropriate.
@@ -170,6 +226,14 @@ interface UriInterface
      *
      * Implementations MUST NOT return the succeeding colon (":").
      *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the scheme component is:
+     *
+     * <samp>foo</samp>
+     *
      * @return string|null Scheme component, or `null` if not set.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-3.1 RFC 3986 § 3.1
@@ -186,6 +250,18 @@ interface UriInterface
      * return a succeeding question mark ("?") or number sign ("#") that
      * delimits it from a query or fragment component respectively.
      *
+     * For example, for the URIs:
+     *
+     * - <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     * - <samp>urn:example:animal?name=ferret#teeth</samp>
+     *
+     * the hierarchical parts are:
+     *
+     * - <samp>//user:password@example.com:8042/over/there</samp>
+     * - <samp>example:animal</samp>
+     *
+     * respectively.
+     *
      * @return string Hierarchical part.
      */
     public function getHierarchicalPart();
@@ -195,6 +271,14 @@ interface UriInterface
      *
      * Implementations MUST NOT return the preceding question mark ("?") nor a
      * succeeding number sign ("#").
+     *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the query component is:
+     *
+     * <samp>name=ferret</samp>
      *
      * @return string|null Query component, or `null` if not set.
      *
@@ -209,7 +293,7 @@ interface UriInterface
      * Implementations MUST treat keys ending with one or more sets of square
      * brackets ("[...]") optionally containing a value as nested array keys.
      *
-     * For example, the query string:
+     * For example, the query component:
      *
      * <pre>
      * key1=value1&key2[key3][]=value2&key2[key3][]=value3
@@ -247,6 +331,14 @@ interface UriInterface
      *
      * Implementations MUST NOT return the preceding number sign ("#").
      *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the fragment component is:
+     *
+     * <samp>teeth</samp>
+     *
      * @return string|null Fragment component, or `null` if not set.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-3.5 RFC 3986 § 3.5
@@ -268,12 +360,6 @@ namespace Psr\Uri;
  * This is an absolute URI whose hierarchical part does not begin with a
  * slash character ("/").
  *
- * Some examples of opaque URIs are:
- *
- * - <samp>mailto:example@example.com</samp>
- * - <samp>news:comp.lang.php</samp>
- * - <samp>urn:isbn:096139210x</samp>
- *
  * Opaque URIs in string form have the syntax:
  *
  * <pre>
@@ -282,16 +368,6 @@ namespace Psr\Uri;
  *
  * where square brackets "[...]" delineate optional components and the
  * characters ":", "?", and "#" stand for themselves.
- *
- * For example:
- *
- * <pre>
- *   urn:example:animal?name=ferret#teeth
- *   \_/ \____________/ \_________/ \___/
- *    |         |            |        |
- * scheme  hierarchical    query   fragment
- *             part
- * </pre>
  */
 interface OpaqueUriInterface extends UriInterface
 {
@@ -312,13 +388,6 @@ namespace Psr\Uri;
  * slash ("/"), or a relative URI, that is, a URI that does not specify a
  * scheme.
  *
- * Some examples of hierarchical URIs are:
- *
- * - <samp>http://php.net/manual/en/</samp>
- * - <samp>manual/en/language.oop5.interfaces.php</samp>
- * - <samp>../../manual/</samp>
- * - <samp>file:///~/calendar</samp>
- *
  * Hierarchical URIs in string form have the syntax:
  *
  * <pre>
@@ -327,32 +396,6 @@ namespace Psr\Uri;
  *
  * where square brackets "[...]" delineate optional components and the
  * characters ":", "/", "?", and "#" stand for themselves.
- *
- * The authority component has the syntax:
- *
- * <pre>
- * [user-info@]host[:port]
- * </pre>
- *
- * The path component of a hierarchical URI is itself said to be absolute if it
- * begins with a slash character ("/"); otherwise it is relative. The path of a
- * hierarchical URI that is either absolute or specifies an authority is always
- * absolute.
- *
- * For example:
- *
- * <pre>
- *   foo://user:password@example.com:8042/over/there?name=ferret#teeth
- *   \_/   \___________/ \_________/ \__/\_________/ \_________/ \___/
- *    |          |            |       |       |           |        |
- *    |      user info      host     port     |           |        |
- *    |    \____________________________/     |           |        |
- *    |                  |                    |           |        |
- *    |              authority               path         |        |
- *    |  \_________________________________________/      |        |
- *    |                       |                           |        |
- * scheme             hierarchical part                 query   fragment
- * </pre>
  */
 interface HierarchicalUriInterface extends UriInterface
 {
@@ -373,6 +416,14 @@ interface HierarchicalUriInterface extends UriInterface
      * question mark ("?") or number sign ("#") that delimits it from a path,
      * query or fragment component respectively.
      *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the hierarchical part is:
+     *
+     * <samp>//user:password@example.com:8042/over/there</samp>
+     *
      * @return string|null Hierarchical part, or `null` if not set.
      */
     public function getHierarchicalPart();
@@ -380,12 +431,26 @@ interface HierarchicalUriInterface extends UriInterface
     /**
      * Gets the authority component.
      *
+     * The authority component has the syntax:
+     *
+     * <pre>
+     * [user-info@]host[:port]
+     * </pre>
+     *
      * If the port subcomponent has been set as the known default for the
      * scheme component it SHOULD NOT be included.
      *
      * Implementations MUST NOT return the preceding double slash ("//") nor a
      * subsequent slash ("/"), question mark ("?") or number sign ("#") that
      * delimits it from a path, query or fragment component respectively.
+     *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the authority component is:
+     *
+     * <samp>user:password@example.com:8042</samp>
      *
      * @return string Authority component, or `null` if not set.
      *
@@ -397,6 +462,14 @@ interface HierarchicalUriInterface extends UriInterface
      * Gets the user info subcomponent of the authority.
      *
      * Implementations MUST NOT return the succeeding at-sign ("@").
+     *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the user info subcomponent is:
+     *
+     * <samp>user:password</samp>
      *
      * @return string|null User info component, or `null` if not set.
      *
@@ -410,6 +483,14 @@ interface HierarchicalUriInterface extends UriInterface
      * It MUST be treated as case-insensitive. Implementations SHOULD return
      * lowercase registered names and hexadecimal addresses.
      *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the host subcomponent is:
+     *
+     * <samp>example.com</samp>
+     *
      * @return string|null Host subcomponent, or `null` if not set.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-3.2.2 RFC 3986 § 3.2.2
@@ -422,6 +503,14 @@ interface HierarchicalUriInterface extends UriInterface
      * If the port has not been set this MAY return the default port for the
      * scheme if known.
      *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the port subcomponent is:
+     *
+     * <samp>8042</samp>
+     *
      * @return int|null Port subcomponent, or `null` if not set.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-3.2.3 RFC 3986 § 3.2.3
@@ -431,8 +520,26 @@ interface HierarchicalUriInterface extends UriInterface
     /**
      * Gets the decoded path component.
      *
+     * The path component of a hierarchical URI is itself said to be absolute if it
+     * begins with a slash character ("/"); otherwise it is relative. The path of a
+     * hierarchical URI that is either absolute or specifies an authority is always
+     * absolute.
+     *
+     * Implementations MUST return the initial slash ("/") if it is set.
+     * Implementations MUST NOT return a subsequent question mark ("?") or
+     * number sign ("#") that delimits it from a query or fragment component
+     * respectively.
+     *
      * Implementations MUST return an empty string (as opposed to `null`) when
      * no path is set.
+     *
+     * For example, for the URI:
+     *
+     * <samp>foo://user:password@example.com:8042/over/there?name=ferret#teeth</samp>
+     *
+     * the path component is:
+     *
+     * <samp>/over/there</samp>
      *
      * @return string Path.
      *
