@@ -21,7 +21,7 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 
 - Los archivos TIENEN QUE emplear solamente la codificación UTF-8 sin BOM para el código en PHP.
 
-- Los archivos DEBERÍAN declarar *cualquier* estructura (clases, funciones, constantes, etc,...) *o* realizar partes de la lógica de negocio (por ejemplo, generar una salida, cambio de configuración. ini, etc,...) pero NO DEBERÍA hacer las dos cosas.
+- Los archivos DEBERÍAN declarar *cualquier* estructura (clases, funciones, constantes, etc,...) *o* realizar partes de la lógica de negocio (por ejemplo, generar una salida, cambio de configuración ini, etc,...) pero NO DEBERÍA hacer las dos cosas.
 
 - Los namespaces y las clases TIENEN QUE cumplir [PSR-0] [].
 
@@ -47,7 +47,7 @@ El código PHP sólo debe utilizar UTF-8 sin BOM.
 Un archivo DEBERÍA declarar estructuras (clases, funciones, constantes, etc,...) y no causar efectos secundarios o DEBERÍA ejecutar partes de la lógica de negocio, pero NO DEBERÍAN hacer las dos cosas.
 
 La frase "efectos secundarios" significa la ejecución de la lógica de negocio que no está directamente relacionado con
-declarar clases, funciones, constantes, etc, *simplemente la de incluir la archivo*.
+declarar clases, funciones, constantes, etc, *simplemente la de incluir el archivo*.
 
 "Efectos secundarios" incluyen, pero no se limitan a: generar salidas, uso explícito de `requiere` o `include`, conexiones a servicios externos, modificación de configuraciones iniciales, enviar errores o excepciones, modificar variables globales o estáticas, leer o escribir un archivo, etc...
 
@@ -92,3 +92,67 @@ if (! function_exists('bar')) {
     }
 }
 ```
+
+3. Namespace y nombres de clases
+----------------------------------------------
+
+Los namespaces y las clases TIENEN QUE seguir el [PSR-0][].
+
+Esto significa que cada clase estará en un fichero independiente y está dentro de un namespace en almenos un nivel: un nombre de proveedor de nivel superior.
+
+Los nombres de clases TIENEN QUE declararse con notación `StudlyCaps`.
+
+El código escrito para PHP 5.3 o superior TIENE QUE hacer un uso formal de los namespaces.
+
+Por ejemplo:
+
+```php
+<?php
+// PHP 5.3 o superior:
+namespace Vendor\Model;
+
+class Foo
+{
+}
+```
+
+El código escrito para PHP 5.2.x o inferior DEBERÍA emplear una convención de pseudo-namespaces con prefijos en los nombres de las clases con el formato `Vendor_`.
+
+```php
+<?php
+// PHP 5.2.x o inferior:
+class Vendor_Model_Foo
+{
+}
+```
+
+4. Constantes de clases, propiedades y métodos
+---------------------------------------------------------------
+
+El término "clases" hace referencia a todas las clases, interfaces y traits.
+
+### 4.1. Constantes
+
+Las constantes en las clases TIENEN QUE declararse siempre en mayúsculas y separandas con guiones bajos.
+Por ejemplo:
+
+```php
+<?php
+namespace Vendor\Model;
+
+class Foo
+{
+    const VERSION = '1.0';
+    const FECHA_DE_APROBADO = '2012-06-01';
+}
+```
+
+### 4.2. Propiedades
+
+Esta guía evita intencionadamente cualquier recomendación respecto al uso de `$StudlyCaps`, `$camelCase`, or `$guion_bajo` en los nombres de las propiedades.
+
+Cualquiera que sea la convención de nomenclatura DEBERÍA ser utilizada de forma coherente en una alcance razonable. Ese alcance PUEDE ser a nivel de proveedor, a nivel de paquete, a nivel de clase, o a nivel de método.
+
+### 4.3. Métodos
+
+El nombre de método TIENE QUE declararse en notación `camelCase()`.
