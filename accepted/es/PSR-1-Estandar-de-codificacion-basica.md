@@ -151,7 +151,7 @@ class Foo
 
 Esta guía evita intencionadamente cualquier recomendación respecto al uso de `$StudlyCaps`, `$camelCase`, or `$guion_bajo` en los nombres de las propiedades.
 
-Cualquiera que sea la convención de nomenclatura DEBERÍA ser utilizada de forma coherente en una alcance razonable. Ese alcance PUEDE ser a nivel de proveedor, a nivel de paquete, a nivel de clase, o a nivel de método.
+Cualquiera que sea la convención de nomenclatura DEBERÍA ser utilizada de forma coherente con un alcance razonable. Ese alcance PUEDE ser a nivel de proveedor, a nivel de paquete, a nivel de clase, o a nivel de método.
 
 ### 4.3. Métodos
 
