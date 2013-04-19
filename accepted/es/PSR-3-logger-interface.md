@@ -22,9 +22,9 @@ Los usuarios de los logs son referidos como `usuario`.
 
 ### 1.1 Fundamental
 
-- El `LoggerInterface` expone ocho métodos para la escritura de logs en los ocho [RFC 5424][] niveles (debug, info, notice, warning, error, critical, alert, emergency). [^1]
+- El `LoggerInterface` expone ocho métodos para la escritura de logs en los ocho niveles niveles definidos en el [RFC 5424][] (debug, info, notice, warning, error, critical, alert, emergency). [^1]
 
-- Un noveno método, `log`, acepta un nivel de log como primer parámetro. La llamada a este método con alguno de las constantes de nivel de log TIENE QUE tener el mismo resultado que la llamada al método específico de dicho nivel. Las llamadas a este método con un nivel no definido por esta especificación TIENEN QUE lanzar una `Psr\Log\InvalidArgumentException` si la implementación no conoce el nivel. Los usuarios NO DEBERÍAN usar niveles específicos sin conocer de manera precisa que la implementación en uso lo soporte.
+- Un noveno método, `log`, acepta un nivel de log como primer parámetro. La llamada a este método con alguna de las constantes de nivel de log TIENE QUE tener el mismo resultado que la llamada al método específico de dicho nivel. Las llamadas a este método con un nivel no definido por esta norma TIENEN QUE lanzar una `Psr\Log\InvalidArgumentException` si la implementación no conoce el nivel. Los usuarios NO DEBERÍAN usar niveles específicos sin conocer de manera precisa que la implementación en uso lo soporta.
 
 [RFC 5424]: http://tools.ietf.org/html/rfc5424
 
@@ -32,13 +32,13 @@ Los usuarios de los logs son referidos como `usuario`.
 
 - Cada método debería aceptar una cadena de texto como mensaje, o un objeto con el método `__toString()`. Las implementaciones PUEDEN tener un tratamiento especial para el objeto en uso. En este caso, la implementación TIENE QUE convertirlo a una cadena de texto.
 
-- El mensaje PUEDE contener marcadores que las implementaciones PUEDEN remplazar con los valores del una array contextual .
+- El mensaje PUEDE contener marcadores que las implementaciones PUEDEN remplazar con los valores de una array contextual.
 
   Los nombres de los marcadores TIENEN QUE corresponder con las claves del array contextual.
 
   Los nombres de los marcadores TIENEN QUE estar delimitados con una apertura de llave `{` y un cierre de llave `}`. NO TIENE QUE haber ningún espacio en blanco entre los delimitadores (llaves) y el nombre del marcador.
 
-  Los nombres de los marcadores DEBERÍAN estar compuestos sólo por los caracteres `A-Z`, `a-z`, `0-9`, guión bajo `_`, y punto `.`. El uso de otros caracteres está reservado para futuras modificaciones en los nombres de los marcadores en la especificación.
+  Los nombres de los marcadores DEBERÍAN estar compuestos sólo por los caracteres `A-Z`, `a-z`, `0-9`, guión bajo `_`, y punto `.`. El uso de otros caracteres está reservado para futuras modificaciones en los nombres de los marcadores en la norma.
 
   Las implementaciones PUEDEN usar marcadores para implementar varias estrategias de escape y traducción para mostrar en los logs. Los usuarios NO DEBERÍAN pre-escapar valores de marcadores dado que no podrían conocer en qué contexto serían mostrados los datos.
 
@@ -75,17 +75,17 @@ Los usuarios de los logs son referidos como `usuario`.
 
 - Cada método acepta un array de datos contextual. Esto se usa para contener cualquier información extraña que no encajara bien en una cadena de texto. El array puede contener cualquier cosa. Las implementaciones TIENEN QUE asegurar que el tratamiento de los datos de contexto se hace con la mayor claridad posible. Un valor dado en el contexto NO TIENE QUE lanzar ninguna excepción ni error, warning o notice de PHP.
 
-- Si un objecto `Exception` es pasado en el array de contexto, TIENE QUE ir en la clave `'exception'`. Mostrar excepciones en el log es un patrón común y permite a las implementaciones extraer la traza de la pila del error cuando la aplicación de log lo soporte. Las implementaciones TIENEN QUE verificar que la clave `'exception'` contiene una `Exception` antes de usarla como tal, dado que PUEDE contener cualquier cosa.
+- Si un objecto `Exception` es pasado en el array contextual, TIENE QUE ir en la clave `'exception'`. Mostrar excepciones en el log es un patrón común y permite a las implementaciones extraer la traza de la pila del error cuando la aplicación de log lo soporte. Las implementaciones TIENEN QUE verificar que la clave `'exception'` contiene una `Exception` antes de usarla como tal, dado que PUEDE contener cualquier cosa.
 
 ### 1.4 Clases de ayuda e Interfaces
 
-- La clase `Psr\Log\AbstractLogger` te permite implementar la `LoggerInterface` de manera sencilla extendiéndola e implementado el método genérico `log`. Los otros ocho métodos realizan una llamada con el mensaje y el contexto a éste.
+- La clase `Psr\Log\AbstractLogger` permite implementar la `LoggerInterface` de manera sencilla extendiéndola e implementado el método genérico `log`. Los otros ocho métodos realizan una llamada con el mensaje y el array contextual a este método.
 
-- De manera similar, usando `Psr\Log\LoggerTrait` sólo necesita que usted implemente el método genérico `log`. Tenga en cuenta que los traits no permiten implementar interfaces, en ese caso tendrá que hacer un `implement LoggerInterface`.
+- De manera similar, usando `Psr\Log\LoggerTrait` sólo necesita implementar el método genérico `log`. Tenga en cuenta que los traits no permiten implementar interfaces, en ese caso tendrá que hacer un `implement LoggerInterface`.
 
 - La clase `Psr\Log\NullLogger` está incluida junto con la interfaz. PUEDE ser usada por los usuarios de la interfaz para proveer un escape seguro en la implementación si no se ha provisto de un logger. De todas formas, imprimir logs de manera condicional puede ser una mejor práctica si el coste de la creación de los datos de contexto es alta.
 
-- La clase `Psr\Log\LoggerAwareInterface` sólo contiene el método `setLogger(LoggerInterface $logger)` y puede ser usada por frameworks para auto enlazar de manera arbitraria instancias con un logger.
+- La clase `Psr\Log\LoggerAwareInterface` sólo contiene el método `setLogger(LoggerInterface $logger)` y puede ser usada por frameworks para auto enlazar de manera arbitraria instancias de un logger.
 
 - El trait `Psr\Log\LoggerAwareTrait` puede ser usado para implementar el equivalente a la interfaz de manera sencilla en cualquier clase. Le provee acceso a `$this->logger`.
 
@@ -267,5 +267,5 @@ class LogLevel
 Notas
 --------
 
-[^1]: Los términos expresados en inglés (debug, info, notice, warning, error, critical, alert, emergency) se traducen literalmente al español como (depuración, información, nota, advertencia, error, crítico, alerta, emergencia) respectivamente, e implican un nivel más elevado de menos a mayor.
+[^1]: Los términos expresados en inglés debug, info, notice, warning, error, critical, alert y emergency se traducen literalmente al español como depuración, información, nota, advertencia, error, crítico, alerta y emergencia respectivamente, e implican un nivel más elevado de menor a mayor.
 
