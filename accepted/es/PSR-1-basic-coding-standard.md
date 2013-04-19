@@ -1,0 +1,16 @@
+Codificación estándar básica
+=====================
+
+Esta sección de la norma comprende lo que debe considerarse la norma codificación de los elementos que se requieren para garantizar un alto nivel técnico de
+interoperabilidad entre el código PHP compartido.
+
+Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
+- TIENE QUE o REQUERIDO implica que es un requisito absoluto de la especificación.
+- NO TIENE QUE conlleva la completa prohibición de la especificación.
+- DEBERÍA o RECOMENDADO implica que pueden existen razones válidas para ignorar dicho elemento, pero las implicaciones que ello conlleva deben ser entendidas y sopesadas antes de elegir una opción diferente.
+- NO DEBERÍA implica que pueden existir razones bajo ciertas circunstancias cuando el comportamiento es aceptable o incluso útil, pero todas las implicaciones deben ser entendidas cuidadosamente y sopesadas antes de implementar algún comportamiento descrito por esta etiqueta para ignorar dicho comportamiento.
+- PUEDE u OPCIONAL implica que el elemento es puramente opcional. Cualquier proveedor puede elegir incluir dicho elemento porque crea que conlleva mejoras en su producto mientras otro puede elegir obviarlas. Una implementación que no incluya un opción particular TIENE QUE estar preparada para operar con otra implementación que incluya dicha opción, aunque implique limitar la funcionalidad. De la misma manera, una implementación que incluya una opción particular TIENE QUE estar preparada para otra que no la incluya (excepto, por supuesto, para la característica que la opción provea).
+
+[RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+
