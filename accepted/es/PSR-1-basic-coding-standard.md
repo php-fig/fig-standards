@@ -14,3 +14,81 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 
+1. Visión general
+----------------------
+
+- Los archivos TIENEN QUE utilizar solamente las etiquetas `<?php` y `<?=`.
+
+- Los archivos TIENEN QUE emplear solamente la codificación UTF-8 sin BOM para el código en PHP.
+
+- Los archivos DEBERÍAN declarar *cualquier* estructura (clases, funciones, constantes, etc,...) *o* realizar partes de la lógica de negocio (por ejemplo, generar una salida, cambio de configuración. ini, etc,...) pero NO DEBERÍA hacer las dos cosas.
+
+- Los namespaces y las clases TIENEN QUE cumplir [PSR-0] [].
+
+- Los nombres de clase se TIENEN QUE declarar en notación `StudlyCaps`.
+
+- Las constantes de clase se TIENEN QUE declarar en notación C, mayúsculas y separación por guiones bajos `NOTACION_C_Y_MAYUSCULAS`.
+
+- Los métodos se TIENEN QUE declarar en notación `camelCase`.
+
+2. Archivos
+--------------
+
+# # # 2.1. Etiquetas PHP
+
+El código en PHP TIENE QUE utilizar las etiquetas largas `<?php ?>` o las etiquetas cortas `<?= ?>`; NO TIENE QUE emplear otras variaciones.
+
+# # # 2.2. Codificación de caracteres
+
+El código PHP sólo debe utilizar UTF-8 sin BOM.
+
+# # # 2.3. Efectos secundarios
+
+Un archivo DEBERÍA declarar estructuras (clases, funciones, constantes, etc,...) y no causar efectos secundarios o DEBERÍA ejecutar partes de la lógica de negocio, pero NO DEBERÍAN hacer las dos cosas.
+
+La frase "efectos secundarios" significa la ejecución de la lógica de negocio que no está directamente relacionado con
+declarar clases, funciones, constantes, etc, *simplemente la de incluir la archivo*.
+
+"Efectos secundarios" incluyen, pero no se limitan a: generar salidas, uso explícito de `requiere` o `include`, conexiones a servicios externos, modificación de configuraciones iniciales, enviar errores o excepciones, modificar variables globales o estáticas, leer o escribir un archivo, etc...
+
+El siguiente es un ejemplo de un archivo con las dos declaraciones y los efectos secundarios;
+Un ejemplo de lo que debe evitar:
+
+```php
+<?php
+// Efecto secundario: cambiar configuracion ini
+ini_set('error_reporting', E_ALL);
+
+// Efecto secundario: cargar ficheros
+include "file.php";
+
+// Efecto secundario: generar salidas
+echo "<html>\n";
+
+// Declaración
+function foo()
+{
+    // Cuerpo de la función
+}
+```
+
+El siguiente ejemplo es el de un archivo que contiene declaraciones sin efectos secundarios;
+Un ejemplo que puede seguir:
+
+```php
+<?php
+// Declaración
+function foo()
+{
+    // Cuerpo de la función
+}
+
+// Una declaración condiciona *no* es un
+// efecto secundario
+if (! function_exists('bar')) {
+    function bar()
+    {
+        // Cuerpo de la función
+    }
+}
+```
