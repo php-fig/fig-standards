@@ -34,15 +34,15 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 2. Archivos
 --------------
 
-# # # 2.1. Etiquetas PHP
+### 2.1. Etiquetas PHP
 
 El código en PHP TIENE QUE utilizar las etiquetas largas `<?php ?>` o las etiquetas cortas `<?= ?>`; NO TIENE QUE emplear otras variaciones.
 
-# # # 2.2. Codificación de caracteres
+### 2.2. Codificación de caracteres
 
 El código PHP sólo debe utilizar UTF-8 sin BOM.
 
-# # # 2.3. Efectos secundarios
+### 2.3. Efectos secundarios
 
 Un archivo DEBERÍA declarar estructuras (clases, funciones, constantes, etc,...) y no causar efectos secundarios o DEBERÍA ejecutar partes de la lógica de negocio, pero NO DEBERÍAN hacer las dos cosas.
 
