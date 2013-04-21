@@ -39,7 +39,7 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 
 - La visibilidad TIENE QUE estar declarada en todas las propiedades y métodos; `abstract` y `final` TIENEN QUE estar declaradas antes de la visibilidad; `static` se TIENE QUE declarar después de la visibilidad.
 
--Las palabras clave de control de estructuras TIENEN QUE tener un espacio después de ellos, método y llamadas a funciones NO TIENEN QUE tenerlo.
+- Las palabras clave de control de estructuras TIENEN QUE tener un espacio después de ellos, método y llamadas a funciones NO TIENEN QUE tenerlo.
 
 - Las llaves de apertura en las estructuras de control TIENEN QUE ir en la misma línea, y las de cierre TIENEN QUE ir en la siguiente línea posterior al cuerpo.
 
@@ -323,69 +323,66 @@ $foo->bar(
 );
 ```
 
-5. Control Structures
----------------------
+5. Estructuras de control
+----------------------------
 
-The general style rules for control structures are as follows:
+Las reglas de estilo para las estructuras de control son las siguientes:
 
-- There MUST be one space after the control structure keyword
-- There MUST NOT be a space after the opening parenthesis
-- There MUST NOT be a space before the closing parenthesis
-- There MUST be one space between the closing parenthesis and the opening
-  brace
-- The structure body MUST be indented once
-- The closing brace MUST be on the next line after the body
+- TIENE QUE haber un espacio después de una palabra clave de estructura de control.
+- NO TIENE QUE haber espacios después de la apertura de los paréntesis.
+- NO TIENE QUE haber espacios antes del cierre de paréntesis.
+- TIENE QUE haber un espacio entre paréntesis de cierre y la llave de apertura.
+- El cuerpo de la estructura de control TIENE QUE estar indentada una vez.
+- La llave de cierre TIENE QUE estar en la linea siguiente al final del cuerpo de la estructura.
 
-The body of each structure MUST be enclosed by braces. This standardizes how
-the structures look, and reduces the likelihood of introducing errors as new
-lines get added to the body.
+El cuerpo de cada estructura TIENE QUE encerrarse entre llaves. Esto estandariza el aspecto de las estructuras y reduce la probabilidad de añadir errores como nuevas líneas que se añaden al cuerpo de la estructura.
 
 
 ### 5.1. `if`, `elseif`, `else`
 
-An `if` structure looks like the following. Note the placement of parentheses,
-spaces, and braces; and that `else` and `elseif` are on the same line as the
-closing brace from the earlier body.
+Una estructura `if` se ve como sigue. Fíjese en el lugar de paréntesis, espacios y llaves; 
+y que `else` y `elseif` están en la misma línea que las llaves de cierre anteriores.
 
 ```php
 <?php
 if ($expr1) {
-    // if body
+    // if cuerpo
 } elseif ($expr2) {
-    // elseif body
+    // elseif cuerpo
 } else {
-    // else body;
+    // else cuerpo;
 }
 ```
 
-The keyword `elseif` SHOULD be used instead of `else if` so that all control
-keywords look like single words.
+La palabra reservada `elseif` DEBERÍA ser empleada en lugar de `else if`
+tal que toda la estructura esté compuesta por palabras reservadas en un solo término.
 
 
 ### 5.2. `switch`, `case`
 
-A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces. The `case` statement MUST be indented once
-from `switch`, and the `break` keyword (or other terminating keyword) MUST be
-indented at the same level as the `case` body. There MUST be a comment such as
-`// no break` when fall-through is intentional in a non-empty `case` body.
+Una estructura `switch` se ve como se muestra a continuación. Fíjese
+en el lugar donde están paréntesis, espacios y llaves. La palabra reservada `case`
+TIENE QUE estar indentada una vez respecto al `switch` y la parabra reservada `break`
+o cualquier otro término de finalización TIENEN QUE estar indentadas al mismo nivel
+que el cuerpo del `case`. TIENE QUE ser comentado como `// no break`
+cuando hay `case` en cascada no vacíos.
 
 ```php
 <?php
 switch ($expr) {
     case 0:
-        echo 'First case, with a break';
+        echo 'Primer case con break';
         break;
     case 1:
-        echo 'Second case, which falls through';
+        echo 'Segundo case sin break en cascada';
         // no break
     case 2:
     case 3:
     case 4:
-        echo 'Third case, return instead of break';
+        echo 'Tercer case; el return implica break';
         return;
     default:
-        echo 'Default case';
+        echo 'case por defecto';
         break;
 }
 ```
@@ -393,23 +390,23 @@ switch ($expr) {
 
 ### 5.3. `while`, `do while`
 
-A `while` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Una instrucción `while` se expresa a continuación.
+Fíjese en el lugar donde están paréntesis, espacios y llaves.
 
 ```php
 <?php
 while ($expr) {
-    // structure body
+    // Cuerpo de la estructura
 }
 ```
 
-Similarly, a `do while` statement looks like the following. Note the placement
-of parentheses, spaces, and braces.
+Igualmente, una sentencia `do while` se muestra a continuación.
+Fíjese en el lugar donde están paréntesis, espacios y llaves.
 
 ```php
 <?php
 do {
-    // structure body;
+    // Cuerpo de la estructura;
 } while ($expr);
 ```
 
