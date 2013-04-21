@@ -194,18 +194,17 @@ class ClassName extends ParentClass implements
 }
 ```
 
-### 4.2. Properties
+### 4.2. Propiedades
 
-Visibility MUST be declared on all properties.
+La visibilidad TIENE QUE ser declarada en todas las propiedades.
 
-The `var` keyword MUST NOT be used to declare a property.
+La palabra clave `var` NO TIENE QUE ser usada al declarar una propiedad.
 
-There MUST NOT be more than one property declared per statement.
+NO TIENE QUE declararse más de una propiedad por sentencia.
 
-Property names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Los nombres de las propiedades NO DEBERIAN tener prefijos con un guión bajo para indicar si es privada o protegida.
 
-A property declaration looks like the following.
+Una declaración de propiedas a modo de ejemplo.
 
 ```php
 <?php
@@ -217,20 +216,15 @@ class ClassName
 }
 ```
 
-### 4.3. Methods
+### 4.3. Métodos
 
-Visibility MUST be declared on all methods.
+La visibilidad TIENE QUE declararse en todos los métodos.
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Los nombres de los métodos NO DEBERÍAN llevar ningún prefijo con guión bajo indicando la visibilidad.
 
-Method names MUST NOT be declared with a space after the method name. The
-opening brace MUST go on its own line, and the closing brace MUST go on the
-next line following the body. There MUST NOT be a space after the opening
-parenthesis, and there MUST NOT be a space before the closing parenthesis.
+Los nombres de métodos TIENEN QUE declararse con un espacio después del nombre del método. La llave apertura TIENE QUE situarse en su propia línea, y la llave de cierre TIENE QUE ir en la siguiente línea al cuerpo del método. NO TIENE QUE haber ningún espacio después de la apertura de los paréntesis, y NO TIENE QUE haber ningún espacio antes del paréntesis de cierre.
 
-A method declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+Una declaración de método se parece al siguiente ejempo. Fíjese en la situación de los paréntesis, comas, espacios y llaves:
 
 ```php
 <?php
@@ -240,18 +234,16 @@ class ClassName
 {
     public function fooBarBaz($arg1, &$arg2, $arg3 = [])
     {
-        // method body
+        // Cuerpo del método
     }
 }
 ```    
 
-### 4.4. Method Arguments
+### 4.4. Argumentos de los métodos
 
-In the argument list, there MUST NOT be a space before each comma, and there
-MUST be one space after each comma.
+En la lista de argumentos, NO TIENE QUE haber un espacio antes de cada coma, y TIENE QUE haber un espacio después de cada coma.
 
-Method arguments with default values MUST go at the end of the argument
-list.
+Los argumentos con valores por defecto de un método TIENE QUE ir al final de la lista.
 
 ```php
 <?php
@@ -261,18 +253,14 @@ class ClassName
 {
     public function foo($arg1, &$arg2, $arg3 = [])
     {
-        // method body
+        // Cuerpo del método
     }
 }
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+La lista de argumentos PUEDE dividirse en múltiples líneas, donde cada línea será indentada un vez.. Cuando se dividan de esta forma, el primer argumento TIENE QUE estar en la siguiente línea, y TIENE QUE haber únicamente un argumento por línea.
 
-When the argument list is split across multiple lines, the closing parenthesis
-and opening brace MUST be placed together on their own line with one space
-between them.
+Cuando la lista de argumentos se divide en varias líneas, el paréntesis de cierre y la llave de apertura TIENEN QUE ir juntos en su propia línea, separados por un espacio.
 
 ```php
 <?php
@@ -285,18 +273,16 @@ class ClassName
         &$arg2,
         array $arg3 = []
     ) {
-        // method body
+        // Cierpo del método
     }
 }
 ```
 
-### 4.5. `abstract`, `final`, and `static`
+### 4.5. `abstract`, `final`, y `static`
 
-When present, the `abstract` and `final` declarations MUST precede the
-visibility declaration.
+Cuando estén presentes, las declaraciones `abstract` y `final` TIENEN QUE preceder a la declaración de visibilidad.
 
-When present, the `static` declaration MUST come after the visibility
-declaration.
+Cuando esté presente, la declaración `static` TIENE QUE ir después de la declaración de visibilidad.
 
 ```php
 <?php
@@ -310,18 +296,14 @@ abstract class ClassName
 
     final public static function bar()
     {
-        // method body
+        // Cuerpo del método
     }
 }
 ```
 
-### 4.6. Method and Function Calls
+### 4.6. Llamadas a métodos y funciones
 
-When making a method or function call, there MUST NOT be a space between the
-method or function name and the opening parenthesis, there MUST NOT be a space
-after the opening parenthesis, and there MUST NOT be a space before the
-closing parenthesis. In the argument list, there MUST NOT be a space before
-each comma, and there MUST be one space after each comma.
+Cuando se haga una llamada a un método o función, NO TIENE QUE haber espacio entre el nombre del método o función y el paréntesis de apertura, NO TIENE QUE haber espacio después de la apartura del paréntesis, y NO TIENE QUE haber espacio antes del paréntesis de cierre. In la lista de argumentos, NO TIENE QUE haber espacio antes de cada coma, y TIENE QUE haber un espacio después de cada coma.
 
 ```php
 <?php
@@ -330,9 +312,7 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+La lista de argumentos PUEDE dividirse en múltiples líneas, donde cada una se indenta una vez. Cuando esto suceda, el primer argumento TIENE QUE estar en la siguiente línea, y TIENE QUE haber sólo un argumento por línea.
 
 ```php
 <?php
