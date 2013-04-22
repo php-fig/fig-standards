@@ -71,11 +71,9 @@ is provided implementations MUST default to the maximum legal value allowed by
 the underlying implementation.  If the underlying implementation does not 
 support TTL, the user-specified TTL MUST be silently ignored.
 
-Implementations MUST accept keys that consist of up to 32 characters, containing
-the ASCII values A-Z, z-z, 0-9, _, ., and -.  That is the minimum requirement 
-for keys is the regular expression [A-Z|a-z|0-9|\.|\-|\_]{1,32}.
-Implementations MAY allow additional characters or extended ASCCI-compatible 
-character sets (such as UTF-8), but these characters MUST always be legal.
+If your implementation is expected to work accross many different platforms then 
+it is recommended to have your cache keys consist of no more than 32 ASCII characters
+ or the following symbols. ``,._-``
 
 2. Interfaces
 ----------
