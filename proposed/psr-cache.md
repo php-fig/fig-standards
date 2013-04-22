@@ -44,14 +44,14 @@ by an integer representing time in seconds.
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at
     1:35:00.
 
-*    **Key** - A string that uniquely identifies the cached item. Implementing
-libraries are responsible for any encoding or escaping required by their
-backends, but must be able to supply the original key if needed.
+*    **Key** - A string that uniquely identifies the cached item.
+
+*    **CacheItem** - An object that implements the `Psr\Cache\CacheItemInterface` interface.
+
+*    **Cache** - An object that implements the `Psr\Cache\CacheInterface` interface.
 
 ### 1.3 CacheItem
 
-By `CacheItem` we refer to a object that implements the
-`Psr\Cache\CacheItemInterface` interface.
 
 By using the `CacheItem` class implementations can guarantee consistency across
 various systems.
@@ -61,9 +61,6 @@ encapsulate the key and value of the stored cache entry.  `CacheItem` objects
 SHOULD NOT be created in any other way.
 
 ### 1.4 Cache
-
-By `Cache` we refer to a object that implements the `Psr\Cache\CacheInterface`
-interface.
 
 Implementations MAY provide a mechanism for a user to specify a default TTL 
 if one is not specified for a specific cache item.  If no user-specified default 
