@@ -1,4 +1,5 @@
-A continuación se describen los requisitos obligatorios que deben cumplirse para la interoperabilidad del autoloader.
+A continuación se describen los requisitos obligatorios que deben
+cumplirse para la interoperabilidad del autoloader.
 
 Obligatorio
 -----------
@@ -25,12 +26,19 @@ El guión bajo en Namespaces y nombres de Clase
 * `\namespace\paquete\Nombre_De_Clase` => `/directorio/del/proyecto/lib/vendor/namespace/paquete/Nombre/De/Clase.php`
 * `\namespace\nombre_de_paquete\Nombre_De_Clase` => `/directorio/del/proyecto/lib/vendor/namespace/nombre_de_paquete/Nombre/De/Clase.php`
 
-Los estándares que aquí establecidos deben ser el mínimo común denominador para la interoperabilidad del autoloader. Puede comprobar que sigue estas normas mediante la utilización del la implementación del ejemplo de autoloader SplClassLoader, capaz de cargar clases de PHP 5.3.
+Los estándares que aquí establecidos deben ser el mínimo común
+denominador para la interoperabilidad del autoloader. Puede
+comprobar que sigue estas normas mediante la utilización del
+la implementación del ejemplo de autoloader SplClassLoader,
+capaz de cargar clases de PHP 5.3.
 
 Ejemplo de implementación
 ----------------------------
 
-A continuación se muestra una función de ejemplo para demostrar de forma sencilla cómo se cargan de automáticamente las clases con la propuesta anterior.
+A continuación se muestra una función de ejemplo para demostrar
+de forma sencilla cómo se cargan de automáticamente las clases con
+la propuesta anterior.
+
 ```php
 <?php
 
@@ -53,7 +61,10 @@ function autoload($className)
 Implementación de SplClassLoader
 ------------------------------------
 
-El siguiente gist es un ejemplo de implementación de SplClassLoader, que puede cargar sus clases si ha seguido el estándar anteriormente expuesto. Esta es la forma actual recomendada para la carga de clases de PHP 5.3 que sigan estas normas.
+El siguiente gist es un ejemplo de implementación de SplClassLoader,
+que puede cargar sus clases si ha seguido el estándar anteriormente
+expuesto. Esta es la forma actual recomendada para la carga de clases
+de PHP 5.3 que sigan estas normas.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
 
