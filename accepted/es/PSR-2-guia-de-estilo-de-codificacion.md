@@ -1,16 +1,24 @@
 Guía de estilo de condificación
 =======================
 
-Esta guía amplía y extiende el [PSR-1][], el estándar de codificación básica.
+Esta guía amplía y extiende el estándar de codificación básica [PSR-1][].
 
-La intención de esta guía es la de reducir la dificultad cuando se revisa un código de autores diferentes.
-Lo realiza mediante la enumeración de un conjunto común de normas y expectativas sobre cómo dar formato al código PHP.
+La intención de esta guía es la de reducir la dificultad cuando se revisa un
+código de autores diferentes. Lo realiza mediante la enumeración de un
+conjunto común de normas y expresiones sobre cómo dar formato al código PHP.
 
-Las reglas de estilo de este documento se derivan de los puntos comunes de los diferentes miembros del proyecto. 
-Cuando varios autores colaboran en varios proyectos, ayuda tener un conjunto de directrices que se utilizarán en todos los proyectos.
-Por tanto, el beneficio de esta guía no está en las normas en sí, sino en el hecho de compartir de esas reglas.
+Las reglas de estilo de este documento se derivan de los puntos comunes
+de los diferentes miembros del proyecto. Cuando varios autores colaboran
+en varios proyectos, ayuda tener un conjunto de directrices que se utilizarán
+en todos los proyectos. Por tanto, el beneficio de esta guía no está en las normas
+en sí, sino en el hecho de compartir de esas reglas.
 
-Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
+Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE"
+("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA"
+("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO"
+("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL")
+de este documento son una traducción de las palabras inglesas descritas
+en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
 - TIENE QUE o REQUERIDO implica que es un requisito absoluto de la especificación.
 - NO TIENE QUE conlleva la completa prohibición de la especificación.
 - DEBERÍA o RECOMENDADO implica que pueden existen razones válidas para ignorar dicho elemento, pero las implicaciones que ello conlleva deben ser entendidas y sopesadas antes de elegir una opción diferente.
@@ -27,7 +35,7 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 
 - El código TIENE QUE seguir [PSR-1][].
 
-- El código TIENE QUE usar 4 espacios como indentación y no tabulación.
+- El código TIENE QUE usar 4 espacios como indentación y no tabuladores.
 
 - NO TIENE QUE existir un límite fijo a la longitud de línea, y el límite dinámico TIENE QUE ser 120 caracteres; las líneas DEBERÍAN tener 80 caracteres o menos.
 
@@ -90,31 +98,38 @@ Todos los ficheros PHP TIENEN QUE usar el final de linea Unix LF.
 
 Todos los ficheros PHP TIENEN QUE finalizar con un línea en blanco.
 
-La etiqueta de cierre `?>` TIENE QUE ser omitida en todos aquellos ficheros que únicamente incluyan código PHP.
+La etiqueta de cierre `?>` TIENE QUE ser omitida en todos aquellos ficheros
+que únicamente incluyan código PHP.
 
 ### 2.3. Líneas
 
 NO TIENE QUE haber un límite fijo a la longitud de línea.
 
-El límite dinámico de longitud de línea TIENE QUE ser de 120 caracteres; los chequeadores de estilos automatizados TIENEN QUE adevertir de ésto, pero NO TIENE que dar error.
+El límite dinámico de longitud de línea TIENE QUE ser de 120 caracteres;
+los chequeadores de estilos automatizados TIENEN QUE advertir de ésto,
+pero NO TIENE que dar error.
 
-Las líneas NO DEBERÍAN ser más largas de 80 caracteres; las líneas más largas de estos 80 caracteres DEBERÍAN dividirse en múltiples líneas de no más de 80 caracteres cada una.
+Las líneas NO DEBERÍAN ser más largas de 80 caracteres; las líneas más largas
+de estos 80 caracteres DEBERÍAN dividirse en múltiples líneas de no más de 80
+caracteres cada una.
 
 NO TIENE QUE haber espacios en blanco al final de las líneas que no estén vacías.
 
-PUEDEN ser añadidas líneas en blanco para mejorar la lectura del código y para indicar bloques que estén relacionados.
+PUEDEN añadirse líneas en blanco para mejorar la lectura del código y
+para indicar bloques que estén relacionados.
 
 NO TIENE QUE haber más de una sentencia por línea.
 
-### 2.4. indentación
+### 2.4. Indentación
 
-El código TIENE QUE  usar una indentación de 4 espacios, y NO TIENE QUE usar tabulación para la indentación.
+El código TIENE QUE  usar una indentación de 4 espacios,
+y NO TIENE QUE usar tabuladores para la indentación.
 
-> Nota: Utilizando sólo los espacios y no mezclar espacios con tabuladores,
+> Nota: Utilizar sólo los espacios y no mezclar espacios con tabuladores,
 > ayuda a evitar problemas con diffs, parches, históricos y anotaciones.
-> El uso de los espacios también facilita afinar la alineación interlineada.
+> El uso de los espacios también facilita afinar la alineación entre líneas.
 
-### 2.5. Palabras clave y True/False/Null
+### 2.5. Palabras clave y `true`/`false`/`null`.
 
 Las [Palabras clave][] de PHP TIENEN QUE estar en minúsculas.
 
@@ -123,17 +138,18 @@ Las constantes de PHP `true`, `false` y `null` TIENEN QUE estar en minúsculas.
 [Palabras clave]: http://php.net/manual/en/reserved.keywords.php
 
 
-
 3. Namespace y declaraciones `use`
 ----------------------------------------
 
-Cuando esté presente, TIENE QUE haber una línea en blanco después de la declación del `namespace`.
+Cuando esté presente, TIENE QUE haber una línea en blanco después de
+la declación del `namespace`.
 
-Cuando estén presentes, todas las declaraciones `use` TIENEN QUE ir después de la declaración del `namespace`.
+Cuando estén presentes, todas las declaraciones `use` TIENEN QUE ir
+después de la declaración del `namespace`.
 
 TIENE QUE haber un `use` por declaración.
 
-TIENE QUE haber una línea en blaco después del bloque de declaraciones `use`.
+TIENE QUE haber una línea en blanco después del bloque de declaraciones `use`.
 
 Por ejemplo:
 
@@ -150,16 +166,18 @@ use OtherVendor\OtherPackage\BazClass;
 ```
 
 
-4.Clases, propiedades y métodos
+4.Clases, propiedades y métodos.
 -------------------------------------
 
 El término "clase" hace referencia a todas las clases, interfaces o traits.
 
 ### 4.1. Extensiones e implementaciones
 
-Las palabras clave `extends` e `implements` TIENEN QUE declararse en la misma línea del nombre de la clase.
+Las palabras clave `extends` e `implements` TIENEN QUE declararse en la
+misma línea del nombre de la clase.
 
-Las llaves de apertura de la clase TIENE QUE ir en la siguiente línea; las llaves de cierre TIENEN QUE ir en la siguiente línea al cuerpo de la clase.
+Las llaves de apertura de la clase TIENE QUE ir en la siguiente línea; las llaves
+de cierre TIENEN QUE ir en la siguiente línea al cuerpo de la clase.
 
 ```php
 <?php
@@ -175,7 +193,9 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 }
 ```
 
-Las listas de `implements` PUEDEN ser divididas en múltiples líneas, donde las líneas subsiguientes serán indentadas una vez. Al hacerlo, el primer elemento de la lista TIENE QUE estar en la línea siguiente, y TIENE QUE haber una sola interfaz por línea.
+Las listas de `implements` PUEDEN ser divididas en múltiples líneas, donde las
+líneas subsiguientes serán indentadas una vez. Al hacerlo, el primer elemento
+de la lista TIENE QUE estar en la línea siguiente, y TIENE QUE haber una sola interfaz por línea.
 
 ```php
 <?php
@@ -202,7 +222,8 @@ La palabra clave `var` NO TIENE QUE ser usada al declarar una propiedad.
 
 NO TIENE QUE declararse más de una propiedad por sentencia.
 
-Los nombres de las propiedades NO DEBERIAN tener prefijos con un guión bajo para indicar si es privada o protegida.
+Los nombres de las propiedades NO DEBERIAN tener prefijos con un guión
+bajo para indicar si es privada o protegida.
 
 Una declaración de propiedas a modo de ejemplo.
 
@@ -220,11 +241,18 @@ class ClassName
 
 La visibilidad TIENE QUE declararse en todos los métodos.
 
-Los nombres de los métodos NO DEBERÍAN llevar ningún prefijo con guión bajo indicando la visibilidad.
+Los nombres de los métodos NO DEBERÍAN llevar ningún prefijo
+con guión bajo indicando la visibilidad.
 
-Los nombres de métodos TIENEN QUE declararse con un espacio después del nombre del método. La llave apertura TIENE QUE situarse en su propia línea, y la llave de cierre TIENE QUE ir en la siguiente línea al cuerpo del método. NO TIENE QUE haber ningún espacio después de la apertura de los paréntesis, y NO TIENE QUE haber ningún espacio antes del paréntesis de cierre.
+Los nombres de métodos TIENEN QUE declararse con un espacio
+después del nombre del método. La llave apertura TIENE QUE
+situarse en su propia línea, y la llave de cierre TIENE QUE ir en
+la siguiente línea al cuerpo del método. NO TIENE QUE haber
+ningún espacio después de la apertura de los paréntesis, y
+NO TIENE QUE haber ningún espacio antes del paréntesis de cierre.
 
-Una declaración de método se parece al siguiente ejempo. Fíjese en la situación de los paréntesis, comas, espacios y llaves:
+Una declaración de método se parece al siguiente ejemplo.
+Fíjese en la situación de los paréntesis, comas, espacios y llaves:
 
 ```php
 <?php
@@ -241,9 +269,11 @@ class ClassName
 
 ### 4.4. Argumentos de los métodos
 
-En la lista de argumentos, NO TIENE QUE haber un espacio antes de cada coma, y TIENE QUE haber un espacio después de cada coma.
+En la lista de argumentos, NO TIENE QUE haber un espacio antes
+de cada coma, y TIENE QUE haber un espacio después de cada coma.
 
-Los argumentos con valores por defecto de un método TIENE QUE ir al final de la lista.
+Los argumentos con valores por defecto de un método TIENE QUE ir
+al final de la lista.
 
 ```php
 <?php
@@ -258,9 +288,14 @@ class ClassName
 }
 ```
 
-La lista de argumentos PUEDE dividirse en múltiples líneas, donde cada línea será indentada un vez.. Cuando se dividan de esta forma, el primer argumento TIENE QUE estar en la siguiente línea, y TIENE QUE haber únicamente un argumento por línea.
+La lista de argumentos PUEDE dividirse en múltiples líneas, donde
+cada línea será indentada un vez.. Cuando se dividan de esta forma,
+el primer argumento TIENE QUE estar en la siguiente línea, y
+TIENE QUE haber únicamente un argumento por línea.
 
-Cuando la lista de argumentos se divide en varias líneas, el paréntesis de cierre y la llave de apertura TIENEN QUE ir juntos en su propia línea, separados por un espacio.
+Cuando la lista de argumentos se divide en varias líneas, el paréntesis
+de cierre y la llave de apertura TIENEN QUE ir juntos en su propia línea,
+separados por un espacio.
 
 ```php
 <?php
@@ -280,9 +315,11 @@ class ClassName
 
 ### 4.5. `abstract`, `final`, y `static`
 
-Cuando estén presentes, las declaraciones `abstract` y `final` TIENEN QUE preceder a la declaración de visibilidad.
+Cuando estén presentes, las declaraciones `abstract` y `final` TIENEN QUE
+preceder a la declaración de visibilidad.
 
-Cuando esté presente, la declaración `static` TIENE QUE ir después de la declaración de visibilidad.
+Cuando esté presente, la declaración `static` TIENE QUE ir después
+de la declaración de visibilidad.
 
 ```php
 <?php
@@ -303,7 +340,12 @@ abstract class ClassName
 
 ### 4.6. Llamadas a métodos y funciones
 
-Cuando se haga una llamada a un método o función, NO TIENE QUE haber espacio entre el nombre del método o función y el paréntesis de apertura, NO TIENE QUE haber espacio después de la apartura del paréntesis, y NO TIENE QUE haber espacio antes del paréntesis de cierre. In la lista de argumentos, NO TIENE QUE haber espacio antes de cada coma, y TIENE QUE haber un espacio después de cada coma.
+Cuando se haga una llamada a un método o función, NO TIENE QUE
+haber espacio entre el nombre del método o función y el paréntesis
+de apertura, NO TIENE QUE haber espacio después de la apartura
+del paréntesis, y NO TIENE QUE haber espacio antes del paréntesis
+de cierre. In la lista de argumentos, NO TIENE QUE haber espacio
+antes de cada coma, y TIENE QUE haber un espacio después de cada coma.
 
 ```php
 <?php
@@ -312,7 +354,10 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
-La lista de argumentos PUEDE dividirse en múltiples líneas, donde cada una se indenta una vez. Cuando esto suceda, el primer argumento TIENE QUE estar en la siguiente línea, y TIENE QUE haber sólo un argumento por línea.
+La lista de argumentos PUEDE dividirse en múltiples líneas, donde
+cada una se indenta una vez. Cuando esto suceda, el primer argumento
+TIENE QUE estar en la siguiente línea, y TIENE QUE haber sólo un
+argumento por línea.
 
 ```php
 <?php
@@ -335,7 +380,9 @@ Las reglas de estilo para las estructuras de control son las siguientes:
 - El cuerpo de la estructura de control TIENE QUE estar indentada una vez.
 - La llave de cierre TIENE QUE estar en la linea siguiente al final del cuerpo de la estructura.
 
-El cuerpo de cada estructura TIENE QUE encerrarse entre llaves. Esto estandariza el aspecto de las estructuras y reduce la probabilidad de añadir errores como nuevas líneas que se añaden al cuerpo de la estructura.
+El cuerpo de cada estructura TIENE QUE encerrarse entre llaves.
+Esto estandariza el aspecto de las estructuras y reduce la probabilidad
+de añadir errores como nuevas líneas que se añaden al cuerpo de la estructura.
 
 
 ### 5.1. `if`, `elseif`, `else`
@@ -412,182 +459,188 @@ do {
 
 ### 5.4. `for`
 
-A `for` statement looks like the following. Note the placement of parentheses,
-spaces, and braces.
+Una sentencia `for` se ve como sigue.
+Fíjese en el lugar donde aparecen paréntesis, espacios y llaves.
 
 ```php
 <?php
 for ($i = 0; $i < 10; $i++) {
-    // for body
+    // Cuerpo del for
 }
 ```
 
 ### 5.5. `foreach`
     
-A `foreach` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Un sentencia `foreach` se ve a continuación.
+Fíjese en el lugar donde aparecen paréntesis, espacios y llaves.
 
 ```php
 <?php
 foreach ($iterable as $key => $value) {
-    // foreach body
+    // Cuerpo foreach
 }
 ```
 
 ### 5.6. `try`, `catch`
 
-A `try catch` block looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Un bloque `try catch` se ve a continuación.
+Fíjese en el lugar donde aparecen paréntesis, espacios y llaves.
+
 
 ```php
 <?php
 try {
-    // try body
+    // Cuerpo del try
 } catch (FirstExceptionType $e) {
-    // catch body
+    // Cuerpo catch
 } catch (OtherExceptionType $e) {
-    // catch body
+    // Cuerpo catch
 }
 ```
 
 6. Closures
------------
+-------------
 
-Closures MUST be declared with a space after the `function` keyword, and a
-space before and after the `use` keyword.
+Las closures TIENEN QUE declararse con un espacio después de la
+palabra clave `function` y un espacio antes de la parabra clave `use`.
 
-The opening brace MUST go on the same line, and the closing brace MUST go on
-the next line following the body.
+La llave de apertura TIENE QUE ir en la misma línea y
+la llave de cierre TIENE QUE ir en la siguiente línea al final del cuerpo.
 
-There MUST NOT be a space after the opening parenthesis of the argument list
-or variable list, and there MUST NOT be a space before the closing parenthesis
-of the argument list or variable list.
+NO TIENE QUE haber espacios después del paréntesis de apertura
+de la lista de argumentos o lista de variables y NO TIENE QUE haber
+espacios antes del paréntesis de cierre de la lista de argumentos
+o lista de variables.
 
-In the argument list and variable list, there MUST NOT be a space before each
-comma, and there MUST be one space after each comma.
+En las listas de argumentos y variables NO TIENE QUE haber espacios
+antes de cada coma y TIENE QUE haber un espacio después de cada coma.
 
-Closure arguments with default values MUST go at the end of the argument
-list.
+Los argumentos de las closures con valores por defecto TIENEN QUE ir
+al final de la lista de argumentos.
 
-A closure declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+Una declaración de una closure tendrá el siguiente aspecto.
+Fíjese en el lugar donde aparecen paréntesis, comas, espacios y llaves.
 
 ```php
 <?php
-$closureWithArgs = function ($arg1, $arg2) {
-    // body
+$closureConArgumentos = function ($arg1, $arg2) {
+    // Cuerpo
 };
 
-$closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
-    // body
+$closureConArgumentosYVariables = function ($arg1, $arg2) use ($var1, $var2) {
+    // Cuerpo
 };
 ```
 
-Argument lists and variable lists MAY be split across multiple lines, where
-each subsequent line is indented once. When doing so, the first item in the
-list MUST be on the next line, and there MUST be only one argument or variable
-per line.
+La lista de argumetos y la de variables PUEDEN ser divididas
+en múltiples líneas, donde cada nueva línea se indentará una vez.
+Cuando esto suceda, el primer elemento de la lista TIENE QUE
+ir en una nueva línea y TIENE QUE haber sólo un argumento o
+variable por línea.
 
-When the ending list (whether or arguments or variables) is split across
-multiple lines, the closing parenthesis and opening brace MUST be placed
-together on their own line with one space between them.
+Al final de una lista en múltiples líneas (de argumentos o variables)
+el paréntesis de cierre y la llave de apertura TIENEN QUE estar en
+la misma línea separados por un espacio.
 
-The following are examples of closures with and without argument lists and
-variable lists split across multiple lines.
+A continuación s muestran ejemplos de closures con y sin lista de
+argumentos y variables, así como con listas de argumentos y variables
+en múltiples líneas.
 
 ```php
 <?php
-$longArgs_noVars = function (
-    $longArgument,
-    $longerArgument,
-    $muchLongerArgument
+$listaLargaDeArgumentos_sinVariables = function (
+    $argumentLargo,
+    $argumentMasLargo,
+    $argumentoMuchoMasLargo
 ) {
-   // body
+   // Cuerpo
 };
 
-$noArgs_longVars = function () use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+$sinArgumentos_listaLargaDeVariables = function () use (
+    $variableLarga1,
+    $variableMasLarga2,
+    $variableMuchoMasLarga3
 ) {
-   // body
+   // Cuerpo
 };
 
-$longArgs_longVars = function (
-    $longArgument,
-    $longerArgument,
-    $muchLongerArgument
+$listaLargaDeArgumentos_listaLargaDeVariables = function (
+    $argumentLargo,
+    $argumentMasLargo,
+    $argumentoMuchoMasLargo
 ) use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $variableLarga1,
+    $variableMasLarga2,
+    $variableMuchoMasLarga3
 ) {
-   // body
+   // Cuerpo
 };
 
-$longArgs_shortVars = function (
-    $longArgument,
-    $longerArgument,
-    $muchLongerArgument
+$listaLargaDeArgumentos_listaDeVars = function (
+    $argumentLargo,
+    $argumentMasLargo,
+    $argumentoMuchoMasLargo
 ) use ($var1) {
-   // body
+   // Cuerpo
 };
 
-$shortArgs_longVars = function ($arg) use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+$listaDeArgumentos_listaLargaDeVariables = function ($arg) use (
+    $variableLarga1,
+    $variableMasLarga2,
+    $variableMuchoMasLarga3
 ) {
-   // body
+   // Cuerpo
 };
 ```
 
-Note that the formatting rules also apply when the closure is used directly
-in a function or method call as an argument.
+Fíjese que las reglas de formateo se aplican cuando una closure se usar
+directamente en una función o llamada a método como argumento.
 
 ```php
 <?php
 $foo->bar(
     $arg1,
     function ($arg2) use ($var1) {
-        // body
+        // Cuerpo
     },
     $arg3
 );
 ```
 
 
-7. Conclusion
---------------
+7. Conclusión
+----------------
 
-There are many elements of style and practice intentionally omitted by this
-guide. These include but are not limited to:
+Hay muchos elementos de estilo y prácticas omitidas intencionadamente
+en esta guía. 
+Estos incluyen pero no limitan a:
 
-- Declaration of global variables and global constants
+- Declaraciones de variables y constantes globales.
 
-- Declaration of functions
+- Declaración de funciones.
 
-- Operators and assignment
+- Operadores y asignaciones.
 
-- Inter-line alignment
+- Alineación entre líneas.
 
-- Comments and documentation blocks
+- Comentarios y bloques de documentación.
 
-- Class name prefixes and suffixes
+- Prefijos y sufijos en nombres de clases.
 
-- Best practices
+- Buenas prácticas.
 
-Future recommendations MAY revise and extend this guide to address those or
-other elements of style and practice.
+Futuras recomendaciones PUEDEN revisar y extender para hacer frente a estos u
+otros elementos en la práctica.
 
 
-Appendix A. Survey
-------------------
+Apéndice A. Encuesta.
+--------------------------
 
-In writing this style guide, the group took a survey of member projects to
-determine common practices.  The survey is retained herein for posterity.
+Al escribir esta guía a los miembros del grupo se les hizo una
+encuesta con el fin de determinar las prácticas comunes.
+Esta encuesta se conserva en este documento para la posteridad.
 
-### A.1. Survey Data
+### A.1. Datos de la encuesta
 
     url,http://www.horde.org/apps/horde/docs/CODING_STANDARDS,http://pear.php.net/manual/en/standards.php,http://solarphp.com/manual/appendix-standards.style,http://framework.zend.com/manual/en/coding-standard.html,http://symfony.com/doc/2.0/contributing/code/standards.html,http://www.ppi.io/docs/coding-standards.html,https://github.com/ezsystems/ezp-next/wiki/codingstandards,http://book.cakephp.org/2.0/en/contributing/cakephp-coding-conventions.html,https://github.com/UnionOfRAD/lithium/wiki/Spec%3A-Coding,http://drupal.org/coding-standards,http://code.google.com/p/sabredav/,http://area51.phpbb.com/docs/31x/coding-guidelines.html,https://docs.google.com/a/zikula.org/document/edit?authkey=CPCU0Us&hgd=1&id=1fcqb93Sn-hR9c0mkN6m_tyWnmEvoswKBtSc0tKkZmJA,http://www.chisimba.com,n/a,https://github.com/Respect/project-info/blob/master/coding-standards-sample.php,n/a,Object Calisthenics for PHP,http://doc.nette.org/en/coding-standard,http://flow3.typo3.org,https://github.com/propelorm/Propel2/wiki/Coding-Standards,http://developer.joomla.org/coding-standards.html
     voting,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,no,no,?,yes,no,yes
@@ -613,7 +666,7 @@ determine common practices.  The survey is retained herein for posterity.
     blank_line_after_php,no,no,no,no,yes,no,no,no,no,yes,yes,no,no,yes,?,yes,yes,no,yes,no,yes,no
     class_method_control_brace,next/next/same,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/next,same/same/same,same/same/same,same/same/same,same/same/same,next/next/next,next/next/same,next/same/same,next/next/next,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/same,next/next/next
 
-### A.2. Survey Legend
+### A.2. Leyenda de la encuesta.
 
 `indent_type`:
 The type of indenting. `tab` = "Use a tab", `2` or `4` = "number of spaces"
@@ -678,7 +731,7 @@ Is there a blank line after the opening PHP tag?
 `class_method_control_brace`:
 A summary of what line the opening braces go on for classes, methods, and control structures.
 
-### A.3. Survey Results
+### A.3. Resultados de la encuesta.
 
     indent_type:
         tab: 7
