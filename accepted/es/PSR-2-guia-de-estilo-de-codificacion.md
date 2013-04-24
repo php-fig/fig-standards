@@ -67,7 +67,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 class Foo extends Bar implements FooInterface
 {
-    public function sampleFunction($a, $b = null)
+    public function funcionDeEjemplo($a, $b = null)
     {
         if ($a === $b) {
             bar();
@@ -159,7 +159,7 @@ namespace Vendor\Package;
 
 use FooClass;
 use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use OtroProveedor\OtroPaquete\BazClass;
 
 // ... código PHP adicional ...
 
@@ -177,7 +177,7 @@ Las palabras clave `extends` e `implements` TIENEN QUE declararse en la
 misma línea del nombre de la clase.
 
 Las llaves de apertura de la clase TIENE QUE ir en la siguiente línea; las llaves
-de cierre TIENEN QUE ir en la siguiente línea al cuerpo de la clase.
+de cierre TIENEN QUE ir en la línea siguiente al cuerpo de la clase.
 
 ```php
 <?php
@@ -185,9 +185,9 @@ namespace Vendor\Package;
 
 use FooClass;
 use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use OtroProveedor\OtroPaquete\BazClass;
 
-class ClassName extends ParentClass implements \ArrayAccess, \Countable
+class NombreDeClase extends ClasePadre implements \ArrayAccess, \Countable
 {
     // constantes, propiedades, métodos
 }
@@ -199,13 +199,13 @@ de la lista TIENE QUE estar en la línea siguiente, y TIENE QUE haber una sola i
 
 ```php
 <?php
-namespace Vendor\Package;
+namespace Proveedor\Paquete;
 
 use FooClass;
 use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use OtroProveedor\OtroPaquete\BazClass;
 
-class ClassName extends ParentClass implements
+class NombreDeClase extends ClasePadre implements
     \ArrayAccess,
     \Countable,
     \Serializable
@@ -229,9 +229,9 @@ Una declaración de propiedas a modo de ejemplo.
 
 ```php
 <?php
-namespace Vendor\Package;
+namespace Proveedor\Paquete;
 
-class ClassName
+class NombreDeClase
 {
     public $foo = null;
 }
@@ -256,9 +256,9 @@ Fíjese en la situación de los paréntesis, comas, espacios y llaves:
 
 ```php
 <?php
-namespace Vendor\Package;
+namespace Proveedor\Paquete;
 
-class ClassName
+class NombreDeClase
 {
     public function fooBarBaz($arg1, &$arg2, $arg3 = [])
     {
@@ -269,17 +269,17 @@ class ClassName
 
 ### 4.4. Argumentos de los métodos
 
-En la lista de argumentos, NO TIENE QUE haber un espacio antes
-de cada coma, y TIENE QUE haber un espacio después de cada coma.
+En la lista de argumentos NO TIENE QUE haber un espacio antes
+de cada coma y TIENE QUE haber un espacio después de cada coma.
 
 Los argumentos con valores por defecto de un método TIENE QUE ir
 al final de la lista.
 
 ```php
 <?php
-namespace Vendor\Package;
+namespace Proveedor\Paquete;
 
-class ClassName
+class NombreDeClase
 {
     public function foo($arg1, &$arg2, $arg3 = [])
     {
@@ -289,7 +289,7 @@ class ClassName
 ```
 
 La lista de argumentos PUEDE dividirse en múltiples líneas, donde
-cada línea será indentada un vez.. Cuando se dividan de esta forma,
+cada línea será indentada un vez. Cuando se dividan de esta forma,
 el primer argumento TIENE QUE estar en la siguiente línea, y
 TIENE QUE haber únicamente un argumento por línea.
 
@@ -299,16 +299,16 @@ separados por un espacio.
 
 ```php
 <?php
-namespace Vendor\Package;
+namespace Proveedor\Paquete;
 
-class ClassName
+class NombreDeClase
 {
-    public function aVeryLongMethodName(
+    public function metodoConNombreLargo(
         ClassTypeHint $arg1,
         &$arg2,
         array $arg3 = []
     ) {
-        // Cierpo del método
+        // Cuerpo del método
     }
 }
 ```
@@ -323,9 +323,9 @@ de la declaración de visibilidad.
 
 ```php
 <?php
-namespace Vendor\Package;
+namespace Proveedor\Paquete;
 
-abstract class ClassName
+abstract class NombreDeClase
 {
     protected static $foo;
 
@@ -342,10 +342,10 @@ abstract class ClassName
 
 Cuando se haga una llamada a un método o función, NO TIENE QUE
 haber espacio entre el nombre del método o función y el paréntesis
-de apertura, NO TIENE QUE haber espacio después de la apartura
-del paréntesis, y NO TIENE QUE haber espacio antes del paréntesis
-de cierre. In la lista de argumentos, NO TIENE QUE haber espacio
-antes de cada coma, y TIENE QUE haber un espacio después de cada coma.
+de apertura, NO TIENE QUE haber espacio después de la apertura
+del paréntesis y NO TIENE QUE haber espacio antes del paréntesis
+de cierre. En la lista de argumentos, NO TIENE QUE haber espacio
+antes de cada coma y TIENE QUE haber un espacio después de cada coma.
 
 ```php
 <?php
@@ -362,9 +362,9 @@ argumento por línea.
 ```php
 <?php
 $foo->bar(
-    $longArgument,
-    $longerArgument,
-    $muchLongerArgument
+    $argumentoLargo,
+    $argumentoMaslargo,
+    $argumentoTodaviaMasLargo
 );
 ```
 
@@ -373,7 +373,7 @@ $foo->bar(
 
 Las reglas de estilo para las estructuras de control son las siguientes:
 
-- TIENE QUE haber un espacio después de una palabra clave de estructura de control.
+- TIENE QUE haber un espacio después de una palabra clave de la estructura de control.
 - NO TIENE QUE haber espacios después de la apertura de los paréntesis.
 - NO TIENE QUE haber espacios antes del cierre de paréntesis.
 - TIENE QUE haber un espacio entre paréntesis de cierre y la llave de apertura.
@@ -409,7 +409,7 @@ tal que toda la estructura esté compuesta por palabras reservadas en un solo t�
 
 Una estructura `switch` se ve como se muestra a continuación. Fíjese
 en el lugar donde están paréntesis, espacios y llaves. La palabra reservada `case`
-TIENE QUE estar indentada una vez respecto al `switch` y la parabra reservada `break`
+TIENE QUE estar indentada una vez respecto al `switch` y la palabra reservada `break`
 o cualquier otro término de finalización TIENEN QUE estar indentadas al mismo nivel
 que el cuerpo del `case`. TIENE QUE ser comentado como `// no break`
 cuando hay `case` en cascada no vacíos.
@@ -491,9 +491,9 @@ Fíjese en el lugar donde aparecen paréntesis, espacios y llaves.
 <?php
 try {
     // Cuerpo del try
-} catch (FirstExceptionType $e) {
+} catch (PrimerTipoDeExcepcion $e) {
     // Cuerpo catch
-} catch (OtherExceptionType $e) {
+} catch (OtroTipoDeExcepcion $e) {
     // Cuerpo catch
 }
 ```
@@ -542,7 +542,7 @@ Al final de una lista en múltiples líneas (de argumentos o variables)
 el paréntesis de cierre y la llave de apertura TIENEN QUE estar en
 la misma línea separados por un espacio.
 
-A continuación s muestran ejemplos de closures con y sin lista de
+A continuación se muestran ejemplos de closures con y sin lista de
 argumentos y variables, así como con listas de argumentos y variables
 en múltiples líneas.
 
@@ -638,7 +638,7 @@ Apéndice A. Encuesta.
 
 Al escribir esta guía a los miembros del grupo se les hizo una
 encuesta con el fin de determinar las prácticas comunes.
-Esta encuesta se conserva en este documento para la posteridad.
+Esta encuesta se conserva en el documento para su uso posterior.
 
 ### A.1. Datos de la encuesta
 
@@ -669,67 +669,67 @@ Esta encuesta se conserva en este documento para la posteridad.
 ### A.2. Leyenda de la encuesta.
 
 `indent_type`:
-The type of indenting. `tab` = "Use a tab", `2` or `4` = "number of spaces"
+The type of indenting. `tab` = "Usar tabuladores", `2` or `4` = "número de espacios"
 
 `line_length_limit_soft`:
-The "soft" line length limit, in characters. `?` = not discernible or no response, `no` means no limit.
+El límite de la línea dinámica ("soft"), en caracteres. `?` = no sabe o no contesta, `no` significa sin límite.
 
 `line_length_limit_hard`:
-The "hard" line length limit, in characters. `?` = not discernible or no response, `no` means no limit.
+El límite de la línea dura ("hard"), en caracteres. `?` = no sabe o no contesta, `no` significa sin límite.
 
 `class_names`:
-How classes are named. `lower` = lowercase only, `lower_under` = lowercase with underscore separators, `studly` = StudlyCase.
+¿Cómo nombrar las clases?. `lower` = solo minúsculas, `lower_under` = minúsculas con guiones bajos como separador, `studly` = StudlyCase.
 
 `class_brace_line`:
-Does the opening brace for a class go on the `same` line as the class keyword, or on the `next` line after it?
+¿La llave de apertura para clases puede ir en la misma línea (`same`) que la palabra clave class, o en la siguiente (`next`) línea?
 
 `constant_names`:
-How are class constants named? `upper` = Uppercase with underscore separators.
+¿Cómo nombrar las constantes en las clases? `upper` = Mayúsculas con guiones bajos como separador.
 
 `true_false_null`:
-Are the `true`, `false`, and `null` keywords spelled as all `lower` case, or all `upper` case?
+¿Las palabras clave `true`, `false`, y `null` se expresan todo en minúsculas (`lower`) o todo en mayúsculas (`upper`)?
 
 `method_names`:
-How are methods named? `camel` = `camelCase`, `lower_under` = lowercase with underscore separators.
+¿Cómo se nombran los métodos? `camel` = `camelCase`, `lower_under` = minúsculas con guiones bajos como separador.
 
 `method_brace_line`:
-Does the opening brace for a method go on the `same` line as the method name, or on the `next` line?
+¿La llave de apertura para los métodos se ponen en la misma (`same`) línea del nombre del método o en la siguiente (`next`) línea?
 
 `control_brace_line`:
-Does the opening brace for a control structure go on the `same` line, or on the `next` line?
+¿La llave de apertura para las estructuras de control se ponen en la misma (`same`) línea o en la siguiente `next` línea?
 
 `control_space_after`:
-Is there a space after the control structure keyword?
+¿Hay un espacio después de la palabra clave en una estructura de control?
 
 `always_use_control_braces`:
-Do control structures always use braces?
+¿Las estructuras de control siempre usan llaves?
 
 `else_elseif_line`:
-When using `else` or `elseif`, does it go on the `same` line as the previous closing brace, or does it go on the `next` line?
+Cuando se usa `else` o `elseif`, ¿se ponen en la misma (`same`) línea que la llave de cierre previa o en la siguiente (`next`) línea?
 
 `case_break_indent_from_switch`:
-How many times are `case` and `break` indented from an opening `switch` statement?
+¿Cuántas veces hay que indentar el `case` y el `break` respecto a la apertura del `switch`?
 
 `function_space_after`:
-Do function calls have a space after the function name and before the opening parenthesis?
+¿Tienen las llamadas a funciones un espacio después del nombre de la función y antes de la apertura del paréntesis?
 
 `closing_php_tag_required`:
-In files containing only PHP, is the closing `?>` tag required?
+En los ficheros que solamente contengan código PHP, ¿Se requiere la etiqueta de cierre `?>`?
 
 `line_endings`:
-What type of line ending is used?
+¿Qué tipo de final de línea se usa?
 
 `static_or_visibility_first`:
-When declaring a method, does `static` come first, or does the visibility come first?
+Cuando se declara un método, ¿se pone primero `static` o la visibilidad?
 
 `control_space_parens`:
-In a control structure expression, is there a space after the opening parenthesis and a space before the closing parenthesis? `yes` = `if ( $expr )`, `no` = `if ($expr)`.
+En una expresión de estructura de control, ¿hay un espacio después del paréntesis de apertura y un espacio antes del paréntesis de cierre? `yes` = `if ( $expr )`, `no` = `if ($expr)`.
 
 `blank_line_after_php`:
-Is there a blank line after the opening PHP tag?
+¿Hay una línea en blanco después de la etiqueta de inicio de PHP?
 
 `class_method_control_brace`:
-A summary of what line the opening braces go on for classes, methods, and control structures.
+Un resumen de en qué línea se abren las llaves para clases, métodos y estructuras de control. (Clases/Métodos/Estructuras)
 
 ### A.3. Resultados de la encuesta.
 
