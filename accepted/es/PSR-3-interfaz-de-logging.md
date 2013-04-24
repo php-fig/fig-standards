@@ -3,11 +3,11 @@ Interfaz de logging
 
 Este documento describe una interfaz común para el logging de librerías.
 
-El objetivo principal es permitir a las librerias recibir un objeto de 
+El objetivo principal es permitir a las librerías recibir un objeto de 
 tipo `Psr\Log\LoggerInterface` y escribir logs en el de forma simple y 
 universal. Los Frameworks y CMSs con otras necesidades PUEDEN extender la
 interfaz para su propio propósito, pero DEBE seguir siendo compatible con
-este documento. Para asegurar que las librerias de terceros que se utilicen
+este documento. Para asegurar que las librerías de terceros que se utilicen
 en la aplicación puedan seguir escribiendo en los logs centralizados de la 
 aplicación.
 
@@ -35,7 +35,7 @@ logging o framework. `user` se refiere al usuario de loggers.
   Llamando a este método con una constante de nivel de registro DEBE resultar
   en el mismo resultado que llamar al método específico del nivel. Llamando 
   a este método con un nivel no definido por esta especificación DEBE lanzar
-  una excepción `Psr\Log\InvalidArgumentException`, si la implenetación no
+  una excepción `Psr\Log\InvalidArgumentException`, si la implementación no
   conoce el nivel. NO SE DEBE utilizar un nivel propio por el usuario, sin 
   tener la certeza de que la implementación lo soporta.
 
@@ -68,7 +68,7 @@ logging o framework. `user` se refiere al usuario de loggers.
   en el que van a ser mostrados los datos.
 
   A continuación se muestra un ejemplo de la implementación de un marcador 
-  interpolado proveido, sólo con propósitos de referencia.
+  interpolado proveído, sólo con propósitos de referencia.
 
   ```php
   /**
@@ -99,14 +99,14 @@ logging o framework. `user` se refiere al usuario de loggers.
 ### 1.3 Contexto
 
 - Cada método acepta un array como datos de contexto. Esto quiere decir que 
-  contendrá cualquier información exraña que no pueda ser representada como 
+  contendrá cualquier información extraña que no pueda ser representada como 
   una cadena de texto. El array puede contener cualquier cosa. Los implementors
   DEBEN asegurarse que tratan la información de contexto con tanta exigencia
   como sea posible. Un valor proporcionado en el contexto NO DEBE lanzar una
   excepción, ni producir ningún error, aviso o notificación de PHP.
 
 - Si en los datos de contexto se pasa un objeto de tipo `Exception`, este DEBE
-  estar en la clave `'exception'`. El registro de excepciones es un patron
+  estar en la clave `'exception'`. El registro de excepciones es un patrón
   común y este, debe permitir a los implementors extraer la traza de la pila
   de la excepción cuando el log backend lo soporte. Los implementors DEBEN
   verificar que la clave `'exception'` es una `Exception` antes de utilizarla
@@ -116,11 +116,11 @@ logging o framework. `user` se refiere al usuario de loggers.
 
 - La clase `Psr\Log\AbstractLogger` te permite implementar la interfaz
   `LoggerInterface` de forma muy sencilla extendiendo e implementando el
-  método generico `log`. Los otros ocho métodos reenvian el mensaje y el contexto
+  método genérico `log`. Los otros ocho métodos reenvían el mensaje y el contexto
   a la misma.
 
 - De forma similar, utilizando el `Psr\Log\LoggerTrait` solo requiere que se
-  implemente el método generico `log`. Se debe tener en cuenta que, mientras
+  implemente el método genérico `log`. Se debe tener en cuenta que, mientras
   que los tratis no puedan implementar interfaces, en ese caso se debe seguir
   implementando `LoggerInterface`.
 

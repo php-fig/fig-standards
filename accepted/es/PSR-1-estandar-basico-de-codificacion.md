@@ -2,18 +2,19 @@ Estándar básico de codificación
 ===============================
 
 Esta sección del estándar define lo que debe considerarse elementos de código
-estándar que son obligatorios para asegurar un alto nivel técnico de 
+estándar que son obligatorios para asegurar un alto nivel técnico de
 interoperatividad entre código PHP compartido.
 
-Las palabras clave "DEBE/MUST", "NO DEBE/MUST NOT", "REQUERIDO/REQUIRED", 
-"SE DEBE/SHALL", "NO SE DEBE/SHALL NOT", "SE DEBERÍA/SHOULD", "NO SE DEBERÍA/SHOULD NOT", "RECOMENDADO/RECOMMENDED", "PUEDE/MAY", y "OPCIONAL/OPTIONAL" de este documento
-se deben interpretar como se describe en el [RFC 2119][].
+Las palabras clave "DEBE/MUST", "NO DEBE/MUST NOT", "REQUERIDO/REQUIRED",
+"SE DEBE/SHALL", "NO SE DEBE/SHALL NOT", "SE DEBERÍA/SHOULD", "NO SE DEBERÍA/
+SHOULD NOT", "RECOMENDADO/RECOMMENDED", "PUEDE/MAY", y "OPCIONAL/OPTIONAL" de este
+documento se deben interpretar como se describe en el [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 
 
-1. Resúmen
+1. Resumen
 ----------
 
 - Los archivos DEBEN usar sólo las etiquetas `<?php` y `<?=`.
@@ -21,14 +22,15 @@ se deben interpretar como se describe en el [RFC 2119][].
 - Los archivos DEBEN usar sólo UTF-8 sin BOM para código PHP.
 
 - Los archivos DEBERÍAN *o* declarar símbolos (clases, funciones, constantes, etc.)
-  *o* tener otros efectos (ej. generar salída de información, cambiar configuraciones, etc.)
-  pero NO DEBERÍAN realizar ambas acciones.
+  *o* tener otros efectos (ej. generar salida de información, cambiar
+  configuraciones, etc.) pero NO DEBERÍAN realizar ambas acciones.
 
-- Los Paquetes y las Clases DEBEN seguir el estandar [PSR-0][].
+- Los Paquetes y las Clases DEBEN seguir el estándar [PSR-0][].
 
 - Los nombres de las Clases DEBEN declararse en `StudlyCaps`.
 
-- Las constantes de una Clase, DEBEN declararse en mayúsculas con guiones bajos como separadores.
+- Las constantes de una Clase, DEBEN declararse en mayúsculas con guiones bajos
+  como separadores.
 
 - Los nombres de los métodos DEBEN declararse en `camelCase`.
 
@@ -38,7 +40,9 @@ se deben interpretar como se describe en el [RFC 2119][].
 
 ### 2.1. Etiquetas PHP
 
-El código PHP DEBE usar las etiquetas con formato largo `<?php ?>` o el formato de salida corto short-echo `<?= ?>`; el código NO DEBE utilizar ningún otro tipo de etiqueta.
+El código PHP DEBE usar las etiquetas con formato largo `<?php ?>` o el formato de
+salida corto short-echo `<?= ?>`; el código NO DEBE utilizar ningún otro tipo de
+etiqueta.
 
 ### 2.2. Codificación de caracteres
 
@@ -46,18 +50,21 @@ El código PHP DEBE usar sólo UTF-8 sin BOM.
 
 ### 2.3. Otros efectos
 
-Un archivo DEBERÍA declarar nuevos símbolos (clases, funciones, constantes,
-etc.) y no debería causar otros efectos, o el archivo DEBERÍA ejecutar lógica 
-con con otros efectos, pero NO DEBERÍA realizar ambas acciones.
+Un archivo DEBERÍA declarar nuevos símbolos (clases, funciones, constantes, etc.) y
+no debería causar otros efectos, o el archivo DEBERÍA ejecutar lógica con con otros
+efectos, pero NO DEBERÍA realizar ambas acciones.
 
 La frase "otros efectos" significa, ejecución de lógica que no está relacionada
 directamente con la declaración de clases, funciones, constantes, etc., *excluyendo
 la inclusión o requerimiento de archivos*.
 
 "Otros efectos" incluye pero no limita a: generación de salida de información,
-uso explícito de `require` o `include`, conectando con servicios externos, modificar configuraciones del ini, emitir errores o excepciones, modificar variables globales o estáticas, leer en o escribir a un archivo, etc.
+uso explícito de `require` o `include`, conectando con servicios externos,
+modificar configuraciones del ini, emitir errores o excepciones, modificar
+variables globales o estáticas, leer en o escribir a un archivo, etc.
 
-A continuación se muestra un ejemplo de de un archivo con una declaración y otros efectos;
+A continuación se muestra un ejemplo de de un archivo con una declaración y otros
+efectos;
 p.e, un ejemplo de lo que se debe evitar:
 
 ```php
@@ -78,7 +85,7 @@ function foo()
 }
 ```
 
-El siguiente ejemplo muestra un archivo con una declaración sin otros efectos; 
+El siguiente ejemplo muestra un archivo con una declaración sin otros efectos;
 p.e., un ejemplo de lo que se debe emular:
 
 ```php
@@ -104,7 +111,7 @@ if (! function_exists('bar')) {
 
 Los Paquetes y las Clases DEBEN seguir el estándar [PSR-0][].
 
-Esto significa que cada estará declarada en un único archivo, y estará en un 
+Esto significa que cada estará declarada en un único archivo, y estará en un
 paquete que tendrá al menos un nivel: un nivel raíz correspondiente al nombre
 del proveedor.
 
@@ -124,7 +131,7 @@ class Foo
 }
 ```
 
-El código escrito para PHP 5.2.x y anteriores DEBERÍA utilizar la conveción de 
+El código escrito para PHP 5.2.x y anteriores DEBERÍA utilizar la convención de
 pseudo-paquetes agregando el prefijo `Proveedor_` al nombre de las clases.
 
 ```php
@@ -142,7 +149,7 @@ El término "clase" hace referencia a todas las clases, interfaces y traits.
 
 ### 4.1. Constantes
 
-Las constantes de Clases, DEBEN estar declaradas en mayúsculas haciendo uso del 
+Las constantes de Clases, DEBEN estar declaradas en mayúsculas haciendo uso del
 guión bajo como separador.
 
 Por ejemplo:
@@ -163,8 +170,8 @@ class Foo
 Esta guía de forma intencionada evita cualquier recomendación en relación la uso
 de `$StudlyCaps`, `$camelCase`, o `$under_score` en los nombres de las propiedades.
 
-Cualquiern conveción de nombres que se utilice DEBERÍA estar aplicada de forma 
-consistente en un ámbito razonable. El ámbito puede ser a nivel del proveedor, 
+Cualquier convención de nombres que se utilice DEBERÍA estar aplicada de forma
+consistente en un ámbito razonable. El ámbito puede ser a nivel del proveedor,
 a nivel de paquete, a nivel de clase o a nivel de método.
 
 ### 4.3. Métodos

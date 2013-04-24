@@ -1,65 +1,67 @@
 Guía de estilo de codificación
 ==============================
 
-Esta guía extiende y expande lo descrito en [PSR-1][], estándar básico de 
+Esta guía extiende y expande lo descrito en [PSR-1][], estándar básico de
 codificación.
 
 El objetivo de esta guía es reducir el rozamiento cognitivo al revisar código
-de fierentes autores. Lo hace mediante la enumeración de una serie de reglas
+de diferentes autores. Lo hace mediante la enumeración de una serie de reglas
 y expectativas sobre como se debe dar formato al código PHP.
 
 Las reglas de estilo de este documento derivan de los puntos en común de los
-proyectos miembros. Cuando varios autores colaboran a lo largo de múltiples 
+proyectos miembros. Cuando varios autores colaboran a lo largo de múltiples
 proyectos, ayuda el hecho de tener una serie de guías para utilizarlas a lo
 largo de estos proyectos. Así, le beneficio de esta guía no está en las reglas
 en sí mismo, sino en compartir estar reglas.
 
-Las palabras clave "DEBE/MUST", "NO DEBE/MUST NOT", "REQUERIDO/REQUIRED", 
-"SE DEBE/SHALL", "NO SE DEBE/SHALL NOT", "SE DEBERÍA/SHOULD", "NO SE DEBERÍA/SHOULD NOT", "RECOMENDADO/RECOMMENDED", "PUEDE/MAY", y "OPCIONAL/OPTIONAL" de este documento
-se deben interpretar como se describe en el [RFC 2119][].
+Las palabras clave "DEBE/MUST", "NO DEBE/MUST NOT", "REQUERIDO/REQUIRED", "SE DEBE/
+SHALL", "NO SE DEBE/SHALL NOT", "SE DEBERÍA/SHOULD", "NO SE DEBERÍA/SHOULD NOT",
+"RECOMENDADO/RECOMMENDED", "PUEDE/MAY", y "OPCIONAL/OPTIONAL" de este documento se deben interpretar como se describe en el [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-0.md
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-1-estandar-basico-de-codificacion.md
 
 
-1. Resúmen
+1. Resumen
 -----------
 
-- El código DEBE seguir el estandar [PSR-1][].
+- El código DEBE seguir el estándar [PSR-1][].
 
-- El código DEBE utilizar 4 espacios para la indentación, no tabluación.
+- El código DEBE utilizar 4 espacios para la indentación, no tabulación.
 
-- NO DEBE haber un límite extricto en la longitud de la línea; el límite DEBE 
+- NO DEBE haber un límite estricto en la longitud de la línea; el límite DEBE
   estar en 120 caracteres; las líneas DEBERIAN tener 80 caracteres o menos.
 
-- DEBE haber una línea en blanco después de la declaración del `namespace`, y 
+- DEBE haber una línea en blanco después de la declaración del `namespace`, y
   DEBE haber una línea en blanco después del bloque de declaraciones `use`.
 
 - Las llaves de apertura de las clases DEBEN estar en la línea siguiente, y las 
-  llaves de cierre de las clases DEBEN estar en la línea siguiente al cuerpo de la 
-  clase.
+  llaves de cierre de las clases DEBEN estar en la línea siguiente al cuerpo de
+  la clase.
 
 - Las llaves de apertura de los métodos DEBEN estar en la siguiente línea, y las 
   llaves de cierre de los métodos DEBEN estar en la línea siguiente al cuerpo del
   método.
 
-- La visibilidad DEBE estar declarada en todas las propiedades y métodos; `abstract`
-  y `final` DEBEN estar declaradas antes de la visibilidad; `static` DEBEN estar
-  declaradas después de la visibilidad.
+- La visibilidad DEBE estar declarada en todas las propiedades y métodos;
+  `abstract` y `final` DEBEN estar declaradas antes de la visibilidad; `static`
+  DEBEN estar declaradas después de la visibilidad.
   
 - Las palabras clave de las estructuras de control DEBEN tener un espacio después;
   las llamadas a los métodos y las funciones NO DEBEN tenerlo..
 
-- Las llaves de apertura de las estructuras de control DEBEN estar en la misma línea, y
-  las llaves de cierre DEBEN estar en la línea siguiente al cuerpo..
+- Las llaves de apertura de las estructuras de control DEBEN estar en la misma
+  línea, y las llaves de cierre DEBEN estar en la línea siguiente al cuerpo.
 
-- Los paréntesis de las estructuras de control NO DEBEN tener un espacio después, y los
-  paréntesis de cierre de estructuras de control NO DEBEN tener un espacio antes.
+- Los paréntesis de las estructuras de control NO DEBEN tener un espacio después, 
+  y los paréntesis de cierre de estructuras de control NO DEBEN tener un espacio
+  antes.
 
 ### 1.1. Ejemplo
 
-Este ejemplo abarca algunas de las reglas descritas arriba a modo de resúmen rápido:
+Este ejemplo abarca algunas de las reglas descritas arriba a modo de resumen
+rápido:
 
 ```php
 <?php
@@ -94,7 +96,7 @@ class Foo extends Bar implements FooInterface
 
 ### 2.1 Estándar básico de codificación
 
-El código DEBE seguir las relgas descritas en [PSR-1][].
+El código DEBE seguir las reglas descritas en [PSR-1][].
 
 ### 2.2 Archivos
 
@@ -102,15 +104,16 @@ Todos los archivos PHP DEBEN utilizar el final de línea Unix LF.
 
 Todos los archivos PHP DENEN terminar con una línea en blanco.
 
-La etiqueta de cierre `?>` DEBE omitirse en los archivos que sólo contengan 
+La etiqueta de cierre `?>` DEBE omitirse en los archivos que sólo contengan
 código PHP.
 
 ### 2.3. Líneas
 
 NO DEBEN haber un límite estricto en la longitud de la línea.
 
-El límite flexible de la línea DEBE ser de 120 caracteres; los correctores de estilo 
-automáticos DEBEN advertir pero NO DEBEN producir errores de límite flexible.
+El límite flexible de la línea DEBE ser de 120 caracteres; los correctores de
+estilo automáticos DEBEN advertir pero NO DEBEN producir errores de límite
+flexible.
 
 Las líneas NO DEBERÍAN ser de longitud mayor a 80 caracteres; las líneas más largas
 DEBERÍAN separarse en subsecuencias múltiples de líneas de no más de 80 caracteres
@@ -118,26 +121,26 @@ cada una.
 
 NO DEBE haber espacios en blanco al final de las líneas que no estén en blanco.
 
-SE PUEDE añadir líneas en blanco para mejorar la lectura del código y para indicar 
+SE PUEDE añadir líneas en blanco para mejorar la lectura del código y para indicar
 relación de bloques de código.
 
 NO DEBE haber más de una declaración por línea.
 
 ### 2.4. Indentación
 
-El código DEBE utilizar una indentación de 4 espacios, y NO DEBE utilizar tabulacionas
-para la indentación.
+El código DEBE utilizar una indentación de 4 espacios, y NO DEBE utilizar
+tabulaciones para la indentación.
 
-> N.b.: Utilizando sólo espacios, y evitando la mezcla de espacios y tabuladores, ayuda
-> a evitar problemas al aplicar diffs, patches, historiales y anotaciones. El uso de 
-> espacios también facilita la inserción de subindentación granular para la alineación
-> entre líneas.  
+> N.b.: Utilizando sólo espacios, y evitando la mezcla de espacios y tabuladores,
+> ayuda a evitar problemas al aplicar diffs, patches, historiales y anotaciones. El
+> uso de espacios también facilita la inserción de subindentación granular para la
+> alineación entre líneas.  
 
 ### 2.5. Palabras clave True/False/Null
 
 Las [Palabras clave][]] en PHP siempre DEBEN estar en minúsculas.
 
-Las constantes de PHP `true`, `false`, y `null` DEBEN estar siempre en minúsuclas.
+Las constantes de PHP `true`, `false`, y `null` DEBEN estar siempre en minúsculas.
 
 [Palabras clave]: http://php.net/manual/es/reserved.keywords.php
 
@@ -146,7 +149,7 @@ Las constantes de PHP `true`, `false`, y `null` DEBEN estar siempre en minúsucl
 3. Paquete y declaraciones Use
 ------------------------------
 
-Cuando están presentes, DEBE haber una línea en blanco después de la declaración 
+Cuando están presentes, DEBE haber una línea en blanco después de la declaración
 de `namespace`.
 
 Cuando están presentes, todas las declaraciones `use` DEBEN estar después de la
@@ -178,10 +181,10 @@ El término "clase" se refiere a todas las clases, interfaces y traits.
 
 ### 4.1. Extends e Implements
 
-Las palabras reservadas `extends` e `implements` DEBEN estar declaradas en la 
+Las palabras reservadas `extends` e `implements` DEBEN estar declaradas en la
 misma línea que el nombre de la clase.
 
-La llave de apertura de clase DEBE ir en su propia línea; la llave de cierre 
+La llave de apertura de clase DEBE ir en su propia línea; la llave de cierre
 de clase  DEBE ir en la línea siguiente después del cuerpo.
 
 ```php
@@ -227,8 +230,8 @@ La palabra clave `var` NO DEBE utilizarse para declarar una propiedad.
 
 NO DEBE haber más de una propiedad declarada por línea.
 
-Los nombres de las propiedades NO DEBERÍAN utilizar un guión bajo como 
-prefijo para indicar la visibilidad `protected` o `private`.
+Los nombres de las propiedades NO DEBERÍAN utilizar un guión bajo como prefijo
+para indicar la visibilidad `protected` o `private`.
 
 La declaración de una propiedad se parece al siguiente ejemplo.
 
@@ -246,17 +249,17 @@ class ClassName
 
 La visibilidad DEBE estar declarada en todos los métodos.
 
-Los nombres de los métodos NO DEBERÍAN utilizar un guión bajo como
-prefijo para indicar la visibilidad `protected` o `private`.
+Los nombres de los métodos NO DEBERÍAN utilizar un guión bajo como prefijo para
+indicar la visibilidad `protected` o `private`.
 
-Los nombres de los métodos NO DEBEN estar declarados con un espacio después 
-del nombre. La llave de apertura DEBE estar en su propia línea, y la llave de 
-cierre DEBE estar en la siguiente línea del cuerpo. NO DEBE existir un espacio
-después del paréntesis de apertura, y NO DEBE existir un espacio antes del 
-paréntesis de cierre.
+Los nombres de los métodos NO DEBEN estar declarados con un espacio después del
+nombre. La llave de apertura DEBE estar en su propia línea, y la llave de cierre
+DEBE estar en la siguiente línea del cuerpo. NO DEBE existir un espacio después
+del paréntesis de apertura, y NO DEBE existir un espacio antes del paréntesis de
+cierre.
 
-La declaración de un método se parece al siguiente ejemplo. Hay que tener 
-en cuenta la colocación de los paréntesis, comas, espacios y llaves:
+La declaración de un método se parece al siguiente ejemplo. Hay que tener en
+cuenta la colocación de los paréntesis, comas, espacios y llaves:
 
 ```php
 <?php
@@ -273,11 +276,11 @@ class ClassName
 
 ### 4.4. Argumentos del método
 
-En la lista de argumentos, NO DEBE haber un espacio delante de cada coma, 
-y DEBE haber un espacio después de cada coma.
+En la lista de argumentos, NO DEBE haber un espacio delante de cada coma, y DEBE
+haber un espacio después de cada coma.
 
-Los argumentos del método con valores por defecto DEBEN ir al final de la
-lista de argumentos.
+Los argumentos del método con valores por defecto DEBEN ir al final de la lista
+de argumentos.
 
 ```php
 <?php
@@ -318,10 +321,10 @@ class ClassName
 
 ### 4.5. `abstract`, `final`, y `static`
 
-Cuando hay presentes declaraciones de `abstract` y `final`, SE DEBE preceder 
-con la declaración de la visibilidad.
+Cuando hay presentes declaraciones de `abstract` y `final`, SE DEBE preceder con
+la declaración de la visibilidad.
 
-Cuando hay presente una declaración `static`, SE DEBE colocar después de la 
+Cuando hay presente una declaración `static`, SE DEBE colocar después de la
 declaración de visibilidad.
 
 ```php
@@ -343,9 +346,9 @@ abstract class ClassName
 
 ### 4.6. Llamadas a métodos y funciones
 
-Al realizar una llamada a un método o a una función, NO DEBE haber un espcio
+Al realizar una llamada a un método o a una función, NO DEBE haber un espacio
 entre el nombre del método o de la función y la apertura de paréntesis, NO DEBE
-haber un espacio después del paréntesis de apertura, y NO DEBE haber un espacio 
+haber un espacio después del paréntesis de apertura, y NO DEBE haber un espacio
 antes del paréntesis de cierre. En la lista de argumentos, NO DEBE haber
 espacio antes de cada coma, y DEBE haber un espacio después de cada coma.
 
@@ -357,7 +360,7 @@ Foo::bar($arg2, $arg3);
 ```
 
 El listado de argumentos PUEDE separarse en varias líneas, donde cada línea es
-indentada una vez. Al hacer esto, el primer elemento de la lista DEBE estar en 
+indentada una vez. Al hacer esto, el primer elemento de la lista DEBE estar en
 la línea siguiente, y DEBE existir un sólo argumento por línea.
 
 ```php
@@ -372,8 +375,7 @@ $foo->bar(
 5. Estructuras de control
 -------------------------
 
-Las reglas de estilo generales de las esctructuras de control son las
-siguientes:
+Las reglas de estilo generales de las estructuras de control son las siguientes:
 
 - DEBE haber un espacio después de la palabra clave de la estructura de control.
 - NO DEBE haber un espacio después del paréntesis de apertura.
@@ -383,7 +385,7 @@ siguientes:
 - La llave de cierre DEBE estar en la línea siguiente del cuerpo.
 
 El cuerpo de cada estructura DEBE estar encerrado entre llaves. Esto estandariza
-cómo se ven las estructuras, y redice la probabilidad de errores como que se 
+cómo se ven las estructuras, y redice la probabilidad de errores como que se
 añadan nuevas líneas al cuerpo.
 
 
@@ -404,18 +406,18 @@ if ($expr1) {
 }
 ```
 
-La palabra clave `elseif` PODRÍA ser usada en lugar de `else if` de forma que 
+La palabra clave `elseif` PODRÍA ser usada en lugar de `else if` de forma que
 todas las palabras clave de la estructura serían palabras simples.
 
 
 ### 5.2. `switch`, `case`
 
 Una estructura `switch` se parece al siguiente ejemplo. Se debe tener en cuenta
-la posición de los paréntesis, espacios y llaves. La declaración `case` DEBE estar 
-indentada una vez respecto a `switch`, y la palabra clave `break` (o cualquier otra
-palabra de terminación) DEBE estar indentada al mismo nivel del cuerpo del `case`. 
-En el caso de un `case` que debe pasar a través del cuerpo de otro `case` intencionalmente, 
-se debe poner el comentario `// no break`.
+la posición de los paréntesis, espacios y llaves. La declaración `case` DEBE estar
+indentada una vez respecto a `switch`, y la palabra clave `break` (o cualquier
+otra palabra de terminación) DEBE estar indentada al mismo nivel del cuerpo del
+`case`. En el caso de un `case` que debe pasar a través del cuerpo de otro `case`
+intencionalmente, se debe poner el comentario `// no break`.
 
 ```php
 <?php
@@ -456,14 +458,14 @@ tener en cuenta los paréntesis, espacios y llaves.
 ```php
 <?php
 do {
-    // cuepo de la estructura;
+    // cuerpo de la estructura;
 } while ($expr);
 ```
 
 ### 5.4. `for`
 
-Una estructura `for` se parece al siguiente ejemplo. Se debe tener en cuenta
-la posición de los paréntesis, espacios y llaves.
+Una estructura `for` se parece al siguiente ejemplo. Se debe tener en cuenta la
+posición de los paréntesis, espacios y llaves.
 
 ```php
 <?php
@@ -503,21 +505,21 @@ try {
 6. Closures
 -----------
 
-Closures DEBEN estar declarados con un espacio después de la palabra clave 
+Closures DEBEN estar declarados con un espacio después de la palabra clave
 `function`, y un espacio antes y después de la palabra clave `use`.
 
-La llave de apertura DEBE estar en la misma línea, y lallave de cierre DEBE
+La llave de apertura DEBE estar en la misma línea, y la llave de cierre DEBE
 estar en la línea siguiente del cuerpo.
 
 NO DEBE haber un espacio después del paréntesis de la lista de argumentos o
 lista de variables, y NO DEBE haber un espacio antes del paréntesis de cierre
 de la lista de argumentos o lista de variables.
 
-En la lista de argumentos y la lista de variables, NO DEBE haber espacio
-antes de cada coma, y DEBE haber un espacio después de cada coma.
+En la lista de argumentos y la lista de variables, NO DEBE haber espacio antes
+de cada coma, y DEBE haber un espacio después de cada coma.
 
-Los argumentos de un Closure con valor por defecto DEBEN estar al final de 
-la lista de argumentos.
+Los argumentos de un Closure con valor por defecto DEBEN estar al final de la
+lista de argumentos.
 
 La declaración de un Closure se parece al siguiente ejemplo. Se debe tener en
 cuenta la posición de los paréntesis, comas, espacios y llaves:
@@ -533,17 +535,17 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
 };
 ```
 
-La lista de argumentos y la lista de variables PUEDE separarse en varias líneas, 
+La lista de argumentos y la lista de variables PUEDE separarse en varias líneas,
 donde cada línea es indentada una vez. Al hacer esto, el primer elemento de la
 lista DEBE estar en la línea siguiente, y DEBE haber un solo argumento o variable
 por línea.
 
-Cuando finaliza el listado de argumentos o de variables y este está separado 
+Cuando finaliza el listado de argumentos o de variables y este está separado
 en varias líneas, el paréntesis de cierre y la llave de apertura DEBEN colocarse
 juntos en su propia línea con un espacio entre ambos.
 
 Los siguientes ejemplos muestran la declaración de clousures con y sin listado
-de argumentos ys listado de variables separados en varias líneas.
+de argumentos y listado de variables separados en varias líneas.
 
 ```php
 <?php
@@ -593,7 +595,7 @@ $shortArgs_longVars = function ($arg) use (
 ```
 
 Se debe tener en cuenta que las reglas de formato también se aplican cuando
-se utiliza un clousure de forma directa en una llamada función o un método 
+se utiliza un clousure de forma directa en una llamada función o un método
 como argumento. 
 
 ```php
@@ -611,7 +613,7 @@ $foo->bar(
 7. Conclusión
 --------------
 
-Hay muchos elementos de estulo y práctias intencionalmente omitidas por esta
+Hay muchos elementos de estilo y prácticas intencionalmente omitidas por esta
 guía. Estos incluyen, pero no están limitados a:
 
 - Declaración de variables globales y constantes globales.
@@ -628,7 +630,7 @@ guía. Estos incluyen, pero no están limitados a:
 
 - Mejores prácticas.
 
-PUEDE revisar y ampliar esta guía para hacer frente a estos u otros elementos 
+PUEDE revisar y ampliar esta guía para hacer frente a estos u otros elementos
 de estilo y práctica.
 
 

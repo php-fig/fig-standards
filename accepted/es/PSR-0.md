@@ -1,21 +1,22 @@
-Este documento describe los requisitos que han de seguirse para 
-la autocarga interoperativa.
+Este documento describe los requisitos que han de seguirse para la autocarga
+interoperativa.
 
 Obligatorio
 ---------
 
 * Un paquete correctamente organizado y clases descriptivas deben tener la
-  estructura `\<Nombre del proveedor>\(<Paquete>\)*<Nombre de clase>`
+  estructura `\<Nombre del proveedor>\(<Paquete>\)<Nombre de clase>`
 * Cada paquete debe tener un paquete raíz ("Nombre del proveedor").
-* Cada paquete puede tener tantos subpaquetes como sea necesario.
+* Cada paquete puede tener tantos sub-paquetes como sea necesario.
 * Cada separador de paquete se convierte en un `DIRECTORY_SEPARATOR` cuando se
   cargue del sistema de archivos.
-* Cada carácter `_`  en el nombre de la clase se convertirá en un `DIRECTORY_SEPARATOR`. 
-  El caracter `_` no tiene un significado especial en el paquete.
-* Al paquete y la clase se le agregará el sufijo `.php` cuando se cargue del sistema de
-  archivos.
-* El nombre del proveedor, paquetes y clases, serán una combinación de caracteres alfabéticos
-  combinados de cualquier forma en mayúsculas y minúsculas.
+* Cada carácter `_`  en el nombre de la clase se convertirá en un
+  `DIRECTORY_SEPARATOR`. El carácter `_` no tiene un significado especial en el
+  paquete.
+* Al paquete y la clase se le agregará el sufijo `.php` cuando se cargue del sistema
+  de archivos.
+* El nombre del proveedor, paquetes y clases, serán una combinación de caracteres
+  alfabéticos combinados de cualquier forma en mayúsculas y minúsculas.
 
 Ejemplos
 --------
@@ -31,16 +32,17 @@ Guiones bajos en Paquetes y Clases
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
 
-El estandar que describimos debe ser el minimo comun denominador para
-reducir los problemas de autocarga interoperativa. Puedes comprobar que 
-estás siguiendo estos estandares utilizando este ejemplo de la implementación
-del SplClassLoader que debe cargar las clases en PHP 5.3.
+El estándar que describimos debe ser el mínimo común denominador para reducir los
+problemas de autocarga interoperativa. Puedes comprobar que estás siguiendo estos
+estándares utilizando este ejemplo de la implementación del SplClassLoader que debe
+cargar las clases en PHP 5.3.
 
 Ejemplo de implementación
 -------------------------
 
-Debajo hay un método de ejemplo, que demuestra como las propuestas anteriores
-son autocargadas.
+Debajo hay un método de ejemplo, que demuestra como las propuestas anteriores son
+autocargadas.
+
 ```php
 <?php
 
@@ -63,10 +65,9 @@ function autoload($className)
 Implementación de SplClassLoader
 --------------------------------
 
-El siguiente gist es un ejemplo de la implementación de SplClassLoader
-que puede cargar tus clases siguiendo los estándares de autocarga interoperativa
-propuestos anteriormente. Es el método recomendado para carga de clases en PHP 5.3
-que sigue estos estándares.
+El siguiente gist es un ejemplo de la implementación de SplClassLoader que puede
+cargar tus clases siguiendo los estándares de autocarga interoperativa propuestos
+anteriormente. Es el método recomendado para carga de clases en PHP 5.3 que sigue
+estos estándares.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
-
