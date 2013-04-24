@@ -13,7 +13,7 @@ se deben interpretar como se describe en el [RFC 2119][].
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 
 
-1. Resumen
+1. Resúmen
 ----------
 
 - Los archivos DEBEN usar sólo las etiquetas `<?php` y `<?=`.
