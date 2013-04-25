@@ -6,7 +6,7 @@ Obligatorio
 
 * Un espacio de nombres y clase fully-qualified debe tener la siguiente estructura `\<Nombre del proveedor>\(<Paquete>\)<Nombre de clase>`. [^1]
 * Cada espacio de nombres debe tener un espacio de nombres de nivel superior ("Nombre del proveedor").
-* Cada espacio de nombres puede tener tantos sub-espacio de nombres como sea necesario.
+* Cada espacio de nombres puede tener tantos sub-espacios de nombres como sea necesario.
 * Cada separador de espacio de nombres se convierte en un `DIRECTORY_SEPARATOR` cuando se carga desde el sistema de archivos. [^2]
 * Cada carácter `_` en el nombre de la clase se convierte en un `DIRECTORY_SEPARATOR`. El carácter `_` no tiene ningún significado especial en el espacio de nombres.
 * Al espacio de nombres y clase fully-qualified se le añade el sufijo `.php` cuando se cargue desde el sistema de archivos.
