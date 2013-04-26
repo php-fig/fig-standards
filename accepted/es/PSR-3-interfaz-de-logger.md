@@ -1,33 +1,19 @@
 Interfaz de Logger
-================
+==================
 
-Este documento describe una interfaz común para todas las
-librerías de logging.
+Este documento describe una interfaz común para todas las librerías de logging.
 
-El objetivo principal es permitir a todas las librerías usar un objecto
-`Psr\Log\LoggerInterface` y escribir logs con él de manera simple
-y universal. Frameworks y CMSs que tengan necesidades específicas
-PUEDEN extender la interfaz para su propio uso, pero DEBERÍA
-mantenerse la compatibilidad con este documento. Eso asegura
-que las librerías de terceros usadas en la aplicación puedan escribir
-en los logs centralizados de la aplicación.
+El objetivo principal es permitir a todas las librerías usar un objecto `Psr\Log\LoggerInterface` y escribir logs con él de manera simple y universal. Frameworks y CMSs que tengan necesidades específicas PUEDEN extender la interfaz para su propio uso, pero DEBERÍA mantenerse la compatibilidad con este documento. Eso asegura que las librerías de terceros usadas en la aplicación puedan escribir en los logs centralizados de la aplicación.
 
-Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE"
-("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA"
-("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO"
-("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL")
-de este documento son una traducción de las palabras inglesas descritas
-en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
+Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
 - TIENE QUE o REQUERIDO implica que es un requisito absoluto de la especificación.
 - NO TIENE QUE conlleva la completa prohibición de la especificación.
 - DEBERÍA o RECOMENDADO implica que pueden existen razones válidas para ignorar dicho elemento, pero las implicaciones que ello conlleva deben ser entendidas y sopesadas antes de elegir una opción diferente.
 - NO DEBERÍA implica que pueden existir razones bajo ciertas circunstancias cuando el comportamiento es aceptable o incluso útil, pero todas las implicaciones deben ser entendidas cuidadosamente y sopesadas antes de implementar algún comportamiento descrito por esta etiqueta para ignorar dicho comportamiento.
 - PUEDE u OPCIONAL implica que el elemento es puramente opcional. Cualquier proveedor puede elegir incluir dicho elemento porque crea que conlleva mejoras en su producto mientras otro puede elegir obviarlas. Una implementación que no incluya un opción particular TIENE QUE estar preparada para operar con otra implementación que incluya dicha opción, aunque implique limitar la funcionalidad. De la misma manera, una implementación que incluya una opción particular TIENE QUE estar preparada para otra que no la incluya (excepto, por supuesto, para la característica que la opción provea).
 
-La palabra `implementación` en este documento tiene que ser
-interpretada como un objeto que implementa el `LoggerInterface`
-en una librería de logs relacionada o un framework.
-Los usuarios de los logs son referidos como `usuario`.
+La palabra `implementación` en este documento tiene que ser interpretada como un objeto que implementa el `LoggerInterface`
+en una librería de logs relacionada o un framework. Los usuarios de los logs son referidos como `usuario`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
@@ -48,52 +34,43 @@ Los usuarios de los logs son referidos como `usuario`.
 
 - El mensaje PUEDE contener marcadores que las implementaciones PUEDEN remplazar con los valores de una array contextual.
 
-  Los nombres de los marcadores TIENEN QUE corresponder con
-  las claves del array contextual.
+  Los nombres de los marcadores TIENEN QUE corresponder con las claves del array contextual.
 
-  Los nombres de los marcadores TIENEN QUE estar delimitados
-  con una apertura de llave `{` y un cierre de llave `}`. NO TIENE QUE
-  haber ningún espacio en blanco entre los delimitadores (llaves) y
-  el nombre del marcador.
+  Los nombres de los marcadores TIENEN QUE estar delimitados con una llave de apertura `{` y una llave de cierre `}`. NO TIENE QUE
+  haber ningún espacio en blanco entre los delimitadores (llaves) y el nombre del marcador.
 
-  Los nombres de los marcadores DEBERÍAN estar compuestos sólo
-  por los caracteres `A-Z`, `a-z`, `0-9`, guión bajo `_`, y punto `.`. El uso
-  de otros caracteres está reservado para futuras modificaciones en
-  los nombres de los marcadores en la norma.
+  Los nombres de los marcadores DEBERÍAN estar compuestos sólo por los caracteres `A-Z`, `a-z`, `0-9`, guión bajo `_`, y punto `.`. El uso de otros caracteres está reservado para futuras modificaciones en los nombres de los marcadores en la norma.
 
-  Las implementaciones PUEDEN usar marcadores para implementar
-  varias estrategias de escape y traducción para mostrar en los logs.
-  Los usuarios NO DEBERÍAN pre-escapar valores de marcadores
-  dado que no podrían conocer en qué contexto serían mostrados los datos.
+  Las implementaciones PUEDEN usar marcadores para implementar varias estrategias de escape y traducción para mostrar en los logs.
+  Los usuarios NO DEBERÍAN pre-escapar valores de marcadores dado que no podrían conocer en qué contexto serían mostrados los datos.
 
-  El siguiente código es un ejemplo de implementación de interpolación
-  de marcadores únicamente a modo de referencia:
+  El siguiente código es un ejemplo de implementación de interpolación de marcadores únicamente a modo de referencia:
 
   ```php
   /**
    * Reemplaza los valores de contexto por los marcadores del mensaje.
    */
-  function interpolate($message, array $context = array())
+  function interpolacion($mensaje, array $contexto = array())
   {
-      // Crea un array de sustituciones con llaves alrededor de cada clave
+      // crea un array de sustituciones con llaves alrededor de cada clave
       // del array contextual
-      $replace = array();
-      foreach ($context as $key => $val) {
-          $replace['{' . $key . '}'] = $val;
+      $reemplazo = array();
+      foreach ($contexto as $clave => $valor) {
+          $reemplazo['{' . $clave . '}'] = $valor;
       }
 
       // Reemplaza los valores dentro del mensaje y lo devuelve
-      return strtr($message, $replace);
+      return strtr($mensaje, $reemplazo);
   }
 
-  // Un mensaje con un marcador delimitado por llaves
-  $message = "Usuario {username} creado";
+  // un mensaje con un marcador delimitado por llaves
+  $mensaje = "Usuario {nombre_de_usuario} creado";
 
-  // Un array contextual con los marcadores => valores de sustitución
-  $context = array('username' => 'Pedro');
+  // un array contextual con los marcadores => valores de sustitución
+  $contexto = array('nombre_de_usuario' => 'Pedro');
 
-  // Imprime "Usuario Pedro creado"
-  echo interpolate($message, $context);
+  // imprime "Usuario Pedro creado"
+  echo interpolacion($mensaje, $contexto);
   ```
 
 ### 1.3 Contexto
@@ -119,10 +96,8 @@ Los usuarios de los logs son referidos como `usuario`.
 2. Paquete
 ----------
 
-La interfaces y clases descritas, las clases de excepción relevantes
-y una serie de test para comprobar el funcionamiento de su
-implementación se proveen como parte de paquete
-[psr/log](https://packagist.org/packages/psr/log)
+La interfaces y clases descritas, las clases de excepción relevantes y una serie de test para comprobar el funcionamiento de su
+implementación se proveen como parte de paquete [psr/log](https://packagist.org/packages/psr/log)
 
 
 3. `Psr\Log\LoggerInterface`
@@ -295,5 +270,5 @@ class LogLevel
 Notas
 --------
 
-[^1]: Los términos expresados en inglés debug, info, notice, warning, error, critical, alert y emergency se traducen literalmente al español como depuración, información, nota, advertencia, error, crítico, alerta y emergencia respectivamente, e implican un nivel más elevado de menor a mayor.
+[^1]: Los términos expresados en inglés debug, info, notice, warning, error, critical, alert y emergency se traducen literalmente al español como depuración, información, nota, advertencia, error, crítico, alerta y emergencia respectivamente, e implican un nivel de gravedad de menor a mayor.
 

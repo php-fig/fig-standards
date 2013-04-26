@@ -11,9 +11,9 @@ Protocolo de votación
 
 5. Un tercio o más de los miembros con derecho a voto deben votar dentro del límite de tiempo establecido para que la votación sea válida. Esto es equivalente a establecer un *quorum*. Por ejemplo:
 
-    - Si hay 20, 21 o 22 miembros, entonces 7 o más miembros deberán emitir el voto antes del tiempo límite para que la votación sea válida.
+    - Si hay 20, 21 o 22 miembros, entonces 7 o más miembros tienen que emitir el voto antes del tiempo límite para que la votación sea válida.
 
-    - Si hay 23, 24 o 25 miembros, entonces 8 o más miembros deberán emitir su voto antes del tiempo límite para que la votación sea válida.
+    - Si hay 23, 24 o 25 miembros, entonces 8 o más miembros tienen que emitir su voto antes del tiempo límite para que la votación sea válida.
 
 6. Una medida será aprobada si la mayoría simple de los *votos emitidos* son "A favor".
 
