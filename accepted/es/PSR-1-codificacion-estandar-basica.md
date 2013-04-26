@@ -11,7 +11,7 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 - PUEDE u OPCIONAL, implica que el elemento es puramente opcional. Cualquier proveedor puede elegir incluir dicho elemento porque crea que conlleva mejoras en su producto, mientras otro puede elegir obviarlas. Una implementación que no incluya un opción particular, TIENE QUE estar preparada para operar con otra implementación que incluya dicha opción, aunque implique limitar la funcionalidad. De la misma manera, una implementación que incluya una opción particular TIENE QUE estar preparada para otra que no la incluya (excepto, por supuesto, para la característica que la opción provea).
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-0.md
 
 1. Visión general
 ----------------------
