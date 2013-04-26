@@ -19,7 +19,7 @@ Ejemplos
 * `\Zend\Acl` => `/directorio/del/proyecto/lib/vendor/Zend/Acl.php`
 * `\Zend\Mail\Message` => `/directorio/del/proyecto/lib/vendor/Zend/Mail/Message.php`
 
-Guiones bajos en Espacio de nombres y nombres de Clase
+Guiones bajos en Espacios de nombres y nombres de Clase
 --------------------------------------------------------
 
 * `\espacio_de_nombres\paquete\Nombre_De_Clase` => `/directorio/del/proyecto/lib/proveedor/espacio_de_nombres/paquete/Nombre/De/Clase.php`
