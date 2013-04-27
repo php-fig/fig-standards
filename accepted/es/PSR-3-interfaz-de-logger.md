@@ -75,7 +75,7 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
 
 ### 1.3 Contexto
 
-- Cada método acepta un array de datos contextual. Esto se usa para contener cualquier información extraña que no encajara bien en una cadena de texto. El array puede contener cualquier cosa. Las implementaciones TIENEN QUE asegurar que el tratamiento de los datos de contexto se hace con la mayor claridad posible. Un valor dado en el contexto NO TIENE QUE lanzar ninguna excepción ni error, warning o notice de PHP.
+- Cada método acepta un array de datos contextual. Esto se usa para contener cualquier información extraña que no encaje bien en una cadena de texto. El array puede contener cualquier cosa. Las implementaciones TIENEN QUE asegurar que el tratamiento de los datos de contexto se hace con la mayor claridad posible. Un valor dado en el contexto NO TIENE QUE lanzar ninguna excepción ni error, warning o notice de PHP.
 
 - Si un objecto `Exception` es pasado en el array contextual, TIENE QUE ir en la clave `'exception'`. Mostrar excepciones en el log es un patrón común y permite a las implementaciones extraer la traza de la pila del error cuando la aplicación de log lo soporte. Las implementaciones TIENEN QUE verificar que la clave `'exception'` contiene una `Exception` antes de usarla como tal, dado que PUEDE contener cualquier cosa.
 

@@ -12,7 +12,7 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 - NO TIENE QUE conlleva la completa prohibición de la especificación.
 - DEBERÍA o RECOMENDADO implica que pueden existen razones válidas para ignorar dicho elemento, pero las implicaciones que ello conlleva deben ser entendidas y sopesadas antes de elegir una opción diferente.
 - NO DEBERÍA implica que pueden existir razones bajo ciertas circunstancias cuando el comportamiento es aceptable o incluso útil, pero todas las implicaciones deben ser entendidas cuidadosamente y sopesadas antes de implementar algún comportamiento descrito por esta etiqueta para ignorar dicho comportamiento.
-- PUEDE u OPCIONAL implica que el elemento es puramente opcional. Cualquier proveedor puede elegir incluir dicho elemento porque crea que conlleva mejoras en su producto mientras otro puede elegir obviarlas. Una implementación que no incluya un opción particular TIENE QUE estar preparada para operar con otra implementación que incluya dicha opción, aunque implique limitar la   funcionalidad. De la misma manera, una implementación que incluya una opción particular TIENE QUE estar preparada para otra que no la incluya (excepto, por supuesto, para la característica que la opción provea).
+- PUEDE u OPCIONAL implica que el elemento es puramente opcional. Cualquier proveedor puede elegir incluir dicho elemento porque crea que conlleva mejoras en su producto mientras otro puede elegir obviarlas. Una implementación que no incluya un opción particular TIENE QUE estar preparada para operar con otra implementación que incluya dicha opción, aunque implique limitar la funcionalidad. De la misma manera, una implementación que incluya una opción particular TIENE QUE estar preparada para otra que no la incluya (excepto, por supuesto, para la característica que la opción provea).
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-0.md
@@ -232,7 +232,7 @@ class NombreDeClase
         // cuerpo del método
     }
 }
-```    
+```
 
 ### 4.4. Argumentos de los métodos
 
@@ -408,7 +408,7 @@ for ($i = 0; $i < 10; $i++) {
 ```
 
 ### 5.5. `foreach`
-    
+
 Un sentencia `foreach` tendrá el siguiente aspecto. Fíjese en el lugar donde aparecen los paréntesis, los espacios y las llaves.
 
 ```php
@@ -473,7 +473,7 @@ $listaLargaDeArgumentos_sinVariables = function (
     $argumentoMasLargo,
     $argumentoMuchoMasLargo
 ) {
-   // cuerpo
+    // cuerpo
 };
 
 $sinArgumentos_listaLargaDeVariables = function () use (
@@ -481,7 +481,7 @@ $sinArgumentos_listaLargaDeVariables = function () use (
     $variableMasLarga2,
     $variableMuchoMasLarga3
 ) {
-   // cuerpo
+    // cuerpo
 };
 
 $listaLargaDeArgumentos_listaLargaDeVariables = function (
@@ -493,7 +493,7 @@ $listaLargaDeArgumentos_listaLargaDeVariables = function (
     $variableMasLarga2,
     $variableMuchoMasLarga3
 ) {
-   // cuerpo
+    // cuerpo
 };
 
 $listaLargaDeArgumentos_listaDeVars = function (
@@ -501,7 +501,7 @@ $listaLargaDeArgumentos_listaDeVars = function (
     $argumentoMasLargo,
     $argumentoMuchoMasLargo
 ) use ($var1) {
-   // cuerpo
+    // cuerpo
 };
 
 $listaDeArgumentos_listaLargaDeVariables = function ($arg) use (
@@ -509,7 +509,7 @@ $listaDeArgumentos_listaLargaDeVariables = function ($arg) use (
     $variableMasLarga2,
     $variableMuchoMasLarga3
 ) {
-   // cuerpo
+    // cuerpo
 };
 ```
 
@@ -546,7 +546,7 @@ Hay muchos elementos de estilo y prácticas omitidas intencionadamente en esta g
 
 - Buenas prácticas.
 
-Futuras recomendaciones PUEDEN revisar y extender esta guía para hacer frente a  stos u otros elementos de estilo y práctica.
+Futuras recomendaciones PUEDEN revisar y extender esta guía para hacer frente a estos u otros elementos de estilo y práctica.
 
 
 Apéndice A. Encuesta.
