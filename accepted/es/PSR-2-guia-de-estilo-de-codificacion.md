@@ -215,11 +215,11 @@ class NombreDeClase
 
 La visibilidad TIENE QUE ser declarada en todos los métodos.
 
-Los nombres de los métodos NO DEBERÍAN usar un guión bajo como prefijo para indicar si son privadas o protegidas.
+Los nombres de los métodos NO DEBERÍAN usar un guión bajo como prefijo para indicar si son privados o protegidos.
 
 Los nombres de métodos NO TIENEN QUE estar declarados con un espacio después del nombre del método. La llave de apertura TIENE QUE situarse en su propia línea, y la llave de cierre TIENE QUE ir en la línea siguiente al cuerpo del método. NO TIENE QUE haber ningún espacio después del paréntesis de apertura, y NO TIENE QUE haber ningún espacio antes del paréntesis de cierre.
 
-Una declaración de método tendrá el siguiente aspecto. Fíjese en la situación de los paréntesis, las comas, los espacios y las llaves:
+La declaración de un método tendrá el siguiente aspecto. Fíjese en la situación de los paréntesis, las comas, los espacios y las llaves:
 
 ```php
 <?php
@@ -268,7 +268,7 @@ class NombreDeClase
         &$arg2,
         array $arg3 = []
     ) {
-        // Cuerpo del método
+        // cuerpo del método
     }
 }
 ```
@@ -327,7 +327,7 @@ Las reglas de estilo para las estructuras de control son las siguientes:
 - NO TIENE QUE haber espacios después del paréntesis de apertura.
 - NO TIENE QUE haber espacios antes del paréntesis de cierre.
 - TIENE QUE haber un espacio entre paréntesis de cierre y la llave de apertura.
-- El cuerpo de la estructura de control TIENE QUE estar indentada una vez.
+- El cuerpo de la estructura de control TIENE QUE estar indentado una vez.
 - La llave de cierre TIENE QUE estar en la línea siguiente al final del cuerpo.
 
 El cuerpo de cada estructura TIENE QUE estar encerrado entre llaves. Esto estandariza el aspecto de las estructuras y reduce la probabilidad de añadir errores como nuevas líneas que se añaden al cuerpo de la estructura.
@@ -452,11 +452,11 @@ Una declaración de una closure tendrá el siguiente aspecto. Fíjese en el luga
 ```php
 <?php
 $closureConArgumentos = function ($arg1, $arg2) {
-    // Cuerpo
+    // cuerpo
 };
 
 $closureConArgumentosYVariables = function ($arg1, $arg2) use ($var1, $var2) {
-    // Cuerpo
+    // cuerpo
 };
 ```
 
@@ -589,7 +589,7 @@ Tipo de indentación. `tab` = "Usar tabuladores", `2` or `4` = "número de espac
 El límite de la línea dinámica ("soft"), en caracteres. `?` = no sabe o no contesta, `no` significa sin límite.
 
 `line_length_limit_hard`:
-El límite de la línea dura ("hard"), en caracteres. `?` = no sabe o no contesta, `no` significa sin límite.
+El límite de la línea estricto ("hard"), en caracteres. `?` = no sabe o no contesta, `no` significa sin límite.
 
 `class_names`:
 ¿Cómo nombrar las clases?. `lower` = solo minúsculas, `lower_under` = minúsculas con guiones bajos como separador, `studly` = StudlyCase.
