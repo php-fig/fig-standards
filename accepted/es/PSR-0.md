@@ -54,8 +54,7 @@ function autoload($nombreDeClase)
 Implementación de SplClassLoader
 ------------------------------------
 
-El siguiente *gist*, es un ejemplo de implementación de SplClassLoader, que puede cargar sus clases si ha seguido el estándar anteriormente expuesto. Este es el método recomendado para
-la carga de clases de PHP 5.3 que siga estas normas.
+El siguiente *gist*, es un ejemplo de implementación de SplClassLoader, que puede cargar sus clases si ha seguido el estándar anteriormente expuesto. Este es el método recomendado para la carga de clases de PHP 5.3 que siga estas normas.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
 
