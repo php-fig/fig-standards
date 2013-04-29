@@ -51,8 +51,8 @@ Este ejemplo incluye algunas de las siguientes reglas a modo de visión general 
 namespace Proveedor\Paquete;
 
 use FooInterfaz;
-use BarClass as Bar;
-use OtroProveedor\OtroPaquete\BazClass;
+use BarClase as Bar;
+use OtroProveedor\OtroPaquete\BazClase;
 
 class Foo extends Bar implements FooInterfaz
 {
@@ -63,7 +63,7 @@ class Foo extends Bar implements FooInterfaz
         } elseif ($a > $b) {
             $foo->bar($arg1);
         } else {
-            BazClass::bar($arg2, $arg3);
+            BazClase::bar($arg2, $arg3);
         }
     }
 
@@ -137,8 +137,8 @@ Por ejemplo:
 namespace Proveedor\Paquete;
 
 use FooClass;
-use BarClass as Bar;
-use OtroProveedor\OtroPaquete\BazClass;
+use BarClase as Bar;
+use OtroProveedor\OtroPaquete\BazClase;
 
 // ... código PHP adicional ...
 
@@ -161,8 +161,8 @@ La llave de apertura de la clase TIENE QUE ir en la línea siguiente; la llave d
 namespace Proveedor\Paquete;
 
 use FooClass;
-use BarClass as Bar;
-use OtroProveedor\OtroPaquete\BazClass;
+use BarClase as Bar;
+use OtroProveedor\OtroPaquete\BazClase;
 
 class NombreDeClase extends ClasePadre implements \ArrayAccess, \Countable
 {
@@ -177,8 +177,8 @@ La lista de `implements` PUEDE ser dividida en múltiples líneas, donde las lí
 namespace Proveedor\Paquete;
 
 use FooClass;
-use BarClass as Bar;
-use OtroProveedor\OtroPaquete\BazClass;
+use BarClase as Bar;
+use OtroProveedor\OtroPaquete\BazClase;
 
 class NombreDeClase extends ClasePadre implements
     \ArrayAccess,
