@@ -9,7 +9,7 @@ Protocolo de votación
 
 4. Los votos pueden ser +1 ("A favor"), -1 ("En contra") o 0 ("Abstención").
 
-5. Un tercio o más de los miembros con derecho a voto deben votar dentro del límite de tiempo establecido para que la votación sea válida. Esto es equivalente a establecer un *quorum*. Por ejemplo:
+5. Un tercio o más de los miembros con derecho a voto deben votar dentro del límite de tiempo establecido para que la votación sea válida. Esto es equivalente a establecer un *quórum*. Por ejemplo:
 
     - Si hay 20, 21 o 22 miembros, entonces 7 o más miembros tienen que emitir el voto antes del tiempo límite para que la votación sea válida.
 
@@ -31,4 +31,4 @@ Protocolo de votación
 
 * * *
 
-Nota: Los votos de "Abstención" se cuentan únicamente para el *quorum* y no contarán para calcular la mayoría.
+Nota: Los votos de "Abstención" se cuentan únicamente para el *quórum* y no contarán para calcular la mayoría.

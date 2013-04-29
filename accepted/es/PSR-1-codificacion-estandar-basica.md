@@ -43,9 +43,9 @@ El código PHP sólo debe utilizar codificación UTF-8 sin BOM.
 
 ### 2.3. Efectos secundarios
 
-Un archivo DEBERÍA declarar estructuras (clases, funciones, constantes, etc,...) y no causar efectos secundarios o DEBERÍA ejecutar partes de la lógica de negocio, pero NO DEBERÍA hacer las dos cosas.
+Un archivo DEBERÍA declarar estructuras (clases, funciones, constantes, etc,...) y no causar efectos secundarios, o DEBERÍA ejecutar partes de la lógica de negocio, pero NO DEBERÍA hacer las dos cosas.
 
-La frase "efectos secundarios" significa que la ejecución de la lógica de negocio no está directamente relacionado con declarar clases, funciones, constantes, etc, *simplemente la de incluir el archivo*.
+La frase "efectos secundarios" significa: que la ejecución de la lógica de negocio no está directamente relacionado con declarar clases, funciones, constantes, etc, *simplemente la de incluir el archivo*.
 
 "Efectos secundarios" incluyen, pero no se limitan a: generar salidas, uso explícito de `requiere` o `include`, conexiones a servicios externos, modificación de configuraciones iniciales, enviar errores o excepciones, modificar variables globales o estáticas, leer o escribir un archivo, etc.
 
@@ -53,7 +53,7 @@ El siguiente ejemplo muestra un archivo que incluye las dos: declaraciones y efe
 
 ```php
 <?php
-// efecto secundario: cambiar configuracion ini
+// efecto secundario: cambiar configuracion inicial
 ini_set('error_reporting', E_ALL);
 
 // efecto secundario: cargar ficheros
@@ -155,6 +155,6 @@ Los nombres de los métodos TIENEN QUE declararse en notación `camelCase()`. [^
 Notas
 ------
 
-[^1] `StudlyCaps`, nombres en minúsculas sin espacios y con la primera letra de cada palabra en mayúsculas.
+[^1] `StudlyCaps`, es una forma de notación de texto que sigue el patrón de palabras en minúscula sin espacios y con la primera letra de cada palabra en mayúscula.
 
-[^2] `camelCase`, nombres en minúculas sin espacios y con la primera letra de cada palabra en mayúsculas exceptuando la primera palabra.
+[^2] `camelCase`, es una forma de notación de texto que sigue el patrón de palabras en minúscula sin espacios y con la primera letra de cada palabra en mayúsculas exceptuando la primera palabra.

@@ -12,7 +12,7 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 - NO DEBERÍA implica que pueden existir razones bajo ciertas circunstancias cuando el comportamiento es aceptable o incluso útil, pero todas las implicaciones deben ser entendidas cuidadosamente y sopesadas antes de implementar algún comportamiento descrito por esta etiqueta para ignorar dicho comportamiento.
 - PUEDE u OPCIONAL implica que el elemento es puramente opcional. Cualquier proveedor puede elegir incluir dicho elemento porque crea que conlleva mejoras en su producto mientras otro puede elegir obviarlas. Una implementación que no incluya un opción particular TIENE QUE estar preparada para operar con otra implementación que incluya dicha opción, aunque implique limitar la funcionalidad. De la misma manera, una implementación que incluya una opción particular TIENE QUE estar preparada para otra que no la incluya (excepto, por supuesto, para la característica que la opción provea).
 
-La palabra `implementación` en este documento tiene que ser interpretada como un objeto que implementa el `LoggerInterface`
+La palabra `implementación` en este documento tiene que ser interpretada como un objeto que implementa la interfaz `LoggerInterface`
 en una librería de logs relacionada o un framework. Los usuarios de los logs son referidos como `usuario`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
@@ -22,9 +22,9 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
 
 ### 1.1 Fundamental
 
-- El `LoggerInterface` expone ocho métodos para la escritura de logs en los ocho niveles niveles definidos en el [RFC 5424][] (debug, info, notice, warning, error, critical, alert, emergency). [^1]
+- El `LoggerInterface` expone ocho métodos para la escritura de logs en los ocho niveles definidos en el [RFC 5424][] (debug, info, notice, warning, error, critical, alert, emergency). [^1]
 
-- Un noveno método, `log`, acepta un nivel de log como primer parámetro. La llamada a este método con alguna de las constantes de nivel de log TIENE QUE tener el mismo resultado que la llamada al método específico de dicho nivel. Las llamadas a este método con un nivel no definido por esta norma TIENEN QUE lanzar una `Psr\Log\InvalidArgumentException` si la implementación no conoce el nivel. Los usuarios NO DEBERÍAN usar niveles específicos sin conocer de manera precisa que la implementación en uso lo soporta.
+- Un noveno método, `log`, acepta un nivel de log como primer parámetro. La llamada a este método con alguna de las constantes de nivel de log, TIENE QUE tener el mismo resultado que la llamada al método específico de dicho nivel. Las llamadas a este método con un nivel no definido por esta norma TIENEN QUE lanzar una excepción de tipo `Psr\Log\InvalidArgumentException` si la implementación no conoce el nivel. Los usuarios NO DEBERÍAN usar niveles específicos sin conocer de manera precisa que la implementación en uso lo soporta.
 
 [RFC 5424]: http://tools.ietf.org/html/rfc5424
 
@@ -42,7 +42,7 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
   Los nombres de los marcadores DEBERÍAN estar compuestos sólo por los caracteres `A-Z`, `a-z`, `0-9`, guión bajo `_`, y punto `.`. El uso de otros caracteres está reservado para futuras modificaciones en los nombres de los marcadores en la norma.
 
   Las implementaciones PUEDEN usar marcadores para implementar varias estrategias de escape y traducción para mostrar en los logs.
-  Los usuarios NO DEBERÍAN pre-escapar valores de marcadores dado que no podrían conocer en qué contexto serían mostrados los datos.
+  Los usuarios NO DEBERÍAN pre-escapar valores de marcadores, dado que no podrían conocer en qué contexto serían mostrados los datos.
 
   El siguiente código es un ejemplo de implementación de interpolación de marcadores únicamente a modo de referencia:
 
@@ -75,13 +75,13 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
 
 ### 1.3 Contexto
 
-- Cada método acepta un array de datos contextual. Esto se usa para contener cualquier información extraña que no encaje bien en una cadena de texto. El array puede contener cualquier cosa. Las implementaciones TIENEN QUE asegurar que el tratamiento de los datos de contexto se hace con la mayor claridad posible. Un valor dado en el contexto NO TIENE QUE lanzar ninguna excepción ni error, warning o notice de PHP.
+- Cada método acepta un array de datos contextual. Esto se usa para contener cualquier información extraña que no encaje bien en una cadena de texto. El array puede contener cualquier cosa. Las implementaciones TIENEN QUE asegurar que el tratamiento de los datos de contexto se hace con la mayor claridad posible. Un valor dado en el contexto NO TIENE QUE lanzar ninguna excepción, error, warning o notice de PHP.
 
 - Si un objecto `Exception` es pasado en el array contextual, TIENE QUE ir en la clave `'exception'`. Mostrar excepciones en el log es un patrón común y permite a las implementaciones extraer la traza de la pila del error cuando la aplicación de log lo soporte. Las implementaciones TIENEN QUE verificar que la clave `'exception'` contiene una `Exception` antes de usarla como tal, dado que PUEDE contener cualquier cosa.
 
 ### 1.4 Clases de ayuda e Interfaces
 
-- La clase `Psr\Log\AbstractLogger` permite implementar la `LoggerInterface` de manera sencilla extendiéndola e implementado el método genérico `log`. Los otros ocho métodos realizan una llamada con el mensaje y el array contextual a este método.
+- La clase `Psr\Log\AbstractLogger` permite implementar la interfaz `LoggerInterface` de manera sencilla extendiéndola e implementado el método genérico `log`. Los otros ocho métodos realizan una llamada con el mensaje y el array contextual a este método.
 
 - De manera similar, usando `Psr\Log\LoggerTrait` sólo necesita implementar el método genérico `log`. Tenga en cuenta que los traits no permiten implementar interfaces, en ese caso tendrá que hacer un `implement LoggerInterface`.
 
@@ -96,8 +96,8 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
 2. Paquete
 ----------
 
-La interfaces y clases descritas, las clases de excepción relevantes y una serie de test para comprobar el funcionamiento de su
-implementación se proveen como parte de paquete [psr/log](https://packagist.org/packages/psr/log)
+Las interfaces y clases descritas, las clases de excepción relevantes y una serie de test para comprobar el funcionamiento de su
+implementación se proveen como parte del paquete [psr/log](https://packagist.org/packages/psr/log)
 
 
 3. `Psr\Log\LoggerInterface`

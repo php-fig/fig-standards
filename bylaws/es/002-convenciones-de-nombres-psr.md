@@ -1,7 +1,7 @@
 Convención de nombres para el código liberado bajo PHP-FIG
 ===============================================
 
-1. Los interfaces TIENEN QUE tener el sufijo `Interface`: p.ej. `Psr\Foo\BarInterface`.
+1. Las interfaces TIENEN QUE tener el sufijo `Interface`: p.ej. `Psr\Foo\BarInterface`.
 2. Las clases abstractas TIENEN QUE llevar el prefijo `Abstract`: p.ej. `Psr\Foo\AbstractBar`.
 3. Los traits TIENEN QUE tener el sufijo `Trait`: p.ej. `Psr\Foo\BarTrait`.
 4. PSR-0, 1 y 2 TIENEN QUE cumplirse.

@@ -5,7 +5,7 @@ Esta guía amplía y extiende el estándar de codificación básica [PSR-1][].
 
 La objetivo de esta guía es la de reducir la dificultad cuando se lee código de diferentes autores. Lo realiza mediante la enumeración de una serie de reglas común y expresiones sobre cómo dar formato al código PHP.
 
-Las reglas de estilo de este documento se derivan de los puntos comunes de los diferentes proyectos miembros. Cuando varios autores colaboran a lo largo de múltiples proyectos, ayuda el hecho de tener una serie directrices que se para utilizarlas en todos esos proyectos. Por tanto, el beneficio de esta guía no está en las reglas en sí, sino en el hecho de compartir de esas reglas.
+Las reglas de estilo de este documento se derivan de los puntos comunes de los diferentes proyectos miembros. Cuando varios autores colaboran a lo largo de múltiples proyectos, ayuda el hecho de tener una serie directrices para utilizarlas en todos los proyectos. Por tanto, el beneficio de esta guía no está en las reglas en sí, sino en el hecho de compartir estas reglas.
 
 Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
 - TIENE QUE o REQUERIDO implica que es un requisito absoluto de la especificación.
@@ -36,7 +36,7 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 
 - La visibilidad TIENE QUE estar declarada en todas las propiedades y métodos; `abstract` y `final` TIENEN QUE estar declaradas antes de la visibilidad; `static` TIENE QUE estar declaradas después de la visibilidad.
 
-- Las palabras clave de las estructuras de control TIENEN QUE tener un espacio después de ellas, las llamadas los métodos y las funciones NO TIENEN QUE tenerlo.
+- Las palabras clave de las estructuras de control TIENEN QUE tener un espacio después de ellas, las llamadas a los métodos y las funciones NO TIENEN QUE tenerlo.
 
 - Las llaves de apertura de las estructuras de control TIENEN QUE estar en la misma línea, y las de cierre TIENEN QUE ir en la línea siguiente al cuerpo.
 
@@ -94,7 +94,7 @@ contengan código PHP.
 
 NO TIENE QUE haber un límite estricto en la longitud de la línea.
 
-El límite flexible de la línea TIENE QUE ser de 120 caracteres; los correctores de estilo automáticos TIENEN QUE advertir de ésto, pero NO TIENE que producir errores.
+El límite flexible de la línea TIENE QUE ser de 120 caracteres; los correctores de estilo automáticos TIENEN QUE advertir de ésto, pero NO TIENEN que producir errores.
 
 Las líneas NO DEBERÍAN ser más largas de 80 caracteres; las líneas más largas de estos 80 caracteres DEBERÍAN dividirse en múltiples líneas de no más de 80 caracteres cada una.
 
@@ -108,7 +108,7 @@ NO TIENE QUE haber más de una sentencia por línea.
 
 El código TIENE QUE usar una indentación de 4 espacios, y NO TIENE QUE usar tabuladores para la indentación.
 
-> Nota: Utilizar sólo los espacios, y no mezclar espacios con tabuladores, ayuda a evitar problemas con diffs, parches, historiales y anotaciones. El uso de los espacios también facilita afinar la alineación entre líneas.
+> Nota: Utilizar sólo los espacios, y no mezclar espacios con tabuladores, ayuda a evitar problemas con diffs, parches, historiales y anotaciones. El uso de los espacios también facilita a ajustar la alineación entre líneas.
 
 ### 2.5. Palabras clave y `true`/`false`/`null`.
 
@@ -119,7 +119,7 @@ Las constantes de PHP `true`, `false` y `null` TIENEN QUE estar en minúsculas.
 [Palabras clave]: http://php.net/manual/es/reserved.keywords.php
 
 
-3. Espacio de nombres y declaraciones `use`
+3. Espacio de nombre y declaraciones `use`
 ------------------------------------------
 
 Cuando esté presente, TIENE QUE haber una línea en blanco después de la declación del `namespace`.
@@ -154,7 +154,7 @@ El término "clase" hace referencia a todas las clases, interfaces o traits.
 
 Las palabras clave `extends` e `implements` TIENEN QUE declararse en la misma línea del nombre de la clase.
 
-La llave de apertura de la clase TIENE QUE ir en la línea siguiente; la llave de cierre TIENEN QUE ir en la línea siguiente al cuerpo de la clase.
+La llave de apertura de la clase TIENE QUE ir en la línea siguiente; la llave de cierre TIENE QUE ir en la línea siguiente al cuerpo de la clase.
 
 ```php
 <?php
@@ -253,7 +253,7 @@ class NombreDeClase
 }
 ```
 
-La lista de argumentos PUEDE dividirse en múltiples líneas, donde cada línea será indentada un vez. Cuando se dividan de esta forma, el primer argumento TIENE QUE estar en la línea siguiente, y TIENE QUE haber sólo un argumento por línea.
+La lista de argumentos PUEDE dividirse en múltiples líneas, donde cada línea será indentada una vez. Cuando se dividan de esta forma, el primer argumento TIENE QUE estar en la línea siguiente, y TIENE QUE haber sólo un argumento por línea.
 
 Cuando la lista de argumentos se divide en varias líneas, el paréntesis de cierre y la llave de apertura TIENEN QUE estar juntos en su propia línea separados por un espacio.
 
@@ -275,9 +275,9 @@ class NombreDeClase
 
 ### 4.5. `abstract`, `final`, y `static`
 
-Cuando estén presentes, las declaraciones `abstract` y `final` TIENEN QUE preceder a la declaración de visibilidad.
+Cuando estén presentes las declaraciones `abstract` y `final`, TIENEN QUE preceder a la declaración de visibilidad.
 
-Cuando esté presente, la declaración `static` TIENE QUE ir después de la declaración de visibilidad.
+Cuando esté presente la declaración `static`, TIENE QUE ir después de la declaración de visibilidad.
 
 ```php
 <?php
@@ -348,7 +348,7 @@ if ($expr1) {
 }
 ```
 
-La palabra clave `elseif` DEBERÍA ser usada en lugar de `else if` de forma que todas las palabras clave de la estructura estén compuesta por palabras de un solo término.
+La palabra clave `elseif` DEBERÍA ser usada en lugar de `else if` de forma que todas las palabras clave de la estructura estén compuestas por palabras de un solo término.
 
 
 ### 5.2. `switch`, `case`
@@ -441,11 +441,11 @@ Las closures TIENEN QUE declararse con un espacio después de la palabra clave `
 
 La llave de apertura TIENE QUE ir en la misma línea, y la llave de cierre TIENE QUE ir en la línea siguiente al final del cuerpo.
 
-NO TIENE QUE haber un espacio después del paréntesis de apertura de la lista de argumentos o la lista de variables y NO TIENE QUE haber un espacio antes del paréntesis de cierre de la lista de argumentos o la lista de variables.
+NO TIENE QUE haber un espacio después del paréntesis de apertura de la lista de argumentos o la lista de variables, y NO TIENE QUE haber un espacio antes del paréntesis de cierre de la lista de argumentos o la lista de variables.
 
-En la lista de argumentos y la lista variables NO TIENE QUE haber un espacio antes de cada coma y TIENE QUE haber un espacio después de cada coma.
+En la lista de argumentos y la lista variables, NO TIENE QUE haber un espacio antes de cada coma, y TIENE QUE haber un espacio después de cada coma.
 
-Los argumentos de las closures con valores por defecto TIENEN QUE ir al final de la lista de argumentos.
+Los argumentos de las closures con valores por defecto, TIENEN QUE ir al final de la lista de argumentos.
 
 Una declaración de una closure tendrá el siguiente aspecto. Fíjese en el lugar donde aparecen los paréntesis, las comas, los espacios y las llaves.
 
@@ -462,7 +462,7 @@ $closureConArgumentosYVariables = function ($arg1, $arg2) use ($var1, $var2) {
 
 La lista de argumetos y la lista de variables PUEDEN ser divididas en múltiples líneas, donde cada nueva línea se indentará una vez. Cuando esto suceda, el primer elemento de la lista TIENE QUE ir en una nueva línea y TIENE QUE haber sólo un argumento o variable por línea.
 
-Cuando la lista (de argumentos o variables) se divide en varias líneas, el paréntesis de cierre y la llave de apertura TIENEN QUE estar juntos en su propia línea separados por un espacio.
+Cuando la lista de argumentos o variables se divide en varias líneas, el paréntesis de cierre y la llave de apertura TIENEN QUE estar juntos en su propia línea separados por un espacio.
 
 A continuación se muestran ejemplos de closures con y sin lista de argumentos y variables, así como con listas de argumentos y variables en múltiples líneas.
 
