@@ -26,7 +26,7 @@ Para convertirse en un miembro con capacidad de voto, debe enviar un email a la 
 
 - El asunto del mensaje debe ser (en inglés): `Membership Request: {$your_name} ({$project_name})`
 
-- En el cuerpo del mensaje incluya su nombre, el nombre del proyecto (y enlace también) al que representa, y otros detalles que le parezcan relevantes (seguramente mejor en inglés).
+- El el cuerpo del mensaje, incluya su nombre, el nombre del proyecto (y enlace) al que representa y otros detalles que crea que pueden ser relevantes.
   
 Los miembros actuales votarán sus peticiones.
 
