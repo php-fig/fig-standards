@@ -3,7 +3,7 @@ Codificación estándar básica
 
 Esta sección de la norma comprende lo que debe considerarse la norma de codificación de los elementos que se requieren para garantizar un alto nivel técnico de interoperabilidad entre el código PHP.
 
-Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en el [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
+Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "OBLIGATORIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en el [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
 - TIENE QUE o REQUERIDO, implica que es un requisito absoluto de la especificación.
 - NO TIENE QUE, conlleva la completa prohibición de la especificación.
 - DEBERÍA o RECOMENDADO, implica que pueden existir razones válidas para ignorar dicho elemento, pero las implicaciones que ello conlleva deben ser entendidas y sopesadas antes de elegir una opción diferente.
