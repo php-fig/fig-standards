@@ -7,7 +7,7 @@ La objetivo de esta guía es la de reducir la dificultad cuando se lee código d
 
 Las reglas de estilo de este documento se derivan de los puntos comunes de los diferentes proyectos miembros. Cuando varios autores colaboran a lo largo de múltiples proyectos, ayuda el hecho de tener una serie directrices para utilizarlas en todos los proyectos. Por tanto, el beneficio de esta guía no está en las reglas en sí, sino en el hecho de compartir estas reglas.
 
-Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
+Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "OBLIGATORIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
 - TIENE QUE o REQUERIDO implica que es un requisito absoluto de la especificación.
 - NO TIENE QUE conlleva la completa prohibición de la especificación.
 - DEBERÍA o RECOMENDADO implica que pueden existen razones válidas para ignorar dicho elemento, pero las implicaciones que ello conlleva deben ser entendidas y sopesadas antes de elegir una opción diferente.
@@ -160,7 +160,7 @@ La llave de apertura de la clase TIENE QUE ir en la línea siguiente; la llave d
 <?php
 namespace Proveedor\Paquete;
 
-use FooClass;
+use FooClase;
 use BarClase as Bar;
 use OtroProveedor\OtroPaquete\BazClase;
 
@@ -176,7 +176,7 @@ La lista de `implements` PUEDE ser dividida en múltiples líneas, donde las lí
 <?php
 namespace Proveedor\Paquete;
 
-use FooClass;
+use FooClase;
 use BarClase as Bar;
 use OtroProveedor\OtroPaquete\BazClase;
 
@@ -291,7 +291,7 @@ abstract class NombreDeClase
 
     final public static function bar()
     {
-        // Cuerpo del método
+        // cuerpo del método
     }
 }
 ```
@@ -426,11 +426,11 @@ Un bloque `try catch` tendrá el siguiente aspecto. Fíjese en el lugar donde ap
 ```php
 <?php
 try {
-    // Cuerpo del try
+    // cuerpo del try
 } catch (PrimerTipoDeExcepcion $e) {
-    // Cuerpo catch
+    // cuerpo catch
 } catch (OtroTipoDeExcepcion $e) {
-    // Cuerpo catch
+    // cuerpo catch
 }
 ```
 
