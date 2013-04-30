@@ -20,15 +20,15 @@ Para proponer una recomendación de estándar (PSR en inglés "Proposing a Stand
 Solicitud de membresía
 ----------------------
 
-**No** necesita ser un miembro con derecho de voto para participar en las discusiones en la [lista de correo][].
+**No** necesita ser un miembro con derecho a voto para participar en las discusiones en la [lista de correo][].
 
 Para convertirse en un miembro con capacidad de voto, debe enviar un email a la [lista de correo][].
 
 - El asunto del mensaje debe ser (en inglés): `Membership Request: {$your_name} ({$project_name})`
 
-- El el cuerpo del mensaje, incluya su nombre, el nombre del proyecto (y enlace) al que representa y otros detalles que crea que pueden ser relevantes.
-  
-Los miembros actuales votarán sus peticiones.
+- En el cuerpo del mensaje, incluya su nombre, el nombre del proyecto (y enlace) al que representa y otros detalles que crea que puedan ser relevantes.
+
+Los miembros actuales votarán su aceptación.
 
 No combine solicitudes para ser miembro en un solo hilo; por favor, una petición por hilo.
 
