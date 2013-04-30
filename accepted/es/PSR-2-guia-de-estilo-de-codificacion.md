@@ -26,7 +26,7 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 
 - El código TIENE QUE usar 4 espacios como indentación, no tabuladores.
 
-- NO TIENE QUE haber un límite estricto en la longitud de la línea; el límite TIENE QUE estar 120 caracteres; las líneas DEBERÍAN tener 80 caracteres o menos.
+- NO TIENE QUE haber un límite estricto en la longitud de la línea; el límite TIENE QUE estar en 120 caracteres; las líneas DEBERÍAN tener 80 caracteres o menos.
 
 - TIENE QUE haber una línea en blanco después de la declaración del `namespace`, y TIENE QUE haber una línea en blanco después del bloque de declaraciones `use`.
 
@@ -94,7 +94,7 @@ contengan código PHP.
 
 NO TIENE QUE haber un límite estricto en la longitud de la línea.
 
-El límite flexible de la línea TIENE QUE ser de 120 caracteres; los correctores de estilo automáticos TIENEN QUE advertir de ésto, pero NO TIENEN que producir errores.
+El límite flexible de la línea TIENE QUE estar en 120 caracteres; los correctores de estilo automáticos TIENEN QUE advertir de ésto, pero NO TIENEN que producir errores.
 
 Las líneas NO DEBERÍAN ser más largas de 80 caracteres; las líneas más largas de estos 80 caracteres DEBERÍAN dividirse en múltiples líneas de no más de 80 caracteres cada una.
 
