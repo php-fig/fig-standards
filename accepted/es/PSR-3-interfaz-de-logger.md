@@ -1,9 +1,9 @@
 Interfaz de Logger
 ==================
 
-Este documento describe una interfaz común para todas las librerías de logging.
+Este documento describe una interfaz común para todas las librerías de `logging`.
 
-El objetivo principal es permitir a todas las librerías usar un objecto `Psr\Log\LoggerInterface` y escribir logs con él de manera simple y universal. Frameworks y CMSs que tengan necesidades específicas PUEDEN extender la interfaz para su propio uso, pero DEBERÍA mantenerse la compatibilidad con este documento. Eso asegura que las librerías de terceros usadas en la aplicación puedan escribir en los logs centralizados de la aplicación.
+El objetivo principal es permitir a todas las librerías usar un objecto `Psr\Log\LoggerInterface` y escribir logs con él de manera simple y universal. Frameworks y CMSs que tengan necesidades específicas PUEDEN extender la interfaz para su propio uso, pero DEBERÍA mantenerse la compatibilidad con este documento. Eso asegura que las librerías de terceros usadas en la aplicación pueden escribir en los logs centralizados de la aplicación.
 
 Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "NECESARIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
 - TIENE QUE o REQUERIDO implica que es un requisito absoluto de la especificación.
@@ -118,7 +118,7 @@ namespace Psr\Log;
  *
  * El array de contexto puede contener cualquier dato arbitrario de datos, la
  * única suposición que pueden hacer las implementaciones es si se provee
- * una instancia de Exception para producir una pila de trazas, ésta TIENE QUE
+ * una instancia de `Exception` para producir una pila de trazas, ésta TIENE QUE
  * estar en la clave "exception".
  *
  * Revise https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
