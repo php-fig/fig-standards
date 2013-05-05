@@ -353,7 +353,7 @@ Le corps de chaque structure DOIT être entouré par des accolades. Ceci standar
 
 ### 5.1. `if`, `elseif`, `else`
 
-Une structure `si` ressemble à ce qui suit. Notez l'emplacement des parenthèses,
+Une structure `if` ressemble à ce qui suit. Notez l'emplacement des parenthèses,
 espaces et accolades, et que `else` et `elseif` sont sur la même ligne que l'accolade fermante du corps précédant.
 
 ```php
@@ -566,7 +566,7 @@ $foo->bar(
 7. Conclusion
 --------------
 
-Il ya de nombreux éléments de style et pratique intentionnellement omis par ce
+Il y a de nombreux éléments de style et pratique intentionnellement omis par ce
 guide. Ceux-ci incluent, mais ne sont pas limités à:
 
 - Déclaration des variables et constantes globales
