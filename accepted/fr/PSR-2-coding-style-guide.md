@@ -3,9 +3,9 @@ Guide pour le style d'écriture de code
 
 Ce guide prolonge et élargit [PSR-1][], la norme de codage de base.
 
-Le but de ce guide est de réduire la friction cognitive lors de l'analyse du code de différents auteurs. Il le fait en énumérant un ensemble de règles et attentes  communes quant à la façon de formater du code PHP.
+Le but de ce guide est de réduire la friction cognitive lors de l'analyse du code de différents auteurs. Il le fait en énumérant un ensemble de règles et attentes communes quant à la façon de formater du code PHP.
 
-Les règles de style dans ce document sont tirées de points communs entre les membres de différents  projets. Lorsque plusieurs auteurs collaborent sur plusieurs projets, cela aide d'avoir un ensemble de lignes directrices qui seront utilisées dans tous ces projets. Ainsi, l'avantage de ce guide n'est pas dans les règles elles-mêmes, mais dans le partage de ces dernières.
+Les règles de style dans ce document sont tirées de points communs entre les membres de différents projets. Lorsque plusieurs auteurs collaborent sur plusieurs projets, cela aide d'avoir un ensemble de lignes directrices qui seront utilisées dans tous ces projets. Ainsi, l'avantage de ce guide n'est pas dans les règles elles-mêmes, mais dans le partage de ces dernières.
 
 Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "DEVRAIT", "NE DEVRAIT PAS", "RECOMMENDÉ", "PEUT" et "OPTIONNELLE" dans ce document doivent être interprétés comme décrit dans [RFC 2119][].
 
@@ -16,22 +16,22 @@ Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "D
 1. Vue d'ensemble
 -----------
 
-- Le code DOIT respecter les [PSR-1][].
+- Le code DOIT suivre les [PSR-1][].
 
 - Le code DOIT utiliser 4 espaces pour l'indentation et aucune tabulation.
 
-- Il NE DOIT PAS exister une limite stricte sur la longueur de la ligne, la limite acceptable DOIT être de 120 caractères; les lignes devraient comprendre 80 caractères ou moins.
+- Il NE DOIT PAS exister une limite stricte sur la longueur de la ligne, la limite acceptable DOIT être de 120 caractères; les lignes DEVRAIENT comprendre 80 caractères ou moins.
 
-- Il DOIT y avoir une ligne vide après la déclaration de `l'espace de noms`, et il
-   DOIT y avoir une ligne vide après le bloc de déclarations `use`.
+- Il DOIT y avoir une ligne vide après la déclaration de `l'espace de noms`, et il 
+  DOIT y avoir une ligne vide après le bloc de déclarations `use`.
 
 - L'ouverture des accolades pour les classes DOIT figurer sur la ligne suivante, les accolades de fermeture DOIVENT figurer sur la ligne suivante après le corps de la classe.
 
 - L'ouverture des accolades pour les méthodes DOIT figurer sur la ligne suivante, les accolades de fermeture DOIVENT figurer sur la ligne suivante après le corps de la méthode.
 
-- La visibilité DOIT être déclarée sur toutes les propriétés et méthodes; `abstraite` et `finale` doivent être déclarés avant la visibilité; `statique` DOIT être déclaré après la visibilité.  
+- La visibilité DOIT être déclarée sur toutes les propriétés et méthodes; `abstraite` et `finale` doivent être déclarés avant la visibilité; `statique` DOIT être déclaré après la visibilité.
 
-- La structure des mots-clés de contrôle DOIT avoir un espace après eux, les méthodes et    les appels de fonction NE DOIVENT PAS.
+- La structure des mots-clés de contrôle DOIT avoir un espace après eux, les méthodes et les appels de fonction NE DOIVENT PAS en avoir.
 
 - L'ouverture des accolades pour les structures de contrôle DOIT figurer sur la même ligne, et la fermeture des accolades DOIT figurer sur la ligne suivante après le corps.
 
@@ -90,21 +90,21 @@ Aucune limite stricte de la longueur de la ligne NE DOIT être fixée.
 
 La limite souple de la longueur de la ligne DOIT être de 120 caractères; les outils de vérifications de styles automatisés DOIVENT prévenir, mais NE DOIVENT PAS lever d'erreur au dépassement de cette limite.
 
-Les lignes NE DEVRAIENT PAS être plus longue que 80 caractères, les lignes plus longues que celle DEVRAIENT être scindé en plusieurs lignes de pas plus de 80 caractères chacune.
+Les lignes NE DEVRAIENT PAS être plus longue que 80 caractères, les lignes plus longues que cela DEVRAIENT être scindé en plusieurs lignes de pas plus de 80 caractères chacune.
 
 Aucun espace blanc NE DOIT figurer à la fin des lignes non vides.
 
 Les lignes vides peuvent être ajoutées pour améliorer la lisibilité et pour indiquer des blocs de code liés.
 
-Il NE DOIT PAS y avoir Plus d'une instruction par ligne.
+Il NE DOIT PAS y avoir plus d'une instruction par ligne.
 
 ### 2.4. Indentation
 
 Le code DOIT utiliser une indentation à 4 espaces, et NE DOIT PAS utiliser de tabulation pour l'indentation.
 
 > N.b.: En utilisant seulement des espaces, et ne mélangant pas les espaces avec des tabulations,
-> permet d'éviter les problèmes avec les différentiels, patchs, historiques, et les annotations.
-> L'utilisation d'espaces rend également facile d'insérer des sous-indentations
+> contribue à éviter les problèmes avec les différentiels, patchs, historiques, et les annotations.
+> L'utilisation d'espaces rend également facile l'insertion des sous-indentations
 > précises pour un alignement entre les lignes.
 
 ### 2.5. Mots-clés et True/False/Null
@@ -118,7 +118,7 @@ Les constantes PHP `true`, `false`, et `null` DOIVENT être en minuscule.
 3. Namespace and Use Declarations
 ---------------------------------
 
-Quand présent, il DOIT y avoir une ligne vide après la déclaration du `namespace`. 
+Quand présent, il DOIT y avoir une ligne vide après la déclaration du `namespace`.
 
 Quand présent, toutes les déclarations `use` DOIVENT être après la déclaration du `namespace`.
 
@@ -215,10 +215,10 @@ class ClassName
 
 La visibilité DOIT être déclarée sur toutes les méthodes.
 
-Les noms de méthode NE DOIT PAS être précédés d'un sous-tirent pour indiquer
+Les noms de méthode NE DOIT PAS être précédés d'un sous-tiret pour indiquer
  la visibilité protégée ou privée.
 
-Les noms de méthode NE DOIVENT PAS être déclarés avec un espace après le nom de la méthode. 
+Les noms de méthode NE DOIVENT PAS être déclarés avec un espace après le nom de la méthode.
 L'accolade d'ouverture DOIT aller sur sa propre ligne, et l'accolade de fermeture DOIT 
 aller sur la ligne suivante à la suite du corps. Il NE DOIT PAS y avoir d'espace après 
 l'ouverture des parenthèses, et il NE DOIT PAS y avoir d'espace avant la parenthèse de fermeture.
@@ -237,7 +237,7 @@ class ClassName
         // corps de la fonction
     }
 }
-```    
+```
 
 ### 4.4. Arguments des méthodes
 
@@ -432,7 +432,7 @@ for ($i = 0; $i < 10; $i++) {
 ```
 
 ### 5.5. `foreach`
-    
+
 Une structure `foreach` ressemble à ce qui suit. Notez l'emplacement des parenthèses,
 espaces et accolades.
 
@@ -589,7 +589,7 @@ Appendix A. Survey
 ------------------
 
 In writing this style guide, the group took a survey of member projects to
-determine common practices.  The survey is retained herein for posterity.
+determine common practices. The survey is retained herein for posterity.
 
 ### A.1. Survey Data
 
