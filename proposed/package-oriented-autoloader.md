@@ -7,7 +7,55 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 1. Overview
 -----------
 
+This PSR is intended as an alternative to, not a replacement for, [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md). It removes some legacy compatibility features that were built into PSR-0, in particular the handling of underscores in class names, and it allows for classes to map to shallower directory structures.
+
 This PSR is intended as an alternative to, not a replacement for, [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md). It allows for classes to map to directory structures like the following:
+
+
+2. Definitions
+--------------
+
+- `class`: The term "class" refers to PHP classes, interfaces, and traits.
+
+- `fully-qualified class name (FQCN)`: An absolute namespace and class name;
+  e.g., `Foo\Bar\Dib\Zim`. The `namespace portion` is `Foo\Bar\Dib` and the
+  `class portion` is `Zim`.
+
+- `namespace prefix`: One or more parts of the namespace portion of the fully
+  qualified class name. Given a FQCN of `Foo\Bar\Dib\Zim`, the namespace
+  prefix may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
+
+- `non-namespace prefix`: The parts of the FQCN that appear after the
+  namesspace prefix. Given a FQCN of `Foo\Bar\Dib\Zim` and a namespace prefix
+  of `Foo\Bar`, the non-namespace prefix portion is `Dib\Zim`.
+
+- `base directory`: The absolute directory path on disk where non-namespace
+  prefix file names have their root.
+
+
+3. Specification
+----------------
+
+- Class files MUST contain only one class definition.
+
+- Fully-qualified class names MUST begin with a top-level namespace name,
+  which MUST be followed by zero or more sub-namespace names, and MUST end in
+  a class name.
+
+- Each namespace prefix portion of fully-qualified class names MUST be mapped
+  to a base directory; that namespace prefix MAY be mapped to more than one
+  base directory.
+
+- The non-namespace prefix portion of a fully-qualified class name MUST be
+  mapped to a sub-path by replacing namespace separators with directory
+  separators, and the result MUST be suffixed with `.php`.
+
+
+4. Narrative
+------------
+
+Given the below example implementation, and a `foo/bar` package of classes on
+disk at the following paths ...
 
     /path/to/packages/foo/bar/
         src/
@@ -19,35 +67,7 @@ This PSR is intended as an alternative to, not a replacement for, [PSR-0](https:
             Dib/
                 ZimTest.php     # Foo\Bar\Dib\ZimTest.php
 
-
-2. Definitions
---------------
-
-- `class`: The term "class" refers to PHP classes, interfaces, and traits.
-
-- `fully-qualified class name`: An absolute namespace and class name; e.g., `Foo\Bar\Dib\Zim`.  The `namespace portion` is `Foo\Bar\Dib` and the `class portion` is `Zim`.
-
-- `namespace prefix`: One or more parts of the namespace portion of the fully qualified class name.  Given a FQCN of `Foo\Bar\Dib\Zim`, the namespace prefix may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
-
-- `non-namespace prefix`: The parts of the FQCN that appear after the namesspace prefix.  Given a FQCN of `Foo\Bar\Dib\Zim` and a namespace prefix of `Foo\Bar`, the non-namespace prefix portion is `Dib\Zim`.
-
-
-3. Specification
-----------------
-
-- Class files MUST contain only one class definition.
-
-- Fully-qualified class names MUST begin with a top-level namespace name, which MUST be followed by zero or more sub-namespace names, and MUST end in a class name.
-
-- Each namespace prefix portion of fully-qualified class names MUST be mapped to a base directory; that namespace prefix MAY be mapped to more than one base directory.
-
-- The non-namespace prefix portion of a fully-qualified class name MUST be mapped to a sub-path by replacing namespace separators with directory separators, and the result MUST be suffixed with `.php`.
-
-
-4. Narrative
-------------
-
-Given the below example implementation, and a `foo/bar` package of classes, one would register the path to "source" files and "unit test" files for the `Foo\Bar` namespace prefix like so:
+... one would register the path to "source" files and "unit test" files for the `Foo\Bar` namespace prefix like so:
 
 ```php
 <?php
@@ -66,6 +86,7 @@ $loader->addNamespacePath(
     '/path/to/packages/foo/bar/tests'
 );
 ```
+
 
 5. Example Implementation
 -------------------------
