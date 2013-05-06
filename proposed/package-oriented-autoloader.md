@@ -182,9 +182,3 @@ class PackageOrientedAutoloader
     }
 }
 ```
-
-* * *
-
-[PSR-0]: 
-[RFC 2119]: 
-
