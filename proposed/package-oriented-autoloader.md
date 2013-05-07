@@ -28,7 +28,7 @@ classes to map to shallower directory structures.
   prefix may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
 
 - `non-namespace prefix`: The parts of the FQCN that appear after the
-  namesspace prefix. Given a FQCN of `Foo\Bar\Dib\Zim` and a namespace prefix
+  namespace prefix. Given a FQCN of `Foo\Bar\Dib\Zim` and a namespace prefix
   of `Foo\Bar`, the non-namespace prefix portion is `Dib\Zim`.
 
 - `base directory`: The absolute directory path on disk where non-namespace
