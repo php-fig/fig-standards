@@ -7,7 +7,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 1. Overview
 -----------
 
-This PSR is intended as an alternative to, not a replacement for, [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md). It removes some legacy compatibility features that were built into PSR-0, in particular the handling of underscores in class names, and it allows for classes to map to shallower directory structures.
+This PSR is intended as an alternative to, not a replacement for,
+[PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
+It removes some legacy compatibility features that were built into PSR-0, in
+particular the handling of underscores in class names, and it allows for
+classes to map to shallower directory structures.
 
 
 2. Definitions
@@ -65,7 +69,8 @@ disk at the following paths ...
             Dib/
                 ZimTest.php     # Foo\Bar\Dib\ZimTest.php
 
-... one would register the path to "source" files and "unit test" files for the `Foo\Bar` namespace prefix like so:
+... one would register the path to "source" files and "unit test" files for
+the `Foo\Bar` namespace prefix like so:
 
 ```php
 <?php
