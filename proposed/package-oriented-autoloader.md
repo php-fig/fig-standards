@@ -9,8 +9,6 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 This PSR is intended as an alternative to, not a replacement for, [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md). It removes some legacy compatibility features that were built into PSR-0, in particular the handling of underscores in class names, and it allows for classes to map to shallower directory structures.
 
-This PSR is intended as an alternative to, not a replacement for, [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md). It allows for classes to map to directory structures like the following:
-
 
 2. Definitions
 --------------
