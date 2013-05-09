@@ -1,7 +1,9 @@
 PSR-X: Package-Oriented Autoloader
 ==================================
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 
 1. Overview
@@ -19,16 +21,24 @@ classes to map to shallower directory structures.
 
 - `class`: The term "class" refers to PHP classes, interfaces, and traits.
 
-- `fully-qualified class name (FQCN)`: An absolute namespace and class name;
-  e.g., `Foo\Bar\Dib\Zim`. The `namespace portion` is `Foo\Bar\Dib` and the
-  `class portion` is `Zim`.
+- `fully-qualified class name (FQCN)`: An absolute namespace and class name.
+
+- `namespace portion`: Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `namespace
+  portion` of the name is `Foo\Bar\Dib`.
+
+- `class portion`: Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `class portion` of
+  the name is `Zim`.
+
+- `namespace name`: An individual part of the `namespace portion` of the
+  `FQCN`. Given a `FQCN` of `Foo\Bar\Dib\Zim`, the individual namespace names
+  are `Foo`, `Bar`, and `Dib`.
 
 - `namespace prefix`: One or more parts of the namespace portion of the fully
-  qualified class name. Given a FQCN of `Foo\Bar\Dib\Zim`, the namespace
+  qualified class name. Given a `FQCN` of `Foo\Bar\Dib\Zim`, the namespace
   prefix may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
 
-- `non-namespace prefix`: The parts of the FQCN that appear after the
-  namespace prefix. Given a FQCN of `Foo\Bar\Dib\Zim` and a namespace prefix
+- `non-namespace prefix`: The parts of the `FQCN` that appear after the
+  namespace prefix. Given a `FQCN` of `Foo\Bar\Dib\Zim` and a namespace prefix
   of `Foo\Bar`, the non-namespace prefix portion is `Dib\Zim`.
 
 - `base directory`: The absolute directory path on disk where non-namespace
