@@ -29,20 +29,19 @@ classes to map to shallower directory structures.
 - `class portion`: Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `class portion` of
   the name is `Zim`.
 
-- `namespace name`: An individual part of the `namespace portion` of the
-  `FQCN`. Given a `FQCN` of `Foo\Bar\Dib\Zim`, the individual namespace names
+- `namespace name`: Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `namespace names`
   are `Foo`, `Bar`, and `Dib`.
 
-- `namespace prefix`: One or more parts of the namespace portion of the fully
-  qualified class name. Given a `FQCN` of `Foo\Bar\Dib\Zim`, the namespace
-  prefix may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
+- `namespace prefix`: One or more contiguous `namespace names` at the start of
+  the `namespace portion`. Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `namespace
+  prefix` may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
 
 - `non-namespace prefix`: The parts of the `FQCN` that appear after the
-  namespace prefix. Given a `FQCN` of `Foo\Bar\Dib\Zim` and a namespace prefix
-  of `Foo\Bar`, the non-namespace prefix portion is `Dib\Zim`.
+  `namespace prefix`. Given a `FQCN` of `Foo\Bar\Dib\Zim` and a `namespace
+  prefix` of `Foo\Bar`, the `non-namespace prefix` portion is `Dib\Zim`.
 
-- `base directory`: The absolute directory path on disk where non-namespace
-  prefix file names have their root.
+- `base directory`: The absolute directory path on disk where `non-namespace
+  prefix`` file names have their root.
 
 
 3. Specification
