@@ -66,8 +66,8 @@ classes to map to shallower directory structures.
 4. Narrative
 ------------
 
-Given the below example implementation, and a `foo/bar` package of classes on
-disk at the following paths ...
+Given the below example general-purpost implementation, and a `foo/bar`
+package of classes on disk at the following paths ...
 
     /path/to/packages/foo/bar/
         src/
@@ -100,11 +100,20 @@ $loader->addNamespacePath(
 );
 ```
 
+5. Example Implementations
+--------------------------
 
-5. Example Implementation
--------------------------
+The example implementations MUST NOT be regarded as part of the specification;
+they are examples only. Class loaders MAY contain additional features and MAY
+differ in how they are implemented. As long as a class loader adheres to the
+rules set forth in the specification above they MUST be considered compatible
+with this PSR.
 
-The following is one possible implementation of above specification.
+### Example: General-Purpose Implementation
+
+The following is one possible general-purpose implementation of the above
+specification.
+
 
 ```php
 <?php
@@ -215,4 +224,34 @@ class PackageOrientedAutoloader
         return true;
     }
 }
+```
+
+
+### Example: Project-Specific Implementation
+
+The following is one possible project-specific implementation of the above
+specification.
+
+```php
+<?php
+// Given a PHP file named /path/to/project/example.php with the following
+// content ...
+spl_autoload_register(function ($fqcn) {
+    $namespacePrefix = 'Foo\Bar';
+    $baseDirectory = __DIR__.'/src/';
+    if (0 === strncmp($namespacePrefix, $fqcn, strlen($namespacePrefix))) {
+        $nonNamespacePrefix = substr($fqcn, strlen($namespacePrefix));
+        $nonNamespaceFilename = str_replace('\\', '/', $nonNamespacePrefix).'.php';
+        $path = $baseDirectory.$nonNamespaceFilename;
+        if (file_exists($path)) {
+            require $path;
+            return true;
+        }
+    }
+    return false;
+});
+
+// ... on calling the following line, the autolaoder registered above would
+// attempt to load the FQCN from /path/to/project/src/Dib/Zim.php
+new Foo\Bar\Dib\Zim;
 ```
