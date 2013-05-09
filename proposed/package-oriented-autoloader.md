@@ -231,7 +231,7 @@ $loader->setNamespacePrefixBase(
 );
 
 // register the autoloader
-spl_autoload_register($loader);
+spl_autoload_register(array($loader, 'load'));
 
 // the following line would cause the autoloader to attempt to load
 // the \Foo\Bar\Dib\Zim class from /path/to/packages/foo/bar/src/Dib/Zim.php
