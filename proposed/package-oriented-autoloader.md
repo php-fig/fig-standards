@@ -21,51 +21,49 @@ classes to map to shallower directory structures.
 
 - `class`: The term "class" refers to PHP classes, interfaces, and traits.
 
-- `fully-qualified class name (FQCN)`: An absolute namespace and class name.
+- `absolute class name`: A fully-qualified namespace and class name.
 
-- `namespace portion`: Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `namespace
-  portion` of the name is `Foo\Bar\Dib`.
+- `namespace`: Given an `absolute class name` of `Foo\Bar\Dib\Zim`, the
+  `namespace` is `Foo\Bar\Dib`.
 
-- `class portion`: Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `class portion` of
-  the name is `Zim`.
-
-- `namespace name`: Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `namespace names`
-  are `Foo`, `Bar`, and `Dib`.
+- `namespace name`: Given an `absolute class name` of `Foo\Bar\Dib\Zim`, the
+  `namespace names` are `Foo`, `Bar`, and `Dib`.
 
 - `namespace prefix`: One or more contiguous `namespace names` at the start of
-  the `namespace portion`. Given a `FQCN` of `Foo\Bar\Dib\Zim`, the `namespace
-  prefix` may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
+  the `namespace`. Given an `absolute class name` of `Foo\Bar\Dib\Zim`, the
+  `namespace prefix` may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
 
-- `non-namespace prefix`: The parts of the `FQCN` that appear after the
-  `namespace prefix`. Given a `FQCN` of `Foo\Bar\Dib\Zim` and a `namespace
-  prefix` of `Foo\Bar`, the `non-namespace prefix` portion is `Dib\Zim`.
+- `relative class name`: The parts of the `absolute class name` that appear
+  after the `namespace prefix`. Given an `absolute class name` of
+  `Foo\Bar\Dib\Zim` and a `namespace prefix` of `Foo\Bar`, the `relative class
+  name` is `Dib\Zim`.
 
-- `base directory`: The absolute directory path on disk where `non-namespace
-  prefix`` file names have their root.
+- `base directory`: The absolute directory path on disk where the files for
+  `relative class names` have their root.
 
 
 3. Specification
 ----------------
 
-- Class files MUST contain only one class definition.
+- Each class file MUST contain only one class definition.
 
-- Fully-qualified class names MUST begin with a top-level namespace name,
-  which MUST be followed by zero or more sub-namespace names, and MUST end in
-  a class name.
+- Each absolute class name MUST begin with a top-level namespace name, which
+  MUST be followed by zero or more sub-namespace names, and MUST end in a
+  class name.
 
-- Each namespace prefix portion of fully-qualified class names MUST be mapped
-  to a base directory; that namespace prefix MAY be mapped to more than one
-  base directory.
+- Each namespace prefix of asbolute class names MUST be mapped to a base
+  directory; that namespace prefix MAY be mapped to more than one base
+  directory.
 
-- The non-namespace prefix portion of a fully-qualified class name MUST be
-  mapped to a sub-path by replacing namespace separators with directory
-  separators, and the result MUST be suffixed with `.php`.
+- Each relative class name MUST be mapped to a sub-path by replacing namespace
+  separators with directory separators, and the result MUST be suffixed with
+  `.php`.
 
 
 4. Narrative
 ------------
 
-Given the below example general-purpost implementation, and a `foo/bar`
+Given the below example general-purpose implementation, and a `foo/bar`
 package of classes on disk at the following paths ...
 
     /path/to/packages/foo/bar/
@@ -113,89 +111,77 @@ with this PSR.
 The following is one possible general-purpose implementation of the above
 specification.
 
-
 ```php
 <?php
 /**
- * An example implementation for a package-oriented autoloader.
+ * 
+ * An example implementation for a package-oriented autoloader. Note that this
+ * is only an example, and is not a specification in itself.
+ * 
  */
 class PackageOrientedAutoloader
 {
     /**
      * 
      * An array where the key is a namespace prefix, and the value is a
-     * sequential array of directories for classes in that namespace.
+     * a base directory for classes in that namespace.
      * 
      * @var array
      * 
      */
-    protected $paths = array();
+    protected $prefix_base = array();
 
     /**
      * 
-     * Adds a path for a namespace prefix.
+     * Sets the directory for a namespace prefix.
      * 
-     * @param string $ns The namespace prefix.
+     * @param string $prefix The namespace prefix.
      * 
-     * @param string $path The directory containing classes in that
+     * @param string $dir The directory containing classes in that
      * namespace.
-     * 
-     * @param bool $prepend Prepend (unshift) the path onto the list of 
-     * paths instead of appending (pushing) it.
      * 
      * @return void
      * 
      */
-    public function addNamespacePath($ns, $path, $prepend = false)
+    public function setNamespacePrefixBase($prefix, $base)
     {
-        $path = rtrim($path, DIRECTORY_SEPARATOR);
-        if ($prepend) {
-            array_unshift($this->paths, $path);
-        } else {
-            $this->paths[$ns][] = $path;
-        }
+        $base = rtrim($base, DIRECTORY_SEPARATOR);
+        $this->prefix_base[$prefix] = $base;
     }
 
     /**
      * 
-     * Loads the class file for a fully qualified class name.
+     * Loads the class file for an absolute class name.
      * 
-     * @param string $fqcn The fully-qualified class name.
+     * @param string $absolute The absolute class name.
      * 
      */
-    public function load($fqcn)
+    public function load($absolute)
     {
-        // a partial file name for the class
-        $name = '';
+        // the relative class name
+        $relative = '';
 
-        // go through the parts of the fully-qualifed class name
-        $parts = explode('\\', $fqcn);
-        while ($parts) {
+        // go through the individual names in the absolute class name
+        $names = explode('\\', $absolute);
+        while ($names) {
 
-            // take the last element off the fully-qualified class name
-            // and add to the partial file name. always have a leading
-            // directory separator here.
-            $name = $name . DIRECTORY_SEPARATOR . array_pop($parts);
+            // take the last element off the absolute class name, and add to
+            // the relative class name, representing a partial file name.
+            $relative = $relative . DIRECTORY_SEPARATOR . array_pop($names);
 
-            // the remaining parts indicate the registered namespace
-            $ns = implode('\\', $parts);
+            // the remaining elements indicate the namespace prefix
+            $prefix = implode('\\', $names);
 
-            // is the namespace registered?
-            if (! isset($this->paths[$ns])) {
-                // no, continue the loop
-                continue;
-            }
-
-            // the namespace is registered.  look through its paths.
-            foreach ($this->paths[$ns] as $path) {
-
-                // create a complete file name from the path
+            // is there a base for this namespace prefix?
+            if (isset($this->prefix_base[$prefix])) {
+                
+                // yes. create a complete file name from the namespace dir
                 // and partial name
-                $file = $path . $name . '.php';
+                $file = $this->prefix_base[$prefix] . $relative . '.php';
 
                 // can we read the file from the filesystem?
                 if ($this->readFile($file)) {
-                    // yes, we're done
+                    // done!
                     return true;
                 }
             }
@@ -204,7 +190,7 @@ class PackageOrientedAutoloader
         // never found a file for the class
         return false;
     }
-
+    
     /**
      * 
      * Uses `require` to read a file from the filesystem.
@@ -212,6 +198,7 @@ class PackageOrientedAutoloader
      * @param string $file
      * 
      * @return bool True if the file gets read; false if it does not.
+     * 
      */
     protected function readFile($file)
     {
@@ -233,16 +220,15 @@ specification.
 
 ```php
 <?php
-// Given a PHP file named /path/to/project/example.php with the following
-// content ...
-spl_autoload_register(function ($fqcn) {
+// if this closure is registered in a file at /path/to/project/autoload.php:
+spl_autoload_register(function ($absoluteClass) {
     $namespacePrefix = 'Foo\Bar';
-    $baseDirectory = __DIR__.'/src/';
-    if (0 === strncmp($namespacePrefix, $fqcn, strlen($namespacePrefix))) {
-        $nonNamespacePrefix = substr($fqcn, strlen($namespacePrefix));
-        $nonNamespaceFilename = str_replace('\\', '/', $nonNamespacePrefix).'.php';
-        $path = $baseDirectory.$nonNamespaceFilename;
-        if (file_exists($path)) {
+    $baseDirectory = __DIR__ . '/src/';
+    if (0 === strncmp($namespacePrefix, $absoluteClass, strlen($namespacePrefix))) {
+        $relativeClass = substr($absoluteClass, strlen($namespacePrefix));
+        $relativeFile = str_replace('\\', '/', $relativeClass) . '.php';
+        $path = $baseDirectory . $relativeFile;
+        if (is_readable($path)) {
             require $path;
             return true;
         }
@@ -250,7 +236,7 @@ spl_autoload_register(function ($fqcn) {
     return false;
 });
 
-// ... on calling the following line, the autolaoder registered above would
-// attempt to load the FQCN from /path/to/project/src/Dib/Zim.php
-new Foo\Bar\Dib\Zim;
+// ... then the following line would cause the autoloader registered above to
+// attempt to load the \Foo\Bar\Dib\Zim from /path/to/project/src/Dib/Zim.php
+new \Foo\Bar\Dib\Zim;
 ```
