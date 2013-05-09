@@ -45,9 +45,9 @@ classes to map to shallower directory structures.
 3. Specification
 ----------------
 
-- Each class file MUST contain only one class definition.
+- A class file MUST contain only one class definition.
 
-- Each absolute class name MUST begin with a top-level namespace name, which
+- An absolute class name MUST begin with a top-level namespace name, which
   MUST be followed by zero or more sub-namespace names, and MUST end in a
   class name.
 
@@ -55,7 +55,7 @@ classes to map to shallower directory structures.
   directory; that namespace prefix MAY be mapped to more than one base
   directory.
 
-- Each relative class name MUST be mapped to a sub-path by replacing namespace
+- The relative class name MUST be mapped to a sub-path by replacing namespace
   separators with directory separators, and the result MUST be suffixed with
   `.php`.
 
