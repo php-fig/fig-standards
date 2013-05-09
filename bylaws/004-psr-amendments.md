@@ -30,12 +30,12 @@ Definitions
         implementations or adoptions would remain compliant with the revised
         PSR.
     </dd>
-    <dt><strong>Trivial Change</strong></dt>
+    <dt><strong>Errata</strong></dt>
     <dd>
-        A Non-Conflicting Change made to address spelling, notices of a
-        superceding PSR, bugs in source code examples, and other
-        such minimal changes as may be determined by PHP-FIG to be in compliance
-        with this bylaw.
+        Any Non-Conflicting Change made to address errors such as spelling,
+        grammar, punctuation, bugs in source code, syntax errors, coding style
+        corrections and other such minimal changes as may be determined by
+        PHP-FIG to be in compliance with this bylaw.
     </dd>
 </dl>
 
@@ -63,8 +63,8 @@ Conflicting Changes
 Conflicting Changes to a PSR are not allowed for Functional PSRs. Where
 a Conflicting Change remains desireable, a new PSR may be proposed to supercede 
 another. If a superceding PSR is adopted by PHP-FIG, the preceding PSR must be 
-amended to include a notice that it has been superceded. The preceding PSR must 
-remain at its original URI and may not be taken offline.
+amended to include a notice at the top of the PSR that it has been superceded.
+The preceding PSR must remain at its original URI and may not be taken offline.
 
 Conflicting Changes to a PSR are allowed for Informational PSRs which are
 expected to evolve over time or where a majority preference change is expressed
@@ -76,28 +76,35 @@ should be rejected, subject to a vote in accordance with the [Voting Protocol
 bylaw][voting], to avoid any undue inconvenience for parties currently compliant
 with the PSR.
 
+Conflicting Changes may only be added in a separate Addendum section appended to the end of a PSR.
+
 A Conflicting Change may arise when clarifying an apparent ambiguity or when 
 correcting grammatical errors. Should such a situation arise, careful
 consideration should be given to restating the Conflicting Change as a Non-
 Conflicting Change which ensures backwards compatibility for all previously 
 compliant parties.
 
-Where a Non-Conflicting Change or Trivial Change is found to have introduced a
-Conflicting Change in error, the change may be disregarded when interpreting the
+Where a Non-Conflicting Change or Errata is found to have introduced a
+Conflicting Change in error, the change must be disregarded when interpreting the
 PSR.
 
 Non-Conflicting Changes
 -----------------------
 
-Non-Conflicting Changes to a PSR are allowed for both Informational and
+Non-Conflicting Changes to a PSR are allowed for Informational and
 Functional PSRs subject to a vote in accordance with the [Voting
 Protocol bylaw][voting].
 
-Trivial Changes
----------------
+Non-Conflicting Changes may only be added in a separate Addendum section appended to the end of a PSR.
 
-Trivial Changes to a PSR are allowed for both Informational and
+Errata
+------
+
+Errata to a PSR are allowed for both Informational and
 Functional PSRs subject to a vote in accordance with the [Voting
 Protocol bylaw][voting].
+
+These must be documented in a separate Errata section appended to the end of a
+PSR.
 
 [voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
