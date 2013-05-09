@@ -361,10 +361,11 @@ $foo->bar(
 );
 ```
 
-If there is only one argument for method or function call, then it MAY be on
-the same line or MAY be indended once.
+If there is only one argument for the method or function call, then it MAY be
+on the same line or MAY be on the next line and indented once.
 
 ```php
+<?php
 $foo->bar(array(
     'someName' => 'someValue',
 ));
