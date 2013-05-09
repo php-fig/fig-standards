@@ -215,28 +215,25 @@ classes on disk at the following paths ...
             Baz.php             # Foo\Bar\Baz
             Dib/
                 Zim.php         # Foo\Bar\Dib\Zim
-        tests/
-            BazTest.php         # Foo\Bar\BazTest
-            Dib/
-                ZimTest.php     # Foo\Bar\Dib\ZimTest.php
 
-... one would register the path to "source" files and "unit test" files for
-the `Foo\Bar` namespace prefix like so:
+... one would register the path to the class files for the `Foo\Bar` namespace
+prefix like so:
 
 ```php
 <?php
 // instantiate the loader
-$loader = new PackageOrientedLoader;
+$loader = new \Psr\PackageOrientedLoader;
 
-// register the source file paths for the namespace prefix
-$loader->addNamespacePath(
+// register the base directory for the namespace prefix
+$loader->setNamespacePrefixBase(
     'Foo\Bar',
     '/path/to/packages/foo/bar/src'
 );
 
-// also register the unit test paths for the namespace prefix
-$loader->addNamespacePath(
-    'Foo\Bar',
-    '/path/to/packages/foo/bar/tests'
-);
+// register the autoloader
+spl_autoload_register($loader);
+
+// the following line would cause the autoloader to attempt to load
+// the \Foo\Bar\Dib\Zim class from /path/to/packages/foo/bar/src/Dib/Zim.php
+new \Foo\Bar\Dib\Zim;
 ```
