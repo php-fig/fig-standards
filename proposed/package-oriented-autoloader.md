@@ -51,7 +51,7 @@ classes to map to shallower directory structures.
   MUST be followed by zero or more sub-namespace names, and MUST end in a
   class name.
 
-- Each namespace prefix of asbolute class names MUST be mapped to a base
+- The namespace prefix of an asbolute class name MUST be mapped to a base
   directory; that namespace prefix MAY be mapped to more than one base
   directory.
 
