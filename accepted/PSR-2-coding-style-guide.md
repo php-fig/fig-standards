@@ -361,6 +361,28 @@ $foo->bar(
 );
 ```
 
+If there is only one argument for method or function call, then it MAY be on
+the same line or MAY be indended once.
+
+```php
+$foo->bar(array(
+    'someName' => 'someValue',
+));
+// or
+$foo->bar(new Class(array(
+    'someName' => 'someValue',
+)));
+// or
+$foo->bar(
+    new MyClass(
+        array(
+            'someName' => 'someValue',
+        )
+    )
+);
+```
+
+
 5. Control Structures
 ---------------------
 
