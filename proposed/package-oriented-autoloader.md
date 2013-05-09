@@ -60,44 +60,7 @@ classes to map to shallower directory structures.
   `.php`.
 
 
-4. Narrative
-------------
-
-Given the below example general-purpose implementation, and a `foo/bar`
-package of classes on disk at the following paths ...
-
-    /path/to/packages/foo/bar/
-        src/
-            Baz.php             # Foo\Bar\Baz
-            Dib/
-                Zim.php         # Foo\Bar\Dib\Zim
-        tests/
-            BazTest.php         # Foo\Bar\BazTest
-            Dib/
-                ZimTest.php     # Foo\Bar\Dib\ZimTest.php
-
-... one would register the path to "source" files and "unit test" files for
-the `Foo\Bar` namespace prefix like so:
-
-```php
-<?php
-// instantiate the loader
-$loader = new PackageOrientedLoader;
-
-// register the source file paths for the namespace prefix
-$loader->addNamespacePath(
-    'Foo\Bar',
-    '/path/to/packages/foo/bar/src'
-);
-
-// also register the unit test paths for the namespace prefix
-$loader->addNamespacePath(
-    'Foo\Bar',
-    '/path/to/packages/foo/bar/tests'
-);
-```
-
-5. Example Implementations
+4. Example Implementations
 --------------------------
 
 The example implementations MUST NOT be regarded as part of the specification;
@@ -105,6 +68,36 @@ they are examples only. Class loaders MAY contain additional features and MAY
 differ in how they are implemented. As long as a class loader adheres to the
 rules set forth in the specification above they MUST be considered compatible
 with this PSR.
+
+
+### Example: Project-Specific Implementation
+
+The following is one possible project-specific implementation of the above
+specification.
+
+```php
+<?php
+// if this closure is registered in a file at /path/to/project/autoload.php ...
+spl_autoload_register(function ($absoluteClass) {
+    $namespacePrefix = 'Foo\Bar';
+    $baseDirectory = __DIR__ . '/src/';
+    if (0 === strncmp($namespacePrefix, $absoluteClass, strlen($namespacePrefix))) {
+        $relativeClass = substr($absoluteClass, strlen($namespacePrefix));
+        $relativeFile = str_replace('\\', '/', $relativeClass) . '.php';
+        $path = $baseDirectory . $relativeFile;
+        if (is_readable($path)) {
+            require $path;
+            return true;
+        }
+    }
+    return false;
+});
+
+// ... then the following line would cause the autoloader registered above to
+// attempt to load the \Foo\Bar\Dib\Zim from /path/to/project/src/Dib/Zim.php
+new \Foo\Bar\Dib\Zim;
+```
+
 
 ### Example: General-Purpose Implementation
 
@@ -212,31 +205,36 @@ class PackageOrientedAutoloader
 }
 ```
 
+Given the example general-purpose implementation, and a `foo/bar` package of
+classes on disk at the following paths ...
 
-### Example: Project-Specific Implementation
+    /path/to/packages/foo/bar/
+        src/
+            Baz.php             # Foo\Bar\Baz
+            Dib/
+                Zim.php         # Foo\Bar\Dib\Zim
+        tests/
+            BazTest.php         # Foo\Bar\BazTest
+            Dib/
+                ZimTest.php     # Foo\Bar\Dib\ZimTest.php
 
-The following is one possible project-specific implementation of the above
-specification.
+... one would register the path to "source" files and "unit test" files for
+the `Foo\Bar` namespace prefix like so:
 
 ```php
 <?php
-// if this closure is registered in a file at /path/to/project/autoload.php ...
-spl_autoload_register(function ($absoluteClass) {
-    $namespacePrefix = 'Foo\Bar';
-    $baseDirectory = __DIR__ . '/src/';
-    if (0 === strncmp($namespacePrefix, $absoluteClass, strlen($namespacePrefix))) {
-        $relativeClass = substr($absoluteClass, strlen($namespacePrefix));
-        $relativeFile = str_replace('\\', '/', $relativeClass) . '.php';
-        $path = $baseDirectory . $relativeFile;
-        if (is_readable($path)) {
-            require $path;
-            return true;
-        }
-    }
-    return false;
-});
+// instantiate the loader
+$loader = new PackageOrientedLoader;
 
-// ... then the following line would cause the autoloader registered above to
-// attempt to load the \Foo\Bar\Dib\Zim from /path/to/project/src/Dib/Zim.php
-new \Foo\Bar\Dib\Zim;
+// register the source file paths for the namespace prefix
+$loader->addNamespacePath(
+    'Foo\Bar',
+    '/path/to/packages/foo/bar/src'
+);
+
+// also register the unit test paths for the namespace prefix
+$loader->addNamespacePath(
+    'Foo\Bar',
+    '/path/to/packages/foo/bar/tests'
+);
 ```
