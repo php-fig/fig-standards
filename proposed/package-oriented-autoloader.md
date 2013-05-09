@@ -158,7 +158,7 @@ class PackageOrientedAutoloader
      */
     public function load($absolute)
     {
-        // the relative class name
+        // a partial relative file name
         $relative = '';
 
         // go through the individual names in the absolute class name
@@ -220,7 +220,7 @@ specification.
 
 ```php
 <?php
-// if this closure is registered in a file at /path/to/project/autoload.php:
+// if this closure is registered in a file at /path/to/project/autoload.php ...
 spl_autoload_register(function ($absoluteClass) {
     $namespacePrefix = 'Foo\Bar';
     $baseDirectory = __DIR__ . '/src/';
