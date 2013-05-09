@@ -66,13 +66,13 @@ classes to map to shallower directory structures.
 The example implementations MUST NOT be regarded as part of the specification;
 they are examples only. Class loaders MAY contain additional features and MAY
 differ in how they are implemented. As long as a class loader adheres to the
-rules set forth in the specification above they MUST be considered compatible
+rules set forth in the specification they MUST be considered compatible
 with this PSR.
 
 
 ### Example: Project-Specific Implementation
 
-The following is one possible project-specific implementation of the above
+The following is one possible project-specific implementation of the
 specification.
 
 ```php
@@ -93,15 +93,15 @@ spl_autoload_register(function ($absoluteClass) {
     return false;
 });
 
-// ... then the following line would cause the autoloader registered above to
-// attempt to load the \Foo\Bar\Dib\Zim from /path/to/project/src/Dib/Zim.php
+// ... then the following line would cause the autoloader to attempt to load
+// the \Foo\Bar\Dib\Zim class from /path/to/project/src/Dib/Zim.php
 new \Foo\Bar\Dib\Zim;
 ```
 
 
 ### Example: General-Purpose Implementation
 
-The following is one possible general-purpose implementation of the above
+The following is one possible general-purpose implementation of the
 specification.
 
 ```php
