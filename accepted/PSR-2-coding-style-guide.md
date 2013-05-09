@@ -369,7 +369,7 @@ $foo->bar(array(
     'someName' => 'someValue',
 ));
 // or
-$foo->bar(new Class(array(
+$foo->bar(new MyClass(array(
     'someName' => 'someValue',
 )));
 // or
