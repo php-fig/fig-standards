@@ -106,6 +106,8 @@ specification.
 
 ```php
 <?php
+namespace Psr;
+
 /**
  * 
  * An example implementation for a package-oriented autoloader. Note that this
