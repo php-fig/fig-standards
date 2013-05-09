@@ -366,6 +366,8 @@ on the same line or MAY be on the next line and indented once.
 
 ```php
 <?php
+$foo->bar(array('someName' => 'someValue'));
+// or
 $foo->bar(array(
     'someName' => 'someValue',
 ));
