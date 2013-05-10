@@ -9,7 +9,8 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 1. Overview
 -----------
 
-This PSR is intended as an alternative to, not a replacement for,
+This PSR specifies the rules for an interoperable autoloader. It is intended
+as a co-existing alternative to, not a replacement for,
 [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
 It removes some legacy compatibility features that were built into PSR-0, in
 particular the handling of underscores in class names, and it allows for
@@ -106,7 +107,7 @@ specification.
 
 ```php
 <?php
-namespace Psr;
+namespace Example;
 
 /**
  * 
@@ -207,10 +208,10 @@ class PackageOrientedAutoloader
 }
 ```
 
-Given the example general-purpose implementation, and a `foo/bar` package of
+Given the example general-purpose implementation, and a `foo-bar` package of
 classes on disk at the following paths ...
 
-    /path/to/packages/foo/bar/
+    /path/to/packages/foo-bar/
         src/
             Baz.php             # Foo\Bar\Baz
             Dib/
@@ -222,18 +223,18 @@ prefix like so:
 ```php
 <?php
 // instantiate the loader
-$loader = new \Psr\PackageOrientedLoader;
+$loader = new \Example\PackageOrientedLoader;
 
 // register the base directory for the namespace prefix
 $loader->setNamespacePrefixBase(
     'Foo\Bar',
-    '/path/to/packages/foo/bar/src'
+    '/path/to/packages/foo-bar/src'
 );
 
 // register the autoloader
 spl_autoload_register(array($loader, 'load'));
 
 // the following line would cause the autoloader to attempt to load
-// the \Foo\Bar\Dib\Zim class from /path/to/packages/foo/bar/src/Dib/Zim.php
+// the \Foo\Bar\Dib\Zim class from /path/to/packages/foo-bar/src/Dib/Zim.php
 new \Foo\Bar\Dib\Zim;
 ```
