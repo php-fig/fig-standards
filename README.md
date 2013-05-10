@@ -74,6 +74,8 @@ Voting Members
 
 1. John Mertic: SugarCRM
 
+1. Taylor Otwell: Laravel
+
 1. Ryan Parman: Amazon Web Services SDK
 
 1. Evert Pot: SabreDAV
