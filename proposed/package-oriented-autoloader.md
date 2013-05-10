@@ -48,7 +48,7 @@ classes to map to shallower directory structures.
 - A class file MUST contain only one class definition.
 
 - An absolute class name MUST begin with a top-level namespace name, which
-  MUST be followed by zero or more sub-namespace names, and MUST end in a
+  MUST be followed by the sub-namespace names if they exists, and MUST end in a
   class name.
 
 - The namespace prefix of an absolute class name MUST be mapped to a base
