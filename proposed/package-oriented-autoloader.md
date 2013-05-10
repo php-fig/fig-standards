@@ -163,7 +163,7 @@ class PackageOrientedAutoloader
 
             // take the last element off the absolute class name,
             // and add it to the partial relative file name
-            $relative = $relative . DIRECTORY_SEPARATOR . array_pop($names);
+            $relative .= DIRECTORY_SEPARATOR . array_pop($names);
 
             // the remaining elements indicate the namespace prefix
             $prefix = implode('\\', $names);
