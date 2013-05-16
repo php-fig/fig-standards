@@ -225,7 +225,7 @@ $loader = new \Example\PackageOrientedLoader;
 
 // register the base directory for the namespace prefix
 $loader->setNamespacePrefixBase(
-    'Foo\\Bar\\',
+    'Foo\\Bar',
     '/path/to/packages/foo-bar/src'
 );
 
