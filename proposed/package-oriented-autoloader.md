@@ -217,7 +217,7 @@ classes on disk at the following paths ...
             Dib/
                 Zim.php         # Foo\Bar\Dib\Zim
 
-... one would register the path to the class files for the `Foo\Bar` namespace
+... one would register the path to the class files for the `Foo\Bar\` namespace
 prefix like so:
 
 ```php
@@ -227,7 +227,7 @@ $loader = new \Example\PackageOrientedLoader;
 
 // register the base directory for the namespace prefix
 $loader->setNamespacePrefixBase(
-    'Foo\Bar',
+    'Foo\\Bar\\',
     '/path/to/packages/foo-bar/src'
 );
 
