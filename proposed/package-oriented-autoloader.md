@@ -80,7 +80,7 @@ specification.
 <?php
 // if this closure is registered in a file at /path/to/project/autoload.php ...
 spl_autoload_register(function ($absoluteClass) {
-    $namespacePrefix = 'Foo\Bar';
+    $namespacePrefix = 'Foo\\Bar\\';
     $baseDirectory = __DIR__ . '/src/';
     if (0 === strncmp($namespacePrefix, $absoluteClass, strlen($namespacePrefix))) {
         $relativeClass = substr($absoluteClass, strlen($namespacePrefix));
@@ -88,10 +88,8 @@ spl_autoload_register(function ($absoluteClass) {
         $path = $baseDirectory . $relativeFile;
         if (is_readable($path)) {
             require $path;
-            return true;
         }
     }
-    return false;
 });
 
 // ... then the following line would cause the autoloader to attempt to load
