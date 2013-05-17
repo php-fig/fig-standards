@@ -87,7 +87,7 @@ spl_autoload_register(function ($absoluteClass) {
         $relativeFile = str_replace('\\', '/', $relativeClass) . '.php';
         $path = $baseDirectory . $relativeFile;
         if (is_readable($path)) {
-            require $path;
+            include $path;
         }
     }
 });
@@ -108,47 +108,42 @@ specification.
 namespace Example;
 
 /**
- * 
  * An example implementation for a package-oriented autoloader. Note that this
  * is only an example, and is not a specification in itself.
- * 
  */
 class PackageOrientedAutoloader
 {
     /**
-     * 
      * An array where the key is a namespace prefix, and the value is a
      * a base directory for classes in that namespace.
      * 
      * @var array
-     * 
      */
     protected $prefix_base = array();
-
+    
     /**
-     * 
-     * Sets the directory for a namespace prefix.
-     * 
-     * @param string $prefix The namespace prefix.
-     * 
-     * @param string $dir The directory containing classes in that
-     * namespace.
-     * 
-     * @return void
-     * 
+     * Register loader with SPL autoloader stack.
      */
-    public function setNamespacePrefixBase($prefix, $base)
+     public function register()
     {
-        $base = rtrim($base, DIRECTORY_SEPARATOR);
-        $this->prefix_base[$prefix] = $base;
+      spl_autoload_register(array($this, 'load'));
     }
 
     /**
+     * Sets the directory for a namespace prefix.
      * 
+     * @param string $prefix The namespace prefix.
+     * @param string $dir The directory containing classes in that namespace.
+     */
+    public function setNamespacePrefixBase($prefix, $base)
+    {
+        $this->prefix_base[$prefix] = rtrim($base, DIRECTORY_SEPARATOR);
+    }
+
+    /**
      * Loads the class file for an absolute class name.
      * 
      * @param string $absolute The absolute class name.
-     * 
      */
     public function load($absolute)
     {
@@ -158,7 +153,6 @@ class PackageOrientedAutoloader
         // go through the individual names in the absolute class name
         $names = explode('\\', $absolute);
         while ($names) {
-
             // take the last element off the absolute class name,
             // and add it to the partial relative file name
             $relative .= DIRECTORY_SEPARATOR . array_pop($names);
@@ -168,40 +162,14 @@ class PackageOrientedAutoloader
 
             // is there a base for this namespace prefix?
             if (isset($this->prefix_base[$prefix])) {
-                
-                // yes. create a complete file name from the namespace dir
-                // and partial name
+                // create a complete file name from the namespace dir and partial name
                 $file = $this->prefix_base[$prefix] . $relative . '.php';
-
-                // can we read the file from the filesystem?
-                if ($this->readFile($file)) {
-                    // done!
-                    return true;
+                if (is_readable($file)) {
+                    include $file;
+                    break;
                 }
             }
         }
-
-        // never found a file for the class
-        return false;
-    }
-    
-    /**
-     * 
-     * Uses `require` to read a file from the filesystem.
-     * 
-     * @param string $file
-     * 
-     * @return bool True if the file gets read; false if it does not.
-     * 
-     */
-    protected function readFile($file)
-    {
-        if (! is_readable($file)) {
-            return false;
-        }
-
-        require $file;
-        return true;
     }
 }
 ```
@@ -223,14 +191,14 @@ prefix like so:
 // instantiate the loader
 $loader = new \Example\PackageOrientedLoader;
 
+// register the autoloader
+$loader->register();
+
 // register the base directory for the namespace prefix
 $loader->setNamespacePrefixBase(
     'Foo\\Bar',
     '/path/to/packages/foo-bar/src'
 );
-
-// register the autoloader
-spl_autoload_register(array($loader, 'load'));
 
 // the following line would cause the autoloader to attempt to load
 // the \Foo\Bar\Dib\Zim class from /path/to/packages/foo-bar/src/Dib/Zim.php
