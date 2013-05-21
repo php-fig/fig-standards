@@ -58,7 +58,7 @@ Voting Members
 
 1. William Durand: Propel, Propel 2
 
-1. Andrew Eddie: Joomla
+1. Don Gilbert: Joomla
 
 1. Cal Evans: the community at large
 
