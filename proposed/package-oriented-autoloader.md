@@ -70,6 +70,10 @@ differ in how they are implemented. As long as a class loader adheres to the
 rules set forth in the specification they MUST be considered compatible
 with this PSR.
 
+Please note functions registered for PHP autoloading  receive the fully
+qualified class name with the leading backslash stripped, so `\Foo\Bar` is
+received as `Foo\Bar`.
+
 
 ### Example: Project-Specific Implementation
 
