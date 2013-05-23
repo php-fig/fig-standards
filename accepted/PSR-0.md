@@ -42,6 +42,7 @@ Example Implementation
 
 Below is an example function to simply demonstrate how the above
 proposed standards are autoloaded.
+
 ```php
 <?php
 
