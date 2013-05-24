@@ -22,24 +22,24 @@ classes to map to shallower directory structures.
 
 - `class`: The term "class" refers to PHP classes, interfaces, and traits.
 
-- `absolute class name`: A fully-qualified namespace and class name.
+- `fully qualified class name`: A fully-qualified namespace and class name.
 
-- `namespace`: Given an `absolute class name` of `Foo\Bar\Dib\Zim`, the
+- `namespace`: Given a `fully qualified class name` of `Foo\Bar\Dib\Zim`, the
   `namespace` is `Foo\Bar\Dib`.
 
-- `namespace name`: Given an `absolute class name` of `Foo\Bar\Dib\Zim`, the
+- `namespace name`: Given an `fully qualified class name` of `Foo\Bar\Dib\Zim`, the
   `namespace names` are `Foo`, `Bar`, and `Dib`.
 
 - `namespace prefix`: One or more contiguous `namespace names` at the start of
-  the `namespace`. Given an `absolute class name` of `Foo\Bar\Dib\Zim`, the
+  the `namespace`. Given a `fully qualified class name` of `Foo\Bar\Dib\Zim`, the
   `namespace prefix` may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
 
-- `relative class name`: The parts of the `absolute class name` that appear
-  after the `namespace prefix`. Given an `absolute class name` of
+- `relative class name`: The parts of the `fully qualified class name` that appear
+  after the `namespace prefix`. Given a `fully qualified class name` of
   `Foo\Bar\Dib\Zim` and a `namespace prefix` of `Foo\Bar`, the `relative class
   name` is `Dib\Zim`.
 
-- `base directory`: The absolute directory path on disk where the files for
+- `base directory`: The fully qualified directory path on disk where the files for
   `relative class names` have their root.
 
 
@@ -48,11 +48,11 @@ classes to map to shallower directory structures.
 
 - A class file MUST contain only one class definition.
 
-- An absolute class name MUST begin with a top-level namespace name, which
+- A fully qualified class name MUST begin with a top-level namespace name, which
   MUST be followed by zero or more sub-namespace names, and MUST end in a
   class name.
 
-- The namespace prefix of an absolute class name MUST be mapped to a base
+- The namespace prefix of a fully qualified class name MUST be mapped to a base
   directory; that namespace prefix MAY be mapped to more than one base
   directory.
 
