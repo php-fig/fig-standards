@@ -24,20 +24,20 @@ classes to map to shallower directory structures.
 
 - `fully qualified class name`: A fully-qualified namespace and class name.
 
-- `namespace`: Given a `fully qualified class name` of `Foo\Bar\Dib\Zim`, the
-  `namespace` is `Foo\Bar\Dib`.
+- `namespace`: Given a `fully qualified class name` of `Foo\Bar\Baz\Qux`, the
+  `namespace` is `Foo\Bar\Baz`.
 
-- `namespace name`: Given an `fully qualified class name` of `Foo\Bar\Dib\Zim`, the
-  `namespace names` are `Foo`, `Bar`, and `Dib`.
+- `namespace name`: Given an `fully qualified class name` of
+  `Foo\Bar\Baz\Qux`, the `namespace names` are `Foo`, `Bar`, and `Baz`.
 
 - `namespace prefix`: One or more contiguous `namespace names` at the start of
-  the `namespace`. Given a `fully qualified class name` of `Foo\Bar\Dib\Zim`, the
-  `namespace prefix` may be `Foo`, `Foo\Bar`, or `Foo\Bar\Dib`.
+  the `namespace`. Given a `fully qualified class name` of `Foo\Bar\Baz\Qux`,
+  the `namespace prefix` may be `Foo`, `Foo\Bar`, or `Foo\Bar\Baz`.
 
-- `relative class name`: The parts of the `fully qualified class name` that appear
-  after the `namespace prefix`. Given a `fully qualified class name` of
-  `Foo\Bar\Dib\Zim` and a `namespace prefix` of `Foo\Bar`, the `relative class
-  name` is `Dib\Zim`.
+- `relative class name`: The parts of the `fully qualified class name` that
+  appear after the `namespace prefix`. Given a `fully qualified class name` of
+  `Foo\Bar\Baz\Qux` and a `namespace prefix` of `Foo\Bar`, the `relative class
+  name` is `Baz\Qux`.
 
 - `base directory`: The fully qualified directory path on disk where the files for
   `relative class names` have their root.
@@ -95,8 +95,8 @@ spl_autoload_register(function ($className) {
 });
 
 // ... then the following line would cause the autoloader to attempt to load
-// the Foo\Bar\Dib\Zim class from /path/to/project/src/Dib/Zim.php
-new Foo\Bar\Dib\Zim;
+// the Foo\Bar\Baz\Qux class from /path/to/project/src/Baz/Qux.php
+new Foo\Bar\Baz\Qux;
 ```
 
 ### Example: General-Purpose Implementation
@@ -182,8 +182,8 @@ classes on disk at the following paths ...
     /path/to/packages/foo-bar/
         src/
             Baz.php             # Foo\Bar\Baz
-            Dib/
-                Zim.php         # Foo\Bar\Dib\Zim
+            Qux/
+                Quux.php         # Foo\Bar\Qux\Quux
 
 ... register the path to the class files for the `Foo\Bar\` namespace prefix
 as follows:
@@ -203,6 +203,6 @@ $loader->setNamespacePrefix(
 );
 
 // the following line would cause the autoloader to attempt to load
-// the Foo\Bar\Dib\Zim class from /path/to/packages/foo-bar/src/Dib/Zim.php
-new Foo\Bar\Dib\Zim;
+// the Foo\Bar\Baz\Qux class from /path/to/packages/foo-bar/src/Qux/Quux.php
+new Foo\Bar\Baz\Qux;
 ```
