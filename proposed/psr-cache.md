@@ -142,7 +142,7 @@ interface CacheInterface
      * @param null|integer $ttl   Optional. The TTL value of this item. If no value is sent and the driver supports TTL
      *                            then the library may set a default value for it or let the driver take care of that.
      *
-     * @return boolean
+     * @return boolean True on success and false otherwise
      */
     public function set($key, $value, $ttl = null);
 
