@@ -167,6 +167,9 @@ interface CacheInterface
 ```
 
 ### 2.3 CacheMultipleInterface
+
+```php
+
 <?php
 
 namespace Psr\Cache;
@@ -207,7 +210,7 @@ interface CacheMultipleInterface
     public function removeMultiple($keys);
 
 }
-
+```
 
 ### 2.4 CacheAwareInterface
 
