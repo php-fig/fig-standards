@@ -111,7 +111,7 @@ interface CacheItemInterface
 
 ```
 
-### 2.2 Cache
+### 2.2 CacheInterface
 
 ```php
 
