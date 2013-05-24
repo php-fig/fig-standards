@@ -156,6 +156,25 @@ interface CacheInterface
     public function remove($key);
 
     /**
+     * This will wipe out the entire cache's keys
+     *
+     * @return boolean Returns true on success and otherwise false
+     */
+    public function clear();
+
+}
+
+```
+
+### 2.3 CacheMultipleInterface
+<?php
+
+namespace Psr\Cache;
+
+interface CacheMultipleInterface
+{
+
+    /**
      * Obtain multiple CacheItems by their unique keys
      *
      * @param array $keys A list of keys that can obtained in a single operation.
@@ -187,18 +206,10 @@ interface CacheInterface
      */
     public function removeMultiple($keys);
 
-    /**
-     * This will wipe out the entire cache's keys
-     *
-     * @return boolean Returns true on success and otherwise false
-     */
-    public function clear();
-
 }
 
-```
 
-### 2.3 CacheAwareInterface
+### 2.4 CacheAwareInterface
 
 ``` php
 <?php
