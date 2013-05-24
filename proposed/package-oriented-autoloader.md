@@ -72,9 +72,8 @@ differ in how they are implemented. As long as a class loader adheres to the
 rules set forth in the specification they MUST be considered compatible
 with this PSR.
 
-Please note functions registered for PHP autoloading  receive the fully
-qualified class name with the leading backslash stripped, so `\Foo\Bar` is
-received as `Foo\Bar`.
+> N.b.: Registered autoloaders receive the fully qualified class name with
+> the leading backslash stripped, so `\Foo\Bar` is received as `Foo\Bar`.
 
 
 ### Example: Project-Specific Implementation
@@ -85,11 +84,14 @@ specification.
 ```php
 <?php
 // if this closure is registered in a file at /path/to/project/autoload.php ...
-spl_autoload_register(function ($className) {
-    $namespacePrefix = 'Foo\\Bar\\';
-    if (0 === strncmp($namespacePrefix, $className, strlen($namespacePrefix))) {
-        $relativeFile = substr($className, strlen($namespacePrefix));
-        $file = __DIR__ . '/src/' . str_replace('\\', '/', $relativeFile) . '.php';
+spl_autoload_register(function ($class) {
+    // the project namespace prefix
+    $prefix = 'Foo\\Bar\\';
+    if (0 === strncmp($prefix, $class, strlen($prefix))) {
+        // filename relative to the namespace path
+        $relative = substr($class, strlen($prefix));
+        // build the path to the file containing the class
+        $file = __DIR__ . '/src/' . str_replace('\\', '/', $relative) . '.php';
         if (is_readable($file)) {
             include $file;
         }
@@ -111,10 +113,9 @@ specification.
 namespace Example;
 
 /**
- * An example implementation for PSR-4 class autoloader.
+ * An example implementation of the above specification.
  *
- * Note that this is only an example, and is not a specification
- * in itself.
+ * Note that this is only an example, and is not a specification in itself.
  */
 class ClassLoader
 {
@@ -148,29 +149,30 @@ class ClassLoader
     /**
      * Loads the class file for a class name.
      *
-     * @param string $className The fully-qualified class name.
+     * @param string $class The fully-qualified class name.
      */
-    public function loadClass($className)
+    public function loadClass($class)
     {
-        // filename relative to the namespace prefix
-        $relativeFile = '';
+        // filename relative to the namespace prefix path
+        $relative = '';
 
-        $parts = explode('\\', $className);
+        // go through the parts of the fully-qualified class name
+        $parts = explode('\\', $class);
         while ($parts) {
             // append the last element of the fully-qualified class name
             // to the relative filename
-            $relativeFile .= DIRECTORY_SEPARATOR . array_pop($parts);
+            $relative .= DIRECTORY_SEPARATOR . array_pop($parts);
 
             // the remaining elements indicate the namespace prefix
             $prefix = implode('\\', $parts);
 
-            // is there a base for this namespace prefix?
+            // is there a base directory for this namespace prefix?
             if (isset($this->prefixes[$prefix])) {
                 // build the path to the file containing the class
-                $file = $this->prefixes[$prefix] . $relativeFile . '.php';
+                $file = $this->prefixes[$prefix] . $relative . '.php';
                 if (is_readable($file)) {
                     include $file;
-                    break;
+                    return;
                 }
             }
         }
