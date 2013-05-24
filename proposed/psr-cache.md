@@ -151,7 +151,7 @@ interface CacheInterface
      *
      * @param string $key The unique cache key of the item to remove
      *
-     * @return boolean    The result of the delete operation
+     * @return boolean    Returns true on success and otherwise false
      */
     public function remove($key);
 
@@ -190,7 +190,7 @@ interface CacheInterface
     /**
      * This will wipe out the entire cache's keys
      *
-     * @return boolean The result of the clear operation
+     * @return boolean Returns true on success and otherwise false
      */
     public function clear();
 
