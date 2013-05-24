@@ -22,21 +22,23 @@ classes to map to shallower directory structures.
 
 - `class`: The term "class" refers to PHP classes, interfaces, and traits.
 
-- `fully qualified class name`: A fully-qualified namespace and class name.
+- `fully qualified class name`: The full namespace and class name, with
+  leading backslash. (This is per the "Name Resolution Rules" from the PHP
+  manual.)
 
-- `namespace`: Given a `fully qualified class name` of `Foo\Bar\Baz\Qux`, the
-  `namespace` is `Foo\Bar\Baz`.
+- `namespace`: Given a `fully qualified class name` of `\Foo\Bar\Baz\Qux`, the
+  `namespace` is `\Foo\Bar\Baz\`.
 
 - `namespace name`: Given an `fully qualified class name` of
-  `Foo\Bar\Baz\Qux`, the `namespace names` are `Foo`, `Bar`, and `Baz`.
+  `\Foo\Bar\Baz\Qux`, the `namespace names` are `Foo`, `Bar`, and `Baz`.
 
 - `namespace prefix`: One or more contiguous `namespace names` at the start of
-  the `namespace`. Given a `fully qualified class name` of `Foo\Bar\Baz\Qux`,
-  the `namespace prefix` may be `Foo`, `Foo\Bar`, or `Foo\Bar\Baz`.
+  the `namespace`. Given a `fully qualified class name` of `\Foo\Bar\Baz\Qux`,
+  the `namespace prefix` may be `\Foo\`, `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
 
 - `relative class name`: The parts of the `fully qualified class name` that
   appear after the `namespace prefix`. Given a `fully qualified class name` of
-  `Foo\Bar\Baz\Qux` and a `namespace prefix` of `Foo\Bar`, the `relative class
+  `\Foo\Bar\Baz\Qux` and a `namespace prefix` of `\Foo\Bar\`, the `relative class
   name` is `Baz\Qux`.
 
 - `base directory`: The fully qualified directory path on disk where the files for
@@ -82,7 +84,7 @@ specification.
 
 ```php
 <?php
-// this closure is registered in a file at /path/to/project/autoload.php ...
+// if this closure is registered in a file at /path/to/project/autoload.php ...
 spl_autoload_register(function ($className) {
     $namespacePrefix = 'Foo\\Bar\\';
     if (0 === strncmp($namespacePrefix, $className, strlen($namespacePrefix))) {
@@ -185,7 +187,7 @@ classes on disk at the following paths ...
             Qux/
                 Quux.php         # Foo\Bar\Qux\Quux
 
-... register the path to the class files for the `Foo\Bar\` namespace prefix
+... register the path to the class files for the `\Foo\Bar\` namespace prefix
 as follows:
 
 ```php
