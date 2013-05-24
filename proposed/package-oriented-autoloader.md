@@ -41,8 +41,8 @@ classes to map to shallower directory structures.
   `\Foo\Bar\Baz\Qux` and a `namespace prefix` of `\Foo\Bar\`, the `relative
   class name` is `Baz\Qux`.
 
-- `base directory`: The fully qualified directory path on disk where the files
-  for `relative class names` have their root.
+- `base directory`: The absolute directory path on disk where the files for
+  `relative class names` have their root.
 
 
 3. Specification
