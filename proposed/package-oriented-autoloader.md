@@ -29,7 +29,7 @@ classes to map to shallower directory structures.
 - `namespace`: Given a `fully qualified class name` of `\Foo\Bar\Baz\Qux`, the
   `namespace` is `\Foo\Bar\Baz\`.
 
-- `namespace name`: Given an `fully qualified class name` of
+- `namespace name`: Given a `fully qualified class name` of
   `\Foo\Bar\Baz\Qux`, the `namespace names` are `Foo`, `Bar`, and `Baz`.
 
 - `namespace prefix`: One or more contiguous `namespace names` at the start of
@@ -38,11 +38,11 @@ classes to map to shallower directory structures.
 
 - `relative class name`: The parts of the `fully qualified class name` that
   appear after the `namespace prefix`. Given a `fully qualified class name` of
-  `\Foo\Bar\Baz\Qux` and a `namespace prefix` of `\Foo\Bar\`, the `relative class
-  name` is `Baz\Qux`.
+  `\Foo\Bar\Baz\Qux` and a `namespace prefix` of `\Foo\Bar\`, the `relative
+  class name` is `Baz\Qux`.
 
-- `base directory`: The fully qualified directory path on disk where the files for
-  `relative class names` have their root.
+- `base directory`: The fully qualified directory path on disk where the files
+  for `relative class names` have their root.
 
 
 3. Specification
@@ -50,12 +50,12 @@ classes to map to shallower directory structures.
 
 - A class file MUST contain only one class definition.
 
-- A fully qualified class name MUST begin with a top-level namespace name, which
-  MUST be followed by zero or more sub-namespace names, and MUST end in a
-  class name.
+- A fully qualified class name MUST begin with a top-level namespace name,
+  which MUST be followed by zero or more sub-namespace names, and MUST end in
+  a class name.
 
-- The namespace prefix of a fully qualified class name MUST be mapped to a base
-  directory; that namespace prefix MAY be mapped to more than one base
+- The namespace prefix of a fully qualified class name MUST be mapped to a
+  base directory; that namespace prefix MAY be mapped to more than one base
   directory.
 
 - The relative class name MUST be mapped to a sub-path by replacing namespace
