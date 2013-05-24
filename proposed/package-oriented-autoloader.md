@@ -69,8 +69,8 @@ classes to map to shallower directory structures.
 The example implementations MUST NOT be regarded as part of the specification;
 they are examples only. Class loaders MAY contain additional features and MAY
 differ in how they are implemented. As long as a class loader adheres to the
-rules set forth in the specification they MUST be considered compatible
-with this PSR.
+rules set forth in the specification it MUST be considered compatible with
+this PSR.
 
 > N.b.: Registered autoloaders receive the fully qualified class name with
 > the leading backslash stripped, so `\Foo\Bar` is received as `Foo\Bar`.
