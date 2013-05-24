@@ -103,6 +103,7 @@ spl_autoload_register(function ($class) {
 new Foo\Bar\Baz\Qux;
 ```
 
+
 ### Example: General-Purpose Implementation
 
 The following is one possible general-purpose implementation of the
@@ -113,15 +114,17 @@ specification.
 namespace Example;
 
 /**
- * An example implementation of the above specification.
+ * An example implementation of the above specification that includes the 
+ * optional functionality of allowing multiple base directories for a single
+ * namespace prefix.
  *
  * Note that this is only an example, and is not a specification in itself.
  */
 class ClassLoader
 {
     /**
-     * An associative array where the key is a namespace prefix
-     * and the value is the base directory for classes in that namespace.
+     * An associative array where the key is a namespace prefix and the value
+     * is an array of base directories for classes in that namespace.
      *
      * @var array
      */
@@ -136,43 +139,55 @@ class ClassLoader
     }
 
     /**
-     * Sets the directory for a namespace prefix.
+     * Adds a base directory for a namespace prefix.
      *
      * @param string $prefix The namespace prefix.
-     * @param string $path   The directory containing classes in that namespace.
+     * @param string $base A base directory for class files in the namespace.
      */
-    public function setNamespacePrefix($prefix, $path)
+    public function addNamespace($prefix, $base)
     {
-        $this->prefixes[$prefix] = rtrim($path, DIRECTORY_SEPARATOR);
+        $prefix = trim($prefix, '\\');
+        $base = rtrim($base, DIRECTORY_SEPARATOR);
+        $this->prefixes[$prefix][] = $base;
     }
 
     /**
-     * Loads the class file for a class name.
+     * Loads the class file for a given class name.
      *
      * @param string $class The fully-qualified class name.
      */
     public function loadClass($class)
     {
-        // filename relative to the namespace prefix path
+        // class file relative to the namespace base directory
         $relative = '';
-
+        
         // go through the parts of the fully-qualified class name
         $parts = explode('\\', $class);
         while ($parts) {
             // append the last element of the fully-qualified class name
             // to the relative filename
             $relative .= DIRECTORY_SEPARATOR . array_pop($parts);
-
+            
             // the remaining elements indicate the namespace prefix
             $prefix = implode('\\', $parts);
-
-            // is there a base directory for this namespace prefix?
-            if (isset($this->prefixes[$prefix])) {
-                // build the path to the file containing the class
-                $file = $this->prefixes[$prefix] . $relative . '.php';
+            
+            // are there any base directories for this namespace prefix?
+            if (! isset($this->prefixes[$prefix])) {
+                // no
+                continue;
+            }
+            
+            // look through base directories for this namespace prefix
+            foreach ($this->prefixes[$prefix] as $base) {
+            
+                // create a complete file name from the base directory and
+                // relative file name
+                $file = $base . $relative . '.php';
+                
+                // can we read the file from the filesystem?
                 if (is_readable($file)) {
+                    // yes, we're done
                     include $file;
-                    return;
                 }
             }
         }
@@ -187,26 +202,32 @@ classes on disk at the following paths ...
         src/
             Baz.php             # Foo\Bar\Baz
             Qux/
-                Quux.php         # Foo\Bar\Qux\Quux
+                Quux.php        # Foo\Bar\Qux\Quux
+        tests/
+            BazTest.php         # Foo\Bar\BazTest
+            Qux/
+                QuuxTest.php    # Foo\Bar\Qux\QuuxTest
 
-... register the path to the class files for the `\Foo\Bar\` namespace prefix
+... add the path to the class files for the `\Foo\Bar\` namespace prefix
 as follows:
 
 ```php
 <?php
 // instantiate the loader
-$loader = new Example\ClassLoader;
+$loader = new \Example\ClassLoader;
 
 // register the autoloader
 $loader->register();
 
-// register the base directory for the namespace prefix
-$loader->setNamespacePrefix(
-    'Foo\\Bar',
-    '/path/to/packages/foo-bar/src'
-);
+// register the base directories for the namespace prefix
+$loader->addNamespace('Foo\\Bar', '/path/to/packages/foo-bar/src');
+$loader->addNamespace('Foo\\Bar', '/path/to/packages/foo-bar/tests');
 
 // the following line would cause the autoloader to attempt to load
 // the Foo\Bar\Baz\Qux class from /path/to/packages/foo-bar/src/Qux/Quux.php
 new Foo\Bar\Baz\Qux;
+
+// the following line would cause the autoloader to attempt to load
+// the Foo\Bar\Baz\Qux class from /path/to/packages/foo-bar/tests/Qux/Quux.php
+new Foo\Bar\Baz\QuxTest;
 ```
