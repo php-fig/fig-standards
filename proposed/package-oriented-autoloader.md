@@ -220,8 +220,8 @@ $loader = new \Example\ClassLoader;
 $loader->register();
 
 // register the base directories for the namespace prefix
-$loader->addNamespace('Foo\\Bar', '/path/to/packages/foo-bar/src');
-$loader->addNamespace('Foo\\Bar', '/path/to/packages/foo-bar/tests');
+$loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/src');
+$loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/tests');
 
 // the following line would cause the autoloader to attempt to load
 // the Foo\Bar\Baz\Qux class from /path/to/packages/foo-bar/src/Qux/Quux.php
