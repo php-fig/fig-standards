@@ -228,6 +228,6 @@ $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/tests');
 new Foo\Bar\Baz\Qux;
 
 // the following line would cause the autoloader to attempt to load
-// the Foo\Bar\Baz\Qux class from /path/to/packages/foo-bar/tests/Qux/Quux.php
-new Foo\Bar\Baz\QuxTest;
+// the Foo\Bar\Baz\Qux\QuuxTest class from /path/to/packages/foo-bar/tests/Qux/QuuxTest.php
+new Foo\Bar\Baz\Qux\QuuxTest;
 ```
