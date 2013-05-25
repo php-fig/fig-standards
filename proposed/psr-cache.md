@@ -231,25 +231,16 @@ interface CacheAwareInterface
 }
 ```
 
-3. Examples
------------
-
-* [PsrCacheItem](https://gist.github.com/dragoonis/3802de3d5780f19c81b6)
-* [Redis](https://gist.github.com/dragoonis/ee20463da101cabc7354)
-* [Memcached](https://gist.github.com/dragoonis/1c4ea0836097f5fd1fd6)
-* [APC](https://gist.github.com/dragoonis/6b28ae75f141aab552e5)
-* [DoctrineCache](https://gist.github.com/dragoonis/64e5f508caeb1792a8b3)
-
-4. Package
+3. Package
 ----------
 
 The interfaces described as well as a test suite to verify your implementation
 are provided as part of the [psr/cache](https://packagist.org/packages/psr/cache) package.
 
-5. Credits
+4. Credits
 ----------
 
-This proposal is the result of many months of deliberation, team work and proposals which can be referenced here:
+Parts of this proposal is the result of many months of deliberation, team work and proposals which can be referenced here:
 
  * https://github.com/tedivm/fig-standards/blob/Cache/proposed/PSR-Cache.md
  * https://github.com/evert/fig-standards/blob/master/proposed/objectcache.md
