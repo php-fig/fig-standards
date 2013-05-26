@@ -87,7 +87,8 @@ specification.
 spl_autoload_register(function ($class) {
     // the project namespace prefix
     $prefix = 'Foo\\Bar\\';
-    if (0 === strncmp($prefix, $class, strlen($prefix))) {
+    // does the class match the namespace prefix?
+    if (strncmp($prefix, $class, strlen($prefix)) === 0) {
         // filename relative to the namespace path
         $relative = substr($class, strlen($prefix));
         // build the path to the file containing the class
