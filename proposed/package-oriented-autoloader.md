@@ -1,4 +1,4 @@
-PSR-4: Autoloader
+PSR-X: Autoloader
 =================
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
