@@ -172,7 +172,7 @@ class ClassLoader
             $prefix = implode('\\', $parts);
             
             // are there any base directories for this namespace prefix?
-            if (! isset($this->prefixes[$prefix])) {
+            if (isset($this->prefixes[$prefix]) === false) {
                 // no
                 continue;
             }
