@@ -1,5 +1,5 @@
-PSR-4: Class Autoloader
-=======================
+PSR-4: Autoloader
+=================
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
