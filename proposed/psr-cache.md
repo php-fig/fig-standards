@@ -253,6 +253,8 @@ interface IncrementableInterface
 
 ### 2.5 CacheAwareInterface
 
+This class allows any generic PHP class to become ``cache aware``. This means it can be used to detect if an instance knows about PSR\Cache and can have PSR\Cache instances injected into it the ``setCache`` method
+
 ``` php
 <?php
 
