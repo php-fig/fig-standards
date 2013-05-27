@@ -166,7 +166,7 @@ interface CacheInterface
 
 ```
 
-### 2.3 CacheMultipleInterface
+### 2.3 MultipleInterface
 
 ```php
 
@@ -212,7 +212,41 @@ interface MultipleInterface
 }
 ```
 
-### 2.4 CacheAwareInterface
+### 2.4 IncrementableInterface
+
+```php
+
+<?php
+
+namespace Psr\Cache;
+
+interface IncrementableInterface
+{
+
+    /**
+     * Increment a value in the cache by its step value, which defaults to 1
+     *
+     * @param string  $key  The cache item key
+     * @param integer $step The value to increment by, defaulting to 1
+     *
+     * @return boolean True on success and false on failure
+     */
+    public function increment($key, $step = 1);
+    
+    /**
+     * Decrement a value in the cache by its step value, which defaults to 1
+     *
+     * @param string  $key  The cache item key
+     * @param integer $step The value to decrement by, defaulting to 1
+     *
+     * @return boolean True on success and false on failure
+     */
+    public function decrement($key, $step = 1);
+
+}
+```
+
+### 2.5 CacheAwareInterface
 
 ``` php
 <?php
