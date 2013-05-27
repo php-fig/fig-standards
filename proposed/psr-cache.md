@@ -46,7 +46,7 @@ by an integer representing time in seconds.
 
 *    **Key** - A string that uniquely identifies the cached item.
 
-*    **CacheItem** - An object that implements the `Psr\Cache\CacheItemInterface` interface.
+*    **CacheItem** - An object that implements the `Psr\Cache\ItemInterface` interface.
 
 *    **Cache** - An object that implements the `Psr\Cache\CacheInterface` interface.
 
@@ -83,7 +83,7 @@ it is recommended to have your cache keys consist of no more than 32 ASCII chara
 
 namespace Psr\Cache;
 
-interface CacheItemInterface
+interface ItemInterface
 {
 
     /**
@@ -119,7 +119,7 @@ interface CacheItemInterface
 
 namespace Psr\Cache;
 
-use Psr\Cache\CacheItemInterface;
+use Psr\Cache\ItemInterface;
 
 interface CacheInterface
 {
@@ -174,7 +174,7 @@ interface CacheInterface
 
 namespace Psr\Cache;
 
-interface CacheMultipleInterface
+interface MultipleInterface
 {
 
     /**
