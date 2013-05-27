@@ -168,6 +168,8 @@ interface CacheInterface
 
 ### 2.3 MultipleInterface
 
+This interface has methods for dealing with multiple sets of cache entries such as writing, reading or deleting multiple cache entries at a time. This is really useful when you have lots of cache reads/writes to perform then you can perform your operations in a single call to the cache server cutting down latency times dramatically.
+
 ```php
 
 <?php
@@ -213,6 +215,8 @@ interface MultipleInterface
 ```
 
 ### 2.4 IncrementableInterface
+
+This interface provides the ability to increment and decrement cache entries by their specified value. Some cache backends support this natively so that you don't have to read the item and then increment it and write it back to the cache server, this can be done in a single call to the cache server since it's natively supported by many modern cache servers.
 
 ```php
 
