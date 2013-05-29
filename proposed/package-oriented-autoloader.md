@@ -62,6 +62,9 @@ classes to map to shallower directory structures.
   separators with directory separators, and the result MUST be suffixed with
   `.php`.
 
+- The registered autoloader callback MUST NOT throw exceptions, SHOULD NOT
+  raise errors of any level, and MAY return a value.
+
 
 4. Example Implementations
 --------------------------
