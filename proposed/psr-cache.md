@@ -66,7 +66,7 @@ it is recommended to have your cache keys consist of no more than 32 ASCII chara
 2. Interfaces
 -------------
 
-### 2.1 CacheItem
+### 2.1 ItemInterface
 
 By using the `CacheItem` class implementations can guarantee consistency across
 various systems.
