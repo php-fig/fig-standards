@@ -87,7 +87,7 @@ spl_autoload_register(function ($class) {
     // the project namespace prefix
     $prefix = 'Foo\\Bar\\';
     // remove any leading backslash
-    $class = ltrim('\\', $class);
+    $class = ltrim($class, '\\');
     // does the class match the namespace prefix?
     if (strncmp($prefix, $class, strlen($prefix)) === 0) {
         // filename relative to the namespace path
@@ -161,7 +161,7 @@ class ClassLoader
     public function loadClass($class)
     {
         // remove any leading backslash
-        $class = ltrim('\\', $class);
+        $class = ltrim($class, '\\');
         
         // class file relative to the namespace base directory
         $relative = '';
