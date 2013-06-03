@@ -9,12 +9,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 1. Overview
 -----------
 
-This PSR specifies the rules for an interoperable autoloader. It is intended
-as a co-existing alternative to, not a replacement for,
-[PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
-It removes some legacy compatibility features that were built into PSR-0, in
-particular the handling of underscores in class names, and it allows for
-classes to map to shallower directory structures.
+This PSR specifies the rules for an interoperable autoloader.
 
 
 2. Definitions
@@ -75,8 +70,9 @@ differ in how they are implemented. As long as a class loader adheres to the
 rules set forth in the specification it MUST be considered compatible with
 this PSR.
 
-> N.b.: Registered autoloaders receive the fully qualified class name with
-> the leading backslash stripped, so `\Foo\Bar` is received as `Foo\Bar`.
+> N.b.: Depending on the PHP version, registered autoloaders may receive the
+> fully qualified class name with or without the leading backslash stripped,
+> so `\Foo\Bar` may  received as `\Foo\Bar` or as `\Foo\Bar`.
 
 
 ### Example: Project-Specific Implementation
@@ -90,6 +86,8 @@ specification.
 spl_autoload_register(function ($class) {
     // the project namespace prefix
     $prefix = 'Foo\\Bar\\';
+    // remove any leading backslash
+    $class = ltrim('\\', $class);
     // does the class match the namespace prefix?
     if (strncmp($prefix, $class, strlen($prefix)) === 0) {
         // filename relative to the namespace path
@@ -103,8 +101,8 @@ spl_autoload_register(function ($class) {
 });
 
 // ... then the following line would cause the autoloader to attempt to load
-// the Foo\Bar\Baz\Qux class from /path/to/project/src/Baz/Qux.php
-new Foo\Bar\Baz\Qux;
+// the \Foo\Bar\Baz\Qux class from /path/to/project/src/Baz/Qux.php
+new \Foo\Bar\Baz\Qux;
 ```
 
 
@@ -162,6 +160,9 @@ class ClassLoader
      */
     public function loadClass($class)
     {
+        // remove any leading backslash
+        $class = ltrim('\\', $class);
+        
         // class file relative to the namespace base directory
         $relative = '';
         
