@@ -72,7 +72,7 @@ this PSR.
 
 > N.b.: Depending on the PHP version, registered autoloaders may receive the
 > fully qualified class name with or without the leading backslash stripped,
-> so `\Foo\Bar` may  received as `\Foo\Bar` or as `\Foo\Bar`.
+> so `\Foo\Bar` may  received as `\Foo\Bar` or as `Foo\Bar`.
 
 
 ### Example: Project-Specific Implementation
