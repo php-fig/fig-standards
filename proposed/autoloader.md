@@ -50,9 +50,9 @@ This PSR specifies the rules for an interoperable autoloader.
   which MUST be followed by zero or more sub-namespace names, and MUST end in
   a class name.
 
-- The namespace prefix of a fully qualified class name MUST be mapped to a
-  base directory; that namespace prefix MAY be mapped to more than one base
-  directory.
+- The namespace prefix of a fully qualified class name MUST terminate in \
+  and MUST be mapped to a base directory; that namespace prefix MAY be
+  mapped to more than one base directory.
 
 - The relative class name MUST be mapped to a sub-path by replacing namespace
   separators with directory separators, and the result MUST be suffixed with
@@ -147,13 +147,20 @@ class ClassLoader
     /**
      * Adds a base directory for a namespace prefix.
      *
-     * @param string $prefix The namespace prefix.
-     * 
+     * @param string $prefix The namespace prefix, must terminate in \
      * @param string $base A base directory for class files in the namespace.
+     *
+     * @throws \InvalidArgumentException If $prefix does not meet requirements.
      */
     public function addNamespace($prefix, $base)
     {
-        $prefix = trim($prefix, '\\');
+        // validate $prefix
+        if ($prefix[strlen($prefix)] !== '\\') {
+            throw new \InvalidArgumentException('Namespace $prefix must terminate in \\');
+        }
+
+        // prefixes are expressed from global namespace
+        $prefix = ltrim($prefix, '\\');
         $base = rtrim($base, DIRECTORY_SEPARATOR);
         $this->prefixes[$prefix][] = $base;
     }
@@ -165,7 +172,7 @@ class ClassLoader
      */
     public function loadClass($class)
     {
-        // remove any leading backslash
+        // remove any leading backslash (required for PHP < 5.3.3)
         $class = ltrim($class, '\\');
         
         // class file relative to the namespace base directory
@@ -179,7 +186,7 @@ class ClassLoader
             $relative .= DIRECTORY_SEPARATOR . array_pop($parts);
             
             // the remaining elements indicate the namespace prefix
-            $prefix = implode('\\', $parts);
+            $prefix = implode('\\', $parts) . '\\';
             
             // are there any base directories for this namespace prefix?
             if (isset($this->prefixes[$prefix]) === false) {
