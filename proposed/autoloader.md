@@ -18,8 +18,9 @@ This PSR specifies the rules for an interoperable autoloader.
 - `class`: The term "class" refers to PHP classes, interfaces, and traits.
 
 - `fully qualified class name`: The full namespace and class name, with
-  leading backslash. (This is per the [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php) from the PHP
-  manual.)
+  leading backslash. (This is per the
+  [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
+  from the PHP manual.)
 
 - `namespace`: Given a `fully qualified class name` of `\Foo\Bar\Baz\Qux`, the
   `namespace` is `\Foo\Bar\Baz\`.
