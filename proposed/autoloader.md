@@ -116,24 +116,30 @@ specification.
 namespace Example;
 
 /**
+ * 
  * An example implementation of the above specification that includes the 
  * optional functionality of allowing multiple base directories for a single
  * namespace prefix.
  *
  * Note that this is only an example, and is not a specification in itself.
+ * 
  */
 class ClassLoader
 {
     /**
+     * 
      * An associative array where the key is a namespace prefix and the value
      * is an array of base directories for classes in that namespace.
      *
      * @var array
+     * 
      */
     protected $prefixes = array();
 
     /**
+     * 
      * Register loader with SPL autoloader stack.
+     * 
      */
     public function register()
     {
@@ -141,10 +147,13 @@ class ClassLoader
     }
 
     /**
+     * 
      * Adds a base directory for a namespace prefix.
      *
      * @param string $prefix The namespace prefix.
+     * 
      * @param string $base A base directory for class files in the namespace.
+     * 
      */
     public function addNamespace($prefix, $base)
     {
@@ -154,9 +163,11 @@ class ClassLoader
     }
 
     /**
+     * 
      * Loads the class file for a given class name.
      *
      * @param string $class The fully-qualified class name.
+     * 
      */
     public function loadClass($class)
     {
@@ -230,9 +241,9 @@ $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/tests');
 
 // the following line would cause the autoloader to attempt to load
 // the Foo\Bar\Baz\Qux class from /path/to/packages/foo-bar/src/Qux/Quux.php
-new Foo\Bar\Baz\Qux;
+new \Foo\Bar\Baz\Qux;
 
 // the following line would cause the autoloader to attempt to load
 // the Foo\Bar\Baz\Qux\QuuxTest class from /path/to/packages/foo-bar/tests/Qux/QuuxTest.php
-new Foo\Bar\Baz\Qux\QuuxTest;
+new \Foo\Bar\Baz\Qux\QuuxTest;
 ```
