@@ -71,9 +71,12 @@ differ in how they are implemented. As long as a class loader adheres to the
 rules set forth in the specification it MUST be considered compatible with
 this PSR.
 
-> N.b.: Depending on the PHP version, registered autoloaders may receive the
-> fully qualified class name with or without the leading backslash stripped,
-> so `\Foo\Bar` may  received as `\Foo\Bar` or as `Foo\Bar`.
+> N.b.: Before PHP 5.3.3, registered autoloaders would receive the fully
+> qualified class name **with** the leading backslash in place; in PHP 5.3.3
+> and later, they receive the fully qualified class name **without** the
+> leading backslash. The example implementations strip leading backslashes
+> to make allowance for that inconsistency, but any autoloader that wishes to
+> exclusively target PHP 5.3.3 or greater can ignore this extra processing.
 
 
 ### Example: Project-Specific Implementation
