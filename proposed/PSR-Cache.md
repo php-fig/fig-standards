@@ -141,7 +141,7 @@ interface PoolInterface
      * @param array $keys
      * @return \Iterator
      */
-    function getItemIterator($keys);
+    function getItems($keys);
 
     /**
      * Clears the cache pool of all items.
