@@ -1,5 +1,5 @@
 Padrão de Codificação Básico
-=====================
+============================
 
 Esta seção do padrão compreende o que deve ser considerado dos elementos codificação padrão que são necessários para garantir um alto nível de interoperabilidade técnica entre código PHP compartilhado.
 
@@ -9,7 +9,7 @@ As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, s
 
 
 1. Visão geral
------------
+--------------
 
 - Arquivos DEVEM usar apenas tags `<?php` e `<?=`.
 
@@ -27,7 +27,7 @@ As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, s
 
 
 2. Arquivos
---------
+-----------
 
 ### 2.1. Tags PHP
 
@@ -87,7 +87,7 @@ if (! function_exists('bar')) {
 
 
 3. Namespace e Nomes de Classe
-----------------------------
+------------------------------
 
 As namespaces e as classes DEVEM seguir a [PSR-0][].
 
@@ -120,7 +120,7 @@ class Vendor_Model_Foo
 ```
 
 4. Constantes de Classe, Propriedades e Métodos
--------------------------------------------
+-----------------------------------------------
 
 O termo "classe" se refere à todas as classes, interfaces e traits.
 

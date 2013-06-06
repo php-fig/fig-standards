@@ -10,7 +10,7 @@ As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, s
 A palavra `implementor` neste documento é para ser interpretada como alguém implementando a `LoggerInterface` numa biblioteca ou framework relacionado a log. Usuários dos sismteas de logs (loggers) são referidos como `user`.
 
 1. Especificação
------------------
+----------------
 
 ### 1.1 Básico
 

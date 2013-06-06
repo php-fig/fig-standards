@@ -1,5 +1,5 @@
 Guia de Estilo de Código
-==================
+========================
 
 Este guia estende e expande a [PSR-1][], os padrões básicos de codificação.
 
@@ -13,7 +13,7 @@ As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, s
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md
 
 1. Visão Geral
------------
+--------------
 
 - Código DEVE seguir a [PSR-1][].
 
@@ -68,7 +68,7 @@ class Foo extends Bar implements FooInterface
 ```
 
 2. Geral
-----------
+--------
 
 ### 2.1 Padrão Básico de Codificação
 
@@ -113,7 +113,7 @@ As constantes do PHP `true`, `false` e `null` DEVEM ser em letra minúscula (low
 [Palavras-chave]: http://php.net/manual/en/reserved.keywords.php
 
 3. Namespace e Declarações de 'use'
----------------------------------
+-----------------------------------
 
 Quando presente, DEVE haver uma linha em branco depois da declaração de `namespace`.
 
@@ -138,7 +138,7 @@ use OtherVendor\OtherPackage\BazClass;
 ```
 
 4. Classes, Propriedades e Métodos
------------------------------------
+----------------------------------
 
 O termo "classe" é uma referência a todas as classes, interfaces e traits.
 
@@ -310,7 +310,7 @@ $foo->bar(
 ```
 
 5. Estruturas de Controle
----------------------
+-------------------------
 
 As regras gerais de estilo para estruturas de controle são as seguintes:
 
@@ -514,7 +514,7 @@ $foo->bar(
 ```
 
 7. Conclusão
---------------
+------------
 
 Há muitos elementos de estilo e práticas intencionalmente omitidos por este guia. Estes incluem, mas não estão limitados a:
 
@@ -535,7 +535,7 @@ Há muitos elementos de estilo e práticas intencionalmente omitidos por este gu
 Recomendações futuras PODEM revisar e estender este guia para abordar esses ou outros elementos de estilo e prática.
 
 Apêndice A. Pesquisa
---------------
+--------------------
 
 Ao escrever esse guia de estilo, o grupo fez um levantamento de projetos de membros para determinar práticas comuns. A pesquisa está mantida aqui para a posteridade.
 
