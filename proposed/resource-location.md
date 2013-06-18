@@ -172,8 +172,9 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ### 1.1 Definitions
 
-- **Resource**: A common file or directory.
-- **Class**: A PHP class, trait or interface.
+**Resource**: A common file or directory.
+
+**Class**: A PHP class, trait or interface.
 
 ### 1.2 Resource URIs
 
