@@ -93,10 +93,10 @@
 >    {% include '/acme/demo-package/show.html.twig' %}
 >    ```
 >
-> 4. **Locate resources independent from PHP files**
+> 4. **Locate resources independent from PHP classes**
 >
 >    Even though this is not the main goal, support location of resources
->    independent from PHP source code.
+>    independent from PHP classes.
 >
 >    ```php
 >    $locator->addPath('view', '/app/', '/path/to/app/views');
@@ -173,6 +173,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 ### 1.1 Definitions
 
 - **Resource**: A common file or directory.
+- **Class**: A PHP class, trait or interface.
 
 ### 1.2 Resource URIs
 
