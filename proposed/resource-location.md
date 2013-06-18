@@ -326,7 +326,8 @@ one entry if the path exists. This entry MUST be the path itself.
 > Consistency with previous sections.
 
 `findResource()` MUST return the path of a URI in the "file" scheme if it
-exists. Otherwise a `Psr\ResourceLocation\NotFoundException` MUST be thrown.
+exists. Otherwise a `Psr\ResourceLocation\NoSuchResourceException` MUST be
+thrown.
 
 > Consistency with previous sections.
 
