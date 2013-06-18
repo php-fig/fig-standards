@@ -230,11 +230,11 @@ schemes (for example the "file" scheme in section 1.5).
 
 Examples of valid URIs:
 
-- `classpath:/Acme/Demo/Parser.php`
-- `view:/acme/demo-package/template.php`
-- `config:/acme/demo-package`
-- `file:/`
-- `file:C:/Project/settings.xml`
+- classpath:/Acme/Demo/Parser.php
+- view:/acme/demo-package/template.php
+- config:/acme/demo-package
+- file:/
+- file:C:/Project/settings.xml
 
 ### 1.3 Resource Variants
 
