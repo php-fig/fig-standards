@@ -95,7 +95,7 @@
 >
 > 4. **Locate resources independent from PHP files**
 >
->    Even though this is the main goal, support location of resources
+>    Even though this is not the main goal, support location of resources
 >    independent from PHP source code.
 >
 >    ```php
