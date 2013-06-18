@@ -44,8 +44,6 @@ This PSR specifies the rules for an interoperable autoloader.
 3. Specification
 ----------------
 
-- A class file MUST contain only one class definition.
-
 - A fully qualified class name MUST begin with a top-level namespace name,
   which MUST be followed by zero or more sub-namespace names, and MUST end in
   a class name.
@@ -57,6 +55,9 @@ This PSR specifies the rules for an interoperable autoloader.
 - The relative class name MUST be mapped to a sub-path by replacing namespace
   separators with directory separators, and the result MUST be suffixed with
   `.php`.
+
+- If the mapped file exists, the registered autoloader MUST include or require
+  the mapped file if it exists.
 
 - The registered autoloader callback MUST NOT throw exceptions, MUST NOT
   raise errors of any level, and SHOULD NOT return a value.
