@@ -1,19 +1,3 @@
-Resource Location
-=================
-
-This document describes a common interface for locating resources in PHP.
-
-The main goal is to allow libraries to receive a
-`Psr\ResourceLocation\ResourceLocatorInterface` object and locate file resources
-in a simple and universal way. Frameworks and CMSs that have custom needs MAY
-extend the interface for their own purpose, but SHOULD remain compatible with
-this document. This ensures that the third-party libraries an application uses
-can locate resources as specified in this document.
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
-
 > This proposal is annotated with comments in quote blocks like this one. These
 > annotations should help to clarify why certain passages exist and what other
 > alternatives exist or have been tried.
@@ -166,6 +150,22 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 >             /Demo
 >                 Parser.php -> /path/to/Parser.php
 > ```
+
+Resource Location
+=================
+
+This document describes a common interface for locating resources in PHP.
+
+The main goal is to allow libraries to receive a
+`Psr\ResourceLocation\ResourceLocatorInterface` object and locate file resources
+in a simple and universal way. Frameworks and CMSs that have custom needs MAY
+extend the interface for their own purpose, but SHOULD remain compatible with
+this document. This ensures that the third-party libraries an application uses
+can locate resources as specified in this document.
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 1. Specification
 ----------------
