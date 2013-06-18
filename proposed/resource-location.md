@@ -15,7 +15,7 @@
 > * file:/var/www/project/favicon.ico
 > * view:/acme/demo-package/show.php
 >
-> This URIs can have different schemes ("classpath", "file" etc.), but only the
+> These URIs can have different schemes ("classpath", "file" etc.), but only the
 > scheme "file" is specified in this document.
 >
 > The resource locator is able to turn URIs into file paths which can be read
@@ -154,7 +154,7 @@
 Resource Location
 =================
 
-This document describes a common interface for locating resources in PHP.
+This document describes a common interface for resource location in PHP.
 
 The main goal is to allow libraries to receive a
 `Psr\ResourceLocation\ResourceLocatorInterface` object and locate file resources
