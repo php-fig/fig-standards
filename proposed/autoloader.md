@@ -57,7 +57,7 @@ This PSR specifies the rules for an interoperable autoloader.
   `.php`.
 
 - If the mapped file exists, the registered autoloader MUST include or require
-  the mapped file if it exists.
+  it.
 
 - The registered autoloader callback MUST NOT throw exceptions, MUST NOT
   raise errors of any level, and SHOULD NOT return a value.
