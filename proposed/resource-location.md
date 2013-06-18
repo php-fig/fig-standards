@@ -96,7 +96,7 @@
 > 4. **Locate resources independent from PHP classes**
 >
 >    Even though this is not the main goal, support location of resources
->    independent from PHP classes.
+>    independent from PHP classes, interfaces and traits.
 >
 >    ```php
 >    $locator->addPath('view', '/app/', '/path/to/app/views');
@@ -173,8 +173,6 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 ### 1.1 Definitions
 
 **Resource**: A common file or directory.
-
-**Class**: A PHP class, trait or interface.
 
 ### 1.2 Resource URIs
 
