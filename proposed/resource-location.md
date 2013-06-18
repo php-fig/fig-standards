@@ -36,7 +36,7 @@
 >
 > How to configure such a resource locator depends on the implementation.
 > A very simple implementation would feature a method `addPath()` which maps a
-> URI scheme and a URI path prefix to a directory:
+> URI scheme and a URI path prefix to one or more directories:
 >
 > ```php
 > // paths in the "classpath" scheme are prefixed by PHP namespaces with
