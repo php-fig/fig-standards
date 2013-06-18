@@ -159,12 +159,20 @@ class ClassLoader
      * @param string $prefix The namespace prefix.
      * 
      * @param string $base A base directory for class files in the namespace.
+     * 
+     * @param bool $prepend If true, prepend the base directory to the stack
+     * instead of appending it; this causes it to be searched first rather
+     * than last.
      */
-    public function addNamespace($prefix, $base)
+    public function addNamespace($prefix, $base, $prepend = false)
     {
         $prefix = trim($prefix, '\\');
         $base = rtrim($base, DIRECTORY_SEPARATOR);
-        $this->prefixes[$prefix][] = $base;
+        if ($prepend) {
+            array_unshift($this->prefixes[$prefix], $base);
+        } else {
+            array_push($this->prefixes[$prefix], $base);
+        }
     }
 
     /**
