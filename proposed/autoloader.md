@@ -40,6 +40,13 @@ This PSR specifies the rules for an interoperable autoloader.
 - `base directory`: The absolute directory path in the file system where the
   files for `relative class names` have their root.
 
+- `mapped file name`: The path in the file system that must be included for a
+  fully qualified class name. Given a fully qualified class name of
+  `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a base directory
+  of `/path/to/packages/foo-bar/src`, the translation rules set forth by the
+  specification will result in a class file name of
+  `/path/to/packages/foo-bar/src/Baz/Qux.php`.
+
 
 3. Specification
 ----------------
@@ -54,10 +61,11 @@ This PSR specifies the rules for an interoperable autoloader.
 
 - The relative class name MUST be mapped to a sub-path by replacing namespace
   separators with directory separators, and the result MUST be suffixed with
-  `.php`.
+  `.php`; the resulting string MUST be appended to the base directory to form
+  the mapped file name.
 
-- If the mapped file exists, the registered autoloader MUST include or require
-  it.
+- If the mapped file name exists in the file system, the registered autoloader
+  MUST include or require it.
 
 - The registered autoloader callback MUST NOT throw exceptions, MUST NOT
   raise errors of any level, and SHOULD NOT return a value.
@@ -195,7 +203,7 @@ class ClassLoader
                 // relative file name
                 $file = $base . $relative . '.php';
                 
-                // can we read the file from the filesystem?
+                // can we read the file from the file system?
                 if (is_readable($file)) {
                     // yes, we're done
                     include $file;
