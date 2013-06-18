@@ -107,6 +107,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 >    {% include 'classpath:/Acme/Demo/resources/views/show.html.twig' %}
 >    {% include 'view:/acme/demo-package/show.html.twig' %}
 >    {% include '/acme/demo-package/show.html.twig' %}
+>    ```
 >
 > 4. **Locate resources independent from PHP files**
 >
