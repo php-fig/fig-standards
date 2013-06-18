@@ -64,9 +64,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 > $locator->addPath('view', '/acme/demo-package/', '/path/to/resources/views');
 > ```
 >
-> END OF TL;DR
->
-> **MAIN GOALS:**
+> **Main Goals:**
 >
 > The general goal of this PSR is to locate files (PHP, XML, YAML, INI, JPG, etc.)
 > and directories in a generic way. For example, there should be a unified
@@ -78,7 +76,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 >
 > The tertiary goal is to provide a foundation for the new autoloader PSR.
 >
-> **REQUIREMENTS:**
+> **Requirements:**
 >
 > 1. **Locate files relative to classes**
 >
@@ -132,7 +130,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 >
 >    include $locator->findResource('classpath:/Acme/Demo/Parser.php');
 >
-> **FUTURE**:
+> **Future Outlook**:
 >
 > This PSR addresses only (a) a way for identifying resources through URIs
 > and (b) a way for locating these resources through the resource locator.
@@ -144,7 +142,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 > to turning a class request into a URI and locating that URI with the
 > locator.
 >
-> **PERFORMANCE**:
+> **Performance**:
 >
 > Resource location performance can be optimized by mirroring the URI
 > paths in a cache directory. Then location is reduced to one simple
