@@ -37,8 +37,8 @@ This PSR specifies the rules for an interoperable autoloader.
   `\Foo\Bar\Baz\Qux` and a `namespace prefix` of `\Foo\Bar\`, the `relative
   class name` is `Baz\Qux`.
 
-- `base directory`: The absolute directory path in the file system where the
-  files for `relative class names` have their root.
+- `base directory`: The directory path in the file system where the files for
+  `relative class names` have their root.
 
 - `mapped file name`: The path in the file system that must be included for a
   fully qualified class name. Given a fully qualified class name of
