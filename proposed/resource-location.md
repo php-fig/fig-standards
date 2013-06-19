@@ -141,9 +141,11 @@
 >
 > **Common Rules of Resource Location and Autoloading**
 >
-> The current PSRs have a set of common, underlying rules. We have the
-> following possibilities to deal with these common rules
-> (PSR-X = autoloading, PSR-R = resource location):
+> Since both the autolading PSR (PSR-X) and this PSR (PSR-R) define how
+> to map PHP namespaces to directories, and how to locate files in these
+> directories, they need common logical rules for specifying this mapping.
+>
+> We have the following possibilities:
 >
 > 1. Include common rules in PSR-R, refer to PSR-R from PSR-X
 > 2. Include common rules in PSR-X, refer to PSR-X from PSR-R
@@ -225,6 +227,7 @@
 >
 > Disadvantages:
 >
+> * PSR-X and PSR-R implementations are not necessarily compatible
 > * if it turns out that today's formulation of PSR-X is not adequate/sufficient
 >   for PSR-R, we will either have to
 >   - release a suboptimal PSR-R spec or
