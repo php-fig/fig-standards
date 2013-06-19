@@ -10,11 +10,8 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 -----------
 
 This PSR specifies the rules for an interoperable PHP autoloader that can co-exist 
-with any other SPL registered autoloaders.
-
-The autoloader when implemented correctly will go through an ordered list of 
-path-namespace mappings. Each mapping consists of a filesystem directory 
-and a PHP namespace.
+with any other SPL registered autoloaders, which via some means of configuration will
+map valid PHP namespaces to valid "base directories" in the file system.
 
 
 2. Definitions
@@ -30,7 +27,7 @@ and a PHP namespace.
 - **namespace**: Given a "fully qualified class name" of `\Foo\Bar\Baz\Qux`, the
   "namespace" is `\Foo\Bar\Baz\`.
 
-- **namespace name**: Given a "fully qualified class name" of
+- **namespace names**: Given a "fully qualified class name" of
   `\Foo\Bar\Baz\Qux`, the "namespace names" are `Foo`, `Bar`, and `Baz`.
 
 - **namespace prefix**: One or more contiguous "namespace names" at the start of
@@ -38,16 +35,17 @@ and a PHP namespace.
   the "namespace prefix" may be `\Foo\`, `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
 
 - **relative class name**: The parts of the "fully qualified class name" that
-  appear after the "namespace prefix". Given a `fully qualified class name` of
-  `\Foo\Bar\Baz\Qux` and a "namespace prefix" of `\Foo\Bar\`, the `relative
-  class name` is `Baz\Qux`.
+  appear after the "namespace prefix". Given a "fully qualified class name" of
+  `\Foo\Bar\Baz\Qux` and a "namespace prefix" of `\Foo\Bar\`, the "relative
+  class name" is `Baz\Qux`.
 
 - **base directory**: The directory path in the file system where the files for
-  "relative class names" have their root.
+  "relative class names" have their root. For example, a namespace prefix of 
+  `\Foo\Bar\` could have a "base directory" such as `/path/to/packages/foo-bar/src`.
 
 - **mapped file name**: The path in the file system that must be included for a
-  "fully qualified class name". Given a fully qualified class name of
-  `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a base directory
+  "fully qualified class name". Given a "fully qualified class name" of
+  `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a "base directory"
   of `/path/to/packages/foo-bar/src`, the translation rules set forth by the
   specification will result in a class file name of
   `/path/to/packages/foo-bar/src/Baz/Qux.php`.
