@@ -9,11 +9,11 @@
 >
 > This specification proposes to refer to files and directories through URIs, e.g.:
 >
-> * classpath:/Acme/Demo/Parser/resources/config.yml
-> * classpath:/Acme/Demo/Parser/resources
-> * classpath:/Acme/Demo/Parser.php
-> * file:/var/www/project/favicon.ico
-> * view:/acme/demo-package/show.php
+> * classpath:///Acme/Demo/Parser/resources/config.yml
+> * classpath:///Acme/Demo/Parser/resources
+> * classpath:///Acme/Demo/Parser.php
+> * file:///var/www/project/favicon.ico
+> * view:///acme/demo-package/show.php
 >
 > These URIs can have different schemes ("classpath", "file" etc.), but only the
 > scheme "file" is specified in this document.
@@ -23,13 +23,13 @@
 >
 > ```php
 > // autoloading
-> include $locator->findResource('classpath:/Acme/Demo/Parser.php');
+> include $locator->findResource('classpath:///Acme/Demo/Parser.php');
 >
 > // loading of configuration files
-> $config = Yaml::parse($locator->findResource('classpath:/Acme/Demo/config.yml'));
+> $config = Yaml::parse($locator->findResource('classpath:///Acme/Demo/config.yml'));
 >
 > // loading of templates
-> // internally prepends the "view:" scheme
+> // internally prepends the "view://" scheme
 > // loads "show.php" from the Composer package "acme/demo-package"
 > render('/acme/demo-package/show.php');
 > ```
@@ -70,14 +70,14 @@
 >    `config/settings.yml`.
 >
 >    ```php
->    $locator->findResource('classpath:/Acme/Demo/config/settings.yml');
+>    $locator->findResource('classpath:///Acme/Demo/config/settings.yml');
 >    ```
 >
 > 2. **Locate both directories and files**
 >
 >    ```php
->    $locator->findResource('classpath:/Acme/Demo/config/settings.yml');
->    $locator->findResource('classpath:/Acme/Demo/config');
+>    $locator->findResource('classpath:///Acme/Demo/config/settings.yml');
+>    $locator->findResource('classpath:///Acme/Demo/config');
 >    ```
 >
 > 3. **Short identifiers when the context is known**
@@ -88,8 +88,8 @@
 >    `resources/views/`, make it possible to skip this redundant information.
 >
 >    ```twig
->    {% include 'classpath:/Acme/Demo/resources/views/show.html.twig' %}
->    {% include 'view:/acme/demo-package/show.html.twig' %}
+>    {% include 'classpath:///Acme/Demo/resources/views/show.html.twig' %}
+>    {% include 'view:///acme/demo-package/show.html.twig' %}
 >    {% include '/acme/demo-package/show.html.twig' %}
 >    ```
 >
@@ -100,7 +100,7 @@
 >
 >    ```php
 >    $locator->addPath('view', '/app/', '/path/to/app/views');
->    $locator->findResource('view:/app/layout.php');
+>    $locator->findResource('view:///app/layout.php');
 >    ```
 >
 > 5. **Support resource overriding**
@@ -113,7 +113,7 @@
 >        '/path/to/acme/demo/src',
 >    ));
 >
->    include $locator->findResource('classpath:/Acme/Demo/Parser.php');
+>    include $locator->findResource('classpath:///Acme/Demo/Parser.php');
 >
 > **Future Outlook**:
 >
@@ -134,8 +134,8 @@
 > `file_exists()` check in that cache directory. For example, the
 > URIs
 >
-> * view:/acme/demo/show.php
-> * classpath:/Acme/Demo/Parser.php
+> * view:///acme/demo/show.php
+> * classpath:///Acme/Demo/Parser.php
 >
 > would be cached through symbolic links in
 >
@@ -185,25 +185,41 @@ Resources are identified by URIs that MUST conform to
 > * \Acme\Demo\resources\views\show.php
 >
 > The disadvantage is that this method does not allow the same extensibility
-> that URI schemes ("classpath:/", "view:/", "config:/" etc.) do. In
+> that URI schemes ("classpath://", "view://", "config://" etc.) do. In
 > particular, the requirements 3 and 4 from above cannot be fulfilled.
 >
 > The advantage of URIs is that we can use PHP's native functions such as
 > `parse_url()` or `dirname()` to work with them.
 
-Resource URIs MUST contain at least a non-empty scheme and a non-empty path.
-Additional URI parts MAY be interpreted by implementors, but their effect is
-undefined by this specification.
+Resource URIs MUST contain at least a non-empty scheme, followed by a colon
+(":"), a double slash ("//") and a non-empty path. Additional URI parts MAY be
+interpreted by implementors, but their effect is undefined by this specification.
 
-> i.e. scheme:/some/path
+> i.e. scheme:///some/path
 >
 > Other URI parts are the authority (host:port) or the query string. We don't
 > need them for the base functionality, but their presence doesn't hurt either.
+>
+> We have the alternatives of including or excluding the double slash after the
+> scheme:
+>
+> * scheme:///some/path vs.
+> * scheme:/some/path
+>
+> Both are valid URIs. The disadvantage of the latter is that PHP Stream
+> Wrappers are not supported for it.
+>
+> "The URL syntax used to describe a wrapper only supports the scheme://...
+> syntax. The scheme:/ and scheme: syntaxes are not supported."
+> – http://www.php.net/manual/en/wrappers.php
 
 The path of a resource URI SHOULD start with a slash ("/").
 
 > Reason: The distinction between absolute and relative paths must be possible
 > if the scheme is omitted, e.g. "Demo/Parser.php" vs. "/Demo/Parser.php".
+>
+> SHOULD and not MUST in order to support absolute Windows paths properly:
+> file://C:/some/path
 
 Valid path segments consist of alphanumeric characters (`A-Z`, `a-z`, `0-9`),
 underscores (`_`), hyphens (`-`), colons (`:`) and dots (`.`). Implementors MAY
@@ -225,15 +241,15 @@ schemes (for example the "file" scheme in section 1.5).
 > E.g. the "classpath" scheme requires path prefixes to correspond to PHP
 > namespaces with backslashes replaced by forward slashes.
 >
-> E.g. "\Acme\Demo\" -> "classpath:/Acme/Demo/config.yml"
+> E.g. "\Acme\Demo\" -> "classpath:///Acme/Demo/config.yml"
 
 Examples of valid URIs:
 
-- classpath:/Acme/Demo/Parser.php
-- view:/acme/demo-package/template.php
-- config:/acme/demo-package
-- file:/
-- file:C:/Project/settings.xml
+- classpath:///Acme/Demo/Parser.php
+- view:///acme/demo-package/template.php
+- config:///acme/demo-package
+- file:///
+- file://C:/Project/settings.xml
 
 ### 1.3 Resource Variants
 
@@ -265,7 +281,7 @@ file system.
 >
 > // returns /path/to/overridden/src/Parser.php if it exists,
 > // /path/to/acme/src/Parser.php otherwise
-> $locator->findResource('classpath:/Acme/Demo/Parser.php');
+> $locator->findResource('classpath:///Acme/Demo/Parser.php');
 > ```
 >
 > As for the locality of files, I considered allowing to return
