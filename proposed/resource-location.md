@@ -150,6 +150,40 @@
 >             /Demo
 >                 Parser.php -> /path/to/Parser.php
 > ```
+>
+> **Resource Location** vs. **Autoloading**
+>
+> We currently have the following possibilities in structuring the current
+> PSRs (PSR-X = autoloading, PSR-R = resource location):
+>
+> * release PSR-R first, base PSR-X on PSR-R
+> * release PSR-X first, base PSR-R on PSR-X
+> * split PSR-X and PSR-R into three or more PSRs
+>
+> I want to briefly outline the implications of the first two solutions:
+>
+> **Essence of PSR-R → PSR-X**
+>
+> PSR-R: Given the URI "classpath:///A/B/C/D" and a prefix `/A/B` mapped
+> to some path `/src`, then `/src/C/D` must be an existing *directory or
+> file*. If `/src/C/D` is a file with PHP class definitions, one of them must
+> have the FQCN `\A\B\C\D`.
+>
+> PSR-X: The autoloader must turn the loaded class into a PSR-R compatible
+> classpath URI (trivial), use the PSR-R locator to find its path and include
+> that path.
+>
+> **Essence of PSR-X → PSR-R**
+>
+> PSR-X: Given a FQCN `\A\B\C\D` and a prefix `\A\B` mapped to some path
+> `/src`, then `/src/C/D/` must be a file containing PHP class definitions.
+> One of these definitions must have the FQCN `\A\B\C\D`.
+>
+> PSR-R: Given the URI "classpath:///A/B/C/D", then one of the prefixes, when
+> turned into a namespace, must be mapped by PSR-X to some path `/src`. Then
+> `/src/C/D` must be an existing *directory or file*. If `/src/C/D` is a file
+> with PHP class definitions, then autoloading `\A\B\C\D` per PSR-X must result
+> in loading `/src/C/D`.
 
 Resource Location
 =================
