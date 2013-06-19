@@ -16,7 +16,7 @@
 > * view:///acme/demo-package/show.php
 >
 > These URIs can have different schemes ("classpath", "file" etc.), but only the
-> scheme "file" is specified in this document.
+> schemes "file" and "classpath" are explicitly specified in this document.
 >
 > The resource locator is able to turn URIs into file paths which can be read
 > or included by PHP code, e.g.:
@@ -115,18 +115,6 @@
 >
 >    include $locator->findResource('classpath:///Acme/Demo/Parser.php');
 >
-> **Future Outlook**:
->
-> This PSR addresses only (a) a way for identifying resources through URIs
-> and (b) a way for locating these resources through the resource locator.
-> Apart from "file", no concrete URI schemes (e.g. "classpath", "view" etc.)
-> are specified. These could be added either to this or to a separate
-> PSR.
->
-> Once the "classpath" scheme is specified, the autoloader PSR is reduced
-> to turning a class request into a URI and locating that URI with the
-> locator.
->
 > **Performance**:
 >
 > Resource location performance can be optimized by mirroring the URI
@@ -172,6 +160,18 @@
 > PSR-X: The autoloader must turn the loaded class into a PSR-R compatible
 > classpath URI (trivial), use the PSR-R locator to find its path and include
 > that path.
+>
+> In this case, a PSR-X compatible autoloader would be as simple to implement
+> as:
+>
+> ```php
+> spl_autoload_register(function ($class) use ($locator) {
+>     try {
+>         include $locator->findResource('classpath:///'.strtr($class, '\\', '/').'.php');
+>     } catch (\Exception $e) {
+>     }
+> });
+> ```
 >
 > **Essence of PSR-X → PSR-R**
 >
