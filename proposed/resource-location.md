@@ -174,6 +174,8 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 **Implementation**: An implementation of `Psr\ResourceLocation\ResourceLocatorInterface`.
 
+**Consumer**: Code using a `Psr\ResourceLocation\ResourceLocatorInterface` implementation.
+
 **Resource**: A common file or directory.
 
 **Path Segment**: A path segment as defined by
@@ -449,6 +451,20 @@ this rule.
 >
 > "PHP class definitions" are defined using include to avoid restrictions on
 > the file extensions (".php", ".php5" etc.) or similar.
+
+### 1.7 Further Schemes
+
+Further schemes MAY freely be added by implementations, consumers and future
+PSRs. However, the following schemes SHOULD be used for the corresponding
+resource types listed in the table:
+
+| Scheme     | Resource Type                             |
+|------------|-------------------------------------------|
+| config://  | configuration files                       |
+| doc://     | documentation files                       |
+| lang://    | translation files                         |
+| public://  | CSS, JS, image and similar public files   |
+| view://    | template/view files                       |
 
 2. Package
 ----------
