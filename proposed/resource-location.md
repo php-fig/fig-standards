@@ -267,8 +267,15 @@ correspond to the rules described in section 1.2.
 `findResourceVariants()` MUST return an array which MUST be empty or contain
 only strings, i.e. the resource variants.
 
-Each resource variant MUST be an absolute path and MUST exist on the local
-file system.
+Each resource variant MUST be an absolute path or a URI and MUST exist on the
+local file system. If a variant is given as URI, it MUST have one of the
+[following schemes available in PHP](http://php.net/manual/en/wrappers.php):
+
+* file://
+* phar://
+* zlib://
+* zip://
+* bzip2://
 
 > Files must exist, otherwise the validity of resource variants cannot be
 > determined. For example:
@@ -284,18 +291,11 @@ file system.
 > $locator->findResource('classpath:///Acme/Demo/Parser.php');
 > ```
 >
-> As for the locality of files, I considered allowing to return
-> [other valid PHP streams](http://at2.php.net/manual/en/wrappers.php) as well, 
-> but most of them don't work on default configurations or are restricted by
-> allow_url_(fopen|include). The schemes that are not restricted are
->
-> * php://
-> * zlib://
-> * glob://
-> * phar://
->
-> None of them make sense IMO in the context of resource locating, but I'll
-> be convinced otherwise if you think they do.
+> As for the URI schemes, these are the only ones that are not restricted by
+> allow_url_(fopen|include). Another one would be "glob://", which is not
+> guaranteed to deliver a result. Certain variants of "php://" are also not
+> restricted, but I'm not sure whether they should be allowed (e.g.
+> "php://stdout").
 
 Different resource URIs MAY be resolved to the same resource variants. They
 MAY even be resolved to overlapping sets of variants, although this is NOT
