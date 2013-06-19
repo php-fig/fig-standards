@@ -330,7 +330,7 @@ can be found, a `Psr\ResourceLocation\NoSuchResourceException` MUST be thrown.
 Implementations of this PSR MUST support the scheme "file". The URI path MUST
 then correspond to a path on the local file system, although directory
 separators MUST be written as slashes (`/`) in the URI. For example, the
-URI `file:C:/Project/settings.xml` resolves to either `C:/Resources/settings.xml`
+URI `file://C:/Project/settings.xml` resolves to either `C:/Resources/settings.xml`
 or `C:\Resources\settings.xml`, depending on the locator implementation.
 
 > For generic use cases (hacks) that cannot be achieved with other schemes.
