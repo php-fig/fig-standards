@@ -17,35 +17,35 @@ map valid PHP namespaces to valid "base directories" in the file system.
 2. Definitions
 --------------
 
-- **class**: The term "class" refers to PHP classes, interfaces, and traits.
+- **class**: The term _class_ refers to PHP classes, interfaces, and traits.
 
 - **fully qualified class name**: The full namespace and class name, with
   leading backslash. (This is per the
   [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
   from the PHP manual.)
 
-- **namespace**: Given a "fully qualified class name" of `\Foo\Bar\Baz\Qux`, the
-  "namespace" is `\Foo\Bar\Baz\`.
+- **namespace**: Given a _fully qualified class name_ of `\Foo\Bar\Baz\Qux`, the
+  _namespace_ is `\Foo\Bar\Baz\`.
 
-- **namespace names**: Given a "fully qualified class name" of
-  `\Foo\Bar\Baz\Qux`, the "namespace names" are `Foo`, `Bar`, and `Baz`.
+- **namespace names**: Given a _fully qualified class name_ of
+  `\Foo\Bar\Baz\Qux`, the _namespace names_ are `Foo`, `Bar`, and `Baz`.
 
-- **namespace prefix**: One or more contiguous "namespace names" at the start of
-  the "namespace". Given a `fully qualified class name` of `\Foo\Bar\Baz\Qux`,
-  the "namespace prefix" may be `\Foo\`, `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
+- **namespace prefix**: One or more contiguous _namespace names_ at the start of
+  the _namespace_. Given a _fully qualified class name_ of `\Foo\Bar\Baz\Qux`,
+  the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
 
-- **relative class name**: The parts of the "fully qualified class name" that
-  appear after the "namespace prefix". Given a "fully qualified class name" of
-  `\Foo\Bar\Baz\Qux` and a "namespace prefix" of `\Foo\Bar\`, the "relative
-  class name" is `Baz\Qux`.
+- **relative class name**: The parts of the _fully qualified class name_ that
+  appear after the _namespace prefix_. Given a _fully qualified class name_ of
+  `\Foo\Bar\Baz\Qux` and a _namespace prefix_ of `\Foo\Bar\`, the _relative
+  class name_ is `Baz\Qux`.
 
 - **base directory**: The directory path in the file system where the files for
-  "relative class names" have their root. For example, a namespace prefix of 
-  `\Foo\Bar\` could have a "base directory" such as `/path/to/packages/foo-bar/src`.
+  _relative class names_ have their root. Given a namespace prefix of 
+  `\Foo\Bar\`, the _base directory_ could be `/path/to/packages/foo-bar/src`.
 
 - **mapped file name**: The path in the file system that must be included for a
-  "fully qualified class name". Given a "fully qualified class name" of
-  `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a "base directory"
+  _fully qualified class name_. Given a _fully qualified class name_ of
+  `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a _base directory_
   of `/path/to/packages/foo-bar/src`, the translation rules set forth by the
   specification will result in a class file name of
   `/path/to/packages/foo-bar/src/Baz/Qux.php`.
