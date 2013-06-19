@@ -139,18 +139,23 @@
 >                 Parser.php -> /path/to/Parser.php
 > ```
 >
-> **Resource Location** vs. **Autoloading**
+> **Common Rules of Resource Location and Autoloading**
 >
-> We currently have the following possibilities in structuring the current
-> PSRs (PSR-X = autoloading, PSR-R = resource location):
+> The current PSRs have a set of common, underlying rules. We have the
+> following possibilities to deal with these common rules
+> (PSR-X = autoloading, PSR-R = resource location):
 >
-> * release PSR-R first, base PSR-X on PSR-R
-> * release PSR-X first, base PSR-R on PSR-X
-> * split PSR-X and PSR-R into three or more PSRs
+> 1. Include common rules in PSR-R, refer to PSR-R from PSR-X
+> 2. Include common rules in PSR-X, refer to PSR-X from PSR-R
+> 3. Include common rules in both
+> 4. Move common rules to a separate PSR, refer to that PSR from both
+>    PSR-X and PSR-R
 >
-> I want to briefly outline the implications of the first two solutions:
+> I want to briefly outline the implications of these solutions:
 >
-> **Essence of PSR-R → PSR-X**
+> **1. Include common rules in PSR-R, refer to PSR-R from PSR-X**
+>
+> In this case, the logical formulation of the PSRs will essentially be:
 >
 > PSR-R: Given the URI "classpath:///A/B/C/D" and a prefix `/A/B` mapped
 > to some path `/src`, then `/src/C/D` must be an existing *directory or
@@ -161,8 +166,19 @@
 > classpath URI (trivial), use the PSR-R locator to find its path and include
 > that path.
 >
-> In this case, a PSR-X compatible autoloader would be as simple to implement
-> as:
+> Advantages:
+>
+> * (comparatively) simple logical constructs
+> * simple implementation
+>
+> Disadvantages:
+>
+> * PSR-X will be delayed after PSR-R
+> * PSR-X cannot be implemented without either
+>   - using a `ResourceLocatorInterface` instance, or
+>   - understanding and (partially) implementing PSR-R
+>
+> Implementing an autoloader is then as simple as:
 >
 > ```php
 > spl_autoload_register(function ($class) use ($locator) {
@@ -173,7 +189,9 @@
 > });
 > ```
 >
-> **Essence of PSR-X → PSR-R**
+> **2. Include common rules in PSR-X, refer to PSR-X from PSR-R**
+>
+> In this case, the logical formulation of the PSRs will essentially be:
 >
 > PSR-X: Given a FQCN `\A\B\C\D` and a prefix `\A\B` mapped to some path
 > `/src`, then `/src/C/D/` must be a file containing PHP class definitions.
@@ -184,6 +202,45 @@
 > `/src/C/D` must be an existing *directory or file*. If `/src/C/D` is a file
 > with PHP class definitions, then autoloading `\A\B\C\D` per PSR-X must result
 > in loading `/src/C/D`.
+>
+> Advantages:
+>
+> * PSR-X can be released now
+> * PSR-X can be implemented independently from whether PSR-R is successful or not
+>
+> Disadvantages:
+>
+> * PSR-R will be more complicated to formulate (see the example above)
+> * if it turns out that today's formulation of PSR-X is not adequate/sufficient
+>   for PSR-R, we will either have to
+>   - release a suboptimal PSR-R spec or
+>   - release a PSR-R spec that is incompatible with PSR-X
+>
+> **3. Include common rules in both**
+>
+> Advantages:
+>
+> * PSR-X can be released now
+> * PSR-X can be implemented independently from whether PSR-R is successful or not
+>
+> Disadvantages:
+>
+> * if it turns out that today's formulation of PSR-X is not adequate/sufficient
+>   for PSR-R, we will either have to
+>   - release a suboptimal PSR-R spec or
+>   - release a PSR-R spec that is incompatible with PSR-X
+>
+> **4. Move common rules to a separate PSR, refer to that PSR from both
+> PSR-X and PSR-R**
+>
+> Advantages:
+>
+> * PSR-X can be implemented independently from whether PSR-R is successful or not
+>
+> Disadvantages:
+>
+> * PSR-X is delayed after that separate PSR
+> * three different PSRs for resource location and autoloading might confuse people
 
 Resource Location
 =================
