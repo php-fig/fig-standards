@@ -20,33 +20,33 @@ and a PHP namespace.
 2. Definitions
 --------------
 
-- `class`: The term "class" refers to PHP classes, interfaces, and traits.
+- **class**: The term "class" refers to PHP classes, interfaces, and traits.
 
-- `fully qualified class name`: The full namespace and class name, with
+- **fully qualified class name**: The full namespace and class name, with
   leading backslash. (This is per the
   [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
   from the PHP manual.)
 
-- `namespace`: Given a `fully qualified class name` of `\Foo\Bar\Baz\Qux`, the
-  `namespace` is `\Foo\Bar\Baz\`.
+- **namespace**: Given a "fully qualified class name" of `\Foo\Bar\Baz\Qux`, the
+  "namespace" is `\Foo\Bar\Baz\`.
 
-- `namespace name`: Given a `fully qualified class name` of
-  `\Foo\Bar\Baz\Qux`, the `namespace names` are `Foo`, `Bar`, and `Baz`.
+- **namespace name**: Given a "fully qualified class name" of
+  `\Foo\Bar\Baz\Qux`, the "namespace names" are `Foo`, `Bar`, and `Baz`.
 
-- `namespace prefix`: One or more contiguous `namespace names` at the start of
-  the `namespace`. Given a `fully qualified class name` of `\Foo\Bar\Baz\Qux`,
-  the `namespace prefix` may be `\Foo\`, `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
+- **namespace prefix**: One or more contiguous "namespace names" at the start of
+  the "namespace". Given a `fully qualified class name` of `\Foo\Bar\Baz\Qux`,
+  the "namespace prefix" may be `\Foo\`, `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
 
-- `relative class name`: The parts of the `fully qualified class name` that
-  appear after the `namespace prefix`. Given a `fully qualified class name` of
-  `\Foo\Bar\Baz\Qux` and a `namespace prefix` of `\Foo\Bar\`, the `relative
+- **relative class name**: The parts of the "fully qualified class name" that
+  appear after the "namespace prefix". Given a `fully qualified class name` of
+  `\Foo\Bar\Baz\Qux` and a "namespace prefix" of `\Foo\Bar\`, the `relative
   class name` is `Baz\Qux`.
 
-- `base directory`: The directory path in the file system where the files for
-  `relative class names` have their root.
+- **base directory**: The directory path in the file system where the files for
+  "relative class names" have their root.
 
-- `mapped file name`: The path in the file system that must be included for a
-  fully qualified class name. Given a fully qualified class name of
+- **mapped file name**: The path in the file system that must be included for a
+  "fully qualified class name". Given a fully qualified class name of
   `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a base directory
   of `/path/to/packages/foo-bar/src`, the translation rules set forth by the
   specification will result in a class file name of
