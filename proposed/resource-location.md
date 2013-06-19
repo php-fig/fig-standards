@@ -415,10 +415,11 @@ Given a URI path `/A/B/C` that consists of the path prefixes {`/`, `/A`, `/A/B`,
 the resulting string MUST be the concatentation of a base directory mapped to one
 of the prefixes and the corresponding relative path, separated by a slash. If that
 string is an existing path in the file system, it MUST be considered a resource
-variant for the given URI. For example, if `/A/B` is mapped to `/src`, and the
-path `/src/C` exists, then `/src/C` is a valid resource variant for the URI
-`classpath:///A/B/C`.
+variant for the given URI.
 
+> For example, if `/A/B` is mapped to `/src`, and the path `/src/C` exists, then
+> `/src/C` is a valid resource variant for the URI `classpath:///A/B/C`.
+>
 > Once it is defined what a resource variant is for the classpath scheme, the
 > rules in section 1.3 and 1.4 guarantee that the locator behaves correctly.
 
