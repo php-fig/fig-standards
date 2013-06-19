@@ -306,7 +306,7 @@ overlapping.
 > For clarification only. Not sure where this might be useful, but I'm also
 > not sure that it never will be.
 
-`findResourceVariants()` MUST return an the same variants in the same order
+`findResourceVariants()` MUST return the same variants in the same order
 when called multiple times during the execution of a PHP application. The
 order MAY be chosen by the implementor.
 
