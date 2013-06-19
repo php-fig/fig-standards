@@ -381,6 +381,7 @@ a resource variant for the given URI.
 Implementations of this PSR MUST support the scheme "classpath". The URI path
 MUST then begin with a slash ("/"), followed by a top-level path segment (the
 *vendor namespace*), which MUST be followed by zero or more sub-path segments.
+Implementations MAY choose not to validate this rule.
 
 > Valid examples:
 >
