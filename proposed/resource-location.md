@@ -463,7 +463,7 @@ resource types listed in the table:
 | config://  | configuration files                       |
 | doc://     | documentation files                       |
 | lang://    | translation files                         |
-| public://  | CSS, JS, image and similar public files   |
+| public://  | CSS, JS, images and similar public files   |
 | view://    | template/view files                       |
 
 2. Package
