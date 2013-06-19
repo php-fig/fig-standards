@@ -172,7 +172,36 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ### 1.1 Definitions
 
+**Implementation**: An implementation of `Psr\ResourceLocation\ResourceLocatorInterface`.
+
 **Resource**: A common file or directory.
+
+**Path Segment**: A path segment as defined by
+[RFC 3986](http://tools.ietf.org/html/rfc3986), without leading or trailing
+slash ("/").
+
+**Path**: A sequence of zero or more path segments, separated by slashes
+and starting with a slash. `/`, `/A`, `/A/` and `/A/B` are valid paths.
+
+**Path Prefix**: Zero or more contiguous path segments that appear at the start
+of a path, including the leading but excluding the trailing slash. Given
+a path `/A/B/C/D`, the possible path prefixes are `/`, `/A`, `/A/B`, `/A/B/C`
+and `/A/B/C/D`.
+
+> If /A/B/C/D is mapped to /path/to/D, then
+>
+> * classpath:///A/B/C/D
+>
+> should resolve to /path/to/D. To keep the definition of the classpath scheme
+> simple - which requires that at least one path prefix must be mapped - the
+> full path is also considered a possible prefix.
+
+**Relative Path**: Given a path `/A/B/C/D` and a prefix `/A/B`, the relative
+path is `C/D`. Relative paths never start with a slash ("/").
+
+**Fully Qualified Class Name (FQCN)**: A class identifier given as fully
+qualified name as defined by the
+[PHP Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php).
 
 ### 1.2 Resource URIs
 
@@ -253,19 +282,31 @@ Examples of valid URIs:
 
 ### 1.3 Resource Variants
 
-The main task of the resource locator is to resolve resource URIs to file paths.
-Each resource URI MAY resolve to multiple file paths. These are called
-*resource variants*.
+The main task of the resource locator is to resolve resource URIs to existing
+file paths. These are called *resource variants*. Each resource URI MAY resolve
+to multiple variants. The concrete definition of how to obtain a variant for
+a given URI is provided by scheme specifications (section 1.5 and 1.6).
 
 > For overriding resources. See requirement 5.
 
-The `ResourceLocatorInterface` exposes the method `findResourceVariants()` to
-retrieve the variants. The method receives a resource URI as first argument and
-MUST throw a `Psr\ResourceLocation\IllegalUriException` if the URI does not
-correspond to the rules described in section 1.2.
+The `ResourceLocatorInterface` exposes the method `findResourceVariants()` which
+receives a resource URI as first argument and MUST return all variants for that
+URI in descending order of priority. How to assign priorities MUST be chosen by
+the implementation (e.g. FIFO). The method MUST throw a
+`Psr\ResourceLocation\IllegalUriException` if the URI does not correspond to the
+rules described in section 1.2.
 
-`findResourceVariants()` MUST return an array which MUST be empty or contain
-only strings, i.e. the resource variants.
+> If a scheme specification defines what a "variant" is for a given URI, by
+> implication every such variant must be returned by findResourceVariants().
+
+`findResourceVariants()` MUST return an array which MUST contain only strings,
+i.e. the resource variants. If no variants exist for a resource URI, the array
+MUST be empty.
+
+> No other return values allowed.
+>
+> If a scheme specification defines what a "variant" is but no such variant
+> can be found for a given URI, by implication an empty array must be returned.
 
 Each resource variant MUST be an absolute path or a URI and MUST exist on the
 local file system. If a variant is given as URI, it MUST have one of the
@@ -299,53 +340,113 @@ local file system. If a variant is given as URI, it MUST have one of the
 
 Different resource URIs MAY be resolved to the same resource variants. They
 MAY even be resolved to overlapping sets of variants, although this is NOT
-RECOMMENDED. Two sets of variants are overlapping if they contain both common
-and distinct variants. For example, the sets {V1, V2} and {V2, V3} are
+RECOMMENDED. Two sets of variants are *overlapping* if they contain both
+common and distinct variants. For example, the sets {V1, V2} and {V2, V3} are
 overlapping.
 
 > For clarification only. Not sure where this might be useful, but I'm also
 > not sure that it never will be.
 
 `findResourceVariants()` MUST return the same variants in the same order
-when called multiple times during the execution of a PHP application. The
-order MAY be chosen by the implementor.
+when called multiple times during the execution of a PHP application.
 
 > Idempotence.
 
 ### 1.4 Resource Location
 
 The `ResourceLocatorInterface` exposes the method `findResource()` for
-resolving a resource URI to a file path. It receives a resource URI as first
-argument and MUST throw a `Psr\ResourceLocation\IllegalUriException`
+resolving a resource URI to a resource variant. It receives a resource URI as
+first argument and MUST throw a `Psr\ResourceLocation\IllegalUriException`
 if the URI does not correspond to the rules described in section 1.2.
 
 `findResource()` MUST return a string, which MUST be equivalent to the first
 entry of the array returned by `findResourceVariants()`. If no existing path
 can be found, a `Psr\ResourceLocation\NoSuchResourceException` MUST be thrown.
 
-> The variant is the highest priority one.
+> The first variant is the highest priority one, as defined in section 1.3.
 
 ### 1.5 File Scheme
 
-Implementations of this PSR MUST support the scheme "file". The URI path MUST
-then correspond to a path on the local file system, although directory
-separators MUST be written as slashes (`/`) in the URI. For example, the
-URI `file://C:/Project/settings.xml` resolves to either `C:/Resources/settings.xml`
-or `C:\Resources\settings.xml`, depending on the locator implementation.
-
 > For generic use cases (hacks) that cannot be achieved with other schemes.
 
-`findResourceVariants()` MUST return an empty array if the path specified by
-a URI in the "file" scheme does not exist. It MUST return an array with exactly
-one entry if the path exists. This entry MUST be the path itself.
+Implementations of this PSR MUST support the scheme "file". If the URI path
+corresponds to an existing path on the local file system, it MUST be considered
+a resource variant for the given URI.
 
-> Consistency with previous sections.
+> Once it is defined what a resource variant is for the classpath scheme, the
+> rules in section 1.3 and 1.4 guarantee that the locator behaves correctly.
 
-`findResource()` MUST return the path of a URI in the "file" scheme if it
-exists. Otherwise a `Psr\ResourceLocation\NoSuchResourceException` MUST be
-thrown.
+### 1.6 Classpath Scheme
 
-> Consistency with previous sections.
+Implementations of this PSR MUST support the scheme "classpath". The URI path
+MUST then begin with a slash ("/"), followed by a top-level path segment (the
+*vendor namespace*), which MUST be followed by zero or more sub-path segments.
+
+> Valid examples:
+>
+> * classpath:///Acme
+> * classpath:///Acme/Demo
+> * classpath:///Acme/Demo/Parser.php
+> * classpath:///Acme/Demo/config
+> * classpath:///Acme/Demo/config/settings.ini
+
+At least one path prefix of the URI path MUST be mapped to a directory
+(the *base directory*) provided as absolute path or URI with one of the
+schemes defined in section 1.3. That directory MUST exist on the local file
+system, although implementations MAY choose not to validate this rule. A path
+prefix MAY be mapped to more than one directory. How the mapping is specified
+MUST be chosen by the implementation.
+
+> Valid examples:
+>
+> * / => /path/to/src/
+> * /Acme => /path/to/acme/
+> * /Acme => phar://acme.phar/src
+> * /Acme => [/path/to/acme/, /path/to/overridden/]
+> * /Acme/Demo/Parser => /path/to/src/
+> * /Acme/Demo/Parser.php => /path/to/src/ (valid, but not sensible in practice)
+>
+> Invalid examples (mapping of files is not supported):
+>
+> * /Acme/Demo/Parser.php => /path/to/src/Parser.php
+
+Given a URI path `/A/B/C` that consists of the path prefixes {`/`, `/A`, `/A/B`,
+`/A/B/C`} and the corresponding relative paths {`A/B/C`, `B/C`, `C` and ``}, the
+resulting string MUST be the concatentation of a base directory mapped to one of
+the prefixes and the corresponding relative path, separated by a slash. If that
+string is an existing path in the file system, it MUST be considered a resource
+variant for the given URI. For example, if `/A/B` is mapped to `/src`, and the
+path `/src/C` exists, then `/src/C` is a valid resource variant for the URI
+`classpath:///A/B/C`.
+
+> Once it is defined what a resource variant is for the classpath scheme, the
+> rules in section 1.3 and 1.4 guarantee that the locator behaves correctly.
+
+Variants for longer path prefixes MUST have a higher priority than variants for
+shorter path prefixes.
+
+> If both `/A` and `/A/B` are mapped, files found in a base directory mapped to
+> `/A/B` should be preferred.
+
+If a resource variant contains PHP class definitions that would be loaded when
+[including](http://php.net/manual/en/function.include.php) the file, exactly
+one of these classes MUST have a FQCN equivalent to the URI path with all
+slashes ("/") replaced by backslashes and the file extension(s) removed. This is
+the *primary class*. All other classes in the file MUST belong to the same
+namespace as the primary class. The implementation MAY choose not to validate
+this rule.
+
+> Make sure that when mapping
+>
+> * /Acme/Demo/Parser.php => /path/to/src/Parser.php
+>
+> then Parser.php must contain the class \Acme\Demo\Parser.
+>
+> If it contains further classes, these must belong to the \Acme\Demo\
+> namespace.
+>
+> "PHP class definitions" are defined using include to avoid restrictions on
+> the file extensions (".php", ".php5" etc.) or similar.
 
 2. Package
 ----------
