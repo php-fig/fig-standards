@@ -373,7 +373,7 @@ Implementations of this PSR MUST support the scheme "file". If the URI path
 corresponds to an existing path on the local file system, it MUST be considered
 a resource variant for the given URI.
 
-> Once it is defined what a resource variant is for the classpath scheme, the
+> Once it is defined what a resource variant is for the file scheme, the
 > rules in section 1.3 and 1.4 guarantee that the locator behaves correctly.
 
 ### 1.6 Classpath Scheme
