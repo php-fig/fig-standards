@@ -411,9 +411,9 @@ MUST be chosen by the implementation.
 > * /Acme/Demo/Parser.php => /path/to/src/Parser.php
 
 Given a URI path `/A/B/C` that consists of the path prefixes {`/`, `/A`, `/A/B`,
-`/A/B/C`} and the corresponding relative paths {`A/B/C`, `B/C`, `C` and ``}, the
-resulting string MUST be the concatentation of a base directory mapped to one of
-the prefixes and the corresponding relative path, separated by a slash. If that
+`/A/B/C`} and the corresponding relative paths {`A/B/C`, `B/C`, `C` and `<empty>`},
+the resulting string MUST be the concatentation of a base directory mapped to one
+of the prefixes and the corresponding relative path, separated by a slash. If that
 string is an existing path in the file system, it MUST be considered a resource
 variant for the given URI. For example, if `/A/B` is mapped to `/src`, and the
 path `/src/C` exists, then `/src/C` is a valid resource variant for the URI
