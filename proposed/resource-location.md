@@ -201,9 +201,13 @@ and `/A/B/C/D`.
 **Relative Path**: Given a path `/A/B/C/D` and a prefix `/A/B`, the relative
 path is `C/D`. Relative paths never start with a slash ("/").
 
+**Class**: A PHP class, trait or interface.
+
 **Fully Qualified Class Name (FQCN)**: A class identifier given as fully
 qualified name as defined by the
 [PHP Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php).
+
+**Namespace**: Given a FQCN `\A\B\C\D`, the namespace of that class is `\A\B\C`.
 
 ### 1.2 Resource URIs
 
