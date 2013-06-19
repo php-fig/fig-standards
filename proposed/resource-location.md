@@ -474,7 +474,7 @@ If a resource variant contains PHP class definitions that would be loaded when
 [including](http://php.net/manual/en/function.include.php) the file, exactly
 one of these classes MUST have a FQCN equivalent to the URI path with all
 slashes ("/") replaced by backslashes ("\") and the file extension(s) removed.
-This is the *primary class*. All other classes in the file MUST belong to th
+This is the *primary class*. All other classes in the file MUST belong to the
 same namespace as the primary class. The implementation MAY choose not to
 validate this rule.
 
