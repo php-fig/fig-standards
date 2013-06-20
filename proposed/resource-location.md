@@ -318,7 +318,7 @@ Resources are identified by URIs that MUST conform to
 > particular, the requirements 3 and 4 from above cannot be fulfilled.
 >
 > The advantage of URIs is that we can use PHP's native functions such as
-> `parse_url()` or `dirname()` to work with them.
+> `dirname()` or `basename()` to work with them.
 
 Resource URIs MUST contain at least a non-empty scheme, followed by a colon
 (":"), a double slash ("//") and a non-empty path. Additional URI parts MAY be
