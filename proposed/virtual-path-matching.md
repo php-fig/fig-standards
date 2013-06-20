@@ -15,22 +15,22 @@
 > Example:
 >
 > ```php
-> $sep = '/';
+> $sep = '\\';
 > $mapping = array(
->    '\Acme\Blog\' => 'src/blog',
->    '\Acme\Demo\Parser.php' => 'src/Parser.php',
+>    '\\Acme\\Blog\\' => 'src/blog',
+>    '\\Acme\\Demo\\Parser.php' => 'src/Parser.php',
 > );
 >
-> echo match_path('\Acme\Blog\ShowController.php', $mapping, $sep);
+> echo match_path('\\Acme\\Blog\\ShowController.php', $mapping, $sep);
 > // => "src/blog/ShowController.php"
 >
-> echo match_path('\Acme\Demo\Parser.php', $mapping, $sep);
+> echo match_path('\\Acme\\Demo\\Parser.php', $mapping, $sep);
 > // => "src/Parser.php"
 > ```
 >
 > The algorithm does not care about file suffixes or the distinction between
 > files and directories. Restrictions in this regard can be made by PSRs
-> using this algorithm.
+> using this algorithm (i.e. PSR-X, PSR-R and others).
 >
 > **Potential formulation of PSR-X (autoloading) based on this PSR**
 >
