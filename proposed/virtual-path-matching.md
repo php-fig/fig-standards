@@ -120,8 +120,11 @@ local file system.
 
 ### 1.2 Path Matching Algorithm
 
-Compliant path matchers MUST implement this algorithm to find matches for
-virtual paths.
+Compliant path matchers MUST implement this algorithm or an equivalent
+algorithm that returns the same outputs for the same inputs.
+
+> For example, a caching algorithm is implemented differently but behaves
+> the same.
 
 Given the separator "/", a path `/A/B/C/D` and a path mapping which assigns
 `/A/B/C/D` to one or more base paths, then every base path is a *potential
