@@ -174,12 +174,10 @@ case is undefined.
 -------
 
 The following block defines the path syntax used in this PSR using the Extended
-Backus-Naur Form specified in ISO/IEC 14977.
+Backus-Naur Form (EBNF) specified in ISO/IEC 14977.
 
 ```
-separator     = all characters
-
-path-symbol   = all characters - separator
+path-symbol   = all characters - separator character
 path-segment  = path-symbol, {path-symbol}
 path-prefix   = separator, {path-segment, separator}
 relative-path = path-segment, {separator, path-segment}
