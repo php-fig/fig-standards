@@ -57,7 +57,8 @@
 >
 > - Consumers using both a PSR-X compliant autoloader and a PSR-R compliant
 >   resource locator SHOULD pass the same path mapping to this algorithm as is
->   used in the PSR-X autoloader.
+>   used in the PSR-X autoloader, with backslashes ("\") in the mapped paths
+>   replaced by forward slashes ("/").
 
 Virtual Path Matching
 =====================
