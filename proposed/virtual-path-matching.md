@@ -63,8 +63,9 @@
 Path Matching
 =============
 
-This document describes an algorithm that finds the real path(s) for a virtual
-path when given a mapping of paths and path prefixes to directories.
+This document describes an algorithm that finds the physical path(s) for a
+logical path when given a mapping of logical paths and path prefixes to
+physical paths.
 
 The main goal is to provide a foundation for future PSRs based on this
 algorithm, such as an autoloader PSR, a resource location PSR and so on.
@@ -92,11 +93,11 @@ slash ("/").
 
 **Path Segment**: A sequence of one or more characters except for separators.
 
-**Path**: A sequence of zero or more path segments, divided by separators and
-starting with a separator. Given the separator "/", then `/`, `/A`, `/A/` and
-`/A/B` are valid paths.
+**(Logical) Path**: A sequence of zero or more path segments, divided by
+separators and starting with a separator. Given the separator "/", then `/`,
+`/A`, `/A/` and `/A/B` are valid paths.
 
-**Virtual Path**: A path that does not necessarily exist on the file system.
+**Physical Path**: A file system path.
 
 > E.g. a namespace (\Acme\Demo\Parser) or a URI path (/acme/demo-package/config)
 
@@ -108,9 +109,10 @@ that ends with a separator. For example, given the separator "/" and the path
 class name is the remaining part of that path. For example, given the separator
 "/", a path `/A/B/C/D` and a path prefix `/A/B/`, then `C/D` is the relative path.
 
-**Path Mapping**: A set of paths (which we refer to as *mapped paths*), each of
-which is associated with one or more file system paths (the *base paths*). The
-base paths MUST be provided such that PHP can read and include them from the
+**Path Mapping**: A set of logical paths, each of which is associated with one
+or more physical paths. Given a path mapping, we call the logical paths in the
+mapping *mapped*. We refer to the physical paths in the mapping as *base paths*.
+The base paths MUST be provided such that PHP can read and include them from the
 local file system.
 
 > That is, the base paths must be loadable even if allow_url_fopen and
