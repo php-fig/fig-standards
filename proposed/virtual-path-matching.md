@@ -7,9 +7,9 @@
 >
 > **TL;DR**
 >
-> Finds actual paths on a file system for virtual paths, such as FQCNs
+> Finds actual paths on a file system for logical paths, such as FQCNs
 > ("\Acme\Demo\Parser") or URI paths ("/acme/demo-package/show.html.php"),
-> using a mapping of virtual paths to base paths. The separator
+> using a mapping of logical paths to base paths. The separator
 > character can be chosen by the implementation.
 >
 > Example:
@@ -164,7 +164,7 @@ or continue in order to generate all matches.
 
 > Find first vs. find all matches.
 
-A path matcher MAY not find a match for a virtual path. The result in this
+A path matcher MAY not find a match for a logical path. The result in this
 case is undefined.
 
 > Exception, returning null etc. can be chosen by the implementation.
@@ -202,7 +202,7 @@ the specification it MUST be considered compatible with this PSR.
 
 /**
  * An example implementation of the above specification that finds a match
- * for a virtual path when given a mapping of paths to base paths and a
+ * for a logical path when given a mapping of paths to base paths and a
  * separator character.
  *
  * Note that this is only an example, and is not a specification in itself.
