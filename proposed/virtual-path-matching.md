@@ -64,7 +64,7 @@ Path Matching
 =============
 
 This document describes an algorithm that finds the real path(s) for a virtual
-path when given a mapping of path prefixes to directories.
+path when given a mapping of paths and path prefixes to directories.
 
 The main goal is to provide a foundation for future PSRs based on this
 algorithm, such as an autoloader PSR, a resource location PSR and so on.
