@@ -215,6 +215,7 @@ class ClassLoader
                 if (is_readable($file)) {
                     // yes, we're done
                     include $file;
+                    return;
                 }
             }
         }
