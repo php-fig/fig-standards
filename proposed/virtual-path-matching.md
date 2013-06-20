@@ -91,7 +91,8 @@ slash ("/").
 **Path Segment**: A sequence of one or more characters except for separators.
 
 **Path**: A sequence of zero or more path segments, divided by separators and
-starting with a separator. `/`, `/A`, `/A/` and `/A/B` are valid paths.
+starting with a separator. Given the separator "/", then `/`, `/A`, `/A/` and
+`/A/B` are valid paths.
 
 **Virtual Path**: A path that does not necessarily exist on the file system.
 
