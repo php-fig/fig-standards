@@ -60,8 +60,8 @@
 >   used in the PSR-X autoloader, with backslashes ("\") in the mapped paths
 >   replaced by forward slashes ("/").
 
-Virtual Path Matching
-=====================
+Path Matching
+=============
 
 This document describes an algorithm that finds the real path(s) for a virtual
 path when given a mapping of path prefixes to directories.
@@ -184,7 +184,13 @@ relative-path = path-segment, {separator, path-segment}
 path          = path-prefix, [relative-path]
 ```
 
-4. Example Implementation
+4. Package
+----------
+
+The test suite to verify a path macher implementation is provided as part of the
+psr/path-matching package.
+
+5. Example Implementation
 -------------------------
 
 The example implementation MUST NOT be regarded as part of the specification; it is
