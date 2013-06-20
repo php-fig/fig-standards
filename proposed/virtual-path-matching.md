@@ -116,8 +116,6 @@ local file system.
 > That is, the base paths must be loadable even if allow_url_fopen and
 > allow_url_include are disabled.
 
-**Mapped Path (Prefix)**: A path (prefix) contained in a given path mapping.
-
 ### 1.2 Path Matching Algorithm
 
 Compliant path matchers MUST implement this algorithm or an equivalent
