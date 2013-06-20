@@ -119,6 +119,12 @@ one of the [following schemes available in PHP](http://php.net/manual/en/wrapper
 * zip://
 * bzip2://
 
+> These are the only URI schemes in PHP that are not restricted by
+> allow_url_(fopen|include). Another one would be "glob://", which is not
+> guaranteed to deliver a result. Certain variants of "php://" are also not
+> restricted, but I'm not sure whether they should be allowed (e.g.
+> "php://stdout").
+
 **Mapped Path (Prefix)**: A path (prefix) contained in a given path mapping.
 
 2. Path Matching Algorithm
