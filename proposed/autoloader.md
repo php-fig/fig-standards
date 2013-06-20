@@ -43,11 +43,11 @@ map valid PHP namespaces to valid "base directories" in the file system.
   _relative class names_ have their root. Given a namespace prefix of 
   `\Foo\Bar\`, the _base directory_ could be `/path/to/packages/foo-bar/src`.
 
-- **mapped file name**: The path in the file system that must be included for a
-  _fully qualified class name_. Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a _base directory_
-  of `/path/to/packages/foo-bar/src`, the translation rules set forth by the
-  specification will result in a class file name of
+- **mapped file name**: The path in the file system resulting from the
+  transformation of a _fully qualified class name_. Given a _fully qualified
+  class name_ of `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a
+  _base directory_ of `/path/to/packages/foo-bar/src`, the transformation
+  rules in the specification will result in a _mapped file name_ of
   `/path/to/packages/foo-bar/src/Baz/Qux.php`.
 
 
