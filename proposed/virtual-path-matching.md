@@ -42,8 +42,8 @@
 >   matching file for a FQCN, using a backslash ("\") as separator. The input
 >   for the algorithm MUST be the FQCN suffixed with `.php`.
 > 
-> - If the matching file name exists in the file system, the registered
->   autoloader MUST include or require it.
+> - If a matching file was found, the registered autoloader MUST include or
+>   require it.
 >
 > - The registered autoloader callback MUST NOT throw exceptions, MUST NOT
 >   raise errors of any level, and SHOULD NOT return a value.
