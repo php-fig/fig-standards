@@ -185,7 +185,75 @@ relative-path = path-segment, {separator, path-segment}
 path          = path-prefix, [relative-path]
 ```
 
-4. Example Implementations
---------------------------
+4. Example Implementation
+-------------------------
 
-TODO
+The example implementation MUST NOT be regarded as part of the specification; it is
+an example only. Path matchers MAY contain additional features and MAY differ in how
+they are implemented. As long as a path matcher adheres to the rules set forth in
+the specification it MUST be considered compatible with this PSR.
+
+```php
+<?php
+
+/**
+ * An example implementation of the above specification that finds a match
+ * for a virtual path when given a mapping of paths to base directories and
+ * a separator character.
+ *
+ * Note that this is only an example, and is not a specification in itself.
+ */
+function match_path($path, array $path_mappings, $separator)
+{
+    // remember the length of the path
+    $path_length = strlen($path);
+    
+    // first see if the complete path is mapped
+    $path_prefix = $path;
+
+    // class file relative to the namespace base directory
+    $relative_path = '';
+
+    // the reverse offset of the separator dividing the path
+    // prefix from the relative path
+    $cursor = -1;
+    
+    while (true) {
+        // are there any base directories for this path prefix?
+        if (isset($path_mappings[$path_prefix])) {
+            // look through base directories for this path prefix
+            foreach ((array) $path_mappings[$path_prefix] as $base_dir) {
+                // separators must be replaced by directory separators
+                $relative_path = strtr($relative_path, $separator, DIRECTORY_SEPARATOR);
+
+                // create a potential match from the base directory and
+                // relative path
+                $potential_match = $base_dir . $relative_path;
+                
+                // can we read the file from the file system?
+                if (is_readable($potential_match)) {
+                    // yes, we have a match
+                    return $potential_match;
+                }
+            }
+        }
+        
+        // once the cursor tested the first character, the
+        // algorithm terminates
+        if ($path_prefix === $separator) {
+            return;
+        }
+        
+        // place the cursor on the next separator to the left
+        $cursor = strrpos($path, $separator, $cursor - 1) - $path_length;
+        
+        // the relative path is the part right of and including
+        // the cursor, e.g. "/Parser.php"
+        $relative_path = substr($path, $cursor);
+        
+        // the path prefix is the part left of and including
+        // the cursor, e.g. "/Acme/Demo/"
+        $path_prefix = substr($path, 0, $cursor + 1);
+    }
+}
+```
