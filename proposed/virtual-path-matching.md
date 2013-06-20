@@ -82,7 +82,8 @@ in section 2.
 > This should neither be fixed to PHP code, nor C code, nor a method, nor a
 > function. "Program" is a generic term that matches all of these concepts.
 
-**Separator**: A single character chosen by the path matcher, e.g. a slash ("/").
+**Separator**: A single character chosen by the path matcher, for example a
+slash ("/").
 
 > Allows to use this algorithm for both autoloading (separator: "\") and
 > resource location (separator: "/").
