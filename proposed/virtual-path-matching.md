@@ -7,15 +7,57 @@
 >
 > **TL;DR**
 >
-> A namespaced path is a construct like the following TODO
+> Finds actual paths on a file system for virtual paths, such as FQCNs
+> ("\Acme\Demo\Parser") or URI paths ("/acme/demo-package/show.html.php"),
+> using a mapping of virtual paths to base directories. The separator
+> character can be chosen by the implementation.
 >
-> **Potential Formulation of an Autoloader PSR**
+> Example:
 >
-> TODO
+> ```php
+> $sep = '/';
+> $mapping = array(
+>    '\Acme\Blog\' => 'src/blog',
+>    '\Acme\Demo\Parser.php' => 'src/Parser.php',
+> );
 >
-> **Potential Formulation of a Resource Location PSR**
+> echo match_path('\Acme\Blog\ShowController.php', $mapping, $sep);
+> // => "src/blog/ShowController.php"
 >
-> TODO
+> echo match_path('\Acme\Demo\Parser.php', $mapping, $sep);
+> // => "src/Parser.php"
+> ```
+>
+> The algorithm does not care about file suffixes or the distinction between
+> files and directories. Restrictions in this regard can be made by PSRs
+> using this algorithm.
+>
+> **Potential formulation of PSR-X (autoloading) based on this PSR**
+>
+> - A FQCN MUST begin with a top-level namespace name (the *vendor namespace*),
+>   which MUST be followed by zero or more sub-namespace names, and MUST end in
+>   a class name.
+> 
+> - The path matching algorithm described in PSR-? MUST be used to find a
+>   matching file for a FQCN, using a backslash ("\") as separator. The input
+>   for the algorithm MUST be the FQCN suffixed with `.php`.
+> 
+> - If the matching file name exists in the file system, the registered
+>   autoloader MUST include or require it.
+>
+> - The registered autoloader callback MUST NOT throw exceptions, MUST NOT
+>   raise errors of any level, and SHOULD NOT return a value.
+>
+> **Potential formulation of a PSR-R (resource location) based on this PSR**
+>
+> - Implementations of this PSR MUST support the scheme "classpath". The path
+>   matching algorithm described in PSR-? MUST then be used to find matching
+>   files for the URI path, using a slash ("/") as separator. Each match MUST
+>   be considered a resource variant for the given URI.
+>
+> - Consumers using both a PSR-X compliant autoloader and a PSR-R compliant
+>   resource locator SHOULD pass the same path mapping to this algorithm as is
+>   used in the PSR-X autoloader.
 
 Virtual Path Matching
 =====================
@@ -44,13 +86,25 @@ in section 2.
 > Allows to use this algorithm for both autoloading (separator: "\") and
 > resource location (separator: "/").
 
-**Path Prefix**: A sequence of zero or more path segments, divided by
-separators. A path prefix MUST start with a separator character and MUST NOT end
-with a separator, unless the prefix consists of a single symbol only. Given the
-separator "/", then `/`, `/A` and `/A/B` are valid path prefixes.
+**Path**: A sequence of zero or more path segments, separated by slashes and
+starting with a slash. `/`, `/A`, `/A/` and `/A/B` are valid paths.
 
-**Prefix Mapping**: A set of path prefixes, each of which is assigned to one
-or more existing directories on the local file system (the *base directories*).
+**Virtual Path**: A path that does not necessarily exist on the file system.
+
+> E.g. a namespace (\Acme\Demo\Parser) or a URI path (/acme/demo-package/config)
+
+**Path Prefix**: A sequence of zero or more path segments at the beginning of a
+path, divided by separators. A path prefix MUST start and end with a separator
+character. Given the separator "/", then `/`, `/A/` and `/A/B/` are valid path
+prefixes.
+
+**Relative Path**: A sequence of one or more path segments, divided by
+separators and relative to a path prefix. A relative path MUST NOT start or
+end with a separator character. Given the separator "/", a path `/A/B/C/D`
+and a path prefix `/A/B/`, then `C/D` is the relative path.
+
+**Path Mapping**: A set of paths, each of which is assigned to one or more
+existing directories on the local file system (the *base directories*).
 The base directories MUST be provided either as absolute paths or as URIs with
 one of the following schemes:
 
@@ -60,25 +114,7 @@ one of the following schemes:
 * zip://
 * bzip2://
 
-**Mapped (Path) Prefix**: A path prefix contained in a given prefix mapping.
-
-**Relative Path**: A sequence of zero or more path segments, divided by
-separators. A relative path MUST NOT start or end with a separator character.
-Given the separator "/", then `<empty>`, `A` and `A/B` are valid relative paths.
-The symbol `<empty>` corresponds to an empty string.
-
-**Virtual Path**: A path prefix followed by a relative path. A virtual path
-MUST consist of one or more path segments.
-
-> i.e. must have a vendor namespace
->
-> Valid virtual paths:
->
-> * \Acme
-> * /Acme/Demo/Parser.php
->
-> Virtual paths with just one segment are useful in the context of resource
-> location.
+**Mapped Path (Prefix)**: A path (prefix) contained in a given path mapping.
 
 2. Path Matching Algorithm
 --------------------------
@@ -86,12 +122,19 @@ MUST consist of one or more path segments.
 Compliant path matchers MUST implement this algorithm to find matches for
 virtual paths.
 
-Given the separator "/", a virtual path `A/B/C/D`, the path prefix `/A/B`,
-the relative path `C/D` and a prefix mapping which assigns `/A/B` to the base
+Given the separator "/", a path `/A/B/C/D` and a path mapping which assigns
+`/A/B/C/D` to one or more base directories, then every base directory is a
+*potential match*.
+
+> The full path itself can be mapped. Needed in the resource location PSR to
+> look up the directories that a namespace is mapped to.
+
+Given the separator "/", a path `/A/B/C/D`, the path prefix `/A/B/`,
+the relative path `C/D` and a path mapping which assigns `/A/B/` to the base
 directory `/src`, then a *potential match* is generated by concatenating the
-base directory, a slash ("/") and the relative path: `/src/C/D`. If the
-relative path is empty, the trailing slash MUST be omitted in the potential
-match: `/src`. Separators in the potential match MUST be replaced by slashes.
+base directory, a slash ("/") and the relative path: `/src/C/D`.
+
+Separators in potential matches MUST be replaced by slashes.
 
 > Allows the use of other separators than slashes, e.g. backslashes ("\").
 
@@ -100,15 +143,18 @@ the local file system. If it does, it is called a *match*.
 
 > Matches must exist.
 
-If a mapped path contains multiple mapped prefixes, potential matches for longer
-prefixes MUST be evaluated before those for shorter prefixes.
+If both a full path and any of its prefixes are mapped, potential matches
+for the full path MUST be evaluated before those for the prefixes. If a mapped
+path contains multiple mapped prefixes, potential matches for longer prefixes
+MUST be evaluated before those for shorter prefixes. 
 
-> Self-explanatory.
+> Define order of evaluation..
 
-If a prefix is mapped to multiple base directories, the potential matches MAY
-be evaluated in any order.
+If a prefix is mapped to multiple base directories, the potential matches MUST
+be evaluated in the order of the base directories.
 
-> Path matchers can decide how to behave in this case (e.g. FIFO).
+> When multiple implementations of this algorithm (e.g. PSR-X and PSR-R)
+> receive the same mapping, they should behave identically.
 
 A path matcher MAY choose to abort this algorithm once a match has been found,
 or continue in order to generate all matches.
