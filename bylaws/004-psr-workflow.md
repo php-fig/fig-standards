@@ -48,7 +48,7 @@ Each PSR must contain author(s) and sponsors names listed in the document body. 
 
 This does not need to be policed, if a vote is initiated with the name of a sponsor on the document, that sponsor will have 
 plenty of time to raise their concern. In these instances a vote would be invalidated and a new sponsor must be found before 
-it can be voted upon again (sticking to the two-week wait on votes which is the case for any and all votes, as specified in 
+it can be voted upon again - sticking to the two-week wait on votes which is the case for any and all votes, as specified in 
 the Voting Protocol.
 
   [repo]: https://github.com/php-fig/fig-standards/tree/master
