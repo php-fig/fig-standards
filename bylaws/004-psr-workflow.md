@@ -1,10 +1,8 @@
-# PHP-FIG's PSR Review Workflow
+# PSR Review Workflow
 
-To avoid a PSR being rushed through the FIG, or to avoid having those lingering 95% complete PSR's that just never seem to 
-make it to a vote, it has become clear that a review workflow is neccessary.
-
-Each PSR will have an original author and potentially a co-author in some cases. Each PSR must also have two co-sponsors, 
-both of whom are voting members and one of whom is a "coordinator" (they can switch if needs be).
+Each PSR must have an original author and potentially a co-author in some cases, neither of which are required to be 
+a voting member. Each PSR must also have two co-sponsors, both of whom are voting members and one of whom is 
+a "coordinator" (they can switch if needs be).
 
 ### 0.) Pre-Draft
 
