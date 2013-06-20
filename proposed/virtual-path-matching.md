@@ -100,17 +100,15 @@ starting with a separator. Given the separator "/", then `/`, `/A`, `/A/` and
 
 > E.g. a namespace (\Acme\Demo\Parser) or a URI path (/acme/demo-package/config)
 
-**Path Prefix**: A sequence of zero or more path segments at the beginning of a
-path, divided by separators. A path prefix MUST start and end with a separator
-character. Given the separator "/", then `/`, `/A/` and `/A/B/` are valid path
-prefixes.
+**Path Prefix**: Given a path, then a path prefix is any prefix of the path
+that ends with a separator. For example, given the separator "/" and the path
+`/A/B/C`, then `/`, `/A/` and `/A/B/` are valid path prefixes.
 
-**Relative Path**: A sequence of one or more path segments, divided by
-separators and relative to a path prefix. A relative path MUST NOT start or
-end with a separator character. Given the separator "/", a path `/A/B/C/D`
-and a path prefix `/A/B/`, then `C/D` is the relative path.
+**Relative Path**: Given a path and one of its path prefixes, then the relative
+class name is the remaining part of that path. For example, given the separator
+"/", a path `/A/B/C/D` and a path prefix `/A/B/`, then `C/D` is the relative path.
 
-**Path Mapping**: A set of paths, each of which is assigned to one or more
+**Path Mapping**: A set of paths, each of which is associated with one or more
 existing directories on the local file system (the *base directories*).
 The base directories MUST be provided either as absolute paths or as URIs with
 one of the [following schemes available in PHP](http://php.net/manual/en/wrappers.php):
