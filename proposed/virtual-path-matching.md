@@ -9,7 +9,7 @@
 >
 > Finds actual paths on a file system for logical paths, such as FQCNs
 > ("\Acme\Demo\Parser") or URI paths ("/acme/demo-package/show.html.php"),
-> using a mapping of logical paths to base paths. The separator
+> using a mapping of logical paths to file system paths. The separator
 > character can be chosen by the implementation.
 >
 > Example:
