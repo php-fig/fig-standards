@@ -107,7 +107,7 @@ and a path prefix `/A/B/`, then `C/D` is the relative path.
 **Path Mapping**: A set of paths, each of which is assigned to one or more
 existing directories on the local file system (the *base directories*).
 The base directories MUST be provided either as absolute paths or as URIs with
-one of the following schemes:
+one of the [following schemes available in PHP](http://php.net/manual/en/wrappers.php):
 
 * file://
 * phar://
