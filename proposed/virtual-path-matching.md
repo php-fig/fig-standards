@@ -73,11 +73,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-1. Definitions
---------------
+1. Specification
+----------------
+
+### 1.1 Definitions
 
 **Path Matcher**: A program implementing the path matching algorithm described
-in section 2.
+in section 1.2.
 
 > This should neither be fixed to PHP code, nor C code, nor a method, nor a
 > function. "Program" is a generic term that matches all of these concepts.
@@ -126,8 +128,7 @@ one of the [following schemes available in PHP](http://php.net/manual/en/wrapper
 
 **Mapped Path (Prefix)**: A path (prefix) contained in a given path mapping.
 
-2. Path Matching Algorithm
---------------------------
+### 1.2 Path Matching Algorithm
 
 Compliant path matchers MUST implement this algorithm to find matches for
 virtual paths.
@@ -176,8 +177,7 @@ case is undefined.
 
 > Exception, returning null etc. can be chosen by the implementation.
 
-3. EBNF
--------
+### 1.3 EBNF
 
 The following block defines the path syntax used in this PSR using the Extended
 Backus-Naur Form (EBNF) specified in ISO/IEC 14977.
@@ -191,13 +191,13 @@ relative-path = path-segment, {separator, path-segment}
 path          = path-prefix, [relative-path]
 ```
 
-4. Package
+2. Package
 ----------
 
 The test suite to verify a path macher implementation is provided as part of the
 psr/path-matching package.
 
-5. Example Implementation
+3. Example Implementation
 -------------------------
 
 The example implementation MUST NOT be regarded as part of the specification; it is
