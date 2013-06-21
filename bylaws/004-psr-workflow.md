@@ -7,16 +7,18 @@ and one of whom is a "coordinator" (they can switch if needs be).
 ### 0.) Pre-Draft
 
 The author(s) can work on this anywhere they like, do whatever they like and come up with any ideas they 
-feel are within the scope of the PHP-FIG. Once they are ready to try and get this voted into being a "Draft" 
-PSR they should post on the Mailing List and try to find their two sponsors.
+feel are within the scope of the PHP-FIG. Once the Pre-Draft content is considered ready by the author(s)
+a new fork of the official PHP-FIG ["fig-standards" repo][repo] should be created.
+
+The content of this Pre-Draft PSR should be placed inside the `/proposed` folder with a simple filename. 
+A nickname like "autoload.md" should suffice, and markdown formatting must be used. No number is assigned to the PSR at this point.
+
+Along with this PSR file (Eg: "autoload.md") must be a meta document (Eg: "autoload-meta.md"). 
+
+With both of these documents in the proposed folder, the author(s) can start to look for their sponsors, who 
+will then initiate a vote to make it reach "Draft".
 
 ### 1.) Draft
-
-The author(s) must now set up a fork of the official PHP-FIG ["fig-standards" repo][repo] and place the 
-content of this PSR into the `/proposed` folder with a simple filename. A nickname like "autoload.md" should 
-suffice, and markdown formatting must be used. No number is assigned to the PSR at this point.
-
-This is also the stage in which a meta-document must be built. See below for examples and explanations.
 
 The author(s) and any contributors can make any changes they see fit via pull requests, comments on GitHub, 
 mailing list threads and IRC. Change here is not limited by any strict rules, and funamental rewrites are 
@@ -74,9 +76,6 @@ meta document. Ideally anyone sending in a pull request during the Pre-Draft or 
 and anyone who feels like their review tweaks were relevant too. The author can use reasonable judgement for 
 this.
 
-Also if a sponsors drops support but has been working on the PSR for a while, it would be common sense for them or 
-an author to move that sponsors name to Contributors.
-
 ### Example
 
 This is an example template that can be used to build a meta document. 
@@ -87,26 +86,43 @@ This is an example template that can be used to build a meta document.
 
     The purpose of this autoloader is to bla bla bla. More description than might go into the 
     summary, with potential prose and a little history might be helpful.
-    
+
     ## Chosen Approach
-    
+
     We have decided to build it this way, because we have noticed it to be common practise withing member 
     projects to do X, Y and Z. 
-    
+
     ## Alternative Approaches
-    
-    1. **Trent Reznor's Foo Proposal** - Never left pre-draft.
+
+    ### Trent Reznor's Foo Proposal
+
+    **Pros**
+
+    * Brilliant idea
+    * Good implementation
+
+    **Cons**
+
+    * Never left Pre-Draft
+    * Author ignored feedback and lost sponsors
 
     ## Author(s)
+
+    _**Note:** Order by last name. This is only ever one, maybe two people, but the author(s) will know who 
+    they are._
 
     John Smith
 
     ## Sponsors
 
+    _**Note:** The first two folks to agree to be the Sponsors. Authors add these names in place._
+
     Jimmy Cash
     Barbra Streisand
 
     ## Contributors
+
+    _**Note:** Order by last name. Anyone can send in a PR, or authors can add these._
 
     Trent Reznor
     Jimmie Rodgers
@@ -114,19 +130,20 @@ This is an example template that can be used to build a meta document.
 
     ## Votes
 
+    _**Note:** Order descending chronilogically._
+
     * **Pre-Draft -> Draft: ** http://groups.google.com...
     * **Draft -> Review: ** http://groups.google.com...
     * **Review -> Acceptance: ** http://groups.google.com...
 
     ## Relevant Links
 
-    _Note: Order this stuff by date._
+    _**Note:** Order descending chronilogically._
 
     * [Formative IRC Conversation Gist]
     * [Mailing list thread poll to decide if Y should do Z]
     * [IRC Conversation Gist where everyone decided to rewrite things]
     * [Relevant Poll of existing method names in voting projects for new interface]
-
 
   [repo]: https://github.com/php-fig/fig-standards/tree/master
   [voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
