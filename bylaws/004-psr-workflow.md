@@ -13,7 +13,8 @@ a new fork of the official PHP-FIG ["fig-standards" repo][repo] should be create
 The content of this Pre-Draft PSR should be placed inside the `/proposed` folder with a simple filename. 
 A nickname like "autoload.md" should suffice, and markdown formatting must be used. No number is assigned to the PSR at this point.
 
-Along with this PSR file (Eg: "autoload.md") must be a meta document (Eg: "autoload-meta.md"). 
+Along with this PSR file (Eg: "autoload.md") must be a meta document with a suffix of `-meta` before the 
+extension (Eg: "autoload-meta.md"). 
 
 With both of these documents in the proposed folder, the author(s) can start to look for their sponsors, who 
 will then initiate a vote to make it reach "Draft".
