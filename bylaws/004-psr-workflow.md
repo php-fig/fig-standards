@@ -50,7 +50,12 @@ If the vote fails the author(s) can use feedback to improve and keep it in Revie
 another vote later on. The author(s) also have the option of going back to the drawing board if their ideas 
 are slammed multiple times, meaning they need to tell folks they are back in Draft status.
 
-## Attribution / Ownership
+## Meta Document
+
+Each PSR must also contain a "Meta Document" to hold relevant information such as who the author(s) are, 
+who the sponsors are, which one is the "coordinator" and list any relevant contributors.
+
+### Author(s) and Sponsors
 
 Each PSR must contain author(s) and sponsors names listed in the document body. These can be changed if 
 people swap out, but a PSR can never progress unless there are two co-sponsors actively backing the PSR. 
@@ -59,6 +64,54 @@ This does not need to be policed, if a vote is initiated with the name of a spon
 that sponsor will have plenty of time to raise their concern. In these instances a vote would be invalidated 
 and a new sponsor must be found before it can be voted upon again - sticking to the two-week wait on votes 
 which is the case for any and all votes, as specified in the Voting Protocol.
+
+### Contributors
+
+Anyone who feels like they have done a relevant amount of contribution should add themselves to the 
+meta document. Ideally anyone sending in a pull request during the Pre-Draft or Draft stages should go on here,
+and anyone who feels like their review tweaks were relevant too. The author can use reasonable judgement for 
+this.
+
+### Example
+
+This is an example template that can be used to build a meta document. 
+
+    # PSR-X Meta Document
+
+    ## Summary
+
+    The purpose of this autoloader is to bla bla bla. More description than might go into the 
+    summary, with potential prose and a little history might be helpful.
+
+    ## Author(s)
+
+    John Smith
+
+    ## Sponsors
+
+    Jimmy Cash
+    Barbra Streisand
+
+    ## Contributors
+
+    Trent Reznor
+    Jimmie Rodgers
+    Kanye West
+
+    ## Votes
+
+    * **Pre-Draft -> Draft: ** http://groups.google.com...
+    * **Draft -> Review: ** http://groups.google.com...
+    * **Review -> Acceptance: ** http://groups.google.com...
+
+    ## Relevant Links
+
+    _Note: Order this stuff by date._
+
+    * [Formative IRC Conversation Gist]
+    * [Mailing list thread poll to decide if Y should do Z]
+    * [IRC Conversation Gist where everyone decided to rewrite things]
+
 
   [repo]: https://github.com/php-fig/fig-standards/tree/master
   [voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
