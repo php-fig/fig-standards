@@ -16,6 +16,8 @@ The author(s) must now set up a fork of the official PHP-FIG ["fig-standards" re
 content of this PSR into the `/proposed` folder with a simple filename. A nickname like "autoload.md" should 
 suffice, and markdown formatting must be used. No number is assigned to the PSR at this point.
 
+This is also the stage in which a meta-document must be built. See below for examples and explanations.
+
 The author(s) and any contributors can make any changes they see fit via pull requests, comments on GitHub, 
 mailing list threads and IRC. Change here is not limited by any strict rules, and funamental rewrites are 
 possible if supported by the author(s).
