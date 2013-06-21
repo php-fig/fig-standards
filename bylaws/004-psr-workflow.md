@@ -2,6 +2,9 @@
 
 This document describes the workflow for proposing a PSR and having it published by the PHP-FIG.
 
+> **Note:** Throughout this article when you see "PSR-X", X is being used as a variable and not 
+> the autoloader standard some refer to as PSR-X.
+
 ## 1. Roles
 
 **Author:** An author is actively involved in writing a PSR. A document may have multiple authors. None
@@ -42,16 +45,15 @@ a suffix of "-meta" before the extension (e.g. "autoload-meta.md"). Markdown for
 both documents. No PSR number is assigned to the proposal at this point.
 
 With both the proposal and the meta document in the proposed folder, the author(s) must find their sponsors,
-one of which must become the coordinator. Unless the proposed concept was already voted on before,
-the coordinator must initiate a vote to enquire whether the members of PHP-FIG are generally interested in
-publishing a PSR for the proposed subject, even if they disagree with the details of the proposal.
-The coordinator must announce the vote on the Mailing List in a thread titled "[VOTE] Proposed: Title of
-the proposal". The vote must adhere to [the voting protocol][voting].
+one of which must become the coordinator. The coordinator must initiate a vote to enquire whether the 
+members of PHP-FIG are generally interested inpublishing a PSR for the proposed subject, even if they 
+disagree with the details of the proposal. The coordinator must announce the vote on the Mailing List in 
+a thread titled "[VOTE] Proposed: Title of the proposal". The vote must adhere to [the voting 
+protocol][voting].
 
-If the vote passes, the proposal receives a temporary name and officially enters Draft stage. The name
-should be composed of the prefix "PSR-" and one or two uppercase letters representing the proposal's name,
-such as "PSR-C" for a cache proposal. The names must be noted in the `/proposed/_names.md` document of the
-[official PHP-FIG "fig-standards" repo][repo]. Names may be reused once a proposal was accepted or dropped.
+If the vote passes the proposal officially enters Draft stage. The propsal receives a PSR number 
+auto-incremented from the last PSR in the `/accepted` folder of the [official PHP-FIG "fig-standards" 
+repo][repo].
 
 The author(s) may continue to work on the proposal during the complete voting period.
 
@@ -67,8 +69,8 @@ proposed and discussed any time.
 
 All knowledge gained during Draft stage, such as possible alternative approaches, their implications, pros
 and cons etc. as well as the reasons for choosing the proposed approach must be summarized in the meta
-document. The purpose of this rule is to prevent discussions or alternative proposals from reappearing once
-they have been decided on.
+document. The purpose of this rule is to prevent circular discussions or alternative proposals from 
+reappearing once they have been decided on.
 
 When the author(s) and sponsors agree that the proposal is ready and that the meta document is objective and
 complete, the coordinator may promote the proposal to Review stage. The promotion must be announced in a
@@ -89,7 +91,7 @@ a proposal and to decide whether it is ready for an acceptance vote.
 
 The goal is *not* to significantly change or enhance the proposal. If significant changes are needed, the
 proposal must be moved back to Draft stage. The goal is also *not necessarily* to have every PHP-FIG member
-agree with the approach chosen by the proposal. The majority in the final vote wins. The goal however *is*
+agree with the approach chosen by the proposal. The majority in the acceptance vote wins. The goal however *is*
 to have all PHP-FIG members agree on the completeness and objectivity of the meta document.
 
 > Individual members of the PHP-FIG should not be permitted to prevent a PSR from being published.
@@ -103,30 +105,30 @@ PHP-FIG members agree on, even if they personally disagree.
 
 In this stage, major additions to the meta document are strictly prohibited. If alternative approaches are
 discovered that are not yet listed in the meta document, the coordinator must abort the Review by publishing
-a thread titled "[CANCEL REVIEW] PSR-X: Title of the proposal" on the Mailing List, unless the final vote
+a thread titled "[CANCEL REVIEW] PSR-X: Title of the proposal" on the Mailing List, unless the acceptance vote
 has started already. However, the sponsors may choose to abort the vote and the Review even after that,
-if they agree that this is necessary. The purpose of this rule is to give every PHP-FIG member the chance
-to consider *all* known alternatives during the complete Review stage.
+if they agree that this is necessary. The purpose of this rule is to give PHP-FIG members the chance
+to consider *all* known alternatives during the Review stage.
 
 Unless a proposal is moved to Draft stage again, it must remain in Review stage for a minimum of two weeks.
 This gives every PHP-FIG Member sufficient time to get familiar with and influence a proposal before the final
 vote is called.
 
-When the author(s) and sponsors agree that the proposal is ready to become a PSR, a final vote is called.
+When the author(s) and sponsors agree that the proposal is ready to become a PSR, a acceptance vote is called.
 The coordinator must publish a thread on the Mailing List with the subject "[VOTE] PSR-X: Title of the proposal"
 to announce the vote. The vote must adhere to [the voting protocol][voting].
 
 ### 2.4 Accepted
 
-If the final vote passes, then the proposal officially becomes a PSR. At this point, it is assigned a PSR number
+If the acceptance vote passes, then the proposal officially becomes a PSR. At this point, it is assigned a PSR number
 by incrementing the previous PSR number. The proposal itself is moved from `/proposed` to `/accepted` by a
-PHP-FIG member with GitHub access and prefixed with its PSR number, such as "psr-4-autoloader.md". Comments must
+PHP-FIG member with GitHub access and prefixed with its PSR number, such as "PSR-4-autoloader.md". Comments must
 be removed from this document, but a copy of the commented proposal must be kept in `/accepted/meta`, bearing
-the suffix "-commented" (e.g. "psr-4-autoloader-commented.md"). The commented version can be used to interpret
+the suffix "-commented" (e.g. "PSR-4-autoloader-commented.md"). The commented version can be used to interpret
 the rules of the PSR in case of doubt.
 
 The meta document of the proposal must also be moved to `/accepted/meta` and prefixed with the PSR number, for
-example "psr-4-autoloader-meta.md".
+example "PSR-4-autoloader-meta.md".
 
 ## 3. Meta Document
 
@@ -180,6 +182,7 @@ This is an example template that can be used to build a meta document.
     **Cons**
 
     * Never left Pre-Draft
+    * No survey was completed to form decision on method names
     * Author ignored feedback and lost sponsors
 
     ## Author(s)
