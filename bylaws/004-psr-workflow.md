@@ -43,14 +43,18 @@ to the PSR at this point.
 Along with this PSR file (Eg: "autoload.md") must be a meta document with a suffix of `-meta` before the 
 extension (Eg: "autoload-meta.md"). 
 
-With both of these documents in the proposed folder, the author(s) can start to look for their sponsors, who 
-will then initiate a vote to make it reach "Draft".
+With both of these documents in the proposed folder, the author(s) can find their sponsors, who will then 
+assign one of them as "coordinator", whos first action will be to review the meta document and publish 
+a thread in the Mailing List with a subject of `[Draft]: New Autoloader`. This lets the group know about 
+the draft that is being worked on, but does not require a vote at this stage. 
 
 ### 2.2 Draft
 
-The author(s) and any contributors can make any changes they see fit via pull requests, comments on GitHub, 
-mailing list threads and IRC. Change here is not limited by any strict rules, and funamental rewrites are 
-possible if supported by the author(s).
+With the document in Draft, the author(s) and any contributors can make any changes they see fit via pull 
+requests, comments on GitHub, mailing list threads and IRC. Change here is not limited by any strict rules, 
+and funamental rewrites are possible if supported by the author(s).
+
+When the author(s) and sponsors agree it is ready, the "coordinators" must initiate a vote to get it to Review.
 
 ### 2.3 Review
 
