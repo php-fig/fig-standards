@@ -65,7 +65,10 @@ considered for review by the majority of the PHP-FIG members.
 In Draft stage, the author(s) and any contributors may make any changes they see fit via pull requests,
 comments on GitHub, mailing list threads, IRC and similar tools. Change here is not limited by any strict
 rules, and fundamental rewrites are possible if supported by the author(s). Alternative approaches may be
-proposed and discussed any time.
+proposed and discussed at any time. If sponsors are convinced that an alternative proposal is superior
+to the original proposal, then the alternative may replace the original. If the alternative builds upon the
+original, authorship will be attributed to both the original author(s) and the author(s) of the alternative.
+Otherwise, the author(s) of the alternative proposal become the new main author(s).
 
 All knowledge gained during Draft stage, such as possible alternative approaches, their implications, pros
 and cons etc. as well as the reasons for choosing the proposed approach must be summarized in the meta
