@@ -12,14 +12,19 @@ PSR they should post on the Mailing List and try to find their two sponsors.
 
 ### 1.) Draft
 
-The author(s) and any contributors can make any changes they see fit via pull requests, comments on GitHub, mailing list threads and IRC. Change is free game here, but it's all to be kept in the authors own fork until 
-it is ready to be progress.
+The author(s) must now set up a fork of the official PHP-FIG ["fig-standards" repo][repo] and place the 
+content of this PSR into the `/proposed` folder with a simple filename. A nickname like "autoload.md" should 
+suffice, and markdown formatting must be used. No number is assigned to the PSR at this point.
+
+The author(s) and any contributors can make any changes they see fit via pull requests, comments on GitHub, 
+mailing list threads and IRC. Change here is not limited by any strict rules, and funamental rewrites are 
+possible if supported by the author(s).
 
 ### 2.) Review
 
 Once a PSR has reached Review the author must create a Pull Request on the official PHP-FIG ["fig-standards" 
-repo][repo], on on the `master` branch in the `/proposed` folder with a simple filename. No number is 
-assigned to the PSR at this point.
+repo][repo] against the `master` and the file will remain in the `/proposed` folder with the same name.
+PSR at this point.
 
 While a PSR remains in Review, changes are limited to wording, typos, clarification, minimal rule addition, 
 etc. The author(s) and sponsors may use their own judgement to control the scope of these changes, and 
