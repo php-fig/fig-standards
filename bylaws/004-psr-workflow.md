@@ -74,6 +74,9 @@ meta document. Ideally anyone sending in a pull request during the Pre-Draft or 
 and anyone who feels like their review tweaks were relevant too. The author can use reasonable judgement for 
 this.
 
+Also if a sponsors drops support but has been working on the PSR for a while, it would be common sense for them or 
+an author to move that sponsors name to Contributors.
+
 ### Example
 
 This is an example template that can be used to build a meta document. 
