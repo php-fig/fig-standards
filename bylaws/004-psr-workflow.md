@@ -108,9 +108,10 @@ PHP-FIG members agree on, even if they personally disagree.
 
 In this stage, major additions to the meta document are strictly prohibited. If alternative approaches are
 discovered that are not yet listed in the meta document, the coordinator MUST abort the Review by publishing
-a thread titled "[CANCEL REVIEW] PSR-X: Title of the proposal" on the Mailing List. The purpose of this
-rule is to give every PHP-FIG member the chance to consider *all* known alternatives during the complete Review
-stage.
+a thread titled "[CANCEL REVIEW] PSR-X: Title of the proposal" on the Mailing List, unless the final vote
+has started already. However, the sponsors MAY choose to abort the vote and the Review even after that,
+if they agree that this is necessary. The purpose of this rule is to give every PHP-FIG member the chance
+to consider *all* known alternatives during the complete Review stage.
 
 Unless a proposal is moved to Draft stage again, it MUST remain in Review stage for a minimum of two weeks.
 This gives every PHP-FIG Member sufficient time to get familiar with and influence a proposal before the final
