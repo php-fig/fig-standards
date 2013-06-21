@@ -125,6 +125,18 @@ be removed from this document, but a copy of the commented proposal must be kept
 the suffix "-commented" (e.g. "psr-4-autoloader-commented.md"). The commented version can be used to interpret
 the rules of the PSR in case of doubt.
 
+> Reason for having both a commented PSR and a meta document:
+>
+> The meta document provides the high-level perspective, why an approach was
+> taken and what other approaches exist.
+>
+> The comments in a PSR, on the contrary, provide additional information about
+> specific rules in a PSR or explain the intention of a rule in simple words
+> (like doc blocks in source code). Comments are mostly useful during Draft and
+> Review. With their additional information, other people reading the proposal
+> can judge more easily whether they disagree with a rule fundamentally or
+> whether they agree, but the author just happened to formulate the rule badly.
+
 The meta document of the proposal must also be moved to `/accepted/meta` and prefixed with the PSR number, for
 example "psr-4-autoloader-meta.md".
 
