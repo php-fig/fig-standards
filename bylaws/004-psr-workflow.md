@@ -2,8 +2,8 @@
 
 This document describes the workflow for proposing a PSR and having it published by the PHP-FIG.
 
-> **Note:** Throughout this article when you see "PSR-X", X is being used as a variable and not 
-> the autoloader standard some refer to as PSR-X.
+> **Note:** Throughout this article when you see "PSR-N", "N" refers to whatever number has been 
+> assigned to the PSR in question.
 
 ## 1. Roles
 
@@ -74,7 +74,7 @@ reappearing once they have been decided on.
 
 When the author(s) and sponsors agree that the proposal is ready and that the meta document is objective and
 complete, the coordinator may promote the proposal to Review stage. The promotion must be announced in a
-thread on the Mailing List with the subject "[REVIEW] PSR-X: Title of the proposal". At this point, the
+thread on the Mailing List with the subject "[REVIEW] PSR-N: Title of the proposal". At this point, the
 proposal must be merged into the "master" branch of the [official PHP-FIG "fig-standards" repository][repo].
 
 > At this point, the author(s) transfer the ownership of the proposal to the sponsors. This is to [prevent
@@ -105,7 +105,7 @@ PHP-FIG members agree on, even if they personally disagree.
 
 In this stage, major additions to the meta document are strictly prohibited. If alternative approaches are
 discovered that are not yet listed in the meta document, the coordinator must abort the Review by publishing
-a thread titled "[CANCEL REVIEW] PSR-X: Title of the proposal" on the Mailing List, unless the acceptance vote
+a thread titled "[CANCEL REVIEW] PSR-N: Title of the proposal" on the Mailing List, unless the acceptance vote
 has started already. However, the sponsors may choose to abort the vote and the Review even after that,
 if they agree that this is necessary. The purpose of this rule is to give PHP-FIG members the chance
 to consider *all* known alternatives during the Review stage.
@@ -115,7 +115,7 @@ This gives every PHP-FIG Member sufficient time to get familiar with and influen
 vote is called.
 
 When the author(s) and sponsors agree that the proposal is ready to become a PSR, a acceptance vote is called.
-The coordinator must publish a thread on the Mailing List with the subject "[VOTE] PSR-X: Title of the proposal"
+The coordinator must publish a thread on the Mailing List with the subject "[VOTE] PSR-N: Title of the proposal"
 to announce the vote. The vote must adhere to [the voting protocol][voting].
 
 ### 2.4 Accepted
@@ -170,7 +170,7 @@ this.
 
 This is an example template that can be used to build a meta document. 
 
-    # PSR-X Meta Document
+    # PSR-N Meta Document
 
     ## Summary
 
