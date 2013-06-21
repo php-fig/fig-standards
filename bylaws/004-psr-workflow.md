@@ -87,6 +87,15 @@ This is an example template that can be used to build a meta document.
 
     The purpose of this autoloader is to bla bla bla. More description than might go into the 
     summary, with potential prose and a little history might be helpful.
+    
+    ## Chosen Approach
+    
+    We have decided to build it this way, because we have noticed it to be common practise withing member 
+    projects to do X, Y and Z. 
+    
+    ## Alternative Approaches
+    
+    1. **Trent Reznor's Foo Proposal** - Never left pre-draft.
 
     ## Author(s)
 
@@ -116,6 +125,7 @@ This is an example template that can be used to build a meta document.
     * [Formative IRC Conversation Gist]
     * [Mailing list thread poll to decide if Y should do Z]
     * [IRC Conversation Gist where everyone decided to rewrite things]
+    * [Relevant Poll of existing method names in voting projects for new interface]
 
 
   [repo]: https://github.com/php-fig/fig-standards/tree/master
