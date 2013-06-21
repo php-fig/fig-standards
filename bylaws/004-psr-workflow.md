@@ -11,7 +11,8 @@ feel are within the scope of the PHP-FIG. Once the Pre-Draft content is consider
 a new fork of the official PHP-FIG ["fig-standards" repo][repo] should be created.
 
 The content of this Pre-Draft PSR should be placed inside the `/proposed` folder with a simple filename. 
-A nickname like "autoload.md" should suffice, and markdown formatting must be used. No number is assigned to the PSR at this point.
+A nickname like "autoload.md" should suffice, and markdown formatting must be used. No number is assigned 
+to the PSR at this point.
 
 Along with this PSR file (Eg: "autoload.md") must be a meta document with a suffix of `-meta` before the 
 extension (Eg: "autoload-meta.md"). 
@@ -62,13 +63,18 @@ who the sponsors are, which one is the "coordinator" and list any relevant contr
 
 ### Author(s) and Sponsors
 
-Each PSR must contain author(s) and sponsors names listed in the document body. These can be changed if 
-people swap out, but a PSR can never progress unless there are two co-sponsors actively backing the PSR. 
+Each PSR must contain author(s) and sponsors names listed in the document body. In the event that an author would 
+like to step down from their position mid-way then the a named author must listing the new author in the meta 
+document. Sponsors can also quit and have their names moved from the Sponsor section to the Contributor section.
+A PSR can never progress unless there are two co-sponsors actively backing the PSR. 
 
-This does not need to be policed, if a vote is initiated with the name of a sponsor on the document, 
-that sponsor will have plenty of time to raise their concern. In these instances a vote would be invalidated 
-and a new sponsor must be found before it can be voted upon again - sticking to the two-week wait on votes 
-which is the case for any and all votes, as specified in the Voting Protocol.
+This does not need to be policed, if a vote is initiated with the name of an ex-sponsor (or a sponsor who does not 
+consider themselves active) on the document, that person will have a reasonable window of time to raise their 
+concern. In the instance that a vote is underway with a sponsor who does not consider themselves active (i.e they 
+have quit or been listed without permission) then they cans imply raise this on the mailing list and the vote 
+would be invalidated until a new sponsor has been put in place. This would need a two-week wait since the last vote 
+before it can be voted upon again - sticking to the two-week wait on votes which is the case for any and all votes, 
+as specified in the Voting Protocol.
 
 ### Contributors
 
