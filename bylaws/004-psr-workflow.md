@@ -46,12 +46,12 @@ both documents. No PSR number is assigned to the proposal at this point.
 
 With both the proposal and the meta document in the proposed folder, the author(s) must find their sponsors,
 one of which must become the coordinator. The coordinator must initiate a vote to enquire whether the 
-members of PHP-FIG are generally interested inpublishing a PSR for the proposed subject, even if they 
+members of PHP-FIG are generally interested in publishing a PSR for the proposed subject, even if they
 disagree with the details of the proposal. The coordinator must announce the vote on the Mailing List in 
 a thread titled "[VOTE] Proposed: Title of the proposal". The vote must adhere to [the voting 
 protocol][voting].
 
-If the vote passes the proposal officially enters Draft stage. The propsal receives a PSR number 
+If the vote passes, the proposal officially enters Draft stage. The proposal receives a PSR number
 auto-incremented from the last PSR in the `/accepted` folder of the [official PHP-FIG "fig-standards" 
 repo][repo].
 
@@ -117,7 +117,7 @@ Unless a proposal is moved to Draft stage again, it must remain in Review stage 
 This gives every PHP-FIG Member sufficient time to get familiar with and influence a proposal before the final
 vote is called.
 
-When the author(s) and sponsors agree that the proposal is ready to become a PSR, a acceptance vote is called.
+When the author(s) and sponsors agree that the proposal is ready to become a PSR, an acceptance vote is called.
 The coordinator must publish a thread on the Mailing List with the subject "[VOTE] PSR-N: Title of the proposal"
 to announce the vote. The vote must adhere to [the voting protocol][voting].
 
@@ -224,7 +224,7 @@ This is an example template that can be used to build a meta document.
 
     ## Votes
 
-    _**Note:** Order descending chronilogically._
+    _**Note:** Order descending chronologically._
 
     * **Pre-Draft -> Draft: ** http://groups.google.com...
     * **Draft -> Review: ** http://groups.google.com...
@@ -232,7 +232,7 @@ This is an example template that can be used to build a meta document.
 
     ## Relevant Links
 
-    _**Note:** Order descending chronilogically._
+    _**Note:** Order descending chronologically._
 
     * [Formative IRC Conversation Gist]
     * [Mailing list thread poll to decide if Y should do Z]
