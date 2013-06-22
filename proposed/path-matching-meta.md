@@ -1,5 +1,7 @@
-Path Matching Meta Document
-===========================
+PSR-? Path Matching Meta Document
+=================================
+
+Meta Document for [PSR-? Path Matching](path-matching.md).
 
 1. Summary
 ----------
