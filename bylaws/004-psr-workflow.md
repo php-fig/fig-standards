@@ -254,18 +254,18 @@ This is an example template that can be used to build a meta document.
 
     ## 6. Author(s)
 
-    John Smith
+    * John Smith
 
     ## 7. Sponsors
 
-    Jimmy Cash
-    Barbra Streisand (coordinator)
+    * Jimmy Cash
+    * Barbra Streisand (coordinator)
 
     ## 8. Contributors
 
-    Trent Reznor
-    Jimmie Rodgers
-    Kanye West
+    * Trent Reznor
+    * Jimmie Rodgers
+    * Kanye West
 
     ## 9. Votes
 
