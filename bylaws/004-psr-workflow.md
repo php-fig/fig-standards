@@ -2,8 +2,8 @@
 
 This document describes the workflow for proposing a PSR and having it published by the PHP-FIG.
 
-> **Note:** Throughout this article when you see "PSR-N", "N" refers to whatever number has been 
-> assigned to the PSR in question.
+**Note:** Throughout this article when you see "PSR-N", "N" refers to whatever number has been
+assigned to the PSR in question.
 
 ## 1. Roles
 
