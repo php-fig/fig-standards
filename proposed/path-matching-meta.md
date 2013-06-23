@@ -36,26 +36,28 @@ using this algorithm (i.e. PSR-X, PSR-R and others).
 
 Currently, two PSR proposals can be expected to be based on this PSR:
 
-* [PSR-X Autoloading](https://github.com/php-fig/fig-standards/blob/master/proposed/autoloader.md)
-* [PSR-R Resource Location](resource-location.md)
+* [PSR-X Autoloading][psr-x]
+* [PSR-R Resource Location][psr-r]
 
 PSR-R is still very young, so it can be based onto this PSR without major
 problems. PSR-X, however, has been discussed for a long time and is considered
 to be in his final stages. Nevertheless, we propose to *change* the *wording* of
 PSR-X to base onto this PSR for the following reasons:
 
-* Basing PSR-X onto PSR Path Mapping is intended to only change the wording of
-  PSR-X, not the semantics.
 * PSR-R needs a more precise specification than the [current version of PSR-X]
   (https://github.com/php-fig/fig-standards/blob/5a536a0b03caceabbf4690c668dbc1e570bac336/proposed/autoloader.md)
   since it is not restricted by PHP's syntax of class identifiers. Even if both
-  specifications should be semantically equivalent, using different rule wording
-  creates a potential for incompatibilities.
+  specifications *should* be semantically equivalent, using different rule
+  wording creates a potential for incompatibilities.
+* The more precise formulation of PSR Path Mapping will help implementors of
+  PSR-X to create compliant implementations.
 * Reviewing and releasing this PSR before PSR-X will make sure that this PSR
   is actually compatible with the intentions of the PSR-X authors.
-* It will be easier to implement code that complies both with PSR-X and PSR-R.
-* PSR-X and PSR-R will be easier to formulate.
 * It will be obvious that PSR-X and PSR-R share the same algorithm.
+* PSR-X and PSR-R will be shorter and simpler formulated.
+* It will be easier to implement code that complies both with PSR-X and PSR-R.
+* The same path mapping can be used for both PSR-X and PSR-R implementations
+  (e.g. defined in composer.json).
 
 Reasons against changing PSR-X:
 
@@ -96,12 +98,23 @@ The wording of PSR-X would change to the following:
 4. Chosen Approach
 ------------------
 
-TODO
+The approach for path mapping was extracted from the PSR-X proposal. It is a
+more generic version for mapping paths with custom separators to file system
+paths than what the autoloader does.
+
+Pros:
+
+* compatibility with PSR-X
+* compatibility with the current version of the PSR-R proposal
+
+Cons:
+
+* none known so far
 
 5. Alternative Approaches
 -------------------------
 
-TODO
+None known so far.
 
 6. Authors
 ----------
@@ -129,4 +142,17 @@ none yet
 10. Relevant Links
 ------------------
 
-TODO
+* [PSR-X Autoloader proposal][psr-x]
+* [PSR-R Resource Location proposal][psr-r]
+* [Original Google Groups discussion on PSR Path Mapping]
+  (https://groups.google.com/d/msg/php-fig/WMaKNNhHZJw/nbj4eR_QeTYJ)
+* [Current Google Groups discussion on PSR Path Mapping]
+  (https://groups.google.com/d/msg/php-fig/ACrNd8Drz6g/L6LeNEcYTzMJ)
+* [Example formulation of PSR-X when based on PSR Path Mapping (outdated version)]
+  (https://gist.github.com/simensen/0129bdf5ee07fe896c2c)
+* [Example implementation of PSR-X, PSR-R and PSR Path Matching]
+  (https://github.com/simensen/psr-match)
+
+
+[psr-x]: https://github.com/php-fig/fig-standards/blob/master/proposed/autoloader.md
+[psr-r]: resource-location.md
