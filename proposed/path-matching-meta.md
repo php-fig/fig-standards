@@ -6,8 +6,6 @@ Meta Document for [PSR-? Path Matching](path-matching.md).
 1. Summary
 ----------
 
-### 1.1 TL;DR
-
 Finds file system paths for logical paths, such as FQCNs ("\Acme\Demo\Parser")
 or URI paths ("/acme/demo-package/show.html.php"). The separator character can
 be chosen by the implementation.
@@ -32,7 +30,10 @@ The algorithm does not care about file suffixes or the distinction between
 files and directories. Restrictions in this regard can be made by PSRs
 using this algorithm (i.e. PSR-X, PSR-R and others).
 
-### 1.2 Reasons for/against basing PSR-X Autoloading on PSR Path Mapping
+2. Why Bother?
+--------------
+
+### 2.1 Reasons for/against basing PSR-X Autoloading on PSR Path Mapping
 
 Currently, two PSR proposals can be expected to be based on this PSR:
 
@@ -66,7 +67,7 @@ Reasons against changing PSR-X:
   wording, but the same semantics, so PSR Path Mapping should be acceptable for
   anyone who is satisfied with the current state of PSR-X.
 
-### 1.3 Impact on the wording of PSR-X
+### 2.2 Impact on the wording of PSR-X
 
 The wording of PSR-X would change to the following:
 
@@ -84,19 +85,22 @@ The wording of PSR-X would change to the following:
 - The registered autoloader callback MUST NOT throw exceptions, MUST NOT
   raise errors of any level, and SHOULD NOT return a value.
 
-2. Goals
+3. Scope
 --------
+
+### 3.1 Goals
 
 * Deterministically map logical paths, such as `\A\B\C\D`, to physical paths,
   such as `/src/C/D`
 
-3. Non-Goals
-------------
+### 3.2 Non-Goals
 
 * Wildcard file search (glob)
 
-4. Chosen Approach
-------------------
+4. Approaches
+-------------
+
+### 4.1 Chosen Approach
 
 The approach for path mapping was extracted from the PSR-X proposal. It is a
 more generic version for mapping paths with custom separators to file system
@@ -111,36 +115,31 @@ Cons:
 
 * none known so far
 
-5. Alternative Approaches
--------------------------
+5. People
+---------
 
-None known so far.
-
-6. Authors
-----------
+### 5.1 Authors
 
 * Bernhard Schussek
 
-7. Sponsors
------------
+### 5.2 Sponsors
 
-none yet
+* none yet
 
-8. Contributors
----------------
+### 5.3 Contributors
 
 * Andreas Hennings
 * Paul M. Jones
 * Beau Simensen
 * Amy Stephen
 
-9. Votes
+6. Votes
 --------
 
-none yet
+* none yet
 
-10. Relevant Links
-------------------
+7. Relevant Links
+-----------------
 
 * [PSR-X Autoloader proposal][psr-x]
 * [PSR-R Resource Location proposal][psr-r]
