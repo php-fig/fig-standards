@@ -8,10 +8,9 @@ Meta Document for [PSR-? Path Matching](path-matching.md).
 
 ### 1.1 TL;DR
 
-Finds actual paths on a file system for logical paths, such as FQCNs
-("\Acme\Demo\Parser") or URI paths ("/acme/demo-package/show.html.php"),
-using a mapping of logical paths to file system paths. The separator
-character can be chosen by the implementation.
+Finds file system paths for logical paths, such as FQCNs ("\Acme\Demo\Parser")
+or URI paths ("/acme/demo-package/show.html.php"). The separator character can
+be chosen by the implementation.
 
 Example:
 
@@ -37,21 +36,26 @@ using this algorithm (i.e. PSR-X, PSR-R and others).
 
 Currently, two PSR proposals can be expected to be based on this PSR:
 
-* PSR-X Autoloading
-* PSR-R Resource Location
+* [PSR-X Autoloading](https://github.com/php-fig/fig-standards/blob/master/proposed/autoloader.md)
+* [PSR-R Resource Location](resource-location.md)
 
 PSR-R is still very young, so it can be based onto this PSR without major
 problems. PSR-X, however, has been discussed for a long time and is considered
 to be in his final stages. Nevertheless, we propose to *change* the *wording* of
 PSR-X to base onto this PSR for the following reasons:
 
+* Basing PSR-X onto PSR Path Mapping is intended to only change the wording of
+  PSR-X, not the semantics.
+* PSR-R needs a more precise specification than the [current version of PSR-X]
+  (https://github.com/php-fig/fig-standards/blob/5a536a0b03caceabbf4690c668dbc1e570bac336/proposed/autoloader.md)
+  since it is not restricted by PHP's syntax of class identifiers. Even if both
+  specifications should be semantically equivalent, using different rule wording
+  creates a potential for incompatibilities.
+* Reviewing and releasing this PSR before PSR-X will make sure that this PSR
+  is actually compatible with the intentions of the PSR-X authors.
 * It will be easier to implement code that complies both with PSR-X and PSR-R.
 * PSR-X and PSR-R will be easier to formulate.
 * It will be obvious that PSR-X and PSR-R share the same algorithm.
-* Reviewing and releasing this PSR before PSR-X will make sure that this PSR
-  is actually compatible with the intentions of the PSR-X authors.
-* Basing PSR-X onto PSR Path Mapping is expected to only change the wording of
-  PSR-X, not the semantics.
 
 Reasons against changing PSR-X:
 
