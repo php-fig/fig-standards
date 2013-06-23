@@ -163,116 +163,140 @@ an informed decision.
 The "too long, didn't read". Summarizes the purpose and big picture of the proposal, possibly with a few
 simple examples of how the author(s) imagine an implementation of the PSR to be used in practice.
 
-### 3.2 Goals
+### 3.2 Why Bother?
 
-A listing of one or more goals that the PSR should achieve. The goals should be specific and measurable.
+An argument for why the proposed topic should be specified in a PSR at all. Should include a list of positive
+and negative implications of releasing this PSR. The purpose of this section is to convince voters to accept
+the proposal as draft in the Pre-Draft->Draft voting.
+
+### 3.3 Scope
+
+A listing of both goals and non-goals that the PSR should achieve. The goals/non-goals should be specific and
+measurable.
 
 **Bad:** Make logging easier.
 
 **Better:** Provide an interoperable logger interface.
 
-### 3.3 Non-Goals
-
-A listing of goals that the PSR should *not* achieve. Non-goals specify what is inside and what is outside
-of a proposal's scope and facilitate decisions when multiple options exist. Like goals, non-goals should
-be specific and measurable.
-
-**Bad:** Log everything.
-
-**Better:** Integrate with the logging system of the OS.
-
-### 3.4 Chosen Approach
+### 3.4 Approaches
 
 Describes the design decisions that were made in the proposal and *why* they were taken. Most importantly,
 this section must objectively list both the positive and negative implications of these decisions. If
 possible, links to individual, relevant posts on the Mailing List, IRC logs or similar should be included.
 
-### 3.5 Alternative Approaches
-
-Lists all known alternative approaches for the PSR proposal. For each of them, the document should describe
+Also lists all known alternative approaches for the PSR proposal. For each of them, the document should describe
 an objective list of pros and cons and the reason why that approach is not considered good enough. Should
 also include links to Pull Requests, individual posts on the Mailing List, IRC logs or similar, if available.
 
-### 3.6 Author(s)
+### 3.5 People
 
-The names the authors of a PSR proposal, sorted alphabetically by last name in ascending order.
+The names the
 
-### 3.7 Sponsors
+* authors
+* sponsors (indicating which of them was coordinator)
+* contributors (as defined in section 1)
 
-The names of the sponsors, sorted alphabetically by last name in ascending order. Should indicate which
-of them was the coordinator.
+of the PSR proposal, sorted alphabetically by last name in ascending order. If someone considers himself a
+contributor but is not listed here, he should contact the author(s) and sponsors, including some proof about
+his contribution. If the proof is valid, the contributor must be put on this list by one of the author(s)
+or sponsors.
 
-### 3.8 Contributors
-
-The names of all contributors as defined in section 1, sorted alphabetically by last name in ascending order.
-If someone considers himself a contributor but is not listed here, he should contact the author(s) and
-sponsors, showing some proof about his contribution. If the proof is valid, the contributor must be put on
-this list by one of the author(s) or sponsors.
-
-### 3.9 Template
+### 3.6 Template
 
 This is an example template that can be used to build a meta document. 
 
-    # PSR-N Meta Document
+    PSR-N Meta Document
+    ===================
 
-    ## 1. Summary
+    1. Summary
+    ----------
 
     The purpose of X is to bla bla bla. More description than might go into the
     summary, with potential prose and a little history might be helpful.
 
-    ## 2. Goals
+    2. Why Bother?
+    --------------
+
+    Specifying X will help libraries to share their mechanisms for bla bla...
+
+    Pros:
+
+    * Frameworks will use a common algorithm
+
+    Cons:
+
+    * Most of the frameworks don't use this algorithm yet
+
+    3. Scope
+    --------
+
+    ## 3.1 Goals
 
     * Autoload namespaced classes
     * Support an implementation capable of loading 1000 classes within 10ms
 
-    ## 3. Non-Goals
+    ## 3.2 Non-Goals
 
     * Support PEAR naming conventions
 
-    ## 4. Chosen Approach
+    4. Approaches
+    -------------
+
+    ### 4.1 Chosen Approach
 
     We have decided to build it this way, because we have noticed it to be common practice withing member
-    projects to do X, Y and Z. 
+    projects to do X, Y and Z.
 
-    ## 5. Alternative Approaches
-
-    ### 5.1 Trent Reznor's Foo Proposal
-
-    The idea of this approach is to bla bla bla. Contrary to the chosen approach, we'd do X and not Y etc.
-
-    We decided against this approach because
-
-    **Pros**
+    Pros:
 
     * Simple solution
     * Easy to implement in practice
 
-    **Cons**
+    Cons:
 
-    * Not very efficient
-    * Cannot be extended
+    * Simple solution
+    * Easy to implement in practice
 
-    ## 6. Author(s)
+    ### 4.2 Alternative: Trent Reznor's Foo Proposal
+
+    The idea of this approach is to bla bla bla. Contrary to the chosen approach, we'd do X and not Y etc.
+
+    We decided against this approach because X and Y.
+
+    Pros:
+
+    * ...
+
+    Cons:
+
+    * ...
+
+    5. People
+    ---------
+
+    ### 5.1 Author(s)
 
     * John Smith
 
-    ## 7. Sponsors
+    ### 5.2 Sponsors
 
     * Jimmy Cash
     * Barbra Streisand (coordinator)
 
-    ## 8. Contributors
+    ### 5.3 Contributors
 
     * Trent Reznor
     * Jimmie Rodgers
     * Kanye West
 
-    ## 9. Votes
+    6. Votes
+    --------
 
     * **Pre-Draft -> Draft: ** http://groups.google.com...
     * **Acceptance Vote:** http://groups.google.com...
 
-    ## 10. Relevant Links
+    7. Relevant Links
+    -----------------
 
     _**Note:** Order descending chronologically._
 
@@ -281,5 +305,5 @@ This is an example template that can be used to build a meta document.
     * [IRC Conversation Gist where everyone decided to rewrite things]
     * [Relevant Poll of existing method names in voting projects for new interface]
 
-  [repo]: https://github.com/php-fig/fig-standards/tree/master
-  [voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
+[repo]: https://github.com/php-fig/fig-standards/tree/master
+[voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
