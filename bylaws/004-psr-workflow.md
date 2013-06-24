@@ -2,16 +2,23 @@
 
 This document describes the workflow for proposing a PSR and having it published by the PHP-FIG.
 
-> **Note:** Throughout this article when you see "PSR-N", "N" refers to whatever number has been 
-> assigned to the PSR in question.
+**Note:** Throughout this article when you see "PSR-N", "N" refers to whatever number has been
+assigned to the PSR in question.
 
 ## 1. Roles
 
 **Author:** An author is actively involved in writing a PSR. A document may have multiple authors. None
-of them are required to be voting members.
+of them are required to be voting members. Authors may step down from their position mid-way, but should
+inform the PHP-FIG about this. If the author(s) of a proposal are missing for more than two months
+without a note of absence, the sponsors may agree on new author(s).
 
 **Sponsor:** A voting member who officially supports a proposal. Each PSR must have two sponsors that
-must not include any of the authors.
+must not include any of the authors. If a sponsor wants to quit or wants to become an author himself,
+he should inform the authors and the PHP-FIG. In this case, a new sponsor need to be found. In the
+instance that a vote is underway with a sponsor who does not consider themselves active listed in the
+meta document, they should raise this on the Mailing List. The vote will then be invalidated until a
+new sponsor has been put in place. A proposal can never progress unless there are two sponsors actively
+backing the PSR.
 
 > Two and not just one to prevent a single sponsor from making important decisions alone.
 
@@ -24,9 +31,9 @@ whether or not the application was accepted.
 > **Note:** Copied from [Paul M. Jones' mail](https://groups.google.com/d/msg/php-fig/I0urcaIsEpk/uqQMb4bqlGwJ)
 
 **Contributor:** Anyone who feels like they have done a relevant amount of contribution. Includes anyone
-sending in a pull request during the Pre-Draft or Draft stages and anyone who feels like their review
-tweaks were relevant too. In case of doubt, the voters should use reasonable judgement to decide whether
-a contribution was relevant or not.
+sending in a pull request during the Pre-Draft or Draft stages, anyone who feels like their review
+tweaks were relevant too, former authors and sponsors who stepped down etc. In case of doubt, the voters
+should use reasonable judgement to decide whether a contribution was relevant or not.
 
 ## 2. Stages
 
@@ -45,13 +52,12 @@ a suffix of "-meta" before the extension (e.g. "autoload-meta.md"). Markdown for
 both documents. No PSR number is assigned to the proposal at this point.
 
 With both the proposal and the meta document in the proposed folder, the author(s) must find their sponsors,
-one of which must become the coordinator. The coordinator must initiate a vote to enquire whether the 
-members of PHP-FIG are generally interested inpublishing a PSR for the proposed subject, even if they 
-disagree with the details of the proposal. The coordinator must announce the vote on the Mailing List in 
-a thread titled "[VOTE] Proposed: Title of the proposal". The vote must adhere to [the voting 
-protocol][voting].
+one of which must become the coordinator. The coordinator must initiate an entrance vote to enquire whether
+the members of PHP-FIG are generally interested in publishing a PSR for the proposed subject, even if they
+disagree with the details of the proposal. The coordinator must announce th vote on the Mailing List in
+a thread titled "[VOTE][Entrance] Title of the proposal". The vote must adhere to [the voting protocol][voting].
 
-If the vote passes the proposal officially enters Draft stage. The propsal receives a PSR number 
+If the vote passes, the proposal officially enters Draft stage. The proposal receives a PSR number
 auto-incremented from the last PSR in the `/accepted` folder of the [official PHP-FIG "fig-standards" 
 repo][repo].
 
@@ -63,7 +69,7 @@ The goal of the Draft stage is to discuss and polish a PSR proposal up to the po
 considered for review by the majority of the PHP-FIG members.
 
 In Draft stage, the author(s) and any contributors may make any changes they see fit via pull requests,
-comments on GitHub, mailing list threads, IRC and similar tools. Change here is not limited by any strict
+comments on GitHub, Mailing List threads, IRC and similar tools. Change here is not limited by any strict
 rules, and fundamental rewrites are possible if supported by the author(s). Alternative approaches may be
 proposed and discussed at any time. If sponsors are convinced that an alternative proposal is superior
 to the original proposal, then the alternative may replace the original. If the alternative builds upon the
@@ -117,8 +123,8 @@ Unless a proposal is moved to Draft stage again, it must remain in Review stage 
 This gives every PHP-FIG Member sufficient time to get familiar with and influence a proposal before the final
 vote is called.
 
-When the author(s) and sponsors agree that the proposal is ready to become a PSR, a acceptance vote is called.
-The coordinator must publish a thread on the Mailing List with the subject "[VOTE] PSR-N: Title of the proposal"
+When the author(s) and sponsors agree that the proposal is ready to become a PSR, an acceptance vote is called.
+The coordinator must publish a thread on the Mailing List with the subject "[VOTE][Accept] PSR-N: Title of the proposal"
 to announce the vote. The vote must adhere to [the voting protocol][voting].
 
 ### 2.4 Accepted
@@ -147,97 +153,171 @@ example "PSR-4-autoloader-meta.md".
 
 ## 3. Meta Document
 
-### 3.1 Author(s) and Sponsors
+The purpose of the meta document is to provide the high-level perspective of a proposal for the voters and to
+give them objective information about both the chosen approach and any alternative approaches in order to make
+an informed decision.
 
-Each PSR must contain author(s) and sponsors names listed in the document body. In the event that an author would
-like to step down from their position mid-way then the a named author must listing the new author in the meta
-document. Sponsors can also quit and have their names moved from the Sponsor section to the Contributor section.
-A PSR can never progress unless there are two co-sponsors actively backing the PSR.
+### 3.1 Summary
 
-This does not need to be policed, if a vote is initiated with the name of an ex-sponsor (or a sponsor who does not
-consider themselves active) on the document, that person will have a reasonable window of time to raise their
-concern. In the instance that a vote is underway with a sponsor who does not consider themselves active (i.e they
-have quit or been listed without permission) then they can simply raise this on the mailing list and the vote
-would be invalidated until a new sponsor has been put in place. This would need a two-week wait since the last vote
-before it can be voted upon again - sticking to the two-week wait on votes which is the case for any and all votes,
-as specified in the Voting Protocol.
+The "too long, didn't read". Summarizes the purpose and big picture of the proposal, possibly with a few
+simple examples of how the author(s) imagine an implementation of the PSR to be used in practice.
 
-### 3.2 Contributors
+### 3.2 Why Bother?
 
-Anyone who feels like they have done a relevant amount of contribution should add themselves to the
-meta document. Ideally anyone sending in a pull request during the Pre-Draft or Draft stages should go on here,
-and anyone who feels like their review tweaks were relevant too. The author can use reasonable judgement for
-this.
+An argument for why the proposed topic should be specified in a PSR at all. Should include a list of positive
+and negative implications of releasing this PSR. The purpose of this section is to convince voters to accept
+the proposal as draft in the Pre-Draft->Draft voting.
 
-### 3.3 Example
+### 3.3 Scope
+
+A listing of both goals and non-goals that the PSR should achieve. The goals/non-goals should be specific and
+measurable.
+
+**Bad:** Make logging easier.
+
+**Better:** Provide an interoperable logger interface.
+
+### 3.4 Approaches
+
+Describes the design decisions that were made in the proposal and *why* they were taken. Most importantly,
+this section must objectively list both the positive and negative implications of these decisions. If
+possible, links to individual, relevant posts on the Mailing List, IRC logs or similar should be included.
+
+Also lists all known alternative approaches for the PSR proposal. For each of them, the document should describe
+an objective list of pros and cons and the reason why that approach is not considered good enough. Should
+also include links to Pull Requests, individual posts on the Mailing List, IRC logs or similar, if available.
+
+### 3.5 People
+
+The names the people involved in creating the PSR proposal, sorted alphabetically by last name in ascending
+order. The document should distinguish between the following groups:
+
+* authors
+* sponsors (indicating which of them was coordinator)
+* contributors (as defined in section 1)
+
+If someone considers himself a contributor but is not listed here, he should contact the author(s) and sponsors,
+including some proof about his contribution. If the proof is valid, the contributor must be put on this list by
+one of the author(s)
+or sponsors.
+
+### 3.6 Template
 
 This is an example template that can be used to build a meta document. 
 
-    # PSR-N Meta Document
+    PSR-N Meta Document
+    ===================
 
-    ## Summary
+    1. Summary
+    ----------
 
-    The purpose of this autoloader is to bla bla bla. More description than might go into the 
+    The purpose of X is to bla bla bla. More description than might go into the
     summary, with potential prose and a little history might be helpful.
 
-    ## Chosen Approach
+    2. Why Bother?
+    --------------
 
-    We have decided to build it this way, because we have noticed it to be common practise withing member 
-    projects to do X, Y and Z. 
+    Specifying X will help libraries to share their mechanisms for bla bla...
 
-    ## Alternative Approaches
+    Pros:
 
-    ### Trent Reznor's Foo Proposal
+    * Frameworks will use a common algorithm
 
-    **Pros**
+    Cons:
 
-    * Brilliant idea
-    * Good implementation
+    * Most of the frameworks don't use this algorithm yet
 
-    **Cons**
+    3. Scope
+    --------
 
-    * Never left Pre-Draft
-    * No survey was completed to form decision on method names
-    * Author ignored feedback and lost sponsors
+    ## 3.1 Goals
 
-    ## Author(s)
+    * Autoload namespaced classes
+    * Support an implementation capable of loading 1000 classes within 10ms
 
-    _**Note:** Order by last name. This is only ever one, maybe two people, but the author(s) will know who 
-    they are._
+    ## 3.2 Non-Goals
 
-    John Smith
+    * Support PEAR naming conventions
 
-    ## Sponsors
+    4. Approaches
+    -------------
 
-    _**Note:** The first two folks to agree to be the Sponsors. Authors add these names in place._
+    ### 4.1 Chosen Approach
 
-    Jimmy Cash
-    Barbra Streisand
+    We have decided to build it this way, because we have noticed it to be common practice withing member
+    projects to do X, Y and Z.
 
-    ## Contributors
+    Pros:
 
-    _**Note:** Order by last name. Anyone can send in a PR, or authors can add these._
+    * Simple solution
+    * Easy to implement in practice
 
-    Trent Reznor
-    Jimmie Rodgers
-    Kanye West
+    Cons:
 
-    ## Votes
+    * Not very efficient
+    * Cannot be extended
 
-    _**Note:** Order descending chronilogically._
+    ### 4.2 Alternative: Trent Reznor's Foo Proposal
 
-    * **Pre-Draft -> Draft: ** http://groups.google.com...
-    * **Draft -> Review: ** http://groups.google.com...
-    * **Review -> Acceptance: ** http://groups.google.com...
+    The idea of this approach is to bla bla bla. Contrary to the chosen approach, we'd do X and not Y etc.
 
-    ## Relevant Links
+    We decided against this approach because X and Y.
 
-    _**Note:** Order descending chronilogically._
+    Pros:
+
+    * ...
+
+    Cons:
+
+    * ...
+
+    ### 4.3 Alternative: Kanye West's Bar Proposal
+
+    This approach differs from the others in that it bla bla.
+
+    Unfortunately the author disappeared mid-way and no-one else took over the proposal.
+
+    Pros:
+
+    * ...
+
+    Cons:
+
+    * ...
+
+    5. People
+    ---------
+
+    ### 5.1 Author(s)
+
+    * John Smith
+
+    ### 5.2 Sponsors
+
+    * Jimmy Cash
+    * Barbra Streisand (coordinator)
+
+    ### 5.3 Contributors
+
+    * Trent Reznor
+    * Jimmie Rodgers
+    * Kanye West
+
+    6. Votes
+    --------
+
+    * **Entrance Vote: ** http://groups.google.com...
+    * **Acceptance Vote:** http://groups.google.com...
+
+    7. Relevant Links
+    -----------------
+
+    _**Note:** Order descending chronologically._
 
     * [Formative IRC Conversation Gist]
     * [Mailing list thread poll to decide if Y should do Z]
     * [IRC Conversation Gist where everyone decided to rewrite things]
     * [Relevant Poll of existing method names in voting projects for new interface]
 
-  [repo]: https://github.com/php-fig/fig-standards/tree/master
-  [voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
+[repo]: https://github.com/php-fig/fig-standards/tree/master
+[voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
