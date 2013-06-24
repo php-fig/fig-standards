@@ -195,8 +195,8 @@ order. The document should distinguish between the following groups:
 * Sponsors (indicating which of them was coordinator)
 * Contributors (as defined in Section 1)
 
-If someone considers themself to be a contributor but is not listed here, they should contact the author(s) and sponsors,
-including some proof about theur contribution. If the proof is valid, the contributor must be put on this list by
+If someone considers themselves to be a contributor but is not listed here, they should contact the author(s) and sponsors,
+including some proof about their contribution. If the proof is valid, the contributor must be put on this list by
 one of the author(s) or sponsors.
 
 ### 3.6 Template
