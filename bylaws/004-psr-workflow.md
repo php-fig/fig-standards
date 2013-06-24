@@ -129,12 +129,11 @@ to announce the vote. The vote must adhere to [the voting protocol][voting].
 
 ### 2.4 Accepted
 
-If the acceptance vote passes, then the proposal officially becomes a PSR. At this point, it is assigned a PSR number
-by incrementing the previous PSR number. The proposal itself is moved from `/proposed` to `/accepted` by a
-PHP-FIG member with GitHub access and prefixed with its PSR number, such as "PSR-4-autoloader.md". Comments must
-be removed from this document, but a copy of the commented proposal must be kept in `/accepted/meta`, bearing
-the suffix "-commented" (e.g. "PSR-4-autoloader-commented.md"). The commented version can be used to interpret
-the rules of the PSR in case of doubt.
+If the acceptance vote passes, then the proposal officially becomes an accepted PSR. The proposal itself is moved 
+from `/proposed` to `/accepted` by a PHP-FIG member with GitHub access and prefixed with its PSR number, such as 
+"PSR-4-autoloader.md". Comments must be removed from this document, but a copy of the commented proposal must be kept 
+in `/accepted/meta`, bearing the suffix "-commented" (e.g. "PSR-4-autoloader-commented.md"). The commented version 
+can be used to interpret the rules of the PSR in case of doubt.
 
 > Reason for having both a commented PSR and a meta document:
 >
