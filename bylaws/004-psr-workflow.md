@@ -254,8 +254,8 @@ This is an example template that can be used to build a meta document.
 
     Cons:
 
-    * Simple solution
-    * Easy to implement in practice
+    * Not very efficient
+    * Cannot be extended
 
     ### 4.2 Alternative: Trent Reznor's Foo Proposal
 
