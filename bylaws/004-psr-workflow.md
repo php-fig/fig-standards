@@ -272,6 +272,20 @@ This is an example template that can be used to build a meta document.
 
     * ...
 
+    ### 4.3 Alternative: Kanye West's Bar Proposal
+
+    This approach differs from the others in that it bla bla.
+
+    Unfortunately the author disappeared mid-way and no-one else took over the proposal.
+
+    Pros:
+
+    * ...
+
+    Cons:
+
+    * ...
+
     5. People
     ---------
 
