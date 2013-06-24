@@ -171,7 +171,7 @@ class ClassLoader
     {
         $prefix = trim($prefix, '\\');
         $base = rtrim($base, DIRECTORY_SEPARATOR);
-        if (!isset($this->prefixes[$prefix])) {
+        if (isset($this->prefixes[$prefix]) === false) {
             $this->prefixes[$prefix] = array();
         }
         if ($prepend) {
