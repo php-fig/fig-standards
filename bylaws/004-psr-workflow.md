@@ -188,17 +188,16 @@ also include links to Pull Requests, individual posts on the Mailing List, IRC l
 
 ### 3.5 People
 
-The names the people involved in creating the PSR proposal, sorted alphabetically by last name in ascending
+The names of the people involved in creating the PSR proposal, sorted alphabetically by last name in ascending
 order. The document should distinguish between the following groups:
 
-* authors
-* sponsors (indicating which of them was coordinator)
-* contributors (as defined in section 1)
+* Authors
+* Sponsors (indicating which of them was coordinator)
+* Contributors (as defined in Section 1)
 
-If someone considers himself a contributor but is not listed here, he should contact the author(s) and sponsors,
-including some proof about his contribution. If the proof is valid, the contributor must be put on this list by
-one of the author(s)
-or sponsors.
+If someone considers themself to be a contributor but is not listed here, they should contact the author(s) and sponsors,
+including some proof about theur contribution. If the proof is valid, the contributor must be put on this list by
+one of the author(s) or sponsors.
 
 ### 3.6 Template
 
