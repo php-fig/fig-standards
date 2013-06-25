@@ -165,7 +165,7 @@ simple examples of how the author(s) imagine an implementation of the PSR to be 
 
 An argument for why the proposed topic should be specified in a PSR at all. Should include a list of positive
 and negative implications of releasing this PSR. The purpose of this section is to convince voters to accept
-the proposal as draft in the Pre-Draft->Draft voting.
+the proposal as draft during the entrance vote.
 
 ### 3.3 Scope
 
