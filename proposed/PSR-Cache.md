@@ -243,6 +243,6 @@ interface ItemInterface
      *
      * @return bool
      */
-    function remove();
+    function delete();
 }
 ```
