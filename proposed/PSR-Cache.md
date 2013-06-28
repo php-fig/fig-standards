@@ -111,7 +111,7 @@ getItemIterator function.
 
 ```php
 <?php
-namespace PSR\Cache;
+namespace Psr\Cache;
 
 /**
  * Cache\PoolInterface generates Cache\Item objects.
@@ -128,7 +128,7 @@ interface PoolInterface
      *  {}()/\@
      *
      * @param string $key
-     * @return PSR\Cache\ItemInterface
+     * @return Psr\Cache\ItemInterface
      */
     function getItem($key);
 
@@ -164,7 +164,7 @@ value defined in the Data section of this document.
 
 ```php
 <?php
-namespace PSR\Cache;
+namespace Psr\Cache;
 
 /**
  * Cache\ItemInterface defines an interface for interacting with objects inside a cache.
