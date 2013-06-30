@@ -225,15 +225,11 @@ interface ItemInterface
     function set($value = null, $ttl = null);
 
     /**
-     * Validates the current state of the item in the cache.
-     *
-     * Checks the validity of a cache result. If the object is good (is not a 
-     * miss, and meets all the standards set by the Implementing Library) then
-     * this function returns true.
+     * Confirms if the cache item exists in the cache
      *
      * @return bool
      */
-    function isValid();
+    function isHit();
 
     /**
      * Removes the current key from the cache.
