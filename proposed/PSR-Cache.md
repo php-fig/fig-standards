@@ -56,26 +56,31 @@ implementation of those caching services.
 
 *    **Implementing Library** - This library is responsible for implementing
 this standard in order to provide caching services to any Calling Library. The
-Implementing Library must provide classes which implement the Cache\Pool and
+Implementing Library MUST provide classes which implement the Cache\Pool and
 Cache\Item interfaces.
 
 
 ## Data
 
+Implementing libraries MUST support all serializable PHP data types, including:
 
-Acceptable data includes all serializable PHP data types-
+*    **Strings** - Character strings of arbitrary size in any PHP-compatible encoding.
+*    **Integers** - All integers of any size supported by PHP, up to 64-bit signed.
+*    **Floats** - All signed floating point values.
+*    **Boolean** - True and False.
+*    **Null** - The actual null value.
+*    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
+*    **Object** - Any object that supports lossless serialization and
+deserialization such that $o == unserialize(serialize($o)). Objects MAY
+leverage PHP's Serializable interface, __sleep()/__wakeup() magic methods, or
+similar language functionality if appropriate.
 
-*    **Strings** - Simple, complex and large strings of any encoding.
-*    **Integers** - Positive, negative and large integers (>32 bit).
-*    **Floats** - Positive, negative and large.
-*    **Boolean**- true, false.
-*    **Null** - not a wrapper or object, but the actual null value.
-*    **Arrays** - indexed, associative and multidimensional.
-*    **Object** - those that support the PHP serialize functionality.
+All data passed into the Implementing Library MUST be returned exactly as
+passed. That includes the variable type. That is, it is an error to return
+(string) 5 if (int) 5 was the value saved.
 
-All data passed into the Implementing Library must be returned exactly as
-passed. If this is not possible for whatever reason then it is preferable to
-respond with a cache miss than with corrupted data.
+If it is not possible to return the exact saved value for any reason, implementing
+libraries MUST respond with a cache miss rather than corrupted data.
 
 
 ## Key Concepts
