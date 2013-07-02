@@ -35,12 +35,14 @@ can also be explicitly set with DateTime object.
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at
     1:35:00.
 
-*    **Key** - A string that uniquely identifies the cached item. Implementing
-Libraries are responsible for any encoding or escaping required by their
-backends, but must be able to supply the original key if needed. Keys should not
-contain the special characters listed:
-
-	{}()/\@
+*    **Key** - A string that uniquely identifies a cached item. Implementing
+libraries MUST support keys consisting of the characters A-Z, a-z, 0-9, and _
+in any order in UTF-8 encoding and a length of up to 64 characters.
+Implementing libraries MAY support additional characters and encodings or longer
+lengths, but must support at least that minimum.  Libraries are responsible for
+their own escaping of key strings as appropriate, but MUST be able to return
+the original unmodified key string. The following characters are reserved for
+future extensions and MUST NOT be supported by implementing libraries: {}()/\@:
 
 *    **Miss** - An item is considered missing from the cache when it isn't there
 or has an expiration in the past. Additional Miss conditions can be defined by
