@@ -108,53 +108,53 @@ at any time.
 
 ### Cache\PoolInterface
 
-The main focus of Cache\PoolInterface is to accept a key from the Calling
-Library and return the associated Cache\ItemInterface object. The majority of the Pool
-object's implementation is up to the Implementing Library, including all
-configuration, initialization and the injection itself into the Calling Library.
-
-Items can be retrieved from the Cache\PoolInterface individually using the getItem
-function, or in groups by retrieving an Iterator object from the
-getItemIterator function.
+The primary purpose of Cache\PoolInterface is to accept a key from the Calling
+Library and return the associated Cache\ItemInterface object. It is also the
+primary point of interaction with the entire cache collection. All configuration
+and initialization of the Pool is left up to an Implementing Library.
 
 ```php
 <?php
 namespace Psr\Cache;
 
 /**
- * Cache\PoolInterface generates Cache\Item objects.
+ * \Psr\Cache\PoolInterface generates Cache\Item objects.
  */
 interface PoolInterface
 {
     /**
-     * Returns objects which implement the Cache\PoolInterface interface.
+     * Returns a Cache Item representing the specified key.
      *
-     * Provided key must be unique for each item in the cache. Implementing
-     * Libraries are responsible for any encoding or escaping required by their
-     * backends, but must be able to supply the original key if needed. Keys
-     * should not contain the special characters listed:
-     *  {}()/\@
+     * This method must always return an ItemInterface object, even in case of
+     * a cache miss. It MUST NOT return null.
      *
      * @param string $key
-     * @return Psr\Cache\ItemInterface
+     *   The key for which to return the corresponding Cache Item.
+     * @return \Psr\Cache\ItemInterface
+     *   The corresponding Cache Item.
+     * @throws \InvalidArgumentException
+     *   If the $key string is not a legal value an \InvalidArgumentException
+     *   MUST be thrown.
      */
     function getItem($key);
 
     /**
-     * Returns a group of cache objects as an \Iterator
-     *
-     * Bulk lookups can often by streamlined by backend cache systems. The
-     * returned iterator will contain a Cache\Item for each key passed.
+     * Returns a traversable set of cache items.
      *
      * @param array $keys
-     * @return \Iterator
+     *   An indexed array of keys of items to retrieve.
+     * @return \Traversable
+     *   A traversable collection of Cache Items in the same order as the $keys
+     *   parameter. If no items are found an empty Traversable collection will
+     *   be returned.
      */
-    function getItems($keys);
+    function getItems(array $keys);
 
     /**
-     * Clears the cache pool of all items.
+     * Deletes all items in the pool.
      *
-     * @return bool
+     * @return \Psr\Cache\PoolInterface
+     *   The current pool.
      */
     function clear();
 }
