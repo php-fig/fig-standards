@@ -44,10 +44,14 @@ their own escaping of key strings as appropriate, but MUST be able to return
 the original unmodified key string. The following characters are reserved for
 future extensions and MUST NOT be supported by implementing libraries: {}()/\@:
 
-*    **Miss** - An item is considered missing from the cache when it isn't there
-or has an expiration in the past. Additional Miss conditions can be defined by
-the Implementing Library as long as these conditions are met (at no point should
-an expired item not be considered a miss).
+*    **Hit** - A cache hit occurs when a Calling Library requests an Item by key
+and a matching value is found for that key and that value has not expired and
+the value is not invalid for some other reason.
+
+*    **Miss** - A cache miss is the opposite of a cache hit. A cache hit occurs
+when a Calling Library requests an item by key and that value not found for that
+key, or the value was found but has expired, or the value is invalid for some
+other reason. An expired value MUST always be considered a cache miss.
 
 *    **Calling Library** - The library or code that actually needs the cache
 services. This library will utilize caching services that implement this
