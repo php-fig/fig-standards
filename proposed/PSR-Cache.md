@@ -87,19 +87,16 @@ libraries MUST respond with a cache miss rather than corrupted data.
 
 ### Pool
 
-The pool represents a collection of items in a caching system. The pool
-conceptually contains all of the items. When you want to get something out of
-the caching system, you use the Pool to create the Item object. A Pool can
-return one Item or many Items, and the pool can be used to clear all of the
-items in the cache.
-
+The Pool represents a collection of items in a caching system. The pool is
+a logical Repository of all items it contains.  All cacheable items are retrieved
+from the Pool as an Item object, and all interaction with the whole universe of
+cached objects happens through the Pool.
 
 ### Items
 
-An item represents a single key/value pair inside of a caching system. It is
-associated with a "key" that can't be changed, and a value that can be set or
-retrieved. The status of the item (hit or miss) is relevant only to that
-particular item.
+An Item represents a single key/value pair within a Pool. The key is the primary
+unique identifier for an Item and MUST be immutable. The Value MAY be changed
+at any time.
 
 
 ## Interfaces
