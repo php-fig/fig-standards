@@ -266,3 +266,15 @@ interface ItemInterface
     function delete();
 }
 ```
+
+### Cache\InvalidArgumentException
+
+Any time an invalid argument is passed into a method it must throw an exception class which implements ``Psr\Cache\InvalidArgumentException``.
+
+```php
+<?php
+namespace Psr\Cache;
+
+interface InvalidArgumentException {}
+
+
