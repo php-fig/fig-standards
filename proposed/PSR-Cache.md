@@ -40,6 +40,9 @@ may also be explicitly set with DateTime object.
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at
     1:35:00.
 
+Implementing Libraries MAY expire an item before its requested Expiration Time,
+but MUST treat an item as expired once its Expiration Time is reached.
+
 *    **Key** - A string that uniquely identifies a cached item. Implementing
 libraries MUST support keys consisting of the characters `A-Z`, `a-z`, `0-9`,
 and `_` in any order in UTF-8 encoding and a length of up to 64 characters.
