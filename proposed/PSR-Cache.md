@@ -35,22 +35,22 @@ by an integer representing time in seconds, or a DateInterval object.
 
 *    **Expiration** - The actual time when an item is set to go stale. This it
 typically calculated by adding the TTL to the time when an object is stored, but
-can also be explicitly set with DateTime object.
+may also be explicitly set with DateTime object.
 
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at
     1:35:00.
 
 *    **Key** - A string that uniquely identifies a cached item. Implementing
-libraries MUST support keys consisting of the characters A-Z, a-z, 0-9, and _
-in any order in UTF-8 encoding and a length of up to 64 characters.
+libraries MUST support keys consisting of the characters `A-Z`, `a-z`, `0-9`,
+and `_` in any order in UTF-8 encoding and a length of up to 64 characters.
 Implementing libraries MAY support additional characters and encodings or longer
 lengths, but must support at least that minimum.  Libraries are responsible for
 their own escaping of key strings as appropriate, but MUST be able to return
 the original unmodified key string. The following characters are reserved for
-future extensions and MUST NOT be supported by implementing libraries: {}()/\@:
+future extensions and MUST NOT be supported by implementing libraries: `{}()/\@:`
 
 *    **Hit** - A cache hit occurs when a Calling Library requests an Item by key
-and a matching value is found for that key and that value has not expired and
+and a matching value is found for that key, and that value has not expired, and
 the value is not invalid for some other reason.
 
 *    **Miss** - A cache miss is the opposite of a cache hit. A cache hit occurs
@@ -90,7 +90,6 @@ passed. That includes the variable type. That is, it is an error to return
 
 If it is not possible to return the exact saved value for any reason, implementing
 libraries MUST respond with a cache miss rather than corrupted data.
-
 
 ## Key Concepts
 
