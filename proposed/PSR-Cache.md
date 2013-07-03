@@ -269,7 +269,8 @@ interface ItemInterface
 
 ### Cache\InvalidArgumentException
 
-Any time an invalid argument is passed into a method it must throw an exception class which implements ``Psr\Cache\InvalidArgumentException``.
+Any time an invalid argument is passed into a method it must 
+throw an exception class which implements ``Psr\Cache\InvalidArgumentException``.
 
 ```php
 <?php
