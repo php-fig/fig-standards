@@ -40,7 +40,7 @@ may also be explicitly set with DateTime object.
     An item with a 300 second TTL stored at 1:30:00 will have an expiration at
     1:35:00.
 
-Implementing Libraries MAY expire an item before its requested Expiration Time,
+    Implementing Libraries MAY expire an item before its requested Expiration Time,
 but MUST treat an item as expired once its Expiration Time is reached.
 
 *    **Key** - A string that uniquely identifies a cached item. Implementing
@@ -84,7 +84,7 @@ Implementing libraries MUST support all serializable PHP data types, including:
 *    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
 *    **Object** - Any object that supports lossless serialization and
 deserialization such that $o == unserialize(serialize($o)). Objects MAY
-leverage PHP's Serializable interface, __sleep()/__wakeup() magic methods, or
+leverage PHP's Serializable interface, __sleep() or __wakeup() magic methods, or
 similar language functionality if appropriate.
 
 All data passed into the Implementing Library MUST be returned exactly as
