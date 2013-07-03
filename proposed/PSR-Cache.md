@@ -154,8 +154,8 @@ interface PoolInterface
      *   An indexed array of keys of items to retrieve.
      * @return \Traversable
      *   A traversable collection of Cache Items in the same order as the $keys
-     *   parameter. If no items are found an empty Traversable collection will
-     *   be returned.
+     *   parameter, keyed by the cache keys of each item. If no items are found
+     *   an empty Traversable collection will be returned.
      */
     function getItems(array $keys);
 
