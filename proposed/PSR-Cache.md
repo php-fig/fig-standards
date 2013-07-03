@@ -228,19 +228,21 @@ interface ItemInterface
      * although the method of serialization is left up to the Implementing
      * Library.
      *
-     * The $ttl can be defined in a number of ways. As an integer or
-     * DateInverval object the argument defines how long before the cache should
-     * expire. As a DateTime object the argument defines the actual expiration
-     * time of the object. Implementations are allowed to use a lower time than
-     * passed, but should not use a longer one.
-     *
-     * If no $ttl is passed then the item can be stored indefinitely or a
-     * default value can be set by the Implementing Library.
-     *
-     * Returns true if the item was successfully stored.
+     * Implementing Libraries MAY provide a default TTL if one is not specified.
+     * If no TTL is specified and no default TTL has been set, the TTL MUST
+     * be set to the maximum possible duration of the underlying storage
+     * mechanism, or permanent if possible.
      *
      * @param mixed $value
-     * @param int|DateInterval|DateTime $ttl
+     *   The serializable value to be stored.
+     * @param int|DateTime $ttl
+     *   - If an integer is passed, it is interpreted as the number of seconds
+     *     after which the item MUST be considered expired.
+     *   - If a DateTime object is passed, it is interpreted as the point in
+     *     time after which the the item MUST be considered expired.
+     *   - If no value is passed, a default value MAY be used. If none is set,
+     *     the value should be stored permanently or for as long as the
+     *     implementation allows.
      * @return bool
      *   Returns true if the item was successfully saved, or false if there was
      *   an error.
