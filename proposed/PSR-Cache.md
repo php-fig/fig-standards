@@ -141,8 +141,8 @@ interface PoolInterface
      *   The key for which to return the corresponding Cache Item.
      * @return \Psr\Cache\ItemInterface
      *   The corresponding Cache Item.
-     * @throws \InvalidArgumentException
-     *   If the $key string is not a legal value an \InvalidArgumentException
+     * @throws \Psr\Cache\InvalidArgumentException
+     *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
      *   MUST be thrown.
      */
     function getItem($key);
