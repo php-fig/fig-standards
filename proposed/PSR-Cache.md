@@ -141,8 +141,8 @@ interface PoolInterface
      *   The key for which to return the corresponding Cache Item.
      * @return \Psr\Cache\ItemInterface
      *   The corresponding Cache Item.
-     * @throws \InvalidArgumentException
-     *   If the $key string is not a legal value an \InvalidArgumentException
+     * @throws \Psr\Cache\InvalidArgumentException
+     *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
      *   MUST be thrown.
      */
     function getItem($key);
@@ -266,3 +266,16 @@ interface ItemInterface
     function delete();
 }
 ```
+
+### Cache\InvalidArgumentException
+
+Any time an invalid argument is passed into a method it must 
+throw an exception class which implements ``Psr\Cache\InvalidArgumentException``.
+
+```php
+<?php
+namespace Psr\Cache;
+
+interface InvalidArgumentException {}
+
+
