@@ -93,7 +93,7 @@ class Foo extends Bar implements FooInterface
 
 ### 2.1 Standard elementare di scrittura codice
 
-Il codice DEVE seguire tutte le regole delineane nel [PSR-1][].
+Il codice DEVE seguire tutte le regole delineate nel [PSR-1][].
 
 ### 2.2 I file
 
@@ -168,7 +168,7 @@ use AltroVendor\AltroPackage\BazClass;
 ```
 
 
-4. Classi, Propertà e Metodi
+4. Classi, Proprietà e Metodi
 -----------------------------
 
 Il termine "classe" si riferisce a tutte le classi, interfacce e trait.
@@ -542,8 +542,8 @@ Quando la lista di chiusura (di argomenti o variabili) è divisa su righe multip
 la parentesi di chiusura e la graffa di apertura DEVONO essere posizionate
 insieme su una nuova riga con uno spazio a separarle.
 
-Quello che segue è un esemnpio di closure con e senza liste di argomenti e liste di variabili
-variabili divise su righe multiple.
+Quello che segue è un esempio di closure con e senza liste di argomenti e liste di variabili 
+divise su righe multiple.
 
 ```php
 <?php
