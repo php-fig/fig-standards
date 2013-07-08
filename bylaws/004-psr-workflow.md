@@ -48,8 +48,8 @@ ideas they feel are within the scope of the PHP-FIG.
 Once the proposal is considered ready by the author(s), it must be published in a fork of the [official
 PHP-FIG "fig-standards" repo][repo]. The content of the proposal must be placed inside the `/proposed`
 folder with a simple filename such as "autoload.md". Along with this document must be a meta document with
-a suffix of "-meta" before the extension (e.g. "autoload-meta.md"). Markdown formatting must be used for
-both documents. No PSR number is assigned to the proposal at this point.
+a suffix of "-meta" before the extension (e.g. "autoload-meta.md"). GitHub Markdown formatting must be 
+used for both documents. No PSR number is assigned to the proposal at this point.
 
 With both the proposal and the meta document in the proposed folder, the author(s) must find their sponsors,
 one of which must become the coordinator. The coordinator must initiate an entrance vote to enquire whether
@@ -96,12 +96,12 @@ proposal must be merged into the "master" branch of the [official PHP-FIG "fig-s
 ### 2.3 Review
 
 The goal of the Review stage is to involve the majority of the PHP-FIG members in getting familiar with
-a proposal and to decide whether it is ready for an acceptance vote.
+a proposal and to decide whether it is ready for an acceptance vote. At this stage the coordinator is in 
+charge of any decisions to move the proposal forwards or backwards.
 
-The goal is *not* to significantly change or enhance the proposal. If significant changes are needed, the
-proposal must be moved back to Draft stage. The goal is also *not necessarily* to have every PHP-FIG member
-agree with the approach chosen by the proposal. The majority in the acceptance vote wins. The goal however *is*
-to have all PHP-FIG members agree on the completeness and objectivity of the meta document.
+The goal is also *not necessarily* to have every PHP-FIG member agree with the approach chosen by the 
+proposal. The goal however *is* to have all PHP-FIG members agree on the completeness and objectivity of 
+the meta document.
 
 > Individual members of the PHP-FIG should not be permitted to prevent a PSR from being published.
 
@@ -156,10 +156,10 @@ The purpose of the meta document is to provide the high-level perspective of a p
 give them objective information about both the chosen approach and any alternative approaches in order to make
 an informed decision.
 
-### 3.1 Summary
+### 3.1 Executive Summary
 
-The "too long, didn't read". Summarizes the purpose and big picture of the proposal, possibly with a few
-simple examples of how the author(s) imagine an implementation of the PSR to be used in practice.
+Summarizes the purpose and big picture of the proposal, possibly with a few simple examples of how the 
+author(s) imagine an implementation of the PSR to be used in practice.
 
 ### 3.2 Why Bother?
 
