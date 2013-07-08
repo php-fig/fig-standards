@@ -7,7 +7,7 @@ Le but de ce guide est de réduire la friction cognitive lors de l'analyse du co
 
 Les règles de style dans ce document sont tirées de points communs entre les membres de différents projets. Lorsque plusieurs auteurs collaborent sur plusieurs projets, cela aide d'avoir un ensemble de lignes directrices qui seront utilisées dans tous ces projets. Ainsi, l'avantage de ce guide n'est pas dans les règles elles-mêmes, mais dans le partage de ces dernières.
 
-Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "DEVRAIT", "NE DEVRAIT PAS", "RECOMMENDÉ", "PEUT" et "OPTIONNELLE" dans ce document doivent être interprétés comme décrit dans [RFC 2119][].
+Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "DEVRAIT", "NE DEVRAIT PAS", "RECOMMANDÉ", "PEUT" et "OPTIONNELLE" dans ce document doivent être interprétés comme décrit dans [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
@@ -337,7 +337,7 @@ $foo->bar(
 );
 ```
 
-5. Structures de Controles
+5. Structures de contrôle
 ---------------------
 
 Les règles de style générales pour les structures de contrôle sont les suivantes:
@@ -462,7 +462,7 @@ try {
 6. Closures
 -----------
 
-les closures DOIVENT être déclarées avec un espace après le mot-clé `fonction` et un
+Les closures DOIVENT être déclarées avec un espace après le mot-clé `fonction` et un
 espace avant et après le mot clé `use`.
 
 L'accolade ouvrante DOIT aller sur la même ligne, et l'accolade fermante doit aller sur
@@ -566,8 +566,8 @@ $foo->bar(
 7. Conclusion
 --------------
 
-Il y a de nombreux éléments de style et pratique intentionnellement omis par ce
-guide. Ceux-ci incluent, mais ne sont pas limités à:
+Il y a de nombreux éléments de style et pratiques intentionnellement omis par ce
+guide. Ceux-ci incluent, mais ne sont pas limités à :
 
 - Déclaration des variables et constantes globales
 
