@@ -7,22 +7,25 @@ assigned to the PSR in question.
 
 ## 1. Roles
 
-**Author:** An author is actively involved in writing a PSR. A document may have multiple authors. None
-of them are required to be voting members. Authors may step down from their position mid-way, but should
-inform the PHP-FIG about this. If the author(s) of a proposal are missing for more than two months
-without a note of absence, the sponsors may agree on new author(s).
+**Editor:** The Editor of a PSR is actively involved in managing and tracking a PSR as it is written.
+A proposal may have no more than two editors at a time, and a single editor is preferred. The Editor
+is responsible for managing the development of a PSR; for representing the PSR in discussions on
+the PHP-FIG Mailing List; for coordinating other Contributors; and for working with the Coordinator
+to see the PSR through the review process. The Editor(s) are not required to be voting members of
+PHP-FIG. If the Editor(s) of a proposal are missing for more than 60 days without notice then
+the Sponsors may agree upon a new Editor. An Editor is assumed to also be a Contributor to a PSR.
 
-**Sponsor:** A voting member who officially supports a proposal. Each PSR must have two sponsors that
-must not include any of the authors. If a sponsor wants to quit or wants to become an author himself,
-he should inform the authors and the PHP-FIG. In this case, a new sponsor need to be found. In the
-instance that a vote is underway with a sponsor who does not consider themselves active listed in the
-meta document, they should raise this on the Mailing List. The vote will then be invalidated until a
+**Sponsor:** A voting member who officially supports a proposal. Each PSR MUST have two Sponsors.
+A Sponsor MAY NOT be the Editor or a Contributor. A Sponsor MAY step down to become the Editor
+or a Contributor for a PSR by posting a message to the Mailing List. In this case, a new Sponsor
+must be found. Should a vote be underway with a sponsor who does not consider themselves active listed in the
+meta document, they should raise an objection on the Mailing List. The vote will then be invalidated until a
 new sponsor has been put in place. A proposal can never progress unless there are two sponsors actively
 backing the PSR.
 
 > Two and not just one to prevent a single sponsor from making important decisions alone.
 
-**Coordinator:** One of the sponsors is the coordinator of a PSR. The coordinator is in charge of the
+**Coordinator:** One of the Sponsors is the Coordinator of a PSR. The Coordinator is in charge of the
 voting process. He notes the starting and ending dates, the number of voting members at the start of the
 vote, and the quorum count needed. He sends out reminders by whatever means he feels appropriate to drive
 the vote. At the end of the voting period, he tallies the votes, notes if quorum was established, and
@@ -30,10 +33,10 @@ whether or not the application was accepted.
 
 > **Note:** Copied from [Paul M. Jones' mail](https://groups.google.com/d/msg/php-fig/I0urcaIsEpk/uqQMb4bqlGwJ)
 
-**Contributor:** Anyone who feels like they have done a relevant amount of contribution. Includes anyone
-sending in a pull request during the Pre-Draft or Draft stages, anyone who feels like their review
-tweaks were relevant too, former authors and sponsors who stepped down etc. In case of doubt, the voters
-should use reasonable judgement to decide whether a contribution was relevant or not.
+**Contributor:** Anyone who has contributed significantly to the PSR. That may include sending in a pull
+request during the Pre-Draft or Draft stages, offered significant and meaningful reviews, former editors, etc.
+In case of dispute, the Editor and Coordinator are responsible for determining whether a particular
+individual qualifies as a Contributor.
 
 ## 2. Stages
 
