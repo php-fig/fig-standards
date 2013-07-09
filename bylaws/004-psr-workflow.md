@@ -45,26 +45,36 @@ individual qualifies as a Contributor.
 The goal of the Pre-Draft stage is to determine whether a majority of the PHP-FIG is interested in
 publishing a PSR for a proposed concept.
 
-The author(s) can work on the proposal anywhere they like, do whatever they like and come up with any
-ideas they feel are within the scope of the PHP-FIG.
+Interested parties may discuss a possible proposal, including possible implementations, by
+whatever means they feel is appropriate. That includes informal discussion on the PHP-FIG
+mailing list or IRC channel of whether or not the idea has merit and is within the scope
+of PHP-FIG's goals.
 
-Once the proposal is considered ready by the author(s), it must be published in a fork of the [official
-PHP-FIG "fig-standards" repo][repo]. The content of the proposal must be placed inside the `/proposed`
-folder with a simple filename such as "autoload.md". Along with this document must be a meta document with
-a suffix of "-meta" before the extension (e.g. "autoload-meta.md"). GitHub Markdown formatting must be
-used for both documents. No PSR number is assigned to the proposal at this point.
+Once those parties have determined to move forward, they must select an Editor and prepare a proposal
+document. The proposal must be published in a fork of the [official PHP-FIG "fig-standards" repo][repo].
+The content of the proposal must be placed inside the `/proposed` folder with a simple filename such as
+"autoload.md". Along with this document must be a meta document with a suffix of "-meta" before the
+extension (e.g. "autoload-meta.md"). GitHub Markdown formatting must be used for both documents.
+No PSR number is assigned to the proposal at this point.
 
-With both the proposal and the meta document in the proposed folder, the author(s) must find their sponsors,
-one of which must become the coordinator. The coordinator must initiate an entrance vote to enquire whether
-the members of PHP-FIG are generally interested in publishing a PSR for the proposed subject, even if they
-disagree with the details of the proposal. The coordinator must announce th vote on the Mailing List in
-a thread titled "[VOTE][Entrance] Title of the proposal". The vote must adhere to [the voting protocol][voting].
+The Editor must then locate two voting members to sponsor the proposal, one of whom agrees to be the
+Coordinator. The Editor, Sponsors, and existing additional Contributors if any form the working group
+for the proposal.
+
+The proposal is NOT required to be fully developed at this point, although that is permitted. At
+minimum, it must include a statement of the problem to be solved and basic information on the
+general approach to be taken. Further revision and expansion is expected during the Draft phase.
+
+The Coordinator must initiate an entrance vote to enquire whether the members of PHP-FIG are generally
+interested in publishing a PSR for the proposed subject, even if they disagree with the details of
+the proposal. The coordinator must announce th vote on the Mailing List in a thread titled
+"[VOTE][Entrance] Title of the proposal". The vote must adhere to [the voting protocol][voting].
 
 If the vote passes, the proposal officially enters Draft stage. The proposal receives a PSR number
 auto-incremented from the last PSR in the `/accepted` folder of the [official PHP-FIG "fig-standards"
 repo][repo].
 
-The author(s) may continue to work on the proposal during the complete voting period.
+The working group may continue to work on the proposal during the complete voting period.
 
 ### 2.2 Draft
 
