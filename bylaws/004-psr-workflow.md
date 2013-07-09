@@ -99,17 +99,17 @@ complete, the coordinator may promote the proposal to Review stage. The promotio
 thread on the Mailing List with the subject "[REVIEW] PSR-N: Title of the proposal". At this point, the
 proposal must be merged into the "master" branch of the [official PHP-FIG "fig-standards" repository][repo].
 
-> At this point, the author(s) transfer the ownership of the proposal to the sponsors. This is to [prevent
-> the author(s) from blocking changes](https://groups.google.com/d/msg/php-fig/qHOrincccWk/HrjpQMAW4AsJ)
+> At this point, the contributors(s) transfer the ownership of the proposal to the sponsors. This is to [prevent
+> the contributors(s) from blocking changes](https://groups.google.com/d/msg/php-fig/qHOrincccWk/HrjpQMAW4AsJ)
 > that the other PHP-FIG members agree on.
 >
-> If the author(s) are not ready yet to pass ownership, they should continue working on the proposal and
+> If the contributors(s) are not ready yet to pass ownership, they should continue working on the proposal and
 > the meta document until they feel confident to do so.
 
 ### 2.3 Review
 
 The goal of the Review stage is to involve the majority of the PHP-FIG members in getting familiar with
-a proposal and to decide whether it is ready for an acceptance vote. At this stage the coordinator is in
+a proposal and to decide whether it is ready for an acceptance vote. At this stage the Coordinator is in
 charge of any decisions to move the proposal forwards or backwards.
 
 The goal is also *not necessarily* to have every PHP-FIG member agree with the approach chosen by the
@@ -132,11 +132,11 @@ has started already. However, the sponsors may choose to abort the vote and the 
 if they agree that this is necessary. The purpose of this rule is to give PHP-FIG members the chance
 to consider *all* known alternatives during the Review stage.
 
-Unless a proposal is moved to Draft stage again, it must remain in Review stage for a minimum of two weeks.
-This gives every PHP-FIG Member sufficient time to get familiar with and influence a proposal before the final
-vote is called.
+Unless a proposal is moved to Draft stage again, it must remain in Review stage for a minimum of two weeks
+before an acceptance vote is called. This gives every PHP-FIG Member sufficient time to get familiar
+with and influence a proposal before the final vote is called.
 
-When the author(s) and sponsors agree that the proposal is ready to become a PSR, an acceptance vote is called.
+When the editor(s) and sponsors agree that the proposal is ready to become a PSR, an acceptance vote is called.
 The coordinator must publish a thread on the Mailing List with the subject "[VOTE][Accept] PSR-N: Title of the proposal"
 to announce the vote. The vote must adhere to [the voting protocol][voting].
 
@@ -172,7 +172,7 @@ an informed decision.
 ### 3.1 Executive Summary
 
 Summarizes the purpose and big picture of the proposal, possibly with a few simple examples of how the
-author(s) imagine an implementation of the PSR to be used in practice.
+contributors(s) imagine an implementation of the PSR to be used in practice.
 
 ### 3.2 Why Bother?
 
@@ -204,13 +204,13 @@ also include links to Pull Requests, individual posts on the Mailing List, IRC l
 The names of the people involved in creating the PSR proposal, sorted alphabetically by last name in ascending
 order. The document should distinguish between the following groups:
 
-* Authors
+* Editors
 * Sponsors (indicating which of them was coordinator)
 * Contributors (as defined in Section 1)
 
-If someone considers themselves to be a contributor but is not listed here, they should contact the author(s) and sponsors,
+If someone considers themselves to be a contributor but is not listed here, they should contact the editors(s) and sponsors,
 including some proof about their contribution. If the proof is valid, the contributor must be put on this list by
-one of the author(s) or sponsors.
+one of the editors(s) or sponsors.
 
 ### 3.6 Template
 
@@ -299,7 +299,7 @@ This is an example template that can be used to build a meta document.
     5. People
     ---------
 
-    ### 5.1 Author(s)
+    ### 5.1 Editor(s)
 
     * John Smith
 
