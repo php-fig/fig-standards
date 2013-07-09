@@ -16,7 +16,7 @@ PHP-FIG. If the Editor(s) of a proposal are missing for more than 60 days withou
 the Sponsors may agree upon a new Editor. An Editor is assumed to also be a Contributor to a PSR.
 
 **Sponsor:** A voting member who officially supports a proposal. Each PSR MUST have two Sponsors.
-A Sponsor MAY NOT be the Editor, but could be a Contributor. A Sponsor MAY step down to become the Editor
+A Sponsor MAY NOT be the Editor or a Contributor. A Sponsor MAY step down to become the Editor
 or a Contributor for a PSR by posting a message to the Mailing List. In this case, a new Sponsor
 must be found. Should a vote be underway with a sponsor who does not consider themselves active listed in the
 meta document, they should raise an objection on the Mailing List. The vote will then be invalidated until a
@@ -99,11 +99,11 @@ complete, the coordinator may promote the proposal to Review stage. The promotio
 thread on the Mailing List with the subject "[REVIEW] PSR-N: Title of the proposal". At this point, the
 proposal must be merged into the "master" branch of the [official PHP-FIG "fig-standards" repository][repo].
 
-> At this point, the Editor(s) transfer authority of the proposal to the sponsors. This is to [prevent
+> At this point, the Editor(s) transfer authority over the proposal to the sponsors. This is to [prevent
 > the Editor(s) from blocking changes](https://groups.google.com/d/msg/php-fig/qHOrincccWk/HrjpQMAW4AsJ)
 > that the other PHP-FIG members agree on.
 >
-> If the Editor(s) are not ready yet to pass authority, they should continue working on the proposal and
+> If the Editor(s) are not ready yet to transfer authority, they should continue working on the proposal and
 > the meta document until they feel confident to do so.
 
 ### 2.3 Review
