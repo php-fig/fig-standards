@@ -8,7 +8,7 @@ assigned to the PSR in question.
 ## 1. Roles
 
 **Editor:** The Editor of a PSR is actively involved in managing and tracking a PSR as it is written.
-A proposal may have no more than two editors at a time, and a single editor is preferred. The Editor
+A proposal may have no more than two Editors at a time, and a single Editor is preferred. The Editor
 is responsible for managing the development of a PSR; for representing the PSR in discussions on
 the PHP-FIG Mailing List; for coordinating other Contributors; and for working with the Coordinator
 to see the PSR through the review process. The Editor(s) are not required to be voting members of
@@ -16,7 +16,7 @@ PHP-FIG. If the Editor(s) of a proposal are missing for more than 60 days withou
 the Sponsors may agree upon a new Editor. An Editor is assumed to also be a Contributor to a PSR.
 
 **Sponsor:** A voting member who officially supports a proposal. Each PSR MUST have two Sponsors.
-A Sponsor MAY NOT be the Editor or a Contributor. A Sponsor MAY step down to become the Editor
+A Sponsor MAY NOT be the Editor, but could be a Contributor. A Sponsor MAY step down to become the Editor
 or a Contributor for a PSR by posting a message to the Mailing List. In this case, a new Sponsor
 must be found. Should a vote be underway with a sponsor who does not consider themselves active listed in the
 meta document, they should raise an objection on the Mailing List. The vote will then be invalidated until a
@@ -34,7 +34,7 @@ whether or not the application was accepted.
 > **Note:** Copied from [Paul M. Jones' mail](https://groups.google.com/d/msg/php-fig/I0urcaIsEpk/uqQMb4bqlGwJ)
 
 **Contributor:** Anyone who has contributed significantly to the PSR. That may include sending in a pull
-request during the Pre-Draft or Draft stages, offered significant and meaningful reviews, former editors, etc.
+request during the Pre-Draft or Draft stages, offered significant and meaningful reviews, former Editors, etc.
 In case of dispute, the Editor and Coordinator are responsible for determining whether a particular
 individual qualifies as a Contributor.
 
@@ -47,7 +47,7 @@ publishing a PSR for a proposed concept.
 
 Interested parties may discuss a possible proposal, including possible implementations, by
 whatever means they feel is appropriate. That includes informal discussion on the PHP-FIG
-mailing list or IRC channel of whether or not the idea has merit and is within the scope
+Mailing List or IRC channel of whether or not the idea has merit and is within the scope
 of PHP-FIG's goals.
 
 Once those parties have determined to move forward, they must select an Editor and prepare a proposal
@@ -67,7 +67,7 @@ general approach to be taken. Further revision and expansion is expected during 
 
 The Coordinator must initiate an entrance vote to enquire whether the members of PHP-FIG are generally
 interested in publishing a PSR for the proposed subject, even if they disagree with the details of
-the proposal. The coordinator must announce th vote on the Mailing List in a thread titled
+the proposal. The coordinator must announce the vote on the Mailing List in a thread titled
 "[VOTE][Entrance] Title of the proposal". The vote must adhere to [the voting protocol][voting].
 
 If the vote passes, the proposal officially enters Draft stage. The proposal receives a PSR number
@@ -83,11 +83,11 @@ considered for review by the majority of the PHP-FIG members.
 
 In Draft stage, the Editor(s) and any Contributors may make any changes they see fit via pull requests,
 comments on GitHub, Mailing List threads, IRC and similar tools. Change here is not limited by any strict
-rules, and fundamental rewrites are possible if supported by the editor(s). Alternative approaches may be
-proposed and discussed at any time. If the editor and coordinator are convinced that an alternative proposal
+rules, and fundamental rewrites are possible if supported by the Editor(s). Alternative approaches may be
+proposed and discussed at any time. If the Editor and coordinator are convinced that an alternative proposal
 is superior to the original proposal, then the alternative may replace the original. If the alternative builds
-upon the original, both the authors of the original proposal and the new alternative will be listed as
-Contributors. Otherwise, the author(s) of the alternative proposal become the new main Contributors.
+upon the original, the Editor(s) of the original proposal and the new alternative will be listed as
+Contributors. Otherwise, the Editor(s) of the alternative proposal should be listed as Contributors.
 
 All knowledge gained during Draft stage, such as possible alternative approaches, their implications, pros
 and cons etc. as well as the reasons for choosing the proposed approach must be summarized in the meta
@@ -99,11 +99,11 @@ complete, the coordinator may promote the proposal to Review stage. The promotio
 thread on the Mailing List with the subject "[REVIEW] PSR-N: Title of the proposal". At this point, the
 proposal must be merged into the "master" branch of the [official PHP-FIG "fig-standards" repository][repo].
 
-> At this point, the contributors(s) transfer the ownership of the proposal to the sponsors. This is to [prevent
-> the contributors(s) from blocking changes](https://groups.google.com/d/msg/php-fig/qHOrincccWk/HrjpQMAW4AsJ)
+> At this point, the Editor(s) transfer authority of the proposal to the sponsors. This is to [prevent
+> the Editor(s) from blocking changes](https://groups.google.com/d/msg/php-fig/qHOrincccWk/HrjpQMAW4AsJ)
 > that the other PHP-FIG members agree on.
 >
-> If the contributors(s) are not ready yet to pass ownership, they should continue working on the proposal and
+> If the Editor(s) are not ready yet to pass authority, they should continue working on the proposal and
 > the meta document until they feel confident to do so.
 
 ### 2.3 Review
@@ -136,7 +136,7 @@ Unless a proposal is moved to Draft stage again, it must remain in Review stage 
 before an acceptance vote is called. This gives every PHP-FIG Member sufficient time to get familiar
 with and influence a proposal before the final vote is called.
 
-When the editor(s) and sponsors agree that the proposal is ready to become a PSR, an acceptance vote is called.
+When the Editor(s) and sponsors agree that the proposal is ready to become a PSR, an acceptance vote is called.
 The coordinator must publish a thread on the Mailing List with the subject "[VOTE][Accept] PSR-N: Title of the proposal"
 to announce the vote. The vote must adhere to [the voting protocol][voting].
 
@@ -158,7 +158,7 @@ can be used to interpret the rules of the PSR in case of doubt.
 > (like doc blocks in source code). Comments are mostly useful during Draft and
 > Review. With their additional information, other people reading the proposal
 > can judge more easily whether they disagree with a rule fundamentally or
-> whether they agree, but the author just happened to formulate the rule badly.
+> whether they agree, but the Editor just happened to formulate the rule badly.
 
 The meta document of the proposal must also be moved to `/accepted/meta` and prefixed with the PSR number, for
 example "PSR-4-autoloader-meta.md".
@@ -208,9 +208,9 @@ order. The document should distinguish between the following groups:
 * Sponsors (indicating which of them was coordinator)
 * Contributors (as defined in Section 1)
 
-If someone considers themselves to be a contributor but is not listed here, they should contact the editors(s) and sponsors,
+If someone considers themselves to be a contributor but is not listed here, they should contact the Editors(s) and sponsors,
 including some proof about their contribution. If the proof is valid, the contributor must be put on this list by
-one of the editors(s) or sponsors.
+one of the Editors(s) or sponsors.
 
 ### 3.6 Template
 
@@ -286,7 +286,7 @@ This is an example template that can be used to build a meta document.
 
     This approach differs from the others in that it bla bla.
 
-    Unfortunately the author disappeared mid-way and no-one else took over the proposal.
+    Unfortunately the editor disappeared mid-way and no-one else took over the proposal.
 
     Pros:
 
