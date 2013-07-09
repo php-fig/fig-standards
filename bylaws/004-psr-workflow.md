@@ -51,7 +51,7 @@ ideas they feel are within the scope of the PHP-FIG.
 Once the proposal is considered ready by the author(s), it must be published in a fork of the [official
 PHP-FIG "fig-standards" repo][repo]. The content of the proposal must be placed inside the `/proposed`
 folder with a simple filename such as "autoload.md". Along with this document must be a meta document with
-a suffix of "-meta" before the extension (e.g. "autoload-meta.md"). GitHub Markdown formatting must be 
+a suffix of "-meta" before the extension (e.g. "autoload-meta.md"). GitHub Markdown formatting must be
 used for both documents. No PSR number is assigned to the proposal at this point.
 
 With both the proposal and the meta document in the proposed folder, the author(s) must find their sponsors,
@@ -61,7 +61,7 @@ disagree with the details of the proposal. The coordinator must announce th vote
 a thread titled "[VOTE][Entrance] Title of the proposal". The vote must adhere to [the voting protocol][voting].
 
 If the vote passes, the proposal officially enters Draft stage. The proposal receives a PSR number
-auto-incremented from the last PSR in the `/accepted` folder of the [official PHP-FIG "fig-standards" 
+auto-incremented from the last PSR in the `/accepted` folder of the [official PHP-FIG "fig-standards"
 repo][repo].
 
 The author(s) may continue to work on the proposal during the complete voting period.
@@ -81,7 +81,7 @@ Otherwise, the author(s) of the alternative proposal become the new main author(
 
 All knowledge gained during Draft stage, such as possible alternative approaches, their implications, pros
 and cons etc. as well as the reasons for choosing the proposed approach must be summarized in the meta
-document. The purpose of this rule is to prevent circular discussions or alternative proposals from 
+document. The purpose of this rule is to prevent circular discussions or alternative proposals from
 reappearing once they have been decided on.
 
 When the author(s) and sponsors agree that the proposal is ready and that the meta document is objective and
@@ -99,11 +99,11 @@ proposal must be merged into the "master" branch of the [official PHP-FIG "fig-s
 ### 2.3 Review
 
 The goal of the Review stage is to involve the majority of the PHP-FIG members in getting familiar with
-a proposal and to decide whether it is ready for an acceptance vote. At this stage the coordinator is in 
+a proposal and to decide whether it is ready for an acceptance vote. At this stage the coordinator is in
 charge of any decisions to move the proposal forwards or backwards.
 
-The goal is also *not necessarily* to have every PHP-FIG member agree with the approach chosen by the 
-proposal. The goal however *is* to have all PHP-FIG members agree on the completeness and objectivity of 
+The goal is also *not necessarily* to have every PHP-FIG member agree with the approach chosen by the
+proposal. The goal however *is* to have all PHP-FIG members agree on the completeness and objectivity of
 the meta document.
 
 > Individual members of the PHP-FIG should not be permitted to prevent a PSR from being published.
@@ -132,10 +132,10 @@ to announce the vote. The vote must adhere to [the voting protocol][voting].
 
 ### 2.4 Accepted
 
-If the acceptance vote passes, then the proposal officially becomes an accepted PSR. The proposal itself is moved 
-from `/proposed` to `/accepted` by a PHP-FIG member with GitHub access and prefixed with its PSR number, such as 
-"PSR-4-autoloader.md". Comments must be removed from this document, but a copy of the commented proposal must be kept 
-in `/accepted/meta`, bearing the suffix "-commented" (e.g. "PSR-4-autoloader-commented.md"). The commented version 
+If the acceptance vote passes, then the proposal officially becomes an accepted PSR. The proposal itself is moved
+from `/proposed` to `/accepted` by a PHP-FIG member with GitHub access and prefixed with its PSR number, such as
+"PSR-4-autoloader.md". Comments must be removed from this document, but a copy of the commented proposal must be kept
+in `/accepted/meta`, bearing the suffix "-commented" (e.g. "PSR-4-autoloader-commented.md"). The commented version
 can be used to interpret the rules of the PSR in case of doubt.
 
 > Reason for having both a commented PSR and a meta document:
@@ -161,7 +161,7 @@ an informed decision.
 
 ### 3.1 Executive Summary
 
-Summarizes the purpose and big picture of the proposal, possibly with a few simple examples of how the 
+Summarizes the purpose and big picture of the proposal, possibly with a few simple examples of how the
 author(s) imagine an implementation of the PSR to be used in practice.
 
 ### 3.2 Why Bother?
@@ -204,7 +204,7 @@ one of the author(s) or sponsors.
 
 ### 3.6 Template
 
-This is an example template that can be used to build a meta document. 
+This is an example template that can be used to build a meta document.
 
     PSR-N Meta Document
     ===================
