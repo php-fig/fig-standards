@@ -7,22 +7,25 @@ assigned to the PSR in question.
 
 ## 1. Roles
 
-**Author:** An author is actively involved in writing a PSR. A document may have multiple authors. None
-of them are required to be voting members. Authors may step down from their position mid-way, but should
-inform the PHP-FIG about this. If the author(s) of a proposal are missing for more than two months
-without a note of absence, the sponsors may agree on new author(s).
+**Editor:** The Editor of a PSR is actively involved in managing and tracking a PSR as it is written.
+A proposal may have no more than two editors at a time, and a single editor is preferred. The Editor
+is responsible for managing the development of a PSR; for representing the PSR in discussions on
+the PHP-FIG Mailing List; for coordinating other Contributors; and for working with the Coordinator
+to see the PSR through the review process. The Editor(s) are not required to be voting members of
+PHP-FIG. If the Editor(s) of a proposal are missing for more than 60 days without notice then
+the Sponsors may agree upon a new Editor. An Editor is assumed to also be a Contributor to a PSR.
 
-**Sponsor:** A voting member who officially supports a proposal. Each PSR must have two sponsors that
-must not include any of the authors. If a sponsor wants to quit or wants to become an author himself,
-he should inform the authors and the PHP-FIG. In this case, a new sponsor need to be found. In the
-instance that a vote is underway with a sponsor who does not consider themselves active listed in the
-meta document, they should raise this on the Mailing List. The vote will then be invalidated until a
+**Sponsor:** A voting member who officially supports a proposal. Each PSR MUST have two Sponsors.
+A Sponsor MAY NOT be the Editor or a Contributor. A Sponsor MAY step down to become the Editor
+or a Contributor for a PSR by posting a message to the Mailing List. In this case, a new Sponsor
+must be found. Should a vote be underway with a sponsor who does not consider themselves active listed in the
+meta document, they should raise an objection on the Mailing List. The vote will then be invalidated until a
 new sponsor has been put in place. A proposal can never progress unless there are two sponsors actively
 backing the PSR.
 
 > Two and not just one to prevent a single sponsor from making important decisions alone.
 
-**Coordinator:** One of the sponsors is the coordinator of a PSR. The coordinator is in charge of the
+**Coordinator:** One of the Sponsors is the Coordinator of a PSR. The Coordinator is in charge of the
 voting process. He notes the starting and ending dates, the number of voting members at the start of the
 vote, and the quorum count needed. He sends out reminders by whatever means he feels appropriate to drive
 the vote. At the end of the voting period, he tallies the votes, notes if quorum was established, and
@@ -30,10 +33,10 @@ whether or not the application was accepted.
 
 > **Note:** Copied from [Paul M. Jones' mail](https://groups.google.com/d/msg/php-fig/I0urcaIsEpk/uqQMb4bqlGwJ)
 
-**Contributor:** Anyone who feels like they have done a relevant amount of contribution. Includes anyone
-sending in a pull request during the Pre-Draft or Draft stages, anyone who feels like their review
-tweaks were relevant too, former authors and sponsors who stepped down etc. In case of doubt, the voters
-should use reasonable judgement to decide whether a contribution was relevant or not.
+**Contributor:** Anyone who has contributed significantly to the PSR. That may include sending in a pull
+request during the Pre-Draft or Draft stages, offered significant and meaningful reviews, former editors, etc.
+In case of dispute, the Editor and Coordinator are responsible for determining whether a particular
+individual qualifies as a Contributor.
 
 ## 2. Stages
 
@@ -42,65 +45,75 @@ should use reasonable judgement to decide whether a contribution was relevant or
 The goal of the Pre-Draft stage is to determine whether a majority of the PHP-FIG is interested in
 publishing a PSR for a proposed concept.
 
-The author(s) can work on the proposal anywhere they like, do whatever they like and come up with any
-ideas they feel are within the scope of the PHP-FIG.
+Interested parties may discuss a possible proposal, including possible implementations, by
+whatever means they feel is appropriate. That includes informal discussion on the PHP-FIG
+mailing list or IRC channel of whether or not the idea has merit and is within the scope
+of PHP-FIG's goals.
 
-Once the proposal is considered ready by the author(s), it must be published in a fork of the [official
-PHP-FIG "fig-standards" repo][repo]. The content of the proposal must be placed inside the `/proposed`
-folder with a simple filename such as "autoload.md". Along with this document must be a meta document with
-a suffix of "-meta" before the extension (e.g. "autoload-meta.md"). GitHub Markdown formatting must be 
-used for both documents. No PSR number is assigned to the proposal at this point.
+Once those parties have determined to move forward, they must select an Editor and prepare a proposal
+document. The proposal must be published in a fork of the [official PHP-FIG "fig-standards" repo][repo].
+The content of the proposal must be placed inside the `/proposed` folder with a simple filename such as
+"autoload.md". Along with this document must be a meta document with a suffix of "-meta" before the
+extension (e.g. "autoload-meta.md"). GitHub Markdown formatting must be used for both documents.
+No PSR number is assigned to the proposal at this point.
 
-With both the proposal and the meta document in the proposed folder, the author(s) must find their sponsors,
-one of which must become the coordinator. The coordinator must initiate an entrance vote to enquire whether
-the members of PHP-FIG are generally interested in publishing a PSR for the proposed subject, even if they
-disagree with the details of the proposal. The coordinator must announce th vote on the Mailing List in
-a thread titled "[VOTE][Entrance] Title of the proposal". The vote must adhere to [the voting protocol][voting].
+The Editor must then locate two voting members to sponsor the proposal, one of whom agrees to be the
+Coordinator. The Editor, Sponsors, and existing additional Contributors if any form the working group
+for the proposal.
+
+The proposal is NOT required to be fully developed at this point, although that is permitted. At
+minimum, it must include a statement of the problem to be solved and basic information on the
+general approach to be taken. Further revision and expansion is expected during the Draft phase.
+
+The Coordinator must initiate an entrance vote to enquire whether the members of PHP-FIG are generally
+interested in publishing a PSR for the proposed subject, even if they disagree with the details of
+the proposal. The coordinator must announce th vote on the Mailing List in a thread titled
+"[VOTE][Entrance] Title of the proposal". The vote must adhere to [the voting protocol][voting].
 
 If the vote passes, the proposal officially enters Draft stage. The proposal receives a PSR number
-auto-incremented from the last PSR in the `/accepted` folder of the [official PHP-FIG "fig-standards" 
+auto-incremented from the last PSR in the `/accepted` folder of the [official PHP-FIG "fig-standards"
 repo][repo].
 
-The author(s) may continue to work on the proposal during the complete voting period.
+The working group may continue to work on the proposal during the complete voting period.
 
 ### 2.2 Draft
 
 The goal of the Draft stage is to discuss and polish a PSR proposal up to the point that it can be
 considered for review by the majority of the PHP-FIG members.
 
-In Draft stage, the author(s) and any contributors may make any changes they see fit via pull requests,
+In Draft stage, the Editor(s) and any Contributors may make any changes they see fit via pull requests,
 comments on GitHub, Mailing List threads, IRC and similar tools. Change here is not limited by any strict
-rules, and fundamental rewrites are possible if supported by the author(s). Alternative approaches may be
-proposed and discussed at any time. If sponsors are convinced that an alternative proposal is superior
-to the original proposal, then the alternative may replace the original. If the alternative builds upon the
-original, authorship will be attributed to both the original author(s) and the author(s) of the alternative.
-Otherwise, the author(s) of the alternative proposal become the new main author(s).
+rules, and fundamental rewrites are possible if supported by the editor(s). Alternative approaches may be
+proposed and discussed at any time. If the editor and coordinator are convinced that an alternative proposal
+is superior to the original proposal, then the alternative may replace the original. If the alternative builds
+upon the original, both the authors of the original proposal and the new alternative will be listed as
+Contributors. Otherwise, the author(s) of the alternative proposal become the new main Contributors.
 
 All knowledge gained during Draft stage, such as possible alternative approaches, their implications, pros
 and cons etc. as well as the reasons for choosing the proposed approach must be summarized in the meta
-document. The purpose of this rule is to prevent circular discussions or alternative proposals from 
+document. The purpose of this rule is to prevent circular discussions or alternative proposals from
 reappearing once they have been decided on.
 
-When the author(s) and sponsors agree that the proposal is ready and that the meta document is objective and
+When the Editor and sponsors agree that the proposal is ready and that the meta document is objective and
 complete, the coordinator may promote the proposal to Review stage. The promotion must be announced in a
 thread on the Mailing List with the subject "[REVIEW] PSR-N: Title of the proposal". At this point, the
 proposal must be merged into the "master" branch of the [official PHP-FIG "fig-standards" repository][repo].
 
-> At this point, the author(s) transfer the ownership of the proposal to the sponsors. This is to [prevent
-> the author(s) from blocking changes](https://groups.google.com/d/msg/php-fig/qHOrincccWk/HrjpQMAW4AsJ)
+> At this point, the contributors(s) transfer the ownership of the proposal to the sponsors. This is to [prevent
+> the contributors(s) from blocking changes](https://groups.google.com/d/msg/php-fig/qHOrincccWk/HrjpQMAW4AsJ)
 > that the other PHP-FIG members agree on.
 >
-> If the author(s) are not ready yet to pass ownership, they should continue working on the proposal and
+> If the contributors(s) are not ready yet to pass ownership, they should continue working on the proposal and
 > the meta document until they feel confident to do so.
 
 ### 2.3 Review
 
 The goal of the Review stage is to involve the majority of the PHP-FIG members in getting familiar with
-a proposal and to decide whether it is ready for an acceptance vote. At this stage the coordinator is in 
+a proposal and to decide whether it is ready for an acceptance vote. At this stage the Coordinator is in
 charge of any decisions to move the proposal forwards or backwards.
 
-The goal is also *not necessarily* to have every PHP-FIG member agree with the approach chosen by the 
-proposal. The goal however *is* to have all PHP-FIG members agree on the completeness and objectivity of 
+The goal is also *not necessarily* to have every PHP-FIG member agree with the approach chosen by the
+proposal. The goal however *is* to have all PHP-FIG members agree on the completeness and objectivity of
 the meta document.
 
 > Individual members of the PHP-FIG should not be permitted to prevent a PSR from being published.
@@ -119,20 +132,20 @@ has started already. However, the sponsors may choose to abort the vote and the 
 if they agree that this is necessary. The purpose of this rule is to give PHP-FIG members the chance
 to consider *all* known alternatives during the Review stage.
 
-Unless a proposal is moved to Draft stage again, it must remain in Review stage for a minimum of two weeks.
-This gives every PHP-FIG Member sufficient time to get familiar with and influence a proposal before the final
-vote is called.
+Unless a proposal is moved to Draft stage again, it must remain in Review stage for a minimum of two weeks
+before an acceptance vote is called. This gives every PHP-FIG Member sufficient time to get familiar
+with and influence a proposal before the final vote is called.
 
-When the author(s) and sponsors agree that the proposal is ready to become a PSR, an acceptance vote is called.
+When the editor(s) and sponsors agree that the proposal is ready to become a PSR, an acceptance vote is called.
 The coordinator must publish a thread on the Mailing List with the subject "[VOTE][Accept] PSR-N: Title of the proposal"
 to announce the vote. The vote must adhere to [the voting protocol][voting].
 
 ### 2.4 Accepted
 
-If the acceptance vote passes, then the proposal officially becomes an accepted PSR. The proposal itself is moved 
-from `/proposed` to `/accepted` by a PHP-FIG member with GitHub access and prefixed with its PSR number, such as 
-"PSR-4-autoloader.md". Comments must be removed from this document, but a copy of the commented proposal must be kept 
-in `/accepted/meta`, bearing the suffix "-commented" (e.g. "PSR-4-autoloader-commented.md"). The commented version 
+If the acceptance vote passes, then the proposal officially becomes an accepted PSR. The proposal itself is moved
+from `/proposed` to `/accepted` by a PHP-FIG member with GitHub access and prefixed with its PSR number, such as
+"PSR-4-autoloader.md". Comments must be removed from this document, but a copy of the commented proposal must be kept
+in `/accepted/meta`, bearing the suffix "-commented" (e.g. "PSR-4-autoloader-commented.md"). The commented version
 can be used to interpret the rules of the PSR in case of doubt.
 
 > Reason for having both a commented PSR and a meta document:
@@ -158,8 +171,8 @@ an informed decision.
 
 ### 3.1 Executive Summary
 
-Summarizes the purpose and big picture of the proposal, possibly with a few simple examples of how the 
-author(s) imagine an implementation of the PSR to be used in practice.
+Summarizes the purpose and big picture of the proposal, possibly with a few simple examples of how the
+contributors(s) imagine an implementation of the PSR to be used in practice.
 
 ### 3.2 Why Bother?
 
@@ -191,17 +204,17 @@ also include links to Pull Requests, individual posts on the Mailing List, IRC l
 The names of the people involved in creating the PSR proposal, sorted alphabetically by last name in ascending
 order. The document should distinguish between the following groups:
 
-* Authors
+* Editors
 * Sponsors (indicating which of them was coordinator)
 * Contributors (as defined in Section 1)
 
-If someone considers themselves to be a contributor but is not listed here, they should contact the author(s) and sponsors,
+If someone considers themselves to be a contributor but is not listed here, they should contact the editors(s) and sponsors,
 including some proof about their contribution. If the proof is valid, the contributor must be put on this list by
-one of the author(s) or sponsors.
+one of the editors(s) or sponsors.
 
 ### 3.6 Template
 
-This is an example template that can be used to build a meta document. 
+This is an example template that can be used to build a meta document.
 
     PSR-N Meta Document
     ===================
@@ -286,7 +299,7 @@ This is an example template that can be used to build a meta document.
     5. People
     ---------
 
-    ### 5.1 Author(s)
+    ### 5.1 Editor(s)
 
     * John Smith
 
