@@ -81,20 +81,20 @@ The working group may continue to work on the proposal during the complete votin
 The goal of the Draft stage is to discuss and polish a PSR proposal up to the point that it can be
 considered for review by the majority of the PHP-FIG members.
 
-In Draft stage, the author(s) and any contributors may make any changes they see fit via pull requests,
+In Draft stage, the Editor(s) and any Contributors may make any changes they see fit via pull requests,
 comments on GitHub, Mailing List threads, IRC and similar tools. Change here is not limited by any strict
-rules, and fundamental rewrites are possible if supported by the author(s). Alternative approaches may be
-proposed and discussed at any time. If sponsors are convinced that an alternative proposal is superior
-to the original proposal, then the alternative may replace the original. If the alternative builds upon the
-original, authorship will be attributed to both the original author(s) and the author(s) of the alternative.
-Otherwise, the author(s) of the alternative proposal become the new main author(s).
+rules, and fundamental rewrites are possible if supported by the editor(s). Alternative approaches may be
+proposed and discussed at any time. If the editor and coordinator are convinced that an alternative proposal
+is superior to the original proposal, then the alternative may replace the original. If the alternative builds
+upon the original, both the authors of the original proposal and the new alternative will be listed as
+Contributors. Otherwise, the author(s) of the alternative proposal become the new main Contributors.
 
 All knowledge gained during Draft stage, such as possible alternative approaches, their implications, pros
 and cons etc. as well as the reasons for choosing the proposed approach must be summarized in the meta
 document. The purpose of this rule is to prevent circular discussions or alternative proposals from
 reappearing once they have been decided on.
 
-When the author(s) and sponsors agree that the proposal is ready and that the meta document is objective and
+When the Editor and sponsors agree that the proposal is ready and that the meta document is objective and
 complete, the coordinator may promote the proposal to Review stage. The promotion must be announced in a
 thread on the Mailing List with the subject "[REVIEW] PSR-N: Title of the proposal". At this point, the
 proposal must be merged into the "master" branch of the [official PHP-FIG "fig-standards" repository][repo].
