@@ -16,27 +16,29 @@ PHP-FIG. If the Editor(s) of a proposal are missing for more than 60 days withou
 the Sponsors may agree upon a new Editor. An Editor is assumed to also be a Contributor to a PSR.
 
 **Sponsor:** A voting member who officially supports a proposal. Each PSR MUST have two Sponsors.
-A Sponsor MAY NOT be the Editor or a Contributor. A Sponsor MAY step down to become the Editor
-or a Contributor for a PSR by posting a message to the Mailing List. In this case, a new Sponsor
-must be found. Should a vote be underway with a sponsor who does not consider themselves active listed in the
-meta document, they should raise an objection on the Mailing List. The vote will then be invalidated until a
-new sponsor has been put in place. A proposal can never progress unless there are two sponsors actively
-backing the PSR.
+A Sponsor MAY NOT be the Editor or listed as a Contributor, but there is of course nothing stopping a Sponsor 
+from contributing. A Sponsor MAY step down to become the Editor or a Contributor for a PSR by posting a message 
+to the Mailing List. In this case, a new Sponsor must be found. Should a vote be underway with a sponsor who 
+does not consider themselves active listed in the meta document, they should raise an objection on the Mailing 
+List. The vote will then be invalidated until a new sponsor has been put in place. A proposal can never 
+progress unless there are two sponsors actively backing the PSR.
 
-> Two and not just one to prevent a single sponsor from making important decisions alone.
+> Requiring two Sponsors instead of just prevents a single sponsor from making important decisions alone.
 
-**Coordinator:** One of the Sponsors is the Coordinator of a PSR. The Coordinator is in charge of the
-voting process. He notes the starting and ending dates, the number of voting members at the start of the
-vote, and the quorum count needed. He sends out reminders by whatever means he feels appropriate to drive
-the vote. At the end of the voting period, he tallies the votes, notes if quorum was established, and
-whether or not the application was accepted.
+**Coordinator:** One of the Sponsors is the Coordinator, and this must be decided between the Sponsors early on. 
+The Coordinator is in charge of the voting process. He notes the starting and ending dates, the number of voting 
+members at the start of the vote, and the quorum count needed. He sends out reminders by whatever means he feels 
+appropriate to drive the vote. At the end of the voting period, he tallies the votes, notes if quorum was 
+established, and whether or not the application was accepted.
 
 > **Note:** Copied from [Paul M. Jones' mail](https://groups.google.com/d/msg/php-fig/I0urcaIsEpk/uqQMb4bqlGwJ)
 
 **Contributor:** Anyone who has contributed significantly to the PSR. That may include sending in a pull
 request during the Pre-Draft or Draft stages, offered significant and meaningful reviews, former Editors, etc.
 In case of dispute, the Editor and Coordinator are responsible for determining whether a particular
-individual qualifies as a Contributor.
+individual qualifies as a Contributor. The significance is at the discression of the Editor(s) and Sponsors. If 
+somebody feels their contributions are going without attribution they should contact the Editor(s), or a Sponsor, 
+and failing that as a last resort post a thread on the Mailing List saying so.
 
 ## 2. Stages
 
