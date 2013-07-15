@@ -3,10 +3,10 @@ A continuación se describen los requisitos obligatorios que deben cumplirse par
 Obligatorio
 -----------
 
-* Un espacio de nombres y clase completamente cualificada debe tener la siguiente estructura `\<Nombre del proveedor>\(<Paquete>\)<Nombre de clase>`. [^1]
+* Un espacio de nombres y clase completamente cualificada debe tener la siguiente estructura `\<Nombre del proveedor>\(<Paquete>\)<Nombre de clase>`.
 * Cada espacio de nombres debe tener un espacio de nombres de nivel superior ("Nombre del proveedor").
 * Cada espacio de nombres puede tener tantos sub-espacios de nombres como sea necesario.
-* Cada separador de espacio de nombres se convierte en la constante `DIRECTORY_SEPARATOR` cuando se carga desde el sistema de archivos. [^2]
+* Cada separador de espacio de nombres se convierte en la constante `DIRECTORY_SEPARATOR` cuando se carga desde el sistema de archivos. [^1]
 * Cada carácter `_` en el nombre de la clase se convierte en la constante `DIRECTORY_SEPARATOR`. El carácter `_` no tiene ningún significado especial en el espacio de nombres.
 * Al espacio de nombres y la clase completamente cualificada se le añade el sufijo `.php` cuando se cargue desde el sistema de archivos.
 * Los caracteres alfabéticos en los nombres de proveedor, espacios de nombres y nombres de clase pueden contener cualquier combinación de mayúsculas y minúsculas.
@@ -61,7 +61,5 @@ El siguiente *gist*, es un ejemplo de implementación de SplClassLoader, que pue
 Notas
 ------
 
-[^1]: Espacio de nombre fully-qualified se trata de un espacio de nombre completamente cualificado.
-
-[^2]: El nombre del proveedor se traduce en inglés como `vendor`. La constante `DIRECTORY_SEPARATOR` contiene el carácter de separación de directorios, diferente en cada sistema operativo. Por ejemplo en *Unix u OS X este carácter es la barra `/`
+[^1]: El nombre del proveedor se traduce en inglés como `vendor`. La constante `DIRECTORY_SEPARATOR` contiene el carácter de separación de directorios, diferente en cada sistema operativo. Por ejemplo en *Unix u OS X este carácter es la barra `/`
 mientras que en Windows se trata de la barra invertida `\`.
