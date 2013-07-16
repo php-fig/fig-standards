@@ -1,4 +1,4 @@
-Guía de estilo de condificación
+Guía de estilo de codificación
 ===============================
 
 Esta guía amplía y extiende el estándar de codificación básica [PSR-1][].
