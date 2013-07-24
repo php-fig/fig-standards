@@ -23,7 +23,7 @@ En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MU
 
 - DEBE haber una línea en blanco después de la declaración del `namespace`, y DEBE haber una línea en blanco después del bloque de declaraciones `use`.
 
-- Las llaves de apertura de las clases DEBEN QUE ir en la línea siguiente, y las llaves de cierre DEBEN ir en la línea siguiente al cuerpo de la clase.
+- Las llaves de apertura de las clases DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN ir en la línea siguiente al cuerpo de la clase.
 
 - Las llaves de apertura de los métodos DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN QUE ir en la línea siguiente al cuerpo del método.
 
