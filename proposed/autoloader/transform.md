@@ -77,55 +77,11 @@ exist in the file system.
 The result is the transformed path.
 
 
-3. Example Implementation
--------------------------
+3. Implementations
+------------------
 
-The example implementation MUST NOT be regarded as part of the specification;
-it is an example only. Implementations MAY contain additional features and MAY
-differ in how they are implemented.
+Implementations MAY contain additional features and MAY differ in how they are
+implemented.
 
-```php
-<?php
-/**
- * Example implementation.
- * 
- * Note that this is only an example, and is not a specification in itself.
- * 
- * @param string $logical_path The logical path to transform.
- * @param string $logical_prefix The logical prefix associated with $dir_prefix.
- * @param string $logical_sep The logical separator in the logical path.
- * @param string $dir_prefix The directory prefix for the transformation.
- * @return string The logical path transformed into a file system path.
- */
-function transform(
-    $logical_path,
-    $logical_prefix,
-    $logical_sep,
-    $dir_prefix
-) {
-    // normalize logical path: leading logical separator
-    $logical_path = $logical_sep . ltrim($logical_path, $logical_sep);
-    
-    // normalize logical prefix: leading and trailing logical separators.
-    // do this in two steps so that we don't destroy a single separator.
-    $logical_prefix = $logical_sep . ltrim($logical_prefix, $logical_sep);
-    $logical_prefix = rtrim($logical_prefix, $logical_sep) . $logical_sep;
-    
-    // normalize directory prefix: trailing directory separator
-    $dir_prefix = rtrim($dir_prefix, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-    
-    // make sure prefixes match exactly
-    $len = strlen($logical_prefix);
-    if (substr($logical_path, 0, $len) !== $logical_prefix) {
-        return false;
-    }
-    
-    // extract the logical suffix
-    $logical_suffix = substr($logical_path, $len);
-    
-    // complete the transformation
-    return $dir_prefix
-         . str_replace($logical_sep, DIRECTORY_SEPARATOR, $logical_suffix);
-}
-?>
-```
+For an example implemenation, see _TransformTest.php_. Example implementations
+MUST NOT be regarded as part of the specification; they are examples only.

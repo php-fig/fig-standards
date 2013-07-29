@@ -9,9 +9,10 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 1. Overview
 -----------
 
-This PSR specifies the rules for an interoperable PHP autoloader that can co-exist 
-with any other SPL registered autoloaders, which via some means of configuration will
-map valid PHP namespaces to valid "base directories" in the file system.
+This PSR specifies the rules for an interoperable PHP autoloader that can
+co-exist with any other SPL registered autoloaders, which via some means of
+configuration will map valid PHP namespaces to valid "base directories" in the
+file system.
 
 
 2. Definitions
@@ -22,17 +23,19 @@ map valid PHP namespaces to valid "base directories" in the file system.
 - **fully qualified class name**: The full namespace and class name, with
   leading backslash. (This is per the
   [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
-  from the PHP manual.)
+  from the PHP
+  manual.)
 
-- **namespace**: Given a _fully qualified class name_ of `\Foo\Bar\Baz\Qux`, the
-  _namespace_ is `\Foo\Bar\Baz\`.
+- **namespace**: Given a _fully qualified class name_ of `\Foo\Bar\Baz\Qux`,
+  the _namespace_ is `\Foo\Bar\Baz\`.
 
 - **namespace names**: Given a _fully qualified class name_ of
   `\Foo\Bar\Baz\Qux`, the _namespace names_ are `Foo`, `Bar`, and `Baz`.
 
-- **namespace prefix**: One or more contiguous _namespace names_ at the start of
-  the _namespace_. Given a _fully qualified class name_ of `\Foo\Bar\Baz\Qux`,
-  the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
+- **namespace prefix**: One or more contiguous _namespace names_ at the start
+  of the _namespace_. Given a _fully qualified class name_ of
+  `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or
+  `\Foo\Bar\Baz\`.
 
 - **relative class name**: The parts of the _fully qualified class name_ that
   appear after the _namespace prefix_. Given a _fully qualified class name_ of
