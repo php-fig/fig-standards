@@ -51,24 +51,22 @@ registered autoloader.
 3. Specification
 ----------------
 
-### 3.1. Fully-Qualifed Class Names
+### 3.1. General
 
 The fully qualified class name MUST begin with a top-level namespace name,
 which MUST be followed by zero or more sub-namespace names, and MUST end in a
 class name.
-
-### 3.2 Namespace Prefixes and Base Directories
 
 At least one namespace prefix of the fully qualified class name MUST
 correspond to a base directory.
 
 A namespace prefix MAY correspond to more than one base directory.
 
-### 3.3. Registered Autoloaders
+### 3.2. Registered Autoloaders
 
-The registered autoloader MUST be transform the fully-qualified class name
-using the rules in section 3.4; the result MUST be suffixed with `.php` to
-result in a mapped file name.
+The registered autoloader MUST transform the fully-qualified class name
+using the rules in section 3.3; the result MUST be suffixed with `.php` to
+generate a mapped file name.
 
 If the mapped file name exists in the file system, the registered autoloader
 MUST include or require it.
@@ -76,7 +74,7 @@ MUST include or require it.
 The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors of
 any level, and SHOULD NOT return a value.
 
-### 3.4. Transformation
+### 3.3. Transformation
 
 The namespace prefix in the fully-qualified class name MUST be replaced with
 the corresponding base directory,
