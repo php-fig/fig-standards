@@ -28,8 +28,8 @@ registered autoloader.
   `\Foo\Bar\Baz\Qux`, the _namespace names_ are `Foo`, `Bar`, and `Baz`.
   
 - **namespace prefix**: Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or
-  `\Foo\Bar\Baz\`.
+  `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\`, `\Foo\`,
+  `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
 
 - **relative class name**: The parts of the _fully qualified class name_ that
   appear after the _namespace prefix_. Given a _fully qualified class name_ of
@@ -53,9 +53,9 @@ registered autoloader.
 
 ### 3.1. General
 
-The fully qualified class name MUST begin with a top-level namespace name,
-which MUST be followed by zero or more sub-namespace names, and MUST end in a
-class name.
+The fully qualified class name MUST begin with a namespace name, which MAY be
+followed by one or more additional namespace names, and MUST end in a class
+name.
 
 At least one namespace prefix of the fully qualified class name MUST
 correspond to a base directory.
@@ -64,8 +64,8 @@ A namespace prefix MAY correspond to more than one base directory.
 
 ### 3.2. Registered Autoloaders
 
-The registered autoloader MUST transform the fully-qualified class name
-using the rules in section 3.3; the result MUST be suffixed with `.php` to
+The registered autoloader MUST transform the fully qualified class name
+using the rules in section 3.3. The result MUST be suffixed with `.php` to
 generate a mapped file name.
 
 If the mapped file name exists in the file system, the registered autoloader
@@ -76,7 +76,7 @@ any level, and SHOULD NOT return a value.
 
 ### 3.3. Transformation
 
-The namespace prefix in the fully-qualified class name MUST be replaced with
+The namespace prefix in the fully qualified class name MUST be replaced with
 the corresponding base directory,
 
 Namespace separators in the relative class name MUST be replaced with
