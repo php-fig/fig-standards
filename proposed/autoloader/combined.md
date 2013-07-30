@@ -76,9 +76,24 @@ any level, and SHOULD NOT return a value.
 
 ### 3.3. Transformation
 
-Given a fully qualified class name, the namespace prefix portion MUST be
-replaced with the corresponding base directory, and namespace separators in
-the relative class name portion MUST be replaced with directory separators.
+Given a fully qualified class name, a namespace prefix, and a corresponding
+base directory ...
+
+- The fully qualified class name MUST be normalized so that it begins with a
+  namespace separator.
+
+- The namespace prefix MUST be normalized so that it begins and ends with a
+  namespace separator.
+
+- The base directory MUST be normalized so that it ends with directory
+  separator.
+
+- The namespace prefix portion of the fully qualified class name MUST be
+  replaced with the corresponding base directory.
+
+- Namespace separators in the relative class name portion of the fully
+  qualified class MUST be replaced with directory separators.
+
 
 
 4. Implementations
