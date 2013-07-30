@@ -17,8 +17,6 @@ registered autoloader.
 2. Definitions
 --------------
 
-These definitions are presented in addition to the terms defined in PSR-T.
-
 - **class**: The term _class_ refers to PHP classes, interfaces, and traits.
 
 - **fully qualified class name**: The full namespace and class name, with the
