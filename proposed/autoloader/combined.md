@@ -51,30 +51,38 @@ registered autoloader.
 3. Specification
 ----------------
 
-- The fully qualified class name MUST begin with a top-level namespace name,
-  which MUST be followed by zero or more sub-namespace names, and MUST end in
-  a class name.
+### 3.1. Fully-Qualifed Class Names
 
-- A namespace prefix of the fully qualified class name MUST be mapped to a
-  base directory; that namespace prefix MAY be mapped to more than one base
-  directory.
+The fully qualified class name MUST begin with a top-level namespace name,
+which MUST be followed by zero or more sub-namespace names, and MUST end in a
+class name.
 
-- The fully-qualified class name MUST be transformed into a mapped file name
-  by:
+### 3.2 Namespace Prefixes and Base Directories
 
-    - replacing the namespace prefix in the fully-qualified class name with
-      the associated base directory;
+At least one namespace prefix of the fully qualified class name MUST
+correspond to a base directory.
 
-    - replacing namespace separators in the relative class name with directory
-      separators; and,
-      
-    - suffixing the result with `.php`.
-    
-- If the mapped file name exists in the file system, the registered autoloader
-  MUST include or require it.
+A namespace prefix MAY correspond to more than one base directory.
 
-- The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors
-  of any level, and SHOULD NOT return a value.
+### 3.3. Registered Autoloaders
+
+The registered autoloader MUST be transform the fully-qualified class name
+using the rules in section 3.4; the result MUST be suffixed with `.php` to
+result in a mapped file name.
+
+If the mapped file name exists in the file system, the registered autoloader
+MUST include or require it.
+
+The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors of
+any level, and SHOULD NOT return a value.
+
+### 3.4. Transformation
+
+The namespace prefix in the fully-qualified class name MUST be replaced with
+the corresponding base directory,
+
+Namespace separators in the relative class name MUST be replaced with
+directory separators.
 
 
 4. Implementations
