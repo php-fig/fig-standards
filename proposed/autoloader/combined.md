@@ -11,8 +11,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 This PSR specifies the rules for an interoperable PHP autoloader which maps
 namespaces to file system paths, and that can co-exist with any other SPL
-registered autoloader. It is an application of the PSR-T rules for
-transforming logical paths to file paths.
+registered autoloader.
 
 
 2. Definitions
@@ -25,26 +24,22 @@ These definitions are presented in addition to the terms defined in PSR-T.
 - **fully qualified class name**: The full namespace and class name, with the
   leading namespace separator. (This is per the
   [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
-  from the PHP manual.) This is the equivalent of a _logical path_ as defined
-  in PSR-T.
+  from the PHP manual.)
 
-- **namespace names**: Given a _fully qualified class name_ of
+- **namespace name**: Given a _fully qualified class name_ of
   `\Foo\Bar\Baz\Qux`, the _namespace names_ are `Foo`, `Bar`, and `Baz`.
-  These are the equivalent of _logical segments_ as defined in PSR-T.
   
 - **namespace prefix**: Given a _fully qualified class name_ of
   `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or
-  `\Foo\Bar\Baz\`. This is the equivalent of a _logical prefix_ as defined in 
-  PSR-T.
+  `\Foo\Bar\Baz\`.
 
 - **relative class name**: The parts of the _fully qualified class name_ that
   appear after the _namespace prefix_. Given a _fully qualified class name_ of
   `\Foo\Bar\Baz\Qux` and a _namespace prefix_ of `\Foo\Bar\`, the _relative
-  class name_ is `Baz\Qux`. This is the equivalent of a _logical suffix_ as
-  defined in PSR-T.
+  class name_ is `Baz\Qux`.
 
-- **base directory**: The directory path in the file system where the files for
-  _relative class names_ have their root. Given a namespace prefix of 
+- **base directory**: The directory path in the file system where the files
+  for _relative class names_ have their root. Given a namespace prefix of 
   `\Foo\Bar\`, the _base directory_ could be `/path/to/packages/foo-bar/src`.
 
 - **mapped file name**: The path in the file system resulting from the
@@ -52,34 +47,35 @@ These definitions are presented in addition to the terms defined in PSR-T.
   class name_ of `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a
   _base directory_ of `/path/to/packages/foo-bar/src`, the transformation
   rules in the specification will result in a _mapped file name_ of
-  `/path/to/packages/foo-bar/src/Baz/Qux.php`. This is the equivalent of a
-  _transformed path_ as defined in PSR-T.
+  `/path/to/packages/foo-bar/src/Baz/Qux.php`.
 
 
 3. Specification
 ----------------
 
-- A fully qualified class name MUST begin with a top-level namespace name,
+- The fully qualified class name MUST begin with a top-level namespace name,
   which MUST be followed by zero or more sub-namespace names, and MUST end in
-  a class name.  This means that a PSR-X compliant class name MUST consist of
-  at least one namespace name and a class name.
+  a class name.
 
-- The namespace prefix of a fully qualified class name MUST be mapped to a
+- A namespace prefix of the fully qualified class name MUST be mapped to a
   base directory; that namespace prefix MAY be mapped to more than one base
   directory.
 
-- The class name MUST be transformed into a file path using PSR-T. The class
-  name MUST be used as the logical path, a namespace prefix MUST be used as
-  the logical prefix, the logical separator MUST be a backslash, the related
-  base directory for the namespace prefix MUST be used as the directory
-  prefix. The transformed path MUST be suffixed with `.php`, resulting in a
-  _mapped file name_.
+- The fully-qualified class name MUST be transformed into a file path by:
 
+    - replacing the namespace prefix in the fully-qualified class name with
+      the associated base directory,
+
+    - replacing namespace separators in the relative class name with directory
+      separators, and
+      
+    - suffixing the result with `.php`, resulting in a _mapped file name_.
+    
 - If the _mapped file name_ exists in the file system, the registered
   autoloader MUST include or require it.
 
-- The registered autoloader callback MUST NOT throw exceptions, MUST NOT
-  raise errors of any level, and SHOULD NOT return a value.
+- The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors
+  of any level, and SHOULD NOT return a value.
 
 
 4. Implementations
@@ -88,5 +84,5 @@ These definitions are presented in addition to the terms defined in PSR-T.
 Implementations MAY contain additional features and MAY differ in how they are
 implemented.
 
-For example implemenations, see _AutoloadTest.php_. Example implementations
+For example implemenations, see _CombinedTest.php_. Example implementations
 MUST NOT be regarded as part of the specification; they are examples only.
