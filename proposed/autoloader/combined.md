@@ -9,7 +9,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 1. Overview
 -----------
 
-This PSR specifies the rules for an interoperable PHP autoloader which maps
+This PSR specifies the rules for an interoperable PHP autoloader that maps
 namespaces to file system paths, and that can co-exist with any other SPL
 registered autoloader.
 
@@ -87,6 +87,6 @@ the relative class name portion MUST be replaced with directory separators.
 Implementations MAY contain additional features and MAY differ in how they are
 implemented.
 
-For example implemenations, see _CombinedTest.php_. Example implementations
+For example implemenations, see [CombinedTest.php][]. Example implementations
 MUST NOT be regarded as part of the specification; they are examples only, and
 may change at any time.

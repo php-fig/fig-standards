@@ -83,7 +83,7 @@ The result is the transformed path.
 Implementations MAY contain additional features and MAY differ in how they are
 implemented.
 
-For an example implemenation, see _TransformTest.php_. Example implementations
+For an example implemenation, see [TransformTest.php][]. Example implementations
 MUST NOT be regarded as part of the specification; they are examples only, and
 may change at any time.
 

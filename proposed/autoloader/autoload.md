@@ -88,6 +88,6 @@ These definitions are presented in addition to the terms defined in PSR-T.
 Implementations MAY contain additional features and MAY differ in how they are
 implemented.
 
-For example implemenations, see _AutoloadTest.php_. Example implementations
+For example implemenations, see [AutoloadTest.php][]. Example implementations
 MUST NOT be regarded as part of the specification; they are examples only, and
 may change at any time.
