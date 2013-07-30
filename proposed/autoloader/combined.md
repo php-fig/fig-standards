@@ -61,18 +61,19 @@ These definitions are presented in addition to the terms defined in PSR-T.
   base directory; that namespace prefix MAY be mapped to more than one base
   directory.
 
-- The fully-qualified class name MUST be transformed into a file path by:
+- The fully-qualified class name MUST be transformed into a mapped file name
+  by:
 
     - replacing the namespace prefix in the fully-qualified class name with
-      the associated base directory,
+      the associated base directory;
 
     - replacing namespace separators in the relative class name with directory
-      separators, and
+      separators; and,
       
-    - suffixing the result with `.php`, resulting in a _mapped file name_.
+    - suffixing the result with `.php`.
     
-- If the _mapped file name_ exists in the file system, the registered
-  autoloader MUST include or require it.
+- If the mapped file name exists in the file system, the registered autoloader
+  MUST include or require it.
 
 - The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors
   of any level, and SHOULD NOT return a value.
