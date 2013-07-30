@@ -76,11 +76,9 @@ any level, and SHOULD NOT return a value.
 
 ### 3.3. Transformation
 
-The namespace prefix in the fully qualified class name MUST be replaced with
-the corresponding base directory,
-
-Namespace separators in the relative class name MUST be replaced with
-directory separators.
+Given a fully qualified class name, the namespace prefix portion MUST be
+replaced with the corresponding base directory, and namespace separators in
+the relative class name portion MUST be replaced with directory separators.
 
 
 4. Implementations
