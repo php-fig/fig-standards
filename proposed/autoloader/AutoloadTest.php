@@ -2,13 +2,46 @@
 namespace Example;
 
 /**
- * An example implementation of the above specification that includes the
- * optional functionality of allowing multiple base directories for a single
- * namespace prefix.
- *
- * Note that this is only an example, and is not a specification in itself.
+ * An implementation of a project-specific autoload function.
+ * 
+ * @param string $class The fully-qualified class name.
+ * @return void
  */
-class ClassLoader
+function autoloadFunction($class)
+{
+    // PSR-T: normalize the project namespace prefix
+    $prefix = '\\Foo\\Bar\\';
+    
+    // PSR-T: normalize a leading backslash if not already present
+    $class = `\\` . ltrim($class, '\\');
+    
+    // PSR-T: normalize the directory prefix
+    $dir_prefix = __DIR__ . '/src/';
+    
+    // PSR-T: validate the namespace prefix
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) === 0) {
+        return;
+    }
+    
+    // PSR-T: get the filename relative to the namespace path
+    $relative = substr($class, $len);
+    
+    // PSR-T: build the path to the file containing the class
+    $file = $dir_prefix . str_replace('\\', '/', $relative);
+    
+    // PSR-X: append .php and find the file
+    $file .= '.php';
+    if (is_readable($file)) {
+        include $file;
+    }
+}
+
+/**
+ * An implementation that includes the optional functionality of allowing
+ * multiple base directories for a single namespace prefix.
+ */
+class AutoloadClass
 {
     /**
      * An associative array where the key is a namespace prefix and the value
@@ -31,7 +64,8 @@ class ClassLoader
      *
      * @param string $prefix The namespace prefix.
      * 
-     * @param string $dir_prefix A base directory for class files in the namespace.
+     * @param string $dir_prefix A base directory for class files in the
+     * namespace.
      * 
      * @param bool $prepend If true, prepend the base directory to the stack
      * instead of appending it; this causes it to be searched first rather
@@ -103,7 +137,7 @@ class ClassLoader
                 $file = $dir_prefix . $suffix;
                 
                 // PSR-X: can we read the file from the file system?
-                if ($this->readFile($file)) {
+                if ($this->requireFile($file)) {
                     // yes, we're done
                     return $file;
                 }
@@ -112,9 +146,24 @@ class ClassLoader
         
         return false;
     }
+    
+    /**
+     * If a file exists, require it from the file system.
+     * 
+     * @param string $file The file to require.
+     * @return bool True if the file exists, false if not.
+     */
+    protected function requireFile($file)
+    {
+        if (file_exists($file)) {
+            require $file;
+            return true;
+        }
+        return false;
+    }
 }
 
-class MockClassLoader extends ClassLoader
+class MockAutoloadClass extends AutoloadClass
 {
     protected $files = array();
 
@@ -123,19 +172,19 @@ class MockClassLoader extends ClassLoader
         $this->files = $files;
     }
 
-    protected function readFile($file)
+    protected function requireFile($file)
     {
         return in_array($file, $this->files);
     }
 }
 
-class ClassLoaderTest extends \PHPUnit_Framework_TestCase
+class AutoloadClassTest extends \PHPUnit_Framework_TestCase
 {
     protected $loader;
 
     protected function setUp()
     {
-        $this->loader = new MockClassLoader;
+        $this->loader = new MockAutoloadClass;
     
         $this->loader->setFiles(array(
             '/vendor/foo.bar/src/ClassName.php',
