@@ -92,7 +92,7 @@ base directory ...
   replaced with the corresponding base directory.
 
 - Namespace separators in the relative class name portion of the fully
-  qualified class MUST be replaced with directory separators.
+  qualified class name MUST be replaced with directory separators.
 
 
 4. Implementations
