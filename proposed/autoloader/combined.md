@@ -87,6 +87,6 @@ the relative class name portion MUST be replaced with directory separators.
 Implementations MAY contain additional features and MAY differ in how they are
 implemented.
 
-For example implemenations, see [CombinedTest.php][]. Example implementations
-MUST NOT be regarded as part of the specification; they are examples only, and
-may change at any time.
+For example implemenations, see [CombinedTest.php](CombinedTest.php). Example
+implementations MUST NOT be regarded as part of the specification; they are
+examples only, and may change at any time.
