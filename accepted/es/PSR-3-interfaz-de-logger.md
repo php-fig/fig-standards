@@ -3,14 +3,9 @@ Interfaz de Logger
 
 Este documento describe una interfaz común para todas las librerías de `logging`.
 
-El objetivo principal es permitir a todas las librerías usar un objecto `Psr\Log\LoggerInterface` y escribir logs con él de manera simple y universal. Frameworks y CMSs que tengan necesidades específicas PUEDEN extender la interfaz para su propio uso, pero DEBERÍA mantenerse la compatibilidad con este documento. Eso asegura que las librerías de terceros usadas en la aplicación pueden escribir en los logs centralizados de la aplicación.
+En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MUST NOT, SHOULD, SOULD NOT y MAY. Para que la traducción sea lo más fiel posible, se traducira siempre MUST como el verbo deber en presente (DEBE, DEBEN), SHOULD como el verbo deber en condicional (DEBERÍA, DEBERÍAN) y el verbo MAY como el verbo PODER.
 
-Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "OBLIGATORIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
-- TIENE QUE o REQUERIDO implica que es un requisito absoluto de la especificación.
-- NO TIENE QUE conlleva la completa prohibición de la especificación.
-- DEBERÍA o RECOMENDADO implica que pueden existen razones válidas para ignorar dicho elemento, pero las implicaciones que ello conlleva deben ser entendidas y sopesadas antes de elegir una opción diferente.
-- NO DEBERÍA implica que pueden existir razones bajo ciertas circunstancias cuando el comportamiento es aceptable o incluso útil, pero todas las implicaciones deben ser entendidas cuidadosamente y sopesadas antes de implementar algún comportamiento descrito por esta etiqueta para ignorar dicho comportamiento.
-- PUEDE u OPCIONAL implica que el elemento es puramente opcional. Cualquier proveedor puede elegir incluir dicho elemento porque crea que conlleva mejoras en su producto mientras otro puede elegir obviarlas. Una implementación que no incluya un opción particular TIENE QUE estar preparada para operar con otra implementación que incluya dicha opción, aunque implique limitar la funcionalidad. De la misma manera, una implementación que incluya una opción particular TIENE QUE estar preparada para otra que no la incluya (excepto, por supuesto, para la característica que la opción provea).
+El objetivo principal es permitir a todas las librerías usar un objecto `Psr\Log\LoggerInterface` y escribir logs con él de manera simple y universal. Frameworks y CMSs que tengan necesidades específicas PUEDEN extender la interfaz para su propio uso, pero DEBERÍA mantenerse la compatibilidad con este documento. Eso asegura que las librerías de terceros usadas en la aplicación pueden escribir en los logs centralizados de la aplicación.
 
 La palabra `implementación` en este documento tiene que ser interpretada como un objeto que implementa la interfaz `LoggerInterface`
 en una librería de logs relacionada o un framework. Los usuarios de los logs son referidos como `usuario`.
@@ -24,19 +19,19 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
 
 - El `LoggerInterface` expone ocho métodos para la escritura de logs en los ocho niveles definidos en el [RFC 5424][] (debug, info, notice, warning, error, critical, alert, emergency). [^1]
 
-- Un noveno método, `log`, acepta un nivel de log como primer parámetro. La llamada a este método con alguna de las constantes de nivel de log, TIENE QUE tener el mismo resultado que la llamada al método específico de dicho nivel. Las llamadas a este método con un nivel no definido por esta norma TIENEN QUE lanzar una excepción de tipo `Psr\Log\InvalidArgumentException` si la implementación no conoce el nivel. Los usuarios NO DEBERÍAN usar niveles específicos sin conocer de manera precisa que la implementación en uso lo soporta.
+- Un noveno método, `log`, acepta un nivel de log como primer parámetro. La llamada a este método con alguna de las constantes de nivel de log, DEBE tener el mismo resultado que la llamada al método específico de dicho nivel. Las llamadas a este método con un nivel no definido por esta norma DEBEN lanzar una excepción de tipo `Psr\Log\InvalidArgumentException` si la implementación no conoce el nivel. Los usuarios NO DEBERÍAN usar niveles específicos sin conocer de manera precisa que la implementación en uso lo soporta.
 
 [RFC 5424]: http://tools.ietf.org/html/rfc5424
 
 ### 1.2 Mensaje
 
-- Cada método debería aceptar una cadena de texto como mensaje, o un objeto con el método `__toString()`. Las implementaciones PUEDEN tener un tratamiento especial para el objeto en uso. En este caso, la implementación TIENE QUE convertirlo a una cadena de texto.
+- Cada método debería aceptar una cadena de texto como mensaje, o un objeto con el método `__toString()`. Las implementaciones PUEDEN tener un tratamiento especial para el objeto en uso. En este caso, la implementación DEBE convertirlo a una cadena de texto.
 
 - El mensaje PUEDE contener marcadores que las implementaciones PUEDEN remplazar con los valores de una array contextual.
 
-  Los nombres de los marcadores TIENEN QUE corresponder con las claves del array contextual.
+  Los nombres de los marcadores DEBEN corresponder con las claves del array contextual.
 
-  Los nombres de los marcadores TIENEN QUE estar delimitados con una llave de apertura `{` y una llave de cierre `}`. NO TIENE QUE
+  Los nombres de los marcadores DEBEN estar delimitados con una llave de apertura `{` y una llave de cierre `}`. NO DEBE
   haber ningún espacio en blanco entre los delimitadores (llaves) y el nombre del marcador.
 
   Los nombres de los marcadores DEBERÍAN estar compuestos sólo por los caracteres `A-Z`, `a-z`, `0-9`, guión bajo `_`, y punto `.`. El uso de otros caracteres está reservado para futuras modificaciones en los nombres de los marcadores en la norma.
@@ -75,9 +70,9 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
 
 ### 1.3 Contexto
 
-- Cada método acepta un array de datos contextual. Esto se usa para contener cualquier información extraña que no encaje bien en una cadena de texto. El array puede contener cualquier cosa. Las implementaciones TIENEN QUE asegurar que el tratamiento de los datos de contexto se hace con la mayor claridad posible. Un valor dado en el contexto NO TIENE QUE lanzar ninguna excepción, error, warning o notice de PHP.
+- Cada método acepta un array de datos contextual. Esto se usa para contener cualquier información extraña que no encaje bien en una cadena de texto. El array puede contener cualquier cosa. Las implementaciones DEBEN asegurar que el tratamiento de los datos de contexto se hace con la mayor claridad posible. Un valor dado en el contexto NO DEBE lanzar ninguna excepción, error, warning o notice de PHP.
 
-- Si un objecto `Exception` es pasado en el array contextual, TIENE QUE ir en la clave `'exception'`. Mostrar excepciones en el log es un patrón común y permite a las implementaciones extraer la traza de la pila del error cuando la aplicación de log lo soporte. Las implementaciones TIENEN QUE verificar que la clave `'exception'` contiene una `Exception` antes de usarla como tal, dado que PUEDE contener cualquier cosa.
+- Si un objecto `Exception` es pasado en el array contextual, DEBE ir en la clave `'exception'`. Mostrar excepciones en el log es un patrón común y permite a las implementaciones extraer la traza de la pila del error cuando la aplicación de log lo soporte. Las implementaciones DEBEN verificar que la clave `'exception'` contiene una `Exception` antes de usarla como tal, dado que PUEDE contener cualquier cosa.
 
 ### 1.4 Clases de ayuda e Interfaces
 
@@ -111,7 +106,7 @@ namespace Psr\Log;
 /**
  * Describe una instancia de logger
  * 
- * El mensaje TIENE QUE ser una cadena o un objecto que implemente __toString().
+ * El mensaje DEBE ser una cadena o un objecto que implemente __toString().
  *
  * El mensaje PUEDE contener marcadores con el formato: {foo} donde foo
  * será reemplazado por el valor de la clave "foo" en el array de contexto.
