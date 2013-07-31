@@ -25,11 +25,11 @@ Users of loggers are refered to as `user`.
 
 ### 1.1 Basics
 
-- The `LoggerInterface` exposes eight methods to write logs to the eight
+  The `LoggerInterface` exposes eight methods to write logs to the eight
   [RFC 5424][] levels (debug, info, notice, warning, error, critical, alert,
   emergency).
 
-- A ninth method, `log`, accepts a log level as first argument. Calling this
+  A ninth method, `log`, accepts a log level as first argument. Calling this
   method with one of the log level constants MUST have the same result as
   calling the level-specific method. Calling this method with a level not
   defined by this specification MUST throw a `Psr\Log\InvalidArgumentException`
@@ -40,11 +40,11 @@ Users of loggers are refered to as `user`.
 
 ### 1.2 Message
 
-- Every method accepts a string as the message, or an object with a
+  Every method accepts a string as the message, or an object with a
   `__toString()` method. Implementors MAY have special handling for the passed
   objects. If that is not the case, implementors MUST cast it to a string.
 
-- The message MAY contain placeholders which implementors MAY replace with
+  The message MAY contain placeholders which implementors MAY replace with
   values from the context array.
 
   Placeholder names MUST correspond to keys in the context array.

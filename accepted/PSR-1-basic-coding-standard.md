@@ -16,21 +16,21 @@ interpreted as described in [RFC 2119][].
 1. Overview
 -----------
 
-- Files MUST use only `<?php` and `<?=` tags.
+  Files MUST use only `<?php` and `<?=` tags.
 
-- Files MUST use only UTF-8 without BOM for PHP code.
+  Files MUST use only UTF-8 without BOM for PHP code.
 
-- Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
+  Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
   *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
   but SHOULD NOT do both.
 
-- Namespaces and classes MUST follow [PSR-0][].
+  Namespaces and classes MUST follow [PSR-0][].
 
-- Class names MUST be declared in `StudlyCaps`.
+  Class names MUST be declared in `StudlyCaps`.
 
-- Class constants MUST be declared in all upper case with underscore separators.
+  Class constants MUST be declared in all upper case with underscore separators.
 
-- Method names MUST be declared in `camelCase`.
+  Method names MUST be declared in `camelCase`.
 
 
 2. Files
