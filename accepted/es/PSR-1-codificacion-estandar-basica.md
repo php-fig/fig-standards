@@ -3,12 +3,7 @@ Codificación estándar básica
 
 Esta sección de la norma comprende lo que debe considerarse la norma de codificación de los elementos que se requieren para garantizar un alto nivel técnico de interoperabilidad entre el código PHP.
 
-Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SHALL NOT"), "OBLIGATORIO" ("REQUIRED"), "DEBERÍA" ("SHOULD"), "NO DEBERÍA" ("SHOULD NOT"), "RECOMENDADO" ("RECOMMENDED"), "PUEDE" ("MAY") y "OPCIONAL" ("OPTIONAL") de este documento son una traducción de las palabras inglesas descritas en el [RFC 2119][] y deben ser interpretadas de la siguiente manera: 
-- TIENE QUE o REQUERIDO, implica que es un requisito absoluto de la especificación.
-- NO TIENE QUE, conlleva la completa prohibición de la especificación.
-- DEBERÍA o RECOMENDADO, implica que pueden existir razones válidas para ignorar dicho elemento, pero las implicaciones que ello conlleva deben ser entendidas y sopesadas antes de elegir una opción diferente.
-- NO DEBERÍA, implica que pueden existir razones bajo ciertas circunstancias cuando el comportamiento es aceptable o incluso útil, pero todas las implicaciones deben ser entendidas cuidadosamente y sopesadas antes de implementar algún comportamiento descrito por esta etiqueta para ignorar dicho comportamiento.
-- PUEDE u OPCIONAL, implica que el elemento es puramente opcional. Cualquier proveedor puede elegir incluir dicho elemento porque crea que conlleva mejoras en su producto, mientras otro puede elegir obviarlas. Una implementación que no incluya un opción particular, TIENE QUE estar preparada para operar con otra implementación que incluya dicha opción, aunque implique limitar la funcionalidad. De la misma manera, una implementación que incluya una opción particular TIENE QUE estar preparada para otra que no la incluya (excepto, por supuesto, para la característica que la opción provea).
+En el documento original se usa el [RFC 2119][] para el uso de las palabras MUST, MUST NOT, SHOULD, SOULD NOT y MAY. Para que la traducción sea lo más fiel posible, se traducira siempre MUST como el verbo deber en presente (DEBE, DEBEN), SHOULD como el verbo deber en condicional (DEBERÍA, DEBERÍAN) y el verbo MAY como el verbo PODER.
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-0.md
@@ -16,30 +11,30 @@ Las palabras claves "TIENE QUE" ("MUST"/"SHALL"), "NO TIENE QUE" ("MUST NOT"/"SH
 1. Visión general
 ----------------------
 
-- Los archivos TIENEN QUE utilizar solamente las etiquetas `<?php` y `<?=`.
+- Los archivos DEBEN utilizar solamente las etiquetas `<?php` y `<?=`.
 
-- Los archivos TIENEN QUE emplear solamente la codificación UTF-8 sin BOM para el código PHP.
+- Los archivos DEBEN emplear solamente la codificación UTF-8 sin BOM para el código PHP.
 
 - Los archivos DEBERÍAN declarar *cualquier* estructura (clases, funciones, constantes, etc,...) *o* realizar partes de la lógica de negocio (por ejemplo, generar una salida, cambio de configuración ini, etc,...) pero NO DEBERÍAN hacer las dos cosas.
 
-- Los espacios de nombres y las clases TIENEN QUE cumplir [PSR-0][].
+- Los espacios de nombres y las clases DEBEN cumplir el estándar [PSR-0][].
 
-- Los nombres de las clases TIENEN QUE declararse en notación `StudlyCaps`. [^1]
+- Los nombres de las clases DEBEN declararse en notación `StudlyCaps`. [^1]
 
-- Las constantes de las clases TIENEN QUE declararse en mayúsculas con guiones bajos como separadores `CONSTANTE_DE_CLASE`.
+- Las constantes de las clases DEBEN declararse en mayúsculas con guiones bajos como separadores `CONSTANTE_DE_CLASE`.
 
-- Los nombres de los métodos TIENEN QUE declararse en notación `camelCase`. [^2]
+- Los nombres de los métodos DEBEN declararse en notación `camelCase`. [^2]
 
 2. Archivos
 --------------
 
 ### 2.1. Etiquetas PHP
 
-El código PHP TIENE QUE utilizar las etiquetas largas `<?php ?>` o las etiquetas cortas para imprimir salida de información `<?= ?>`; NO TIENE QUE emplear otras variantes.
+El código PHP DEBE utilizar las etiquetas largas `<?php ?>` o las etiquetas cortas para imprimir salida de información `<?= ?>`; NO DEBE emplear otras variantes.
 
 ### 2.2. Codificación de caracteres
 
-El código PHP sólo debe utilizar codificación UTF-8 sin BOM.
+El código PHP DEBE utilizar codificación UTF-8 sin BOM.
 
 ### 2.3. Efectos secundarios
 
@@ -92,13 +87,13 @@ if (! function_exists('bar')) {
 3. Espacios de nombres y nombres de las Clases
 ----------------------------------------------
 
-Los espacios de nombres y las clases TIENEN QUE seguir el [PSR-0][].
+Los espacios de nombres y las clases DEBEN seguir el estándar [PSR-0][].
 
 Esto significa que cada clase estará en un fichero independiente y está dentro de un espacio de nombres en al menos un nivel: un nombre de proveedor de nivel superior.
 
-Los nombres de las clases TIENEN QUE declararse con notación `StudlyCaps`. [^1]
+Los nombres de las clases DEBEN declararse con notación `StudlyCaps`. [^1]
 
-El código escrito para PHP 5.3 o superior TIENE QUE hacer un uso formal de los espacios de nombres.
+El código escrito para PHP 5.3 o superior DEBE hacer un uso formal de los espacios de nombres.
 
 Por ejemplo:
 
@@ -129,7 +124,7 @@ El término "clases" hace referencia a todas las clases, interfaces y traits.
 
 ### 4.1. Constantes
 
-Las constantes de las clases TIENEN QUE declararse siempre en mayúsculas y separadas por guiones bajos. Por ejemplo:
+Las constantes de las clases DEBEN declararse siempre en mayúsculas y separadas por guiones bajos. Por ejemplo:
 
 ```php
 <?php
@@ -150,7 +145,7 @@ Cualquiera que sea la convención en nomenclatura, DEBERÍA ser utilizada de for
 
 ### 4.3. Métodos
 
-Los nombres de los métodos TIENEN QUE declararse en notación `camelCase()`. [^2]
+Los nombres de los métodos DEBEN declararse en notación `camelCase()`. [^2]
 
 Notas
 ------
