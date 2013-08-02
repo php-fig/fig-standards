@@ -75,7 +75,7 @@ they represent at any time.
 
 To prevent illegal or erroneous voting, the Voting Representative must be
 confirmed by the Member Project to be authorised to act in such a capacity
-by sending an email to the the main [php-fig mailing list][list]. This email
+by sending an email to the main [php-fig mailing list][list]. This email
 may be combined with a Member Application if the applicant has sufficient
 authority. The other Member Projects may seek such confirmation at any time
 during the Voting Representative's term.
