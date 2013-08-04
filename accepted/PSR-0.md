@@ -58,7 +58,9 @@ function autoload($className)
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-    require $fileName;
+    if (stream_resolve_include_path($fileName)) {
+        require $fileName;
+    }
 }
 ```
 
