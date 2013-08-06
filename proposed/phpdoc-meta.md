@@ -94,7 +94,7 @@ Cons:
 ### 5.2 Sponsors
 
 * Phil Sturgeon
-* Not yet filled
+* Donald Gilbert
 
 ### 5.3 Contributors
 
