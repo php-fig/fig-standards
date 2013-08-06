@@ -86,7 +86,7 @@ Users of loggers are refered to as `user`.
   // a context array of placeholder names => replacement values
   $context = array('username' => 'bolivar');
 
-  // echoes "Username bolivar created"
+  // echoes "User bolivar created"
   echo interpolate($message, $context);
   ```
 
