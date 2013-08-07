@@ -28,8 +28,8 @@ registered autoloader.
   `\Foo\Bar\Baz\Qux`, the _namespace names_ are `Foo`, `Bar`, and `Baz`.
   
 - **namespace prefix**: Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\`, `\Foo\`,
-  `\Foo\Bar\`, or `\Foo\Bar\Baz\`.
+  `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or
+  `\Foo\Bar\Baz\`.
 
 - **relative class name**: The parts of the _fully qualified class name_ that
   appear after the _namespace prefix_. Given a _fully qualified class name_ of
