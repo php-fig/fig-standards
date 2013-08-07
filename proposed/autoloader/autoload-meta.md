@@ -124,7 +124,7 @@ acceptable to remove them here as well.
 3. Scope
 --------
 
-## 3.1 Goals
+### 3.1 Goals
 
 - Retain the PSR-0 rule that implementors MUST use at least two namespace
   levels: a vendor name, and package name within that vendor.
@@ -137,7 +137,7 @@ acceptable to remove them here as well.
 
 - End the honoring of underscores in class names as directory separators
 
-## 3.2 Non-Goals
+### 3.2 Non-Goals
 
 - Provide a general transformation algorithm for non-class resources
 
