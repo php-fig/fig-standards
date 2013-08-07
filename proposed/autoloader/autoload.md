@@ -80,7 +80,7 @@ Given a fully qualified class name, a namespace prefix, and a base directory
 that corresponds with that namespace prefix ...
 
 - The fully qualified class name MUST be normalized so that any leading
-  namespace separator is removed. (PHP versions 5.x and later do this
+  namespace separator is removed. (PHP versions 5.3.2 and later do this
   automatically.)
 
 - The namespace prefix MUST be normalized so that any leading namespace
