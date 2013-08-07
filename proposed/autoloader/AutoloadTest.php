@@ -145,7 +145,7 @@ class AutoloadClass
         // the current namespace prefix
         $prefix = $class;
         
-        // work backwards through the namespace named of the fully-qualified
+        // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
         while (false !== $pos = strrpos($prefix, '\\')) {
             
@@ -162,6 +162,7 @@ class AutoloadClass
             }
 
             // remove the trailing namespace separator for the next iteration
+            // of strrpos()
             $prefix = rtrim($prefix, '\\');   
         }
         
