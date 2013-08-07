@@ -188,8 +188,8 @@ Cons:
 ### 4.3 Alternative: Split Up Autoloading And Transformation
 
 Beau Simensen and others suggested that the transformation algorithm might be
-splitout from the autoloading proposal, so that the transformation rules could
-be referenced by other proposals. After doing the work to separate them,
+split out from the autoloading proposal, so that the transformation rules
+could be referenced by other proposals. After doing the work to separate them,
 followed by a poll and some discussion, the combined version (i.e.,
 transformation rules embedded in the autoloader proposal) was revealed as the
 preference.
