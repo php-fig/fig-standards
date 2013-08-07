@@ -5,44 +5,42 @@ namespace Example;
  * An example of of a project-specific implementation.
  * 
  * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
- * from /path/to/project/src/Baz/Qux.php:
+ * would cause the function to attempt to load the `\Foo\Bar\Baz\Qux` class
+ * from `/path/to/project/src/Baz/Qux.php`:
  * 
  *      new \Foo\Bar\Baz\Qux;
  *      
  * @param string $class The fully-qualified class name.
  * @return void
  */
-function autoloadFunction($class)
-{
-    // PSR-T: normalize the project namespace prefix; note the leading and
-    // trailing separators.
-    $prefix = '\\Foo\\Bar\\';
+spl_autoload_register(function ($class) {
     
-    // PSR-T: normalize a leading backslash if not already present
-    $class = `\\` . ltrim($class, '\\');
+    // project-specific namespace prefix
+    $prefix = 'Foo\\Bar\\';
+
+    // base directory for the namespace prefix
+    $base_dir = __DIR__ . '/src/';
     
-    // PSR-T: normalize the directory prefix
-    $dir_prefix = __DIR__ . '/src/';
-    
-    // PSR-T: validate the namespace prefix
+    // does the class use the namespace prefix?
     $len = strlen($prefix);
     if (strncmp($prefix, $class, $len) === 0) {
+        // no, move to the next registered autoloader
         return;
     }
     
-    // PSR-T: get the filename relative to the namespace path
-    $relative = substr($class, $len);
+    // get the relative class name
+    $relative_class = substr($class, $len);
     
-    // PSR-T: build the path to the file containing the class
-    $file = $dir_prefix . str_replace('\\', '/', $relative);
+    // replace the namespace prefix with the base directory, replace namespace
+    // separators with directory separators in the relative class name, append
+    // with .php
+    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
     
-    // PSR-X: append .php and find the file
-    $file .= '.php';
+    // if the file exists, require it
     if (file_exists($file)) {
         require $file;
     }
-}
+});
 
 /**
  * An example of a general-purpose implementation that includes the optional
@@ -110,35 +108,30 @@ class AutoloadClass
      * Adds a base directory for a namespace prefix.
      *
      * @param string $prefix The namespace prefix.
-     * 
-     * @param string $dir_prefix A base directory for class files in the
+     * @param string $base_dir A base directory for class files in the
      * namespace.
-     * 
      * @param bool $prepend If true, prepend the base directory to the stack
      * instead of appending it; this causes it to be searched first rather
      * than last.
      */
-    public function addNamespace($prefix, $dir_prefix, $prepend = false)
+    public function addNamespace($prefix, $base_dir, $prepend = false)
     {
-        // PSR-T: normalize logical prefix with leading and trailing logical
-        // separators. two steps so that we don't destroy a single separator.
-        $prefix = '\\' . ltrim($prefix, '\\');
-        $prefix = rtrim($prefix, '\\') . '\\';
+        // normalize namespace prefix
+        $prefix = trim($prefix, '\\') . '\\';
         
-        // PSR-T: normalize the directory prefix
-        $dir_prefix = rtrim($dir_prefix, DIRECTORY_SEPARATOR)
-                    . DIRECTORY_SEPARATOR;
+        // normalize the base directory with a trailing separator
+        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         
-        // initialize the prefix array
+        // initialize the namespace prefix array
         if (isset($this->prefixes[$prefix]) === false) {
             $this->prefixes[$prefix] = array();
         }
         
-        // retain the directory for the prefix
+        // retain the base directory for the namespace prefix
         if ($prepend) {
-            array_unshift($this->prefixes[$prefix], $dir_prefix);
+            array_unshift($this->prefixes[$prefix], $base_dir);
         } else {
-            array_push($this->prefixes[$prefix], $dir_prefix);
+            array_push($this->prefixes[$prefix], $base_dir);
         }
     }
 
@@ -149,48 +142,66 @@ class AutoloadClass
      */
     public function loadClass($class)
     {
-        // PSR-T: normalize a leading backslash if not already present
-        $class = '\\' . ltrim($class, '\\');
-        
-        // work backwards through the segments of the fully-qualified class
-        // name to find a class file
+        // the current namespace prefix
         $prefix = $class;
-        $suffix = '';
-        while ($prefix != '\\') {
+        
+        // work backwards through the namespace named of the fully-qualified
+        // class name to find a mapped file name
+        while (false !== $pos = strrpos($prefix, '\\')) {
             
-            // look for the next rightmost namespace separator
-            $pos = strrpos($prefix, '\\', -2);
-            
-            // get the new prefix
-            $prefix = '\\' . substr($class, 1, $pos);
-            
-            // are there any base directories for this prefix?
-            if (isset($this->prefixes[$prefix]) === false) {
-                continue;
+            // retain the trailing namespace separator in the prefix
+            $prefix = substr($class, 0, $pos + 1);
+
+            // the rest is the relative class name
+            $relative_class = substr($class, $pos + 1);
+
+            // try to load a mapped file for the prefix and relative class
+            $mapped_file = $this->loadMappedFile($prefix, $relative_class);
+            if ($mapped_file) {
+                return $mapped_file;
             }
+
+            // remove the trailing namespace separator for the next iteration
+            $prefix = rtrim($prefix, '\\');   
+        }
+        
+        // never found a mapped file
+        return false;
+    }
+    
+    /**
+     * Load the mapped file for a namespace prefix and relative class.
+     * 
+     * @param string $prefix The namespace prefix.
+     * @param string $relative_class The relative class name.
+     * @return mixed Boolean false if no mapped file can be loaded, or the
+     * name of the mapped file that was loaded.
+     */
+    protected function loadMappedFile($prefix, $relative_class)
+    {
+        // are there any base directories for this namespace prefix?
+        if (! isset($this->prefixes[$prefix])) {
+            return false;
+        }
             
-            // PSR-T: get the suffix, convert namespace separators to
-            // directory separators
-            $suffix = substr($class, $pos + 1);
-            $suffix = str_replace('\\', DIRECTORY_SEPARATOR, $suffix);
-            
-            // PSR-X: append .php to the suffix
-            $suffix .= '.php';
-            
-            // look through base directories for this namespace prefix
-            foreach ($this->prefixes[$prefix] as $dir_prefix) {
-            
-                // PSR-T: finish the transformation
-                $file = $dir_prefix . $suffix;
-                
-                // PSR-X: can we read the file from the file system?
-                if ($this->requireFile($file)) {
-                    // yes, we're done
-                    return $file;
-                }
+        // look through base directories for this namespace prefix
+        foreach ($this->prefixes[$prefix] as $base_dir) {
+
+            // replace the namespace prefix with the base directory,
+            // replace namespace separators with directory separators
+            // in the relative class name, append with .php
+            $file = $base_dir
+                  . str_replace('\\', DIRECTORY_SEPARATOR, $relative_class)
+                  . '.php';
+    
+            // if the mapped file exists, require it
+            if ($this->requireFile($file)) {
+                // yes, we're done
+                return $file;
             }
         }
         
+        // never found it
         return false;
     }
     
@@ -240,6 +251,7 @@ class AutoloadClassTest extends \PHPUnit_Framework_TestCase
             '/vendor/foo.bardoom/src/ClassName.php',
             '/vendor/foo.bar.baz.dib/src/ClassName.php',
             '/vendor/foo.bar.baz.dib.zim.gir/src/ClassName.php',
+            '/path/to/includes/Qux/Quux.php',
         ));
         
         $this->loader->addNamespace(
@@ -265,6 +277,11 @@ class AutoloadClassTest extends \PHPUnit_Framework_TestCase
         $this->loader->addNamespace(
             'Foo\Bar\Baz\Dib\Zim\Gir',
             '/vendor/foo.bar.baz.dib.zim.gir/src'
+        );
+        
+        $this->loader->addNamespace(
+            '\\',
+            '/path/to/global/includes'
         );
     }
 
