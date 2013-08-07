@@ -75,16 +75,16 @@ spl_autoload_register(function ($class) {
  *      $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/tests');
  * 
  * The following line would cause the autoloader to attempt to load the
- * \Foo\Bar\Baz\Qux class from /path/to/packages/foo-bar/src/Qux/Quux.php:
+ * \Foo\Bar\Qux\Quux class from /path/to/packages/foo-bar/src/Qux/Quux.php:
  * 
  *      <?php
- *      new \Foo\Bar\Baz\Qux;
+ *      new \Foo\Bar\Qux\Quux;
  * 
  * The following line would cause the autoloader to attempt to load the 
- * \Foo\Bar\Baz\Qux\QuuxTest class from /path/to/packages/foo-bar/tests/Qux/QuuxTest.php:
+ * \Foo\Bar\Qux\QuuxTest class from /path/to/packages/foo-bar/tests/Qux/QuuxTest.php:
  * 
  *      <?php
- *      new \Foo\Bar\Baz\Qux\QuuxTest;
+ *      new \Foo\Bar\Qux\QuuxTest;
  */
 class AutoloadClass
 {
