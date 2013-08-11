@@ -137,7 +137,7 @@ on `get` was impossible.
 ### 5.2 Sponsors
 
 * Pádraic Brady (Coordinator)
-* Your name here
+* John Mertic
 
 ### 5.3 Contributors
 
