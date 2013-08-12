@@ -1,7 +1,7 @@
 Guia de Estilo de Código
 ========================
 
-Este guia estende e expande a [PSR-1][], os padrões básicos de codificação.
+Este guia estende e expande a [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md), os padrões básicos de codificação.
 
 A intenção deste guia é reduzir a fricção cognitiva durante a codificação de diferentes autores. Ele faz isso por enumerar um conjunto compartilhado de regras e expectativas sobre como formatar um código PHP.
 
@@ -9,13 +9,10 @@ As regras de estilo daqui são derivadas de semelhanças entre vários projetos 
 
 As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, shall not), "DEVERIA(M)" (should, recommended), "NÃO DEVERIA(M)" (should not), "PODE(M)" (may) e "OPCIONAL" (optional) nesse documento devem ser interpretadas como descrito na [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt).
 
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md
-
 1. Visão Geral
 --------------
 
-- Código DEVE seguir a [PSR-1][].
+- Código DEVE seguir a [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md).
 
 - Código DEVE usar 4 espaços para indentação ao invés de tabs.
 
@@ -72,7 +69,7 @@ class Foo extends Bar implements FooInterface
 
 ### 2.1 Padrão Básico de Codificação
 
-Código DEVE seguir todas as regras descritas na [PSR-1][].
+Código DEVE seguir todas as regras descritas na [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md).
 
 ### 2.2 Arquivos
 
@@ -106,11 +103,9 @@ Código DEVE usar uma indentação de 4 espaços e NÃO DEVE usar tabs para inde
 
 ### 2.5. Palavras-chave e True/False/Null
 
-[Palavras-chave][] do PHP DEVEM ser em letra minúscula (lower case).
+[Palavras-chave](http://php.net/manual/en/reserved.keywords.php) do PHP DEVEM ser em letra minúscula (lower case).
 
 As constantes do PHP `true`, `false` e `null` DEVEM ser em letra minúscula (lower case).
-
-[Palavras-chave]: http://php.net/manual/en/reserved.keywords.php
 
 3. Namespace e Declarações de 'use'
 -----------------------------------

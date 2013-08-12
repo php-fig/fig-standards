@@ -14,11 +14,10 @@ A palavra `implementor` neste documento é para ser interpretada como alguém im
 
 ### 1.1 Básico
 
-- A `LoggerInterface` expõe oito métodos par escrever logs para os oito níveis [RFC 5424][] (debug, info, notice, warning, error, critical, alert, emergency).
+- A `LoggerInterface` expõe oito métodos par escrever logs para os oito níveis [RFC 5424](http://tools.ietf.org/html/rfc5424
+) (debug, info, notice, warning, error, critical, alert, emergency).
 
 - Um nono método, `log`, aceita um nível de log como primeiro argumento. Chamando este método com uma das constantes dos níveis de log DEVE ter o mesmo resultado como chamando o método específico do nível. Chamando este método com um nível não definido por esta especificação DEVE lançar uma `Psr\Log\InvalidArgumentException` se a implementação não conhece o nível. Usuários NÃO DEVERIAM usar um nível customizado sem saber ao certo se a implementação atual o irá suportar.
-
-[RFC 5424]: http://tools.ietf.org/html/rfc5424
 
 ### 1.2 Mensagem
 

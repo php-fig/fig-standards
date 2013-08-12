@@ -5,8 +5,6 @@ Esta seção do padrão compreende o que deve ser considerado dos elementos codi
 
 As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, shall not), "DEVERIA(M)" (should, recommended), "NÃO DEVERIA(M)" (should not), "PODE(M)" (may) e "OPCIONAL" (optional) nesse documento devem ser interpretadas como descrito na [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt).
 
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-
 
 1. Visão geral
 --------------
@@ -17,7 +15,7 @@ As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, s
 
 - Arquivos DEVERIAM _ou_ declarar símbolos (classes, funções, contantes, etc.) _ou_ causar outros efeitos (ex: gerar output, alterar configurações .ini, etc.), mas NÃO DEVERIAM fazer ambas.
 
-- Namespaces e classes DEVEM seguir a [PSR-0][].
+- Namespaces e classes DEVEM seguir a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
 
 - Nomes de classe DEVEM ser declarados em `StudlyCaps`.
 
@@ -89,7 +87,7 @@ if (! function_exists('bar')) {
 3. Namespace e Nomes de Classe
 ------------------------------
 
-As namespaces e as classes DEVEM seguir a [PSR-0][].
+As namespaces e as classes DEVEM seguir a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
 
 Isto significa que cada classe é um arquivo por si só, e é em uma namespace de um nível ao menos (o nome do fornecedor).
 
