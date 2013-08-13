@@ -129,28 +129,28 @@ interpreted as described in [RFC 2119][RFC2119].
   or
 
   ```php
-  /**
-   * This class acts as an example on where to position a DocBlock.
-   */
-  class Foo
-  {
-      /** @type string|null $description Should contain a description */
-      protected $description = null;
+    /**
+     * This class acts as an example on where to position a DocBlock.
+     */
+    class Foo
+    {
+        /** @type string|null $description Should contain a description */
+        protected $description = null;
 
 
-      /**
-       * This method sets a description.
-       *
-       * @param string $description A text with a maximum of 80 characters.
-       *
-       * @return void
-       */
-      public function setDescription($description)
-      {
-          // there should be no docblock here
-          $this->description = $description;
-      }
-  }
+        /**
+         * This method sets a description.
+         *
+         * @param string $description A text with a maximum of 80 characters.
+         *
+         * @return void
+         */
+        public function setDescription($description)
+        {
+            // there should be no docblock here
+            $this->description = $description;
+        }
+    }
   ```
 
   An example of use that falls beyond the scope of this Standard is to document
@@ -187,9 +187,9 @@ interpreted as described in [RFC 2119][RFC2119].
   Multiline example:
 
   ```php
-  /**
-   * <...>
-   */
+    /**
+     * <...>
+     */
   ```
 
 * "DocBlock" is a "DocComment" containing a single "PHPDoc" structure and
@@ -508,10 +508,10 @@ Some tags may even feature an "Inline PHPDoc" as shown in the following example.
  *     @return integer
  * }
  */
- class MyMagicClass
- {
-     ...
- }
+class MyMagicClass
+{
+    ...
+}
 ```
 
 ## 6. Inheritance
@@ -690,10 +690,10 @@ Backwards Compatibility.
  *
  * @return void
  */
- function showVersion()
- {
-    <...>
- }
+function showVersion()
+{
+   <...>
+}
 ```
 
 ### 8.2. @author
@@ -1675,7 +1675,6 @@ bi-directional experience and allow for static analysis.
 #### Examples
 
 ```php
-<?php
 /**
  * @uses \SimpleXMLElement::__construct()
  */
@@ -1686,7 +1685,6 @@ function initializeXml()
 ```
 
 ```php
-<?php
 /**
  * @uses MyView.php
  */
