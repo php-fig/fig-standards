@@ -4,12 +4,11 @@ Obrigatório
 -----------
 
 * A namespace totalmente qualificada e as classes devem seguir a seguinte estrutura `\<Nome do Fornecedor>\(<Namespace>\)*<Nome da Classe>`
-* Cada namespace deve ter uma namespace de nível superior ("Nome do Fornecedor").
-* Cada namespace pode ter quantos sub-namespaces que quiser.
-* Cada separador de namespace é convertido para `DIRECTORY_SEPARATOR` durante o carregamento do sistema de arquivos.
-* Cada caractere `_` no nome da classe é convertido para
-  `DIRECTORY_SEPARATOR`. O caractere `_`não tem nenhum significado especial na namespace.
-* A namespace totalmente qualificada e a classe é sufixada com `.php` durante o carregamento do sistema de arquivos.
+* Cada namespace deve ter uma namespace de primeiro nível ("Nome do Fornecedor").
+* Cada namespace pode ter quantos sub-namespaces quiser.
+* Cada separador de namespace é convertido para `DIRECTORY_SEPARATOR` durante o carregamento pelo sistema de arquivos.
+* Cada caractere `_` no nome da classe é convertido para `DIRECTORY_SEPARATOR`. O caractere `_` não tem significado especial na namespace.
+* A namespace totalmente qualificada e a classe é sufixada com `.php` durante o carregamento pelo sistema de arquivos.
 * Caracteres alfabéticos em nomes de fornecedor, namespaces e nomes de classe podem ser de qualquer combinação de letras maiúsculas (upper case) e minúsculas (lower case).
 
 Exemplos
@@ -31,7 +30,7 @@ Os padrões que definimos aqui devem ser o menor denominador comum para uma indo
 Exemplo de Implementação
 ------------------------
 
-Abaixo está uma função de exemplo para simplesmente demonstrar como os padrões propostos acima são automaticamente carregados.
+Abaixo está uma função de exemplo para demonstrar como os padrões propostos acima são automaticamente carregados.
 ```php
 <?php
 
@@ -54,7 +53,7 @@ function autoload($className)
 Implementação da SplClassLoader
 -------------------------------
 
-O seguinte gist é um exemplo de implementação da SplClassLoader que pode carregar suas classes caso você siga os padrões de interoperabilidade de _autoloading_ propostos acima. Atualmente, esta é a forma recomendada para carregar classes no PHP 5.3 que seguem estes padrões.
+O gist a seguir é uma implementação SplClassLoader de exemplo capaz de carregar classes que seguem o padraõ de interoperabilidade de _autoloading_ proposto acima.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
 
