@@ -1933,11 +1933,6 @@ The following keywords are recognized by this PSR:
             return null;
         }
 
-        return null;
-    }
-    ```
-
-
 11. 'callable', the element to which this type applies is a pointer to a
     function call. This may be any type of callable as defined in the PHP manual
     about [pseudo-types][PHP_PSEUDO] or the section on [callable][PHP_CALLABLE].
