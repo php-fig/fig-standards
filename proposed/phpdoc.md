@@ -632,7 +632,7 @@ Example:
 /**
  * Initializes this class with the given options.
  *
- * @param string[] $options {
+ * @param array $options {
  *     @type boolean $required Whether this element is required
  *     @type string  $label    The display name for this element
  * }
@@ -1230,7 +1230,7 @@ an option array with 2 elements: 'required' and 'label'.
 /**
  * Initializes this class with the given options.
  *
- * @param string[] $options {
+ * @param array $options {
  *     @type boolean $required Whether this element is required
  *     @type string  $label    The display name for this element
  * }
