@@ -36,17 +36,16 @@ The goals stated below could be fulfilled by different PSRs.
 
 * **Goal 1**: Provide interoperable DI Containers and reduce coupling between DI containers and MVC frameworks
 
-* **Goal 2**: A package might be able to add its own instances to a DI containers. When installing a package,
-  this package might declare its own instances in the active DI container.
-  
-* **Goal 3**: Multiple active DI containers. We could have multiple DI containers (with a different set of features)
+* **Goal 2**: Multiple active DI containers. We could have multiple DI containers (with a different set of features)
   speaking to each other. The goal would be to enable one DI container to fetch an instance that it has no
   knowledge of in another DI container.
 
+* **Goal 3**: A package might be able to add its own instances to a DI containers. When installing a package,
+  this package might declare its own instances in the active DI container.
 
 ## 3.2 Non-Goals
 
-* Enforce features in any implementation of a DI Container: this document must not enforce implementation
+* Enforce features in any implementation of a DI Container: this document MUST NOT enforce implementation
   of any particular features (aliasing, context, autowiring, configuration file...) in DI containers. Every DI container 
   implementor should be free to choose its own implementation.
 
@@ -98,7 +97,7 @@ lead to a PSR.
 
 #### 4.2.1 **Group 1**: DIC - MVC framework interoperability
 
-**Step 1**
+**Step 1**: 
 
 We already know what is common between DI containers. What we do not know yet is **what
 a MVC framework needs from the DI Container**.
