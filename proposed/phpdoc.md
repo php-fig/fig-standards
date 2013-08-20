@@ -1755,48 +1755,79 @@ class Foo
 
 ### ABNF
 
-    type-expression          = 1*(array-of-type-expression|array-of-type|type ["|"])
-    array-of-type-expression = "(" type-expression ")[]"
-    array-of-type            = type "[]"
-    type                     = class-name|keyword
-    class-name               = 1*CHAR
-    keyword                  = "string"|"integer"|"int"|"boolean"|"bool"|"float"
-                               |"double"|"object"|"mixed"|"array"|"resource"
-                               |"void"|"null"|"callable"|"false"|"true"|"self"
-                               |"static"|"$this"
+  A Type has the following [ABNF][RFC5234] definition:
 
-### Additional details
+    ; the vertical bar sign in the type-expression MUST be used as separator when multiple elements are used
+    type-expression  = 1*((array / type) ["|"])
+    array            = "array" / (type / array-expression / array) "[]" / generic
+    type             = class-name / keyword
+    array-expression = "(" type-expression ")"
+    generic          = collection-type "<" [type-expression "," *1SP] type-expression">"
+    collection-type  = class-name / "array"
+    class-name       = 1*ALPHA *(ALPHA / "_" / "\")
+    keyword          = "string" / "integer" / "int" / "boolean" / "bool" / "float" /  "double" / "object"
+    keyword          =/ "mixed" / "resource" / "void" / "null" / "callable" / "false" / "true" / "self"
+    keyword          =/ "static" / "$this"
 
-When a "Type" is used the user will expect a value, or set of values, as
-detailed below.
+### Details
 
-When the "Type" may consist of multiple types then these MUST be separated
-with the vertical bar sign (|). Any application supporting this specification MUST
-recognize this and split the "Type" before processing.
+When a "Type" is used the user will expect a value, or set of values, as detailed below.
+
+When the "Type" consists of multiple types then these MUST be separated with the vertical bar sign (|). Any
+interpreter supporting this specification MUST recognize this and split the "Type" before evaluating.
 
 For example: `@return int|null`
 
-The value represented by "Type" can be an array. The type MUST be defined
-following the format of one of the following options:
+#### Arrays
+
+The value represented by "Type" can be an array. The type MUST be defined following the format of one of the
+following options:
 
 1. unspecified, no definition of the contents of the represented array is given.
    Example: `@return array`
 
-2. specified containing a single type, the Type definition informs the reader of
-   the type of each array element. Only one type is then expected as element for
-   a given array.
+2. specified containing a single type, the Type definition informs the reader of the type of each array value. Only one
+   type is then expected for each value in a given array.
 
    Example: `@return int[]`
 
-   Please note that _mixed_ is also a single type and with this keyword it is
-   possible to indicate that each array element contains any possible type.
+   Please note that _mixed_ is also a single type and with this keyword it is possible to indicate that each array
+   value contains any possible type.
 
-3. specified containing multiple types, the Type definition informs the reader
-   of the type of each array element. Each element can be of any of the given
-   types.
+3. specified as containing multiple types, the Type definition informs the reader of the type of each array value.
+   Each value can be of any of the given types.
    Example: `@return (int|string)[]`
 
-The supported atomic types are either a *valid class name* or *keyword*.
+4. specified using the Generics notation, see the next chapter "Collections" for a description on this notation.
+
+#### Collections
+
+The value represented by "Type" can also be a [Collection][COLLECTION], a class that contains a list of keys with
+values. Collections can be denoted using a format derived from Generics in Java; as such aptly named Generics-style
+notation.
+
+With Generics-style notation it is REQUIRED to specify a class name, or the array keyword, followed by the type of
+the values enclosed with angular brackets.
+
+Example: to indicate that this element returns an object of class ArrayObject that only contains a series of strings.
+
+    @return \ArrayObject<string>
+
+The type of the values in a Collection MAY be another array and even another Collection,
+
+    @return \ArrayObject<\ArrayObject<integer>>
+
+A Collection MAY optionally define the type of the keys of said Collection by adding an additional type definition
+between the angular brackets before the identifier denoting the values' type. These two should be separated by a comma.
+
+Example: to declare an ArrayObject collection containing a list of strings with integer keys.
+
+    @return \ArrayObject<integer, string>
+
+The type of a value, or key, MAY consist of several different types, this can be represented by separating each
+individual type with a vertical bar sign between the angular brackets.
+
+    @return \ArrayObject<string|boolean>
 
 ### Valid Class Name
 
@@ -2004,3 +2035,4 @@ The following keywords are recognized by this PSR:
 [DEFACTO]:      http://www.phpdoc.org/docs/1.4/index.html
 [PHPDOC.ORG]:   http://www.phpdoc.org
 [FLUENT]:       http://en.wikipedia.org/wiki/Fluent_interface
+[COLLECTION]:   http://en.wikipedia.org/wiki/Collection_(abstract_data_type)
