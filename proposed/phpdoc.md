@@ -525,9 +525,9 @@ Every "Structural Element" MUST inherit the following PHPDoc parts by default:
 * [Short description](#51-short-description)
 * [Long description](#52-long-description)
 * A specific subset of [tags](#53-tags)
-  * [@version](#724-version)
-  * [@author](#72-author)
-  * [@copyright](#74-copyright)
+  * [@version](#825-version)
+  * [@author](#82-author)
+  * [@copyright](#84-copyright)
 
 Each specific "Structural Element" MUST also inherit a specialized subset as
 defined in the sub-chapters.
@@ -559,11 +559,11 @@ the top unless overridden.
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a class or interface MUST inherit the following tags:
 
-* [@package](#712-package)
+* [@package](#812-package)
 
 A class or interface SHOULD inherit the following deprecated tags if supplied:
 
-* [@subpackage](#718-subpackage)
+* [@subpackage](#819-subpackage-deprecated)
 
 The @subpackage MUST NOT be inherited if the @package annotation of the
 super-class (or interface) is not the same as the @package of the child class
@@ -598,20 +598,20 @@ _Controllers_.
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a function or method in a class or interface MUST inherit the following tags:
 
-* [@param](#713-param)
-* [@return](#715-return)
-* [@throws](#719-throws)
+* [@param](#813-param)
+* [@return](#815-return)
+* [@throws](#820-throws)
 
 ### 6.3. Constant Or Property
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a constant or property in a class MUST inherit the following tags:
 
-* [@type](#721-type)
+* [@type](#822-type)
 
 A constant or property SHOULD inherit the following deprecated tags if supplied:
 
-* [@var](#723-var)
+* [@var](#824-var-deprecated)
 
 ## 7. Describing hashes
 
@@ -1641,7 +1641,7 @@ class Foo
 }
 ```
 
-### 8.22. @uses
+### 8.23. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1694,8 +1694,10 @@ function executeMyView()
 }
 ```
 
+### 8.24. @var [deprecated]
+
 The @var tag is a **deprecated** alias for `@type`. Please see the documentation
-for `@type` for details of its usage.
+for [@type](#822-type) for details of its usage.
 
 ### 8.25. @version
 
