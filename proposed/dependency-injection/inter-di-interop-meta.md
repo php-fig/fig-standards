@@ -51,7 +51,7 @@ class DICLocator {
 	}
 	
 	public function get($identifier) {
-		// Call in turns all the containers, and returns the first
+		// Calls in turn all the containers, and returns the first
 		// object to be returned by a container.
 	}
 }
@@ -66,5 +66,8 @@ be able to find it and return it to DIC1.
 
 Know, I wonder if this would really be possible, or if this might break caching / optimisations performed by some DI containers.
 Any idea?
+
+Also, there is a real question about sharing this code between project. Should we put the service locator in a common
+PSR package? Shall each project embed its own DIC locator (and let the autoloader decide which class wins?)
 
 **TODO**
