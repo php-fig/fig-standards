@@ -29,4 +29,4 @@ A simple *list of all instances available* could be enough though, since Splash 
 **Step 2**: A service locator for DI containers
 -----------------------------------------------
 
-TODO
+TODO (see Proposition 2 from [Interoperability between DI containers](inter-di-interop-meta.md#proposition-2-by-david-négrier-dic-locator))

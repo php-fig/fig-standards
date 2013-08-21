@@ -5,8 +5,12 @@ PSR-DI Meta Document
 ----------
 
 The purpose of the PSR-DI is to provide interoperable dependency injection containers.
-The ultimate goal is to allow an MVC framework to use any dependency injection containers that would fit its needs.
 
+There are multiple goals, and therefore, this "meta" document might lead to one or more PSRs. However, subjects
+are interconnected and it makes sense to keep a central "meta" document regarding those topics.
+
+ * The most obvious goal is to allow an MVC framework to use any dependency injection containers that would fit its needs.
+ * Another goal would be to allow a package to declare its own instances in a dependency injection container.
 
 2. Why Bother?
 --------------
@@ -15,9 +19,9 @@ Today, most MVC frameworks are tied to one DI container (or service locator). Th
 first component called by the web-server when a request is received. It usually instanciates the DI container
 that comes with it and uses that container to get the controller and any instances that are tied to the controller.
 
-Therefore, it is not often not possible to use a third party DI container with a MVC framework. Conversely,
+Therefore, it is often not possible to use a third party DI container with a MVC framework. Conversely,
 it is not possible for a MVC framework developer to let the user choose which DI container he wants to use.
-The implementor of the MVC framework is making the choice for the user.
+The implementor of the MVC framework is making the choice of the DI container for the user.
 
 Pros:
 
@@ -60,7 +64,7 @@ We do not want to work on a service locator common interface.
 DI Containers and service locators are the 2 sides of a same coin. In both, you do provide an
 instance identifier (a string) and the service/container returns an object.
 
-They are however  different in the way they are used. If you use a container as a service locator,
+However, they are different in the way they are used. If you use a container as a service locator,
 your are drastically increasing the dependency of your code (on all your project).
 
 A DI container should actually only be used by the component bootstraping the project (that is
@@ -95,6 +99,22 @@ There are a number of additional features that have been talked about:
 We propose to sort all these requested features in different work groups. Each group might or might not
 lead to a PSR.
 
+
+               +----------------------------------+
+               | A. Common interface (get/has...) |
+               +----------------------------------+
+                                |
+           +--------------------+---------------------+      
+           |                    |                     |
+           V                    V                     V
+    +---------------+  +-----------------+   +-----------------+
+    |  B. Common    |  |  C.  Interop    |   |  D.   DI        |
+    |initialisation |  |      between    |   |  configuration  |
+    |(DI locator...)|  |        DIC      |   |    interop      |
+    +---------------+  +-----------------+   +-----------------+
+
+
+
 #### 4.2.1 **Group 1**: DIC - MVC framework interoperability
 
 **Step 1**: 
@@ -115,7 +135,7 @@ interface that could be implemented in most DIC, then we can move on to step 2.
 
 **Step 2**
 
-This step is about finding for an MVC framework to find a DIC. It is optionnal, but it 
+This step is about finding how an MVC framework can find the DIC. It is optionnal, but it 
 might be great. Just imagine: you install one DI container you like. You install about
 any MVC framework. The framework is clever enough to detect your DI container and to
 fetch your controller from it. Wouldn't that be great?
@@ -177,7 +197,7 @@ instances. Also, should a package declare its own instances? Does this imply an 
 6. Votes
 --------
 
-* **Entrance Vote: ** tbd
+* **Entrance Vote:** tbd
 * **Acceptance Vote:** tbd
 
 7. Relevant Links
