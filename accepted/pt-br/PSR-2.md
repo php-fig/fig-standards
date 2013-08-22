@@ -3,7 +3,7 @@ Guia de Estilo de Código
 
 Este guia estende e expande a [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md), os padrões básicos de codificação.
 
-A intenção deste guia é reduzir a fricção cognitiva durante a codificação de diferentes autores. Ele faz isso por enumerar um conjunto compartilhado de regras e expectativas sobre como formatar um código PHP.
+A intenção deste guia é reduzir a fricção cognitiva durante a codificação de diferentes autores enumerando um conjunto compartilhado de regras e expectativas sobre como formatar um código PHP.
 
 As regras de estilo daqui são derivadas de semelhanças entre vários projetos de membros. Quando vários autores colaboram através de vários projetos, isso ajuda a ter um conjunto de diretrizes para ser usado em todos esses projetos. Assim, o benefício deste guia não está nas regras em si, mas no compartilhamento dessas regras.
 
@@ -12,25 +12,25 @@ As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, s
 1. Visão Geral
 --------------
 
-- Código DEVE seguir a [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md).
+- O código DEVE seguir a [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md).
 
-- Código DEVE usar 4 espaços para indentação ao invés de tabs.
+- O código DEVE usar 4 espaços para indentação ao invés de tabs.
 
 - NÃO DEVE haver um limite rigoroso (hard limit) no comprimento das linhas; o limite suave (soft limit) DEVE ser de 120 caracteres; linhas DEVERIAM ser de 80 caracteres ou menos.
 
-- DEVE haver uma linha em branco após a declaração da `namespace` e DEVE haver uma linha em branco após o bloco de declarações `use`.
+- DEVE haver uma linha em branco após a declaração do `namespace` e DEVE haver uma linha em branco após o bloco de declarações `use`.
 
-- Abertura de chaves para classes DEVE estar na próxima linha e o fechamento na próxima linha DEVE estar na próxima linha após o corpo.
+- A abertura de chaves para classes DEVE estar na próxima linha e o fechamento na próxima linha DEVE estar na próxima linha após o corpo.
 
-- Abertura de chaves para métodos DEVE estar na próxima linha e o fechamento na próxima linha DEVE estar na próxima linha após o corpo.
+- A abertura de chaves para métodos DEVE estar na próxima linha e o fechamento na próxima linha DEVE estar na próxima linha após o corpo.
 
-- Visibilidade DEVE ser declarada em todas as propriedades e métodos; `abstract` e `final` DEVEM ser declaradas antes da visibilidade; `static` DEVE ser declarado após a visibilidade.
+- A visibilidade DEVE ser declarada em todas as propriedades e métodos; as palavras-chave `abstract` e `final` DEVEM ser declaradas antes da visibilidade; a palavra-chave `static` DEVE ser declarada após a visibilidade.
 
-- Palavras-chaves de estruturas de controle DEVEM ter um espaço depois delas; chamadas de métodos e funções NÃO DEVEM.
+- As palavras-chave de estruturas de controle DEVEM ter um espaço depois delas; chamadas de métodos e funções NÃO DEVEM.
 
-- Abertura de chaves para estruturas de controle DEVE estar na mesma linha e o fechamento DEVE estar na próxima linha após o corpo.
+- A abertura de chaves para estruturas de controle DEVE estar na mesma linha e o fechamento DEVE estar na próxima linha após o corpo.
 
-- Abertura de parênteses para estruturas de controle NÃO DEVE ter um espaço depois dela e fechamento de parênteses para estruturas de controle NÃO DEVE ter um espaco antes.
+- A abertura de parênteses para estruturas de controle NÃO DEVE ter um espaço depois dela e o fechamento de parênteses para estruturas de controle NÃO DEVE ter um espaco antes.
 
 ### 1.1. Exemplo
 
@@ -69,7 +69,7 @@ class Foo extends Bar implements FooInterface
 
 ### 2.1 Padrão Básico de Codificação
 
-Código DEVE seguir todas as regras descritas na [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md).
+O código DEVE seguir todas as regras descritas na [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1.md).
 
 ### 2.2 Arquivos
 
@@ -77,7 +77,7 @@ Todos os arquivos PHP DEVEM usar o fim da linha Unix LF (linefeed).
 
 Todos os arquivos PHP DEVEM terminar com uma única linha em branco.
 
-A tag de fechamento `?>` DEVE ser omitida em arquivos contendo somente PHP.
+A tag de fechamento `?>` DEVE ser omitida em arquivos que contêm somente PHP.
 
 ### 2.3. Linhas
 
@@ -85,17 +85,17 @@ NÃO DEVE haver um limite rigoroso (hard limit) no comprimento das linhas.
 
 O limite suave (soft limit) DEVE ser de 120 caracteres; verificadores de estilo automatizados DEVEM avisar mas NÃO DEVEM assinalar como erro no limite suave (soft limit).
 
-Linhas NÃO DEVERIAM ser maiores do que 80 caracteres; linhas mais longas que isso DEVERIAM ser quebradas em várias linhas subsequentes com não mais de 80 caracteres cada.
+As linhas NÃO DEVERIAM ser maiores do que 80 caracteres; as linhas mais longas que isso DEVERIAM ser quebradas em várias linhas subsequentes com não mais de 80 caracteres cada.
 
 NÃO DEVE haver espaço em branco no final de linhas não-em-branco.
 
-Linhas em branco PODEM ser adcionadas para aumentar a legibilidade e para indicar blocos de código relacionados.
+As linhas em branco PODEM ser adcionadas para aumentar a legibilidade e para indicar blocos de código relacionados.
 
 NÃO DEVE haver mais de um comando (statement) por linha.
 
 ### 2.4. Indentação
 
-Código DEVE usar uma indentação de 4 espaços e NÃO DEVE usar tabs para indentação.
+O código DEVE usar uma indentação de 4 espaços e NÃO DEVE usar tabs para indentação.
 
 > Note bem: Usando apenas espaços e não misturando espaços com tabs ajuda a evitar
 > problemas com diffs, patches, history e annotations. O uso de espaços
@@ -178,13 +178,13 @@ class ClassName extends ParentClass implements
 
 ### 4.2. Propriedades
 
-Visibilidade DEVE ser declarada em todas as propriedades.
+A visibilidade DEVE ser declarada em todas as propriedades.
 
 A palavra-chave `var` NÃO DEVE ser utilizada para declarar uma propriedade.
 
 NÃO DEVE haver mais de uma propriedade declarada por instrução.
 
-Nome das propriedades NÃO DEVERIAM ser prefixados com um único undeline para indicar a visibilidade protegida ou privada.
+Os nomes das propriedades NÃO DEVERIAM ser prefixados com um único underscore para indicar a visibilidade protegida ou privada.
 
 Uma declaração de propriedade se parece com o seguinte:
 
@@ -200,11 +200,11 @@ class ClassName
 
 ### 4.3. Métodos
 
-Visibilidade DEVE ser declarada em todos os métodos.
+A visibilidade DEVE ser declarada em todos os métodos.
 
-Nomes de métodos NÃO DEVERIAM ser prefixados com um único undersocre para indicar visibilidade protegida ou privada.
+Os nomes de métodos NÃO DEVERIAM ser prefixados com um único undersocre para indicar visibilidade protegida ou privada.
 
-Nomes de métodos NÃO DEVEM ser declarados com um espaço após ao nome do método. A chave de abertura DEVE estar em sua própria linha e a chave de fechamento DEVE estar na linha seguinte ao fechamento do corpo. NÃO DEVE haver um espaço depois do parêntese de abertura e NÃO DEVE haver um espaço antes do parêntese de fechamento.
+Os nomes de métodos NÃO DEVEM ser declarados com um espaço após ao nome do método. A chave de abertura DEVE estar em sua própria linha e a chave de fechamento DEVE estar na linha seguinte ao fechamento do corpo. NÃO DEVE haver um espaço depois do parêntese de abertura e NÃO DEVE haver um espaço antes do parêntese de fechamento.
 
 Uma declaração de método se parece com o seguinte. Note a colocação dos parênteses, vírgulas, espaços e chaves:
 
@@ -225,7 +225,7 @@ class ClassName
 
 Na lista de argumentos, NÃO DEVE haver um espaço antes de cada vírgula e DEVE haver um espaço após cada vírgula.
 
-Argumentos de métodos com valores padrão DEVEM vir no final da lista de argumentos.
+Os argumentos de métodos com valores padrão DEVEM vir no final da lista de argumentos.
 
 ```php
 <?php
@@ -240,7 +240,7 @@ class ClassName
 }
 ```
 
-Listas de argumento PODEM ser dividas em múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fizer isto, o primeiro item na lista DEVE estar na próxima linha e DEVE haver um argumento por linha.
+As listas de argumento PODEM ser dividas em múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fizer isto, o primeiro item na lista DEVE estar na próxima linha e DEVE haver um argumento por linha.
 
 Quando a lista de argumento for dividida em múltiplas linhas, o parêntese de fechamento e a chave de abertura DEVEM ser colocados na mesma linha com um espaço entre eles.
 
@@ -293,7 +293,7 @@ bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
-Listas de argumento PODEM ser dividas em múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fizer isto, o primeiro item na lista DEVE estar na próxima linha e DEVE haver um argumento por linha.
+As listas de argumento PODEM ser dividas em múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fizer isto, o primeiro item na lista DEVE estar na próxima linha e DEVE haver um argumento por linha.
 
 ```php
 <?php
@@ -386,7 +386,7 @@ Uma estrutura `for` se parece com o seguinte. Note a posição dos parênteses, 
 ```php
 <?php
 for ($i = 0; $i < 10; $i++) {
-    // corpor de for
+    // corpo de for
 }
 ```
 
@@ -419,7 +419,7 @@ try {
 6. Closures
 -----------
 
-Closures DEVEM ser declaradas com um espaço depois da palavra-chave `function` e um espaço antes e depois da palavra-chave `use`.
+As closures DEVEM ser declaradas com um espaço depois da palavra-chave `function` e um espaço antes e depois da palavra-chave `use`.
 
 A chave de abertura DEVE vir na mesma linha e a chave de fechamento DEVE vir na próxima linha após o corpo.
 
@@ -427,7 +427,7 @@ NÃO DEVE haver um espaço após o parêntese de abertura de uma lista de argume
 
 Na lista de argumentos e na lista de variáveis, NÃO DEVE haver um espaço antes de cada vírgula e DEVE haver um espaço depois de cada vírgula.
 
-Argumentos de closure com valores padrão DEVEM vir depois da lista de argumentos.
+Os argumentos de closure com valores padrão DEVEM vir depois da lista de argumentos.
 
 Uma declaração de closure se parece com o seguinte. Note a posição de parênteses, vírgulas, espaços e chaves:
 
@@ -442,7 +442,7 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
 };
 ```
 
-Listas de argumento e listas de variáveis PODEM ser divididas em múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fizer isso, o primeiro item na lista DEVE estar na próxima linha e DEVE haver um argumento ou variável por linha.
+As listas de argumento e listas de variáveis PODEM ser divididas em múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fizer isso, o primeiro item na lista DEVE estar na próxima linha e DEVE haver um argumento ou variável por linha.
 
 Quando a lista de argumento ou lista de variáveis forem dividida em múltiplas linhas, o parêntese de fechamento e a chave de abertura DEVEM ser colocados na mesma linha com um espaço entre eles.
 
@@ -572,19 +572,19 @@ O limite suave ("soft") de comprimento de linha, em caracteres. `?` = resposta n
 O limite rigoroso ("hard") de comprimento de linha, em caracteres. `?` = resposta não discernível ou nenhuma, `no` significa que não há limite.
 
 `class_names`:
-Como classes são nomeadas. `lower` = apenas em minúsculo, `lower_under` = minúsculo com separadores underline, `studly` = StudlyCase.
+Como as classes são nomeadas. `lower` = apenas em minúsculo, `lower_under` = minúsculo com separadores underscore, `studly` = StudlyCase.
 
 `class_brace_line`:
 A chave de abertura para uma classe vai na mesma linha (`same`) que a palavra-chave class ou na próxima linha (`next`) depois dela?
 
 `constant_names`:
-Como constantes de classes são nomeadas? `upper` = Maiúsculas com separadores underline.
+Como as constantes de classes são nomeadas? `upper` = Maiúsculas com separadores underscore.
 
 `true_false_null`:
 As palavras-chave `true`, `false` e `null` são escritas todas em minúsculo (`lower`) ou maiúsculo (`upper`)?
 
 `method_names`:
-Como métodos são nomeados? `camel` = `camelCase`, `lower_under` = minúsculo com separadores underline.
+Como os métodos são nomeados? `camel` = `camelCase`, `lower_under` = minúsculo com separadores underscore.
 
 `method_brace_line`:
 A chave de abertura de um método vai na mesma linha (`same`) do nome do método ou na linha seguinte (`next`)?
@@ -596,7 +596,7 @@ A chave de abertura para uma estrutura de controle vai na mesma linha (`same`) o
 Há um espaço após a palavra-chave da estrutura de controle?
 
 `always_use_control_braces`:
-Estruturas de controle sempre usam chaves?
+As estruturas de controle sempre usam chaves?
 
 `else_elseif_line`:
 Ao usar `else` ou `elseif`, ele vai na mesma linha (`same`) da chave de fechamento anterior ou na próxima linha (`next`)?
@@ -605,10 +605,10 @@ Ao usar `else` ou `elseif`, ele vai na mesma linha (`same`) da chave de fechamen
 Quantas vezes `case` e `break` são indentados numa declaração de abertura `switch`?
 
 `function_space_after`:
-Chamadas a funções têm um espaço após o nome da função e antes do parêntese de abertura?
+As chamadas a funções têm um espaço após o nome da função e antes do parêntese de abertura?
 
 `closing_php_tag_required`:
-Em arquivos contendo somente PHP, a tag de fechamento `?>` é exigida?
+Em arquivos que contém somente PHP, a tag de fechamento `?>` é exigida?
 
 `line_endings`:
 Que tipo de final de linha é usado?
@@ -625,7 +625,7 @@ Existe uma linha em branco após a tag de abertura PHP?
 `class_method_control_brace`:
 Um resumo de em que linha vão as chaves de abertura para classes, métodos e estruturas de controle.
 
-### A.3. Survey Results
+### A.3. Resultados do questionário
 
     indent_type:
         tab: 7

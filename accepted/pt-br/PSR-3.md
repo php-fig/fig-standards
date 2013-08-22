@@ -3,11 +3,11 @@ Logger Interface
 
 Este documento descreve uma interface comum para bibliotecas de log.
 
-O objetivo principal é permitir bibliotecas a receber um objeto `Psr\Log\LoggerInterface` e escrever logs para ele em uma forma simples e universal. Frameworks e CMSs que têm necessidades próprias PODEM estender a interface para sua própria proposta, mas DEVERIAM manter a compatibilidade com este documento. Isso assegura que bibliotecas de terceiros que uma aplicação usa podem escrever nos logs da aplicação centralizada.
+O objetivo principal é permitir bibliotecas a receber um objeto `Psr\Log\LoggerInterface` e escrever logs de uma forma simples e universal. Frameworks e CMSs que têm necessidades próprias PODEM estender a interface para sua própria proposta, mas DEVERIAM manter a compatibilidade com este documento. Assegurando que bibliotecas de terceiros possam escrever nos logs da aplicação centralizada.
 
 As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, shall not), "DEVERIA(M)" (should, recommended), "NÃO DEVERIA(M)" (should not), "PODE(M)" (may) e "OPCIONAL" (optional) nesse documento devem ser interpretadas como descrito na [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt).
 
-A palavra `implementor` neste documento é para ser interpretada como alguém implementando a `LoggerInterface` numa biblioteca ou framework relacionado a log. Usuários dos sismteas de logs (loggers) são referidos como `user`.
+A palavra `implementor` neste documento é para ser interpretada como alguém implementando a `LoggerInterface` numa biblioteca ou framework relacionado a log. Usuários dos sistemas de logs (loggers) são referidos como `user`.
 
 1. Especificação
 ----------------
@@ -17,19 +17,19 @@ A palavra `implementor` neste documento é para ser interpretada como alguém im
 - A `LoggerInterface` expõe oito métodos par escrever logs para os oito níveis [RFC 5424](http://tools.ietf.org/html/rfc5424
 ) (debug, info, notice, warning, error, critical, alert, emergency).
 
-- Um nono método, `log`, aceita um nível de log como primeiro argumento. Chamando este método com uma das constantes dos níveis de log DEVE ter o mesmo resultado como chamando o método específico do nível. Chamando este método com um nível não definido por esta especificação DEVE lançar uma `Psr\Log\InvalidArgumentException` se a implementação não conhece o nível. Usuários NÃO DEVERIAM usar um nível customizado sem saber ao certo se a implementação atual o irá suportar.
+- Um nono método, `log`, aceita um nível de log como primeiro argumento. Ao chamar este método com uma das constantes dos níveis de log DEVE ter o mesmo resultado ao chamar o método específico do nível. Ao chamar este método com um nível não definido por esta especificação DEVE lançar uma `Psr\Log\InvalidArgumentException` se a implementação não conhece o nível. Usuários NÃO DEVERIAM usar um nível customizado sem saber ao certo se a implementação atual o irá suportar.
 
 ### 1.2 Mensagem
 
-- Todo método aceita uma string como a mensagem ou um objeto com um método `__toString()`. Implementadores PODEM ter um tratamento especial para os objetos passados. Se esse não for o caso, implementadores DEVEM fazer conversão para string.
+- Todo método aceita uma string como a mensagem ou um objeto com um método `__toString()`. Os implementadores PODEM ter um tratamento especial para os objetos passados. Se esse não for o caso, os implementadores DEVEM fazer conversão para string.
 
 - A mensagem PODE conter placeholders que implementadores PODEM substituir com valores do array de contexto.
 
-- Nomes de placeholders DEVEM corresponder a chaves no array de contexto.
+- Os nomes de placeholders DEVEM corresponder a chaves no array de contexto.
 
-- Nomes de placeholders DEVEM ser delimitados com uma única chave de abertura `{` e uma única chave de fechamento `}`. NÃO DEVE haver nenhum espaço em branco entre o delimitador e o nome do placeholder.
+- Os nomes de placeholders DEVEM ser delimitados com uma única chave de abertura `{` e uma única chave de fechamento `}`. NÃO DEVE haver nenhum espaço em branco entre o delimitador e o nome do placeholder.
 
-- Nomes de placeholders DEVERIAM ser compostos apenas de caracteres `A-Z`, `a-z`, `0-9`, underline `_` e ponto `.`. O uso de outros caracteres é reservado para futuras modificações da especificação dos placeholders.
+- Os nomes de placeholders DEVERIAM ser compostos apenas de caracteres `A-Z`, `a-z`, `0-9`, underscore `_` e ponto `.`. O uso de outros caracteres é reservado para futuras modificações da especificação dos placeholders.
 
 - Implementadores PODEM usar placeholders para implementar várias estratégias de escapamento ("escaping") e traduzir logs para exibir. Usuários NÃO DEVEM pré-escapar ("pre-escape") valores de placeholder, já que eles não podem saber em qual contexto os dados serão exibidos.
 
@@ -77,14 +77,14 @@ A palavra `implementor` neste documento é para ser interpretada como alguém im
 
 - A `Psr\Log\LoggerAwareInterface` apenas contém um método `setLogger(LoggerInterface $logger)` e pode ser usada por frameworks para criar instâncias arbitrárias com um logger.
 
-- A trait `Psr\Log\LoggerAwareTrait` pode ser usada para implementar a interface equivalente facilmente em qualquer classe. Ela dá acesso para `$this->logger`.
+- A trait `Psr\Log\LoggerAwareTrait` pode ser usada para implementar a interface equivalente facilmente em qualquer classe. Ela fornece acesso para `$this->logger`.
 
 - A classe `Psr\Log\LogLevel` mantém constantes para os oito níveis de log.
 
 2. Pacote
 ----------
 
-As interfaces e classes descritas, bem como classes de exceptions relevantes e uma suíte de testes para verificar sua implementação, é fornecida como parte do pacote [psr/log](https://packagist.org/packages/psr/log).
+As interfaces e classes descritas, bem como as classes de exceptions relevantes e uma suíte de testes para verificar sua implementação, é fornecida como parte do pacote [psr/log](https://packagist.org/packages/psr/log).
 
 3. `Psr\Log\LoggerInterface`
 ----------------------------

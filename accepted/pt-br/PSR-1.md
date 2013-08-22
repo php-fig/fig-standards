@@ -1,7 +1,7 @@
 Padrão de Codificação Básico
 ============================
 
-Esta seção do padrão compreende o que deve ser considerado dos elementos codificação padrão que são necessários para garantir um alto nível de interoperabilidade técnica entre código PHP compartilhado.
+Por esta seção compreende-se o que deve ser considerado um padrão mínimo para garantir um alto nível de interoperabilidade técnica entre códigos PHP.
 
 As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, shall not), "DEVERIA(M)" (should, recommended), "NÃO DEVERIA(M)" (should not), "PODE(M)" (may) e "OPCIONAL" (optional) nesse documento devem ser interpretadas como descrito na [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt).
 
@@ -9,19 +9,19 @@ As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, s
 1. Visão geral
 --------------
 
-- Arquivos DEVEM usar apenas tags `<?php` e `<?=`.
+- Os arquivos DEVEM usar apenas tags `<?php` e `<?=`.
 
-- Arquivos DEVEM usar apenas UTF-8 sem BOM para código PHP.
+- Os arquivos DEVEM usar apenas UTF-8 sem BOM para código PHP.
 
-- Arquivos DEVERIAM _ou_ declarar símbolos (classes, funções, contantes, etc.) _ou_ causar outros efeitos (ex: gerar output, alterar configurações .ini, etc.), mas NÃO DEVERIAM fazer ambas.
+- Os arquivos DEVERIAM _ou_ declarar símbolos (classes, funções, contantes, etc.) _ou_ causar outros efeitos (ex: gerar output, alterar configurações .ini, etc.), mas NÃO DEVERIAM fazer ambas.
 
-- Namespaces e classes DEVEM seguir a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
+- Os namespaces e as classes DEVEM seguir a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
 
-- Nomes de classe DEVEM ser declarados em `StudlyCaps`.
+- Os nomes de classe DEVEM ser declarados em `StudlyCaps`.
 
-- Constantes de classes DEVEM ser inteiramente declaradas em letras maiúsculas (upper case) separados por underscores.
+- As constantes de classes DEVEM ser inteiramente declaradas em letras maiúsculas (upper case) separadas por underscores.
 
-- Nomes de métodos DEVEM ser declarados em `camelCase`.
+- Os nomes de métodos DEVEM ser declarados em `camelCase`.
 
 
 2. Arquivos
@@ -29,11 +29,11 @@ As palavras-chave "DEVE(M)" (must, required, shall), "NÃO DEVE(M)" (must not, s
 
 ### 2.1. Tags PHP
 
-Código PHP DEVE usar as tags longas `<?php ?>` ou as short-echo tags `<?= ?>`; NÃO DEVE se utilizar outros tipos de tag.
+O código PHP DEVE usar as tags longas `<?php ?>` ou as short-echo tags `<?= ?>`; NÃO DEVE se utilizar outros tipos de tag.
 
 ### 2.2. Codificação de Caracteres
 
-Código PHP DEVE usar apenas UTF-8 sem BOM.
+O código PHP DEVE usar apenas UTF-8 sem BOM.
 
 ### 2.3. Efeitos secundários
 
@@ -44,7 +44,7 @@ A expressão "efeitos secundários" significa a execução da lógica não diret
 "Efeitos secundários" incluem, mas não estão limitados à: geração de output, uso explícito de `require` ou `include`, conexão à serviços externos, modificação das configurações ini, emissão de erros ou exceções, modificação de variáveis ​​globais ou estáticas,
 ler ou escrever em um arquivo e assim por diante.
 
-O exemplo a seguir é de um arquivo com ambos, declarações e efeitos secundários; isto é um exemplo do que deve ser evitado:
+O exemplo a seguir é de um arquivo com declarações e efeitos secundários ao mesmo tempo; este é um exemplo do que deve ser evitado:
 
 ```php
 <?php
@@ -64,7 +64,7 @@ function foo()
 }
 ```
 
-O exemplo a seguir é de um arquivo que contém declarações sem efeitos secundários; isto é um um exemplo do que deve ser feito:
+O exemplo a seguir é de um arquivo que contém declarações sem efeitos secundários; este é um um exemplo do que deve ser feito:
 
 ```php
 <?php
@@ -87,13 +87,13 @@ if (! function_exists('bar')) {
 3. Namespace e Nomes de Classe
 ------------------------------
 
-As namespaces e as classes DEVEM seguir a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
+Os namespaces e as classes DEVEM seguir a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
 
-Isto significa que cada classe é um arquivo por si só, e é em uma namespace de um nível ao menos (o nome do fornecedor).
+Isto significa que cada classe é um arquivo por si só, e está em um namespace de um nível ao menos (o nome do fornecedor).
 
 Nomes de classes DEVEM ser declaradas em `StudlyCaps`.
 
-Código escrito para a versão 5.3 do PHP ou para versões superiores DEVE utilizar namespaces reais.
+Códigos escritos para a versão 5.3 do PHP ou para versões superiores DEVEM utilizar namespaces reais.
 
 Por exemplo:
 
@@ -107,7 +107,7 @@ class Foo
 }
 ```
 
-Código escrito para a versão 5.2 do PHP ou para versões inferiores DEVERIA utilizar a convenção de pseudo-namespace de prefixos `Vendor_` em nomes de classe.
+Códigos escritos para a versão 5.2 do PHP ou para versões inferiores DEVERIAM utilizar a convenção de pseudo-namespace de prefixos `Vendor_` em nomes de classe.
 
 ```php
 <?php
@@ -124,7 +124,7 @@ O termo "classe" se refere à todas as classes, interfaces e traits.
 
 ### 4.1. Constantes
 
-Constantes de classe DEVEM ser todas declaradas em letra maiúscula (upper case) separados por underscores. Por exemplo:
+Constantes de classe DEVEM ser todas declaradas em letra maiúscula (upper case) separadas por underscores. Por exemplo:
 ```php
 <?php
 namespace Vendor\Model;
