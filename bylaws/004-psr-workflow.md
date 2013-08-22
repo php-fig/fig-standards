@@ -96,7 +96,7 @@ The working group may continue to work on the proposal during the complete votin
 ### 2.2 Draft
 
 The goal of the Draft stage is to discuss and polish a PSR proposal up to the point that it can be
-considered for review by the PHP-FIG voting and non-voting members.
+considered for review by the PHP-FIG voting members.
 
 In Draft stage, the Editor(s) and any Contributors may make any changes they see fit via pull requests,
 comments on GitHub, Mailing List threads, IRC and similar tools. Change here is not limited by any strict
