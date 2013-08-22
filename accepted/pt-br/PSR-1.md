@@ -39,7 +39,7 @@ O código PHP DEVE usar apenas UTF-8 sem BOM.
 
 Um arquivo DEVERIA declarar novos símbolos (classes, funções, contantes, etc.) e não causar outros efeitos colaterais ou ele DEVERIA executar lógica com efeitos secundários, mas NÃO DEVERIA fazer ambos.
 
-A expressão "efeitos secundários" significa a execução da lógica não diretamente ligada com declaração de classes, funções, constantes, etc, _meramente pela inclusão do arquivo_.
+A expressão "efeitos secundários" significa a execução da lógica não diretamente ligada com a declaração de classes, funções, constantes, etc, _meramente pela inclusão do arquivo_.
 
 "Efeitos secundários" incluem, mas não estão limitados à: geração de output, uso explícito de `require` ou `include`, conexão à serviços externos, modificação das configurações ini, emissão de erros ou exceções, modificação de variáveis ​​globais ou estáticas,
 ler ou escrever em um arquivo e assim por diante.
@@ -140,7 +140,7 @@ class Foo
 
 Este guia intencionalmente evita qualquer recomendação sobre o uso de `$StudlyCaps`, `$camelCase` ou `$under_score` em nomes de propriedades.
 
-Seja qual for a convenção de nomenclatura usada, ela DEVERIA ser aplicada consistentemente dentro de um escopo razoável. Esse escopo pode ser a nível de fornecedor, nível de pacote, nível de classe ou a nível de método.
+Seja qual for a convenção de nomenclatura usada, ela DEVERIA ser aplicada consistentemente dentro de um escopo razoável. No fornecedor, pacote, classe ou método.
 
 ### 4.3. Métodos
 
