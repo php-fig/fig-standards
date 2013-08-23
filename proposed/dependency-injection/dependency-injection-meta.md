@@ -113,7 +113,7 @@ lead to a PSR.
     |  (DI locator...)  |  |        DIC      |   |    interop      |
     +-------------------+  +-----------------+   +-----------------+
 
-For each step has its own meta document.
+Each step has its own meta document.
 
 #### 4.2.1 **Step A**: Common object retrieval interface
 
