@@ -96,31 +96,31 @@ There are a number of additional features that have been talked about:
 - having a common way for a package to declare its instances
 - ...
 
-We propose to sort all these requested features in different work groups. Each group might or might not
+We propose to sort all these requested features in different steps or work groups. Each step might or might not
 lead to a PSR.
 
 
-               +----------------------------------+
-               | A. Common interface (get/has...) |
-               +----------------------------------+
-                                |
-           +--------------------+---------------------+      
-           |                    |                     |
-           V                    V                     V
-    +---------------+  +-----------------+   +-----------------+
-    |  B. Common    |  |  C.  Interop    |   |  D.   DI        |
-    |initialisation |  |      between    |   |  configuration  |
-    |(DI locator...)|  |        DIC      |   |    interop      |
-    +---------------+  +-----------------+   +-----------------+
+                   +----------------------------------+
+                   | A. Common interface (get/has...) |
+                   +----------------------------------+
+                                    |
+             +----------------------+---------------------+      
+             |                      |                     |
+             V                      V                     V
+    +-------------------+  +-----------------+   +-----------------+
+    |    B. Common      |  |  C.  Interop    |   |  D.   DI        |
+    |  initialisation   |->|      between    |   |  configuration  |
+    |  (DI locator...)  |  |        DIC      |   |    interop      |
+    +-------------------+  +-----------------+   +-----------------+
 
+For each step has its own meta document.
 
+#### 4.2.1 **Step A**: Common object retrieval interface
 
-#### 4.2.1 **Group 1**: DIC - MVC framework interoperability
-
-**Step 1**: 
+This step is required (but probably not enough) to achieve DIC - MVC framework interoperability.
 
 We already know what is common between DI containers. What we do not know yet is **what
-a MVC framework needs from the DI Container**.
+a typical MVC framework needs from the DI Container**.
 
 For instance, Mouf's MVC framework (splash), needs to be able to retrieve all instances
 of the container implementing the `ControlerInterface` interface. So it requires a
@@ -133,7 +133,10 @@ by the MVC frameworks are covered by the interface offered.
 If (and only if) the set of functions used by MVC frameworks can be reduced to a common
 interface that could be implemented in most DIC, then we can move on to step 2. 
 
-**Step 2**
+The work related to this step is summarized in [this meta document](step-a-common-object-retrieval-interface.md).
+
+
+#### 4.2.2 **Step B**: Common way to initialise a DI container
 
 This step is about finding how an MVC framework can find the DIC. It is optionnal, but it 
 might be great. Just imagine: you install one DI container you like. You install about
@@ -144,12 +147,12 @@ This is however a difficult discussion. This might mean building a kind of a "se
 locate DI containers, which is a bit awkward. This also means at some point playing with
 a "global" or "static" service locator, which might not please everybody.
 
-Also, this problem shares a lot of common questions with **Group 2** (interoperability between
+Also, this problem shares a lot of common questions with **step C** (interoperability between
 DI containers).
 
-Group 1 work will be summarized in [this meta document](di-mvc-interop-meta.md).
+The work related to this step is summarized in [this meta document](step-b-common-initialization.md).
 
-#### 4.2.2 **Group 2**: interoperability between DI containers
+#### 4.2.3 **Step C**: interoperability between DI containers
 
 Let's assume I want to use Zend DI container for my project.
 And I want to use Mouf's Splash MVC framework. Splash requires the DI Container to 
@@ -164,9 +167,9 @@ For this to be possible, DI containers must know each other.
 
 This can either be done via chaining, or via registering to a common DI container locator.
 
-Group 2 work will be summarized in [this meta document](inter-di-interop-meta.md).
+Step C related work will be summarized in [this meta document](step-c-inter-di-interop-meta.md).
 
-#### 4.2.3 **Group 3**: DI containers configuration interoperability
+#### 4.2.4 **Step D**: DI containers configuration interoperability
 
 A number of packages could come with "default settings", and therefore "default instances".
 This work group might want to see how those packages could declare in a simple way
@@ -175,6 +178,8 @@ a common set of instances that might be created in the DI container.
 This is a tricky question. First of all, some DI containers heavily rely on annotations,
 or on auto binding (Zend DI for instance). Therefore, it might not be always possible to declare
 instances. Also, should a package declare its own instances? Does this imply an install mechanism?
+
+Step D releated work will be summarized in [this meta document](step-d-di-configuration-interop-meta.md).
  
 
 
