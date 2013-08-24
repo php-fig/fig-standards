@@ -50,13 +50,15 @@ Voting Members
 
 1. Jordi Boggiano: Composer, Packagist
 
+1. Pádraic Brady: Zend Framework
+
 1. Karma Dordrak: Zikula
 
 1. Paul Dragoonis: PPI, PPI2
 
 1. William Durand: Propel, Propel 2
 
-1. Andrew Eddie: Joomla
+1. Don Gilbert: Joomla
 
 1. Cal Evans: the community at large
 
@@ -66,11 +68,13 @@ Voting Members
 
 1. Paul M. Jones: Solar Framework, Aura Project
 
-1. Robert Lemke: TYPO3 Flow, TYPO3 Neos
+1. Karsten Dambekalns: TYPO3 Flow, TYPO3 Neos
 
 1. Larry Masters: CakePHP, CakePHP 2
 
 1. John Mertic: SugarCRM
+
+1. Taylor Otwell: Laravel
 
 1. Ryan Parman: Amazon Web Services SDK
 
@@ -78,18 +82,14 @@ Voting Members
 
 1. Fabien Potencier: Symfony, Symfony2
 
-1. Andre Romcke: eZ Publish
+1. Mike van Riel: phpDocumentor
 
-1. Paul Scott: Chisimba, C4
+1. Andre Romcke: eZ Publish
 
 1. Phil Sturgeon: PyroCMS
 
 1. Lukas Smith: Jackalope
 
 1. Kris Wallsmith: Assetic, Buzz
-
-1. Mike van Riel: phpDocumentor
-
-1. Pádraic Brady: Zend Framework
 
 1. David Zülke: Agavi
