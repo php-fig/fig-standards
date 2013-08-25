@@ -234,7 +234,10 @@ contributor must be put on this list by one of the Editors(s) or Sponsors.
 ### 3.6 Errata
 
 Errata can be used to add clarification on contentious points that arise after a documents formation. 
-This is limited to non-binding, backwards compatible explanations and must not include new rules. 
+This is limited to non-binding, backwards compatible explanations and must not include new rules.
+
+Errata may only be added to the meta document. To add new Errata to the meta document a vote must be held 
+on the mailing list, and this vote must adhere to [the voting protocol][voting].
 
 ### 3.7 Template
 
