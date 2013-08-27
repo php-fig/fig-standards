@@ -170,6 +170,15 @@ class Psr4AutoloaderClass
             // remove the trailing namespace separator for the next iteration
             // of strrpos()
             $prefix = rtrim($prefix, '\\');   
+
+        // if a "global" namespace has been registered, need to check it
+        if (isset($this->prefixes['\\'])) {
+            foreach($this->prefixes['\\'] as $aPath) {
+                $mapped_file = $this->loadMappedFile('\\', $class);
+                if ($mapped_file) {
+                    return $mapped_file;
+                }
+            }
         }
         
         // never found a mapped file
