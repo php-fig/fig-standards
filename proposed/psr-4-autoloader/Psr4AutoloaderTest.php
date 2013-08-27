@@ -65,7 +65,7 @@ spl_autoload_register(function ($class) {
  * 
  *      <?php
  *      // instantiate the loader
- *      $loader = new \Example\AutoloadClass;
+ *      $loader = new \Example\Psr4AutoloaderClass;
  *      
  *      // register the autoloader
  *      $loader->register();
@@ -86,7 +86,7 @@ spl_autoload_register(function ($class) {
  *      <?php
  *      new \Foo\Bar\Qux\QuuxTest;
  */
-class AutoloadClass
+class Psr4AutoloaderClass
 {
     /**
      * An associative array where the key is a namespace prefix and the value
@@ -98,6 +98,8 @@ class AutoloadClass
 
     /**
      * Register loader with SPL autoloader stack.
+     * 
+     * @return null
      */
     public function register()
     {
@@ -113,6 +115,7 @@ class AutoloadClass
      * @param bool $prepend If true, prepend the base directory to the stack
      * instead of appending it; this causes it to be searched first rather
      * than last.
+     * @return null
      */
     public function addNamespace($prefix, $base_dir, $prepend = false)
     {
@@ -139,6 +142,8 @@ class AutoloadClass
      * Loads the class file for a given class name.
      *
      * @param string $class The fully-qualified class name.
+     * @return mixed The mapped file name on success, or boolean false on
+     * failure.
      */
     public function loadClass($class)
     {
@@ -222,7 +227,7 @@ class AutoloadClass
     }
 }
 
-class MockAutoloadClass extends AutoloadClass
+class MockPsr4AutoloaderClass extends Psr4AutoloaderClass
 {
     protected $files = array();
 
@@ -237,13 +242,13 @@ class MockAutoloadClass extends AutoloadClass
     }
 }
 
-class AutoloadClassTest extends \PHPUnit_Framework_TestCase
+class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
 {
     protected $loader;
 
     protected function setUp()
     {
-        $this->loader = new MockAutoloadClass;
+        $this->loader = new MockPsr4AutoloaderClass;
     
         $this->loader->setFiles(array(
             '/vendor/foo.bar/src/ClassName.php',
