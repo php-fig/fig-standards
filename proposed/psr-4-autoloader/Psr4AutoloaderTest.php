@@ -170,15 +170,6 @@ class Psr4AutoloaderClass
             // remove the trailing namespace separator for the next iteration
             // of strrpos()
             $prefix = rtrim($prefix, '\\');   
-
-        // if a "global" namespace has been registered, need to check it
-        if (isset($this->prefixes['\\'])) {
-            foreach($this->prefixes['\\'] as $aPath) {
-                $mapped_file = $this->loadMappedFile('\\', $class);
-                if ($mapped_file) {
-                    return $mapped_file;
-                }
-            }
         }
         
         // never found a mapped file
@@ -270,7 +261,6 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
             '/vendor/foo.bardoom/src/ClassName.php',
             '/vendor/foo.bar.baz.dib/src/ClassName.php',
             '/vendor/foo.bar.baz.dib.zim.gir/src/ClassName.php',
-            '/path/to/global/includes/Qux/Quux.php',
         ));
         
         $this->loader->addNamespace(
@@ -296,11 +286,6 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
         $this->loader->addNamespace(
             'Foo\Bar\Baz\Dib\Zim\Gir',
             '/vendor/foo.bar.baz.dib.zim.gir/src'
-        );
-        
-        $this->loader->addNamespace(
-            '\\',
-            '/path/to/global/includes'
         );
     }
 
@@ -336,13 +321,6 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
         
         $actual = $this->loader->loadClass('Foo\BarDoom\ClassName');
         $expect = '/vendor/foo.bardoom/src/ClassName.php';
-        $this->assertSame($expect, $actual);
-    }
-
-    public function testGlobalUnnamespacedFile()
-    {
-        $actual = $this->loader->loadClass('Qux/Quux');
-        $expect = '/path/to/global/includes/Qux/Quux.php';
         $this->assertSame($expect, $actual);
     }
 }
