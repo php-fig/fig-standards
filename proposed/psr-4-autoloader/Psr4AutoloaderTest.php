@@ -261,7 +261,7 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
             '/vendor/foo.bardoom/src/ClassName.php',
             '/vendor/foo.bar.baz.dib/src/ClassName.php',
             '/vendor/foo.bar.baz.dib.zim.gir/src/ClassName.php',
-            '/path/to/includes/Qux/Quux.php',
+            '/path/to/global/includes/Qux/Quux.php',
         ));
         
         $this->loader->addNamespace(
