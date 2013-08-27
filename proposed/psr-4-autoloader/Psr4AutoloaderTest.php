@@ -123,8 +123,9 @@ class Psr4AutoloaderClass
         $prefix = trim($prefix, '\\') . '\\';
         
         // normalize the base directory with a trailing separator
-        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-        
+        $base_dir = rtrim($base_dir, '/') . DIRECTORY_SEPARATOR;
+        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
+
         // initialize the namespace prefix array
         if (isset($this->prefixes[$prefix]) === false) {
             $this->prefixes[$prefix] = array();
@@ -199,7 +200,10 @@ class Psr4AutoloaderClass
             $file = $base_dir
                   . str_replace('\\', DIRECTORY_SEPARATOR, $relative_class)
                   . '.php';
-    
+            $file = $base_dir
+                  . str_replace('\\', '/', $relative_class)
+                  . '.php';
+
             // if the mapped file exists, require it
             if ($this->requireFile($file)) {
                 // yes, we're done
