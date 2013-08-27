@@ -102,6 +102,6 @@ that corresponds with that namespace prefix ...
 Implementations MAY contain additional features and MAY differ in how they are
 implemented.
 
-For example implementations, see [AutoloadTest.php](AutoloadTest.php). Example
+For example implementations, see [Psr4AutoloaderTest.php](Psr4AutoloaderTest.php). Example
 implementations MUST NOT be regarded as part of the specification; they are
 examples only, and may change at any time.
