@@ -329,4 +329,11 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
         $expect = '/vendor/foo.bardoom/src/ClassName.php';
         $this->assertSame($expect, $actual);
     }
+
+    public function testGlobalUnnamespacedFile()
+    {
+        $actual = $this->loader->loadClass('Qux/Quux');
+        $expect = '/path/to/global/includes/Qux/Quux.php';
+        $this->assertSame($expect, $actual);
+    }
 }
