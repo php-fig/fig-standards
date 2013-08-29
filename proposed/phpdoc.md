@@ -1,4 +1,4 @@
-PSR-n: PHPDoc
+PSR-5: PHPDoc
 =============
 
 Author(s):
