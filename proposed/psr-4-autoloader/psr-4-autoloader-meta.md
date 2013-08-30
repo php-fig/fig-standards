@@ -203,33 +203,40 @@ Cons:
 - Not in line with the wishes of poll respondents and some collaborators
 
 
-5. People
+5. Implementations
+------------------
+
+For example implementations, see [Psr4AutoloaderTest.php](Psr4AutoloaderTest.php).
+These impelementations are examples only and may change at any time.
+
+
+6. People
 ---------
 
-### 5.1 Editor
+### 6.1 Editor
 
 - Paul M. Jones, Solar/Aura
 
-### 5.2 Sponsors
+### 6.2 Sponsors
 
 - Phil Sturgeon, PyroCMS (Coordinator)
 - Larry Garfield, Drupal
 
-### 5.3 Contributors
+### 6.3 Contributors
 
 - Beau Simensen, for his work on defining and separating the transformation
   rules
 - Too many others to name and count
 
 
-6. Votes
+7. Votes
 --------
 
 - **Entrance Vote:** (tbd)
 - **Acceptance Vote:** (tbd)
 
 
-7. Relevant Links
+8. Relevant Links
 -----------------
 
 - [Autoloader, round 4](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/lpmJcmkNYjM)
