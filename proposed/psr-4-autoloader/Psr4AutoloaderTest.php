@@ -2,7 +2,7 @@
 namespace Example;
 
 /**
- * An example of of a project-specific implementation.
+ * An example of a project-specific implementation.
  * 
  * After registering this autoload function with SPL, the following line
  * would cause the function to attempt to load the `\Foo\Bar\Baz\Qux` class
@@ -215,15 +215,14 @@ class Psr4AutoloaderClass
      * If a file exists, require it from the file system.
      * 
      * @param string $file The file to require.
-     * @return bool True if the file exists, false if not.
+     * @return void
      */
     protected function requireFile($file)
     {
         if (file_exists($file)) {
             require $file;
-            return true;
         }
-        return false;
+        return;
     }
 }
 
