@@ -14,9 +14,6 @@ libraries themselves face a choice between only supporting a limited number
 of frameworks or creating a large number of adapter classes.
 
 
-The purpose of X is to bla bla bla. More description than might go into the
-summary, with potential prose and a little history might be helpful.
-
 2. Why Bother?
 --------------
 
