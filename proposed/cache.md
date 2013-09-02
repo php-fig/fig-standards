@@ -210,7 +210,7 @@ interface ItemInterface
     /**
      * Retrieves the value of the item from the cache associated with this objects key.
      *
-     * Value returned must be identical to the value original stored by set().
+     * The value returned must be identical to the value original stored by set().
      *
      * if isHit() returns false, this method MUST return null. Note that null
      * is a legitimate cached value, so the isHit() method SHOULD be used to
@@ -269,7 +269,7 @@ interface ItemInterface
 
 ### Cache\InvalidArgumentException
 
-Any time an invalid argument is passed into a method it must 
+Any time an invalid argument is passed into a method it must
 throw an exception class which implements ``Psr\Cache\InvalidArgumentException``.
 
 ```php
