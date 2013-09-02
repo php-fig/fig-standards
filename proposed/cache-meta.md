@@ -87,6 +87,143 @@ Cons:
 
 * A bit more verbose than the naive approach
 
+Examples:
+
+Some common usage patterns are shown below.  These are non-normative but should
+demonstrate the application of some design decisions.
+
+```php
+/**
+ * Gets a list of available widgets.
+ *
+ * In this case, we assume the widget list changes so rarely that we want
+ * the list cached forever until an explicit clear.
+ */
+function get_widget_list()
+{
+    $pool = get_cache_pool('widgets');
+    $item = $pool->getItem('widget_list');
+    if (!$item->isHit()) {
+        $value = compute_expensive_widget_list();
+        $item->set($value);
+    }
+    return $item->get();
+}
+```
+
+```php
+/**
+ * Caches a list of available widgets.
+ *
+ * In this case, we assume a list of widgets has been computed and we want
+ * to cache it, regardless of what may already be cached.
+ */
+function save_widget_list($list)
+{
+    $pool = get_cache_pool('widgets');
+    $pool->getItem('widget_list')->set($list);
+}
+```
+
+```php
+/**
+ * Clears the list of available widgets.
+ *
+ * In this case, we simply want to remove the widget list from the cache. We
+ * don't care if it was set or not; the post condition is simply "no longer set".
+ */
+function clear_widget_list()
+{
+    $pool = get_cache_pool('widgets');
+    $pool->getItem('widget_list')->delete();
+}
+```
+
+```php
+/**
+ * Clears all widget information.
+ *
+ * In this case, we want to empty the entire widget pool. There may be other
+ * pools in the application that will be unaffected.
+ */
+function clear_widget_cache()
+{
+    $pool = get_cache_pool('widgets');
+    $pool->clear();
+}
+```
+
+```php
+/**
+ * Load widgets.
+ *
+ * We want to get back a list of widgets, of which some are cached and some
+ * are not. This of course assumes that loading from the cache is faster than
+ * whatever the non-cached loading mechanism is.
+ *
+ * In this case, we assume widgets may change frequently so we only allow them
+ * to be cached for an hour (3600 seconds).
+ *
+ * Note that a real implementation would probably also want a multi-load
+ * operation for widgets, but that's irrelevant for this demonstration.
+ */
+function load_widgets(array $ids)
+{
+    $pool = get_cache_pool('widgets');
+    $keys = array_map(function($id) { return 'widget.' . $id; }, $ids);
+    $items = $pool->getItems($keys);
+
+    $widgets = array();
+    foreach ($items as $key => $item) {
+        if ($item->isHit()) {
+            $value = $item->get();
+        }
+        else {
+            $value = expensive_widget_load($id);
+            $item->set($value, 3600);
+        }
+        $widget[$value->id()] = $value;
+    }
+    return $widgets;
+}
+```
+
+```php
+/**
+ * This examples reflects functionality that is NOT included in this
+ * specification, but is shown as an example of how such functionality MIGHT
+ * be added by extending implementations.
+ */
+
+
+interface TaggablePoolInterface extends Psr\Cache\PoolInterface
+{
+    /**
+     * Clears only those items from the pool that have the specified tag.
+     */
+    clearByTag($tag);
+}
+
+interface TaggableItemInterface extends Psr\Cache\ItemInterface
+{
+    public function setTags(array $tags);
+}
+
+/**
+ * Caches a widget with tags.
+ */
+function set_widget(TaggablePoolInterface $pool, Widget $widget)
+{
+    $key = 'widget.' . $widget->id();
+    $item = $pool->getItem($key);
+
+    // setTags() must be called first, since set() will also commit the changes
+    // to the pool's data store.
+    $item->setTags($widget->tags());
+    $item->set($widget);
+}
+```
+
 ### 4.2 Alternative: "Weak item" approach
 
 A variety of earlier drafts took a simpler "key value with expiration" approach,
