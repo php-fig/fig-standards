@@ -1756,19 +1756,19 @@ class Foo
 
 ### ABNF
 
-  A Type has the following [ABNF][RFC5234] definition:
+A Type has the following [ABNF][RFC5234] definition:
 
-    ; the vertical bar sign in the type-expression MUST be used as separator when multiple elements are used
-    type-expression  = 1*((array / type) ["|"])
-    array            = "array" / (type / array-expression / array) "[]" / generic
-    type             = class-name / keyword
+    type-expression  = type *("|" type)
+    type             = class-name / keyword / array
+    array            = (type / array-expression) "[]" / generic
     array-expression = "(" type-expression ")"
-    generic          = collection-type "<" [type-expression "," *1SP] type-expression">"
+    generic          = collection-type "<" [type-expression "," *SP] type-expression ">"
     collection-type  = class-name / "array"
-    class-name       = 1*ALPHA *(ALPHA / "_" / "\")
-    keyword          = "string" / "integer" / "int" / "boolean" / "bool" / "float" /  "double" / "object"
-    keyword          =/ "mixed" / "resource" / "void" / "null" / "callable" / "false" / "true" / "self"
-    keyword          =/ "static" / "$this"
+    class-name       = ["\"] label *("\" label)
+    label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
+    keyword          = "array" / "bool" / "boolean" / "callable" / "double" / "false" / "float" / "int" / "integer"
+    keyword          =/ "mixed" / "null" / "object" / "resource" / "self" / "static" / "string" / "true" / "void"
+    keyword          =/ "$this"
 
 ### Details
 
