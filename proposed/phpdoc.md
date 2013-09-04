@@ -169,14 +169,15 @@ interpreted as described in [RFC 2119][RFC2119].
   }
   ```
 
-* "DocComment" is a special type of comment which starts with `/**`, ends
-  with `*/` and may contain any number of lines in between.
-  When a DocComment spans multiple lines, every line SHOULD start with an
-  asterisk that is aligned with the first asterisk of the opening clause.
+* "DocComment" is a special type of comment which MUST
 
-  In case a DocComment spans multiple lines then every line should start with
-  an asterisk (`*`) that is aligned with the first asterisk of the opening
-  clause.
+  - start with the character sequence `/**` followed by a whitespace character
+  - end with `*/` and
+  - have zero or more lines in between.
+
+  In case a DocComment spans multiple lines then every line MUST start with
+  an asterisk (`*`) that SHOULD be aligned with the first asterisk of the
+  opening clause.
 
   Single line example:
 
@@ -1876,13 +1877,6 @@ The following keywords are recognized by this PSR:
 
 5.  'object', the element to which this type applies is the instance of an
     undetermined class.
-    This could be considered an alias for providing the class stdClass, as this
-    is the base class of all classes, but the intention of the type differs.
-
-    Providing stdClass will imply the intention that the related element contains
-    an actual object of class stdClass or direct descendant, whereas object
-    implies that it is completely unknown of which class the contained
-    object will be.
 
 6.  'mixed', the element to which this type applies can be of any type as
     specified here. It is not known on compile time which type will be used.
