@@ -12,7 +12,7 @@ PSR-0.
 2. Why Bother?
 --------------
 
-### History of PSR-0 
+### History of PSR-0
 
 The PSR-0 class naming and autoloading standard rose out of the broad
 acceptance of the Horde/PEAR convention under the constraints of PHP 5.2 and
@@ -20,13 +20,13 @@ previous. With that convention, the tendency was to put all PHP source classes
 in a single main directory, using underscores in the class name to indicate
 pseudo-namespaces, like so:
 
-    /path/to/src/ 
-        VendorFoo/ 
-            Bar/ 
-                Baz.php     # VendorFoo_Bar_Baz 
-        VendorDib/ 
-            Zim/ 
-                Gir.php     # Vendor_Dib_Zim_Gir 
+    /path/to/src/
+        VendorFoo/
+            Bar/
+                Baz.php     # VendorFoo_Bar_Baz
+        VendorDib/
+            Zim/
+                Gir.php     # Vendor_Dib_Zim_Gir
 
 With the release of PHP 5.3 and the availability of namespaces proper, PSR-0
 was introduced to allow both the old Horde/PEAR underscore mode *and* the use
@@ -34,22 +34,22 @@ of the new namespace notation. Underscores were still allowed in the class
 name to ease transition from the older namespace naming to the newer naming,
 and thereby to encourage wider adoption.
 
-    /path/to/src/ 
-        VendorFoo/ 
-            Bar/ 
-                Baz.php     # VendorFoo_Bar_Baz 
-        VendorDib/ 
-            Zim/ 
-                Gir.php     # VendorDib_Zim_Gir 
-        Irk_Operation/ 
-            Impending_Doom/ 
-                V1.php 
-                V2.php      # Irk_Operation\Impending_Doom\V2 
+    /path/to/src/
+        VendorFoo/
+            Bar/
+                Baz.php     # VendorFoo_Bar_Baz
+        VendorDib/
+            Zim/
+                Gir.php     # VendorDib_Zim_Gir
+        Irk_Operation/
+            Impending_Doom/
+                V1.php
+                V2.php      # Irk_Operation\Impending_Doom\V2
 
 This structure is informed very much by the fact that the PEAR installer moved
 source files from PEAR packages into a single central directory.
 
-### Along Comes Composer 
+### Along Comes Composer
 
 With Composer, package sources are no longer copied to a single central
 location. They are used from their installed location and are not moved
@@ -60,17 +60,17 @@ each package.
 To meet the requirements of PSR-0, this leads to Composer packages looking
 like this:
 
-    vendor/ 
-        vendor_name/ 
-            package_name/ 
-                src/ 
-                    Vendor_Name/ 
-                        Package_Name/ 
-                            ClassName.php       # Vendor_Name\Package_Name\ClassName 
-                tests/ 
-                    Vendor_Name/ 
-                        Package_Name/ 
-                            ClassNameTest.php   # Vendor_Name\Package_Name\ClassNameTest 
+    vendor/
+        vendor_name/
+            package_name/
+                src/
+                    Vendor_Name/
+                        Package_Name/
+                            ClassName.php       # Vendor_Name\Package_Name\ClassName
+                tests/
+                    Vendor_Name/
+                        Package_Name/
+                            ClassNameTest.php   # Vendor_Name\Package_Name\ClassNameTest
 
 The "src" and "tests" directories have to include vendor and package directory
 names. This is an artifact of PSR-0 compliance.
@@ -79,19 +79,19 @@ Many find this structure to be deeper and more-repetitive than necessary. This
 proposal suggests that an additional or superseding PSR would be useful so
 that we can have packages that look more like the following:
 
-    vendor/ 
-        vendor_name/ 
-            package_name/ 
-                src/ 
-                    ClassName.php       # Vendor_Name\Package_Name\ClassName 
-                tests/ 
-                    ClassNameTest.php   # Vendor_Name\Package_Name\ClassNameTest 
+    vendor/
+        vendor_name/
+            package_name/
+                src/
+                    ClassName.php       # Vendor_Name\Package_Name\ClassName
+                tests/
+                    ClassNameTest.php   # Vendor_Name\Package_Name\ClassNameTest
 
 This would require an implementation of what was intially called
 "package-oriented autoloading" (as vs the traditional "direct class-to-file
 autoloading").
 
-### Package-Oriented Autoloading 
+### Package-Oriented Autoloading
 
 It's difficult to implement package-oriented autoloading via an extension or
 amendment to PSR-0, because PSR-0 does not allow for an intercessory path
