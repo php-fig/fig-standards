@@ -151,6 +151,18 @@ This approach retains key characteristics of PSR-0 while eliminating the
 deeper directory structures it requires. In addition, it specifies certain
 additional rules that make implementations explicity more interoperable.
 
+Although not related to directory mapping, the final draft also specifies how
+autoloaders should handle errors.  Specifically, it forbids throwing exceptions
+or raising errors.  The reason is two-fold.  One, autoloaders in PHP are explicitly
+designed to be stackable so that if one autoloader cannot load a class another
+has a chance to do so. Having an autoloader trigger a breaking error condition
+violates that compatibility.  Two, class_exists() and interface_exists()
+allow "not found, even after trying to autoload" as a legitimate, normal use case.
+An autoloader that throws exceptions renders class_exists() unsuable, which is
+entirely unacceptable from an interoperability standpoint.  Autoloaders that
+wish to provide additional debugging information in a class-not-found case should
+do so via logging instead, either to a PSR-3 compatible logger or otherwise.
+
 Pros:
 
 - Shallower directory structures
@@ -242,5 +254,3 @@ Cons:
 - [VOTE: Package-Oriented Autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/Ua46E344_Ls)
 - [Proposal: Package-Oriented Autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/qT7mEy0RIuI)
 - [Towards a Package Oriented Autoloader](https://groups.google.com/forum/#!searchin/php-fig/package$20oriented$20autoloader/php-fig/JdR-g8ZxKa8/jJr80ard-ekJ)
-- [MUST NOT throw Exceptions](https://groups.google.com/d/msg/php-fig/kRTVRSIJ0qE/138W3AxoU8cJ)
-
