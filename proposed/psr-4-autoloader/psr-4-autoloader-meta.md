@@ -153,15 +153,17 @@ additional rules that make implementations explicity more interoperable.
 
 Although not related to directory mapping, the final draft also specifies how
 autoloaders should handle errors.  Specifically, it forbids throwing exceptions
-or raising errors.  The reason is two-fold.  One, autoloaders in PHP are explicitly
-designed to be stackable so that if one autoloader cannot load a class another
-has a chance to do so. Having an autoloader trigger a breaking error condition
-violates that compatibility.  Two, class_exists() and interface_exists()
-allow "not found, even after trying to autoload" as a legitimate, normal use case.
-An autoloader that throws exceptions renders class_exists() unsuable, which is
-entirely unacceptable from an interoperability standpoint.  Autoloaders that
-wish to provide additional debugging information in a class-not-found case should
-do so via logging instead, either to a PSR-3 compatible logger or otherwise.
+or raising errors.  The reason is two-fold.
+
+1. Autoloaders in PHP are explicitly designed to be stackable so that if one
+autoloader cannot load a class another has a chance to do so. Having an autoloader
+trigger a breaking error condition violates that compatibility.
+2. class_exists()  and interface_exists() allow "not found, even after trying to
+autoload" as a legitimate, normal use case. An autoloader that throws exceptions
+renders class_exists() unusable, which is entirely unacceptable from an interoperability
+standpoint.  Autoloaders that wish to provide additional debugging information
+in a class-not-found case should do so via logging instead, either to a PSR-3
+compatible logger or otherwise.
 
 Pros:
 
