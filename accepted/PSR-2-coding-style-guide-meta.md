@@ -18,7 +18,7 @@ The style rules herein are derived from commonalities among the various member p
 3. Errata
 ---------
 
-1. _[09//2013]_ Using multi-line arguments lines does not constitute splitting the argument list, and 
+1. _[09/08/2013]_ Using multi-line arguments lines does not constitute splitting the argument list, and 
 therefore Section 4.6 is not automatically enforced. Arrays and callbacks are able to span multiple lines 
 while other arguments do not. 
 
@@ -34,4 +34,3 @@ $app->get('/hello/{name}', function ($name) use ($app) {
     return 'Hello '.$app->escape($name); 
 });
 ```
- 
