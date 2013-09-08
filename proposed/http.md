@@ -24,8 +24,8 @@ implemented directly.
 2. Package
 ----------
 
-The interfaces and classes described as well as relevant exception classes and
-a test suite to verify your implementation are provided as part of the
+The interfaces and classes described as well as a test suite to verify your
+implementation are provided as part of the
 [psr/http](https://packagist.org/packages/psr/http) package.
 
 3. Interfaces
@@ -37,8 +37,6 @@ a test suite to verify your implementation are provided as part of the
 <?php
 
 namespace Psr\Http;
-
-use Psr\Http\Exception\InvalidArgumentException;
 
 /**
  * HTTP messages consist of requests from client to server and responses from
@@ -70,7 +68,7 @@ interface MessageInterface
      *
      * @return self Reference to the message.
      *
-     * @throws InvalidArgumentException When the HTTP protocol version is not valid.
+     * @throws \InvalidArgumentException When the HTTP protocol version is not valid.
      */
     public function setProtocolVersion($protocolVersion);
 
@@ -116,7 +114,7 @@ interface MessageInterface
      *
      * @return self Reference to the message.
      *
-     * @throws InvalidArgumentException When the header name or value is not valid.
+     * @throws \InvalidArgumentException When the header name or value is not valid.
      */
     public function setHeader($header, $value);
 
@@ -134,7 +132,7 @@ interface MessageInterface
      *
      * @return self Reference to the message.
      *
-     * @throws InvalidArgumentException When part of the header set is not valid.
+     * @throws \InvalidArgumentException When part of the header set is not valid.
      */
     public function setHeaders(array $headers);
 
@@ -154,7 +152,7 @@ interface MessageInterface
      *
      * @return self Reference to the message.
      *
-     * @throws InvalidArgumentException When part of the header set is not valid.
+     * @throws \InvalidArgumentException When part of the header set is not valid.
      */
     public function addHeaders(array $headers);
 
@@ -191,7 +189,7 @@ interface MessageInterface
      *
      * @return self Reference to the message.
      *
-     * @throws InvalidArgumentException When the body is not valid.
+     * @throws \InvalidArgumentException When the body is not valid.
      */
     public function setBody($body);
 }
@@ -203,8 +201,6 @@ interface MessageInterface
 <?php
 
 namespace Psr\Http;
-
-use Psr\Http\Exception\InvalidArgumentException;
 
 /**
  * A request message from a client to a server.
@@ -241,7 +237,7 @@ interface RequestInterface extends MessageInterface
      *
      * @return self Reference to the request.
      *
-     * @throws InvalidArgumentException If the URL is invalid.
+     * @throws \InvalidArgumentException If the URL is invalid.
      */
     public function setUrl($url);
 }
@@ -253,8 +249,6 @@ interface RequestInterface extends MessageInterface
 <?php
 
 namespace Psr\Http;
-
-use Psr\Http\Exception\InvalidArgumentException;
 
 /**
  * A request message from a server to a client.
@@ -275,7 +269,7 @@ interface ResponseInterface extends MessageInterface
      *
      * @return self Reference to the response.
      *
-     * @throws InvalidArgumentException When the status code is not valid.
+     * @throws \InvalidArgumentException When the status code is not valid.
      */
     public function setStatusCode($statusCode);
 
