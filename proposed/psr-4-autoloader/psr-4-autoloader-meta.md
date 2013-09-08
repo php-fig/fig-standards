@@ -1,4 +1,4 @@
-PSR-N Meta Document
+PSR-4 Meta Document
 ===================
 
 1. Summary
