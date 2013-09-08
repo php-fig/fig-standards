@@ -269,17 +269,6 @@ interface ResponseInterface extends MessageInterface
     public function getStatusCode();
 
     /**
-     * Sets the response status code.
-     *
-     * @param integer $statusCode Status code.
-     *
-     * @return self Reference to the response.
-     *
-     * @throws InvalidArgumentException When the status code is not valid.
-     */
-    public function setStatusCode($statusCode);
-
-    /**
      * Gets the response reason phrase.
      *
      * If it has not been explicitly set using `setReasonPhrase()` it SHOULD
@@ -288,14 +277,5 @@ interface ResponseInterface extends MessageInterface
      * @return string|null Reason phrase, or null if unknown.
      */
     public function getReasonPhrase();
-
-    /**
-     * Sets the response reason phrase.
-     *
-     * @param string $reasonPhrase Reason phrase.
-     *
-     * @return self Reference to the response.
-     */
-    public function setReasonPhrase($reasonPhrase);
 }
 ```
