@@ -94,14 +94,3 @@ that corresponds with that namespace prefix ...
 
 - Namespace separators in the relative class name portion of the fully
   qualified class name MUST be replaced with directory separators.
-
-
-4. Implementations
-------------------
-
-Implementations MAY contain additional features and MAY differ in how they are
-implemented.
-
-For example implementations, see [Psr4AutoloaderTest.php](Psr4AutoloaderTest.php). Example
-implementations MUST NOT be regarded as part of the specification; they are
-examples only, and may change at any time.
