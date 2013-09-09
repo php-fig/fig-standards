@@ -22,7 +22,7 @@ projects. Thus, the benefit of this guide is not in the rules themselves, but in
 ---------
 
 1. _[09/08/2013]_ Using one or more multi-line arguments does not constitute splitting the argument list itself, 
-therefore Section 4.6 is not automatically enforced. Arrays and annonymous functions are able to span multiple
+therefore Section 4.6 is not automatically enforced. Arrays and anonymous functions are able to span multiple
 lines.
 
 The following examples are perfectly valid in PSR-2:
