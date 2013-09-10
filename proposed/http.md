@@ -14,19 +14,18 @@ interpreted as described in [RFC 2119][].
 
 ### 1.1 Basics
 
-HTTP messages consist of requests from client to server and responses from
-server to client. These are represented by `Psr\Http\RequestInterface` and
-`Psr\Http\ResponseInterface` respectively.
+HTTP messages consist of requests from a client to a server and responses from
+a server to a client. These messages are represented by
+`Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` respectively.
 
-Both message types extend `Psr\Http\MessageInterface`, which MUST not be
+Both message types extend from `Psr\Http\MessageInterface`, which SHOULD not be
 implemented directly.
 
 2. Package
 ----------
 
-The interfaces and classes described as well as a test suite to verify your
-implementation are provided as part of the
-[psr/http](https://packagist.org/packages/psr/http) package.
+The interfaces and classes described are provided as part of the
+[psr/http-message](https://packagist.org/packages/psr/http-message) package.
 
 3. Interfaces
 -------------
@@ -39,18 +38,18 @@ implementation are provided as part of the
 namespace Psr\Http;
 
 /**
- * HTTP messages consist of requests from client to server and responses from
- * server to client.
+ * HTTP messages consist of requests from a client to a server and responses
+ * from a server to a client.
  *
- * This interface is not to be implemented directly, instead implement
+ * This interface SHOULD not be implemented directly; instead, implement
  * `RequestInterface` or `ResponseInterface` as appropriate.
  */
 interface MessageInterface
 {
     /**
-     * Returns the message as an HTTP string.
+     * Returns a string representation of the HTTP message.
      *
-     * @return string Message as an HTTP string.
+     * @return string Message as a string.
      */
     public function __toString();
 
@@ -62,18 +61,11 @@ interface MessageInterface
     public function getProtocolVersion();
 
     /**
-     * Sets the HTTP protocol version.
+     * Retrieve an HTTP header by name.
      *
-     * @param string $protocolVersion The HTTP protocol version.
-     *
-     * @return self Reference to the message.
-     *
-     * @throws \InvalidArgumentException When the HTTP protocol version is not valid.
-     */
-    public function setProtocolVersion($protocolVersion);
-
-    /**
-     * Gets a header.
+     * If a header contains multiple values for the given case-insensitive name,
+     * then the header values MUST be combined using a comma separator followed
+     * by a space (i.e., ", ") as specified in RFC 2616.
      *
      * @param string $header Header name.
      *
@@ -84,90 +76,82 @@ interface MessageInterface
     /**
      * Gets all headers.
      *
-     * The array keys are the header name, the values the header value.
+     * The keys represent the header name as it will be sent over the wire, and
+     * the values are an array of strings representing the header values.
      *
-     * @return array Headers.
+     * The return value of this method MUST be an array or a PHP object that
+     * implements \Traversable.
+     *
+     * @return array|Traversable An iterable representation of all of the
+     *                           message's HTTP headers.
      */
     public function getHeaders();
 
     /**
-     * Checks if a certain header is present.
+     * Checks if a header exists by the given case-insensitive name.
      *
-     * @param string $header Header name.
+     * @param string $header Case-insensitive header name.
      *
-     * @return bool If the header is present.
+     * @return bool Returns true if any header names match the given header
+     *              name using a case-insensitive string comparison. Returns
+     *              false if no matching header name is found in the message.
      */
     public function hasHeader($header);
 
     /**
-     * Sets a header, replacing the existing header if has already been set.
+     * Sets a header, replacing any existing values of any headers with the
+     * same case-insensitive name.
      *
      * The header name and value MUST be a string, or an object that implement
-     * the `__toString()` method. The value MAY also be an array, in which case
-     * it MUST be converted to a comma-separated string; the ordering MUST be
-     * maintained.
+     * the `__toString()` method. The value MAY also be an array of header
+     * values.
      *
-     * A null value will remove the existing header.
+     * @param string       $header Header name
+     * @param string|array $value  Header value(s)
      *
-     * @param string $header Header name.
-     * @param string $value  Header value.
-     *
-     * @return self Reference to the message.
+     * @return self Returns the message.
      *
      * @throws \InvalidArgumentException When the header name or value is not valid.
      */
     public function setHeader($header, $value);
 
     /**
-     * Sets headers, removing any that have already been set.
+     * Sets headers, replacing any headers that have already been set on the
+     * message.
      *
-     * The array keys must the header name, the values the header value.
-     *
-     * The header names and values MUST strings, or objects that implement the
-     * `__toString()` method. The values MAY also be arrays, in which case they
-     * MUST be converted to comma-separated strings; the ordering MUST be
-     * maintained.
+     * The array keys must be strings representing the header name. The values
+     * for each key MUST be one of the following: string, and object that
+     * implements the `__toString()` method, or an array of string values.
      *
      * @param array $headers Headers to set.
      *
-     * @return self Reference to the message.
+     * @return self Returns the message.
      *
      * @throws \InvalidArgumentException When part of the header set is not valid.
      */
     public function setHeaders(array $headers);
 
     /**
-     * Gets the body.
+     * Gets the body of the message.
      *
-     * This returns the original form, in contrast to `getBodyAsString()`.
-     *
-     * @return mixed|null Body, or null if not set.
-     *
-     * @see getBodyAsString()
+     * @return mixed|null Returns the message body, or null if not set.
      */
     public function getBody();
 
     /**
-     * Gets the body as a string.
-     *
-     * @return string|null Body as a string, or null if not set.
-     */
-    public function getBodyAsString();
-
-    /**
-     * Sets the body.
+     * Sets the body of the message.
      *
      * The body SHOULD be a string, or an object that implements the
      * `__toString()` method.
      *
-     * A null value will remove the existing body.
+     * A null value MUST remove the existing body.
      *
      * An implementation MAY accept other types, but MUST reject anything that
      * it does not know how to turn into a string.
      *
      * @param mixed $body Body.
      *
-     * @return self Reference to the message.
+     * @return self Returns the message.
      *
      * @throws \InvalidArgumentException When the body is not valid.
      */
@@ -183,37 +167,42 @@ interface MessageInterface
 namespace Psr\Http;
 
 /**
- * A request message from a client to a server.
+ * A HTTP request message.
+ * @link http://tools.ietf.org/html/rfc2616#section-5
  */
 interface RequestInterface extends MessageInterface
 {
     /**
-     * Gets the method.
+     * Gets the method of the request.
      *
-     * @return string Method.
+     * @return string Returns the request method.
      */
     public function getMethod();
 
     /**
-     * Sets the method.
+     * Sets the method to be performed on the resource identified by the
+     * Request-URI. The method is case-sensitive.
      *
-     * @param string $method Method.
+     * @param string $method Case-insensitive method.
      *
-     * @return self Reference to the request.
+     * @return self Returns the request.
      */
     public function setMethod($method);
 
     /**
-     * Gets the absolute URL.
+     * Gets the request URL.
      *
      * @return string URL.
      */
     public function getUrl();
 
     /**
-     * Sets the absolute URL.
+     * Sets the request URL.
      *
-     * @param string $url URL.
+     * The URL MUST be a string, or an object that implements the
+     * `__toString()` method.
+     *
+     * @param string $url Request URL.
      *
      * @return self Reference to the request.
      *
@@ -231,22 +220,27 @@ interface RequestInterface extends MessageInterface
 namespace Psr\Http;
 
 /**
- * A request message from a server to a client.
+ * A HTTP response message.
+ * @link http://tools.ietf.org/html/rfc2616#section-6
  */
 interface ResponseInterface extends MessageInterface
 {
     /**
-     * Gets the response status code.
+     * Gets the response Status-Code, a 3-digit integer result code of the
+     * server's attempt to understand and satisfy the request.
      *
      * @return integer Status code.
      */
     public function getStatusCode();
 
     /**
-     * Gets the response reason phrase.
+     * Gets the response Reason-Phrase, a short textual description of the
+     * Status-Code.
      *
-     * If it has not been explicitly set using `setReasonPhrase()` it SHOULD
-     * return the RFC 2616 recommended reason phrase.
+     * Because a Reason-Phrase is not a required element in response
+     * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
+     * choose to return the default RFC 2616 recommended reason phrase for the
+     * response's Status-Code.
      *
      * @return string|null Reason phrase, or null if unknown.
      */
