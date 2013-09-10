@@ -139,26 +139,6 @@ interface MessageInterface
     public function setHeaders(array $headers);
 
     /**
-     * Adds headers, replacing those that are already set.
-     *
-     * The array keys must the header name, the values the header value.
-     *
-     * The header names and values MUST strings, or objects that implement the
-     * `__toString()` method. The values MAY also be arrays, in which case they
-     * MUST be converted to comma-separated strings; the ordering MUST be
-     * maintained.
-     *
-     * Null values will remove existing headers.
-     *
-     * @param array $headers Headers to add.
-     *
-     * @return self Reference to the message.
-     *
-     * @throws InvalidArgumentException When part of the header set is not valid.
-     */
-    public function addHeaders(array $headers);
-
-    /**
      * Gets the body.
      *
      * This returns the original form, in contrast to `getBodyAsString()`.
