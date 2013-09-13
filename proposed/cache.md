@@ -272,7 +272,7 @@ interface ItemInterface
     function delete();
     
     /**
-     * Confirms if the cache item exists in the cache without, no get() required.
+     * Confirms if the cache item exists in the cache, no get() required.
      *
      * @return bool
      *  True if item exists in the cache, false otherwise.
