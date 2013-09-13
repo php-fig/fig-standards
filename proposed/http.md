@@ -12,11 +12,48 @@ interpreted as described in [RFC 2119][].
 1. Specification
 ----------------
 
-### 1.1 Basics
+### 1.1 Messages
 
 HTTP messages consist of requests from a client to a server and responses from
 a server to a client. These messages are represented by
 `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` respectively.
+
+- Both `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` implement
+  `Psr\Http\MessageInterface`. While `Psr\Http\MessageInterface` MAY be
+  implemented directly, implementors are encourages to implement
+  `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface`.
+
+- Both `Psr\Http\MessageInterface` extends the `Psr\Http\HasHeadersInterface`.
+  The `Psr\Http\HasHeadersInterface` MAY be implemented directly in cases where
+  an object needs an array of HTTP headers.
+
+### 1.2 Streams
+
+HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
+message can be very small or extremely large. Attempting to represent the body
+of a message as a string can easily consume more memory than intended because
+the body must be stored completely in memory. Attempting to store the body of a
+request or response in memory would preclude the use of that implementation from
+being able to work with large message bodies. The `StreamInterface` is used in
+order to hide the implementation details of where a stream of data is read from
+or written to.
+
+`StreamInterface` exposes several methods that enable streams to be read
+  from, written to, and traversed effectively.
+
+- Streams expose their capabilities using three methods: `isReadable()`,
+  `isWritable()`, and `isSeekable()`. These methods can be used by stream
+  collaborators to determine if a stream is capable of their requirements.
+
+  Each stream instance will have various capabilities: it can be read-only,
+  write-only, or read-write. It can also allow arbitrary random access (seeking
+  forwards or backwards to any location), or only sequential access (for
+  example in the case of a socket or pipe).
+
+- The `StreamFactoryInterface` exposes a single factory method,
+  `create($data)`, that is used to create `StreamInterface` objects from
+  various input types including but not limited to strings, PHP stream
+  resources, and objects that implement the `__toString()` method.
 
 2. Package
 ----------
@@ -282,5 +319,165 @@ interface ResponseInterface extends MessageInterface
      * @return string|null Reason phrase, or null if unknown.
      */
     public function getReasonPhrase();
+}
+```
+
+3.6 `Psr\Stream\StreamInterface`
+-------------------------------
+
+```php
+<?php
+
+namespace Psr\Http;
+
+/**
+ * Describes a stream instance.
+ */
+interface StreamInterface
+{
+    /**
+     * Reads the remainder of the stream from the current position until the
+     * end of the stream is reached.
+     *
+     * Warning: This could attempt to load a large amount of data into memory.
+     *
+     * @return string
+     */
+    public function __toString();
+
+    /**
+     * Closes the stream and any underlying resources.
+     */
+    public function close();
+
+    /**
+     * Separates any underlying resources from the stream.
+     *
+     * After the stream has been detached, the stream is in an unusable state.
+     */
+    public function detach();
+
+    /**
+     * Get the size of the stream if known
+     *
+     * @return int|null Returns the size in bytes if known, or null if unknown
+     */
+    public function getSize();
+
+    /**
+     * Get the filename/URL associated with the stream (if known)
+     *
+     * @return null|string
+     */
+    public function getUri();
+
+    /**
+     * Returns the current position of the file read/write pointer
+     *
+     * @return int|bool Position of the file pointer or false on error
+     */
+    public function tell();
+
+    /**
+     * Returns true if the stream is at the end of the stream.
+     *
+     * @return bool
+     */
+    public function eof();
+
+    /**
+     * Returns whether or not the stream is seekable
+     *
+     * @return bool
+     */
+    public function isSeekable();
+
+    /**
+     * Seek to a position in the stream
+     *
+     * @param int $offset Stream offset
+     * @param int $whence Specifies how the cursor position will be calculated
+     *                    based on the seek offset. Valid values are identical
+     *                    to the built-in PHP $whence values for `fseek()`.
+     *                    SEEK_SET: Set position equal to offset bytes
+     *                    SEEK_CUR: Set position to current location plus offset
+     *                    SEEK_END: Set position to end-of-stream plus offset
+     *
+     * @return bool Returns TRUE on success or FALSE on failure
+     * @link   http://www.php.net/manual/en/function.fseek.php
+     */
+    public function seek($offset, $whence = SEEK_SET);
+
+    /**
+     * Returns whether or not the stream is writable
+     *
+     * @return bool
+     */
+    public function isWritable();
+
+    /**
+     * Write data to the stream.
+     *
+     * @param string $string The string that is to be written.
+     *
+     * @return int|bool Returns the number of bytes written to the stream on
+     *                  success or FALSE on failure.
+     */
+    public function write($string);
+
+    /**
+     * Returns whether or not the stream is readable
+     *
+     * @return bool
+     */
+    public function isReadable();
+
+    /**
+     * Read data from the stream
+     *
+     * @param int $length Read up to $length bytes from the object and return
+     *                    them. Fewer than $length bytes may be returned if
+     *                    underlying stream call returns fewer bytes.
+     *
+     * @return string     Returns the data read from the stream.
+     */
+    public function read($length);
+}
+```
+
+2. `Psr\Stream\StreamFactoryInterface`
+--------------------------------------
+
+```php
+<?php
+
+namespace Psr\Http\StreamFactoryInterface;
+
+/**
+ * Describes a stream factory instance that is used to create
+ * StreamFactoryInterface objects.
+ */
+interface StreamFactoryInterface
+{
+    /**
+     * Creates an {@see StreamInterface} object from various input formats. The
+     * following input types SHOULD be supported, and implementations MAY add
+     * additional creational behavior if necessary.
+     *
+     * 1. Pass a string or object that implements __toString() to create a
+     *    stream object that contains a string of data. The created stream MUST
+     *    be readable and writable.
+     * 2. Pass a PHP resource returned from fopen() to create a stream that
+     *    wraps a PHP stream resource.
+     * 3. Pass NULL or omit the argument to create an empty StreamInterface
+     *    object that is readable and writable.
+     * 4. Implementations MAY choose to expose additional creational behavior
+     *    as necessary.
+     *
+     * @param string|resource|object $data Stream data to use when creating the
+     *                                     StreamInterface object.
+     * @return StreamInterface
+     */
+    public function create($data = null);
 }
 ```
