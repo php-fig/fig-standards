@@ -56,6 +56,11 @@ future extensions and MUST NOT be supported by implementing libraries: `{}()/\@:
 and a matching value is found for that key, and that value has not expired, and
 the value is not invalid for some other reason.
 
+*    **Exists** - When the item exists in the cache at the time of this call. 
+This is separate from isHit() because there's a potential race condition between 
+the time exists() is called and get() being called so make sure to verify isHit() 
+on all of the get() calls.
+
 *    **Miss** - A cache miss is the opposite of a cache hit. A cache hit occurs
 when a Calling Library requests an item by key and that value not found for that
 key, or the value was found but has expired, or the value is invalid for some
@@ -251,7 +256,7 @@ interface ItemInterface
     function set($value = null, $ttl = null);
 
     /**
-     * Confirms if the cache item exists in the cache.
+     * Confirms if the cache item existed after performing a get()
      *
      * @return bool
      *   True if the request resulted in a cache hit.  False otherwise.
@@ -259,12 +264,21 @@ interface ItemInterface
     function isHit();
 
     /**
-     * Removes the current key from the cache.
+     * Removes the current key from the cache
      *
      * @return \Psr\Cache\CacheInterface
      *   The current item.
      */
     function delete();
+    
+    /**
+     * Confirms if the cache item exists in the cache without, no get() required.
+     *
+     * @return bool
+     *  True if item exists in the cache, false otherwise.
+     */
+     function exists();
+     
 }
 ```
 
