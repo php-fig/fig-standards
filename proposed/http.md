@@ -18,9 +18,6 @@ HTTP messages consist of requests from a client to a server and responses from
 a server to a client. These messages are represented by
 `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` respectively.
 
-Both message types extend from `Psr\Http\MessageInterface`, which SHOULD not be
-implemented directly.
-
 2. Package
 ----------
 
@@ -30,7 +27,7 @@ The interfaces and classes described are provided as part of the
 3. Interfaces
 -------------
 
-### 3.1 `Psr\Http\MessageInterface`
+### 3.1 `Psr\Http\HasHeadersInterface`
 
 ```php
 <?php
@@ -38,52 +35,27 @@ The interfaces and classes described are provided as part of the
 namespace Psr\Http;
 
 /**
- * HTTP messages consist of requests from a client to a server and responses
- * from a server to a client.
+ * Represents an object that contains an array of HTTP headers.
  *
- * This interface SHOULD not be implemented directly; instead, implement
- * `RequestInterface` or `ResponseInterface` as appropriate.
+ * This interface is extended by RequestInterface and ResponseInterface. This
+ * interface MAY be implemented directly as needed.
  */
-interface MessageInterface
+interface HasHeadersInterface
 {
-    /**
-     * Returns a string representation of the HTTP message.
-     *
-     * @return string Message as a string.
-     */
-    public function __toString();
-
-    /**
-     * Gets the HTTP protocol version.
-     *
-     * @return string HTTP protocol version.
-     */
-    public function getProtocolVersion();
-
-    /**
-     * Retrieve an HTTP header by name.
-     *
-     * If a header contains multiple values for the given case-insensitive name,
-     * then the header values MUST be combined using a comma separator followed
-     * by a space (i.e., ", ") as specified in RFC 2616.
-     *
-     * @param string $header Header name.
-     *
-     * @return string|null Header value, or null if not set.
-     */
-    public function getHeader($header);
-
     /**
      * Gets all headers.
      *
      * The keys represent the header name as it will be sent over the wire, and
      * the values are an array of strings representing the header values.
      *
-     * The return value of this method MUST be an array or a PHP object that
-     * implements \Traversable.
+     *     // Represent the headers as a string
+     *     foreach ($message->getHeaders() as $name => $values) {
+     *         echo $name . ': ' .  implode(', ', $values) . "\r\n";
+     *     }
      *
-     * @return array|Traversable An iterable representation of all of the
-     *                           message's HTTP headers.
+     * @return array Returns an associative array of the message's HTTP headers
+     *     where the key is the name of the header as it will be sent over the
+     *     wire, and the value is an array of strings for a particular header.
      */
     public function getHeaders();
 
@@ -97,6 +69,19 @@ interface MessageInterface
      *              false if no matching header name is found in the message.
      */
     public function hasHeader($header);
+
+    /**
+     * Retrieve an HTTP header by name.
+     *
+     * If a header contains multiple values for the given case-insensitive name,
+     * then the header values MUST be combined using a comma separator followed
+     * by a space (i.e., ", ") as specified in RFC 2616.
+     *
+     * @param string $header Header name.
+     *
+     * @return string|null Header value, or null if not set.
+     */
+    public function getHeader($header);
 
     /**
      * Sets a header, replacing any existing values of any headers with the
@@ -132,24 +117,75 @@ interface MessageInterface
     public function setHeaders(array $headers);
 
     /**
+     * Appends a header value to any existing values associated with the
+     * given header name.
+     *
+     * @param string $header Header name to add
+     * @param string $value  Value of the header
+     *
+     * @return self
+     */
+    public function addHeader($header, $value);
+
+    /**
+     * Remove a specific header by case-insensitive name.
+     *
+     * @param string $header HTTP header to remove
+     *
+     * @return self
+     */
+    public function removeHeader($header);
+}
+```
+
+### 3.2 `Psr\Http\MessageInterface`
+
+```php
+<?php
+
+namespace Psr\Http;
+
+/**
+ * HTTP messages consist of requests from a client to a server and responses
+ * from a server to a client.
+ *
+ * This interface SHOULD not be implemented directly; instead, implement
+ * `RequestInterface` or `ResponseInterface` as appropriate.
+ */
+interface MessageInterface exists HasHeadersInterface
+{
+    /**
+     * Returns a string representation of the HTTP message.
+     *
+     * @return string Message as a string.
+     */
+    public function __toString();
+
+    /**
+     * Gets the HTTP protocol version.
+     *
+     * @return string HTTP protocol version.
+     */
+    public function getProtocolVersion();
+
+    /**
      * Gets the body of the message.
      *
-     * @return mixed|null Returns the message body, or null if not set.
+     * @return StreamInterface|null Returns the body, or null if not set.
      */
     public function getBody();
 
     /**
      * Sets the body of the message.
      *
-     * The body SHOULD be a string, or an object that implements the
-     * `__toString()` method.
+     * The body MUST be a StreamInterface object, a string, or a PHP stream
+     * resource (e.g., the return value of fopen()). Implementations MAY choose
+     * to accept additional types.
      *
      * A null value MUST remove the existing body.
      *
-     * An implementation MAY accept other types, but MUST reject anything that
-     * it does not know how to turn into a string.
      *
-     * @param mixed $body Body.
+     * @param StreamInterface|string|resource|null $body Body.
      *
      * @return self Returns the message.
      *
@@ -159,7 +195,7 @@ interface MessageInterface
 }
 ```
 
-### 3.2 `Psr\Http\RequestInterface`
+### 3.3 `Psr\Http\RequestInterface`
 
 ```php
 <?php
@@ -173,7 +209,7 @@ namespace Psr\Http;
 interface RequestInterface extends MessageInterface
 {
     /**
-     * Gets the method of the request.
+     * Gets the HTTP method of the request.
      *
      * @return string Returns the request method.
      */
@@ -181,7 +217,8 @@ interface RequestInterface extends MessageInterface
 
     /**
      * Sets the method to be performed on the resource identified by the
-     * Request-URI. The method is case-sensitive.
+     * Request-URI. While method names are case case-sensitive, implementations
+     * SHOULD convert the method to all uppercase characters.
      *
      * @param string $method Case-insensitive method.
      *
@@ -212,7 +249,7 @@ interface RequestInterface extends MessageInterface
 }
 ```
 
-### 3.3 `Psr\Http\ResponseInterface`
+### 3.4 `Psr\Http\ResponseInterface`
 
 ```php
 <?php
