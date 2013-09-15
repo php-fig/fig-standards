@@ -82,17 +82,16 @@ interface HasHeadersInterface
     /**
      * Gets all headers.
      *
-     * The keys represent the header name as it will be sent over the wire, and
-     * the values are an array of strings representing the header values.
+     * The keys of the returned array represents the header name as it will be
+     * sent over the wire, and each value is a HeaderValuesInterface object that
+     * can be used like an array or cast to a string.
      *
      *     // Represent the headers as a string
      *     foreach ($message->getHeaders() as $name => $values) {
-     *         echo $name . ': ' .  implode(', ', $values) . "\r\n";
+     *         echo "{$name}: {$values}\r\n";
      *     }
      *
-     * @return array Returns an associative array of the message's HTTP headers
-     *     where the key is the name of the header as it will be sent over the
-     *     wire, and the value is an array of strings for a particular header.
+     * @return array Returns an associative array of the message's headers
      */
     public function getHeaders();
 
@@ -108,15 +107,12 @@ interface HasHeadersInterface
     public function hasHeader($header);
 
     /**
-     * Retrieve an HTTP header by name.
-     *
-     * If a header contains multiple values for the given case-insensitive name,
-     * then the header values MUST be combined using a comma separator followed
-     * by a space (i.e., ", ") as specified in RFC 2616.
+     * Retrieve a header by name.
      *
      * @param string $header Header name.
      *
-     * @return string|null Header value, or null if not set.
+     * @return HeaderValuesInterface|null Returns the header values or or null
+     *                                    if not set.
      */
     public function getHeader($header);
 
@@ -124,16 +120,13 @@ interface HasHeadersInterface
      * Sets a header, replacing any existing values of any headers with the
      * same case-insensitive name.
      *
-     * The header name and value MUST be a string, or an object that implement
-     * the `__toString()` method. The value MAY also be an array of header
-     * values.
+     * The header values MUST be a string, an array of strings, or a
+     * HeaderValuesInterface object.
      *
-     * @param string       $header Header name
-     * @param string|array $value  Header value(s)
+     * @param string                             $header Header name
+     * @param string|array|HeaderValuesInterface $value  Header value(s)
      *
      * @return self Returns the message.
-     *
-     * @throws \InvalidArgumentException When the header name or value is not valid.
      */
     public function setHeader($header, $value);
 
@@ -141,15 +134,12 @@ interface HasHeadersInterface
      * Sets headers, replacing any headers that have already been set on the
      * message.
      *
-     * The array keys must be strings representing the header name. The values
-     * for each key MUST be one of the following: string, and object that
-     * implements the `__toString()` method, or an array of string values.
+     * The array keys MUST be a string. The array values must be either a
+     * string, array of strings, or a HeaderValuesInterface object.
      *
      * @param array $headers Headers to set.
      *
      * @return self Returns the message.
-     *
-     * @throws \InvalidArgumentException When part of the header set is not valid.
      */
     public function setHeaders(array $headers);
 
@@ -175,7 +165,29 @@ interface HasHeadersInterface
 }
 ```
 
-### 3.2 `Psr\Http\MessageInterface`
+### 3.2 `Psr\Http\HeaderValuesInterface`
+
+```php
+<?php
+
+namespace Psr\Http;
+
+/**
+ * Represents a collection of header values.
+ */
+interface HeaderValuesInterface extends \Countable, \Traversable, \ArrayAccess
+{
+    /**
+     * Convert the header values to a string, concatenating multiple values 
+     * using a comma.
+     *
+     * @return string
+     */
+    public function __toString();
+}
+```
+
+### 3.3 `Psr\Http\MessageInterface`
 
 ```php
 <?php
@@ -215,24 +227,20 @@ interface MessageInterface exists HasHeadersInterface
     /**
      * Sets the body of the message.
      *
-     * The body MUST be a StreamInterface object, a string, or a PHP stream
-     * resource (e.g., the return value of fopen()). Implementations MAY choose
-     * to accept additional types.
+     * The body MUST be a StreamInterface object. Setting the body to null MUST
+     * remove the existing body.
      *
-     * A null value MUST remove the existing body.
-     *
-     *
-     * @param StreamInterface|string|resource|null $body Body.
+     * @param StreamInterface|null $body Body.
      *
      * @return self Returns the message.
      *
      * @throws \InvalidArgumentException When the body is not valid.
      */
-    public function setBody($body);
+    public function setBody(StreamInterface $body = null);
 }
 ```
 
-### 3.3 `Psr\Http\RequestInterface`
+### 3.4 `Psr\Http\RequestInterface`
 
 ```php
 <?php
@@ -266,7 +274,7 @@ interface RequestInterface extends MessageInterface
     /**
      * Gets the request URL.
      *
-     * @return string URL.
+     * @return string Returns the URL as a string.
      */
     public function getUrl();
 
@@ -279,14 +287,13 @@ interface RequestInterface extends MessageInterface
      * @param string $url Request URL.
      *
      * @return self Reference to the request.
-     *
      * @throws \InvalidArgumentException If the URL is invalid.
      */
     public function setUrl($url);
 }
 ```
 
-### 3.4 `Psr\Http\ResponseInterface`
+### 3.5 `Psr\Http\ResponseInterface`
 
 ```php
 <?php
@@ -322,8 +329,84 @@ interface ResponseInterface extends MessageInterface
 }
 ```
 
-3.6 `Psr\Stream\StreamInterface`
--------------------------------
+### 3.6 `Psr\Http\MessageFactoryInterface`
+
+```php
+<?php
+
+namespace Psr\Http;
+
+/**
+ * Message factory.
+ */
+interface MessageFactoryInterface
+{
+    /**
+     * Create a new request based on the HTTP method.
+     *
+     * The URL MUST be a string or an object that implements the __toString()
+     * method.
+     *
+     * Headers must be an array which maps header names to either a string, an
+     * array of strings, or a HeaderValuesInterface object.
+     *
+     * Body MUST be either a StreamInterface, string, an object that implements
+     * the __toString() method, or a resource as returned from PHP's fopen()
+     * function.
+     *
+     * The $options array is a custom associative array of options that are
+     * completely implementation specific options. These are options allow
+     * implementations to be interoperable, while still providing the ability
+     * to expose custom features.
+     *
+     * @param string $method  HTTP method (GET, POST, PUT, etc...)
+     * @param string $url     URL to send the request to
+     * @param array  $headers Request headers
+     * @param mixed  $body    Body to send in the request
+     * @param array  $options Array of options to apply to the request
+     *
+     * @return RequestInterface
+     */
+    public function createRequest(
+        $method,
+        $url,
+        array $headers = array(),
+        $body = null,
+        array $options = array()
+    );
+
+    /**
+     * Creates a response.
+     *
+     * Headers must be an array which maps header names to either a string, an
+     * array of strings, or a HeaderValuesInterface object.
+     *
+     * Body MUST be either a StreamInterface, string, an object that implements
+     * the __toString() method, or a resource as returned from PHP's fopen()
+     * function.
+     *
+     * The $options array is a custom associative array of options that are
+     * completely implementation specific options. These are options allow
+     * implementations to be interoperable, while still providing the ability
+     * to expose custom features.
+     *
+     * @param int   $statusCode HTTP status code
+     * @param array $headers    Response headers
+     * @param mixed $body       Response body
+     * @param array $options    Array of options to apply to the response.
+     *
+     * @return ResponseInterface
+     */
+    public function createResponse(
+        $statusCode = null,
+        array $headers = array(),
+        $body = null,
+        array $options = array()
+    );
+}
+```
+
+### 3.7 `Psr\Http\StreamInterface`
 
 ```php
 <?php
@@ -363,13 +446,6 @@ interface StreamInterface
      * @return int|null Returns the size in bytes if known, or null if unknown
      */
     public function getSize();
-
-    /**
-     * Get the filename/URL associated with the stream (if known)
-     *
-     * @return null|string
-     */
-    public function getUri();
 
     /**
      * Returns the current position of the file read/write pointer
@@ -445,8 +521,7 @@ interface StreamInterface
 }
 ```
 
-2. `Psr\Stream\StreamFactoryInterface`
---------------------------------------
+### 3.8 `Psr\Http\StreamFactoryInterface`
 
 ```php
 <?php
