@@ -398,7 +398,7 @@ interface MessageFactoryInterface
      * @return ResponseInterface
      */
     public function createResponse(
-        $statusCode = null,
+        $statusCode,
         array $headers = array(),
         $body = null,
         array $options = array()
