@@ -102,6 +102,9 @@ that corresponds with that namespace prefix ...
 Implementations MAY contain additional features and MAY differ in how they are
 implemented.
 
-For example implementations, see [Psr4AutoloaderTest.php](Psr4AutoloaderTest.php). Example
-implementations MUST NOT be regarded as part of the specification; they are
-examples only, and may change at any time.
+For example implementations, please see [the relevant wiki page][]. Example
+implementations MUST NOT be regarded as part of the specification. They are
+examples only, and MAY change at any time.
+
+[the relevant wiki page]: https://github.com/php-fig/fig-standards/wiki/PSR-4-Example-Implementations
+
