@@ -99,9 +99,6 @@ that corresponds with that namespace prefix ...
 4. Implementations
 ------------------
 
-Implementations MAY contain additional features and MAY differ in how they are
-implemented.
-
 For example implementations, please see [the relevant wiki page][]. Example
 implementations MUST NOT be regarded as part of the specification. They are
 examples only, and MAY change at any time.
