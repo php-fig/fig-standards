@@ -1,47 +1,44 @@
 PHP Framework Interoperability Group
 ====================================
 
-A idéia por trás do grupo é reunir projetos representativos para falar sobre as 
-semelhanças entre eles e encontrar maneiras para trabalharem juntos. Nosso público 
-principal é outro, mas estamos muito conscientes de que o resto da comunidade 
-PHP está acompanhando. Se outras pessoas quiserem adorar o que estamos fazendo 
-sejam bem-vindos para fazer isso, mas esse não é o objetivo.
+The idea behind the group is for project representatives to talk about the commonalities between our projects and find ways we can work together. Our main audience is each other, but we’re very aware that the rest of the PHP community is watching. If other folks want to adopt what we’re doing they are welcome to do so, but that is not the aim.
 
-Normas para propor recomendações
---------------------------------
+Proposing a Standards Recommendation
+------------------------------------
 
-Para propor uma recomendação de padrão (PSR):
+To propose a standards recommendation (PSR):
 
-- fork esse repositório, crie um branch, faça checkout no branch, adicione a PSR em
-  `proposed/`, faça o push do branch para o Github, e envie um pull request; ou,
+- fork this repo, create a branch, checkout that branch, add the PSR in
+  `proposed/`, push the branch to Github, and send a pull request; or,
 
-- crie um ticket para iniciar uma discussão no Github; ou,
+- create a ticket to start a discussion on Github; or,
 
-- comece uma conversa na [lista de e-mails][].
+- start a conversation on the [mailing list][].
 
-[lista de e-mails]: http://groups.google.com/group/php-fig/
+[mailing list]: http://groups.google.com/group/php-fig/
 
 
-Como se tornar membro
+Requesting Membership
 ---------------------
 
-Você **não** precisa ser um membro votante para participar de uma discussão
-na [lista de e-mails][].
+You **do not** need to be a voting member to participate in discussion on
+the [mailing list][].
 
-Para ser um membro votante, vocÊ deve enviar um e-mail para a [lista de e-mails][].
+To become a voting member, you must send an email to the [mailing list][].
 
-- O assunto deve ser: `Membership Request: {$seu_nome} ({$nome_projeto})`
+- The subject line should read: `Membership Request: {$your_name} ({$project_name})`
 
-- O corpo deve incluir seu nome, o nome (e o link) do projeto que você representa
-e outros detalhes que você achar relevantes.
+- The body should include your name, the name of (and link to) the project you
+  represent, and other details you feel are relevant.
+  
+Current members will vote on your request.
 
-Os atuais membros irão votar no seu pedido.
+Do not combine separate membership requests in a single thread; one request
+per thread, please.
 
-Não junte diferentes requisições de adesão em uma única thread; uma solicitação por 
-thread, por favor.
 
-Membros Votantes
-----------------
+Voting Members
+--------------
 
 1. Nate Abele: Lithium
 
