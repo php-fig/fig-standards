@@ -167,7 +167,7 @@ use OtherVendor\OtherPackage\BazClass;
 4. Classes, Properties, and Methods
 -----------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+The term "class" refers to all classes, interfaces, and traits except in 4.1.
 
 ### 4.1. Extends and Implements
 
@@ -204,6 +204,29 @@ use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
 class ClassName extends ParentClass implements
+    \ArrayAccess,
+    \Countable,
+    \Serializable
+{
+    // constants, properties, methods
+}
+```
+
+#### Interfaces Only
+
+Lists of `extends` MAY be split across multiple lines, where each
+subsequent line is indented once. When doing so, the first item in the list
+MUST be on the next line, and there MUST be only one interface per line.
+
+```php
+<?php
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+interface InterfaceName extends
     \ArrayAccess,
     \Countable,
     \Serializable
