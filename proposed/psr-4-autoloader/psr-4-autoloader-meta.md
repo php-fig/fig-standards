@@ -239,8 +239,8 @@ Cons:
 6. Votes
 --------
 
-- **Entrance Vote:** (tbd)
-- **Acceptance Vote:** (tbd)
+- **Entrance Vote:** https://groups.google.com/d/topic/php-fig/NWfyAeF7Psk/discussion
+- **Acceptance Vote:** https://groups.google.com/d/topic/php-fig/NWfyAeF7Psk/discussion
 
 
 7. Relevant Links
