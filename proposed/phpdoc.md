@@ -772,7 +772,7 @@ The @copyright tag defines who holds the copyright over the "Structural Element"
 The copyright indicated with this tag applies to the "Structural Element" to
 which it applies and all child elements unless otherwise noted.
 
-The format of the description if governed by the coding standard of each
+The format of the description is governed by the coding standard of each
 individual project. It is RECOMMENDED to mention the year or years which are
 covered by this copyright and the organization involved.
 
