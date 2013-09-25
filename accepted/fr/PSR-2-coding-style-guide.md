@@ -115,7 +115,7 @@ Les constantes PHP `true`, `false`, et `null` DOIVENT être en minuscule.
 
 [mots-clés]: http://php.net/manual/en/reserved.keywords.php
 
-3. Namespace and Use Declarations
+3. Namespace et déclarations Use
 ---------------------------------
 
 Quand présent, il DOIT y avoir une ligne vide après la déclaration du `namespace`.
