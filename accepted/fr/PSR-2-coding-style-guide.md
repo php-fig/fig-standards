@@ -215,7 +215,7 @@ class ClassName
 
 La visibilité DOIT être déclarée sur toutes les méthodes.
 
-Les noms de méthode NE DOIT PAS être précédés d'un sous-tiret pour indiquer
+Les noms de méthode NE DOIVENT PAS être précédés d'un sous-tiret pour indiquer
  la visibilité protégée ou privée.
 
 Les noms de méthode NE DOIVENT PAS être déclarés avec un espace après le nom de la méthode.
