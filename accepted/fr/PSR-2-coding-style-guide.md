@@ -29,7 +29,7 @@ Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "D
 
 - L'ouverture des accolades pour les méthodes DOIT figurer sur la ligne suivante, les accolades de fermeture DOIVENT figurer sur la ligne suivante après le corps de la méthode.
 
-- La visibilité DOIT être déclarée sur toutes les propriétés et méthodes; `abstraite` et `finale` doivent être déclarés avant la visibilité; `statique` DOIT être déclaré après la visibilité.
+- La visibilité DOIT être déclarée sur toutes les propriétés et méthodes; `abstract` et `final` doivent être déclarés avant la visibilité; `static` DOIT être déclaré après la visibilité.
 
 - La structure des mots-clés de contrôle DOIT avoir un espace après eux, les méthodes et les appels de fonction NE DOIVENT PAS en avoir.
 
