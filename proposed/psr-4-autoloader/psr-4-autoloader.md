@@ -53,25 +53,43 @@ registered autoloader.
 
 ### 3.1. General
 
-The "fully qualified class name" MUST begin with a "namespace name", which 
+1. The "fully qualified class name" MUST begin with a "namespace name", which 
 MAY be followed by one or more additional namespace names, and MUST end in 
 a class name.
 
-At least one "namespace prefix" of the "fully qualified class name" MUST
-correspond to a base directory.
+  > **Example:** With a "fully qualified class name" of `\Foo\Bar\Baz`, 
+  > the "namespace name is `\Foo\Bar` and the class name is `Baz`.
 
-A "namespace prefix" MAY correspond to more than one "base directory".
+2. At a minimum, a "namespace prefix" MUST correspond to a "base directory".
+
+  > **Example:** Any one of these examples would be valid if used individually:
+  >
+  > * \Foo\Bar -> ./
+  > * \Foo\Bar -> ./src
+  > * \Foo\Bar -> ./src/bar
+
+3. A "namespace prefix" MAY correspond to more than one "base directory". The 
+order in which an autoloader will attempt to map the file is not in the scope 
+of this specification, but the consumer should be aware that different 
+approaches may be used and should refer to the documentation.
+
+4. A "base directory" MUST NOT be a child of another "base directory".
+
+  > This example is not allowed:
+  >
+  > * \Foo\Bar -> ./src/
+  > * \Foo\Test\Bar -> ./src/test/ 
 
 ### 3.2. Registered Autoloaders
 
-The registered autoloader MUST transform the "fully qualified class name"
+1. The registered autoloader MUST transform the "fully qualified class name"
 using the rules in section 3.3. The result MUST be suffixed with `.php` to
 generate a mapped file name.
 
-If the "mapped file name" exists in the file system, the registered autoloader
+2. If the "mapped file name" exists in the file system, the registered autoloader
 MUST include or require it.
 
-The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors of
+3. The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors of
 any level, and SHOULD NOT return a value.
 
 ### 3.3. Transformation
@@ -102,9 +120,9 @@ The following rules MUST be respected:
 4. Implementations
 ------------------
 
-For example implementations, please see [the relevant wiki page][]. Example
-implementations MUST NOT be regarded as part of the specification. They are
-examples only, and MAY change at any time.
+For example implementations, please see [the relevant wiki page][examples].
+Example implementations MUST NOT be regarded as part of the specification. 
+They are examples only, and MAY change at any time.
 
-[the relevant wiki page]: https://github.com/php-fig/fig-standards/wiki/PSR-4-Example-Implementations
+[examples]: https://github.com/php-fig/fig-standards/wiki/PSR-4-Example-Implementations
 
