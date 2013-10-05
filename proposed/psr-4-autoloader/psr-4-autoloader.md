@@ -76,9 +76,9 @@ any level, and SHOULD NOT return a value.
 
 ### 3.3. Transformation
 
-A relationship must present between a "namespace prefix" and the "base directory". 
-This relationship allows a compliant autoloader to know where to identify the 
-location of the class.
+A relationship must be present between a "namespace prefix" and the "base 
+directory". This relationship allows a compliant autoloader to know where to 
+identify the location of the class.
 
 The following rules MUST be respected:
 
