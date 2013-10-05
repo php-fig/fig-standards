@@ -17,30 +17,30 @@ registered autoloader.
 2. Definitions
 --------------
 
-- **class**: The term "class" refers to PHP classes, interfaces, and traits.
+- **Class**: The term "class" refers to PHP classes, interfaces, and traits.
 
-- **fully qualified class name**: The full namespace and class name, with the
+- **Fully Qualified Class Name**: The full namespace and class name, with the
   leading namespace separator. (This is per the
   [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
   from the PHP manual.)
 
-- **namespace name**: Given a "fully qualified class name" of
+- **Namespace Name**: Given a "fully qualified class name" of
   `\Foo\Bar\Baz\Qux`, the "namespace names" are `Foo`, `Bar`, and `Baz`.
   
-- **namespace prefix**: Given a "fully qualified class name" of
+- **Namespace Prefix**: Given a "fully qualified class name" of
   `\Foo\Bar\Baz\Qux`, the "namespace prefix" may be `\Foo\`, `\Foo\Bar\`, or
   `\Foo\Bar\Baz\`.
 
-- **relative class name**: The parts of the "fully qualified class name" that
+- **Relative Class Name**: The parts of the "fully qualified class name" that
   appear after the "namespace prefix". Given a "fully qualified class name" of
   `\Foo\Bar\Baz\Qux` and a "namespace prefix" of `\Foo\Bar\`, the "relative
   class name" is `Baz\Qux`.
 
-- **base directory**: The directory path in the file system where the files
+- **Base Directory**: The directory path in the file system where the files
   for "relative class names" have their root. Given a namespace prefix of 
   `\Foo\Bar\`, the "base directory" could be `/path/to/packages/foo-bar/src`.
 
-- **mapped file name**: The path in the file system resulting from the
+- **Mapped File Name**: The path in the file system resulting from the
   transformation of a "fully qualified class name". Given a "fully qualified
   class name" of `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a
   "base directory" of `/path/to/packages/foo-bar/src`, the transformation
