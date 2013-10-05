@@ -216,6 +216,12 @@ Cons:
 
 - Not in line with the wishes of poll respondents and some collaborators
 
+### Compatability Note with PHP 5.3.2 and below
+
+PHP versions before 5.3.3 do not strip the leading namespace seperator, so 
+the responsibility to look out for this falls on the implementation. Failing 
+to strip the leading namespace seperator could lead to unexpected behavior. 
+
 
 5. People
 ---------
@@ -239,7 +245,7 @@ Cons:
 6. Votes
 --------
 
-- **Entrance Vote:** (tbd)
+- **Entrance Vote:** https://groups.google.com/d/msg/php-fig/_LYBgfcEoFE/ZwFTvVTIl4AJ
 - **Acceptance Vote:** (tbd)
 
 
