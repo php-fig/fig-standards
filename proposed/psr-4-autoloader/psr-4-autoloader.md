@@ -65,20 +65,20 @@ a class name.
   > **Example:** Any one of these examples would be valid if used individually:
   >
   > * \Foo\Bar -> ./
-  > * \Foo\Bar -> ./src
-  > * \Foo\Bar -> ./src/bar
+  > * \Foo\Bar -> ./src/
+  > * \Foo\Bar -> ./src/bar/
 
-3. A "namespace prefix" MAY correspond to more than one "base directory". The 
-order in which an autoloader will attempt to map the file is not in the scope 
-of this specification, but the consumer should be aware that different 
-approaches may be used and should refer to the documentation.
-
-4. A "base directory" MUST NOT be a child of another "base directory".
+3. A "base directory" MUST NOT be a child of another "base directory".
 
   > This example is not allowed:
   >
   > * \Foo\Bar -> ./src/
   > * \Foo\Test\Bar -> ./src/test/ 
+
+4. A "namespace prefix" MAY correspond to more than one "base directory". The 
+order in which an autoloader will attempt to map the file is not in the scope 
+of this specification, but the consumer should be aware that different 
+approaches may be used and should refer to the documentation.
 
 ### 3.2. Registered Autoloaders
 
@@ -113,7 +113,7 @@ The following rules MUST be respected:
   be replaced with the corresponding "base directory".
 
 - Namespace separators in the "relative class name" of the "fully
-  qualified class name" MUST be replaced with a directory separators for 
+  qualified class name" MUST be replaced with directory separators for 
   the respective operating system.
 
 
