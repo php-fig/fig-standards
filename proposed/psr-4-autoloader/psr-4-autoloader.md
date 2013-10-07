@@ -9,9 +9,8 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 1. Overview
 -----------
 
-This PSR specifies the rules for an interoperable PHP autoloader that maps
-namespaces to file system paths, and that can co-exist with any other SPL
-registered autoloader.
+The following describes the mandatory requirements that must be adhered to 
+for autoloader interoperability, by mapping namespaces to file system paths.
 
 
 2. Definitions
