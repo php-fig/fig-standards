@@ -9,9 +9,8 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 1. Overview
 -----------
 
-This PSR specifies the rules for an interoperable PHP autoloader that maps
-namespaces to file system paths, and that can co-exist with any other SPL
-registered autoloader.
+The following describes the mandatory requirements that must be adhered to 
+for autoloader interoperability, by mapping namespaces to file system paths.
 
 
 2. Definitions
@@ -71,17 +70,10 @@ a class name.
   > * \Foo\Bar -> ./src/
   > * \Foo\Bar -> ./src/bar/
 
-3. A "base directory" MUST NOT be a child of another "base directory".
-
-  > **Example:** This example is not allowed:
-  >
-  > * \Foo\Bar -> ./src/
-  > * \Foo\Test\Bar -> ./src/test/ 
-
-4. A "namespace prefix" MAY correspond to more than one "base directory". The 
+3. A "namespace prefix" MAY correspond to more than one "base directory". The 
 order in which an autoloader will attempt to map the file is not in the scope 
 of this specification, but the consumer should be aware that different 
-approaches may be used and should refer to the documentation.
+approaches may be used and should refer to the autoloader documentation.
 
 ### 3.2. Registered Autoloaders
 
