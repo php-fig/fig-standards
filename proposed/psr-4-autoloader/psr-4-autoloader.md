@@ -71,17 +71,10 @@ a class name.
   > * \Foo\Bar -> ./src/
   > * \Foo\Bar -> ./src/bar/
 
-3. A "base directory" MUST NOT be a child of another "base directory".
-
-  > **Example:** This example is not allowed:
-  >
-  > * \Foo\Bar -> ./src/
-  > * \Foo\Test\Bar -> ./src/test/ 
-
-4. A "namespace prefix" MAY correspond to more than one "base directory". The 
+3. A "namespace prefix" MAY correspond to more than one "base directory". The 
 order in which an autoloader will attempt to map the file is not in the scope 
 of this specification, but the consumer should be aware that different 
-approaches may be used and should refer to the documentation.
+approaches may be used and should refer to the autoloader documentation.
 
 ### 3.2. Registered Autoloaders
 
