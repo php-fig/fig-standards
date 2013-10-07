@@ -36,17 +36,17 @@ for autoloader interoperability, by mapping namespaces to file system paths.
   `Foo\Bar\Baz\Qux` and a "namespace prefix" of `Foo\Bar\`, the "relative
   class name" is `Baz\Qux`. The "relative class name" MUST NOT include a
   leading namespace separator.
-  
+
 - **Base Directory**: The directory path in the file system where the files
   for "relative class names" have their root. Given a namespace prefix of
-  `Foo\Bar\`, the "base directory" could be `/path/to/packages/foo-bar/src/`.
+  `Foo\Bar\`, the "base directory" could be `./src/`.
   The "base directory" MUST include a trailing directory separator.
 
 - **Mapped File Name**: The path in the file system resulting from the
   transformation of a "fully qualified class name". Given a "fully qualified
   class name" of `Foo\Bar\Baz\Qux`, a namespace prefix of `Foo\Bar\`, and a
-  "base directory" of `/path/to/packages/foo-bar/src/`, the "mapped file name"
-  MUST be `/path/to/packages/foo-bar/src/Baz/Qux.php`.
+  "base directory" of `./src/`, the "mapped file name"
+  MUST be `./src/Baz/Qux.php`.
 
 
 3. Specification
@@ -54,14 +54,24 @@ for autoloader interoperability, by mapping namespaces to file system paths.
 
 ### 3.1. General
 
-1. The "fully qualified class name" MUST begin with a "namespace name", which 
+1. A fully-qualified namespace and class must have the following
+  structure `\<Vendor Name>\(<Namespace>\)*<Class Name>`
+
+2. Each namespace must have a top-level namespace ("Vendor Name").
+
+3. Each namespace can have as many sub-namespaces as it wishes.
+
+4. Each namespace separator is converted to a `DIRECTORY_SEPARATOR` when
+  loading from the file system.
+
+5. The "fully qualified class name" MUST begin with a "namespace name", which 
 MAY be followed by one or more additional namespace names, and MUST end in 
 a class name.
 
   > **Example:** With a "fully qualified class name" of `Foo\Bar\Baz`, 
   > the "namespace name is `Foo\Bar` and the class name is `Baz`.
 
-2. At a minimum, a "namespace prefix" MUST correspond to a "base directory".
+6. A "namespace prefix" MUST correspond to at least one "base directory".
 
   > **Example:** Any one of these examples would be valid if used
   > individually:
@@ -70,7 +80,7 @@ a class name.
   > * \Foo\Bar -> ./src/
   > * \Foo\Bar -> ./src/bar/
 
-3. A "namespace prefix" MAY correspond to more than one "base directory". The 
+7. A "namespace prefix" MAY correspond to more than one "base directory". The 
 order in which an autoloader will attempt to map the file is not in the scope 
 of this specification, but the consumer should be aware that different 
 approaches may be used and should refer to the autoloader documentation.
