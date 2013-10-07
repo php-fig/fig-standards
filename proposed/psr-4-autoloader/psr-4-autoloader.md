@@ -23,30 +23,30 @@ for autoloader interoperability, by mapping namespaces to file system paths.
   separator.
 
 - **Namespace Name**: Given a "fully qualified class name" of
-  `Foo\Bar\Baz\Qux`, the "namespace names" are `Foo`, `Bar`, and `Baz`. A
+  `Acme\Log\Formatter\LineFormatter`, the "namespace names" are `Acme`, `Log`, and `Formatter`. A
   namespace name MUST NOT include a leading or trailing namespace separator.
   
 - **Namespace Prefix**: Given a "fully qualified class name" of
-  `Foo\Bar\Baz\Qux`, the "namespace prefix" could be `Foo\`, `Foo\Bar\`, or
-  `Foo\Bar\Baz\`. The "namespace prefix" MUST NOT include a leading namespace
+  `Acme\Log\Formatter\LineFormatter`, the "namespace prefix" could be `Acme\`, `Acme\Log\`, or
+  `Acme\Log\Formatter\`. The "namespace prefix" MUST NOT include a leading namespace
   separator, but MUST include a trailing namespace separator.
 
 - **Relative Class Name**: The parts of the "fully qualified class name" that
   appear after the "namespace prefix". Given a "fully qualified class name" of
-  `Foo\Bar\Baz\Qux` and a "namespace prefix" of `Foo\Bar\`, the "relative
-  class name" is `Baz\Qux`. The "relative class name" MUST NOT include a
+  `Acme\Log\Formatter\LineFormatter` and a "namespace prefix" of `Acme\Log\`, the "relative
+  class name" is `Formatter\LineFormatter`. The "relative class name" MUST NOT include a
   leading namespace separator.
 
 - **Base Directory**: The directory path in the file system where the files
   for "relative class names" have their root. Given a namespace prefix of
-  `Foo\Bar\`, the "base directory" could be `./src/`.
+  `Acme\Log\`, the "base directory" could be `./src/`.
   The "base directory" MUST include a trailing directory separator.
 
 - **Mapped File Name**: The path in the file system resulting from the
   transformation of a "fully qualified class name". Given a "fully qualified
-  class name" of `Foo\Bar\Baz\Qux`, a namespace prefix of `Foo\Bar\`, and a
+  class name" of `Acme\Log\Formatter\LineFormatter`, a namespace prefix of `Acme\Log\`, and a
   "base directory" of `./src/`, the "mapped file name"
-  MUST be `./src/Baz/Qux.php`.
+  MUST be `./src/Formatter/LineFormatter.php`.
 
 
 3. Specification
@@ -68,17 +68,17 @@ for autoloader interoperability, by mapping namespaces to file system paths.
 MAY be followed by one or more additional namespace names, and MUST end in 
 a class name.
 
-  > **Example:** With a "fully qualified class name" of `Foo\Bar\Baz`, 
-  > the "namespace name is `Foo\Bar` and the class name is `Baz`.
+  > **Example:** With a "fully qualified class name" of `Acme\Log\Baz`, 
+  > the "namespace name is `Acme\Log` and the class name is `Baz`.
 
 6. A "namespace prefix" MUST correspond to at least one "base directory".
 
   > **Example:** Any one of these examples would be valid if used
   > individually:
   >
-  > * \Foo\Bar -> ./
-  > * \Foo\Bar -> ./src/
-  > * \Foo\Bar -> ./src/bar/
+  > * \Acme\Log -> ./
+  > * \Acme\Log -> ./src/
+  > * \Acme\Log -> ./src/foo/
 
 7. A "namespace prefix" MAY correspond to more than one "base directory". The 
 order in which an autoloader will attempt to map the file is not in the scope 
