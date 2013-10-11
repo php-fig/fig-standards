@@ -64,9 +64,9 @@ rules in PSR-0.
 
   Example:
 
-      Given a "Fully Qualified Class Name" of
-      `Acme\Log\Formatter\LineFormatter`, the "Namespace Prefix" could be
-      `Acme\`, `Acme\Log\`, or `Acme\Log\Formatter\`.
+  > Given a "Fully Qualified Class Name" of
+  > `Acme\Log\Formatter\LineFormatter`, the "Namespace Prefix" could be
+  > `Acme\`, `Acme\Log\`, or `Acme\Log\Formatter\`.
 
   A "Namespace Prefix" MUST NOT include a leading namespace separator, but
   MUST include a trailing namespace separator.
@@ -81,16 +81,16 @@ rules in PSR-0.
 
   For example:
 
-      A "Base Location" can be the folder `./src/`; in which case attempting
-      to locate the "Fully Qualified Class Name"
-      `Acme\Log\Formatter\LineFormatter` will result in the File Resource
-      Location `./src/Acme/Log/Formatter/LineFormatter.php`.
-
-      Should the "Base Location" `./src/` be related to the "Namespace
-      Prefix" `Acme\Log` then the File Resource Location would become
-      `./src/Formatter/LineFormatter.php`.
-
-      See chapter 4 for more information on the translation process.
+  > A "Base Location" can be the folder `./src/`; in which case attempting
+  > to locate the "Fully Qualified Class Name"
+  > `Acme\Log\Formatter\LineFormatter` will result in the File Resource
+  > Location `./src/Acme/Log/Formatter/LineFormatter.php`.
+  >
+  > Should the "Base Location" `./src/` be related to the "Namespace
+  > Prefix" `Acme\Log` then the File Resource Location would become
+  > `./src/Formatter/LineFormatter.php`.
+  >
+  > See chapter 4 for more information on the translation process.
 
   The "Base Location" MUST include a trailing separator applicable to the
   respective location scheme; in case of physical files this means the
@@ -127,8 +127,8 @@ namespace to a File Resource Location.
 
    For example:
 
-       With a "Fully Qualified Class Name" of `Acme\Log\Baz`, the
-       "Namespace Parts" are `Acme\Log` and the "Class" name is `Baz`.
+   > With a "Fully Qualified Class Name" of `Acme\Log\Baz`, the
+   > "Namespace Parts" are `Acme\Log` and the "Class" name is `Baz`.
 
 2. The first "Namespace Part" of a namespace or "Fully Qualified Class Name"
    MUST be a vendor name unique to the developer. This will prevent clashes
@@ -137,13 +137,13 @@ namespace to a File Resource Location.
    It is RECOMMENDED for the second "Namespace Part" to be a unique name
    describing the application or library but this is not required.
 
-    An example of this concept is:
+   An example of this concept is:
 
-        `\Vendor\ClassName`
+   > `\Vendor\ClassName`
 
-    or when the application name is used as second "Namespace Part":
+   or when the application name is used as second "Namespace Part":
 
-        `\Vendor\Application\ClassName`
+   > `\Vendor\Application\ClassName`
 
 3. This specification does not impose a limit on the number of
    "Namespace Parts" used by the developer of an application or library. It is
@@ -183,18 +183,18 @@ include or require it.
 
 For example:
 
-    Given the "Fully Qualified Class Name" of
-    `\Acme\Log\Formatter\LineFormatter`, the Namespace Prefix `Acme\Log\` and
-    the "Base Location" `./src/` the following will happen:
-
-    1. `\Acme\Log\Formatter\LineFormatter` becomes
-       `Acme\Log\Formatter\LineFormatter`.
-    2. `Acme\Log\Formatter\LineFormatter` is changed into
-       `./src/Formatter\LineFormatter`.
-    3. The directory separators for `./src/Formatter\LineFormatter` are
-       replaced and the whole becomes `./src/Formatter/LineFormatter`.
-    4. Lastly the `.php` extension is added so that the "Mapped File Location"
-       will become `./src/Formatter/LineFormatter.php`.
+> Given the "Fully Qualified Class Name" of
+> `\Acme\Log\Formatter\LineFormatter`, the Namespace Prefix `Acme\Log\` and
+> the "Base Location" `./src/` the following will happen:
+>
+> 1. `\Acme\Log\Formatter\LineFormatter` becomes
+>    `Acme\Log\Formatter\LineFormatter`.
+> 2. `Acme\Log\Formatter\LineFormatter` is changed into
+>    `./src/Formatter\LineFormatter`.
+> 3. The directory separators for `./src/Formatter\LineFormatter` are
+>    replaced and the whole becomes `./src/Formatter/LineFormatter`.
+> 4. Lastly the `.php` extension is added so that the "Mapped File Location"
+>    will become `./src/Formatter/LineFormatter.php`.
 
 A "Namespace Prefix" MAY have a relationship with more than one "Base
 Location". When applicable, the application or library attempting to locate
