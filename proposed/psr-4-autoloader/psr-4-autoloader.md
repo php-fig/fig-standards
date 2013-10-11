@@ -99,7 +99,7 @@ rules in PSR-0.
 - "Mapped File Location" is the end-product of the translation of a
   "Fully Qualified Class Name" and represents a File Resource Location.
 
-3. Specification
+5. Specification
 ----------------
 
 For an application to be able to translate a "Fully Qualified Class Name" this
@@ -120,7 +120,7 @@ to the way developers MUST deal with namespaces and "Fully Qualified Class
 Names", the subsequent chapter will describe the process of translating a
 namespace to a File Resource Location.
 
-### 3.1. Principles
+### 5.1. Principles
 
 1. A "Fully Qualified Class Name" MUST begin with one or more "Namespace Parts"
    and MUST end with a "Class" name.
@@ -152,7 +152,7 @@ namespace to a File Resource Location.
 4. The File Location for a "Class" MUST match the capitalization of the
    "Class" and its "Namespace Parts".
 
-### Translating a "Fully Qualified Class Name" into a File Resource location
+### 5.2. Translating a "Fully Qualified Class Name" into a File Resource location
 
 A relationship MAY be present between a "Namespace Prefix" and a "Base
 Location". This relationship allows an application or library to locate a
