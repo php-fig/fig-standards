@@ -68,7 +68,7 @@ Voting Members
 
 1. Paul M. Jones: Solar Framework, Aura Project
 
-1. Robert Lemke: TYPO3 Flow, TYPO3 Neos
+1. Karsten Dambekalns: TYPO3 Flow, TYPO3 Neos
 
 1. Larry Masters: CakePHP, CakePHP 2
 
