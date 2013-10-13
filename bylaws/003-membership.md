@@ -54,7 +54,10 @@ Representative, the name of the Voting Representative sponsor and any other
 details that the individual applying on behalf of the PHP project believes are
 necessary to include.
 
-The membership application will be voted upon by the existing Member Projects
+There must be a minimum two week period from the membership request being made
+before voting can begin to allow for necessary discussions. 
+
+The membership application can then be voted upon by the existing Member Projects
 in accordance with the [Voting Protocol bylaw][voting]. PHP-FIG must perform
 checks to ensure that each application is valid and authorised by the PHP
 project that the applicant claims to act on behalf of. Once voting has completed
