@@ -53,7 +53,7 @@ name and structure classes to be autoloaded using the described technique.
   the _class part_ is `FileWriter`. A _class part_ MUST NOT include a leading
   namespace separator.
 
-- **namespace prefix**: One or more contiguous _namespace parts_ with
+- **namespace prefix**: One or more contiguous leading _namespace parts_ with
   namespace separators. Given an _autoloadable class name_ of
   `Acme\Log\Writer\FileWriter`, a _namespace prefix_ may be `Acme\`,
   `Acme\Log\`, or `Acme\Log\Writer\`. A _namespace prefix_ MUST NOT include a
@@ -80,11 +80,11 @@ name and structure classes to be autoloaded using the described technique.
 
 - **resource path**: A path in the _scheme_ representing a _resource_ defining
   an _autoloadable class name_. Given an _autoloadable class name_ of
-  `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, a file
-  system _scheme_, a _resource base_ of `/path/to/acme-log/src`, and the
-  specification described below, the _resource path_ MUST be
-  `/path/to/acme-log/src/Writer/FileWriter.php`. The _resource path_ MAY or
-  MAY NOT actually exist in the _scheme_.
+  `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, a
+  UNIX-like file system _scheme_, a _resource base_ of
+  `/path/to/acme-log/src`, and the specification described below, the
+  _resource path_ MUST be `/path/to/acme-log/src/Writer/FileWriter.php`. The
+  _resource path_ MAY or MAY NOT actually exist in the _scheme_.
 
 - **conforming autoloader**: PHP autoloader code that implements the technique
   described in the specification below.
@@ -98,8 +98,8 @@ name and structure classes to be autoloaded using the described technique.
 ### 3.1. Preamble
 
 For a _conforming autoloader_ to be able to transform an _autoloadable class
-name_ to a _resource path_ this specification describes a technique that MUST
-be applied or taken into account. When the technique is applied, the
+name_ into a _resource path_, this specification describes a technique that
+MUST be applied or taken into account. When the technique is applied, the
 _conforming autoloader_ can autoload an _autoloadable class name_ from an
 existing _resource path_.
 
@@ -150,7 +150,7 @@ _namespace prefixes_, and their corresponding _resource bases_ as follows:
     required, or otherwise loaded so that it becomes available.
 
     e. Because a _namespace prefix_ MAY correspond to more than one _resource
-    base_, a _conforming autoloader_ SHOULD_ process each corresponding
+    base_, a _conforming autoloader_ SHOULD process each corresponding
     _resource base_ for that _namespace prefix_ until it finds an existing
     _resource path_ for the _autoloadable class name_. (The behavior for a
     _conforming autoloader_ when it cannot find a _resource path_ for an
