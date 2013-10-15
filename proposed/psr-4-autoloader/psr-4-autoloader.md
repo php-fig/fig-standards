@@ -25,27 +25,28 @@ registered autoloader.
   from the PHP manual.)
 
 - **namespace name**: Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, the _namespace names_ are `Foo`, `Bar`, and `Baz`.
+  `\Acme\Log\Writer\FileWriter`, the _namespace names_ are `Acme`, `Log`, and
+  `Writer`.
   
 - **namespace prefix**: Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or
-  `\Foo\Bar\Baz\`.
+  `\Acme\Log\Writer\FileWriter`, the _namespace prefix_ may be `\Acme\`,
+  `\Acme\Log\`, or `\Acme\Log\Writer\`.
 
 - **relative class name**: The parts of the _fully qualified class name_ that
   appear after the _namespace prefix_. Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux` and a _namespace prefix_ of `\Foo\Bar\`, the _relative
-  class name_ is `Baz\Qux`.
+  `\Acme\Log\Writer\FileWriter` and a _namespace prefix_ of `\Acme\Log\`, the
+  _relative class name_ is `Writer\FileWriter`.
 
 - **base directory**: The directory path in the file system where the files
   for _relative class names_ have their root. Given a namespace prefix of 
-  `\Foo\Bar\`, the _base directory_ could be `/path/to/packages/foo-bar/src`.
+  `\Acme\Log\`, the _base directory_ could be `/path/to/packages/acme-log/src`.
 
 - **mapped file name**: The path in the file system resulting from the
   transformation of a _fully qualified class name_. Given a _fully qualified
-  class name_ of `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a
-  _base directory_ of `/path/to/packages/foo-bar/src`, the transformation
-  rules in the specification will result in a _mapped file name_ of
-  `/path/to/packages/foo-bar/src/Baz/Qux.php`.
+  class name_ of `\Acme\Log\Writer\FileWriter`, a namespace prefix of
+  `\Acme\Log\`, and a _base directory_ of `/path/to/packages/acme-log/src`,
+  the transformation rules in the specification will result in a _mapped file
+  name_ of `/path/to/packages/acme-log/src/Writer/FileWriter.php`.
 
 
 3. Specification
