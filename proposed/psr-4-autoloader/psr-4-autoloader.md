@@ -140,7 +140,7 @@ _namespace prefixes_, and their corresponding _resource bases_ as follows:
     be replaced with the corresponding _resource base_.
 
     b. Each _namespace separator_ in the _relative class name_ portion of the
-    _autoloadable class name_ MUST be replaced with the a _scheme_-appropriate
+    _autoloadable class name_ MUST be replaced with a _scheme_-appropriate
     separator; in a file system _scheme_, that separator MUST be the
     `DIRECTORY_SEPARATOR` constant.
 
