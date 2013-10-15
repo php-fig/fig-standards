@@ -67,11 +67,11 @@ A _namespace prefix_ MAY correspond to more than one _base directory_.
 
 ### 3.2. Registered Autoloaders
 
-1. Registered autoloaders MUST transform the _fully qualified class name_ into a
-_mapped file name_ as follows:
+1. Registered autoloaders MUST transform the _fully qualified class name_ into
+a _mapped file name_ as follows:
 
-    a. The _namespace prefix_ portion of the _fully qualified class name_ MUST be
-    replaced with the corresponding _base directory_.
+    a. The _namespace prefix_ portion of the _fully qualified class name_ MUST
+    be replaced with the corresponding _base directory_.
 
     b. Namespace separators in the _relative class name_ portion of the
     _fully qualified class name_ MUST be replaced with directory separators
