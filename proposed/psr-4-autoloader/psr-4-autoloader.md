@@ -19,35 +19,35 @@ registered autoloader.
 
 - **class**: The term _class_ refers to PHP classes, interfaces, and traits.
 
-- **Fully Qualified Class Name**: The full namespace and class name. The
+- **fully qualified class name**: The full namespace and class name. The
   _fully qualified class name_ MUST NOT include a leading namespace separator.
 
 - **namespace name**: Given a _fully qualified class name_ of
-  `\Acme\Log\Writer\FileWriter`, the _namespace names_ are `Acme`, `Log`, and
-  `Writer`. A namespace name MUST NOT include a leading or trailing namespace
-  separator.
+  `Acme\Log\Writer\FileWriter`, the _namespace names_ are `Acme`, `Log`, and
+  `Writer`. A _namespace name_ MUST NOT include a leading or trailing
+  namespace separator.
   
 - **namespace prefix**: Given a _fully qualified class name_ of
-  `\Acme\Log\Writer\FileWriter`, the _namespace prefix_ may be `\Acme\`,
-  `\Acme\Log\`, or `\Acme\Log\Writer\`. A _namespace prefix_ MUST NOT include
+  `Acme\Log\Writer\FileWriter`, the _namespace prefix_ may be `Acme\`,
+  `Acme\Log\`, or `Acme\Log\Writer\`. A _namespace prefix_ MUST NOT include
   a leading namespace separator, but MUST include a trailing namespace
   separator.
 
 - **relative class name**: The parts of the _fully qualified class name_ that
   appear after the _namespace prefix_. Given a _fully qualified class name_ of
-  `\Acme\Log\Writer\FileWriter` and a _namespace prefix_ of `\Acme\Log\`, the
+  `Acme\Log\Writer\FileWriter` and a _namespace prefix_ of `Acme\Log\`, the
   _relative class name_ is `Writer\FileWriter`. A _relative class name_ MUST
   NOT include a leading namespace separator.
 
 - **base directory**: A directory path in the file system where files for
   _relative class names_ have their root. Given a namespace prefix of
-  `\Acme\Log\`, a _base directory_ could be `/path/to/packages/acme-log/src`.
+  `Acme\Log\`, a _base directory_ could be `/path/to/packages/acme-log/src`.
   A _base directory_ MUST include a trailing directory separator.
 
 - **mapped file name**: The path in the file system resulting from the
   transformation of a _fully qualified class name_. Given a _fully qualified
-  class name_ of `\Acme\Log\Writer\FileWriter`, a namespace prefix of
-  `\Acme\Log\`, and a _base directory_ of `/path/to/packages/acme-log/src`,
+  class name_ of `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of
+  `Acme\Log\`, and a _base directory_ of `/path/to/packages/acme-log/src`,
   the _mapped file name_ MUST be
   `/path/to/packages/acme-log/src/Writer/FileWriter.php`.
 
@@ -56,9 +56,9 @@ registered autoloader.
 
 ### 3.1. General
 
-The _fully qualified class name_ MUST begin with a _namespace name_, which MAY be
-followed by one or more additional _namespace names_, and MUST end in a class
-name.
+The _fully qualified class name_ MUST begin with a _namespace name_, which MAY
+be followed by one or more additional _namespace names_, and MUST end in a
+class name.
 
 At least one _namespace prefix_ of the _fully qualified class name_ MUST
 correspond to a _base directory_.
