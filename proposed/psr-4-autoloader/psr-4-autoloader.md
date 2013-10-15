@@ -73,9 +73,9 @@ a _mapped file name_ as follows:
     a. The _namespace prefix_ portion of the _fully qualified class name_ MUST
     be replaced with the corresponding _base directory_.
 
-    b. Namespace separators in the _relative class name_ portion of the
-    _fully qualified class name_ MUST be replaced with directory separators
-    for the respective operating system.
+    b. Each namespace separator in the _relative class name_ portion of the
+    _fully qualified class name_ MUST be replaced with the
+    `DIRECTORY_SEPARATOR` constant.
 
     c. The result MUST be suffixed with `.php`.
 
