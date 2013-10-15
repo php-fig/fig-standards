@@ -19,82 +19,71 @@ registered autoloader.
 
 - **class**: The term _class_ refers to PHP classes, interfaces, and traits.
 
-- **fully qualified class name**: The full namespace and class name, with the
-  leading namespace separator. (This is per the
-  [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
-  from the PHP manual.)
+- **Fully Qualified Class Name**: The full namespace and class name. The
+  _fully qualified class name_ MUST NOT include a leading namespace separator.
 
 - **namespace name**: Given a _fully qualified class name_ of
   `\Acme\Log\Writer\FileWriter`, the _namespace names_ are `Acme`, `Log`, and
-  `Writer`.
+  `Writer`. A namespace name MUST NOT include a leading or trailing namespace
+  separator.
   
 - **namespace prefix**: Given a _fully qualified class name_ of
   `\Acme\Log\Writer\FileWriter`, the _namespace prefix_ may be `\Acme\`,
-  `\Acme\Log\`, or `\Acme\Log\Writer\`.
+  `\Acme\Log\`, or `\Acme\Log\Writer\`. A _namespace prefix_ MUST NOT include
+  a leading namespace separator, but MUST include a trailing namespace
+  separator.
 
 - **relative class name**: The parts of the _fully qualified class name_ that
   appear after the _namespace prefix_. Given a _fully qualified class name_ of
   `\Acme\Log\Writer\FileWriter` and a _namespace prefix_ of `\Acme\Log\`, the
-  _relative class name_ is `Writer\FileWriter`.
+  _relative class name_ is `Writer\FileWriter`. A _relative class name_ MUST
+  NOT include a leading namespace separator.
 
-- **base directory**: The directory path in the file system where the files
-  for _relative class names_ have their root. Given a namespace prefix of 
-  `\Acme\Log\`, the _base directory_ could be `/path/to/packages/acme-log/src`.
+- **base directory**: A directory path in the file system where files for
+  _relative class names_ have their root. Given a namespace prefix of
+  `\Acme\Log\`, a _base directory_ could be `/path/to/packages/acme-log/src`.
+  A _base directory_ MUST include a trailing directory separator.
 
 - **mapped file name**: The path in the file system resulting from the
   transformation of a _fully qualified class name_. Given a _fully qualified
   class name_ of `\Acme\Log\Writer\FileWriter`, a namespace prefix of
   `\Acme\Log\`, and a _base directory_ of `/path/to/packages/acme-log/src`,
-  the transformation rules in the specification will result in a _mapped file
-  name_ of `/path/to/packages/acme-log/src/Writer/FileWriter.php`.
-
+  the _mapped file name_ MUST be
+  `/path/to/packages/acme-log/src/Writer/FileWriter.php`.
 
 3. Specification
 ----------------
 
 ### 3.1. General
 
-The fully qualified class name MUST begin with a namespace name, which MAY be
-followed by one or more additional namespace names, and MUST end in a class
+The _fully qualified class name_ MUST begin with a _namespace name_, which MAY be
+followed by one or more additional _namespace names_, and MUST end in a class
 name.
 
-At least one namespace prefix of the fully qualified class name MUST
-correspond to a base directory.
+At least one _namespace prefix_ of the _fully qualified class name_ MUST
+correspond to a _base directory_.
 
-A namespace prefix MAY correspond to more than one base directory.
+A _namespace prefix_ MAY correspond to more than one _base directory_.
 
 ### 3.2. Registered Autoloaders
 
-The registered autoloader MUST transform the fully qualified class name
-using the rules in section 3.3. The result MUST be suffixed with `.php` to
-generate a mapped file name.
+1. Registered autoloaders MUST transform the _fully qualified class name_ into a
+_mapped file name_ as follows:
 
-If the mapped file name exists in the file system, the registered autoloader
-MUST include or require it.
+    a. The _namespace prefix_ portion of the _fully qualified class name_ MUST be
+    replaced with the corresponding _base directory_.
 
-The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors of
-any level, and SHOULD NOT return a value.
+    b. Namespace separators in the _relative class name_ portion of the
+    _fully qualified class name_ MUST be replaced with directory separators
+    for the respective operating system.
 
-### 3.3. Transformation
+    c. The result MUST be suffixed with `.php`.
 
-Given a fully qualified class name, a namespace prefix, and a base directory
-that corresponds with that namespace prefix ...
+2. If the _mapped file name_ exists in the file system, the registered
+autoloader MUST include or require it.
 
-- The fully qualified class name MUST be normalized so that any leading
-  namespace separator is removed. (PHP versions 5.3.3 and later do this
-  automatically.)
-
-- The namespace prefix MUST be normalized so that any leading namespace
-  separator is removed, and so that it ends with a namespace separator.
-
-- The base directory MUST be normalized so that it ends with directory
-  separator.
-
-- The namespace prefix portion of the fully qualified class name MUST be
-  replaced with the corresponding base directory.
-
-- Namespace separators in the relative class name portion of the fully
-  qualified class name MUST be replaced with directory separators.
+3. The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors
+of any level, and SHOULD NOT return a value.
 
 
 4. Implementations
