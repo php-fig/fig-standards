@@ -100,8 +100,8 @@ that corresponds with that namespace prefix ...
 4. Implementations
 ------------------
 
-For example implementations, please see [the relevant wiki page][]. Example
-implementations MUST NOT be regarded as part of the specification. They are
-examples only, and MAY change at any time.
+For example implementations, please see [the relevant wiki page][examples].
+Example implementations MUST NOT be regarded as part of the specification. 
+They are examples only, and MAY change at any time.
 
-[the relevant wiki page]: https://github.com/php-fig/fig-standards/wiki/PSR-4-Example-Implementations
+[examples]: https://github.com/php-fig/fig-standards/wiki/PSR-4-Example-Implementations
