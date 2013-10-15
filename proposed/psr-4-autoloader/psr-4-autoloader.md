@@ -63,7 +63,9 @@ class name.
 At least one _namespace prefix_ of the _fully qualified class name_ MUST
 correspond to a _base directory_.
 
-A _namespace prefix_ MAY correspond to more than one _base directory_.
+A _namespace prefix_ MAY correspond to more than one _base directory_. The
+order in which a registered autoloader processes more than one corresponding
+_base directories_ is undefined.
 
 ### 3.2. Registered Autoloaders
 
