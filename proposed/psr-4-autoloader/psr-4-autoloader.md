@@ -202,9 +202,8 @@ included, required, or otherwise loaded so that it is available.
 
 ## 4. Implementations
 
-For example implementations of _conforming autoloaders_, please see [the
-relevant wiki page][examples]. Example implementations MUST NOT be regarded as
-part of the specification. They are examples only, and MAY change at any time.
+For example implementations of _conforming autoloaders_, please see the
+[examples file][]. Example implementations MUST NOT be regarded as part of the
+specification. They are examples only, and MAY change at any time.
 
-[examples]: https://github.com/php-fig/fig-standards/wiki/PSR-4-Example-Implementations
-
+[examples]: psr-4-autoloader-examples.php
