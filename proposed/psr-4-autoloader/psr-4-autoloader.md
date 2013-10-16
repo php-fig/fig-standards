@@ -9,43 +9,44 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 1. Overview
 -----------
 
-This PSR specifies the rules for an interoperable PHP autoloader that maps
-namespaces to file system paths, and that can co-exist with any other SPL
-registered autoloader.
+The following describes the mandatory requirements that must be adhered to 
+for autoloader interoperability, by mapping namespaces to file system paths.
 
 
 2. Definitions
 --------------
 
-- **class**: The term _class_ refers to PHP classes, interfaces, and traits.
+- **Class**: The term "class" refers to PHP classes, interfaces, and traits.
 
-- **fully qualified class name**: The full namespace and class name, with the
-  leading namespace separator. (This is per the
-  [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
-  from the PHP manual.)
+- **Fully Qualified Class Name**: The full namespace and class name. The
+  "fully qualified class name" MUST NOT include the leading namespace
+  separator.
 
-- **namespace name**: Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, the _namespace names_ are `Foo`, `Bar`, and `Baz`.
+- **Namespace Name**: Given a "fully qualified class name" of
+  `Acme\Log\Formatter\LineFormatter`, the "namespace names" are `Acme`, `Log`, and `Formatter`. A
+  namespace name MUST NOT include a leading or trailing namespace separator.
   
-- **namespace prefix**: Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or
-  `\Foo\Bar\Baz\`.
+- **Namespace Prefix**: Given a "fully qualified class name" of
+  `Acme\Log\Formatter\LineFormatter`, the "namespace prefix" could be `Acme\`, `Acme\Log\`, or
+  `Acme\Log\Formatter\`. The "namespace prefix" MUST NOT include a leading namespace
+  separator, but MUST include a trailing namespace separator.
 
-- **relative class name**: The parts of the _fully qualified class name_ that
-  appear after the _namespace prefix_. Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux` and a _namespace prefix_ of `\Foo\Bar\`, the _relative
-  class name_ is `Baz\Qux`.
+- **Relative Class Name**: The parts of the "fully qualified class name" that
+  appear after the "namespace prefix". Given a "fully qualified class name" of
+  `Acme\Log\Formatter\LineFormatter` and a "namespace prefix" of `Acme\Log\`, the "relative
+  class name" is `Formatter\LineFormatter`. The "relative class name" MUST NOT include a
+  leading namespace separator.
 
-- **base directory**: The directory path in the file system where the files
-  for _relative class names_ have their root. Given a namespace prefix of 
-  `\Foo\Bar\`, the _base directory_ could be `/path/to/packages/foo-bar/src`.
+- **Base Directory**: The directory path in the file system where the files
+  for "relative class names" have their root. Given a namespace prefix of
+  `Acme\Log\`, the "base directory" could be `./src/`.
+  The "base directory" MUST include a trailing directory separator.
 
-- **mapped file name**: The path in the file system resulting from the
-  transformation of a _fully qualified class name_. Given a _fully qualified
-  class name_ of `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a
-  _base directory_ of `/path/to/packages/foo-bar/src`, the transformation
-  rules in the specification will result in a _mapped file name_ of
-  `/path/to/packages/foo-bar/src/Baz/Qux.php`.
+- **Mapped File Name**: The path in the file system resulting from the
+  transformation of a "fully qualified class name". Given a "fully qualified
+  class name" of `Acme\Log\Formatter\LineFormatter`, a namespace prefix of `Acme\Log\`, and a
+  "base directory" of `./src/`, the "mapped file name"
+  MUST be `./src/Formatter/LineFormatter.php`.
 
 
 3. Specification
@@ -53,55 +54,66 @@ registered autoloader.
 
 ### 3.1. General
 
-The fully qualified class name MUST begin with a namespace name, which MAY be
-followed by one or more additional namespace names, and MUST end in a class
-name.
+1. A fully-qualified namespace and class must have the following
+  structure `\<Vendor Name>\(<Namespace>\)*<Class Name>`
 
-At least one namespace prefix of the fully qualified class name MUST
-correspond to a base directory.
+2. Each namespace must have a top-level namespace ("Vendor Name").
 
-A namespace prefix MAY correspond to more than one base directory.
+3. Each namespace can have as many sub-namespaces as it wishes.
+
+4. Each namespace separator is converted to a `DIRECTORY_SEPARATOR` when
+  loading from the file system.
+
+5. The "fully qualified class name" MUST begin with a "namespace name", which 
+MAY be followed by one or more additional namespace names, and MUST end in 
+a class name.
+
+  > **Example:** With a "fully qualified class name" of `Acme\Log\Baz`, 
+  > the "namespace name is `Acme\Log` and the class name is `Baz`.
+
+6. A "namespace prefix" MUST correspond to at least one "base directory".
+
+  > **Example:** Any one of these examples would be valid if used
+  > individually:
+  >
+  > * \Acme\Log -> ./
+  > * \Acme\Log -> ./src/
+  > * \Acme\Log -> ./src/foo/
+
+7. A "namespace prefix" MAY correspond to more than one "base directory". The 
+order in which an autoloader will attempt to map the file is not in the scope 
+of this specification, but the consumer should be aware that different 
+approaches may be used and should refer to the autoloader documentation.
 
 ### 3.2. Registered Autoloaders
 
-The registered autoloader MUST transform the fully qualified class name
-using the rules in section 3.3. The result MUST be suffixed with `.php` to
-generate a mapped file name.
+1. A relationship MUST be present between a "namespace prefix" and the "base
+directory". This relationship allows a registered autoloader to know where to
+identify the location of the class. To establish this relationship, the
+registered autoloader MUST transform the "fully qualified class name" into a
+"mapped file name" as follows:
 
-If the mapped file name exists in the file system, the registered autoloader
-MUST include or require it.
+    1.1. The "namespace prefix" portion of the "fully qualified class name"
+    MUST be replaced with the corresponding "base directory".
 
-The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors of
-any level, and SHOULD NOT return a value.
+    1.2. Namespace separators in the "relative class name" portion of the
+    "fully qualified class name" MUST be replaced with directory separators
+    for the respective operating system.
 
-### 3.3. Transformation
+    1.3. The result MUST be suffixed with `.php`.
 
-Given a fully qualified class name, a namespace prefix, and a base directory
-that corresponds with that namespace prefix ...
+2. If the "mapped file name" exists in the file system, the registered
+autoloader MUST include or require it.
 
-- The fully qualified class name MUST be normalized so that any leading
-  namespace separator is removed. (PHP versions 5.3.3 and later do this
-  automatically.)
-
-- The namespace prefix MUST be normalized so that any leading namespace
-  separator is removed, and so that it ends with a namespace separator.
-
-- The base directory MUST be normalized so that it ends with directory
-  separator.
-
-- The namespace prefix portion of the fully qualified class name MUST be
-  replaced with the corresponding base directory.
-
-- Namespace separators in the relative class name portion of the fully
-  qualified class name MUST be replaced with directory separators.
+3. The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors
+of any level, and SHOULD NOT return a value.
 
 
 4. Implementations
 ------------------
 
-For example implementations, please see [the relevant wiki page][]. Example
+For example implementations, please see the [examples file][]. Example
 implementations MUST NOT be regarded as part of the specification. They are
 examples only, and MAY change at any time.
 
-[the relevant wiki page]: https://github.com/php-fig/fig-standards/wiki/PSR-4-Example-Implementations
-
+[examples]: psr-4-autoloader-examples.php
