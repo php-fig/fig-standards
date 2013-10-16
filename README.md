@@ -36,7 +36,7 @@ To become a voting member, you must send an email to the [mailing list][].
 - The body should include your name, the name of (and link to) the project you
   represent, and other details you feel are relevant.
 
-Current members will vote on your request.
+- Current members will vote on your request.
 
 Do not combine separate membership requests in a single thread; one request
 per thread, please.
