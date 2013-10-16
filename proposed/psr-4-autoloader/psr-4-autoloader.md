@@ -75,7 +75,7 @@ name and structure classes to be autoloaded using the described technique.
   prefix_. Given a file system _scheme_ and a _namespace prefix_ of
   `Acme\Log\`, a _resource base_ MAY be `/path/to/acme-log/src/`. A _resource
   base_ MUST include a _scheme_-appropriate trailing separator, and MAY
-  include a _scheme_-appropriate leading separator; in a file system _scheme_,
+  include a _scheme_-appropriate leading separator. In a file system _scheme_,
   that separator MUST be the constant `DIRECTORY_SEPARATOR`.
 
 - **resource path**: A path in the _scheme_ representing a _resource_ defining
@@ -116,7 +116,7 @@ _class part_.
 
     a. The beginning _namespace part_ of the _autoloadable class name_,
     sometimes called a "vendor name", MUST be unique to the developer or
-    project; this is to prevent conflicts between different libraries,
+    project. This is to prevent conflicts between different libraries,
     components, modules, etc.
     
     b. It is RECOMMENDED (but not required) that the _autoloadable class name_
@@ -141,7 +141,7 @@ _namespace prefixes_, and their corresponding _resource bases_ as follows:
 
     b. Each _namespace separator_ in the _relative class name_ portion of the
     _autoloadable class name_ MUST be replaced with a _scheme_-appropriate
-    separator; in a file system _scheme_, that separator MUST be the
+    separator. In a file system _scheme_, that separator MUST be the
     `DIRECTORY_SEPARATOR` constant.
 
     c. The result MUST be suffixed with `.php` to create a _resource path_.
@@ -168,7 +168,7 @@ return a value.
 
 5. Developers who want their classes to be autoloadable by a _conforming
 autoloader_ MUST specify how their _namespace prefixes_ correspond to
-_resource bases_. The approach is left to the developer; it may be via
+_resource bases_. The approach is left to the developer. It may be via
 narrative documentation, meta-files, PHP source code, project-specific
 conventions, or some other approach.
 
@@ -185,19 +185,19 @@ result in the following actions by a _conforming autoloader_:
 
 1. `\Acme\Log\Writer\FileWriter` becomes `Acme\Log\Writer\FileWriter`.
 
-2. The _namespace prefix_ is replaced with the _resource base_; that is,
+2. The _namespace prefix_ is replaced with the _resource base_. That is,
 `Acme\Log\Writer\FileWriter` is transformed into
 `/path/to/acme-log/src/Writer\FileWriter`.
 
 3. The _namespace separators_ in the _relative class name_ are replaced with
-_scheme_-appropriate separators; that is,
+_scheme_-appropriate separators. That is,
 `/path/to/acme-log/src/Writer\FileWriter` is tranformed into
 `/path/to/acme-log/src/Writer/FileWriter`.
 
 4. The result is appended with `.php` to give a _resource path_ of
 `/path/to/acme-log/src/Writer/FileWriter.php`.
 
-5. The _scheme_ is searched; if the _resource path_ exists, it is
+5. The _scheme_ is searched. If the _resource path_ exists, it is
 included, required, or otherwise loaded so that it is available.
 
 
