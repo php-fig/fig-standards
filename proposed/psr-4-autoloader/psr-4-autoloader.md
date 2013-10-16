@@ -186,7 +186,8 @@ result in the following actions by a _conforming autoloader_:
 1. `\Acme\Log\Writer\FileWriter` becomes `Acme\Log\Writer\FileWriter`.
 
 2. The _namespace prefix_ is replaced with the _resource base_; that is,
-`Acme\Log\Writer\FileWriter` is transformed into `/path/to/acme-log/src/Writer\FileWriter`.
+`Acme\Log\Writer\FileWriter` is transformed into
+`/path/to/acme-log/src/Writer\FileWriter`.
 
 3. The _namespace separators_ in the _relative class name_ are replaced with
 _scheme_-appropriate separators; that is,
