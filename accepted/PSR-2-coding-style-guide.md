@@ -167,7 +167,7 @@ use OtherVendor\OtherPackage\BazClass;
 4. Classes, Properties, and Methods
 -----------------------------------
 
-The term "class" refers to all classes, interfaces, and traits except in 4.1.
+The term "class" refers to all classes, interfaces, and traits.
 
 ### 4.1. Extends and Implements
 
