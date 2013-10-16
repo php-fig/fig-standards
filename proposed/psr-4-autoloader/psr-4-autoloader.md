@@ -206,4 +206,4 @@ For example implementations of _conforming autoloaders_, please see the
 [examples file][]. Example implementations MUST NOT be regarded as part of the
 specification. They are examples only, and MAY change at any time.
 
-[examples]: psr-4-autoloader-examples.php
+[examples file]: psr-4-autoloader-examples.php
