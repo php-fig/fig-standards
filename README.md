@@ -1,7 +1,12 @@
 PHP Framework Interoperability Group
 ====================================
 
-The idea behind the group is for project representatives to talk about the commonalities between our projects and find ways we can work together. Our main audience is each other, but we’re very aware that the rest of the PHP community is watching. If other folks want to adopt what we’re doing they are welcome to do so, but that is not the aim.
+The idea behind the group is for project representatives to talk about the
+commonalities between our projects and find ways we can work together. Our main
+audience is each other, but we’re very aware that the rest of the PHP community
+is watching. If other folks want to adopt what we’re doing they are welcome to
+do so, but that is not the aim.
+
 
 Proposing a Standards Recommendation
 ------------------------------------
@@ -30,7 +35,7 @@ To become a voting member, you must send an email to the [mailing list][].
 
 - The body should include your name, the name of (and link to) the project you
   represent, and other details you feel are relevant.
-  
+
 Current members will vote on your request.
 
 Do not combine separate membership requests in a single thread; one request
