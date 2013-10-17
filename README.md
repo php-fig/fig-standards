@@ -47,4 +47,4 @@ Voting Members
 
 The current list of voting members is available on the [project website][].
 
-[project website][]: http://www.php-fig.org/
+[project website]: http://www.php-fig.org/
