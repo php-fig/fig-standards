@@ -38,11 +38,11 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ```
 
-2. _[10/17/2013]_ For interfaces the lists of `implements` MAY be split across
+2. _[10/17/2013]_ For interfaces, the lists of `implements` MAY be split across
 multiple lines, where each subsequent line is indented once. When doing so, the
 first item in the list MUST be on the next line, and there MUST be only one
-interface per line. This is an extension of Section 4.1 which didn't cover for 
-interface which extend multiple other interfaces.
+interface per line. This is an extension of Section 4.1 which didn't cover 
+interfaces which extend multiple other interfaces.
 
 The following example is valid in PSR-2:
 
