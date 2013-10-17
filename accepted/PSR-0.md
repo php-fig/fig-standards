@@ -1,3 +1,6 @@
+Autoloading Standard
+====================
+
 The following describes the mandatory requirements that must be adhered
 to for autoloader interoperability.
 
