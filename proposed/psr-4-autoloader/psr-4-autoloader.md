@@ -1,119 +1,215 @@
 PSR-4: Autoloader
 =================
 
+1. Introduction
+---------------
+
+The goal for this specification is two-fold:
+
+1. As an extension to PSR-0, and to provide an alternative option for
+   applications to determine the location of a file resource on a medium,
+   as supported by PHP, when a "Fully Qualified Class Name" is provided.
+
+2. As a specification for software maintainers on how to name and structure
+   namespaces in an application so that a uniform representation develops.
+
+   This will aid developers by
+
+   - improving navigation and searchability of PHP source code due to
+     recognizability.
+   - preventing conflicts and assisting with naming and structuring for
+     maintainers.
+   - assisting applications to automatically find classes without the need for
+     include or require statements, also known as 'autoloading'.
+
+The location of a file resource is often determined by a specialized library,
+or component, to which we refer as an autoloader. This name provides no further
+significance in the context of this document but is provided to clarify when
+and where file resource locations are determined in real world situations.
+
+2. Conventions used in this document
+------------------------------------
+
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
+3. Scope
+--------
 
-1. Overview
------------
+This specification is partly backwards incompatible with PSR-0. Where a
+conflict occurs the rules in this specification precede, or override, the
+rules in PSR-0.
 
-The following describes the mandatory requirements that must be adhered to 
-for autoloader interoperability, by mapping namespaces to file system paths.
-
-
-2. Definitions
+4. Definitions
 --------------
 
-- **Class**: The term "class" refers to PHP classes, interfaces, and traits.
+- "Class" refers to PHP classes, interfaces, and traits alike.
 
-- **Fully Qualified Class Name**: The full namespace and class name. The
-  "fully qualified class name" MUST NOT include the leading namespace
-  separator.
+- "Fully Qualified Class Name" is a string representing the complete class
+  name, including its Namespace. For the scope of this specification it
+  MUST NOT include the leading Namespace separator.
 
-- **Namespace Name**: Given a "fully qualified class name" of
-  `Acme\Log\Formatter\LineFormatter`, the "namespace names" are `Acme`, `Log`, and `Formatter`. A
-  namespace name MUST NOT include a leading or trailing namespace separator.
-  
-- **Namespace Prefix**: Given a "fully qualified class name" of
-  `Acme\Log\Formatter\LineFormatter`, the "namespace prefix" could be `Acme\`, `Acme\Log\`, or
-  `Acme\Log\Formatter\`. The "namespace prefix" MUST NOT include a leading namespace
-  separator, but MUST include a trailing namespace separator.
+- "Namespace Part" is any individual section of a "Fully Qualified Class
+  Name" or Namespace.
 
-- **Relative Class Name**: The parts of the "fully qualified class name" that
-  appear after the "namespace prefix". Given a "fully qualified class name" of
-  `Acme\Log\Formatter\LineFormatter` and a "namespace prefix" of `Acme\Log\`, the "relative
-  class name" is `Formatter\LineFormatter`. The "relative class name" MUST NOT include a
-  leading namespace separator.
+  An example of this would be the "Fully Qualified Class Name"
+  `Acme\Log\Formatter\LineFormatter`, where the "Namespace Parts" here are
+  `Acme`, `Log`, and `Formatter`.
 
-- **Base Directory**: The directory path in the file system where the files
-  for "relative class names" have their root. Given a namespace prefix of
-  `Acme\Log\`, the "base directory" could be `./src/`.
-  The "base directory" MUST include a trailing directory separator.
+  A "Namespace Part" MUST NOT include a leading or trailing Namespace separator.
 
-- **Mapped File Name**: The path in the file system resulting from the
-  transformation of a "fully qualified class name". Given a "fully qualified
-  class name" of `Acme\Log\Formatter\LineFormatter`, a namespace prefix of `Acme\Log\`, and a
-  "base directory" of `./src/`, the "mapped file name"
-  MUST be `./src/Formatter/LineFormatter.php`.
+- "Namespace Prefix" is a series of "Namespace Parts", always starting with
+  the first part, of a Namespace or "Fully Qualified Class Name".
 
+  Example:
 
-3. Specification
+  > Given a "Fully Qualified Class Name" of
+  > `Acme\Log\Formatter\LineFormatter`, the "Namespace Prefix" could be
+  > `Acme\`, `Acme\Log\`, or `Acme\Log\Formatter\`.
+
+  A "Namespace Prefix" MUST NOT include a leading namespace separator, but
+  MUST include a trailing namespace separator.
+
+- "Base Location" is a location from where an application or library should
+  start scanning for a File Resource applicable to a given "Fully Qualified
+  Class Name".
+
+  A "Base Location" can be related to a "Namespace Prefix" in order to 'skip'
+  "Namespace Parts" and to lessen the depth of the applicable File Resource
+  Location.
+
+  For example:
+
+  > A "Base Location" can be the folder `./src/`; in which case attempting
+  > to locate the "Fully Qualified Class Name"
+  > `Acme\Log\Formatter\LineFormatter` will result in the File Resource
+  > Location `./src/Acme/Log/Formatter/LineFormatter.php`.
+  >
+  > Should the "Base Location" `./src/` be related to the "Namespace
+  > Prefix" `Acme\Log` then the File Resource Location would become
+  > `./src/Formatter/LineFormatter.php`.
+  >
+  > See chapter 4 for more information on the translation process.
+
+  The "Base Location" MUST include a trailing separator applicable to the
+  respective location scheme; in case of physical files this means the
+  directory separator.
+
+- "Mapped File Location" is the end-product of the translation of a
+  "Fully Qualified Class Name" and represents a File Resource Location.
+
+5. Specification
 ----------------
 
-### 3.1. General
+For an application to be able to translate a "Fully Qualified Class Name" this
+specification prescribes that specific principles, or conditions, MUST be
+fulfilled or taken into account.
 
-1. A fully-qualified namespace and class must have the following
-  structure `\<Vendor Name>\(<Namespace>\)*<Class Name>`
+When these principles are met an application can translate the "Fully
+Qualified Class Name" according to the rules as described in the appropriate
+chapter below.
 
-2. Each namespace must have a top-level namespace ("Vendor Name").
+Aside from technical considerations this specification also imposes
+requirements according to best practices on software developers. Software
+developers that wish to comply with this specification MUST also write their
+software using these same principles.
 
-3. Each namespace can have as many sub-namespaces as it wishes.
+The principles are mentioned as the first chapter given that they are universal
+to the way developers MUST deal with namespaces and "Fully Qualified Class
+Names", the subsequent chapter will describe the process of translating a
+namespace to a File Resource Location.
 
-4. Each namespace separator is converted to a `DIRECTORY_SEPARATOR` when
-  loading from the file system.
+### 5.1. Principles
 
-5. The "fully qualified class name" MUST begin with a "namespace name", which 
-MAY be followed by one or more additional namespace names, and MUST end in 
-a class name.
+1. A "Fully Qualified Class Name" MUST begin with one or more "Namespace Parts"
+   and MUST end with a "Class" name.
 
-  > **Example:** With a "fully qualified class name" of `Acme\Log\Baz`, 
-  > the "namespace name is `Acme\Log` and the class name is `Baz`.
+   For example:
 
-6. A "namespace prefix" MUST correspond to at least one "base directory".
+   > With a "Fully Qualified Class Name" of `Acme\Log\Baz`, the
+   > "Namespace Parts" are `Acme\Log` and the "Class" name is `Baz`.
 
-  > **Example:** Any one of these examples would be valid if used
-  > individually:
-  >
-  > * \Acme\Log -> ./
-  > * \Acme\Log -> ./src/
-  > * \Acme\Log -> ./src/foo/
+2. The first "Namespace Part" of a namespace or "Fully Qualified Class Name"
+   MUST be a vendor name unique to the developer. This will prevent clashes
+   between different pieces of software, such as libraries and components.
 
-7. A "namespace prefix" MAY correspond to more than one "base directory". The 
-order in which an autoloader will attempt to map the file is not in the scope 
-of this specification, but the consumer should be aware that different 
-approaches may be used and should refer to the autoloader documentation.
+   It is RECOMMENDED for the second "Namespace Part" to be a unique name
+   describing the application or library but this is not required.
 
-### 3.2. Registered Autoloaders
+   An example of this concept is:
 
-1. A relationship MUST be present between a "namespace prefix" and the "base
-directory". This relationship allows a registered autoloader to know where to
-identify the location of the class. To establish this relationship, the
-registered autoloader MUST transform the "fully qualified class name" into a
-"mapped file name" as follows:
+   > `\Vendor\ClassName`
 
-    1.1. The "namespace prefix" portion of the "fully qualified class name"
-    MUST be replaced with the corresponding "base directory".
+   or when the application name is used as second "Namespace Part":
 
-    1.2. Namespace separators in the "relative class name" portion of the
-    "fully qualified class name" MUST be replaced with directory separators
-    for the respective operating system.
+   > `\Vendor\Application\ClassName`
 
-    1.3. The result MUST be suffixed with `.php`.
+3. This specification does not impose a limit on the number of
+   "Namespace Parts" used by the developer of an application or library. It is
+   however RECOMMENDED to limit the depth.
 
-2. If the "mapped file name" exists in the file system, the registered
-autoloader MUST include or require it.
+4. The File Location for a "Class" MUST match the capitalization of the
+   "Class" and its "Namespace Parts".
 
-3. The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors
-of any level, and SHOULD NOT return a value.
+### 5.2. Translating a "Fully Qualified Class Name" into a File Resource location
 
+A relationship MAY be present between a "Namespace Prefix" and a "Base
+Location". This relationship allows an application or library to locate a
+"Class" based on its "Fully Qualified Class Name". If no relationship is defined
+then the "Namespace Prefix" is considered to be empty.
 
-4. Implementations
-------------------
+The method with which a relationship is defined is not within the scope
+of this specification and is left up to the specific implementation.
 
-For example implementations, please see the [examples file][]. Example
-implementations MUST NOT be regarded as part of the specification. They are
-examples only, and MAY change at any time.
+To translate a "Fully Qualified Class Name" into a "Mapped File Location" an
+application or library MUST apply the following steps, in sequence.
 
-[examples]: psr-4-autoloader-examples.php
+1. Preceding Namespace separators MUST be removed.
+
+2. The "Namespace Prefix", when present, of a "Fully Qualified Class Name"
+   MUST be replaced with the "Base Location" related to that "Namespace
+   Prefix". If the "Namespace Prefix" is empty, then the "Base Location"
+   is prepended to the "Fully Qualified Class Name"
+
+3. All Namespace separators MUST be replaced with the separators for the
+   respective location scheme; in case of physical files this means that the
+   directory separators for the respective operating system MUST be used.
+
+4. The result from the above rules MUST be suffixed with the string `.php`.
+
+If the "Mapped File Location" is readable then the application or library MUST
+include or require it.
+
+For example:
+
+> Given the "Fully Qualified Class Name" of
+> `\Acme\Log\Formatter\LineFormatter`, the Namespace Prefix `Acme\Log\` and
+> the "Base Location" `./src/` the following will happen:
+>
+> 1. `\Acme\Log\Formatter\LineFormatter` becomes
+>    `Acme\Log\Formatter\LineFormatter`.
+> 2. `Acme\Log\Formatter\LineFormatter` is changed into
+>    `./src/Formatter\LineFormatter`.
+> 3. The directory separators for `./src/Formatter\LineFormatter` are
+>    replaced and the whole becomes `./src/Formatter/LineFormatter`.
+> 4. Lastly the `.php` extension is added so that the "Mapped File Location"
+>    will become `./src/Formatter/LineFormatter.php`.
+
+A "Namespace Prefix" MAY have a relationship with more than one "Base
+Location". When applicable, the application or library attempting to locate
+a File Resource Location must search every "Base Location" until a readable
+"Mapped File Location" is encountered.
+
+The order in which an application will attempt to map a "Class" to
+one of those locations is not within the scope of this specification.
+Developers should be aware that different approaches MAY be used and SHOULD
+refer to the documentation of the application with which they map "Classes"
+to locations.
+
+To prevent clashes and confusion with developers different "Namespace Prefixes"
+SHOULD NOT map onto the same "Base Location".
+
+An application or library MUST NOT throw exceptions or raise errors (of any
+level) during the translation process. This will ensure that the process of
+sequentially loading "Classes" is not abruptly stopped partway.
