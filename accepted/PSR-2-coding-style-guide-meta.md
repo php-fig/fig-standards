@@ -38,28 +38,6 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ```
 
-2. _[10/17/2013]_ For interfaces, the lists of `extends` MAY be split across
-multiple lines, where each subsequent line is indented once. When doing so, the
-first item in the list MUST be on the next line, and there MUST be only one
-interface per line. This is an extension of Section 4.1 which didn't cover 
-interfaces which extend multiple other interfaces.
+2. _[10/17/2013]_ When extending multiple interfaces, the list of `extends` should be treated the same as a list
+of `implements`, as declared in Section 4.1.
 
-The following example is valid in PSR-2:
-
-
-```php
-<?php
-namespace Vendor\Package;
-
-use FooClass;
-use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
-
-interface InterfaceName extends
-    \ArrayAccess,
-    \Countable,
-    \Serializable
-{
-    // abstract public methods and public properties
-}
-```
