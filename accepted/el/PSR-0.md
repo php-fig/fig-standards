@@ -23,16 +23,16 @@
 Παραδείγματα
 ------------
 
-* `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
-* `\Symfony\Core\Request` => `/path/to/project/lib/vendor/Symfony/Core/Request.php`
-* `\Zend\Acl` => `/path/to/project/lib/vendor/Zend/Acl.php`
-* `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
+* `\Doctrine\Common\IsolatedClassLoader` => `/διαδρομή/προς/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
+* `\Symfony\Core\Request` => `/διαδρομή/προς/project/lib/vendor/Symfony/Core/Request.php`
+* `\Zend\Acl` => `/διαδρομή/προς/project/lib/vendor/Zend/Acl.php`
+* `\Zend\Mail\Message` => `/διαδρομή/προς/project/lib/vendor/Zend/Mail/Message.php`
 
 Κάτω παύλα σε Ονόματα Τομέων και Ονόματα Κλάσεων
 ------------------------------------------------
 
-* `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
-* `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
+* `\όνομα τομέα\πακέτο\Όνομα_Κλάσης` => `/διαδρομή/προς/project/lib/vendor/όνομα τομέα/πακέτο/Κλάση/Όνομα.php`
+* `\όνομα τομέα\όνομα_πακέτου\Όνομα_Κλάσης` => `/διαδρομή/προς/project/lib/vendor/όνομα τομέα/όνομα_πακέτου/Κλάση/Όνομα.php`
 
 Τα πρότυπα που ορίζουμε εδώ θα πρέπει να έχουν το μικρότερο κοινό παρονομαστή για
 ανώδυνη διαλειτουργικότητα με αυτόματους φορτωτές. Μπορείτε να ελέγξετε ότι ακολουθείτε
