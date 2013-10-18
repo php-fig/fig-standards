@@ -208,3 +208,43 @@ For example implementations of _conforming autoloaders_, please see the
 specification. They are examples only, and MAY change at any time.
 
 [examples file]: psr-4-autoloader-examples.php
+
+
+## 5. Resource Organization
+
+The above specification implies a particular organizational structure for
+class files. Developers MUST use the following process to determine where
+a class file will be placed:
+
+1. Pick a single _namespace prefix_ for the classes to be autoloaded.
+
+2. Pick one or more _resource bases_ for the file locations.
+
+3. Remove the _namespace prefix_ from the _autoloadable class name_.
+    
+4. The remaining _namespace parts_ become subdirectories under one of the
+_resource bases_.
+
+5. The remaining _class part_ becomes the file name and is suffixed with
+`.php`.
+
+For example, given:
+
+- _autoloadable class names_ of `Acme\Log\Writer\FileWriter` and
+  `Acme\Log\Writer\FileWriterTest`,
+
+- a _namespace prefix_ of `Acme\Log`,
+
+- a _resource base_ of `/path/to/acme-log/src/` for source files,
+
+- a _resource base_ of `/path/to/acme-log/tests/` for test files,
+
+... the resulting files MUST be organized like this:
+
+    /path/to/acme-log/
+        src/
+            Writer/
+                FileWriter.php
+        tests/
+            Writer/
+                FileWriterTest.php
