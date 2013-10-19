@@ -36,10 +36,10 @@ Unterstriche in Namespaces und Klassennamen
 
 Der Standard, welcher hier durch uns gesetzt wird, repräsentiert die minimale Anforderung,
 um eine Kompatibilität hinsichtlich Autoloader zu gewährleisten.
-Mit der Nutzung der Beispielimplementation des SplClassLoaders (verfügbar ab PHP 5.3)
+Mit der Nutzung der Beispiel-Implementation des SplClassLoaders (verfügbar ab PHP 5.3)
 kann getestet werden, ob die Standards eingehalten werden.
 
-Beispiel Implementation
+Beispiel-Implementation
 ----------------------
 
 Das Beispiel zeigt eine Beispielfunktion, welche auf einfache Weise demonstriert, wie die
@@ -68,7 +68,7 @@ function autoload($className)
 SplClassLoader Implementation
 -----------------------------
 
-Das folgende Gist beinhaltet eine Beispielimplementation des SplClassLoaders.
+Das folgende Gist beinhaltet eine Beispiel-Implementation des SplClassLoaders.
 Die Implementation kann genutzt werden, um Klassen zu laden, sofern diese die
 oben erklärten Standards einhalten. Derzeit wird PSR-0
 empfohlen um PHP Klassen (ab PHP 5.3) zu laden, sofern diese die oben erklärten Standards einhalten.
