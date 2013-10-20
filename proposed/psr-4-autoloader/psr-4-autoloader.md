@@ -1,119 +1,250 @@
-PSR-4: Autoloader
-=================
+# PSR-4: Autoloader
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 
-1. Overview
------------
+## 1. Overview
 
-The following describes the mandatory requirements that must be adhered to 
-for autoloader interoperability, by mapping namespaces to file system paths.
+This PSR describes a technique to [autoload][] classes from specified resource
+paths. It is fully interoperable, and can be used in addition to any other
+autoloading technique, including [PSR-0][]. This PSR also describes how to
+name and structure classes to be autoloaded using the described technique.
+
+[autoload]: http://php.net/autoload
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 
 
-2. Definitions
---------------
+## 2. Definitions
 
-- **Class**: The term "class" refers to PHP classes, interfaces, and traits.
+- **class**: The term _class_ refers to PHP classes, interfaces, traits, and
+  similar future resource definitions.
 
-- **Fully Qualified Class Name**: The full namespace and class name. The
-  "fully qualified class name" MUST NOT include the leading namespace
+- **namespace**: A PHP namespace, as is syntactically valid after the
+  [PHP `namespace` keyword](http://www.php.net/manual/en/language.namespaces.definition.php).
+  `\` by itself is not an acceptable _namespace_ within this PSR.
+
+- **namespace separator**: The PHP namespace separator symbol `\` (backslash).
+
+- **fully qualified class name**: A full namespace and class name, such as
+  `\Acme\Log\Writer\FileWriter`. As defined by
+  [PHP's name resolution rules](http://php.net/manual/en/language.namespaces.rules.php),
+  the _fully qualified class name_ MUST include the leading namespace
   separator.
 
-- **Namespace Name**: Given a "fully qualified class name" of
-  `Acme\Log\Formatter\LineFormatter`, the "namespace names" are `Acme`, `Log`, and `Formatter`. A
-  namespace name MUST NOT include a leading or trailing namespace separator.
+- **autoloadable class name**: Any class intended for autoloading. (Classes
+  not intended for autoloading are not covered by this term.) The
+  _autoloadable class name_ is the same as the _fully qualified class name_
+  but it MUST NOT include the leading namespace separator. Given a _fully
+  qualified class name_ of `\Acme\Log\Writer\FileWriter`, the _autoloadable
+  class name_ is `Acme\Log\Writer\FileWriter`. Typically, this is the
+  value sent to the [__autoload()][] function and to callbacks registered with
+  [spl_autoload_register()][].
   
-- **Namespace Prefix**: Given a "fully qualified class name" of
-  `Acme\Log\Formatter\LineFormatter`, the "namespace prefix" could be `Acme\`, `Acme\Log\`, or
-  `Acme\Log\Formatter\`. The "namespace prefix" MUST NOT include a leading namespace
-  separator, but MUST include a trailing namespace separator.
+- **namespace part**: The individual non-terminating parts of an _autoloadable
+  class name_. Given an _autoloadable class name_ of
+  `Acme\Log\Writer\FileWriter`, the _namespace parts_ are `Acme`, `Log`, and
+  `Writer`. A _namespace part_ MUST NOT include a leading or trailing
+  namespace separator.
 
-- **Relative Class Name**: The parts of the "fully qualified class name" that
-  appear after the "namespace prefix". Given a "fully qualified class name" of
-  `Acme\Log\Formatter\LineFormatter` and a "namespace prefix" of `Acme\Log\`, the "relative
-  class name" is `Formatter\LineFormatter`. The "relative class name" MUST NOT include a
-  leading namespace separator.
+- **class part**: The individual terminating part of an _autoloadable class
+  name_. Given an _autoloadable class name_ of `Acme\Log\Writer\FileWriter`,
+  the _class part_ is `FileWriter`. A _class part_ MUST NOT include a leading
+  namespace separator.
 
-- **Base Directory**: The directory path in the file system where the files
-  for "relative class names" have their root. Given a namespace prefix of
-  `Acme\Log\`, the "base directory" could be `./src/`.
-  The "base directory" MUST include a trailing directory separator.
+- **namespace prefix**: One or more contiguous leading _namespace parts_ with
+  namespace separators. Given an _autoloadable class name_ of
+  `Acme\Log\Writer\FileWriter`, a _namespace prefix_ may be `Acme\`,
+  `Acme\Log\`, or `Acme\Log\Writer\`. A _namespace prefix_ MUST NOT include a
+  leading namespace separator, but MUST include a trailing namespace
+  separator.
 
-- **Mapped File Name**: The path in the file system resulting from the
-  transformation of a "fully qualified class name". Given a "fully qualified
-  class name" of `Acme\Log\Formatter\LineFormatter`, a namespace prefix of `Acme\Log\`, and a
-  "base directory" of `./src/`, the "mapped file name"
-  MUST be `./src/Formatter/LineFormatter.php`.
+- **relative class name**: The parts of the _autoloadable class name_ that
+  appear after the _namespace prefix_. Given an _autoloadable class name_ of
+  `Acme\Log\Writer\FileWriter` and a _namespace prefix_ of `Acme\Log\`, the
+  _relative class name_ is `Writer\FileWriter`. A _relative class name_ MUST
+  NOT include a leading namespace separator.
 
+- **resource**: A class definition, typically a file in a file system.
 
-3. Specification
-----------------
+- **scheme**: A resource storage-and-retrieval mechanism, typically a file
+  system.
 
-### 3.1. General
+- **resource base**: A base path to _resources_ for a particular _namespace
+  prefix_. Given a file system _scheme_ and a _namespace prefix_ of
+  `Acme\Log\`, a _resource base_ MAY be `/path/to/acme-log/src/`. A _resource
+  base_ MUST include a _scheme_-appropriate trailing separator, and MAY
+  include a _scheme_-appropriate leading separator. In a file system _scheme_,
+  that separator MUST be the constant `DIRECTORY_SEPARATOR`.
 
-1. A fully-qualified namespace and class must have the following
-  structure `\<Vendor Name>\(<Namespace>\)*<Class Name>`
+- **resource path**: A path in the _scheme_ representing a _resource_ defining
+  an _autoloadable class name_. Given an _autoloadable class name_ of
+  `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, a
+  UNIX-like file system _scheme_, a _resource base_ of
+  `/path/to/acme-log/src`, and the specification described below, the
+  _resource path_ MUST be `/path/to/acme-log/src/Writer/FileWriter.php`. The
+  _resource path_ MAY or MAY NOT actually exist in the _scheme_.
 
-2. Each namespace must have a top-level namespace ("Vendor Name").
+- **conforming autoloader**: PHP autoloader code that implements the technique
+  described in the specification below.
 
-3. Each namespace can have as many sub-namespaces as it wishes.
-
-4. Each namespace separator is converted to a `DIRECTORY_SEPARATOR` when
-  loading from the file system.
-
-5. The "fully qualified class name" MUST begin with a "namespace name", which 
-MAY be followed by one or more additional namespace names, and MUST end in 
-a class name.
-
-  > **Example:** With a "fully qualified class name" of `Acme\Log\Baz`, 
-  > the "namespace name is `Acme\Log` and the class name is `Baz`.
-
-6. A "namespace prefix" MUST correspond to at least one "base directory".
-
-  > **Example:** Any one of these examples would be valid if used
-  > individually:
-  >
-  > * \Acme\Log -> ./
-  > * \Acme\Log -> ./src/
-  > * \Acme\Log -> ./src/foo/
-
-7. A "namespace prefix" MAY correspond to more than one "base directory". The 
-order in which an autoloader will attempt to map the file is not in the scope 
-of this specification, but the consumer should be aware that different 
-approaches may be used and should refer to the autoloader documentation.
-
-### 3.2. Registered Autoloaders
-
-1. A relationship MUST be present between a "namespace prefix" and the "base
-directory". This relationship allows a registered autoloader to know where to
-identify the location of the class. To establish this relationship, the
-registered autoloader MUST transform the "fully qualified class name" into a
-"mapped file name" as follows:
-
-    1.1. The "namespace prefix" portion of the "fully qualified class name"
-    MUST be replaced with the corresponding "base directory".
-
-    1.2. Namespace separators in the "relative class name" portion of the
-    "fully qualified class name" MUST be replaced with directory separators
-    for the respective operating system.
-
-    1.3. The result MUST be suffixed with `.php`.
-
-2. If the "mapped file name" exists in the file system, the registered
-autoloader MUST include or require it.
-
-3. The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors
-of any level, and SHOULD NOT return a value.
+[__autoload()]: http://php.net/manual/en/function.autoload.php
+[spl_autoload_register()]: http://php.net/manual/en/function.spl-autoload-register.php
 
 
-4. Implementations
-------------------
+## 3. Specification
 
-For example implementations, please see the [examples file][]. Example
-implementations MUST NOT be regarded as part of the specification. They are
-examples only, and MAY change at any time.
+### 3.1. Preamble
 
-[examples]: psr-4-autoloader-examples.php
+For a _conforming autoloader_ to be able to transform an _autoloadable class
+name_ into a _resource path_, this specification describes a technique that
+MUST be applied or taken into account. When the technique is applied, the
+_conforming autoloader_ can autoload an _autoloadable class name_ from an
+existing _resource path_.
+
+Aside from technical considerations, this specification also imposes
+requirements on developers who want their classes to be autoloadable by a
+_conforming autoloader_. Developers who wish to comply with this specification
+MUST structure their classes using these same principles.
+
+### 3.2. Technique
+
+1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
+MAY be followed by one or more additional _namespace parts_, and MUST end in a
+_class part_.
+
+    a. The beginning _namespace part_ of the _autoloadable class name_,
+    sometimes called a "vendor name", MUST be unique to the developer or
+    project. This is to prevent conflicts between different libraries,
+    components, modules, etc.
+    
+    b. It is RECOMMENDED (but not required) that the _autoloadable class name_
+    include a second _namespace part_, sometimes called a "package name", to
+    identify its place within the "vendor name".
+
+2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
+correspond to a _resource base_.
+
+    a. A _namespace prefix_ MAY correspond to more than one _resource base_.
+    (The order in which a _conforming autoloader_ processes more than one
+    corresponding _resource base_ is undefined.)
+
+    b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
+    correspond to the same _resource base_.
+
+3. A _conforming autoloader_ MUST process an _autoloadable class name_, its
+_namespace prefixes_, and their corresponding _resource bases_ as follows:
+
+    a. The _namespace prefix_ portion of the _autoloadable class name_ MUST
+    be replaced with the corresponding _resource base_.
+
+    b. Each _namespace separator_ in the _relative class name_ portion of the
+    _autoloadable class name_ MUST be replaced with a _scheme_-appropriate
+    separator. In a file system _scheme_, that separator MUST be the
+    `DIRECTORY_SEPARATOR` constant.
+
+    c. The result MUST be suffixed with `.php` to create a _resource path_.
+
+    d. If the _resource path_ exists in the _scheme_, it MUST be included,
+    required, or otherwise loaded so that it becomes available.
+
+    e. Because a _namespace prefix_ MAY correspond to more than one _resource
+    base_, a _conforming autoloader_ SHOULD process each corresponding
+    _resource base_ for that _namespace prefix_ until it finds an existing
+    _resource path_ for the _autoloadable class name_. (The behavior for a
+    _conforming autoloader_ when it cannot find a _resource path_ for an
+    _autoloadable class name_ is undefined.)
+
+    f. The order in which a _conforming autoloader_ attempts to process
+    multiple _resource bases_ corresponding to a _namespace prefix_ is not
+    within the scope of this specification. Developers should be aware that
+    different approaches MAY be used and SHOULD refer to the documentation of
+    the _conforming autoloader_ for more information.
+
+4. A _conforming autoloader_ MUST NOT interfere with other autoloaders: it
+MUST NOT throw exceptions, MUST NOT raise errors of any level, and SHOULD NOT
+return a value.
+
+5. Developers who want their classes to be autoloadable by a _conforming
+autoloader_ MUST specify how their _namespace prefixes_ correspond to
+_resource bases_. The approach is left to the developer. It may be via
+narrative documentation, meta-files, PHP source code, project-specific
+conventions, or some other approach.
+
+
+### 3.3. Example
+
+The following example MUST NOT be regarded as part of the specification. It is
+for example purposes only.
+
+Given a UNIX-like file system _scheme_, a _fully qualified class name_ of
+`\Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, and a
+_resource base_ of `/path/to/acme-log/src/`, the above specification will
+result in the following actions by a _conforming autoloader_:
+
+1. `\Acme\Log\Writer\FileWriter` becomes `Acme\Log\Writer\FileWriter`.
+
+2. The _namespace prefix_ is replaced with the _resource base_. That is,
+`Acme\Log\Writer\FileWriter` is transformed into
+`/path/to/acme-log/src/Writer\FileWriter`.
+
+3. The _namespace separators_ in the _relative class name_ are replaced with
+_scheme_-appropriate separators. That is,
+`/path/to/acme-log/src/Writer\FileWriter` is tranformed into
+`/path/to/acme-log/src/Writer/FileWriter`.
+
+4. The result is appended with `.php` to give a _resource path_ of
+`/path/to/acme-log/src/Writer/FileWriter.php`.
+
+5. The _scheme_ is searched. If the _resource path_ exists, it is
+included, required, or otherwise loaded so that it is available.
+
+
+## 4. Implementations
+
+For example implementations of _conforming autoloaders_, please see the
+[examples file][]. Example implementations MUST NOT be regarded as part of the
+specification. They are examples only, and MAY change at any time.
+
+[examples file]: psr-4-autoloader-examples.php
+
+
+## 5. Resource Organization
+
+The above specification implies a particular organizational structure for
+class files. Developers MUST use the following process to determine where
+a class file will be placed:
+
+1. Pick a single _namespace prefix_ for the classes to be autoloaded.
+
+2. Pick one or more _resource bases_ for the file locations.
+
+3. Remove the _namespace prefix_ from the _autoloadable class name_.
+    
+4. The remaining _namespace parts_ become subdirectories under one of the
+_resource bases_.
+
+5. The remaining _class part_ becomes the file name and is suffixed with
+`.php`.
+
+For example, given:
+
+- _autoloadable class names_ of `Acme\Log\Writer\FileWriter` and
+  `Acme\Log\Writer\FileWriterTest`,
+
+- a _namespace prefix_ of `Acme\Log`,
+
+- a _resource base_ of `/path/to/acme-log/src/` for source files,
+
+- a _resource base_ of `/path/to/acme-log/tests/` for test files,
+
+... the resulting files MUST be organized like this:
+
+    /path/to/acme-log/
+        src/
+            Writer/
+                FileWriter.php
+        tests/
+            Writer/
+                FileWriterTest.php
