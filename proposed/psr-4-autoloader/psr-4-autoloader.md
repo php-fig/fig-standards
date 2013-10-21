@@ -145,18 +145,6 @@ treated as sequential steps:
     c. If the _resource path_ exists in the _scheme_, it MUST be included,
     required, or otherwise loaded so that it becomes available.
 
-    d. Because a _namespace prefix_ MAY correspond to more than one _resource
-    base_, a _conforming autoloader_ will process each corresponding
-    _resource base_ for that _namespace prefix_ until it finds an existing
-    _resource path_ for the _autoloadable class name_. (The behavior for a
-    _conforming autoloader_ when it cannot find a _resource path_ for an
-    _autoloadable class name_ is outside the scope of this spec.)
-
-    e. The order in which a _conforming autoloader_ attempts to process
-    multiple _resource bases_ corresponding to a _namespace prefix_ is not
-    within the scope of this specification. Refer to the documentation of
-    the _conforming autoloader_ for more information.
-
 
 ### 3.3. Example
 
@@ -197,6 +185,11 @@ autoloader_ will specify how their _namespace prefixes_ correspond to
 _resource bases_. The approach is left to the autoloader developer. It may
 be via narrative documentation, meta-files, PHP source code, project-specific
 conventions, or some other approach.
+
+3. The order in which a _conforming autoloader_ attempts to process
+multiple _resource bases_ corresponding to a _namespace prefix_ is not
+within the scope of this specification. Refer to the documentation of
+the _conforming autoloader_ for more information.
 
 For example implementations of _conforming autoloaders_, please see the
 [examples file][]. Example implementations MUST NOT be regarded as part of the
