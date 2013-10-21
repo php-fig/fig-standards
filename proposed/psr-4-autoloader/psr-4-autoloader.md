@@ -114,7 +114,7 @@ This is a collection of rules which explain how the _FQCN_ can be
 converted into a _resource path_.
 
 1. Each _autoloadable class name_ begins with a _namespace part_, which
-could be followed by one or more additional _namespace parts_, and MUST end in a
+MAY be followed by one or more additional _namespace parts_, and MUST end in a
 _class part_.
 
     a. The beginning _namespace part_ of the _autoloadable class name_,
