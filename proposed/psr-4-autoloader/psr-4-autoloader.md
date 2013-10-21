@@ -113,8 +113,8 @@ MUST structure their classes using these same principles.
 This is a collection of rules which explain how the _FQCN_ can be 
 converted into a _resource path_.
 
-1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
-MAY be followed by one or more additional _namespace parts_, and MUST end in a
+1. Each _autoloadable class name_ begins with a _namespace part_, which
+could be followed by one or more additional _namespace parts_, and MUST end in a
 _class part_.
 
     a. The beginning _namespace part_ of the _autoloadable class name_,
@@ -125,6 +125,8 @@ _class part_.
     b. It is RECOMMENDED (but not required) that the _autoloadable class name_
     include a second _namespace part_, sometimes called a "package name", to
     identify its place within the "vendor name".
+
+    > **Example:** \<Vendor Name>\(<Namespace>\)*<Class Name>
 
 2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
 correspond to a _resource base_.
@@ -149,31 +151,21 @@ treated as sequential steps:
     separator, and the classname appended with .php. This will help it 
     locate the actual file.
 
-    d. If the _resource path_ exists in the _scheme_, it MUST be included,
+    c. If the _resource path_ exists in the _scheme_, it MUST be included,
     required, or otherwise loaded so that it becomes available.
 
-    e. Because a _namespace prefix_ MAY correspond to more than one _resource
+    d. Because a _namespace prefix_ MAY correspond to more than one _resource
     base_, a _conforming autoloader_ SHOULD process each corresponding
     _resource base_ for that _namespace prefix_ until it finds an existing
     _resource path_ for the _autoloadable class name_. (The behavior for a
     _conforming autoloader_ when it cannot find a _resource path_ for an
     _autoloadable class name_ is outside the scope of this spec.)
 
-    f. The order in which a _conforming autoloader_ attempts to process
+    e. The order in which a _conforming autoloader_ attempts to process
     multiple _resource bases_ corresponding to a _namespace prefix_ is not
     within the scope of this specification. Developers should be aware that
     different approaches MAY be used and SHOULD refer to the documentation of
     the _conforming autoloader_ for more information.
-
-4. A _conforming autoloader_ will not interfere with other autoloaders, and as
-such it will not throw exceptions, raise errors of any level, and should not
-return a value.
-
-5. Developers who want their classes to be autoloadable by a _conforming
-autoloader_ MUST specify how their _namespace prefixes_ correspond to
-_resource bases_. The approach is left to the autoloader developer. It may
-be via narrative documentation, meta-files, PHP source code, project-specific
-conventions, or some other approach.
 
 
 ### 3.3. Example
@@ -205,6 +197,16 @@ included, required, or otherwise loaded so that it is available.
 
 
 ## 4. Implementations
+
+1. A _conforming autoloader_ will not interfere with other autoloaders, and as
+such it will not throw exceptions, raise errors of any level, and should not
+return a value.
+
+2. Developers who want their classes to be autoloadable by a _conforming
+autoloader_ will specify how their _namespace prefixes_ correspond to
+_resource bases_. The approach is left to the autoloader developer. It may
+be via narrative documentation, meta-files, PHP source code, project-specific
+conventions, or some other approach.
 
 For example implementations of _conforming autoloaders_, please see the
 [examples file][]. Example implementations MUST NOT be regarded as part of the
