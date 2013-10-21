@@ -99,7 +99,7 @@ requirements on developers who want their classes to be autoloadable by a
 _conforming autoloader_. Developers who wish to comply with this specification
 MUST structure their classes using these same principles.
 
-### 3.2. Technique
+### 3.2. Requirements
 
 This is a collection of rules which explain how the _FQCN_ can be 
 converted into a _resource path_.
@@ -117,7 +117,7 @@ _class part_.
     include a second _namespace part_, sometimes called a "package name", to
     identify its place within the "vendor name".
 
-    > **Example:** \<Vendor Name>\(<Namespace>\)*<Class Name>
+    > **Example:** \<Vendor Name>\\(<Namespace>\\)*<Class Name>
 
 2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
 correspond to a _resource base_.
@@ -129,27 +129,26 @@ correspond to a _resource base_.
     b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
     correspond to the same _resource base_.
 
-3. A _conforming autoloader_ will process an _autoloadable class name_, its
-_namespace prefixes_, and their corresponding _resource bases_ in the 
-following fashion. This is not pseudo-code, and these items should not be 
-treated as sequential steps:
+3. The resources MUST be laid out so that an autoloader can perform the
+following steps:
 
-    a. The _namespace prefix_ portion of the _autoloadable class name_ MUST
-    be replaced with the corresponding _resource base_.
+  1. For each _namespace prefix_ of the _autoloadable class name_, determine
+  all _resource bases_ associated with it, if any.
 
-    b. Each _namespace separator_ in the _relative class name_ portion of the 
-    autoloadable class name should be replaced with a scheme-appropriate 
-    separator, and the classname appended with .php. This will help it 
-    locate the actual file.
+  2. For every combination of _namespace prefix_ and _resource base_ found,
+  take the _relative class name_  replace every _namespace separator_ in
+  it with a _scheme_-appropriate separator. Append the ".php" suffix, and 
+  append the result to the _resource base_. The result will be refered to 
+  as _resource path_.
+  
+  3. If any of the _resource paths_ obtained this way exists in the _scheme_,
+  then include or require exactly one of them.
 
-    c. If the _resource path_ exists in the _scheme_, it MUST be included,
-    required, or otherwise loaded so that it becomes available.
-
-
-### 3.3. Example
+### 3.3. Example Technique
 
 The following example MUST NOT be regarded as part of the specification. It is
-for example purposes only.
+for example purposes only, to highlight how an autoloader could transform a 
+_autoloadable class name_ into a _resource path_.
 
 Given a UNIX-like file system _scheme_, a _fully qualified class name_ of
 `\Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, and a
