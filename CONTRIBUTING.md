@@ -11,7 +11,7 @@ See the [PHP-FIG FAQ](http://www.php-fig.org/faq/) for more information.
 
 # Licensing
 
-By contributing your code you agree to license your contribution under the MIT
+By contributing code you agree to license your contribution under the MIT
 license.
 
 By contributing documentation, examples, or any other non-code assets you agree

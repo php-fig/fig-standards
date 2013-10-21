@@ -2,7 +2,7 @@
 
 ## 1. Code
 
-1. All code must be licensed under the MIT license.
+1. All PHP-FIG code must be licensed under the MIT license.
 
 2. Code includes any pure PHP files (including but not limited to classes,
    functions, interfaces and procedural code), as well as any code inside of
