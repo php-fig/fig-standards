@@ -130,7 +130,7 @@ correspond to a _resource base_.
     correspond to the same _resource base_.
 
 3. The resources MUST be laid out so that an autoloader can perform the
-following steps:
+following steps to locate and eventually include the correct _resource_:
 
   1. For each _namespace prefix_ of the _autoloadable class name_, determine
   all _resource bases_ associated with it, if any.
