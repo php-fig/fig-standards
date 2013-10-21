@@ -7,16 +7,29 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ## 1. Overview
 
-This PSR describes a technique to [autoload][] classes from specified resource
-paths. It is fully interoperable, and can be used in addition to any other
-autoloading technique, including [PSR-0][]. This PSR also describes how to
-name and structure classes to be autoloaded using the described technique.
+This PSR describes a way to lay out a directory structure with files that
+define or make available PHP classes, so that they can be found by a compliant
+[autoloader][], and so that human readers can easily find the class definitions
+they are looking for.
 
-[autoload]: http://php.net/autoload
+It can apply to a full "library" (as defined below) or just a part of that. E.g.
+another part of the "library" could use [PSR-0][] instead of PSR-4.
+
+[autoloader]: http://php.net/autoload
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 
 
 ## 2. Definitions
+
+- **library:** A combination of the following:
+  * A collection of PHP files (and possibly other files) in a directory structure,
+    or a subset of these files.
+  * The PHP classes that are defined in or provided by this library, or those of
+    these PHP classes that should be subject to this spec.
+  * Optionally, documentation and meta information that belongs to the library,
+    but might not be part of the directory structure.
+  
+  Note: A larger project composed of multiple libraries may again be regarded as a library by itself, and be subject to this spec.
 
 - **class**: The term _class_ refers to PHP classes, interfaces, traits, and
   similar future resource definitions.
@@ -33,14 +46,15 @@ name and structure classes to be autoloaded using the described technique.
   the _fully qualified class name_ MUST include the leading namespace
   separator.
 
-- **autoloadable class name**: Any class intended for autoloading. (Classes
-  not intended for autoloading are not covered by this term.) The
-  _autoloadable class name_ is the same as the _fully qualified class name_
-  but it MUST NOT include the leading namespace separator. Given a _fully
-  qualified class name_ of `\Acme\Log\Writer\FileWriter`, the _autoloadable
-  class name_ is `Acme\Log\Writer\FileWriter`. Typically, this is the
-  value sent to the [__autoload()][] function and to callbacks registered with
-  [spl_autoload_register()][].
+- **autoloadable class**: Any class in the library intended for autoloading.  
+  (Classes not intended for autoloading are not covered by this term.)
+
+- **autoloadable class name**: The same as the fully qualified class name,
+  but without a leading namespace separator.  
+  Given a _fully qualified class name_ of `\Acme\Log\Writer\FileWriter`,
+  the _autoloadable class name_ is `Acme\Log\Writer\FileWriter`.
+  Typically, this is the value sent to the [__autoload()][] function
+  and to callbacks registered with [spl_autoload_register()][].
   
 - **namespace part**: The individual non-terminating parts of an _autoloadable
   class name_. Given an _autoloadable class name_ of
@@ -95,27 +109,20 @@ name and structure classes to be autoloaded using the described technique.
 
 ## 3. Specification
 
-### 3.1. Preamble
+### 3.1. Scope
 
-For a _conforming autoloader_ to be able to transform an _autoloadable class
-name_ into a _resource path_, this specification describes a technique that
-MUST be applied or taken into account. When the technique is applied, the
-_conforming autoloader_ can autoload an _autoloadable class name_ from an
-existing _resource path_.
+The specification may apply to a "library" as defined above.
 
-Aside from technical considerations, this specification also imposes
-requirements on developers who want their classes to be autoloadable by a
-_conforming autoloader_. Developers who wish to comply with this specification
-MUST structure their classes using these same principles.
+As explained above, this goes beyond what is commonly refered to as "library",
+and may also refer to e.g. a subset of a library, or an "application" composed
+of more than one library.
 
-### 3.2. Technique
 
-This is a collection of rules which explain how the _FQCN_ can be 
-converted into a _resource path_.
+### 3.2. Requirements
 
-1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
-MAY be followed by one or more additional _namespace parts_, and MUST end in a
-_class part_.
+1. For every autoloadable class in the library, the _autoloadable class name_
+MUST begin with a _namespace part_, which MAY be followed by one or more
+additional _namespace parts_, and MUST end in a _class part_.
 
     a. The beginning _namespace part_ of the _autoloadable class name_,
     sometimes called a "vendor name", MUST be unique to the developer or
@@ -128,44 +135,36 @@ _class part_.
 
     > **Example:** \<Vendor Name>\(<Namespace>\)*<Class Name>
 
-2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
-correspond to a _resource base_.
+2. The library MUST explicitly or implicitly specify a relationship that
+   associates _namespace prefixes_ with _resource bases_.
 
-    a. A _namespace prefix_ MAY correspond to more than one _resource base_.
-    (The order in which a _conforming autoloader_ processes more than one
-    corresponding _resource base_ is outside the scope of this spec.)
+    a. A _namespace prefix_ MAY be associated with more than one
+    _resource base_.
 
     b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
-    correspond to the same _resource base_.
+    be associated with the same _resource base_.
 
-3. A _conforming autoloader_ will process an _autoloadable class name_, its
-_namespace prefixes_, and their corresponding _resource bases_ in the 
-following fashion. This is not pseudo-code, and these items should not be 
-treated as sequential steps:
+3. For every autoloadable class in the library, the relationship above MUST
+   associate at least one _namespace prefix_ of the _autoloadable class name_
+   with a _resource base_.
 
-    a. The _namespace prefix_ portion of the _autoloadable class name_ MUST
-    be replaced with the corresponding _resource base_.
+3. The resources in the library MUST be layed out so that an autoloader that
+   performs the following steps, if called with an autoloadable class name
+   for a class that is provided at least once in the library, will make
+   exactly one version of this class available within the PHP script:
 
-    b. Each _namespace separator_ in the _relative class name_ portion of the 
-    autoloadable class name should be replaced with a scheme-appropriate 
-    separator, and the classname appended with .php. This will help it 
-    locate the actual file.
-
-    c. If the _resource path_ exists in the _scheme_, it MUST be included,
-    required, or otherwise loaded so that it becomes available.
-
-    d. Because a _namespace prefix_ MAY correspond to more than one _resource
-    base_, a _conforming autoloader_ SHOULD process each corresponding
-    _resource base_ for that _namespace prefix_ until it finds an existing
-    _resource path_ for the _autoloadable class name_. (The behavior for a
-    _conforming autoloader_ when it cannot find a _resource path_ for an
-    _autoloadable class name_ is outside the scope of this spec.)
-
-    e. The order in which a _conforming autoloader_ attempts to process
-    multiple _resource bases_ corresponding to a _namespace prefix_ is not
-    within the scope of this specification. Developers should be aware that
-    different approaches MAY be used and SHOULD refer to the documentation of
-    the _conforming autoloader_ for more information.
+    1. For each _namespace prefix_ of the autoloadable class name, determine
+    all _resource bases_ associated with it, if any.  
+    (as by the previous points, this will yield at least one match)
+    
+    2. For every combination of _namespace prefix_ and _resource base_ found,
+    take the _relative class name_ (relativ to the _namespace prefix_),
+    replace every namespace separator in it with a scheme-appropriate separator,
+    append the ".php" suffix, and append the result to the _resource base_.  
+    The result will be refered to as _resource path_.
+    
+    3. If any of the _resource paths_ obtained this way exists in the _scheme_,
+    then include or require exactly one of them.
 
 
 ### 3.3. Example
