@@ -117,7 +117,9 @@ _class part_.
     include a second _namespace part_, sometimes called a "package name", to
     identify its place within the "vendor name".
 
-    > **Example:** `\<Vendor Name>\(<Namespace>\)*<Class Name>`
+    > **Example:** The _autoloadable class name_ which contains a "vendor 
+    name" and other _namespace parts_ - including potentially a "package name",
+    could follow this structure `\<Vendor Name>\(<Namespace Parts>\)*<Class Part>`.
 
 2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
 correspond to a _resource base_.
