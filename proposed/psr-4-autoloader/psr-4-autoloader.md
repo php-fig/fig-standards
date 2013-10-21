@@ -110,6 +110,9 @@ MUST structure their classes using these same principles.
 
 ### 3.2. Technique
 
+This is a collection of rules which explain how the _FQCN_ can be 
+converted into a _resource path_.
+
 1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
 MAY be followed by one or more additional _namespace parts_, and MUST end in a
 _class part_.
@@ -128,23 +131,23 @@ correspond to a _resource base_.
 
     a. A _namespace prefix_ MAY correspond to more than one _resource base_.
     (The order in which a _conforming autoloader_ processes more than one
-    corresponding _resource base_ is undefined.)
+    corresponding _resource base_ is outside the scope of this spec.)
 
     b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
     correspond to the same _resource base_.
 
-3. A _conforming autoloader_ MUST process an _autoloadable class name_, its
-_namespace prefixes_, and their corresponding _resource bases_ as follows:
+3. A _conforming autoloader_ will process an _autoloadable class name_, its
+_namespace prefixes_, and their corresponding _resource bases_ in the 
+following fashion. This is not pseudo-code, and these items should not be 
+treated as sequential steps:
 
     a. The _namespace prefix_ portion of the _autoloadable class name_ MUST
     be replaced with the corresponding _resource base_.
 
-    b. Each _namespace separator_ in the _relative class name_ portion of the
-    _autoloadable class name_ MUST be replaced with a _scheme_-appropriate
-    separator. In a file system _scheme_, that separator MUST be the
-    `DIRECTORY_SEPARATOR` constant.
-
-    c. The result MUST be suffixed with `.php` to create a _resource path_.
+    b. Each _namespace separator_ in the _relative class name_ portion of the 
+    autoloadable class name should be replaced with a scheme-appropriate 
+    separator, and the classname appended with .php. This will help it 
+    locate the actual file.
 
     d. If the _resource path_ exists in the _scheme_, it MUST be included,
     required, or otherwise loaded so that it becomes available.
@@ -154,7 +157,7 @@ _namespace prefixes_, and their corresponding _resource bases_ as follows:
     _resource base_ for that _namespace prefix_ until it finds an existing
     _resource path_ for the _autoloadable class name_. (The behavior for a
     _conforming autoloader_ when it cannot find a _resource path_ for an
-    _autoloadable class name_ is undefined.)
+    _autoloadable class name_ is outside the scope of this spec.)
 
     f. The order in which a _conforming autoloader_ attempts to process
     multiple _resource bases_ corresponding to a _namespace prefix_ is not
@@ -162,14 +165,14 @@ _namespace prefixes_, and their corresponding _resource bases_ as follows:
     different approaches MAY be used and SHOULD refer to the documentation of
     the _conforming autoloader_ for more information.
 
-4. A _conforming autoloader_ MUST NOT interfere with other autoloaders: it
-MUST NOT throw exceptions, MUST NOT raise errors of any level, and SHOULD NOT
+4. A _conforming autoloader_ will not interfere with other autoloaders, and as
+such it will not throw exceptions, raise errors of any level, and should not
 return a value.
 
 5. Developers who want their classes to be autoloadable by a _conforming
 autoloader_ MUST specify how their _namespace prefixes_ correspond to
-_resource bases_. The approach is left to the developer. It may be via
-narrative documentation, meta-files, PHP source code, project-specific
+_resource bases_. The approach is left to the autoloader developer. It may
+be via narrative documentation, meta-files, PHP source code, project-specific
 conventions, or some other approach.
 
 
