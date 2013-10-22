@@ -51,7 +51,7 @@ name and structure classes to be autoloaded using the described technique.
   namespace separators. Given an _autoloadable class name_ of
   `Acme\Log\Writer\FileWriter`, a _namespace prefix_ may be `Acme\`,
   `Acme\Log\`, or `Acme\Log\Writer\`. A _namespace prefix_ will include a
-  leading namespace separator, but will not include trailing namespace separator.
+  trailing namespace separator, but will not include leading namespace separator.
 
 - **relative class name**: The parts of the _autoloadable class name_ that
   appear after the _namespace prefix_. Given an _autoloadable class name_ of
