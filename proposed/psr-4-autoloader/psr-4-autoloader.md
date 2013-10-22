@@ -80,7 +80,7 @@ name and structure classes to be autoloaded using the described technique.
   _resource path_ is not certain to exist in the _scheme_.
 
 - **conforming autoloader**: PHP autoloader code that implements follows these 
-  definitions and attempts to inlcude the correct _resource path_ based on 
+  definitions and attempts to include the correct _resource path_ based on 
   a valid _fully qualified class name_.
 
 
