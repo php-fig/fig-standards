@@ -298,7 +298,8 @@ _**Note:** Order descending chronologically._
 
 * [Survey of existing cache implementations][1], by @dragoonis
 * [Strong vs. Weak informal poll][2], by @Crell
+* [Implementation details informal poll][3], by @Crell
 
 [1]: https://docs.google.com/spreadsheet/ccc?key=0Ak2JdGialLildEM2UjlOdnA4ekg3R1Bfeng5eGlZc1E#gid=0
 [2]: https://docs.google.com/spreadsheet/ccc?key=0AsMrMKNHL1uGdDdVd2llN1kxczZQejZaa3JHcXA3b0E#gid=0
-
+[3]: https://docs.google.com/spreadsheet/ccc?key=0AsMrMKNHL1uGdEE3SU8zclNtdTNobWxpZnFyR0llSXc#gid=1
