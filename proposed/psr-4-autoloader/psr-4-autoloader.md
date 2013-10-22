@@ -25,7 +25,8 @@ name and structure classes to be autoloaded using the described technique.
   [PHP `namespace` keyword](http://www.php.net/manual/en/language.namespaces.definition.php).
   `\` by itself is not an acceptable _namespace_ within this PSR.
 
-- **namespace separator**: The PHP namespace separator symbol `\` (backslash).
+- **namespace separator**: A symbol that separates a PHP namespace, typically 
+  a `\` (backslash)
 
 - **fully qualified class name**: A full namespace and class name, such as
   `\Acme\Log\Writer\FileWriter` including the leading namespace
@@ -34,30 +35,31 @@ name and structure classes to be autoloaded using the described technique.
 - **autoloadable class name**: Any class intended for autoloading. (Classes
   not intended for autoloading are not covered by this term.) The
   _autoloadable class name_ is the same as the _fully qualified class name_
-  but will not include the leading namespace separator. Given a _fully
+  but will not include the leading _namespace separator_. Given a _fully
   qualified class name_ of `\Acme\Log\Writer\FileWriter`, the _autoloadable
   class name_ is `Acme\Log\Writer\FileWriter`.
   
 - **namespace part**: The individual non-terminating parts of an _autoloadable
   class name_. Given an _autoloadable class name_ of
   `Acme\Log\Writer\FileWriter`, the _namespace parts_ are `Acme`, `Log`, and
-  `Writer`. A _namespace part_ has no leading or trailing namespace separator.
+  `Writer`. A _namespace part_ has no leading or trailing _namespace separator_.
 
 - **class part**: The individual terminating part of an _autoloadable class
   name_. Given an _autoloadable class name_ of `Acme\Log\Writer\FileWriter`,
-  the _class part_ is `FileWriter`, without a leading namespace separator.
+  the _class part_ is `FileWriter`, without a leading _namespace separator_.
 
 - **namespace prefix**: One or more contiguous leading _namespace parts_ with
-  namespace separators. Given an _autoloadable class name_ of
+  _namespace separators_. Given an _autoloadable class name_ of
   `Acme\Log\Writer\FileWriter`, a _namespace prefix_ may be `Acme\`,
   `Acme\Log\`, or `Acme\Log\Writer\`. A _namespace prefix_ will include a
-  trailing namespace separator, but will not include leading namespace separator.
+  trailing _namespace separator_, but will not include leading _namespace 
+  separator_.
 
 - **relative class name**: The parts of the _autoloadable class name_ that
   appear after the _namespace prefix_. Given an _autoloadable class name_ of
   `Acme\Log\Writer\FileWriter` and a _namespace prefix_ of `Acme\Log\`, the
   _relative class name_ is `Writer\FileWriter`. A _relative class name_ MUST
-  NOT include a leading namespace separator.
+  NOT include a leading _namespace separator_.
 
 - **resource**: A class definition, typically a file in a file system.
 
