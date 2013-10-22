@@ -25,8 +25,8 @@ name and structure classes to be autoloaded using the described technique.
   [PHP `namespace` keyword](http://www.php.net/manual/en/language.namespaces.definition.php).
   `\` by itself is not an acceptable _namespace_ within this PSR.
 
-- **namespace separator**: A symbol that separates a PHP namespace, typically 
-  a `\` (backslash)
+- **namespace separator**: A symbol that separates a PHP namespace, i.e: 
+  a `\` (backslash).
 
 - **fully qualified class name**: A full namespace and class name, such as
   `\Acme\Log\Writer\FileWriter` including the leading namespace
