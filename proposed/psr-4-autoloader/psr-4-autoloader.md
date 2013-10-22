@@ -70,9 +70,13 @@ name and structure classes to be autoloaded using the described technique.
   (It is still a _base path_, even if the directory does not exist, or it is not
   a directory)
 
-- **conforming autoloader**: PHP autoloader code that implements follows these 
-  definitions and attempts to inlcude the correct _class file_ based on 
-  a valid _fully qualified class name_.
+- **autoloader**: A function or callback that is triggered by PHP if a yet
+  undefined class name is being used in a script.  
+  This could be a function named `__autoload()`, or a callback registered with
+  `spl_autoload_register()`.
+
+- **conforming autoloader**: An autoloader that is designed to autoload classes
+  in a system that follows the requirements of this document.
 
 
 ## 3. Specification
