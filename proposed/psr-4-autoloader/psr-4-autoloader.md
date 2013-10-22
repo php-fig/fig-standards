@@ -122,7 +122,7 @@ _class part_.
     could follow this structure `\<Vendor Name>\(<Namespace Parts>\)*<Class Part>`.
 
 2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
-correspond to a _resource base_.
+correspond to a _resource base_, using the following rules:
 
     a. A _namespace prefix_ MAY correspond to more than one _resource base_.
     (The order in which a _conforming autoloader_ processes more than one
