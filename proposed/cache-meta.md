@@ -261,6 +261,15 @@ of structured object on `get` at least to avoid confusion between a miss and a
 sentinel value.  Based on that prior experience FIG decided that a naked value
 on `get` was impossible.
 
+### 4.4 Alternative: ArrayAccess Pool
+
+There was a suggestion to make a Pool implement ArrayAccess, which would allow
+for cache get/set operations to use array syntax.  That was rejected due to
+limited interest, limited flexibility of that approach (trivial get and set with
+default control information is all that's possible), and because it's trivial
+for a particular implementation to include as an add-on should it desire to
+do so.
+
 5. People
 ---------
 
