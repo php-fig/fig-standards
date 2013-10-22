@@ -99,7 +99,7 @@ requirements on developers who want their classes to be autoloadable by a
 _conforming autoloader_. Developers who wish to comply with this specification
 MUST structure their classes using these same principles.
 
-### 3.2. Technique
+### 3.2. Requirements
 
 This is a collection of rules which explain how the _FQCN_ can be 
 converted into a _resource path_.
@@ -117,10 +117,12 @@ _class part_.
     include a second _namespace part_, sometimes called a "package name", to
     identify its place within the "vendor name".
 
-    > **Example:** \<Vendor Name>\(<Namespace>\)*<Class Name>
+    > **Example:** The _autoloadable class name_ which contains a "vendor 
+    name" and other _namespace parts_ - including potentially a "package name",
+    could follow this structure `\<Vendor Name>\(<Namespace Parts>\)*<Class Part>`.
 
 2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
-correspond to a _resource base_.
+correspond to a _resource base_, using the following rules:
 
     a. A _namespace prefix_ MAY correspond to more than one _resource base_.
     (The order in which a _conforming autoloader_ processes more than one
@@ -129,39 +131,47 @@ correspond to a _resource base_.
     b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
     correspond to the same _resource base_.
 
-3. A _conforming autoloader_ will process an _autoloadable class name_, its
-_namespace prefixes_, and their corresponding _resource bases_ in the 
-following fashion. This is not pseudo-code, and these items should not be 
-treated as sequential steps:
+3. The resources MUST be laid out so that an autoloader can perform the
+following steps to locate and eventually include the correct _resource_:
 
-    a. The _namespace prefix_ portion of the _autoloadable class name_ MUST
-    be replaced with the corresponding _resource base_.
+  1. For each _namespace prefix_ of the _autoloadable class name_, determine
+  all _resource bases_ associated with it, if any.
 
-    b. Each _namespace separator_ in the _relative class name_ portion of the 
-    autoloadable class name should be replaced with a scheme-appropriate 
-    separator, and the classname appended with .php. This will help it 
-    locate the actual file.
-
-    c. If the _resource path_ exists in the _scheme_, it MUST be included,
-    required, or otherwise loaded so that it becomes available.
-
-    d. Because a _namespace prefix_ MAY correspond to more than one _resource
-    base_, a _conforming autoloader_ will process each corresponding
-    _resource base_ for that _namespace prefix_ until it finds an existing
-    _resource path_ for the _autoloadable class name_. (The behavior for a
-    _conforming autoloader_ when it cannot find a _resource path_ for an
-    _autoloadable class name_ is outside the scope of this spec.)
-
-    e. The order in which a _conforming autoloader_ attempts to process
-    multiple _resource bases_ corresponding to a _namespace prefix_ is not
-    within the scope of this specification. Refer to the documentation of
-    the _conforming autoloader_ for more information.
+  2. For every combination of _namespace prefix_ and _resource base_ found,
+  take the _relative class name_  replace every _namespace separator_ in
+  it with a _scheme_-appropriate separator. Append the ".php" suffix, and 
+  append the result to the _resource base_. The result will be refered to 
+  as _resource path_.
+  
+  3. If any of the _resource paths_ obtained this way exists in the _scheme_,
+  then include or require exactly one of them.
 
 
-### 3.3. Example
+## 4. Implementations
 
-The following example MUST NOT be regarded as part of the specification. It is
-for example purposes only.
+1. A _conforming autoloader_ will not interfere with other autoloaders, and as
+such it will not throw exceptions, raise errors of any level, and should not
+return a value.
+
+2. Developers who want their classes to be autoloadable by a _conforming
+autoloader_ will specify how their _namespace prefixes_ correspond to
+_resource bases_. The approach is left to the autoloader developer. It may
+be via narrative documentation, meta-files, PHP source code, project-specific
+conventions, or some other approach.
+
+3. The order in which a _conforming autoloader_ attempts to process
+multiple _resource bases_ corresponding to a _namespace prefix_ is not
+within the scope of this specification. Refer to the documentation of
+the _conforming autoloader_ for more information.
+
+## 5. Examples
+
+The following examples MUST NOT be regarded as part of the specification. 
+
+### 5.1. Example Technique
+
+The aim of this "Example Technique" is to highlight how an autoloader could 
+transform a _autoloadable class name_ into a _resource path_.
 
 Given a UNIX-like file system _scheme_, a _fully qualified class name_ of
 `\Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, and a
@@ -186,26 +196,7 @@ _scheme_-appropriate separators. That is,
 included, required, or otherwise loaded so that it is available.
 
 
-## 4. Implementations
-
-1. A _conforming autoloader_ will not interfere with other autoloaders, and as
-such it will not throw exceptions, raise errors of any level, and should not
-return a value.
-
-2. Developers who want their classes to be autoloadable by a _conforming
-autoloader_ will specify how their _namespace prefixes_ correspond to
-_resource bases_. The approach is left to the autoloader developer. It may
-be via narrative documentation, meta-files, PHP source code, project-specific
-conventions, or some other approach.
-
-For example implementations of _conforming autoloaders_, please see the
-[examples file][]. Example implementations MUST NOT be regarded as part of the
-specification. They are examples only, and MAY change at any time.
-
-[examples file]: psr-4-autoloader-examples.php
-
-
-## 5. Resource Organization
+### 5.2. Example Resource Organization
 
 The above specification implies a particular organizational structure for
 class files. Developers MUST use the following process to determine where
@@ -243,3 +234,11 @@ For example, given:
         tests/
             Writer/
                 FileWriterTest.php
+
+### 5.3. Example Implementation
+
+For example implementations of _conforming autoloaders_, please see the
+[examples file][]. Example implementations MUST NOT be regarded as part of the
+specification and MAY change at any time.
+
+[examples file]: psr-4-autoloader-examples.php
