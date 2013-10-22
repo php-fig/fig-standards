@@ -7,7 +7,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ## 1. Overview
 
-This PSR describes a technique to [autoload][] classes from specified resource
+This PSR describes a technique to [autoload][] classes from specified file
 paths. It is fully interoperable, and can be used in addition to any other
 autoloading technique, including [PSR-0][]. This PSR also describes how to
 name and structure classes to be autoloaded using the described technique.
@@ -59,28 +59,19 @@ name and structure classes to be autoloaded using the described technique.
   _relative class name_ is `Writer\FileWriter`. A _relative class name_ MUST
   NOT include a leading namespace separator.
 
-- **resource**: A class definition, typically a file in a file system.
+- **class file**: A file that, if included in a PHP script, will cause this
+  class to be defined.
 
-- **scheme**: A resource storage-and-retrieval mechanism, typically a file
-  system.
+- **file path**: A string intended to address a file.  
+  (It is still a _file path_, even if the file does not exist or is not a file.)
 
-- **resource base**: A base path to _resources_ for a particular _namespace
-  prefix_. Given a file system _scheme_ and a _namespace prefix_ of
-  `Acme\Log\`, a _resource base_ could be `/path/to/acme-log/src/`. A _resource
-  base_ will include a _scheme_-appropriate trailing separator, and could
-  include a _scheme_-appropriate leading separator. For example, in a file 
-  system _scheme_, that separator could be "\" or "/".
-
-- **resource path**: A path in the _scheme_ representing a _resource_ defining
-  an _autoloadable class name_. Given an _autoloadable class name_ of
-  `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, a
-  UNIX-like file system _scheme_, a _resource base_ of
-  `/path/to/acme-log/src`, and the specification described below, the
-  _resource path_ will be `/path/to/acme-log/src/Writer/FileWriter.php`. The
-  _resource path_ is not certain to exist in the _scheme_.
+- **base path**: A string intended to represent a directory, with an appended
+  directory separator.  
+  (It is still a _base path_, even if the directory does not exist, or it is not
+  a directory)
 
 - **conforming autoloader**: PHP autoloader code that implements follows these 
-  definitions and attempts to inlcude the correct _resource path_ based on 
+  definitions and attempts to inlcude the correct _class file_ based on 
   a valid _fully qualified class name_.
 
 
@@ -89,10 +80,10 @@ name and structure classes to be autoloaded using the described technique.
 ### 3.1. Preamble
 
 For a _conforming autoloader_ to be able to transform an _autoloadable class
-name_ into a _resource path_, this specification describes a technique that
+name_ into a _file path_, this specification describes a technique that
 MUST be applied or taken into account. When the technique is applied, the
 _conforming autoloader_ can autoload an _autoloadable class name_ from an
-existing _resource path_.
+existing _class file_.
 
 Aside from technical considerations, this specification also imposes
 requirements on developers who want their classes to be autoloadable by a
@@ -102,7 +93,7 @@ MUST structure their classes using these same principles.
 ### 3.2. Requirements
 
 This is a collection of rules which explain how the _FQCN_ can be 
-converted into a _resource path_.
+converted into the _file path_ to a _class file_.
 
 1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
 MAY be followed by one or more additional _namespace parts_, and MUST end in a
@@ -122,29 +113,28 @@ _class part_.
     could follow this structure `\<Vendor Name>\(<Namespace Parts>\)*<Class Part>`.
 
 2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
-correspond to a _resource base_, using the following rules:
+correspond to a _base path_, using the following rules:
 
-    a. A _namespace prefix_ MAY correspond to more than one _resource base_.
+    a. A _namespace prefix_ MAY correspond to more than one _base path_.
     (The order in which a _conforming autoloader_ processes more than one
-    corresponding _resource base_ is outside the scope of this spec.)
+    corresponding _base path_ is outside the scope of this spec.)
 
     b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
-    correspond to the same _resource base_.
+    correspond to the same _base path_.
 
-3. The resources MUST be laid out so that an autoloader can perform the
-following steps to locate and eventually include the correct _resource_:
+3. The files MUST be laid out so that an autoloader can perform the
+following steps to locate and eventually include the correct _class file_:
 
   1. For each _namespace prefix_ of the _autoloadable class name_, determine
-  all _resource bases_ associated with it, if any.
+  all _base paths_ associated with it, if any.
 
-  2. For every combination of _namespace prefix_ and _resource base_ found,
+  2. For every combination of _namespace prefix_ and _directory_ found,
   take the _relative class name_  replace every _namespace separator_ in
-  it with a _scheme_-appropriate separator. Append the ".php" suffix, and 
-  append the result to the _resource base_. The result will be refered to 
-  as _resource path_.
+  it with a directory separator. Append the ".php" suffix, and append the result
+  to the _base path_, to obtain a _file path_.
   
-  3. If any of the _resource paths_ obtained this way exists in the _scheme_,
-  then include or require exactly one of them.
+  3. If any of the _file paths_ obtained this way points to an existing file,
+  then include or require exactly one of these files.
 
 
 ## 4. Implementations
@@ -155,12 +145,12 @@ return a value.
 
 2. Developers who want their classes to be autoloadable by a _conforming
 autoloader_ will specify how their _namespace prefixes_ correspond to
-_resource bases_. The approach is left to the autoloader developer. It may
+_base paths_. The approach is left to the autoloader developer. It may
 be via narrative documentation, meta-files, PHP source code, project-specific
 conventions, or some other approach.
 
 3. The order in which a _conforming autoloader_ attempts to process
-multiple _resource bases_ corresponding to a _namespace prefix_ is not
+multiple _base paths_ corresponding to a _namespace prefix_ is not
 within the scope of this specification. Refer to the documentation of
 the _conforming autoloader_ for more information.
 
@@ -171,16 +161,16 @@ The following examples MUST NOT be regarded as part of the specification.
 ### 5.1. Example Technique
 
 The aim of this "Example Technique" is to highlight how an autoloader could 
-transform a _autoloadable class name_ into a _resource path_.
+transform a _autoloadable class name_ into a _class file path_.
 
 Given a UNIX-like file system _scheme_, a _fully qualified class name_ of
 `\Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, and a
-_resource base_ of `/path/to/acme-log/src/`, the above specification will
+_base path_ of `/path/to/acme-log/src/`, the above specification will
 result in the following actions by a _conforming autoloader_:
 
 1. `\Acme\Log\Writer\FileWriter` becomes `Acme\Log\Writer\FileWriter`.
 
-2. The _namespace prefix_ is replaced with the _resource base_. That is,
+2. The _namespace prefix_ is replaced with the _base path_. That is,
 `Acme\Log\Writer\FileWriter` is transformed into
 `/path/to/acme-log/src/Writer\FileWriter`.
 
@@ -189,14 +179,14 @@ _scheme_-appropriate separators. That is,
 `/path/to/acme-log/src/Writer\FileWriter` is tranformed into
 `/path/to/acme-log/src/Writer/FileWriter`.
 
-4. The result is appended with `.php` to give a _resource path_ of
+4. The result is appended with `.php` to give a _file path_ of
 `/path/to/acme-log/src/Writer/FileWriter.php`.
 
-5. The _scheme_ is searched. If the _resource path_ exists, it is
+5. If the _file path_ points to an existing file, it is
 included, required, or otherwise loaded so that it is available.
 
 
-### 5.2. Example Resource Organization
+### 5.2. Example File Organization
 
 The above specification implies a particular organizational structure for
 class files. Developers MUST use the following process to determine where
@@ -204,12 +194,12 @@ a class file will be placed:
 
 1. Pick a single _namespace prefix_ for the classes to be autoloaded.
 
-2. Pick one or more _resource bases_ for the file locations.
+2. Pick one or more _base paths_ for the file locations.
 
 3. Remove the _namespace prefix_ from the _autoloadable class name_.
     
 4. The remaining _namespace parts_ become subdirectories under one of the
-_resource bases_.
+_base paths_.
 
 5. The remaining _class part_ becomes the file name and is suffixed with
 `.php`.
@@ -221,9 +211,9 @@ For example, given:
 
 - a _namespace prefix_ of `Acme\Log`,
 
-- a _resource base_ of `/path/to/acme-log/src/` for source files,
+- a _base path_ of `/path/to/acme-log/src/` for source files,
 
-- a _resource base_ of `/path/to/acme-log/tests/` for test files,
+- a _base path_ of `/path/to/acme-log/tests/` for test files,
 
 ... the resulting files MUST be organized like this:
 
