@@ -81,7 +81,7 @@ name and structure classes to be autoloaded using the described technique.
 
 - **conforming autoloader**: PHP autoloader code that follows the given 
   [specification requirements](#32-requirements) and [implementation](#4-implementation) 
-  rules to attempts to include the correct _resource path_ based on 
+  rules to attempt to include the correct _resource path_ based on 
   a valid _fully qualified class name_.
 
 
