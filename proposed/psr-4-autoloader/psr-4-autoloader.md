@@ -37,9 +37,9 @@ This PSR describes a technique to [autoload][] classes from specified resource p
 
 This is a collection of rules which explain how the _Qualified Class Name_ relates to its _resource path_.
 
-1. A _qualified class name_ MUST have the following structure: `<Namespace names>\<Unqualified Class Name>`
+1. A _qualified class name_ MUST have the following structure: `<Namespace>\<Unqualified Class Name>`
 
-    a. A _qualified class name_ MUST have one or more _namespace names_.
+    a. A _qualified class name_ MUST have a value for _namespace_.
     
     b. Each _namespace name_ MUST be separated by a _namespace separator_.
     
@@ -52,7 +52,7 @@ This is a collection of rules which explain how the _Qualified Class Name_ relat
  
     > **Example:** The _namespace_ of: `Acme\Log\` is associated with the _resource base_ `/path/to/acme-log/src/`
 
-3. A _qualified class name_ is constructed using the _namespace_, the name of each subfolder in the matching _resource base_, appended by the _unqualified class name_.
+3. A _qualified class name_ is constructed using the _namespace_ of the matching _resource base_, the name of each subfolder in the matching _resource base_, and appended by the _unqualified class name_.
 
     > **Example:** Where a _namespace_ of `Acme\Log\` is associated with a _resource base_ of `/path/to/acme-log/src` and a _resource path_ of  `/path/to/acme-log/src/FileWriter.php` contains the _unqualified class_ `FileWriter`, the _qualified class name_ is `Acme\Log\FileWriter`.
 
@@ -60,6 +60,6 @@ This is a collection of rules which explain how the _Qualified Class Name_ relat
 
 1. A _conforming autoloader_ MUST NOT interfere with other spl_autoloaders by throwing exceptions or raising errors. In addition, the _conforming autoloader_ SHOULD NOT return a value.
 
-2. The approach used to associate _namespace_ values with _resource bases_ is outside of the scope of this specification.
+2. The approach used to associate _namespace_ values with _resource base_ values is outside of the scope of this specification.
 
 3. The order in which a _conforming autoloader_ processes multiple _resource base_ values associated with a _namespace_ is also outside the scope of this specification.
