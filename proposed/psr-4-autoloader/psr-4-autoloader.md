@@ -23,7 +23,6 @@ name and structure classes to be autoloaded using the described technique.
 
 - **namespace**: A PHP namespace, as is syntactically valid after the
   [PHP `namespace` keyword](http://www.php.net/manual/en/language.namespaces.definition.php).
-  `\` by itself is not an acceptable _namespace_ within this PSR.
 
 - **namespace separator**: The PHP namespace separator symbol `\` (backslash).
 
