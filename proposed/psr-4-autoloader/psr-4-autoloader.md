@@ -49,21 +49,6 @@ name and structure classes to be autoloaded using the described technique.
 
 ## 3. Specification
 
-### 3.1. Preamble
-
-For a _conforming autoloader_ to be able to transform an _autoloadable class
-name_ into a _resource path_, this specification describes a technique that
-MUST be applied or taken into account. When the technique is applied, the
-_conforming autoloader_ can autoload a _qualified class name_ from an
-existing _resource path_.
-
-Aside from technical considerations, this specification also imposes
-requirements on developers who want their classes to be autoloadable by a
-_conforming autoloader_. Developers who wish to comply with this specification
-MUST structure their classes using these same principles.
-
-### 3.2. Requirements
-
 This is a collection of rules which explain how the _FQCN_ can be 
 converted into a _resource path_.
 
