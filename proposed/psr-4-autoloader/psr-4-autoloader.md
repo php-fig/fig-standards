@@ -55,7 +55,7 @@ name of the containing file for the class, excluding the file extension.
 This is a collection of rules which explain how the _Qualified Class Name_ relates to  
 a _sub-namespace_ and a _resource path_.
 
-1. A _qualified class name_ MUST have the following structure: '<Sub-namespace(s)>\<Unqualified Class Name>'
+1. A _qualified class name_ MUST have the following structure: `<Sub-namespace(s)>\<Unqualified Class Name>`
 
     a. The _sub-namespace_ MUST have one or more _namespace names_.
     
