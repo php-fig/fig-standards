@@ -45,10 +45,7 @@ name and structure classes to be autoloaded using the described technique.
 - **resource path**: A base path representing the location of a resource, for example, 
    `/path/to/acme-log/src/Writer/FileWriter.php`. 
 
-- **conforming autoloader**: PHP autoloader code that implements follows these 
-  definitions and attempts to include the correct _resource path_ based on 
-  a valid _qualified class name_.
-
+- **conforming autoloader**: A PHP SPL autoloader that implements the definitions contained within this standards recommendation.
 
 ## 3. Specification
 
