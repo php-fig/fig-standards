@@ -63,3 +63,9 @@ This is a collection of rules which explain how the _Qualified Class Name_ relat
 2. The approach used to associate _namespace_ values with _resource base_ values is outside of the scope of this specification.
 
 3. The order in which a _conforming autoloader_ processes multiple _resource base_ values associated with a _namespace_ is also outside the scope of this specification.
+ 
+## 5. Examples
+
+For examples of mapping techniques, resource organiation, and implementations of _conforming autoloaders_, please see the
+-[examples file]:[psr-4-autoloader-examples.php]. Example implementations MUST NOT be regarded as part of the
+-specification and MAY change at any time.
