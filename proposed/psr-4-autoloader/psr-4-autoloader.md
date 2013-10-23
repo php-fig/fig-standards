@@ -22,23 +22,24 @@ name and structure classes to be autoloaded using the described technique.
   similar future resource definitions.
 
 - **namespace**: A PHP namespace, as is syntactically valid after the
-  [PHP `namespace` keyword](http://www.php.net/manual/en/language.namespaces.definition.php).
+  [PHP `namespace` keyword](http://www.php.net/manual/en/language.namespaces.definition.php). Sometimes
+  referred as a "namespace name" by PHP.
 
 - **namespace separator**: The PHP namespace separator symbol `\` (backslash).
 
 - **qualified class name**: A full namespace and class name, such as
   `Acme\Log\Writer\FileWriter` excluding a leading namespace
-  separator. This value is passed into the spl_autoloader by PHP.
+  separator. The QCN is passed into the spl_autoloader by PHP.
 
-- **namespace prefix**: One or more contiguous leading _namespace parts_ with
-  namespace separators. Given a _qualified class name_ of
-  `Acme\Log\Writer\FileWriter`, a _namespace prefix_ may be `Acme\`,
-  `Acme\Log\`, or `Acme\Log\Writer\`. A _namespace prefix_ will include a
-  leading namespace separator, but will not include trailing namespace separator.
+- **sub-namespace**: PHP namespaces can specify a hierarchy of namespace names. 
+   Given a _qualified class name_ of
+  `Acme\Log\Writer\FileWriter`, a PHP _sub-namespace_ may be `Acme\`,
+  `Acme\Log\`, or `Acme\Log\Writer\`. Within this PSR, a sub-namespace includes 
+  a trailing namespace separator.
 
 - **relative class name**: The parts of the _qualified class name_ that
-  appear after the _namespace prefix_. Given a _qualified class name_ of
-  `Acme\Log\Writer\FileWriter` and a _namespace prefix_ of `Acme\Log\`, the
+  appear after the _sub-namespace_. Given a _qualified class name_ of
+  `Acme\Log\Writer\FileWriter` and a _sub-namespace_ of `Acme\Log\`, the
   _relative class name_ is `Writer\FileWriter`. A _relative class name_ MUST
   NOT include a leading namespace separator.
 
@@ -48,7 +49,7 @@ name and structure classes to be autoloaded using the described technique.
   system.
 
 - **resource base**: A base path to _resources_ for a particular _namespace
-  prefix_. Given a file system _scheme_ and a _namespace prefix_ of
+  prefix_. Given a file system _scheme_ and a _sub-namespace_ of
   `Acme\Log\`, a _resource base_ could be `/path/to/acme-log/src/`. A _resource
   base_ will include a _scheme_-appropriate trailing separator, and could
   include a _scheme_-appropriate leading separator. For example, in a file 
@@ -56,7 +57,7 @@ name and structure classes to be autoloaded using the described technique.
 
 - **resource path**: A path in the _scheme_ representing a _resource_ defining
   a _qualified class name_. Given a _qualified class name_ of
-  `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, a
+  `Acme\Log\Writer\FileWriter`, a _sub-namespace_ of `Acme\Log\`, a
   UNIX-like file system _scheme_, a _resource base_ of
   `/path/to/acme-log/src`, and the specification described below, the
   _resource path_ will be `/path/to/acme-log/src/Writer/FileWriter.php`. The
@@ -104,23 +105,23 @@ _class part_.
     name" and other _namespace parts_ - including potentially a "package name",
     could follow this structure `\<Vendor Name>\(<Namespace Parts>\)*<Class Part>`.
 
-2. At least one _namespace prefix_ of each _qualified class name_ MUST
+2. At least one _sub-namespace_ of each _qualified class name_ MUST
 correspond to a _resource base_, using the following rules:
 
-    a. A _namespace prefix_ MAY correspond to more than one _resource base_.
+    a. A _sub-namespace_ MAY correspond to more than one _resource base_.
     (The order in which a _conforming autoloader_ processes more than one
     corresponding _resource base_ is outside the scope of this spec.)
 
-    b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
+    b. To prevent conflicts, different _sub-namespacees_ SHOULD NOT
     correspond to the same _resource base_.
 
 3. The resources MUST be laid out so that an autoloader can perform the
 following steps to locate and eventually include the correct _resource_:
 
-  1. For each _namespace prefix_ of the _qualified class name_, determine
+  1. For each _sub-namespace_ of the _qualified class name_, determine
   all _resource bases_ associated with it, if any.
 
-  2. For every combination of _namespace prefix_ and _resource base_ found,
+  2. For every combination of _sub-namespace_ and _resource base_ found,
   take the _relative class name_  replace every _namespace separator_ in
   it with a _scheme_-appropriate separator. Append the ".php" suffix, and 
   append the result to the _resource base_. The result will be refered to 
@@ -137,13 +138,13 @@ such it will not throw exceptions, raise errors of any level, and should not
 return a value.
 
 2. Developers who want their classes to be autoloadable by a _conforming
-autoloader_ will specify how their _namespace prefixes_ correspond to
+autoloader_ will specify how their _sub-namespaces_ correspond to
 _resource bases_. The approach is left to the autoloader developer. It may
 be via narrative documentation, meta-files, PHP source code, project-specific
 conventions, or some other approach.
 
 3. The order in which a _conforming autoloader_ attempts to process
-multiple _resource bases_ corresponding to a _namespace prefix_ is not
+multiple _resource bases_ corresponding to a _sub-namespace_ is not
 within the scope of this specification. Refer to the documentation of
 the _conforming autoloader_ for more information.
 
@@ -157,13 +158,13 @@ The aim of this "Example Technique" is to highlight how an autoloader could
 transform a _qualified class name_ into a _resource path_.
 
 Given a UNIX-like file system _scheme_, a _fully qualified class name_ of
-`\Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, and a
+`\Acme\Log\Writer\FileWriter`, a _sub-namespace_ of `Acme\Log\`, and a
 _resource base_ of `/path/to/acme-log/src/`, the above specification will
 result in the following actions by a _conforming autoloader_:
 
 1. `\Acme\Log\Writer\FileWriter` becomes `Acme\Log\Writer\FileWriter`.
 
-2. The _namespace prefix_ is replaced with the _resource base_. That is,
+2. The _sub-namespace_ is replaced with the _resource base_. That is,
 `Acme\Log\Writer\FileWriter` is transformed into
 `/path/to/acme-log/src/Writer\FileWriter`.
 
@@ -185,11 +186,11 @@ The above specification implies a particular organizational structure for
 class files. Developers MUST use the following process to determine where
 a class file will be placed:
 
-1. Pick a single _namespace prefix_ for the classes to be autoloaded.
+1. Pick a single _sub-namespace_ for the classes to be autoloaded.
 
 2. Pick one or more _resource bases_ for the file locations.
 
-3. Remove the _namespace prefix_ from the _qualified class name_.
+3. Remove the _sub-namespace_ from the _qualified class name_.
     
 4. The remaining _namespace parts_ become subdirectories under one of the
 _resource bases_.
@@ -202,7 +203,7 @@ For example, given:
 - _qualified class names_ of `Acme\Log\Writer\FileWriter` and
   `Acme\Log\Writer\FileWriterTest`,
 
-- a _namespace prefix_ of `Acme\Log`,
+- a _sub-namespace_ of `Acme\Log`,
 
 - a _resource base_ of `/path/to/acme-log/src/` for source files,
 
