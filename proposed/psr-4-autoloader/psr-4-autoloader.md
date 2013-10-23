@@ -29,15 +29,6 @@ name and structure classes to be autoloaded using the described technique.
 - **qualified class name**: A full namespace and class name, such as
   `Acme\Log\Writer\FileWriter` excluding a leading namespace
   separator. This value is passed into the spl_autoloader by PHP.
-  
-- **namespace part**: The individual non-terminating parts of an _autoloadable
-  class name_. Given a _qualified class name_ of
-  `Acme\Log\Writer\FileWriter`, the _namespace parts_ are `Acme`, `Log`, and
-  `Writer`. A _namespace part_ has no leading or trailing namespace separator.
-
-- **class part**: The individual terminating part of an _autoloadable class
-  name_. Given a _qualified class name_ of `Acme\Log\Writer\FileWriter`,
-  the _class part_ is `FileWriter`, without a leading namespace separator.
 
 - **namespace prefix**: One or more contiguous leading _namespace parts_ with
   namespace separators. Given a _qualified class name_ of
