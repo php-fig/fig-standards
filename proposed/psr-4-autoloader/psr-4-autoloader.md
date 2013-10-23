@@ -39,9 +39,6 @@ name and structure classes to be autoloaded using the described technique.
 
 - **resource**: A class definition, typically a file in a file system.
 
-- **scheme**: A resource storage-and-retrieval mechanism, typically a file
-  system.
-
 - **resource base**: A base path to _resources_ for a particular _namespace
   prefix_. Given a file system _scheme_ and a _sub-namespace_ of
   `Acme\Log\`, a _resource base_ could be `/path/to/acme-log/src/`. A _resource
