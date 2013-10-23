@@ -38,10 +38,8 @@ This is a collection of rules which explain how the _Qualified Class Name_ relat
 1. A _qualified class name_ MUST have the following structure: `<Namespace>\<Unqualified Class Name>`
 
     a. A _qualified class name_ MUST have a value for _namespace_.
-    
-    b. Each node of a _namespace_ MUST be separated by a _namespace separator_.
-    
-    c. The _unqualified class name_ MUST be proceeded by a _namespace separator_.
+
+    b. The _unqualified class name_ MUST be proceeded by a _namespace separator_.
 
     > **Example:** 
     > The _qualified class name_ could follow this structure: 
