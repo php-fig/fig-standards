@@ -38,24 +38,24 @@ This is a collection of rules which explain how the _qualified class name_ relat
 
     a. Each _unqualified class name_ MUST have a _namespace_.
 
-    b. A _name separator_ MUST be used between the _namespace_ and the _unqualified class name_.
+    b. A _namespace separator_ MUST be used between the _namespace_ and the _unqualified class name_.
 
     > **Example:** 
     > For a _namespace_ of `Acme\Log` and an _unqualified class name_ of `Writer` the _qualified class name_
     > is `Acme\Log\Writer`.
 
-2. Each _namespace_ MUST BE associated with one or more _resource bases_.
+2. Each _namespace_ MUST BE associated with one, or more, _resource base_ values.
  
     > **Example:** 
-    > The _namespace_: `Acme\Log` is associated with the _resource base_ `/path/to/acme-log/src/`
+    > The _namespace_: `Acme\Log` is associated with the _resource base_ `/path/to/acme-log/src`
 
-3. A _qualified class name_ is constructed by concatenating the _namespace_ for a matching _resource base_
-   to the name of each subfolder separated by a _namespace separator_ 
-   to the _unqualified class name_.
+3. A _qualified class name_ is constructed by concatenating the _namespace_ for a matching _resource base_,
+   the name of each subfolder separated by a _namespace separator_,  
+   and the _unqualified class name_.
 
     > **Example:** 
     > Where a _namespace_ of `Acme\Log` is associated with a 
-    > _resource base_ of `/path/to/acme-log/src/` 
+    > _resource base_ of `/path/to/acme-log/src` 
     > and a _resource path_ of `/path/to/acme-log/src/Writer.php` contains the _unqualified class_ `Writer`, 
     > the _qualified class name_ is `Acme\Log\Writer`.
 
@@ -73,5 +73,5 @@ This is a collection of rules which explain how the _qualified class name_ relat
 ## 5. Examples
 
 For examples of mapping techniques, resource organization, and implementations of _conforming autoloaders_, 
-see the [examples file]:[psr-4-autoloader-examples.php]. Examples MUST NOT be regarded as 
+see the [examples file](psr-4-autoloader-examples.php). Examples MUST NOT be regarded as 
 part of the specification and MAY change at any time.
