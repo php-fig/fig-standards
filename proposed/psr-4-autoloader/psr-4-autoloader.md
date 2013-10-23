@@ -37,12 +37,6 @@ name and structure classes to be autoloaded using the described technique.
   `Acme\Log\`, or `Acme\Log\Writer\`. Within this PSR, a sub-namespace includes 
   a trailing namespace separator.
 
-- **relative class name**: The parts of the _qualified class name_ that
-  appear after the _sub-namespace_. Given a _qualified class name_ of
-  `Acme\Log\Writer\FileWriter` and a _sub-namespace_ of `Acme\Log\`, the
-  _relative class name_ is `Writer\FileWriter`. A _relative class name_ MUST
-  NOT include a leading namespace separator.
-
 - **resource**: A class definition, typically a file in a file system.
 
 - **scheme**: A resource storage-and-retrieval mechanism, typically a file
