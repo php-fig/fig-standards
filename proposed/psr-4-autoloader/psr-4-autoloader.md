@@ -69,15 +69,15 @@ a _sub-namespace_ and a _resource path_.
     f. Additional namespace names MAY follow the optional "vendor name" and "package name" _namespace names_.
 
     > **Example:** The _qualified class name_ could follow this structure: 
-    `<Vendor Name>\(<Package Name>)\(<Namespace Name(s)>\)<Unqualified Class Name>`.
+    `Vendor\Package\AdditionalNamespaceNames\UnqualifiedClassName`.
 
 2. _Sub-namespaces_ MUST BE associated with one or more _resource base_ values.
  
     > **Example:** The _sub-namespace_ of: 
-    `Acme\Log\` could be associated with a _resource base_ of `/path/to/acme-log/src/`
+    `Acme\Log\` is associated with the _resource base_ `/path/to/acme-log/src/`
 
-3. A _qualified class name_ is constructed using a _sub-namespace_, a _namespace name_ for each subfolder name 
-of the matching _resource base_, followed by the _unqualified class name_.
+3. A _qualified class name_ is constructed using the _sub-namespace_, one _namespace name_ for each subfolder name 
+in the matching _resource base_, followed by the _unqualified class name_.
 
     > **Example:** Where a _sub-namespace_ of `Acme\Log\` is 
     associated with a _resource base_ of `/path/to/acme-log/src/`
