@@ -29,7 +29,7 @@ name and structure classes to be autoloaded using the described technique.
 
 - **qualified class name**: A full namespace and class name, such as
   `Acme\Log\Writer\FileWriter` excluding a leading namespace
-  separator. The QCN is passed into the spl_autoloader by PHP.
+  separator. The _qualified class name_ is passed into the spl_autoloader by PHP.
 
 - **sub-namespace**: PHP namespaces can specify a hierarchy of namespace names. 
    Given a _qualified class name_ of
@@ -42,13 +42,11 @@ name of the containing file for the class, excluding the file extension.
 
 - **resource**: A class definition, typically a file in a file system.
 
-- **resource base**: A base path to a folder, for example, 
-   `/path/to/acme-log/src`.  
+- **resource base**: A base path to a folder, for example, `/path/to/acme-log/src`.  
 
-- **resource path**: A base path representing the location of a resource, for example, 
-   `/path/to/acme-log/src/Writer/FileWriter.php`. 
+- **resource path**: A base path representing the location of a resource, for example, `/path/to/acme-log/src/Writer/FileWriter.php`. 
 
-- **conforming autoloader**: A PHP SPL autoloader that implements the definitions contained within this standards recommendation.
+- **conforming autoloader**: A PHP spl autoloader that implements the definitions contained within this standards recommendation.
 
 ## 3. Specification
 
@@ -59,14 +57,14 @@ a _sub-namespace_ and a _resource path_.
 
     a. The _sub-namespace_ MUST have one or more _namespace names_.
     
-    b. Each _namespace name_ must be separated by a _namespace separator_.
+    b. Each _namespace name_ MUST be separated by a _namespace separator_.
     
-    c. The _unqualified class name_ must be proceeded by a _namespace separator_.
+    c. The _unqualified class name_ MUST be proceeded by a _namespace separator_.
     
-    d. It is RECOMMENDED that the first _namespace name_, be a unique value identifying the "vendor name".
+    d. The first _namespace name_ MAY be a unique value identifying the "vendor name."
         
-    e. In cases where a vendor has multiple packages, it is RECOMMENDED that the second _namespace name_, 
-    identify the "package name".
+    e. In cases where a vendor has multiple packages, the second _namespace name_ MAY be value 
+    identifying the "package name."
     
     f. Additional namespace names MAY follow the optional "vendor name" and "package name" _namespace names_.
 
@@ -75,19 +73,20 @@ a _sub-namespace_ and a _resource path_.
 
 2. _Sub-namespaces_ MUST BE associated with one or more _resource base_ values.
  
+    > **Example:** The _sub-namespace_ of: 
+    `Acme\Log\` could be associated with a _resource base_ of `/path/to/acme-log/src/`
+
 3. A _qualified class name_ is constructed using a _sub-namespace_, a _namespace name_ for each subfolder name 
 of the matching _resource base_, followed by the _unqualified class name_.
 
-    > **Example:** The _sub-namespace_ of: 
-    `Acme\Log\`
+    > **Example:** Where a _sub-namespace_ of `Acme\Log\` is 
     associated with a _resource base_ of `/path/to/acme-log/src/`
-    and a _resource path_ of  `/path/to/acme-log/src/FileWriter.php`
-    resolves to a _qualified class name_ of 
-    `Acme\Log\FileWriter`
+    and a _resource path_ of  `/path/to/acme-log/src/FileWriter.php` contains the _unqualified class_ `FileWriter`,
+    the _qualified class name_ is `Acme\Log\FileWriter`.
 
 ## 4. Implementations
 
-1. A _conforming autoloader_ will not interfere with other spl_autoloaders, and as
+1. A _conforming autoloader_ MUST NOT interfere with other spl_autoloaders, and as
 such MUST NOT throw exceptions or raise errors of any level, and SHOULD NOT
 return a value.
 
