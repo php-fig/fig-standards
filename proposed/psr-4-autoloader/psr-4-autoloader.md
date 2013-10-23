@@ -39,14 +39,9 @@ name and structure classes to be autoloaded using the described technique.
 
 - **resource**: A class definition, typically a file in a file system.
 
-- **resource base**: A base path to _resources_ for a particular _namespace
-  prefix_. Given a file system _scheme_ and a _sub-namespace_ of
-  `Acme\Log\`, a _resource base_ could be `/path/to/acme-log/src/`. A _resource
-  base_ will include a _scheme_-appropriate trailing separator, and could
-  include a _scheme_-appropriate leading separator. For example, in a file 
-  system _scheme_, that separator could be "\" or "/".
+- **resource base**: A base path to a folder. 
 
-- **resource path**: A path in the _scheme_ representing a _resource_ defining
+- **resource path**: A path representing a folder. _resource_ defining
   a _qualified class name_. Given a _qualified class name_ of
   `Acme\Log\Writer\FileWriter`, a _sub-namespace_ of `Acme\Log\`, a
   UNIX-like file system _scheme_, a _resource base_ of
