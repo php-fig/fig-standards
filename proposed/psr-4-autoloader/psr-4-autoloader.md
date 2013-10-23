@@ -39,15 +39,11 @@ name and structure classes to be autoloaded using the described technique.
 
 - **resource**: A class definition, typically a file in a file system.
 
-- **resource base**: A base path to a folder. 
+- **resource base**: A base path to a folder, for example, 
+   `/path/to/acme-log/src`.  
 
-- **resource path**: A path representing a folder. _resource_ defining
-  a _qualified class name_. Given a _qualified class name_ of
-  `Acme\Log\Writer\FileWriter`, a _sub-namespace_ of `Acme\Log\`, a
-  UNIX-like file system _scheme_, a _resource base_ of
-  `/path/to/acme-log/src`, and the specification described below, the
-  _resource path_ will be `/path/to/acme-log/src/Writer/FileWriter.php`. The
-  _resource path_ is not certain to exist in the _scheme_.
+- **resource path**: A base path representing the location of a resource, for example, 
+   `/path/to/acme-log/src/Writer/FileWriter.php`. 
 
 - **conforming autoloader**: PHP autoloader code that implements follows these 
   definitions and attempts to include the correct _resource path_ based on 
