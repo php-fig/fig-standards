@@ -26,30 +26,27 @@ name and structure classes to be autoloaded using the described technique.
 
 - **namespace separator**: The PHP namespace separator symbol `\` (backslash).
 
-- **autoloadable class name**: Any class intended for autoloading. (Classes
-  not intended for autoloading are not covered by this term.) The
-  _autoloadable class name_ is the same as the _fully qualified class name_
-  but will not include the leading namespace separator. Given a _fully
-  qualified class name_ of `\Acme\Log\Writer\FileWriter`, the _autoloadable
-  class name_ is `Acme\Log\Writer\FileWriter`.
+- **qualified class name**: A full namespace and class name, such as
+  `Acme\Log\Writer\FileWriter` excluding a leading namespace
+  separator. This value is passed into the spl_autoloader by PHP.
   
 - **namespace part**: The individual non-terminating parts of an _autoloadable
-  class name_. Given an _autoloadable class name_ of
+  class name_. Given a _qualified class name_ of
   `Acme\Log\Writer\FileWriter`, the _namespace parts_ are `Acme`, `Log`, and
   `Writer`. A _namespace part_ has no leading or trailing namespace separator.
 
 - **class part**: The individual terminating part of an _autoloadable class
-  name_. Given an _autoloadable class name_ of `Acme\Log\Writer\FileWriter`,
+  name_. Given a _qualified class name_ of `Acme\Log\Writer\FileWriter`,
   the _class part_ is `FileWriter`, without a leading namespace separator.
 
 - **namespace prefix**: One or more contiguous leading _namespace parts_ with
-  namespace separators. Given an _autoloadable class name_ of
+  namespace separators. Given a _qualified class name_ of
   `Acme\Log\Writer\FileWriter`, a _namespace prefix_ may be `Acme\`,
   `Acme\Log\`, or `Acme\Log\Writer\`. A _namespace prefix_ will include a
   leading namespace separator, but will not include trailing namespace separator.
 
-- **relative class name**: The parts of the _autoloadable class name_ that
-  appear after the _namespace prefix_. Given an _autoloadable class name_ of
+- **relative class name**: The parts of the _qualified class name_ that
+  appear after the _namespace prefix_. Given a _qualified class name_ of
   `Acme\Log\Writer\FileWriter` and a _namespace prefix_ of `Acme\Log\`, the
   _relative class name_ is `Writer\FileWriter`. A _relative class name_ MUST
   NOT include a leading namespace separator.
@@ -67,7 +64,7 @@ name and structure classes to be autoloaded using the described technique.
   system _scheme_, that separator could be "\" or "/".
 
 - **resource path**: A path in the _scheme_ representing a _resource_ defining
-  an _autoloadable class name_. Given an _autoloadable class name_ of
+  a _qualified class name_. Given a _qualified class name_ of
   `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, a
   UNIX-like file system _scheme_, a _resource base_ of
   `/path/to/acme-log/src`, and the specification described below, the
@@ -75,8 +72,8 @@ name and structure classes to be autoloaded using the described technique.
   _resource path_ is not certain to exist in the _scheme_.
 
 - **conforming autoloader**: PHP autoloader code that implements follows these 
-  definitions and attempts to inlcude the correct _resource path_ based on 
-  a valid _fully qualified class name_.
+  definitions and attempts to include the correct _resource path_ based on 
+  a valid _qualified class name_.
 
 
 ## 3. Specification
@@ -86,7 +83,7 @@ name and structure classes to be autoloaded using the described technique.
 For a _conforming autoloader_ to be able to transform an _autoloadable class
 name_ into a _resource path_, this specification describes a technique that
 MUST be applied or taken into account. When the technique is applied, the
-_conforming autoloader_ can autoload an _autoloadable class name_ from an
+_conforming autoloader_ can autoload a _qualified class name_ from an
 existing _resource path_.
 
 Aside from technical considerations, this specification also imposes
@@ -99,24 +96,24 @@ MUST structure their classes using these same principles.
 This is a collection of rules which explain how the _FQCN_ can be 
 converted into a _resource path_.
 
-1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
+1. Each _qualified class name_ MUST begin with a _namespace part_, which
 MAY be followed by one or more additional _namespace parts_, and MUST end in a
 _class part_.
 
-    a. The beginning _namespace part_ of the _autoloadable class name_,
+    a. The beginning _namespace part_ of the _qualified class name_,
     sometimes called a "vendor name", MUST be unique to the developer or
     project. This is to prevent conflicts between different libraries,
     components, modules, etc.
     
-    b. It is RECOMMENDED (but not required) that the _autoloadable class name_
+    b. It is RECOMMENDED (but not required) that the _qualified class name_
     include a second _namespace part_, sometimes called a "package name", to
     identify its place within the "vendor name".
 
-    > **Example:** The _autoloadable class name_ which contains a "vendor 
+    > **Example:** The _qualified class name_ which contains a "vendor 
     name" and other _namespace parts_ - including potentially a "package name",
     could follow this structure `\<Vendor Name>\(<Namespace Parts>\)*<Class Part>`.
 
-2. At least one _namespace prefix_ of each _autoloadable class name_ MUST
+2. At least one _namespace prefix_ of each _qualified class name_ MUST
 correspond to a _resource base_, using the following rules:
 
     a. A _namespace prefix_ MAY correspond to more than one _resource base_.
@@ -129,7 +126,7 @@ correspond to a _resource base_, using the following rules:
 3. The resources MUST be laid out so that an autoloader can perform the
 following steps to locate and eventually include the correct _resource_:
 
-  1. For each _namespace prefix_ of the _autoloadable class name_, determine
+  1. For each _namespace prefix_ of the _qualified class name_, determine
   all _resource bases_ associated with it, if any.
 
   2. For every combination of _namespace prefix_ and _resource base_ found,
@@ -166,7 +163,7 @@ The following examples MUST NOT be regarded as part of the specification.
 ### 5.1. Example Technique
 
 The aim of this "Example Technique" is to highlight how an autoloader could 
-transform a _autoloadable class name_ into a _resource path_.
+transform a _qualified class name_ into a _resource path_.
 
 Given a UNIX-like file system _scheme_, a _fully qualified class name_ of
 `\Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, and a
@@ -201,7 +198,7 @@ a class file will be placed:
 
 2. Pick one or more _resource bases_ for the file locations.
 
-3. Remove the _namespace prefix_ from the _autoloadable class name_.
+3. Remove the _namespace prefix_ from the _qualified class name_.
     
 4. The remaining _namespace parts_ become subdirectories under one of the
 _resource bases_.
@@ -211,7 +208,7 @@ _resource bases_.
 
 For example, given:
 
-- _autoloadable class names_ of `Acme\Log\Writer\FileWriter` and
+- _qualified class names_ of `Acme\Log\Writer\FileWriter` and
   `Acme\Log\Writer\FileWriterTest`,
 
 - a _namespace prefix_ of `Acme\Log`,
