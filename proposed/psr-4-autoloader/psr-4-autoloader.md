@@ -50,8 +50,7 @@ This is a collection of rules which explain how the _qualified class name_ relat
     > The _namespace_: `Acme\Log` is associated with the _resource base_ `/path/to/acme-log/src`
 
 3. A _qualified class name_ is constructed by concatenating the _namespace_ for a matching _resource base_,
-   the name of each subfolder separated by a _namespace separator_,  
-   and the _unqualified class name_.
+   the name of each subfolder separated by a _namespace separator_, and the _unqualified class name_.
 
     > **Example:** 
     > Where a _namespace_ of `Acme\Log` is associated with a 
