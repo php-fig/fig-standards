@@ -26,10 +26,6 @@ name and structure classes to be autoloaded using the described technique.
 
 - **namespace separator**: The PHP namespace separator symbol `\` (backslash).
 
-- **fully qualified class name**: A full namespace and class name, such as
-  `\Acme\Log\Writer\FileWriter` including the leading namespace
-  separator.
-
 - **autoloadable class name**: Any class intended for autoloading. (Classes
   not intended for autoloading are not covered by this term.) The
   _autoloadable class name_ is the same as the _fully qualified class name_
