@@ -79,8 +79,9 @@ name and structure classes to be autoloaded using the described technique.
   _resource path_ will be `/path/to/acme-log/src/Writer/FileWriter.php`. The
   _resource path_ is not certain to exist in the _scheme_.
 
-- **conforming autoloader**: PHP autoloader code that implements follows these
-  definitions and attempts to include the correct _resource path_ based on
+- **conforming autoloader**: PHP autoloader code that follows the given
+  [specification requirements](#32-requirements) and [implementation rules](#4-implementation)
+  to attempt to include the correct _resource path_ based on 
   a valid _fully qualified class name_.
 
 
