@@ -54,7 +54,7 @@ to place files that will be autoloaded according the specification.
        MUST match the case of file names.
 
 4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
-   of any level, and MAY return a value.
+   of any level, and SHOULD NOT return a value.
 
 
 ## 3. Examples
