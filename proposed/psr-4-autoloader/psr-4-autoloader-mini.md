@@ -30,7 +30,7 @@ to place files that will be autoloaded according the specification.
     
     3. The fully qualified class name MUST have a terminating class name.
 
-    4. Alphabetic characters in in the fully qualified class name MAY be any
+    4. Alphabetic characters in the fully qualified class name MAY be any
        combination of lower case and upper case.
 
     5. Fully qualified class names MUST NOT differ only in case.
