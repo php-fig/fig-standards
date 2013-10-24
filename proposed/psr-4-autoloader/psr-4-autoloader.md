@@ -67,7 +67,7 @@ name and structure classes to be autoloaded using the described technique.
 - **resource base**: A base path to _resources_ for a particular _namespace
   prefix_. Given a file system _scheme_ and a _namespace prefix_ of
   `Acme\Log\`, a _resource base_ could be `/path/to/acme-log/src/`. A _resource
-  base_ will include a _scheme_-appropriate trailing separator, and could
+  base_ will include a _scheme_-appropriate trailing separator, and MAY
   include a _scheme_-appropriate leading separator. For example, in a file
   system _scheme_, that separator could be "\" or "/".
 
