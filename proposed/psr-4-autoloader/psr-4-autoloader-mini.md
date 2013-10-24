@@ -45,7 +45,7 @@ to place files that will be autoloaded according the specification.
        name (a "qualified name") corresponds to at least one "base directory".
       
     2. The contiguous sub-namespace names after the "qualified name"
-       correspond to a subdirectory within the "base directory", in which the
+       correspond to a subdirectory within a "base directory", in which the
        namespace separators represent directory separators.
 
     3. The terminating class name corresponds to a file name ending in `.php`.
