@@ -61,7 +61,7 @@ to place files that will be autoloaded according the specification.
 
 ```
 Fully Qualified Class Name      Qualified Name      Base Directory              Corresponding File Path
-----------------------------    ----------------    ----------------------      ----------------------------------------
+----------------------------    ----------------    ----------------------      -----------------------------------------
 \Acme\Log\Writer\File_Writer    Acme\Log\Writer     ./acme-log-writer/lib/      ./acme-log-writer/File_Writer.php
 \Aura\Web\Response\Status       Aura\Web            /path/to/aura-web/src/      /path/to/aura-web/src/Response/Status.php
 \Symfony\Core\Request           Symfony\Core        ./vendor/Symfony/Core/      ./vendor/Symfony/Core/Request.php
