@@ -102,7 +102,7 @@ MUST structure their classes using these same principles.
 
 ### 3.2. Requirements
 
-This is a collection of rules which explain how the _FQCN_ can be
+This is a collection of rules that explain how the _FQCN_ can be
 converted into a _resource path_.
 
 1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
