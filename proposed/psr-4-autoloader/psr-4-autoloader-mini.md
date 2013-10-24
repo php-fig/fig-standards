@@ -42,7 +42,7 @@ to place files that will be autoloaded according the specification.
 
     1. A contiguous series of one or more leading namespace names, not
        including the leading namespace separator, in the fully qualified class
-       name (a "qualified name") corresponds to a "base directory".
+       name (a "qualified name") corresponds to at least one "base directory".
       
     2. The contiguous sub-namespace names after the "qualified name"
        correspond to a subdirectory within the "base directory", in which the
