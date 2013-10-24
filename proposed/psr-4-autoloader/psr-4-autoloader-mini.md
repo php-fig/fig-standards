@@ -9,42 +9,52 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 This PSR describes a specification for [autoloading][] classes from file
 paths. It is fully interoperable, and can be used in addition to any other
-autoloading specification, including [PSR-0][].
+autoloading specification, including [PSR-0][]. This PSR also describes where
+to place files that will be autoloaded according the specification.
 
 
 ## 2. Specification
 
-* The term "class" refers to classes, interfaces, traits, and other similar
-  structures.
+1. The term "class" refers to classes, interfaces, traits, and other similar
+   structures.
 
-* A fully qualified class name has the following form:
+2. A fully qualified class name has the following form:
 
-        \<NamespaceName>(\<SubNamespaceName>)*\<ClassName>
+        \<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>
 
-    * The fully qualified class name MUST have a top-level namespace name.
+    1. The fully qualified class name MUST have a top-level namespace name,
+       also known as a "vendor namespace".
 
-    * The fully qualified class name MAY have one or more sub-namespace names.
+    2. The fully qualified class name MAY have one or more sub-namespace
+       names.
     
-    * The fully qualified class name MUST have a terminating class name.
+    3. The fully qualified class name MUST have a terminating class name.
 
-* When loading a file that corresponds to a fully qualified class name ...
+    4. Alphabetic characters in in the fully qualified class name MAY be any
+       combination of lower case and upper case.
 
-    * a contiguous series of one or more leading namespace names, not
-      including the leading namespace separator, in the fully qualified class
-      name (a "qualified name") corresponds to a base directory;
+    5. Fully qualified class names MUST NOT differ only in case.
+
+    6. Underscores have no special meaning in any portion of the fully
+       qualified class name.
+
+3. When loading a file that corresponds to a fully qualified class name ...
+
+    1. A contiguous series of one or more leading namespace names, not
+       including the leading namespace separator, in the fully qualified class
+       name (a "qualified name") corresponds to a "base directory".
       
-    * the contiguous sub-namespace names after the "qualified name" correspond
-      to a subdirectory within the base directory, in which the namespace
-      separators represent directory separators; and,
+    2. The contiguous sub-namespace names after the "qualified name"
+       correspond to a subdirectory within the "base directory", in which the
+       namespace separators represent directory separators.
 
-    * the terminating class name corresponds to a file name ending in `.php`.
+    3. The terminating class name corresponds to a file name ending in `.php`.
     
-* Alphabetic characters in in the fully qualified class name MAY be of any
-  combination of lower case and upper case. Underscores have no special
-  meaning in any portion of the fully qualified class name.
-  
-* Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
-  of any level, and MAY return a value.
+    4. Namespace names MUST match the case of directory names, and class names
+       MUST match the case of file names.
+
+4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
+   of any level, and MAY return a value.
 
 
 ## 3. Examples
