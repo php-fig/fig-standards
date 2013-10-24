@@ -91,7 +91,7 @@ name and structure classes to be autoloaded using the described technique.
 
 For a _conforming autoloader_ to be able to transform an _autoloadable class
 name_ into a _resource path_, this specification describes a technique that
-MUST be applied or taken into account. When the technique is applied, the
+MUST be applied. When the technique is applied, the
 _conforming autoloader_ can autoload an _autoloadable class name_ from an
 existing _resource path_.
 
