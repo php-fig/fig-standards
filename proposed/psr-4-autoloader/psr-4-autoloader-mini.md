@@ -58,38 +58,12 @@ to place files that will be autoloaded according the specification.
 
 ## 3. Examples
 
-<table>
-    <tr>
-        <th>Fully Qualified Class Name</th>
-        <th>Qualified Name</th>
-        <th>Base Directory</th>
-        <th>Corresponding File Path</th>
-    </tr>
-    <tr>
-        <td>\Acme\Log\Writer\File_Writer</td>
-        <td>Acme\Log\Writer</td>
-        <td>./acme-log-writer/lib/</td>
-        <td>./acme-log-writer/lib/File_Writer.php</td>
-    </tr>
-    <tr>
-        <td>\Aura\Web\Response\Status</td>
-        <td>Aura\Web</td>
-        <td>/path/to/aura-web/src/</td>
-        <td>/path/to/aura-web/src/Response/Status.php</td>
-    </tr>
-    <tr>
-        <td>\Symfony\Core\Request</td>
-        <td>Symfony\Core</td>
-        <td>./vendor/Symfony/Core/</td>
-        <td>./vendor/Symfony/Core/Request.php</td>
-    </tr>
-    <tr>
-        <td>\Zend\Acl</td>
-        <td>Zend</td>
-        <td>/usr/includes/Zend/</td>
-        <td>/usr/includes/Zend/Acl.php</td>
-    </tr>
-</table>
+| Fully Qualified Class Name    | Qualified Name    | Base Directory            | Corresponding File Path                   | 
+| :---------------------------- | :---------------- | :------------------------ | :---------------------------------------- |
+| \Acme\Log\Writer\File_Writer  | Acme\Log\Writer   | ./acme-log-writer/lib/    | ./acme-log-writer/lib/File_Writer.php     | 
+| \Aura\Web\Response\Status     | Aura\Web          | /path/to/aura-web/src/    | /path/to/aura-web/src/Response/Status.php | 
+| \Symfony\Core\Request         | Symfony\Core      | ./vendor/Symfony/Core/    | ./vendor/Symfony/Core/Request.php         | 
+| \Zend\Acl                     | Zend              | /usr/includes/Zend/       | /usr/includes/Zend/Acl.php                | 
 
 For example implementations of autoloaders conforming to the specification,
 please see the [examples file][]. Example implementations MUST NOT be regarded
