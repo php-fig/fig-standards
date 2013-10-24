@@ -170,8 +170,8 @@ _resource base_, and _resource path_ as case-sensitive.  Developers who wish
 their classes to be autoloadable MUST match case between an
 _autoloadable class name_ and the intended corresponding file. Furthermore,
 developers MUST NOT define _autoloadable class names_ that differ only in case.
-Although PHP does not enforce case on class names many file systems are
-case-sensitive, and allowing case-insensitive autoloading could lead to
+Although PHP does not enforce case on class names, many file systems are
+case-sensitive and allowing case-insensitive autoloading could lead to
 inconsistent results depending on the file system in question.
 
 
