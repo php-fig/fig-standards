@@ -69,7 +69,7 @@ to place files that will be autoloaded according the specification.
         <td>\Acme\Log\Writer\File_Writer</td>
         <td>Acme\Log\Writer</td>
         <td>./acme-log-writer/lib/</td>
-        <td>./acme-log-writer/File_Writer.php</td>
+        <td>./acme-log-writer/lib/File_Writer.php</td>
     </tr>
     <tr>
         <td>\Aura\Web\Response\Status</td>
