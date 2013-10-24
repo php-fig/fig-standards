@@ -45,13 +45,12 @@ to place files that will be autoloaded according the specification.
        name (a "qualified name") corresponds to at least one "base directory".
       
     2. The contiguous sub-namespace names after the "qualified name"
-       correspond to a subdirectory within a "base directory", in which the
-       namespace separators represent directory separators.
+       correspond to subdirectories of matching case within a "base
+       directory", in which the namespace separators represent directory
+       separators.
 
-    3. The terminating class name corresponds to a file name ending in `.php`.
-    
-    4. Namespace names MUST match the case of directory names, and class names
-       MUST match the case of file names.
+    3. The terminating class name corresponds to a file name of matching case
+       ending in `.php`.
 
 4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
    of any level, and SHOULD NOT return a value.
