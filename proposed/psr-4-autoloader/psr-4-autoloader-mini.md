@@ -58,12 +58,14 @@ to place files that will be autoloaded according the specification.
 
 ## 3. Examples
 
-| Fully Qualified Class Name    | Qualified Name    | Base Directory            | Corresponding File Path                   | 
-| :---------------------------- | :---------------- | :------------------------ | :---------------------------------------- |
-| \Acme\Log\Writer\File_Writer  | Acme\Log\Writer   | ./acme-log-writer/lib/    | ./acme-log-writer/lib/File_Writer.php     | 
-| \Aura\Web\Response\Status     | Aura\Web          | /path/to/aura-web/src/    | /path/to/aura-web/src/Response/Status.php | 
-| \Symfony\Core\Request         | Symfony\Core      | ./vendor/Symfony/Core/    | ./vendor/Symfony/Core/Request.php         | 
-| \Zend\Acl                     | Zend              | /usr/includes/Zend/       | /usr/includes/Zend/Acl.php                | 
+The table below shows the expected file path [4] for given inputs [1], [2], & [3]:
+
+Fully Qualified Class Name[1] | Qualified Name[2]  | Base Directory[3]        | Corresponding File Path[4]
+------------------------------|--------------------|--------------------------|-------------------------------------------
+\Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/File_Writer.php
+\Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
+\Symfony\Core\Request         | Symfony\Core       | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
+\Zend\Acl                     | Zend               | /usr/includes/Zend/      | /usr/includes/Zend/Acl.php
 
 For example implementations of autoloaders conforming to the specification,
 please see the [examples file][]. Example implementations MUST NOT be regarded
