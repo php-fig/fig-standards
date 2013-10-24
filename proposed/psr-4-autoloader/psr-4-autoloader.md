@@ -67,20 +67,21 @@ name and structure classes to be autoloaded using the described technique.
 - **resource base**: A base path to _resources_ for a particular _namespace
   prefix_. Given a file system _scheme_ and a _namespace prefix_ of
   `Acme\Log\`, a _resource base_ could be `/path/to/acme-log/src/`. A _resource
-  base_ will include a _scheme_-appropriate trailing separator, and could
+  base_ will include a _scheme_-appropriate trailing separator, and MAY
   include a _scheme_-appropriate leading separator. For example, in a file
   system _scheme_, that separator could be "\" or "/".
 
 - **resource path**: A path in the _scheme_ representing a _resource_ defining
   an _autoloadable class name_. Given an _autoloadable class name_ of
   `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, a
-  UNIX-like file system _scheme_, a _resource base_ of
-  `/path/to/acme-log/src`, and the specification described below, the
-  _resource path_ will be `/path/to/acme-log/src/Writer/FileWriter.php`. The
+  UNIX-like file system _scheme_ and a _resource base_ of
+  `/path/to/acme-log/src` a _conforming autoloader_ will determine the
+  _resource path_ as `/path/to/acme-log/src/Writer/FileWriter.php`. The
   _resource path_ is not certain to exist in the _scheme_.
 
-- **conforming autoloader**: PHP autoloader code that implements follows these
-  definitions and attempts to include the correct _resource path_ based on
+- **conforming autoloader**: PHP autoloader code that follows the given
+  [specification requirements](#32-requirements) and [implementation rules](#4-implementation)
+  to attempt to include the correct _resource path_ based on 
   a valid _fully qualified class name_.
 
 
@@ -90,7 +91,7 @@ name and structure classes to be autoloaded using the described technique.
 
 For a _conforming autoloader_ to be able to transform an _autoloadable class
 name_ into a _resource path_, this specification describes a technique that
-MUST be applied or taken into account. When the technique is applied, the
+MUST be applied. When the technique is applied, the
 _conforming autoloader_ can autoload an _autoloadable class name_ from an
 existing _resource path_.
 
@@ -101,7 +102,7 @@ MUST structure their classes using these same principles.
 
 ### 3.2. Requirements
 
-This is a collection of rules which explain how the _FQCN_ can be
+This is a collection of rules that explain how the _fully qualified class name_ can be
 converted into a _resource path_.
 
 1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
@@ -113,7 +114,7 @@ _class part_.
     project. This is to prevent conflicts between different libraries,
     components, modules, etc.
 
-    b. It is RECOMMENDED (but not required) that the _autoloadable class name_
+    b. It is RECOMMENDED that the _autoloadable class name_
     include a second _namespace part_, sometimes called a "package name", to
     identify its place within the "vendor name".
 
@@ -126,7 +127,7 @@ correspond to a _resource base_, using the following rules:
 
     a. A _namespace prefix_ MAY correspond to more than one _resource base_.
     (The order in which a _conforming autoloader_ processes more than one
-    corresponding _resource base_ is outside the scope of this spec.)
+    corresponding _resource base_ is outside the scope of this specification.)
 
     b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
     correspond to the same _resource base_.
