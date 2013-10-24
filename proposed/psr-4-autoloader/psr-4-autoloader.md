@@ -37,7 +37,7 @@ name and structure classes to be autoloaded using the described technique.
   but will not include the leading namespace separator. Given a _fully
   qualified class name_ of `\Acme\Log\Writer\FileWriter`, the _autoloadable
   class name_ is `Acme\Log\Writer\FileWriter`.
-  
+
 - **namespace part**: The individual non-terminating parts of an _autoloadable
   class name_. Given an _autoloadable class name_ of
   `Acme\Log\Writer\FileWriter`, the _namespace parts_ are `Acme`, `Log`, and
@@ -68,7 +68,7 @@ name and structure classes to be autoloaded using the described technique.
   prefix_. Given a file system _scheme_ and a _namespace prefix_ of
   `Acme\Log\`, a _resource base_ could be `/path/to/acme-log/src/`. A _resource
   base_ will include a _scheme_-appropriate trailing separator, and could
-  include a _scheme_-appropriate leading separator. For example, in a file 
+  include a _scheme_-appropriate leading separator. For example, in a file
   system _scheme_, that separator could be "\" or "/".
 
 - **resource path**: A path in the _scheme_ representing a _resource_ defining
@@ -101,7 +101,7 @@ MUST structure their classes using these same principles.
 
 ### 3.2. Requirements
 
-This is a collection of rules which explain how the _FQCN_ can be 
+This is a collection of rules which explain how the _FQCN_ can be
 converted into a _resource path_.
 
 1. Each _autoloadable class name_ MUST begin with a _namespace part_, which
@@ -112,12 +112,12 @@ _class part_.
     sometimes called a "vendor name", MUST be unique to the developer or
     project. This is to prevent conflicts between different libraries,
     components, modules, etc.
-    
+
     b. It is RECOMMENDED (but not required) that the _autoloadable class name_
     include a second _namespace part_, sometimes called a "package name", to
     identify its place within the "vendor name".
 
-    > **Example:** The _autoloadable class name_ which contains a "vendor 
+    > **Example:** The _autoloadable class name_ which contains a "vendor
     name" and other _namespace parts_ - including potentially a "package name",
     could follow this structure `\<Vendor Name>\(<Namespace Parts>\)*<Class Part>`.
 
@@ -139,10 +139,10 @@ following steps to locate and eventually include the correct _resource_:
 
   2. For every combination of _namespace prefix_ and _resource base_ found,
   take the _relative class name_  replace every _namespace separator_ in
-  it with a _scheme_-appropriate separator. Append the ".php" suffix, and 
-  append the result to the _resource base_. The result will be refered to 
+  it with a _scheme_-appropriate separator. Append the ".php" suffix, and
+  append the result to the _resource base_. The result will be refered to
   as _resource path_.
-  
+
   3. If any of the _resource paths_ obtained this way exists in the _scheme_,
   then include or require exactly one of them.
 
@@ -166,11 +166,11 @@ the _conforming autoloader_ for more information.
 
 ## 5. Examples
 
-The following examples MUST NOT be regarded as part of the specification. 
+The following examples MUST NOT be regarded as part of the specification.
 
 ### 5.1. Example Technique
 
-The aim of this "Example Technique" is to highlight how an autoloader could 
+The aim of this "Example Technique" is to highlight how an autoloader could
 transform a _autoloadable class name_ into a _resource path_.
 
 Given a UNIX-like file system _scheme_, a _fully qualified class name_ of
@@ -207,7 +207,7 @@ a class file will be placed:
 2. Pick one or more _resource bases_ for the file locations.
 
 3. Remove the _namespace prefix_ from the _autoloadable class name_.
-    
+
 4. The remaining _namespace parts_ become subdirectories under one of the
 _resource bases_.
 
