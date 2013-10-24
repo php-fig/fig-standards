@@ -74,9 +74,9 @@ name and structure classes to be autoloaded using the described technique.
 - **resource path**: A path in the _scheme_ representing a _resource_ defining
   an _autoloadable class name_. Given an _autoloadable class name_ of
   `Acme\Log\Writer\FileWriter`, a _namespace prefix_ of `Acme\Log\`, a
-  UNIX-like file system _scheme_, a _resource base_ of
-  `/path/to/acme-log/src`, and the specification described below, the
-  _resource path_ will be `/path/to/acme-log/src/Writer/FileWriter.php`. The
+  UNIX-like file system _scheme_ and a _resource base_ of
+  `/path/to/acme-log/src` a _conforming autoloader_ will determine the
+  _resource path_ as `/path/to/acme-log/src/Writer/FileWriter.php`. The
   _resource path_ is not certain to exist in the _scheme_.
 
 - **conforming autoloader**: PHP autoloader code that follows the given
