@@ -127,7 +127,7 @@ correspond to a _resource base_, using the following rules:
 
     a. A _namespace prefix_ MAY correspond to more than one _resource base_.
     (The order in which a _conforming autoloader_ processes more than one
-    corresponding _resource base_ is outside the scope of this spec.)
+    corresponding _resource base_ is outside the scope of this specification.)
 
     b. To prevent conflicts, different _namespace prefixes_ SHOULD NOT
     correspond to the same _resource base_.
