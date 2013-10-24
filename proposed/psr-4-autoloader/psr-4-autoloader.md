@@ -114,7 +114,7 @@ _class part_.
     project. This is to prevent conflicts between different libraries,
     components, modules, etc.
 
-    b. It is RECOMMENDED (but not required) that the _autoloadable class name_
+    b. It is RECOMMENDED that the _autoloadable class name_
     include a second _namespace part_, sometimes called a "package name", to
     identify its place within the "vendor name".
 
