@@ -140,7 +140,7 @@ following steps to locate and eventually include the correct _resource_:
   2. For every combination of _namespace prefix_ and _resource base_ found,
   take the _relative class name_  replace every _namespace separator_ in
   it with a _scheme_-appropriate separator. Append the ".php" suffix, and
-  append the result to the _resource base_. The result will be refered to
+  append the result to the _resource base_. The result will be referred to
   as _resource path_.
 
   3. If any of the _resource paths_ obtained this way exists in the _scheme_,
