@@ -164,6 +164,16 @@ multiple _resource bases_ corresponding to a _namespace prefix_ is not
 within the scope of this specification. Refer to the documentation of
 the _conforming autoloader_ for more information.
 
+4. A _conforming autoloader_ MUST treat a _fully qualified class name_,
+_resource base_, and _resource path_ as case-sensitive.  Developers who wish
+their classes to be autoloadable MUST match case between an
+_autoloadable class name_ and the intended corresponding file. Furthermore,
+developers MUST NOT define _autoloadable class names_ that differ only in case.
+Although PHP does not enforce case on class names many file systems are
+case-sensitive, and allowing case-insensitive autoloading could lead to
+inconsistent results depending on the file system in question.
+
+
 ## 5. Examples
 
 The following examples MUST NOT be regarded as part of the specification.
