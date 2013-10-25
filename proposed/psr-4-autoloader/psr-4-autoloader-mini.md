@@ -58,11 +58,11 @@ to place files that will be autoloaded according the specification.
 
 ## 3. Examples
 
-The table below shows the corresponding file paths [4] given inputs [1], [2],
-and [3]:
+The table below shows the corresponding file paths for a given fully qualified
+class name, qualified name, and base directory.
 
-| 1. Fully Qualified Class Name | 2. Qualified Name  | 3. Base Directory        | 4. Corresponding File Path
-| ------------------------------|--------------------|--------------------------|-------------------------------------------
+| Fully Qualified Class Name    | Qualified Name     | Base Directory           | Corresponding File Path
+| ----------------------------- |--------------------|--------------------------|-------------------------------------------
 | \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
 | \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
 | \Symfony\Core\Request         | Symfony\Core       | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
