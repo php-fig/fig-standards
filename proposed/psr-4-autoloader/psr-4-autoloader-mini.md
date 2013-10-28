@@ -30,13 +30,15 @@ to place files that will be autoloaded according the specification.
     
     3. The fully qualified class name MUST have a terminating class name.
 
-    4. Alphabetic characters in the fully qualified class name MAY be any
+    4. Underscores have no special meaning in any portion of the fully
+       qualified class name.
+
+    5. Alphabetic characters in the fully qualified class name MAY be any
        combination of lower case and upper case.
 
-    5. Fully qualified class names MUST NOT differ only in case.
-
-    6. Underscores have no special meaning in any portion of the fully
-       qualified class name.
+    6. Fully qualified class names MUST NOT differ only in case.
+    
+    7. All class names MUST be referred to in a case-sensitive fashion.
 
 3. When loading a file that corresponds to a fully qualified class name ...
 
