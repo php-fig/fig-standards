@@ -60,7 +60,7 @@ to place files that will be autoloaded according the specification.
 
 ## 3. Examples
 
-The table below shows the corresponding file paths for a given fully qualified
+The table below shows the corresponding file path for a given fully qualified
 class name, qualified name, and base directory.
 
 | Fully Qualified Class Name    | Qualified Name     | Base Directory           | Corresponding File Path
