@@ -220,13 +220,14 @@ Cons:
 # 4.4 Alternative: Use More Imperative And Narrative Langauge
 
 After one vote failed due to accidental proposal tampering, and a second vote
-was pulled by a Sponsor after hearing from multiple +1 voters that they supported 
-the idea but did not agree with (or understand) the wording of the proposal, 
-there was a period during which the voted-on proposal was expanded with greater 
-narrative and somewhat more imperative language. This approach was decried by a 
-vocal minority of participants. After some time, Beau Simensen started an 
-experimental revision with an eye to PSR-0; the Editor and Sponsors favored this 
-more terse approach and shepherded the version now under consideration.
+was pulled by a Sponsor after hearing from multiple +1 voters that they
+supported the idea but did not agree with (or understand) the wording of the
+proposal, there was a period during which the voted-on proposal was expanded
+with greater narrative and somewhat more imperative language. This approach
+was decried by a vocal minority of participants. After some time, Beau
+Simensen started an experimental revision with an eye to PSR-0; the Editor and
+Sponsors favored this more terse approach and shepherded the version now under
+consideration.
 
 ### Compatability Note with PHP 5.3.2 and below
 
