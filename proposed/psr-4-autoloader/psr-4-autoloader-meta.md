@@ -158,6 +158,7 @@ or raising errors.  The reason is two-fold.
 1. Autoloaders in PHP are explicitly designed to be stackable so that if one
 autoloader cannot load a class another has a chance to do so. Having an autoloader
 trigger a breaking error condition violates that compatibility.
+
 2. class_exists()  and interface_exists() allow "not found, even after trying to
 autoload" as a legitimate, normal use case. An autoloader that throws exceptions
 renders class_exists() unusable, which is entirely unacceptable from an interoperability
@@ -216,9 +217,20 @@ Cons:
 
 - Not in line with the wishes of poll respondents and some collaborators
 
+# 4.4 Alternative: Use More Imperative And Narrative Langauge
+
+After one vote failed due to accidental proposal tampering, and a second vote
+was pulled to the sponsor feeling that +1 voters were not truly satisfied with
+the proposal, there was a period during which the voted-on proposal was
+expanded with greater narrative and somewhat more imperative language. This
+approach was decried by a vocal minority of participants. After some time,
+Beau Simensen started an experimental revision with an eye to PSR-0; the
+Editor and Sponsors favored this more terse approach and shepherded the
+version now under consideration.
+
 ### Compatability Note with PHP 5.3.2 and below
 
-PHP versions before 5.3.3 do not strip the leading namespace seperator, so 
+PHP versions before 5.3.3 do not strip the leading namespace separator, so 
 the responsibility to look out for this falls on the implementation. Failing 
 to strip the leading namespace seperator could lead to unexpected behavior. 
 
@@ -238,7 +250,8 @@ to strip the leading namespace seperator could lead to unexpected behavior.
 ### 5.3 Contributors
 
 - Beau Simensen, for his work on defining and separating the transformation
-  rules
+  rules, as well as his experimental PSR-0-based version
+  
 - Too many others to name and count
 
 
