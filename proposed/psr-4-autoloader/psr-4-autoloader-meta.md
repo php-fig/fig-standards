@@ -159,9 +159,9 @@ or raising errors.  The reason is two-fold.
 autoloader cannot load a class another has a chance to do so. Having an autoloader
 trigger a breaking error condition violates that compatibility.
 
-2. class_exists()  and interface_exists() allow "not found, even after trying to
+2. `class_exists()` and `interface_exists()` allow "not found, even after trying to
 autoload" as a legitimate, normal use case. An autoloader that throws exceptions
-renders class_exists() unusable, which is entirely unacceptable from an interoperability
+renders `class_exists()` unusable, which is entirely unacceptable from an interoperability
 standpoint.  Autoloaders that wish to provide additional debugging information
 in a class-not-found case should do so via logging instead, either to a PSR-3
 compatible logger or otherwise.
@@ -220,13 +220,13 @@ Cons:
 # 4.4 Alternative: Use More Imperative And Narrative Langauge
 
 After one vote failed due to accidental proposal tampering, and a second vote
-was pulled by the sponsor after hearing from some +1 voters that they were not
-truly satisfied with the proposal, there was a period during which the
-voted-on proposal was expanded with greater narrative and somewhat more
-imperative language. This approach was decried by a vocal minority of
-participants. After some time, Beau Simensen started an experimental revision
-with an eye to PSR-0; the Editor and Sponsors favored this more terse approach
-and shepherded the version now under consideration.
+was pulled by the Editor after hearing from multiple +1 voters that they supported 
+the idea but did not agree with (or understand) the wording of the proposal, 
+there was a period during which the voted-on proposal was expanded with greater 
+narrative and somewhat more imperative language. This approach was decried by a 
+vocal minority of participants. After some time, Beau Simensen started an 
+experimental revision with an eye to PSR-0; the Editor and Sponsors favored this 
+more terse approach and shepherded the version now under consideration.
 
 ### Compatability Note with PHP 5.3.2 and below
 
