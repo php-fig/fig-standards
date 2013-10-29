@@ -258,8 +258,17 @@ to strip the leading namespace seperator could lead to unexpected behavior.
 6. Votes
 --------
 
-- **Entrance Vote:** https://groups.google.com/d/msg/php-fig/_LYBgfcEoFE/ZwFTvVTIl4AJ
-- **Acceptance Vote:** (tbd)
+- **Entrance Vote:** <https://groups.google.com/d/msg/php-fig/_LYBgfcEoFE/ZwFTvVTIl4AJ>
+
+- **Acceptance Vote:**
+
+    - 1st attempt: <https://groups.google.com/forum/#!topic/php-fig/Ua46E344_Ls>,
+      presented prior to new workflow; aborted due to accidental proposal modification
+      
+    - 2nd attempt: <https://groups.google.com/forum/#!topic/php-fig/NWfyAeF7Psk>,
+      cancelled at the discretion of the sponsor <https://groups.google.com/forum/#!topic/php-fig/t4mW2TQF7iE>
+    
+    - 3rd attempt: TBD
 
 
 7. Relevant Links
