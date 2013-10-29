@@ -43,10 +43,10 @@ to place files that will be autoloaded according the specification.
 3. When loading a file that corresponds to a fully qualified class name ...
 
     1. A contiguous series of one or more leading namespace names, not
-       including the leading namespace separator, in the fully qualified class
-       name (a "qualified name") corresponds to at least one "base directory".
+    including the leading namespace separator, in the fully qualified class
+    name (a "namespace prefix") corresponds to at least one "base directory".
       
-    2. The contiguous sub-namespace names after the "qualified name"
+    2. The contiguous sub-namespace names after the "namespace prefix"
        correspond to a subdirectory within a "base directory", in which the
        namespace separators represent directory separators. The subdirectory
        name MUST match the case of the sub-namespace names.
@@ -61,9 +61,9 @@ to place files that will be autoloaded according the specification.
 ## 3. Examples
 
 The table below shows the corresponding file path for a given fully qualified
-class name, qualified name, and base directory.
+class name, namespace prefix, and base directory.
 
-| Fully Qualified Class Name    | Qualified Name     | Base Directory           | Corresponding File Path
+| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Corresponding File Path
 | ----------------------------- |--------------------|--------------------------|-------------------------------------------
 | \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
 | \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
