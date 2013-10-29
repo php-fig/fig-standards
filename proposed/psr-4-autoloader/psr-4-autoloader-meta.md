@@ -220,7 +220,7 @@ Cons:
 # 4.4 Alternative: Use More Imperative And Narrative Langauge
 
 After one vote failed due to accidental proposal tampering, and a second vote
-was pulled by the Editor after hearing from multiple +1 voters that they supported 
+was pulled by a Sponsor after hearing from multiple +1 voters that they supported 
 the idea but did not agree with (or understand) the wording of the proposal, 
 there was a period during which the voted-on proposal was expanded with greater 
 narrative and somewhat more imperative language. This approach was decried by a 
