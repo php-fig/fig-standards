@@ -187,7 +187,7 @@ class Psr4AutoloaderClass
     protected function loadMappedFile($prefix, $relative_class)
     {
         // are there any base directories for this namespace prefix?
-        if (false !== isset($this->prefixes[$prefix])) {
+        if (isset($this->prefixes[$prefix]) === false) {
             return false;
         }
             
