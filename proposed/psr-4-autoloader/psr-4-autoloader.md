@@ -36,9 +36,7 @@ to place files that will be autoloaded according to the specification.
     5. Alphabetic characters in the fully qualified class name MAY be any
        combination of lower case and upper case.
 
-    6. Fully qualified class names MUST NOT differ only in case.
-    
-    7. All class names MUST be referenced in a case-sensitive fashion.
+    6. All class names MUST be referenced in a case-sensitive fashion.
 
 3. When loading a file that corresponds to a fully qualified class name ...
 
