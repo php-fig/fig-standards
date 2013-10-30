@@ -10,7 +10,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 This PSR describes a specification for [autoloading][] classes from file
 paths. It is fully interoperable, and can be used in addition to any other
 autoloading specification, including [PSR-0][]. This PSR also describes where
-to place files that will be autoloaded according the specification.
+to place files that will be autoloaded according to the specification.
 
 
 ## 2. Specification
