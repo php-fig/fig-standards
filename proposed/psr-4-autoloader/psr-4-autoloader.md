@@ -27,7 +27,7 @@ to place files that will be autoloaded according to the specification.
 
     2. The fully qualified class name MAY have one or more sub-namespace
        names.
-    
+
     3. The fully qualified class name MUST have a terminating class name.
 
     4. Underscores have no special meaning in any portion of the fully
@@ -40,10 +40,11 @@ to place files that will be autoloaded according to the specification.
 
 3. When loading a file that corresponds to a fully qualified class name ...
 
-    1. A contiguous series of one or more leading namespace names, not
-    including the leading namespace separator, in the fully qualified class
-    name (a "namespace prefix") corresponds to at least one "base directory".
-      
+    1. A contiguous series of one or more leading namespace and sub-namespace
+       names, not including the leading namespace separator, in the fully
+       qualified class name (a "namespace prefix") corresponds to at least one
+       "base directory".
+
     2. The contiguous sub-namespace names after the "namespace prefix"
        correspond to a subdirectory within a "base directory", in which the
        namespace separators represent directory separators. The subdirectory
@@ -51,7 +52,7 @@ to place files that will be autoloaded according to the specification.
 
     3. The terminating class name corresponds to a file name ending in `.php`.
        The file name MUST match the case of the terminating class name.
-    
+
 4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
    of any level, and SHOULD NOT return a value.
 
