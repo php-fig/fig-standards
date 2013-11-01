@@ -750,7 +750,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
 
 ```php
 /**
- * Page-Level DocBlock
+ * File-Level DocBlock
  *
  * @category MyCategory
  * @package  MyPackage
