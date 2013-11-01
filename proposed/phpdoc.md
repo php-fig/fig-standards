@@ -1306,7 +1306,7 @@ It is RECOMMENDED to use this tag with every function and method.
 Exceptions to this recommendation are:
 
 1. **constructors**: the @return tag MAY be omitted here, in which case an
-   interpreter MUST interpret this as if `@return self` is provided.
+   interpreter MUST interpret this as if `@return $this` is provided.
 2. **functions and methods without a `return` value**: the @return tag MAY be
    omitted here, in which case an interpreter MUST interpret this as if
    `@return void` is provided.
