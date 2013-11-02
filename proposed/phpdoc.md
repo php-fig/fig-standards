@@ -1161,11 +1161,10 @@ depending where it is defined.
 
 1. If the @package is defined in the *file-level* DocBlock then it only applies
    to the following elements in the applicable file:
-
-   * global functions
-   * global constants
-   * global variables
-   * requires and includes
+    * global functions
+    * global constants
+    * global variables
+    * requires and includes
 
 2. If the @package is defined in a *namespace-level* or *class-level* DocBlock
    then the package applies to that namespace, class or interface and their
