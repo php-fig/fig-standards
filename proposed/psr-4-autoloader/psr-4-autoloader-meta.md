@@ -250,9 +250,10 @@ to strip the leading namespace seperator could lead to unexpected behavior.
 
 ### 5.3 Contributors
 
-- Beau Simensen, for his work on defining and separating the transformation
-  rules, as well as his experimental PSR-0-based version
-  
+- Paul Dragoonis
+- Bernhard Schussek
+- Beau Simensen
+- Mike van Riel
 - Too many others to name and count
 
 
