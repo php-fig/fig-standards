@@ -219,15 +219,14 @@ Cons:
 
 # 4.4 Alternative: Use More Imperative And Narrative Langauge
 
-After one vote failed due to accidental proposal tampering, and a second vote
-was pulled by a Sponsor after hearing from multiple +1 voters that they
-supported the idea but did not agree with (or understand) the wording of the
-proposal, there was a period during which the voted-on proposal was expanded
-with greater narrative and somewhat more imperative language. This approach
-was decried by a vocal minority of participants. After some time, Beau
+After the second vote was pulled by a Sponsor after hearing from multiple +1 
+voters that they supported the idea but did not agree with (or understand) the 
+wording of the proposal, there was a period during which the voted-on proposal
+was expanded with greater narrative and somewhat more imperative language. This
+approach was decried by a vocal minority of participants. After some time, Beau
 Simensen started an experimental revision with an eye to PSR-0; the Editor and
 Sponsors favored this more terse approach and shepherded the version now under
-consideration.
+consideration, written by Paul M. Jones and contributed to by many.
 
 ### Compatability Note with PHP 5.3.2 and below
 
@@ -250,10 +249,12 @@ to strip the leading namespace seperator could lead to unexpected behavior.
 
 ### 5.3 Contributors
 
-- Paul Dragoonis
+- Andreas Hennings
 - Bernhard Schussek
 - Beau Simensen
+- Donald Gilbert 
 - Mike van Riel
+- Paul Dragoonis
 - Too many others to name and count
 
 
@@ -286,3 +287,5 @@ to strip the leading namespace seperator could lead to unexpected behavior.
 - [VOTE: Package-Oriented Autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/Ua46E344_Ls)
 - [Proposal: Package-Oriented Autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/qT7mEy0RIuI)
 - [Towards a Package Oriented Autoloader](https://groups.google.com/forum/#!searchin/php-fig/package$20oriented$20autoloader/php-fig/JdR-g8ZxKa8/jJr80ard-ekJ)
+- [List of Alternative PSR-4 Proposals](https://groups.google.com/forum/#!topic/php-fig/oXr-2TU1lQY)
+- [Summary of [post-Acceptance Vote pull] PSR-4 discussions](https://groups.google.com/forum/#!searchin/php-fig/psr-4$20summary/php-fig/bSTwUX58NhE/YPcFgBjwvpEJ)
