@@ -5,8 +5,8 @@ namespace Example;
  * An example of a project-specific implementation.
  * 
  * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the `\Foo\Bar\Baz\Qux` class
- * from `/path/to/project/src/Baz/Qux.php`:
+ * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
+ * from /path/to/project/src/Baz/Qux.php:
  * 
  *      new \Foo\Bar\Baz\Qux;
  *      
@@ -23,7 +23,7 @@ spl_autoload_register(function ($class) {
     
     // does the class use the namespace prefix?
     $len = strlen($prefix);
-    if (strncmp($prefix, $class, $len) === 0) {
+    if (strncmp($prefix, $class, $len) !== 0) {
         // no, move to the next registered autoloader
         return;
     }
@@ -47,7 +47,7 @@ spl_autoload_register(function ($class) {
  * functionality of allowing multiple base directories for a single namespace
  * prefix.
  * 
- * Given a `foo-bar` package of classes in the file system at the following
+ * Given a foo-bar package of classes in the file system at the following
  * paths ...
  * 
  *     /path/to/packages/foo-bar/
@@ -60,7 +60,7 @@ spl_autoload_register(function ($class) {
  *             Qux/
  *                 QuuxTest.php    # Foo\Bar\Qux\QuuxTest
  * 
- * ... add the path to the class files for the `\Foo\Bar\` namespace prefix
+ * ... add the path to the class files for the \Foo\Bar\ namespace prefix
  * as follows:
  * 
  *      <?php
@@ -187,7 +187,7 @@ class Psr4AutoloaderClass
     protected function loadMappedFile($prefix, $relative_class)
     {
         // are there any base directories for this namespace prefix?
-        if (! isset($this->prefixes[$prefix])) {
+        if (isset($this->prefixes[$prefix]) === false) {
             return false;
         }
             

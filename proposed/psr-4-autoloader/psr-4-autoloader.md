@@ -1,107 +1,78 @@
-PSR-4: Autoloader
-=================
+# PSR-4: Autoloader
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 
-1. Overview
------------
+## 1. Overview
 
-This PSR specifies the rules for an interoperable PHP autoloader that maps
-namespaces to file system paths, and that can co-exist with any other SPL
-registered autoloader.
-
-
-2. Definitions
---------------
-
-- **class**: The term _class_ refers to PHP classes, interfaces, and traits.
-
-- **fully qualified class name**: The full namespace and class name, with the
-  leading namespace separator. (This is per the
-  [Name Resolution Rules](http://php.net/manual/en/language.namespaces.rules.php)
-  from the PHP manual.)
-
-- **namespace name**: Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, the _namespace names_ are `Foo`, `Bar`, and `Baz`.
-  
-- **namespace prefix**: Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux`, the _namespace prefix_ may be `\Foo\`, `\Foo\Bar\`, or
-  `\Foo\Bar\Baz\`.
-
-- **relative class name**: The parts of the _fully qualified class name_ that
-  appear after the _namespace prefix_. Given a _fully qualified class name_ of
-  `\Foo\Bar\Baz\Qux` and a _namespace prefix_ of `\Foo\Bar\`, the _relative
-  class name_ is `Baz\Qux`.
-
-- **base directory**: The directory path in the file system where the files
-  for _relative class names_ have their root. Given a namespace prefix of 
-  `\Foo\Bar\`, the _base directory_ could be `/path/to/packages/foo-bar/src`.
-
-- **mapped file name**: The path in the file system resulting from the
-  transformation of a _fully qualified class name_. Given a _fully qualified
-  class name_ of `\Foo\Bar\Baz\Qux`, a namespace prefix of `\Foo\Bar\`, and a
-  _base directory_ of `/path/to/packages/foo-bar/src`, the transformation
-  rules in the specification will result in a _mapped file name_ of
-  `/path/to/packages/foo-bar/src/Baz/Qux.php`.
+This PSR describes a specification for [autoloading][] classes from file
+paths. It is fully interoperable, and can be used in addition to any other
+autoloading specification, including [PSR-0][]. This PSR also describes where
+to place files that will be autoloaded according to the specification.
 
 
-3. Specification
-----------------
+## 2. Specification
 
-### 3.1. General
+1. The term "class" refers to classes, interfaces, traits, and other similar
+   structures.
 
-The fully qualified class name MUST begin with a namespace name, which MAY be
-followed by one or more additional namespace names, and MUST end in a class
-name.
+2. A fully qualified class name has the following form:
 
-At least one namespace prefix of the fully qualified class name MUST
-correspond to a base directory.
+        \<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>
 
-A namespace prefix MAY correspond to more than one base directory.
+    1. The fully qualified class name MUST have a top-level namespace name,
+       also known as a "vendor namespace".
 
-### 3.2. Registered Autoloaders
+    2. The fully qualified class name MAY have one or more sub-namespace
+       names.
 
-The registered autoloader MUST transform the fully qualified class name
-using the rules in section 3.3. The result MUST be suffixed with `.php` to
-generate a mapped file name.
+    3. The fully qualified class name MUST have a terminating class name.
 
-If the mapped file name exists in the file system, the registered autoloader
-MUST include or require it.
+    4. Underscores have no special meaning in any portion of the fully
+       qualified class name.
 
-The registered autoloader MUST NOT throw exceptions, MUST NOT raise errors of
-any level, and SHOULD NOT return a value.
+    5. Alphabetic characters in the fully qualified class name MAY be any
+       combination of lower case and upper case.
 
-### 3.3. Transformation
+    6. All class names MUST be referenced in a case-sensitive fashion.
 
-Given a fully qualified class name, a namespace prefix, and a base directory
-that corresponds with that namespace prefix ...
+3. When loading a file that corresponds to a fully qualified class name ...
 
-- The fully qualified class name MUST be normalized so that any leading
-  namespace separator is removed. (PHP versions 5.3.3 and later do this
-  automatically.)
+    1. A contiguous series of one or more leading namespace and sub-namespace
+       names, not including the leading namespace separator, in the fully
+       qualified class name (a "namespace prefix") corresponds to at least one
+       "base directory".
 
-- The namespace prefix MUST be normalized so that any leading namespace
-  separator is removed, and so that it ends with a namespace separator.
+    2. The contiguous sub-namespace names after the "namespace prefix"
+       correspond to a subdirectory within a "base directory", in which the
+       namespace separators represent directory separators. The subdirectory
+       name MUST match the case of the sub-namespace names.
 
-- The base directory MUST be normalized so that it ends with directory
-  separator.
+    3. The terminating class name corresponds to a file name ending in `.php`.
+       The file name MUST match the case of the terminating class name.
 
-- The namespace prefix portion of the fully qualified class name MUST be
-  replaced with the corresponding base directory.
-
-- Namespace separators in the relative class name portion of the fully
-  qualified class name MUST be replaced with directory separators.
+4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
+   of any level, and SHOULD NOT return a value.
 
 
-4. Implementations
-------------------
+## 3. Examples
 
-Implementations MAY contain additional features and MAY differ in how they are
-implemented.
+The table below shows the corresponding file path for a given fully qualified
+class name, namespace prefix, and base directory.
 
-For example implementations, see [Psr4AutoloaderTest.php](Psr4AutoloaderTest.php). Example
-implementations MUST NOT be regarded as part of the specification; they are
-examples only, and may change at any time.
+| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Corresponding File Path
+| ----------------------------- |--------------------|--------------------------|-------------------------------------------
+| \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
+| \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
+| \Symfony\Core\Request         | Symfony\Core       | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
+| \Zend\Acl                     | Zend               | /usr/includes/Zend/      | /usr/includes/Zend/Acl.php
+
+For example implementations of autoloaders conforming to the specification,
+please see the [examples file][]. Example implementations MUST NOT be regarded
+as part of the specification and MAY change at any time.
+
+[autoloading]: http://php.net/autoload
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+[examples file]: psr-4-autoloader-examples.php

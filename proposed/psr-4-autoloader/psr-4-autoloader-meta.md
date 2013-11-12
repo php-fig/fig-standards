@@ -158,9 +158,10 @@ or raising errors.  The reason is two-fold.
 1. Autoloaders in PHP are explicitly designed to be stackable so that if one
 autoloader cannot load a class another has a chance to do so. Having an autoloader
 trigger a breaking error condition violates that compatibility.
-2. class_exists()  and interface_exists() allow "not found, even after trying to
+
+2. `class_exists()` and `interface_exists()` allow "not found, even after trying to
 autoload" as a legitimate, normal use case. An autoloader that throws exceptions
-renders class_exists() unusable, which is entirely unacceptable from an interoperability
+renders `class_exists()` unusable, which is entirely unacceptable from an interoperability
 standpoint.  Autoloaders that wish to provide additional debugging information
 in a class-not-found case should do so via logging instead, either to a PSR-3
 compatible logger or otherwise.
@@ -216,6 +217,23 @@ Cons:
 
 - Not in line with the wishes of poll respondents and some collaborators
 
+### 4.4 Alternative: Use More Imperative And Narrative Langauge
+
+After the second vote was pulled by a Sponsor after hearing from multiple +1 
+voters that they supported the idea but did not agree with (or understand) the 
+wording of the proposal, there was a period during which the voted-on proposal
+was expanded with greater narrative and somewhat more imperative language. This
+approach was decried by a vocal minority of participants. After some time, Beau
+Simensen started an experimental revision with an eye to PSR-0; the Editor and
+Sponsors favored this more terse approach and shepherded the version now under
+consideration, written by Paul M. Jones and contributed to by many.
+
+### Compatability Note with PHP 5.3.2 and below
+
+PHP versions before 5.3.3 do not strip the leading namespace separator, so 
+the responsibility to look out for this falls on the implementation. Failing 
+to strip the leading namespace seperator could lead to unexpected behavior. 
+
 
 5. People
 ---------
@@ -231,16 +249,29 @@ Cons:
 
 ### 5.3 Contributors
 
-- Beau Simensen, for his work on defining and separating the transformation
-  rules
+- Andreas Hennings
+- Bernhard Schussek
+- Beau Simensen
+- Donald Gilbert 
+- Mike van Riel
+- Paul Dragoonis
 - Too many others to name and count
 
 
 6. Votes
 --------
 
-- **Entrance Vote:** (tbd)
-- **Acceptance Vote:** (tbd)
+- **Entrance Vote:** <https://groups.google.com/d/msg/php-fig/_LYBgfcEoFE/ZwFTvVTIl4AJ>
+
+- **Acceptance Vote:**
+
+    - 1st attempt: <https://groups.google.com/forum/#!topic/php-fig/Ua46E344_Ls>,
+      presented prior to new workflow; aborted due to accidental proposal modification
+      
+    - 2nd attempt: <https://groups.google.com/forum/#!topic/php-fig/NWfyAeF7Psk>,
+      cancelled at the discretion of the sponsor <https://groups.google.com/forum/#!topic/php-fig/t4mW2TQF7iE>
+    
+    - 3rd attempt: TBD
 
 
 7. Relevant Links
@@ -256,3 +287,5 @@ Cons:
 - [VOTE: Package-Oriented Autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/Ua46E344_Ls)
 - [Proposal: Package-Oriented Autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/qT7mEy0RIuI)
 - [Towards a Package Oriented Autoloader](https://groups.google.com/forum/#!searchin/php-fig/package$20oriented$20autoloader/php-fig/JdR-g8ZxKa8/jJr80ard-ekJ)
+- [List of Alternative PSR-4 Proposals](https://groups.google.com/forum/#!topic/php-fig/oXr-2TU1lQY)
+- [Summary of [post-Acceptance Vote pull] PSR-4 discussions](https://groups.google.com/forum/#!searchin/php-fig/psr-4$20summary/php-fig/bSTwUX58NhE/YPcFgBjwvpEJ)
