@@ -62,7 +62,7 @@ to place files that will be autoloaded according to the specification.
 The table below shows the corresponding file path for a given fully qualified
 class name, namespace prefix, and base directory.
 
-| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Corresponding File Path
+| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Resulting File Path
 | ----------------------------- |--------------------|--------------------------|-------------------------------------------
 | \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
 | \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
