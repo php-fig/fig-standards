@@ -1,6 +1,13 @@
-<?php
-namespace Example;
+Example Implementations of PSR-4
+================================
 
+The following are examples illustrate PSR-4 compliant code:
+
+Closure Example
+---------------
+
+```php
+<?php
 /**
  * An example of a project-specific implementation.
  * 
@@ -41,6 +48,17 @@ spl_autoload_register(function ($class) {
         require $file;
     }
 });
+```
+
+Class Example
+-------------
+
+The following is an example class implementation to handle multiple
+namespaces:
+
+```php
+<?php
+namespace Example;
 
 /**
  * An example of a general-purpose implementation that includes the optional
@@ -99,7 +117,7 @@ class Psr4AutoloaderClass
     /**
      * Register loader with SPL autoloader stack.
      * 
-     * @return null
+     * @return void
      */
     public function register()
     {
@@ -115,7 +133,7 @@ class Psr4AutoloaderClass
      * @param bool $prepend If true, prepend the base directory to the stack
      * instead of appending it; this causes it to be searched first rather
      * than last.
-     * @return null
+     * @return void
      */
     public function addNamespace($prefix, $base_dir, $prepend = false)
     {
@@ -230,6 +248,15 @@ class Psr4AutoloaderClass
         return false;
     }
 }
+```
+
+### Unit Tests
+
+The following example is one way of unit testing the above class loader:
+
+```php
+<?php
+namespace Example\Tests;
 
 class MockPsr4AutoloaderClass extends Psr4AutoloaderClass
 {
