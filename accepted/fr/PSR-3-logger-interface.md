@@ -247,7 +247,7 @@ interface LoggerInterface
 namespace Psr\Log;
 
 /**
- * Décris une instance logger-aware
+ * Décrit une instance logger-aware
  */
 interface LoggerAwareInterface
 {
@@ -270,7 +270,7 @@ interface LoggerAwareInterface
 namespace Psr\Log;
 
 /**
- * Décris les niveaux de journalisation
+ * Décrit les niveaux de journalisation
  */
 class LogLevel
 {
