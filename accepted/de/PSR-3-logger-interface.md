@@ -123,29 +123,34 @@ Anwender eines Loggers werden als `Anwender` bezeichnet.
   ob die Daten aus `'exception'` eine g&uuml;ltige `Exception` bevore sie den 
   Inhalt wie eine `Exception` behandeln, da in `'exception'` `alles` stehen KANN.
 
-### 1.4 Helper classes and interfaces
+### 1.4 Helfer Klassen und Interfaces
 
-- The `Psr\Log\AbstractLogger` class lets you implement the `LoggerInterface`
-  very easily by extending it and implementing the generic `log` method.
-  The other eight methods are forwarding the message and context to it.
+- Die Klasse `Psr\Log\AbstractLogger` erm&ouml;glicht ein sehr einfaches 
+  Implementieren der Schnittstelle `Psr\Log\LoggerInterface`. Dazu muss die 
+  Implementierung nur von `Psr\Log\AbstractLogger` ableiten und die generische 
+  Methode `log` implementieren.
+  Die anderen acht Methoden leiten die Nachricht und den Kontext via des entspechenden
+  Log-Levels and diese Methode weiter.
 
-- Similarly, using the `Psr\Log\LoggerTrait` only requires you to
-  implement the generic `log` method. Note that since traits can not implement
-  interfaces, in this case you still have to `implement LoggerInterface`.
+- &Auml;hnlich dazu kann `Psr\Log\LoggerTrait` verwendet werden. Auch hier muss
+  nur die generische `log` Methode implementiert werden und in diesem Fall explizit
+  die Schnittstelle `Psr\Log\LoggerInterface` implementiert werden.
 
-- The `Psr\Log\NullLogger` is provided together with the interface. It MAY be
-  used by users of the interface to provide a fall-back "black hole"
-  implementation if no logger is given to them. However conditional logging
-  may be a better approach if context data creation is expensive.
+- Die Klasse `Psr\Log\NullLogger` wird ebenfalls mitgeliefert. Diese KANN vom 
+  `Anwender` verwendet werden um z.B. als Fallback zu dienen, WENN KEIN Logger
+  bereit steht. Normalerweise KANN bedingtes Loggen einen besseren Ansatz sein, 
+  da das Erstellen der Kontext daten teuer, zeitaufw&auml;ndig sein KANN.
 
-- The `Psr\Log\LoggerAwareInterface` only contains a
-  `setLogger(LoggerInterface $logger)` method and can be used by frameworks to
-  auto-wire arbitrary instances with a logger.
+- Die Schnittstelle `Psr\Log\LoggerAwareInterface` beinhaltet nur eine Methode
+  `setLogger(LoggerInterface $logger)` und kann dazu genutzt werden, dass Frameworks 
+  automatisch einen Logger an beliebige Instanzen binden k&ouml;nnen.
 
-- The `Psr\Log\LoggerAwareTrait` trait can be used to implement the equivalent
-  interface easily in any class. It gives you access to `$this->logger`.
+- Das Trait `Psr\Log\LoggerAwareTrait` kann gleich wie `Psr\Log\LoggerAwareInterface`
+  dazu verwendet werden &uuml;berall einfach eingebunden zu werden und stellt den 
+  Zugriff auf `$this->logger` bereit.
 
-- The `Psr\Log\LogLevel` class holds constants for the eight log levels.
+-  Die Klasse `Psr\Log\LogLevel` stellt die acht Log-Level als Konstanten zur 
+  Verf&uuml;gung.
 
 2. Package
 ----------
