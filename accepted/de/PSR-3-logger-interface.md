@@ -1,44 +1,54 @@
 Logger Interface
 ================
 
-This document describes a common interface for logging libraries.
+Diese Dokument beschreibt eine generische Schnittestelle f&uuml;r Bibliotheken die
+Logging anbieten möchten.
 
-The main goal is to allow libraries to receive a `Psr\Log\LoggerInterface`
-object and write logs to it in a simple and universal way. Frameworks
-and CMSs that have custom needs MAY extend the interface for their own
-purpose, but SHOULD remain compatible with this document. This ensures
-that the third-party libraries an application uses can write to the
-centralized application logs.
+Das Hauptziel ist, Bibliotheken zu erm&ouml;glichen eine Instanz von 
+`Psr\Log\LoggerInterface` zu erhalten und auf einem einfachen und universellen 
+Weg aufdieses Interface Log-Eintr&auml;ge zu schreiben. Frameworks und Content 
+Management Systeme, welche ihre eigenen Anforderungen haben K&Ouml;NNEN das Interface
+erweitern, SOLLTEN jedoch die Kompatibilit&auml;t zu diesem Dokument erhalten. Dies 
+sichert den Anwendungen die drittanbieter Bibliotheken verwenden zu, dass in die 
+anwendungszentralen Logs geschrieben werden kann.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+Die Schl&uuml;sselw&ouml;rter "M&Uuml;SSEN", "D&Uuml;RFEN NICHT", "ERFORDERT", "SOLLEN", 
+"SOLLEN NICHT", ", WENN", "WENN NICHT", "EMPFOHLEN", "K&Ouml;NNEN" und "OPTIONAL", die
+in diesem Dokument verwendet werden, sind zu verstehen wie in RFC 2119 [RFC 2119][] 
+beschrieben.
 
-The word `implementor` in this document is to be interpreted as someone
-implementing the `LoggerInterface` in a log-related library or framework.
-Users of loggers are refered to as `user`.
+Was Wort `Implementierer` in diesem Dokument ist zu verstehen als: eine 
+Person/Organisation welche das hier erw&auml;hnte `Psr\Log\LoggerInterface` in einem 
+Framework oder einer Bibliothek, welche mit Logging in Zusammenhang steht 
+implemenitert.
+
+Anwender eines Loggers werden als `Anwender` bezeichnet.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-1. Specification
+1. Spezifikation
 -----------------
 
-### 1.1 Basics
+### 1.1 Grundlegendes
 
-- The `LoggerInterface` exposes eight methods to write logs to the eight
-  [RFC 5424][] levels (debug, info, notice, warning, error, critical, alert,
-  emergency).
+- Das `Psr\Log\LoggerInterface` ver&ouml;ffentlicht acht Methoden um in Logs zu 
+  schreibeneight methods. Diese acht Methoden bilden die acht Log-Levels aus
+  [RFC 5424][] (debug, info, notice, warning, error, critical, alert, emergency) 
+  ab.
 
-- A ninth method, `log`, accepts a log level as first argument. Calling this
-  method with one of the log level constants MUST have the same result as
-  calling the level-specific method. Calling this method with a level not
-  defined by this specification MUST throw a `Psr\Log\InvalidArgumentException`
-  if the implementation does not know about the level. Users SHOULD NOT use a
-  custom level without knowing for sure the current implementation supports it.
+- Es wir deine neunte Methode `log` ver&ouml;ffentlicht welche als erstes 
+  Argument eines der acht Log-Levels akzeptiert. Der Aufruf dieser Methode mit 
+  einem der acht Log-Levels MUSS das selbe Ergebnis haben als wenn man die 
+  dem Log-Level entsprechende Methode aufruft. Wird diese Methode mit einem 
+  Log-Level aufgerufen, dass nicht einem der acht Log-Levels aus [RFC 5424][] 
+  entspricht und von der Implementierung nicht verstanden wird MUSS eine 
+  `Psr\Log\InvalidArgumentException` geworfen werden.
+  `Anwender` SOLLTEN KEINE benutzerspezifischen Log-Levels verwenden ohne zu wissen
+  ob diese von der aktuellen Implementierung unterst&uuml; werden.
 
 [RFC 5424]: http://tools.ietf.org/html/rfc5424
 
-### 1.2 Message
+### 1.2 Nachricht
 
 - Every method accepts a string as the message, or an object with a
   `__toString()` method. Implementors MAY have special handling for the passed
