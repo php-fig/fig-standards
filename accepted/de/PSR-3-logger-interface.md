@@ -160,6 +160,7 @@ wie die erw&auml;hnten `Exceptions` und eine TestSuite um ihre Implementierung z
 pr&uuml;fen sind Teils des pakets [psr/log] (https://packagist.org/packages/psr/log).
 
 3. - 5. Quellcode
+----------
 
 Um hier keine veralten Quellcodes anzuzeigen wird an dieser Stelle auf das Repository:
 [psr/log] verwiesen. Das Repository beinhaltet alle Quellen aus diesem Dokument.
