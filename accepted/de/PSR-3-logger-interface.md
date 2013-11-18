@@ -80,7 +80,7 @@ Anwender eines Loggers werden als `Anwender` bezeichnet.
   und wird daher nicht &Uuml;bersetzt:
 
   ```php
-  /**s
+  /**
    * Interpolates context values into the message placeholders.
    */
   function interpolate($message, array $context = array())
