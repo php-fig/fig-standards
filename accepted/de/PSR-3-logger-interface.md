@@ -58,7 +58,7 @@ Anwender eines Loggers werden als `Anwender` bezeichnet.
 - Die Nachricht KANN Platzhalter beinhalten welche der `Implementierer` mit den 
   Werten aus dem Contaxt Array ersetzen KANN.
 
-  Platzhalter M&Uuml;SSEN den Schl&uuml;sseln des Context Array entsprechen.
+  Platzhalter M&Uuml;SSEN den Schl&uuml;sseln des Kontext Array entsprechen.
 
   Platzhalter-Namen M&Uuml;SSEN begrenzt sein durch eine am Beginn stehende 
   &ouml;ffnende geschungene Klammer `{` und am Ende durch eine schlie&szlig;ende 
@@ -75,12 +75,12 @@ Anwender eines Loggers werden als `Anwender` bezeichnet.
   verwenden, da der `Anwender` nicht im Vorfeld wissen kann wie die COntext Daten 
   angezeigt oder verarbeitet werden.
 
-  Im Folgenden ist ein Beispiel f&uuml;r das Interpolieren des Context Arrays 
+  Im Folgenden ist ein Beispiel f&uuml;r das Interpolieren des Kontext Arrays 
   als Referenz Beispiel zu sehen. Dieser Code stammt aus dem englischen Original
   und wird daher nicht &Uuml;bersetzt:
 
   ```php
-  /**
+  /**s
    * Interpolates context values into the message placeholders.
    */
   function interpolate($message, array $context = array())
@@ -105,20 +105,23 @@ Anwender eines Loggers werden als `Anwender` bezeichnet.
   echo interpolate($message, $context);
   ```
 
-### 1.3 Context
+### 1.3 Kontext
 
-- Every method accepts an array as context data. This is meant to hold any
-  extraneous information that does not fit well in a string. The array can
-  contain anything. Implementors MUST ensure they treat context data with
-  as much lenience as possible. A given value in the context MUST NOT throw
-  an exception nor raise any php error, warning or notice.
+- Jede Methode akzeptiert ein Array als Kontext Daten. Dies ist dazu gedacht,
+  externe Daten zu halten die nicht direkt in die Nachricht passen bzw. formattiert 
+  werden k&ouml;nnen. Das Array kann alles beinhalten.
+  `Implementierer` M&Uuml;SSEN sicherstellen, dass die Kontext-Daten so 
+  Nachsichtig wie m&ouml;glich behandelt werden. Ein Wert aus dem Kontext 
+  DARF KEINE `Exception` werfen oder eine(n) `PHP Fehler, Warnung oder Notiz` 
+  ausl&ouml;sen.
 
-- If an `Exception` object is passed in the context data, it MUST be in the
-  `'exception'` key. Logging exceptions is a common pattern and this allows
-  implementors to extract a stack trace from the exception when the log
-  backend supports it. Implementors MUST still verify that the `'exception'`
-  key is actually an `Exception` before using it as such, as it MAY contain
-  anything.
+  - WENN ein `Exception` Objekt in Kontext-daten enthalten ist MUSS dieses mit 
+  dem Schl&uuml;ssel `exception` &uuml;bergeben werden.
+  Das Loggen von Exceptions ist ein g&auml;ngiges Vorgehen und erlaubt dem 
+  `Implementierer` das Extrahieren des Stacktraces aus der `Exception` WENN 
+  das Backend dies unterst&uuml;tzt. `Implementierer` M&Uuml;SSEN trotzdem pr&uuml;fen
+  ob die Daten aus `'exception'` eine g&uuml;ltige `Exception` bevore sie den 
+  Inhalt wie eine `Exception` behandeln, da in `'exception'` `alles` stehen KANN.
 
 ### 1.4 Helper classes and interfaces
 
