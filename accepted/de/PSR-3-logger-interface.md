@@ -50,29 +50,34 @@ Anwender eines Loggers werden als `Anwender` bezeichnet.
 
 ### 1.2 Nachricht
 
-- Every method accepts a string as the message, or an object with a
-  `__toString()` method. Implementors MAY have special handling for the passed
-  objects. If that is not the case, implementors MUST cast it to a string.
+- Jede Methode MUSS einen String als Nachricht akzeptieren oder ein Objekt, dass
+  die `__toString()` Methode implementiert. `Implementierer` k&ouml;nnen eine
+  gesonderte Behandlung f&uuml;r &uuml;bergebene Objekte implementieren. WENN NICHT
+  MUSS das Objekt als String gecastet werden.
 
-- The message MAY contain placeholders which implementors MAY replace with
-  values from the context array.
+- Die Nachricht KANN Platzhalter beinhalten welche der `Implementierer` mit den 
+  Werten aus dem Contaxt Array ersetzen KANN.
 
-  Placeholder names MUST correspond to keys in the context array.
+  Platzhalter M&Uuml;SSEN den Schl&uuml;sseln des Context Array entsprechen.
 
-  Placeholder names MUST be delimited with a single opening brace `{` and
-  a single closing brace `}`. There MUST NOT be any whitespace between the
-  delimiters and the placeholder name.
+  Platzhalter-Namen M&Uuml;SSEN begrenzt sein durch eine am Beginn stehende 
+  &ouml;ffnende geschungene Klammer `{` und am Ende durch eine schlie&szlig;ende 
+  geschungene Klammer `}`. Es D&Uuml;RFEN KEINE Leerzeichen zwischen den Begrenzern
+  und des Platzhalter-Namens stehen.
 
-  Placeholder names SHOULD be composed only of the characters `A-Z`, `a-z`,
-  `0-9`, underscore `_`, and period `.`. The use of other characters is
-  reserved for future modifications of the placeholders specification.
+  Platzhalter-Namen SOLLTEN nur aus den Zeichen `A-Z`, `a-z`, `0-9`, Unterstrich
+  `_` und Punkt `.` bestehen. Das Verwenden von anderen Zeichen is reserviert f&uuml;
+  zuk&uuml;nftige &Auml;nderungen an der Spezifikation f&uuml;r Platzhalter.
 
-  Implementors MAY use placeholders to implement various escaping strategies
-  and translate logs for display. Users SHOULD NOT pre-escape placeholder
-  values since they can not know in which context the data will be displayed.
+  `Implementierer` K&Ouml;NNEN Platzhalter nutzen um verschiedenen Escaping 
+  Strategien oder das &Uuml;bersetzen von Log-Eintr&auml;gen zur Anzeige zu 
+  implementieren. `Anwender` SOLLTEN KEINE bereits escapte Platzhalter-Werte 
+  verwenden, da der `Anwender` nicht im Vorfeld wissen kann wie die COntext Daten 
+  angezeigt oder verarbeitet werden.
 
-  The following is an example implementation of placeholder interpolation
-  provided for reference purposes only:
+  Im Folgenden ist ein Beispiel f&uuml;r das Interpolieren des Context Arrays 
+  als Referenz Beispiel zu sehen. Dieser Code stammt aus dem englischen Original
+  und wird daher nicht &Uuml;bersetzt:
 
   ```php
   /**
