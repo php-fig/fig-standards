@@ -22,8 +22,7 @@ Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "D
 
 - Il NE DOIT PAS exister une limite stricte sur la longueur de la ligne, la limite acceptable DOIT être de 120 caractères; les lignes DEVRAIENT comprendre 80 caractères ou moins.
 
-- Il DOIT y avoir une ligne vide après la déclaration de `l'espace de noms`, et il 
-  DOIT y avoir une ligne vide après le bloc de déclarations `use`.
+- Il DOIT y avoir une ligne vide après la déclaration de `l'espace de noms`, et il DOIT y avoir une ligne vide après le bloc de déclarations `use`.
 
 - L'ouverture des accolades pour les classes DOIT figurer sur la ligne suivante, les accolades de fermeture DOIVENT figurer sur la ligne suivante après le corps de la classe.
 
@@ -224,7 +223,7 @@ aller sur la ligne suivante à la suite du corps. Il NE DOIT PAS y avoir d'espac
 l'ouverture des parenthèses, et il NE DOIT PAS y avoir d'espace avant la parenthèse de fermeture.
 
 Une déclaration de méthode ressemble à la suivante. Notez l'emplacement des
-parenthèses, virgules, espaces et accolades:
+parenthèses, virgules, espaces et accolades :
 
 ```php
 <?php
