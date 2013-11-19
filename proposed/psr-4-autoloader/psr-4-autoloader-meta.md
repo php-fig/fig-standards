@@ -51,11 +51,11 @@ source files from PEAR packages into a single central directory.
 
 ### Along Comes Composer
 
-With Composer, package sources are no longer copied to a single central
+With Composer, package sources are no longer copied to a single global
 location. They are used from their installed location and are not moved
 around. This means that with Composer there is no "single main directory" for
-PHP sources as with PEAR. Instead, there are multiple directories, one for
-each package.
+PHP sources as with PEAR. Instead, there are multiple directories; each
+package is in a separate directory for each project.
 
 To meet the requirements of PSR-0, this leads to Composer packages looking
 like this:
