@@ -134,21 +134,21 @@ interpreted as described in [RFC 2119][RFC2119].
      */
     class Foo
     {
-        /** @type string|null $description Should contain a description */
-        protected $description = null;
+        /** @type string|null $title contains a title for the Foo with a max. length of 24 characters */
+        protected $title = null;
 
 
         /**
-         * This method sets a description.
+         * Sets a single-line title.
          *
-         * @param string $description A text with a maximum of 80 characters.
+         * @param string $title A text with a maximum of 24 characters.
          *
          * @return void
          */
-        public function setDescription($description)
+        public function setTitle($title)
         {
             // there should be no docblock here
-            $this->description = $description;
+            $this->title = $title;
         }
     }
   ```
