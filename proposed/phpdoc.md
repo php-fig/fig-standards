@@ -1301,12 +1301,11 @@ RECOMMENDED in case of complicated return structures, such as associative arrays
 The @return tag MAY have a multi-line description and does not need explicit
 delimiting.
 
-It is RECOMMENDED to use this tag with every function and method.
-Exceptions to this recommendation are:
+It is RECOMMENDED to use this tag with every function and method. An exception to 
+this recommendation, as defined by the Coding Standard of any individual project, 
+MAY be:
 
-1. **constructors**: the @return tag MAY be omitted here, in which case an
-   interpreter MUST interpret this as if `@return $this` is provided.
-2. **functions and methods without a `return` value**: the @return tag MAY be
+   **functions and methods without a `return` value**: the @return tag MAY be
    omitted here, in which case an interpreter MUST interpret this as if
    `@return void` is provided.
 
