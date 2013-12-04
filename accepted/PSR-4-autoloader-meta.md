@@ -217,7 +217,7 @@ Cons:
 
 - Not in line with the wishes of poll respondents and some collaborators
 
-### 4.4 Alternative: Use More Imperative And Narrative Langauge
+### 4.4 Alternative: Use More Imperative And Narrative Language
 
 After the second vote was pulled by a Sponsor after hearing from multiple +1 
 voters that they supported the idea but did not agree with (or understand) the 
