@@ -1030,7 +1030,10 @@ and this SHOULD be interpreted as if having the URL mentioned in the registry.
  */
 ```
 
-### 8.10. @link
+### 8.10. @link [deprecated]
+
+*This tag is deprecated in favor of the `@see` tag, which since this
+specification may relate to URIs.*
 
 The @link tag indicates a custom relation between the associated
 "Structural Element" and a website, which is identified by an absolute URI.
@@ -1341,8 +1344,8 @@ a website or other "Structural Elements".
 
 #### Description
 
-The @see tag can be used to define a reference to other
-"Structural Elements" or to an URI.
+The @see tag can be used to define a reference to other "Structural Elements"
+or to a URI.
 
 When defining a reference to another "Structural Elements" you can refer to a
 specific element by appending a double colon and providing the name of that
@@ -1351,13 +1354,13 @@ element (also called the "FQSEN").
 A URI MUST be complete and well-formed as specified in [RFC 2396][RFC2396].
 
 The type of reference MAY be provided after the URI or FQSEN by mentioning a
-string wrapped in colons that defines the type of relation.
+string wrapped in colons that defines the type of relation. The list of
+supported relation types is not maintained in this document as is may
+change over time. The meta document will contain a series of recommendation
+but projects are free to choose their own relation types if applicable.
 
-(TODO: where do we keep a list of recommended relation types? here? separate
-RFC (my preference) or somewhere on the internet?)
-
-The @see tag SHOULD have a description appended to provide additional
-information regarding the relationship between the 2 elements.
+The @see tag SHOULD have a description to provide additional information
+regarding the relationship between the element and its target.
 
 #### Examples
 
