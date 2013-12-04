@@ -1068,7 +1068,7 @@ function count()
 }
 
 /**
- * This method counts the occurences of Foo.
+ * This method counts the occurrences of Foo.
  *
  * When no more Foo ({@link http://example.com/my/bar}) are given this
  * function will add one as there must always be one Foo.
