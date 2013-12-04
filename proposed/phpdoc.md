@@ -1533,7 +1533,7 @@ function count()
 You may use the @type tag to document the "Type" of the following
 "Structural Elements":
 
-* Constants, both class and global
+* Constants, both class and global scope
 * Properties
 * Variables, both global and local scope
 
@@ -1543,21 +1543,20 @@ You may use the @type tag to document the "Type" of the following
 
 #### Description
 
-The @type tag is the successor of the @var tag and serves the purpose of defining
-which type of data is contained in a Constant, Property or Variable.
+The @type tag defines which type of data is represented by a value of a
+Constant, Property or Variable.
 
-Each Constant or Property *definition* MUST be preceded by a DocBlock
-containing the @type tag. Each Variable, where the type is ambiguous or unknown,
-SHOULD be preceded by a DocBlock containing the @type tag. Any other
-variable MAY be preceeded with a similar DocBlock.
+Each Constant or Property definition or Variable where the type is ambiguous
+or unknown SHOULD be preceded by a DocBlock containing the @type tag. Any
+other variable MAY be preceded with a DocBlock containing the @type tag.
 
-The @type tag MUST contain the name of the element it documents. This is used
-when compound statements are used to define a series of Constants or Properties.
-Such a compound statement can only have one DocBlock while several items are
-represented.
+The @type tag MUST contain the name of the element it documents. An exception
+to this is when property declarations only refer to a single property. In this
+case the name of the property MAY be omitted.
 
-It is NOT RECOMMENDED to use the @var alias unless it is necessary in order for
-the application, or associated tools, to function correctly.
+This is used when compound statements are used to define a series of Constants
+or Properties. Such a compound statement can only have one DocBlock while several
+items are represented.
 
 #### Examples
 
@@ -1574,7 +1573,7 @@ Or:
 ```php
 class Foo
 {
-  /** @type string|null $description Should contain a description */
+  /** @type string|null Should contain a description */
   protected $description = null;
 
   public function setDescription($description)
