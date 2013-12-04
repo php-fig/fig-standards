@@ -1,20 +1,6 @@
 PSR-5: PHPDoc
 =============
 
-Author(s):
-
-    Mike van Riel (@mvriel) <mike.vanriel@naenius.com>
-
-Acknowledgements:
-
-    The author(s) wish to thank Chuck Burgess (@ashnazg), Gary Jones (@GaryJ)
-    and all other people who commented and contributed on various versions of
-    this proposal.
-
-Obsoletes:
-
-    [De-facto PHPDoc Standard][DEFACTO]
-
 ## Table Of Contents
 
     1. Introduction
@@ -1301,8 +1287,8 @@ RECOMMENDED in case of complicated return structures, such as associative arrays
 The @return tag MAY have a multi-line description and does not need explicit
 delimiting.
 
-It is RECOMMENDED to use this tag with every function and method. An exception to 
-this recommendation, as defined by the Coding Standard of any individual project, 
+It is RECOMMENDED to use this tag with every function and method. An exception to
+this recommendation, as defined by the Coding Standard of any individual project,
 MAY be:
 
    **functions and methods without a `return` value**: the @return tag MAY be
