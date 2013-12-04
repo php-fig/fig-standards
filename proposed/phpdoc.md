@@ -20,7 +20,6 @@ PSR-5: PHPDoc
       6.2. Function Or Method
       6.3. Constant Or Property
     7. Describing hashes
-    8. Describing anonymous functions
     8. Tags
       8.1.  @api
       8.2.  @author
