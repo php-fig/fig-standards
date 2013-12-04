@@ -1692,8 +1692,8 @@ function executeMyView()
 
 ### 8.24. @var [deprecated]
 
-The @var tag is a **deprecated** alias for `@type`. Please see the documentation
-for [@type](#822-type) for details of its usage.
+The @var tag is **deprecated** in favor of `@type`. Please see the
+documentation for [@type](#822-type) for details of its usage.
 
 ### 8.25. @version
 
