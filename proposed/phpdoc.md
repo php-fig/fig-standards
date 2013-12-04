@@ -322,10 +322,22 @@ Common uses for the long description are (amongst others):
 ### 5.3. Tags
 
 Tags provide a way for authors to supply concise meta-data regarding the
-succeeding "Structural Element". They commonly consist of a name followed by
-white-space and a description or Inline PHPDoc.
-If a description is provided, it MAY span multiple lines and COULD follow a
-strict format dictated by the type of tag, as indicated by its name.
+succeeding "Structural Element". Each tag starts on a new line, followed
+by an at-sign (@) and a tag-name followed by white-space and meta-data
+(including a description) or Inline PHPDoc.
+
+If meta-data is provided, it MAY span multiple lines and COULD follow a
+strict format, and as such provide parameters, as dictated by the type of tag.
+The type of the tag can be derived from its name.
+
+For example:
+
+> `@param string $argument1 This is a parameter.`
+>
+> The above tag consists of a name ('param') and meta-data
+> ('string $argument1 This is a parameter.') where the meta-data is split into a
+> "Type" ('string'), variable name ('$argument') and description
+> ('This is a parameter.').
 
 The meta-data supplied by tags could result in a change of actual runtime behaviour
 of the succeeding "Structural Element", in which case the term "Annotation" is
@@ -353,6 +365,7 @@ specifically for an individual application or subset of applications (and thus
 not covered by this specification).
 
 These tags, or annotations, MUST provide a namespace by either
+
 * prefixing the tag name with a PHP-style namespace, or by
 * prefixing the tag name with a single vendor-name followed by a hyphen.
 
