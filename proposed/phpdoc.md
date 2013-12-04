@@ -278,7 +278,7 @@ definition:
     tag               = "@" tag-name [tag-details]
     tag-name          = (ALPHA / "\") *(ALPHA / DIGIT / "\" / "-" / "_")
     tag-details       = *SP (SP tag-description / tag-signature / inline-phpdoc)
-    tag-description   = 1*CHAR
+    tag-description   = 1*(CHAR / CRLF)
     tag-signature     = "(" *tag-argument ")"
     tag-argument      = *SP 1*CHAR [","] *SP
 
