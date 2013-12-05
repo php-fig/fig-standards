@@ -37,3 +37,7 @@ $app->get('/hello/{name}', function ($name) use ($app) {
     return 'Hello '.$app->escape($name); 
 });
 ```
+
+2. _[10/17/2013]_ When extending multiple interfaces, the list of `extends` should be treated the same as a list
+of `implements`, as declared in Section 4.1.
+
