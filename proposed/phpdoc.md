@@ -343,7 +343,7 @@ The description of a tag MUST support Markdown as a formatting language. Due to
 the nature of Markdown it is legal to start the description of the tag on the same
 or the subsequent line and interpret it in the same way.
 
-So the following tags are identical::
+So the following tags are semantically identical:
 
     /**
      * @type string This is a description.
