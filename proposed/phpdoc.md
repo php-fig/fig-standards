@@ -339,9 +339,19 @@ For example:
 > "Type" ('string'), variable name ('$argument') and description
 > ('This is a parameter.').
 
-The meta-data supplied by tags could result in a change of actual runtime behaviour
-of the succeeding "Structural Element", in which case the term "Annotation" is
-commonly used instead of "Tag".
+The description of a tag MUST support Markdown as a formatting language. Due to
+the nature of Markdown it is legal to start the description of the tag on the same
+or the subsequent line and interpret it in the same way.
+
+So the following tags are identical::
+
+    /**
+     * @type string This is a description.
+     * @type string This is a
+     *    description.
+     * @type string
+     *    This is a description.
+     */
 
 A variation of this is where, instead of a description, a tag-signature is used;
 in most cases the tag will in fact be an "Annotation". The tag-signature is
@@ -349,6 +359,10 @@ able to provide the annotation with parameters regarding its operation.
 
 If a tag-signature is present then there MUST NOT be a description present in
 the same tag.
+
+The meta-data supplied by tags could result in a change of actual runtime behaviour
+of the succeeding "Structural Element", in which case the term "Annotation" is
+commonly used instead of "Tag".
 
 Annotations will not be described in further detail in this specification as
 this falls beyond scope. This specification provides a basis on top of which
