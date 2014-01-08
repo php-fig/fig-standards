@@ -253,6 +253,13 @@ namespace Psr\Http;
 
 /**
  * Represents a collection of header values.
+ *
+ * When implementing the methods required for ArrayAccess, implementations MUST
+ * return null when accessing an index that does not exist and MAY NOT emit a
+ * warning.
+ *
+ * When implementing the Countable interface, implementations MUST return the
+ * number of values in the list of header values.
  */
 interface HeaderValuesInterface extends \Countable, \Traversable, \ArrayAccess
 {
@@ -498,8 +505,8 @@ namespace Psr\Http;
 interface StreamInterface
 {
     /**
-     * Reads the remainder of the stream from the current position until the
-     * end of the stream is reached.
+     * Attempts to seek to the beginning of the stream and reads all data into
+     * a string until the end of the stream is reached.
      *
      * Warning: This could attempt to load a large amount of data into memory.
      *
@@ -597,6 +604,15 @@ interface StreamInterface
      * @return string     Returns the data read from the stream.
      */
     public function read($length);
+
+    /**
+     * Returns the remaining contents in a string, up to maxlength bytes.
+     *
+     * @param int $maxLength The maximum bytes to read. Defaults to -1 (read
+     *                       all the remaining buffer).
+     * @return string
+     */
+    public function getContents($maxLength = -1);
 }
 ```
 
@@ -635,3 +651,145 @@ interface StreamFactoryInterface
     public function create($data = null);
 }
 ```
+
+4. Design Decisions
+-------------------
+
+### Message design
+
+The design the `MessageInterface`, `RequestInterface`, and `ResponseInterface`
+interfaces are based on existing projects in the PHP community.
+
+#### `HasHeadersInterface` as a separate interface
+
+`HasHeadersInterface` is provided as a separate interface so that other
+protocols that require a hash of case-insensitive headers can utilize the same
+interface if desired. For example, `HasHeadersInterface` could be used when
+implementing an email API for representing headers or for an HTTP client
+implementation that provides an abstraction for multipart/form-data elements
+that allow custom headers (e.g., Content-Disposition).
+
+#### Using `HeaderValuesInterface` instead of an array
+
+Header values are represented using `HeaderValuesInterface`. This interface
+allows developers to work with headers as a string and as an array. This allows
+developers the flexibility of serialzing a header precisely as it should be
+sent over the wire, while also providing the convenience of working with
+headers that typically have a single value (e.g., Host, Content-Type, etc...)
+as a string. Furthermore, accessing missing elements of a
+`HeaderValuesInterface` will return null rather than emit a warning (as would
+happen if header values were represented as an actual PHP array).
+
+In addition to being more convenient, `HeaderValuesInterface` allows
+implementations to pre-compute an internal cache of header values represented
+as a string. This performance optimization can be useful in performance
+sensitive applications that perform various checks and modifications to headers
+before a message is sent over the wire.
+
+In other HTTP message specifications, header values are occassionally
+represtented using an array of strings. Working with an array of header strings
+requires quite a bit of boiler-plate code and lacks the ability to provide
+implementation specific performance optimizations that can be used when
+converting a list of header values to a string.
+
+When using an array to represent headers, you MUST check if a specific header
+value is set before accessing an index. End-users would also need to manually
+implode the header values on ', ' to represent the header values as a string.
+
+```php
+$message->setHeader('Foo', array('a', 'b', 'c'));
+echo $message->getHeader('Foo');
+// Output: PHP Notice:  Array to string conversion in ...
+echo implode(', ', $message->getHeader('Foo'));
+// Output: a, b, c
+echo $message->getHeader('Foo')[0];
+// Output: 'a'
+echo $message->getHeader('Foo')[10];
+// Output: PHP Notice:  Undefined offset: 10
+// The above would need to be rewritten as:
+$values = $message->getHeader('Foo');
+if (isset($values[10])) {
+    echo $values[10];
+}
+```
+
+When using `HeaderValuesInterface`, developers can safely interact with any
+header as a string or array without having to first check if a specific index
+exists.
+
+```php
+$message->setHeader('Foo', array('a', 'b', 'c'));
+echo $message->getHeader('Foo');
+// Output: 'a, b, c'
+echo $message->getHeader('Foo')[0];
+// Output: 'a'
+echo $message->getHeader('Foo')[10];
+// Output: ''
+```
+
+#### Mutability of messages
+
+Headers and messages are mutable to reflect real-world usage in clients.
+
+A large number of HTTP clients allow you to modify a request pre-flight in
+order to implement custom logic (for example, signing a request, compression,
+encryption, etc...).
+
+* Guzzle: http://guzzlephp.org/guide/plugins.html
+* Buzz: https://github.com/kriswallsmith/Buzz/blob/master/lib/Buzz/Listener/BasicAuthListener.php
+* Requests/PHP:  https://github.com/rmccue/Requests/blob/master/docs/hooks.md
+
+This is not just a popular pattern in the PHP community:
+
+* Requests: http://docs.python-requests.org/en/latest/user/advanced/#event-hooks
+* Typhoeus: https://github.com/typhoeus/typhoeus/blob/master/lib/typhoeus/request/before.rb
+* RestClient: https://github.com/archiloque/rest-client#hook
+* Java's HttpClient: http://hc.apache.org/httpcomponents-client-ga/httpclient/examples/org/apache/http/examples/client/ClientGZipContentCompression.java
+* etc...
+
+Having mutable and immutable messages would add a significant amount of
+complexity to a HTTP message PSR and would not reflect what is currently being
+used by a majority of PHP projects.
+
+#### Reasons for NOT including header specific methods
+
+#### Using streams instead of X
+
+`MessageInterface` uses a body value the must implement `StreamInterface`. This
+design decision was made so that developers can send and receive HTTP messages
+that contain more data than can practically be stored in memory while still
+allowing the convenience of interacting with message bodies as a string. While
+PHP provides a stream abstraction using stream wrappers, stream resoures can be
+awkward to work with: stream resources can only be cast to a string using
+`stream_get_contents()` or manually reading the remainder of a string.
+
+The use of a very well defined stream interface allows for the potential of
+flexible stream decorators that can be added to a request or response
+pre-flight to enable things like encryption, compression, ensuring that the
+number of bytes downloaded reflects the number of bytes reported in the
+`Content-Length` of a response, etc... Decorating streams is a well-established
+[pattern in the Java community](http://docs.oracle.com/javase/7/docs/api/java/io/package-tree.html)
+that allows for very flexible streams.
+
+The majority of the `StreamInterface` API is based on
+[Python's io module](http://docs.python.org/3.1/library/io.html) which provides
+a practical and easy to work with API. Instead of implementing stream
+capabilities using something like a `WritableStreamInterface` and
+`ReadableStreamInterface`, the capabilities of a stream are provided by methods
+like `isReadable()`, `isWritable()`, etc... This approach is used by Python,
+[C#, C++](http://msdn.microsoft.com/en-us/library/system.io.stream.aspx),
+[Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html), and probably others.
+
+### Message factory design
+
+#### The addition of an `$options` array
+
+Allowing developers to pass an array of `$options` to
+`MessageFactoryInterface::createRequest()` and
+`MessageFactoryInterface::createResponse()` helps to future-proof factory's
+interface for future additions without breaking the API and allows 
+implementations to directly implement the HTTP message PSR without requiring an
+adapter while still exposing implementation specific customizable settings. If
+patterns emerge in the community that show specific options are used across
+implementations in the same manner, then a futuer PSR could be approved to
+formally define some of the options available to the `$options` array.
