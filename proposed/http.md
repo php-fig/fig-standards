@@ -284,7 +284,7 @@ namespace Psr\Http;
  * This interface SHOULD not be implemented directly; instead, implement
  * `RequestInterface` or `ResponseInterface` as appropriate.
  */
-interface MessageInterface exists HasHeadersInterface
+interface MessageInterface extends HasHeadersInterface
 {
     /**
      * Returns a string representation of the HTTP message.
@@ -526,7 +526,7 @@ interface StreamInterface
     /**
      * Get the size of the stream if known
      *
-     * @return int|null Returns the size in bytes if known, or null if unknown
+     * @return int|bool Returns the size in bytes if known, or false if unknown
      */
     public function getSize();
 
