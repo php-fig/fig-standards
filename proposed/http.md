@@ -27,6 +27,85 @@ a server to a client. These messages are represented by
   The `Psr\Http\HasHeadersInterface` MAY be implemented directly in cases where
   an object needs an array of HTTP headers.
 
+#### 1.2 HTTP Headers
+
+##### Case-insensitive headers
+
+HTTP messages include case-insensitive headers. Headers are retrieved from
+classes implementing the HasHeadersInterface interface in a case-insensitive
+manner. Retrieving the "foo" header will return the same result as retrieving
+the "FoO" header. Similarly, setting the "Foo" header will overwrite any
+previously set "foo" header.
+
+```php
+$message->setHeader('foo', 'bar');
+echo $message->getHeader('foo');
+// Outputs: bar
+
+echo $message->getHeader('FOO');
+// Outputs: bar
+
+$message->setHeader('fOO', 'baz');
+echo $message->getHeader('foo');
+// Outputs: baz
+```
+
+##### Headers with multiple values
+
+In order to accommodate headers with multiple values yet still provide the
+convenience of working with headers as strings, all header values are
+implemented using `HeaderValuesInterface` objects. Any object implementing
+`HeaderValuesInterface` can be used as an array or cast to a string. When a
+header containing multiple values is cast to a string, the values will be
+concatenated using a comma separator.
+
+```php
+$message->setHeader('foo', 'bar');
+$message->addHeader('foo', 'baz');
+$header = $message->getHeader('foo');
+
+echo $header;
+// Outputs: bar, baz
+
+echo $header[0];
+// Outputs: bar
+
+echo $header[1];
+// Outputs: baz
+
+foreach ($header as $value) {
+    echo $value . ' ';
+}
+// Outputs: baz bar
+```
+
+Implementations MAY choose to internally maintain the state of classes
+implementing HeaderValuesInterface using an array of strings or a string value.
+However, it is recommended that implementations maintain the internal state
+using an array so that headers that cannot be concatenated using a comma
+(e.g., Set-Cookie) can be serialized using the array values rather than an
+invalid string.
+
+Because some headers cannot be concatenated using a comma, the most accurate
+method used for serializing message headers is to iterate over header values
+and serialize based on any rules for the specific header.
+
+For example, when converting an object implementing RequestInterface to a
+string, an underlying implementation MAY mimic the following behavior.
+
+```php
+$str = $message->getUrl() . ' ' . $path . ' HTTP/'
+    . $message->getProtocolVersion()) . "\r\n\r\n";
+
+foreach ($message->getHeaders() as $key => $value) {
+    // Custom handling MAY be applied for specific keys
+    $str .= $key . ': ' . $value . "\r\n";
+}
+
+$str .= "\r\n";
+$str .= $message->getBody();
+```
+
 ### 1.2 Streams
 
 HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
@@ -178,7 +257,7 @@ namespace Psr\Http;
 interface HeaderValuesInterface extends \Countable, \Traversable, \ArrayAccess
 {
     /**
-     * Convert the header values to a string, concatenating multiple values 
+     * Convert the header values to a string, concatenating multiple values
      * using a comma.
      *
      * @return string
