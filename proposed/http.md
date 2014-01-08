@@ -32,10 +32,10 @@ a server to a client. These messages are represented by
 ##### Case-insensitive headers
 
 HTTP messages include case-insensitive headers. Headers are retrieved from
-classes implementing the HasHeadersInterface interface in a case-insensitive
-manner. Retrieving the "foo" header will return the same result as retrieving
-the "FoO" header. Similarly, setting the "Foo" header will overwrite any
-previously set "foo" header.
+classes implementing the `HasHeadersInterface` interface in a case-insensitive
+manner. For example, retrieving the "foo" header will return the same result as
+retrieving the "FoO" header. Similarly, setting the "Foo" header will overwrite
+any previously set "foo" header.
 
 ```php
 $message->setHeader('foo', 'bar');
@@ -79,19 +79,16 @@ foreach ($header as $value) {
 // Outputs: baz bar
 ```
 
+Because some headers cannot be concatenated using a comma (e.g., Set-Cookie),
+the most accurate method used for serializing message headers is to iterate
+over header values and serialize based on any rules for the specific header.
 Implementations MAY choose to internally maintain the state of classes
-implementing HeaderValuesInterface using an array of strings or a string value.
-However, it is recommended that implementations maintain the internal state
-using an array so that headers that cannot be concatenated using a comma
-(e.g., Set-Cookie) can be serialized using the array values rather than an
-invalid string.
-
-Because some headers cannot be concatenated using a comma, the most accurate
-method used for serializing message headers is to iterate over header values
-and serialize based on any rules for the specific header.
-
-For example, when converting an object implementing RequestInterface to a
-string, an underlying implementation MAY mimic the following behavior.
+implementing `HeaderValuesInterface` using an array of strings or a string
+value. However, it is recommended that implementations maintain the internal
+state using an array so that headers that cannot be concatenated using a comma
+can be serialized using the array values rather than an invalid string. For
+example, when converting an object implementing `RequestInterface` to a string,
+an underlying implementation MAY mimic the following behavior.
 
 ```php
 $str = $message->getUrl() . ' ' . $path . ' HTTP/'
@@ -674,27 +671,26 @@ that allow custom headers (e.g., Content-Disposition).
 Header values are represented using `HeaderValuesInterface`. This interface
 allows developers to work with headers as a string and as an array. This allows
 developers the flexibility of serialzing a header precisely as it should be
-sent over the wire, while also providing the convenience of working with
+sent over the wire, while still providing the convenience of working with
 headers that typically have a single value (e.g., Host, Content-Type, etc...)
 as a string. Furthermore, accessing missing elements of a
-`HeaderValuesInterface` will return null rather than emit a warning (as would
-happen if header values were represented as an actual PHP array).
+`HeaderValuesInterface` will return `null` rather than emit a warning (as
+would happen if header values were represented as an actual PHP array).
 
 In addition to being more convenient, `HeaderValuesInterface` allows
 implementations to pre-compute an internal cache of header values represented
-as a string. This performance optimization can be useful in performance
+as a string instead of expecting developers to constantly implode an array of
+values into a string. This performance optimization can be useful in performance
 sensitive applications that perform various checks and modifications to headers
 before a message is sent over the wire.
 
-In other HTTP message specifications, header values are occassionally
-represtented using an array of strings. Working with an array of header strings
-requires quite a bit of boiler-plate code and lacks the ability to provide
-implementation specific performance optimizations that can be used when
-converting a list of header values to a string.
-
-When using an array to represent headers, you MUST check if a specific header
-value is set before accessing an index. End-users would also need to manually
-implode the header values on ', ' to represent the header values as a string.
+Representing header values as an array of strings has various issues. Working
+with an array of header strings requires quite a bit of boiler-plate code and
+lacks the ability to provide implementation specific performance optimizations.
+When using an array to represent headers, you MUST check if a specific index
+exists in the header values array before it can be accessed. End-users would
+also need to manually implode the header values on ', ' to represent the header
+values as a string.
 
 ```php
 $message->setHeader('Foo', array('a', 'b', 'c'));
@@ -729,9 +725,8 @@ echo $message->getHeader('Foo')[10];
 
 #### Mutability of messages
 
-Headers and messages are mutable to reflect real-world usage in clients.
-
-A large number of HTTP clients allow you to modify a request pre-flight in
+Headers and messages are mutable to reflect real-world usage in clients. A
+large number of HTTP clients allow you to modify a request pre-flight in
 order to implement custom logic (for example, signing a request, compression,
 encryption, etc...).
 
@@ -755,13 +750,17 @@ used by a majority of PHP projects.
 
 #### Using streams instead of X
 
-`MessageInterface` uses a body value the must implement `StreamInterface`. This
+`MessageInterface` uses a body value that must implement `StreamInterface`. This
 design decision was made so that developers can send and receive HTTP messages
 that contain more data than can practically be stored in memory while still
 allowing the convenience of interacting with message bodies as a string. While
-PHP provides a stream abstraction using stream wrappers, stream resoures can be
-awkward to work with: stream resources can only be cast to a string using
-`stream_get_contents()` or manually reading the remainder of a string.
+PHP provides a stream abstraction by way of stream wrappers, stream resoures
+can be cumbersome to work with: stream resources can only be cast to a string
+using `stream_get_contents()` or manually reading the remainder of a string.
+Adding custom behavior to a stream as it is consumed or populated requires
+registering a stream filter; however, stream filters can only be added to a
+stream after the filter is registered with PHP (i.e., there is no stream filter
+autoloading mechanism).
 
 The use of a very well defined stream interface allows for the potential of
 flexible stream decorators that can be added to a request or response
@@ -778,7 +777,7 @@ capabilities using something like a `WritableStreamInterface` and
 `ReadableStreamInterface`, the capabilities of a stream are provided by methods
 like `isReadable()`, `isWritable()`, etc... This approach is used by Python,
 [C#, C++](http://msdn.microsoft.com/en-us/library/system.io.stream.aspx),
-[Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html), and probably others.
+[Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html), and likely others.
 
 ### Message factory design
 
@@ -787,9 +786,12 @@ like `isReadable()`, `isWritable()`, etc... This approach is used by Python,
 Allowing developers to pass an array of `$options` to
 `MessageFactoryInterface::createRequest()` and
 `MessageFactoryInterface::createResponse()` helps to future-proof factory's
-interface for future additions without breaking the API and allows 
-implementations to directly implement the HTTP message PSR without requiring an
-adapter while still exposing implementation specific customizable settings. If
-patterns emerge in the community that show specific options are used across
-implementations in the same manner, then a futuer PSR could be approved to
+interface for future additions without breaking the API and allows implementations
+to directly implement the HTTP message PSR without requiring an adapter while
+providing the ability to expose implementation specific customization settings.
+This can be useful if a developer knows exactly which client they are interacting
+with.
+
+If patterns emerge in the community that show specific options are used across
+implementations in the same manner, then a future PSR could be proposed to
 formally define some of the options available to the `$options` array.
