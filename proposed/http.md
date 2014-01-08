@@ -654,7 +654,7 @@ interface StreamFactoryInterface
 
 ### Message design
 
-The design the `MessageInterface`, `RequestInterface`, and `ResponseInterface`
+The design of the `MessageInterface`, `RequestInterface`, and `ResponseInterface`
 interfaces are based on existing projects in the PHP community.
 
 #### `HasHeadersInterface` as a separate interface
