@@ -567,7 +567,7 @@ that allow custom headers (e.g., Content-Disposition).
 
 Header values are represented using `HeaderValuesInterface`. This interface
 allows developers to work with headers as a string and as an array. This allows
-developers the flexibility of serialzing a header precisely as it should be
+developers the flexibility of serializing a header precisely as it should be
 sent over the wire, while still providing the convenience of working with
 headers that typically have a single value (e.g., Host, Content-Type, etc...)
 as a string. Furthermore, accessing missing elements of a
