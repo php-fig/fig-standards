@@ -563,6 +563,18 @@ implementing an email API for representing headers or for an HTTP client
 implementation that provides an abstraction for multipart/form-data elements
 that allow custom headers (e.g., Content-Disposition).
 
+#### Why are there header methods on messages rather than in a header bag?
+
+Moving headers to a "header bag" breaks the Law of Demeter and exposes the
+internal implementation of a message to its collaborators. In order for
+something to access the headers of a message, they need to reach into the the
+message's header bag (`$message->getHeaders()->getHeader('Foo')`).
+
+Moving headers from messages into an externally mutable "header bag" exposes the
+internal implementation of how a message manages its headers an has a
+side-effect that messages are no longer aware of changes to their headers. This
+can lead to messages entering into an invalid or inconistent state.
+
 #### Using `HeaderValuesInterface` instead of an array
 
 Header values are represented using `HeaderValuesInterface`. This interface
