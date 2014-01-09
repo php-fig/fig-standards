@@ -643,8 +643,6 @@ Having mutable and immutable messages would add a significant amount of
 complexity to a HTTP message PSR and would not reflect what is currently being
 used by a majority of PHP projects.
 
-#### Reasons for NOT including header specific methods
-
 #### Using streams instead of X
 
 `MessageInterface` uses a body value that must implement `StreamInterface`. This
