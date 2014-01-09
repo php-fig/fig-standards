@@ -126,11 +126,6 @@ or written to.
   forwards or backwards to any location), or only sequential access (for
   example in the case of a socket or pipe).
 
-- The `StreamFactoryInterface` exposes a single factory method,
-  `create($data)`, that is used to create `StreamInterface` objects from
-  various input types including but not limited to strings, PHP stream
-  resources, and objects that implement the `__toString()` method.
-
 2. Package
 ----------
 
@@ -229,6 +224,21 @@ interface HasHeadersInterface
      * @return self
      */
     public function addHeader($header, $value);
+
+    /**
+     * Merges in an associative array of headers.
+     *
+     * Each array key MUST be a string representing the case-insensitive name
+     * of a header. Each value MUST be either an array of strings or an array
+     * of HeaderValuesInterface objects. For each value, the value is appended
+     * to any existing header of the same name, or, if a header does not already
+     * exist by the given name, then the header is added.
+     *
+     * @param array $headers Associative array of headers to add to the message
+     *
+     * @return self
+     */
+    public function addHeaders(array $headers);
 
     /**
      * Remove a specific header by case-insensitive name.
@@ -412,83 +422,6 @@ interface ResponseInterface extends MessageInterface
 }
 ```
 
-### 3.6 `Psr\Http\MessageFactoryInterface`
-
-```php
-<?php
-
-namespace Psr\Http;
-
-/**
- * Message factory.
- */
-interface MessageFactoryInterface
-{
-    /**
-     * Create a new request based on the HTTP method.
-     *
-     * The URL MUST be a string or an object that implements the __toString()
-     * method.
-     *
-     * Headers must be an array which maps header names to either a string, an
-     * array of strings, or a HeaderValuesInterface object.
-     *
-     * Body MUST be either a StreamInterface, string, an object that implements
-     * the __toString() method, or a resource as returned from PHP's fopen()
-     * function.
-     *
-     * The $options array is a custom associative array of options that are
-     * completely implementation specific options. These are options allow
-     * implementations to be interoperable, while still providing the ability
-     * to expose custom features.
-     *
-     * @param string $method  HTTP method (GET, POST, PUT, etc...)
-     * @param string $url     URL to send the request to
-     * @param array  $headers Request headers
-     * @param mixed  $body    Body to send in the request
-     * @param array  $options Array of options to apply to the request
-     *
-     * @return RequestInterface
-     */
-    public function createRequest(
-        $method,
-        $url,
-        array $headers = array(),
-        $body = null,
-        array $options = array()
-    );
-
-    /**
-     * Creates a response.
-     *
-     * Headers must be an array which maps header names to either a string, an
-     * array of strings, or a HeaderValuesInterface object.
-     *
-     * Body MUST be either a StreamInterface, string, an object that implements
-     * the __toString() method, or a resource as returned from PHP's fopen()
-     * function.
-     *
-     * The $options array is a custom associative array of options that are
-     * completely implementation specific options. These are options allow
-     * implementations to be interoperable, while still providing the ability
-     * to expose custom features.
-     *
-     * @param int   $statusCode HTTP status code
-     * @param array $headers    Response headers
-     * @param mixed $body       Response body
-     * @param array $options    Array of options to apply to the response.
-     *
-     * @return ResponseInterface
-     */
-    public function createResponse(
-        $statusCode,
-        array $headers = array(),
-        $body = null,
-        array $options = array()
-    );
-}
-```
-
 ### 3.7 `Psr\Http\StreamInterface`
 
 ```php
@@ -610,42 +543,6 @@ interface StreamInterface
      * @return string
      */
     public function getContents($maxLength = -1);
-}
-```
-
-### 3.8 `Psr\Http\StreamFactoryInterface`
-
-```php
-<?php
-
-namespace Psr\Http\StreamFactoryInterface;
-
-/**
- * Describes a stream factory instance that is used to create
- * StreamFactoryInterface objects.
- */
-interface StreamFactoryInterface
-{
-    /**
-     * Creates an {@see StreamInterface} object from various input formats. The
-     * following input types SHOULD be supported, and implementations MAY add
-     * additional creational behavior if necessary.
-     *
-     * 1. Pass a string or object that implements __toString() to create a
-     *    stream object that contains a string of data. The created stream MUST
-     *    be readable and writable.
-     * 2. Pass a PHP resource returned from fopen() to create a stream that
-     *    wraps a PHP stream resource.
-     * 3. Pass NULL or omit the argument to create an empty StreamInterface
-     *    object that is readable and writable.
-     * 4. Implementations MAY choose to expose additional creational behavior
-     *    as necessary.
-     *
-     * @param string|resource|object $data Stream data to use when creating the
-     *                                     StreamInterface object.
-     * @return StreamInterface
-     */
-    public function create($data = null);
 }
 ```
 
@@ -778,20 +675,3 @@ capabilities using something like a `WritableStreamInterface` and
 like `isReadable()`, `isWritable()`, etc... This approach is used by Python,
 [C#, C++](http://msdn.microsoft.com/en-us/library/system.io.stream.aspx),
 [Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html), and likely others.
-
-### Message factory design
-
-#### The addition of an `$options` array
-
-Allowing developers to pass an array of `$options` to
-`MessageFactoryInterface::createRequest()` and
-`MessageFactoryInterface::createResponse()` helps to future-proof factory's
-interface for future additions without breaking the API and allows implementations
-to directly implement the HTTP message PSR without requiring an adapter while
-providing the ability to expose implementation specific customization settings.
-This can be useful if a developer knows exactly which client they are interacting
-with.
-
-If patterns emerge in the community that show specific options are used across
-implementations in the same manner, then a future PSR could be proposed to
-formally define some of the options available to the `$options` array.
