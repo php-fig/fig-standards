@@ -20,7 +20,7 @@ a server to a client. These messages are represented by
 
 - Both `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` implement
   `Psr\Http\MessageInterface`. While `Psr\Http\MessageInterface` MAY be
-  implemented directly, implementors are encourages to implement
+  implemented directly, implementors are encouraged to implement
   `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface`.
 
 - Both `Psr\Http\MessageInterface` extends the `Psr\Http\HasHeadersInterface`.
