@@ -18,7 +18,7 @@ HTTP messages consist of requests from a client to a server and responses from
 a server to a client. These messages are represented by
 `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` respectively.
 
-- Both `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` implement
+- Both `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` extend
   `Psr\Http\MessageInterface`. While `Psr\Http\MessageInterface` MAY be
   implemented directly, implementors are encouraged to implement
   `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface`.
