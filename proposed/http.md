@@ -54,8 +54,8 @@ echo $message->getHeader('foo');
 
 In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, all header values are
-implemented using `HeaderValuesInterface` objects. Any object implementing
-`HeaderValuesInterface` can be used as an array or cast to a string. When a
+implemented using `HeaderFieldValuesInterface` objects. Any object implementing
+`HeaderFieldValuesInterface` can be used as an array or cast to a string. When a
 header containing multiple values is cast to a string, the values will be
 concatenated using a comma separator.
 
@@ -83,7 +83,7 @@ Because some headers cannot be concatenated using a comma (e.g., Set-Cookie),
 the most accurate method used for serializing message headers is to iterate
 over header values and serialize based on any rules for the specific header.
 Implementations MAY choose to internally maintain the state of classes
-implementing `HeaderValuesInterface` using an array of strings or a string
+implementing `HeaderFieldValuesInterface` using an array of strings or a string
 value. However, it is recommended that implementations maintain the internal
 state using an array so that headers that cannot be concatenated using a comma
 can be serialized using the array values rather than an invalid string. For
@@ -154,8 +154,8 @@ interface HasHeadersInterface
      * Gets all headers.
      *
      * The keys of the returned array represents the header name as it will be
-     * sent over the wire, and each value is a HeaderValuesInterface object that
-     * can be used like an array or cast to a string.
+     * sent over the wire, and each value is a HeaderFieldValuesInterface object
+     * that can be used like an array or cast to a string.
      *
      *     // Represent the headers as a string
      *     foreach ($message->getHeaders() as $name => $values) {
@@ -182,8 +182,8 @@ interface HasHeadersInterface
      *
      * @param string $header Header name.
      *
-     * @return HeaderValuesInterface|null Returns the header values or or null
-     *                                    if not set.
+     * @return HeaderFieldValuesInterface|null Returns the header values or or
+     *                                         null if not set.
      */
     public function getHeader($header);
 
@@ -192,10 +192,10 @@ interface HasHeadersInterface
      * same case-insensitive name.
      *
      * The header values MUST be a string, an array of strings, or a
-     * HeaderValuesInterface object.
+     * HeaderFieldValuesInterface object.
      *
      * @param string                             $header Header name
-     * @param string|array|HeaderValuesInterface $value  Header value(s)
+     * @param string|array|HeaderFieldValuesInterface $value  Header value(s)
      *
      * @return self Returns the message.
      */
@@ -206,7 +206,7 @@ interface HasHeadersInterface
      * message.
      *
      * The array keys MUST be a string. The array values must be either a
-     * string, array of strings, or a HeaderValuesInterface object.
+     * string, array of strings, or a HeaderFieldValuesInterface object.
      *
      * @param array $headers Headers to set.
      *
@@ -230,9 +230,9 @@ interface HasHeadersInterface
      *
      * Each array key MUST be a string representing the case-insensitive name
      * of a header. Each value MUST be either an array of strings or an array
-     * of HeaderValuesInterface objects. For each value, the value is appended
-     * to any existing header of the same name, or, if a header does not already
-     * exist by the given name, then the header is added.
+     * of HeaderFieldValuesInterface objects. For each value, the value is
+     * appended to any existing header of the same name, or, if a header does
+     * not already exist by the given name, then the header is added.
      *
      * @param array $headers Associative array of headers to add to the message
      *
@@ -251,7 +251,7 @@ interface HasHeadersInterface
 }
 ```
 
-### 3.2 `Psr\Http\HeaderValuesInterface`
+### 3.2 `Psr\Http\HeaderFieldValuesInterface`
 
 ```php
 <?php
@@ -268,7 +268,7 @@ namespace Psr\Http;
  * When implementing the Countable interface, implementations MUST return the
  * number of values in the list of header values.
  */
-interface HeaderValuesInterface extends \Countable, \Traversable, \ArrayAccess
+interface HeaderFieldValuesInterface extends \Countable, \Traversable, \ArrayAccess
 {
     /**
      * Convert the header values to a string, concatenating multiple values
@@ -575,18 +575,18 @@ internal implementation of how a message manages its headers an has a
 side-effect that messages are no longer aware of changes to their headers. This
 can lead to messages entering into an invalid or inconistent state.
 
-#### Using `HeaderValuesInterface` instead of an array
+#### Using `HeaderFieldValuesInterface` instead of an array
 
-Header values are represented using `HeaderValuesInterface`. This interface
+Header values are represented using `HeaderFieldValuesInterface`. This interface
 allows developers to work with headers as a string and as an array. This allows
 developers the flexibility of serializing a header precisely as it should be
 sent over the wire, while still providing the convenience of working with
 headers that typically have a single value (e.g., Host, Content-Type, etc...)
 as a string. Furthermore, accessing missing elements of a
-`HeaderValuesInterface` will return `null` rather than emit a warning (as
+`HeaderFieldValuesInterface` will return `null` rather than emit a warning (as
 would happen if header values were represented as an actual PHP array).
 
-In addition to being more convenient, `HeaderValuesInterface` allows
+In addition to being more convenient, `HeaderFieldValuesInterface` allows
 implementations to pre-compute an internal cache of header values represented
 as a string instead of expecting developers to constantly implode an array of
 values into a string. This performance optimization can be useful in performance
@@ -618,7 +618,7 @@ if (isset($values[10])) {
 }
 ```
 
-When using `HeaderValuesInterface`, developers can safely interact with any
+When using `HeaderFieldValuesInterface`, developers can safely interact with any
 header as a string or array without having to first check if a specific index
 exists.
 
