@@ -297,13 +297,6 @@ namespace Psr\Http;
 interface MessageInterface extends HasHeadersInterface
 {
     /**
-     * Returns a string representation of the HTTP message.
-     *
-     * @return string Message as a string.
-     */
-    public function __toString();
-
-    /**
      * Gets the HTTP protocol version.
      *
      * @return string HTTP protocol version.
