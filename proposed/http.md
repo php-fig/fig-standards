@@ -23,16 +23,12 @@ a server to a client. These messages are represented by
   implemented directly, implementors are encouraged to implement
   `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface`.
 
-- Both `Psr\Http\MessageInterface` extends the `Psr\Http\HasHeadersInterface`.
-  The `Psr\Http\HasHeadersInterface` MAY be implemented directly in cases where
-  an object needs an array of HTTP headers.
-
 #### 1.2 HTTP Headers
 
 ##### Case-insensitive headers
 
 HTTP messages include case-insensitive headers. Headers are retrieved from
-classes implementing the `HasHeadersInterface` interface in a case-insensitive
+classes implementing the `MessageInterface` interface in a case-insensitive
 manner. For example, retrieving the "foo" header will return the same result as
 retrieving the "FoO" header. Similarly, setting the "Foo" header will overwrite
 any previously set "foo" header.
@@ -135,7 +131,7 @@ The interfaces and classes described are provided as part of the
 3. Interfaces
 -------------
 
-### 3.1 `Psr\Http\HasHeadersInterface`
+### 3.1 `Psr\Http\HeaderFieldValuesInterface`
 
 ```php
 <?php
@@ -143,13 +139,68 @@ The interfaces and classes described are provided as part of the
 namespace Psr\Http;
 
 /**
- * Represents an object that contains an array of HTTP headers.
+ * Represents a collection of header values.
  *
- * This interface is extended by RequestInterface and ResponseInterface. This
- * interface MAY be implemented directly as needed.
+ * When implementing the methods required for ArrayAccess, implementations MUST
+ * return null when accessing an index that does not exist and MAY NOT emit a
+ * warning.
+ *
+ * When implementing the Countable interface, implementations MUST return the
+ * number of values in the list of header values.
  */
-interface HasHeadersInterface
+interface HeaderFieldValuesInterface extends \Countable, \Traversable, \ArrayAccess
 {
+    /**
+     * Convert the header values to a string, concatenating multiple values
+     * using a comma.
+     *
+     * @return string
+     */
+    public function __toString();
+}
+```
+
+### 3.2 `Psr\Http\MessageInterface`
+
+```php
+<?php
+
+namespace Psr\Http;
+
+/**
+ * HTTP messages consist of requests from a client to a server and responses
+ * from a server to a client.
+ */
+interface MessageInterface
+{
+    /**
+     * Gets the HTTP protocol version.
+     *
+     * @return string HTTP protocol version.
+     */
+    public function getProtocolVersion();
+
+    /**
+     * Gets the body of the message.
+     *
+     * @return StreamInterface|null Returns the body, or null if not set.
+     */
+    public function getBody();
+
+    /**
+     * Sets the body of the message.
+     *
+     * The body MUST be a StreamInterface object. Setting the body to null MUST
+     * remove the existing body.
+     *
+     * @param StreamInterface|null $body Body.
+     *
+     * @return self Returns the message.
+     *
+     * @throws \InvalidArgumentException When the body is not valid.
+     */
+    public function setBody(StreamInterface $body = null);
+
     /**
      * Gets all headers.
      *
@@ -251,82 +302,7 @@ interface HasHeadersInterface
 }
 ```
 
-### 3.2 `Psr\Http\HeaderFieldValuesInterface`
-
-```php
-<?php
-
-namespace Psr\Http;
-
-/**
- * Represents a collection of header values.
- *
- * When implementing the methods required for ArrayAccess, implementations MUST
- * return null when accessing an index that does not exist and MAY NOT emit a
- * warning.
- *
- * When implementing the Countable interface, implementations MUST return the
- * number of values in the list of header values.
- */
-interface HeaderFieldValuesInterface extends \Countable, \Traversable, \ArrayAccess
-{
-    /**
-     * Convert the header values to a string, concatenating multiple values
-     * using a comma.
-     *
-     * @return string
-     */
-    public function __toString();
-}
-```
-
-### 3.3 `Psr\Http\MessageInterface`
-
-```php
-<?php
-
-namespace Psr\Http;
-
-/**
- * HTTP messages consist of requests from a client to a server and responses
- * from a server to a client.
- *
- * This interface SHOULD not be implemented directly; instead, implement
- * `RequestInterface` or `ResponseInterface` as appropriate.
- */
-interface MessageInterface extends HasHeadersInterface
-{
-    /**
-     * Gets the HTTP protocol version.
-     *
-     * @return string HTTP protocol version.
-     */
-    public function getProtocolVersion();
-
-    /**
-     * Gets the body of the message.
-     *
-     * @return StreamInterface|null Returns the body, or null if not set.
-     */
-    public function getBody();
-
-    /**
-     * Sets the body of the message.
-     *
-     * The body MUST be a StreamInterface object. Setting the body to null MUST
-     * remove the existing body.
-     *
-     * @param StreamInterface|null $body Body.
-     *
-     * @return self Returns the message.
-     *
-     * @throws \InvalidArgumentException When the body is not valid.
-     */
-    public function setBody(StreamInterface $body = null);
-}
-```
-
-### 3.4 `Psr\Http\RequestInterface`
+### 3.3 `Psr\Http\RequestInterface`
 
 ```php
 <?php
@@ -379,7 +355,7 @@ interface RequestInterface extends MessageInterface
 }
 ```
 
-### 3.5 `Psr\Http\ResponseInterface`
+### 3.4 `Psr\Http\ResponseInterface`
 
 ```php
 <?php
@@ -415,7 +391,7 @@ interface ResponseInterface extends MessageInterface
 }
 ```
 
-### 3.7 `Psr\Http\StreamInterface`
+### 3.5 `Psr\Http\StreamInterface`
 
 ```php
 <?php
@@ -546,15 +522,6 @@ interface StreamInterface
 
 The design of the `MessageInterface`, `RequestInterface`, and `ResponseInterface`
 interfaces are based on existing projects in the PHP community.
-
-#### `HasHeadersInterface` as a separate interface
-
-`HasHeadersInterface` is provided as a separate interface so that other
-protocols that require a hash of case-insensitive headers can utilize the same
-interface if desired. For example, `HasHeadersInterface` could be used when
-implementing an email API for representing headers or for an HTTP client
-implementation that provides an abstraction for multipart/form-data elements
-that allow custom headers (e.g., Content-Disposition).
 
 #### Why are there header methods on messages rather than in a header bag?
 
