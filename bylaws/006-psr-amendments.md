@@ -6,7 +6,7 @@ compatibility will remain at 100%, and any confusion that arises from original
 wording may only be clarified through Errata - as outlined in 
 `bylaws/004-psr-workflow.md`.
 
-If a PSR is found to require updates or errata is no longer server as a 
+If a PSR is found to require updates or errata is no longer serves as a 
 useful resource to clarify confusion, then the PSR must be replaced, following
 the workflow set out in `bylaws/004-psr-workflow.md`.
 
@@ -55,7 +55,7 @@ If Errata is added which is deemed important enough, annotations may be placed i
 or near the offending line so that readers know to view the errata for more 
 information.
 
-> - Something something confusing about where brackets go. [cf. [errata](foo-meta.md#anchor)]
+> - Something confusing about where brackets go. [cf. [errata](foo-meta.md#anchor)]
 
 ### 3. Formatting & Typos
 
