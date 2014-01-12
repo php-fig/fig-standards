@@ -4,11 +4,11 @@ Amendments
 Once a PSR has been "Accepted", the PSR meaning cannot change, backwards 
 compatibility will remain at 100%, and any confusion that arises from original 
 wording may only be clarified through Errata - as outlined in 
-`004-psr-workflow.md`.
+`bylaws/004-psr-workflow.md`.
 
 If a PSR is found to require updates or errata is no longer server as a 
 useful resource to clarify confusion, then the PSR must be replaced, following
-the workflow set out in `004-psr-workflow.md`.
+the workflow set out in `bylaws/004-psr-workflow.md`.
 
 The original PSR may then be deprecated, and the new PSR becomes the recommended 
 document. 
@@ -49,11 +49,15 @@ For example:
 > **Deprecated** - PSR-0 has been marked as deprecated. PSR-4 is now recommended 
 as an alternative.
 
-### 2. Typos
+### 2. Annotations
 
-It should never happen, but you'd be amazed.
+If Errata is added which is deemed important enough, annotations may be placed in 
+or near the offending line so that readers know to view the errata for more 
+information.
 
-### 3. Formatting
+> - Something something confusing about where brackets go. [cf. [errata](foo-meta.md#anchor)]
+
+### 3. Formatting & Typos
 
 If formatting is broken for any reason (due to GitHub Markdown issues) then 
 changing formatting must not be considered a change to the document.
