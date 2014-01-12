@@ -25,7 +25,7 @@ interpreted as described in [RFC 2119][].
 1. Overview
 -----------
 
-- Code MUST follow [PSR-1][].
+- Code MUST follow a "coding style guide" PSR [[PSR-1][]].
 
 - Code MUST use 4 spaces for indenting, not tabs.
 

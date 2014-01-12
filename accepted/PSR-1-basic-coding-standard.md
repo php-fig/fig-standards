@@ -11,6 +11,7 @@ interpreted as described in [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+[PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
 
 1. Overview
@@ -24,7 +25,7 @@ interpreted as described in [RFC 2119][].
   *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
   but SHOULD NOT do both.
 
-- Namespaces and classes MUST follow [PSR-0][].
+- Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0][], [PSR-4][]].
 
 - Class names MUST be declared in `StudlyCaps`.
 
