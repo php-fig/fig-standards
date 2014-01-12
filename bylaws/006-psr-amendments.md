@@ -46,7 +46,7 @@ document, and a link should be placed in the body.
 
 For example:
 
-> **Deprecated** - PSR-0 has been marked as deprecated. PSR-4 is now recommended 
+> **Deprecated** - As of 01/01/2014 PSR-0 has been marked as deprecated. PSR-4 is now recommended 
 as an alternative.
 
 ### 2. Annotations
