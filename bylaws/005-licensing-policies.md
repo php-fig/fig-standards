@@ -1,4 +1,5 @@
-# Licensing Policies
+Licensing Policies
+==================
 
 ## 1. Code
 
