@@ -84,6 +84,7 @@ class Foo extends Bar implements FooInterface
         // method body
     }
 }
+
 ```
 
 2. General
