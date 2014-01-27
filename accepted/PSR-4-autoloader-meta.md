@@ -87,7 +87,7 @@ that we can have packages that look more like the following:
                 tests/
                     ClassNameTest.php   # Vendor_Name\Package_Name\ClassNameTest
 
-This would require an implementation of what was intially called
+This would require an implementation of what was initially called
 "package-oriented autoloading" (as vs the traditional "direct class-to-file
 autoloading").
 
@@ -149,7 +149,7 @@ acceptable to remove them here as well.
 
 This approach retains key characteristics of PSR-0 while eliminating the
 deeper directory structures it requires. In addition, it specifies certain
-additional rules that make implementations explicity more interoperable.
+additional rules that make implementations explicitly more interoperable.
 
 Although not related to directory mapping, the final draft also specifies how
 autoloaders should handle errors.  Specifically, it forbids throwing exceptions
