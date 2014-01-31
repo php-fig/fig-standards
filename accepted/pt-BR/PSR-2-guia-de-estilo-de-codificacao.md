@@ -87,7 +87,7 @@ A tag de fechamento `?>` DEVE ser omitida em arquivos contendo somente PHP.
 
 ### 2.3. Linhas
 
-NÃO PODE haver um limite absoluto no comprimento da linha.
+NÃO DEVE haver um limite absoluto no comprimento da linha.
 
 O limite relativo no comprimento das linhas DEVE ser de 120 caracteres; Analizadores automáticos de estilo DEVEM advertir, mas NÃO DEVEM exibir um erro ao ultrapassar o limite relativo.
 
