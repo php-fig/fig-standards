@@ -1,21 +1,21 @@
 Amendments
 ==========
 
-Following the rules of the [workflow bylaw][], once a PSR has been "Accepted" the PSR meaning 
+Following the rules of the [workflow bylaw], once a PSR has been "Accepted" the PSR meaning 
 cannot change, backwards compatibility MUST remain at 100%, and any confusion that arises from
 original wording MAY be clarified through errata. 
 
-The rules for errata are covered in the [workflow bylaw][], and only allow non-backwards compatible clarification to be added to the meta document. Sometimes, modifications will be necessary in PSR document itself, and this document outlines those cases.
+The rules for errata are covered in the [workflow bylaw], and only allow non-backwards compatible clarification to be added to the meta document. Sometimes, modifications will be necessary in PSR document itself, and this document outlines those cases.
 
 ## 1. Deprecation and Replacement
 
 If a PSR is found to require substantive updates or errata is no longer serves as a 
 useful resource to clarify confusion, then the PSR must be replaced, following
-the workflow set out in [workflow bylaw][].
+the workflow set out in [workflow bylaw].
 
 The original PSR may at some point in time be deprecated, and the new PSR becomes the recommended 
 document. Deprecation and recommendation changes must be made with a vote according to the rules 
-of the [voting protocol][], with a subject like "[VOTE] Deprecate PSR-X", at which point a PSR-Y should be specified as a recommendation. 
+of the [voting protocol], with a subject like "[VOTE] Deprecate PSR-X", at which point a PSR-Y should be specified as a recommendation. 
 
 Once a vote has passed with the decision to deprecate a PSR and supersede it 
 with another PSR, the deprecated PSR must be marked as such in the original 
