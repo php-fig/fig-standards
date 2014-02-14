@@ -49,11 +49,10 @@ echo $message->getHeader('foo');
 ##### Headers with multiple values
 
 In order to accommodate headers with multiple values yet still provide the
-convenience of working with headers as strings, all header values are
-implemented using `HeaderFieldValuesInterface` objects. Any object implementing
-`HeaderFieldValuesInterface` can be used as an array or cast to a string. When a
-header containing multiple values is cast to a string, the values will be
-concatenated using a comma separator.
+convenience of working with headers as strings, headers can be retrieved from
+an instance of a ``MessageInterface`` as an array or string. When header field
+values are retrieved as a string (the default behavior), the values are
+concatenated together using a comma.
 
 ```php
 $message->setHeader('foo', 'bar');
@@ -63,36 +62,24 @@ $header = $message->getHeader('foo');
 echo $header;
 // Outputs: bar, baz
 
-echo $header[0];
-// Outputs: bar
-
-echo $header[1];
-// Outputs: baz
-
-foreach ($header as $value) {
-    echo $value . ' ';
-}
-// Outputs: baz bar
+$header = $message->getHeader('foo', true);
+// ['bar', 'baz']
 ```
 
 Because some headers cannot be concatenated using a comma (e.g., Set-Cookie),
 the most accurate method used for serializing message headers is to iterate
-over header values and serialize based on any rules for the specific header.
-Implementations MAY choose to internally maintain the state of classes
-implementing `HeaderFieldValuesInterface` using an array of strings or a string
-value. However, it is recommended that implementations maintain the internal
-state using an array so that headers that cannot be concatenated using a comma
-can be serialized using the array values rather than an invalid string. For
-example, when converting an object implementing `RequestInterface` to a string,
-an underlying implementation MAY mimic the following behavior.
+over header values as an array and serialize the fields based on any rules for
+the specific header. For example, when converting an object implementing
+`RequestInterface` to a string, an underlying implementation MAY mimic the
+following behavior.
 
 ```php
 $str = $message->getUrl() . ' ' . $path . ' HTTP/'
     . $message->getProtocolVersion()) . "\r\n\r\n";
 
-foreach ($message->getHeaders() as $key => $value) {
+foreach ($message->getHeaders() as $key => $values) {
     // Custom handling MAY be applied for specific keys
-    $str .= $key . ': ' . $value . "\r\n";
+    $str .= $key . ': ' . implode(', ', $value) . "\r\n";
 }
 
 $str .= "\r\n";
@@ -131,36 +118,7 @@ The interfaces and classes described are provided as part of the
 3. Interfaces
 -------------
 
-### 3.1 `Psr\Http\HeaderFieldValuesInterface`
-
-```php
-<?php
-
-namespace Psr\Http;
-
-/**
- * Represents a collection of header values.
- *
- * When implementing the methods required for ArrayAccess, implementations MUST
- * return null when accessing an index that does not exist and MAY NOT emit a
- * warning.
- *
- * When implementing the Countable interface, implementations MUST return the
- * number of values in the list of header values.
- */
-interface HeaderFieldValuesInterface extends \Countable, \Traversable, \ArrayAccess
-{
-    /**
-     * Convert the header values to a string, concatenating multiple values
-     * using a comma.
-     *
-     * @return string
-     */
-    public function __toString();
-}
-```
-
-### 3.2 `Psr\Http\MessageInterface`
+### 3.1 `Psr\Http\MessageInterface`
 
 ```php
 <?php
@@ -202,18 +160,17 @@ interface MessageInterface
     public function setBody(StreamInterface $body = null);
 
     /**
-     * Gets all headers.
+     * Gets all message headers.
      *
-     * The keys of the returned array represents the header name as it will be
-     * sent over the wire, and each value is a HeaderFieldValuesInterface object
-     * that can be used like an array or cast to a string.
+     * The keys represent the header name as it will be sent over the wire, and
+     * each value is an array of strings associated with the header.
      *
      *     // Represent the headers as a string
      *     foreach ($message->getHeaders() as $name => $values) {
-     *         echo "{$name}: {$values}\r\n";
+     *         echo $name . ": " . implode(", ", $values);
      *     }
      *
-     * @return array Returns an associative array of the message's headers
+     * @return array Returns an associative array of the message's headers.
      */
     public function getHeaders();
 
@@ -223,30 +180,36 @@ interface MessageInterface
      * @param string $header Case-insensitive header name.
      *
      * @return bool Returns true if any header names match the given header
-     *              name using a case-insensitive string comparison. Returns
-     *              false if no matching header name is found in the message.
+     *     name using a case-insensitive string comparison. Returns false if
+     *     no matching header name is found in the message.
      */
     public function hasHeader($header);
 
     /**
-     * Retrieve a header by name.
+     * Retrieve a header by the given case-insensitive name.
      *
-     * @param string $header Header name.
+     * By default, this method returns all of the header values of the given
+     * case-insensitive header name as a string concatenated together using
+     * a comma. Because some header should not be concatenated together using a
+     * comma, this method provides a Boolean argument that can be used to
+     * retrieve the associated header values as an array of strings.
      *
-     * @return HeaderFieldValuesInterface|null Returns the header values or or
-     *                                         null if not set.
+     * @param string $header  Case-insensitive header name.
+     * @param bool   $asArray Set to true to retrieve the header value as an
+     *                        array of strings.
+     *
+     * @return array|string
      */
-    public function getHeader($header);
+    public function getHeader($header, $asArray = false);
 
     /**
      * Sets a header, replacing any existing values of any headers with the
      * same case-insensitive name.
      *
-     * The header values MUST be a string, an array of strings, or a
-     * HeaderFieldValuesInterface object.
+     * The header values MUST be a string or an array of strings.
      *
-     * @param string                             $header Header name
-     * @param string|array|HeaderFieldValuesInterface $value  Header value(s)
+     * @param string       $header Header name
+     * @param string|array $value  Header value(s)
      *
      * @return self Returns the message.
      */
@@ -257,7 +220,7 @@ interface MessageInterface
      * message.
      *
      * The array keys MUST be a string. The array values must be either a
-     * string, array of strings, or a HeaderFieldValuesInterface object.
+     * string or an array of strings.
      *
      * @param array $headers Headers to set.
      *
@@ -280,10 +243,10 @@ interface MessageInterface
      * Merges in an associative array of headers.
      *
      * Each array key MUST be a string representing the case-insensitive name
-     * of a header. Each value MUST be either an array of strings or an array
-     * of HeaderFieldValuesInterface objects. For each value, the value is
-     * appended to any existing header of the same name, or, if a header does
-     * not already exist by the given name, then the header is added.
+     * of a header. Each value MUST be either a string or an array of strings.
+     * For each value, the value is appended to any existing header of the same
+     * name, or, if a header does not already exist by the given name, then the
+     * header is added.
      *
      * @param array $headers Associative array of headers to add to the message
      *
@@ -302,7 +265,7 @@ interface MessageInterface
 }
 ```
 
-### 3.3 `Psr\Http\RequestInterface`
+### 3.2 `Psr\Http\RequestInterface`
 
 ```php
 <?php
@@ -355,7 +318,7 @@ interface RequestInterface extends MessageInterface
 }
 ```
 
-### 3.4 `Psr\Http\ResponseInterface`
+### 3.3 `Psr\Http\ResponseInterface`
 
 ```php
 <?php
@@ -391,7 +354,7 @@ interface ResponseInterface extends MessageInterface
 }
 ```
 
-### 3.5 `Psr\Http\StreamInterface`
+### 3.4 `Psr\Http\StreamInterface`
 
 ```php
 <?php
@@ -534,63 +497,6 @@ Moving headers from messages into an externally mutable "header bag" exposes the
 internal implementation of how a message manages its headers an has a
 side-effect that messages are no longer aware of changes to their headers. This
 can lead to messages entering into an invalid or inconistent state.
-
-#### Using `HeaderFieldValuesInterface` instead of an array
-
-Header values are represented using `HeaderFieldValuesInterface`. This interface
-allows developers to work with headers as a string and as an array. This allows
-developers the flexibility of serializing a header precisely as it should be
-sent over the wire, while still providing the convenience of working with
-headers that typically have a single value (e.g., Host, Content-Type, etc...)
-as a string. Furthermore, accessing missing elements of a
-`HeaderFieldValuesInterface` will return `null` rather than emit a warning (as
-would happen if header values were represented as an actual PHP array).
-
-In addition to being more convenient, `HeaderFieldValuesInterface` allows
-implementations to pre-compute an internal cache of header values represented
-as a string instead of expecting developers to constantly implode an array of
-values into a string. This performance optimization can be useful in performance
-sensitive applications that perform various checks and modifications to headers
-before a message is sent over the wire.
-
-Representing header values as an array of strings has various issues. Working
-with an array of header strings requires quite a bit of boiler-plate code and
-lacks the ability to provide implementation specific performance optimizations.
-When using an array to represent headers, you MUST check if a specific index
-exists in the header values array before it can be accessed. End-users would
-also need to manually implode the header values on ', ' to represent the header
-values as a string.
-
-```php
-$message->setHeader('Foo', array('a', 'b', 'c'));
-echo $message->getHeader('Foo');
-// Output: PHP Notice:  Array to string conversion in ...
-echo implode(', ', $message->getHeader('Foo'));
-// Output: a, b, c
-echo $message->getHeader('Foo')[0];
-// Output: 'a'
-echo $message->getHeader('Foo')[10];
-// Output: PHP Notice:  Undefined offset: 10
-// The above would need to be rewritten as:
-$values = $message->getHeader('Foo');
-if (isset($values[10])) {
-    echo $values[10];
-}
-```
-
-When using `HeaderFieldValuesInterface`, developers can safely interact with any
-header as a string or array without having to first check if a specific index
-exists.
-
-```php
-$message->setHeader('Foo', array('a', 'b', 'c'));
-echo $message->getHeader('Foo');
-// Output: 'a, b, c'
-echo $message->getHeader('Foo')[0];
-// Output: 'a'
-echo $message->getHeader('Foo')[10];
-// Output: ''
-```
 
 #### Mutability of messages
 
