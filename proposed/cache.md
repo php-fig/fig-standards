@@ -151,7 +151,7 @@ interface PoolInterface
      *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
      *   MUST be thrown.
      */
-    function getItem($key);
+    public function getItem($key);
 
     /**
      * Returns a traversable set of cache items.
@@ -163,7 +163,7 @@ interface PoolInterface
      *   parameter, keyed by the cache keys of each item. If no items are found
      *   an empty Traversable collection will be returned.
      */
-    function getItems(array $keys);
+    public function getItems(array $keys);
 
     /**
      * Deletes all items in the pool.
@@ -171,8 +171,9 @@ interface PoolInterface
      * @return \Psr\Cache\PoolInterface
      *   The current pool.
      */
-    function clear();
+    public function clear();
 }
+
 ```
 
 
@@ -211,7 +212,7 @@ interface ItemInterface
      * @return string
      *   The key string for this cache item.
      */
-    function getKey();
+    public function getKey();
 
     /**
      * Retrieves the value of the item from the cache associated with this objects key.
@@ -225,7 +226,7 @@ interface ItemInterface
      * @return mixed
      *   The value corresponding to this cache item's key, or null if not found.
      */
-    function get();
+    public function get();
 
     /**
      * Stores a value into the cache.
@@ -253,7 +254,7 @@ interface ItemInterface
      *   Returns true if the item was successfully saved, or false if there was
      *   an error.
      */
-    function set($value = null, $ttl = null);
+    public function set($value = null, $ttl = null);
 
     /**
      * Confirms if the cache item lookup resulted in a cache hit.
@@ -264,15 +265,15 @@ interface ItemInterface
      * @return bool
      *   True if the request resulted in a cache hit.  False otherwise.
      */
-    function isHit();
+    public function isHit();
 
     /**
      * Removes the current key from the cache.
      *
-     * @return \Psr\Cache\CacheInterface
+     * @return \Psr\Cache\ItemInterface
      *   The current item.
      */
-    function delete();
+    public function delete();
 
     /**
      * Confirms if the cache item exists in the cache.
@@ -283,9 +284,10 @@ interface ItemInterface
      * @return bool
      *  True if item exists in the cache, false otherwise.
      */
-     function exists();
+     public function exists();
 
 }
+
 ```
 
 ### Cache\InvalidArgumentException
