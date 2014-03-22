@@ -43,14 +43,15 @@ may also be explicitly set with DateTime object.
     Implementing Libraries MAY expire an item before its requested Expiration Time,
 but MUST treat an item as expired once its Expiration Time is reached.
 
-*    **Key** - A string that uniquely identifies a cached item. Implementing
-libraries MUST support keys consisting of the characters `A-Z`, `a-z`, `0-9`,
-and `_` in any order in UTF-8 encoding and a length of up to 64 characters.
-Implementing libraries MAY support additional characters and encodings or longer
-lengths, but must support at least that minimum.  Libraries are responsible for
-their own escaping of key strings as appropriate, but MUST be able to return
-the original unmodified key string. The following characters are reserved for
-future extensions and MUST NOT be supported by implementing libraries: `{}()/\@:`
+*    **Key** - A string of at least one character that uniquely identifies a
+cached item. Implementing libraries MUST support keys consisting of the
+characters `A-Z`, `a-z`, `0-9`, and `_` in any order in UTF-8 encoding and a
+length of up to 64 characters. Implementing libraries MAY support additional
+characters and encodings or longer lengths, but must support at least that
+minimum.  Libraries are responsible for their own escaping of key strings
+as appropriate, but MUST be able to return the original unmodified key string.
+The following characters are reserved for future extensions and MUST NOT be
+supported by implementing libraries: `{}()/\@:`
 
 *    **Hit** - A cache hit occurs when a Calling Library requests an Item by key
 and a matching value is found for that key, and that value has not expired, and
