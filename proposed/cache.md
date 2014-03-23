@@ -163,12 +163,12 @@ interface PoolInterface
      *   parameter, keyed by the cache keys of each item. If no items are found
      *   an empty Traversable collection will be returned.
      */
-    public function getItems(array $keys);
+    public function getItems(array $keys = array());
 
     /**
      * Deletes all items in the pool.
      *
-     * @return \Psr\Cache\PoolInterface
+     * @return static
      *   The current pool.
      */
     public function clear();
@@ -242,7 +242,7 @@ interface ItemInterface
      *
      * @param mixed $value
      *   The serializable value to be stored.
-     * @param int|DateTime $ttl
+     * @param int|\DateTime $ttl
      *   - If an integer is passed, it is interpreted as the number of seconds
      *     after which the item MUST be considered expired.
      *   - If a DateTime object is passed, it is interpreted as the point in
@@ -262,7 +262,7 @@ interface ItemInterface
      * Note: This method MUST NOT have a race condition between calling isHit()
      * and calling get().
      *
-     * @return bool
+     * @return boolean
      *   True if the request resulted in a cache hit.  False otherwise.
      */
     public function isHit();
@@ -281,10 +281,11 @@ interface ItemInterface
      * Note: This method MAY avoid retrieving the cached value for performance
      * reasons, which could result in a race condition between exists() and get().
      *
-     * @return bool
+     * @return boolean
      *  True if item exists in the cache, false otherwise.
      */
-     public function exists();
+    public function exists();
+}
 
 }
 
@@ -300,5 +301,5 @@ throw an exception class which implements ``Psr\Cache\InvalidArgumentException``
 namespace Psr\Cache;
 
 interface InvalidArgumentException {}
-
+```
 
