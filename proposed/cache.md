@@ -282,6 +282,7 @@ interface ItemInterface
      *
      * Note: This method MAY avoid retrieving the cached value for performance
      * reasons, which could result in a race condition between exists() and get().
+     * To avoid that potential race condition use isHit() instead.
      *
      * @return boolean
      *  True if item exists in the cache, false otherwise.
