@@ -169,8 +169,8 @@ interface PoolInterface
     /**
      * Deletes all items in the pool.
      *
-     * @return static
-     *   The current pool.
+     * @return boolean
+     *   True if the pool was successfully cleared. False if there was an error.
      */
     public function clear();
 }
