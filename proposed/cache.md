@@ -271,8 +271,9 @@ interface ItemInterface
     /**
      * Removes the current key from the cache.
      *
-     * @return \Psr\Cache\ItemInterface
-     *   The current item.
+     * @return boolean
+     *   Returns true if the item was deleted or if it did not exist in the
+     *   first place, or false if there was an error.
      */
     public function delete();
 
