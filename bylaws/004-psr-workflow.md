@@ -1,4 +1,5 @@
-# PSR Review Workflow
+PSR Review Workflow
+===================
 
 This document describes the workflow for proposing a PSR and having it published by the PHP-FIG.
 

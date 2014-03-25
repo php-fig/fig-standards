@@ -28,7 +28,7 @@ Sous-tiret dans les Espaces de Noms et Noms de Classes
 
 Les standards établis ici doivent avoir le plus petit dénominateur commun pour assurer une bonne interopérabilité des chargeurs de classes. Vous pouvez vérifier que vous respectez ces standards via l'utilisation de l'implémentation d'exemple de SplClassLoader qui est capable de charger les classes PHP 5.3.
 
-Exemple d'Implémentation
+Exemple d'implémentation
 ------------------------
 
 Le code ci-dessous est un exemple de fonction permettant de montrer comment les standards proposés ci-dessus peuvent être chargés automatiquement.
@@ -52,8 +52,8 @@ function autoload($className)
 }
 ```
 
-Implémentation SplClassLoader
------------------------------
+Implémentation de SplClassLoader
+--------------------------------
 
 Le gist suivant est un exemple d'implémentation de SplClassLoader qui permet de charger vos classes si vous respectez les standards d'interopérabilité proposés plus haut. C'est la façon actuelle recommandée pour charger des classes PHP 5.3 qui respectent ces standards.
 

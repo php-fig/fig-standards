@@ -1,7 +1,7 @@
 Coding Style Guide
 ==================
 
-This guide extends and expands on [PSR-1][], the basic coding standard.
+This guide extends and expands on [PSR-1], the basic coding standard.
 
 The intent of this guide is to reduce cognitive friction when scanning code
 from different authors. It does so by enumerating a shared set of rules and
@@ -15,7 +15,7 @@ those rules.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+interpreted as described in [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
@@ -25,7 +25,7 @@ interpreted as described in [RFC 2119][].
 1. Overview
 -----------
 
-- Code MUST follow [PSR-1][].
+- Code MUST follow a "coding style guide" PSR [[PSR-1]].
 
 - Code MUST use 4 spaces for indenting, not tabs.
 
@@ -91,7 +91,7 @@ class Foo extends Bar implements FooInterface
 
 ### 2.1 Basic Coding Standard
 
-Code MUST follow all rules outlined in [PSR-1][].
+Code MUST follow all rules outlined in [PSR-1].
 
 ### 2.2 Files
 
@@ -129,7 +129,7 @@ Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
 ### 2.5. Keywords and True/False/Null
 
-PHP [keywords][] MUST be in lower case.
+PHP [keywords] MUST be in lower case.
 
 The PHP constants `true`, `false`, and `null` MUST be in lower case.
 
