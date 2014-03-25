@@ -8,8 +8,8 @@ PSR-5: PHPDoc
     3. Definitions
     4. Basic Principles
     5. The PHPDoc Format
-      5.1. Short Description
-      5.2. Long Description
+      5.1. Summary
+      5.2. Description
       5.3. Tags
         5.3.1. Tag Name
         5.3.2. Tag Signature
@@ -268,10 +268,10 @@ interpreted as described in [RFC 2119][RFC2119].
 The PHPDoc format has the following [ABNF][RFC5234]
 definition:
 
-    PHPDoc            = [short-description] [long-description] [tags]
+    PHPDoc            = [summary] [description] [tags]
     inline-phpdoc     = "{" *SP PHPDoc *SP "}"
-    short-description = *CHAR ("." 1*CRLF / 2*CRLF)
-    long-description  = 1*(CHAR / inline-tag) 1*CRLF ; any amount of characters
+    summary           = *CHAR ("." 1*CRLF / 2*CRLF)
+    description       = 1*(CHAR / inline-tag) 1*CRLF ; any amount of characters
                                                      ; with inline tags inside
     tags              = *(tag 1*CRLF)
     inline-tag        = "{" tag "}"
@@ -284,36 +284,34 @@ definition:
 
 Examples of use are included in chapter 5.4.
 
-### 5.1. Short Description
+### 5.1. Summary
 
-A short description MUST contain an abstract of the "Structural Element"
-defining the purpose. It is RECOMMENDED for short descriptions to span a single
-line or at most two but not more than that.
+A Summary MUST contain an abstract of the "Structural Element" defining the 
+purpose. It is RECOMMENDED for Summaries to span a single line or at most two 
+but not more than that.
 
-A short description MUST end with either
+A Summary MUST end with either
+
 * a full stop (.) followed by a line break
 * or two sequential line breaks.
 
-If a long description is provided, then it MUST be preceded by a short
-description. Otherwise the long description will be considered the short
-description, until the stop of the short description is encountered.
+If a Description is provided, then it MUST be preceded by a Summary. Otherwise 
+the Description will be considered the Summary, until the end of the Summary 
+is reached.
 
-Tags do not have to be preceded by a short description but it is RECOMMENDED
-to do so.
+### 5.2. Description
 
-### 5.2. Long Description
-
-The long description is OPTIONAL but SHOULD be included when the
+The Description is OPTIONAL but SHOULD be included when the
 "Structural Element", which this DocBlock precedes, contains more operations, or
-more complex operations, than can be described in the short description alone.
+more complex operations, than can be described in the Summary alone.
 
-Any application parsing the long description is RECOMMENDED to support the
+Any application parsing the Description is RECOMMENDED to support the
 Markdown mark-up language for this field so that it is possible for the author
 to provide formatting and a clear way of representing code examples.
 
-Common uses for the long description are (amongst others):
+Common uses for the Description are (amongst others):
 
-* To provide more detail than the short description on what this method does.
+* To provide more detail than the Summary on what this method does.
 * To specify of what child elements an input or output array, or object, is
   composed.
 * To provide a set of common use cases or scenarios in which the
@@ -340,8 +338,8 @@ For example:
 > ('This is a parameter.').
 
 The description of a tag MUST support Markdown as a formatting language. Due to
-the nature of Markdown it is legal to start the description of the tag on the same
-or the subsequent line and interpret it in the same way.
+the nature of Markdown it is legal to start the description of the tag on the 
+same or the subsequent line and interpret it in the same way.
 
 So the following tags are semantically identical:
 
@@ -353,16 +351,16 @@ So the following tags are semantically identical:
      *    This is a description.
      */
 
-A variation of this is where, instead of a description, a tag-signature is used;
-in most cases the tag will in fact be an "Annotation". The tag-signature is
+A variation of this is where, instead of a description, a tag signature is used;
+in most cases the tag will in fact be an "Annotation". The tag signature is
 able to provide the annotation with parameters regarding its operation.
 
-If a tag-signature is present then there MUST NOT be a description present in
+If a tag signature is present then there MUST NOT be a description present in
 the same tag.
 
-The meta-data supplied by tags could result in a change of actual runtime behaviour
-of the succeeding "Structural Element", in which case the term "Annotation" is
-commonly used instead of "Tag".
+The meta-data supplied by tags could result in a change of actual runtime 
+behavior of the succeeding "Structural Element", in which case the term 
+"Annotation" is commonly used instead of "Tag".
 
 Annotations will not be described in further detail in this specification as
 this falls beyond scope. This specification provides a basis on top of which
@@ -401,9 +399,8 @@ is OPTIONAL):
 > Your own library or application may check for namespace aliases and make a
 > FQCN from this; this has no impact on this standard.
 
-> *Important*: Individual Documentation Generation Applications (DGAs) MAY
-> interpret namespaces that are registered with that application and apply
-> custom behaviour.
+> *Important*: Tools using the PHPDoc Standard MAY interpret namespaces that are
+> registered with that application and apply custom behaviour.
 
 Example of a tag name prefixed with a vendor name and hyphen:
 
@@ -449,9 +446,9 @@ A complete example could look like the following example:
 
 ```php
 /**
- * This is a short description.
+ * This is a Summary.
  *
- * This is a long description. It may span multiple lines
+ * This is a Description. It may span multiple lines
  * or contain 'code' examples using the _Markdown_ markup
  * language.
  *
@@ -470,11 +467,11 @@ function test($parameter1, $e)
 }
 ```
 
-It is also allowed to omit the long description:
+It is also allowed to omit the Description:
 
 ```php
 /**
- * This is a short description.
+ * This is a Summary.
  *
  * @see Markdown
  *
@@ -495,7 +492,7 @@ encouraged as you are missing information on the parameters and return value):
 
 ```php
 /**
- * This is a short description.
+ * This is a Summary.
  */
 function test($parameter1, $parameter2)
 {
@@ -514,9 +511,9 @@ Some tags may even feature an "Inline PHPDoc" as shown in the following example.
 ```php
 /**
  * @method integer MyMagicMethod(string $argument1) {
- *     This is the short description for MyMagicMethod.
+ *     This is the summary for MyMagicMethod.
  *
- *     @param string $argument1
+ *     @param string $argument1 Description for argument 1.
  *
  *     @return integer
  * }
@@ -535,8 +532,8 @@ the same name in a super-class or implemented in a super-interface).
 
 Every "Structural Element" MUST inherit the following PHPDoc parts by default:
 
-* [Short description](#51-short-description)
-* [Long description](#52-long-description)
+* [Summary](#51-summary)
+* [Description](#52-description)
 * A specific subset of [tags](#53-tags)
   * [@version](#825-version)
   * [@author](#82-author)
@@ -547,24 +544,24 @@ defined in the sub-chapters.
 
 The PHPDoc parts MUST NOT be inherited when a replacement is available in the
 sub-element. The exception to this rule is when the {@inheritdoc} inline tag is
-present in the long description. When present the parser MUST insert the
-super-element's long description at the location of the {@inheritdoc} inline
+present in the Description. When present the parser MUST insert the
+super-element's Description at the location of the {@inheritdoc} inline
 tag, while still including the current element's description.
 
 Inheritance takes place from the root of a class hierarchy graph to its leafs.
 This means that anything inherited in the bottom of the tree MUST 'bubble' up to
 the top unless overridden.
 
-> Note: a special circumstance here would be when the Long Description must be
-> overridden but the Short Description should stay intact. It would be difficult
+> Note: a special circumstance here would be when the Description must be
+> overridden but the Summary should stay intact. It would be difficult
 > for a reader to distinguish which is overridden.
 >
 > In this case the writer MUST use the {@inheritdoc} inline tag as
-> Short Description and override the Long Description with the intended text.
+> Summary and override the Description with the intended text.
 >
 > Without the {@inheritdoc} inline tag the reader MUST interpret any text
-> as if the Short Description would be overridden and long description MAY
-> appear overridden if the block of text contains a Short Description ending
+> as if the Summary would be overridden and Description MAY
+> appear overridden if the block of text contains a Summary ending
 > as defined in the ABNF.
 
 ### 6.1. Class Or Interface
@@ -835,8 +832,7 @@ same 'PHPDoc' pointing to the new element.
 
 The @example tag is used to link to an external source code file which contains
 an example of use for the current "Structural element". An inline variant exists
-with which code from an example file can be shown inline with the Long
-Description.
+with which code from an example file can be shown inline with the Description.
 
 #### Syntax
 
@@ -876,7 +872,7 @@ RECOMMENDED to use a syntax highlighting solution to improve user experience.
 
 The rules as described above also apply to the inline tags. The inline tag
 has 2 additional parameters with which to limit which lines of code
-are shown in the Long Description. Due to this, consuming applications MUST
+are shown in the Description. Due to this, consuming applications MUST
 show the example code in case an inline example tag is used.
 
 The start and end argument may be omitted but the ellipsis should remain in
@@ -951,7 +947,7 @@ variable and a variable documented in the project.
 
 The @internal tag is used to denote that the associated "Structural Element" is
 a structure internal to this application or library. It may also be used inside
-a long description to insert a piece of text that is only applicable for
+a description to insert a piece of text that is only applicable for
 the developers of this software.
 
 #### Syntax
@@ -978,7 +974,7 @@ associated element unless the user has explicitly indicated that internal elemen
 should be included.
 
 An additional use of @internal is to add internal comments or additional
-description text inline to the Long Description. This may be done, for example,
+description text inline to the Description. This may be done, for example,
 to withhold certain business-critical or confusing information when generating
 documentation from the source code of this piece of software.
 
@@ -1063,8 +1059,7 @@ or inline
 #### Description
 
 The @link tag can be used to define a relation, or link, between the
-"Structural Element", or part of the long description when used inline,
-to an URI.
+"Structural Element", or part of the description when used inline, to an URI.
 
 The URI MUST be complete and welformed as specified in RFC 2396.
 
