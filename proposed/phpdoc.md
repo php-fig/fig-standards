@@ -13,8 +13,8 @@ PSR-5: PHPDoc
       5.3. Tags
         5.3.1. Tag Name
         5.3.2. Tag Signature
-        5.3.3. Inline PHPDoc
-      5.4. Examples
+      5.4. Inline PHPDoc
+      5.5. Examples
     6. Inheritance
       6.1. Class Or Interface
       6.2. Function Or Method
@@ -268,19 +268,20 @@ interpreted as described in [RFC 2119][RFC2119].
 The PHPDoc format has the following [ABNF][RFC5234]
 definition:
 
-    PHPDoc            = [summary] [description] [tags]
-    inline-phpdoc     = "{" *SP PHPDoc *SP "}"
-    summary           = *CHAR ("." 1*CRLF / 2*CRLF)
-    description       = 1*(CHAR / inline-tag) 1*CRLF ; any amount of characters
+    PHPDoc             = [summary] [description] [tags]
+    inline-phpdoc      = "{" *SP PHPDoc *SP "}"
+    summary            = *CHAR ("." 1*CRLF / 2*CRLF)
+    description        = 1*(CHAR / inline-tag) 1*CRLF ; any amount of characters
                                                      ; with inline tags inside
-    tags              = *(tag 1*CRLF)
-    inline-tag        = "{" tag "}"
-    tag               = "@" tag-name [tag-details]
-    tag-name          = (ALPHA / "\") *(ALPHA / DIGIT / "\" / "-" / "_")
-    tag-details       = *SP (SP tag-description / tag-signature / inline-phpdoc)
-    tag-description   = 1*(CHAR / CRLF)
-    tag-signature     = "(" *tag-argument ")"
-    tag-argument      = *SP 1*CHAR [","] *SP
+    tags               = *(tag 1*CRLF)
+    inline-tag         = "{" tag "}"
+    tag                = "@" tag-name [":" tag-specialization] [tag-details]
+    tag-name           = (ALPHA / "\") *(ALPHA / DIGIT / "\" / "-" / "_")
+    tag-specialization = 1*(ALPHA / DIGIT / "-")
+    tag-details        = *SP (SP tag-description / tag-signature / inline-phpdoc)
+    tag-description    = 1*(CHAR / CRLF)
+    tag-signature      = "(" *tag-argument ")"
+    tag-argument       = *SP 1*CHAR [","] *SP
 
 Examples of use are included in chapter 5.4.
 
@@ -423,21 +424,49 @@ The contents of a signature are to be determined by the tag type (as described
 in the tag-name) and fall beyond the scope of this specification. However, a
 tag-signature MUST NOT be followed by a description or other form of meta-data.
 
-#### 5.3.3. Inline PHPDoc
+### 5.4. Inline PHPDoc
 
 Specific Tags MAY have an "Inline PHPDoc" section at the end of the "Tag"
 definition. An "Inline PHPDoc" is a "PHPDoc" element enclosed in braces and is
-only present at the end of a "Tag" sequence unless specified otherwise in a
-"Tag" definition, the "Inline PHPDoc" element MUST replace any description that
+only present at the end of a "Tag" sequence, unless specified otherwise in a
+"Tag" definition. The "Inline PHPDoc" element MUST replace any description that
 COULD have been provided.
 
-An example can be the @method tag. This tag may be augmented using an
+An example is the `@method` tag. This tag can be augmented using an
 "Inline PHPDoc" to provide additional information regarding the parameters,
 return value or any other tag supported by functions and methods.
 
-Chapter 5.4 contains an example of use for this construct.
+An example of this is:
 
-### 5.4. Examples
+```php
+/**
+ * @method integer MyMagicMethod(string $argument1) {
+ *     This is the summary for MyMagicMethod.
+ *
+ *     @param string $argument1 Description for argument 1.
+ *
+ *     @return integer
+ * }
+ */
+class MyMagicClass
+{
+    ...
+}
+```
+
+In this example is described how the `@method` tag for the Magic Method 
+`MyMagicMethod` has a complete PHPDoc definition associated with it. In this
+definition all constraints, constructs and tags that apply to a normal usage of 
+PHPDoc also apply.
+
+The meaning of an "Inline PHPDoc" element differs based on the context in which
+it is provided. In the example above the "Inline PHPDoc" provides a regular 
+PHPDoc definition as would precede a method. 
+
+To prevent confusion regarding the function of "Inline PHPDoc" elements MUST 
+their usage be restricted to tags and locations that are documented.
+
+### 5.5. Examples
 
 The following examples serve to illustrate the basic use of DocBlocks; it is
 advised to read through the list of tags in chapter 8.
