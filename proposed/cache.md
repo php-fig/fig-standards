@@ -247,7 +247,7 @@ interface ItemInterface
      *   - If an integer is passed, it is interpreted as the number of seconds
      *     after which the item MUST be considered expired.
      *   - If a DateTime object is passed, it is interpreted as the point in
-     *     time after which the the item MUST be considered expired.
+     *     time after which the item MUST be considered expired.
      *   - If no value is passed, a default value MAY be used. If none is set,
      *     the value should be stored permanently or for as long as the
      *     implementation allows.
