@@ -290,8 +290,6 @@ interface ItemInterface
     public function exists();
 }
 
-}
-
 ```
 
 ### Cache\InvalidArgumentException
