@@ -29,6 +29,17 @@ custom development.
 
 ## Definitions
 
+*    **Calling Library** - The library or code that actually needs the cache
+services. This library will utilize caching services that implement this
+standard's interfaces, but will otherwise have no knowledge of the
+implementation of those caching services.
+
+*    **Implementing Library** - This library is responsible for implementing
+this standard in order to provide caching services to any Calling Library. The
+Implementing Library MUST provide classes which implement the Cache\PoolInterface
+and Cache\ItemInterface interfaces. Implementing Libraries MUST support at
+minimum TTL functionality as described below with whole-second granularity.
+
 *    **TTL** - The Time To Live (TTL) of an item is the amount of time between
 when that item is stored and it is considered stale. The TTL is normally defined
 by an integer representing time in seconds, or a DateInterval object.
@@ -66,17 +77,6 @@ make sure to verify isHit() on all of the get() calls.
 when a Calling Library requests an item by key and that value not found for that
 key, or the value was found but has expired, or the value is invalid for some
 other reason. An expired value MUST always be considered a cache miss.
-
-*    **Calling Library** - The library or code that actually needs the cache
-services. This library will utilize caching services that implement this
-standard's interfaces, but will otherwise have no knowledge of the
-implementation of those caching services.
-
-*    **Implementing Library** - This library is responsible for implementing
-this standard in order to provide caching services to any Calling Library. The
-Implementing Library MUST provide classes which implement the Cache\PoolInterface
-and Cache\ItemInterface interfaces. Implementing Libraries MUST support at
-minimum TTL functionality as described above with whole-second granularity.
 
 
 ## Data
