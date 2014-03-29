@@ -213,10 +213,6 @@ interpreted as described in [RFC 2119][RFC2119].
   *Property*:       `\My\Space\MyClass::$my_property`
   *Class Constant*: `\My\Space\MyClass::MY_CONSTANT`
 
-* "FQSEN" is short for 'Fully Qualified Structural Element Name'. This is the
-  unique identifier for each Structural Element and should not occur more than
-  once in a project.
-
   A FQSEN has the following [ABNF][RFC5234]
   definition:
 
@@ -228,30 +224,6 @@ interpreted as described in [RFC 2119][RFC2119].
           property = fqcn "::$" name
           function = fqnn "\" name "()"
           name     = (ALPHA / "_") *(ALPHA / DIGIT / "_")
-
-  Example, namespace:
-        `\My\Space`
-
-  Example, function:
-        `\My\Space\function()`
-
-  Example, constant:
-        `\My\Space\constant`
-
-  Example, trait:
-        `\My\Space\FactoryTrait`
-
-  Example, interface:
-        `\My\Space\FactoryInterface`
-
-  Example, class:
-        `\My\Space\Factory`
-
-  Example, method:
-        `\My\Space\Factory::method()`
-
-  Example, class constant:
-        `\My\Space\Factory::constant`
 
 ## 4. Basic Principles
 
