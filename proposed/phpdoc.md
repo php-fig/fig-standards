@@ -604,7 +604,7 @@ A class or interface SHOULD inherit the following deprecated tags if supplied:
 
 * [@subpackage](#819-subpackage-deprecated)
 
-The @subpackage MUST NOT be inherited if the @package annotation of the
+The @subpackage MUST NOT be inherited if the @package name of the
 super-class (or interface) is not the same as the @package of the child class
 (or interface).
 
