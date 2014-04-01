@@ -18,3 +18,16 @@ affection and support.
 3. Errata
 ---------
 
+
+
+4. People
+---------
+
+### 5.1 Editor
+
+- Larry Garfield, Drupal
+
+### 5.2 Sponsors
+
+- Cal Evans, the PHP Community (Coordinator)
+- Paul Jones, Aura
