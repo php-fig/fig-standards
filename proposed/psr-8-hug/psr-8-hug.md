@@ -39,4 +39,58 @@ A common example is to increment an internal happiness or satisfaction counter.
 1. An object may optionally implement GroupHuggable to indicate that it is able
 to support and affirm multiple objects at once.
 
-2. 
+
+## 3. Interfaces
+
+### HuggableInterface
+
+````php
+namespace Psr\Hug;
+
+/**
+ * Defines a huggable object.
+ *
+ * A huggable object expresses mutual affection with another huggable object.
+ */
+interface Huggable
+{
+
+    /**
+     * Hugs this object.
+     *
+     * All hugs are mutual. An object that is hugged MUST in turn hug the other
+     * object back by calling hug() on the first parameter. All objects MUST
+     * implement a mechanism to prevent an infinite loop of hugging.
+     *
+     * @param Huggable $h
+     *   The object that is hugging this object.
+     */
+    public function hug(Huggable $h);
+}
+````
+
+````php
+namespace Psr\Hug;
+
+/**
+ * Defines a huggable object.
+ *
+ * A huggable object expresses mutual affection with another huggable object.
+ */
+interface GroupHuggable extends Huggable
+{
+
+  /**
+   * Hugs a series of huggable objects.
+   *
+   * When called, this object MUST invoke the hug() method of every object
+   * provided. The order of the collection is not significant, and this object
+   * MAY hug each of the objects in any order provided that all are hugged.
+   *
+   * @param $huggables
+   *   An array or iterator of objects implementing the Huggable interface.
+   */
+  public function groupHug($huggables);
+}
+````
+
