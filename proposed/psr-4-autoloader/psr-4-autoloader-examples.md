@@ -219,7 +219,7 @@ class Psr4AutoloaderClass
                   . str_replace('\\', DIRECTORY_SEPARATOR, $relative_class)
                   . '.php';
             $file = $base_dir
-                  . str_replace('\\', '/', $relative_class)
+                  . str_replace('\\', '/', $file)
                   . '.php';
 
             // if the mapped file exists, require it
