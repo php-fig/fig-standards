@@ -96,9 +96,9 @@ similar language functionality if appropriate.
 
 All data passed into the Implementing Library MUST be returned exactly as
 passed. That includes the variable type. That is, it is an error to return
-(string) 5 if (int) 5 was the value saved.  Note that Implementing Libraries
-are not required to use PHP's serialize()/unserialize() functions internally.
-Compatibility with them is simply used as a compatibility baseline.
+(string) 5 if (int) 5 was the value saved.  Implementing Libraries MAY use PHP's
+serialize()/unserialize() functions internally but are not required to do so.
+Compatibility with them is simply used as a baseline for acceptable object values.
 
 If it is not possible to return the exact saved value for any reason, implementing
 libraries MUST respond with a cache miss rather than corrupted data.
