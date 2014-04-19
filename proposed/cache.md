@@ -187,9 +187,9 @@ unique Key. Cache\ItemInterface objects MUST be able to store and retrieve any
 type of PHP value defined in the Data section of this document.
 
 Calling Libraries MUST NOT instantiate Item objects themselves. They may only
-be created by a Pool object.  Calling Libraries SHOULD NOT assume that an Item
-created by one Implementing Library is compatible with a Pool from another
-Implementing Library.
+be requested from a Pool object via the getItem() method.  Calling Libraries
+SHOULD NOT assume that an Item created by one Implementing Library is compatible
+with a Pool from another Implementing Library.
 
 ```php
 <?php
