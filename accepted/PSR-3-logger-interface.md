@@ -113,7 +113,7 @@ Users of loggers are refered to as `user`.
 
 - Similarly, using the `Psr\Log\LoggerTrait` only requires you to
   implement the generic `log` method. Note that since traits can not implement
-  interfaces, in this case you still have to `implement LoggerInterface`.
+  interfaces, in this case you still have to implement `LoggerInterface`.
 
 - The `Psr\Log\NullLogger` is provided together with the interface. It MAY be
   used by users of the interface to provide a fall-back "black hole"
