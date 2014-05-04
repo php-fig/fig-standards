@@ -9,7 +9,7 @@ Exemplo de Closure
 ```php
 <?php
 /**
- * Um exemplo de uma implementação de um projeto específico.
+ * Um exemplo de uma implementação para um projeto específico.
  * 
  * Após registrar esta função de carregamento automático com SPL, a seguinte linha
  * faria a função tentar carregar a classe \Foo\Bar\Baz\Qux
@@ -82,13 +82,13 @@ namespace Example;
  * como segue:
  * 
  *      <?php
- *      // instantiate the loader
+ *      // instanciar o carregador
  *      $loader = new \Example\Psr4AutoloaderClass;
  *      
- *      // register the autoloader
+ *      // registrar o carregador automático
  *      $loader->register();
  *      
- *      // register the base directories for the namespace prefix
+ *      // registrar os diretórios base para o prefixo de namespace
  *      $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/src');
  *      $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/tests');
  * 
@@ -130,14 +130,14 @@ class Psr4AutoloaderClass
      * @param string $prefix O prefixo de namespace.
      * @param string $base_dir Um diretório base para arquivos de classe no
      * namespace.
-     * @param bool $prepend Se true, antepor o diretório base no stack
+     * @param bool $prepend Se true, antepor o diretório base na stack
      * em vez de acrescentá-lo; isso faz com que ele seja pesquisado em primeiro lugar, em vez
      * de último.
      * @return void
      */
     public function addNamespace($prefix, $base_dir, $prepend = false)
     {
-        // normaliza o prefixo do namespace
+        // normaliza o prefixo de namespace
         $prefix = trim($prefix, '\\') . '\\';
         
         // normaliza o diretório base com um separador posterior
@@ -158,10 +158,10 @@ class Psr4AutoloaderClass
     }
 
     /**
-     * Carrega o arquivo de classe para um determinado nome da classe.
+     * Carrega o arquivo de classe para um determinado nome de classe.
      *
      * @param string $class O nome da classe totalmente qualificado.
-     * @return mixed O nome do arquivo mapeado em caso de sucesso, ou o boleano falso em caso
+     * @return mixed O nome do arquivo mapeado em caso de sucesso, ou o booleano falso em caso
      * de falha.
      */
     public function loadClass($class)
@@ -179,13 +179,13 @@ class Psr4AutoloaderClass
             // o resto é o nome da classe relativo
             $relative_class = substr($class, $pos + 1);
 
-            // tentar carregar um arquivo mapeado para o prefixo e classe relativa
+            // tenta carregar um arquivo mapeado para o prefixo e classe relativa
             $mapped_file = $this->loadMappedFile($prefix, $relative_class);
             if ($mapped_file) {
                 return $mapped_file;
             }
 
-            // remover o separador de namespace posterior para a próxima iteração
+            // remove o separador de namespace posterior para a próxima iteração
             // do strrpos()
             $prefix = rtrim($prefix, '\\');   
         }
@@ -198,7 +198,7 @@ class Psr4AutoloaderClass
      * Carrega o arquivo mapeado para um prefixo de namespace e classe relativa.
      * 
      * @param string $prefix O prefixo de namespace.
-     * @param string $relative_class O nome de classe relativa.
+     * @param string $relative_class O nome de classe relativo.
      * @return mixed Boolean false se nenhum arquivo mapeado pode ser carregado, ou o
      * nome do arquivo mapeado que foi carregado.
      */
