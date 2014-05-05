@@ -21,11 +21,11 @@ Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "D
 
 - Les espaces de noms et les classes DOIVENT suivre [PSR-0][].
 
-- Les noms des classes DOIVENT être déclarés comme `StudlyCaps`.
+- Les noms des classes DOIVENT être déclarés comme `CamelCase`.
 
 - Les constantes de classe DOIVENT être déclarées en majuscules avec un sous-tiret en séparateurs.
 
-- Les noms des méthodes DOIVENT être déclarés comme `camelCase`.
+- Les noms des méthodes DOIVENT être déclarés comme `lowerCamelCase`.
 
 2. Fichiers
 --------
