@@ -15,6 +15,11 @@ Definitions
         submitting an application to the PHP-FIG mailing list under the
         Member Application procedure described in this bylaw.
     </dd>
+    <dt><strong>Affiliated Project</strong></dt>
+    <dd>
+        Any PHP project that is in the view of PHP-FIG closely linked with
+        a Member Project and in practice represented by that project.
+    </dd>
     <dt><strong>Voting Representative</strong></dt>
     <dd>
         Any individual granted the right to cast votes on behalf of a Member
@@ -101,6 +106,34 @@ inappropriately and to the detriment of PHP-FIG's ability to meet its
 objectives, a vote may be taken to request a replacement Voting Representative in
 accordance with the [Voting Protocol bylaw][voting] or to expel the Member
 Project where replacing a Voting Representative is not possible.
+
+Affiliated Projects
+-------------------
+
+There are cases in which multiple projects may be viewed as distinct in some
+circumstances but coupled to another existing Member Project in other
+circumstances. These projects are known as Affiliated Projects, as they are
+affiliated with another Member Project but are somewhat distinct.
+
+Affiliated Projects may not be admitted as Member Projects; they may, however,
+be listed alongside a Member Project and share the same Voting Representative
+with the consent of the Member Project in question if appropriate. In that case
+the Voting Representative is understood to represent the interests of both
+projects.
+
+A project should be considered Affiliated if, in the judgment of PHP-FIG, at
+least one of the following is true:
+
+1. The Affiliated Project is an extension of or plugin for another project,
+whether a member project or not.
+2. The Affiliated Project is intended as a direct replacement for, or has been
+directly replaced by, a Member Project.  That is, one project is a "Version 2"
+of another.
+3. The same authority would be responsible for appointing a Voting Representative
+for both projects.  That may be due to having the same project lead, or be
+projects of the same company, or other reasons as determined by PHP-FIG on a
+case-by-case basis. The same named Project Lead for both projects does not
+automatically imply the same appointing authority.
 
 Resignation Of Member Projects
 ------------------------------
