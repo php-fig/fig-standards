@@ -829,7 +829,7 @@ deprecated and are to be removed in a future version.
 
 #### Syntax
 
-    @deprecated [<"Semantic Version">] [<description>]
+    @deprecated [<"Semantic Version"> [<"Semantic Version">]] [<description>]
 
 #### Description
 
@@ -837,12 +837,16 @@ The @deprecated tag declares that the associated 'Structural elements' will
 be removed in a future version as it has become obsolete or its usage is
 otherwise not recommended.
 
-This tag MAY also contain a version number up till which it is guaranteed to be
-included in the software. Starting with the given version will the function be
-removed or may be removed without further notice.
+It is RECOMMENDED to specify a version number denoting the version in which it
+has been deprecated (similar to @since).
 
-It is RECOMMENDED to provide an additional description stating why the
-associated element is deprecated.
+The tag MAY specify a second version number in which it is scheduled for removal
+and up till which it is guaranteed to be included in the software. Starting with
+the given version it MAY be removed without further notice.
+
+It MAY provide an additional description stating why the associated element is
+deprecated.
+
 If it is superceded by another method it is RECOMMENDED to add a @see tag in the
 same 'PHPDoc' pointing to the new element.
 
@@ -851,9 +855,15 @@ same 'PHPDoc' pointing to the new element.
 ```php
 /**
  * @deprecated
+ *
  * @deprecated 1.0.0
+ *
  * @deprecated No longer used by internal code and not recommended.
+ *
  * @deprecated 1.0.0 No longer used by internal code and not recommended.
+ *
+ * @deprecated 1.0.0 2.0.0
+ * @see \New\Recommended::method()
  */
 ```
 
