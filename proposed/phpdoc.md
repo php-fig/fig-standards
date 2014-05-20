@@ -829,7 +829,7 @@ deprecated and are to be removed in a future version.
 
 #### Syntax
 
-    @deprecated [<"Semantic Version"> [<"Semantic Version">]] [<description>]
+    @deprecated [<"Semantic Version">][:<"Semantic Version">] [<description>]
 
 #### Description
 
@@ -837,12 +837,16 @@ The @deprecated tag declares that the associated 'Structural elements' will
 be removed in a future version as it has become obsolete or its usage is
 otherwise not recommended.
 
-It is RECOMMENDED to specify a version number denoting the version in which it
-has been deprecated (similar to @since).
+It is RECOMMENDED to specify a version number range to denote the version in
+which it has been deprecated.  This version MAY be followed by a colon and
+immediately followed by the version in which it is scheduled for removal; i.e.,
+up till which it is guaranteed to be included in the software.
 
-The tag MAY specify a second version number in which it is scheduled for removal
-and up till which it is guaranteed to be included in the software. Starting with
-the given version it MAY be removed without further notice.
+The starting version MAY be omitted to only specify the ending version, prefixed
+with a colon.
+
+If an ending version has been specified, the associated 'Structural elements'
+MAY be removed without further notice in that version or a later version.
 
 It MAY provide an additional description stating why the associated element is
 deprecated.
@@ -856,14 +860,16 @@ same 'PHPDoc' pointing to the new element.
 /**
  * @deprecated
  *
+ * @deprecated 1.0.0:2.0.0
+ * @see \New\Recommended::method()
+ *
  * @deprecated 1.0.0
+ *
+ * @deprecated :2.0.0
  *
  * @deprecated No longer used by internal code and not recommended.
  *
  * @deprecated 1.0.0 No longer used by internal code and not recommended.
- *
- * @deprecated 1.0.0 2.0.0
- * @see \New\Recommended::method()
  */
 ```
 
