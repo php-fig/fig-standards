@@ -205,7 +205,7 @@ class Psr4AutoloaderClass
     protected function loadMappedFile($prefix, $relative_class)
     {
         // are there any base directories for this namespace prefix?
-        if (isset($this->prefixes[$prefix]) === false) {
+        if (! isset($this->prefixes[$prefix])) {
             return false;
         }
             
@@ -217,9 +217,6 @@ class Psr4AutoloaderClass
             // in the relative class name, append with .php
             $file = $base_dir
                   . str_replace('\\', DIRECTORY_SEPARATOR, $relative_class)
-                  . '.php';
-            $file = $base_dir
-                  . str_replace('\\', '/', $relative_class)
                   . '.php';
 
             // if the mapped file exists, require it
