@@ -127,14 +127,17 @@ Users of loggers are refered to as `user`.
 - The `Psr\Log\LoggerAwareTrait` trait can be used to implement the equivalent
   interface easily in any class. It gives you access to `$this->logger`.
 
-- The `Psr\Log\LogLevel` class holds constants for the eight log levels.
+- The `Psr\Log\LogLevel` class holds constants for the eight [RFC 5424] log
+  message severity levels.
 
 2. Package
 ----------
 
 The interfaces and classes described as well as relevant exception classes
 and a test suite to verify your implementation is provided as part of the
-[psr/log](https://packagist.org/packages/psr/log) package.
+[psr/log] package.
+
+[psr/log]: https://packagist.org/packages/psr/log
 
 3. `Psr\Log\LoggerInterface`
 ----------------------------
@@ -288,17 +291,48 @@ interface LoggerAwareInterface
 namespace Psr\Log;
 
 /**
- * Describes log levels
+ * Defines RFC 5424 log levels.
+ *
+ * @see http://tools.ietf.org/html/rfc5424#section-6.2.1
  */
 class LogLevel
 {
-    const EMERGENCY = 'emergency';
-    const ALERT     = 'alert';
-    const CRITICAL  = 'critical';
-    const ERROR     = 'error';
-    const WARNING   = 'warning';
-    const NOTICE    = 'notice';
-    const INFO      = 'info';
-    const DEBUG     = 'debug';
+    const EMERGENCY = 0;
+    const ALERT     = 1;
+    const CRITICAL  = 2;
+    const ERROR     = 3;
+    const WARNING   = 4;
+    const NOTICE    = 5;
+    const INFO      = 6;
+    const DEBUG     = 7;
 }
+```
+
+6. Errata
+---------
+
+### 6.1 `LogLevel` class constant values
+
+The constant values of the `LogLevel` class in this specification did not comply
+with the definition of numerical codes for severity levels in the IETF standard
+[RFC 5424].  The specification and the [psr/log] package has been corrected
+accordingly:
+
+```diff
+-    const EMERGENCY = 'emergency';
+-    const ALERT     = 'alert';
+-    const CRITICAL  = 'critical';
+-    const ERROR     = 'error';
+-    const WARNING   = 'warning';
+-    const NOTICE    = 'notice';
+-    const INFO      = 'info';
+-    const DEBUG     = 'debug';
++    const EMERGENCY = 0;
++    const ALERT     = 1;
++    const CRITICAL  = 2;
++    const ERROR     = 3;
++    const WARNING   = 4;
++    const NOTICE    = 5;
++    const INFO      = 6;
++    const DEBUG     = 7;
 ```
