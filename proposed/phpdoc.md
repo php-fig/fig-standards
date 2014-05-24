@@ -837,22 +837,31 @@ The @deprecated tag declares that the associated 'Structural elements' will
 be removed in a future version as it has become obsolete or its usage is
 otherwise not recommended.
 
-It is RECOMMENDED to specify a version number range to denote the version in
-which it has been deprecated.  This version MAY be followed by a colon and
-immediately followed by the version in which it is scheduled for removal; i.e.,
-up till which it is guaranteed to be included in the software.
+This tag MAY specify up to two version numbers in the sense of a version number
+range:
 
-The starting version MAY be omitted to only specify the ending version, prefixed
-with a colon.
+The first version number, referred to as the 'starting version', denotes the
+version in which the associated element has been deprecated.
 
-If an ending version has been specified, the associated 'Structural elements'
+The second version number, referred to as the 'ending version', denotes the
+version in which the associated element is scheduled for removal; i.e., up till
+which the associated element is guaranteed to be included in the software.
+
+It is RECOMMENDED to specify both a 'starting version' and an 'ending version'.
+In this case, the two version numbers MUST be separated by a colon (`:`) without
+white-space in between.
+
+The 'starting version' MAY be omitted. In this case, the 'ending version' MUST
+be preceded by a colon.
+
+If an 'ending version' has been specified, the associated 'Structural elements'
 MAY be removed without further notice in that version or a later version.
 
-It MAY provide an additional description stating why the associated element is
-deprecated.
+This tag MAY provide an additional description stating why the associated
+element is deprecated.
 
-If it is superceded by another method it is RECOMMENDED to add a @see tag in the
-same 'PHPDoc' pointing to the new element.
+If the associated element is superseded by another it is RECOMMENDED to add a
+@see tag in the same 'PHPDoc' pointing to the new element.
 
 #### Examples
 
