@@ -844,8 +844,11 @@ The first version number, referred to as the 'starting version', denotes the
 version in which the associated element has been deprecated.
 
 The second version number, referred to as the 'ending version', denotes the
-version in which the associated element is scheduled for removal; i.e., up till
-which the associated element is guaranteed to be included in the software.
+version in which the associated element is scheduled for removal.
+
+If an 'ending version' has been specified, the associated 'Structural elements'
+MAY no longer exist in the 'ending version' and MAY be removed without further
+notice in that version or a later version, but MUST exist in all prior versions.
 
 It is RECOMMENDED to specify both a 'starting version' and an 'ending version'.
 In this case, the two version numbers MUST be separated by a colon (`:`) without
@@ -853,9 +856,6 @@ white-space in between.
 
 The 'starting version' MAY be omitted. In this case, the 'ending version' MUST
 be preceded by a colon.
-
-If an 'ending version' has been specified, the associated 'Structural elements'
-MAY be removed without further notice in that version or a later version.
 
 This tag MAY provide an additional description stating why the associated
 element is deprecated.
