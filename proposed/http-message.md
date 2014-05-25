@@ -1,4 +1,4 @@
-HTTP message interfaces
+﻿HTTP message interfaces
 =======================
 
 This document describes common interfaces for representing HTTP messages
@@ -143,6 +143,8 @@ interface MessageInterface
      *
      * @param StreamInterface|null $body Body.
      *
+     * @throws \InvalidArgumentException When the body is not valid.
+     *
      * @return self Returns the message.
      */
     public function setBody(StreamInterface $body = null);
@@ -204,8 +206,6 @@ interface MessageInterface
      *
      * @param string       $header Header name
      * @param string|array $value  Header value(s)
-     *
-     * @return self Returns the message.
      */
     public function setHeader($header, $value);
 
@@ -217,8 +217,6 @@ interface MessageInterface
      * string or an array of strings.
      *
      * @param array $headers Headers to set.
-     *
-     * @return self Returns the message.
      */
     public function setHeaders(array $headers);
 
@@ -228,8 +226,6 @@ interface MessageInterface
      *
      * @param string $header Header name to add
      * @param string $value  Value of the header
-     *
-     * @return self
      */
     public function addHeader($header, $value);
 
@@ -243,8 +239,6 @@ interface MessageInterface
      * header is added.
      *
      * @param array $headers Associative array of headers to add to the message
-     *
-     * @return self
      */
     public function addHeaders(array $headers);
 
@@ -252,8 +246,6 @@ interface MessageInterface
      * Remove a specific header by case-insensitive name.
      *
      * @param string $header HTTP header to remove
-     *
-     * @return self
      */
     public function removeHeader($header);
 }
