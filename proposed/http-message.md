@@ -280,8 +280,6 @@ interface RequestInterface extends MessageInterface
      * modify the given string.
      *
      * @param string $method Case-insensitive method.
-     *
-     * @return self Returns the request.
      */
     public function setMethod($method);
 
@@ -301,7 +299,6 @@ interface RequestInterface extends MessageInterface
      *
      * @param string $url Request URL.
      *
-     * @return self Reference to the request.
      * @throws \InvalidArgumentException If the URL is invalid.
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
      */
