@@ -279,8 +279,6 @@ interface RequestInterface extends MessageInterface
      * SHOULD convert the method to all uppercase characters.
      *
      * @param string $method Case-insensitive method.
-     *
-     * @return self Returns the request.
      */
     public function setMethod($method);
 
@@ -299,7 +297,6 @@ interface RequestInterface extends MessageInterface
      *
      * @param string $url Request URL.
      *
-     * @return self Reference to the request.
      * @throws \InvalidArgumentException If the URL is invalid.
      */
     public function setUrl($url);
