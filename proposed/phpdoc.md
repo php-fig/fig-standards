@@ -395,16 +395,17 @@ is not maintained in this document as it may change over time. The meta document
 will contain a series of recommendations on a per-tag name basis, but projects
 are free to choose their own tag specializations if applicable.
 
+*Important*: Tools using the PHPDoc Standard MAY interpret tag specializations
+that are registered with/understood by that application and apply custom
+behaviour, but are only expected to implement the preceding tag name as defined
+in this standard.
+
 For example:
 
 > `@see:unit-test \Mapping\EntityTest::testGetId`
 >
 > The above tag consists of a name ('see') and tag specialization ('unit-test'),
 > and thus defines a relation to the unit test for the proceeding method.
-
-> *Important*: Tools using the PHPDoc Standard MAY interpret tag specializations
-> that are registered with that application and apply custom behaviour, but are
-> only expected to implement the preceding tag name.
 
 #### 5.3.3. Tag Signature
 
