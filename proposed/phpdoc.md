@@ -12,7 +12,8 @@ PSR-5: PHPDoc
       5.2. Description
       5.3. Tags
         5.3.1. Tag Name
-        5.3.2. Tag Signature
+        5.3.2. Tag Specialization
+        5.3.3. Tag Signature
       5.4. Inline PHPDoc
       5.5. Examples
     6. Inheritance
@@ -259,8 +260,8 @@ Examples of use are included in chapter 5.4.
 
 ### 5.1. Summary
 
-A Summary MUST contain an abstract of the "Structural Element" defining the 
-purpose. It is RECOMMENDED for Summaries to span a single line or at most two 
+A Summary MUST contain an abstract of the "Structural Element" defining the
+purpose. It is RECOMMENDED for Summaries to span a single line or at most two
 but not more than that.
 
 A Summary MUST end with either
@@ -268,8 +269,8 @@ A Summary MUST end with either
 * a full stop (.) followed by a line break
 * or two sequential line breaks.
 
-If a Description is provided, then it MUST be preceded by a Summary. Otherwise 
-the Description will be considered the Summary, until the end of the Summary 
+If a Description is provided, then it MUST be preceded by a Summary. Otherwise
+the Description will be considered the Summary, until the end of the Summary
 is reached.
 
 ### 5.2. Description
@@ -311,7 +312,7 @@ For example:
 > ('This is a parameter.').
 
 The description of a tag MUST support Markdown as a formatting language. Due to
-the nature of Markdown it is legal to start the description of the tag on the 
+the nature of Markdown it is legal to start the description of the tag on the
 same or the subsequent line and interpret it in the same way.
 
 So the following tags are semantically identical:
@@ -331,8 +332,8 @@ able to provide the annotation with parameters regarding its operation.
 If a tag signature is present then there MUST NOT be a description present in
 the same tag.
 
-The meta-data supplied by tags could result in a change of actual runtime 
-behavior of the succeeding "Structural Element", in which case the term 
+The meta-data supplied by tags could result in a change of actual runtime
+behavior of the succeeding "Structural Element", in which case the term
 "Annotation" is commonly used instead of "Tag".
 
 Annotations will not be described in further detail in this specification as
@@ -384,7 +385,29 @@ Example of a tag name prefixed with a vendor name and hyphen:
 Tag names that are not prefixed with a vendor or namespace MUST be described in
 this specification (see chapter 7) and/or any official addendum.
 
-#### 5.3.2. Tag Signature
+#### 5.3.2. Tag Specialization
+
+In order to provide a method by which to provide nuance to the tags defined in
+this standard but without expanding the base set, a tag specialization MAY be
+provided after the tag name by adding a colon followed by a string that provides
+a more nuanced description of the tag. The list of supported tag specializations
+is not maintained in this document as it may change over time. The meta document
+will contain a series of recommendations on a per-tag name basis, but projects
+are free to choose their own tag specializations if applicable.
+
+*Important*: Tools using the PHPDoc Standard MAY interpret tag specializations
+that are registered with/understood by that application and apply custom
+behaviour, but are only expected to implement the preceding tag name as defined
+in this standard.
+
+For example:
+
+> `@see:unit-test \Mapping\EntityTest::testGetId`
+>
+> The above tag consists of a name ('see') and tag specialization ('unit-test'),
+> and thus defines a relation to the unit test for the proceeding method.
+
+#### 5.3.3. Tag Signature
 
 Tag signatures are commonly used for annotations to supply additional meta-data
 specific to the current tag.
@@ -426,16 +449,16 @@ class MyMagicClass
 }
 ```
 
-In this example is described how the `@method` tag for the Magic Method 
+In this example is described how the `@method` tag for the Magic Method
 `MyMagicMethod` has a complete PHPDoc definition associated with it. In this
-definition all constraints, constructs and tags that apply to a normal usage of 
+definition all constraints, constructs and tags that apply to a normal usage of
 PHPDoc also apply.
 
 The meaning of an "Inline PHPDoc" element differs based on the context in which
-it is provided. In the example above the "Inline PHPDoc" provides a regular 
-PHPDoc definition as would precede a method. 
+it is provided. In the example above the "Inline PHPDoc" provides a regular
+PHPDoc definition as would precede a method.
 
-To prevent confusion regarding the function of "Inline PHPDoc" elements MUST 
+To prevent confusion regarding the function of "Inline PHPDoc" elements MUST
 their usage be restricted to tags and locations that are documented.
 
 ### 5.5. Examples
@@ -1350,7 +1373,7 @@ a website or other "Structural Elements".
 
 #### Syntax
 
-    @see [URI | "FQSEN"] [<:type:>] [<description>]
+    @see [URI | "FQSEN"] [<description>]
 
 #### Description
 
@@ -1363,14 +1386,10 @@ element (also called the "FQSEN").
 
 A URI MUST be complete and well-formed as specified in [RFC 2396][RFC2396].
 
-The type of reference MAY be provided after the URI or FQSEN by mentioning a
-string wrapped in colons that defines the type of relation. The list of
-supported relation types is not maintained in this document as is may
-change over time. The meta document will contain a series of recommendation
-but projects are free to choose their own relation types if applicable.
-
 The @see tag SHOULD have a description to provide additional information
-regarding the relationship between the element and its target.
+regarding the relationship between the element and its target. Additionally, the
+@see tag MAY have a tag specialization to add further definition to this
+relationship.
 
 #### Examples
 
