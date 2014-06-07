@@ -189,9 +189,6 @@ class Psr4AutoloaderClass
             // of strrpos()
             $prefix = rtrim($prefix, '\\');   
         }
-        
-        // never found a mapped file
-        return false;
     }
     
     /**
