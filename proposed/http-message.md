@@ -1,7 +1,8 @@
 ﻿HTTP message interfaces
 =======================
 
-This document describes common interfaces for representing HTTP messages.
+This document describes common interfaces for representing HTTP messages
+described in [RFC 2616](http://www.ietf.org/rfc/rfc2616.txt).
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -50,9 +51,11 @@ echo $message->getHeader('foo');
 
 In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
-an instance of a ``MessageInterface`` as an array or string. When header field
-values are retrieved as a string (the default behavior), the values are
-concatenated together using a comma.
+an instance of a ``MessageInterface`` as an array or string. Use the
+`getHeader()` method to retrieve a header value as a string containing all
+header values of a case-insensitive header by name concatenated with a comma.
+Use `getHeaderAsArray()` to retrieve an array of all the header values for a
+particular case-insensitive header by name.
 
 ```php
 $message->setHeader('foo', 'bar');
@@ -62,29 +65,14 @@ $header = $message->getHeader('foo');
 echo $header;
 // Outputs: bar, baz
 
-$header = $message->getHeader('foo', true);
+$header = $message->getHeaderAsArray('foo');
 // ['bar', 'baz']
 ```
 
-Because some headers cannot be concatenated using a comma (e.g., Set-Cookie),
-the most accurate method used for serializing message headers is to iterate
-over header values as an array and serialize the fields based on any rules for
-the specific header. For example, when converting an object implementing
-`RequestInterface` to a string, an underlying implementation MAY mimic the
-following behavior.
-
-```php
-$str = $message->getUrl() . ' ' . $path . ' HTTP/'
-    . $message->getProtocolVersion()) . "\r\n\r\n";
-
-foreach ($message->getHeaders() as $key => $values) {
-    // Custom handling MAY be applied for specific keys
-    $str .= $key . ': ' . implode(', ', $value) . "\r\n";
-}
-
-$str .= "\r\n";
-$str .= $message->getBody();
-```
+Note: Not all header values can be concatenated using a comma
+(e.g., Set-Cookie). When working with such headers, consumers of the
+MessageInterface SHOULD rely on the `getHeaderAsArray()` method for retrieving
+such multi-valued headers
 
 ### 1.2 Streams
 
@@ -132,7 +120,8 @@ namespace Psr\Http;
 interface MessageInterface
 {
     /**
-     * Gets the HTTP protocol version.
+     * Gets the HTTP protocol version as a string containing only the HTTP
+     * version (e.g., "1.1", "1.0").
      *
      * @return string HTTP protocol version.
      */
@@ -154,8 +143,6 @@ interface MessageInterface
      * @param StreamInterface|null $body Body.
      *
      * @return self Returns the message.
-     *
-     * @throws \InvalidArgumentException When the body is not valid.
      */
     public function setBody(StreamInterface $body = null);
 
@@ -186,21 +173,27 @@ interface MessageInterface
     public function hasHeader($header);
 
     /**
-     * Retrieve a header by the given case-insensitive name.
+     * Retrieve a header by the given case-insensitive name as a string.
      *
-     * By default, this method returns all of the header values of the given
+     * This method returns all of the header values of the given
      * case-insensitive header name as a string concatenated together using
-     * a comma. Because some header should not be concatenated together using a
-     * comma, this method provides a Boolean argument that can be used to
-     * retrieve the associated header values as an array of strings.
+     * a comma.
      *
-     * @param string $header  Case-insensitive header name.
-     * @param bool   $asArray Set to true to retrieve the header value as an
-     *                        array of strings.
+     * @param string $header Case-insensitive header name.
      *
-     * @return array|string
+     * @return string
      */
-    public function getHeader($header, $asArray = false);
+    public function getHeader($header);
+
+    /**
+     * Retrieve a header by the given case-insensitive name as an array of
+     * strings.
+     *
+     * @param string $header Case-insensitive header name.
+     *
+     * @return array
+     */
+    public function getHeaderAsArray($header);
 
     /**
      * Sets a header, replacing any existing values of any headers with the
@@ -287,8 +280,11 @@ interface RequestInterface extends MessageInterface
 
     /**
      * Sets the method to be performed on the resource identified by the
-     * Request-URI. While method names are case case-sensitive, implementations
-     * SHOULD convert the method to all uppercase characters.
+     * Request-URI.
+     *
+     * While HTTP method names are typically all uppercase characters, HTTP
+     * method names are case-sensitive and thus implementations SHOULD NOT
+     * modify the given string.
      *
      * @param string $method Case-insensitive method.
      *
@@ -297,7 +293,7 @@ interface RequestInterface extends MessageInterface
     public function setMethod($method);
 
     /**
-     * Gets the request URL.
+     * Gets the absolute request URL.
      *
      * @return string Returns the URL as a string.
      */
@@ -307,12 +303,14 @@ interface RequestInterface extends MessageInterface
      * Sets the request URL.
      *
      * The URL MUST be a string, or an object that implements the
-     * `__toString()` method.
+     * `__toString()` method. The URL must be an absolute URI as specified
+     * in RFC 3986.
      *
      * @param string $url Request URL.
      *
      * @return self Reference to the request.
      * @throws \InvalidArgumentException If the URL is invalid.
+     * @link http://tools.ietf.org/html/rfc3986#section-4.3
      */
     public function setUrl($url);
 }
@@ -391,7 +389,7 @@ interface StreamInterface
     /**
      * Get the size of the stream if known
      *
-     * @return int|bool Returns the size in bytes if known, or false if unknown
+     * @return int|null Returns the size in bytes if known, or null if unknown
      */
     public function getSize();
 
@@ -477,77 +475,3 @@ interface StreamInterface
     public function getContents($maxLength = -1);
 }
 ```
-
-4. Design Decisions
--------------------
-
-### Message design
-
-The design of the `MessageInterface`, `RequestInterface`, and `ResponseInterface`
-interfaces are based on existing projects in the PHP community.
-
-#### Why are there header methods on messages rather than in a header bag?
-
-Moving headers to a "header bag" breaks the Law of Demeter and exposes the
-internal implementation of a message to its collaborators. In order for
-something to access the headers of a message, they need to reach into the the
-message's header bag (`$message->getHeaders()->getHeader('Foo')`).
-
-Moving headers from messages into an externally mutable "header bag" exposes the
-internal implementation of how a message manages its headers an has a
-side-effect that messages are no longer aware of changes to their headers. This
-can lead to messages entering into an invalid or inconistent state.
-
-#### Mutability of messages
-
-Headers and messages are mutable to reflect real-world usage in clients. A
-large number of HTTP clients allow you to modify a request pre-flight in
-order to implement custom logic (for example, signing a request, compression,
-encryption, etc...).
-
-* Guzzle: http://guzzlephp.org/guide/plugins.html
-* Buzz: https://github.com/kriswallsmith/Buzz/blob/master/lib/Buzz/Listener/BasicAuthListener.php
-* Requests/PHP:  https://github.com/rmccue/Requests/blob/master/docs/hooks.md
-
-This is not just a popular pattern in the PHP community:
-
-* Requests: http://docs.python-requests.org/en/latest/user/advanced/#event-hooks
-* Typhoeus: https://github.com/typhoeus/typhoeus/blob/master/lib/typhoeus/request/before.rb
-* RestClient: https://github.com/archiloque/rest-client#hook
-* Java's HttpClient: http://hc.apache.org/httpcomponents-client-ga/httpclient/examples/org/apache/http/examples/client/ClientGZipContentCompression.java
-* etc...
-
-Having mutable and immutable messages would add a significant amount of
-complexity to a HTTP message PSR and would not reflect what is currently being
-used by a majority of PHP projects.
-
-#### Using streams instead of X
-
-`MessageInterface` uses a body value that must implement `StreamInterface`. This
-design decision was made so that developers can send and receive HTTP messages
-that contain more data than can practically be stored in memory while still
-allowing the convenience of interacting with message bodies as a string. While
-PHP provides a stream abstraction by way of stream wrappers, stream resoures
-can be cumbersome to work with: stream resources can only be cast to a string
-using `stream_get_contents()` or manually reading the remainder of a string.
-Adding custom behavior to a stream as it is consumed or populated requires
-registering a stream filter; however, stream filters can only be added to a
-stream after the filter is registered with PHP (i.e., there is no stream filter
-autoloading mechanism).
-
-The use of a very well defined stream interface allows for the potential of
-flexible stream decorators that can be added to a request or response
-pre-flight to enable things like encryption, compression, ensuring that the
-number of bytes downloaded reflects the number of bytes reported in the
-`Content-Length` of a response, etc... Decorating streams is a well-established
-[pattern in the Java community](http://docs.oracle.com/javase/7/docs/api/java/io/package-tree.html)
-that allows for very flexible streams.
-
-The majority of the `StreamInterface` API is based on
-[Python's io module](http://docs.python.org/3.1/library/io.html) which provides
-a practical and easy to work with API. Instead of implementing stream
-capabilities using something like a `WritableStreamInterface` and
-`ReadableStreamInterface`, the capabilities of a stream are provided by methods
-like `isReadable()`, `isWritable()`, etc... This approach is used by Python,
-[C#, C++](http://msdn.microsoft.com/en-us/library/system.io.stream.aspx),
-[Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html), and likely others.
