@@ -1,4 +1,4 @@
-﻿HTTP message interfaces
+HTTP message interfaces
 =======================
 
 This document describes common interfaces for representing HTTP messages
@@ -17,12 +17,12 @@ interpreted as described in [RFC 2119][].
 
 HTTP messages consist of requests from a client to a server and responses from
 a server to a client. These messages are represented by
-`Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` respectively.
+`Psr\HttpMessage\RequestInterface` and `Psr\HttpMessage\ResponseInterface` respectively.
 
-- Both `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface` extend
-  `Psr\Http\MessageInterface`. While `Psr\Http\MessageInterface` MAY be
+- Both `Psr\HttpMessage\RequestInterface` and `Psr\HttpMessage\ResponseInterface` extend
+  `Psr\HttpMessage\MessageInterface`. While `Psr\HttpMessage\MessageInterface` MAY be
   implemented directly, implementors are encouraged to implement
-  `Psr\Http\RequestInterface` and `Psr\Http\ResponseInterface`.
+  `Psr\HttpMessage\RequestInterface` and `Psr\HttpMessage\ResponseInterface`.
 
 #### 1.2 HTTP Headers
 
@@ -106,7 +106,7 @@ The interfaces and classes described are provided as part of the
 3. Interfaces
 -------------
 
-### 3.1 `Psr\Http\MessageInterface`
+### 3.1 `Psr\HttpMessage\MessageInterface`
 
 ```php
 <?php
@@ -258,7 +258,7 @@ interface MessageInterface
 }
 ```
 
-### 3.2 `Psr\Http\RequestInterface`
+### 3.2 `Psr\HttpMessage\RequestInterface`
 
 ```php
 <?php
@@ -316,7 +316,7 @@ interface RequestInterface extends MessageInterface
 }
 ```
 
-### 3.3 `Psr\Http\ResponseInterface`
+### 3.3 `Psr\HttpMessage\ResponseInterface`
 
 ```php
 <?php
@@ -352,7 +352,7 @@ interface ResponseInterface extends MessageInterface
 }
 ```
 
-### 3.4 `Psr\Http\StreamInterface`
+### 3.4 `Psr\HttpMessage\StreamInterface`
 
 ```php
 <?php
