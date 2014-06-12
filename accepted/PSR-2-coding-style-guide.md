@@ -27,7 +27,7 @@ interpreted as described in [RFC 2119].
 
 - Code MUST follow a "coding style guide" PSR [[PSR-1]].
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- Code MUST use 2 spaces for indenting, not tabs.
 
 - There MUST NOT be a hard limit on line length; the soft limit MUST be 120
   characters; lines SHOULD be 80 characters or less.
@@ -35,10 +35,10 @@ interpreted as described in [RFC 2119].
 - There MUST be one blank line after the `namespace` declaration, and there
   MUST be one blank line after the block of `use` declarations.
 
-- Opening braces for classes MUST go on the next line, and closing braces MUST
+- Opening braces for classes MUST go on the same line, and closing braces MUST
   go on the next line after the body.
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
+- Opening braces for methods MUST go on the same line, and closing braces MUST
   go on the next line after the body.
 
 - Visibility MUST be declared on all properties and methods; `abstract` and
@@ -66,21 +66,20 @@ use FooInterface;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-class Foo extends Bar implements FooInterface
-{
-    public function sampleFunction($a, $b = null)
-    {
+class Foo extends Bar implements FooInterface {
+    public function sampleFunction($a, $b = null) {
         if ($a === $b) {
             bar();
-        } elseif ($a > $b) {
+        } 
+        elseif ($a > $b) {
             $foo->bar($arg1);
-        } else {
+        } 
+        else {
             BazClass::bar($arg2, $arg3);
         }
     }
 
-    final public static function bar()
-    {
+    final public static function bar() {
         // method body
     }
 }
@@ -94,10 +93,6 @@ class Foo extends Bar implements FooInterface
 Code MUST follow all rules outlined in [PSR-1].
 
 ### 2.2 Files
-
-All PHP files MUST use the Unix LF (linefeed) line ending.
-
-All PHP files MUST end with a single blank line.
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
@@ -174,7 +169,7 @@ The term "class" refers to all classes, interfaces, and traits.
 The `extends` and `implements` keywords MUST be declared on the same line as
 the class name.
 
-The opening brace for the class MUST go on its own line; the closing brace
+The opening brace for the class MUST go on the same line; the closing brace
 for the class MUST go on the next line after the body.
 
 ```php
@@ -185,8 +180,7 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-class ClassName extends ParentClass implements \ArrayAccess, \Countable
-{
+class ClassName extends ParentClass implements \ArrayAccess, \Countable {
     // constants, properties, methods
 }
 ```
@@ -206,8 +200,7 @@ use OtherVendor\OtherPackage\BazClass;
 class ClassName extends ParentClass implements
     \ArrayAccess,
     \Countable,
-    \Serializable
-{
+    \Serializable {
     // constants, properties, methods
 }
 ```
@@ -275,10 +268,8 @@ list.
 <?php
 namespace Vendor\Package;
 
-class ClassName
-{
-    public function foo($arg1, &$arg2, $arg3 = [])
-    {
+class ClassName {
+    public function foo($arg1, &$arg2, $arg3 = []) {
         // method body
     }
 }
@@ -296,10 +287,9 @@ between them.
 <?php
 namespace Vendor\Package;
 
-class ClassName
-{
+class ClassName {
     public function aVeryLongMethodName(
-        ClassTypeHint $arg1,
+        ClassTypeHint $arg1, 
         &$arg2,
         array $arg3 = []
     ) {
@@ -320,14 +310,12 @@ declaration.
 <?php
 namespace Vendor\Package;
 
-abstract class ClassName
-{
+abstract class ClassName {
     protected static $foo;
 
     abstract protected function zim();
 
-    final public static function bar()
-    {
+    final public static function bar() {
         // method body
     }
 }
