@@ -39,7 +39,7 @@ Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "D
 
 ### 1.1. Exemple
 
-Cet exemple comprend certaines des règles citées ci-dessous comme étant un aperçu:
+Cet exemple comprend certaines des règles citées ci-dessus comme étant un aperçu:
 
 ```php
 <?php
@@ -82,7 +82,7 @@ Tous les fichiers PHP DOIVENT utiliser la fin de ligne Unix LF (linefeed).
 
 Tous les fichiers PHP DOIVENT se terminer par une ligne vide.
 
-La tag de fermeture `?>` DOIT être omis de tous les fichiers contenant uniquement du PHP.
+Le tag de fermeture `?>` DOIT être omis de tous les fichiers contenant uniquement du PHP.
 
 ### 2.3. Lignes
 
@@ -90,7 +90,7 @@ Aucune limite stricte de la longueur de la ligne NE DOIT être fixée.
 
 La limite souple de la longueur de la ligne DOIT être de 120 caractères; les outils de vérifications de styles automatisés DOIVENT prévenir, mais NE DOIVENT PAS lever d'erreur au dépassement de cette limite.
 
-Les lignes NE DEVRAIENT PAS être plus longue que 80 caractères, les lignes plus longues que cela DEVRAIENT être scindé en plusieurs lignes de pas plus de 80 caractères chacune.
+Les lignes NE DEVRAIENT PAS être plus longues que 80 caractères, les lignes plus longues que cela DEVRAIENT être scindées en plusieurs lignes de pas plus de 80 caractères chacune.
 
 Aucun espace blanc NE DOIT figurer à la fin des lignes non vides.
 
@@ -102,7 +102,7 @@ Il NE DOIT PAS y avoir plus d'une instruction par ligne.
 
 Le code DOIT utiliser une indentation à 4 espaces, et NE DOIT PAS utiliser de tabulation pour l'indentation.
 
-> N.b.: En utilisant seulement des espaces, et ne mélangant pas les espaces avec des tabulations,
+> N.b.: En utilisant seulement des espaces, et ne mélangeant pas les espaces avec des tabulations,
 > contribue à éviter les problèmes avec les différentiels, patchs, historiques, et les annotations.
 > L'utilisation d'espaces rend également facile l'insertion des sous-indentations
 > précises pour un alignement entre les lignes.
@@ -324,7 +324,7 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
-La listes d'arguments PEUT être répartie sur plusieurs lignes, où chaque ligne 
+La liste d'arguments PEUT être répartie sur plusieurs lignes, où chaque ligne 
 subséquente est indentée une fois. Ce faisant, le premier élément de la liste DOIT
  figurer sur la ligne suivante, et il NE DOIT y avoir qu'un seul argument par ligne.
 
@@ -496,7 +496,7 @@ liste doit figurer sur la ligne suivante, et il DOIT y avoir qu'un seul argument
 par ligne.
 
 Lorsque la liste de fin (ou arguments ou variables) est répartie sur
-plusieurs lignes, la parenthèse fermante et accolade ouvrante DOIVENT être placé
+plusieurs lignes, la parenthèse fermante et accolade ouvrante DOIVENT être placées
 ensemble sur leur ligne avec un espace entre eux.
 
 Voici des exemples de closure avec et sans liste d'arguments et
