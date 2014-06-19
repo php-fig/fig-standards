@@ -2,13 +2,14 @@ HTTP message interfaces
 =======================
 
 This document describes common interfaces for representing HTTP messages
-described in [RFC 2616](http://www.ietf.org/rfc/rfc2616.txt).
+described in [RFC 7230].
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+interpreted as described in [RFC 2119].
 
-[RFC 2119]: http://tools.ietf.org/html/rfc2119
+[RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
+[RFC 7230]: http://www.ietf.org/rfc/rfc7230.txt
 
 1. Specification
 ----------------
@@ -111,7 +112,7 @@ The interfaces and classes described are provided as part of the
 ```php
 <?php
 
-namespace Psr\Http;
+namespace Psr\HttpMessage;
 
 /**
  * HTTP messages consist of requests from a client to a server and responses
@@ -263,7 +264,7 @@ interface MessageInterface
 ```php
 <?php
 
-namespace Psr\Http;
+namespace Psr\HttpMessage;
 
 /**
  * A HTTP request message.
@@ -321,7 +322,7 @@ interface RequestInterface extends MessageInterface
 ```php
 <?php
 
-namespace Psr\Http;
+namespace Psr\HttpMessage;
 
 /**
  * A HTTP response message.
@@ -357,7 +358,7 @@ interface ResponseInterface extends MessageInterface
 ```php
 <?php
 
-namespace Psr\Http;
+namespace Psr\HttpMessage;
 
 /**
  * Describes a stream instance.

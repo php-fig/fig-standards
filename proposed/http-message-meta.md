@@ -5,7 +5,9 @@ HTTP Message Meta Document
 ----------
 
 The purpose of this proposal is to provide a set of common interfaces for HTTP
-messages as described in [RFC 2616](http://www.ietf.org/rfc/rfc2616.txt).
+messages as described in [RFC 7230].
+
+[RFC 7230]: http://www.ietf.org/rfc/rfc7230.txt
 
 2. Why Bother?
 --------------
