@@ -1,4 +1,4 @@
-HTTP message interfaces
+﻿HTTP message interfaces
 =======================
 
 This document describes common interfaces for representing HTTP messages
@@ -143,6 +143,10 @@ interface MessageInterface
      *
      * @param StreamInterface|null $body Body.
      *
+     * @return void
+     *
+     * @throws \InvalidArgumentException When the body is not valid.
+     *
      * @return self Returns the message.
      */
     public function setBody(StreamInterface $body = null);
@@ -205,7 +209,7 @@ interface MessageInterface
      * @param string       $header Header name
      * @param string|array $value  Header value(s)
      *
-     * @return self Returns the message.
+     * @return void
      */
     public function setHeader($header, $value);
 
@@ -218,7 +222,7 @@ interface MessageInterface
      *
      * @param array $headers Headers to set.
      *
-     * @return self Returns the message.
+     * @return void
      */
     public function setHeaders(array $headers);
 
@@ -229,7 +233,7 @@ interface MessageInterface
      * @param string $header Header name to add
      * @param string $value  Value of the header
      *
-     * @return self
+     * @return void
      */
     public function addHeader($header, $value);
 
@@ -244,7 +248,7 @@ interface MessageInterface
      *
      * @param array $headers Associative array of headers to add to the message
      *
-     * @return self
+     * @return void
      */
     public function addHeaders(array $headers);
 
@@ -253,7 +257,7 @@ interface MessageInterface
      *
      * @param string $header HTTP header to remove
      *
-     * @return self
+     * @return void
      */
     public function removeHeader($header);
 }
@@ -289,7 +293,7 @@ interface RequestInterface extends MessageInterface
      *
      * @param string $method Case-insensitive method.
      *
-     * @return self Returns the request.
+     * @return void
      */
     public function setMethod($method);
 
@@ -309,7 +313,8 @@ interface RequestInterface extends MessageInterface
      *
      * @param string $url Request URL.
      *
-     * @return self Reference to the request.
+     * @return void
+     *
      * @throws \InvalidArgumentException If the URL is invalid.
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
      */
@@ -377,6 +382,8 @@ interface StreamInterface
 
     /**
      * Closes the stream and any underlying resources.
+     *
+     * @return void
      */
     public function close();
 
@@ -384,6 +391,8 @@ interface StreamInterface
      * Separates any underlying resources from the stream.
      *
      * After the stream has been detached, the stream is in an unusable state.
+     *
+     * @return void
      */
     public function detach();
 
