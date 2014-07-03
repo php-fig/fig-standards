@@ -218,9 +218,6 @@ class Psr4AutoloaderClass
             $file = $base_dir
                   . str_replace('\\', DIRECTORY_SEPARATOR, $relative_class)
                   . '.php';
-            $file = $base_dir
-                  . str_replace('\\', '/', $relative_class)
-                  . '.php';
 
             // if the mapped file exists, require it
             if ($this->requireFile($file)) {
@@ -228,7 +225,12 @@ class Psr4AutoloaderClass
                 return $file;
             }
         }
-        
+
+        // support empty prefix
+        if (isset($this->prefixes['\\']) && ($class[0] !== '\\')) {
+            return $this->loadClass('\\'.$class);
+        }
+
         // never found it
         return false;
     }
