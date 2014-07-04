@@ -346,6 +346,13 @@ interface ResponseInterface extends MessageInterface
     public function getStatusCode();
 
     /**
+     * Sets the status code of this response.
+     *
+     * @param integer $code The 3-digit integer result code to set.
+     */
+    public function setStatusCode($code);
+
+    /**
      * Gets the response Reason-Phrase, a short textual description of the
      * Status-Code.
      *
@@ -357,6 +364,16 @@ interface ResponseInterface extends MessageInterface
      * @return string|null Reason phrase, or null if unknown.
      */
     public function getReasonPhrase();
+
+    /**
+     * Sets the Reason-Phrase of the response.
+     *
+     * If no Reason-Phrase is specified, implementations MAY choose to default
+     * to the RFC 2616 recommended reason phrase for the response's Status-Code.
+     *
+     * @param string $phrase The Reason-Phrase to set.
+     */
+    public function setReasonPhrase($phrase);
 }
 ```
 
