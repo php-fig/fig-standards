@@ -298,7 +298,11 @@ interface RequestInterface extends MessageInterface
     /**
      * Gets the absolute request URL.
      *
-     * @return string Returns the URL as a string.
+     * @return string Returns the URL as a string, or an object that implements
+     *    the `__toString()` method. The URL must be an absolute URI as specified
+     *    in RFC 3986.
+     *
+     * @link http://tools.ietf.org/html/rfc3986#section-4.3
      */
     public function getUrl();
 
