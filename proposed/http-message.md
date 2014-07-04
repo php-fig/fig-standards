@@ -121,8 +121,9 @@ namespace Psr\HttpMessage;
 interface MessageInterface
 {
     /**
-     * Gets the HTTP protocol version as a string containing only the HTTP
-     * version (e.g., "1.1", "1.0").
+     * Gets the HTTP protocol version as a string.
+     *
+     * The string MUST contain onl the HTTP version number (e.g., "1.1", "1.0").
      *
      * @return string HTTP protocol version.
      */
@@ -189,8 +190,7 @@ interface MessageInterface
     public function getHeader($header);
 
     /**
-     * Retrieve a header by the given case-insensitive name as an array of
-     * strings.
+     * Retrieves a header by the given case-insensitive name as an array of strings.
      *
      * @param string $header Case-insensitive header name.
      *
@@ -202,7 +202,8 @@ interface MessageInterface
      * Sets a header, replacing any existing values of any headers with the
      * same case-insensitive name.
      *
-     * The header values MUST be a string or an array of strings.
+     * The header name is case-insensitive. The header values MUST be a string
+     * or an array of strings.
      *
      * @param string       $header Header name
      * @param string|array $value  Header value(s)
@@ -212,8 +213,7 @@ interface MessageInterface
     public function setHeader($header, $value);
 
     /**
-     * Sets headers, replacing any headers that have already been set on the
-     * message.
+     * Sets headers, replacing any headers that have already been set on the message.
      *
      * The array keys MUST be a string. The array values must be either a
      * string or an array of strings.
@@ -225,8 +225,10 @@ interface MessageInterface
     public function setHeaders(array $headers);
 
     /**
-     * Appends a header value to any existing values associated with the
-     * given header name.
+     * Appends a header value for the specified header.
+     *
+     * Existing values for the specified header will be maintained. The new
+     * value will be appended to the existing list.
      *
      * @param string $header Header name to add
      * @param string $value  Value of the header
@@ -282,8 +284,7 @@ interface RequestInterface extends MessageInterface
     public function getMethod();
 
     /**
-     * Sets the method to be performed on the resource identified by the
-     * Request-URI.
+     * Sets the method to be performed on the resource identified by the Request-URI.
      *
      * While HTTP method names are typically all uppercase characters, HTTP
      * method names are case-sensitive and thus implementations SHOULD NOT
@@ -338,8 +339,10 @@ namespace Psr\HttpMessage;
 interface ResponseInterface extends MessageInterface
 {
     /**
-     * Gets the response Status-Code, a 3-digit integer result code of the
-     * server's attempt to understand and satisfy the request.
+     * Gets the response Status-Code.
+     *
+     * The Status-Code is a 3-digit integer result code of the server's attempt
+     * to understand and satisfy the request.
      *
      * @return integer Status code.
      */
@@ -353,8 +356,7 @@ interface ResponseInterface extends MessageInterface
     public function setStatusCode($code);
 
     /**
-     * Gets the response Reason-Phrase, a short textual description of the
-     * Status-Code.
+     * Gets the response Reason-Phrase, a short textual description of the Status-Code.
      *
      * Because a Reason-Phrase is not a required element in response
      * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
@@ -390,8 +392,10 @@ namespace Psr\HttpMessage;
 interface StreamInterface
 {
     /**
-     * Attempts to seek to the beginning of the stream and reads all data into
-     * a string until the end of the stream is reached.
+     * Reads all data from the stream into a string, from the beginning to end.
+     *
+     * This method MUST attempt to seek to the beginning of the stream before
+     * reading data and read the stream until the end is reached.
      *
      * Warning: This could attempt to load a large amount of data into memory.
      *
