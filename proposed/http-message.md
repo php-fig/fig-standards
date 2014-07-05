@@ -123,7 +123,7 @@ interface MessageInterface
     /**
      * Gets the HTTP protocol version as a string.
      *
-     * The string MUST contain onl the HTTP version number (e.g., "1.1", "1.0").
+     * The string MUST contain only the HTTP version number (e.g., "1.1", "1.0").
      *
      * @return string HTTP protocol version.
      */
