@@ -299,9 +299,9 @@ interface RequestInterface extends MessageInterface
     /**
      * Gets the absolute request URL.
      *
-     * @return string Returns the URL as a string, or an object that implements
-     *    the `__toString()` method. The URL must be an absolute URI as specified
-     *    in RFC 3986.
+     * @return string|object Returns the URL as a string, or an object that
+     *    implements the `__toString()` method. The URL must be an absolute URI
+     *    as specified in RFC 3986.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
      */
@@ -314,7 +314,7 @@ interface RequestInterface extends MessageInterface
      * `__toString()` method. The URL must be an absolute URI as specified
      * in RFC 3986.
      *
-     * @param string $url Request URL.
+     * @param string|object $url Request URL.
      *
      * @return void
      *
