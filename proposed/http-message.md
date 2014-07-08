@@ -194,7 +194,7 @@ interface MessageInterface
      *
      * @param string $header Case-insensitive header name.
      *
-     * @return array
+     * @return string[]
      */
     public function getHeaderAsArray($header);
 
@@ -205,8 +205,8 @@ interface MessageInterface
      * The header name is case-insensitive. The header values MUST be a string
      * or an array of strings.
      *
-     * @param string       $header Header name
-     * @param string|array $value  Header value(s)
+     * @param string $header Header name
+     * @param string|string[] $value  Header value(s)
      *
      * @return void
      */
