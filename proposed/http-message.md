@@ -18,12 +18,12 @@ interpreted as described in [RFC 2119].
 
 HTTP messages consist of requests from a client to a server and responses from
 a server to a client. These messages are represented by
-`Psr\HttpMessage\RequestInterface` and `Psr\HttpMessage\ResponseInterface` respectively.
+`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
 
-- Both `Psr\HttpMessage\RequestInterface` and `Psr\HttpMessage\ResponseInterface` extend
-  `Psr\HttpMessage\MessageInterface`. While `Psr\HttpMessage\MessageInterface` MAY be
+- Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
+  `Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
   implemented directly, implementors are encouraged to implement
-  `Psr\HttpMessage\RequestInterface` and `Psr\HttpMessage\ResponseInterface`.
+  `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
 
 #### 1.2 HTTP Headers
 
@@ -107,12 +107,12 @@ The interfaces and classes described are provided as part of the
 3. Interfaces
 -------------
 
-### 3.1 `Psr\HttpMessage\MessageInterface`
+### 3.1 `Psr\Http\Message\MessageInterface`
 
 ```php
 <?php
 
-namespace Psr\HttpMessage;
+namespace Psr\Http\Message;
 
 /**
  * HTTP messages consist of requests from a client to a server and responses
@@ -263,12 +263,12 @@ interface MessageInterface
 }
 ```
 
-### 3.2 `Psr\HttpMessage\RequestInterface`
+### 3.2 `Psr\Http\Message\RequestInterface`
 
 ```php
 <?php
 
-namespace Psr\HttpMessage;
+namespace Psr\Http\Message;
 
 /**
  * A HTTP request message.
@@ -325,12 +325,12 @@ interface RequestInterface extends MessageInterface
 }
 ```
 
-### 3.3 `Psr\HttpMessage\ResponseInterface`
+### 3.3 `Psr\Http\Message\ResponseInterface`
 
 ```php
 <?php
 
-namespace Psr\HttpMessage;
+namespace Psr\Http\Message;
 
 /**
  * A HTTP response message.
@@ -379,12 +379,12 @@ interface ResponseInterface extends MessageInterface
 }
 ```
 
-### 3.4 `Psr\HttpMessage\StreamInterface`
+### 3.4 `Psr\Http\Message\StreamInterface`
 
 ```php
 <?php
 
-namespace Psr\HttpMessage;
+namespace Psr\Http\Message;
 
 /**
  * Describes a stream instance.
