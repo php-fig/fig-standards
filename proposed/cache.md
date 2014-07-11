@@ -91,8 +91,8 @@ Implementing libraries MUST support all serializable PHP data types, including:
 *    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
 *    **Object** - Any object that supports lossless serialization and
 deserialization such that $o == unserialize(serialize($o)). Objects MAY
-leverage PHP's Serializable interface, __sleep() or __wakeup() magic methods, or
-similar language functionality if appropriate.
+leverage PHP's Serializable interface, `__sleep()` or `__wakeup()` magic methods,
+or similar language functionality if appropriate.
 
 All data passed into the Implementing Library MUST be returned exactly as
 passed. That includes the variable type. That is, it is an error to return
