@@ -78,6 +78,18 @@ when a Calling Library requests an item by key and that value not found for that
 key, or the value was found but has expired, or the value is invalid for some
 other reason. An expired value MUST always be considered a cache miss.
 
+*    **Deferred** - A deferred cache save indicates that a cache item may not be
+persisted immediately by the pool. A Pool object MAY delay persisting a deferred
+cache item in order to take advantage of bulk-set operations supported by some
+storage engines. A Pool MUST ensure that any deferred cache items are eventually
+persisted and data is not lost, and MAY persist them before a Calling Library
+requests that they be persisted. When a Calling Library invokes the commit()
+method all outstanding deferred items MUST be persisted. An Implementing Library
+MAY use whatever logic is appropriate to determine when to persist deferred
+items, such as an object destructor, persisting all on save(), a timeout or
+max-items check or any other appropriate logic. Requests for a cache item that
+has been deferred MUST return the deferred but not-yet-persisted item.
+
 
 ## Data
 
@@ -91,8 +103,8 @@ Implementing libraries MUST support all serializable PHP data types, including:
 *    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
 *    **Object** - Any object that supports lossless serialization and
 deserialization such that $o == unserialize(serialize($o)). Objects MAY
-leverage PHP's Serializable interface, __sleep() or __wakeup() magic methods, or
-similar language functionality if appropriate.
+leverage PHP's Serializable interface, `__sleep()` or `__wakeup()` magic methods,
+or similar language functionality if appropriate.
 
 All data passed into the Implementing Library MUST be returned exactly as
 passed. That includes the variable type. That is, it is an error to return

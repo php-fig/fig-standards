@@ -106,6 +106,7 @@ function get_widget_list()
     if (!$item->isHit()) {
         $value = compute_expensive_widget_list();
         $item->set($value);
+        $pool->save($item);
     }
     return $item->get();
 }
@@ -121,7 +122,9 @@ function get_widget_list()
 function save_widget_list($list)
 {
     $pool = get_cache_pool('widgets');
-    $pool->getItem('widget_list')->set($list);
+    $item = $pool->getItem('widget_list');
+    $item->set($list);
+    $pool->save($item);
 }
 ```
 
@@ -135,7 +138,7 @@ function save_widget_list($list)
 function clear_widget_list()
 {
     $pool = get_cache_pool('widgets');
-    $pool->getItem('widget_list')->delete();
+    $pool->deleteItems(['widget_list']);
 }
 ```
 
@@ -162,7 +165,8 @@ function clear_widget_cache()
  * whatever the non-cached loading mechanism is.
  *
  * In this case, we assume widgets may change frequently so we only allow them
- * to be cached for an hour (3600 seconds).
+ * to be cached for an hour (3600 seconds). We also cache newly-loaded objects
+ * back to the pool en masse.
  *
  * Note that a real implementation would probably also want a multi-load
  * operation for widgets, but that's irrelevant for this demonstration.
@@ -181,9 +185,12 @@ function load_widgets(array $ids)
         else {
             $value = expensive_widget_load($id);
             $item->set($value, 3600);
+            $pool->saveDeferred($item, true);
         }
         $widget[$value->id()] = $value;
     }
+    $pool->commit(); // If no items were deferred this is a no-op.
+
     return $widgets;
 }
 ```
@@ -217,10 +224,9 @@ function set_widget(TaggablePoolInterface $pool, Widget $widget)
     $key = 'widget.' . $widget->id();
     $item = $pool->getItem($key);
 
-    // setTags() must be called first, since set() will also commit the changes
-    // to the pool's data store.
     $item->setTags($widget->tags());
     $item->set($widget);
+    $pool->save($item);
 }
 ```
 
