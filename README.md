@@ -31,7 +31,7 @@ the [mailing list][].
 
 To become a voting member, you must send an email to the [mailing list][].
 
-- The subject line should read: `Membership Request: {$your_name} ({$project_name})`
+- The subject line should read: `Membership Request: {$yourName} ({$projectName})`
 
 - The body should include your name, the name of (and link to) the project you
   represent, and other details you feel are relevant.
