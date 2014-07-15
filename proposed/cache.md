@@ -238,9 +238,9 @@ interface CacheItemInterface
      * Notifies the caching system that an Item's data is being regenerated.
      *
      * Calling Libraries can use this to notify the Implementing Library that
-     * an Item is having it's value regenerated. This can be used to prevent
-     * the dogpile effect by allowing Implementing Libraries to manage when
-     * write operations occur.
+     * an Item is having its value regenerated. This can be used to prevent the
+     * dogpile effect by allowing Implementing Libraries to manage when write
+     * operations occur.
      *
      * @return static
      *   The invoked object.
