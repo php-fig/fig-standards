@@ -43,9 +43,10 @@ PSR-5: PHPDoc
       8.20. @throws
       8.21. @todo
       8.22. @type
-      8.23. @uses
-      8.24. @var [deprecated]
-      8.25. @version
+      8.23. @typedef
+      8.24. @uses
+      8.25. @var [deprecated]
+      8.26. @version
     Appendix A. Types
     Appendix B. Differences Compared With The De-facto PHPDoc Standard
 
@@ -1678,7 +1679,114 @@ class Foo
 }
 ```
 
-### 8.23. @uses
+### 8.23. @typedef
+
+Allows the author to define a custom type composed of one or more types that
+may be augmented with key definitions, properties or methods.
+
+#### Syntax
+
+    @typedef ["Type"] [<"QCN">] [<"Inline PHPDoc">]
+
+#### Description
+
+Using the `@typedef` tag it is possible to define a new pseudo-type or 
+associative array definition for use in PHPDoc blocks.
+
+Let's explain this concept by presenting the following use-cases:
+
+1. You want to document the properties of a class that is dynamically 
+   constructed, such as the `\stdClass` coming from `json_decode`.
+2. You have a configuration array for which you want to document its keys and 
+   associated values.
+3. You consume a library with magic methods who does not implement the `@method`
+   tag but still want to document which methods are on it yourself.
+4. You want a pseudo-type called Scalar that represents either a string, float,
+   boolean or integer.
+5. You have used class_alias() to create an alias and want PHPDoc to know which
+   class it is based from so that methods and properties could be inherited.
+
+The first parameter for the `@typedef` tag is the base "Type", 
+including compound types and collection classes, that is the defining "Type" 
+for the second parameter. The second parameter is used to name your pseudo-type, 
+and MUST be a Qualified Class Name.
+
+The second parameter MAY be omitted, in which case an "Inline PHPDoc" MUST be
+defined. The information in the "Inline PHPDoc" will augment the existing base
+class. Using this mechanism it is possible to provide additional information
+with an existing class, such as methods or properties that could or were not
+documented in the original.
+
+It is also possible to combine multiple "Types" into a single pseudo-type by 
+using the pipe operator (`|`), the examples section contains an example of use.
+
+##### Location
+
+A `@typedef` tag MUST always be placed on a DocBlock that belongs to a File or 
+Class. 
+
+When associated with a File the type definition is considered to be 
+global and available throughout your project. It is NOT RECOMMENDED to use it
+in this fashion without due consideration as you are making your documentation
+harder to read without generator or IDE.
+
+Type definitions that are associated with a Class MUST only be used inside that
+class, or its descendants, and are considered to have a visibility similar to 
+protected.
+
+##### Adding methods and properties on objects
+
+It is also possible to add new properties or methods using an "Inline PHPDoc",
+and the `@property` and `@method` tags on any object. In this context an object
+is any Qualified Class Name (QCN) that does not match one of PHP's primitive 
+types. A notable exception is the 'object' keyword, which may have methods and 
+properties added onto it.
+
+#### Examples
+
+##### Providing an alias for another class
+
+An example may be that the `\Storage` class is aliased using the 
+`class_alias()` function as `\Session`, and the elements of the `\Session` 
+class must be documented. 
+
+The above can be accomplished with the following tag:
+
+    @typedef \Storage \Session
+
+##### Defining additional elements on an aliased class
+
+Here is an example where we add a property and a summary on the new `\Session`
+class.
+
+```
+@typedef \Storage \Session {
+  This class represents a session that stores user specific information.
+
+  @property string $session_id
+}
+```
+
+##### Combining multiple types into one
+
+An example of combining multiple types may be a class that is regularly 
+stubbed in unit tests:
+
+    @typedef \Mockery\MockInterface|\My\DiContainer DicStub
+
+The above example will construct a pseudo-type DicStub that combines the methods
+and properties of both the MockInterface and the DiContainer.
+
+##### Defining an associative array as pseudo-type
+
+```
+@typedef array \Configuration {
+  @type string $setting1
+  @type string $setting2
+}
+```
+
+### 8.24. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1689,7 +1797,7 @@ Indicates whether the current "Structural Element" consumes the
 
 #### Description
 
-The @uses tag describes whether any part of the associated "Structural Element"
+The `@uses` tag describes whether any part of the associated "Structural Element"
 uses, or consumes, another "Structural Element" or a file that is situated in
 the current project.
 
@@ -1731,12 +1839,12 @@ function executeMyView()
 }
 ```
 
-### 8.24. @var [deprecated]
+### 8.25. @var [deprecated]
 
 The @var tag is **deprecated** in favor of `@type`. Please see the
 documentation for [@type](#822-type) for details of its usage.
 
-### 8.25. @version
+### 8.26. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
