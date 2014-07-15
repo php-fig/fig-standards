@@ -216,7 +216,7 @@ class Psr4AutoloaderClass
             // replace namespace separators with directory separators
             // in the relative class name, append with .php
             $file = $base_dir
-                  . str_replace('\\', DIRECTORY_SEPARATOR, $relative_class)
+                  . str_replace('\\', '/', $relative_class)
                   . '.php';
 
             // if the mapped file exists, require it
@@ -290,6 +290,9 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
             '/vendor/foo.bardoom/src/ClassName.php',
             '/vendor/foo.bar.baz.dib/src/ClassName.php',
             '/vendor/foo.bar.baz.dib.zim.gir/src/ClassName.php',
+            '/vendor/src/ClassName.php',
+            '/vendor/src/Foo/Bar/Baz/ClassName.php',
+            '/vendor/src/Bar/Baz/ClassName.php',
         ));
         
         $this->loader->addNamespace(
@@ -315,6 +318,11 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
         $this->loader->addNamespace(
             'Foo\Bar\Baz\Dib\Zim\Gir',
             '/vendor/foo.bar.baz.dib.zim.gir/src'
+        );
+        
+        $this->loader->addNamespace(
+            '',
+            '/vendor/src'
         );
     }
 
@@ -350,6 +358,21 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
         
         $actual = $this->loader->loadClass('Foo\BarDoom\ClassName');
         $expect = '/vendor/foo.bardoom/src/ClassName.php';
+        $this->assertSame($expect, $actual);
+    }
+    
+    public function testEmptyPrefix()
+    {
+        $actual = $this->loader->loadClass('ClassName');
+        $expect = '/vendor/src/ClassName.php';
+        $this->assertSame($expect, $actual);
+        
+        $actual = $this->loader->loadClass('Foo\Bar\Baz\ClassName');
+        $expect = '/vendor/src/Foo/Bar/Baz/ClassName.php';
+        $this->assertSame($expect, $actual);
+        
+        $actual = $this->loader->loadClass('Bar\Baz\ClassName');
+        $expect = '/vendor/src/Bar/Baz/ClassName.php';
         $this->assertSame($expect, $actual);
     }
 }
