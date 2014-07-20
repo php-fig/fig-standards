@@ -1,62 +1,62 @@
-Coding Style Guide
-==================
+Vodič stila kode
+================
 
-This guide extends and expands on [PSR-1], the basic coding standard.
+Ta vodič podaljšuje in razširja [PSR-1], osnovni kodni standard.
 
-The intent of this guide is to reduce cognitive friction when scanning code
-from different authors. It does so by enumerating a shared set of rules and
-expectations about how to format PHP code.
+Namen tega vodiča je zmanjšanje kognitivnega trenja, ko se skenira kodo
+različnih avtorjev. To naredi z zagotavljanjem skupnega skupka pravil in
+pričakovanj o tem, kako oblikovati PHP kodo.
 
-The style rules herein are derived from commonalities among the various member
-projects. When various authors collaborate across multiple projects, it helps
-to have one set of guidelines to be used among all those projects. Thus, the
-benefit of this guide is not in the rules themselves, but in the sharing of
-those rules.
+Pravila stila tu so pridobljena iz skupnih značilnosti med različnimi projekti
+članov. Ko različni avtorji sodelujejo med večimi projekti, pomaga
+imeti en skupek smernic, ki so uporabljene med vsemi temi projekti. Tako
+korist tega vodiča ni v samih pravilih, vendar v deljenju
+teh pravil.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119].
+Ključne besede "MORA", "NE SME", "ZAHTEVANO", "SE", "SE NE", "BI MORALO",
+"NE BI MORALO", "PRIPOROČLJIVO", "LAHKO" in "OPCIJSKO" v tem dokumentu se
+interpretira, kot je opisano v [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 
 
-1. Overview
------------
+1. Pregled
+----------
 
-- Code MUST follow a "coding style guide" PSR [[PSR-1]].
+- Koda MORA slediti "vodiču stila kode" PSR [[PSR-1]].
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- Koda MORA uporabljati 4 presledke za odstavke in ne tabulatorjev.
 
-- There MUST NOT be a hard limit on line length; the soft limit MUST be 120
-  characters; lines SHOULD be 80 characters or less.
+- NE SME biti obveznih omejitev na dolžini vrstice; neobvezni limit MORA biti 120
+  znakov; vrstice BI MORALE biti dolge 80 znakov ali manj.
 
-- There MUST be one blank line after the `namespace` declaration, and there
-  MUST be one blank line after the block of `use` declarations.
+- MORA biti ena prazna vrstica za deklaracijo `namespace` in biti
+  MORA ena prazna vrstica za blokom deklaracije `use`.
 
-- Opening braces for classes MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- Odpiranje zavitih oklepajev za razrede MORA iti v naslednjo vrstico in zapiranje zavitih oklepajev MORA
+  iti v naslednjo vrstico za telesom.
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- Odpiranje zavitih oklepajev za metode MORA iti v novo vrstico in zapiranje zavitih oklepajev MORA
+  iti v naslednjo vrstico za telesom.
 
-- Visibility MUST be declared on all properties and methods; `abstract` and
-  `final` MUST be declared before the visibility; `static` MUST be declared
-  after the visibility.
+- Vidnost MORA biti deklarirana na vseh lastnostih in metodah; `abstract` in
+  `final` MORATA biti deklarirana pred vidnostjo; `static` MORA biti deklariran
+  za vidnostjo.
   
-- Control structure keywords MUST have one space after them; method and
-  function calls MUST NOT.
+- Kontrolne strukture ključnih besed MORAJO imeti za njimi en presledek; klic metode in
+  funkcije NE SME.
 
-- Opening braces for control structures MUST go on the same line, and closing
-  braces MUST go on the next line after the body.
+- Odpiranje zavitih oklepajev za kontrolne struktured MORAJO iti na isto vrstico in zapiranje
+  zavitih oklepajev MORA iti na naslednjo vrstico za telesom.
 
-- Opening parentheses for control structures MUST NOT have a space after them,
-  and closing parentheses for control structures MUST NOT have a space before.
+- Odpiranje oklepajev za kontrolne strukture NE SME imeti za njimi presledka,
+  in zaprtje oklepajev za kontrolne strukture NE SME imeti pred njimi presledka.
 
-### 1.1. Example
+### 1.1. Primer
 
-This example encompasses some of the rules below as a quick overview:
+Ta primer zajema nekaj pravil spodaj za hiter pregled:
 
 ```php
 <?php
@@ -86,70 +86,70 @@ class Foo extends Bar implements FooInterface
 }
 ```
 
-2. General
-----------
+2. Spošno
+---------
 
-### 2.1 Basic Coding Standard
+### 2.1 Osnovni kodni standard
 
-Code MUST follow all rules outlined in [PSR-1].
+Koda MORA slediti vsem pravilom opisanim v [PSR-1].
 
-### 2.2 Files
+### 2.2 Datoteke
 
-All PHP files MUST use the Unix LF (linefeed) line ending.
+Vse PHP datoteke MORAJO uporabljati Unix LF (linefeed) na koncih vrstic.
 
-All PHP files MUST end with a single blank line.
+Vse PHP datoteke se MORAJO končati s prazno vrstico.
 
-The closing `?>` tag MUST be omitted from files containing only PHP.
+Zapiralna značka `?>` MORA biti izpuščena iz datotek, ki vsebujejo samo PHP.
 
-### 2.3. Lines
+### 2.3. Vrstice
 
-There MUST NOT be a hard limit on line length.
+NE SME biti obvezne omejitve na dolžini vrstice.
 
-The soft limit on line length MUST be 120 characters; automated style checkers
-MUST warn but MUST NOT error at the soft limit.
+Neobvezna omejitev dolžine vrstice MORA biti 120 znakov; avtomatizirani pregledovalniki stilov
+MORAJO opozoriti vendar NE SMEJO dati napake na neobveznih omejitvah.
 
-Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
-be split into multiple subsequent lines of no more than 80 characters each.
+Vrstice NE BI SMELE biti daljše od 80 znakov; vrstice daljše kot to BI MORALE
+biti razdeljene v več naknadnih vrstic in ne več ko 80 znakov vsaka.
 
-There MUST NOT be trailing whitespace at the end of non-blank lines.
+Ne sme biti zaključnega presledka na koncu ne-praznih vrstic.
 
-Blank lines MAY be added to improve readability and to indicate related
-blocks of code.
+Prazne vrstice SO LAHKO dodane, da izboljšajo bralnost in indicirajo povezane
+bloke kode.
 
-There MUST NOT be more than one statement per line.
+NE SME biti več kot ena izjava na vrstico.
 
-### 2.4. Indenting
+### 2.4. Odstavki
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+Koda MORA uporabljati za odstavke 4 presledke in NE SME uporabljati tabulatorjev.
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
+> N.b.: Uporaba samo presledkov in ne mešanje presledkov s tabulatorji pomaga pri izogibu
+> problemov z diff-i, patch-i, zgodovino in anotacijami. Uporaba presledkov
+> naredi tudi enostavno za vstavljanje dobro razdrobljenih pod-odstavkov za znotraj-vrstično
+> poravnavo.
 
-### 2.5. Keywords and True/False/Null
+### 2.5. Ključne besede in True/False/Null
 
-PHP [keywords] MUST be in lower case.
+PHP [ključne besede] MORAJO biti v malih črkah.
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
+PHP konstante `true`, `false` in `null` MORAJO biti v malih črkah.
 
-[keywords]: http://php.net/manual/en/reserved.keywords.php
+[ključne besede]: http://php.net/manual/en/reserved.keywords.php
 
 
 
-3. Namespace and Use Declarations
----------------------------------
+3. Deklaraciji namespace in use
+-------------------------------
 
-When present, there MUST be one blank line after the `namespace` declaration.
+Ko je prisotna, MORA biti ena prazna vrstica za `namespace` deklaracijo.
 
-When present, all `use` declarations MUST go after the `namespace`
-declaration.
+Ko je prisotno, vse deklaracje `use` MORAJO iti za `namespace`
+deklaracijo.
 
-There MUST be one `use` keyword per declaration.
+Biti MORA ena `use` ključna beseda na deklaracijo.
 
-There MUST be one blank line after the `use` block.
+Biti MORA ena prazna vrstica za blokom `use`.
 
-For example:
+Na primer:
 
 ```php
 <?php
@@ -164,18 +164,18 @@ use OtherVendor\OtherPackage\BazClass;
 ```
 
 
-4. Classes, Properties, and Methods
------------------------------------
+4. Razredi, lastnosti in metode
+-------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+Izraz "razred" se sklicuje na vse razrede, vmesnike in lastnosti - traits.
 
-### 4.1. Extends and Implements
+### 4.1. Razširitve in implementacije
 
-The `extends` and `implements` keywords MUST be declared on the same line as
-the class name.
+Ključni besedi `extends` in `implements` MORATA biti deklarirani na isti vrstici kot
+ime razreda.
 
-The opening brace for the class MUST go on its own line; the closing brace
-for the class MUST go on the next line after the body.
+Odpiralni zaviti oklepaj za razred MORA iti na svojo vrstico; zapiralni zaviti oklepaj
+za razred MORA iti na naslednjo vrstico za telesom.
 
 ```php
 <?php
@@ -191,9 +191,9 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 }
 ```
 
-Lists of `implements` MAY be split across multiple lines, where each
-subsequent line is indented once. When doing so, the first item in the list
-MUST be on the next line, and there MUST be only one interface per line.
+Seznami z `implements` so LAHKO razdeljeni po večih vrsticah, kjer je vsaka
+naknadna vrstica enkrat zamaknjena. Ko se to dela, prvi element v seznamu
+MORA iti na naslednjo vrstico in torej MORA biti samo en vmesnik na vrstico.
 
 ```php
 <?php
@@ -212,18 +212,18 @@ class ClassName extends ParentClass implements
 }
 ```
 
-### 4.2. Properties
+### 4.2. Lastnosti
 
-Visibility MUST be declared on all properties.
+Vidnost MORA biti deklarirana na vseh lastnostih.
 
-The `var` keyword MUST NOT be used to declare a property.
+Ključna beseda `var` NE SME biti uporabljena za deklaracijo lastnosti.
 
-There MUST NOT be more than one property declared per statement.
+Ne SME BITI več kot ena deklaracija lastnosti na izraz.
 
-Property names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Imena lastnosti NE BI SMELA imeti predpon z enim podčrtajem za prikaz
+t.i. protected ali private vidnosti.
 
-A property declaration looks like the following.
+Deklaracija lastnosti izgleda kot sledeče.
 
 ```php
 <?php
@@ -235,20 +235,20 @@ class ClassName
 }
 ```
 
-### 4.3. Methods
+### 4.3. Metode
 
-Visibility MUST be declared on all methods.
+Vidnost MORA biti deklarirana na vseh metodah.
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Imena metod NE BI SMELA imeti predpon z enim podčrtajem za prikaz
+t.i. protected ali private vidnosti.
 
-Method names MUST NOT be declared with a space after the method name. The
-opening brace MUST go on its own line, and the closing brace MUST go on the
-next line following the body. There MUST NOT be a space after the opening
-parenthesis, and there MUST NOT be a space before the closing parenthesis.
+Imena metod NE SMEJO biti deklarirana s presledkom za imenom metode.
+Odpiralni zaviti oklepaj MORA biti na svoji vrstici in zapiralni zaviti oklepaj MORA iti na
+naslednjo vrstico, ki sledi telesu. NE SME biti presledka za odpiralnim
+oklepajem in NE SME biti presledka za zapiralnim oklepajem.
 
-A method declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+Deklaracija metode izgleda sledeče. Bodite pozorni na postavitev
+oklepajec, vejic, presledkov in zavitih oklepajev:
 
 ```php
 <?php
@@ -261,15 +261,15 @@ class ClassName
         // method body
     }
 }
-```    
+```
 
-### 4.4. Method Arguments
+### 4.4. Argumenti metode
 
-In the argument list, there MUST NOT be a space before each comma, and there
-MUST be one space after each comma.
+V seznamu argumentov NE SME biti presledka pred vsako vejico in
+MORA biti en presledek za vsako vejico.
 
-Method arguments with default values MUST go at the end of the argument
-list.
+Argumenti metode s privzetimi vrednostmi MORAJO iti na konec seznama
+argumentov.
 
 ```php
 <?php
@@ -284,13 +284,13 @@ class ClassName
 }
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+Seznami argumentov so LAHKO razdeljeni med več vrstic, kjer je vsaka naknadna vrstica
+enkrat zamaknjena. Ko se dela to, MORA biti prvi element v seznamu na
+naslednji vrstici in MORA biti samo en argument na vrstico.
 
-When the argument list is split across multiple lines, the closing parenthesis
-and opening brace MUST be placed together on their own line with one space
-between them.
+Ko je seznam argumentov razdeljen med več vrstic, MORATA biti zapiralni oklepaj
+in odpiralni zaviti oklepaj dana skupaj na svojo vrstico z enim presledkom
+med njima.
 
 ```php
 <?php
@@ -308,13 +308,13 @@ class ClassName
 }
 ```
 
-### 4.5. `abstract`, `final`, and `static`
+### 4.5. `abstract`, `final` in `static`
 
-When present, the `abstract` and `final` declarations MUST precede the
-visibility declaration.
+Ko so prisotne, `abstract` in `final` deklaracije MORAJO biti pred
+deklaracijo vidnosti.
 
-When present, the `static` declaration MUST come after the visibility
-declaration.
+Ko je prisotna, MORA biti deklaracija `static` za deklaracijo
+vidnosti.
 
 ```php
 <?php
@@ -333,13 +333,13 @@ abstract class ClassName
 }
 ```
 
-### 4.6. Method and Function Calls
+### 4.6. Klicanje metod in funkcij
 
-When making a method or function call, there MUST NOT be a space between the
-method or function name and the opening parenthesis, there MUST NOT be a space
-after the opening parenthesis, and there MUST NOT be a space before the
-closing parenthesis. In the argument list, there MUST NOT be a space before
-each comma, and there MUST be one space after each comma.
+Ko izvajate klic metode ali funkcije, NE SME biti presledka med
+metodo ali imenom funkcije in odpiralnim oklepajem, NE SME biti presledka
+za odpiralnim oklepajem in NE SME biti presledka pred
+zapiralnim oklepajem. V seznamu argumentov ne sme biti presledka pred
+vsako vejico in MORA biti en presledek za vsako vejico.
 
 ```php
 <?php
@@ -348,9 +348,9 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+Seznami argumentov so LAHKO razdeljeni v več vrstic, kjer je vsaka naknadna vrstica
+enkrat zamaknjena. Ko to delate, MORA biti prvi element v seznamu v
+naslednji vrstici in biti MORA samo en argument na vrstico.
 
 ```php
 <?php
@@ -361,29 +361,29 @@ $foo->bar(
 );
 ```
 
-5. Control Structures
----------------------
+5. Kontrolne strukture
+----------------------
 
-The general style rules for control structures are as follows:
+Splošni stil pravil za kontrolne strukture je, kot sledi:
 
-- There MUST be one space after the control structure keyword
-- There MUST NOT be a space after the opening parenthesis
-- There MUST NOT be a space before the closing parenthesis
-- There MUST be one space between the closing parenthesis and the opening
-  brace
-- The structure body MUST be indented once
-- The closing brace MUST be on the next line after the body
+- Biti MORA en presledek za ključno besedo kontrolne strukture
+- NE SME biti presledka za odpiralnim oklepajem
+- NE SME biti presledka pred zapiralnim oklepajem
+- Biti MORA en presledek med zapiralnim oklepajem in odpiralnim
+  zavitim oklepajem
+- Telo strukture MORA biti enkrat zamaknjeno
+- Zapiralni zaviti oklepaj MORA biti v naslednji vrstici za telesom
 
-The body of each structure MUST be enclosed by braces. This standardizes how
-the structures look, and reduces the likelihood of introducing errors as new
-lines get added to the body.
+Telo vsake strukture MORA biti zaprto z zavitimi oklepaji. To standardizira, kako
+struktura izgleda in zmanjšuje verjetnost uvajanje napak, ko se dodaja nove
+vrstice v telo.
 
 
 ### 5.1. `if`, `elseif`, `else`
 
-An `if` structure looks like the following. Note the placement of parentheses,
-spaces, and braces; and that `else` and `elseif` are on the same line as the
-closing brace from the earlier body.
+Struktura `if` izgleda sleče. Bodite pozorni na postavitev oklepajev,
+presledkov in zavitih oklepajev; ter na to, da sta `else` in `elseif` v isti vrstici kot
+zaviti zaklepaj iz predhodnega telesa.
 
 ```php
 <?php
@@ -396,17 +396,17 @@ if ($expr1) {
 }
 ```
 
-The keyword `elseif` SHOULD be used instead of `else if` so that all control
-keywords look like single words.
+Ključna beseda `elseif` BI MORALA biti uporabljena namesto `else if`, da vse kontrolne
+ključne besede izgledajo kot enojne besede.
 
 
 ### 5.2. `switch`, `case`
 
-A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces. The `case` statement MUST be indented once
-from `switch`, and the `break` keyword (or other terminating keyword) MUST be
-indented at the same level as the `case` body. There MUST be a comment such as
-`// no break` when fall-through is intentional in a non-empty `case` body.
+Struktura `switch` izgleda, kot sledi. Bodite pozorni na postavitev
+oklepajev, presledkov in zavitih oklepajev. Izraz `case` MORA biti enkrt zamaknjen
+od `switch` in `break` ključnih besed (ali ostalih zaključnih ključnih besed) MORA biti
+zamaknjen na enakem nivoju, kot je telo `case`. Biti MORA komentar, kot je
+`// no break`, ko je prehajanje naprej namensko v nepraznem `case` telesu.
 
 ```php
 <?php
@@ -431,8 +431,8 @@ switch ($expr) {
 
 ### 5.3. `while`, `do while`
 
-A `while` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Stavek `while` izgleda, kot sledi. Bodite pozorni na postavitev
+oklepajev, presledkov in zavitih oklepajev.
 
 ```php
 <?php
@@ -441,8 +441,8 @@ while ($expr) {
 }
 ```
 
-Similarly, a `do while` statement looks like the following. Note the placement
-of parentheses, spaces, and braces.
+Podobno stavek `do while` izgleda sledeče. Bodite pozorni
+na oklepaje, presledke in zavite oklepaje.
 
 ```php
 <?php
@@ -453,8 +453,8 @@ do {
 
 ### 5.4. `for`
 
-A `for` statement looks like the following. Note the placement of parentheses,
-spaces, and braces.
+Stavek `for` izgleda, kot sledi. Bodite pozorni na oklepaje,
+presledke in zavite oklepaje.
 
 ```php
 <?php
@@ -464,9 +464,9 @@ for ($i = 0; $i < 10; $i++) {
 ```
 
 ### 5.5. `foreach`
-    
-A `foreach` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+
+Stavek `foreach` izgleda, kot sledi. Bodite pozorni na postavitev
+oklepajev, presledkov in zavitih oklepajev.
 
 ```php
 <?php
@@ -477,8 +477,8 @@ foreach ($iterable as $key => $value) {
 
 ### 5.6. `try`, `catch`
 
-A `try catch` block looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Blok `try catch` izgleda, kot sledi. Bodite pozorni na postavitev
+oklepajev, presledkov in zavitih oklepajev.
 
 ```php
 <?php
@@ -491,27 +491,27 @@ try {
 }
 ```
 
-6. Closures
------------
+6. Zaprtja
+----------
 
-Closures MUST be declared with a space after the `function` keyword, and a
-space before and after the `use` keyword.
+Zaprtja MORAJO biti deklarirana s presledkom za ključno besedo `function` in
+presledkom pred in za ključno besedo `use`.
 
-The opening brace MUST go on the same line, and the closing brace MUST go on
-the next line following the body.
+Odpirajoči zaviti oklepaj MORA iti na isto vrstico in zaviti zaklepaj MORA iti na
+naslednjo vrstico, ki sledi telesu.
 
-There MUST NOT be a space after the opening parenthesis of the argument list
-or variable list, and there MUST NOT be a space before the closing parenthesis
-of the argument list or variable list.
+NE SME biti presledka za odpirajočim oklepajev seznama argumentov
+ali seznamom spremenljivk in NE SME biti presledka pred zaklepajem
+seznama argumentov ali seznama spremenljivk.
 
-In the argument list and variable list, there MUST NOT be a space before each
-comma, and there MUST be one space after each comma.
+V seznamu argumentov in seznamu spremenljivk NE SME biti presledka pred vsako
+vejico in MORA biti presledek za vsako vejico.
 
-Closure arguments with default values MUST go at the end of the argument
-list.
+Argumenti zaprtij s privzetimi vrednostmi MORAJo iti na konec seznama
+argumentov.
 
-A closure declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+Deklaracija zaprtja izgleda, kot sledi. Bodite pozorni na postavitev
+oklepajev, vejic, presledkov in zavitih oklepajev:
 
 ```php
 <?php
@@ -524,17 +524,17 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
 };
 ```
 
-Argument lists and variable lists MAY be split across multiple lines, where
-each subsequent line is indented once. When doing so, the first item in the
-list MUST be on the next line, and there MUST be only one argument or variable
-per line.
+Seznami argumentov in seznami spremenljivk so LAHKO razdeljeni po večih vrsticah, kjer
+je vsaka naknadna vrstica enkrat zamaknjena. Ko to delate, MORA biti prvi element v
+seznamu na naslednji vrstici in biti MORA samo en argument ali spremenljivka
+na vrstico.
 
-When the ending list (whether or arguments or variables) is split across
-multiple lines, the closing parenthesis and opening brace MUST be placed
-together on their own line with one space between them.
+Ko je zaključni seznam (ali argumentov ali spremenljivk) razdeljen med
+več vrstic, MORATA biti zaviti zaklepaj in odpirajoči zaviti oklepaj postavljena
+skupaj na svojo vrstico z enim presledkom med njima.
 
-The following are examples of closures with and without argument lists and
-variable lists split across multiple lines.
+Sledijo primeri zaprtij z ali brez seznama argumentov in
+seznama spremenljivk na večih vrsticah.
 
 ```php
 <?php
@@ -583,8 +583,8 @@ $shortArgs_longVars = function ($arg) use (
 };
 ```
 
-Note that the formatting rules also apply when the closure is used directly
-in a function or method call as an argument.
+Bodite pozorni, da pravila oblikovanja tudi veljajo, ko je zaprtje direktno uporabljeno
+v klicu funkcije ali metode kot argument.
 
 ```php
 <?php
@@ -598,37 +598,37 @@ $foo->bar(
 ```
 
 
-7. Conclusion
---------------
+7. Zaključek
+------------
 
-There are many elements of style and practice intentionally omitted by this
-guide. These include but are not limited to:
+Mnogo elementov sloga in praks je namerno izpuščenih v tem
+vodiču. Te vključujejo, vendar niso omejeni na:
 
-- Declaration of global variables and global constants
+- Deklaracijo globalnih spremenljivk, globalnih konstant
 
-- Declaration of functions
+- Deklaracijo funkcij
 
-- Operators and assignment
+- Operatorje in naloge
 
-- Inter-line alignment
+- Poravnavo notranjih vrstic
 
-- Comments and documentation blocks
+- Bloke komentarjev in dokumentacije
 
-- Class name prefixes and suffixes
+- Predpone in pripone imen razredov
 
-- Best practices
+- Najboljše prakse
 
-Future recommendations MAY revise and extend this guide to address those or
-other elements of style and practice.
+Prihodnje priporočila LAHKO revidirajo in razširjajo ta vodič, da naslovijo te ali
+ostale elemente sloga in praks.
 
 
-Appendix A. Survey
-------------------
+Appendix A. Raziskava
+---------------------
 
-In writing this style guide, the group took a survey of member projects to
-determine common practices.  The survey is retained herein for posterity.
+Pri pisanju tega vodiča stila je skupina izvedla raziskavo projektov članov za
+ugotovitev skupnih praks. Raziskava je dana tu za ponazoritev.
 
-### A.1. Survey Data
+### A.1. Podatki raziskave
 
     url,http://www.horde.org/apps/horde/docs/CODING_STANDARDS,http://pear.php.net/manual/en/standards.php,http://solarphp.com/manual/appendix-standards.style,http://framework.zend.com/manual/en/coding-standard.html,http://symfony.com/doc/2.0/contributing/code/standards.html,http://www.ppi.io/docs/coding-standards.html,https://github.com/ezsystems/ezp-next/wiki/codingstandards,http://book.cakephp.org/2.0/en/contributing/cakephp-coding-conventions.html,https://github.com/UnionOfRAD/lithium/wiki/Spec%3A-Coding,http://drupal.org/coding-standards,http://code.google.com/p/sabredav/,http://area51.phpbb.com/docs/31x/coding-guidelines.html,https://docs.google.com/a/zikula.org/document/edit?authkey=CPCU0Us&hgd=1&id=1fcqb93Sn-hR9c0mkN6m_tyWnmEvoswKBtSc0tKkZmJA,http://www.chisimba.com,n/a,https://github.com/Respect/project-info/blob/master/coding-standards-sample.php,n/a,Object Calisthenics for PHP,http://doc.nette.org/en/coding-standard,http://flow3.typo3.org,https://github.com/propelorm/Propel2/wiki/Coding-Standards,http://developer.joomla.org/coding-standards.html
     voting,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,no,no,?,yes,no,yes
@@ -654,7 +654,7 @@ determine common practices.  The survey is retained herein for posterity.
     blank_line_after_php,no,no,no,no,yes,no,no,no,no,yes,yes,no,no,yes,?,yes,yes,no,yes,no,yes,no
     class_method_control_brace,next/next/same,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/next,same/same/same,same/same/same,same/same/same,same/same/same,next/next/next,next/next/same,next/same/same,next/next/next,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/same,next/next/next
 
-### A.2. Survey Legend
+### A.2. Legenda raziskave
 
 `indent_type`:
 The type of indenting. `tab` = "Use a tab", `2` or `4` = "number of spaces"
@@ -719,7 +719,7 @@ Is there a blank line after the opening PHP tag?
 `class_method_control_brace`:
 A summary of what line the opening braces go on for classes, methods, and control structures.
 
-### A.3. Survey Results
+### A.3. Rezultati raziskave
 
     indent_type:
         tab: 7

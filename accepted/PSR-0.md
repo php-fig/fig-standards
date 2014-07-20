@@ -1,3 +1,6 @@
+Autoloading Standard
+====================
+
 The following describes the mandatory requirements that must be adhered
 to for autoloader interoperability.
 
@@ -42,6 +45,7 @@ Example Implementation
 
 Below is an example function to simply demonstrate how the above
 proposed standards are autoloaded.
+
 ```php
 <?php
 
