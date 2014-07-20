@@ -18,20 +18,38 @@ to create libraries that can interact with many frameworks in a common fashion.
 
 Some examples:
 
-* Security framework that will prevent saving data when a user doesn't have permission.
+* Security framework that will prevent saving/accessing data when a user
+doesn't have permission.
 * A Common full page caching system
+* Logging package to track all actions taken within the application
+
+## Terms
+
+*   **Event** - An action that about to take place (or has taken place).  The
+event name MUST only contain the characters `A-Z`, `a-z`, `0-9`, `_`, and '.'.
+It is RECOMMENDED that words in event names be separated using '.'
+ex. 'foo.bar.baz.bat'
+
+*   **Listener** - A list of callbacks that are passed the EventInterface and
+MAY return a result.  Listeners MAY be attached to the EventManager with a
+priority.  Listeners MUST BE called based on priority.
 
 ## Components
 
+There are 2 interfaces needed for managing events:
+
+1. An event object which contains all the information about the event.
+2. The event manager which holds all the listeners
+
 ### EventInterface
 
-The EventInterface defines the methods needed to dispatch an event.  Each event MUST
-contain a event name in order trigger the listeners. Each event MAY have a target
-which is an object that is the context the event is being triggered for.  OPTIONALLY
-the event can have additional parameters for use within the event.
+The EventInterface defines the methods needed to dispatch an event.  Each event
+MUST contain a event name in order trigger the listeners. Each event MAY have a
+target which is an object that is the context the event is being triggered for.
+OPTIONALLY the event can have additional parameters for use within the event.
 
-The event MUST contain a propegation flag that singles the Manager to stop passing along
-the event to other listeners
+The event MUST contain a propegation flag that singles the EventManager to stop
+passing along the event to other listeners.
 
 ```php
 
@@ -108,5 +126,61 @@ interface EventInterface
      * @return bool
      */
     public function isPropagationStopped();
+}
+```
+
+### EventManagerInterface
+
+The EventManager holds all the listeners for a particular event.  Since an
+event can have many listeners that each return a result, the EventManager
+ MUST return the result from the last listener.
+
+```php
+
+namespace Psr\EventManager;
+
+/**
+ * Interface for EventManager
+ */
+interface EventManagerInterface
+{
+    /**
+     * Attaches a listener to an event
+     *
+     * @param string $event the event to attach too
+     * @param callable $callback a callable function
+     * @param int $priority the priority at which the $callback executed
+     * @return bool true on success false on failure
+     */
+    public function attach($event, $callback, $priority = 0);
+
+    /**
+     * Detaches a listener from an event
+     *
+     * @param string $event the event to attach too
+     * @param callable $callback a callable function
+     * @return bool true on success false on failure
+     */
+    public function detach($event, $callback);
+
+    /**
+     * Clear all listeners for a given event
+     *
+     * @param  string $event
+     * @return void
+     */
+    public function clearListeners($event);
+
+    /**
+     * Trigger an event
+     *
+     * Can accept an EventInterface or will create one if not passed
+     *
+     * @param  string|EventInterface $event
+     * @param  object|string $target
+     * @param  array|object $argv
+     * @return mixed
+     */
+    public function trigger($event, $target = null, $argv = array());
 }
 ```
