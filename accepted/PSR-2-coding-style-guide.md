@@ -515,11 +515,11 @@ parentheses, commas, spaces, and braces:
 
 ```php
 <?php
-$closureWithArgs = function ($arg1, $arg2) {
+$closureWithArgs = function ($arg1, $arg2, $arg3 = []) {
     // body
 };
 
-$closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
+$closureWithArgsAndVars = function ($arg1, $arg2, $arg3 = []) use ($var1, $var2) {
     // body
 };
 ```
@@ -541,7 +541,8 @@ variable lists split across multiple lines.
 $longArgs_noVars = function (
     $longArgument,
     $longerArgument,
-    $muchLongerArgument
+    $muchLongerArgument,
+    $arg = []
 ) {
    // body
 };
@@ -557,7 +558,8 @@ $noArgs_longVars = function () use (
 $longArgs_longVars = function (
     $longArgument,
     $longerArgument,
-    $muchLongerArgument
+    $muchLongerArgument,
+    $arg = []
 ) use (
     $longVar1,
     $longerVar2,
@@ -569,7 +571,8 @@ $longArgs_longVars = function (
 $longArgs_shortVars = function (
     $longArgument,
     $longerArgument,
-    $muchLongerArgument
+    $muchLongerArgument,
+    $arg = []
 ) use ($var1) {
    // body
 };
