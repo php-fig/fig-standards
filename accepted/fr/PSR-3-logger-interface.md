@@ -3,7 +3,7 @@ Interface Logger
 
 Ce document décrit une interface commune pour les bibliothèques de journalisation.
 
-L'objectif principal est de permettre aux bibliothèques d'obtenir un objet `Psr\Log\LoggerInterface` et d'y écrire des logs d'une façon simple et universel. Les Frameworks et CMS qui ont des besoins personnalisés peuvent étendre l'interface dans leur propre but, mais DOIVENT rester compatible avec le présent document. Cela garantit que les bibliothèques tierces utilisées par une application peuvent écrure dans les journaux centralisés des applications.
+L'objectif principal est de permettre aux bibliothèques d'obtenir un objet `Psr\Log\LoggerInterface` et d'y écrire des logs d'une façon simple et universelle. Les Frameworks et CMS qui ont des besoins personnalisés peuvent étendre l'interface dans leur propre but, mais DOIVENT rester compatible avec le présent document. Cela garantit que les bibliothèques tierces utilisées par une application peuvent écrire dans les journaux centralisés des applications.
 
 Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "DEVRAIT", "NE DEVRAIT PAS", "RECOMMENDÉ", "PEUT" et "OPTIONNELLE" dans ce document doivent être interprétés comme décrit dans [RFC 2119][].
 
