@@ -244,7 +244,7 @@ class ClassName
 Dans la liste des arguments, il NE DOIT PAS y avoir d'espace avant chaque virgule, et il
 DOIT y avoir un espace après chaque virgule.
 
-Les arguments de méthode avec les valeurs par défaut doivent être placés à la fin
+Les arguments de méthode avec les valeurs par défaut DOIVENT être placés à la fin
  de la liste d'arguments.
 
 ```php
@@ -264,7 +264,7 @@ subséquente est indentée une fois. Ce faisant, le premier élément de la list
 DOIT figurer sur la ligne suivante, et il NE DOIT y avoir qu'un seul argument par ligne.
 
 Lorsque la liste des arguments est répartie sur plusieurs lignes, la parenthèse 
-de fermeture et d'ouverture DOIT être placée ensemble sur leur propre ligne avec un espace
+de fermeture et l'accolades d'ouverture DOIVENT être placée ensemble sur leur propre ligne avec un espace
 entre eux.
 
 
@@ -372,10 +372,10 @@ Le mot-clé `elseif` DEVRAIT être utilisé au lieu de `else if` afin que tout l
 ### 5.2. `switch`, `case`
 
 Une structure `switch` ressemble à ce qui suit. Notez l'emplacement des parenthèses,
-espaces et accolades, La déclaration de `case` DOIT être indenté une fois
+espaces et accolades, la déclaration de `case` DOIT être indenté une fois
 par rapport à `switch` et le mot-clé `break` (ou autre mot-clé de terminaison) DOIT être
 indenté au même niveau que le corps de `case`. Il DOIT y avoir un commentaire comme
-`// no break` lorsque son omission est intentionnel dans un corps de `case` non vide.
+`// no break` lorsque son omission est intentionnelle dans un corps de `case` non vide.
 
 ```php
 <?php
@@ -550,7 +550,7 @@ $argsCourt_varsLong = function ($arg) use (
 ```
 
 Notez que les règles de formatage s'appliquent également lorsque la closure est utilisée directement
-dans un appel de fonction ou d'une méthode en tant qu'argument.
+dans un appel d'une fonction ou méthode en tant qu'argument.
 
 ```php
 <?php
