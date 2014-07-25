@@ -2,7 +2,7 @@ La norme de codage de base
 ==========================
 
 Cette section de la norme comprend ce qu'il convient de prendre en compte des
-éléments standards de codage nécessaires pour assurer un niveau élevé
+éléments standard de codage nécessaires pour assurer un niveau élevé
 d'interopérabilité technique pour le partage du code PHP.
 
 Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "DEVRAIT", "NE DEVRAIT PAS", "RECOMMANDÉ", "PEUT" et "OPTIONNELLE" dans ce document doivent être interprétés comme décrit dans [RFC 2119][].
@@ -40,9 +40,9 @@ Le code PHP DOIT utiliser uniquement UTF-8 sans BOM.
 
 ### 2.3. Les effets secondaires
 
-Un fichier DEVRAIT déclarer des nouveaux symboles (classes, fonctions, constantes, etc.) et ne pas causer d’effets secondaires, ou il DEVRAIT exécuter de la logique avec effets secondaires, mais NE DEVRAIT PAS faire les deux.
+Un fichier DEVRAIT déclarer des nouveaux symboles (classes, fonctions, constantes, etc.) et ne pas causer d’effets secondaires, où il DEVRAIT exécuter de la logique avec effets secondaires, mais NE DEVRAIT PAS faire les deux.
 
-La phrase "effets secondaires" signifie l’exécution de la logique qui n’est pas lié directement à la déclaration de classes, fonctions, constantes, etc., *simplement par l’inclusion du fichier.*
+La phrase "effets secondaires" signifie l’exécution de la logique qui n’est pas liée directement à la déclaration de classes, fonctions, constantes, etc., *simplement par l’inclusion du fichier.*
 
 Les "effets secondaires" comprennent, mais ne sont pas limités à : générer une sortie, utilisation explicite de `require` ou `include`, connexion à des services externes, modification de paramètres ini, émission d'erreurs ou d'exceptions, modification de variables globales ou statiques, lecture ou écriture dans un fichier et ainsi de suite.
 
@@ -89,13 +89,13 @@ if (! function_exists('bar')) {
 3. Espaces de Nom et Noms des Classes
 -------------------------------------
 
-Les espaces de nom et les classes DOIVENT suivre [PSR-0][].
+Les espaces de noms et les classes DOIVENT suivre [PSR-0][].
 
-Cela signifie que chaque classe se trouve seule dans un fichier, et dans un espace de nom d'au moins un niveau : le nom d'un vendor de plus haut niveau.
+Cela signifie que chaque classe devra se trouver seule dans un fichier, et dans un espace de nom d'au moins un niveau : le nom d'un vendor de plus haut niveau.
 
 Les noms de classes DOIVENT être déclarés en `StudlyCaps`.
 
-Le code écrit pour PHP 5.3 et après DOIT utiliser les espaces de noms formels.
+Le code écrit pour PHP 5.3 et après, DOIT utiliser les espaces de noms formels.
 
 Par exemple :
 
@@ -108,7 +108,7 @@ class Foo
 {
 }
 ```
-Le code écrit pour 5.2.x et avant DEVRAIT utiliser la convention pseudo-espace de nom `Vendor_` préfixée par les noms de classe.
+Le code écrit pour 5.2.x et avant DEVRAIT utiliser la convention pseudo-espace de nom `Vendor_` préfixée par les noms de classes.
 
 ```php
 <?php
@@ -147,5 +147,5 @@ Quelle que soit la convention de nommage utilisée, elle DOIT être appliquée d
 
 ### 4.3. Les Méthodes
 
-Les noms de méthodes DOIVENT être déclarés comme `camelCase()`.
+Les noms de méthodes DOIVENT être déclarés ainsi `camelCase()`.
 
