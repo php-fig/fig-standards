@@ -1842,7 +1842,7 @@ class Foo
 }
 ```
 
-### 8.26. @version
+### 8.25. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
