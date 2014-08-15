@@ -238,7 +238,7 @@ interpreted as described in [RFC 2119][RFC2119].
   > file. 
   >
   > To prevent ambiguity when a Structural Element comes directly after a
-  > File-level DocBlock MUST such elements have their own DocBlock in 
+  > File-level DocBlock MUST that element have its own DocBlock in 
   > addition to the File-level DocBlock.
   >
   > Example of a valid File-level DocBlock:
