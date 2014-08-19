@@ -235,17 +235,15 @@ interface CacheItemInterface
     public function exists();
 
     /**
-     * Notifies the caching system that an Item's data is being regenerated.
+     * This method is used to tell future calls to this item if re-regeneration of
+     * this item's data is in progress or not.
      *
-     * Calling Libraries can use this to notify the Implementing Library that
-     * an Item is having its value regenerated. This can be used to prevent the
-     * dogpile effect by allowing Implementing Libraries to manage when write
-     * operations occur.
+     * This can be used to prevent the dogpile effect to stop lots of requests re-generating
+     * the fresh data over and over.
      *
-     * @return static
-     *   The invoked object.
+     * @return boolean
      */
-    public function flag();
+    public function isRegenerating($bool);
 
     /**
      * Sets the expiration for this cache item.
