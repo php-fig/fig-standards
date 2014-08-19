@@ -243,7 +243,7 @@ interface CacheItemInterface
      *
      * @return boolean
      */
-    public function isRegenerating($bool);
+    public function isRegenerating();
 
     /**
      * Sets the expiration for this cache item.
