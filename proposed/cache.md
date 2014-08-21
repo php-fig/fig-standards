@@ -227,6 +227,17 @@ interface CacheItemInterface
     public function exists();
 
     /**
+     * This method is used to tell future calls to this item if re-regeneration of
+     * this item's data is in progress or not.
+     *
+     * This can be used to prevent the dogpile effect to stop lots of requests re-generating
+     * the fresh data over and over.
+     *
+     * @return boolean
+     */
+    public function isRegenerating();
+
+    /**
      * Sets the expiration for this cache item.
      *
      * @param int|\DateTime $ttl
