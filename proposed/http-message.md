@@ -75,6 +75,7 @@ Note: Not all header values can be concatenated using a comma
 MessageInterface SHOULD rely on the `getHeaderAsArray()` method for retrieving
 such multi-valued headers
 
+
 ### 1.2 Streams
 
 HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
@@ -376,6 +377,39 @@ interface ResponseInterface extends MessageInterface
      * @param string $phrase The Reason-Phrase to set.
      */
     public function setReasonPhrase($phrase);
+
+    /**
+     * Write data to the response body.
+     *
+     * Proxies to the underlying stream and appends data to it.
+     * 
+     * @param string $data
+     */
+    public function write($data);
+
+    /**
+     * Mark the response as complete.
+     *
+     * A completed response should no longer allow manipulation of either
+     * headers or the content body.
+     * 
+     * If $data is passed, that data will be passed to write() prior to
+     * marking the response as complete.
+     *
+     * @param null|string $data
+     */
+    public function end($data = null);
+
+    /**
+     * Indicate whether or not the response is complete.
+     *
+     * I.e., if end() has been called previously. SHOULD also be used
+     * internally to determine whether or not an operation can be invoked
+     * currently.
+     * 
+     * @return bool
+     */
+    public function isComplete();
 }
 ```
 
