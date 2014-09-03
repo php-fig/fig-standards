@@ -1,3 +1,6 @@
+Normes d'auto-chargement des classes
+====================================
+
 La section suivante décrit les conditions obligatoires qui doivent être
 respectées pour l'interopérabilité avec un chargeur de classes.
 
