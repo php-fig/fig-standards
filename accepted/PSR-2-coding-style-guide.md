@@ -475,7 +475,7 @@ foreach ($iterable as $key => $value) {
 }
 ```
 
-### 5.6. `try`, `catch`
+### 5.6. `try`, `catch`, `finaly`
 
 A `try catch` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -488,6 +488,20 @@ try {
     // catch body
 } catch (OtherExceptionType $e) {
     // catch body
+}
+```
+And when you use the `finally` block it's will be like the following.
+
+```php
+<?php
+try {
+    // try body
+} catch (FirstExceptionType $e) {
+    // catch body
+} catch (OtherExceptionType $e) {
+    // catch body
+} finally {
+    // finally body
 }
 ```
 
