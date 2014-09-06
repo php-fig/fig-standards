@@ -75,6 +75,6 @@ veuillez voir le [fichier d'exemples][]. Les exemples d'implémentations NE
 DOIVENT PAS être compris comme faisant partie de cette spécification et
 POURRAIENT changer à tout moment.
 
-[auto-chargement]: http://php.net/autoload
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+[auto-chargement]: http://fr2.php.net/manual/fr/language.oop5.autoload.php
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/fr/PSR-0.md
 [fichier d'exemples]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
