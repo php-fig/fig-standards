@@ -48,7 +48,7 @@ seront auto-chargés en accord avec cette spécification.
     2. Les sous-espaces de noms contigus situés après le "préfixe d'espace de noms"
        corespondent à des sous-répertoires dans le "répertoire de base",
        dans lequel les séparateurs d'espace de noms représentent des séparateurs
-       de répertoires. Le nom de sous-répertoire DOIT respecteer la casse des
+       de répertoires. Le nom des sous-répertoires DOIT respecter la casse des
        sous-espaces de noms. 
 
     3. Le nom terminal de la classe correspond à un fichier suffixé par `.php`.
@@ -75,6 +75,6 @@ veuillez voir le [fichier d'exemples][]. Les exemples d'implémentations NE
 DOIVENT PAS être compris comme faisant partie de cette spécification et
 POURRAIENT changer à tout moment.
 
-[[auto-chargement]: http://php.net/autoload
+[auto-chargement]: http://php.net/autoload
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [fichier d'exemples]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
