@@ -1,50 +1,54 @@
-PHP Framework Interoperability Group
-====================================
+Grupo de Interoperabilidade entre Frameworks PHP
+================================================
 
-The idea behind the group is for project representatives to talk about the
-commonalities between our projects and find ways we can work together. Our main
-audience is each other, but we’re very aware that the rest of the PHP community
-is watching. If other folks want to adopt what we’re doing they are welcome to
-do so, but that is not the aim.
-
-
-Proposing a Standards Recommendation
-------------------------------------
-
-To propose a standards recommendation (PSR):
-
-- fork this repo, create a branch, checkout that branch, add the PSR in
-  `proposed/`, push the branch to Github, and send a pull request; or,
-
-- create a ticket to start a discussion on Github; or,
-
-- start a conversation on the [mailing list][].
-
-[mailing list]: http://groups.google.com/group/php-fig/
+A ideia por trás do grupo é falar sobre pontos em comum entre os projetos
+representados e encontrar maneiras de trabalharmos juntos. Nosso público-alvo
+somos nós mesmos, apesar de estarmos conscientes de que o restante da
+comunidade PHP está nos observando. Se outras pessoas quiserem adotar o que
+estivermos fazendo serão bem vindos, mesmo que esse não seja o objetivo do
+grupo.
 
 
-Requesting Membership
----------------------
+Proposta de uma Recomendação de Padrão
+--------------------------------------
 
-You **do not** need to be a voting member to participate in discussion on
-the [mailing list][].
+Para propor uma recomendação de padrão (PSR, em inglês, PHP
+Standards Recommendation):
 
-To become a voting member, you must send an email to the [mailing list][].
+- faça o fork, crie um branch, faça o checkout desse branch, adicione a PSR na
+  pasta `proposed/`, faça o push do branch para o Github e envie um pull
+  request; ou,
 
-- The subject line should read: `Membership Request: {$your_name} ({$project_name})`
+- crie uma issue para iniciar a discussão no Github; ou,
 
-- The body should include your name, the name of (and link to) the project you
-  represent, and other details you feel are relevant.
+- inicie uma conversa na [lista de discussão][].
 
-- Current members will vote on your request.
-
-Do not combine separate membership requests in a single thread; one request
-per thread, please.
+[lista de discussão]: http://groups.google.com/group/php-fig/
 
 
-Voting Members
---------------
+Solicitação de Associação
+-------------------------
 
-The current list of voting members is available on the [project website][].
+Você **não** precisa ser um membro votante para participar de uma discussão na
+[lista][lista de discussão].
 
-[project website]: http://www.php-fig.org/
+Para se tornar um membro votante, você precisa enviar um email para a
+[lista de discussão][].
+
+- O assunto da mensagem deve ser: `Membership Request: {$your_name} ({$project_name})`
+
+- O corpo da mensagem deve conter seu nome, o nome (e o link) do projeto
+  que você representa, e outros detalhes que achar relevantes.
+
+- Os membros atuais votarão sobre sua solicitação.
+
+Não misture várias solicitações de associação em uma única mensagem; por
+favor, uma solicitação por mensagem/thread.
+
+
+Membros Votantes
+----------------
+
+A lista atual de membros votantes está disponível na [página do projeto][].
+
+[página do projeto]: http://www.php-fig.org/
