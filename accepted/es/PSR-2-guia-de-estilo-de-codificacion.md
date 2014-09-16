@@ -9,7 +9,7 @@ En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MU
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-0.md
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-1-basic-coding-standard.md
+[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-1-codificacion-estandar-basica.md
 
 
 1. Visión general
