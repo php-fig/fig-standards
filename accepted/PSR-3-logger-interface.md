@@ -64,31 +64,31 @@ Users of loggers are refered to as `user`.
   The following is an example implementation of placeholder interpolation
   provided for reference purposes only:
 
-  ```php
-  /**
-   * Interpolates context values into the message placeholders.
-   */
-  function interpolate($message, array $context = array())
-  {
-      // build a replacement array with braces around the context keys
-      $replace = array();
-      foreach ($context as $key => $val) {
-          $replace['{' . $key . '}'] = $val;
-      }
+```php
+/**
+ * Interpolates context values into the message placeholders.
+ */
+function interpolate($message, array $context = array())
+{
+    // build a replacement array with braces around the context keys
+    $replace = array();
+    foreach ($context as $key => $val) {
+        $replace['{' . $key . '}'] = $val;
+    }
 
-      // interpolate replacement values into the message and return
-      return strtr($message, $replace);
-  }
+    // interpolate replacement values into the message and return
+    return strtr($message, $replace);
+}
 
-  // a message with brace-delimited placeholder names
-  $message = "User {username} created";
+// a message with brace-delimited placeholder names
+$message = "User {username} created";
 
-  // a context array of placeholder names => replacement values
-  $context = array('username' => 'bolivar');
+// a context array of placeholder names => replacement values
+$context = array('username' => 'bolivar');
 
-  // echoes "User bolivar created"
-  echo interpolate($message, $context);
-  ```
+// echoes "User bolivar created"
+echo interpolate($message, $context);
+```
 
 ### 1.3 Context
 
