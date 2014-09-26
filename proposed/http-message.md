@@ -82,12 +82,12 @@ message can be very small or extremely large. Attempting to represent the body
 of a message as a string can easily consume more memory than intended because
 the body must be stored completely in memory. Attempting to store the body of a
 request or response in memory would preclude the use of that implementation from
-being able to work with large message bodies. The `StreamInterface` is used in
-order to hide the implementation details of where a stream of data is read from
+being able to work with large message bodies. The `StreamableInterface` is used in
+order to hide the implementation details when a stream of data is read from
 or written to.
 
-`StreamInterface` exposes several methods that enable streams to be read
-  from, written to, and traversed effectively.
+`StreamableInterface` exposes several methods that enable streams to be read
+from, written to, and traversed effectively.
 
 - Streams expose their capabilities using three methods: `isReadable()`,
   `isWritable()`, and `isSeekable()`. These methods can be used by stream
@@ -132,23 +132,23 @@ interface MessageInterface
     /**
      * Gets the body of the message.
      *
-     * @return StreamInterface|null Returns the body, or null if not set.
+     * @return StreamableInterface|null Returns the body, or null if not set.
      */
     public function getBody();
 
     /**
      * Sets the body of the message.
      *
-     * The body MUST be a StreamInterface object. Setting the body to null MUST
+     * The body MUST be a StreamableInterface object. Setting the body to null MUST
      * remove the existing body.
      *
-     * @param StreamInterface|null $body Body.
+     * @param StreamableInterface|null $body Body.
      *
      * @return void
      *
      * @throws \InvalidArgumentException When the body is not valid.
      */
-    public function setBody(StreamInterface $body = null);
+    public function setBody(StreamableInterface $body = null);
 
     /**
      * Gets all message headers.
@@ -379,7 +379,7 @@ interface ResponseInterface extends MessageInterface
 }
 ```
 
-### 3.4 `Psr\Http\Message\StreamInterface`
+### 3.4 `Psr\Http\Message\StreamableInterface`
 
 ```php
 <?php
@@ -387,9 +387,13 @@ interface ResponseInterface extends MessageInterface
 namespace Psr\Http\Message;
 
 /**
- * Describes a stream instance.
+ * Describes streamable content.
+ *
+ * Typically, an instance will wrap a PHP stream; this interface provides
+ * a wrapper around the most common operations, including serialization of
+ * the entire stream to a string.
  */
-interface StreamInterface
+interface StreamableInterface
 {
     /**
      * Reads all data from the stream into a string, from the beginning to end.
