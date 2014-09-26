@@ -420,6 +420,21 @@ interface StreamInterface
     public function detach();
 
     /**
+     * Replaces the underlying stream resource with the provided stream.
+     *
+     * Use this method to replace the underlying stream with another; as an
+     * example, in server-side code, if you decide to return a file, you
+     * would replace the original content-oriented stream with the file
+     * stream.
+     *
+     * Any internal state such as caching of cursor position should be reset
+     * when attach() is called, as the stream has changed.
+     *
+     * @return void
+     */
+    public function attach($stream);
+
+    /**
      * Get the size of the stream if known
      *
      * @return int|null Returns the size in bytes if known, or null if unknown
