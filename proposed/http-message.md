@@ -415,7 +415,7 @@ interface StreamInterface
      *
      * After the stream has been detached, the stream is in an unusable state.
      *
-     * @return void
+     * @return resource Underlying PHP stream
      */
     public function detach();
 
