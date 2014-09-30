@@ -25,6 +25,12 @@ a server to a client. These messages are represented by
   implemented directly, implementors are encouraged to implement
   `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
 
+An additional interface, `Psr\Http\Message\IncomingRequestInterface`, extends
+`Psr\Http\Message\RequestInterface`, to provide accessors to common server-side
+environment parameters, including the deserialized query string arguments,
+deserialized body parameters, and the incoming upload files information
+(typically represented in PHP via `$_FILES`).
+
 #### 1.2 HTTP Headers
 
 ##### Case-insensitive headers
@@ -324,6 +330,97 @@ interface RequestInterface extends MessageInterface
     public function setUrl($url);
 }
 ```
+
+### 3.2.1 `Psr\Http\Message\IncomingRequestInterface`
+
+```php
+<?php
+
+namespace Psr\Http\Message;
+
+/**
+ * An incoming (server-side) HTTP request.
+ *
+ * This interface further describes a server-side request and provides
+ * accessors and mutators around common request data, such as query
+ * string arguments, body parameters, and upload file metadata.
+ */
+interface IncomingRequestInterface extends RequestInterface
+{
+    /**
+     * Retrieve query string arguments.
+     *
+     * Retrieves the deserialized query string arguments, if any.
+     * 
+     * @return array
+     */
+    public function getQueryParams();
+
+    /**
+     * Set the query string arguments for the request.
+     *
+     * This will typically be used by factories to inject the values of $_GET
+     * into the request instance.
+     * 
+     * @param array $values The deserialized query string arguments.
+     *
+     * @return void
+     */
+    public function setQueryParams(array $values);
+
+    /**
+     * Retrieve any parameters provided in the request body.
+     *
+     * If the request body can be deserialized, and if the deserialized values
+     * can be represented as an array and/or associative array, this method
+     * can be used to retrieve them.
+     *
+     * In other cases, the parent getBody() method should be used to retrieve
+     * the body content.
+     * 
+     * @return array The deserialized body parameters, if any.
+     */
+    public function getBodyParams();
+
+    /**
+     * Set the request body parameters.
+     *
+     * If the body content can be deserialized, the values obtained may then
+     * be injected into the response using this method. This method will
+     * typically be invoked by a factory marshaling request parameters.
+     * 
+     * @param array $values The deserialized body parameters, if any.
+     *
+     * @return void
+     */
+    public function setBodyParams(array $values);
+
+    /**
+     * Retrieve the upload file metadata.
+     *
+     * This method should return file upload metadata in the same structure
+     * as PHP's $_FILES superglobal.
+     * 
+     * @return array Upload file(s) metadata, if any.
+     */
+    public function getIncomingFiles();
+
+    /**
+     * Set upload file metadata.
+     * 
+     * If files are being uploaded in the incoming request, the metadata for
+     * the file(s) may be injected into the response using this method. This 
+     * method will typically be invoked by a factory marshaling request parameters.
+     *
+     * @param array $values Upload file metadata, if any.
+     *
+     * @return void
+     */
+    public function setIncomingFiles(array $values)
+}
+
+```
+
 
 ### 3.3 `Psr\Http\Message\ResponseInterface`
 
