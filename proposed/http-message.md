@@ -499,7 +499,7 @@ interface StreamInterface
     public function read($length);
 
     /**
-     * Returns the remaining contents in a string, up to maxlength bytes.
+     * Returns the remaining contents in a string
      *
      * @return string
      */
