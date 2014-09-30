@@ -4,12 +4,16 @@
 This document describes common interfaces for representing HTTP messages
 described in [RFC 7230].
 
+It also describes an interface for representing URIs as described in [RFC 3986],
+specifically for composition within an HTTP request message.
+
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [RFC 7230]: http://www.ietf.org/rfc/rfc7230.txt
+[RFC 3986]: http://www.ietf.org/rfc/rfc3986.txt
 
 1. Specification
 ----------------
@@ -97,6 +101,37 @@ or written to.
   write-only, or read-write. It can also allow arbitrary random access (seeking
   forwards or backwards to any location), or only sequential access (for
   example in the case of a socket or pipe).
+
+### 1.3 URIs
+
+A Uniform Resource Indicator (URI) provides a means for addressing and
+identifying a resource. In the realm of HTTP, this means a URI that can be
+addressed using an HTTP or HTTPS scheme, via which HTTP messages may be
+exchanged.
+
+URIs are strings which consist of one or more of the following parts:
+
+- Scheme
+- User Information
+- Host
+- Port
+- Path
+- Query
+- Fragment
+
+When describing URIs in the context of HTTP, a URI will consist of minimally the
+scheme and host. In cases where a port is not specified, the default port
+for the given scheme may be assumed (port 80 for HTTP, port 443 for HTTPS). In
+cases where the path is omitted, a path of `/` may be assumed.
+
+The `UriInterface` hides the implementation details of identifying the parts of
+a URI, and provides a consistent interface for retrieving the data associated
+with each part. Additionally, it implements PHP's "magic" `__toString()` method,
+allowing it to be cast to a string representation of the URI.
+
+`Psr\Http\Message\RequestInterface` recommends using a `Psr\Http\UriInterface`
+implementation for its "url" member in order to provide a uniform contract for
+accessing the parts of a URI.
 
 2. Package
 ----------
@@ -301,7 +336,8 @@ interface RequestInterface extends MessageInterface
      *
      * @return string|object Returns the URL as a string, or an object that
      *    implements the `__toString()` method. The URL must be an absolute URI
-     *    as specified in RFC 3986.
+     *    as specified in RFC 3986. SHOULD be a Psr\Http\UriInterface
+     *    implementation.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
      */
@@ -312,7 +348,7 @@ interface RequestInterface extends MessageInterface
      *
      * The URL MUST be a string, or an object that implements the
      * `__toString()` method. The URL must be an absolute URI as specified
-     * in RFC 3986.
+     * in RFC 3986. SHOULD be a Psr\Http\UriInterface implementation.
      *
      * @param string|object $url Request URL.
      *
@@ -506,5 +542,105 @@ interface StreamInterface
      * @return string
      */
     public function getContents($maxLength = -1);
+}
+```
+
+### 3.5 `Psr\Http\UriInterface`
+
+```php
+namespace Psr\Http;
+
+/**
+ * Describes a URI.
+ */
+interface UriInterface
+{
+    /**
+     * Cast the URI instance to a string value (the URI representation).
+     *
+     * Casts the URI instance to a string value, with the following caveats:
+     *
+     * - The scheme MAY be omitted, but SHOULD either be fully present, or
+     *   represented using relative scheme notation ("//").
+     * - If the current port is the default port for the given scheme, it SHOULD
+     *   be omitted from the representation.
+     * - If the current path is "/" it CAN be omitted from the representation.
+     * 
+     * @return string The URI representation.
+     */
+    public function __toString();
+
+    /**
+     * Retrieve the URI scheme.
+     *
+     * @return string The URI scheme (typically HTTP or HTTPS).
+     */
+    public function getScheme();
+
+    /**
+     * Retrieve the URI user information.
+     *
+     * Returns the URI user information. For a case where only the username is
+     * is present in the URI, this can return a string. Otherwise, an array
+     * with the keys "username" and "password" SHOULD be returned.
+     *
+     * For consistency, implementations SHOULD return an associative array
+     * with the keys "username" and "password" regardless of what is present.
+     *
+     * @return string|array The user information, if any; if returned as an
+     *                      array, the array MUST contain the elements
+     *                      "username" and optionally "password".
+     */
+    public function getUserInformation();
+
+    /**
+     * Retrieve the URI host.
+     * 
+     * @return string The host represented in the URI.
+     */
+    public function getHost();
+
+    /**
+     * Retrieve the URI port.
+     *
+     * This should always return a port even if the underlying URI does not
+     * specify one (implying the default port for the scheme should be used).
+     * 
+     * @return string The port represented in or implied by the URI.
+     */
+    public function getPort();
+
+    /**
+     * Retrieve the URI path.
+     *
+     * If no path is present in the URI, this should still return minimally
+     * a "/", indicating the root path of the server.
+     * 
+     * @return string The path represented in or implied by the URI.
+     */
+    public function getPath();
+
+    /**
+     * Retrieve the URI query string.
+     *
+     * Returns the query string arguments for the URI, without the "?" prefix.
+     * If none are present, an empty string may be returned.
+     *
+     * SHOULD NOT return the parsed/deserialized representation of them.
+     * 
+     * @return string The query string represented by the URI.
+     */
+    public function getQuery();
+
+    /**
+     * Retrieve the URI fragment.
+     *
+     * The URI fragment is the value following a "#" symbol in the URI. This
+     * value will never be seen by server-side applications, but can be useful
+     * when representing links to specific sections of a resource.
+     * 
+     * @return string The URI fragment.
+     */
+    public function getFragment();
 }
 ```
