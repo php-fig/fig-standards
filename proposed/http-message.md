@@ -396,7 +396,7 @@ interface IncomingRequestInterface extends RequestInterface
      * 
      * @return array Upload file(s) metadata, if any.
      */
-    public function getIncomingFiles();
+    public function getFileParams();
 
     /**
      * Retrieve any parameters provided in the request body.
