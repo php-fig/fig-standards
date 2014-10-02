@@ -28,8 +28,9 @@ a server to a client. These messages are represented by
 An additional interface, `Psr\Http\Message\IncomingRequestInterface`, extends
 `Psr\Http\Message\RequestInterface`, to provide accessors to common server-side
 environment parameters, including the deserialized query string arguments,
-deserialized body parameters, and the incoming upload files information
-(typically represented in PHP via `$_FILES`).
+deserialized body parameters, the incoming upload files information
+(typically represented in PHP via `$_FILES`), cookies (typically injected from
+PHP's `$_COOKIE`), and matched routing parameters.
 
 #### 1.2 HTTP Headers
 
@@ -343,42 +344,73 @@ namespace Psr\Http\Message;
  *
  * This interface further describes a server-side request and provides
  * accessors and mutators around common request data, such as query
- * string arguments, body parameters, and upload file metadata.
+ * string arguments, body parameters, upload file metadata, cookies, and
+ * matched routing parameters.
  */
 interface IncomingRequestInterface extends RequestInterface
 {
     /**
+     * Retrieve cookies.
+     *
+     * Retrieves cookies sent by the client to the server.
+     *
+     * The assumption is these are injected during instantiation, typically
+     * from PHP's $_COOKIE superglobal, and should remain immutable over the
+     * course of the incoming request.
+     *
+     * The return value can be either an array or an object that acts like
+     * an array (e.g., implements ArrayAccess, or an ArrayObject).
+     * 
+     * @return array|\ArrayAccess
+     */
+    public function getCookieParams();
+
+    /**
      * Retrieve query string arguments.
      *
      * Retrieves the deserialized query string arguments, if any.
+     *
+     * The assumption is these are injected during instantiation, typically
+     * from PHP's $_GET superglobal, and should remain immutable over the
+     * course of the incoming request.
+     *
+     * The return value can be either an array or an object that acts like
+     * an array (e.g., implements ArrayAccess, or an ArrayObject).
      * 
      * @return array
      */
     public function getQueryParams();
 
     /**
-     * Set the query string arguments for the request.
+     * Retrieve the upload file metadata.
      *
-     * This will typically be used by factories to inject the values of $_GET
-     * into the request instance.
+     * This method should return file upload metadata in the same structure
+     * as PHP's $_FILES superglobal.
+     *
+     * The assumption is these are injected during instantiation, typically
+     * from PHP's $_FILES superglobal, and should remain immutable over the
+     * course of the incoming request.
+     *
+     * The return value can be either an array or an object that acts like
+     * an array (e.g., implements ArrayAccess, or an ArrayObject).
      * 
-     * @param array $values The deserialized query string arguments.
-     *
-     * @return void
+     * @return array Upload file(s) metadata, if any.
      */
-    public function setQueryParams(array $values);
+    public function getIncomingFiles();
 
     /**
      * Retrieve any parameters provided in the request body.
      *
      * If the request body can be deserialized, and if the deserialized values
-     * can be represented as an array and/or associative array, this method
-     * can be used to retrieve them.
+     * can be represented as an array or object, this method can be used to
+     * retrieve them.
      *
      * In other cases, the parent getBody() method should be used to retrieve
      * the body content.
      * 
-     * @return array The deserialized body parameters, if any.
+     * @return array|object The deserialized body parameters, if any. These may
+     *                      be either an array or an object, though an array or
+     *                      array-like object is recommended.
      */
     public function getBodyParams();
 
@@ -389,38 +421,40 @@ interface IncomingRequestInterface extends RequestInterface
      * be injected into the response using this method. This method will
      * typically be invoked by a factory marshaling request parameters.
      * 
-     * @param array $values The deserialized body parameters, if any.
+     * @param array|object $values The deserialized body parameters, if any.
+     *                             These may be either an array or an object,
+     *                             though an array or array-like object is
+     *                             recommended.
      *
      * @return void
      */
-    public function setBodyParams(array $values);
+    public function setBodyParams($values);
 
     /**
-     * Retrieve the upload file metadata.
+     * Retrieve parameters matched during routing.
      *
-     * This method should return file upload metadata in the same structure
-     * as PHP's $_FILES superglobal.
-     * 
-     * @return array Upload file(s) metadata, if any.
+     * If a router or similar is used to match against the path and/or request,
+     * this method can be used to retrieve the results, so long as those
+     * results can be represented as an array or array-like object.
+     *
+     * @return array|\ArrayAccess Path parameters matched by routing
      */
-    public function getIncomingFiles();
+    public function getPathParams();
 
     /**
-     * Set upload file metadata.
-     * 
-     * If files are being uploaded in the incoming request, the metadata for
-     * the file(s) may be injected into the response using this method. This 
-     * method will typically be invoked by a factory marshaling request parameters.
+     * Set parameters discovered by matching that path
      *
-     * @param array $values Upload file metadata, if any.
+     * If a router or similar is used to match against the path and/or request,
+     * this method can be used to inject the request with the results, so long
+     * as those results can be represented as an array or array-like object.
+     * 
+     * @param array|\ArrayAccess $values Path parameters matched by routing
      *
      * @return void
      */
-    public function setIncomingFiles(array $values)
+    public function setPathParams(array $values);
 }
-
 ```
-
 
 ### 3.3 `Psr\Http\Message\ResponseInterface`
 
