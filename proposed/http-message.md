@@ -366,6 +366,24 @@ interface IncomingRequestInterface extends RequestInterface
     public function getCookieParams();
 
     /**
+     * Set cookie parameters.
+     *
+     * Allows a library to set the cookie parameters. Use cases include
+     * libraries that implement additional security practices, such as
+     * encrypting or hashing cookie values; in such cases, they will read
+     * the original value, filter them, and re-inject into the incoming
+     * request..
+     *
+     * The value provided should be an array or array-like object
+     * (e.g., implements ArrayAccess, or an ArrayObject).
+     * 
+     * @param array|\ArrayAccess $cookies Cookie values/structs
+     * 
+     * @return void
+     */
+    public function setCookieParams($cookies);
+
+    /**
      * Retrieve query string arguments.
      *
      * Retrieves the deserialized query string arguments, if any.
