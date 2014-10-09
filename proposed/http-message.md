@@ -206,7 +206,9 @@ interface MessageInterface
      * or an array of strings.
      *
      * @param string $header Header name
-     * @param string|string[] $value  Header value(s)
+     * @param string|string[]|object|object[] $value Header value(s). Values may 
+     *                                               be objects as long as they
+     *                                               can be cast to strings.
      *
      * @return void
      */
@@ -215,8 +217,9 @@ interface MessageInterface
     /**
      * Sets headers, replacing any headers that have already been set on the message.
      *
-     * The array keys MUST be a string. The array values must be either a
-     * string or an array of strings.
+     * The array keys MUST be a string. Each array value MUST be either a string
+     * or object, or array of strings and/or objects; any object used as a
+     * header value MUST be able to be cast to a string.
      *
      * @param array $headers Headers to set.
      *
@@ -231,7 +234,8 @@ interface MessageInterface
      * value will be appended to the existing list.
      *
      * @param string $header Header name to add
-     * @param string $value  Value of the header
+     * @param string|object $value Value of the header; object is allowed if it
+     *                             can be cast to a string.
      *
      * @return void
      */
@@ -241,7 +245,10 @@ interface MessageInterface
      * Merges in an associative array of headers.
      *
      * Each array key MUST be a string representing the case-insensitive name
-     * of a header. Each value MUST be either a string or an array of strings.
+     * of a header. Each value MUST be either a string or object, or array of
+     * strings and/or objects; any object used as a header value MUST be able
+     * to be cast to a string.
+     *
      * For each value, the value is appended to any existing header of the same
      * name, or, if a header does not already exist by the given name, then the
      * header is added.
