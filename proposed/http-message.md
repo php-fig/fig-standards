@@ -130,6 +130,18 @@ interface MessageInterface
     public function getProtocolVersion();
 
     /**
+     * Set the HTTP protocol version.
+     *
+     * The version string MUST contain only the HTTP version number (e.g.,
+     * "1.1", "1.0").
+     *
+     * @param string $version HTTP protocol version
+     *
+     * @return void
+     */
+    public function setProtocolVersion($version);
+
+    /**
      * Gets the body of the message.
      *
      * @return StreamableInterface|null Returns the body, or null if not set.
