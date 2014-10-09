@@ -48,9 +48,10 @@ It seems apparent that the tasks also need some standardized way of outputting d
 Instead on relying on 'echo' and library specific implementations this proposal will try adopting
 the Symfony2 Command way of passing an OutputInterface
 
-## 4.1 Importnt questions
+## 4.1 Important questions
 
-* Do we need OutputInterface and InputInterface included in this PSR ?
+* Do we need OutputInterface included in this PSR ?
+* What about InputInterface ?
 * Should run() return anything ?
 
 ...To be continued..
