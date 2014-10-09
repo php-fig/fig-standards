@@ -53,7 +53,7 @@ the Symfony2 Command way of passing an OutputInterface
 * Do we need OutputInterface included in this PSR ?
 * What about InputInterface ?
 * Should run() return anything ?
-* Do we need an interfce for a TaskRepositry ? It might be useful for example if one of the tasks depends on
+* Do we need an interfce for a TaskRepository ? It might be useful for example if one of the tasks depends on
 a different task and would like to run it internally. But this might be too convoluted.
 
 ...To be continued..
