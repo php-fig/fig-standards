@@ -166,7 +166,7 @@ incoming requests:
   body)
 - Access to uploaded files (usually encapsulated in PHP via the `$_FILES`
   superglobal)
-- Access to cookie values (usually encapsulated in PHP via the `$COOKIE`
+- Access to cookie values (usually encapsulated in PHP via the `$_COOKIE`
   superglobal)
 - Access to parameters during routing (usually against the URL path)
 
