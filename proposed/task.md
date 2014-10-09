@@ -1,8 +1,7 @@
-  HTTP message interfaces
+Task interfaces
 =======================
 
-This document describes common interfaces for representing HTTP messages
-described in [RFC 7230].
+This document describes common task interfaces for representing runnable actions.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
