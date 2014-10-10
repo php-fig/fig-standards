@@ -87,7 +87,7 @@ interface TaskInterface
      *
      * @return void
      */
-    public function setParam($name, $value);
+    public function setParameter($name, $value);
 
 }
 ```
