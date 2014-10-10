@@ -56,4 +56,19 @@ the Symfony2 Command way of passing an OutputInterface
 * Do we need an interfce for a TaskRepository ? It might be useful for example if one of the tasks depends on
 a different task and would like to run it internally. But this might be too convoluted.
 
+## 4.2 Reducting configuration redundancy
+
+Now I have a more ambitious idea (wild dreams ahead):
+
+The problem with this setup, and with many task runner libraries out there is that they often suffer from configuration duplication. Lets say in your cron job configuration you need to:
+
+1. Copy files to remote server over FTP
+2. Run a SSH command on that server
+3. Copy some more files over FTP
+
+For both steps `1` and `3` you would have to define your FTP login credentials, thus getting some redundancy.
+
+What if we could separate task configuration ( which would be FTP credentials ) from the actual task Command ( copy this file over there ).
+This would require a CommandInterface and changing TaskInterface::run signature to TaskInterface::run(OutputInterface $output, CommandInterface $command)
+
 ...To be continued..
