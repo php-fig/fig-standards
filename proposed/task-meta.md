@@ -101,7 +101,7 @@ There is no need to change internal nomenclature and rename CallInterface to Tas
 
 Robos' TaskInterface already defines ::run(), but would be required to also pass OutputInterface to it, instead of relying on static Runner::getPrinter() call
 
-### Taskphp
+### Task
 
 Realies on Symfony2 Command so most of the things i said about Symfony 2 apply here too.
 
