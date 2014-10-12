@@ -71,4 +71,40 @@ For both steps `1` and `3` you would have to define your FTP login credentials, 
 What if we could separate task configuration ( which would be FTP credentials ) from the actual task Command ( copy this file over there ).
 This would require a CommandInterface and changing TaskInterface::run signature to TaskInterface::run(OutputInterface $output, CommandInterface $command)
 
-...To be continued..
+## 4.3 Implementation in popular libraries
+
+This section describes steps that would have to be taken to make popular libraries comply with this PSR.
+The purpose is to show how easily this could be done.
+
+### Phing
+
+ * Task::main() would have to be renamed to Task::run, or ::run could act as a proxy for ::main for backwards compatibility
+ * When setting configuration values instead of setSourceDir('/') setProperty('sourceDir', '/') would be called
+
+### Symfony 2 Commands
+
+ * Command::execute would have to be renamed to Command::run
+ * Symfony2 commands serve a different purpose alltogether, being standalone actions not meant as "builidingc blocks" for jobs. So I guess they are actually out of the scope of this PSR. However they can be easily made to comply with TaskInterface and thus become interpolable.
+
+### Yii
+
+Yii 2 console commands are actually controllers and as with Symfony2 present standalone complete actions, not "building block" style like Phing. So the PSR wouldnt apply here
+
+Yii 1 however has a CConsoleCommand class which already has a ::run($args) method. The only diference between it and the PSR is that the arguments are passed separately instead passed to ::run. This would allow any PSR compliant TaskInterface task to instantly become a valid Yii Command.
+
+### Bldr
+
+Is mostly compliant anyway. All it needs is for CallInterface to extend TaskInterface, and some tweaks with passing parameters.
+There is no need to change internal nomenclature and rename CallInterface to TaskInterface internally.
+
+### Robo
+
+Robos' TaskInterface already defines ::run(), but would be required to also pass OutputInterface to it, instead of relying on static Runner::getPrinter() call
+
+### Taskphp
+
+Realies on Symfony2 Command so most of the things i said about Symfony 2 apply here too.
+
+
+
+
