@@ -1,7 +1,7 @@
 ﻿HTTP message interfaces
 =======================
 
-This document describes common interfaces for representing HTTP messages
+This document describes common interfaces for representing HTTP messages as
 described in [RFC 7230].
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -80,7 +80,7 @@ $header = $message->getHeaderAsArray('foo');
 Note: Not all header values can be concatenated using a comma
 (e.g., Set-Cookie). When working with such headers, consumers of the
 MessageInterface SHOULD rely on the `getHeaderAsArray()` method for retrieving
-such multi-valued headers
+such multi-valued headers.
 
 ### 1.2 Streams
 
