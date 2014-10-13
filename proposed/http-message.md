@@ -144,7 +144,6 @@ interface MessageInterface
      * "1.1", "1.0").
      *
      * @param string $version HTTP protocol version
-     *
      * @return void
      */
     public function setProtocolVersion($version);
@@ -163,9 +162,7 @@ interface MessageInterface
      * remove the existing body.
      *
      * @param StreamableInterface|null $body Body.
-     *
      * @return void
-     *
      * @throws \InvalidArgumentException When the body is not valid.
      */
     public function setBody(StreamableInterface $body = null);
@@ -197,7 +194,6 @@ interface MessageInterface
      * Checks if a header exists by the given case-insensitive name.
      *
      * @param string $header Case-insensitive header name.
-     *
      * @return bool Returns true if any header names match the given header
      *     name using a case-insensitive string comparison. Returns false if
      *     no matching header name is found in the message.
@@ -212,7 +208,6 @@ interface MessageInterface
      * a comma.
      *
      * @param string $header Case-insensitive header name.
-     *
      * @return string
      */
     public function getHeader($header);
@@ -221,7 +216,6 @@ interface MessageInterface
      * Retrieves a header by the given case-insensitive name as an array of strings.
      *
      * @param string $header Case-insensitive header name.
-     *
      * @return string[]
      */
     public function getHeaderAsArray($header);
@@ -235,24 +229,21 @@ interface MessageInterface
      *
      * @param string $header Header name
      * @param string|string[] $value Header value(s).
-     *
      * @return void
+     * @throws \InvalidArgumentException for invalid header names or values
      */
     public function setHeader($header, $value);
 
     /**
-     * Appends a header value for the specified, case-insensitive, header name.
-     *
-     * The header name is case-insensitive. The header values MUST be a string
-     * or an array of strings.
+     * Appends a header value for the specified header.
      *
      * Existing values for the specified header will be maintained. The new
      * value(s) will be appended to the existing list.
      *
      * @param string $header Header name to add
      * @param string|string[] $value Header value(s).
-     *
      * @return void
+     * @throws \InvalidArgumentException for invalid header names or values
      */
     public function addHeader($header, $value);
 
@@ -260,7 +251,6 @@ interface MessageInterface
      * Remove a specific header by case-insensitive name.
      *
      * @param string $header HTTP header to remove
-     *
      * @return void
      */
     public function removeHeader($header);
@@ -295,19 +285,18 @@ interface RequestInterface extends MessageInterface
      * modify the given string.
      *
      * @param string $method Case-insensitive method.
-     *
      * @return void
+     * @throws \InvalidArgumentException for invalid HTTP methods
      */
     public function setMethod($method);
 
     /**
      * Gets the absolute request URL.
      *
+     * @link http://tools.ietf.org/html/rfc3986#section-4.3
      * @return string|object Returns the URL as a string, or an object that
      *    implements the `__toString()` method. The URL must be an absolute URI
      *    as specified in RFC 3986.
-     *
-     * @link http://tools.ietf.org/html/rfc3986#section-4.3
      */
     public function getUrl();
 
@@ -318,12 +307,10 @@ interface RequestInterface extends MessageInterface
      * `__toString()` method. The URL must be an absolute URI as specified
      * in RFC 3986.
      *
-     * @param string|object $url Request URL.
-     *
-     * @return void
-     *
-     * @throws \InvalidArgumentException If the URL is invalid.
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
+     * @param string|object $url Request URL.
+     * @return void
+     * @throws \InvalidArgumentException If the URL is invalid.
      */
     public function setUrl($url);
 }
@@ -371,8 +358,8 @@ interface IncomingRequestInterface extends RequestInterface
      * The value provided MUST be compatible with the structure of $_COOKIE.
      *
      * @param array $cookies Cookie values
-     *
      * @return void
+     * @throws \InvalidArgumentException For invalid cookie parameters.
      */
     public function setCookieParams($cookies);
 
@@ -430,6 +417,7 @@ interface IncomingRequestInterface extends RequestInterface
      * @param array $values The deserialized body parameters, if any.
      *
      * @return void
+     * @throws \InvalidArgumentException For $values that cannot be accepted.
      */
     public function setBodyParams($values);
 
@@ -440,7 +428,7 @@ interface IncomingRequestInterface extends RequestInterface
      * this method can be used to retrieve the results, so long as those
      * results can be represented as an array.
      *
-     * @return array Path parameters matched by routing
+     * @return array Attributes derived from the request.
      */
     public function getAttributes();
 
@@ -451,8 +439,7 @@ interface IncomingRequestInterface extends RequestInterface
      * this method can be used to inject the request with the results, so long
      * as those results can be represented as an array.
      *
-     * @param array $attributes Path parameters matched by routing
-     *
+     * @param array $attributes Attributes derived from the request.
      * @return void
      */
     public function setAttributes(array $attributes);
@@ -487,6 +474,7 @@ interface ResponseInterface extends MessageInterface
      * Sets the status code of this response.
      *
      * @param integer $code The 3-digit integer result code to set.
+     * @throws \InvalidArgumentException For invalid status code arguments.
      */
     public function setStatusCode($code);
 
@@ -513,6 +501,7 @@ interface ResponseInterface extends MessageInterface
      * Status-Code.
      *
      * @param string $phrase The Reason-Phrase to set.
+     * @throws \InvalidArgumentException For non-string $phrase arguments.
      */
     public function setReasonPhrase($phrase);
 }
@@ -573,7 +562,11 @@ interface StreamableInterface
      * Any internal state such as caching of cursor position should be reset
      * when attach() is called, as the stream has changed.
      *
+     * @param string|resource $stream The underlying stream. String values
+     *                                SHOULD be used to create a stream
+     *                                resource.
      * @return void
+     * @throws \InvalidArgumentException For invalid $stream arguments
      */
     public function attach($stream);
 
