@@ -681,7 +681,8 @@ interface StreamableInterface
      *                    them. Fewer than $length bytes may be returned if
      *                    underlying stream call returns fewer bytes.
      *
-     * @return string     Returns the data read from the stream.
+     * @return string|false Returns the data read from the stream, false if
+     *                      unable to read or if an error occurs.
      */
     public function read($length);
 
