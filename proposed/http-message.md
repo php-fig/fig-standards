@@ -16,8 +16,8 @@ interpreted as described in [RFC 2119].
 
 ### 1.1 Messages
 
-HTTP messages consist of requests from a client to a server and responses from
-a server to a client. These messages are represented by
+A HTTP message is either request from a client to a server or a response from
+a server to a client. HTTP messages are therefor represented by classes implementing
 `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
 
 - Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
