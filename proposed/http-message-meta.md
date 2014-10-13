@@ -5,9 +5,10 @@ HTTP Message Meta Document
 ----------
 
 The purpose of this proposal is to provide a set of common interfaces for HTTP
-messages as described in [RFC 7230].
+messages as described in [RFC 7230] and [RFC 7231].
 
 [RFC 7230]: http://www.ietf.org/rfc/rfc7230.txt
+[RFC 7231]: http://www.ietf.org/rfc/rfc7231.txt
 
 2. Why Bother?
 --------------
@@ -53,9 +54,9 @@ messages.
   interoperability.
 * While everyone's perception of what is and is not an implementation detail
   varies, this proposal should not impose implementation details. However,
-  because RFC 2616 does not force any particular implementation, there will be
-  a certain amount of invention needed to describe HTTP message interfaces in
-  PHP.
+  because RFC 7230 and RFC 7231 do not force any particular implementation,
+  there will be a certain amount of invention needed to describe HTTP message
+  interfaces in PHP.
 
 4. Design Decisions
 -------------------

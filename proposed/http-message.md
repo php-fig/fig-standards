@@ -2,7 +2,7 @@
 =======================
 
 This document describes common interfaces for representing HTTP messages
-described in [RFC 7230].
+described in [RFC 7230] and [RFC 7231].
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -10,6 +10,7 @@ interpreted as described in [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [RFC 7230]: http://www.ietf.org/rfc/rfc7230.txt
+[RFC 7231]: http://www.ietf.org/rfc/rfc7231.txt
 
 1. Specification
 ----------------
@@ -298,7 +299,7 @@ namespace Psr\Http\Message;
 
 /**
  * A HTTP request message.
- * @link http://tools.ietf.org/html/rfc2616#section-5
+ * @link http://tools.ietf.org/html/rfc7230#section-3
  */
 interface RequestInterface extends MessageInterface
 {
@@ -502,7 +503,8 @@ namespace Psr\Http\Message;
 
 /**
  * A HTTP response message.
- * @link http://tools.ietf.org/html/rfc2616#section-6
+ * @link http://tools.ietf.org/html/rfc7231#section-6
+ * @link http://tools.ietf.org/html/rfc7231#section-7
  */
 interface ResponseInterface extends MessageInterface
 {
@@ -528,9 +530,12 @@ interface ResponseInterface extends MessageInterface
      *
      * Because a Reason-Phrase is not a required element in response
      * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
-     * choose to return the default RFC 2616 recommended reason phrase for the
-     * response's Status-Code.
+     * choose to return the default RFC 7231 recommended reason phrase (or those
+     * listed in the IANA HTTP Status Code Registry) for the response's
+     * Status-Code.
      *
+     * @link http://tools.ietf.org/html/rfc7231#section-6
+     * @link http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
      * @return string|null Reason phrase, or null if unknown.
      */
     public function getReasonPhrase();
@@ -539,7 +544,8 @@ interface ResponseInterface extends MessageInterface
      * Sets the Reason-Phrase of the response.
      *
      * If no Reason-Phrase is specified, implementations MAY choose to default
-     * to the RFC 2616 recommended reason phrase for the response's Status-Code.
+     * to the RFC 7231 or IANA recommended reason phrase for the response's
+     * Status-Code.
      *
      * @param string $phrase The Reason-Phrase to set.
      */
