@@ -180,7 +180,15 @@ interface MessageInterface
      *         echo $name . ": " . implode(", ", $values);
      *     }
      *
-     * @return array Returns an associative array of the message's headers.
+     *     // Emit headers iteratively:
+     *     foreach ($message->getHeaders() as $name => $values) {
+     *         foreach ($values as $value) {
+     *             header(sprintf('%s: %s', $name, $value), false);
+     *         }
+     *     }
+     *
+     * @return array Returns an associative array of the message's headers. Each
+     *     key MUST be a header name, and each value MUST be an array of strings.
      */
     public function getHeaders();
 
