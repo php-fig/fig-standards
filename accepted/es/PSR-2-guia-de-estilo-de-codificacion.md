@@ -25,7 +25,7 @@ En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MU
 
 - Las llaves de apertura de las clases DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN ir en la línea siguiente al cuerpo de la clase.
 
-- Las llaves de apertura de los métodos DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN de ir en la línea siguiente al cuerpo del método.
+- Las llaves de apertura de los métodos DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN ir en la línea siguiente al cuerpo del método.
 
 - La visibilidad DEBE estar declarada en todas las propiedades y métodos; `abstract` y `final` DEBEN estar declaradas antes de la visibilidad; `static` DEBE estar declarada después de la visibilidad.
 
