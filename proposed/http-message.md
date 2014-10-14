@@ -375,8 +375,8 @@ interface IncomingRequestInterface extends RequestInterface
      * Retrieves cookies sent by the client to the server.
      *
      * The assumption is these are injected during instantiation, typically
-     * from PHP's $_COOKIE superglobal, and should remain immutable over the
-     * course of the incoming request.
+     * from PHP's $_COOKIE superglobal. The data IS NOT REQUIRED to come from
+     * $_COOKIE, but MUST be compatible with the structure of $_COOKIE.
      *
      * The return value can be either an array or an object that acts like
      * an array (e.g., implements ArrayAccess, or an ArrayObject).
@@ -395,7 +395,8 @@ interface IncomingRequestInterface extends RequestInterface
      * request..
      *
      * The value provided should be an array or array-like object
-     * (e.g., implements ArrayAccess, or an ArrayObject).
+     * (e.g., implements ArrayAccess, or an ArrayObject). The data MUST
+     * be compatible with the structure of $_COOKIE.
      *
      * @param array|\ArrayAccess $cookies Cookie values/structs
      *
@@ -408,9 +409,13 @@ interface IncomingRequestInterface extends RequestInterface
      *
      * Retrieves the deserialized query string arguments, if any.
      *
-     * The assumption is these are injected during instantiation, typically
-     * from PHP's $_GET superglobal, and should remain immutable over the
-     * course of the incoming request.
+     * These values SHOULD remain immutable over the course of the incoming
+     * request. They MAY be injected during instantiation, such as from PHP's
+     * $_GET superglobal, or MAY be derived from some other value such as the
+     * URI. In cases where the arguments are parsed from the URI, the data
+     * MUST be compatible with what PHP's parse_str() would return for
+     * purposes of how duplicate query parameters are handled, and how nested
+     * sets are handled.
      *
      * The return value can be either an array or an object that acts like
      * an array (e.g., implements ArrayAccess, or an ArrayObject).
@@ -422,12 +427,12 @@ interface IncomingRequestInterface extends RequestInterface
     /**
      * Retrieve the upload file metadata.
      *
-     * This method should return file upload metadata in the same structure
+     * This method MUST return file upload metadata in the same structure
      * as PHP's $_FILES superglobal.
      *
-     * The assumption is these are injected during instantiation, typically
-     * from PHP's $_FILES superglobal, and should remain immutable over the
-     * course of the incoming request.
+     * These values SHOULD remain immutable over the course of the incoming
+     * request. They MAY be injected during instantiation, such as from PHP's
+     * $_FILES superglobal, or MAY be derived from other sources.
      *
      * The return value can be either an array or an object that acts like
      * an array (e.g., implements ArrayAccess, or an ArrayObject).
