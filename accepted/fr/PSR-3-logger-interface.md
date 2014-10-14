@@ -1,13 +1,23 @@
 Interface Logger
 ================
 
-Ce document décrit une interface commune pour les bibliothèques de journalisation.
+Ce document décrit une interface commune pour les bibliothèques de
+journalisation.
 
-L'objectif principal est de permettre aux bibliothèques d'obtenir un objet `Psr\Log\LoggerInterface` et d'y écrire des logs d'une façon simple et universelle. Les Frameworks et CMS qui ont des besoins personnalisés peuvent étendre l'interface dans leur propre but, mais DOIVENT rester compatible avec le présent document. Cela garantit que les bibliothèques tierces utilisées par une application peuvent écrire dans les journaux centralisés des applications.
+L'objectif principal est de permettre aux bibliothèques d'obtenir un objet
+`Psr\Log\LoggerInterface` et d'y écrire des logs d'une façon simple et
+universelle. Les Frameworks et CMS qui ont des besoins personnalisés peuvent
+étendre l'interface dans leur propre but, mais DOIVENT rester compatible avec
+le présent document. Cela garantit que les bibliothèques tierces utilisées par
+une application peuvent écrire dans les journaux centralisés des applications.
 
-Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS", "DEVRAIT", "NE DEVRAIT PAS", "RECOMMENDÉ", "PEUT" et "OPTIONNELLE" dans ce document doivent être interprétés comme décrit dans [RFC 2119][].
+Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS",
+"DEVRAIT", "NE DEVRAIT PAS", "RECOMMENDÉ", "PEUT" et "OPTIONNELLE" dans ce
+document doivent être interprétés comme décrit dans [RFC 2119][].
 
-Le mot `implementor` dans ce document est à interpréter comme quelqu'un qui implémente le `LoggerInterface` dans une bibliothèque relative à de la journalisation ou dans un framework.
+Le mot `implementor` dans ce document est à interpréter comme quelqu'un qui
+implémente le `LoggerInterface` dans une bibliothèque relative à de la
+journalisation ou dans un framework.
 Les utilisateurs d'objet `loggers` sont mentionnées comme `utilisateur`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
@@ -17,10 +27,18 @@ Les utilisateurs d'objet `loggers` sont mentionnées comme `utilisateur`.
 
 ### 1.1 Basique
 
-- L'interface `LoggerInterface` expose huit méthodes pour écrire les logs pour les huit [RFC 5424][] levels (debug, info, notice, warning, error, critical, alert, emergency).
+- L'interface `LoggerInterface` expose huit méthodes pour écrire les logs pour
+les huit [RFC 5424][] levels (debug, info, notice, warning, error, critical,
+alert, emergency).
 
-- Un neuvième méthode, `log`, accepte un niveau de journalisation en tant que premier argument.
-  L'appel de cette méthode avec l'une des constantes du niveau de journalisation DOIT avoir le même résultat que l'appel de la méthode de niveau spécifique. L'appel de cette méthode avec un niveau non défini par cette spécification DOIT lancer un `Psr\Log\InvalidArgumentException` si l'implémentation ne reconnaît pas le niveau. Les utilisateurs NE DEVRAIENT PAS utiliser de niveau personnalisé sans savoir avec certitude si l'implémentation le supporte.
+- Un neuvième méthode, `log`, accepte un niveau de journalisation en tant que
+premier argument.
+L'appel de cette méthode avec l'une des constantes du niveau de journalisation
+DOIT avoir le même résultat que l'appel de la méthode de niveau spécifique.
+L'appel de cette méthode avec un niveau non défini par cette spécification
+DOIT lancer un `Psr\Log\InvalidArgumentException` si l'implémentation ne
+reconnaît pas le niveau. Les utilisateurs NE DEVRAIENT PAS utiliser de niveau
+personnalisé sans savoir avec certitude si l'implémentation le supporte.
 
 [RFC 5424]: http://tools.ietf.org/html/rfc5424
 
@@ -93,29 +111,38 @@ Les utilisateurs d'objet `loggers` sont mentionnées comme `utilisateur`.
 
 ### 1.4 Classes d'aide et interfaces
 
-- La classe `Psr\Log\AbstractLogger` vous permet d'implémenter le `LoggerInterface`
-  très facilement en l'étendant et en implémentant la méthode générique `log`.
-  Les huit autres méthodes sont la transmission du message et du contexte à cette message.
+- La classe `Psr\Log\AbstractLogger` vous permet d'implémenter le
+  `LoggerInterface` très facilement en l'étendant et en implémentant la méthode
+  générique `log`. Les huit autres méthodes sont la transmission du message et
+  du contexte à cette message.
 
-- De même, l'utilisation du `Psr\Log\LoggerTrait` ne requiert que l'implémentation de la méthode
-  générique `log`. A noter que puisque que les traits ne peuvent pas implémenter d'interfaces, dans ce cas vous pouvez `implémenter le LoggerInterface`.
+- De même, l'utilisation du `Psr\Log\LoggerTrait` ne requiert que
+  l'implémentation de la méthode générique `log`. A noter que puisque que les
+  traits ne peuvent pas implémenter d'interfaces, dans ce cas vous pouvez
+  `implémenter le LoggerInterface`.
 
-- Le `Psr\Log\NullLogger` est fourni avec l'interface. Il PEUT être utilisé par les utilisateurs
-  de l'interface pour fournir une solution "trou noir" implémentée si aucun logger ne lui est fournit. Cependant les journalisations conditionnelles PEUT être une meilleure approche si la création de données de contexte est couteuse.
+- Le `Psr\Log\NullLogger` est fourni avec l'interface. Il PEUT être utilisé par
+  les utilisateurs de l'interface pour fournir une solution "trou noir"
+  implémentée si aucun logger ne lui est fournit. Cependant les journalisations
+  conditionnelles PEUT être une meilleure approche si la création de données de
+  contexte est couteuse.
 
-- Le `Psr\Log\LoggerAwareInterface` ne contient que la méthode `setLogger(LoggerInterface $logger)`
-  et peut être utilisé par les frameworks pour auto-connecter une instance arbitraires avec le logger.
+- Le `Psr\Log\LoggerAwareInterface` ne contient que la méthode
+  `setLogger(LoggerInterface $logger)` et peut être utilisé par les frameworks
+  pour auto-connecter une instance arbitraires avec le logger.
 
-- Le trait `Psr\Log\LoggerAwareTrait` peut être utilisé pour implémenter facilement l'interface
-  équivalente dans n'importe quelle classe. Il vous donne accès à `$this->logger`.
+- Le trait `Psr\Log\LoggerAwareTrait` peut être utilisé pour implémenter
+  facilement l'interface équivalente dans n'importe quelle classe. Il vous donne
+  accès à `$this->logger`.
 
-- La classe `Psr\Log\LogLevel` contient des constantes pour les huit niveaux de journal.
+- La classe `Psr\Log\LogLevel` contient des constantes pour les huit niveaux de
+  journal.
 
 2. Paquets
 ----------
 
-Les interfaces et les classes décrites ainsi que les classes d'exception pertinents
-et une suite de tests pour vérifier votre mise en œuvre fournies par
+Les interfaces et les classes décrites ainsi que les classes d'exception
+pertinents et une suite de tests pour vérifier votre mise en œuvre fournies par
 [psr/log](https://packagist.org/packages/psr/log) package.
 
 3. `Psr\Log\LoggerInterface`
@@ -134,9 +161,10 @@ namespace Psr\Log;
  * Le message PEUT contenir des marqueurs à la forme: {foo} où foo
  * sera remplacé par les données de contexte à clé "foo".
  *
- * Le tableau de contexte peut contenir des données arbitraires, la seule hypothèse qui peut être
- * faite par des réalisateurs, c'est que si une instance de Exception est donné
- * pour produire une trace de la pile, il DOIT être dans une clé nommée "exception".
+ * Le tableau de contexte peut contenir des données arbitraires, la seule
+ * hypothèse qui peut être faite par des réalisateurs, c'est que si une instance
+ * de Exception est donné pour produire une trace de la pile, il DOIT être dans
+ * une clé nommée "exception".
  *
  * Voir https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
  * pour la spécification d'interface complète.
@@ -155,8 +183,9 @@ interface LoggerInterface
     /**
      * Des mesures doivent être prises immédiatement.
      *
-     * Exemple: Tout le site est hors service, la base de données est indisponible, etc. Cela devrait
-     * déclencher des alertes par SMS et vous réveiller.
+     * Exemple: Tout le site est hors service, la base de données est
+     * indisponible, etc. Cela devrait déclencher des alertes par SMS et vous
+     * réveiller.
      *
      * @param string $message
      * @param array $context
@@ -176,8 +205,8 @@ interface LoggerInterface
     public function critical($message, array $context = array());
 
     /**
-     * Erreurs d'exécution qui ne nécessitent pas une action immédiate mais doit normalement
-     * être journalisée et contrôlée.
+     * Erreurs d'exécution qui ne nécessitent pas une action immédiate mais doit
+     * normalement être journalisée et contrôlée.
      *
      * @param string $message
      * @param array $context
@@ -188,8 +217,8 @@ interface LoggerInterface
     /**
      * Événements exceptionnels qui ne sont pas des erreurs.
      *
-     * Exemple: Utilisation des API obsolètes, mauvaise utilisation d'une API, indésirables élements
-     * qui ne sont pas nécessairement mauvais.
+     * Exemple: Utilisation des API obsolètes, mauvaise utilisation d'une API,
+     * indésirables élements qui ne sont pas nécessairement mauvais.
      *
      * @param string $message
      * @param array $context
