@@ -222,80 +222,33 @@ interface MessageInterface
      * Sets a header, replacing any existing values of any headers with the
      * same case-insensitive name.
      *
-     * The header name is case-insensitive. The header values MUST be a string,
-     * an object capable of being cast to a string, or an array of such values.
-     * Any object used as a header value MUST be able to be cast to a string;
-     * implementations MUST cast object values immediately to ensure consistent
-     * runtime behavior.
+     * The header name is case-insensitive. The header values MUST be a string
+     * or an array of strings.
      *
      * @param string $header Header name
-     * @param string|string[]|object|object[] $value Header value(s). Values may 
-     *                                               be objects as long as they
-     *                                               can be cast to strings.
+     * @param string|string[] $value Header value(s). Values may be objects as
+     *                               long as they can be cast to strings.
      *
      * @return void
      */
     public function setHeader($header, $value);
 
     /**
-     * Sets headers, replacing any headers previously set on the message.
-     *
-     * Each array key MUST be a string representing the case-insensitive name
-     * of a header. Each value MUST be either a string, an object capable of
-     * being cast to a string, or an array of such values. Any object used as a
-     * header value MUST be able to be cast to a string; implementations MUST
-     * cast object values immediately to ensure consistent runtime behavior.
-     *
-     * This method MUST NOT remove previously set headers not specified in the
-     * headers provided; existing headers not specified should be left intact.
-     * If you wish to replace all headers with the set you are providing, first
-     * call clearHeaders().
-     *
-     * @param array $headers Headers to set.
-     *
-     * @return void
-     */
-    public function setHeaders(array $headers);
-
-    /**
      * Appends a header value for the specified, case-insensitive, header name.
      *
-     * The header name is case-insensitive. The header values MUST be a string,
-     * an object capable of being cast to a string, or an array of such values.
-     * Any object used as a header value MUST be able to be cast to a string;
-     * implementations MUST cast object values immediately to ensure consistent
-     * runtime behavior.
+     * The header name is case-insensitive. The header values MUST be a string
+     * or an array of strings.
      *
      * Existing values for the specified header will be maintained. The new
      * value(s) will be appended to the existing list.
      *
      * @param string $header Header name to add
-     * @param string|string[]|object|object[] $value Header value(s). Values may 
-     *                                               be objects as long as they
-     *                                               can be cast to strings.
+     * @param string|string[] $value Header value(s). Values may be objects as
+     *                               long as they can be cast to strings.
      *
      * @return void
      */
     public function addHeader($header, $value);
-
-    /**
-     * Merges in an associative array of headers.
-     *
-     * Each array key MUST be a string representing the case-insensitive name
-     * of a header. Each value MUST be either a string, an object capable of
-     * being cast to a string, or an array of such values. Any object used as a
-     * header value MUST be able to be cast to a string; implementations MUST
-     * cast object values immediately to ensure consistent runtime behavior.
-     *
-     * For each value, the value is appended to any existing header of the same
-     * name, or, if a header does not already exist by the given name, then the
-     * header is added.
-     *
-     * @param array $headers Associative array of headers to add to the message
-     *
-     * @return void
-     */
-    public function addHeaders(array $headers);
 
     /**
      * Remove a specific header by case-insensitive name.
@@ -305,13 +258,6 @@ interface MessageInterface
      * @return void
      */
     public function removeHeader($header);
-
-    /**
-     * Remove all previously set headers on the message.
-     *
-     * @return void
-     */
-    public function clearHeaders();
 }
 ```
 
