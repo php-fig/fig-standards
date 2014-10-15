@@ -226,8 +226,7 @@ interface MessageInterface
      * or an array of strings.
      *
      * @param string $header Header name
-     * @param string|string[] $value Header value(s). Values may be objects as
-     *                               long as they can be cast to strings.
+     * @param string|string[] $value Header value(s).
      *
      * @return void
      */
@@ -243,8 +242,7 @@ interface MessageInterface
      * value(s) will be appended to the existing list.
      *
      * @param string $header Header name to add
-     * @param string|string[] $value Header value(s). Values may be objects as
-     *                               long as they can be cast to strings.
+     * @param string|string[] $value Header value(s).
      *
      * @return void
      */
