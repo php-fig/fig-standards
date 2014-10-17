@@ -17,21 +17,24 @@ interpreted as described in [RFC 2119].
 
 ### 1.1 Messages
 
-A HTTP message is either request from a client to a server or a response from
-a server to a client. HTTP messages are therefor represented by classes implementing
+An HTTP message is either a request from a client to a server or a response from
+a server to a client. This specification defines interfaces for the HTTP messages
 `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
 
-- Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
-  `Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
-  implemented directly, implementors are encouraged to implement
-  `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
+Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
+`Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
+implemented directly, implementors are encouraged to implement
+`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
 
 An additional interface, `Psr\Http\Message\IncomingRequestInterface`, extends
 `Psr\Http\Message\RequestInterface`, to provide accessors to common server-side
 environment parameters, including the deserialized query string arguments,
 deserialized body parameters, the incoming upload files information
 (typically represented in PHP via `$_FILES`), cookies (typically injected from
-PHP's `$_COOKIE`), and matched routing parameters.
+PHP's `$_COOKIE`), and any attributes derived from the request.
+
+From here forward, the namespace `Psr\Http\Message` will be omitted when
+referring to these interfaces.
 
 #### 1.2 HTTP Headers
 
@@ -78,10 +81,10 @@ $header = $message->getHeaderAsArray('foo');
 // ['bar', 'baz']
 ```
 
-Note: Not all header values can be concatenated using a comma
-(e.g., Set-Cookie). When working with such headers, consumers of the
-MessageInterface SHOULD rely on the `getHeaderAsArray()` method for retrieving
-such multi-valued headers.
+Note: Not all header values can be concatenated using a comma (e.g.,
+`Set-Cookie`). When working with such headers, consumers of
+`MessageInterface`-based classes SHOULD rely on the `getHeaderAsArray()` method
+for retrieving such multi-valued headers.
 
 ### 1.2 Streams
 
@@ -90,21 +93,24 @@ message can be very small or extremely large. Attempting to represent the body
 of a message as a string can easily consume more memory than intended because
 the body must be stored completely in memory. Attempting to store the body of a
 request or response in memory would preclude the use of that implementation from
-being able to work with large message bodies. The `StreamableInterface` is used in
+being able to work with large message bodies. `StreamableInterface` is used in
 order to hide the implementation details when a stream of data is read from
 or written to.
 
 `StreamableInterface` exposes several methods that enable streams to be read
 from, written to, and traversed effectively.
 
-- Streams expose their capabilities using three methods: `isReadable()`,
-  `isWritable()`, and `isSeekable()`. These methods can be used by stream
-  collaborators to determine if a stream is capable of their requirements.
+Streams expose their capabilities using three methods: `isReadable()`,
+`isWritable()`, and `isSeekable()`. These methods can be used by stream
+collaborators to determine if a stream is capable of their requirements.
 
-  Each stream instance will have various capabilities: it can be read-only,
-  write-only, or read-write. It can also allow arbitrary random access (seeking
-  forwards or backwards to any location), or only sequential access (for
-  example in the case of a socket or pipe).
+Each stream instance will have various capabilities: it can be read-only,
+write-only, or read-write. It can also allow arbitrary random access (seeking
+forwards or backwards to any location), or only sequential access (for
+example in the case of a socket or pipe).
+
+Finally, `StreamableInterface` defines a `__toString()` method to simplify
+retrieving or emitting the entire body contents at once.
 
 2. Package
 ----------
@@ -124,7 +130,11 @@ namespace Psr\Http\Message;
 
 /**
  * HTTP messages consist of requests from a client to a server and responses
- * from a server to a client.
+ * from a server to a client. This interface defines the methods common to
+ * each.
+ *
+ * @link http://www.ietf.org/rfc/rfc7230.txt
+ * @link http://www.ietf.org/rfc/rfc7231.txt
  */
 interface MessageInterface
 {
@@ -230,7 +240,7 @@ interface MessageInterface
      * @param string $header Header name
      * @param string|string[] $value Header value(s).
      * @return void
-     * @throws \InvalidArgumentException for invalid header names or values
+     * @throws \InvalidArgumentException for invalid header names or values.
      */
     public function setHeader($header, $value);
 
@@ -243,7 +253,7 @@ interface MessageInterface
      * @param string $header Header name to add
      * @param string|string[] $value Header value(s).
      * @return void
-     * @throws \InvalidArgumentException for invalid header names or values
+     * @throws \InvalidArgumentException for invalid header names or values.
      */
     public function addHeader($header, $value);
 
@@ -265,20 +275,22 @@ interface MessageInterface
 namespace Psr\Http\Message;
 
 /**
- * A HTTP request message.
+ * An HTTP request message.
+ *
  * @link http://tools.ietf.org/html/rfc7230#section-3
  */
 interface RequestInterface extends MessageInterface
 {
     /**
-     * Gets the HTTP method of the request.
+     * Retrieves the HTTP method of the request.
      *
      * @return string Returns the request method.
      */
     public function getMethod();
 
     /**
-     * Sets the method to be performed on the resource identified by the Request-URI.
+     * Sets the HTTP method to be performed on the resource identified by the
+     * Request-URI.
      *
      * While HTTP method names are typically all uppercase characters, HTTP
      * method names are case-sensitive and thus implementations SHOULD NOT
@@ -286,12 +298,12 @@ interface RequestInterface extends MessageInterface
      *
      * @param string $method Case-insensitive method.
      * @return void
-     * @throws \InvalidArgumentException for invalid HTTP methods
+     * @throws \InvalidArgumentException for invalid HTTP methods.
      */
     public function setMethod($method);
 
     /**
-     * Gets the absolute request URL.
+     * Retrieves the absolute request URL.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
      * @return string|object Returns the URL as a string, or an object that
@@ -327,9 +339,9 @@ namespace Psr\Http\Message;
  * An incoming (server-side) HTTP request.
  *
  * This interface further describes a server-side request and provides
- * accessors and mutators around common request data, such as query
+ * accessors and mutators around common request data, including query
  * string arguments, body parameters, upload file metadata, cookies, and
- * arbitrary attributes derived from the request.
+ * arbitrary attributes derived from the request by the application.
  */
 interface IncomingRequestInterface extends RequestInterface
 {
@@ -353,7 +365,7 @@ interface IncomingRequestInterface extends RequestInterface
      * libraries that implement additional security practices, such as
      * encrypting or hashing cookie values; in such cases, they will read
      * the original value, filter them, and re-inject into the incoming
-     * request..
+     * request.
      *
      * The value provided MUST be compatible with the structure of $_COOKIE.
      *
@@ -372,7 +384,7 @@ interface IncomingRequestInterface extends RequestInterface
      * request. They MAY be injected during instantiation, such as from PHP's
      * $_GET superglobal, or MAY be derived from some other value such as the
      * URI. In cases where the arguments are parsed from the URI, the data
-     * MUST be compatible with what PHP's parse_str() would return for
+     * MUST be compatible with what PHP's `parse_str()` would return for
      * purposes of how duplicate query parameters are handled, and how nested
      * sets are handled.
      *
@@ -397,11 +409,13 @@ interface IncomingRequestInterface extends RequestInterface
     /**
      * Retrieve any parameters provided in the request body.
      *
-     * If the request body can be deserialized to an array, this method can be
-     * used to retrieve them.
+     * If the request body can be deserialized to an array, this method MAY be
+     * used to retrieve them. These MAY be injected during instantiation from
+     * PHP's $_POST superglobal. The data IS NOT REQUIRED to come from $_POST,
+     * but MUST be an array.
      *
-     * In other cases, the parent getBody() method should be used to retrieve
-     * the body content.
+     * In cases where the request content cannot be coerced to an array, the
+     * parent getBody() method should be used to retrieve the body content.
      *
      * @return array The deserialized body parameters, if any.
      */
@@ -411,11 +425,10 @@ interface IncomingRequestInterface extends RequestInterface
      * Set the request body parameters.
      *
      * If the body content can be deserialized to an array, the values obtained
-     * may then be injected into the response using this method. This method
+     * MAY then be injected into the response using this method. This method
      * will typically be invoked by a factory marshaling request parameters.
      *
      * @param array $values The deserialized body parameters, if any.
-     *
      * @return void
      * @throws \InvalidArgumentException For $values that cannot be accepted.
      */
@@ -425,7 +438,7 @@ interface IncomingRequestInterface extends RequestInterface
      * Retrieve attributes derived from the request.
      *
      * If a router or similar is used to match against the path and/or request,
-     * this method can be used to retrieve the results, so long as those
+     * this method MAY be used to retrieve the results, so long as those
      * results can be represented as an array.
      *
      * @return array Attributes derived from the request.
@@ -436,7 +449,7 @@ interface IncomingRequestInterface extends RequestInterface
      * Set attributes derived from the request
      *
      * If a router or similar is used to match against the path and/or request,
-     * this method can be used to inject the request with the results, so long
+     * this method MAY be used to inject the request with the results, so long
      * as those results can be represented as an array.
      *
      * @param array $attributes Attributes derived from the request.
@@ -454,7 +467,8 @@ interface IncomingRequestInterface extends RequestInterface
 namespace Psr\Http\Message;
 
 /**
- * A HTTP response message.
+ * An HTTP response message.
+ *
  * @link http://tools.ietf.org/html/rfc7231#section-6
  * @link http://tools.ietf.org/html/rfc7231#section-7
  */
@@ -481,7 +495,7 @@ interface ResponseInterface extends MessageInterface
     /**
      * Gets the response Reason-Phrase, a short textual description of the Status-Code.
      *
-     * Because a Reason-Phrase is not a required element in response
+     * Because a Reason-Phrase is not a required element in a response
      * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
      * choose to return the default RFC 7231 recommended reason phrase (or those
      * listed in the IANA HTTP Status Code Registry) for the response's
@@ -515,7 +529,7 @@ interface ResponseInterface extends MessageInterface
 namespace Psr\Http\Message;
 
 /**
- * Describes streamable content.
+ * Describes streamable message body content.
  *
  * Typically, an instance will wrap a PHP stream; this interface provides
  * a wrapper around the most common operations, including serialization of
@@ -566,21 +580,21 @@ interface StreamableInterface
      *                                SHOULD be used to create a stream
      *                                resource.
      * @return void
-     * @throws \InvalidArgumentException For invalid $stream arguments
+     * @throws \InvalidArgumentException For invalid $stream arguments.
      */
     public function attach($stream);
 
     /**
      * Get the size of the stream if known
      *
-     * @return int|null Returns the size in bytes if known, or null if unknown
+     * @return int|null Returns the size in bytes if known, or null if unknown.
      */
     public function getSize();
 
     /**
      * Returns the current position of the file read/write pointer
      *
-     * @return int|bool Position of the file pointer or false on error
+     * @return int|bool Position of the file pointer or false on error.
      */
     public function tell();
 
@@ -592,15 +606,16 @@ interface StreamableInterface
     public function eof();
 
     /**
-     * Returns whether or not the stream is seekable
+     * Returns whether or not the stream is seekable.
      *
      * @return bool
      */
     public function isSeekable();
 
     /**
-     * Seek to a position in the stream
+     * Seek to a position in the stream.
      *
+     * @link  http://www.php.net/manual/en/function.fseek.php
      * @param int $offset Stream offset
      * @param int $whence Specifies how the cursor position will be calculated
      *                    based on the seek offset. Valid values are identical
@@ -609,13 +624,12 @@ interface StreamableInterface
      *                    SEEK_CUR: Set position to current location plus offset
      *                    SEEK_END: Set position to end-of-stream plus offset
      *
-     * @return bool Returns TRUE on success or FALSE on failure
-     * @link   http://www.php.net/manual/en/function.fseek.php
+     * @return bool Returns TRUE on success or FALSE on failure.
      */
     public function seek($offset, $whence = SEEK_SET);
 
     /**
-     * Returns whether or not the stream is writable
+     * Returns whether or not the stream is writable.
      *
      * @return bool
      */
@@ -632,19 +646,18 @@ interface StreamableInterface
     public function write($string);
 
     /**
-     * Returns whether or not the stream is readable
+     * Returns whether or not the stream is readable.
      *
      * @return bool
      */
     public function isReadable();
 
     /**
-     * Read data from the stream
+     * Read data from the stream.
      *
      * @param int $length Read up to $length bytes from the object and return
      *                    them. Fewer than $length bytes may be returned if
      *                    underlying stream call returns fewer bytes.
-     *
      * @return string|false Returns the data read from the stream, false if
      *                      unable to read or if an error occurs.
      */
@@ -663,13 +676,12 @@ interface StreamableInterface
      * The keys returned are identical to the keys returned from PHP's
      * stream_get_meta_data() function.
      *
+     * @link http://php.net/manual/en/function.stream-get-meta-data.php
      * @param string $key Specific metadata to retrieve.
-     *
      * @return array|mixed|null Returns an associative array if no key is
      *                          provided. Returns a specific key value if a key
      *                          is provided and the value is found, or null if
      *                          the key is not found.
-     * @see http://php.net/manual/en/function.stream-get-meta-data.php
      */
     public function getMetadata($key = null);
 }
