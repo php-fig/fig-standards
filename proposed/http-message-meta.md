@@ -46,10 +46,12 @@ messages.
 * Ensure that the API does not impose arbitrary limits on HTTP messages. For
   example, some HTTP message bodies can be too large to store in memory, so we
   must account for this.
+* Provide useful abstractions for handling incoming requests for server-side
+  applications.
 
 ### 3.2 Non-Goals
 
-* This proposal does not expect all HTTP client libraries or server side
+* This proposal does not expect all HTTP client libraries or server-side
   frameworks to change their interfaces to conform. It is strictly meant for
   interoperability.
 * While everyone's perception of what is and is not an implementation detail
@@ -82,10 +84,10 @@ can lead to messages entering into an invalid or inconsistent state.
 
 #### Mutability of messages
 
-Headers and messages are mutable to reflect real-world usage in clients. A
-large number of HTTP clients allow you to modify a request pre-flight in
-order to implement custom logic (for example, signing a request, compression,
-encryption, etc...). Examples include:
+Headers and messages are mutable to reflect real-world usage in clients and
+server-side applications. A large number of HTTP clients allow you to modify a
+request pre-flight in order to implement custom logic (for example, signing a
+request, compression, encryption, etc...). Examples include:
 
 * Guzzle: http://guzzlephp.org/guide/plugins.html
 * Buzz: https://github.com/kriswallsmith/Buzz/blob/master/lib/Buzz/Listener/BasicAuthListener.php
@@ -100,7 +102,7 @@ This is not just a popular pattern in the PHP community:
 * etc...
 
 On the server-side, the application will write to the response instance in order
-to populate it before sending it back to the client.  Additionally, many aspects
+to populate it before sending it back to the client. Additionally, many aspects
 of the request must be mutable:
 
 * Body parameters are often "discovered" via deserialization of the incoming
@@ -108,8 +110,10 @@ of the request must be mutable:
   introspecting incoming `Content-Type` headers.
 * Cookies may be encrypted, and a process may decrypt them and re-inject them
   into the request for later collaborators to access.
-* Path parameters are discovered during routing, and can only be injected
-  after routing is complete.
+* Routing and other tools are often used to "discover" request attributes (e.g.,
+  decomposing the URL `/user/phil` to assign the value "phil" to the attribute
+  "user"). Such logic is application-specific, but still considered part of the
+  request state; it can only be injected after instantiation.
 
 Each of the above, as well as other activities, require mutable incoming request
 objects.
@@ -120,7 +124,7 @@ used by a majority of PHP projects.
 
 ### Using streams instead of X
 
-`MessageInterface` uses a body value that must implement `StreamInterface`. This
+`MessageInterface` uses a body value that must implement `StreamableInterface`. This
 design decision was made so that developers can send and receive (and/or receive
 and send) HTTP messages that contain more data than can practically be stored in
 memory while still allowing the convenience of interacting with message bodies
@@ -136,17 +140,17 @@ The use of a very well defined stream interface allows for the potential of
 flexible stream decorators that can be added to a request or response
 pre-flight to enable things like encryption, compression, ensuring that the
 number of bytes downloaded reflects the number of bytes reported in the
-`Content-Length` of a response, etc... Decorating streams is a well-established
+`Content-Length` of a response, etc. Decorating streams is a well-established
 [pattern in the Java](http://docs.oracle.com/javase/7/docs/api/java/io/package-tree.html)
 and [Node](http://nodejs.org/api/stream.html#stream_class_stream_transform_1)
 communities that allows for very flexible streams.
 
-The majority of the `StreamInterface` API is based on
+The majority of the `StreamableInterface` API is based on
 [Python's io module](http://docs.python.org/3.1/library/io.html), which provides
 a practical and consumable API. Instead of implementing stream
 capabilities using something like a `WritableStreamInterface` and
 `ReadableStreamInterface`, the capabilities of a stream are provided by methods
-like `isReadable()`, `isWritable()`, etc... This approach is used by Python,
+like `isReadable()`, `isWritable()`, etc. This approach is used by Python,
 [C#, C++](http://msdn.microsoft.com/en-us/library/system.io.stream.aspx),
 [Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html),
 [Node](http://nodejs.org/api/stream.html), and likely others.
@@ -162,14 +166,14 @@ For server-side applications, however, there are other considerations for
 incoming requests:
 
 - Access to the query string arguments (usually encapsulated in PHP via the
-  `$_GET` superglobal)
+  `$_GET` superglobal).
 - Access to body parameters (i.e., data deserialized from the incoming request
-  body)
+  body, and usually encapsulated by PHP in the `$_POST` superglobal).
 - Access to uploaded files (usually encapsulated in PHP via the `$_FILES`
-  superglobal)
+  superglobal).
 - Access to cookie values (usually encapsulated in PHP via the `$_COOKIE`
-  superglobal)
-- Access to parameters during routing (usually against the URL path)
+  superglobal).
+- Access to parameters derived from the request (usually against the URL path).
 
 Uniform access to these parameters increases the viability of interoperability
 between frameworks and libraries, as they can now assume that if a request
@@ -185,7 +189,7 @@ solves problems within the PHP language itself:
   `IncomingRequestInterface` implementation eases testing considerations.
 
 The interface as defined only provides mutators for body parameters, cookies,
-and path parameters. The assumption is that all other values either (a) may be
+and derived attributes. The assumption is that all other values either (a) may be
 injected at instantiation from superglobals, or (b) should not change over the
 course of the incoming request.
 
@@ -200,9 +204,9 @@ course of the incoming request.
   value, and then re-injects the discovered value. This practice requires that
   cookie parameters in the request be mutable. (For one example, see the
   [Laravel cookie implementation](http://laravel.com/docs/4.2/requests#cookies).)
-- Path parameters can _only_ be discovered by the application, generally
-  during the process commonly described as routing. As such, path parameters
-  must be mutable.
+- Derived attributes will vary based on the application logic (in particular,
+  routing), and are the result of inspecting the request; as such, they must be
+  mutable.
 
 #### What about "special" header values?
 
@@ -214,15 +218,14 @@ This proposal does not provide any special treatment of any header types. The
 base `MessageInterface` provides methods for header retrieval and setting, and
 all header values are, in the end, string values.
 
-Implementors are encouraged to allow object values for headers that may be cast
-to strings.
-
 Developers are encouraged to write commodity libraries for interacting with
 these header values, either for the purposes of parsing or generation. Users may
 then consume these libraries when needing to interact with those values.
 Examples of this practice already exist in libraries such as
 [willdurand/Negotiation](https://github.com/willdurand/Negotiation) and
-[aura/accept](https://github.com/pmjones/Aura.Accept).
+[aura/accept](https://github.com/pmjones/Aura.Accept). So long as the object
+has functionality for casting the value to a string, these objects can be
+used to populate the headers of an HTTP message.
 
 5. People
 ---------
