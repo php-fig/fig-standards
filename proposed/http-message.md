@@ -361,7 +361,7 @@ interface IncomingRequestInterface extends RequestInterface
      * @return void
      * @throws \InvalidArgumentException For invalid cookie parameters.
      */
-    public function setCookieParams($cookies);
+    public function setCookieParams(array $cookies);
 
     /**
      * Retrieve query string arguments.
@@ -419,7 +419,7 @@ interface IncomingRequestInterface extends RequestInterface
      * @return void
      * @throws \InvalidArgumentException For $values that cannot be accepted.
      */
-    public function setBodyParams($values);
+    public function setBodyParams(array $values);
 
     /**
      * Retrieve attributes derived from the request.
