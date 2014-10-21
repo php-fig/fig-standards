@@ -99,14 +99,12 @@
 - 同样的，使用`Psr\Log\LoggerTrait`只需要实现通用的`log`方法。注意的是，
   Trait不能够实现接口，在这种情况下，你依然必须实现`LoggerInterface`接口。
 
-- The `Psr\Log\NullLogger` is provided together with the interface. It MAY be
-  used by users of the interface to provide a fall-back "black hole"
-  implementation if no logger is given to them. However conditional logging
-  may be a better approach if context data creation is expensive.
+- 同接口一起，提供了`Psr\Log\NullLogger`，接口的使用者在没有提供日志功能时，
+  可以使用它提供一种“黑洞”实现。然而，如果上下文数据的创建是非常耗费资源的话，
+  使用有条件的日志是一个不错的办法。
 
-- The `Psr\Log\LoggerAwareInterface` only contains a
-  `setLogger(LoggerInterface $logger)` method and can be used by frameworks to
-  auto-wire arbitrary instances with a logger.
+- 接口 `Psr\Log\LoggerAwareInterface` 值包含了一个 `setLogger(LoggerInterface $logger)`
+  方法，框架可以使用它自动加载任意日志实现的实例。
 
 - Trait `Psr\Log\LoggerAwareTrait` 可以在任何类中方便的实现接口相同的方法，
   它使得你可以访问 `$this->logger`。
