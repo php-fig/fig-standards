@@ -32,21 +32,15 @@
 
 3. 当加载一个对应全称的类名的文件的时候 ……
 
-    1. A contiguous series of one or more leading namespace and sub-namespace
-       names, not including the leading namespace separator, in the fully
-       qualified class name (a "namespace prefix") corresponds to at least one
-       "base directory".
+    1. 在全称的类名（含有“命名空间前缀”）中的一系列连续的一个或者多个
+       前缀命名空间和子命名空间，不包含前缀的命名空间分隔符，对应了至少一个“基础目录”。
 
-    2. The contiguous sub-namespace names after the "namespace prefix"
-       correspond to a subdirectory within a "base directory", in which the
-       namespace separators represent directory separators. The subdirectory
-       name MUST match the case of the sub-namespace names.
+    2. 在“命名空间前缀”之后的连续的子命名空间名称对应了“基础目录”中的一个子目录，
+       命名空间分隔符代表了目录的分隔符。子目录名称必须完全匹配子命名空间名称。
 
-    3. The terminating class name corresponds to a file name ending in `.php`.
-       The file name MUST match the case of the terminating class name.
+    3. 最后的类名对应了以`.php`为后缀的文件名。文件名必须与类名的大小写匹配。
 
-4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
-   of any level, and SHOULD NOT return a value.
+4. 自动加载器的实现不允许抛出异常，不允许产生任何级别的错误，不应该有返回值。
 
 
 ## 3. 示例
