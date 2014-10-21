@@ -1,22 +1,19 @@
-Logger Interface
+日志接口
 ================
 
-This document describes a common interface for logging libraries.
+本文档为日志类库描述了通用的日志接口。
 
-The main goal is to allow libraries to receive a `Psr\Log\LoggerInterface`
-object and write logs to it in a simple and universal way. Frameworks
-and CMSs that have custom needs MAY extend the interface for their own
-purpose, but SHOULD remain compatible with this document. This ensures
-that the third-party libraries an application uses can write to the
-centralized application logs.
+主要目标是允许类库接收一个`Psr\Log\LoggerInterface`对象并且以一种简单和
+通用的方式将日志信息写入到该对象中。 有自定义需要的框架和CMS可以为了他们
+的目标扩展该接口，但是应该保持与本文档的兼容性。这样确保了应用程序使用的
+第三方的类可以将日志写入到中心化的应用程序日志中。
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
 
-The word `implementor` in this document is to be interpreted as someone
-implementing the `LoggerInterface` in a log-related library or framework.
-Users of loggers are referred to as `user`.
+单词 `implementor` 在本文档中指的是实现`LoggerInterface`接口的相关日志类库
+或者框架。日志的用户我们叫做`user`。
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
