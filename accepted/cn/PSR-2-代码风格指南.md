@@ -233,11 +233,9 @@ class ClassName
 
 ### 4.4. 方法参数
 
-In the argument list, there MUST NOT be a space before each comma, and there
-MUST be one space after each comma.
+在参数列表中，在每个逗号之前不允许有空格，每个逗号之后有一个空格。
 
-Method arguments with default values MUST go at the end of the argument
-list.
+含有默认值的方法参数必须在参数列表的最后。
 
 ```php
 <?php
@@ -252,13 +250,9 @@ class ClassName
 }
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+参数列表可能会被分割成多行，每一行都要缩进一次。列表中第一项必须另起一行，每一行只能有一个参数。
 
-When the argument list is split across multiple lines, the closing parenthesis
-and opening brace MUST be placed together on their own line with one space
-between them.
+当参数列表被分割成多行的时候，结束括号和主体的开始大括号必须占用同一行，并且之间有一个空格。
 
 ```php
 <?php
@@ -276,13 +270,11 @@ class ClassName
 }
 ```
 
-### 4.5. `abstract`, `final`, and `static`
+### 4.5. `abstract`, `final`, 和 `static`
 
-When present, the `abstract` and `final` declarations MUST precede the
-visibility declaration.
+当出现 `abstract` and `final` 声明的时候，它们必须在可见性声明之前。
 
-When present, the `static` declaration MUST come after the visibility
-declaration.
+当出现 `static` 声明的时候，它必须在可见性声明之后。
 
 ```php
 <?php
@@ -301,13 +293,11 @@ abstract class ClassName
 }
 ```
 
-### 4.6. Method and Function Calls
+### 4.6. 方法和函数调用
 
-When making a method or function call, there MUST NOT be a space between the
-method or function name and the opening parenthesis, there MUST NOT be a space
-after the opening parenthesis, and there MUST NOT be a space before the
-closing parenthesis. In the argument list, there MUST NOT be a space before
-each comma, and there MUST be one space after each comma.
+当进行方法或者函数调用的时候，在方法或者函数名和参数括号之间不允许有空格，
+在参数开始括号之后和参数结束括号之前不允许有空格。在参数列表中，
+每一个逗号之前不允许有空格，逗号之后必须有一个空格。
 
 ```php
 <?php
@@ -316,9 +306,8 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+参数列表可能会被分割成多行，每一行都需要缩进一次。
+列表中的第一项必须另起一行，每个参数必须独占一行。
 
 ```php
 <?php
@@ -329,29 +318,26 @@ $foo->bar(
 );
 ```
 
-5. Control Structures
+5. 控制结构
 ---------------------
 
-The general style rules for control structures are as follows:
+对于控制结构，通用的样式规则如下：
 
-- There MUST be one space after the control structure keyword
-- There MUST NOT be a space after the opening parenthesis
-- There MUST NOT be a space before the closing parenthesis
-- There MUST be one space between the closing parenthesis and the opening
-  brace
-- The structure body MUST be indented once
-- The closing brace MUST be on the next line after the body
+- 控制结构关键字之后必须有一个空格
+- 开始括号之后不允许有空格
+- 关闭括号之前不允许有空格
+- 关闭括号和开始大括号之间必须有一个空格
+- 结构的主体必须缩进一次
+- 关闭的大括号必须在主体的另起一行
 
-The body of each structure MUST be enclosed by braces. This standardizes how
-the structures look, and reduces the likelihood of introducing errors as new
-lines get added to the body.
+每一个结构的主体必须使用大括号包围。这样标准化了结构的样式，
+减少了将错误作为主体的新行引入的可能性。
 
 
 ### 5.1. `if`, `elseif`, `else`
 
-An `if` structure looks like the following. Note the placement of parentheses,
-spaces, and braces; and that `else` and `elseif` are on the same line as the
-closing brace from the earlier body.
+结构 `if` 看起来像下面这样。注意括号、空格和大括号的位置；
+`else`和`elseif`在第一个主体结束括号的同一行。
 
 ```php
 <?php
@@ -364,17 +350,15 @@ if ($expr1) {
 }
 ```
 
-The keyword `elseif` SHOULD be used instead of `else if` so that all control
-keywords look like single words.
+应该将关键字 `else if` 替换为关键字 `elseif` ，这样所有的else if看起来都是一体的。 
 
 
 ### 5.2. `switch`, `case`
 
-A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces. The `case` statement MUST be indented once
-from `switch`, and the `break` keyword (or other terminating keyword) MUST be
-indented at the same level as the `case` body. There MUST be a comment such as
-`// no break` when fall-through is intentional in a non-empty `case` body.
+`switch` 结构看起来是下面这样。注意括号、空格和大括号的位置。`case`块必须在`switch`
+块中缩进一次，并且`break`关键字（或者其它结束关键字）必须与`case`保持同样的缩进级别。
+如果`case`的主体会一直执行下去，在第一个非空的`case`主体后必须添加一个`// no break`
+这样的注释说明。
 
 ```php
 <?php
@@ -399,8 +383,7 @@ switch ($expr) {
 
 ### 5.3. `while`, `do while`
 
-A `while` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+`while` 结构看起来是下面这样的。注意括号、空格和大括号的位置。
 
 ```php
 <?php
@@ -409,8 +392,7 @@ while ($expr) {
 }
 ```
 
-Similarly, a `do while` statement looks like the following. Note the placement
-of parentheses, spaces, and braces.
+类似的，`do while`语句看起来是下面这样的。注意括号、空格和大括号的位置。
 
 ```php
 <?php
@@ -421,8 +403,7 @@ do {
 
 ### 5.4. `for`
 
-A `for` statement looks like the following. Note the placement of parentheses,
-spaces, and braces.
+`for` 语句看起来是下面这样的。注意括号、空格和大括号的位置。
 
 ```php
 <?php
@@ -433,8 +414,7 @@ for ($i = 0; $i < 10; $i++) {
 
 ### 5.5. `foreach`
     
-A `foreach` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+`foreach` 语句看起来是下面这样的。注意括号，空格和大括号的位置。
 
 ```php
 <?php
@@ -445,8 +425,7 @@ foreach ($iterable as $key => $value) {
 
 ### 5.6. `try`, `catch`
 
-A `try catch` block looks like the following. Note the placement of
-parentheses, spaces, and braces.
+`try catch` 块看起来是下面这样的。注意括号，空格和大括号的位置。
 
 ```php
 <?php
@@ -459,7 +438,7 @@ try {
 }
 ```
 
-6. Closures
+6. 闭包
 -----------
 
 Closures MUST be declared with a space after the `function` keyword, and a
