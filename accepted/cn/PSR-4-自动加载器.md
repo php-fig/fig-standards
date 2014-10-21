@@ -60,10 +60,8 @@
 | \Symfony\Core\Request         | Symfony\Core       | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
 | \Zend\Acl                     | Zend               | /usr/includes/Zend/      | /usr/includes/Zend/Acl.php
 
-For example implementations of autoloaders conforming to the specification,
-please see the [examples file][]. Example implementations MUST NOT be regarded
-as part of the specification and MAY change at any time.
+按照本规范实现的自动加载器的示例，请查看 [示例文件][]。示例实现不是本规范的一部分，它随时都有可能会发生更改。
 
-[autoloading]: http://php.net/autoload
+[自动加载]: http://php.net/autoload
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[examples file]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
+[示例文件]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
