@@ -441,24 +441,17 @@ try {
 6. 闭包
 -----------
 
-Closures MUST be declared with a space after the `function` keyword, and a
-space before and after the `use` keyword.
+在闭包的声明中，`function`关键字后面必须跟着一个空格，后面的`use`关键字的前后都要有一个空格。
 
-The opening brace MUST go on the same line, and the closing brace MUST go on
-the next line following the body.
+开始大括号必须和声明在同一行，关闭大括号必须主体的下一行。
 
-There MUST NOT be a space after the opening parenthesis of the argument list
-or variable list, and there MUST NOT be a space before the closing parenthesis
-of the argument list or variable list.
+开始括号和参数列表或者变量列表之间不允许有空格，参数或者变量列表和关闭括号之间不允许有空格。
 
-In the argument list and variable list, there MUST NOT be a space before each
-comma, and there MUST be one space after each comma.
+在参数和变量列表中，每一个逗号之前不允许与空格，之后必须有一个空格。
 
-Closure arguments with default values MUST go at the end of the argument
-list.
+闭包参数的默认值必须在参数列表的结尾。
 
-A closure declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+闭包声明看起来是下面这样的。注意括号，逗号，空格和大括号的位置：
 
 ```php
 <?php
