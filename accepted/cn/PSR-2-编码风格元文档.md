@@ -1,0 +1,44 @@
+PSR-2 元文档
+===================
+
+1. 总结
+----------
+
+本文档的目的是通过枚举共享一系列的用于格式化PHP代码的规则和期望值，
+减少在阅读不同作者的代码时的认知摩擦。
+这里所列举出的样式规则来源于各种成员项目中的共性。在多个作者跨多个项目的合作中，
+它可以在所有的这些项目中协助提供一系列的指导方针。因此，本文档的价值不是规则本身，
+而是这些规则的共享。
+
+2. 投票
+--------
+
+- **接受投票:** [ML](https://groups.google.com/d/msg/php-fig/c-QVvnZdMQ0/TdDMdzKFpdIJ)
+
+
+3. 勘误表
+---------
+
+### 3.1 - 多行参数 (09/08/2013)
+
+Using one or more multi-line arguments (i.e: arrays or anonymous functions) does not constitute 
+splitting the argument list itself, therefore Section 4.6 is not automatically enforced. Arrays and anonymous 
+functions are able to span multiple lines.
+
+下面的例子是很好的遵循PSR-2标准的:
+
+```php
+<?php
+somefunction($foo, $bar, [
+  // ...
+], $baz);
+
+$app->get('/hello/{name}', function ($name) use ($app) { 
+    return 'Hello '.$app->escape($name); 
+});
+```
+
+### 3.2 - 多接口继承 (10/17/2013)
+
+当继承多个接口的时候，`extends`的列表应该和在4.1章节中声明的`implements`的列表是一致的。
+
