@@ -29,7 +29,7 @@
 
 - 所有的属性和方法必须声明可见性；`abstract`和`final`必须在可见性声明之前；`static`必须在可见性声明之后。
   
-- 控制结构的关键字之后必须有一个空格；方法和函数调用后面不允许有空格。
+- 控制结构的关键字之后必须有一个空格；方法和函数调用关键字后面不允许有空格。
 
 - 控制结构的开始大括号必须在控制结构同一行，关闭大括号必须在主体的下一行。
 
@@ -120,14 +120,13 @@ PHP常量 `true`, `false`, 和 `null` 必须是小写的.
 
 当`命名空间`出现的时候，在之后必须有一个空行
 
-When present, all `use` declarations MUST go after the `namespace`
-declaration.
+当使用`use`声明的时候，所有的`use`声明必须跟在`namespace`声明之后。
 
-There MUST be one `use` keyword per declaration.
+每一个声明必须使用一个`use`关键字。
 
-There MUST be one blank line after the `use` block.
+在`use`块之后必须有一个空行。
 
-For example:
+例如:
 
 ```php
 <?php
@@ -137,23 +136,21 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-// ... additional PHP code ...
+// ... 额外的PHP代码 ...
 
 ```
 
 
-4. Classes, Properties, and Methods
+4. 类, 属性和方法
 -----------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+术语`类`值得是所有的类、接口和Traits。
 
-### 4.1. Extends and Implements
+### 4.1. 继承和实现
 
-The `extends` and `implements` keywords MUST be declared on the same line as
-the class name.
+关键字 `extends` 和 `implements` 必须在类名的同一行进行声明。
 
-The opening brace for the class MUST go on its own line; the closing brace
-for the class MUST go on the next line after the body.
+类的开始大括号必须在新的独立的一行；关闭大括号必须在主体的下一行。
 
 ```php
 <?php
@@ -165,13 +162,11 @@ use OtherVendor\OtherPackage\BazClass;
 
 class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
-    // constants, properties, methods
+    // 常量, 属性, 方法
 }
 ```
 
-Lists of `implements` MAY be split across multiple lines, where each
-subsequent line is indented once. When doing so, the first item in the list
-MUST be on the next line, and there MUST be only one interface per line.
+关键字`implements`的列表可以分割为多行，每一个子行缩进一次。在这种情况下，列表中的第一个项必须在下一行，并且，每个接口必须独占一行。
 
 ```php
 <?php
@@ -190,18 +185,17 @@ class ClassName extends ParentClass implements
 }
 ```
 
-### 4.2. Properties
+### 4.2. 属性
 
-Visibility MUST be declared on all properties.
+所有属性必须声明其可见性。
 
-The `var` keyword MUST NOT be used to declare a property.
+关键字 `var` 不允许用来声明属性.
 
-There MUST NOT be more than one property declared per statement.
+每一个声明只能有一个属性。
 
-Property names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+属性名不应该以单个下划线开头来暗示其为protected或者private的可见性。
 
-A property declaration looks like the following.
+一个属性的声明看起来是下面这样的：
 
 ```php
 <?php
@@ -213,20 +207,16 @@ class ClassName
 }
 ```
 
-### 4.3. Methods
+### 4.3. 方法
 
-Visibility MUST be declared on all methods.
+所有方法都必须声明其可见性.
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+方法名不应该以单个下划线开头来暗示其为protected或者private的可见性。
 
-Method names MUST NOT be declared with a space after the method name. The
-opening brace MUST go on its own line, and the closing brace MUST go on the
-next line following the body. There MUST NOT be a space after the opening
-parenthesis, and there MUST NOT be a space before the closing parenthesis.
+不允许在方法名之后添加空格。开始大括号必须另起一行，关闭括号必须在方法体的下一行。
+在参数的开始括号之后和结束括号之前不允许有空格。
 
-A method declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+方法的声明是下面这样的。注意括号，逗号，空格和大括号的位置：
 
 ```php
 <?php
@@ -241,7 +231,7 @@ class ClassName
 }
 ```    
 
-### 4.4. Method Arguments
+### 4.4. 方法参数
 
 In the argument list, there MUST NOT be a space before each comma, and there
 MUST be one space after each comma.
