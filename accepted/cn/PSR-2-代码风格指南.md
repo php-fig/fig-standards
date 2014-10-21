@@ -29,18 +29,15 @@
 
 - 所有的属性和方法必须声明可见性；`abstract`和`final`必须在可见性声明之前；`static`必须在可见性声明之后。
   
-- Control structure keywords MUST have one space after them; method and
-  function calls MUST NOT.
+- 控制结构的关键字之后必须有一个空格；方法和函数调用后面不允许有空格。
 
-- Opening braces for control structures MUST go on the same line, and closing
-  braces MUST go on the next line after the body.
+- 控制结构的开始大括号必须在控制结构同一行，关闭大括号必须在主体的下一行。
 
-- Opening parentheses for control structures MUST NOT have a space after them,
-  and closing parentheses for control structures MUST NOT have a space before.
+- 控制结构的开始括号之前必须有一个空格，关闭括号之前不允许有空格。
 
-### 1.1. Example
+### 1.1. 范例
 
-This example encompasses some of the rules below as a quick overview:
+下面的例子包含了一些规则，以做一个快速的概述：
 
 ```php
 <?php
