@@ -3,7 +3,7 @@
 
 标准的本章节包含了在共享的PHP代码中，要保证高级别的技术互用性所应该考虑到的标准编码元素。
 
-本文档中的关键字“必须”， “必须不”，“必需”，“将会”，“将不会”，“应该”，“不应该”，“推荐”，“可以”和“可选”遵循[RFC 2119]中的描述。
+本文档中的关键字“必须”， “不允许”，“必需”，“将会”，“将不会”，“应该”，“不应该”，“推荐”，“可以”和“可选”遵循[RFC 2119]中的描述。
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
@@ -33,18 +33,16 @@
 
 ### 2.1. PHP 标签
 
-PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
-MUST NOT use the other tag variations.
+PHP代码必须使用 `<?php ?>` 标签或者 `<?= ?>` 标签； 不允许使用其它标签变体。
 
-### 2.2. Character Encoding
+### 2.2. 字符编码
 
-PHP code MUST use only UTF-8 without BOM.
+PHP代码必须仅使用UTF-8无BOM的编码格式。
 
-### 2.3. Side Effects
+### 2.3. 行为影响
 
-A file SHOULD declare new symbols (classes, functions, constants,
-etc.) and cause no other side effects, or it SHOULD execute logic with side
-effects, but SHOULD NOT do both.
+一个文件应该用于声明新的符号（类，函数，常量等），并且不会影响程序行为，
+或者应该用于执行影响程序行为的逻辑，但是不应该两者都具有。
 
 The phrase "side effects" means execution of logic not directly related to
 declaring classes, functions, constants, etc., *merely from including the
