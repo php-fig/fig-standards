@@ -1,7 +1,7 @@
-Coding Style Guide
+代码风格指南
 ==================
 
-This guide extends and expands on [PSR-1], the basic coding standard.
+本文档扩展了[PSR-1] 基本编程标准。
 
 The intent of this guide is to reduce cognitive friction when scanning code
 from different authors. It does so by enumerating a shared set of rules and
