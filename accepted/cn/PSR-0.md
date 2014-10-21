@@ -6,19 +6,15 @@
 强制性
 ---------
 
-* 一个全称的命名空间和类必须遵循下列结构  `\<Vendor Name>\(<Namespace>\)*<Class Name>`
-* 每一个命名空间必须有一个顶级的命名空间（“厂商名称”）
-* 每个命名空间可以按照它的需要来创建多个子命名空间
-* 在从文件系统载入文件的时候，每一个命名空间分隔符被转换为 `DIRECTORY_SEPARATOR`
-* Each `_` character in the CLASS NAME is converted to a
-  `DIRECTORY_SEPARATOR`. The `_` character has no special meaning in the
-  namespace.
-* The fully-qualified namespace and class is suffixed with `.php` when
-  loading from the file system.
-* Alphabetic characters in vendor names, namespaces, and class names may
-  be of any combination of lower case and upper case.
+* 一个全称的命名空间和类必须遵循下列结构  `\<Vendor Name>\(<Namespace>\)*<Class Name>`。
+* 每一个命名空间必须有一个顶级的命名空间（“厂商名称”）。
+* 每个命名空间可以按照它的需要来创建多个子命名空间。
+* 在从文件系统载入文件的时候，每一个命名空间分隔符被转换为 `DIRECTORY_SEPARATOR`。
+* 在类名中的每一个 `_` 字符将被转换为一个 `DIRECTORY_SEPARATOR`。 字符 `_` 在命名空间中没有特殊的含义。
+* 当从文件系统加载文件的时候，全称的命名空间和类以 `.php` 结尾。
+* 厂商名称，命名空间和类名可以是任何小写和大写字母的组合。
 
-Examples
+举例
 --------
 
 * `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
@@ -26,7 +22,7 @@ Examples
 * `\Zend\Acl` => `/path/to/project/lib/vendor/Zend/Acl.php`
 * `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
 
-Underscores in Namespaces and Class Names
+命名空间和类名中的下划线
 -----------------------------------------
 
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
