@@ -79,26 +79,22 @@
   echo interpolate($message, $context);
   ```
 
-### 1.3 Context
+### 1.3 上下文
 
-- Every method accepts an array as context data. This is meant to hold any
-  extraneous information that does not fit well in a string. The array can
-  contain anything. Implementors MUST ensure they treat context data with
-  as much lenience as possible. A given value in the context MUST NOT throw
-  an exception nor raise any php error, warning or notice.
+- 每一个方法都接受一个数组作为上下文数据。这样是为了能够接受任意不能转换为
+  字符串的外来信息。这个数组可以包含任何内容。是限制必须确保尽可能宽容的对待
+  这些上下文数据。上下文中一个给定的值不允许抛出异常或者产生任何PHP error，
+  warning或者notice。
 
-- If an `Exception` object is passed in the context data, it MUST be in the
-  `'exception'` key. Logging exceptions is a common pattern and this allows
-  implementors to extract a stack trace from the exception when the log
-  backend supports it. Implementors MUST still verify that the `'exception'`
-  key is actually an `Exception` before using it as such, as it MAY contain
-  anything.
+- 如果在上下文数据中传递了一个`Exception`对象，它必须以`'exception'` 为键名。
+  日志记录异常是一个常见的模式，如果后端支持的话，这允许实现者去解析异常调用堆栈信息。
+  实现者在使用`'exception'`键下的值作为一个Exception对象的时候必须先验证它是否是
+  一个合法的`Exception`对象，因为它可能包含任何值。
 
-### 1.4 Helper classes and interfaces
+### 1.4 助手类和接口
 
-- The `Psr\Log\AbstractLogger` class lets you implement the `LoggerInterface`
-  very easily by extending it and implementing the generic `log` method.
-  The other eight methods are forwarding the message and context to it.
+- 类 `Psr\Log\AbstractLogger` 让你可以通过扩展它来更加容易的实现 `LoggerInterface`
+  接口的`log`方法。其它八个方法转发消息和上下为到该方法中。
 
 - Similarly, using the `Psr\Log\LoggerTrait` only requires you to
   implement the generic `log` method. Note that since traits can not implement
@@ -118,7 +114,7 @@
 
 - The `Psr\Log\LogLevel` class holds constants for the eight log levels.
 
-2. Package
+2. 包
 ----------
 
 The interfaces and classes described as well as relevant exception classes
