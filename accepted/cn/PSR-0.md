@@ -14,7 +14,7 @@
 * 当从文件系统加载文件的时候，全称的命名空间和类以 `.php` 结尾。
 * 厂商名称，命名空间和类名可以是任何小写和大写字母的组合。
 
-举例
+范例
 --------
 
 * `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
@@ -28,16 +28,12 @@
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
 
-The standards we set here should be the lowest common denominator for
-painless autoloader interoperability. You can test that you are
-following these standards by utilizing this sample SplClassLoader
-implementation which is able to load PHP 5.3 classes.
+这里我们设置的标准应该是可互用的自动加载器的最低标准。你可以利用这个能够加载PHP 5.3的类的简单的SplClassLoader实现测试代码是否遵循了这些标准。
 
-Example Implementation
+范例实现
 ----------------------
 
-Below is an example function to simply demonstrate how the above
-proposed standards are autoloaded.
+下面是一个能够简要实现上面提议标准的自动加载器的范例函数。
 
 ```php
 <?php
@@ -58,13 +54,11 @@ function autoload($className)
 }
 ```
 
-SplClassLoader Implementation
+SplClassLoader 实现
 -----------------------------
 
-The following gist is a sample SplClassLoader implementation that can
-load your classes if you follow the autoloader interoperability
-standards proposed above. It is the current recommended way to load PHP
-5.3 classes that follow these standards.
+下面的gist是一个SplClassLoader实现的例子，如果你遵循上述的自动加载器互用性标准，那它就能够加载你的类。
+这也是遵循上述标准，用于加载PHP 5.3中的类的推荐做法。
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
 
