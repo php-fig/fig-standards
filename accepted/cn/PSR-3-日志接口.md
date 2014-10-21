@@ -96,9 +96,8 @@
 - 类 `Psr\Log\AbstractLogger` 让你可以通过扩展它来更加容易的实现 `LoggerInterface`
   接口的`log`方法。其它八个方法转发消息和上下为到该方法中。
 
-- Similarly, using the `Psr\Log\LoggerTrait` only requires you to
-  implement the generic `log` method. Note that since traits can not implement
-  interfaces, in this case you still have to implement `LoggerInterface`.
+- 同样的，使用`Psr\Log\LoggerTrait`只需要实现通用的`log`方法。注意的是，
+  Trait不能够实现接口，在这种情况下，你依然必须实现`LoggerInterface`接口。
 
 - The `Psr\Log\NullLogger` is provided together with the interface. It MAY be
   used by users of the interface to provide a fall-back "black hole"
@@ -109,10 +108,10 @@
   `setLogger(LoggerInterface $logger)` method and can be used by frameworks to
   auto-wire arbitrary instances with a logger.
 
-- The `Psr\Log\LoggerAwareTrait` trait can be used to implement the equivalent
-  interface easily in any class. It gives you access to `$this->logger`.
+- Trait `Psr\Log\LoggerAwareTrait` 可以在任何类中方便的实现接口相同的方法，
+  它使得你可以访问 `$this->logger`。
 
-- The `Psr\Log\LogLevel` class holds constants for the eight log levels.
+- 类 `Psr\Log\LogLevel` 包含了八个日志级别的常量。
 
 2. 包
 ----------
