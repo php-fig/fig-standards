@@ -3,47 +3,31 @@
 
 本文档扩展了[PSR-1] 基本编程标准。
 
-The intent of this guide is to reduce cognitive friction when scanning code
-from different authors. It does so by enumerating a shared set of rules and
-expectations about how to format PHP code.
+本文档的目的是通过枚举共享一系列的用于格式化PHP代码的规则和期望值， 减少在阅读不同作者的代码时的认知摩擦。 这里所列举出的样式规则来源于各种成员项目中的共性。在多个作者跨多个项目的合作中， 它可以在所有的这些项目中协助提供一系列的指导方针。因此，本文档的价值不是规则本身， 而是这些规则的共享。
 
-The style rules herein are derived from commonalities among the various member
-projects. When various authors collaborate across multiple projects, it helps
-to have one set of guidelines to be used among all those projects. Thus, the
-benefit of this guide is not in the rules themselves, but in the sharing of
-those rules.
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119].
+本文档中的关键字“必须”， “不允许”，“必需”，“将会”，“将不会”，“应该”，“不应该”，“推荐”，“可以”和“可选”遵循[RFC 2119]中的描述。
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 
 
-1. Overview
+1. 概述
 -----------
 
-- Code MUST follow a "coding style guide" PSR [[PSR-1]].
+- 代码必须遵循“编码风格指南” PSR [[PSR-1]]。
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- 代码必须使用4个空格缩进，而不是tab。
 
-- There MUST NOT be a hard limit on line length; the soft limit MUST be 120
-  characters; lines SHOULD be 80 characters or less.
+- 对一行的长度不能是一个硬性的限制；但对每一行必须限制在120字符之内，每一行应该80个字符或者更少。
 
-- There MUST be one blank line after the `namespace` declaration, and there
-  MUST be one blank line after the block of `use` declarations.
+- 在`namespace`声明之后必须有一个空行，在`use`声明之后也必须有一个空行。
 
-- Opening braces for classes MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- 类的打开的大括号必须在下一行，关闭大括号必须类的主体之后的下一行。
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- 方法的打开的大括号必须在方法的下一行，关闭大括号必须在主体之后的下一行。
 
-- Visibility MUST be declared on all properties and methods; `abstract` and
-  `final` MUST be declared before the visibility; `static` MUST be declared
-  after the visibility.
+- 所有的属性和方法必须声明可见性；`abstract`和`final`必须在可见性声明之前；`static`必须在可见性声明之后。
   
 - Control structure keywords MUST have one space after them; method and
   function calls MUST NOT.
