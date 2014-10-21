@@ -1,43 +1,36 @@
-# Autoloader
+# 自动加载器
 
 本文档中的关键字“必须”， “不允许”，“必需”，“将会”，“将不会”，“应该”，“不应该”，
 “推荐”，“可以”和“可选”遵循[RFC 2119](http://tools.ietf.org/html/rfc2119)中的描述。
 
 
-## 1. Overview
+## 1. 概述
 
-This PSR describes a specification for [autoloading][] classes from file
-paths. It is fully interoperable, and can be used in addition to any other
-autoloading specification, including [PSR-0][]. This PSR also describes where
-to place files that will be autoloaded according to the specification.
+这个PSR是描述了从文件路径 [自动加载][] 类的规范 。它与任何其它自动加载规范，
+包括[PSR-0][]是可互用的。这个PSR也描述了根据规范，文件放在哪里可以被自动加载。
 
 
-## 2. Specification
+## 2. 规范
 
-1. The term "class" refers to classes, interfaces, traits, and other similar
-   structures.
+1. 术语“类”值得是类，接口，Trait和其它类似的结构。
 
-2. A fully qualified class name has the following form:
+2. 一个全称的类名为下列形式：
 
         \<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>
 
-    1. The fully qualified class name MUST have a top-level namespace name,
-       also known as a "vendor namespace".
+    1. 全称类名必须有一个顶级命名空间，也称为“厂商命名空间”。
 
-    2. The fully qualified class name MAY have one or more sub-namespace
-       names.
+    2. 全称的类名可以有一个或多个子命名空间名。
 
-    3. The fully qualified class name MUST have a terminating class name.
+    3. 全称的类名必须以一个类名结束。
 
-    4. Underscores have no special meaning in any portion of the fully
-       qualified class name.
+    4. 在全称命名空间的任意部分，下划线都没有任何特殊含义。
 
-    5. Alphabetic characters in the fully qualified class name MAY be any
-       combination of lower case and upper case.
+    5. 在全称的类名中字母字符可以是大写字母和小写字母的任意组合。
 
-    6. All class names MUST be referenced in a case-sensitive fashion.
+    6. 所有的类名必须使用大小写敏感的方式引用。
 
-3. When loading a file that corresponds to a fully qualified class name ...
+3. 当加载一个对应全称的类名的文件的时候 ……
 
     1. A contiguous series of one or more leading namespace and sub-namespace
        names, not including the leading namespace separator, in the fully
@@ -56,12 +49,11 @@ to place files that will be autoloaded according to the specification.
    of any level, and SHOULD NOT return a value.
 
 
-## 3. Examples
+## 3. 示例
 
-The table below shows the corresponding file path for a given fully qualified
-class name, namespace prefix, and base directory.
+下面的表格显示了文件路径和跟定的全称类名，命名空间前缀，基础目录。
 
-| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Resulting File Path
+| 全称的类名                    | 命名空间前缀       | 基础目录                 | 产生的文件路径
 | ----------------------------- |--------------------|--------------------------|-------------------------------------------
 | \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
 | \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
