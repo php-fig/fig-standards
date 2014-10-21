@@ -102,7 +102,7 @@ class Foo extends Bar implements FooInterface
 
 > 注意： 只使用空格，而不要空格和tabs混合可以协助
 > 避免使用diff, patches, history和annotations时出现的问题。 
-> 空格的使用也可以使内部行插入子缩进的对齐更加将简单。
+> 空格的使用也可以使国际线插入子缩进的对齐更加简单。
 
 
 ### 2.5. 关键字和True/False/Null
@@ -464,17 +464,13 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
 };
 ```
 
-Argument lists and variable lists MAY be split across multiple lines, where
-each subsequent line is indented once. When doing so, the first item in the
-list MUST be on the next line, and there MUST be only one argument or variable
-per line.
+参数和变量列表可能会被分割为多行，每一行都要缩进一次。
+第一个项必须另起一行，每一个参数或者变量独占一行。
 
-When the ending list (whether or arguments or variables) is split across
-multiple lines, the closing parenthesis and opening brace MUST be placed
-together on their own line with one space between them.
+当分割长多行的时候，结束括号和开始大括号必须另起一行，
+并且放在同一行，之间必须有一个空格。
 
-The following are examples of closures with and without argument lists and
-variable lists split across multiple lines.
+下面是含有参数和变量列表分割为多行和非多行的例子。
 
 ```php
 <?php
@@ -523,8 +519,7 @@ $shortArgs_longVars = function ($arg) use (
 };
 ```
 
-Note that the formatting rules also apply when the closure is used directly
-in a function or method call as an argument.
+注意当闭包函数直接用在函数或者方法参数的时候，以上规则同样适用。
 
 ```php
 <?php
@@ -538,25 +533,24 @@ $foo->bar(
 ```
 
 
-7. Conclusion
+7. 总结
 --------------
 
-There are many elements of style and practice intentionally omitted by this
-guide. These include but are not limited to:
+还有很多元素的样式和实践在本指南中故意忽略了。包含但并不局限于下面这些：
 
-- Declaration of global variables and global constants
+- 全局变量和全局常量的声明
 
-- Declaration of functions
+- 函数的声明
 
-- Operators and assignment
+- 操作符和赋值
 
-- Inter-line alignment
+- 国际线对齐
 
-- Comments and documentation blocks
+- 注释和文档块
 
-- Class name prefixes and suffixes
+- 类名前缀和后缀Class name prefixes and suffixes
 
-- Best practices
+- 最佳实践
 
 Future recommendations MAY revise and extend this guide to address those or
 other elements of style and practice.
