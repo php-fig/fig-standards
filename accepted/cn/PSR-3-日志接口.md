@@ -8,58 +8,50 @@
 的目标扩展该接口，但是应该保持与本文档的兼容性。这样确保了应用程序使用的
 第三方的类可以将日志写入到中心化的应用程序日志中。
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+本文档中的关键字“必须”， “不允许”，“必需”，“将会”，“将不会”，“应该”，“不应该”，
+“推荐”，“可以”和“可选”遵循[RFC 2119]中的描述。
 
 单词 `implementor` 在本文档中指的是实现`LoggerInterface`接口的相关日志类库
 或者框架。日志的用户我们叫做`user`。
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-1. Specification
+1. 规范
 -----------------
 
-### 1.1 Basics
+### 1.1 基础
 
-- The `LoggerInterface` exposes eight methods to write logs to the eight
-  [RFC 5424][] levels (debug, info, notice, warning, error, critical, alert,
-  emergency).
+- 接口 `LoggerInterface` 暴露出八个方法用于为[RFC 5424][]规范的八个
+  日志级别（debug, info, notice, warning, error, critical, alert, emergency)提供日志写入功能。
 
-- A ninth method, `log`, accepts a log level as first argument. Calling this
-  method with one of the log level constants MUST have the same result as
-  calling the level-specific method. Calling this method with a level not
-  defined by this specification MUST throw a `Psr\Log\InvalidArgumentException`
-  if the implementation does not know about the level. Users SHOULD NOT use a
-  custom level without knowing for sure the current implementation supports it.
+- 第九个方法，`log`，接收日志级别作为第一个参数。使用日志级别常量
+  作为参数调用这个方法必须和直接调用级别特定的方法产生同样的结果。
+  使用规范没有定义的日志级别调用这个方法，如果日志实现不知道这个日志
+  级别的话，必须抛出一个`Psr\Log\InvalidArgumentException`异常。
+  用户不应该在不知道当前实现是否支持该日志级别的情况下使用自定义的日志级别。
 
 [RFC 5424]: http://tools.ietf.org/html/rfc5424
 
-### 1.2 Message
+### 1.2 消息
 
-- Every method accepts a string as the message, or an object with a
-  `__toString()` method. Implementors MAY have special handling for the passed
-  objects. If that is not the case, implementors MUST cast it to a string.
+- 每个方法都接收一个字符串，或者一个包含`__toString()`方法的对象作为消息。
+  实现者可以对传递的对象做特殊的处理。如果事实并非如此的话，实现者必须将其
+  作为一个字符串处理。
 
-- The message MAY contain placeholders which implementors MAY replace with
-  values from the context array.
+- 消息可以包含占位符，实现者可以将其替换为上下文数组中的值。
 
-  Placeholder names MUST correspond to keys in the context array.
+  占位符的名称必须对应上下文数组中的键名。
 
-  Placeholder names MUST be delimited with a single opening brace `{` and
-  a single closing brace `}`. There MUST NOT be any whitespace between the
-  delimiters and the placeholder name.
+  占位符的名称必须包含在一个单个的`{`开始，`}`结束的分隔符之间。
+  在占位符和大括号之间不允许出现任何空格。
 
-  Placeholder names SHOULD be composed only of the characters `A-Z`, `a-z`,
-  `0-9`, underscore `_`, and period `.`. The use of other characters is
-  reserved for future modifications of the placeholders specification.
+  占位符的名称应该仅包含字符`A-Z`, `a-z`,
+  `0-9`, 下划线 `_`, 和句点 `.`。 其它字符预留给未来占位符规范的修改使用.
 
-  Implementors MAY use placeholders to implement various escaping strategies
-  and translate logs for display. Users SHOULD NOT pre-escape placeholder
-  values since they can not know in which context the data will be displayed.
+  实现者可以使用占位符实现各种转义策略和翻译日志以供显示。用户不应该预先对占位符的值
+  进行转义，因为他们并不知道这些数据将会在哪个上下文中显示。
 
-  The following is an example implementation of placeholder interpolation
-  provided for reference purposes only:
+  下面是一个插入占位符的例子，仅供参考：
 
   ```php
   /**
