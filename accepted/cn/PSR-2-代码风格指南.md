@@ -67,61 +67,58 @@ class Foo extends Bar implements FooInterface
 }
 ```
 
-2. General
+2. 基础
 ----------
 
-### 2.1 Basic Coding Standard
+### 2.1 基本编码标准
 
-Code MUST follow all rules outlined in [PSR-1].
+代码必须遵循标准 [PSR-1]。
 
-### 2.2 Files
+### 2.2 文件
 
-All PHP files MUST use the Unix LF (linefeed) line ending.
+所有的PHP文件必须使用Unix LF行结尾符。
 
-All PHP files MUST end with a single blank line.
+所有的PHP文件必须以单个空行结尾。
 
-The closing `?>` tag MUST be omitted from files containing only PHP.
+在只包含PHP代码的文件中，结尾的`?>`标记必须省略。
 
-### 2.3. Lines
+### 2.3. 行
 
-There MUST NOT be a hard limit on line length.
+对一行的长度不允许做硬性的限制。
 
-The soft limit on line length MUST be 120 characters; automated style checkers
-MUST warn but MUST NOT error at the soft limit.
+对一行的长度的软限制是必须120个字符之内；自动语法检查器必须在超过这个软限制时发出警告，但是不允许产生错误提示。
 
-Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
-be split into multiple subsequent lines of no more than 80 characters each.
+一行不应该超过80个字符长度；超过该长度的行应该被分割成每一行都少于80字符的多行。
 
-There MUST NOT be trailing whitespace at the end of non-blank lines.
+在非空行结尾不允许有空格。
 
-Blank lines MAY be added to improve readability and to indicate related
-blocks of code.
+可以添加空行以提高代码的可读性和区分相关的代码块。
 
-There MUST NOT be more than one statement per line.
+每一行不能多于一个声明。
 
-### 2.4. Indenting
+### 2.4. 缩进
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+代码必须使用4个空格缩进，不允许使用tabs进行缩进。
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
+> 注意： 只使用空格，而不要空格和tabs混合可以协助
+> 避免使用diff, patches, history和annotations时出现的问题。 
+> 空格的使用也可以使内部行插入子缩进的对齐更加将简单。
 
-### 2.5. Keywords and True/False/Null
 
-PHP [keywords] MUST be in lower case.
+### 2.5. 关键字和True/False/Null
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
+PHP [关键字] 必须是小写的.
 
-[keywords]: http://php.net/manual/en/reserved.keywords.php
+PHP常量 `true`, `false`, 和 `null` 必须是小写的.
+
+[关键字]: http://php.net/manual/en/reserved.keywords.php
 
 
 
-3. Namespace and Use Declarations
+3. 命名空间和Use声明
 ---------------------------------
 
-When present, there MUST be one blank line after the `namespace` declaration.
+当`命名空间`出现的时候，在之后必须有一个空行
 
 When present, all `use` declarations MUST go after the `namespace`
 declaration.
