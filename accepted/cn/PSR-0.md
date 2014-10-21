@@ -1,18 +1,15 @@
-Autoloading Standard
+自动加载标准
 ====================
 
-The following describes the mandatory requirements that must be adhered
-to for autoloader interoperability.
+下面描述了实现自动加载器互用性必须遵循的强制性要求。
 
-Mandatory
+强制性
 ---------
 
-* A fully-qualified namespace and class must have the following
-  structure `\<Vendor Name>\(<Namespace>\)*<Class Name>`
-* Each namespace must have a top-level namespace ("Vendor Name").
-* Each namespace can have as many sub-namespaces as it wishes.
-* Each namespace separator is converted to a `DIRECTORY_SEPARATOR` when
-  loading from the file system.
+* 一个全称的命名空间和类必须遵循下列结构  `\<Vendor Name>\(<Namespace>\)*<Class Name>`
+* 每一个命名空间必须有一个顶级的命名空间（“厂商名称”）
+* 每个命名空间可以按照它的需要来创建多个子命名空间
+* 在从文件系统载入文件的时候，每一个命名空间分隔符被转换为 `DIRECTORY_SEPARATOR`
 * Each `_` character in the CLASS NAME is converted to a
   `DIRECTORY_SEPARATOR`. The `_` character has no special meaning in the
   namespace.
