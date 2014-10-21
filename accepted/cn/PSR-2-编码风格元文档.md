@@ -21,9 +21,7 @@ PSR-2 元文档
 
 ### 3.1 - 多行参数 (09/08/2013)
 
-Using one or more multi-line arguments (i.e: arrays or anonymous functions) does not constitute 
-splitting the argument list itself, therefore Section 4.6 is not automatically enforced. Arrays and anonymous 
-functions are able to span multiple lines.
+使用单行或者多行参数（例如：数组或者匿名函数）不会对参数列表本身构成分割，因此，4.6章节并不是强制的。数组和匿名函数是允许跨越多行的。
 
 下面的例子是很好的遵循PSR-2标准的:
 
