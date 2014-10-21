@@ -114,9 +114,7 @@
 2. 包
 ----------
 
-The interfaces and classes described as well as relevant exception classes
-and a test suite to verify your implementation is provided as part of the
-[psr/log](https://packagist.org/packages/psr/log) package.
+上面描述的接口、类和相关的异常类，和用来验证你的日志实现的测试用例都已作为 [psr/log](https://packagist.org/packages/psr/log) 包的一部分提供。
 
 3. `Psr\Log\LoggerInterface`
 ----------------------------
