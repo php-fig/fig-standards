@@ -552,11 +552,10 @@ $foo->bar(
 
 - 最佳实践
 
-Future recommendations MAY revise and extend this guide to address those or
-other elements of style and practice.
+未来可能会通过修改和扩展本指南来添加其它元素的样式和实践规范。
 
 
-Appendix A. Survey
+附录 A. Survey
 ------------------
 
 In writing this style guide, the group took a survey of member projects to
