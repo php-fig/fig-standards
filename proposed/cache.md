@@ -73,8 +73,8 @@ As this is separate from isHit() there's a potential race condition between
 the time exists() is called and get() being called so Calling Libraries SHOULD
 make sure to verify isHit() on all of the get() calls.
 
-*    **Miss** - A cache miss is the opposite of a cache hit. A cache hit occurs
-when a Calling Library requests an item by key and that value not found for that
+*    **Miss** - A cache miss is the opposite of a cache hit. A cache miss occurs
+when a Calling Library requests an item by key and no value was found for that
 key, or the value was found but has expired, or the value is invalid for some
 other reason. An expired value MUST always be considered a cache miss.
 
