@@ -54,7 +54,7 @@ proposed standards are autoloaded.
 ```php
 <?php
 
-function autoload($className)
+function __autoload($className)
 {
     $className = ltrim($className, '\\');
     $fileName  = '';
