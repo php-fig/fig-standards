@@ -18,20 +18,39 @@ interpreted as described in [RFC 2119].
 ### 1.1 Messages
 
 An HTTP message is either a request from a client to a server or a response from
-a server to a client. This specification defines interfaces for the HTTP messages
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
+a server to a client. This specification defines two pairs of interfaces for
+HTTP messages based on context:
 
-Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
-`Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
-implemented directly, implementors are encouraged to implement
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
+- Client-Side (i.e., making an HTTP request from PHP):
+  - `Psr\Http\Message\OutgoingRequestInterface`
+  - `Psr\Http\Message\IncomingResponseInterface`
+- Server-Side (i.e., processing a request made to a resource handled by PHP)
+  - `Psr\Http\Message\IncomingRequestInterface`
+  - `Psr\Http\Message\OutgoingResponseInterface`
 
-An additional interface, `Psr\Http\Message\IncomingRequestInterface`, extends
-`Psr\Http\Message\RequestInterface`, to provide accessors to common server-side
-environment parameters, including the deserialized query string arguments,
-deserialized body parameters, the incoming upload files information
-(typically represented in PHP via `$_FILES`), cookies (typically injected from
-PHP's `$_COOKIE`), and any attributes derived from the request.
+All of the above messages extend a base `Psr\Http\Message\MessageInterface`,
+which defines accessors for properties common across all implementations. While
+`Psr\Http\Message\MessageInterface` MAY be implemented directly, implementors are
+encouraged to implement one or both pairs of request/response interfaces, and
+consumers are encouraged to typehint on the relevant request/response interfaces.
+
+Interfaces are segregated by context. For HTTP client applications, the request is
+mutable, to allow consumers to incrementally build the request before sending it; the
+response, however, is immutable, as it is the product of an operation. Similarly, for
+server-side applications, the request is immutable and represents the specifics
+of the HTTP request made to the server; the response, however, will be incrementally
+built by the application prior to sending it back to the client.
+
+The `Psr\Http\Message\IncomingRequestInterface`, since it represents the incoming
+PHP request environment, is intended to model the various PHP superglobals.
+This practice helps reduce coupling to the superglobals by consumers, and
+encourages and promotes the ability to test request consumers. The interface
+purposely does not provide mutators for the various superglobal properties to
+encourage treating them as immutable. However, it does provide one mutable
+property, "attributes", to allow consumers the ability to introspect,
+decompose, and match the request against application-specific rules (such as
+path matching, cookie decryption, etc.). As such, the request can also provide
+messaging between multiple request consumers.
 
 From here forward, the namespace `Psr\Http\Message` will be omitted when
 referring to these interfaces.
@@ -95,7 +114,9 @@ the body must be stored completely in memory. Attempting to store the body of a
 request or response in memory would preclude the use of that implementation from
 being able to work with large message bodies. `StreamableInterface` is used in
 order to hide the implementation details when a stream of data is read from
-or written to.
+or written to. For situations where a string would be an appropriate message
+implementation, built-in streams such as `php://memory` and `php://tem` may be
+used.
 
 `StreamableInterface` exposes several methods that enable streams to be read
 from, written to, and traversed effectively.
@@ -148,34 +169,11 @@ interface MessageInterface
     public function getProtocolVersion();
 
     /**
-     * Set the HTTP protocol version.
-     *
-     * The version string MUST contain only the HTTP version number (e.g.,
-     * "1.1", "1.0").
-     *
-     * @param string $version HTTP protocol version
-     * @return void
-     */
-    public function setProtocolVersion($version);
-
-    /**
      * Gets the body of the message.
      *
      * @return StreamableInterface|null Returns the body, or null if not set.
      */
     public function getBody();
-
-    /**
-     * Sets the body of the message.
-     *
-     * The body MUST be a StreamableInterface object. Setting the body to null MUST
-     * remove the existing body.
-     *
-     * @param StreamableInterface|null $body Body.
-     * @return void
-     * @throws \InvalidArgumentException When the body is not valid.
-     */
-    public function setBody(StreamableInterface $body = null);
 
     /**
      * Gets all message headers.
@@ -211,11 +209,14 @@ interface MessageInterface
     public function hasHeader($header);
 
     /**
-     * Retrieve a header by the given case-insensitive name as a string.
+     * Retrieve a header by the given case-insensitive name, as a string.
      *
      * This method returns all of the header values of the given
      * case-insensitive header name as a string concatenated together using
      * a comma.
+     *
+     * NOTE: Not all header values may be appropriately represented using
+     * comma concatenation.
      *
      * @param string $header Case-insensitive header name.
      * @return string
@@ -229,6 +230,265 @@ interface MessageInterface
      * @return string[]
      */
     public function getHeaderAsArray($header);
+}
+```
+
+### 3.2 Server-Side messages
+
+The `IncomingRequestInterface` and `OutgoingResponseInterface` describe the messages used when handling an incoming HTTP request via PHP.
+
+#### 3.2.1 `Psr\Http\Message\IncomingRequestInterface`
+
+```php
+<?php
+
+namespace Psr\Http\Message;
+
+/**
+ * Representation of an incoming, server-side HTTP request.
+ *
+ * Per the HTTP specification, this interface includes accessors for
+ * the following:
+ *
+ * - Protocol version
+ * - HTTP method
+ * - URL
+ * - Headers
+ * - Message body
+ *
+ * Additionally, it encapsulates all data as it has arrived to the 
+ * application from the PHP environment, including:
+ *
+ * - The values represented in $_SERVER.
+ * - Any cookies provided (generally via $_COOKIE)
+ * - Query string arguments (generally via $_GET, or as parsed via parse_str())
+ * - Upload files, if any (as represented by $_FILES)
+ * - Deserialized body parameters (generally from $_POST)
+ *
+ * The above values MUST be immutable, in order to ensure that all consumers of
+ * the request instance within a given request cycle receive the same information.
+ *
+ * Additionally, this interface recognizes the utility of introspecting a
+ * request to derive and match additional parameters (e.g., via URI path 
+ * matching, decrypting cookie values, deserializing non-form-encoded body
+ * content, matching authorization headers to users, etc). These parameters
+ * are stored in an "attributes" property, which MUST be mutable.
+ */
+interface IncomingRequestInterface extends MessageInterface
+{
+    /**
+     * Retrieves the HTTP method of the request.
+     *
+     * @return string Returns the request method.
+     */
+    public function getMethod();
+
+    /**
+     * Retrieves the absolute request URL.
+     *
+     * @link http://tools.ietf.org/html/rfc3986#section-4.3
+     * @return string|object Returns the URL as a string, or an object that
+     *    implements the `__toString()` method. The URL must be an absolute URI
+     *    as specified in RFC 3986.
+     */
+    public function getUrl();
+
+    /**
+     * Retrieve server parameters.
+     *
+     * Retrieves data related to the incoming request environment, 
+     * typically derived from PHP's $_SERVER superglobal. The data IS NOT 
+     * REQUIRED to originate from $_SERVER.
+     * 
+     * @return array
+     */
+    public function getServerParams();
+
+    /**
+     * Retrieve cookies.
+     *
+     * Retrieves cookies sent by the client to the server.
+     *
+     * The assumption is these are injected during instantiation, typically
+     * from PHP's $_COOKIE superglobal. The data IS NOT REQUIRED to come from
+     * $_COOKIE, but MUST be compatible with the structure of $_COOKIE.
+     *
+     * @return array
+     */
+    public function getCookieParams();
+
+    /**
+     * Retrieve query string arguments.
+     *
+     * Retrieves the deserialized query string arguments, if any.
+     *
+     * These values SHOULD remain immutable over the course of the incoming
+     * request. They MAY be injected during instantiation, such as from PHP's
+     * $_GET superglobal, or MAY be derived from some other value such as the
+     * URI. In cases where the arguments are parsed from the URI, the data
+     * MUST be compatible with what PHP's `parse_str()` would return for
+     * purposes of how duplicate query parameters are handled, and how nested
+     * sets are handled.
+     *
+     * @return array
+     */
+    public function getQueryParams();
+
+    /**
+     * Retrieve the upload file metadata.
+     *
+     * This method MUST return file upload metadata in the same structure
+     * as PHP's $_FILES superglobal.
+     *
+     * These values SHOULD remain immutable over the course of the incoming
+     * request. They MAY be injected during instantiation, such as from PHP's
+     * $_FILES superglobal, or MAY be derived from other sources.
+     *
+     * @return array Upload file(s) metadata, if any.
+     */
+    public function getFileParams();
+
+    /**
+     * Retrieve any parameters provided in the request body.
+     *
+     * If the request body can be deserialized to an array, this method MAY be
+     * used to retrieve them. These MAY be injected during instantiation from
+     * PHP's $_POST superglobal. The data IS NOT REQUIRED to come from $_POST,
+     * but MUST be an array.
+     *
+     * @return array The deserialized body parameters, if any.
+     */
+    public function getBodyParams();
+
+    /**
+     * Retrieve attributes derived from the request.
+     *
+     * The request "attributes" may be used to allow injection of any
+     * parameters derived from the request: e.g., the results of path
+     * match operations; the results of decrypting cookies; the results of
+     * deserializing non-form-encoded message bodies; etc. Attributes
+     * will be application and request specific, and CAN be mutable.
+     *
+     * @return array Attributes derived from the request.
+     */
+    public function getAttributes();
+
+    /**
+     * Retrieve a single derived request attribute.
+     * 
+     * Retrieves a single derived request attribute as described in
+     * getAttributes(). If the attribute has not been previously set, returns
+     * the default value as provided.
+     * 
+     * @see getAttributes()
+     * @param string $attribute Attribute name.
+     * @param mixed $default Default value to return if the attribute does not exist.
+     * @return mixed
+     */
+    public function getAttribute($attribute, $default = null);
+
+    /**
+     * Set attributes derived from the request.
+     *
+     * This method allows setting request attributes, as described in
+     * getAttributes().
+     *
+     * @see getAttributes()
+     * @param array $attributes Attributes derived from the request.
+     * @return void
+     */
+    public function setAttributes(array $attributes);
+
+    /**
+     * Set a single derived request attribute.
+     * 
+     * This method allows setting a single derived request attribute as
+     * described in getAttributes().
+     *
+     * @see getAttributes()
+     * @param string $attribute The attribute name.
+     * @param mixed $value The value of the attribute.
+     * @return void
+     */
+    public function setAttribute($attribute, $value);
+}
+```
+
+#### 3.2.2 `Psr\Http\Message\OutgoingResponseInterface`
+
+```php
+<?php
+
+namespace Psr\Http\Message;
+
+/**
+ * Representation of an outgoing, server-side response.
+ *
+ * Per the HTTP specification, this interface includes both accessors for
+ * and mutators for the following:
+ *
+ * - Protocol version
+ * - Status code and reason phrase
+ * - Headers
+ * - Message body
+ *
+ * As the response CAN be built iteratively, the interface allows
+ * mutability of all properties.
+ */
+interface OutgoingResponseInterface extends MessageInterface
+{
+    /**
+     * Set the HTTP protocol version.
+     *
+     * The version string MUST contain only the HTTP version number (e.g.,
+     * "1.1", "1.0").
+     *
+     * @param string $version HTTP protocol version
+     * @return void
+     */
+    public function setProtocolVersion($version);
+
+    /**
+     * Gets the response Status-Code.
+     *
+     * The Status-Code is a 3-digit integer result code of the server's attempt
+     * to understand and satisfy the request.
+     *
+     * @return integer Status code.
+     */
+    public function getStatusCode();
+
+    /**
+     * Sets the status code, and optionally reason phrase,  of this response.
+     *
+     * If no Reason-Phrase is specified, implementations MAY choose to default
+     * to the RFC 7231 or IANA recommended reason phrase for the response's
+     * Status-Code.
+     *
+     * @link http://tools.ietf.org/html/rfc7231#section-6
+     * @link http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+     * @param integer $code The 3-digit integer result code to set.
+     * @param null|string $reasonPhrase The reason phrase to use with the
+     *     provided status code; if none is provided, implementations MAY
+     *     use the defaults as suggested in the HTTP specification.
+     * @throws \InvalidArgumentException For invalid status code arguments.
+     */
+    public function setStatus($code, $reasonPhrase = null);
+
+    /**
+     * Gets the response Reason-Phrase, a short textual description of the Status-Code.
+     *
+     * Because a Reason-Phrase is not a required element in a response
+     * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
+     * choose to return the default RFC 7231 recommended reason phrase (or those
+     * listed in the IANA HTTP Status Code Registry) for the response's
+     * Status-Code.
+     *
+     * @link http://tools.ietf.org/html/rfc7231#section-6
+     * @link http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+     * @return string|null Reason phrase, or null if unknown.
+     */
+    public function getReasonPhrase();
 
     /**
      * Sets a header, replacing any existing values of any headers with the
@@ -264,10 +524,26 @@ interface MessageInterface
      * @return void
      */
     public function removeHeader($header);
+
+    /**
+     * Sets the body of the message.
+     *
+     * The body MUST be a StreamableInterface object. Setting the body to null MUST
+     * remove the existing body.
+     *
+     * @param StreamableInterface|null $body Body.
+     * @return void
+     * @throws \InvalidArgumentException When the body is not valid.
+     */
+    public function setBody(StreamableInterface $body = null);
 }
 ```
 
-### 3.2 `Psr\Http\Message\RequestInterface`
+### 3.3 Client-Side Messages
+
+The `OutgoingRequestInterface` and `IncomingResponseInterface` describe messages associated with making an HTTP request from PHP.
+
+#### 3.3.1 `Psr\Http\Message\OutgoingRequestInterface`
 
 ```php
 <?php
@@ -275,12 +551,33 @@ interface MessageInterface
 namespace Psr\Http\Message;
 
 /**
- * An HTTP request message.
+ * Representation of an outgoing, client-side request.
+ * 
+ * Per the HTTP specification, this interface includes both accessors for
+ * and mutators for the following:
  *
- * @link http://tools.ietf.org/html/rfc7230#section-3
+ * - Protocol version
+ * - HTTP method
+ * - URL
+ * - Headers
+ * - Message body
+ *
+ * As the request CAN be built iteratively, the interface allows
+ * mutability of all properties.
  */
-interface RequestInterface extends MessageInterface
+interface OutgoingRequestInterface extends MessageInterface
 {
+    /**
+     * Set the HTTP protocol version.
+     *
+     * The version string MUST contain only the HTTP version number (e.g.,
+     * "1.1", "1.0").
+     *
+     * @param string $version HTTP protocol version
+     * @return void
+     */
+    public function setProtocolVersion($version);
+
     /**
      * Retrieves the HTTP method of the request.
      *
@@ -325,10 +622,57 @@ interface RequestInterface extends MessageInterface
      * @throws \InvalidArgumentException If the URL is invalid.
      */
     public function setUrl($url);
+
+    /**
+     * Sets a header, replacing any existing values of any headers with the
+     * same case-insensitive name.
+     *
+     * The header name is case-insensitive. The header values MUST be a string
+     * or an array of strings.
+     *
+     * @param string $header Header name
+     * @param string|string[] $value Header value(s).
+     * @return void
+     * @throws \InvalidArgumentException for invalid header names or values.
+     */
+    public function setHeader($header, $value);
+
+    /**
+     * Appends a header value for the specified header.
+     *
+     * Existing values for the specified header will be maintained. The new
+     * value(s) will be appended to the existing list.
+     *
+     * @param string $header Header name to add
+     * @param string|string[] $value Header value(s).
+     * @return void
+     * @throws \InvalidArgumentException for invalid header names or values.
+     */
+    public function addHeader($header, $value);
+
+    /**
+     * Remove a specific header by case-insensitive name.
+     *
+     * @param string $header HTTP header to remove
+     * @return void
+     */
+    public function removeHeader($header);
+
+    /**
+     * Sets the body of the message.
+     *
+     * The body MUST be a StreamableInterface object. Setting the body to null MUST
+     * remove the existing body.
+     *
+     * @param StreamableInterface|null $body Body.
+     * @return void
+     * @throws \InvalidArgumentException When the body is not valid.
+     */
+    public function setBody(StreamableInterface $body = null);
 }
 ```
 
-### 3.2.1 `Psr\Http\Message\IncomingRequestInterface`
+#### 3.3.2 `Psr\Http\Message\IncomingResponseInterface`
 
 ```php
 <?php
@@ -336,143 +680,20 @@ interface RequestInterface extends MessageInterface
 namespace Psr\Http\Message;
 
 /**
- * An incoming (server-side) HTTP request.
+ * Representation of an incoming, client-side response.
+ * 
+ * Per the HTTP specification, this interface includes accessors for
+ * the following:
  *
- * This interface further describes a server-side request and provides
- * accessors and mutators around common request data, including query
- * string arguments, body parameters, upload file metadata, cookies, and
- * arbitrary attributes derived from the request by the application.
- */
-interface IncomingRequestInterface extends RequestInterface
-{
-    /**
-     * Retrieve cookies.
-     *
-     * Retrieves cookies sent by the client to the server.
-     *
-     * The assumption is these are injected during instantiation, typically
-     * from PHP's $_COOKIE superglobal. The data IS NOT REQUIRED to come from
-     * $_COOKIE, but MUST be compatible with the structure of $_COOKIE.
-     *
-     * @return array
-     */
-    public function getCookieParams();
-
-    /**
-     * Set cookie parameters.
-     *
-     * Allows a library to set the cookie parameters. Use cases include
-     * libraries that implement additional security practices, such as
-     * encrypting or hashing cookie values; in such cases, they will read
-     * the original value, filter them, and re-inject into the incoming
-     * request.
-     *
-     * The value provided MUST be compatible with the structure of $_COOKIE.
-     *
-     * @param array $cookies Cookie values
-     * @return void
-     * @throws \InvalidArgumentException For invalid cookie parameters.
-     */
-    public function setCookieParams(array $cookies);
-
-    /**
-     * Retrieve query string arguments.
-     *
-     * Retrieves the deserialized query string arguments, if any.
-     *
-     * These values SHOULD remain immutable over the course of the incoming
-     * request. They MAY be injected during instantiation, such as from PHP's
-     * $_GET superglobal, or MAY be derived from some other value such as the
-     * URI. In cases where the arguments are parsed from the URI, the data
-     * MUST be compatible with what PHP's `parse_str()` would return for
-     * purposes of how duplicate query parameters are handled, and how nested
-     * sets are handled.
-     *
-     * @return array
-     */
-    public function getQueryParams();
-
-    /**
-     * Retrieve the upload file metadata.
-     *
-     * This method MUST return file upload metadata in the same structure
-     * as PHP's $_FILES superglobal.
-     *
-     * These values SHOULD remain immutable over the course of the incoming
-     * request. They MAY be injected during instantiation, such as from PHP's
-     * $_FILES superglobal, or MAY be derived from other sources.
-     *
-     * @return array Upload file(s) metadata, if any.
-     */
-    public function getFileParams();
-
-    /**
-     * Retrieve any parameters provided in the request body.
-     *
-     * If the request body can be deserialized to an array, this method MAY be
-     * used to retrieve them. These MAY be injected during instantiation from
-     * PHP's $_POST superglobal. The data IS NOT REQUIRED to come from $_POST,
-     * but MUST be an array.
-     *
-     * In cases where the request content cannot be coerced to an array, the
-     * parent getBody() method should be used to retrieve the body content.
-     *
-     * @return array The deserialized body parameters, if any.
-     */
-    public function getBodyParams();
-
-    /**
-     * Set the request body parameters.
-     *
-     * If the body content can be deserialized to an array, the values obtained
-     * MAY then be injected into the response using this method. This method
-     * will typically be invoked by a factory marshaling request parameters.
-     *
-     * @param array $values The deserialized body parameters, if any.
-     * @return void
-     * @throws \InvalidArgumentException For $values that cannot be accepted.
-     */
-    public function setBodyParams(array $values);
-
-    /**
-     * Retrieve attributes derived from the request.
-     *
-     * If a router or similar is used to match against the path and/or request,
-     * this method MAY be used to retrieve the results, so long as those
-     * results can be represented as an array.
-     *
-     * @return array Attributes derived from the request.
-     */
-    public function getAttributes();
-
-    /**
-     * Set attributes derived from the request
-     *
-     * If a router or similar is used to match against the path and/or request,
-     * this method MAY be used to inject the request with the results, so long
-     * as those results can be represented as an array.
-     *
-     * @param array $attributes Attributes derived from the request.
-     * @return void
-     */
-    public function setAttributes(array $attributes);
-}
-```
-
-### 3.3 `Psr\Http\Message\ResponseInterface`
-
-```php
-<?php
-
-namespace Psr\Http\Message;
-
-/**
- * An HTTP response message.
+ * - Protocol version
+ * - Status code and reason phrase
+ * - Headers
+ * - Message body
  *
- * @link http://tools.ietf.org/html/rfc7231#section-6
- * @link http://tools.ietf.org/html/rfc7231#section-7
+ * As the response is the result of making a request, it is considered
+ * immutable.
  */
-interface ResponseInterface extends MessageInterface
+interface IncomingResponseInterface extends MessageInterface
 {
     /**
      * Gets the response Status-Code.
@@ -483,14 +704,6 @@ interface ResponseInterface extends MessageInterface
      * @return integer Status code.
      */
     public function getStatusCode();
-
-    /**
-     * Sets the status code of this response.
-     *
-     * @param integer $code The 3-digit integer result code to set.
-     * @throws \InvalidArgumentException For invalid status code arguments.
-     */
-    public function setStatusCode($code);
 
     /**
      * Gets the response Reason-Phrase, a short textual description of the Status-Code.
@@ -506,18 +719,6 @@ interface ResponseInterface extends MessageInterface
      * @return string|null Reason phrase, or null if unknown.
      */
     public function getReasonPhrase();
-
-    /**
-     * Sets the Reason-Phrase of the response.
-     *
-     * If no Reason-Phrase is specified, implementations MAY choose to default
-     * to the RFC 7231 or IANA recommended reason phrase for the response's
-     * Status-Code.
-     *
-     * @param string $phrase The Reason-Phrase to set.
-     * @throws \InvalidArgumentException For non-string $phrase arguments.
-     */
-    public function setReasonPhrase($phrase);
 }
 ```
 
