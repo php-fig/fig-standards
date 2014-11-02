@@ -57,9 +57,9 @@ referring to these interfaces.
 
 #### 1.2 HTTP Headers
 
-##### Case-insensitive headers
+##### Case-insensitive header names
 
-HTTP messages include case-insensitive headers. Headers are retrieved from
+HTTP messages include case-insensitive header names. Headers are retrieved by name from
 classes implementing the `MessageInterface` interface in a case-insensitive
 manner. For example, retrieving the "foo" header will return the same result as
 retrieving the "FoO" header. Similarly, setting the "Foo" header will overwrite
@@ -84,9 +84,9 @@ In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
 an instance of a ``MessageInterface`` as an array or string. Use the
 `getHeader()` method to retrieve a header value as a string containing all
-header values of a case-insensitive header by name concatenated with a comma.
+header values of a header by name concatenated with a comma.
 Use `getHeaderAsArray()` to retrieve an array of all the header values for a
-particular case-insensitive header by name.
+particular header by name.
 
 ```php
 $message->setHeader('foo', 'bar');
