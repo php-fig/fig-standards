@@ -171,7 +171,11 @@ interface MessageInterface
     /**
      * Gets the body of the message.
      *
-     * @return StreamableInterface|null Returns the body, or null if not set.
+     * The returned body MUST be an instance of StreamableInterface. This may
+     * require that the implementation create a stream if none has been 
+     * set previously.
+     *
+     * @return StreamableInterface Returns the body, or null if not set.
      */
     public function getBody();
 
