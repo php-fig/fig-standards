@@ -284,12 +284,11 @@ interface IncomingRequestInterface extends MessageInterface
     public function getMethod();
 
     /**
-     * Retrieves the absolute request URL.
+     * Retrieves the request URL.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return string|object Returns the URL as a string, or an object that
-     *    implements the `__toString()` method. The URL must be an absolute URI
-     *    as specified in RFC 3986.
+     * @return string Returns the URL as a string. The URL SHOULD be an absolute
+     *     URI as specified in RFC 3986, but MAY be a relative URI.
      */
     public function getUrl();
 
@@ -600,24 +599,22 @@ interface OutgoingRequestInterface extends MessageInterface
     public function setMethod($method);
 
     /**
-     * Retrieves the absolute request URL.
+     * Retrieves the request URL.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return string|object Returns the URL as a string, or an object that
-     *    implements the `__toString()` method. The URL must be an absolute URI
-     *    as specified in RFC 3986.
+     * @return string Returns the URL as a string. The URL SHOULD be an
+     *     absolute URI as specified in RFC 3986, but MAY be a relative URI.
      */
     public function getUrl();
 
     /**
      * Sets the request URL.
      *
-     * The URL MUST be a string, or an object that implements the
-     * `__toString()` method. The URL must be an absolute URI as specified
-     * in RFC 3986.
+     * The URL MUST be a string. The URL SHOULD be an absolute URI as specified
+     * in RFC 3986, but MAY be a relative URI.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @param string|object $url Request URL.
+     * @param string $url Request URL.
      * @return void
      * @throws \InvalidArgumentException If the URL is invalid.
      */
