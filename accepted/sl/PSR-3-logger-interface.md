@@ -113,7 +113,7 @@ Uporabniki dnevnikov so navedeni kot `uporabnik`.
 
 - Podbno z uporabo `Psr\Log\LoggerTrait` od vas samo zahteva
   implementacijo generične `log` metode. Bodite pozorni, da odkar lastnosti - traits ne morejo implementirati
-  vmesnikov, morate v tem primeru še vedno narediti `implement LoggerInterface`.
+  vmesnikov, morate v tem primeru še vedno narediti implementirati `LoggerInterface`.
 
 - `Psr\Log\NullLogger` je ponujen skupaj z vmesnikom. LAHKO
   ga uporabljajo uporabniki vmesnika, da podajo fall-back "črno luknjo"

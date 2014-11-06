@@ -27,7 +27,7 @@ uradnem PHP-FIG GitHub repozitoriju `fig-standards`.
 
 > **Deprecated** - As of 2014-12-30 PSR-0 has been marked as deprecated. [PSR-4] is now recommended
 as an alternative.
-> [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
+> [PSR-4]: http://php-fig.org/psr/psr-4
 
 
 ## 2. Odvisnosti
@@ -83,5 +83,5 @@ Primeri:
 2. Nekdo je nekaj napačno črkoval in nihče ni tega opazil leto dni.
 3. Problemi z GitHub Markdown
 
-[bylaw]: https://github.com/philsturgeon/fig-standards/blob/master/bylaws/004-psr-workflow.md
-[glasovalnega protokola]: https://github.com/philsturgeon/fig-standards/blob/master/bylaws/001-voting-protocol.md
+[bylaw]: https://github.com/php-fig/fig-standards/blob/master/bylaws/004-psr-workflow.md
+[glasovalnega protokola]: https://php-fig/philsturgeon/fig-standards/blob/master/bylaws/001-voting-protocol.md

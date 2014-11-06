@@ -40,7 +40,7 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ```
 
-### 3.2 - Več vrstični argumenti (10/17/2013)
+### 3.2 - Razširitev večih vmesnikov (10/17/2013)
 
 Ko razširjate več vmesnikov, bi moral seznam `razširitev` bi obravnavan enako kot seznam
 `implementacij`, kot je deklarirano v Sekciji 4.1.

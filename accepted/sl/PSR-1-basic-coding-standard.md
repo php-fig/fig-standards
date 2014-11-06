@@ -105,7 +105,7 @@ if (! function_exists('bar')) {
 3. Imenski prostori in imena razredov
 -------------------------------------
 
-Imenski prostor in razredi MORAJO slediti [PSR-0].
+Imenski prostor in razredi MORAJO slediti PSR-ju avtomatskega nalaganja: [[PSR-0], [PSR-4]]
 
 To pomeni, da je vsak razred v samostojni datoteki in je znotraj imenskega prostora
 vsaj enega nivoja: vrhnje ime izdelovalca.
