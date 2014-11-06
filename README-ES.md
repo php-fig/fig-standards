@@ -36,54 +36,6 @@ No combine solicitudes para ser miembro en un solo hilo; por favor, una petició
 Miembros con derecho a voto
 ---------------------------
 
-1. Nate Abele: Lithium
+La lista actalizada de miembros con derecho a voto está disponible en el [sitio web del proyecto][].
 
-1. Nils Adermann: phpBB
-
-1. Brett Bieber: PEAR, PEAR2
-    
-1. Guilherme Blanco: Doctrine, Doctrine2, et al.
-
-1. Jordi Boggiano: Composer, Packagist
-
-1. Pádraic Brady: Zend Framework
-
-1. Karma Dordrak: Zikula
-
-1. Paul Dragoonis: PPI, PPI2
-
-1. William Durand: Propel, Propel 2
-
-1. Andrew Eddie: Joomla
-
-1. Cal Evans: the community at large
-
-1. Larry Garfield: Drupal
-
-1. Ivan Habunek: Apache log4php
-
-1. Paul M. Jones: Solar Framework, Aura Project
-
-1. Robert Lemke: TYPO3 Flow, TYPO3 Neos
-
-1. Larry Masters: CakePHP, CakePHP 2
-
-1. John Mertic: SugarCRM
-
-1. Ryan Parman: Amazon Web Services SDK
-
-1. Evert Pot: SabreDAV
-
-1. Fabien Potencier: Symfony, Symfony2
-
-1. Mike van Riel: phpDocumentor
-
-1. Andre Romcke: eZ Publish
-
-1. Phil Sturgeon: PyroCMS
-
-1. Lukas Smith: Jackalope
-
-1. Kris Wallsmith: Assetic, Buzz
-
-1. David Zülke: Agavi
+[sitio web del proyecto]: http://www.php-fig.org/
