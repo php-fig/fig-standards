@@ -1,3 +1,11 @@
+Estándar de autocarga de clases
+===============================
+
+> **Obsoleto** - A partir del 21/10/2014 el estándar PSR-0 se ha marcado como obsoleto. Ahora se recomienda [PSR-4]
+como alternativa.
+
+[PSR-4]: http://www.php-fig.org/psr/psr-4/
+
 A continuación se describen los requisitos obligatorios que deben cumplirse para la interoperabilidad del autoloader.
 
 Obligatorio
