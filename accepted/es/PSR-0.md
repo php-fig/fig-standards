@@ -1,7 +1,7 @@
 Estándar de autocarga de clases
-====================
+===============================
 
-> **Obsoleto** - A partir del 10/21/2014 el estándar PSR-0 se ha marcado como obsoleto. Ahora se recomienda [PSR-4]
+> **Obsoleto** - A partir del 21/10/2014 el estándar PSR-0 se ha marcado como obsoleto. Ahora se recomienda [PSR-4]
 como alternativa.
 
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
