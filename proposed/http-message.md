@@ -114,7 +114,7 @@ request or response in memory would preclude the use of that implementation from
 being able to work with large message bodies. `StreamableInterface` is used in
 order to hide the implementation details when a stream of data is read from
 or written to. For situations where a string would be an appropriate message
-implementation, built-in streams such as `php://memory` and `php://tem` may be
+implementation, built-in streams such as `php://memory` and `php://temp` may be
 used.
 
 `StreamableInterface` exposes several methods that enable streams to be read
