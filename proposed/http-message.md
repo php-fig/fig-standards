@@ -91,13 +91,12 @@ particular header by name.
 ```php
 $message->setHeader('foo', 'bar');
 $message->addHeader('foo', 'baz');
-$header = $message->getHeader('foo');
 
-echo $header;
-// Outputs: bar, baz
+$header = $message->getHeader('foo');
+// $header contains: 'bar, baz'
 
 $header = $message->getHeaderAsArray('foo');
-// ['bar', 'baz']
+// $header contains: ['bar', 'baz']
 ```
 
 Note: Not all header values can be concatenated using a comma (e.g.,
