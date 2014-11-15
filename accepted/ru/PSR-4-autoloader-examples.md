@@ -134,7 +134,6 @@ class Psr4AutoloaderClass
         $prefix = trim($prefix, '\\') . '\\';
         
         // нормализуем базовую директорию так, чтобы всегда присутствовал разделитель в конце
-        $base_dir = rtrim($base_dir, '/') . DIRECTORY_SEPARATOR;
         $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
 
         // инициализируем массив префиксов пространства имён
@@ -205,9 +204,6 @@ class Psr4AutoloaderClass
             // заменяем префикс базовой директорией,
             // заменяем разделители пространства имён на разделители директорий
             // к относительному имени класса добавляем .php
-            $file = $base_dir
-                  . str_replace('\\', DIRECTORY_SEPARATOR, $relative_class)
-                  . '.php';
             $file = $base_dir
                   . str_replace('\\', '/', $relative_class)
                   . '.php';
