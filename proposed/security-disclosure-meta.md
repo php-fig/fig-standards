@@ -74,11 +74,12 @@ other people to build centralized tools around this information.
 
 ### 5.2 Sponsors
 
-* ???
+* Larry Garfeild (Drupal)
+* Korvin Szanto (concrete5)
 
-### 5.3 Contributors
+### 5.3 Coordinator
 
-* ???
+* Korvin Szanto (concrete5)
 
 6. Votes
 --------
