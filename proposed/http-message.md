@@ -85,7 +85,7 @@ convenience of working with headers as strings, headers can be retrieved from
 an instance of a ``MessageInterface`` as an array or string. Use the
 `getHeader()` method to retrieve a header value as a string containing all
 header values of a header by name concatenated with a comma.
-Use `getHeaderAsArray()` to retrieve an array of all the header values for a
+Use `getHeaderLines()` to retrieve an array of all the header values for a
 particular header by name.
 
 ```php
@@ -95,13 +95,13 @@ $message->addHeader('foo', 'baz');
 $header = $message->getHeader('foo');
 // $header contains: 'bar, baz'
 
-$header = $message->getHeaderAsArray('foo');
+$header = $message->getHeaderLines('foo');
 // $header contains: ['bar', 'baz']
 ```
 
 Note: Not all header values can be concatenated using a comma (e.g.,
 `Set-Cookie`). When working with such headers, consumers of
-`MessageInterface`-based classes SHOULD rely on the `getHeaderAsArray()` method
+`MessageInterface`-based classes SHOULD rely on the `getHeaderLines()` method
 for retrieving such multi-valued headers.
 
 ### 1.2 Streams
@@ -232,7 +232,7 @@ interface MessageInterface
      * @param string $header Case-insensitive header name.
      * @return string[]
      */
-    public function getHeaderAsArray($header);
+    public function getHeaderLines($header);
 }
 ```
 
