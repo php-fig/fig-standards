@@ -126,15 +126,16 @@ can lead to messages entering into an invalid or inconsistent state.
 
 #### Mutability of messages
 
-The proposal models "context-specific" mutability. This means that a message is mutable based on its context. For example:
+The proposal models "context-specific" mutability. This means that a message is
+mutable based on its context. For example:
 
 - Client-side requests are mutable, as they will be iterably built before being
   sent.
 - Client-side responses are immutable, as they represent the result of a
   request that has been made; changing the result would lead to inconsistent
   state when multiple processes are passed the message.
-- Server-side requests are immutable, as they represent the state of the
-  current incoming request; changes to the message would lead to inconsistent
+- Server-side requests are (mostly) immutable, as they represent the state of the
+  current incoming request; changes to the message could lead to inconsistent
   state when multiple processes are passed the message.
 - Server-side responses are mutable, as they are built iterably before being
   returned to the client.
@@ -162,23 +163,26 @@ useful when considering the fact that headers can no longer be emitted once
 _any_ output has been sent; aggregating headers and content in a response
 object is a useful and typically necessary abstraction.
 
-While server-side requests are primarily immutable, we have noted one element
-or property as _mutable_: "attributes". Most server-side applications utilize
-processes that match the request to specific criteria -- such as path segments,
-subdomains, etc. -- and then push the derived matches back into the request
-itself. Since these processes need to introspect the populated request, and are
-a product of the application itself, the proposal allows this property to be
-mutable. Possible use cases include:
+While server-side requests are primarily immutable, we have noted that PHP itself
+does not treat superglobals as immutable. In surveying Python's WSGI, Ruby's Rack,
+and Node's `http.IncomingRequest`, we noted that the equivalent parameters (query
+string arguments, body, cookies) were also mutable in these implementations. As
+such, we mark the following as mutable:
 
-* Body parameters are often "discovered" via deserialization of the incoming
-  request body, and the serialization method will need to be determined by
-  introspecting incoming `Content-Type` headers.
-* Cookies may be encrypted, and a process may decrypt them and re-inject them
-  into the request for later collaborators to access.
-* Routing and other tools are often used to "discover" request attributes (e.g.,
-  decomposing the URL `/user/phil` to assign the value "phil" to the attribute
-  "user"). Such logic is application-specific, but still considered part of the
-  request state; it can only be injected after instantiation.
+- query string arguments
+- cookies
+- body parameters
+
+Additionally, most server-side applications utilize processes that match the
+request to specific criteria -- such as path segments, subdomains, etc. -- and
+then push the derived matches back into the request itself. Since these
+processes need to introspect the populated request, and are a product of the
+application itself, the proposal allows this property to be mutable. The
+primary use case envisioned for it is routing, which is used to "discover"
+request attributes (e.g., decomposing the URL `/user/phil` to assign the value
+"phil" to the attribute "user"); Such logic is application-specific, but still
+considered part of the request state; it can only be injected after
+instantiation.
 
 Having context-specific mutability ensures the consistency of client-side
 responses and server-side requests, while simultaneously allowing for the full
@@ -254,11 +258,6 @@ solves problems within the PHP language itself:
 - Unit testing against superglobals (e.g., `$_GET`, `$_FILES`, etc.) is
   difficult and typically brittle. Encapsulating them inside the
   `IncomingRequestInterface` implementation eases testing considerations.
-
-The interface as defined provides no mutators other than for derived
-attributes. The assumption is that values either (a) may be injected at
-instantiation from superglobals, and (b) should not change over the course of
-the incoming request.
 
 #### What about "special" header values?
 
