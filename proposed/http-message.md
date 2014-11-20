@@ -604,16 +604,16 @@ interface OutgoingRequestInterface extends MessageInterface
      * Retrieves the request URL.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return string Returns the URL as a string. The URL SHOULD be an
-     *     absolute URI as specified in RFC 3986, but MAY be a relative URI.
+     * @return string Returns the URL as a string. The URL MUST be an
+     *     absolute URI as specified in RFC 3986.
      */
     public function getUrl();
 
     /**
      * Sets the request URL.
      *
-     * The URL MUST be a string. The URL SHOULD be an absolute URI as specified
-     * in RFC 3986, but MAY be a relative URI.
+     * The URL MUST be a string. The URL MUST be an absolute URI as specified
+     * in RFC 3986.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
      * @param string $url Request URL.
