@@ -289,9 +289,14 @@ interface IncomingRequestInterface extends MessageInterface
     /**
      * Retrieves the request URL.
      *
-     * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return string Returns the URL as a string. The URL SHOULD be an absolute
-     *     URI as specified in RFC 3986, but MAY be a relative URI.
+     * The URL will contain the path information, and, if present and non-empty, the
+     * query string, and these two items ONLY. As such, it fulfills the "origin-form"
+     * request target of RFC 7230.
+     *
+     * @link http://tools.ietf.org/html/rfc7230#section-5.3
+     * @return string Returns the URL as a string. The URL MUST contain the path
+     *     information, and optionally the query string if present, per the
+     *     origin-form request target specification of RFC 7230 section 5.3.
      */
     public function getUrl();
 
