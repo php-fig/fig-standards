@@ -2070,16 +2070,16 @@ The following keywords are recognized by this PSR:
     This type is often used as return value for methods implementing the
     [Fluent Interface][FLUENT] design pattern.
 
-[RFC2119]:      http://www.ietf.org/rfc/rfc2119.txt
-[RFC5234]:      http://www.ietf.org/rfc/rfc5234.txt
-[RFC2396]:      http://www.ietf.org/rfc/rfc2396.txt
+[RFC2119]:      https://tools.ietf.org/html/rfc2119
+[RFC5234]:      https://tools.ietf.org/html/rfc5234
+[RFC2396]:      https://tools.ietf.org/html/rfc2396
 [SEMVER2]:      http://www.semver.org
-[PHP_SUBSTR]:   http://nl.php.net/manual/en/function.substr.php
-[PHP_RESOURCE]: http://www.php.net/manual/en/language.types.resource.php
-[PHP_PSEUDO]:   http://php.net/manual/en/language.pseudo-types.php
-[PHP_CALLABLE]: http://php.net/manual/en/language.types.callable.php
-[SPDX]:         http://www.spdx.org/licenses
-[DEFACTO]:      http://www.phpdoc.org/docs/1.4/index.html
-[PHPDOC.ORG]:   http://www.phpdoc.org
-[FLUENT]:       http://en.wikipedia.org/wiki/Fluent_interface
-[COLLECTION]:   http://en.wikipedia.org/wiki/Collection_(abstract_data_type)
+[PHP_SUBSTR]:   https://php.net/manual/function.substr.php
+[PHP_RESOURCE]: https://php.net/manual/language.types.resource.php
+[PHP_PSEUDO]:   https://php.net/manual/language.pseudo-types.php
+[PHP_CALLABLE]: https://php.net/manual/language.types.callable.php
+[SPDX]:         https://www.spdx.org/licenses
+[DEFACTO]:      http://www.phpdoc.org/docs/latest/index.html
+[PHPDOC.ORG]:   http://www.phpdoc.org/
+[FLUENT]:       https://en.wikipedia.org/wiki/Fluent_interface
+[COLLECTION]:   https://en.wikipedia.org/wiki/Collection_(abstract_data_type)
