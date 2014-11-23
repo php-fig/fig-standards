@@ -2059,8 +2059,8 @@ The following keywords are recognized by this PSR:
     which the documented element is contained, or when encountered in a
     subclass is of type of that subclass instead of the original class.
 
-    This keyword behaves the same way as the 'static' keyword keyword (not
-    the static property or method modifier) as defined by PHP.
+    This keyword behaves the same way as the [keyword for late static binding][PHP_OOP5LSB]
+    (not the static method, property, nor variable modifier) as defined by PHP.
 
 15. '$this', the element to which this type applies is the same exact instance
     as the current Class in the given context. As such this type is a stricter
@@ -2078,6 +2078,7 @@ The following keywords are recognized by this PSR:
 [PHP_RESOURCE]: https://php.net/manual/language.types.resource.php
 [PHP_PSEUDO]:   https://php.net/manual/language.pseudo-types.php
 [PHP_CALLABLE]: https://php.net/manual/language.types.callable.php
+[PHP_OOP5LSB]:  https://php.net/manual/language.oop5.late-static-bindings.php
 [SPDX]:         https://www.spdx.org/licenses
 [DEFACTO]:      http://www.phpdoc.org/docs/latest/index.html
 [PHPDOC.ORG]:   http://www.phpdoc.org/
