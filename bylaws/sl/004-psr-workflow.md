@@ -88,8 +88,9 @@ predloga. Koordinator mora objaviti glasovanje na e-poštnem seznamu v temi z na
 
 Če gre glasovanje skozi, predlog uradno vstopi v fazo osnutka. Predlog dobi PSR številko
 povečano od najvišje številke PSR-ja, ki je šel skozi vstopno glasovanje, ne glede na status
-tega PSR-ja. Seznam PSR-jev bo vdrževan na wiki strani [indeks PHP standardnih priporočil][wikiindex]
-[uradnega PHP-FIG "fig-standards" repozitorija][repo], kjer bo vpis PSR vzdrževan s strani
+tega PSR-ja. Seznam PSR-jev bo vdrževan v datoteki `index.md` repozitorija `fig-standards`. To bo
+vključeno na PHP-FIG spletni strani na strani imenovani
+[Index of PHP Standard Recommendations][psrindex], kjer bo vpis PSR vnos vzdrževan s strani
 koordinatorja.
 
 Delujoča skupina lahko nadaljuje delo na predlogu med celotnim obdobjem glasovanja.
@@ -366,5 +367,5 @@ To je primer predloge, ki je lahko uporabljen za gradnjo meta dokumenta.
     but it cannot create new rules.
 
 [repo]: https://github.com/php-fig/fig-standards/tree/master
-[wikiindex]: https://github.com/php-fig/fig-standards/wiki/Index-of-PHP-Standard-Recommendations
+[psrindex]: http://php-fig.org/psr/
 [voting]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
