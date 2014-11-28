@@ -44,7 +44,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | R      | 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady |
 | D      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Phil Sturgeon |
 | D      | 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans     |
-| D      | 9   | [Security Disclosure][psr8]    | Lukas Kahwe Smith       | Korvin Szanto |
+| D      | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto |
 
 _**Legend:** A = Accepted | D = Draft | R = Review | X = Rejected_
 
