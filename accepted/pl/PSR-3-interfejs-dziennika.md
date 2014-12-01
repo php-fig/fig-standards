@@ -5,7 +5,7 @@ Poniższy dokument opisuje wspólny interfejs dla bibliotek logujących.
 
 Głównym celem jest umożliwienie bibliotekom dostarczenia obiektu implementującego 
 `Psr\Log\LoggerInterface` oraz funkcjonalność zapisywania do wspomnianego obiektu 
-logów w prosty i uniwersalny sposób. Frameworki i CRMy, które potrzebują własnych 
+logów w prosty i uniwersalny sposób. Frameworki i CMSy, które potrzebują własnych 
 rozwiązań, MOGĄ rozszerzyć interfejs tak, aby osiągnąć własne cele, nie mniej jednak 
 rezultaty ciągle POWINNY być kompatybilne z wymogami zwartymi w tym dokumencie. 
 Gwarantuje to, że zewnętrzne biblioteki, których używa aplikacja, będą zapisywać 
