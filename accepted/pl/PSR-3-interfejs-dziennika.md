@@ -1,5 +1,5 @@
 Interfejs dziennika
-================
+===================
 
 Poniższy dokument opisuje wspólny interfejs dla bibliotek logujących.
 
@@ -19,7 +19,7 @@ Wyrażenie `implementator` w poniższym dokumencie powinno być interpretowane, 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
 1. Specyfikacja
------------------
+---------------
 
 ### 1.1 Podstawy
 
@@ -132,7 +132,7 @@ równoznacznego interfejsu w jakiejkolwiek klasie. Daje dostęp do `$this->logge
 - Klasa `Psr\Log\LogLevel` przechowuje stałe z ośmioma poziomami logów.
 
 2. Pakiet
-----------
+---------
 
 Interfejsy i klasy opisane powyżej oraz odpowiednie klasy wyjątków i zestaw testów weryfikujący poprawność implementacji, zostały udostępnione w pakiecie o nazwie [psr/log](https://packagist.org/packages/psr/log).
 

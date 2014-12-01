@@ -1,5 +1,5 @@
 Przewodnik po standardach formatowania
-==================
+======================================
 
 Poniższy przewodnik rozszerza i rozwija PSR-1 - podstawowe standardy formatowania.
 
@@ -21,7 +21,7 @@ Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO",
 
 
 1. Podsumowanie
------------
+---------------
 
 - Kod php MUSI stosować się do zasad podstawowych standardów kodowania PSR [[PSR-1]].
 
@@ -85,7 +85,7 @@ class Foo extends Bar implements FooInterface
 ```
 
 2. Zasady ogólne
-----------
+----------------
 
 ### 2.1 Podstawowe standardy formatowania
 
@@ -136,7 +136,7 @@ Stałe php `true`, `false` i `null` MUSZĄ także być zapisywane małymi litera
 
 
 3. Przestrzenie nazw i deklaracja Use
----------------------------------
+-------------------------------------
 
 Kiedy używamy deklaracji `namespace`, MUSI występować po niej jedna pusta linia.
 
@@ -163,7 +163,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 
 4. Klasy, właściwości i metody
------------------------------------
+------------------------------
 
 Termin "klasa" odnosi się poniżej do wszystkich klas, interfejsów i traitów.
 
@@ -356,7 +356,7 @@ $foo->bar(
 ```
 
 5. Instrukcje sterujące
----------------------
+-----------------------
 
 Ogólne zasady stylowania instrukcji sterujących:
 
@@ -486,7 +486,7 @@ try {
 ```
 
 6. Funkcje anonimowe
------------
+--------------------
 
 Funkcje anonimowe MUSZĄ być deklarowane ze znakiem spacji po słowie 
 kluczowym `function`, oraz ze spacją przed i po słowie kluczowym `use`.
@@ -593,7 +593,7 @@ $foo->bar(
 
 
 7. Wnioski
---------------
+----------
 
 Istnieje wiele rodzajów stylów i praktyk celowo pominiętych w powyższym przewodniku. 
 Mowa tutaj m.in. o:

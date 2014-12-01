@@ -1,5 +1,5 @@
 Podstawowe standardy formatowania
-=====================
+=================================
 
 Poniższa sekcja standardów zawiera reguły, które są uznawane za konieczne 
 dla zachowania wysokiego poziomu interoperacyjności kodu PHP pochodzącego z różnych źródeł.
@@ -13,7 +13,7 @@ Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", 
 
 
 1. Podsumowanie
------------
+---------------
 
 - Pliki z kodem php MUSZĄ korzystać z tagów `<?php` i `<?=`.
 
@@ -101,7 +101,7 @@ if (! function_exists('bar')) {
 
 
 3. Przestrzenie nazw oraz nazwy klas
-----------------------------
+------------------------------------
 
 Standardy tworzenia namespace'ów oraz klas MUSZĄ podążać za PSRami dotyczącymi autoloadingu: [[PSR-0], [PSR-4]].
 
@@ -136,7 +136,7 @@ class Vendor_Model_Foo
 ```
 
 4. Stałe klas, właściwości i metody
--------------------------------------------
+-----------------------------------
 
 Termin "klasa" odnosi się poniżej do wszystkich klas, interfejsów i traitów.
 

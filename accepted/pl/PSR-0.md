@@ -1,5 +1,5 @@
 Standardy autoloadingu
-====================
+======================
 
 > **Zdeprecjonowany** - Od dnia 2014-10-21 standard PSR-0 jest standardem zdeprecjonowanym. [PSR-4] jest od teraz rekomendowany jako alternatywa.
 
@@ -22,7 +22,7 @@ Znak `_` nie ma żadnego specjalnego znaczenia w nazwie namespace'a.
 * Wielkość znaków (duże/małe litery) w nazwie vendora, namespace'a czy klasy nie odgrywa żadnego znaczenia.
 
 Przykłady
---------
+---------
 
 * `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
 * `\Symfony\Core\Request` => `/path/to/project/lib/vendor/Symfony/Core/Request.php`
@@ -30,7 +30,7 @@ Przykłady
 * `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
 
 Znaki podkreślenia w nazwach namespace'ów i klas
------------------------------------------
+------------------------------------------------
 
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
@@ -40,7 +40,7 @@ W każdym momencie można wypróbować działanie powyższych standardów poprze
 będzie ona działać poprawnie już dla projektów opartych o wersję PHP 5.3.
 
 Przykładowa implementacja
-----------------------
+-------------------------
 
 Poniżej przedstawiono przykładową funkcję aby zademonstrować jak powinna wyglądać implementacja autloadingu na podstawie powyższych standardów.
 
@@ -65,7 +65,7 @@ spl_autoload_register('autoload');
 ```
 
 Implementacja SplClassLoader
------------------------------
+----------------------------
 
 W poniższym linku znajduje się klasa SplClassLoader implementująca powyższe standardy dotyczące autoloadingu klas. 
 Jest to aktualnie zalecane podejście do procesu ładowania klas dla projektów od wersji 5.3 PHP.

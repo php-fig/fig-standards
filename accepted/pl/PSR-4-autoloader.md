@@ -61,12 +61,12 @@ jakichkolwiek błędów, implementacja NIE POWINNA także zwracać wartości.
 Poniższa tabela przedstawia w pełni poprawne nazwy klas, prefiksy przestrzeni 
 nazw oraz bazowy katalog, które wskazują na ścieżkę do pliku.
 
-| W pełni poprawna nazwa klasy  | Prefiks przestrzeni nazw | Bazowy katalog          | Wynikowa ścieżka pliku
-| ----------------------------- |--------------------|--------------------------|-------------------------------------------
-| \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
-| \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
-| \Symfony\Core\Request         | Symfony\Core       | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
-| \Zend\Acl                     | Zend               | /usr/includes/Zend/      | /usr/includes/Zend/Acl.php
+| W pełni poprawna nazwa klasy  | Prefiks przestrzeni nazw | Bazowy katalog           | Wynikowa ścieżka pliku
+| ----------------------------- |--------------------------|--------------------------|------------------------------------------
+| \Acme\Log\Writer\File_Writer  | Acme\Log\Writer          | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
+| \Aura\Web\Response\Status     | Aura\Web                 | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
+| \Symfony\Core\Request         | Symfony\Core             | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
+| \Zend\Acl                     | Zend                     | /usr/includes/Zend/      | /usr/includes/Zend/Acl.php
 
 Aby przejrzeć przykładową implementację autloadera zgodnego ze specyfikacja, 
 można przejść do [pliku przykładu][]. NIE WOLNO uważać przykładowej implementacji 
