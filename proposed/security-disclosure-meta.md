@@ -65,6 +65,29 @@ outside authority for something as sensitive as security related topics.
 However due to defined locations and formats, it will become possible for
 other people to build centralized tools around this information.
 
+For further reference here is a list of security disclosure processes in
+various PHP and non-PHP projects:
+
+* http://symfony.com/doc/current/contributing/code/security.html
+* http://framework.zend.com/security/
+* http://www.yiiframework.com/security/
+* https://www.drupal.org/security
+* http://codex.wordpress.org/FAQ_Security
+* http://www.sugarcrm.com/page/sugarcrm-security-policy/en
+* http://typo3.org/teams/security/
+* http://cakephp.org/development
+* http://www.concrete5.org/developers/security/
+* http://developer.joomla.org/security.html
+* http://wiki.horde.org/SecurityManagement
+* http://www.revive-adserver.com/support/bugs/
+* http://magento.com/security
+* http://www.apache.org/security/committers.html
+* https://www.mozilla.org/en-US/about/governance/policies/security-group/bugs/
+* http://www.openbsd.org/security.html
+
+A summary of the differences and similarities can be found here:
+https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40StsJ
+
 5. People
 ---------
 
