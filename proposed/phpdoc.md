@@ -304,6 +304,12 @@ If a Description is provided, then it MUST be preceded by a Summary. Otherwise
 the Description will be considered the Summary, until the end of the Summary
 is reached.
 
+Because a Summary is comparable to a chapter title it is beneficial to use as 
+little formatting as possible. As such, contrary to the Description (see next 
+chapter), no recommendation is done to support a mark-up language. It is 
+explicitly left up to the implementing application whether it wants to support 
+this or not.
+
 ### 5.2. Description
 
 The Description is OPTIONAL but SHOULD be included when the
