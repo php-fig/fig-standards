@@ -1093,27 +1093,23 @@ associated 'Structural Elements'.
 
 #### Syntax
 
-    @license <<"SPDX identifier">|<url>> [label]
+    @license [<SPDX identifier>|URI] [name]
 
 #### Description
 
 The @license tag provides licensing information to the user, which is applicable
 to 'Structural Elements' and their child elements.
 
-The first parameter MUST be either a 'SPDX identifer', as defined by the
+The first parameter MUST be either a 'SPDX identifier', as defined by the
 [SPDX Open Source License Registry][SPDX], or a URL to a document containing
 the full license text.
 
-The second parameter MAY be the official name/label of the applicable license.
+The second parameter MAY be the official name of the applicable license.
 
-It is RECOMMENDED to only specify a 'SPDX identifier', and to apply @license
-tags to file-level 'PHPDoc' only, since multiple varying licences within a
+It is RECOMMENDED to only specify an 'SPDX identifier' and to apply @license
+tags to file-level 'PHPDoc' only, since multiple varying licenses within a
 single file may cause confusion with regard to which license applies at which
 time.
-
-It is NOT RECOMMENDED to specify the @license tag in the 'PHPDoc' of every file
-of a package, if the files are distributed as part of the package, and unless
-the applied license requires to do so.
 
 In case multiple licenses apply, there MUST be one @license tag per applicable
 license.
