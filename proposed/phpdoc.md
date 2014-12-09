@@ -43,11 +43,10 @@ PSR-5: PHPDoc
       8.19. @subpackage [deprecated]
       8.20. @throws
       8.21. @todo
-      8.22. @type
-      8.23. @typedef
-      8.24. @uses
-      8.25. @var [deprecated]
-      8.26. @version
+      8.22. @typedef
+      8.23. @uses
+      8.24. @var
+      8.25. @version
     Appendix A. Types
     Appendix B. Differences Compared With The De-facto PHPDoc Standard
 
@@ -105,7 +104,7 @@ interpreted as described in [RFC 2119][RFC2119].
   Example:
 
   ```php
-  /** @type int $int This is a counter. */
+  /** @var int $int This is a counter. */
   $int = 0;
 
 
@@ -121,7 +120,7 @@ interpreted as described in [RFC 2119][RFC2119].
      */
     class Foo
     {
-        /** @type string|null $title contains a title for the Foo with a max. length of 24 characters */
+        /** @var string|null $title contains a title for the Foo with a max. length of 24 characters */
         protected $title = null;
 
 
@@ -148,7 +147,7 @@ interpreted as described in [RFC 2119][RFC2119].
   is not considered to be a "Structural Element" but a Control Flow statement.
 
   ```php
-  /** @type \Sqlite3 $sqlite */
+  /** @var \Sqlite3 $sqlite */
   foreach($connections as $sqlite) {
       // there should be no docblock here
       $sqlite->open('/my/database/path');
@@ -350,10 +349,10 @@ same or the subsequent line and interpret it in the same way.
 So the following tags are semantically identical:
 
     /**
-     * @type string This is a description.
-     * @type string This is a
+     * @var string This is a description.
+     * @var string This is a
      *    description.
-     * @type string
+     * @var string
      *    This is a description.
      */
 
@@ -558,7 +557,7 @@ function test($parameter1, $parameter2)
 A DocBlock may also span a single line as shown in the following example.
 
 ```php
-/** @type \ArrayObject $array */
+/** @var \ArrayObject $array */
 public $array = null;
 ```
 
@@ -673,23 +672,19 @@ root, a function or method in a class or interface MUST inherit the following ta
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a constant or property in a class MUST inherit the following tags:
 
-* [@type](#822-type)
-
-A constant or property SHOULD inherit the following deprecated tags if supplied:
-
-* [@var](#824-var-deprecated)
+* [@var](#822-type)
 
 ## 7. Describing hashes
 
 The structure of a hash may be described using an "Inline PHPDoc" as part of a
-@type, @param or @return declaration or using the @struct tag in the Class'
+@var, @param or @return declaration or using the @struct tag in the Class'
 DocBlock.
 
-In either case each element of the hash is denoted with a @type declaration in
+In either case each element of the hash is denoted with a @var declaration in
 the "Inline PHPDoc". Using this tag it is possible to indicate type, name and
 purpose of the element.
 
-Please note that the variable name part of the @type tag still needs to be
+Please note that the variable name part of the @var tag still needs to be
 preceded by a dollar sign for readability and parsability of the tag.
 
 Example:
@@ -699,8 +694,8 @@ Example:
  * Initializes this class with the given options.
  *
  * @param array $options {
- *     @type boolean $required Whether this element is required
- *     @type string  $label    The display name for this element
+ *     @var boolean $required Whether this element is required
+ *     @var string  $label    The display name for this element
  * }
  */
 public function __construct(array $options = array())
@@ -986,7 +981,7 @@ function count()
 ### 8.7. @global
 
 TODO: The definition of this item should be discussed and whether it may or
-may not be superceded in part or in whole by the @type tag.
+may not be superceded in part or in whole by the @var tag.
 
 The @global tag is used to denote a global variable or its usage.
 
@@ -1148,7 +1143,7 @@ or inline
 The @link tag can be used to define a relation, or link, between the
 "Structural Element", or part of the description when used inline, to an URI.
 
-The URI MUST be complete and welformed as specified in RFC 2396.
+The URI MUST be complete and welformed as specified in [RFC 2396][RFC2396].
 
 The @link tag MAY have a description appended to indicate the type of relation
 defined by this occurrence.
@@ -1328,8 +1323,8 @@ an option array with 2 elements: 'required' and 'label'.
  * Initializes this class with the given options.
  *
  * @param array $options {
- *     @type boolean $required Whether this element is required
- *     @type string  $label    The display name for this element
+ *     @var boolean $required Whether this element is required
+ *     @var string  $label    The display name for this element
  * }
  */
 public function __construct(array $options = array())
@@ -1636,103 +1631,7 @@ function count()
 }
 ```
 
-### 8.22. @type
-
-You may use the @type tag to document the "Type" of the following
-"Structural Elements":
-
-* Constants, both class and global scope
-* Properties
-* Variables, both global and local scope
-
-#### Syntax
-
-    @type ["Type"] [element_name] [<description>]
-
-#### Description
-
-The @type tag defines which type of data is represented by a value of a
-Constant, Property or Variable.
-
-Each Constant or Property definition or Variable where the type is ambiguous
-or unknown SHOULD be preceded by a DocBlock containing the @type tag. Any
-other variable MAY be preceded with a DocBlock containing the @type tag.
-
-The @type tag MUST contain the name of the element it documents. An exception
-to this is when property declarations only refer to a single property. In this
-case the name of the property MAY be omitted.
-
-This is used when compound statements are used to define a series of Constants
-or Properties. Such a compound statement can only have one DocBlock while several
-items are represented.
-
-#### Examples
-
-```php
-/** @type int $int This is a counter. */
-$int = 0;
-
-// there should be no docblock here
-$int++;
-```
-
-Or:
-
-```php
-class Foo
-{
-  /** @type string|null Should contain a description */
-  protected $description = null;
-
-  public function setDescription($description)
-  {
-      // there should be no docblock here
-      $this->description = $description;
-  }
-}
-```
-
-Another example is to document the variable in a foreach explicitly; many IDEs
-use this information to help you with auto-completion:
-
-```php
-/** @type \Sqlite3 $sqlite */
-foreach($connections as $sqlite) {
-    // there should be no docblock here
-    $sqlite->open('/my/database/path');
-    <...>
-}
-```
-
-Even compound statements may be documented:
-
-```php
-class Foo
-{
-  /**
-   * @type string $name Should contain a description
-   * @type string $description Should contain a description
-   */
-  protected $name, $description;
-
-}
-```
-
-Or constants:
-
-```php
-class Foo
-{
-  /**
-   * @type string MY_CONST1 Should contain a description
-   * @type string MY_CONST2 Should contain a description
-   */
-  const MY_CONST1 = "1", MY_CONST2 = "2";
-
-}
-```
-
-### 8.23. @typedef
+### 8.22. @typedef
 
 Allows the author to define a custom type composed of one or more types that
 may be augmented with key definitions, properties or methods.
@@ -1834,12 +1733,12 @@ and properties of both the MockInterface and the DiContainer.
 
 ```
 @typedef array \Configuration {
-  @type string $setting1
-  @type string $setting2
+  @var string $setting1
+  @var string $setting2
 }
 ```
 
-### 8.24. @uses
+### 8.23. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1892,12 +1791,111 @@ function executeMyView()
 }
 ```
 
-### 8.25. @var [deprecated]
+### 8.24. @var
 
-The @var tag is **deprecated** in favor of `@type`. Please see the
-documentation for [@type](#822-type) for details of its usage.
+You may use the @var tag to document the "Type" of the following
+"Structural Elements":
 
-### 8.26. @version
+* Constants, both class and global scope
+* Properties
+* Variables, both global and local scope
+
+#### Syntax
+
+    @var ["Type"] [element_name] [<description>]
+
+#### Description
+
+The @var tag defines which type of data is represented by a value of a
+Constant, Property or Variable.
+
+Each Constant or Property definition or Variable where the type is ambiguous
+or unknown SHOULD be preceded by a DocBlock containing the @var tag. Any
+other variable MAY be preceded with a DocBlock containing the @var tag.
+
+The @var tag MUST contain the name of the element it documents. An exception
+to this is when property declarations only refer to a single property. In this
+case the name of the property MAY be omitted.
+
+This is used when compound statements are used to define a series of Constants
+or Properties. Such a compound statement can only have one DocBlock while several
+items are represented.
+
+#### Examples
+
+```php
+/** @var int $int This is a counter. */
+$int = 0;
+
+// there should be no docblock here
+$int++;
+```
+
+Or:
+
+```php
+class Foo
+{
+  /** @var string|null Should contain a description */
+  protected $description = null;
+
+  public function setDescription($description)
+  {
+      // there should be no docblock here
+      $this->description = $description;
+  }
+}
+```
+
+Another example is to document the variable in a foreach explicitly; many IDEs
+use this information to help you with auto-completion:
+
+```php
+/** @var \Sqlite3 $sqlite */
+foreach($connections as $sqlite) {
+    // there should be no docblock here
+    $sqlite->open('/my/database/path');
+    <...>
+}
+```
+
+Even compound statements may be documented:
+
+```php
+class Foo
+{
+  protected 
+      /**
+       * @var string Should contain a description
+       */
+      $name, 
+      /**
+       * @var string Should contain a description
+       */
+      $description;
+
+}
+```
+
+Or constants:
+
+```php
+class Foo
+{
+  const 
+      /**
+       * @var string Should contain a description
+       */
+      MY_CONST1 = "1", 
+      /**
+       * @var string Should contain a description
+       */
+      MY_CONST2 = "2";
+
+}
+```
+
+### 8.25. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
