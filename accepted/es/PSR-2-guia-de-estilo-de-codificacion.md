@@ -9,7 +9,7 @@ En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MU
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-0.md
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-1-basic-coding-standard.md
+[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-1-codificacion-estandar-basica.md
 
 
 1. Visión general
@@ -25,7 +25,7 @@ En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MU
 
 - Las llaves de apertura de las clases DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN ir en la línea siguiente al cuerpo de la clase.
 
-- Las llaves de apertura de los métodos DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN de ir en la línea siguiente al cuerpo del método.
+- Las llaves de apertura de los métodos DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN ir en la línea siguiente al cuerpo del método.
 
 - La visibilidad DEBE estar declarada en todas las propiedades y métodos; `abstract` y `final` DEBEN estar declaradas antes de la visibilidad; `static` DEBE estar declarada después de la visibilidad.
 

@@ -16,7 +16,7 @@ interpreted as described in [RFC 2119][].
 
 The word `implementor` in this document is to be interpreted as someone
 implementing the `LoggerInterface` in a log-related library or framework.
-Users of loggers are refered to as `user`.
+Users of loggers are referred to as `user`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
@@ -113,7 +113,7 @@ Users of loggers are refered to as `user`.
 
 - Similarly, using the `Psr\Log\LoggerTrait` only requires you to
   implement the generic `log` method. Note that since traits can not implement
-  interfaces, in this case you still have to `implement LoggerInterface`.
+  interfaces, in this case you still have to implement `LoggerInterface`.
 
 - The `Psr\Log\NullLogger` is provided together with the interface. It MAY be
   used by users of the interface to provide a fall-back "black hole"

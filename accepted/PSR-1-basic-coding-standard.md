@@ -106,7 +106,7 @@ if (! function_exists('bar')) {
 3. Namespace and Class Names
 ----------------------------
 
-Namespaces and classes MUST follow [PSR-0].
+Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
 
 This means each class is in a file by itself, and is in a namespace of at
 least one level: a top-level vendor name.

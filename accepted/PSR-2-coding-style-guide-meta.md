@@ -40,7 +40,7 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ```
 
-### 3.2 - Multi-line Arguments (10/17/2013)
+### 3.2 - Extending Multiple Interfaces (10/17/2013)
 
 When extending multiple interfaces, the list of `extends` should be treated the same as a list
 of `implements`, as declared in Section 4.1.
