@@ -2044,179 +2044,163 @@ or an instance of a class that is a (sub-)child to the given class.
 
 ### Keyword
 
-A keyword defining the purpose of this type. Not every element is determined
-by a class but still worthy of classification to assist the developer in
-understanding the code covered by the DocBlock.
+A keyword defining the purpose of this type. Not every element is determined by a class but still worthy of
+classification to assist the developer in understanding the code covered by the DocBlock.
 
-> Note: most of these keywords are allowed as class names in PHP and as
-> such are hard to distinguish from real classes. As such the keywords MUST
-> be lowercase, as most class names start with an uppercase first character,
-> and you SHOULD NOT use classes with these names in your code.
+**Note:**
+> Most of these keywords are allowed as class names in PHP and as such are hard to distinguish from real classes. As
+> such the keywords MUST be lowercase, as most class names start with an uppercase first character, and you SHOULD NOT
+> use classes with these names in your code.
 
-> There are more reasons to not name classes with the names of these
-> keywords but that falls beyond the scope of this specification.
+> There are more reasons to not name classes with the names of these keywords but that falls beyond the scope of this
+> specification.
 
 The following keywords are recognized by this PSR:
 
-1.  'string', the element to which this type applies is a string of
-    binary characters.
+1.  `string`, the element to which this type applies is a string of binary characters.
 
-2.  'integer' or 'int', the element to which this type applies is a whole
-    number or integer.
+2.  `integer` or `int`, the element to which this type applies is a whole number or integer.
 
-3.  'boolean' or 'bool', the element to which this type applies only has
-    state true or false.
+3.  `boolean` or `bool`, the element to which this type applies only has state `TRUE` or `FALSE`.
 
-4.  'float' or 'double', the element to which this type applies is a continuous,
-    or real, number.
+4.  `float` or `double`, the element to which this type applies is a continuous, or real, number.
 
-5.  'object', the element to which this type applies is the instance of an
-    undetermined class.
+5.  `object`, the element to which this type applies is the instance of an undetermined class.
 
-6.  'mixed', the element to which this type applies can be of any type as
-    specified here. It is not known on compile time which type will be used.
+6.  `mixed`, the element to which this type applies can be of any type as specified here. It is not known on compile
+    time which type will be used.
 
-7.  'array', the element to which this type applies is an array of values.
+7.  `array`, the element to which this type applies is an array of values.
 
-8.  'resource', the element to which this type applies is a resource per
-    the [definition of PHP][PHP_RESOURCE].
+8.  `resource`, the element to which this type applies is a resource per the [definition of PHP][PHP_RESOURCE].
 
-9.  'void', this type is commonly only used when defining the return type of a
-    method or function.
-    The basic definition is that the element indicated with this type does not
-    contain a value and the user should not rely on any retrieved value.
+9.  `void`, this type is commonly only used when defining the return type of a method or function.
 
-    For example:
+    The basic definition is that the element indicated with this type does not contain a value and the user should not
+    rely on any retrieved value.
 
-        /**
-         * @return void
-         */
-        function outputHello()
-        {
-            echo 'Hello world';
+    **Example 1:**
+    ```php
+    /**
+     * @return void
+     */
+    function outputHello()
+    {
+        echo 'Hello world';
+    }
+    ```
+
+    In the example above no return statement is specified and thus the return value is not determined.
+
+    **Example 2:**
+    ```php
+    /**
+     * @param boolean $hi when true 'Hello world' is echo-ed.
+     *
+     * @return void
+     */
+    function outputHello($quiet)
+    {
+        if ($quiet} {
+            return;
         }
+        echo 'Hello world';
+    }
+    ```
 
-    In the example above no return statement is specified and thus the return
-    value is not determined.
+    In this example the function contains a return statement without a given value. Because there is no actual value
+    specified, this also qualifies as type `void`.
 
-    Example 2:
+10. `null`, the element to which this type applies is a `NULL` value or, in technical terms, does not exist.
 
-        /**
-         * @param boolean $hi when true 'Hello world' is echo-ed.
-         *
-         * @return void
-         */
-        function outputHello($quiet)
-        {
-            if ($quiet} {
-                return;
-            }
-            echo 'Hello world';
+    A big difference compared to `void` is that this type is used in any situation where the described element may at
+    any given time contain an explicit `NULL` value.
+
+    **Example 1:**
+    ```php
+    /**
+     * @return null
+     */
+    function foo()
+    {
+        echo 'Hello world';
+        return null;
+    }
+    ```
+
+    This type is commonly used in conjunction with another type to indicate that it is possible that nothing is
+    returned.
+
+    **Example 2:**
+    ```php
+    /**
+     * @param boolean $create_new When true returns a new stdClass.
+     *
+     * @return stdClass|null
+     */
+    function foo($create_new)
+    {
+        if ($create_new) {
+            return new stdClass();
         }
+        return null;
+    }
+    ```
 
-    In this example the function contains a return statement without a given
-    value. Because there is no actual value specified, this also qualifies
-    as type 'void'.
+11. `callable`, the element to which this type applies is a pointer to a function call. This may be any type of callable
+    as defined in the PHP manual about [pseudo-types][PHP_PSEUDO] or the section on [callable][PHP_CALLABLE].
 
-10. 'null', the element to which this type applies is a NULL value or, in
-    technical terms, does not exist.
+12. `false` or `true`, the element to which this type applies will have the value `TRUE` or `FALSE`. No other value will
+    be returned from this element.
 
-    A big difference compared to void is that this type is used in any situation
-    where the described element may at any given time contain an explicit NULL
-    value.
+13. `self`, the element to which this type applies is of the same class as which the documented element is originally
+    contained.
 
-    Example:
+    **Example:**
 
-        /**
-         * @return null
-         */
-        function foo()
-        {
-            echo 'Hello world';
-            return null;
-        }
-
-    This type is commonly used in conjunction with another type to indicate that
-    it is possible that nothing is returned.
-
-    Example:
-
-        /**
-         * @param boolean $create_new When true returns a new stdClass.
-         *
-         * @return stdClass|null
-         */
-        function foo($create_new)
-        {
-            if ($create_new) {
-                return new stdClass();
-            }
-
-            return null;
-        }
-
-11. 'callable', the element to which this type applies is a pointer to a
-    function call. This may be any type of callable as defined in the PHP manual
-    about [pseudo-types][PHP_PSEUDO] or the section on [callable][PHP_CALLABLE].
-
-12. 'false' or 'true', the element to which this type applies will have
-    the value true or false. No other value will be returned from this
-    element.
-
-13. 'self', the element to which this type applies is of the same Class as
-    which the documented element is originally contained.
-
-    For example:
-
-        Method C() is contained in class A. The DocBlock states
-        that its return value is of type `self`. As such method C()
-        returns an instance of class A.
+    > Method *c* is contained in class *A*. The DocBlock states that its return value is of type `self`. As such method
+    > *c* returns an instance of class *A*.
 
     This may lead to confusing situations when inheritance is involved.
 
-    For example (previous example situation still applies):
+    **Example (previous example situation still applies):**
 
-        Class B extends Class A and does not redefine method C(). As such
-        it is possible to invoke method C() from class B.
+    > Class *B* extends class *A* and does not redefine method *c*. As such it is possible to invoke method *c* from
+    > class *B*.
 
-    In this situation ambiguity may arise as `self` could be interpreted as
-    either class A or B. In these cases `self` MUST be interpreted as being
-    an instance of the Class where the DocBlock containing the `self` type
-    is written.
+    In this situation ambiguity may arise as `self` could be interpreted as either class *A* or *B*. In these cases
+    `self` MUST be interpreted as being an instance of the class where the DocBlock containing the `self` type is
+    written.
 
-    In the examples above `self` MUST always refer to class A, since it is
-    defined with method C() in class A.
+    In the examples above `self` MUST always refer to class *A*, since it is defined with method *c* in class *A*.
 
-    > Due to the above nature it is RECOMMENDED for applications that
-    > collect and shape this information to show a list of child classes
-    > with each representation of the class. This would make it obvious
-    > for the user which classes are acceptable as type.
+    > Due to the above nature it is RECOMMENDED for applications that collect and shape this information to show a list
+    > of child classes with each representation of the class. This would make it obvious for the user which classes are
+    > acceptable as type.
 
-14. 'static', the element to which this type applies is of the same Class as
-    which the documented element is contained, or when encountered in a
-    subclass is of type of that subclass instead of the original class.
+14. `static`, the element to which this type applies is of the same class as which the documented element is contained,
+    or when encountered in a subclass is of type of that subclass instead of the original class.
 
-    This keyword behaves the same way as the 'static' keyword keyword (not
-    the static property or method modifier) as defined by PHP.
+    This keyword behaves the same way as the [keyword for late static binding][PHP_OOP5LSB] (not the static method,
+    property, nor variable modifier) as defined by PHP.
 
-15. '$this', the element to which this type applies is the same exact instance
-    as the current Class in the given context. As such this type is a stricter
-    version of 'static' as, in addition, the returned instance must not only
-    be of the same Class but also the same instance.
+15. `$this`, the element to which this type applies is the same exact instance as the current class in the given
+    context. As such this type is a stricter version of `static` as, in addition, the returned instance must not only be
+    of the same class but also the same instance.
 
-    This type is often used as return value for methods implementing the
-    [Fluent Interface][FLUENT] design pattern.
+    This type is often used as return value for methods implementing the [Fluent Interface][FLUENT] design pattern.
 
-[RFC2119]:      http://www.ietf.org/rfc/rfc2119.txt
-[RFC5234]:      http://www.ietf.org/rfc/rfc5234.txt
-[RFC2396]:      http://www.ietf.org/rfc/rfc2396.txt
+[RFC2119]:      https://tools.ietf.org/html/rfc2119
+[RFC5234]:      https://tools.ietf.org/html/rfc5234
+[RFC2396]:      https://tools.ietf.org/html/rfc2396
 [SEMVER2]:      http://www.semver.org
-[PHP_SUBSTR]:   http://nl.php.net/manual/en/function.substr.php
-[PHP_RESOURCE]: http://www.php.net/manual/en/language.types.resource.php
-[PHP_PSEUDO]:   http://php.net/manual/en/language.pseudo-types.php
-[PHP_CALLABLE]: http://php.net/manual/en/language.types.callable.php
-[SPDX]:         http://www.spdx.org/licenses
-[DEFACTO]:      http://www.phpdoc.org/docs/1.4/index.html
-[PHPDOC.ORG]:   http://www.phpdoc.org
-[FLUENT]:       http://en.wikipedia.org/wiki/Fluent_interface
-[COLLECTION]:   http://en.wikipedia.org/wiki/Collection_(abstract_data_type)
+[PHP_SUBSTR]:   https://php.net/manual/function.substr.php
+[PHP_RESOURCE]: https://php.net/manual/language.types.resource.php
+[PHP_PSEUDO]:   https://php.net/manual/language.pseudo-types.php
+[PHP_CALLABLE]: https://php.net/manual/language.types.callable.php
+[PHP_OOP5LSB]:  https://php.net/manual/language.oop5.late-static-bindings.php
+[SPDX]:         https://www.spdx.org/licenses
+[DEFACTO]:      http://www.phpdoc.org/docs/latest/index.html
+[PHPDOC.ORG]:   http://www.phpdoc.org/
+[FLUENT]:       https://en.wikipedia.org/wiki/Fluent_interface
+[COLLECTION]:   https://en.wikipedia.org/wiki/Collection_(abstract_data_type)
