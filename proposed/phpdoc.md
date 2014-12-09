@@ -855,7 +855,7 @@ deprecated and are to be removed in a future version.
 
 #### Syntax
 
-    @deprecated [<"Semantic Version">] [<description>]
+    @deprecated [<"Semantic Version">][:<"Semantic Version">] [<description>]
 
 #### Description
 
@@ -863,22 +863,47 @@ The @deprecated tag declares that the associated 'Structural elements' will
 be removed in a future version as it has become obsolete or its usage is
 otherwise not recommended.
 
-This tag MAY also contain a version number up till which it is guaranteed to be
-included in the software. Starting with the given version will the function be
-removed or may be removed without further notice.
+This tag MAY specify up to two version numbers in the sense of a version number
+range:
 
-It is RECOMMENDED to provide an additional description stating why the
-associated element is deprecated.
-If it is superceded by another method it is RECOMMENDED to add a @see tag in the
-same 'PHPDoc' pointing to the new element.
+The first version number, referred to as the 'starting version', denotes the
+version in which the associated element has been deprecated.
+
+The second version number, referred to as the 'ending version', denotes the
+version in which the associated element is scheduled for removal.
+
+If an 'ending version' has been specified, the associated 'Structural elements'
+MAY no longer exist in the 'ending version' and MAY be removed without further
+notice in that version or a later version, but MUST exist in all prior versions.
+
+It is RECOMMENDED to specify both a 'starting version' and an 'ending version'.
+In this case, the two version numbers MUST be separated by a colon (`:`) without
+white-space in between.
+
+The 'starting version' MAY be omitted. In this case, the 'ending version' MUST
+be preceded by a colon.
+
+This tag MAY provide an additional description stating why the associated
+element is deprecated.
+
+If the associated element is superseded by another it is RECOMMENDED to add a
+@see tag in the same 'PHPDoc' pointing to the new element.
 
 #### Examples
 
 ```php
 /**
  * @deprecated
+ *
+ * @deprecated 1.0.0:2.0.0
+ * @see \New\Recommended::method()
+ *
  * @deprecated 1.0.0
+ *
+ * @deprecated :2.0.0
+ *
  * @deprecated No longer used by internal code and not recommended.
+ *
  * @deprecated 1.0.0 No longer used by internal code and not recommended.
  */
 ```
