@@ -1093,29 +1093,39 @@ associated 'Structural Elements'.
 
 #### Syntax
 
-    @license [<url>] [name]
+    @license <<"SPDX identifier">|<url>> [label]
 
 #### Description
 
-The @license tag provides the user with the name and URL of the license that is
-applicable to 'Structural Elements' and any of their child elements.
+The @license tag provides licensing information to the user, which is applicable
+to 'Structural Elements' and their child elements.
 
-It is NOT RECOMMENDED to apply @license tags to any 'PHPDoc' other than
-file-level PHPDocs as this may cause confusion which license applies at which
+The first parameter MUST be either a 'SPDX identifer', as defined by the
+[SPDX Open Source License Registry][SPDX], or a URL to a document containing
+the full license text.
+
+The second parameter MAY be the official name/label of the applicable license.
+
+It is RECOMMENDED to only specify a 'SPDX identifier', and to apply @license
+tags to file-level 'PHPDoc' only, since multiple varying licences within a
+single file may cause confusion with regard to which license applies at which
 time.
 
-Whenever multiple licenses apply there MUST be one @license tag per applicable
-license.
+It is NOT RECOMMENDED to specify the @license tag in the 'PHPDoc' of every file
+of a package, if the files are distributed as part of the package, and unless
+the applied license requires to do so.
 
-Instead of providing a URL an identifier as identified in the
-[SPDX Open Source License Registry][SPDX] MAY be provided
-and this SHOULD be interpreted as if having the URL mentioned in the registry.
+In case multiple licenses apply, there MUST be one @license tag per applicable
+license.
 
 #### Examples
 
 ```php
 /**
  * @license MIT
+ *
+ * @license GPL-2.0+
+ *
  * @license http://www.spdx.org/licenses/MIT MIT License
  */
 ```
