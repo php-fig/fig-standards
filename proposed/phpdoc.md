@@ -99,7 +99,8 @@ interpreted as described in [RFC 2119][RFC2119].
   * variables, both local and global scope.
 
   It is RECOMMENDED to precede a "Structural Element" with a DocBlock with its
-  definition and not with each usage.
+  definition and not with each usage. It is common practice to have the DocBlock
+  precede a Structural Element but it MAY also be separated by a an empty line.
 
   Example:
 
