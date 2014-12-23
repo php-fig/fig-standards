@@ -97,7 +97,7 @@ https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40Sts
 
 ### 5.2 Sponsors
 
-* Larry Garfeild (Drupal)
+* Larry Garfield (Drupal)
 * Korvin Szanto (concrete5)
 
 ### 5.3 Coordinator
@@ -115,3 +115,4 @@ https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40Sts
 [2]: https://github.com/FriendsOfPHP/security-advisories
 
 Initial discussion: https://groups.google.com/d/msg/php-fig/45AIj5bPHJ4/ThERB43j-u8J
+Discussion: https://groups.google.com/forum/#!forum/php-fig-psr-9-discussion
