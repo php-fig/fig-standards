@@ -1,77 +1,60 @@
 # Autoloader
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+文書内記載されている "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY" 及び "OPTIONAL" は、[RFC 2119](http://tools.ietf.org/html/rfc2119)で説明される趣旨で解釈してください。
+
+## 1. 概要
+
+このPSRは、ファイルパスから、クラスをオートローディングするための仕様について記述します。
+これは、[PSR-0][]を含む、その他のオートロードの仕様と完全に相互運用可能であり、その他の仕様に追加して使用することができます。
+また、このPSRは、この仕様に従ってオートロードされるファイルの配置についても記述しています。
+
+## 2. 仕様
 
 
-## 1. Overview
-
-This PSR describes a specification for [autoloading][] classes from file
-paths. It is fully interoperable, and can be used in addition to any other
-autoloading specification, including [PSR-0][]. This PSR also describes where
-to place files that will be autoloaded according to the specification.
+1. 「クラス」という用語は、クラス、インターフェース, トレイト、および他の類似の構造を指します。
 
 
-## 2. Specification
-
-1. The term "class" refers to classes, interfaces, traits, and other similar
-   structures.
-
-2. A fully qualified class name has the following form:
+2. 完全修飾クラス名は次のような形式になります。
 
         \<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>
 
-    1. The fully qualified class name MUST have a top-level namespace name,
-       also known as a "vendor namespace".
+    1. 完全修飾クラス名は、「ベンダーの名前空間」として知られているトップレベルの名前空間名を持っている必要があります。(MUST)
 
-    2. The fully qualified class name MAY have one or more sub-namespace
-       names.
+    2. 完全修飾クラス名は、1つ以上のサブ名前空間名を持つことがあります。(MAY)
 
-    3. The fully qualified class name MUST have a terminating class name.
+    3. 完全修飾クラス名は終端クラス名を持つ必要があります。(MUST)
 
-    4. Underscores have no special meaning in any portion of the fully
-       qualified class name.
+    4. アンダースコアは、完全修飾クラス名のいずれの部分にも特別な意味を持ちません。
 
-    5. Alphabetic characters in the fully qualified class name MAY be any
-       combination of lower case and upper case.
+    5. 英字は小文字と大文字の任意の組み合わせでかまいません。(MUST)
 
-    6. All class names MUST be referenced in a case-sensitive fashion.
+    6. すべてのクラス名は大文字と小文字を区別して参照する必要があります。(MUST)
 
-3. When loading a file that corresponds to a fully qualified class name ...
+3. 完全修飾クラス名に対応するファイルをロードする場合、
 
-    1. A contiguous series of one or more leading namespace and sub-namespace
-       names, not including the leading namespace separator, in the fully
-       qualified class name (a "namespace prefix") corresponds to at least one
-       "base directory".
+    1. 完全修飾クラス名の名前空間の先頭とそれに続くサブ名前空間名の連続(名前空間プレフィックス)が「ベースディレクトリ」に対応します。
+  
+    2. 「名前空間プレフィックス」の後の連続したサブ名前空間名は、ベースディレクトリ内のサブディレクトリに対応します。名前空間のセパレータは、ディレクトリのセパレータを表し、サブディレクトリ名は、サブ名前空間名の大文字小文字と一致しなければなりません。
 
-    2. The contiguous sub-namespace names after the "namespace prefix"
-       correspond to a subdirectory within a "base directory", in which the
-       namespace separators represent directory separators. The subdirectory
-       name MUST match the case of the sub-namespace names.
-
-    3. The terminating class name corresponds to a file name ending in `.php`.
-       The file name MUST match the case of the terminating class name.
-
-4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
-   of any level, and SHOULD NOT return a value.
+    3. 終端クラス名は .php で終わるファイル名に対応します。ファイル名は、終端クラス名の大文字小文字と一致しなければなりません。
 
 
-## 3. Examples
+4. オートローダの実装では、任意のレベルのエラーを発生させてはならなず、例外もスローしてはなりません。またその値も返すべきではありません。
 
-The table below shows the corresponding file path for a given fully qualified
-class name, namespace prefix, and base directory.
 
-| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Resulting File Path
+## 3. 例
+
+以下の表は、与えられた完全修飾クラス名、名前空間プレフィックス、およびベースディレクトリに対応するファイルパスを示しています。
+
+| 完全修飾クラス名    | 名前空間プレフィックス   | ベースディレクトリ           | ファイルパス
 | ----------------------------- |--------------------|--------------------------|-------------------------------------------
 | \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
 | \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
 | \Symfony\Core\Request         | Symfony\Core       | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
 | \Zend\Acl                     | Zend               | /usr/includes/Zend/      | /usr/includes/Zend/Acl.php
 
-For example implementations of autoloaders conforming to the specification,
-please see the [examples file][]. Example implementations MUST NOT be regarded
-as part of the specification and MAY change at any time.
+仕様に準拠したオートローダーの実装例については、[examples file][] を参照してください。
+実装例は仕様の一部とはみなされず、任意のタイミングで変更されることがあります。
 
 [autoloading]: http://php.net/autoload
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
