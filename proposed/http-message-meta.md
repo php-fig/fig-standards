@@ -111,7 +111,7 @@ specifically the context of each (client- vs. server-side). These divisions are
 partly inspired by existing PHP usage, but also by other languages such as
 Ruby, Python, Go, Node, etc.
 
-#### Why are there header methods on messages rather than in a header bag?
+### Why are there header methods on messages rather than in a header bag?
 
 Moving headers to a "header bag" breaks the
 [Law of Demeter](http://en.wikipedia.org/wiki/Law_of_Demeter) and exposes the
@@ -124,7 +124,7 @@ internal implementation of how a message manages its headers, and has a
 side-effect that messages are no longer aware of changes to their headers. This
 can lead to messages entering into an invalid or inconsistent state.
 
-#### Mutability of messages
+### Mutability of messages
 
 The proposal models "context-specific" mutability. This means that a message is mutable based on its context. For example:
 
@@ -218,7 +218,7 @@ like `isReadable()`, `isWritable()`, etc. This approach is used by Python,
 [Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html),
 [Node](http://nodejs.org/api/stream.html), and likely others.
 
-#### Rationale for IncomingRequestInterface
+### Rationale for IncomingRequestInterface
 
 The `OutgoingRequestInterface`, `IncomingResponseInterface`, and
 `OutgoingResponseInterface`, have essentially 1:1 correlations with the request
@@ -260,7 +260,7 @@ attributes. The assumption is that values either (a) may be injected at
 instantiation from superglobals, and (b) should not change over the course of
 the incoming request.
 
-#### What about "special" header values?
+### What about "special" header values?
 
 A number of header values contain unique representation requirements which can
 pose problems both for consumption as well as generation; in particular, cookies
@@ -278,6 +278,33 @@ Examples of this practice already exist in libraries such as
 [aura/accept](https://github.com/pmjones/Aura.Accept). So long as the object
 has functionality for casting the value to a string, these objects can be
 used to populate the headers of an HTTP message.
+
+### Why is the URL absolute for clients, but relative for servers?
+
+The request for a client must be self-encapsulating; in other words, it should
+contain all the necessary information for a client to be able to send it. As
+such, the URL must be absolute: it must contain the URI scheme, host, and port,
+in addition to any path information or query string arguments.
+
+The situation on the server side is quite different. The scheme, host, and port
+are usually available (or computable) in the request environment (in the
+proposal, the server parameters). In equivalent implementations in other
+languages -- Python's WSGI and Ruby's Rack -- the "request" contains
+`PATH_INFO` and `QUERY_STRING` as distinct members, and all other members may
+be computed or retrieved from other environment variables, similar to PHP. Node
+stores the incoming request URL as the combination of path information and
+query string - and, again, the scheme, host, and port are either discoverable
+in the request or as part of the application.
+
+In the HTTP specification, you can use either an "origin-form" or an
+"absolute-form" for the request URL in the request line; the latter is an
+absolute URI, while the former is just the path information and query string
+arguments. The former (origin-form) is also what is typically sent by clients,
+and reflects real-world usage.
+
+For consistency both of use as well as with other implementations and the HTTP
+specification as actually used, the URL returned by an `IncomingRequestInterface`
+will be the path information, plus any query string arguments, if present.
 
 5. People
 ---------
