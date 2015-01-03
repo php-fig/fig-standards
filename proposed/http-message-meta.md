@@ -284,14 +284,15 @@ used to populate the headers of an HTTP message.
 
 ### 5.1 Editor(s)
 
-* Michael Dowling
 * Matthew Weier O'Phinney
 
 ### 5.2 Sponsors
 
-* Phil Sturgeon (coordinator)
-* Beau Simensen
+* Paul M. Jones
+* Beau Simensen (coordinator)
 
 ### 5.3 Contributors
 
+* Michael Dowling
+* Phil Sturgeon
 * Chris Wilkinson
