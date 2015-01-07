@@ -339,50 +339,54 @@ interface RequestInterface extends MessageInterface
     public function setMethod($method);
 
     /**
-     * Retrieves the base request URL.
+     * Retrieves the absolute URI.
      *
-     * The base URL consists of:
+     * An absolute URI consists of minimally scheme and host, but can also
+     * contain:
      *
-     * - scheme
-     * - authentication (if any)
-     * - server name/host
+     * - authentication (user/pass) if provided
      * - port (if non-standard)
+     * - path (if any)
+     * - query string (if present)
+     * - fragment (if present)
      *
-     * This method is provided for convenience, particularly when considering
-     * server-side requests, where data such as the scheme and server name may
-     * need to be computed from more than one environmental variable.
+     * If either of the scheme or host are not present, this method MUST return
+     * null.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return string Returns the base URL as a string. The URL MUST include
-     *     the scheme and host; if the port is non-standard for the scheme,
-     *     the port MUST be included; authentication data MAY be provided.
+     * @return string|null Returns the absolute URL as a string. The URL MUST
+     *     include the scheme and host; if the port is non-standard for the
+     *     scheme, the port MUST be included; authentication data MAY be
+     *     provided. If either host or scheme are missing, this method MUST
+     *     return null.
      */
-    public function getBaseUrl();
+    public function getAbsoluteUri();
 
     /**
-     * Sets the base request URL.
+     * Sets the absolute URI of the request.
      *
-     * The base URL MUST be a string, and MUST include the scheme and host.
+     * The absolute URI MUST be a string, and MUST include the scheme and host.
      *
      * If the port is non-standard for the scheme, the port MUST be provided.
      *
      * Authentication data MAY be provided.
      *
-     * If path, query string, or URL fragment are provided they SHOULD be
-     * stripped; optionally, an error MAY be raised in such situations.
+     * Path, query string, and fragment are optional.
+     *
+     * When setting the absolute URI, the url (see getUrl() and setUrl()) MUST
+     * be updated.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @param string $url Base request URL.
+     * @param string $uri Absolute request URI.
      * @return void
-     * @throws \InvalidArgumentException If the URL is invalid.
+     * @throws \InvalidArgumentException If the URI is invalid.
      */
-    public function setBaseUrl($url);
+    public function setAbsoluteUri($uri);
 
     /**
      * Retrieves the request URL.
      *
-     * The request URL is the same value as REQUEST_URI: the path and query
-     * string ONLY.
+     * The request URL is the path and query string ONLY.
      *
      * @link http://tools.ietf.org/html/rfc7230#section-5.3
      * @return string Returns the URL as a string. The URL MUST be an
@@ -396,6 +400,9 @@ interface RequestInterface extends MessageInterface
      * The URL MUST be a string. The URL SHOULD be an origin-form (path + query
      * string) per RFC 7230 section 5.3; if other URL parts are present, the
      * method MUST raise an exception OR remove those parts.
+     *
+     * When setting the URL, the absolute URI (see getAbsoluteUri() and
+     * setAbsoluteUri()) MUST be updated.
      *
      * @link http://tools.ietf.org/html/rfc7230#section-5.3
      * @param string $url Request URL, with path and optionally query string.
