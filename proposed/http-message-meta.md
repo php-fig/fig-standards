@@ -176,6 +176,7 @@ fails to address many real-world scenarios:
   that body content parameters must be mutable.
 - Cookie encryption, while an arguable practice, is very common in modern
   frameworks. For the practice to work, the cookie data must be mutable.
+- Streams, per definition, cannot be immutable.
 
 Cookies, query string arguments, and body parameters can always be
 re-calculated from sources such as the `$_SERVER` superglobal, request content
