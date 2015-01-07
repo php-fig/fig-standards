@@ -276,7 +276,7 @@ interface MessageInterface
     /**
      * Gets the body of the message.
      *
-     * @return StreamableInterface|null Returns the body, or null if not set.
+     * @return StreamableInterface Returns the body as a stream.
      */
     public function getBody();
 
