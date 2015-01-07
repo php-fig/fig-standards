@@ -490,6 +490,11 @@ interface ServerRequestInterface extends RequestInterface
      *
      * Retrieves the deserialized query string arguments, if any.
      *
+     * Note: the query params might not be in sync with the URL or server
+     * params. If you need to ensure you are only getting the original
+     * values, you may need to parse the composed URL or the `QUERY_STRING`
+     * composed in the server params.
+     *
      * @return array
      */
     public function getQueryParams();
@@ -504,6 +509,9 @@ interface ServerRequestInterface extends RequestInterface
      * MUST be compatible with what PHP's `parse_str()` would return for
      * purposes of how duplicate query parameters are handled, and how nested
      * sets are handled.
+     *
+     * Setting query string arguments MUST NOT change the URL stored by the
+     * request, nor the values in the server params.
      *
      * @param array $query Array of query string arguments, typically from
      *     $_GET.
