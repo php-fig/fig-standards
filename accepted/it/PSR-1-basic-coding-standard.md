@@ -3,16 +3,16 @@ Standard elementari per la scrittura del codice
 
 Questa sezione dello standard contiene quelli che dovrebbero essere considerati
 elementi standard per la scrittura del codice, necessari per garantire un alto
-livello di interoperabilità tra parti di codice PHP condivise.
+livello di interoperabilità tecnica tra parti di codice PHP condivise.
 
 Le parole "DEVE/DEVONO/NECESSARIO(I)" ("MUST", "SHALL" O "REQUIRED"),
 "NON DEVE/NON DEVONO" ("MUST NOT" O "SHALL NOT"), "DOVREBBE/DOVREBBERO/RACCOMANDATO(I)"
 ("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUO'/POSSONO" ("MAY") e
 "OPZIONALE" ("OPTIONAL") in questo documento devono essere interpretate come
-descritto nella [RFC 2119][].
+descritto nella [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/it/PSR-0.md
 
 
 1. Panoramica
@@ -26,11 +26,11 @@ descritto nella [RFC 2119][].
   *o* causare effetti collaterali (es. generare output, cambiare le impostazioni .ini, etc.)
   ma NON DOVREBBERO fare entrambe le cose.
 
-- I namespace e i nomi delle classi DEVONO seguire il [PSR-0][].
+- I namespace e i nomi delle classi DEVONO seguire un PSR di "autoloading": [[PSR-0], [PSR-4]].
 
 - I nomi delle classi DEVONO essere dichiarati in `StudlyCaps`.
 
-- Le costanti di classe DEVONO  essere dichiarate tutte maiuscole con underscore come separatore.
+- Le costanti di classe DEVONO essere dichiarate tutte maiuscole con underscore come separatore.
 
 - I nomi dei metodi DEVONO essere dichiarati in `camelCase`.
 
@@ -45,7 +45,7 @@ dei tag short-echo `<?= ?>`; NON DEVONO essere usate altre varianti dei tag.
 
 ### 2.2. Codifica dei caratteri
 
-Per il codice PHP si DEVE usare soltanto UTF-8 senza BOM.
+Il codice PHP DEVE usare soltanto UTF-8 senza BOM.
 
 ### 2.3. Effetti collaterali
 
@@ -107,13 +107,13 @@ if (! function_exists('bar')) {
 3. Namespace e Nomi delle Classi
 ----------------------------
 
-I Namespace e i Nomi delle Classi DEVONO seguire il [PSR-0][].
+I namespace e i nomi delle classi DEVONO seguire un PSR di "autoloading": [[PSR-0], [PSR-4]].
 
 Questo significa che ogni classe deve essere contenuta in un singolo file
 e il suo namespace deve essere di almeno un livello: il primo livello del
 nome del vendor.
 
-I Nomi delle Classi DEVONO essere dichiarati in `StudlyCaps`.
+I nomi delle classi DEVONO essere dichiarati in `StudlyCaps`.
 
 Il codice scritto per PHP 5.3 e versioni successive DEVE usare namespace formali.
 
