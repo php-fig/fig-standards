@@ -16,7 +16,7 @@ Para propor uma recomendação de padrão (PSR):
 adicione a PSR em `proposed/`, faça o push do branch para o Github e envie
 um pull request; ou,
 
-- crie um ticket para iniciar uma discussão no Github; or,
+- crie um ticket para iniciar uma discussão no Github; ou,
 
 - começe uma conversa na [lista de e-mails][].
 
