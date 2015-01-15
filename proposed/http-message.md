@@ -104,7 +104,7 @@ Note: Not all header values can be concatenated using a comma (e.g.,
 `MessageInterface`-based classes SHOULD rely on the `getHeaderAsArray()` method
 for retrieving such multi-valued headers.
 
-### 1.2 Streams
+### 1.3 Streams
 
 HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
 message can be very small or extremely large. Attempting to represent the body

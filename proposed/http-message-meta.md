@@ -124,6 +124,21 @@ internal implementation of how a message manages its headers, and has a
 side-effect that messages are no longer aware of changes to their headers. This
 can lead to messages entering into an invalid or inconsistent state.
 
+#### Why are header values stored as arrays?
+
+RFC7230 indicates that headers MAY have multiple values; in some cases, this is
+accomplished via comma-separated values, and in others, by emitting multiple
+headers of the same name. Common headers with multiple values include `Accept`,
+`Cookie`, and `Set-Cookie`.
+
+Because multiple values may be present, and in order to ensure consistency, this
+proposal mandates header values as arrays when considering header return values.
+The consumer may then decide how to represent/consume them (e.g., using
+`array_reduce()`, or `implode()`, or emitting one at a time via `header()`).
+Having a consistent return value ensures predictability when consuming headers,
+preventing the need for conditional checking of the values when working with
+them.
+
 #### Mutability of messages
 
 The proposal models "context-specific" mutability. This means that a message is mutable based on its context. For example:
