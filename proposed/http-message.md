@@ -2,15 +2,59 @@
 =======================
 
 This document describes common interfaces for representing HTTP messages as
-described in [RFC 7230] and [RFC 7231].
+described in [RFC 7230](http://tools.ietf.org/html/rfc7230) and
+[RFC 7231](http://tools.ietf.org/html/rfc7231), and URIs for use with HTTP
+messages as described in [RFC 3986](http://tools.ietf.org/html/rfc3986).
+
+HTTP messages are the foundation of web development. Web browsers and HTTP
+clients such as cURL create HTTP request messages that are sent to a web server,
+which provides an HTTP response message. Server-side code receives an HTTP
+request message, and returns an HTTP response message.
+
+HTTP messages are typically abstracted from the end-user consumer, but as
+developers, we typically need to know how they are structured and how to
+access or manipulate them in order to perform our tasks, whether that might be
+making a request to an HTTP API, or handling an incoming request.
+
+Every HTTP request message has a specific form:
+
+```http
+POST /path HTTP/1.1
+Host: example.com
+
+foo=bar&baz=bat
+```
+
+The first line of a request is the "request line", and contains, in order, the
+HTTP request method, the request target (usually either an absolute URI or a
+path on the web server), and the HTTP protocol version. This is followed by one
+or more HTTP headers, an empty line, and the message body.
+
+HTTP response messages have a similar structure:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/plain
+
+This is the response body
+```
+
+The first line is the "status line", and contains, in order, the HTTP protocol
+version, the HTTP status code, and a "reason phrase," a human-readable
+description of the status code. Just like the request message, this is then
+followed by one or more HTTP headers, and empty line, and the message body.
+
+The interfaces described in this document are abstractions around HTTP messages
+and the elements composing them.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119].
+interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-[RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
-[RFC 7230]: http://www.ietf.org/rfc/rfc7230.txt
-[RFC 7231]: http://www.ietf.org/rfc/rfc7231.txt
+- RFC 2119: http://www.ietf.org/rfc/rfc2119.txt
+- RFC 7230: http://www.ietf.org/rfc/rfc7230.txt
+- RFC 7231: http://www.ietf.org/rfc/rfc7231.txt
+- RFC 3986: http://www.ietf.org/rfc/rfc3986.txt
 
 1. Specification
 ----------------
@@ -18,39 +62,13 @@ interpreted as described in [RFC 2119].
 ### 1.1 Messages
 
 An HTTP message is either a request from a client to a server or a response from
-a server to a client. This specification defines two pairs of interfaces for
-HTTP messages based on context:
+a server to a client. This specification defines interfaces for the HTTP messages
+`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
 
-- Client-Side (i.e., making an HTTP request from PHP):
-  - `Psr\Http\Message\OutgoingRequestInterface`
-  - `Psr\Http\Message\IncomingResponseInterface`
-- Server-Side (i.e., processing a request made to a resource handled by PHP)
-  - `Psr\Http\Message\IncomingRequestInterface`
-  - `Psr\Http\Message\OutgoingResponseInterface`
-
-All of the above messages extend a base `Psr\Http\Message\MessageInterface`,
-which defines accessors for properties common across all implementations. While
-`Psr\Http\Message\MessageInterface` MAY be implemented directly, implementors are
-encouraged to implement one or both pairs of request/response interfaces, and
-consumers are encouraged to typehint on the relevant request/response interfaces.
-
-Interfaces are segregated by context. For HTTP client applications, the request is
-mutable, to allow consumers to incrementally build the request before sending it; the
-response, however, is immutable, as it is the product of an operation. Similarly, for
-server-side applications, the request is immutable and represents the specifics
-of the HTTP request made to the server; the response, however, will be incrementally
-built by the application prior to sending it back to the client.
-
-The `Psr\Http\Message\IncomingRequestInterface`, since it represents the incoming
-PHP request environment, is intended to model the various PHP superglobals.
-This practice helps reduce coupling to the superglobals by consumers, and
-encourages and promotes the ability to test request consumers. The interface
-purposely does not provide mutators for the various superglobal properties to
-encourage treating them as immutable. However, it does provide one mutable
-property, "attributes", to allow consumers the ability to introspect,
-decompose, and match the request against application-specific rules (such as
-path matching, cookie decryption, etc.). As such, the request can also provide
-messaging between multiple request consumers.
+Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
+`Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
+implemented directly, implementors SHOULD implement
+`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
 
 From here forward, the namespace `Psr\Http\Message` will be omitted when
 referring to these interfaces.
@@ -66,14 +84,15 @@ retrieving the "FoO" header. Similarly, setting the "Foo" header will overwrite
 any previously set "foo" header.
 
 ```php
-$message->setHeader('foo', 'bar');
+$message = $message->withHeader('foo', 'bar');
+
 echo $message->getHeader('foo');
 // Outputs: bar
 
 echo $message->getHeader('FOO');
 // Outputs: bar
 
-$message->setHeader('fOO', 'baz');
+$message = $message->withHeader('fOO', 'baz');
 echo $message->getHeader('foo');
 // Outputs: baz
 ```
@@ -84,27 +103,28 @@ In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
 an instance of a ``MessageInterface`` as an array or string. Use the
 `getHeader()` method to retrieve a header value as a string containing all
-header values of a header by name concatenated with a comma.
-Use `getHeaderAsArray()` to retrieve an array of all the header values for a
-particular header by name.
+header values of a case-insensitive header by name concatenated with a comma.
+Use `getHeaderLines()` to retrieve an array of all the header values for a
+particular case-insensitive header by name.
 
 ```php
-$message->setHeader('foo', 'bar');
-$message->addHeader('foo', 'baz');
+$message = $message
+    ->setHeader('foo', 'bar')
+    ->addHeader('foo', 'baz');
 
 $header = $message->getHeader('foo');
 // $header contains: 'bar, baz'
 
-$header = $message->getHeaderAsArray('foo');
-// $header contains: ['bar', 'baz']
+$header = $message->getHeaderLines('foo');
+// ['bar', 'baz']
 ```
 
 Note: Not all header values can be concatenated using a comma (e.g.,
 `Set-Cookie`). When working with such headers, consumers of
-`MessageInterface`-based classes SHOULD rely on the `getHeaderAsArray()` method
+`MessageInterface`-based classes SHOULD rely on the `getHeaderLines()` method
 for retrieving such multi-valued headers.
 
-### 1.2 Streams
+### 1.3 Streams
 
 HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
 message can be very small or extremely large. Attempting to represent the body
@@ -127,10 +147,77 @@ collaborators to determine if a stream is capable of their requirements.
 Each stream instance will have various capabilities: it can be read-only,
 write-only, or read-write. It can also allow arbitrary random access (seeking
 forwards or backwards to any location), or only sequential access (for
-example in the case of a socket or pipe).
+example in the case of a socket, pipe, or callback-based stream).
 
 Finally, `StreamableInterface` defines a `__toString()` method to simplify
 retrieving or emitting the entire body contents at once.
+
+### 1.4 Request Targets and URIs
+
+Per RFC 7230, request messages contain a "request-target" as the second segment
+of the request line. The request target can be one of the following forms:
+
+- **origin-form**, which consists of the path, and, if present, the query
+  string; this is often referred to as a relative URL. Messages as transmitted
+  over TCP typically are of origin-form; scheme and authority data are usually
+  only present via CGI variables.
+- **absolute-form**, which consists of the scheme, authority
+  ("[user-info@]host[:port]", where items in brackets are optional), path (if
+  present), query string (if present), and fragment (if present). This is often
+  referred to as an absolute URI, and is the only form to specify a URI as
+  detailed in RFC 3986.
+- **authority-form**, which consists of the authority only. This is typically
+  used in CONNECT requests only, to establish a connection between an HTTP
+  client and a proxy server.
+- **asterisk-form**, which consists solely of the string '*', and which is used
+  with the OPTIONS method to determine the general capabilities of a web server.
+
+Since the goal of this proposal is to establish representations of HTTP
+messages, all four forms MUST be supported, even though only one represents a
+fully qualified URI.
+
+When working with fully qualified URIs, consumers will often need access to the
+various URI segments -- scheme, authority, user-info, host, port, path, query,
+and fragment -- and the ability to specify any specific segment. Since changing
+a segment is equivalent to creating a new URI, URI objects MUST be immutable.
+
+`UriTargetInterface` models HTTP and HTTPS URIs as specified in RFC 3986 (the
+primary use case), as well as any of the four request targets. The interface
+provides methods for testing which request target form is modeled, allowing
+consumers to query and branch based on that information. It also specifies a
+`__toString()` method for casting the modeled request target to the
+representation used (or to use) in the HTTP message.
+
+### 1.5 Server-side Requests
+
+`RequestInterface` provides the general representation of an HTTP request
+message. However, server-side requests need additional treatment, due to the
+nature of the server-side environment. Server-side processing needs to take into
+account Common Gateway Interface (CGI), and, more specifically, PHP's
+abstraction and extension of CGI via its Server APIs (SAPI). PHP has provided
+simplification around input marshaling via superglobals such as:
+
+- `$_COOKIE`, which deserializes and provides simplified access for HTTP
+  cookies.
+- `$_GET`, which deserializes and provides simplified access for query string
+  arguments.
+- `$_POST`, which deserializes and provides simplified access for urlencoded
+  parameters submitted via HTTP POST.
+- `$_FILES`, which provides serialized metadata around file uploads.
+- `$_SERVER`, which provides access to CGI/SAPI environment variables, which
+  commonly include the request method, the request scheme, the request URI, and
+  headers.
+
+`ServerRequestInterface` extends `RequestInterface` to provide an abstraction
+around these various superglobals. This practice helps reduce coupling to the
+superglobals by consumers, and encourages and promotes the ability to test
+request consumers.
+
+The server request provides one additional property, "attributes", to allow
+consumers the ability to introspect, decompose, and match the request against
+application-specific rules (such as path matching, scheme matching, host
+matching, etc.). As such, the server request can also provide messaging between
+multiple request consumers.
 
 2. Package
 ----------
@@ -153,13 +240,17 @@ namespace Psr\Http\Message;
  * from a server to a client. This interface defines the methods common to
  * each.
  *
+ * Messages are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return a new instance that contains the changed state.
+ *
  * @link http://www.ietf.org/rfc/rfc7230.txt
  * @link http://www.ietf.org/rfc/rfc7231.txt
  */
 interface MessageInterface
 {
     /**
-     * Gets the HTTP protocol version as a string.
+     * Retrieves the HTTP protocol version as a string.
      *
      * The string MUST contain only the HTTP version number (e.g., "1.1", "1.0").
      *
@@ -168,18 +259,22 @@ interface MessageInterface
     public function getProtocolVersion();
 
     /**
-     * Gets the body of the message.
+     * Create a new instance with the specified HTTP protocol version.
      *
-     * The returned body MUST be an instance of StreamableInterface. This may
-     * require that the implementation create a stream if none has been 
-     * set previously.
+     * The version string MUST contain only the HTTP version number (e.g.,
+     * "1.1", "1.0").
      *
-     * @return StreamableInterface Returns the body, or null if not set.
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * new protocol version.
+     *
+     * @param string $version HTTP protocol version
+     * @return self
      */
-    public function getBody();
+    public function withProtocolVersion($version);
 
     /**
-     * Gets all message headers.
+     * Retrieves all message headers.
      *
      * The keys represent the header name as it will be sent over the wire, and
      * each value is an array of strings associated with the header.
@@ -219,7 +314,8 @@ interface MessageInterface
      * a comma.
      *
      * NOTE: Not all header values may be appropriately represented using
-     * comma concatenation.
+     * comma concatenation. For such headers, use getHeaderLines() instead
+     * and supply your own delimiter when concatenating.
      *
      * @param string $header Case-insensitive header name.
      * @return string
@@ -232,15 +328,84 @@ interface MessageInterface
      * @param string $header Case-insensitive header name.
      * @return string[]
      */
-    public function getHeaderAsArray($header);
+    public function getHeaderLines($header);
+
+    /**
+     * Create a new instance with the provided header, replacing any existing
+     * values of any headers with the same case-insensitive name.
+     *
+     * The header name is case-insensitive. The header values MUST be a string
+     * or an array of strings.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * new and/or updated header and value.
+     *
+     * @param string $header Header name
+     * @param string|string[] $value Header value(s).
+     * @return self
+     * @throws \InvalidArgumentException for invalid header names or values.
+     */
+    public function withHeader($header, $value);
+
+    /**
+     * Creates a new instance, with the specified header appended with the
+     * given value.
+     *
+     * Existing values for the specified header will be maintained. The new
+     * value(s) will be appended to the existing list. If the header did not
+     * exist previously, it will be added.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * new header and/or value.
+     *
+     * @param string $header Header name to add
+     * @param string|string[] $value Header value(s).
+     * @return self
+     * @throws \InvalidArgumentException for invalid header names or values.
+     */
+    public function withAddedHeader($header, $value);
+
+    /**
+     * Creates a new instance, without the specified header.
+     *
+     * Header resolution MUST be done without case-sensitivity.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that removes
+     * the named header.
+     *
+     * @param string $header HTTP header to remove
+     * @return self
+     */
+    public function withoutHeader($header);
+
+    /**
+     * Gets the body of the message.
+     *
+     * @return StreamableInterface Returns the body as a stream.
+     */
+    public function getBody();
+
+    /**
+     * Create a new instance, with the specified message body.
+     *
+     * The body MUST be a StreamableInterface object.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * new body stream.
+     *
+     * @param StreamableInterface $body Body.
+     * @return self
+     * @throws \InvalidArgumentException When the body is not valid.
+     */
+    public function withBody(StreamableInterface $body);
 }
 ```
 
-### 3.2 Server-Side messages
-
-The `IncomingRequestInterface` and `OutgoingResponseInterface` describe the messages used when handling an incoming HTTP request via PHP.
-
-#### 3.2.1 `Psr\Http\Message\IncomingRequestInterface`
+### 3.2 `Psr\Http\Message\RequestInterface`
 
 ```php
 <?php
@@ -248,36 +413,22 @@ The `IncomingRequestInterface` and `OutgoingResponseInterface` describe the mess
 namespace Psr\Http\Message;
 
 /**
- * Representation of an incoming, server-side HTTP request.
+ * Representation of an outgoing, client-side request.
  *
- * Per the HTTP specification, this interface includes accessors for
- * the following:
+ * Per the HTTP specification, this interface includes properties for
+ * each of the following:
  *
  * - Protocol version
  * - HTTP method
- * - URL
+ * - URI
  * - Headers
  * - Message body
  *
- * Additionally, it encapsulates all data as it has arrived to the 
- * application from the PHP environment, including:
- *
- * - The values represented in $_SERVER.
- * - Any cookies provided (generally via $_COOKIE)
- * - Query string arguments (generally via $_GET, or as parsed via parse_str())
- * - Upload files, if any (as represented by $_FILES)
- * - Deserialized body parameters (generally from $_POST)
- *
- * The above values MUST be immutable, in order to ensure that all consumers of
- * the request instance within a given request cycle receive the same information.
- *
- * Additionally, this interface recognizes the utility of introspecting a
- * request to derive and match additional parameters (e.g., via URI path 
- * matching, decrypting cookie values, deserializing non-form-encoded body
- * content, matching authorization headers to users, etc). These parameters
- * are stored in an "attributes" property, which MUST be mutable.
+ * Requests are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return a new instance that contains the changed state.
  */
-interface IncomingRequestInterface extends MessageInterface
+interface RequestInterface extends MessageInterface
 {
     /**
      * Retrieves the HTTP method of the request.
@@ -287,21 +438,102 @@ interface IncomingRequestInterface extends MessageInterface
     public function getMethod();
 
     /**
-     * Retrieves the request URL.
+     * Create a new instance with the provided HTTP method.
+     *
+     * While HTTP method names are typically all uppercase characters, HTTP
+     * method names are case-sensitive and thus implementations SHOULD NOT
+     * modify the given string.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * changed request method.
+     *
+     * @param string $method Case-insensitive method.
+     * @return self
+     * @throws \InvalidArgumentException for invalid HTTP methods.
+     */
+    public function withMethod($method);
+
+    /**
+     * Retrieves the URI instance.
+     *
+     * This method MUST return a UriTargetInterface instance.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return string Returns the URL as a string. The URL SHOULD be an absolute
-     *     URI as specified in RFC 3986, but MAY be a relative URI.
+     * @return UriTargetInterface Returns a UriTargetInterface instance
+     *     representing the URI of the request, if any.
      */
-    public function getUrl();
+    public function getUri();
 
+    /**
+     * Create a new instance with the provided URI.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * new UriTargetInterface instance.
+     *
+     * @link http://tools.ietf.org/html/rfc3986#section-4.3
+     * @param UriTargetInterface $uri New request URI to use.
+     * @return self
+     */
+    public function withUri(UriTargetInterface $uri);
+}
+```
+
+#### 3.2.1 `Psr\Http\Message\ServerRequestInterface`
+
+```php
+<?php
+
+namespace Psr\Http\Message;
+
+/**
+ * Representation of an incoming, server-side HTTP request.
+ *
+ * Per the HTTP specification, this interface includes properties for
+ * each of the following:
+ *
+ * - Protocol version
+ * - HTTP method
+ * - URI
+ * - Headers
+ * - Message body
+ *
+ * Additionally, it encapsulates all data as it has arrived to the
+ * application from the CGI and/or PHP environment, including:
+ *
+ * - The values represented in $_SERVER.
+ * - Any cookies provided (generally via $_COOKIE)
+ * - Query string arguments (generally via $_GET, or as parsed via parse_str())
+ * - Upload files, if any (as represented by $_FILES)
+ * - Deserialized body parameters (generally from $_POST)
+ *
+ * $_SERVER and $_FILES values MUST be treated as immutable, as they represent
+ * application state at the time of request; as such, no methods are provided
+ * to allow modification of those values. The other values provide such methods,
+ * as they can be restored from $_SERVER, $_FILES, or the request body, and may
+ * need treatment during the application (e.g., body parameters may be
+ * deserialized based on content type).
+ *
+ * Additionally, this interface recognizes the utility of introspecting a
+ * request to derive and match additional parameters (e.g., via URI path
+ * matching, decrypting cookie values, deserializing non-form-encoded body
+ * content, matching authorization headers to users, etc). These parameters
+ * are stored in an "attributes" property.
+ *
+ * Requests are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return a new instance that contains the changed state.
+ */
+interface ServerRequestInterface extends RequestInterface
+{
     /**
      * Retrieve server parameters.
      *
-     * Retrieves data related to the incoming request environment, 
-     * typically derived from PHP's $_SERVER superglobal. The data IS NOT 
+     * Retrieves data related to the incoming request environment,
+     * typically derived from PHP's $_SERVER superglobal. The data IS NOT
      * REQUIRED to originate from $_SERVER.
-     * 
+     *
      * @return array
      */
     public function getServerParams();
@@ -311,30 +543,66 @@ interface IncomingRequestInterface extends MessageInterface
      *
      * Retrieves cookies sent by the client to the server.
      *
-     * The assumption is these are injected during instantiation, typically
-     * from PHP's $_COOKIE superglobal. The data IS NOT REQUIRED to come from
-     * $_COOKIE, but MUST be compatible with the structure of $_COOKIE.
+     * The data MUST be compatible with the structure of the $_COOKIE
+     * superglobal.
      *
      * @return array
      */
     public function getCookieParams();
 
     /**
+     * Create a new instance with the specified cookies.
+     *
+     * The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST
+     * be compatible with the structure of $_COOKIE. Typically, this data will
+     * be injected at instantiation.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * updated cookie values.
+     *
+     * @param array $cookies Array of key/value pairs representing cookies.
+     * @return self
+     */
+    public function withCookieParams(array $cookies);
+
+    /**
      * Retrieve query string arguments.
      *
      * Retrieves the deserialized query string arguments, if any.
+     *
+     * Note: the query params might not be in sync with the URL or server
+     * params. If you need to ensure you are only getting the original
+     * values, you may need to parse the composed URL or the `QUERY_STRING`
+     * composed in the server params.
+     *
+     * @return array
+     */
+    public function getQueryParams();
+
+    /**
+     * Create a new instance with the specified query string arguments.
      *
      * These values SHOULD remain immutable over the course of the incoming
      * request. They MAY be injected during instantiation, such as from PHP's
      * $_GET superglobal, or MAY be derived from some other value such as the
      * URI. In cases where the arguments are parsed from the URI, the data
-     * MUST be compatible with what PHP's `parse_str()` would return for
+     * MUST be compatible with what PHP's parse_str() would return for
      * purposes of how duplicate query parameters are handled, and how nested
      * sets are handled.
      *
-     * @return array
+     * Setting query string arguments MUST NOT change the URL stored by the
+     * request, nor the values in the server params.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * updated query string arguments.
+     *
+     * @param array $query Array of query string arguments, typically from
+     *     $_GET.
+     * @return self
      */
-    public function getQueryParams();
+    public function withQueryParams(array $query);
 
     /**
      * Retrieve the upload file metadata.
@@ -342,9 +610,9 @@ interface IncomingRequestInterface extends MessageInterface
      * This method MUST return file upload metadata in the same structure
      * as PHP's $_FILES superglobal.
      *
-     * These values SHOULD remain immutable over the course of the incoming
-     * request. They MAY be injected during instantiation, such as from PHP's
-     * $_FILES superglobal, or MAY be derived from other sources.
+     * These values MUST remain immutable over the course of the incoming
+     * request. They SHOULD be injected during instantiation, such as from PHP's
+     * $_FILES superglobal, but MAY be derived from other sources.
      *
      * @return array Upload file(s) metadata, if any.
      */
@@ -354,13 +622,31 @@ interface IncomingRequestInterface extends MessageInterface
      * Retrieve any parameters provided in the request body.
      *
      * If the request body can be deserialized to an array, this method MAY be
-     * used to retrieve them. These MAY be injected during instantiation from
-     * PHP's $_POST superglobal. The data IS NOT REQUIRED to come from $_POST,
-     * but MUST be an array.
+     * used to retrieve them.
      *
      * @return array The deserialized body parameters, if any.
      */
     public function getBodyParams();
+
+    /**
+     * Create a new instance with the specified body parameters.
+     *
+     * These MAY be injected during instantiation from PHP's $_POST
+     * superglobal. The data IS NOT REQUIRED to come from $_POST, but MUST be
+     * an array. This method can be used during the request lifetime to inject
+     * parameters discovered and/or deserialized from the request body; as an
+     * example, if content negotiation determines that the request data is
+     * a JSON payload, this method could be used to inject the deserialized
+     * parameters.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * updated body parameters.
+     *
+     * @param array $params The deserialized body parameters.
+     * @return self
+     */
+    public function withBodyParams(array $params);
 
     /**
      * Retrieve attributes derived from the request.
@@ -377,11 +663,14 @@ interface IncomingRequestInterface extends MessageInterface
 
     /**
      * Retrieve a single derived request attribute.
-     * 
+     *
      * Retrieves a single derived request attribute as described in
      * getAttributes(). If the attribute has not been previously set, returns
      * the default value as provided.
-     * 
+     *
+     * This method obviates the need for a hasAttribute() method, as it allows
+     * specifying a default value to return if the attribute is not found.
+     *
      * @see getAttributes()
      * @param string $attribute Attribute name.
      * @param mixed $default Default value to return if the attribute does not exist.
@@ -390,33 +679,42 @@ interface IncomingRequestInterface extends MessageInterface
     public function getAttribute($attribute, $default = null);
 
     /**
-     * Set attributes derived from the request.
+     * Create a new instance with the specified derived request attribute.
      *
-     * This method allows setting request attributes, as described in
-     * getAttributes().
-     *
-     * @see getAttributes()
-     * @param array $attributes Attributes derived from the request.
-     * @return void
-     */
-    public function setAttributes(array $attributes);
-
-    /**
-     * Set a single derived request attribute.
-     * 
      * This method allows setting a single derived request attribute as
      * described in getAttributes().
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * updated attribute.
      *
      * @see getAttributes()
      * @param string $attribute The attribute name.
      * @param mixed $value The value of the attribute.
-     * @return void
+     * @return self
      */
-    public function setAttribute($attribute, $value);
+    public function withAttribute($attribute, $value);
+
+    /**
+     * Create a new instance that removes the specified derived request
+     * attribute.
+     *
+     * This method allows removing a single derived request attribute as
+     * described in getAttributes().
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that removes
+     * the attribute.
+     *
+     * @see getAttributes()
+     * @param string $attribute The attribute name.
+     * @return self
+     */
+    public function withoutAttribute($attribute);
 }
 ```
 
-#### 3.2.2 `Psr\Http\Message\OutgoingResponseInterface`
+### 3.3 `Psr\Http\Message\ResponseInterface`
 
 ```php
 <?php
@@ -426,30 +724,20 @@ namespace Psr\Http\Message;
 /**
  * Representation of an outgoing, server-side response.
  *
- * Per the HTTP specification, this interface includes both accessors for
- * and mutators for the following:
+ * Per the HTTP specification, this interface includes properties for
+ * each of the following:
  *
  * - Protocol version
  * - Status code and reason phrase
  * - Headers
  * - Message body
  *
- * As the response CAN be built iteratively, the interface allows
- * mutability of all properties.
+ * Responses are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return a new instance that contains the changed state.
  */
-interface OutgoingResponseInterface extends MessageInterface
+interface ResponseInterface extends MessageInterface
 {
-    /**
-     * Set the HTTP protocol version.
-     *
-     * The version string MUST contain only the HTTP version number (e.g.,
-     * "1.1", "1.0").
-     *
-     * @param string $version HTTP protocol version
-     * @return void
-     */
-    public function setProtocolVersion($version);
-
     /**
      * Gets the response Status-Code.
      *
@@ -461,11 +749,16 @@ interface OutgoingResponseInterface extends MessageInterface
     public function getStatusCode();
 
     /**
-     * Sets the status code, and optionally reason phrase,  of this response.
+     * Create a new instance with the specified status code, and optionally
+     * reason phrase, for the response.
      *
      * If no Reason-Phrase is specified, implementations MAY choose to default
      * to the RFC 7231 or IANA recommended reason phrase for the response's
      * Status-Code.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * updated status and reason phrase.
      *
      * @link http://tools.ietf.org/html/rfc7231#section-6
      * @link http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
@@ -473,235 +766,10 @@ interface OutgoingResponseInterface extends MessageInterface
      * @param null|string $reasonPhrase The reason phrase to use with the
      *     provided status code; if none is provided, implementations MAY
      *     use the defaults as suggested in the HTTP specification.
+     * @return self
      * @throws \InvalidArgumentException For invalid status code arguments.
      */
-    public function setStatus($code, $reasonPhrase = null);
-
-    /**
-     * Gets the response Reason-Phrase, a short textual description of the Status-Code.
-     *
-     * Because a Reason-Phrase is not a required element in a response
-     * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
-     * choose to return the default RFC 7231 recommended reason phrase (or those
-     * listed in the IANA HTTP Status Code Registry) for the response's
-     * Status-Code.
-     *
-     * @link http://tools.ietf.org/html/rfc7231#section-6
-     * @link http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
-     * @return string|null Reason phrase, or null if unknown.
-     */
-    public function getReasonPhrase();
-
-    /**
-     * Sets a header, replacing any existing values of any headers with the
-     * same case-insensitive name.
-     *
-     * The header name is case-insensitive. The header values MUST be a string
-     * or an array of strings.
-     *
-     * @param string $header Header name
-     * @param string|string[] $value Header value(s).
-     * @return void
-     * @throws \InvalidArgumentException for invalid header names or values.
-     */
-    public function setHeader($header, $value);
-
-    /**
-     * Appends a header value for the specified header.
-     *
-     * Existing values for the specified header will be maintained. The new
-     * value(s) will be appended to the existing list.
-     *
-     * @param string $header Header name to add
-     * @param string|string[] $value Header value(s).
-     * @return void
-     * @throws \InvalidArgumentException for invalid header names or values.
-     */
-    public function addHeader($header, $value);
-
-    /**
-     * Remove a specific header by case-insensitive name.
-     *
-     * @param string $header HTTP header to remove
-     * @return void
-     */
-    public function removeHeader($header);
-
-    /**
-     * Sets the body of the message.
-     *
-     * The body MUST be a StreamableInterface object.
-     *
-     * @param StreamableInterface $body Body.
-     * @return void
-     * @throws \InvalidArgumentException When the body is not valid.
-     */
-    public function setBody(StreamableInterface $body);
-}
-```
-
-### 3.3 Client-Side Messages
-
-The `OutgoingRequestInterface` and `IncomingResponseInterface` describe messages associated with making an HTTP request from PHP.
-
-#### 3.3.1 `Psr\Http\Message\OutgoingRequestInterface`
-
-```php
-<?php
-
-namespace Psr\Http\Message;
-
-/**
- * Representation of an outgoing, client-side request.
- * 
- * Per the HTTP specification, this interface includes both accessors for
- * and mutators for the following:
- *
- * - Protocol version
- * - HTTP method
- * - URL
- * - Headers
- * - Message body
- *
- * As the request CAN be built iteratively, the interface allows
- * mutability of all properties.
- */
-interface OutgoingRequestInterface extends MessageInterface
-{
-    /**
-     * Set the HTTP protocol version.
-     *
-     * The version string MUST contain only the HTTP version number (e.g.,
-     * "1.1", "1.0").
-     *
-     * @param string $version HTTP protocol version
-     * @return void
-     */
-    public function setProtocolVersion($version);
-
-    /**
-     * Retrieves the HTTP method of the request.
-     *
-     * @return string Returns the request method.
-     */
-    public function getMethod();
-
-    /**
-     * Sets the HTTP method to be performed on the resource identified by the
-     * Request-URI.
-     *
-     * While HTTP method names are typically all uppercase characters, HTTP
-     * method names are case-sensitive and thus implementations SHOULD NOT
-     * modify the given string.
-     *
-     * @param string $method Case-insensitive method.
-     * @return void
-     * @throws \InvalidArgumentException for invalid HTTP methods.
-     */
-    public function setMethod($method);
-
-    /**
-     * Retrieves the request URL.
-     *
-     * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return string Returns the URL as a string. The URL SHOULD be an
-     *     absolute URI as specified in RFC 3986, but MAY be a relative URI.
-     */
-    public function getUrl();
-
-    /**
-     * Sets the request URL.
-     *
-     * The URL MUST be a string. The URL SHOULD be an absolute URI as specified
-     * in RFC 3986, but MAY be a relative URI.
-     *
-     * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @param string $url Request URL.
-     * @return void
-     * @throws \InvalidArgumentException If the URL is invalid.
-     */
-    public function setUrl($url);
-
-    /**
-     * Sets a header, replacing any existing values of any headers with the
-     * same case-insensitive name.
-     *
-     * The header name is case-insensitive. The header values MUST be a string
-     * or an array of strings.
-     *
-     * @param string $header Header name
-     * @param string|string[] $value Header value(s).
-     * @return void
-     * @throws \InvalidArgumentException for invalid header names or values.
-     */
-    public function setHeader($header, $value);
-
-    /**
-     * Appends a header value for the specified header.
-     *
-     * Existing values for the specified header will be maintained. The new
-     * value(s) will be appended to the existing list.
-     *
-     * @param string $header Header name to add
-     * @param string|string[] $value Header value(s).
-     * @return void
-     * @throws \InvalidArgumentException for invalid header names or values.
-     */
-    public function addHeader($header, $value);
-
-    /**
-     * Remove a specific header by case-insensitive name.
-     *
-     * @param string $header HTTP header to remove
-     * @return void
-     */
-    public function removeHeader($header);
-
-    /**
-     * Sets the body of the message.
-     *
-     * The body MUST be a StreamableInterface object.
-     *
-     * @param StreamableInterface $body Body.
-     * @return void
-     * @throws \InvalidArgumentException When the body is not valid.
-     */
-    public function setBody(StreamableInterface $body);
-}
-```
-
-#### 3.3.2 `Psr\Http\Message\IncomingResponseInterface`
-
-```php
-<?php
-
-namespace Psr\Http\Message;
-
-/**
- * Representation of an incoming, client-side response.
- * 
- * Per the HTTP specification, this interface includes accessors for
- * the following:
- *
- * - Protocol version
- * - Status code and reason phrase
- * - Headers
- * - Message body
- *
- * As the response is the result of making a request, it is considered
- * immutable.
- */
-interface IncomingResponseInterface extends MessageInterface
-{
-    /**
-     * Gets the response Status-Code.
-     *
-     * The Status-Code is a 3-digit integer result code of the server's attempt
-     * to understand and satisfy the request.
-     *
-     * @return integer Status code.
-     */
-    public function getStatusCode();
+    public function withStatus($code, $reasonPhrase = null);
 
     /**
      * Gets the response Reason-Phrase, a short textual description of the Status-Code.
@@ -795,18 +863,29 @@ interface StreamableInterface
     /**
      * Seek to a position in the stream.
      *
-     * @link  http://www.php.net/manual/en/function.fseek.php
+     * @link http://www.php.net/manual/en/function.fseek.php
      * @param int $offset Stream offset
      * @param int $whence Specifies how the cursor position will be calculated
-     *                    based on the seek offset. Valid values are identical
-     *                    to the built-in PHP $whence values for `fseek()`.
-     *                    SEEK_SET: Set position equal to offset bytes
-     *                    SEEK_CUR: Set position to current location plus offset
-     *                    SEEK_END: Set position to end-of-stream plus offset
-     *
+     *     based on the seek offset. Valid values are identical to the built-in
+     *     PHP $whence values for `fseek()`.  SEEK_SET: Set position equal to
+     *     offset bytes SEEK_CUR: Set position to current location plus offset
+     *     SEEK_END: Set position to end-of-stream plus offset.
      * @return bool Returns TRUE on success or FALSE on failure.
      */
     public function seek($offset, $whence = SEEK_SET);
+
+    /**
+     * Seek to the beginning of the stream.
+     *
+     * If the stream is not seekable, this method will return FALSE, indicating
+     * failure; otherwise, it will perform a seek(0), and return the status of
+     * that operation.
+     *
+     * @see seek()
+     * @link http://www.php.net/manual/en/function.fseek.php
+     * @return bool Returns TRUE on success or FALSE on failure.
+     */
+    public function rewind();
 
     /**
      * Returns whether or not the stream is writable.
@@ -819,9 +898,8 @@ interface StreamableInterface
      * Write data to the stream.
      *
      * @param string $string The string that is to be written.
-     *
      * @return int|bool Returns the number of bytes written to the stream on
-     *                  success or FALSE on failure.
+     *     success or FALSE on failure.
      */
     public function write($string);
 
@@ -836,10 +914,10 @@ interface StreamableInterface
      * Read data from the stream.
      *
      * @param int $length Read up to $length bytes from the object and return
-     *                    them. Fewer than $length bytes may be returned if
-     *                    underlying stream call returns fewer bytes.
+     *     them. Fewer than $length bytes may be returned if underlying stream
+     *     call returns fewer bytes.
      * @return string|false Returns the data read from the stream, false if
-     *                      unable to read or if an error occurs.
+     *     unable to read or if an error occurs.
      */
     public function read($length);
 
@@ -859,10 +937,341 @@ interface StreamableInterface
      * @link http://php.net/manual/en/function.stream-get-meta-data.php
      * @param string $key Specific metadata to retrieve.
      * @return array|mixed|null Returns an associative array if no key is
-     *                          provided. Returns a specific key value if a key
-     *                          is provided and the value is found, or null if
-     *                          the key is not found.
+     *     provided. Returns a specific key value if a key is provided and the
+     *     value is found, or null if the key is not found.
      */
     public function getMetadata($key = null);
+}
+```
+
+### 3.5 `Psr\Http\Message\UriTargetInterface`
+
+```php
+<?php
+namespace Psr\Http\Message;
+
+/**
+ * Value object representing the request target, and typically a URI.
+ *
+ * Instances of this interface are considered immutable; all methods that
+ * might change state MUST be implemented such that they retain the internal
+ * state of the current instance and return a new instance that contains the
+ * changed state.
+ *
+ * Since this interface represents a request target per RFC 7230, the instance
+ * MAY represent an absolute URI OR one of the request targets that are not
+ * fully qualified URIs, including origin-form, authority-form, or
+ * asterisk-form. As such, test methods exist for determining what request
+ * target form is in use:
+ *
+ * - isAbsolute() tests if the target is in absolute-form (minimally scheme +
+ *   authority).
+ * - isOrigin() tests if the target is in origin-form (path + optional query
+ *   string only).
+ * - isAuthority() tests if the target contains the authority only.
+ * - isAsterisk() tests if the entirety of the target is '*'.
+ *
+ * These target forms are included, as they are valid forms for use with an
+ * HTTP request, and will appear without other URI segments available within
+ * the request line. This interface models the target as it appears in the
+ * incoming request line or as it will be emitted by a client.
+ *
+ * Typically, for all forms other than absolute-form, minimally the Host header
+ * will be also be present in the request message. For server-side requests,
+ * the scheme will typically be discoverable in the server parameters.
+ *
+ * @link http://tools.ietf.org/html/rfc3986 (the URI specification)
+ * @link http://tools.ietf.org/html/rfc7230#section-2.7 (URIs as used in the HTTP specification)
+ */
+interface UriTargetInterface
+{
+    /**
+     * Retrieve the URI scheme.
+     *
+     * Implementations SHOULD restrict values to "http", "https", or an empty
+     * string but MAY accommodate other schemes if required.
+     *
+     * If no scheme is present, this method MUST return an empty string.
+     *
+     * The string returned MUST omit the trailing "://" delimiter if present.
+     *
+     * @return string The scheme of the URI.
+     */
+    public function getScheme();
+
+    /**
+     * Retrieve the authority portion of the URI.
+     *
+     * The authority portion of the URI is:
+     *
+     * <pre>
+     * [user-info@]host[:port]
+     * </pre>
+     *
+     * If the port component is not set or is the standard port for the current
+     * scheme, it SHOULD NOT be included.
+     *
+     * This method MUST return an empty string if no authority information is
+     * present.
+     *
+     * @return string Authority portion of the URI, in "[user-info@]host[:port]"
+     *     format.
+     */
+    public function getAuthority();
+
+    /**
+     * Retrieve the user information portion of the URI, if present.
+     *
+     * If a user is present in the URI, this will return that value;
+     * additionally, if the password is also present, it will be appended to the
+     * user value, with a colon (":") separating the values.
+     *
+     * Implementations MUST NOT return the "@" suffix when returning this value.
+     *
+     * @return string User information portion of the URI, if present, in
+     *     "username[:password]" format.
+     */
+    public function getUserInfo();
+
+    /**
+     * Retrieve the host segment of the URI.
+     *
+     * This method MUST return a string; if no host segment is present, an
+     * empty string MUST be returned.
+     *
+     * @return string Host segment of the URI.
+     */
+    public function getHost();
+
+    /**
+     * Retrieve the port segment of the URI.
+     *
+     * If a port is present, and it is non-standard for the current scheme,
+     * this method MUST return it as an integer. If the port is the standard port
+     * used with the current scheme, this method SHOULD return null.
+     *
+     * If no port is present, and no scheme is present, this method MUST return
+     * a null value.
+     *
+     * If no port is present, but a scheme is present, this method MAY return
+     * the standard port for that scheme, but SHOULD return null.
+     *
+     * @return null|int The port for the URI.
+     */
+    public function getPort();
+
+    /**
+     * Retrieve the path segment of the URI.
+     *
+     * This method MUST return a string; if no path is present it MUST return
+     * an empty string.
+     *
+     * @return string The path segment of the URI.
+     */
+    public function getPath();
+
+    /**
+     * Retrieve the query string of the URI.
+     *
+     * This method MUST return a string; if no query string is present, it MUST
+     * return an empty string.
+     *
+     * The string returned MUST omit the leading "?" character.
+     *
+     * @return string The URI query string.
+     */
+    public function getQuery();
+
+    /**
+     * Retrieve the fragment segment of the URI.
+     *
+     * This method MUST return a string; if no fragment is present, it MUST
+     * return an empty string.
+     *
+     * The string returned MUST omit the leading "#" character.
+     *
+     * @return string The URI fragment.
+     */
+    public function getFragment();
+
+    /**
+     * Create a new instance with the specified scheme.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * a new instance that contains the specified scheme. If the scheme
+     * provided includes the "://" delimiter, it MUST be removed.
+     *
+     * Implementations SHOULD restrict values to "http", "https", or an empty
+     * string but MAY accommodate other schemes if required.
+     *
+     * An empty scheme is equivalent to removing the scheme.
+     *
+     * @param string $scheme The scheme to use with the new instance.
+     * @return self A new instance with the specified scheme.
+     * @throws \InvalidArgumentException for invalid or unsupported schemes.
+     */
+    public function withScheme($scheme);
+
+    /**
+     * Create a new instance with the specified user information.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * a new instance that contains the specified user information.
+     *
+     * Password is optional, but the user information MUST include the
+     * user; an empty string for the user is equivalent to removing user
+     * information.
+     *
+     * @param string $user User name to use for authority.
+     * @param null|string $password Password associated with $user.
+     * @return self A new instance with the specified user information.
+     */
+    public function withUserInfo($user, $password = null);
+
+    /**
+     * Create a new instance with the specified host.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * a new instance that contains the specified host.
+     *
+     * An empty host value is equivalent to removing the host.
+     *
+     * @param string $host Hostname to use with the new instance.
+     * @return self A new instance with the specified host.
+     * @throws \InvalidArgumentException for invalid hostnames.
+     */
+    public function withHost($host);
+
+    /**
+     * Create a new instance with the specified port.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * a new instance that contains the specified port.
+     *
+     * Implementations MUST raise an exception for ports outside the
+     * established TCP and UDP port ranges.
+     *
+     * A null value provided for the port is equivalent to removing the port
+     * information.
+     *
+     * @param null|int $port Port to use with the new instance; a null value
+     *     removes the port information.
+     * @return self A new instance with the specified port.
+     * @throws \InvalidArgumentException for invalid ports.
+     */
+    public function withPort($port);
+
+    /**
+     * Create a new instance with the specified path.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * a new instance that contains the specified path.
+     *
+     * The path MUST be prefixed with "/"; if not, the implementation MAY
+     * provide the prefix itself.
+     *
+     * An empty path value is equivalent to removing the path.
+     *
+     * @param string $path The path to use with the new instance.
+     * @return self A new instance with the specified path.
+     * @throws \InvalidArgumentException for invalid paths.
+     */
+    public function withPath($path);
+
+    /**
+     * Create a new instance with the specified query string.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * a new instance that contains the specified query string.
+     *
+     * If the query string is prefixed by "?", that character MUST be removed.
+     * Additionally, the query string SHOULD be parseable by parse_str() in
+     * order to be valid.
+     *
+     * An empty query string value is equivalent to removing the query string.
+     *
+     * @param string $query The query string to use with the new instance.
+     * @return self A new instance with the specified query string.
+     * @throws \InvalidArgumentException for invalid query strings.
+     */
+    public function withQuery($query);
+
+    /**
+     * Create a new instance with the specified URI fragment.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * a new instance that contains the specified URI fragment.
+     *
+     * If the fragment is prefixed by "#", that character MUST be removed.
+     *
+     * An empty fragment value is equivalent to removing the fragment.
+     *
+     * @param string $fragment The URI fragment to use with the new instance.
+     * @return self A new instance with the specified URI fragment.
+     */
+    public function withFragment($fragment);
+
+    /**
+     * Indicate whether the URI is in origin-form.
+     *
+     * Origin-form is a URI that includes only the path, and optionally the
+     * query string.
+     *
+     * @link http://tools.ietf.org/html/rfc7230#section-5.3.1
+     * @return bool
+     */
+    public function isOrigin();
+
+    /**
+     * Indicate whether the URI is absolute.
+     *
+     * An absolute URI contains minimally a non-empty scheme and non-empty
+     * authority.
+     *
+     * @see getAuthority()
+     * @link http://tools.ietf.org/html/rfc7230#section-5.3.2
+     * @return bool
+     */
+    public function isAbsolute();
+
+    /**
+     * Indicate whether the URI is in authority form.
+     *
+     * An authority-form URI is an URI that contains ONLY the authority
+     * information.
+     *
+     * @see getAuthority()
+     * @link http://tools.ietf.org/html/rfc7230#section-5.3.3
+     * @return bool
+     */
+    public function isAuthority();
+
+    /**
+     * Indicate whether the URI is an asterisk-form.
+     *
+     * An asterisk form URI will contain "*" as the path, and no other URI
+     * segments.
+     *
+     * @link http://tools.ietf.org/html/rfc7230#section-5.3.4
+     * @return bool
+     */
+    public function isAsterisk();
+
+    /**
+     * Return the string representation of the URI.
+     *
+     * Concatenates the various segments of the URI, using the appropriate
+     * delimiters:
+     *
+     * - If a scheme is present, "://" MUST append the value.
+     * - If the authority information is present, that value will be
+     *   contatenated.
+     * - If a path is present, it MUST be prefixed by a "/" character.
+     * - If a query string is present, it MUST be prefixed by a "?" character.
+     * - If a URI fragment is present, it MUST be prefixed by a "#" character.
+     *
+     * @return string
+     */
+    public function __toString();
 }
 ```
