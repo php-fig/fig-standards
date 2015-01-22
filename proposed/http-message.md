@@ -1235,10 +1235,10 @@ interface UriTargetInterface
     public function isAbsolute();
 
     /**
-     * Indicate whether the URI is in authority form.
+     * Indicate whether the instance represents an authority-form request
+     * target.
      *
-     * An authority-form URI is an URI that contains ONLY the authority
-     * information.
+     * An authority-form request-target contains ONLY the authority information.
      *
      * @see getAuthority()
      * @link http://tools.ietf.org/html/rfc7230#section-5.3.3
@@ -1247,10 +1247,10 @@ interface UriTargetInterface
     public function isAuthority();
 
     /**
-     * Indicate whether the URI is an asterisk-form.
+     * Indicate whether the instance represents an asterisk-form request
+     * target.
      *
-     * An asterisk form URI will contain "*" as the path, and no other URI
-     * segments.
+     * An asterisk-form request-target will contain ONLY the string "*".
      *
      * @link http://tools.ietf.org/html/rfc7230#section-5.3.4
      * @return bool
