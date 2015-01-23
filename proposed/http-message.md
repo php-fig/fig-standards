@@ -109,8 +109,8 @@ particular case-insensitive header by name.
 
 ```php
 $message = $message
-    ->setHeader('foo', 'bar')
-    ->addHeader('foo', 'baz');
+    ->withHeader('foo', 'bar')
+    ->withAddedHeader('foo', 'baz');
 
 $header = $message->getHeader('foo');
 // $header contains: 'bar, baz'
