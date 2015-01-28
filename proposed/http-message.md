@@ -199,7 +199,7 @@ request-target.
 
 If it's desired by an end-user to use one of the other three forms, or if the
 user wants to explictly override the request-target, it is possible to do so
-with `withRequestForm`.
+with `withRequestTarget()`.
 
 Calling this method does not affect the URI, as it is returned from `getUri()`.
 
@@ -221,8 +221,8 @@ OPTIONS * HTTP/1.1
 But the HTTP client will be able to use the effective url (from `getUri()`),
 to determine the protocol, hostname and tcp port.
 
-A client generally MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
-and insteadand instead use the value returned by `getRequestTarget()`, which defaults
+A HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
+and instead use the value returned by `getRequestTarget()`, which defaults
 to concatenating these two values.
 
 Clients that choose to not implement 1 or more of the 4 request-target forms,
