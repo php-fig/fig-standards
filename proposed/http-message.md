@@ -187,6 +187,17 @@ parts, which will obviate the need for repeated parsing of the URI. It also
 specifies a `__toString()` method for casting the modeled URI to its string
 representation.
 
+`RequestInterface` provides methods for retrieving the request-target or
+creating a new instance with the provided request-target. By default, if no
+request-target is specifically composed in the instance, `getRequestTarget()`
+will return the origin-form of the composed URI (or "/" if no URI is composed).
+`withRequestTarget($requestTarget)` creates a new instance with the
+specified request target, and thus allows developers to create request messages
+that represent the other three request-target forms (absolute-form,
+authority-form, and asterisk-form). When used, the composed URI instance can
+still be of use, particularly in clients, where it may be used to create the
+connection to the server.
+
 ### 1.5 Server-side Requests
 
 `RequestInterface` provides the general representation of an HTTP request
@@ -430,56 +441,41 @@ namespace Psr\Http\Message;
 interface RequestInterface extends MessageInterface
 {
     /**
-     * Retrieves the message's request line.
+     * Retrieves the message's request target.
      *
-     * Retrieves the message's request line either as it will appear (for
+     * Retrieves the message's request-target either as it will appear (for
      * clients), as it appeared at request (for servers), or as it was
-     * specified for the instance (see withRequestLine()).
+     * specified for the instance (see withRequestTarget()).
      *
-     * This method MUST return a string of the form:
+     * In most cases, this will be the origin-form of the composed URI,
+     * unless a value was provided to the concrete implementation (see
+     * withRequestTarget() below).
      *
-     * <code>
-     * HTTP_METHOD REQUEST_TARGET HTTP/PROTOCOL_VERSION
-     * </code>
-     *
-     * If the request line is calculated at method execution (i.e., not from
-     * a value set on the instance), the request-target MUST be in origin-form.
-     *
-     * If any aspect of the request line is unknown, it MUST raise an
-     * exception.
+     * If no URI is available, and no request-target has been specifically
+     * provided, this method MUST return the string "/".
      *
      * @return string
-     * @throws \RuntimeException if unable to construct a valid request line.
      */
-    public function getRequestLine();
+    public function getRequestTarget();
 
     /**
-     * Create a new instance with a specific request line.
+     * Create a new instance with a specific request-target.
      *
-     * If the request needs a specific request line — for instance, to allow
-     * specifying an absolute-form, authority-form, or asterisk-form
-     * request-target — this method may be used to create an instance with
-     * the specified request line, verbatim.
-     *
-     * This method MUST validate that the line is in the form:
-     *
-     * <code>
-     * HTTP_METHOD REQUEST_TARGET HTTP/PROTOCOL_VERSION
-     * </code>
-     *
-     * and raise an exception if not.
+     * If the request needs a non-origin-form request-target — e.g., for
+     * specifying an absolute-form, authority-form, or asterisk-form —
+     * this method may be used to create an instance with the specified
+     * request-target, verbatim.
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return a new instance that has the
-     * changed request line.
+     * changed request target.
      *
      * @link http://tools.ietf.org/html/rfc7230#section-2.7 (for the various
      *     request-target forms allowed in request messages)
-     * @param mixed $requestLine
+     * @param mixed $requestTarget
      * @return self
-     * @throws \InvalidArgumentException for invalid request lines.
      */
-    public function withRequestLine($requestLine);
+    public function withRequestTarget($requestTarget);
 
     /**
      * Retrieves the HTTP method of the request.
