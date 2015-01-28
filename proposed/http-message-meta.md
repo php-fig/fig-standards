@@ -205,22 +205,28 @@ provides convenience in client applications by allowing users to create new
 instances of a base URI instance with just the segments that change (e.g.,
 updating the path only).
 
-### Why are URIs and request-targets merged in a single interface?
+### Why does the request interface have methods for dealing with the request line as whole, AND compose a URI?
 
 RFC 7230 details the request line as containing a "request-target". Of the four
-forms of request-target, only one is a URI compliant with RFC 3986. However,
-since all forms are valid for purposes of requests, the proposal must
-accommodate each.
+forms of request-target, only one is a URI compliant with RFC 3986; the most
+common form used, however, is origin-form, which represents the URI without the
+scheme or authority information. Moreover, since all forms are valid for
+purposes of requests, the proposal must accommodate each.
 
-The most common use case for requests, however, will be specifying either
-absolute URIs (absolute-form) or relative URIs (origin-form) -- which are also
-the most commonly known request-target types. To keep verbiage familiar for
-developers, `RequestInterface` only references the term "URI".
+`RequestInterface` thus has methods surrounding the request line. By default,
+it will attempt to construct the request line by computing it from its own
+values: the HTTP method, the composed URI, and the protocol version. Since the
+most common form or specifying the request line is using origin-form (path and
+query string), this is the default used. Another method, `withRequestLine()`,
+allows specifying an instance with a specific request line, allowing users to
+create requests that use one of the other valid request-target forms.
 
-Since the interface used to model the URI accommodates the other request-target
-forms, its name -- `UriTargetInterface` -- references both the verbiage "URI"
-and "target" in order to call attention to the fact that the non-URI forms
-(authority-form and asterisk-form) are also valid values.
+The URI is kept as a discrete member of the request for a variety of reasons.
+For both clients and servers, knowledge of the absolute URI is typically
+required. In the case of clients, the URI, and specifically the scheme and
+authority details, is needed in order to make the actual TCP connection. For
+server-side applications, the full URI is often required in order to validate
+the request or to route to an appropriate handler.
 
 ### Immutability of messages
 
