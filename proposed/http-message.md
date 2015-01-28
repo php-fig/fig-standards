@@ -1,4 +1,4 @@
-﻿HTTP message interfaces
+HTTP message interfaces
 =======================
 
 This document describes common interfaces for representing HTTP messages as
@@ -51,10 +51,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-- RFC 2119: http://www.ietf.org/rfc/rfc2119.txt
-- RFC 7230: http://www.ietf.org/rfc/rfc7230.txt
-- RFC 7231: http://www.ietf.org/rfc/rfc7231.txt
-- RFC 3986: http://www.ietf.org/rfc/rfc3986.txt
+### References
+
+- [RFC 2119](http://tools.ietf.org/html/rfc2119)
+- [RFC 3986](http://tools.ietf.org/html/rfc3986)
+- [RFC 7230](http://tools.ietf.org/html/rfc7230)
+- [RFC 7231](http://tools.ietf.org/html/rfc7231)
+
 
 1. Specification
 ----------------
@@ -70,7 +73,7 @@ Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface
 implemented directly, implementors SHOULD implement
 `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
 
-From here forward, the namespace `Psr\Http\Message` will be omitted when
+From here forward, the namespace `Psr\Http\MessageInterface` will be omitted when
 referring to these interfaces.
 
 #### 1.2 HTTP Headers
@@ -96,6 +99,14 @@ $message = $message->withHeader('fOO', 'baz');
 echo $message->getHeader('foo');
 // Outputs: baz
 ```
+
+Despite that headers may be retrieved case-insenstively, the original case
+MUST be preserved by the implementation, in particular when retrieved with
+`getHeaders()`.
+
+Non-conforming HTTP applications may depend on a certain case, so it is useful
+for a user to be able to dictate the case of the HTTP headers when creating a 
+request or response.
 
 ##### Headers with multiple values
 
