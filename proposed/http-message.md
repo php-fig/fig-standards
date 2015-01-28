@@ -181,12 +181,11 @@ various URI segments -- scheme, authority, user-info, host, port, path, query,
 and fragment -- and the ability to specify any specific segment. Since changing
 a segment is equivalent to creating a new URI, URI objects MUST be immutable.
 
-`UriTargetInterface` models HTTP and HTTPS URIs as specified in RFC 3986 (the
-primary use case), as well as any of the four request targets. The interface
-provides methods for testing which request target form is modeled, allowing
-consumers to query and branch based on that information. It also specifies a
-`__toString()` method for casting the modeled request target to the
-representation used (or to use) in the HTTP message.
+`UriInterface` models HTTP and HTTPS URIs as specified in RFC 3986 (the primary
+use case). The interface provides methods for interacting with the various URI
+parts, which will obviate the need for repeated parsing of the URI. It also
+specifies a `__toString()` method for casting the modeled URI to its string
+representation.
 
 ### 1.5 Server-side Requests
 
@@ -431,6 +430,58 @@ namespace Psr\Http\Message;
 interface RequestInterface extends MessageInterface
 {
     /**
+     * Retrieves the message's request line.
+     *
+     * Retrieves the message's request line either as it will appear (for
+     * clients), as it appeared at request (for servers), or as it was
+     * specified for the instance (see withRequestLine()).
+     *
+     * This method MUST return a string of the form:
+     *
+     * <code>
+     * HTTP_METHOD REQUEST_TARGET HTTP/PROTOCOL_VERSION
+     * </code>
+     *
+     * If the request line is calculated at method execution (i.e., not from
+     * a value set on the instance), the request-target MUST be in origin-form.
+     *
+     * If any aspect of the request line is unknown, it MUST raise an
+     * exception.
+     *
+     * @return string
+     * @throws \RuntimeException if unable to construct a valid request line.
+     */
+    public function getRequestLine();
+
+    /**
+     * Create a new instance with a specific request line.
+     *
+     * If the request needs a specific request line — for instance, to allow
+     * specifying an absolute-form, authority-form, or asterisk-form
+     * request-target — this method may be used to create an instance with
+     * the specified request line, verbatim.
+     *
+     * This method MUST validate that the line is in the form:
+     *
+     * <code>
+     * HTTP_METHOD REQUEST_TARGET HTTP/PROTOCOL_VERSION
+     * </code>
+     *
+     * and raise an exception if not.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * changed request line.
+     *
+     * @link http://tools.ietf.org/html/rfc7230#section-2.7 (for the various
+     *     request-target forms allowed in request messages)
+     * @param mixed $requestLine
+     * @return self
+     * @throws \InvalidArgumentException for invalid request lines.
+     */
+    public function withRequestLine($requestLine);
+
+    /**
      * Retrieves the HTTP method of the request.
      *
      * @return string Returns the request method.
@@ -457,10 +508,10 @@ interface RequestInterface extends MessageInterface
     /**
      * Retrieves the URI instance.
      *
-     * This method MUST return a UriTargetInterface instance.
+     * This method MUST return a UriInterface instance.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @return UriTargetInterface Returns a UriTargetInterface instance
+     * @return UriInterface Returns a UriInterface instance
      *     representing the URI of the request, if any.
      */
     public function getUri();
@@ -470,13 +521,13 @@ interface RequestInterface extends MessageInterface
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return a new instance that has the
-     * new UriTargetInterface instance.
+     * new UriInterface instance.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
-     * @param UriTargetInterface $uri New request URI to use.
+     * @param UriInterface $uri New request URI to use.
      * @return self
      */
-    public function withUri(UriTargetInterface $uri);
+    public function withUri(UriInterface $uri);
 }
 ```
 
@@ -944,46 +995,30 @@ interface StreamableInterface
 }
 ```
 
-### 3.5 `Psr\Http\Message\UriTargetInterface`
+### 3.5 `Psr\Http\Message\UriInterface`
 
 ```php
 <?php
 namespace Psr\Http\Message;
 
 /**
- * Value object representing the request target, and typically a URI.
+ * Value object representing a URI for use in HTTP requests.
+ *
+ * This interface is meant to represent only URIs for use with HTTP requests,
+ * and is not intended as a general-purpose URI implementation.
  *
  * Instances of this interface are considered immutable; all methods that
  * might change state MUST be implemented such that they retain the internal
  * state of the current instance and return a new instance that contains the
  * changed state.
  *
- * Since this interface represents a request target per RFC 7230, the instance
- * MAY represent an absolute URI OR one of the request targets that are not
- * fully qualified URIs, including origin-form, authority-form, or
- * asterisk-form. As such, test methods exist for determining what request
- * target form is in use:
- *
- * - isAbsolute() tests if the target is in absolute-form (minimally scheme +
- *   authority).
- * - isOrigin() tests if the target is in origin-form (path + optional query
- *   string only).
- * - isAuthority() tests if the target contains the authority only.
- * - isAsterisk() tests if the entirety of the target is '*'.
- *
- * These target forms are included, as they are valid forms for use with an
- * HTTP request, and will appear without other URI segments available within
- * the request line. This interface models the target as it appears in the
- * incoming request line or as it will be emitted by a client.
- *
- * Typically, for all forms other than absolute-form, minimally the Host header
- * will be also be present in the request message. For server-side requests,
- * the scheme will typically be discoverable in the server parameters.
+ * Typically the Host header will be also be present in the request message.
+ * For server-side requests, the scheme will typically be discoverable in the
+ * server parameters.
  *
  * @link http://tools.ietf.org/html/rfc3986 (the URI specification)
- * @link http://tools.ietf.org/html/rfc7230#section-2.7 (URIs as used in the HTTP specification)
  */
-interface UriTargetInterface
+interface UriInterface
 {
     /**
      * Retrieve the URI scheme.
@@ -1210,52 +1245,6 @@ interface UriTargetInterface
      * @return self A new instance with the specified URI fragment.
      */
     public function withFragment($fragment);
-
-    /**
-     * Indicate whether the URI is in origin-form.
-     *
-     * Origin-form is a URI that includes only the path, and optionally the
-     * query string.
-     *
-     * @link http://tools.ietf.org/html/rfc7230#section-5.3.1
-     * @return bool
-     */
-    public function isOrigin();
-
-    /**
-     * Indicate whether the URI is absolute.
-     *
-     * An absolute URI contains minimally a non-empty scheme and non-empty
-     * authority.
-     *
-     * @see getAuthority()
-     * @link http://tools.ietf.org/html/rfc7230#section-5.3.2
-     * @return bool
-     */
-    public function isAbsolute();
-
-    /**
-     * Indicate whether the instance represents an authority-form request
-     * target.
-     *
-     * An authority-form request-target contains ONLY the authority information.
-     *
-     * @see getAuthority()
-     * @link http://tools.ietf.org/html/rfc7230#section-5.3.3
-     * @return bool
-     */
-    public function isAuthority();
-
-    /**
-     * Indicate whether the instance represents an asterisk-form request
-     * target.
-     *
-     * An asterisk-form request-target will contain ONLY the string "*".
-     *
-     * @link http://tools.ietf.org/html/rfc7230#section-5.3.4
-     * @return bool
-     */
-    public function isAsterisk();
 
     /**
      * Return the string representation of the URI.
