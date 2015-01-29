@@ -105,7 +105,7 @@ MUST be preserved by the implementation, in particular when retrieved with
 `getHeaders()`.
 
 Non-conforming HTTP applications may depend on a certain case, so it is useful
-for a user to be able to dictate the case of the HTTP headers when creating a 
+for a user to be able to dictate the case of the HTTP headers when creating a
 request or response.
 
 ##### Headers with multiple values
@@ -176,27 +176,61 @@ of the request line. The request target can be one of the following forms:
   ("[user-info@]host[:port]", where items in brackets are optional), path (if
   present), query string (if present), and fragment (if present). This is often
   referred to as an absolute URI, and is the only form to specify a URI as
-  detailed in RFC 3986.
+  detailed in RFC 3986. This form is commonly used when making requests to
+  HTTP proxies.
 - **authority-form**, which consists of the authority only. This is typically
   used in CONNECT requests only, to establish a connection between an HTTP
   client and a proxy server.
 - **asterisk-form**, which consists solely of the string '*', and which is used
   with the OPTIONS method to determine the general capabilities of a web server.
 
-Since the goal of this proposal is to establish representations of HTTP
-messages, all four forms MUST be supported, even though only one represents a
-fully qualified URI.
+Aside from these request-targets, there is often an 'effective URL' which is
+separate from the request target. The effective URL is not transmitted within
+a HTTP message, but it is used to determine the protocol (http/https), port
+and hostname for making the request.
 
-When working with fully qualified URIs, consumers will often need access to the
-various URI segments -- scheme, authority, user-info, host, port, path, query,
-and fragment -- and the ability to specify any specific segment. Since changing
-a segment is equivalent to creating a new URI, URI objects MUST be immutable.
+The effective URL is represented by `UriInterface`. `UriInterface` models HTTP
+and HTTPS URIs as specified in RFC 3986 (the primary use case). The interface
+provides methods for interacting with the various URI parts, which will obviate
+the need for repeated parsing of the URI. It also specifies a `__toString()`
+method for casting the modeled URI to its string representation.
 
-`UriInterface` models HTTP and HTTPS URIs as specified in RFC 3986 (the primary
-use case). The interface provides methods for interacting with the various URI
-parts, which will obviate the need for repeated parsing of the URI. It also
-specifies a `__toString()` method for casting the modeled URI to its string
-representation.
+When retrieving the request-target with `getRequestTarget()`, by default this
+method will use the URI object and extract all the necessary components to
+construct the _origin-form_. The _origin-form_ is by far the most common
+request-target.
+
+If it's desired by an end-user to use one of the other three forms, or if the
+user wants to explictly override the request-target, it is possible to do so
+with `withRequestTarget()`.
+
+Calling this method does not affect the URI, as it is returned from `getUri()`.
+
+For example, a user may want to make an asterisk-form request to a server:
+
+```php
+$request = $request
+    ->withMethod('OPTIONS')
+    ->withRequestForm('*')
+    ->withUri(new Uri('https://example.org/'));
+```
+
+This example may ultimately result in a HTTP request that looks like this:
+
+```http
+OPTIONS * HTTP/1.1
+```
+
+But the HTTP client will be able to use the effective url (from `getUri()`),
+to determine the protocol, hostname and tcp port.
+
+A HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
+and instead use the value returned by `getRequestTarget()`, which defaults
+to concatenating these two values.
+
+Clients that choose to not implement 1 or more of the 4 request-target forms,
+MUST still use `getRequestTarget()`. These clients MUST reject request-targets
+they do not support, and MUST NOT fall back on the values from `getUri()`.
 
 `RequestInterface` provides methods for retrieving the request-target or
 creating a new instance with the provided request-target. By default, if no
