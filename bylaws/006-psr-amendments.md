@@ -11,7 +11,7 @@ document itself, and this document outlines those cases.
 
 ## 1. Deprecation and Replacement
 
-If a PSR is found to require substantive updates or errata is no longer able clarify confusion, 
+If a PSR is found to require substantive updates or errata is no longer able to clarify confusion, 
 then the PSR must be replaced, following the workflow set out in [workflow bylaw].
 
 The original PSR may at some point in time be deprecated, and the new PSR becomes the recommended 
@@ -19,7 +19,7 @@ document. Deprecation and recommendation changes must be made with a vote accord
 of the [voting protocol], with a subject like "[VOTE] Deprecate PSR-X", at which point a 
 superseding PSR should be specified as a recommendation. 
 
-Once a vote has passed to deprecate a PSR and supersede it with another PSR, the deprecated PSR must
+Once a vote to deprecate a PSR and supersede it with another PSR has passed, the deprecated PSR must
 be marked as such in the original document and a link should be placed in the body.
 
 For example, the following Markdown be placed at the very top of the relevant standard file in the 
