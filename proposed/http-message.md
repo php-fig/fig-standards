@@ -1,4 +1,4 @@
-﻿HTTP message interfaces
+HTTP message interfaces
 =======================
 
 This document describes common interfaces for representing HTTP messages as
@@ -51,10 +51,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-- RFC 2119: http://www.ietf.org/rfc/rfc2119.txt
-- RFC 7230: http://www.ietf.org/rfc/rfc7230.txt
-- RFC 7231: http://www.ietf.org/rfc/rfc7231.txt
-- RFC 3986: http://www.ietf.org/rfc/rfc3986.txt
+### References
+
+- [RFC 2119](http://tools.ietf.org/html/rfc2119)
+- [RFC 3986](http://tools.ietf.org/html/rfc3986)
+- [RFC 7230](http://tools.ietf.org/html/rfc7230)
+- [RFC 7231](http://tools.ietf.org/html/rfc7231)
+
 
 1. Specification
 ----------------
@@ -96,6 +99,14 @@ $message = $message->withHeader('fOO', 'baz');
 echo $message->getHeader('foo');
 // Outputs: baz
 ```
+
+Despite that headers may be retrieved case-insenstively, the original case
+MUST be preserved by the implementation, in particular when retrieved with
+`getHeaders()`.
+
+Non-conforming HTTP applications may depend on a certain case, so it is useful
+for a user to be able to dictate the case of the HTTP headers when creating a 
+request or response.
 
 ##### Headers with multiple values
 
@@ -301,6 +312,9 @@ interface MessageInterface
      *         }
      *     }
      *
+     * While header names are not case-sensitive, getHeaders() will preserve the
+     * exact case in which headers were originally specified.
+     *
      * @return array Returns an associative array of the message's headers. Each
      *     key MUST be a header name, and each value MUST be an array of strings.
      */
@@ -344,8 +358,8 @@ interface MessageInterface
      * Create a new instance with the provided header, replacing any existing
      * values of any headers with the same case-insensitive name.
      *
-     * The header name is case-insensitive. The header values MUST be a string
-     * or an array of strings.
+     * While header names are case-insensitive, the casing of the header will
+     * be preserved by this function, and returned from getHeaders().
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return a new instance that has the
