@@ -205,7 +205,7 @@ provides convenience in client applications by allowing users to create new
 instances of a base URI instance with just the segments that change (e.g.,
 updating the path only).
 
-### Why does the request interface have methods for dealing with the request line as whole, AND compose a URI?
+### Why does the request interface have methods for dealing with the request-target AND compose a URI?
 
 RFC 7230 details the request line as containing a "request-target". Of the four
 forms of request-target, only one is a URI compliant with RFC 3986; the most
@@ -213,13 +213,12 @@ common form used, however, is origin-form, which represents the URI without the
 scheme or authority information. Moreover, since all forms are valid for
 purposes of requests, the proposal must accommodate each.
 
-`RequestInterface` thus has methods surrounding the request line. By default,
-it will attempt to construct the request line by computing it from its own
-values: the HTTP method, the composed URI, and the protocol version. Since the
-most common form or specifying the request line is using origin-form (path and
-query string), this is the default used. Another method, `withRequestLine()`,
-allows specifying an instance with a specific request line, allowing users to
-create requests that use one of the other valid request-target forms.
+`RequestInterface` thus has methods realting to the request-target. By default,
+it will use the composed URI to present an origin-form request-target, and, in
+the absence of a URI instance, return the string "/".  Another method,
+`withRequestTarget()`, allows specifying an instance with a specific
+request-traget, allowing users to create requests that use one of the other
+valid request-target forms.
 
 The URI is kept as a discrete member of the request for a variety of reasons.
 For both clients and servers, knowledge of the absolute URI is typically
