@@ -228,12 +228,15 @@ authority details, is needed in order to make the actual TCP connection. For
 server-side applications, the full URI is often required in order to validate
 the request or to route to an appropriate handler.
 
-### Immutability of messages
+### Why value objects?
 
-The proposal models immutable messages and URIs.
+The proposal models messages and URIs as [value objects](http://en.wikipedia.org/wiki/Value_object).
 
 Messages are values where the identity is the aggregate of all parts of the
 message; a change to any aspect of the message is essentially a new message.
+This is the very definition of a value object. The practice by which changes
+result in a new instance is termed [immutability](http://en.wikipedia.org/wiki/Immutable_object),
+and is a feature designed to ensure the integrity of a given value.
 
 However, the proposal also recognizes that most clients and server-side
 applications will need to be able to easily update message aspects, and, as
@@ -241,14 +244,14 @@ such, provides interface methods that will create new message instances with
 the updates. These are generally prefixed with the verbiage `with` or
 `without`.
 
-Immutability provides several benefits:
+Value objects provides several benefits when modeling HTTP messages:
 
 - Changes in URI state cannot alter the request composing the URI instance.
 - Changes in headers cannot alter the message composing them.
 
-In essence, immutability ensures the integrity of the message state, and
-prevents the need for bi-directional dependencies, which can often go
-out-of-sync or lead to debugging or performance issues.
+In essence, modeling HTTP messages as value objects ensures the integrity of
+the message state, and prevents the need for bi-directional dependencies, which
+can often go out-of-sync or lead to debugging or performance issues.
 
 For HTTP clients, they allow consumers to build a base request with data such
 as the base URI and required headers, without needing to build a brand new
@@ -288,17 +291,17 @@ On the server-side, developers will need to:
 - Decrypt HTTP cookies.
 - Write to the response.
 
-These operations can be accomplished with immutable objects as well, with a
-number of benefits:
+These operations can be accomplished with value objects as well, with a number
+of benefits:
 
 - The original request state can be stored for retrieval by any consumer.
 - A default response state can be created with default headers and/or message body. 
 
-Most popular PHP frameworks have mutable HTTP messages today. The main changes
-necessary in consuming immutable messages are:
+Most popular PHP frameworks have fully mutable HTTP messages today. The main
+changes necessary in consuming true value objects are:
 
 - Instead of calling setter methods or setting public properties, mutator
-  messages will be called, and the result assigned.
+  methods will be called, and the result assigned.
 - Developers must notify the application on a change in state.
 
 As an example, in Zend Framework 2, instead of the following:
