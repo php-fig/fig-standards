@@ -213,11 +213,11 @@ common form used, however, is origin-form, which represents the URI without the
 scheme or authority information. Moreover, since all forms are valid for
 purposes of requests, the proposal must accommodate each.
 
-`RequestInterface` thus has methods realting to the request-target. By default,
+`RequestInterface` thus has methods relating to the request-target. By default,
 it will use the composed URI to present an origin-form request-target, and, in
 the absence of a URI instance, return the string "/".  Another method,
 `withRequestTarget()`, allows specifying an instance with a specific
-request-traget, allowing users to create requests that use one of the other
+request-target, allowing users to create requests that use one of the other
 valid request-target forms.
 
 The URI is kept as a discrete member of the request for a variety of reasons.
