@@ -100,7 +100,7 @@ echo $message->getHeader('foo');
 // Outputs: baz
 ```
 
-Despite that headers may be retrieved case-insenstively, the original case
+Despite that headers may be retrieved case-insensitively, the original case
 MUST be preserved by the implementation, in particular when retrieved with
 `getHeaders()`.
 
@@ -201,7 +201,7 @@ construct the _origin-form_. The _origin-form_ is by far the most common
 request-target.
 
 If it's desired by an end-user to use one of the other three forms, or if the
-user wants to explictly override the request-target, it is possible to do so
+user wants to explicitly override the request-target, it is possible to do so
 with `withRequestTarget()`.
 
 Calling this method does not affect the URI, as it is returned from `getUri()`.
@@ -1298,7 +1298,7 @@ interface UriInterface
      *
      * - If a scheme is present, "://" MUST append the value.
      * - If the authority information is present, that value will be
-     *   contatenated.
+     *   concatenated.
      * - If a path is present, it MUST be prefixed by a "/" character.
      * - If a query string is present, it MUST be prefixed by a "?" character.
      * - If a URI fragment is present, it MUST be prefixed by a "#" character.
