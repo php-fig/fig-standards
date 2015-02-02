@@ -200,10 +200,18 @@ interface CacheItemInterface
      *
      * @param mixed $value
      *   The serializable value to be stored.
+     * @param int|\DateTime $ttl
+     *   - If an integer is passed, it is interpreted as the number of seconds
+     *     after which the item MUST be considered expired.
+     *   - If a DateTime object is passed, it is interpreted as the point in
+     *     time after which the item MUST be considered expired.
+     *   - If no value is passed, a default value MAY be used. If none is set,
+     *     the value should be stored permanently or for as long as the
+     *     implementation allows.
      * @return static
      *   The invoked object.
      */
-    public function set($value);
+    public function set($value, $ttl = null);
 
     /**
      * Confirms if the cache item lookup resulted in a cache hit.
@@ -229,21 +237,31 @@ interface CacheItemInterface
     public function exists();
 
     /**
-     * Sets the expiration for this cache item.
+     * Sets the expiration time this cache item.
      *
-     * @param int|\DateTime $ttl
-     *   - If an integer is passed, it is interpreted as the number of seconds
-     *     after which the item MUST be considered expired.
-     *   - If a DateTime object is passed, it is interpreted as the point in
-     *     time after which the item MUST be considered expired.
-     *   - If null is passed, a default value MAY be used. If none is set,
-     *     the value should be stored permanently or for as long as the
-     *     implementation allows.
+     * @param \DateTime|\DateTimeImmutable $expiration
+     *   The point in time after which the item MUST be considered expired.
+     *   If null is passed explicitly, a default value MAY be used. If none is set,
+     *   the value should be stored permanently or for as long as the
+     *   implementation allows.
      *
      * @return static
      *   The called object.
      */
-    public function setExpiration($ttl = null);
+    public function expiresAt($expiration);
+
+    /**
+     * Sets the expiration time this cache item.
+     *
+     * @param int|\DateInterval $time
+     *   The period of time from the present after which the item MUST be considered
+     *   expired. An integer parameter is understood to be the time in seconds until
+     *   expiration.
+     *
+     * @return static
+     *   The called object.
+     */
+    public function expiresAfter($time);
 
     /**
      * Returns the expiration time of a not-yet-expired cache item.
