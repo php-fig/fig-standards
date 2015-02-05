@@ -100,7 +100,7 @@ echo $message->getHeader('foo');
 // Outputs: baz
 ```
 
-Despite that headers may be retrieved case-insenstively, the original case
+Despite that headers may be retrieved case-insensitively, the original case
 MUST be preserved by the implementation, in particular when retrieved with
 `getHeaders()`.
 
