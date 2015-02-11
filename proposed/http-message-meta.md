@@ -394,10 +394,11 @@ incoming requests:
   via the `$_SERVER` superglobal; these are part of the PHP Server API (SAPI)).
 - Access to the query string arguments (usually encapsulated in PHP via the
   `$_GET` superglobal).
-- Access to body parameters (i.e., data deserialized from the incoming request
-  body; in PHP, this is specific to POST requests in
-  `application/x-www-urlencoded` content types, and encapsulated in the
-  `$_POST` superglobal).
+- Access to the parsed body (i.e., data deserialized from the incoming request
+  body; in PHP, this is typically the result of POST requests using
+  `application/x-www-form-urlencoded` content types, and encapsulated in the
+  `$_POST` superglobal, but for non-POST, non-form-encoded data, could be
+  an array or an object).
 - Access to uploaded files (encapsulated in PHP via the `$_FILES` superglobal).
 - Access to cookie values (encapsulated in PHP via the `$_COOKIE` superglobal).
 - Access to attributes derived from the request (usually, but not limited to,
@@ -415,6 +416,75 @@ solves problems within the PHP language itself:
 - Unit testing against superglobals (e.g., `$_GET`, `$_FILES`, etc.) is
   difficult and typically brittle. Encapsulating them inside the
   `ServerRequestInterface` implementation eases testing considerations.
+
+### Why "parsed body" in the ServerRequestInterface?
+
+Arguments were made to use the terminology "BodyParams", and require the value
+to be an array, with the following rationale:
+
+- Consistency with other server-side parameter access.
+- `$_POST` is an array, and the 80% use case would target that superglobal.
+- A single type makes for a strong contract, simplifying usage.
+
+The main argument is that if the body parameters are an array, developers have
+predictable access to values:
+
+```php
+$foo = isset($request->getBodyParams()['foo'])
+    ? $request->getBodyParams()['foo']
+    : null;
+```
+
+The argument for using "parsed body" was made by examining the domain. A message
+body can contain literally anything. While traditional web applications use
+forms and submit data using POST, this is a use case that is quickly being
+challenged in current web development trends, which are often API centric, and
+thus use alternate request methods (notably PUT and PATCH), as well as
+non-form-encoded content (generally JSON or XML) that _can_ be coerced to arrays
+in many cases, but in many cases also _cannot_ or _should not_.
+
+If forcing the property representing the parsed body to be only an array,
+developers then need a shared convention about where to put the results of
+parsing the body. These might include:
+
+- A special key under the body parameters, such as `__parsed__`.
+- A special named attribute, such as `__body__`.
+
+The end result is that a developer now has to look in multiple locations:
+
+```php
+$data = $request->getBodyParams();
+if (isset($data['__parsed__']) && is_object($data['__parsed__'])) {
+    $data = $data['__parsed__'];
+}
+
+// or:
+$data = $request->getBodyParams();
+if ($request->hasAttribute('__body__')) {
+    $data = $request->getAttribute('__body__');
+}
+```
+
+The solution presented is to use the terminology "ParsedBody", which implies
+that the values are the results of parsing the message body. This also means
+that the return value _will_ be ambiguous; however, because this is an attribute
+of the domain, this is also expected. As such, usage will become:
+
+```php
+$data = $request->getParsedBody();
+if (! $data instanceof \stdClass) {
+    // raise an exception!
+}
+// otherwise, we have what we expected
+```
+
+This approach removes the limitations of forcing an array, at the expense of
+ambiguity of return value. Considering that the other suggested solutions —
+pushing the parsed data into a special body parameter key or into an attribute —
+also suffer from ambiguity, the proposed solution is simpler as it does not
+require additions to the interface specification. Ultimately, the ambiguity
+enables the flexibility required when representing the results of parsing the
+body.
 
 ### What about "special" header values?
 
@@ -450,6 +520,7 @@ used to populate the headers of an HTTP message.
 ### 6.3 Contributors
 
 * Michael Dowling
+* Larry Garfield
 * Phil Sturgeon
 * Chris Wilkinson
 * Evert Pot
