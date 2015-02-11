@@ -752,11 +752,11 @@ interface ServerRequestInterface extends RequestInterface
      * immutability of the message, and MUST return a new instance that has the
      * updated body parameters.
      *
-     * @param null|array|object $params The deserialized body parameters. These
-     *     will typically be in an array or object.
+     * @param null|array|object $data The deserialized body data. This will
+     *     typically be in an array or object.
      * @return self
      */
-    public function withParsedBody($params);
+    public function withParsedBody($data);
 
     /**
      * Retrieve attributes derived from the request.
