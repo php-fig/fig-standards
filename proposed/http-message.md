@@ -257,7 +257,8 @@ simplification around input marshaling via superglobals such as:
 - `$_GET`, which deserializes and provides simplified access for query string
   arguments.
 - `$_POST`, which deserializes and provides simplified access for urlencoded
-  parameters submitted via HTTP POST.
+  parameters submitted via HTTP POST; generically, it can be considered the
+  results of parsing the message body.
 - `$_FILES`, which provides serialized metadata around file uploads.
 - `$_SERVER`, which provides access to CGI/SAPI environment variables, which
   commonly include the request method, the request scheme, the request URI, and
@@ -716,32 +717,46 @@ interface ServerRequestInterface extends RequestInterface
     /**
      * Retrieve any parameters provided in the request body.
      *
-     * If the request body can be deserialized to an array, this method MAY be
-     * used to retrieve them.
+     * If the request Content-Type is application/x-www-form-urlencoded and the
+     * request method is POST, this method MUST return the contents of $_POST.
      *
-     * @return array The deserialized body parameters, if any.
+     * Otherwise, this method may return any results of deserializing
+     * the request body content; as parsing returns structured content, the
+     * potential types MUST be arrays or objects only. A null value indicates
+     * the absence of body content.
+     *
+     * @return null|array|object The deserialized body parameters, if any.
+     *     These will typically be an array or object.
      */
-    public function getBodyParams();
+    public function getParsedBody();
 
     /**
      * Create a new instance with the specified body parameters.
      *
-     * These MAY be injected during instantiation from PHP's $_POST
-     * superglobal. The data IS NOT REQUIRED to come from $_POST, but MUST be
-     * an array. This method can be used during the request lifetime to inject
-     * parameters discovered and/or deserialized from the request body; as an
-     * example, if content negotiation determines that the request data is
-     * a JSON payload, this method could be used to inject the deserialized
-     * parameters.
+     * These MAY be injected during instantiation.
+     *
+     * If the request Content-Type is application/x-www-form-urlencoded and the
+     * request method is POST, use this method ONLY to inject the contents of
+     * $_POST.
+     *
+     * The data IS NOT REQUIRED to come from $_POST, but MUST be the results of
+     * deserializing the request body content. Deserialization/parsing returns
+     * structured data, and, as such, this method ONLY accepts arrays or objects,
+     * or a null value if nothing was available to parse.
+     *
+     * As an example, if content negotiation determines that the request data
+     * is a JSON payload, this method could be used to create a request
+     * instance with the deserialized parameters.
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return a new instance that has the
      * updated body parameters.
      *
-     * @param array $params The deserialized body parameters.
+     * @param null|array|object $data The deserialized body data. This will
+     *     typically be in an array or object.
      * @return self
      */
-    public function withBodyParams(array $params);
+    public function withParsedBody($data);
 
     /**
      * Retrieve attributes derived from the request.
@@ -767,11 +782,11 @@ interface ServerRequestInterface extends RequestInterface
      * specifying a default value to return if the attribute is not found.
      *
      * @see getAttributes()
-     * @param string $attribute Attribute name.
+     * @param string $name The attribute name.
      * @param mixed $default Default value to return if the attribute does not exist.
      * @return mixed
      */
-    public function getAttribute($attribute, $default = null);
+    public function getAttribute($name, $default = null);
 
     /**
      * Create a new instance with the specified derived request attribute.
@@ -784,11 +799,11 @@ interface ServerRequestInterface extends RequestInterface
      * updated attribute.
      *
      * @see getAttributes()
-     * @param string $attribute The attribute name.
+     * @param string $name The attribute name.
      * @param mixed $value The value of the attribute.
      * @return self
      */
-    public function withAttribute($attribute, $value);
+    public function withAttribute($name, $value);
 
     /**
      * Create a new instance that removes the specified derived request
@@ -802,10 +817,10 @@ interface ServerRequestInterface extends RequestInterface
      * the attribute.
      *
      * @see getAttributes()
-     * @param string $attribute The attribute name.
+     * @param string $name The attribute name.
      * @return self
      */
-    public function withoutAttribute($attribute);
+    public function withoutAttribute($name);
 }
 ```
 
