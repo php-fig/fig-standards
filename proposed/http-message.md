@@ -41,8 +41,8 @@ This is the response body
 
 The first line is the "status line", and contains, in order, the HTTP protocol
 version, the HTTP status code, and a "reason phrase," a human-readable
-description of the status code. Just like the request message, this is then
-followed by one or more HTTP headers, and empty line, and the message body.
+description of the status code. Like the request message, this is then
+followed by one or more HTTP headers, an empty line, and the message body.
 
 The interfaces described in this document are abstractions around HTTP messages
 and the elements composing them.
@@ -78,13 +78,13 @@ referring to these interfaces.
 
 #### 1.2 HTTP Headers
 
-##### Case-insensitive header names
+##### Case-insensitive header field names
 
-HTTP messages include case-insensitive header names. Headers are retrieved by name from
-classes implementing the `MessageInterface` interface in a case-insensitive
-manner. For example, retrieving the "foo" header will return the same result as
-retrieving the "FoO" header. Similarly, setting the "Foo" header will overwrite
-any previously set "foo" header.
+HTTP messages include case-insensitive header field names. Headers are retrieved
+by name from classes implementing the `MessageInterface` in a case-insensitive
+manner. For example, retrieving the `foo` header will return the same result as
+retrieving the `FoO` header. Similarly, setting the `Foo` header will overwrite
+any previously set `foo` header value.
 
 ```php
 $message = $message->withHeader('foo', 'bar');
@@ -112,7 +112,7 @@ request or response.
 
 In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
-an instance of a ``MessageInterface`` as an array or string. Use the
+an instance of a `MessageInterface` as an array or a string. Use the
 `getHeader()` method to retrieve a header value as a string containing all
 header values of a case-insensitive header by name concatenated with a comma.
 Use `getHeaderLines()` to retrieve an array of all the header values for a
@@ -181,7 +181,7 @@ of the request line. The request target can be one of the following forms:
 - **authority-form**, which consists of the authority only. This is typically
   used in CONNECT requests only, to establish a connection between an HTTP
   client and a proxy server.
-- **asterisk-form**, which consists solely of the string '*', and which is used
+- **asterisk-form**, which consists solely of the string `*`, and which is used
   with the OPTIONS method to determine the general capabilities of a web server.
 
 Aside from these request-targets, there is often an 'effective URL' which is
@@ -358,12 +358,12 @@ interface MessageInterface
     /**
      * Checks if a header exists by the given case-insensitive name.
      *
-     * @param string $header Case-insensitive header name.
+     * @param string $name Case-insensitive header field name.
      * @return bool Returns true if any header names match the given header
      *     name using a case-insensitive string comparison. Returns false if
      *     no matching header name is found in the message.
      */
-    public function hasHeader($header);
+    public function hasHeader($name);
 
     /**
      * Retrieve a header by the given case-insensitive name, as a string.
@@ -376,18 +376,18 @@ interface MessageInterface
      * comma concatenation. For such headers, use getHeaderLines() instead
      * and supply your own delimiter when concatenating.
      *
-     * @param string $header Case-insensitive header name.
+     * @param string $name Case-insensitive header field name.
      * @return string
      */
-    public function getHeader($header);
+    public function getHeader($name);
 
     /**
      * Retrieves a header by the given case-insensitive name as an array of strings.
      *
-     * @param string $header Case-insensitive header name.
+     * @param string $name Case-insensitive header field name.
      * @return string[]
      */
-    public function getHeaderLines($header);
+    public function getHeaderLines($name);
 
     /**
      * Create a new instance with the provided header, replacing any existing
@@ -400,12 +400,12 @@ interface MessageInterface
      * immutability of the message, and MUST return a new instance that has the
      * new and/or updated header and value.
      *
-     * @param string $header Header name
+     * @param string $name Case-insensitive header field name.
      * @param string|string[] $value Header value(s).
      * @return self
      * @throws \InvalidArgumentException for invalid header names or values.
      */
-    public function withHeader($header, $value);
+    public function withHeader($name, $value);
 
     /**
      * Creates a new instance, with the specified header appended with the
@@ -419,12 +419,12 @@ interface MessageInterface
      * immutability of the message, and MUST return a new instance that has the
      * new header and/or value.
      *
-     * @param string $header Header name to add
+     * @param string $name Case-insensitive header field name to add.
      * @param string|string[] $value Header value(s).
      * @return self
      * @throws \InvalidArgumentException for invalid header names or values.
      */
-    public function withAddedHeader($header, $value);
+    public function withAddedHeader($name, $value);
 
     /**
      * Creates a new instance, without the specified header.
@@ -435,10 +435,10 @@ interface MessageInterface
      * immutability of the message, and MUST return a new instance that removes
      * the named header.
      *
-     * @param string $header HTTP header to remove
+     * @param string $name Case-insensitive header field name to remove.
      * @return self
      */
-    public function withoutHeader($header);
+    public function withoutHeader($name);
 
     /**
      * Gets the body of the message.
@@ -1313,7 +1313,7 @@ interface UriInterface
      *
      * - If a scheme is present, "://" MUST append the value.
      * - If the authority information is present, that value will be
-     *   contatenated.
+     *   concatenated.
      * - If a path is present, it MUST be prefixed by a "/" character.
      * - If a query string is present, it MUST be prefixed by a "?" character.
      * - If a URI fragment is present, it MUST be prefixed by a "#" character.

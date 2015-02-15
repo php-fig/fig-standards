@@ -71,7 +71,7 @@ and `$_POST`, respectively), providing a layer of convenience for web developers
 On the response side of the equation, PHP was originally developed as a
 templating language, and allows intermixing HTML and PHP; any HTML portions of
 a file are immediately flushed to the output buffer. Modern applications and
-frameworks, however, eschew this practice, as it can lead to issues with
+frameworks eschew this practice, as it can lead to issues with
 regards to emitting a status line and/or response headers; they tend to
 aggregate all headers and content, and emit them at once when all other
 application processing is complete. Special care needs to be paid to ensure
@@ -161,8 +161,8 @@ messages.
   frameworks to change their interfaces to conform. It is strictly meant for
   interoperability.
 * While everyone's perception of what is and is not an implementation detail
-  varies, this proposal should not impose implementation details. However,
-  because RFCs 7230, 7231, and 3986 do not force any particular implementation,
+  varies, this proposal should not impose implementation details. As
+  RFCs 7230, 7231, and 3986 do not force any particular implementation,
   there will be a certain amount of invention needed to describe HTTP message
   interfaces in PHP.
 
@@ -202,14 +202,14 @@ times in a give request -- and which would require parsing the URI in order to
 determine (e.g., via `parse_url()`). Modeling URIs as value objects allows
 parsing once only, and simplifies access to individual segments. It also
 provides convenience in client applications by allowing users to create new
-instances of a base URI instance with just the segments that change (e.g.,
+instances of a base URI instance with only the segments that change (e.g.,
 updating the path only).
 
 ### Why does the request interface have methods for dealing with the request-target AND compose a URI?
 
 RFC 7230 details the request line as containing a "request-target". Of the four
 forms of request-target, only one is a URI compliant with RFC 3986; the most
-common form used, however, is origin-form, which represents the URI without the
+common form used is origin-form, which represents the URI without the
 scheme or authority information. Moreover, since all forms are valid for
 purposes of requests, the proposal must accommodate each.
 
@@ -237,7 +237,7 @@ This is the very definition of a value object. The practice by which changes
 result in a new instance is termed [immutability](http://en.wikipedia.org/wiki/Immutable_object),
 and is a feature designed to ensure the integrity of a given value.
 
-However, the proposal also recognizes that most clients and server-side
+The proposal also recognizes that most clients and server-side
 applications will need to be able to easily update message aspects, and, as
 such, provides interface methods that will create new message instances with
 the updates. These are generally prefixed with the verbiage `with` or
@@ -386,7 +386,7 @@ correlations with the request and response messages described in
 implementing value objects that correspond to the specific HTTP message types
 they model.
 
-For server-side applications, however, there are other considerations for
+For server-side applications there are other considerations for
 incoming requests:
 
 - Access to server parameters (potentially derived from the request, but also
