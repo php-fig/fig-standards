@@ -201,7 +201,7 @@ construct the _origin-form_. The _origin-form_ is by far the most common
 request-target.
 
 If it's desired by an end-user to use one of the other three forms, or if the
-user wants to explictly override the request-target, it is possible to do so
+user wants to explicitly override the request-target, it is possible to do so
 with `withRequestTarget()`.
 
 Calling this method does not affect the URI, as it is returned from `getUri()`.
