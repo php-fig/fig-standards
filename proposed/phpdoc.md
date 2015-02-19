@@ -3,52 +3,57 @@ PSR-5: PHPDoc
 
 ## Table Of Contents
 
-    1. Introduction
-    2. Conventions Used In This Document
-    3. Definitions
-    4. Basic Principles
-    5. The PHPDoc Format
-      5.1. Summary
-      5.2. Description
-      5.3. Tags
-        5.3.1. Tag Name
-        5.3.2. Tag Specialization
-        5.3.3. Tag Signature
-      5.4. Inline PHPDoc
-      5.5. Examples
-    6. Inheritance
-      6.1. Class Or Interface
-      6.2. Function Or Method
-      6.3. Constant Or Property
-    7. Describing hashes
-    8. Tags
-      8.1.  @api
-      8.2.  @author
-      8.3.  @category [deprecated]
-      8.4.  @copyright
-      8.5.  @deprecated
-      8.6.  @example
-      8.7.  @global
-      8.8.  @internal
-      8.9.  @license
-      8.10. @link
-      8.11. @method
-      8.12. @package
-      8.13. @param
-      8.14. @property
-      8.15. @return
-      8.16. @see
-      8.17. @since
-      8.18. @struct
-      8.19. @subpackage [deprecated]
-      8.20. @throws
-      8.21. @todo
-      8.22. @typedef
-      8.23. @uses
-      8.24. @var
-      8.25. @version
-    Appendix A. Types
-    Appendix B. Differences Compared With The De-facto PHPDoc Standard
+- [1. Introduction](#1-introduction)
+- [2. Conventions Used In This Document](#2-conventions-used-in-this-document)
+- [3. Definitions](#3-definitions)
+- [4. Basic Principles](#4-basic-principles)
+- [5. The PHPDoc Format](#5-the-phpdoc-format)
+  - [5.1. Summary](#51-summary)
+  - [5.2. Description](#52-description)
+  - [5.3. Tags](#53-tags)
+    - [5.3.1. Tag Name](#531-tag-name)
+    - [5.3.2. Tag Specialization](#532-tag-specialization)
+    - [5.3.3. Tag Signature](#533-tag-signature)
+  - [5.4. Inline PHPDoc](#54-inline-phpdoc)
+  - [5.5. Examples](#55-examples)
+- [6. Inheritance](#6-inheritance)
+  - [6.1. Class Or Interface](#61-class-or-interface)
+  - [6.2. Function Or Method](#62-function-or-method)
+  - [6.3. Constant Or Property](#63-constant-or-property)
+- [7. Describing hashes](#7-describing-hashes)
+- [8. Tags](#8-tags)
+  - [8.1.  @api](#81-api)
+  - [8.2.  @author](#82-author)
+  - [8.3.  @category [deprecated]](#83-category-deprecated) 
+  - [8.4.  @copyright](#84-copyright)
+  - [8.5.  @deprecated](#85-deprecated)
+  - [8.6.  @example](#86-example)
+  - [8.7.  @global](#87-global)
+  - [8.8.  @internal](#88-internal)
+  - [8.9.  @license](#89-license)
+  - [8.10. @link [deprecated]](#810-link-deprecated)
+  - [8.11. @method](#811-method)
+  - [8.12. @package](#812-package)
+  - [8.13. @param](#813-param)
+  - [8.14. @property](#814-property)
+  - [8.15. @return](#815-return)
+  - [8.16. @see](#816-see)
+  - [8.17. @since](#817-since)
+  - [8.18. @struct](#818-struct)
+  - [8.19. @subpackage [deprecated]](#819-subpackage-deprecated)
+  - [8.20. @throws](#820-throws)
+  - [8.21. @todo](#821-todo)
+  - [8.22. @typedef](#822-typedef)
+  - [8.23. @uses](#823-uses)
+  - [8.24. @var](#824-var)
+  - [8.25. @version](#825-version)
+- [Appendix A. Types](#appendix-a-types)
+  - [ABFN](#abfn)
+  - [Details](#details)
+  - [Valid Class Name](#valid-class-name)
+  - [Keyword](#keyword)
+- Appendix B. Differences Compared With The De-facto PHPDoc Standard
+
 
 ## 1. Introduction
 
