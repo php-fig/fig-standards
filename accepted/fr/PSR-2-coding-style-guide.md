@@ -9,7 +9,7 @@ attentes communes quant à la façon de formater du code PHP.
 
 Les règles de style dans ce document sont tirées de points communs entre les
 membres de différents projets. Lorsque plusieurs auteurs collaborent sur
-plusieurs projets, cela aide d'avoir un ensemble de lignes directrices qui
+plusieurs projets, cela aide à avoir un ensemble de lignes directrices qui
 seront utilisées dans tous ces projets. Ainsi, l'avantage de ce guide n'est pas
 dans les règles elles-mêmes, mais dans le partage de ces dernières.
 
@@ -322,9 +322,9 @@ class ClassName
 ### 4.5. `abstract`, `final`, et `static`
 
 Lorsqu'elles sont présentes, les déclarations `abstract` et `final` DOIVENT
-précédés la déclaration de la visibilité.
+précéder la déclaration de la visibilité.
 
-Lorsqu'elle est présente, l'a déclaration `static` DOIT venir après la
+Lorsqu'elle est présente, la déclaration `static` DOIT venir après la
 déclaration de la visibilité.
 
 ```php
@@ -409,13 +409,13 @@ if ($expr1) {
 }
 ```
 
-Le mot-clé `elseif` DEVRAIT être utilisé au lieu de `else if` afin que tout les
+Le mot-clé `elseif` DEVRAIT être utilisé au lieu de `else if` afin que tous les
 mots-clés de contrôle ressemblent à des mots simples.
 
 ### 5.2. `switch`, `case`
 
 Une structure `switch` ressemble à ce qui suit. Notez l'emplacement des
-parenthèses, espaces et accolades, la déclaration de `case` DOIT être indenté
+parenthèses, espaces et accolades, la déclaration de `case` DOIT être indentée
 une fois par rapport à `switch` et le mot-clé `break` (ou autre mot-clé de
 terminaison) DOIT être indenté au même niveau que le corps de `case`. Il DOIT y
 avoir un commentaire comme `// no break` lorsque son omission est
