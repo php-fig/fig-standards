@@ -717,8 +717,9 @@ interface ServerRequestInterface extends RequestInterface
     /**
      * Retrieve any parameters provided in the request body.
      *
-     * If the request Content-Type is application/x-www-form-urlencoded and the
-     * request method is POST, this method MUST return the contents of $_POST.
+     * If the request Content-Type is either application/x-www-form-urlencoded
+     * or multipart/form-data, and the request method is POST, this method MUST
+     * return the contents of $_POST.
      *
      * Otherwise, this method may return any results of deserializing
      * the request body content; as parsing returns structured content, the
@@ -735,9 +736,9 @@ interface ServerRequestInterface extends RequestInterface
      *
      * These MAY be injected during instantiation.
      *
-     * If the request Content-Type is application/x-www-form-urlencoded and the
-     * request method is POST, use this method ONLY to inject the contents of
-     * $_POST.
+     * If the request Content-Type is either application/x-www-form-urlencoded
+     * or multipart/form-data, and the request method is POST, use this method
+     * ONLY to inject the contents of $_POST.
      *
      * The data IS NOT REQUIRED to come from $_POST, but MUST be the results of
      * deserializing the request body content. Deserialization/parsing returns
