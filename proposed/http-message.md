@@ -135,6 +135,17 @@ Note: Not all header values can be concatenated using a comma (e.g.,
 `MessageInterface`-based classes SHOULD rely on the `getHeaderLines()` method
 for retrieving such multi-valued headers.
 
+##### Host header
+
+In requests, the Host header typically mirrors the host segment of the URI, as
+well as the host used when establishing the TCP connection. However, the HTTP
+specification allows the Host header to differ from each of the two.
+
+The `RequestInterface` overrides the `MessageInterface::getHeader()` method to
+indicate that if no Host header is present, but a host segment is present in the
+composed `UriInterface`, the value from the URI should be used. If a Host header
+is explicitly provided to the request instance, that value will be preferred.
+
 ### 1.3 Streams
 
 HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
@@ -489,6 +500,22 @@ namespace Psr\Http\Message;
  */
 interface RequestInterface extends MessageInterface
 {
+    /**
+     * Extends MessageInterface::getHeader() to provide request-specific
+     * behavior.
+     *
+     * This method acts exactly like MessageInterface::getHeader(), with
+     * one behavioral change: if the Host header is requested, but has
+     * not been previously set, the method SHOULD attempt to pull the host
+     * segment of the composed URI, if present.
+     *
+     * @see MessageInterface::getHeader()
+     * @see UriInterface::getHost()
+     * @param string $name Case-insensitive header field name.
+     * @return string
+     */
+    public function getHeader($name);
+
     /**
      * Retrieves the message's request target.
      *
