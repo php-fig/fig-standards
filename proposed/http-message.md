@@ -501,12 +501,30 @@ namespace Psr\Http\Message;
 interface RequestInterface extends MessageInterface
 {
     /**
+     * Extends MessageInterface::getHeaders() to provide request-specific
+     * behavior.
+     *
+     * Retrieves all message headers.
+     *
+     * This method acts exactly like MessageInterface::getHeaders(), with one
+     * behavioral change: if the Host header has not been previously set, the
+     * method MUST attempt to pull the host segment of the composed URI, if
+     * present.
+     *
+     * @see MessageInterface::getHeaders()
+     * @see UriInterface::getHost()
+     * @return array Returns an associative array of the message's headers. Each
+     *     key MUST be a header name, and each value MUST be an array of strings.
+     */
+    public function getHeaders();
+
+    /**
      * Extends MessageInterface::getHeader() to provide request-specific
      * behavior.
      *
      * This method acts exactly like MessageInterface::getHeader(), with
      * one behavioral change: if the Host header is requested, but has
-     * not been previously set, the method SHOULD attempt to pull the host
+     * not been previously set, the method MUST attempt to pull the host
      * segment of the composed URI, if present.
      *
      * @see MessageInterface::getHeader()
@@ -515,6 +533,24 @@ interface RequestInterface extends MessageInterface
      * @return string
      */
     public function getHeader($name);
+
+    /**
+     * Extends MessageInterface::getHeaderLines() to provide request-specific
+     * behavior.
+     *
+     * Retrieves a header by the given case-insensitive name as an array of strings.
+     *
+     * This method acts exactly like MessageInterface::getHeaderLines(), with
+     * one behavioral change: if the Host header is requested, but has
+     * not been previously set, the method MUST attempt to pull the host
+     * segment of the composed URI, if present.
+     *
+     * @see MessageInterface::getHeaderLines()
+     * @see UriInterface::getHost()
+     * @param string $name Case-insensitive header field name.
+     * @return string[]
+     */
+    public function getHeaderLines($name);
 
     /**
      * Retrieves the message's request target.
