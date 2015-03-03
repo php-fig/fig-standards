@@ -1287,6 +1287,10 @@ interface UriInterface
      * Additionally, the query string SHOULD be parseable by parse_str() in
      * order to be valid.
      *
+     * The implementation MUST percent encode reserved characters as
+     * specified in RFC 3986, Section 2, but MUST NOT double-encode any
+     * characters.
+     *
      * An empty query string value is equivalent to removing the query string.
      *
      * @param string $query The query string to use with the new instance.
