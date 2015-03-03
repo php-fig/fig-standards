@@ -1265,6 +1265,10 @@ interface UriInterface
      * The path MUST be prefixed with "/"; if not, the implementation MAY
      * provide the prefix itself.
      *
+     * The implementation MUST percent encode reserved characters as
+     * specified in RFC 3986, Section 2, but MUST NOT double-encode any
+     * characters.
+     *
      * An empty path value is equivalent to removing the path.
      *
      * @param string $path The path to use with the new instance.
