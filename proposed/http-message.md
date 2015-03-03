@@ -376,8 +376,10 @@ interface MessageInterface
      * comma concatenation. For such headers, use getHeaderLines() instead
      * and supply your own delimiter when concatenating.
      *
+     * If the header did not exist, this method should return a null value.
+     *
      * @param string $name Case-insensitive header field name.
-     * @return string
+     * @return string|null
      */
     public function getHeader($name);
 
