@@ -2043,9 +2043,6 @@ A valid class name seen from the context where this type is mentioned. Thus
 this may be either a Fully Qualified Class Name (FQCN) or if present in a
 namespace a local name.
 
-> It is RECOMMENDED for applications to expand any local name into a FQCN
-> for easier processing and comparisons.
-
 The element to which this type applies is either an instance of this class
 or an instance of a class that is a (sub-)child to the given class.
 
