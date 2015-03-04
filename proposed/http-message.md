@@ -1328,6 +1328,10 @@ interface UriInterface
      * The path MUST be prefixed with "/"; if not, the implementation MAY
      * provide the prefix itself.
      *
+     * The implementation MUST percent-encode reserved characters as
+     * specified in RFC 3986, Section 2, but MUST NOT double-encode any
+     * characters.
+     *
      * An empty path value is equivalent to removing the path.
      *
      * @param string $path The path to use with the new instance.
@@ -1345,6 +1349,10 @@ interface UriInterface
      * If the query string is prefixed by "?", that character MUST be removed.
      * Additionally, the query string SHOULD be parseable by parse_str() in
      * order to be valid.
+     *
+     * The implementation MUST percent-encode reserved characters as
+     * specified in RFC 3986, Section 2, but MUST NOT double-encode any
+     * characters.
      *
      * An empty query string value is equivalent to removing the query string.
      *
