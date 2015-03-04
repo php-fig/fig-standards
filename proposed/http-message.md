@@ -221,7 +221,7 @@ This example may ultimately result in a HTTP request that looks like this:
 OPTIONS * HTTP/1.1
 ```
 
-But the HTTP client will be able to use the effective url (from `getUri()`),
+But the HTTP client will be able to use the effective URL (from `getUri()`),
 to determine the protocol, hostname and tcp port.
 
 A HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
@@ -667,10 +667,10 @@ interface ServerRequestInterface extends RequestInterface
      *
      * Retrieves the deserialized query string arguments, if any.
      *
-     * Note: the query params might not be in sync with the URL or server
+     * Note: the query params might not be in sync with the URI or server
      * params. If you need to ensure you are only getting the original
-     * values, you may need to parse the composed URL or the `QUERY_STRING`
-     * composed in the server params.
+     * values, you may need to parse the query string from `getUri()->getQuery()`
+     * or from the `QUERY_STRING` server param.
      *
      * @return array
      */
@@ -687,7 +687,7 @@ interface ServerRequestInterface extends RequestInterface
      * purposes of how duplicate query parameters are handled, and how nested
      * sets are handled.
      *
-     * Setting query string arguments MUST NOT change the URL stored by the
+     * Setting query string arguments MUST NOT change the URI stored by the
      * request, nor the values in the server params.
      *
      * This method MUST be implemented in such a way as to retain the
