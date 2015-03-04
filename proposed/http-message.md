@@ -1265,7 +1265,7 @@ interface UriInterface
      * The path MUST be prefixed with "/"; if not, the implementation MAY
      * provide the prefix itself.
      *
-     * The implementation MUST percent encode reserved characters as
+     * The implementation MUST percent-encode reserved characters as
      * specified in RFC 3986, Section 2, but MUST NOT double-encode any
      * characters.
      *
@@ -1287,7 +1287,7 @@ interface UriInterface
      * Additionally, the query string SHOULD be parseable by parse_str() in
      * order to be valid.
      *
-     * The implementation MUST percent encode reserved characters as
+     * The implementation MUST percent-encode reserved characters as
      * specified in RFC 3986, Section 2, but MUST NOT double-encode any
      * characters.
      *
