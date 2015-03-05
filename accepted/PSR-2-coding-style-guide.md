@@ -140,6 +140,17 @@ The PHP constants `true`, `false`, and `null` MUST be in lower case.
 3. Namespace and Use Declarations
 ---------------------------------
 
+The `namespace` declaration MUST start on the same line as the opening `php` tag.
+
+For example:
+
+```php
+<?php namespace Vendor\Package;
+
+// ... additional PHP code ...
+```
+
+
 When present, there MUST be one blank line after the `namespace` declaration.
 
 When present, all `use` declarations MUST go after the `namespace`
@@ -152,8 +163,7 @@ There MUST be one blank line after the `use` block.
 For example:
 
 ```php
-<?php
-namespace Vendor\Package;
+<?php namespace Vendor\Package;
 
 use FooClass;
 use BarClass as Bar;
@@ -251,8 +261,7 @@ A method declaration looks like the following. Note the placement of
 parentheses, commas, spaces, and braces:
 
 ```php
-<?php
-namespace Vendor\Package;
+<?php namespace Vendor\Package;
 
 class ClassName
 {
@@ -272,8 +281,7 @@ Method arguments with default values MUST go at the end of the argument
 list.
 
 ```php
-<?php
-namespace Vendor\Package;
+<?php namespace Vendor\Package;
 
 class ClassName
 {
@@ -293,8 +301,7 @@ and opening brace MUST be placed together on their own line with one space
 between them.
 
 ```php
-<?php
-namespace Vendor\Package;
+<?php namespace Vendor\Package;
 
 class ClassName
 {
@@ -317,8 +324,7 @@ When present, the `static` declaration MUST come after the visibility
 declaration.
 
 ```php
-<?php
-namespace Vendor\Package;
+<?php namespace Vendor\Package;
 
 abstract class ClassName
 {
