@@ -1506,7 +1506,7 @@ The @since tag SHOULD NOT be used to show the current version of an element, the
 ```php
 /**
  * This is Foo
- * @version MyApp 2.1.7
+ * @version 2.1.7 MyApp
  * @since 2.0.0 introduced
  */
 class Foo
