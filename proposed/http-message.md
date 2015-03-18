@@ -1,5 +1,4 @@
-HTTP message interfaces
-=======================
+# HTTP message interfaces
 
 This document describes common interfaces for representing HTTP messages as
 described in [RFC 7230](http://tools.ietf.org/html/rfc7230) and
@@ -59,8 +58,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 - [RFC 7231](http://tools.ietf.org/html/rfc7231)
 
 
-1. Specification
-----------------
+## 1. Specification
 
 ### 1.1 Messages
 
@@ -286,14 +284,12 @@ application-specific rules (such as path matching, scheme matching, host
 matching, etc.). As such, the server request can also provide messaging between
 multiple request consumers.
 
-2. Package
-----------
+## 2. Package
 
 The interfaces and classes described are provided as part of the
 [psr/http-message](https://packagist.org/packages/psr/http-message) package.
 
-3. Interfaces
--------------
+## 3. Interfaces
 
 ### 3.1 `Psr\Http\Message\MessageInterface`
 

@@ -1,8 +1,6 @@
-HTTP Message Meta Document
-==========================
+# HTTP Message Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 The purpose of this proposal is to provide a set of common interfaces for HTTP
 messages as described in [RFC 7230](http://tools.ietf.org/html/rfc7230) and
@@ -30,8 +28,7 @@ In PHP, HTTP messages are used in two contexts:
 This proposal presents an API for fully describing all parts of the various
 HTTP messages within PHP.
 
-2. HTTP Messages in PHP
------------------------
+## 2. HTTP Messages in PHP
 
 PHP does not have built-in support for HTTP messages.
 
@@ -78,8 +75,7 @@ application processing is complete. Special care needs to be paid to ensure
 that error reporting and other actions that send content to the output buffer
 do not flush the output buffer.
 
-3. Why Bother?
---------------
+## 3. Why Bother?
 
 HTTP messages are used in a wide number of PHP projects -- both clients and
 servers. In each case, we observe one or more of the following patterns or
@@ -140,8 +136,7 @@ current interfaces utilized by existing PHP libraries. This proposal is aimed
 at interoperability between PHP packages for the purpose of describing HTTP
 messages.
 
-4. Scope
---------
+## 4. Scope
 
 ### 4.1 Goals
 
@@ -166,8 +161,7 @@ messages.
   there will be a certain amount of invention needed to describe HTTP message
   interfaces in PHP.
 
-5. Design Decisions
--------------------
+## 5. Design Decisions
 
 ### Message design
 
@@ -505,8 +499,7 @@ Examples of this practice already exist in libraries such as
 has functionality for casting the value to a string, these objects can be
 used to populate the headers of an HTTP message.
 
-6. People
----------
+## 6. People
 
 ### 6.1 Editor(s)
 
