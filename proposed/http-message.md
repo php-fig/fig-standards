@@ -1386,7 +1386,7 @@ interface UriInterface
      * - If a scheme is present, "://" MUST append the value.
      * - If the authority information is present, that value will be
      *   concatenated.
-     * - If a path is present, it MUST be prefixed by a "/" character.
+     * - If a path is present, it MUST start with a "/" character.
      * - If a query string is present, it MUST be prefixed by a "?" character.
      * - If a URI fragment is present, it MUST be prefixed by a "#" character.
      *
