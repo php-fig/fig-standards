@@ -1222,7 +1222,7 @@ interface UriInterface
      * Retrieve the path segment of the URI.
      *
      * This method MUST return a string; if no path is present it MUST return
-     * an empty string.
+     * the string "/".
      *
      * @return string The path segment of the URI.
      */
