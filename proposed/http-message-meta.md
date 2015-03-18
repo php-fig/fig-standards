@@ -480,6 +480,47 @@ require additions to the interface specification. Ultimately, the ambiguity
 enables the flexibility required when representing the results of parsing the
 body.
 
+### Why is no functionality included for retrieving the "base path"?
+
+Many frameworks provide the ability to get the "base path," usually considered
+the path up to and including the front controller. As an example, if the
+application is served at `http://example.com/b2b/index.php`, and the current URI
+used to request it is `http://example.com/b2b/index.php/customer/register`, the
+functionality to retrieve the base path would return `/b2b/index.php`. This value
+can then be used by routers to strip that path segment prior to attempting a
+match.
+
+This value is often also then used for URI generation within applications;
+parameters will be passed to the router, which will generate the path, and
+prefix it with the base path in order to return a fully-qualified URI. Other
+tools — typically view helpers, template filters, or template functions — are
+used to resolve a path relative to the base path in order to generate a URI for
+linking to resources such as static assets.
+
+On examination of several different implementations, we noticed the following:
+
+- The logic for determining the base path varies widely between implementations.
+  As an example, compare the [logic in ZF2](https://github.com/zendframework/zf2/blob/release-2.3.7/library/Zend/Http/PhpEnvironment/Request.php#L477-L575)
+  to the [logic in Symfony 2](https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/HttpFoundation/Request.php#L1858-L1877).
+- Most implementations appear to allow manual injection of a base path to the
+  router and/or any facilities used for URI generation.
+- The primary use cases — routing and URI generation — typically are the only
+  consumers of the functionality; developers usually do not need to be aware
+  of the base path concept as other objects take care of that detail for them.
+  As examples:
+  - A router will strip off the base path for you during routing; you do not
+    need to pass the modified path to the router.
+  - View helpers, template filters, etc. typically are injected with a base path
+    prior to invocation. Sometimes this is manually done, though more often it
+    is the result of framework wiring.
+- All sources necessary for calculating the base path *are already in the
+  `RequestInterface` instance*, via server parameters and the URI instance.
+
+Our stance is that base path detection is framework and/or application
+specific, and the results of detection can be easily injected into objects that
+need it, and/or calculated as needed using utility functions and/or classes from
+the `RequestInterface` instance itself.
+
 ### What about "special" header values?
 
 A number of header values contain unique representation requirements which can
