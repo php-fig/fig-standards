@@ -42,7 +42,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | A      | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon |
 | D      | 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon |
 | R      | 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady |
-| D      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen |
+| R      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen |
 | D      | 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans     |
 | D      | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto |
 
