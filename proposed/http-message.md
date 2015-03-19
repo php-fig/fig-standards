@@ -172,6 +172,16 @@ example in the case of a socket, pipe, or callback-based stream).
 Finally, `StreamableInterface` defines a `__toString()` method to simplify
 retrieving or emitting the entire body contents at once.
 
+Unlike the request and response interfaces, `StreamableInterface` does not model
+immutability. In situations where an actual PHP stream is wrapped, immutability
+is impossible to enforce, as any code that interacts with the resource can
+potentially change its state (including cursor position, contents, and more).
+Our recommendation is that implementations use read-only streams for
+server-side requests and client-side responses. Consumers should be aware of
+the fact that the stream instance may be mutable, and, as such, could alter
+the state of the message; when in doubt, create a new stream instance and attach
+it to a message to enforce state.
+
 ### 1.4 Request Targets and URIs
 
 Per RFC 7230, request messages contain a "request-target" as the second segment
