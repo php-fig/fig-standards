@@ -357,6 +357,66 @@ like `isReadable()`, `isWritable()`, etc. This approach is used by Python,
 [Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html),
 [Node](http://nodejs.org/api/stream.html), and likely others.
 
+#### What if I just want to return a file?
+
+In some cases, you may want to return a file from the filesystem. The typical
+way to do this in PHP is one of the following:
+
+```php
+readfile($filename);
+
+stream_copy_to_stream(fopen($filename, 'r'), fopen('php://output', 'w'));
+```
+
+Note that the above omits sending appropriate `Content-Type` and
+`Content-Length` headers; the developer would need to emit these prior to
+calling the above code.
+
+The equivalent using HTTP messages would be to use a `StreamableInterface`
+implementation that accepts a filename and/or stream resource, and to provide
+this to the response instance. A complete example, including setting appropriate
+headers:
+
+```php
+// where Stream is a concrete StreamableInterface:
+$stream   = new Stream($filename);
+$finfo    = new finfo(FILEINFO_MIME);
+$response = $response
+    ->withHeader('Content-Type', $finfo->file($filename))
+    ->withHeader('Content-Length', (string) filesize($filename))
+    ->withBody($stream);
+```
+
+Emitting this response will send the file to the client.
+
+#### What if I want to directly emit output?
+
+Directly emitting output (e.g. via `echo`, `printf`, or writing to the
+`php://output` stream) is generally only advisable as a performance optimization
+or when emitting large data sets. If it needs to be done and you still wish
+to work in an HTTP message paradigm, one approach would be to use a
+callback-based `StreamableInterface` implementation, per [this
+example](https://github.com/phly/psr7examples#direct-output). Wrap any code
+emitting output directly in a callback, pass that to an appropriate
+`StreamableInterface` implementation, and provide it to the message body:
+
+```php
+$output = new CallbackStream(function () use ($request) {
+    printf("The requested URI was: %s<br>\n", $request->getUri());
+    return '';
+});
+return (new Response())
+    ->withHeader('Content-Type', 'text/html')
+    ->withBody($output);
+```
+
+#### What if I want to use an iterator for content?
+
+Ruby's Rack implementation uses an iterator-based approach for server-side
+response message bodies. This can be emulated using an HTTP message paradigm via
+an iterator-backed `StreamableInterface` approach, as [detailed in the
+psr7examples repository](https://github.com/phly/psr7examples#iterators-and-generators).
+
 ### Why are streams mutable?
 
 The `StreamableInterface` API includes methods such as `write()` which can
