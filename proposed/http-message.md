@@ -111,8 +111,8 @@ request or response.
 In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
 an instance of a `MessageInterface` as an array or a string. Use the
-`getHeader()` method to retrieve a header value as a string containing all
-header values of a case-insensitive header by name concatenated with a comma.
+`getHeader()` method to retrieve a string containing concatenated
+header values of a case-insensitive header by name.
 Use `getHeaderLines()` to retrieve an array of all the header values for a
 particular case-insensitive header by name.
 
@@ -128,7 +128,7 @@ $header = $message->getHeaderLines('foo');
 // ['bar', 'baz']
 ```
 
-Note: Not all header values can be concatenated using a comma (e.g.,
+Note: Most header values are concatenated using a comma but some aren't (e.g.,
 `Set-Cookie`). When working with such headers, consumers of
 `MessageInterface`-based classes SHOULD rely on the `getHeaderLines()` method
 for retrieving such multi-valued headers.
@@ -385,12 +385,11 @@ interface MessageInterface
     /**
      * Retrieve a header by the given case-insensitive name, as a string.
      *
-     * This method returns all of the header values of the given
-     * case-insensitive header name as a string concatenated together using
-     * a comma.
+     * This method returns a string containing concatenated header values of the given
+     * case-insensitive header name.
      *
-     * NOTE: Not all header values may be appropriately represented using
-     * comma concatenation. For such headers, use getHeaderLines() instead
+     * NOTE: Most header values are concatenated using a comma but some aren't because they could not be represented
+     * using comma concatenation. For such headers, use getHeaderLines() instead
      * and supply your own delimiter when concatenating.
      *
      * If the header did not appear in the message, this method should return
