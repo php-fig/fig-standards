@@ -32,7 +32,7 @@ HTTP messages within PHP.
 
 PHP does not have built-in support for HTTP messages.
 
-### Client-side HTTP support
+### 2.1 Client-side HTTP support
 
 PHP supports sending HTTP requests via several mechanisms:
 
@@ -52,7 +52,7 @@ Most modern HTTP client libraries tend to abstract the implementation, to
 ensure they can work on whatever environment they are executed on, and across
 any of the above layers.
 
-### Server-side HTTP Support
+### 2.2 Server-side HTTP Support
 
 PHP uses Server APIs (SAPI) to interpret incoming HTTP requests, marshal input,
 and pass off handling to scripts. The original SAPI design mirrored [Common
@@ -163,7 +163,7 @@ messages.
 
 ## 5. Design Decisions
 
-### Message design
+### 5.1 Message design
 
 The `MessageInterface` provides accessors for the elements common to all HTTP
 messages, whether they are for requests or responses. These elements include:
@@ -180,13 +180,13 @@ Python's [WSGI](https://www.python.org/dev/peps/pep-0333/),
 Go's [http package](http://golang.org/pkg/net/http/),
 Node's [http module](http://nodejs.org/api/http.html), etc.
 
-### Why are there header methods on messages rather than in a header bag?
+### 5.2 Why are there header methods on messages rather than in a header bag?
 
 The message itself is a container for the headers (as well as the other message
 properties). How these are represented internally is an implementation detail,
 but uniform access to headers is a responsibility of the message.
 
-### Why are URIs represented as objects?
+### 5.3 Why are URIs represented as objects?
 
 URIs are values, with identity defined by the value, and thus should be modeled
 as value objects.
@@ -199,7 +199,7 @@ provides convenience in client applications by allowing users to create new
 instances of a base URI instance with only the segments that change (e.g.,
 updating the path only).
 
-### Why does the request interface have methods for dealing with the request-target AND compose a URI?
+### 5.4 Why does the request interface have methods for dealing with the request-target AND compose a URI?
 
 RFC 7230 details the request line as containing a "request-target". Of the four
 forms of request-target, only one is a URI compliant with RFC 3986; the most
@@ -221,7 +221,7 @@ authority details, is needed in order to make the actual TCP connection. For
 server-side applications, the full URI is often required in order to validate
 the request or to route to an appropriate handler.
 
-### Why value objects?
+### 5.5 Why value objects?
 
 The proposal models messages and URIs as [value objects](http://en.wikipedia.org/wiki/Value_object).
 
@@ -324,7 +324,7 @@ The above combines assignment and notification in a single call.
 This practice has a side benefit of making explicit any changes to application
 state being made.
 
-### Using streams instead of X
+### 5.6 Using streams instead of X
 
 `MessageInterface` uses a body value that must implement `StreamableInterface`. This
 design decision was made so that developers can send and receive (and/or receive
@@ -357,7 +357,7 @@ like `isReadable()`, `isWritable()`, etc. This approach is used by Python,
 [Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html),
 [Node](http://nodejs.org/api/stream.html), and likely others.
 
-#### What if I just want to return a file?
+#### 5.6.1 What if I just want to return a file?
 
 In some cases, you may want to return a file from the filesystem. The typical
 way to do this in PHP is one of the following:
@@ -389,7 +389,7 @@ $response = $response
 
 Emitting this response will send the file to the client.
 
-#### What if I want to directly emit output?
+#### 5.6.2 What if I want to directly emit output?
 
 Directly emitting output (e.g. via `echo`, `printf`, or writing to the
 `php://output` stream) is generally only advisable as a performance optimization
@@ -410,14 +410,14 @@ return (new Response())
     ->withBody($output);
 ```
 
-#### What if I want to use an iterator for content?
+#### 5.6.3 What if I want to use an iterator for content?
 
 Ruby's Rack implementation uses an iterator-based approach for server-side
 response message bodies. This can be emulated using an HTTP message paradigm via
 an iterator-backed `StreamableInterface` approach, as [detailed in the
 psr7examples repository](https://github.com/phly/psr7examples#iterators-and-generators).
 
-### Why are streams mutable?
+### 5.7 Why are streams mutable?
 
 The `StreamableInterface` API includes methods such as `write()` which can
 change the message content -- which directly contradicts having immutable
@@ -432,7 +432,7 @@ making immutability impossible to enforce.
 Our recommendation is that implementations use read-only streams for
 server-side requests and client-side responses.
 
-### Rationale for ServerRequestInterface
+### 5.8 Rationale for ServerRequestInterface
 
 The `RequestInterface` and `ResponseInterface` have essentially 1:1
 correlations with the request and response messages described in
@@ -471,7 +471,7 @@ solves problems within the PHP language itself:
   difficult and typically brittle. Encapsulating them inside the
   `ServerRequestInterface` implementation eases testing considerations.
 
-### Why "parsed body" in the ServerRequestInterface?
+### 5.9 Why "parsed body" in the ServerRequestInterface?
 
 Arguments were made to use the terminology "BodyParams", and require the value
 to be an array, with the following rationale:
@@ -540,7 +540,7 @@ require additions to the interface specification. Ultimately, the ambiguity
 enables the flexibility required when representing the results of parsing the
 body.
 
-### Why is no functionality included for retrieving the "base path"?
+### 5.10 Why is no functionality included for retrieving the "base path"?
 
 Many frameworks provide the ability to get the "base path," usually considered
 the path up to and including the front controller. As an example, if the
@@ -581,7 +581,7 @@ specific, and the results of detection can be easily injected into objects that
 need it, and/or calculated as needed using utility functions and/or classes from
 the `RequestInterface` instance itself.
 
-### What about "special" header values?
+### 5.11 What about "special" header values?
 
 A number of header values contain unique representation requirements which can
 pose problems both for consumption as well as generation; in particular, cookies
