@@ -1253,8 +1253,8 @@ Namespaces provide a functional subdivision of "Structural Elements" where the
 @package tag can provide a *logical* subdivision in which way the elements can
 be grouped with a different hierarchy.
 
-If, across the board, both logical and functional subdivisions are equal is
-it NOT RECOMMENDED to use the @package tag, to prevent maintenance overhead.
+If, across the board, both logical and functional subdivisions are equal it
+is NOT RECOMMENDED to use the @package tag, to prevent maintenance overhead.
 
 Each level in the logical hierarchy MUST separated with a backslash (`\`) to
 be familiar to Namespaces. A hierarchy MAY be of endless depth but it is
@@ -1549,7 +1549,7 @@ Namespaces provide a functional subdivision of "Structural Elements" where
 the @subpackage tag can provide a *logical* subdivision in which way the
 elements can be grouped with a different hierarchy.
 
-If, across the board, both logical and functional subdivisions are equal is it
+If, across the board, both logical and functional subdivisions are equal it is
 NOT RECOMMENDED to use the @subpackage tag, to prevent maintenance overhead.
 
 The @subpackage tag MUST only be used in a specific series of DocBlocks, as is
