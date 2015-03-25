@@ -478,12 +478,12 @@ An example of this is:
 
 ```php
 /**
- * @method integer MyMagicMethod(string $argument1) {
+ * @method int MyMagicMethod(string $argument1) {
  *     This is the summary for MyMagicMethod.
  *
  *     @param string $argument1 Description for argument 1.
  *
- *     @return integer
+ *     @return int
  * }
  */
 class MyMagicClass
@@ -577,12 +577,12 @@ Some tags may even feature an "Inline PHPDoc" as shown in the following example.
 
 ```php
 /**
- * @method integer MyMagicMethod(string $argument1) {
+ * @method int MyMagicMethod(string $argument1) {
  *     This is the summary for MyMagicMethod.
  *
  *     @param string $argument1 Description for argument 1.
  *
- *     @return integer
+ *     @return int
  * }
  */
 class MyMagicClass
@@ -706,8 +706,8 @@ Example:
  * Initializes this class with the given options.
  *
  * @param array $options {
- *     @var boolean $required Whether this element is required
- *     @var string  $label    The display name for this element
+ *     @var bool   $required Whether this element is required
+ *     @var string $label    The display name for this element
  * }
  */
 public function __construct(array $options = array())
@@ -982,7 +982,7 @@ regards to the start and end limit.
  *
  * @example http://example.com/foo.phps
  *
- * @return integer Indicates the number of items.
+ * @return int Indicates the number of items.
  */
 function count()
 {
@@ -1074,7 +1074,7 @@ Mark the count function as being internal to this project:
 /**
  * @internal
  *
- * @return integer Indicates the number of items.
+ * @return int Indicates the number of items.
  */
 function count()
 {
@@ -1086,7 +1086,7 @@ function count()
  *
  * {@internal Silently adds one extra Foo to compensate for lack of Foo }}
  *
- * @return integer Indicates the number of items.
+ * @return int Indicates the number of items.
  */
 function count()
 {
@@ -1166,7 +1166,7 @@ defined by this occurrence.
 /**
  * @link http://example.com/my/bar Documentation of Foo.
  *
- * @return integer Indicates the number of items.
+ * @return int Indicates the number of items.
  */
 function count()
 {
@@ -1179,7 +1179,7 @@ function count()
  * When no more Foo ({@link http://example.com/my/bar}) are given this
  * function will add one as there must always be one Foo.
  *
- * @return integer Indicates the number of items.
+ * @return int Indicates the number of items.
  */
 function count()
 {
@@ -1228,8 +1228,8 @@ class Parent
 
 /**
  * @method string getString()
- * @method void setInteger(integer $integer)
- * @method setString(integer $integer)
+ * @method void setInteger(int $integer)
+ * @method setString(int $integer)
  */
 class Child extends Parent
 {
@@ -1335,8 +1335,8 @@ an option array with 2 elements: 'required' and 'label'.
  * Initializes this class with the given options.
  *
  * @param array $options {
- *     @var boolean $required Whether this element is required
- *     @var string  $label    The display name for this element
+ *     @var bool   $required Whether this element is required
+ *     @var string $label    The display name for this element
  * }
  */
 public function __construct(array $options = array())
@@ -1420,7 +1420,7 @@ This tag MUST NOT occur more than once in a "DocBlock" and is limited to the
 
 ```php
 /**
- * @return integer Indicates the number of items.
+ * @return int Indicates the number of items.
  */
 function count()
 {
@@ -1470,7 +1470,7 @@ relationship.
  * @see MyClass::setItems()       To set the items for this collection.
  * @see http://example.com/my/bar Documentation of Foo.
  *
- * @return integer Indicates the number of items.
+ * @return int Indicates the number of items.
  */
 function count()
 {
@@ -1666,7 +1666,7 @@ Let's explain this concept by presenting the following use-cases:
 3. You consume a library with magic methods who does not implement the `@method`
    tag but still want to document which methods are on it yourself.
 4. You want a pseudo-type called Scalar that represents either a string, float,
-   boolean or integer.
+   bool or int.
 5. You have used class_alias() to create an alias and want PHPDoc to know which
    class it is based from so that methods and properties could be inherited.
 
@@ -1973,9 +1973,8 @@ A Type has the following [ABNF][RFC5234] definition:
     collection-type  = class-name / "array"
     class-name       = ["\"] label *("\" label)
     label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
-    keyword          = "array" / "bool" / "boolean" / "callable" / "double" / "false" / "float" / "int" / "integer"
-    keyword          =/ "mixed" / "null" / "object" / "resource" / "self" / "static" / "string" / "true" / "void"
-    keyword          =/ "$this"
+    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "mixed" / "null" / "object" /
+    keyword          = "resource" / "self" / "static" / "string" / "true" / "void" / "$this"
 
 ### Details
 
@@ -2023,19 +2022,19 @@ Example: to indicate that this element returns an object of class ArrayObject th
 
 The type of the values in a Collection MAY be another array and even another Collection,
 
-    @return \ArrayObject<\ArrayObject<integer>>
+    @return \ArrayObject<\ArrayObject<int>>
 
 A Collection MAY optionally define the type of the keys of said Collection by adding an additional type definition
 between the angular brackets before the identifier denoting the values' type. These two should be separated by a comma.
 
 Example: to declare an ArrayObject collection containing a list of strings with integer keys.
 
-    @return \ArrayObject<integer, string>
+    @return \ArrayObject<int, string>
 
 The type of a value, or key, MAY consist of several different types, this can be represented by separating each
 individual type with a vertical bar sign between the angular brackets.
 
-    @return \ArrayObject<string|boolean>
+    @return \ArrayObject<string|bool>
 
 ### Valid Class Name
 
@@ -2068,11 +2067,11 @@ The following keywords are recognized by this PSR:
 
 1.  `string`, the element to which this type applies is a string of binary characters.
 
-2.  `integer` or `int`, the element to which this type applies is a whole number or integer.
+2.  `int`, the element to which this type applies is a whole number or integer.
 
-3.  `boolean` or `bool`, the element to which this type applies only has state `TRUE` or `FALSE`.
+3.  `bool`, the element to which this type applies only has state `TRUE` or `FALSE`.
 
-4.  `float` or `double`, the element to which this type applies is a continuous, or real, number.
+4.  `float`, the element to which this type applies is a continuous, or real, number.
 
 5.  `object`, the element to which this type applies is the instance of an undetermined class.
 
@@ -2104,7 +2103,7 @@ The following keywords are recognized by this PSR:
     **Example 2:**
     ```php
     /**
-     * @param boolean $hi when true 'Hello world' is echo-ed.
+     * @param bool $hi when true 'Hello world' is echo-ed.
      *
      * @return void
      */
@@ -2143,7 +2142,7 @@ The following keywords are recognized by this PSR:
     **Example 2:**
     ```php
     /**
-     * @param boolean $create_new When true returns a new stdClass.
+     * @param bool $create_new When true returns a new stdClass.
      *
      * @return stdClass|null
      */
