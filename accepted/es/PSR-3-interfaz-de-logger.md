@@ -104,112 +104,120 @@ implementación se proveen como parte del paquete [psr/log](https://packagist.or
 namespace Psr\Log;
 
 /**
- * Describe una instancia de logger
- * 
- * El mensaje DEBE ser una cadena o un objecto que implemente __toString().
+ * Describes a logger instance.
  *
- * El mensaje PUEDE contener marcadores con el formato: {foo} donde foo
- * será reemplazado por el valor de la clave "foo" en el array de contexto.
+ * The message MUST be a string or object implementing __toString().
  *
- * El array de contexto puede contener cualquier dato arbitrario de datos, la
- * única suposición que pueden hacer las implementaciones es si se provee
- * una instancia de `Exception` para producir una pila de trazas, ésta TIENE QUE
- * estar en la clave "exception".
+ * The message MAY contain placeholders in the form: {foo} where foo
+ * will be replaced by the context data in key "foo".
  *
- * Revise https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
- * para obtener la especificación completa de esta interfaz.
+ * The context array can contain arbitrary data. The only assumption that
+ * can be made by implementors is that if an Exception instance is given
+ * to produce a stack trace, it MUST be in a key named "exception".
+ *
+ * See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
+ * for the full interface specification.
  */
 interface LoggerInterface
 {
     /**
-     * El sistema no está disponible.
+     * System is unusable.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function emergency($message, array $context = array());
 
     /**
-     * Debe actuarse de manera inmediata.
+     * Action must be taken immediately.
      *
-     * Ejemplo: Sitio web caído, base de datos no disponible, etc. Esto debería
-     * mandar un SMS de alerta y despertarle.
+     * Example: Entire website down, database unavailable, etc. This should
+     * trigger the SMS alerts and wake you up.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function alert($message, array $context = array());
 
     /**
-     * Condiciones críticas.
+     * Critical conditions.
      *
-     * Ejemplo: Componente de la aplicación no disponible, excepción inesperada.
+     * Example: Application component unavailable, unexpected exception.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function critical($message, array $context = array());
 
     /**
-     * Errores en tiempo de ejecución que no requieren de una acción inmediata
-     * pero que deberían ser imprimidas en el log y monitoreadas.
+     * Runtime errors that do not require immediate action but should typically
+     * be logged and monitored.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function error($message, array $context = array());
 
     /**
-     * Evento excepcional pero que no implica error sino adevertencia.
+     * Exceptional occurrences that are not errors.
      *
-     * Ejemplo: Uso de APIs obsoletas, mal uso de un API, cosas indeseables que
-     * no son necesariamente un error.
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things
+     * that are not necessarily wrong.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function warning($message, array $context = array());
 
     /**
-     * Eventos normales pero significantes.
+     * Normal but significant events.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function notice($message, array $context = array());
 
     /**
-     * Evento interesante.
+     * Interesting events.
      *
-     * Ejemplo: Acceso de usuarios, SQL logs.
+     * Example: User logs in, SQL logs.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function info($message, array $context = array());
 
     /**
-     * Información detallada de debug.
+     * Detailed debug information.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function debug($message, array $context = array());
 
     /**
-     * Imprime un log con nivel arbitrario.
+     * Logs with an arbitrary level.
      *
-     * @param mixed $level
+     * @param mixed  $level
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function log($level, $message, array $context = array());
@@ -225,14 +233,15 @@ interface LoggerInterface
 namespace Psr\Log;
 
 /**
- * Describe un objecto que soporta loggers.
+ * Describes a logger-aware instance.
  */
 interface LoggerAwareInterface
 {
     /**
-     * Define una instancia de log en el objeto
+     * Sets a logger instance on the object.
      *
      * @param LoggerInterface $logger
+     *
      * @return null
      */
     public function setLogger(LoggerInterface $logger);
@@ -248,20 +257,21 @@ interface LoggerAwareInterface
 namespace Psr\Log;
 
 /**
- * Describe los niveles de log
+ * Describes log levels.
  */
 class LogLevel
 {
     const EMERGENCY = 'emergency';
-    const ALERT     = 'alert';
-    const CRITICAL  = 'critical';
-    const ERROR     = 'error';
-    const WARNING   = 'warning';
-    const NOTICE    = 'notice';
-    const INFO      = 'info';
-    const DEBUG     = 'debug';
+    const ALERT = 'alert';
+    const CRITICAL = 'critical';
+    const ERROR = 'error';
+    const WARNING = 'warning';
+    const NOTICE = 'notice';
+    const INFO = 'info';
+    const DEBUG = 'debug';
 }
 ```
+
 Notas
 --------
 
