@@ -660,7 +660,6 @@ class Framework_ActionController
 
 /**
  * @package My
- *
  */
 class My_ActionController extends Framework_ActionController
 {
