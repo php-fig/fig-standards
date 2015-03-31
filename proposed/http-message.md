@@ -1165,6 +1165,8 @@ interface UriInterface
      *
      * The string returned MUST omit the trailing "://" delimiter if present.
      *
+     * @see https://github.com/php-fig/fig-standards/blob/proposed/http-message-meta.md#81-scheme-delimiters
+     *     which indicates ":" delimiters must also be omitted.
      * @return string The scheme of the URI.
      */
     public function getScheme();
@@ -1276,6 +1278,8 @@ interface UriInterface
      *
      * An empty scheme is equivalent to removing the scheme.
      *
+     * @see https://github.com/php-fig/fig-standards/blob/proposed/http-message-meta.md#81-scheme-delimiters
+     *     which indicates ":" delimiters must also be omitted.
      * @param string $scheme The scheme to use with the new instance.
      * @return self A new instance with the specified scheme.
      * @throws \InvalidArgumentException for invalid or unsupported schemes.
