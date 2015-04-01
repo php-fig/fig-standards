@@ -930,7 +930,7 @@ interface ResponseInterface extends MessageInterface
      * The Status-Code is a 3-digit integer result code of the server's attempt
      * to understand and satisfy the request.
      *
-     * @return integer Status code.
+     * @return int Status code.
      */
     public function getStatusCode();
 
@@ -948,7 +948,7 @@ interface ResponseInterface extends MessageInterface
      *
      * @link http://tools.ietf.org/html/rfc7231#section-6
      * @link http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
-     * @param integer $code The 3-digit integer result code to set.
+     * @param int $code The 3-digit integer result code to set.
      * @param null|string $reasonPhrase The reason phrase to use with the
      *     provided status code; if none is provided, implementations MAY
      *     use the defaults as suggested in the HTTP specification.
