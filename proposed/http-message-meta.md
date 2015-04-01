@@ -631,3 +631,38 @@ used to populate the headers of an HTTP message.
 * Evert Pot
 * Phil Sturgeon
 * Chris Wilkinson
+
+## 7. Votes
+
+## 8. Errata
+
+### 8.1 URI Encoding
+
+Each of `Psr\Http\Message\UriInterface`'s `*Path()`, `*Query()`, and
+`*Fragment()` methods reference [RFC 3986 Section
+2](https://tools.ietf.org/html/rfc3986#section-2) with regards to how the
+specific segment should be encoded.
+
+RFC 3986 Section 2 lists a number of reserved characters, and the `UriInterface`
+methods indicate that reserved characters MUST be escaped. However, RFC 3986
+also notes:
+
+> A URI is composed from a limited set of characters consisting of digits,
+> letters, and a few graphic symbols.  A reserved subset of those characters may
+> be used to delimit syntax components within a URI while the remaining
+> characters, including both the unreserved set and those reserved characters
+> not acting as delimiters, define each component's identifying data.
+
+In other words, the reserved characters noted in Section 2 are a *general* set,
+and that the list may differ from component to component within the URI;
+developers must refer to the appropriate section for the component they are
+encoding to determine the appropriate list.
+
+The primary confusion arising is whether or not the `/` character MUST be
+encoded. RFC 3986 indicates in [Section 3.3](https://tools.ietf.org/html/rfc3986#section-3.3)
+that `/` is considered a data character for the path component (and,
+specifically, a delimiter between elements of the path component); as such,
+it does not need to be escaped. If a `/` is required but is not intended as a
+delimiter within the path, it MAY be percent-escaped (i.e., `%2F`) *prior* to
+passing it to `withPath()`; `withPath()` MUST then preserve the encoding as
+presented.
