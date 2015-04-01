@@ -105,7 +105,7 @@ The list of options considered with their respective votes are:
 
 [Full results of the vote](https://github.com/container-interop/container-interop/wiki/%231-interface-name:-Vote)
 
-The complete discussion can be read in [the issue #1](https://github.com/container-interop/container-interop/issues/1).
+The complete discussion can be read in [container-interop's issue #1](https://github.com/container-interop/container-interop/issues/1).
 
 ## 6. Interface methods
 
