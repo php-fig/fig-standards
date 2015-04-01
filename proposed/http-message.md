@@ -1262,8 +1262,8 @@ interface UriInterface
      * double-encode any characters. To determine what characters to encode,
      * please refer to RFC 3986, Sections 2 and 3.3.
      *
-     * If the value should include a slash ("/") not intended as delimeter
-     * between path segments, that value MUST be encode (e.g., "%2F") when
+     * If the value should include a slash ("/") not intended as delimiter
+     * between path segments, that value MUST be encoded (e.g., "%2F") when
      * passed to the instance.
      *
      * @see https://tools.ietf.org/html/rfc3986#section-2
