@@ -631,26 +631,3 @@ used to populate the headers of an HTTP message.
 * Evert Pot
 * Phil Sturgeon
 * Chris Wilkinson
-
-## 7. Votes
-
-## 8. Errata
-
-### 8.1 Scheme Delimiters
-
-Per [RFC 3986 section 3](https://tools.ietf.org/html/rfc3986#section-3), `:` is
-considered a closing delimiter for a scheme, and `//` is considered an
-opening delimeter for the URI authority.
-
-In the specification as accepted, `Psr\Http\Message\UriInterface` indicates that
-the methods `withScheme()` and `getScheme()` should ignore a trailing `://`
-delimiter for purposes of consistency. (No similar stipulation is placed on the
-authority, as authority is not treated as a single segment, but rather as its
-own individual segments (`user-info`, `host`, and `port`)).
-
-The `://` delimiter was called out specifically, as schemes are widely either
-presented as the bare-word (e.g., `http`, `https`) or with that delimiter (e.g.,
-`http://`, `https://`), which is the combination of the scheme closing delimiter
-and the authority opening delimiter. However, implementations of the methods
-MUST also strip a closing `:` delimiter when presented without the opening `//`
-delimiter.
