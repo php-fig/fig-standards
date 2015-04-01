@@ -1258,7 +1258,17 @@ interface UriInterface
      * the front controller, this difference becomes significant. It's the task
      * of the user to handle both "" and "/".
      *
-     * @return string The path component of the URI.
+     * The value returned MUST be returned in percent-encoded form, but MUST NOT
+     * double-encode any characters. To determine what characters to encode,
+     * please refer to RFC 3986, Sections 2 and 3.3.
+     *
+     * If the value should include a slash ("/") not intended as delimeter
+     * between path segments, that value MUST be encode (e.g., "%2F") when
+     * passed to the instance.
+     *
+     * @see https://tools.ietf.org/html/rfc3986#section-2
+     * @see https://tools.ietf.org/html/rfc3986#section-3.3
+     * @return string The path segment of the URI.
      */
     public function getPath();
 
@@ -1270,6 +1280,12 @@ interface UriInterface
      *
      * The string returned MUST omit the leading "?" character.
      *
+     * The value returned MUST be percent-encoded, but MUST NOT double-encode
+     * any characters. To determine what characters to encode, please refer to
+     * RFC 3986, Sections 2 and 3.4.
+     *
+     * @see https://tools.ietf.org/html/rfc3986#section-2
+     * @see https://tools.ietf.org/html/rfc3986#section-3.4
      * @return string The URI query string.
      */
     public function getQuery();
@@ -1282,6 +1298,12 @@ interface UriInterface
      *
      * The string returned MUST omit the leading "#" character.
      *
+     * The value returned MUST be percent-encoded, but MUST NOT double-encode
+     * any characters. To determine what characters to encode, please refer to
+     * RFC 3986, Sections 2 and 3.5.
+     *
+     * @see https://tools.ietf.org/html/rfc3986#section-2
+     * @see https://tools.ietf.org/html/rfc3986#section-3.5
      * @return string The URI fragment.
      */
     public function getFragment();
@@ -1362,10 +1384,6 @@ interface UriInterface
      * The path MUST be prefixed with "/"; if not, the implementation MAY
      * provide the prefix itself.
      *
-     * The implementation MUST percent-encode reserved characters as
-     * specified in RFC 3986, Section 2, but MUST NOT double-encode any
-     * characters.
-     *
      * An empty path value is equivalent to removing the path.
      *
      * @param string $path The path to use with the new instance.
@@ -1383,10 +1401,6 @@ interface UriInterface
      * If the query string is prefixed by "?", that character MUST be removed.
      * Additionally, the query string SHOULD be parseable by parse_str() in
      * order to be valid.
-     *
-     * The implementation MUST percent-encode reserved characters as
-     * specified in RFC 3986, Section 2, but MUST NOT double-encode any
-     * characters.
      *
      * An empty query string value is equivalent to removing the query string.
      *
