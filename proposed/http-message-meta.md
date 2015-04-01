@@ -331,21 +331,11 @@ safely `return $this;` if the argument presented will not result in a change in
 the value. One rationale for doing so is performance (as this will not result in
 a cloning operation).
 
-The established verbiage of "MUST return a new instance" is used for the
-following reasons:
-
-- The code paths that would result in `return $this;` (i.e., calling a `with*()`
-  method with the same value as is already present) will typically be rare,
-  making the practice a micro-optimization.
-- Cloning in PHP is a cheap operation, particularly with shallow object
-  structures (as are present in the HTTP message interfaces), again suggesting
-  that returning the same instance is a micro-optimization.
-- Loosening the restriction leads to ambiguity in the interfaces, as consumers
-  cannot expect the return value to fail an identity test against the original
-  object (e.g., `$new !== $old` would not be consistent).
-
-This last point, behavioral ambiguity, is particularly important: requiring a
-new instance ensures that different implementations have the same behavior.
+The various interfaces have been written with verbiage indicating that
+immutability MUST be preserved, but only indicate that "an instance" must be
+returned containing the new state. Since instances that represent the same value
+are considered equal, returning `$this` is functionally equivalent, and thus
+allowed.
 
 ### Using streams instead of X
 

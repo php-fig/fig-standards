@@ -315,7 +315,7 @@ namespace Psr\Http\Message;
  *
  * Messages are considered immutable; all methods that might change state MUST
  * be implemented such that they retain the internal state of the current
- * message and return a new instance that contains the changed state.
+ * message and return an instance that contains the changed state.
  *
  * @link http://www.ietf.org/rfc/rfc7230.txt
  * @link http://www.ietf.org/rfc/rfc7231.txt
@@ -332,13 +332,13 @@ interface MessageInterface
     public function getProtocolVersion();
 
     /**
-     * Create a new instance with the specified HTTP protocol version.
+     * Return an instance with the specified HTTP protocol version.
      *
      * The version string MUST contain only the HTTP version number (e.g.,
      * "1.1", "1.0").
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * new protocol version.
      *
      * @param string $version HTTP protocol version
@@ -413,14 +413,14 @@ interface MessageInterface
     public function getHeaderLines($name);
 
     /**
-     * Create a new instance with the provided header, replacing any existing
+     * Return an instance with the provided header, replacing any existing
      * values of any headers with the same case-insensitive name.
      *
      * While header names are case-insensitive, the casing of the header will
      * be preserved by this function, and returned from getHeaders().
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * new and/or updated header and value.
      *
      * @param string $name Case-insensitive header field name.
@@ -431,7 +431,7 @@ interface MessageInterface
     public function withHeader($name, $value);
 
     /**
-     * Creates a new instance, with the specified header appended with the
+     * Return an instance with the specified header appended with the
      * given value.
      *
      * Existing values for the specified header will be maintained. The new
@@ -439,7 +439,7 @@ interface MessageInterface
      * exist previously, it will be added.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * new header and/or value.
      *
      * @param string $name Case-insensitive header field name to add.
@@ -450,12 +450,12 @@ interface MessageInterface
     public function withAddedHeader($name, $value);
 
     /**
-     * Creates a new instance, without the specified header.
+     * Return an instance without the specified header.
      *
      * Header resolution MUST be done without case-sensitivity.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that removes
+     * immutability of the message, and MUST return an instance that removes
      * the named header.
      *
      * @param string $name Case-insensitive header field name to remove.
@@ -471,7 +471,7 @@ interface MessageInterface
     public function getBody();
 
     /**
-     * Create a new instance, with the specified message body.
+     * Return an instance with the specified message body.
      *
      * The body MUST be a StreamableInterface object.
      *
@@ -508,7 +508,7 @@ namespace Psr\Http\Message;
  *
  * Requests are considered immutable; all methods that might change state MUST
  * be implemented such that they retain the internal state of the current
- * message and return a new instance that contains the changed state.
+ * message and return an instance that contains the changed state.
  */
 interface RequestInterface extends MessageInterface
 {
@@ -583,7 +583,7 @@ interface RequestInterface extends MessageInterface
     public function getRequestTarget();
 
     /**
-     * Create a new instance with a specific request-target.
+     * Return an instance with the specific request-target.
      *
      * If the request needs a non-origin-form request-target — e.g., for
      * specifying an absolute-form, authority-form, or asterisk-form —
@@ -591,7 +591,7 @@ interface RequestInterface extends MessageInterface
      * request-target, verbatim.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * changed request target.
      *
      * @link http://tools.ietf.org/html/rfc7230#section-2.7 (for the various
@@ -609,14 +609,14 @@ interface RequestInterface extends MessageInterface
     public function getMethod();
 
     /**
-     * Create a new instance with the provided HTTP method.
+     * Return an instance with the provided HTTP method.
      *
      * While HTTP method names are typically all uppercase characters, HTTP
      * method names are case-sensitive and thus implementations SHOULD NOT
      * modify the given string.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * changed request method.
      *
      * @param string $method Case-insensitive method.
@@ -637,10 +637,10 @@ interface RequestInterface extends MessageInterface
     public function getUri();
 
     /**
-     * Create a new instance with the provided URI.
+     * Return an instance with the provided URI.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * new UriInterface instance.
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
@@ -694,7 +694,7 @@ namespace Psr\Http\Message;
  *
  * Requests are considered immutable; all methods that might change state MUST
  * be implemented such that they retain the internal state of the current
- * message and return a new instance that contains the changed state.
+ * message and return an instance that contains the changed state.
  */
 interface ServerRequestInterface extends RequestInterface
 {
@@ -722,14 +722,14 @@ interface ServerRequestInterface extends RequestInterface
     public function getCookieParams();
 
     /**
-     * Create a new instance with the specified cookies.
+     * Return an instance with the specified cookies.
      *
      * The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST
      * be compatible with the structure of $_COOKIE. Typically, this data will
      * be injected at instantiation.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * updated cookie values.
      *
      * @param array $cookies Array of key/value pairs representing cookies.
@@ -752,7 +752,7 @@ interface ServerRequestInterface extends RequestInterface
     public function getQueryParams();
 
     /**
-     * Create a new instance with the specified query string arguments.
+     * Return an instance with the specified query string arguments.
      *
      * These values SHOULD remain immutable over the course of the incoming
      * request. They MAY be injected during instantiation, such as from PHP's
@@ -766,7 +766,7 @@ interface ServerRequestInterface extends RequestInterface
      * request, nor the values in the server params.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * updated query string arguments.
      *
      * @param array $query Array of query string arguments, typically from
@@ -807,7 +807,7 @@ interface ServerRequestInterface extends RequestInterface
     public function getParsedBody();
 
     /**
-     * Create a new instance with the specified body parameters.
+     * Return an instance with the specified body parameters.
      *
      * These MAY be injected during instantiation.
      *
@@ -825,7 +825,7 @@ interface ServerRequestInterface extends RequestInterface
      * instance with the deserialized parameters.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
      * @param null|array|object $data The deserialized body data. This will
@@ -865,13 +865,13 @@ interface ServerRequestInterface extends RequestInterface
     public function getAttribute($name, $default = null);
 
     /**
-     * Create a new instance with the specified derived request attribute.
+     * Return an instance with the specified derived request attribute.
      *
      * This method allows setting a single derived request attribute as
      * described in getAttributes().
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * updated attribute.
      *
      * @see getAttributes()
@@ -882,14 +882,14 @@ interface ServerRequestInterface extends RequestInterface
     public function withAttribute($name, $value);
 
     /**
-     * Create a new instance that removes the specified derived request
+     * Return an instance that removes the specified derived request
      * attribute.
      *
      * This method allows removing a single derived request attribute as
      * described in getAttributes().
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that removes
+     * immutability of the message, and MUST return an instance that removes
      * the attribute.
      *
      * @see getAttributes()
@@ -920,7 +920,7 @@ namespace Psr\Http\Message;
  *
  * Responses are considered immutable; all methods that might change state MUST
  * be implemented such that they retain the internal state of the current
- * message and return a new instance that contains the changed state.
+ * message and return an instance that contains the changed state.
  */
 interface ResponseInterface extends MessageInterface
 {
@@ -935,7 +935,7 @@ interface ResponseInterface extends MessageInterface
     public function getStatusCode();
 
     /**
-     * Create a new instance with the specified status code, and optionally
+     * Return an instance with the specified status code, and optionally
      * reason phrase, for the response.
      *
      * If no Reason-Phrase is specified, implementations MAY choose to default
@@ -943,7 +943,7 @@ interface ResponseInterface extends MessageInterface
      * Status-Code.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * updated status and reason phrase.
      *
      * @link http://tools.ietf.org/html/rfc7231#section-6
@@ -1144,7 +1144,7 @@ namespace Psr\Http\Message;
  *
  * Instances of this interface are considered immutable; all methods that
  * might change state MUST be implemented such that they retain the internal
- * state of the current instance and return a new instance that contains the
+ * state of the current instance and return an instance that contains the
  * changed state.
  *
  * Typically the Host header will be also be present in the request message.
@@ -1265,10 +1265,10 @@ interface UriInterface
     public function getFragment();
 
     /**
-     * Create a new instance with the specified scheme.
+     * Return an instance with the specified scheme.
      *
      * This method MUST retain the state of the current instance, and return
-     * a new instance that contains the specified scheme. If the scheme
+     * an instance that contains the specified scheme. If the scheme
      * provided includes the "://" delimiter, it MUST be removed.
      *
      * Implementations SHOULD restrict values to "http", "https", or an empty
@@ -1283,10 +1283,10 @@ interface UriInterface
     public function withScheme($scheme);
 
     /**
-     * Create a new instance with the specified user information.
+     * Return an instance with the specified user information.
      *
      * This method MUST retain the state of the current instance, and return
-     * a new instance that contains the specified user information.
+     * an instance that contains the specified user information.
      *
      * Password is optional, but the user information MUST include the
      * user; an empty string for the user is equivalent to removing user
@@ -1299,10 +1299,10 @@ interface UriInterface
     public function withUserInfo($user, $password = null);
 
     /**
-     * Create a new instance with the specified host.
+     * Return an instance with the specified host.
      *
      * This method MUST retain the state of the current instance, and return
-     * a new instance that contains the specified host.
+     * an instance that contains the specified host.
      *
      * An empty host value is equivalent to removing the host.
      *
@@ -1313,10 +1313,10 @@ interface UriInterface
     public function withHost($host);
 
     /**
-     * Create a new instance with the specified port.
+     * Return an instance with the specified port.
      *
      * This method MUST retain the state of the current instance, and return
-     * a new instance that contains the specified port.
+     * an instance that contains the specified port.
      *
      * Implementations MUST raise an exception for ports outside the
      * established TCP and UDP port ranges.
@@ -1332,10 +1332,10 @@ interface UriInterface
     public function withPort($port);
 
     /**
-     * Create a new instance with the specified path.
+     * Return an instance with the specified path.
      *
      * This method MUST retain the state of the current instance, and return
-     * a new instance that contains the specified path.
+     * an instance that contains the specified path.
      *
      * The path MUST be prefixed with "/"; if not, the implementation MAY
      * provide the prefix itself.
@@ -1353,10 +1353,10 @@ interface UriInterface
     public function withPath($path);
 
     /**
-     * Create a new instance with the specified query string.
+     * Return an instance with the specified query string.
      *
      * This method MUST retain the state of the current instance, and return
-     * a new instance that contains the specified query string.
+     * an instance that contains the specified query string.
      *
      * If the query string is prefixed by "?", that character MUST be removed.
      * Additionally, the query string SHOULD be parseable by parse_str() in
@@ -1375,10 +1375,10 @@ interface UriInterface
     public function withQuery($query);
 
     /**
-     * Create a new instance with the specified URI fragment.
+     * Return an instance with the specified URI fragment.
      *
      * This method MUST retain the state of the current instance, and return
-     * a new instance that contains the specified URI fragment.
+     * an instance that contains the specified URI fragment.
      *
      * If the fragment is prefixed by "#", that character MUST be removed.
      *
