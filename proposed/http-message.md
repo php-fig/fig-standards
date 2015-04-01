@@ -230,7 +230,7 @@ For example, a user may want to make an asterisk-form request to a server:
 ```php
 $request = $request
     ->withMethod('OPTIONS')
-    ->withRequestForm('*')
+    ->withRequestTarget('*')
     ->withUri(new Uri('https://example.org/'));
 ```
 
