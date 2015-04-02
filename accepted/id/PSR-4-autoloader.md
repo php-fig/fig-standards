@@ -1,7 +1,7 @@
 # Pemuatan Otomatis (Autoloader)
 
-Kata kunci "HARUS/WAJIB" sepadan dengan ("MUST", "REQUIRED", dan "SHALL"),
-"TIDAK BOLEH" sepada dengan ("SHALL NOT" dan "MUST NOT"), "DISARANKAN" sepadan
+Kata kunci "HARUS/WAJIB/HANYA BOLEH" sepadan dengan ("MUST", "REQUIRED", dan "SHALL"),
+"TIDAK BOLEH" sepada dengan ("SHALL NOT" dan "MUST NOT"), "DISARANKAN/SEBAIKNYA" sepadan
 dengan ("SHOULD" dan "RECOMMENDED"), "TIDAK DISARANKAN/TIDAK DIREKOMENDASIKAN" 
 sepadan dengan ("SHOULD NOT"), dan "BOLEH SAJA/BISA JADI" sepadan dengan 
 ("MAY" dan "OPTIONAL") seperti yang dideskripsikan dalam [RFC 2119](http://tools.ietf.org/html/rfc2119).
