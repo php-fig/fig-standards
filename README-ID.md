@@ -1,4 +1,4 @@
-Grup Interopabilitas Kerangka Kerja PHP
+Grup Interoperabilitas Framework PHP
 ====================================
 
 Ide yang melatarbelakangi terbentuknya grup ini adalah perlunya keberadaan sarana
