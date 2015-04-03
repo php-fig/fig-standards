@@ -1231,12 +1231,12 @@ interface UriInterface
     public function getPort();
 
     /**
-     * Retrieve the path segment of the URI.
+     * Retrieve the path component of the URI.
      *
      * This method MUST return a string; if no path is present it MUST return
      * the string "/".
      *
-     * @return string The path segment of the URI.
+     * @return string The path component of the URI.
      */
     public function getPath();
 
