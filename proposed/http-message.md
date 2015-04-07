@@ -816,11 +816,6 @@ interface ServerRequestInterface extends RequestInterface
      * request. They SHOULD be injected during instantiation, such as from PHP's
      * $_FILES superglobal, but MAY be derived from other sources.
      *
-     * The implementation SHOULD ensure that is_uploaded_file() returns true for
-     * the paths of the uploaded files. However, this recommendation MAY be
-     * ignored in special cases, for example when using temporary files as
-     * uploaded files during testing.
-     *
      * @return UploadedFileInterface[] The uploaded file(s), if any.
      */
     public function getUploadedFiles();
@@ -1531,6 +1526,12 @@ interface UploadedFileInterface
      *
      * Implementations SHOULD return the value stored in the "tmp_name" key
      * of the file in the $_FILES array.
+     *
+     * The implementation MUST guarantee that the file pointed to by the path
+     * can safely be used by the calling code. More precisely, the
+     * implementation MUST ensure that is_uploaded_file() returns true for
+     * the path if the path was provided through the $_FILES array or a
+     * similar mechanism.
      *
      * @return string The absolute path to the uploaded file.
      */
