@@ -151,13 +151,13 @@ message can be very small or extremely large. Attempting to represent the body
 of a message as a string can easily consume more memory than intended because
 the body must be stored completely in memory. Attempting to store the body of a
 request or response in memory would preclude the use of that implementation from
-being able to work with large message bodies. `StreamableInterface` is used in
+being able to work with large message bodies. `StreamInterface` is used in
 order to hide the implementation details when a stream of data is read from
 or written to. For situations where a string would be an appropriate message
 implementation, built-in streams such as `php://memory` and `php://temp` may be
 used.
 
-`StreamableInterface` exposes several methods that enable streams to be read
+`StreamInterface` exposes several methods that enable streams to be read
 from, written to, and traversed effectively.
 
 Streams expose their capabilities using three methods: `isReadable()`,
@@ -169,10 +169,10 @@ write-only, or read-write. It can also allow arbitrary random access (seeking
 forwards or backwards to any location), or only sequential access (for
 example in the case of a socket, pipe, or callback-based stream).
 
-Finally, `StreamableInterface` defines a `__toString()` method to simplify
+Finally, `StreamInterface` defines a `__toString()` method to simplify
 retrieving or emitting the entire body contents at once.
 
-Unlike the request and response interfaces, `StreamableInterface` does not model
+Unlike the request and response interfaces, `StreamInterface` does not model
 immutability. In situations where an actual PHP stream is wrapped, immutability
 is impossible to enforce, as any code that interacts with the resource can
 potentially change its state (including cursor position, contents, and more).
@@ -466,24 +466,24 @@ interface MessageInterface
     /**
      * Gets the body of the message.
      *
-     * @return StreamableInterface Returns the body as a stream.
+     * @return StreamInterface Returns the body as a stream.
      */
     public function getBody();
 
     /**
      * Create a new instance, with the specified message body.
      *
-     * The body MUST be a StreamableInterface object.
+     * The body MUST be a StreamInterface object.
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return a new instance that has the
      * new body stream.
      *
-     * @param StreamableInterface $body Body.
+     * @param StreamInterface $body Body.
      * @return self
      * @throws \InvalidArgumentException When the body is not valid.
      */
-    public function withBody(StreamableInterface $body);
+    public function withBody(StreamInterface $body);
 }
 ```
 
@@ -974,7 +974,7 @@ interface ResponseInterface extends MessageInterface
 }
 ```
 
-### 3.4 `Psr\Http\Message\StreamableInterface`
+### 3.4 `Psr\Http\Message\StreamInterface`
 
 ```php
 <?php
@@ -982,13 +982,13 @@ interface ResponseInterface extends MessageInterface
 namespace Psr\Http\Message;
 
 /**
- * Describes streamable message body content.
+ * Describes a data stream.
  *
  * Typically, an instance will wrap a PHP stream; this interface provides
  * a wrapper around the most common operations, including serialization of
  * the entire stream to a string.
  */
-interface StreamableInterface
+interface StreamInterface
 {
     /**
      * Reads all data from the stream into a string, from the beginning to end.
