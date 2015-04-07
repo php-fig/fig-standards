@@ -1161,12 +1161,14 @@ interface UriInterface
      * Implementations SHOULD restrict values to "http", "https", or an empty
      * string but MAY accommodate other schemes if required.
      *
+     * The string MUST omit the closing scheme delimiter (":"), if present.
+     *
+     * If non-empty, the value MUST be normalized to lowercase, per RFC 3986
+     * Section 3.1.
+     *
      * If no scheme is present, this method MUST return an empty string.
      *
-     * The string MUST omit the closing scheme delimiter (":") or the
-     * combination of the closing scheme delimiter and the opening authority
-     * delimiter ("://"), if present.
-     *
+     * @see https://tools.ietf.org/html/rfc3986#section-3.1
      * @return string The scheme of the URI.
      */
     public function getScheme();
@@ -1269,14 +1271,11 @@ interface UriInterface
     /**
      * Return an instance with the specified scheme.
      *
-     * This method MUST retain the state of the current instance, and return
-     * a new instance that contains the specified scheme. If the scheme
-     * provided includes either the closing scheme delimiter (":") or the
-     * combination of the closing scheme delimiter and the opening authority
-     * delimiter ("://"), these strings should be removed.
+     * This method MUST retain the state of the current instance, and return a
+     * new instance that contains the specified scheme.
      *
      * Implementations SHOULD restrict values to "http", "https", or an empty
-     * string but MAY accommodate other schemes if required.
+     * string but MAY accept other schemes if required.
      *
      * An empty scheme is equivalent to removing the scheme.
      *
