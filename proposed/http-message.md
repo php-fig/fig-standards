@@ -807,18 +807,32 @@ interface ServerRequestInterface extends RequestInterface
     public function withQueryParams(array $query);
 
     /**
-     * Retrieve the upload file metadata.
+     * Retrieve the uploaded files.
      *
-     * This method MUST return file upload metadata in the same structure
+     * This method MUST return the file upload metadata in the same structure
      * as PHP's $_FILES superglobal.
      *
      * These values MUST remain immutable over the course of the incoming
      * request. They SHOULD be injected during instantiation, such as from PHP's
      * $_FILES superglobal, but MAY be derived from other sources.
      *
-     * @return array Upload file(s) metadata, if any.
+     * @return UploadedFileInterface[] The uploaded file(s), if any.
      */
-    public function getFileParams();
+    public function getUploadedFiles();
+
+    /**
+     * Create a new instance with the specified uploaded files.
+     *
+     * These MAY be injected during instantiation.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * updated body parameters.
+     *
+     * @param UploadedFileInterface[] $uploadedFiles The uploaded files.
+     * @return self
+     */
+    public function withUploadedFiles(array $uploadedFiles);
 
     /**
      * Retrieve any parameters provided in the request body.
@@ -1486,5 +1500,95 @@ interface UriInterface
      * @return string
      */
     public function __toString();
+}
+```
+
+### 3.6 `Psr\Http\Message\UploadedFileInterface`
+
+```php
+<?php
+namespace Psr\Http\Message;
+
+/**
+ * Value object representing a file uploaded through an HTTP request.
+ *
+ * Instances of this interface are considered immutable; all methods that
+ * might change state MUST be implemented such that they retain the internal
+ * state of the current instance and return a new instance that contains the
+ * changed state.
+ */
+interface UploadedFileInterface
+{
+    /**
+     * Retrieve the path to the uploaded file.
+     *
+     * This method MUST return an absolute file path.
+     *
+     * Implementations SHOULD return the value stored in the "tmp_name" key
+     * of the file in the $_FILES array.
+     *
+     * @return string The absolute path to the uploaded file.
+     */
+    public function getPath();
+    
+    /**
+     * Retrieve the error associated with the uploaded file.
+     *
+     * The return value MUST be one of PHP's UPLOAD_ERR_XXX constants.
+     *
+     * If the file was uploaded successfully, this method MUST return
+     * UPLOAD_ERR_OK.
+     *
+     * Implementations SHOULD return the value stored in the "error" key of
+     * the file in the $_FILES array.
+     *
+     * @return int One of the UPLOAD_ERR_XXX constants.
+     */
+    public function getError();
+    
+    /**
+     * Retrieve the filename sent by the client.
+     *
+     * Do not trust the value returned by this method. A client could send
+     * a malicious filename with the intention to corrupt or hack your
+     * application.
+     *
+     * Implementations SHOULD return the value stored in the "name" key of
+     * the file in the $_FILES array.
+     *
+     * @return string|null The filename sent by the client or null if none
+     *     was provided.
+     */
+    public function getClientFilename();
+    
+    /**
+     * Retrieve the size sent by the client.
+     *
+     * Do not trust the value returned by this method. A client could send
+     * a wrong or malicious size with the intention to corrupt or hack your
+     * application.
+     *
+     * Implementations SHOULD return the value stored in the "size" key of
+     * the file in the $_FILES array.
+     *
+     * @return int|null The size sent by the client in bytes or null if none
+     *     was provided.
+     */
+    public function getClientSize();
+    
+    /**
+     * Retrieve the mime type sent by the client.
+     *
+     * Do not trust the value returned by this method. A client could send
+     * a malicious mime type with the intention to corrupt or hack your
+     * application.
+     *
+     * Implementations SHOULD return the value stored in the "type" key of
+     * the file in the $_FILES array.
+     *
+     * @return string|null The mime type sent by the client or null if none
+     *     was provided.
+     */
+    public function getClientMimeType();
 }
 ```
