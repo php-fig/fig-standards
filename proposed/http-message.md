@@ -1446,6 +1446,9 @@ interface UploadedFileInterface
      * Implementations SHOULD return the value stored in the "tmp_name" key
      * of the file in the $_FILES array.
      *
+     * Implementations MUST guarantee that is_uploaded_file() returns true
+     * for the returned path.
+     *
      * @return string The absolute path to the uploaded file.
      */
     public function getPath();
