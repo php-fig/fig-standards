@@ -350,17 +350,18 @@ interface MessageInterface
      * Retrieves all message headers.
      *
      * The keys represent the header name as it will be sent over the wire, and
-     * each value is an array of strings associated with the header.
+     * each value contains the values for the header concatenated together using
+     * a comma.
      *
      *     // Represent the headers as a string
-     *     foreach ($message->getHeaders() as $name => $values) {
-     *         echo $name . ": " . implode(", ", $values);
+     *     foreach ($message->getHeaders() as $name => $value) {
+     *         echo $name . ": " . $value;
      *     }
      *
      *     // Emit headers iteratively:
-     *     foreach ($message->getHeaders() as $name => $values) {
-     *         foreach ($values as $value) {
-     *             header(sprintf('%s: %s', $name, $value), false);
+     *     foreach ($message->getHeaders() as $name => $value) {
+     *         foreach ($message->getHeaderLines($name) as $line) {
+     *             header(sprintf('%s: %s', $name, $line), false);
      *         }
      *     }
      *
@@ -368,7 +369,7 @@ interface MessageInterface
      * exact case in which headers were originally specified.
      *
      * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be an array of strings.
+     *     key MUST be a header name, and each value MUST be a string.
      */
     public function getHeaders();
 
