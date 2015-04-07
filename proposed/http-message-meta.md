@@ -324,6 +324,19 @@ The above combines assignment and notification in a single call.
 This practice has a side benefit of making explicit any changes to application
 state being made.
 
+### New instances vs returning $this
+
+One observation made on the various `with*()` methods is that they can likely
+safely `return $this;` if the argument presented will not result in a change in
+the value. One rationale for doing so is performance (as this will not result in
+a cloning operation).
+
+The various interfaces have been written with verbiage indicating that
+immutability MUST be preserved, but only indicate that "an instance" must be
+returned containing the new state. Since instances that represent the same value
+are considered equal, returning `$this` is functionally equivalent, and thus
+allowed.
+
 ### Using streams instead of X
 
 `MessageInterface` uses a body value that must implement `StreamableInterface`. This
@@ -615,6 +628,6 @@ used to populate the headers of an HTTP message.
 
 * Michael Dowling
 * Larry Garfield
+* Evert Pot
 * Phil Sturgeon
 * Chris Wilkinson
-* Evert Pot
