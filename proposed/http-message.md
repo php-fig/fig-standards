@@ -347,19 +347,19 @@ interface MessageInterface
     public function withProtocolVersion($version);
 
     /**
-     * Retrieves all message headers.
+     * Retrieves all message header values.
      *
      * The keys represent the header name as it will be sent over the wire, and
-     * each value is an array of strings associated with the header.
+     * each value is the string, or array of strings, associated with the header.
      *
      *     // Represent the headers as a string
      *     foreach ($message->getHeaders() as $name => $values) {
-     *         echo $name . ": " . implode(", ", $values);
+     *         echo $name . ": " . implode(", ", (array) $values);
      *     }
      *
      *     // Emit headers iteratively:
      *     foreach ($message->getHeaders() as $name => $values) {
-     *         foreach ($values as $value) {
+     *         foreach ((array) $values as $value) {
      *             header(sprintf('%s: %s', $name, $value), false);
      *         }
      *     }
@@ -368,7 +368,8 @@ interface MessageInterface
      * exact case in which headers were originally specified.
      *
      * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be an array of strings.
+     *     key MUST be a header name, and each value MUST the value(s) for that
+     *     header.
      */
     public function getHeaders();
 
@@ -383,34 +384,39 @@ interface MessageInterface
     public function hasHeader($name);
 
     /**
-     * Retrieve a header by the given case-insensitive name, as a string.
+     * Retrieves a message header value by the given case-insensitive name.
      *
      * This method returns all of the header values of the given
-     * case-insensitive header name as a string concatenated together using
-     * a comma.
-     *
-     * NOTE: Not all header values may be appropriately represented using
-     * comma concatenation. For such headers, use getHeaderLines() instead
-     * and supply your own delimiter when concatenating.
+     * case-insensitive header name.
      *
      * If the header did not appear in the message, this method should return
      * a null value.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string|null
+     * @return string|array|null
      */
     public function getHeader($name);
 
     /**
-     * Retrieves a header by the given case-insensitive name as an array of strings.
+     * Retrieves all header lines as array of strings.
      *
-     * If the header did not appear in the message, this method should return an
-     * empty array.
+     * If there are no headers, this method should return an empty array.
      *
-     * @param string $name Case-insensitive header field name.
      * @return string[]
      */
-    public function getHeaderLines($name);
+    public function getHeaderLines();
+
+    /**
+     * Retrieves the line for a single header, with the header values as a
+     * comma-separated string.
+     *
+     * If the header does not appear in the message, this method should return
+     * a null value.
+     *
+     * @param string $name Case-insensitive header field name.
+     * @return string|null
+     */
+    public function getHeaderLine($name);
 
     /**
      * Create a new instance with the provided header, replacing any existing
@@ -516,8 +522,6 @@ interface RequestInterface extends MessageInterface
      * Extends MessageInterface::getHeaders() to provide request-specific
      * behavior.
      *
-     * Retrieves all message headers.
-     *
      * This method acts exactly like MessageInterface::getHeaders(), with one
      * behavioral change: if the Host header has not been previously set, the
      * method MUST attempt to pull the host segment of the composed URI, if
@@ -526,7 +530,8 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeaders()
      * @see UriInterface::getHost()
      * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be an array of strings.
+     *     key MUST be a header name, and each value MUST the value(s) for that
+     *     header.
      */
     public function getHeaders();
 
@@ -542,15 +547,13 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeader()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return string
+     * @return string|array|null
      */
     public function getHeader($name);
 
     /**
      * Extends MessageInterface::getHeaderLines() to provide request-specific
      * behavior.
-     *
-     * Retrieves a header by the given case-insensitive name as an array of strings.
      *
      * This method acts exactly like MessageInterface::getHeaderLines(), with
      * one behavioral change: if the Host header is requested, but has
@@ -559,10 +562,25 @@ interface RequestInterface extends MessageInterface
      *
      * @see MessageInterface::getHeaderLines()
      * @see UriInterface::getHost()
-     * @param string $name Case-insensitive header field name.
      * @return string[]
      */
-    public function getHeaderLines($name);
+    public function getHeaderLines();
+
+    /**
+     * Extends MessageInterface::getHeaderLines() to provide request-specific
+     * behavior.
+     *
+     * This method acts exactly like MessageInterface::getHeaderLines(), with
+     * one behavioral change: if the Host header is requested, but has
+     * not been previously set, the method MUST attempt to pull the host
+     * segment of the composed URI, if present.
+     *
+     * @see MessageInterface::getHeaderLine()
+     * @see UriInterface::getHost()
+     * @param string $name Case-insensitive header field name.
+     * @return string|null
+     */
+    public function getHeaderLine($name);
 
     /**
      * Retrieves the message's request target.
