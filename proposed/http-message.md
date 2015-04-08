@@ -390,7 +390,7 @@ interface MessageInterface
      * empty array.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string[] An array of discrete string values for the given header.
+     * @return string[] An array of string values for the given header.
      *    If the header does not appear in the message, this method MUST
      *    return an empty array.
      */
@@ -411,7 +411,7 @@ interface MessageInterface
      * a null value.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string|null A string of discrete header values concatenated
+     * @return string|null A string of header values concatenated
      *    together using a comma. If the header does not appear in the message,
      *    this method MUST return a null value.
      */
@@ -547,7 +547,7 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeader()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return string[] An array of discrete string values for the given header.
+     * @return string[] An array of string values for the given header.
      *    If the header does not appear in the message, this method MUST
      *    return an empty array.
      */
@@ -569,7 +569,7 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeaderLines()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return string|null A string of discrete header values concatenated
+     * @return string|null A string of header values concatenated
      *    together using a comma. If the header does not appear in the message,
      *    this method MUST return a null value.
      */
