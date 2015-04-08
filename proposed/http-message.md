@@ -414,22 +414,6 @@ interface MessageInterface
     public function getHeaderLine($name);
 
     /**
-     * Retrieves all message headers as an array of header names and string
-     * values.
-     *
-     * The keys represent the header name as it will be sent over the wire, and
-     * each value is a string of the header values concatenated together using
-     * a comma.
-     *
-     * While header names are not case-sensitive, getHeaderLines() will preserve
-     * the exact case in which headers were originally specified.
-     *
-     * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be a string.
-     */
-    public function getHeaderLines();
-
-    /**
      * Return an instance with the provided header, replacing any existing
      * values of any headers with the same case-insensitive name.
      *
@@ -582,25 +566,6 @@ interface RequestInterface extends MessageInterface
      * @return string
      */
     public function getHeaderLine($name);
-
-    /**
-     * Extends MessageInterface::getHeaderLines() to provide request-specific
-     * behavior.
-     *
-     * Retrieves all message headers as an array of header names and string
-     * values.
-     *
-     * This method acts exactly like MessageInterface::getHeaderLines(), with
-     * one behavioral change: if the Host header has not been previously set,
-     * the method MUST attempt to pull the host segment of the composed URI, if
-     * present.
-     *
-     * @see MessageInterface::getHeaderLines()
-     * @see UriInterface::getHost()
-     * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be a string.
-     */
-    public function getHeaderLines();
 
     /**
      * Retrieves the message's request target.
