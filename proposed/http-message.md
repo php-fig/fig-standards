@@ -347,7 +347,7 @@ interface MessageInterface
     public function withProtocolVersion($version);
 
     /**
-     * Retrieves all message headers.
+     * Retrieves all message header values.
      *
      * The keys represent the header name as it will be sent over the wire, and
      * each value is an array of strings associated with the header.
@@ -368,7 +368,8 @@ interface MessageInterface
      * exact case in which headers were originally specified.
      *
      * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be an array of strings.
+     *     key MUST be a header name, and each value MUST be an array of strings
+     *     for that header.
      */
     public function getHeaders();
 
@@ -383,8 +384,10 @@ interface MessageInterface
     public function hasHeader($name);
 
     /**
-     * Retrieves a header by the given case-insensitive name as an array of
-     * strings.
+     * Retrieves a message header value by the given case-insensitive name.
+     *
+     * This method returns an array of all the header values of the given
+     * case-insensitive header name.
      *
      * If the header does not appear in the message, this method MUST return an
      * empty array.
@@ -397,7 +400,8 @@ interface MessageInterface
     public function getHeader($name);
 
     /**
-     * Retrieve a header by the given case-insensitive name, as a string.
+     * Retrieves the line for a single header, with the header values as a
+     * comma-separated string.
      *
      * This method returns all of the header values of the given
      * case-insensitive header name as a string concatenated together using
@@ -566,7 +570,7 @@ interface RequestInterface extends MessageInterface
      * not been previously set, the method MUST attempt to pull the host
      * segment of the composed URI, if present.
      *
-     * @see MessageInterface::getHeaderLines()
+     * @see MessageInterface::getHeaderLine()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
      * @return string|null A string of values as provided for the given header
