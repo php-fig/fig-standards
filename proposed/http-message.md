@@ -350,16 +350,16 @@ interface MessageInterface
      * Retrieves all message header values.
      *
      * The keys represent the header name as it will be sent over the wire, and
-     * each value is the string, or array of strings, associated with the header.
+     * each value array of strings associated with the header.
      *
      *     // Represent the headers as a string
      *     foreach ($message->getHeaders() as $name => $values) {
-     *         echo $name . ": " . implode(", ", (array) $values);
+     *         echo $name . ": " . implode(", ", $values);
      *     }
      *
      *     // Emit headers iteratively:
      *     foreach ($message->getHeaders() as $name => $values) {
-     *         foreach ((array) $values as $value) {
+     *         foreach ($values as $value) {
      *             header(sprintf('%s: %s', $name, $value), false);
      *         }
      *     }
@@ -368,8 +368,8 @@ interface MessageInterface
      * exact case in which headers were originally specified.
      *
      * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST the value(s) for that
-     *     header.
+     *     key MUST be a header name, and each value MUST be the array of values
+     *     for that header.
      */
     public function getHeaders();
 
@@ -386,14 +386,14 @@ interface MessageInterface
     /**
      * Retrieves a message header value by the given case-insensitive name.
      *
-     * This method returns all of the header values of the given
+     * This method returns an array of all the header values of the given
      * case-insensitive header name.
      *
      * If the header did not appear in the message, this method should return
      * a null value.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string|array|null
+     * @return array|null
      */
     public function getHeader($name);
 
@@ -530,8 +530,8 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeaders()
      * @see UriInterface::getHost()
      * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST the value(s) for that
-     *     header.
+     *     key MUST be a header name, and each value MUST the array of values
+     *     for that header.
      */
     public function getHeaders();
 
@@ -547,7 +547,7 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeader()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return string|array|null
+     * @return array|null
      */
     public function getHeader($name);
 
