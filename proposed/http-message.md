@@ -1306,9 +1306,6 @@ interface UriInterface
      * any characters. To determine what characters to encode, please refer to
      * RFC 3986, Sections 2 and 3.5.
      *
-     * As an example, if the fragment should include a hash symbol ("#"), that
-     * value MUST be encoded (e.g., "%23") when passed to the instance.
-     *
      * @see https://tools.ietf.org/html/rfc3986#section-2
      * @see https://tools.ietf.org/html/rfc3986#section-3.5
      * @return string The URI fragment.
