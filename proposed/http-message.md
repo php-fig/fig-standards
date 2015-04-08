@@ -1271,8 +1271,8 @@ interface UriInterface
     /**
      * Return an instance with the specified scheme.
      *
-     * This method MUST retain the state of the current instance, and return a
-     * new instance that contains the specified scheme.
+     * This method MUST retain the state of the current instance, and return an
+     * instance that contains the specified scheme.
      *
      * Implementations MUST support an empty scheme AND the schemes "http" and
      * "https", but MAY accept other schemes if required.
