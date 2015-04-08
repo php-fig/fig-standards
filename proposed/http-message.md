@@ -398,15 +398,6 @@ interface MessageInterface
     public function getHeader($name);
 
     /**
-     * Retrieves all header lines as array of strings.
-     *
-     * If there are no headers, this method should return an empty array.
-     *
-     * @return string[]
-     */
-    public function getHeaderLines();
-
-    /**
      * Retrieves the line for a single header, with the header values as a
      * comma-separated string.
      *
@@ -550,21 +541,6 @@ interface RequestInterface extends MessageInterface
      * @return array|null
      */
     public function getHeader($name);
-
-    /**
-     * Extends MessageInterface::getHeaderLines() to provide request-specific
-     * behavior.
-     *
-     * This method acts exactly like MessageInterface::getHeaderLines(), with
-     * one behavioral change: if the Host header is requested, but has
-     * not been previously set, the method MUST attempt to pull the host
-     * segment of the composed URI, if present.
-     *
-     * @see MessageInterface::getHeaderLines()
-     * @see UriInterface::getHost()
-     * @return string[]
-     */
-    public function getHeaderLines();
 
     /**
      * Extends MessageInterface::getHeaderLines() to provide request-specific
