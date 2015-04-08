@@ -390,8 +390,8 @@ interface MessageInterface
      * empty array.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string[] An array of string values for the given header.
-     *    If the header does not appear in the message, this method MUST
+     * @return string[] An array of string values as provided for the given
+     *    header. If the header does not appear in the message, this method MUST
      *    return an empty array.
      */
     public function getHeader($name);
@@ -411,9 +411,9 @@ interface MessageInterface
      * a null value.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string|null A string of header values concatenated
-     *    together using a comma. If the header does not appear in the message,
-     *    this method MUST return a null value.
+     * @return string|null A string of values as provided for the given header
+     *    concatenated together using a comma. If the header does not appear in
+     *    the message, this method MUST return a null value.
      */
     public function getHeaderLine($name);
 
@@ -547,8 +547,8 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeader()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return string[] An array of string values for the given header.
-     *    If the header does not appear in the message, this method MUST
+     * @return string[] An array of string values as provided for the given
+     *    header. If the header does not appear in the message, this method MUST
      *    return an empty array.
      */
     public function getHeader($name);
@@ -569,9 +569,9 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeaderLines()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return string|null A string of header values concatenated
-     *    together using a comma. If the header does not appear in the message,
-     *    this method MUST return a null value.
+     * @return string|null A string of values as provided for the given header
+     *    concatenated together using a comma. If the header does not appear in
+     *    the message, this method MUST return a null value.
      */
     public function getHeaderLine($name);
 
