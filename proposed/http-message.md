@@ -387,7 +387,7 @@ interface MessageInterface
      *
      * This method returns all of the header values of the given
      * case-insensitive header name as a string concatenated together using
-     * a comma.
+     * a specified separator.
      *
      * NOTE: Not all header values may be appropriately represented using
      * comma concatenation. For such headers, use getHeaderLines() instead
@@ -399,7 +399,7 @@ interface MessageInterface
      * @param string $name Case-insensitive header field name.
      * @return string|null
      */
-    public function getHeader($name);
+    public function getHeader($name, $separator = ',');
 
     /**
      * Retrieves a header by the given case-insensitive name as an array of strings.
