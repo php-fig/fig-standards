@@ -1361,9 +1361,7 @@ interface UriInterface
      * This method MUST retain the state of the current instance, and return
      * an instance that contains the specified query string.
      *
-     * If the query string is prefixed by "?", that character MUST be removed.
-     * Additionally, the query string SHOULD be parseable by parse_str() in
-     * order to be valid.
+     * The query string SHOULD be parseable by parse_str() in order to be valid.
      *
      * The implementation MUST percent-encode reserved characters as
      * specified in RFC 3986, Section 2, but MUST NOT double-encode any
@@ -1382,8 +1380,6 @@ interface UriInterface
      *
      * This method MUST retain the state of the current instance, and return
      * an instance that contains the specified URI fragment.
-     *
-     * If the fragment is prefixed by "#", that character MUST be removed.
      *
      * An empty fragment value is equivalent to removing the fragment.
      *
