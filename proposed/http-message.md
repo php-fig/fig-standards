@@ -386,7 +386,7 @@ interface MessageInterface
      * Retrieves a header by the given case-insensitive name as an array of
      * strings.
      *
-     * If the header did not appear in the message, this method MUST return an
+     * If the header does not appear in the message, this method MUST return an
      * empty array.
      *
      * @param string $name Case-insensitive header field name.
@@ -405,7 +405,7 @@ interface MessageInterface
      * comma concatenation. For such headers, use getHeader() instead
      * and supply your own delimiter when concatenating.
      *
-     * If the header did not appear in the message, this method MUST return
+     * If the header does not appear in the message, this method MUST return
      * a null value.
      *
      * @param string $name Case-insensitive header field name.
