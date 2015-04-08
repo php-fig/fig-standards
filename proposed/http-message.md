@@ -390,7 +390,7 @@ interface MessageInterface
      * empty array.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string[]
+     * @return string[] An array of discrete string values for the given header.
      */
     public function getHeader($name);
 
@@ -543,7 +543,7 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeader()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return string[]
+     * @return string[] An array of discrete string values for the given header.
      */
     public function getHeader($name);
 
