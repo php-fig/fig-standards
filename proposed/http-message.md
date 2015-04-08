@@ -386,7 +386,7 @@ interface MessageInterface
      * Retrieves a header by the given case-insensitive name as an array of
      * strings.
      *
-     * If the header did not appear in the message, this method should return an
+     * If the header did not appear in the message, this method MUST return an
      * empty array.
      *
      * @param string $name Case-insensitive header field name.
@@ -405,7 +405,7 @@ interface MessageInterface
      * comma concatenation. For such headers, use getHeader() instead
      * and supply your own delimiter when concatenating.
      *
-     * If the header did not appear in the message, this method should return
+     * If the header did not appear in the message, this method MUST return
      * a null value.
      *
      * @param string $name Case-insensitive header field name.
@@ -414,7 +414,8 @@ interface MessageInterface
     public function getHeaderLine($name);
 
     /**
-     * Retrieves all message headers.
+     * Retrieves all message headers as an array of header names and string
+     * values.
      *
      * The keys represent the header name as it will be sent over the wire, and
      * each value is a string of the header values concatenated together using
@@ -566,7 +567,9 @@ interface RequestInterface extends MessageInterface
      * Extends MessageInterface::getHeaderLines() to provide request-specific
      * behavior.
      *
-     * Retrieves a header by the given case-insensitive name as a string.
+     * This method returns all of the header values of the given
+     * case-insensitive header name as a string concatenated together using
+     * a comma.
      *
      * This method acts exactly like MessageInterface::getHeaderLines(), with
      * one behavioral change: if the Host header is requested, but has
@@ -584,7 +587,8 @@ interface RequestInterface extends MessageInterface
      * Extends MessageInterface::getHeaderLines() to provide request-specific
      * behavior.
      *
-     * Retrieves all message headers.
+     * Retrieves all message headers as an array of header names and string
+     * values.
      *
      * This method acts exactly like MessageInterface::getHeaderLines(), with
      * one behavioral change: if the Host header has not been previously set,
