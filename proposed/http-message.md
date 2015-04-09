@@ -531,7 +531,7 @@ interface RequestInterface extends MessageInterface
      *
      * This method acts exactly like MessageInterface::getHeaders(), with one
      * behavioral change: if the Host header has not been previously set, the
-     * method MUST attempt to pull the host segment of the composed URI, if
+     * method MUST attempt to pull the host component of the composed URI, if
      * present.
      *
      * @see MessageInterface::getHeaders()
@@ -548,7 +548,7 @@ interface RequestInterface extends MessageInterface
      * This method acts exactly like MessageInterface::getHeader(), with
      * one behavioral change: if the Host header is requested, but has
      * not been previously set, the method MUST attempt to pull the host
-     * segment of the composed URI, if present.
+     * component of the composed URI, if present.
      *
      * @see MessageInterface::getHeader()
      * @see UriInterface::getHost()
@@ -570,7 +570,7 @@ interface RequestInterface extends MessageInterface
      * This method acts exactly like MessageInterface::getHeaderLines(), with
      * one behavioral change: if the Host header is requested, but has
      * not been previously set, the method MUST attempt to pull the host
-     * segment of the composed URI, if present.
+     * component of the composed URI, if present.
      *
      * @see MessageInterface::getHeaderLine()
      * @see UriInterface::getHost()
@@ -1221,17 +1221,17 @@ interface UriInterface
     public function getUserInfo();
 
     /**
-     * Retrieve the host segment of the URI.
+     * Retrieve the host component of the URI.
      *
-     * This method MUST return a string; if no host segment is present, an
+     * This method MUST return a string; if no host component is present, an
      * empty string MUST be returned.
      *
-     * @return string Host segment of the URI.
+     * @return string Host component of the URI.
      */
     public function getHost();
 
     /**
-     * Retrieve the port segment of the URI.
+     * Retrieve the port component of the URI.
      *
      * If a port is present, and it is non-standard for the current scheme,
      * this method MUST return it as an integer. If the port is the standard port
@@ -1268,7 +1268,7 @@ interface UriInterface
      *
      * @see https://tools.ietf.org/html/rfc3986#section-2
      * @see https://tools.ietf.org/html/rfc3986#section-3.3
-     * @return string The path segment of the URI.
+     * @return string The path component of the URI.
      */
     public function getPath();
 
@@ -1295,7 +1295,7 @@ interface UriInterface
     public function getQuery();
 
     /**
-     * Retrieve the fragment segment of the URI.
+     * Retrieve the fragment component of the URI.
      *
      * This method MUST return a string; if no fragment is present, it MUST
      * return an empty string.
@@ -1432,7 +1432,7 @@ interface UriInterface
     /**
      * Return the string representation of the URI.
      *
-     * Concatenates the various segments of the URI, using the appropriate
+     * Concatenates the various components of the URI, using the appropriate
      * delimiters:
      *
      * - If a scheme is present, "://" MUST append the value.
