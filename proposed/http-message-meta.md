@@ -606,7 +606,7 @@ represented by `$_FILES`. This data is useful in several cases:
   - https://github.com/siriusphp/upload
 - As a canonical source of file upload information that cannot be mutated.
 
-`getUploadedParams()` exists to fix a known issue with how PHP structures the
+`getUploadedFiles()` exists to fix a known issue with how PHP structures the
 `$_FILES` superglobal when array notation (e.g., `files[0]`, `files[1]`, and so
 on) is used to name file uploads. It can be _derived_ from the return value of
 `getFileParams()`, but presents a structure that is more user friendly, as you
