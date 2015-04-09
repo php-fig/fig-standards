@@ -613,6 +613,75 @@ Examples of this practice already exist in libraries such as
 has functionality for casting the value to a string, these objects can be
 used to populate the headers of an HTTP message.
 
+### What about handling arrays of file uploads?
+
+When submitting a form with file inputs named `file[0]` and `file[1]`, the
+contents of `$_FILES` becomes:
+
+```php
+array( 
+    'file' => array(
+        'name' => array(
+            0 => 'file0.txt',
+            1 => 'file1.txt',
+        ) ,
+        'type' => array(
+            0 => 'text/plain',
+            1 => 'text/html',
+        ),
+        /* and so on */
+    ), 
+)
+```
+
+This means that in such cases, you cannot simply access the file details for
+`file[1]` using the following:
+
+```php
+$fileDetails = $request->getFileParams()['file'][1];
+```
+
+as each specific file detail (e.g., content type) is nested with those of any
+sibling uploads.
+
+We considered specifying that `getFileParams()` MUST parse the values into a
+nested structure that mimics how they were provided in the form; however, we
+feel:
+
+- It introduces inconsistency in the API. Other parameters, such as query string
+  and cookie parameters, are specified such that they MUST retain the
+  structure of their corresponding superglobals. (Body parameters are a
+  necessary exception, as PHP only parses the body under specific conditions.)
+- Any existing code that accepts `$_FILES` as an argument could not immediately
+  make use of `getFileParams()`; additionally, any new utilities written would
+  need to address both `getFileParams()` and `$_FILES` if they wanted to work
+  with both this specification and raw PHP.
+
+Our expectation is that an ecosystem around the specification will evolve, and
+utility libraries or framework components will be written to normalize, filter,
+and/or validate the return value of `getFileParams()`; `ServerRequest` is merely
+the vehicle for providing the data to such utilities. As one example, a library
+might access the file data as follows:
+
+```php
+$files = new FileUploads($request->getFileParams());
+$filename = $files['file'][0]->getTmpName();
+```
+
+Alternately, this value might be passed to a validation library:
+
+```php
+$validator = new FileUploads($validationRules);
+if (! $validator->isValid($request->getFileParams())) {
+    // Raise an exception?
+    throw new Exception('Invalid file uploads!');
+}
+$filename = $validator->getValue('file', '1')->getTmpName();
+```
+
+In each case, these same utilities would continue to work if passed `$_FILES`,
+making `ServerRequest` a conduit for providing that value.
+
 ## 6. People
 
 ### 6.1 Editor(s)
