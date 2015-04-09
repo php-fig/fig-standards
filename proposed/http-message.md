@@ -1258,9 +1258,9 @@ interface UriInterface
      * the front controller, this difference becomes significant. It's the task
      * of the user to handle both "" and "/".
      *
-     * The value returned MUST be returned in percent-encoded form, but MUST NOT
-     * double-encode any characters. To determine what characters to encode,
-     * please refer to RFC 3986, Sections 2 and 3.3.
+     * The value returned MUST be percent-encoded, but MUST NOT double-encode
+     * any characters. To determine what characters to encode, please refer to
+     * RFC 3986, Sections 2 and 3.3.
      *
      * As an example, if the value should include a slash ("/") not intended as
      * delimiter between path segments, that value MUST be encoded (e.g., "%2F")
