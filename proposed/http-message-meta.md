@@ -269,7 +269,7 @@ $body = new StringStream(json_encode(['tasks' => [
 $request = $baseRequest
     ->withUri($uri->withPath('/tasks/user/' . $userId))
     ->withMethod('POST')
-    ->withHeader('Content-Type' => 'application/json')
+    ->withHeader('Content-Type', 'application/json')
     ->withBody($body);
 $response = $client->send($request)
 
