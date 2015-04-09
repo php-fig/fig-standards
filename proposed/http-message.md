@@ -87,14 +87,14 @@ any previously set `foo` header value.
 ```php
 $message = $message->withHeader('foo', 'bar');
 
-echo $message->getHeader('foo');
+echo $message->getHeaderLine('foo');
 // Outputs: bar
 
-echo $message->getHeader('FOO');
+echo $message->getHeaderLine('FOO');
 // Outputs: bar
 
 $message = $message->withHeader('fOO', 'baz');
-echo $message->getHeader('foo');
+echo $message->getHeaderLine('foo');
 // Outputs: baz
 ```
 
@@ -111,9 +111,9 @@ request or response.
 In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
 an instance of a `MessageInterface` as an array or a string. Use the
-`getHeader()` method to retrieve a header value as a string containing all
+`getHeaderLine()` method to retrieve a header value as a string containing all
 header values of a case-insensitive header by name concatenated with a comma.
-Use `getHeaderLines()` to retrieve an array of all the header values for a
+Use `getHeader()` to retrieve an array of all the header values for a
 particular case-insensitive header by name.
 
 ```php
@@ -121,16 +121,16 @@ $message = $message
     ->withHeader('foo', 'bar')
     ->withAddedHeader('foo', 'baz');
 
-$header = $message->getHeader('foo');
+$header = $message->getHeaderLine('foo');
 // $header contains: 'bar, baz'
 
-$header = $message->getHeaderLines('foo');
+$header = $message->getHeader('foo');
 // ['bar', 'baz']
 ```
 
 Note: Not all header values can be concatenated using a comma (e.g.,
 `Set-Cookie`). When working with such headers, consumers of
-`MessageInterface`-based classes SHOULD rely on the `getHeaderLines()` method
+`MessageInterface`-based classes SHOULD rely on the `getHeader()` method
 for retrieving such multi-valued headers.
 
 ##### Host header
@@ -139,10 +139,12 @@ In requests, the Host header typically mirrors the host segment of the URI, as
 well as the host used when establishing the TCP connection. However, the HTTP
 specification allows the Host header to differ from each of the two.
 
-The `RequestInterface` overrides the `MessageInterface::getHeader()` method to
-indicate that if no Host header is present, but a host segment is present in the
-composed `UriInterface`, the value from the URI should be used. If a Host header
-is explicitly provided to the request instance, that value will be preferred.
+The `RequestInterface` overrides the `MessageInterface::getHeader()`,
+`MessageInterface::getHeaders()`, and `MessageInterface::getHeaderLine()`
+methods to indicate that if no Host header is present, but a host segment is
+present in the composed `UriInterface`, the value from the URI should be used.
+If a Host header is explicitly provided to the request instance, that value will
+be preferred.
 
 ### 1.3 Streams
 
@@ -368,7 +370,7 @@ interface MessageInterface
      * exact case in which headers were originally specified.
      *
      * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be the array of values
+     *     key MUST be a header name, and each value MUST be an array of strings
      *     for that header.
      */
     public function getHeaders();
@@ -389,11 +391,13 @@ interface MessageInterface
      * This method returns an array of all the header values of the given
      * case-insensitive header name.
      *
-     * If the header did not appear in the message, this method should return
-     * a null value.
+     * If the header does not appear in the message, this method MUST return an
+     * empty array.
      *
      * @param string $name Case-insensitive header field name.
-     * @return array|null
+     * @return string[] An array of string values as provided for the given
+     *    header. If the header does not appear in the message, this method MUST
+     *    return an empty array.
      */
     public function getHeader($name);
 
@@ -401,11 +405,21 @@ interface MessageInterface
      * Retrieves the line for a single header, with the header values as a
      * comma-separated string.
      *
-     * If the header does not appear in the message, this method should return
+     * This method returns all of the header values of the given
+     * case-insensitive header name as a string concatenated together using
+     * a comma.
+     *
+     * NOTE: Not all header values may be appropriately represented using
+     * comma concatenation. For such headers, use getHeader() instead
+     * and supply your own delimiter when concatenating.
+     *
+     * If the header does not appear in the message, this method MUST return
      * a null value.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string|null
+     * @return string|null A string of values as provided for the given header
+     *    concatenated together using a comma. If the header does not appear in
+     *    the message, this method MUST return a null value.
      */
     public function getHeaderLine($name);
 
@@ -513,6 +527,8 @@ interface RequestInterface extends MessageInterface
      * Extends MessageInterface::getHeaders() to provide request-specific
      * behavior.
      *
+     * Retrieves all message headers.
+     *
      * This method acts exactly like MessageInterface::getHeaders(), with one
      * behavioral change: if the Host header has not been previously set, the
      * method MUST attempt to pull the host segment of the composed URI, if
@@ -521,8 +537,7 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeaders()
      * @see UriInterface::getHost()
      * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST the array of values
-     *     for that header.
+     *     key MUST be a header name, and each value MUST be an array of strings.
      */
     public function getHeaders();
 
@@ -538,13 +553,19 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeader()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return array|null
+     * @return string[] An array of string values as provided for the given
+     *    header. If the header does not appear in the message, this method MUST
+     *    return an empty array.
      */
     public function getHeader($name);
 
     /**
      * Extends MessageInterface::getHeaderLines() to provide request-specific
      * behavior.
+     *
+     * This method returns all of the header values of the given
+     * case-insensitive header name as a string concatenated together using
+     * a comma.
      *
      * This method acts exactly like MessageInterface::getHeaderLines(), with
      * one behavioral change: if the Host header is requested, but has
@@ -554,7 +575,9 @@ interface RequestInterface extends MessageInterface
      * @see MessageInterface::getHeaderLine()
      * @see UriInterface::getHost()
      * @param string $name Case-insensitive header field name.
-     * @return string|null
+     * @return string|null A string of values as provided for the given header
+     *    concatenated together using a comma. If the header does not appear in
+     *    the message, this method MUST return a null value.
      */
     public function getHeaderLine($name);
 
