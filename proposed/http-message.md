@@ -531,7 +531,7 @@ interface RequestInterface extends MessageInterface
      *
      * This method acts exactly like MessageInterface::getHeaders(), with one
      * behavioral change: if the Host header has not been previously set, the
-     * method MUST attempt to pull the host segment of the composed URI, if
+     * method MUST attempt to pull the host component of the composed URI, if
      * present.
      *
      * @see MessageInterface::getHeaders()
@@ -548,7 +548,7 @@ interface RequestInterface extends MessageInterface
      * This method acts exactly like MessageInterface::getHeader(), with
      * one behavioral change: if the Host header is requested, but has
      * not been previously set, the method MUST attempt to pull the host
-     * segment of the composed URI, if present.
+     * component of the composed URI, if present.
      *
      * @see MessageInterface::getHeader()
      * @see UriInterface::getHost()
@@ -570,7 +570,7 @@ interface RequestInterface extends MessageInterface
      * This method acts exactly like MessageInterface::getHeaderLines(), with
      * one behavioral change: if the Host header is requested, but has
      * not been previously set, the method MUST attempt to pull the host
-     * segment of the composed URI, if present.
+     * component of the composed URI, if present.
      *
      * @see MessageInterface::getHeaderLine()
      * @see UriInterface::getHost()
@@ -1221,17 +1221,17 @@ interface UriInterface
     public function getUserInfo();
 
     /**
-     * Retrieve the host segment of the URI.
+     * Retrieve the host component of the URI.
      *
-     * This method MUST return a string; if no host segment is present, an
+     * This method MUST return a string; if no host component is present, an
      * empty string MUST be returned.
      *
-     * @return string Host segment of the URI.
+     * @return string Host component of the URI.
      */
     public function getHost();
 
     /**
-     * Retrieve the port segment of the URI.
+     * Retrieve the port component of the URI.
      *
      * If a port is present, and it is non-standard for the current scheme,
      * this method MUST return it as an integer. If the port is the standard port
@@ -1258,6 +1258,16 @@ interface UriInterface
      * the front controller, this difference becomes significant. It's the task
      * of the user to handle both "" and "/".
      *
+     * The value returned MUST be returned in percent-encoded form, but MUST NOT
+     * double-encode any characters. To determine what characters to encode,
+     * please refer to RFC 3986, Sections 2 and 3.3.
+     *
+     * As an example, if the value should include a slash ("/") not intended as
+     * delimiter between path segments, that value MUST be encoded (e.g., "%2F")
+     * when passed to the instance.
+     *
+     * @see https://tools.ietf.org/html/rfc3986#section-2
+     * @see https://tools.ietf.org/html/rfc3986#section-3.3
      * @return string The path component of the URI.
      */
     public function getPath();
@@ -1270,18 +1280,34 @@ interface UriInterface
      *
      * The string returned MUST omit the leading "?" character.
      *
+     * The value returned MUST be percent-encoded, but MUST NOT double-encode
+     * any characters. To determine what characters to encode, please refer to
+     * RFC 3986, Sections 2 and 3.4.
+     *
+     * As an example, if a value in a key/value pair of the query string should
+     * include an ampersand ("&") not intended as a delimiter between values,
+     * that value MUST be encoded (e.g., "%26") when passed to the instance.
+     *
+     * @see https://tools.ietf.org/html/rfc3986#section-2
+     * @see https://tools.ietf.org/html/rfc3986#section-3.4
      * @return string The URI query string.
      */
     public function getQuery();
 
     /**
-     * Retrieve the fragment segment of the URI.
+     * Retrieve the fragment component of the URI.
      *
      * This method MUST return a string; if no fragment is present, it MUST
      * return an empty string.
      *
      * The string returned MUST omit the leading "#" character.
      *
+     * The value returned MUST be percent-encoded, but MUST NOT double-encode
+     * any characters. To determine what characters to encode, please refer to
+     * RFC 3986, Sections 2 and 3.5.
+     *
+     * @see https://tools.ietf.org/html/rfc3986#section-2
+     * @see https://tools.ietf.org/html/rfc3986#section-3.5
      * @return string The URI fragment.
      */
     public function getFragment();
@@ -1362,10 +1388,6 @@ interface UriInterface
      * The path MUST be prefixed with "/"; if not, the implementation MAY
      * provide the prefix itself.
      *
-     * The implementation MUST percent-encode reserved characters as
-     * specified in RFC 3986, Section 2, but MUST NOT double-encode any
-     * characters.
-     *
      * An empty path value is equivalent to removing the path.
      *
      * @param string $path The path to use with the new instance.
@@ -1383,10 +1405,6 @@ interface UriInterface
      * If the query string is prefixed by "?", that character MUST be removed.
      * Additionally, the query string SHOULD be parseable by parse_str() in
      * order to be valid.
-     *
-     * The implementation MUST percent-encode reserved characters as
-     * specified in RFC 3986, Section 2, but MUST NOT double-encode any
-     * characters.
      *
      * An empty query string value is equivalent to removing the query string.
      *
@@ -1414,7 +1432,7 @@ interface UriInterface
     /**
      * Return the string representation of the URI.
      *
-     * Concatenates the various segments of the URI, using the appropriate
+     * Concatenates the various components of the URI, using the appropriate
      * delimiters:
      *
      * - If a scheme is present, "://" MUST append the value.
