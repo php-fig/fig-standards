@@ -296,6 +296,85 @@ application-specific rules (such as path matching, scheme matching, host
 matching, etc.). As such, the server request can also provide messaging between
 multiple request consumers.
 
+### 1.6 Uploaded files
+
+`ServerRequestInterface` specifies two methods for retrieving uploaded file
+metadata. `getFileParams()` is intended as a canonical source for the raw data
+normally present in PHP's `$_FILES` superglobal.
+
+The `$_FILES` superglobal has some well-known problems when dealing with arrays
+of file inputs. As an example, if you have a form that submits an array of files
+— e.g., the input name "files", submitting `files[0]` and `files[1]` — PHP will
+represent this as:
+
+```php
+array(
+    'files' => array(
+        'name' => array(
+            0 => 'file0.txt',
+            1 => 'file1.html',
+        ),
+        'type' => array(
+            0 => 'text/plain',
+            1 => 'text/html',
+        ),
+        /* etc. */
+    ),
+)
+```
+
+instead of the expected:
+
+```php
+array(
+    'files' => array(
+        0 => array(
+            'name' => 'file0.txt',
+            'type' => 'text/plain',
+            /* etc. */
+        ),
+        1 => array(
+            'name' => 'file1.html',
+            'type' => 'text/html',
+            /* etc. */
+        ),
+    ),
+)
+```
+
+The result is that consumers need to know this language implementation detail,
+and write code for gathering the data for a given upload.
+
+As such, `ServerRequestInterface` defines an additional method,
+`getUploadedFiles()`, intended for providing a normalized structure.
+Implementations are expected to:
+
+- Aggregate all information for a given file upload, and use it to populate a
+  `Psr\Http\Message\UploadedFileInterface` instance.
+- Re-create the submitted tree structure, with each leaf being the appropriate
+  `Psr\Http\Message\UploadedFileInterface` instance for the given location in
+  the tree.
+
+Because the uploaded files data is derivative (derived from `$_FILES` or the
+data returned by `getFileParams()`), a mutator method, `withUploadedFiles()`, is
+also present in the interface, allowing delegation of the normalization to
+another process.
+
+In the case of the above examples, consumption resembles the following:
+
+```php
+$file0 = $request->getUploadedFiles()['files'][0];
+$file1 = $request->getUploadedFiles()['files'][1];
+
+printf(
+    "Received the files %s and %s",
+    $file0->getClientFilename(),
+    $file1->getClientFilename()
+);
+
+// Received the files file0.txt and file1.html
+```
+
 ## 2. Package
 
 The interfaces and classes described are provided as part of the
@@ -807,7 +886,7 @@ interface ServerRequestInterface extends RequestInterface
     public function withQueryParams(array $query);
 
     /**
-     * Retrieve the uploaded files.
+     * Retrieve the uploaded files in raw $_FILES structure.
      *
      * This method MUST return the file upload metadata in the same structure
      * as PHP's $_FILES superglobal.
@@ -816,7 +895,23 @@ interface ServerRequestInterface extends RequestInterface
      * request. They SHOULD be injected during instantiation, such as from PHP's
      * $_FILES superglobal, but MAY be derived from other sources.
      *
-     * @return UploadedFileInterface[] The uploaded file(s), if any.
+     * @return array Upload file(s) metadata, if any; an empty array MUST be
+     *     returned if no data is present.
+     */
+    public function getFileParams();
+
+    /**
+     * Retrieve normalized file upload data.
+     *
+     * This method returns upload metadata in a normalized tree, with each leaf
+     * an instance of Psr\Http\Message\UploadedFileInterface.
+     *
+     * These values MAY be prepared on-demand from the composed file parameters
+     * as exposed by getFileParams(), MAY be injected during instantiation, or
+     * MAY be injected with withUploadedFiles().
+     *
+     * @return array An array tree of UploadedFileInterface instances; an empty
+     *     array MUST be returned if no data is present.
      */
     public function getUploadedFiles();
 
@@ -826,10 +921,10 @@ interface ServerRequestInterface extends RequestInterface
      * These MAY be injected during instantiation.
      *
      * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return a new instance that has the
+     * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
-     * @param UploadedFileInterface[] $uploadedFiles The uploaded files.
+     * @param array An array tree of UploadedFileInterface instances.
      * @return self
      */
     public function withUploadedFiles(array $uploadedFiles);
@@ -1514,7 +1609,7 @@ namespace Psr\Http\Message;
  *
  * Instances of this interface are considered immutable; all methods that
  * might change state MUST be implemented such that they retain the internal
- * state of the current instance and return a new instance that contains the
+ * state of the current instance and return an instance that contains the
  * changed state.
  */
 interface UploadedFileInterface
@@ -1548,7 +1643,8 @@ interface UploadedFileInterface
      * Implementations SHOULD return the value stored in the "error" key of
      * the file in the $_FILES array.
      *
-     * @return int One of the UPLOAD_ERR_XXX constants.
+     * @see http://php.net/manual/en/features.file-upload.errors.php
+     * @return int One of PHP's UPLOAD_ERR_XXX constants.
      */
     public function getError();
     
