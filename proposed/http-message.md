@@ -1154,10 +1154,13 @@ interface StreamableInterface
 namespace Psr\Http\Message;
 
 /**
- * Value object representing a URI for use in HTTP requests.
+ * Value object representing a URI.
  *
- * This interface is meant to represent only URIs for use with HTTP requests,
- * and is not intended as a general-purpose URI implementation.
+ * This interface is meant to represent URIs according to RFC 3986 and to
+ * provide methods for most common operations. Additional functionality for
+ * working with URIs can be provided on top of the interface or externally.
+ * Its primary use is for HTTP requests, but may also be used in other
+ * contexts.
  *
  * Instances of this interface are considered immutable; all methods that
  * might change state MUST be implemented such that they retain the internal
@@ -1177,9 +1180,13 @@ interface UriInterface
      *
      * If no scheme is present, this method MUST return an empty string.
      *
+     * The value returned MUST be normalized to lowercase, per RFC 3986
+     * Section 3.1.
+     *
      * The trailing ":" character is not part of the scheme and MUST NOT be
      * added.
      *
+     * @see https://tools.ietf.org/html/rfc3986#section-3.1
      * @return string The URI scheme.
      */
     public function getScheme();
@@ -1199,6 +1206,7 @@ interface UriInterface
      * If the port component is not set or is the standard port for the current
      * scheme, it SHOULD NOT be included.
      *
+     * @see https://tools.ietf.org/html/rfc3986#section-3.2
      * @return string The URI authority, in "[user-info@]host[:port]" format.
      */
     public function getAuthority();
@@ -1225,6 +1233,10 @@ interface UriInterface
      *
      * If no host is present, this method MUST return an empty string.
      *
+     * The value returned MUST be normalized to lowercase, per RFC 3986
+     * Section 3.2.2.
+     *
+     * @see http://tools.ietf.org/html/rfc3986#section-3.2.2
      * @return string The URI host.
      */
     public function getHost();
@@ -1435,10 +1447,12 @@ interface UriInterface
     public function withFragment($fragment);
 
     /**
-     * Return the string representation of the URI.
+     * Return the string representation as a URI reference.
      *
-     * Concatenates the various components of the URI, using the appropriate
-     * delimiters:
+     * Depending on which components of the URI are present, the resulting
+     * string is either a full URI or relative reference according to RFC 3985,
+     * Section 4.1. The method concatenates the various components of the URI,
+     * using the appropriate delimiters:
      *
      * - If a scheme is present, "://" MUST append the value.
      * - If the authority information is present, that value will be
@@ -1449,6 +1463,7 @@ interface UriInterface
      * - If a query string is present, it MUST be prefixed by a "?" character.
      * - If a URI fragment is present, it MUST be prefixed by a "#" character.
      *
+     * @see http://tools.ietf.org/html/rfc3986#section-4.1
      * @return string
      */
     public function __toString();
