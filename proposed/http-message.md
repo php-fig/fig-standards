@@ -1140,8 +1140,9 @@ interface StreamableInterface
      * @param int $length Read up to $length bytes from the object and return
      *     them. Fewer than $length bytes may be returned if underlying stream
      *     call returns fewer bytes.
-     * @return string Returns the data read from the stream
-     * @throws \RuntimeException if unable to read or if an error occurs.
+     * @return string|null Returns the data read from the stream, or null if no bytes
+         are available and the stream is in non-blocking mode.
+     * @throws \RuntimeException if an error occurs.
      */
     public function read($length);
 
