@@ -661,10 +661,13 @@ interface RequestInterface extends MessageInterface
      * contain a host component, any pre-existing Host header will be carried
      * over to the returned request.
      *
-     * You can disable modifying the Host header of the request by setting
-     * `$overrideHost` to false. Note that when `$overrideHost` is set to
-     * false, the returned request will not update the Host header of the
-     * message-- even if the message contains no Host header.
+     * You can opt-in to preserving the original state of the Host header by
+     * setting `$preserveHost` to `true`. When `$preserveHost` is set to
+     * `true`, the returned request will not update the Host header of the
+     * returned message-- even if the message contains no Host header. This
+     * means that a call to `getHeader('Host')` on the original request MUST
+     * equal the return value of a call to `getHeader('Host')` on the returned
+     * request.
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return an instance that has the
@@ -672,10 +675,10 @@ interface RequestInterface extends MessageInterface
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
      * @param UriInterface $uri New request URI to use.
-     * @param bool $overrideHost Set to false to not change the Host header.
+     * @param bool $preserveHost Preserve the original state of the Host header.
      * @return self
      */
-    public function withUri(UriInterface $uri, $overrideHost = true);
+    public function withUri(UriInterface $uri, $preserveHost = false);
 }
 ```
 
