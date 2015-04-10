@@ -1178,10 +1178,14 @@ interface UriInterface
      * Implementations SHOULD restrict values to "http", "https", or an empty
      * string but MAY accommodate other schemes if required.
      *
+     * The string MUST omit the closing scheme delimiter (":"), if present.
+     *
+     * If non-empty, the value MUST be normalized to lowercase, per RFC 3986
+     * Section 3.1.
+     *
      * If no scheme is present, this method MUST return an empty string.
      *
-     * The string returned MUST omit the trailing "://" delimiter if present.
-     *
+     * @see https://tools.ietf.org/html/rfc3986#section-3.1
      * @return string The scheme of the URI.
      */
     public function getScheme();
@@ -1315,12 +1319,11 @@ interface UriInterface
     /**
      * Return an instance with the specified scheme.
      *
-     * This method MUST retain the state of the current instance, and return
-     * an instance that contains the specified scheme. If the scheme
-     * provided includes the "://" delimiter, it MUST be removed.
+     * This method MUST retain the state of the current instance, and return an
+     * instance that contains the specified scheme.
      *
-     * Implementations SHOULD restrict values to "http", "https", or an empty
-     * string but MAY accommodate other schemes if required.
+     * Implementations MUST support an empty scheme AND the schemes "http" and
+     * "https", but MAY accept other schemes if required.
      *
      * An empty scheme is equivalent to removing the scheme.
      *
@@ -1402,9 +1405,7 @@ interface UriInterface
      * This method MUST retain the state of the current instance, and return
      * an instance that contains the specified query string.
      *
-     * If the query string is prefixed by "?", that character MUST be removed.
-     * Additionally, the query string SHOULD be parseable by parse_str() in
-     * order to be valid.
+     * The query string SHOULD be parseable by parse_str() in order to be valid.
      *
      * An empty query string value is equivalent to removing the query string.
      *
@@ -1419,8 +1420,6 @@ interface UriInterface
      *
      * This method MUST retain the state of the current instance, and return
      * an instance that contains the specified URI fragment.
-     *
-     * If the fragment is prefixed by "#", that character MUST be removed.
      *
      * An empty fragment value is equivalent to removing the fragment.
      *
