@@ -1615,22 +1615,20 @@ namespace Psr\Http\Message;
 interface UploadedFileInterface
 {
     /**
-     * Retrieve the path to the uploaded file.
+     * Retrieve the (temporary) path to the uploaded file.
      *
-     * This method MUST return an absolute file path.
+     * This method MUST return an absolute file path; the path is assumed
+     * to be temporary, per the typical PHP upload mechisms.
      *
      * Implementations SHOULD return the value stored in the "tmp_name" key
      * of the file in the $_FILES array.
      *
      * The implementation MUST guarantee that the file pointed to by the path
-     * can safely be used by the calling code. More precisely, the
-     * implementation MUST ensure that is_uploaded_file() returns true for
-     * the path if the path was provided through the $_FILES array or a
-     * similar mechanism.
+     * can safely be used by the calling code.
      *
      * @return string The absolute path to the uploaded file.
      */
-    public function getPath();
+    public function getTemporaryPath();
     
     /**
      * Retrieve the error associated with the uploaded file.
