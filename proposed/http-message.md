@@ -664,7 +664,7 @@ interface RequestInterface extends MessageInterface
      * You can opt-in to preserving the original state of the Host header by
      * setting `$preserveHost` to `true`. When `$preserveHost` is set to
      * `true`, the returned request will not update the Host header of the
-     * returned message-- even if the message contains no Host header. This
+     * returned message -- even if the message contains no Host header. This
      * means that a call to `getHeader('Host')` on the original request MUST
      * equal the return value of a call to `getHeader('Host')` on the returned
      * request.
