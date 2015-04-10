@@ -1639,6 +1639,16 @@ interface UploadedFileInterface
     public function getTemporaryPath();
     
     /**
+     * Retrieve the file size.
+     *
+     * Implementations SHOULD return the value stored in the "size" key of
+     * the file in the $_FILES array, OR the value returned by filesize().
+     *
+     * @return int|null The file size in bytes or null if none was provided.
+     */
+    public function getSize();
+    
+    /**
      * Retrieve the error associated with the uploaded file.
      *
      * The return value MUST be one of PHP's UPLOAD_ERR_XXX constants.
@@ -1668,21 +1678,6 @@ interface UploadedFileInterface
      *     was provided.
      */
     public function getClientFilename();
-    
-    /**
-     * Retrieve the size sent by the client.
-     *
-     * Do not trust the value returned by this method. A client could send
-     * a wrong or malicious size with the intention to corrupt or hack your
-     * application.
-     *
-     * Implementations SHOULD return the value stored in the "size" key of
-     * the file in the $_FILES array.
-     *
-     * @return int|null The size sent by the client in bytes or null if none
-     *     was provided.
-     */
-    public function getClientSize();
     
     /**
      * Retrieve the mime type sent by the client.
