@@ -1122,8 +1122,7 @@ interface StreamableInterface
      * Write data to the stream.
      *
      * @param string $string The string that is to be written.
-     * @return int|bool Returns the number of bytes written to the stream on
-     *     success.
+     * @return int Returns the number of bytes written to the stream.
      * @throws \RuntimeException on failure.
      */
     public function write($string);
