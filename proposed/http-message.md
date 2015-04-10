@@ -1611,6 +1611,14 @@ namespace Psr\Http\Message;
  * might change state MUST be implemented such that they retain the internal
  * state of the current instance and return an instance that contains the
  * changed state.
+ *
+ * When used in an SAPI environment where $_FILES is populated, files referenced
+ * by instances SHOULD be moved using is_uploaded_file() and
+ * move_uploaded_file() to ensure permissions and upload status are verified
+ * correctly.
+ *
+ * @see http://php.net/is_uploaded_file
+ * @see http://php.net/move_uploaded_file
  */
 interface UploadedFileInterface
 {
