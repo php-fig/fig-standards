@@ -1401,7 +1401,7 @@ interface UriInterface
      * rootless (not starting with a slash). Implementations MUST support all
      * three syntaxes.
      *
-     * Users can provide the path both in encoded as well as decoded form.
+     * Users can provide both encoded and decoded path characters.
      * Implementations ensure the correct encoding as outlined in getPath().
      *
      * @param string $path The path to use with the new instance.
@@ -1416,10 +1416,7 @@ interface UriInterface
      * This method MUST retain the state of the current instance, and return
      * an instance that contains the specified query string.
      *
-     * The query string SHOULD be parseable by parse_str() in order to be
-     * valid.
-     *
-     * Users can provide the query both in encoded as well as decoded form.
+     * Users can provide both encoded and decoded query characters.
      * Implementations ensure the correct encoding as outlined in getQuery().
      *
      * An empty query string value is equivalent to removing the query string.
@@ -1436,7 +1433,7 @@ interface UriInterface
      * This method MUST retain the state of the current instance, and return
      * an instance that contains the specified URI fragment.
      *
-     * Users can provide the fragment both in encoded as well as decoded form.
+     * Users can provide both encoded and decoded fragment characters.
      * Implementations ensure the correct encoding as outlined in getFragment().
      *
      * An empty fragment value is equivalent to removing the fragment.
