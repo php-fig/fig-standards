@@ -355,10 +355,10 @@ Implementations are expected to:
   `Psr\Http\Message\UploadedFileInterface` instance for the given location in
   the tree.
 
-Because the uploaded files data is derivative (derived from `$_FILES` or the
-data returned by `getFileParams()`), a mutator method, `withUploadedFiles()`, is
-also present in the interface, allowing delegation of the normalization to
-another process.
+Because the uploaded files data is derivative (derived from `$_FILES`, the data
+returned by `getFileParams()`, or the request body), a mutator method,
+`withUploadedFiles()`, is also present in the interface, allowing delegation of
+the normalization to another process.
 
 In the case of the above examples, consumption resembles the following:
 
@@ -374,6 +374,23 @@ printf(
 
 // Received the files file0.txt and file1.html
 ```
+
+This proposal also recognizes that implementations may operate in non-SAPI
+environments. As such, `UploadedFileInterface` provides methods for ensuring
+operations will work regardless of environment. In particular:
+
+- `move($path)` is provided as a safe and recommended alternative to calling
+  `move_uploaded_file()` directly on the temporary upload file. Implementations
+  will detect the correct operation to use based on environment.
+- `getStream()` will return a PHP stream resource. In non-SAPI environments,
+  one proposed possibility is to parse individual upload files into `php://temp`
+  streams instead of directly to files; in such cases, no upload file is
+  present. `getStream()` is therefore a safer alternative to
+  `getTemporaryPath()`, as it can be guaranteed to be present regardless of
+  environment.
+
+`getTemporaryPath()` is retained in order to work with legacy code, but we
+recommend using `getStream()` and/or `move()` for portability.
 
 ## 2. Package
 
@@ -1625,8 +1642,13 @@ interface UploadedFileInterface
     /**
      * Retrieve the (temporary) path to the uploaded file.
      *
-     * This method MUST return an absolute file path; the path is assumed
-     * to be temporary, per the typical PHP upload mechisms.
+     * This method is only guaranteed a return value when used in standard PHP
+     * SAPI environments. Consumers should typically only use getStream() and/or
+     * move().
+     *
+     * This method MUST return an absolute file path if one is present for the
+     * uploaded file; the path is assumed to be temporary, per the typical PHP
+     * upload mechanisms.
      *
      * Implementations SHOULD return the value stored in the "tmp_name" key
      * of the file in the $_FILES array.
@@ -1634,9 +1656,47 @@ interface UploadedFileInterface
      * The implementation MUST guarantee that the file pointed to by the path
      * can safely be used by the calling code.
      *
-     * @return string The absolute path to the uploaded file.
+     * If the move() method has been called previously, this method MUST return
+     * null.
+     *
+     * @return null|string The absolute path to the uploaded file, or null
+     *     if unavailable.
      */
     public function getTemporaryPath();
+
+    /**
+     * Retrieve a stream representing the uploaded file.
+     *
+     * This method MUST return a PHP stream, representing the uploaded file.
+     * The purpose of this method is for utilizing native PHP stream
+     * functionality to manipulate the file upload, such as
+     * stream_copy_to_stream().
+     *
+     * If the move() method has been called previously, this method MUST raise
+     * an exception.
+     *
+     * @return resource Stream of the uploaded file.
+     * @throws \RuntimeException in cases when no stream is available or can be
+     *     created.
+     */
+    public function getStream();
+
+    /**
+     * Move the uploaded file to a new location.
+     *
+     * Use this method as an alternative to move_uploaded_file(). This method is
+     * guaranteed to work in both SAPI and non-SAPI environments.
+     * Implementations must determine which environment they are in, and use the
+     * appropriate method (move_uploaded_file(), rename(), or a stream
+     * operation) to perform the operation.
+     *
+     * The original file or stream MUST be removed on completion.
+     *
+     * @param string $path Path to which to move the uploaded file.
+     * @throws \InvalidArgumentException if the $path specified is invalid.
+     * @throws \RuntimeException on any error during the move operation.
+     */
+    public function move($path);
     
     /**
      * Retrieve the file size.
