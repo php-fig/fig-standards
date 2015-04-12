@@ -655,6 +655,8 @@ used to populate the headers of an HTTP message.
 * Michael Dowling
 * Larry Garfield
 * Evert Pot
-- Tobias Schultze
+* Tobias Schultze
+* Bernhard Schussek
+* Anton Serdyuk
 * Phil Sturgeon
 * Chris Wilkinson
