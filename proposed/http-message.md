@@ -396,7 +396,7 @@ operations will work regardless of environment. In particular:
 - `move($path)` is provided as a safe and recommended alternative to calling
   `move_uploaded_file()` directly on the temporary upload file. Implementations
   will detect the correct operation to use based on environment.
-- `getStream()` will return a `StreamableInterface` instance. In non-SAPI
+- `getStream()` will return a `StreamInterface` instance. In non-SAPI
   environments, one proposed possibility is to parse individual upload files
   into `php://temp` streams instead of directly to files; in such cases, no
   upload file is present. `getStream()` is therefore guaranteed to work
@@ -406,7 +406,6 @@ As examples:
 
 ```
 // Move a file to an upload directory
-$uuid = create_a_uuid();
 $filename = sprintf(
     '%s.%s',
     create_uuid(),
@@ -415,7 +414,9 @@ $filename = sprintf(
 $file0->move(DATA_DIR . '/' . $filename);
 
 // Stream a file to Amazon S3.
-// Assume $s3wrapper is a PHP stream that will write to S3.
+// Assume $s3wrapper is a PHP stream that will write to S3, and that
+// Psr7StreamWrapper is a class that will decorate a StreamInterface as a PHP
+// StreamWrapper.
 $stream = new Psr7StreamWrapper($file1->getStream());
 stream_copy_to_stream($stream, $s3wrapper);
 ```
@@ -1647,7 +1648,7 @@ interface UploadedFileInterface
     /**
      * Retrieve a stream representing the uploaded file.
      *
-     * This method MUST return a StreamableInterface instance, representing the
+     * This method MUST return a StreamInterface instance, representing the
      * uploaded file. The purpose of this method is to allow utilizing native PHP
      * stream functionality to manipulate the file upload, such as
      * stream_copy_to_stream() (though the result will need to be decorated in a
@@ -1656,7 +1657,7 @@ interface UploadedFileInterface
      * If the move() method has been called previously, this method MUST raise
      * an exception.
      *
-     * @return StreamableInterface Stream representation of the uploaded file.
+     * @return StreamInterface Stream representation of the uploaded file.
      * @throws \RuntimeException in cases when no stream is available or can be
      *     created.
      */
