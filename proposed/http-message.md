@@ -296,6 +296,131 @@ application-specific rules (such as path matching, scheme matching, host
 matching, etc.). As such, the server request can also provide messaging between
 multiple request consumers.
 
+### 1.6 Uploaded files
+
+`ServerRequestInterface` specifies a method for retrieving a tree of upload
+files in a normalized structure, with each leaf an instance of
+`UploadedFileInterface`.
+
+The `$_FILES` superglobal has some well-known problems when dealing with arrays
+of file inputs. As an example, if you have a form that submits an array of files
+— e.g., the input name "files", submitting `files[0]` and `files[1]` — PHP will
+represent this as:
+
+```php
+array(
+    'files' => array(
+        'name' => array(
+            0 => 'file0.txt',
+            1 => 'file1.html',
+        ),
+        'type' => array(
+            0 => 'text/plain',
+            1 => 'text/html',
+        ),
+        /* etc. */
+    ),
+)
+```
+
+instead of the expected:
+
+```php
+array(
+    'files' => array(
+        0 => array(
+            'name' => 'file0.txt',
+            'type' => 'text/plain',
+            /* etc. */
+        ),
+        1 => array(
+            'name' => 'file1.html',
+            'type' => 'text/html',
+            /* etc. */
+        ),
+    ),
+)
+```
+
+The result is that consumers need to know this language implementation detail,
+and write code for gathering the data for a given upload.
+
+Additionally, scenarios exist where `$_FILES` is not populated when file uploads
+occur:
+
+- When the HTTP method is not `POST`.
+- When unit testing.
+- When operating under a non-SAPI environment, such as [ReactPHP](http://reactphp.org).
+
+In such cases, the data will need to be seeded differently. As examples:
+
+- A process might parse the message body to discover the file uploads. In such
+  cases, the implementation may choose *not* to write the file uploads to the
+  file system, but instead wrap them in a stream in order to reduce memory,
+  I/O, and storage overhead.
+- In unit testing scenarios, developers need to be able to stub and/or mock the
+  file upload metadata in order to validate and verify different scenarios.
+
+`getUploadedFiles()` provides the normalized structure for consumers.
+Implementations are expected to:
+
+- Aggregate all information for a given file upload, and use it to populate a
+  `Psr\Http\Message\UploadedFileInterface` instance.
+- Re-create the submitted tree structure, with each leaf being the appropriate
+  `Psr\Http\Message\UploadedFileInterface` instance for the given location in
+  the tree.
+
+Because the uploaded files data is derivative (derived from `$_FILES` or the
+request body), a mutator method, `withUploadedFiles()`, is also present in the
+interface, allowing delegation of the normalization to another process.
+
+In the case of the above examples, consumption resembles the following:
+
+```php
+$file0 = $request->getUploadedFiles()['files'][0];
+$file1 = $request->getUploadedFiles()['files'][1];
+
+printf(
+    "Received the files %s and %s",
+    $file0->getClientFilename(),
+    $file1->getClientFilename()
+);
+
+// "Received the files file0.txt and file1.html"
+```
+
+This proposal also recognizes that implementations may operate in non-SAPI
+environments. As such, `UploadedFileInterface` provides methods for ensuring
+operations will work regardless of environment. In particular:
+
+- `move($path)` is provided as a safe and recommended alternative to calling
+  `move_uploaded_file()` directly on the temporary upload file. Implementations
+  will detect the correct operation to use based on environment.
+- `getStream()` will return a `StreamInterface` instance. In non-SAPI
+  environments, one proposed possibility is to parse individual upload files
+  into `php://temp` streams instead of directly to files; in such cases, no
+  upload file is present. `getStream()` is therefore guaranteed to work
+  regardless of environment.
+
+As examples:
+
+```
+// Move a file to an upload directory
+$filename = sprintf(
+    '%s.%s',
+    create_uuid(),
+    pathinfo($file0->getClientFilename(), PATHINFO_EXTENSION)
+);
+$file0->move(DATA_DIR . '/' . $filename);
+
+// Stream a file to Amazon S3.
+// Assume $s3wrapper is a PHP stream that will write to S3, and that
+// Psr7StreamWrapper is a class that will decorate a StreamInterface as a PHP
+// StreamWrapper.
+$stream = new Psr7StreamWrapper($file1->getStream());
+stream_copy_to_stream($stream, $s3wrapper);
+```
+
 ## 2. Package
 
 The interfaces and classes described are provided as part of the
@@ -710,12 +835,12 @@ namespace Psr\Http\Message;
  * - Upload files, if any (as represented by $_FILES)
  * - Deserialized body parameters (generally from $_POST)
  *
- * $_SERVER and $_FILES values MUST be treated as immutable, as they represent
- * application state at the time of request; as such, no methods are provided
- * to allow modification of those values. The other values provide such methods,
- * as they can be restored from $_SERVER, $_FILES, or the request body, and may
- * need treatment during the application (e.g., body parameters may be
- * deserialized based on content type).
+ * $_SERVER values MUST be treated as immutable, as they represent application
+ * state at the time of request; as such, no methods are provided to allow
+ * modification of those values. The other values provide such methods, as they
+ * can be restored from $_SERVER or the request body, and may need treatment
+ * during the application (e.g., body parameters may be deserialized based on
+ * content type).
  *
  * Additionally, this interface recognizes the utility of introspecting a
  * request to derive and match additional parameters (e.g., via URI path
@@ -807,18 +932,31 @@ interface ServerRequestInterface extends RequestInterface
     public function withQueryParams(array $query);
 
     /**
-     * Retrieve the upload file metadata.
+     * Retrieve normalized file upload data.
      *
-     * This method MUST return file upload metadata in the same structure
-     * as PHP's $_FILES superglobal.
+     * This method returns upload metadata in a normalized tree, with each leaf
+     * an instance of Psr\Http\Message\UploadedFileInterface.
      *
-     * These values MUST remain immutable over the course of the incoming
-     * request. They SHOULD be injected during instantiation, such as from PHP's
-     * $_FILES superglobal, but MAY be derived from other sources.
+     * These values MAY be prepared from $_FILES or the message body during
+     * instantiation, or MAY be injected via withUploadedFiles().
      *
-     * @return array Upload file(s) metadata, if any.
+     * @return array An array tree of UploadedFileInterface instances; an empty
+     *     array MUST be returned if no data is present.
      */
-    public function getFileParams();
+    public function getUploadedFiles();
+
+    /**
+     * Create a new instance with the specified uploaded files.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated body parameters.
+     *
+     * @param array An array tree of UploadedFileInterface instances.
+     * @return self
+     * @throws \InvalidArgumentException if an invalid structure is provided.
+     */
+    public function withUploadedFiles(array $uploadedFiles);
 
     /**
      * Retrieve any parameters provided in the request body.
@@ -862,6 +1000,8 @@ interface ServerRequestInterface extends RequestInterface
      * @param null|array|object $data The deserialized body data. This will
      *     typically be in an array or object.
      * @return self
+     * @throws \InvalidArgumentException if an unsupported argument type is
+     *     provided.
      */
     public function withParsedBody($data);
 
@@ -1486,5 +1626,125 @@ interface UriInterface
      * @return string
      */
     public function __toString();
+}
+```
+
+### 3.6 `Psr\Http\Message\UploadedFileInterface`
+
+```php
+<?php
+namespace Psr\Http\Message;
+
+/**
+ * Value object representing a file uploaded through an HTTP request.
+ *
+ * Instances of this interface are considered immutable; all methods that
+ * might change state MUST be implemented such that they retain the internal
+ * state of the current instance and return an instance that contains the
+ * changed state.
+ */
+interface UploadedFileInterface
+{
+    /**
+     * Retrieve a stream representing the uploaded file.
+     *
+     * This method MUST return a StreamInterface instance, representing the
+     * uploaded file. The purpose of this method is to allow utilizing native PHP
+     * stream functionality to manipulate the file upload, such as
+     * stream_copy_to_stream() (though the result will need to be decorated in a
+     * native PHP stream wrapper to work with such functions).
+     *
+     * If the move() method has been called previously, this method MUST raise
+     * an exception.
+     *
+     * @return StreamInterface Stream representation of the uploaded file.
+     * @throws \RuntimeException in cases when no stream is available or can be
+     *     created.
+     */
+    public function getStream();
+
+    /**
+     * Move the uploaded file to a new location.
+     *
+     * Use this method as an alternative to move_uploaded_file(). This method is
+     * guaranteed to work in both SAPI and non-SAPI environments.
+     * Implementations must determine which environment they are in, and use the
+     * appropriate method (move_uploaded_file(), rename(), or a stream
+     * operation) to perform the operation.
+     *
+     * The original file or stream MUST be removed on completion.
+     *
+     * If this method is called more than once, any subsequent calls MUST raise
+     * an exception.
+     *
+     * When used in an SAPI environment where $_FILES is populated, when writing
+     * files via move(), is_uploaded_file() and move_uploaded_file() SHOULD be
+     * use to ensure permissions and upload status are verified correctly.
+     *
+     * @see http://php.net/is_uploaded_file
+     * @see http://php.net/move_uploaded_file
+     * @param string $path Path to which to move the uploaded file.
+     * @throws \InvalidArgumentException if the $path specified is invalid.
+     * @throws \RuntimeException on any error during the move operation, or on
+     *     the second or subsequent call to the method.
+     */
+    public function move($path);
+    
+    /**
+     * Retrieve the file size.
+     *
+     * Implementations SHOULD return the value stored in the "size" key of
+     * the file in the $_FILES array if available, as PHP calculates this based
+     * on the actual size transmitted.
+     *
+     * @return int|null The file size in bytes or null if unknown.
+     */
+    public function getSize();
+    
+    /**
+     * Retrieve the error associated with the uploaded file.
+     *
+     * The return value MUST be one of PHP's UPLOAD_ERR_XXX constants.
+     *
+     * If the file was uploaded successfully, this method MUST return
+     * UPLOAD_ERR_OK.
+     *
+     * Implementations SHOULD return the value stored in the "error" key of
+     * the file in the $_FILES array.
+     *
+     * @see http://php.net/manual/en/features.file-upload.errors.php
+     * @return int One of PHP's UPLOAD_ERR_XXX constants.
+     */
+    public function getError();
+    
+    /**
+     * Retrieve the filename sent by the client.
+     *
+     * Do not trust the value returned by this method. A client could send
+     * a malicious filename with the intention to corrupt or hack your
+     * application.
+     *
+     * Implementations SHOULD return the value stored in the "name" key of
+     * the file in the $_FILES array.
+     *
+     * @return string|null The filename sent by the client or null if none
+     *     was provided.
+     */
+    public function getClientFilename();
+    
+    /**
+     * Retrieve the mime type sent by the client.
+     *
+     * Do not trust the value returned by this method. A client could send
+     * a malicious mime type with the intention to corrupt or hack your
+     * application.
+     *
+     * Implementations SHOULD return the value stored in the "type" key of
+     * the file in the $_FILES array.
+     *
+     * @return string|null The mime type sent by the client or null if none
+     *     was provided.
+     */
+    public function getClientMimeType();
 }
 ```
