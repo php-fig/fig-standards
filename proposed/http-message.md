@@ -298,9 +298,9 @@ multiple request consumers.
 
 ### 1.6 Uploaded files
 
-`ServerRequestInterface` specifies two methods for retrieving uploaded file
-metadata. `getFileParams()` is intended as a canonical source for the raw data
-normally present in PHP's `$_FILES` superglobal.
+`ServerRequestInterface` specifies a method for retrieving a tree of upload
+files in a normalized structure, with each leaf an instance of
+`UploadedFileInterface`.
 
 The `$_FILES` superglobal has some well-known problems when dealing with arrays
 of file inputs. As an example, if you have a form that submits an array of files
@@ -345,8 +345,23 @@ array(
 The result is that consumers need to know this language implementation detail,
 and write code for gathering the data for a given upload.
 
-As such, `ServerRequestInterface` defines an additional method,
-`getUploadedFiles()`, intended for providing a normalized structure.
+Additionally, scenarios exist where `$_FILES` is not populated when file uploads
+occur:
+
+- When the HTTP method is not `POST`.
+- When unit testing.
+- When operating under a non-SAPI environment, such as [ReactPHP](http://reactphp.org).
+
+In such cases, the data will need to be seeded differently. As examples:
+
+- A process might parse the message body to discover the file uploads. In such
+  cases, the implementation may choose *not* to write the file uploads to the
+  file system, but instead wrap them in a stream in order to reduce memory,
+  I/O, and storage overhead.
+- In unit testing scenarios, developers need to be able to stub and/or mock the
+  file upload metadata in order to validate and verify different scenarios.
+
+`getUploadedFiles()` provides the normalized structure for consumers.
 Implementations are expected to:
 
 - Aggregate all information for a given file upload, and use it to populate a
@@ -355,10 +370,9 @@ Implementations are expected to:
   `Psr\Http\Message\UploadedFileInterface` instance for the given location in
   the tree.
 
-Because the uploaded files data is derivative (derived from `$_FILES`, the data
-returned by `getFileParams()`, or the request body), a mutator method,
-`withUploadedFiles()`, is also present in the interface, allowing delegation of
-the normalization to another process.
+Because the uploaded files data is derivative (derived from `$_FILES` or the
+request body), a mutator method, `withUploadedFiles()`, is also present in the
+interface, allowing delegation of the normalization to another process.
 
 In the case of the above examples, consumption resembles the following:
 
@@ -372,7 +386,7 @@ printf(
     $file1->getClientFilename()
 );
 
-// Received the files file0.txt and file1.html
+// "Received the files file0.txt and file1.html"
 ```
 
 This proposal also recognizes that implementations may operate in non-SAPI
@@ -382,15 +396,29 @@ operations will work regardless of environment. In particular:
 - `move($path)` is provided as a safe and recommended alternative to calling
   `move_uploaded_file()` directly on the temporary upload file. Implementations
   will detect the correct operation to use based on environment.
-- `getStream()` will return a PHP stream resource. In non-SAPI environments,
-  one proposed possibility is to parse individual upload files into `php://temp`
-  streams instead of directly to files; in such cases, no upload file is
-  present. `getStream()` is therefore a safer alternative to
-  `getTemporaryPath()`, as it can be guaranteed to be present regardless of
-  environment.
+- `getStream()` will return a `StreamableInterface` instance. In non-SAPI
+  environments, one proposed possibility is to parse individual upload files
+  into `php://temp` streams instead of directly to files; in such cases, no
+  upload file is present. `getStream()` is therefore guaranteed to work
+  regardless of environment.
 
-`getTemporaryPath()` is retained in order to work with legacy code, but we
-recommend using `getStream()` and/or `move()` for portability.
+As examples:
+
+```
+// Move a file to an upload directory
+$uuid = create_a_uuid();
+$filename = sprintf(
+    '%s.%s',
+    create_uuid(),
+    pathinfo($file0->getClientFilename(), PATHINFO_EXTENSION)
+);
+$file0->move(DATA_DIR . '/' . $filename);
+
+// Stream a file to Amazon S3.
+// Assume $s3wrapper is a PHP stream that will write to S3.
+$stream = new Psr7StreamWrapper($file1->getStream());
+stream_copy_to_stream($stream, $s3wrapper);
+```
 
 ## 2. Package
 
@@ -806,12 +834,12 @@ namespace Psr\Http\Message;
  * - Upload files, if any (as represented by $_FILES)
  * - Deserialized body parameters (generally from $_POST)
  *
- * $_SERVER and $_FILES values MUST be treated as immutable, as they represent
- * application state at the time of request; as such, no methods are provided
- * to allow modification of those values. The other values provide such methods,
- * as they can be restored from $_SERVER, $_FILES, or the request body, and may
- * need treatment during the application (e.g., body parameters may be
- * deserialized based on content type).
+ * $_SERVER values MUST be treated as immutable, as they represent application
+ * state at the time of request; as such, no methods are provided to allow
+ * modification of those values. The other values provide such methods, as they
+ * can be restored from $_SERVER or the request body, and may need treatment
+ * during the application (e.g., body parameters may be deserialized based on
+ * content type).
  *
  * Additionally, this interface recognizes the utility of introspecting a
  * request to derive and match additional parameters (e.g., via URI path
@@ -903,29 +931,13 @@ interface ServerRequestInterface extends RequestInterface
     public function withQueryParams(array $query);
 
     /**
-     * Retrieve the uploaded files in raw $_FILES structure.
-     *
-     * This method MUST return the file upload metadata in the same structure
-     * as PHP's $_FILES superglobal.
-     *
-     * These values MUST remain immutable over the course of the incoming
-     * request. They SHOULD be injected during instantiation, such as from PHP's
-     * $_FILES superglobal, but MAY be derived from other sources.
-     *
-     * @return array Upload file(s) metadata, if any; an empty array MUST be
-     *     returned if no data is present.
-     */
-    public function getFileParams();
-
-    /**
      * Retrieve normalized file upload data.
      *
      * This method returns upload metadata in a normalized tree, with each leaf
      * an instance of Psr\Http\Message\UploadedFileInterface.
      *
-     * These values MAY be prepared on-demand from the composed file parameters
-     * as exposed by getFileParams(), MAY be injected during instantiation, or
-     * MAY be injected with withUploadedFiles().
+     * These values MAY be prepared from $_FILES or the message body during
+     * instantiation, or MAY be injected via withUploadedFiles().
      *
      * @return array An array tree of UploadedFileInterface instances; an empty
      *     array MUST be returned if no data is present.
@@ -935,14 +947,13 @@ interface ServerRequestInterface extends RequestInterface
     /**
      * Create a new instance with the specified uploaded files.
      *
-     * These MAY be injected during instantiation.
-     *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
      * @param array An array tree of UploadedFileInterface instances.
      * @return self
+     * @throws \InvalidArgumentException if an invalid structure is provided.
      */
     public function withUploadedFiles(array $uploadedFiles);
 
@@ -988,6 +999,8 @@ interface ServerRequestInterface extends RequestInterface
      * @param null|array|object $data The deserialized body data. This will
      *     typically be in an array or object.
      * @return self
+     * @throws \InvalidArgumentException if an unsupported argument type is
+     *     provided.
      */
     public function withParsedBody($data);
 
@@ -1628,54 +1641,22 @@ namespace Psr\Http\Message;
  * might change state MUST be implemented such that they retain the internal
  * state of the current instance and return an instance that contains the
  * changed state.
- *
- * When used in an SAPI environment where $_FILES is populated, files referenced
- * by instances SHOULD be moved using is_uploaded_file() and
- * move_uploaded_file() to ensure permissions and upload status are verified
- * correctly.
- *
- * @see http://php.net/is_uploaded_file
- * @see http://php.net/move_uploaded_file
  */
 interface UploadedFileInterface
 {
     /**
-     * Retrieve the (temporary) path to the uploaded file.
-     *
-     * This method is only guaranteed a return value when used in standard PHP
-     * SAPI environments. Consumers should typically only use getStream() and/or
-     * move().
-     *
-     * This method MUST return an absolute file path if one is present for the
-     * uploaded file; the path is assumed to be temporary, per the typical PHP
-     * upload mechanisms.
-     *
-     * Implementations SHOULD return the value stored in the "tmp_name" key
-     * of the file in the $_FILES array.
-     *
-     * The implementation MUST guarantee that the file pointed to by the path
-     * can safely be used by the calling code.
-     *
-     * If the move() method has been called previously, this method MUST return
-     * null.
-     *
-     * @return null|string The absolute path to the uploaded file, or null
-     *     if unavailable.
-     */
-    public function getTemporaryPath();
-
-    /**
      * Retrieve a stream representing the uploaded file.
      *
-     * This method MUST return a PHP stream, representing the uploaded file.
-     * The purpose of this method is for utilizing native PHP stream
-     * functionality to manipulate the file upload, such as
-     * stream_copy_to_stream().
+     * This method MUST return a StreamableInterface instance, representing the
+     * uploaded file. The purpose of this method is to allow utilizing native PHP
+     * stream functionality to manipulate the file upload, such as
+     * stream_copy_to_stream() (though the result will need to be decorated in a
+     * native PHP stream wrapper to work with such functions).
      *
      * If the move() method has been called previously, this method MUST raise
      * an exception.
      *
-     * @return resource Stream of the uploaded file.
+     * @return StreamableInterface Stream representation of the uploaded file.
      * @throws \RuntimeException in cases when no stream is available or can be
      *     created.
      */
@@ -1692,9 +1673,19 @@ interface UploadedFileInterface
      *
      * The original file or stream MUST be removed on completion.
      *
+     * If this method is called more than once, any subsequent calls MUST raise
+     * an exception.
+     *
+     * When used in an SAPI environment where $_FILES is populated, when writing
+     * files via move(), is_uploaded_file() and move_uploaded_file() SHOULD be
+     * use to ensure permissions and upload status are verified correctly.
+     *
+     * @see http://php.net/is_uploaded_file
+     * @see http://php.net/move_uploaded_file
      * @param string $path Path to which to move the uploaded file.
      * @throws \InvalidArgumentException if the $path specified is invalid.
-     * @throws \RuntimeException on any error during the move operation.
+     * @throws \RuntimeException on any error during the move operation, or on
+     *     the second or subsequent call to the method.
      */
     public function move($path);
     
@@ -1702,9 +1693,10 @@ interface UploadedFileInterface
      * Retrieve the file size.
      *
      * Implementations SHOULD return the value stored in the "size" key of
-     * the file in the $_FILES array, OR the value returned by filesize().
+     * the file in the $_FILES array if available, as PHP calculates this based
+     * on the actual size transmitted.
      *
-     * @return int|null The file size in bytes or null if none was provided.
+     * @return int|null The file size in bytes or null if unknown.
      */
     public function getSize();
     
