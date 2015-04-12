@@ -629,5 +629,6 @@ used to populate the headers of an HTTP message.
 * Michael Dowling
 * Larry Garfield
 * Evert Pot
+- Tobias Schultze
 * Phil Sturgeon
 * Chris Wilkinson
