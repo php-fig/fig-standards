@@ -5,7 +5,7 @@ This document describes a common interface for dependency injection containers.
 
 The goal set by `ContainerInterface` is to standardize how frameworks and libraries make use of a
 container to obtain objects and parameters (called *entries* in the rest of this document).
-
+sh
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
@@ -40,7 +40,7 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 Exceptions directly thrown by the container MUST implement the
 [`Psr\Container\Exception\ContainerException`](#container-exception).
 
-A call to the `get` method with a non-existing id should throw a
+A call to the `get` method with a non-existing id SHOULD throw a
 [`Psr\Container\Exception\NotFoundException`](#not-found-exception).
 
 ### 1.3 Additional feature: Delegate lookup
