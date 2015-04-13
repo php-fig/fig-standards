@@ -884,6 +884,9 @@ interface ServerRequestInterface extends RequestInterface
      * be compatible with the structure of $_COOKIE. Typically, this data will
      * be injected at instantiation.
      *
+     * This method MUST NOT update the related Cookie header of the request
+     * instance, nor related values in the server params.
+     *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return an instance that has the
      * updated cookie values.
