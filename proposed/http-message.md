@@ -1733,18 +1733,18 @@ interface UploadedFileInterface
     public function getClientFilename();
     
     /**
-     * Retrieve the mime type sent by the client.
+     * Retrieve the media type sent by the client.
      *
      * Do not trust the value returned by this method. A client could send
-     * a malicious mime type with the intention to corrupt or hack your
+     * a malicious media type with the intention to corrupt or hack your
      * application.
      *
      * Implementations SHOULD return the value stored in the "type" key of
      * the file in the $_FILES array.
      *
-     * @return string|null The mime type sent by the client or null if none
+     * @return string|null The media type sent by the client or null if none
      *     was provided.
      */
-    public function getClientMimeType();
+    public function getClientMediaType();
 }
 ```
