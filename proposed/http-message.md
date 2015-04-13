@@ -774,7 +774,7 @@ interface RequestInterface extends MessageInterface
      *
      * @link http://tools.ietf.org/html/rfc3986#section-4.3
      * @return UriInterface Returns a UriInterface instance
-     *     representing the URI of the request, if any.
+     *     representing the URI of the request.
      */
     public function getUri();
 
