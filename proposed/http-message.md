@@ -1769,7 +1769,8 @@ namespace Psr\Http\Message;
  * Exception interface for invalid arguments.
  *
  * When an invalid argument is given to a method it must throw an exception
- * implementing this interface.
+ * implementing this interface. Exception classes implementing this interface
+ * SHOULD extend \InvalidArgumentException.
  */
 interface InvalidArgumentException {}
 ```
@@ -1784,7 +1785,8 @@ namespace Psr\Http\Message;
  * Exception interface for failed operations.
  *
  * When an operation fails the method must thrown an exception implementing
- * this interface.
+ * this interface. Exception classes implementing this interface SHOULD extend
+ * \RuntimeException.
  */
 interface RuntimeException {}
 ```
