@@ -396,10 +396,10 @@ operations will work regardless of environment. In particular:
 - `move($path)` is provided as a safe and recommended alternative to calling
   `move_uploaded_file()` directly on the temporary upload file. Implementations
   will detect the correct operation to use based on environment.
-- `getStream()` will return a `StreamInterface` instance. In non-SAPI
+- `getBody()` will return a `StreamInterface` instance. In non-SAPI
   environments, one proposed possibility is to parse individual upload files
   into `php://temp` streams instead of directly to files; in such cases, no
-  upload file is present. `getStream()` is therefore guaranteed to work
+  upload file is present. `getBody()` is therefore guaranteed to work
   regardless of environment.
 
 As examples:
@@ -417,7 +417,7 @@ $file0->move(DATA_DIR . '/' . $filename);
 // Assume $s3wrapper is a PHP stream that will write to S3, and that
 // Psr7StreamWrapper is a class that will decorate a StreamInterface as a PHP
 // StreamWrapper.
-$stream = new Psr7StreamWrapper($file1->getStream());
+$stream = new Psr7StreamWrapper($file1->getBody());
 stream_copy_to_stream($stream, $s3wrapper);
 ```
 
@@ -1646,7 +1646,7 @@ namespace Psr\Http\Message;
 interface UploadedFileInterface
 {
     /**
-     * Retrieve a stream representing the uploaded file.
+     * Retrieve a stream representing the body of the uploaded file.
      *
      * This method MUST return a StreamInterface instance, representing the
      * uploaded file. The purpose of this method is to allow utilizing native PHP
@@ -1657,11 +1657,11 @@ interface UploadedFileInterface
      * If the move() method has been called previously, this method MUST raise
      * an exception.
      *
-     * @return StreamInterface Stream representation of the uploaded file.
+     * @return StreamInterface Stream representation of the file body.
      * @throws \RuntimeException in cases when no stream is available or can be
      *     created.
      */
-    public function getStream();
+    public function getBody();
 
     /**
      * Move the uploaded file to a new location.
