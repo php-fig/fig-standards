@@ -594,31 +594,18 @@ specific, and the results of detection can be easily injected into objects that
 need it, and/or calculated as needed using utility functions and/or classes from
 the `RequestInterface` instance itself.
 
-### Why are both getFileParams() and getUploadedFiles() present?
-
-`getFileParams()` exists to provide the raw file upload data, typically as
-represented by `$_FILES`. This data is useful in several cases:
-
-- A number of existing libraries exist that already can process the `$_FILES`
-  array; having a method that returns that raw value allows them to interoperate
-  with this specification.
-  - https://github.com/codeguy/Upload
-  - https://github.com/siriusphp/upload
-- As a canonical source of file upload information that cannot be mutated.
-
-`getUploadedFiles()` exists to fix a known issue with how PHP structures the
-`$_FILES` superglobal when array notation (e.g., `files[0]`, `files[1]`, and so
-on) is used to name file uploads. It can be _derived_ from the return value of
-`getFileParams()`, but presents a structure that is more user friendly, as you
-can access the various uploads using the same tree structure in which the files
-were submitted.
-
 ### Why does getUploadedFiles() return objects instead of arrays?
 
 `getUploadedFiles()` returns a tree of `Psr\Http\Message\UploadedFileInterface`
 instances. This is done primarily to simplify specification: instead of
-requiring paragraphs of implementation specification for an array, we can
-specify an interface.
+requiring paragraphs of implementation specification for an array, we specify an
+interface.
+
+Additionally, the data in an `UploadedFileInterface` is normalized to work in
+both SAPI and non-SAPI environments. This allows creation of processes to parse
+the message body manually and assign contents to streams without first writing
+to the filesystem, while still allowing proper handling of file uploads in SAPI
+environments.
 
 ### What about "special" header values?
 
