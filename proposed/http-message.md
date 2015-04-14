@@ -245,7 +245,7 @@ OPTIONS * HTTP/1.1
 But the HTTP client will be able to use the effective URL (from `getUri()`),
 to determine the protocol, hostname and TCP port.
 
-A HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
+An HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
 and instead use the value returned by `getRequestTarget()`, which defaults
 to concatenating these two values.
 
