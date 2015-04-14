@@ -207,7 +207,7 @@ of the request line. The request target can be one of the following forms:
 
 Aside from these request-targets, there is often an 'effective URL' which is
 separate from the request target. The effective URL is not transmitted within
-a HTTP message, but it is used to determine the protocol (http/https), port
+an HTTP message, but it is used to determine the protocol (http/https), port
 and hostname for making the request.
 
 The effective URL is represented by `UriInterface`. `UriInterface` models HTTP
@@ -236,7 +236,7 @@ $request = $request
     ->withUri(new Uri('https://example.org/'));
 ```
 
-This example may ultimately result in a HTTP request that looks like this:
+This example may ultimately result in an HTTP request that looks like this:
 
 ```http
 OPTIONS * HTTP/1.1
@@ -245,7 +245,7 @@ OPTIONS * HTTP/1.1
 But the HTTP client will be able to use the effective URL (from `getUri()`),
 to determine the protocol, hostname and TCP port.
 
-A HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
+An HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
 and instead use the value returned by `getRequestTarget()`, which defaults
 to concatenating these two values.
 
