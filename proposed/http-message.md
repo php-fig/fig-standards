@@ -562,7 +562,8 @@ interface MessageInterface
      * @param string $name Case-insensitive header field name.
      * @param string|string[] $value Header value(s).
      * @return self
-     * @throws \InvalidArgumentException for invalid header names or values.
+     * @throws \Psr\Http\Message\InvalidArgumentException for invalid header
+     *     names or values.
      */
     public function withHeader($name, $value);
 
@@ -581,7 +582,8 @@ interface MessageInterface
      * @param string $name Case-insensitive header field name to add.
      * @param string|string[] $value Header value(s).
      * @return self
-     * @throws \InvalidArgumentException for invalid header names or values.
+     * @throws \Psr\Http\Message\InvalidArgumentException for invalid header
+     *     names or values.
      */
     public function withAddedHeader($name, $value);
 
@@ -617,7 +619,8 @@ interface MessageInterface
      *
      * @param StreamInterface $body Body.
      * @return self
-     * @throws \InvalidArgumentException When the body is not valid.
+     * @throws \Psr\Http\Message\InvalidArgumentException When the body is not
+     *     valid.
      */
     public function withBody(StreamInterface $body);
 }
@@ -763,7 +766,8 @@ interface RequestInterface extends MessageInterface
      *
      * @param string $method Case-insensitive method.
      * @return self
-     * @throws \InvalidArgumentException for invalid HTTP methods.
+     * @throws \Psr\Http\Message\InvalidArgumentException for invalid HTTP
+     *     methods.
      */
     public function withMethod($method);
 
@@ -957,7 +961,8 @@ interface ServerRequestInterface extends RequestInterface
      *
      * @param array An array tree of UploadedFileInterface instances.
      * @return self
-     * @throws \InvalidArgumentException if an invalid structure is provided.
+     * @throws \Psr\Http\Message\InvalidArgumentException if an invalid
+     *     structure is provided.
      */
     public function withUploadedFiles(array $uploadedFiles);
 
@@ -1003,8 +1008,8 @@ interface ServerRequestInterface extends RequestInterface
      * @param null|array|object $data The deserialized body data. This will
      *     typically be in an array or object.
      * @return self
-     * @throws \InvalidArgumentException if an unsupported argument type is
-     *     provided.
+     * @throws \Psr\Http\Message\InvalidArgumentException if an unsupported
+     *     argument type is provided.
      */
     public function withParsedBody($data);
 
@@ -1127,7 +1132,8 @@ interface ResponseInterface extends MessageInterface
      *     provided status code; if none is provided, implementations MAY
      *     use the defaults as suggested in the HTTP specification.
      * @return self
-     * @throws \InvalidArgumentException For invalid status code arguments.
+     * @throws \Psr\Http\Message\InvalidArgumentException For invalid status
+     *     code arguments.
      */
     public function withStatus($code, $reasonPhrase = null);
 
@@ -1208,7 +1214,7 @@ interface StreamInterface
      * Returns the current position of the file read/write pointer
      *
      * @return int Position of the file pointer
-     * @throws \RuntimeException on error.
+     * @throws \Psr\Http\Message\RuntimeException on error.
      */
     public function tell();
 
@@ -1236,7 +1242,7 @@ interface StreamInterface
      *     PHP $whence values for `fseek()`.  SEEK_SET: Set position equal to
      *     offset bytes SEEK_CUR: Set position to current location plus offset
      *     SEEK_END: Set position to end-of-stream plus offset.
-     * @throws \RuntimeException on failure.
+     * @throws \Psr\Http\Message\RuntimeException on failure.
      */
     public function seek($offset, $whence = SEEK_SET);
 
@@ -1248,7 +1254,7 @@ interface StreamInterface
      *
      * @see seek()
      * @link http://www.php.net/manual/en/function.fseek.php
-     * @throws \RuntimeException on failure.
+     * @throws \Psr\Http\Message\RuntimeException on failure.
      */
     public function rewind();
 
@@ -1264,7 +1270,7 @@ interface StreamInterface
      *
      * @param string $string The string that is to be written.
      * @return int Returns the number of bytes written to the stream.
-     * @throws \RuntimeException on failure.
+     * @throws \Psr\Http\Message\RuntimeException on failure.
      */
     public function write($string);
 
@@ -1283,7 +1289,7 @@ interface StreamInterface
      *     call returns fewer bytes.
      * @return string Returns the data read from the stream, or an empty string
      *     if no bytes are available.
-     * @throws \RuntimeException if an error occurs.
+     * @throws \Psr\Http\Message\RuntimeException if an error occurs.
      */
     public function read($length);
 
@@ -1291,8 +1297,8 @@ interface StreamInterface
      * Returns the remaining contents in a string
      *
      * @return string
-     * @throws \RuntimeException if unable to read or an error occurs while 
-     *     reading.
+     * @throws \Psr\Http\Message\RuntimeException if unable to read or an error
+     *     occurs while reading.
      */
     public function getContents();
 
@@ -1503,7 +1509,8 @@ interface UriInterface
      *
      * @param string $scheme The scheme to use with the new instance.
      * @return self A new instance with the specified scheme.
-     * @throws \InvalidArgumentException for invalid or unsupported schemes.
+     * @throws \Psr\Http\Message\InvalidArgumentException for invalid or
+     *     unsupported schemes.
      */
     public function withScheme($scheme);
 
@@ -1533,7 +1540,8 @@ interface UriInterface
      *
      * @param string $host The hostname to use with the new instance.
      * @return self A new instance with the specified host.
-     * @throws \InvalidArgumentException for invalid hostnames.
+     * @throws \Psr\Http\Message\InvalidArgumentException for invalid
+     *     hostnames.
      */
     public function withHost($host);
 
@@ -1552,7 +1560,7 @@ interface UriInterface
      * @param null|int $port The port to use with the new instance; a null value
      *     removes the port information.
      * @return self A new instance with the specified port.
-     * @throws \InvalidArgumentException for invalid ports.
+     * @throws \Psr\Http\Message\InvalidArgumentException for invalid ports.
      */
     public function withPort($port);
 
@@ -1571,7 +1579,7 @@ interface UriInterface
      *
      * @param string $path The path to use with the new instance.
      * @return self A new instance with the specified path.
-     * @throws \InvalidArgumentException for invalid paths.
+     * @throws \Psr\Http\Message\InvalidArgumentException for invalid paths.
      */
     public function withPath($path);
 
@@ -1588,7 +1596,8 @@ interface UriInterface
      *
      * @param string $query The query string to use with the new instance.
      * @return self A new instance with the specified query string.
-     * @throws \InvalidArgumentException for invalid query strings.
+     * @throws \Psr\Http\Message\InvalidArgumentException for invalid query
+     *     strings.
      */
     public function withQuery($query);
 
@@ -1664,8 +1673,8 @@ interface UploadedFileInterface
      * an exception.
      *
      * @return StreamInterface Stream representation of the uploaded file.
-     * @throws \RuntimeException in cases when no stream is available or can be
-     *     created.
+     * @throws \Psr\Http\Message\RuntimeException in cases when no stream is
+     *     available or can be created.
      */
     public function getStream();
 
@@ -1690,9 +1699,10 @@ interface UploadedFileInterface
      * @see http://php.net/is_uploaded_file
      * @see http://php.net/move_uploaded_file
      * @param string $path Path to which to move the uploaded file.
-     * @throws \InvalidArgumentException if the $path specified is invalid.
-     * @throws \RuntimeException on any error during the move operation, or on
-     *     the second or subsequent call to the method.
+     * @throws \Psr\Http\Message\InvalidArgumentException if the $path specified
+     *     is invalid.
+     * @throws \Psr\Http\Message\RuntimeException on any error during the move
+     *     operation, or on the second or subsequent call to the method.
      */
     public function move($path);
     
@@ -1753,4 +1763,36 @@ interface UploadedFileInterface
      */
     public function getClientMediaType();
 }
+```
+
+### 3.7 `Psr\Http\Message\InvalidArgumentException`
+
+```php
+<?php
+namespace Psr\Http\Message;
+
+/**
+ * Exception interface for invalid arguments.
+ *
+ * When an invalid argument is given to a method it must throw an exception
+ * implementing this interface. Exception classes implementing this interface
+ * SHOULD extend \InvalidArgumentException.
+ */
+interface InvalidArgumentException {}
+```
+
+### 3.8 `Psr\Http\Message\RuntimeException`
+
+```php
+<?php
+namespace Psr\Http\Message;
+
+/**
+ * Exception interface for failed operations.
+ *
+ * When an operation fails the method must thrown an exception implementing
+ * this interface. Exception classes implementing this interface SHOULD extend
+ * \RuntimeException.
+ */
+interface RuntimeException {}
 ```
