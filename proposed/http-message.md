@@ -781,18 +781,15 @@ interface RequestInterface extends MessageInterface
     /**
      * Returns an instance with the provided URI.
      *
-     * This method will update the Host header of the returned request by
+     * This method MUST update the Host header of the returned request by
      * default if the URI contains a host component. If the URI does not
-     * contain a host component, any pre-existing Host header will be carried
+     * contain a host component, any pre-existing Host header MUST be carried
      * over to the returned request.
      *
      * You can opt-in to preserving the original state of the Host header by
      * setting `$preserveHost` to `true`. When `$preserveHost` is set to
-     * `true`, the returned request will not update the Host header of the
-     * returned message -- even if the message contains no Host header. This
-     * means that a call to `getHeader('Host')` on the original request MUST
-     * equal the return value of a call to `getHeader('Host')` on the returned
-     * request.
+     * `true`, the returned request MUST NOT update the Host header of the
+     * returned message -- even if the message contains no Host header.
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return an instance that has the
