@@ -146,6 +146,27 @@ present in the composed `UriInterface`, the value from the URI should be used.
 If a Host header is explicitly provided to the request instance, that value will
 be preferred.
 
+`RequestInterface::withUri()` also interacts with the Host header. By default,
+this method replaces the returned request's Host header with a Host header
+matching the host component of the passed `UriInterface`.
+
+You can opt-in to preserving the original state of the Host header by passing
+`true` for the second (`$preserveHost`) argument. When this argument is set to
+`true`, the returned request will not update the Host header of the returned
+message -- unless the message contains no Host header.
+
+This table illustrates what `getHeaderLine('Host')` will return for a request
+returned by `withUri()` with the `$preserveHost` argument set to `true` for
+various initial requests and URIs.
+
+Request Host header | Request host component | URI host component | Result
+--------------------|------------------------|--------------------|--------
+''                  | ''                     | ''                 | ''
+''                  | foo.com                | ''                 | foo.com
+''                  | foo.com                | bar.com            | foo.com
+foo.com             | ''                     | bar.com            | foo.com
+foo.com             | bar.com                | baz.com            | foo.com
+
 ### 1.3 Streams
 
 HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
@@ -789,7 +810,10 @@ interface RequestInterface extends MessageInterface
      * You can opt-in to preserving the original state of the Host header by
      * setting `$preserveHost` to `true`. When `$preserveHost` is set to
      * `true`, the returned request MUST NOT update the Host header of the
-     * returned message -- even if the message contains no Host header.
+     * returned message -- unless the original messages contains no Host header.
+     * This means that a call to `getHeader('Host')` on the original request
+     * MUST equal the return value of a call to `getHeader('Host')` on the
+     * returned request.
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return an instance that has the
