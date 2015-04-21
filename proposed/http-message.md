@@ -685,14 +685,14 @@ interface RequestInterface extends MessageInterface
     public function getHeader($name);
 
     /**
-     * Extends MessageInterface::getHeaderLines() to provide request-specific
+     * Extends MessageInterface::getHeaderLine() to provide request-specific
      * behavior.
      *
      * This method returns all of the header values of the given
      * case-insensitive header name as a string concatenated together using
      * a comma.
      *
-     * This method acts exactly like MessageInterface::getHeaderLines(), with
+     * This method acts exactly like MessageInterface::getHeaderLine(), with
      * one behavioral change: if the Host header is requested, but has
      * not been previously set, the method MUST attempt to pull the host
      * component of the composed URI, if present.
