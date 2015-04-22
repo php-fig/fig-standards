@@ -159,13 +159,19 @@ This table illustrates what `getHeaderLine('Host')` will return for a request
 returned by `withUri()` with the `$preserveHost` argument set to `true` for
 various initial requests and URIs.
 
-Request Host header | Request host component | URI host component | Result
---------------------|------------------------|--------------------|--------
-''                  | ''                     | ''                 | ''
-''                  | foo.com                | ''                 | foo.com
-''                  | foo.com                | bar.com            | foo.com
-foo.com             | ''                     | bar.com            | foo.com
-foo.com             | bar.com                | baz.com            | foo.com
+Request Host header<sup>[1](#rhh)</sup> | Request host component<sup>[2](#rhc)</sup> | URI host component<sup>[3](#uhc)</sup> | Result
+----------------------------------------|--------------------------------------------|----------------------------------------|--------
+''                                      | ''                                         | ''                                     | ''
+''                                      | foo.com                                    | ''                                     | foo.com
+''                                      | foo.com                                    | bar.com                                | foo.com
+foo.com                                 | ''                                         | bar.com                                | foo.com
+foo.com                                 | bar.com                                    | baz.com                                | foo.com
+
+- <sup id="rhh">1</sup> `Host` header value prior to operation.
+- <sup id="rhc">2</sup> Host component of the URI composed in the request prior
+  to the operation.
+- <sup id="uhc">3</sup> Host component of the URI being injected via
+  `withUri()`.
 
 ### 1.3 Streams
 
