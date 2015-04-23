@@ -669,6 +669,9 @@ namespace Psr\Http\Message;
  * - Headers
  * - Message body
  *
+ * During construction, implementations MUST attempt to set the Host header from
+ * a provided URI if no Host header is provided as well.
+ * 
  * Requests are considered immutable; all methods that might change state MUST
  * be implemented such that they retain the internal state of the current
  * message and return an instance that contains the changed state.
