@@ -135,25 +135,21 @@ for retrieving such multi-valued headers.
 
 ##### Host header
 
-In requests, the Host header typically mirrors the host segment of the URI, as
+In requests, the `Host` header typically mirrors the host segment of the URI, as
 well as the host used when establishing the TCP connection. However, the HTTP
-specification allows the Host header to differ from each of the two.
+specification allows the `Host` header to differ from each of the two.
 
-The `RequestInterface` overrides the `MessageInterface::getHeader()`,
-`MessageInterface::getHeaders()`, and `MessageInterface::getHeaderLine()`
-methods to indicate that if no Host header is present, but a host segment is
-present in the composed `UriInterface`, the value from the URI should be used.
-If a Host header is explicitly provided to the request instance, that value will
-be preferred.
+During construction, implementations MUST attempt to set the `Host` header from
+a provided URI if no `Host` header is provided as well.
 
-`RequestInterface::withUri()` also interacts with the Host header. By default,
-this method replaces the returned request's Host header with a Host header
-matching the host component of the passed `UriInterface`.
+`RequestInterface::withUri()` will, by default, replace the returned request's
+`Host` header with a `Host` header matching the host component of the passed
+`UriInterface`.
 
-You can opt-in to preserving the original state of the Host header by passing
+You can opt-in to preserving the original state of the `Host` header by passing
 `true` for the second (`$preserveHost`) argument. When this argument is set to
-`true`, the returned request will not update the Host header of the returned
-message -- unless the message contains no Host header.
+`true`, the returned request will not update the `Host` header of the returned
+message -- unless the message contains no `Host` header.
 
 This table illustrates what `getHeaderLine('Host')` will return for a request
 returned by `withUri()` with the `$preserveHost` argument set to `true` for
