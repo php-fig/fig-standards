@@ -140,7 +140,7 @@ well as the host used when establishing the TCP connection. However, the HTTP
 specification allows the `Host` header to differ from each of the two.
 
 During construction, implementations MUST attempt to set the `Host` header from
-a provided URI if no `Host` header is provided as well.
+a provided URI if no `Host` header is provided.
 
 `RequestInterface::withUri()` will, by default, replace the returned request's
 `Host` header with a `Host` header matching the host component of the passed
@@ -666,7 +666,7 @@ namespace Psr\Http\Message;
  * - Message body
  *
  * During construction, implementations MUST attempt to set the Host header from
- * a provided URI if no Host header is provided as well.
+ * a provided URI if no Host header is provided.
  * 
  * Requests are considered immutable; all methods that might change state MUST
  * be implemented such that they retain the internal state of the current
