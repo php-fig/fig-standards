@@ -1039,6 +1039,23 @@ interface ServerRequestInterface extends RequestInterface
     public function getAttribute($name, $default = null);
 
     /**
+     * Return an instance with the specified derived request attributes.
+     *
+     * This method allows setting multiple derived request attributes at once as
+     * described in getAttributes().
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated attributes.
+     *
+     * @see getAttributes()
+     * @param array $attributes Array of key/value pairs representing the new or 
+     *      updated $attributes.
+     * @return self
+     */
+    public function withAttributes(array $attributes);
+
+    /**
      * Return an instance with the specified derived request attribute.
      *
      * This method allows setting a single derived request attribute as
