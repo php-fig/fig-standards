@@ -3,7 +3,7 @@ Guía de estilo de codificación
 
 Esta guía amplía y extiende el estándar de codificación básica [PSR-1][].
 
-La objetivo de esta guía es la de reducir la dificultad cuando se lee código de diferentes autores. Lo realiza mediante la enumeración de una serie de reglas común y expresiones sobre cómo dar formato al código PHP.
+El objetivo de esta guía es el de reducir la dificultad cuando se lee código de diferentes autores. Para ello, se enumeran una serie de reglas común y expresiones sobre cómo dar formato al código PHP.
 
 En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MUST NOT, SHOULD, SOULD NOT y MAY. Para que la traducción sea lo más fiel posible, se traducira siempre MUST como el verbo deber en presente (DEBE, DEBEN), SHOULD como el verbo deber en condicional (DEBERÍA, DEBERÍAN) y el verbo MAY como el verbo PODER.
 
@@ -27,7 +27,7 @@ En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MU
 
 - Las llaves de apertura de los métodos DEBEN ir en la línea siguiente, y las llaves de cierre DEBEN ir en la línea siguiente al cuerpo del método.
 
-- La visibilidad DEBE estar declarada en todas las propiedades y métodos; `abstract` y `final` DEBEN estar declaradas antes de la visibilidad; `static` DEBE estar declarada después de la visibilidad.
+- La visibilidad DEBE declararse en todas las propiedades y métodos; `abstract` y `final` DEBEN declararse antes de la visibilidad; `static` DEBE declararse después de la visibilidad.
 
 - Las palabras clave de las estructuras de control DEBEN tener un espacio después de ellas, las llamadas a los métodos y las funciones NO DEBEN tenerlo.
 
@@ -346,7 +346,7 @@ La palabra clave `elseif` DEBERÍA ser usada en lugar de `else if` de forma que 
 
 ### 5.2. `switch`, `case`
 
-Una estructura `switch` tendrá el siguiente aspecto. Fíjese en el lugar donde están los paréntesis, los espacios y las llaves. La palabra clave `case` DEBE estar indentada una vez respecto al `switch` y la palabra clave `break` o cualquier otra palabra clave de finalización DEBE estar indentadas al mismo nivel que el cuerpo del `case`. DEBE haber un comentario como `// no break` cuando hay `case` en cascada no vacío.
+Una estructura `switch` tendrá el siguiente aspecto. Fíjese en el lugar donde están los paréntesis, los espacios y las llaves. La palabra clave `case` DEBE estar indentada una vez respecto al `switch` y la palabra clave `break` o cualquier otra palabra clave de finalización DEBE estar indentada al mismo nivel que el cuerpo del `case`. DEBE haber un comentario como `// no break` cuando hay `case` en cascada no vacío.
 
 ```php
 <?php
@@ -436,7 +436,7 @@ La llave de apertura DEBE ir en la misma línea, y la llave de cierre DEBE ir en
 
 NO DEBE haber un espacio después del paréntesis de apertura de la lista de argumentos o la lista de variables, y NO DEBE haber un espacio antes del paréntesis de cierre de la lista de argumentos o la lista de variables.
 
-En la lista de argumentos y la lista variables, NO DEBE haber un espacio antes de cada coma, y DEBE QUE haber un espacio después de cada coma.
+En la lista de argumentos y la lista variables, NO DEBE haber un espacio antes de cada coma, y DEBE haber un espacio después de cada coma.
 
 Los argumentos de las closures con valores por defecto, DEBEN ir al final de la lista de argumentos.
 
