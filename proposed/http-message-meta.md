@@ -192,7 +192,7 @@ URIs are values, with identity defined by the value, and thus should be modeled
 as value objects.
 
 Additionally, URIs contain a variety of segments which may be accessed many
-times in a give request -- and which would require parsing the URI in order to
+times in a given request -- and which would require parsing the URI in order to
 determine (e.g., via `parse_url()`). Modeling URIs as value objects allows
 parsing once only, and simplifies access to individual segments. It also
 provides convenience in client applications by allowing users to create new
