@@ -27,20 +27,20 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 
 | Num | Title                         | Editor         |  Coordinator  | Sponsor        |
 |:---:|-------------------------------|----------------|---------------|--------------  |
-| 0   | [Autoloading Standard][psr0]  | _N/A_          | _N/A_         |
-| 1   | [Basic Coding Standard][psr1] | _N/A_          | _N/A_         |
-| 2   | [Coding Style Guide][psr2]    | _N/A_          | _N/A_         |
-| 3   | [Logger Interface][psr3]      | Jordi Boggiano | _N/A_         |
+| 0   | [Autoloading Standard][psr0]  | _N/A_          | _N/A_         | _N/A_          |
+| 1   | [Basic Coding Standard][psr1] | _N/A_          | _N/A_         | _N/A_          |
+| 2   | [Coding Style Guide][psr2]    | _N/A_          | _N/A_         | _N/A_          |
+| 3   | [Logger Interface][psr3]      | Jordi Boggiano | _N/A_         | _N/A_          |
 | 4   | [Autoloading Standard][psr4]  | Paul M. Jones  | Phil Sturgeon | Larry Garfield |
 
 ## Numerical Index
 
 | Status | Num | Title                          | Editor                  |  Coordinator   | Sponsor        |
 |--------|:---:|--------------------------------|-------------------------|----------------|----------------| 
-| A      | 0   | [Autoloading Standard][psr0]   | _N/A_                   | _N/A_          |
-| A      | 1   | [Basic Coding Standard][psr1]  | _N/A_                   | _N/A_          |
-| A      | 2   | [Coding Style Guide][psr2]     | _N/A_                   | _N/A_          |
-| A      | 3   | [Logger Interface][psr3]       | Jordi Boggiano          | _N/A_          |
+| A      | 0   | [Autoloading Standard][psr0]   | _N/A_                   | _N/A_          | _N/A_          |
+| A      | 1   | [Basic Coding Standard][psr1]  | _N/A_                   | _N/A_          | _N/A_          |
+| A      | 2   | [Coding Style Guide][psr2]     | _N/A_                   | _N/A_          | _N/A_          |
+| A      | 3   | [Logger Interface][psr3]       | Jordi Boggiano          | _N/A_          | _N/A_          |
 | A      | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon  | Larry Garfield |
 | D      | 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon  | Donald Gilbert |
 | R      | 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady  | John Mertic    |
