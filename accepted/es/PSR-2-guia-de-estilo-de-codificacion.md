@@ -436,7 +436,7 @@ La llave de apertura DEBE ir en la misma línea, y la llave de cierre DEBE ir en
 
 NO DEBE haber un espacio después del paréntesis de apertura de la lista de argumentos o la lista de variables, y NO DEBE haber un espacio antes del paréntesis de cierre de la lista de argumentos o la lista de variables.
 
-En la lista de argumentos y la lista variables, NO DEBE haber un espacio antes de cada coma, y DEBE haber un espacio después de cada coma.
+En la lista de argumentos y la lista de variables, NO DEBE haber un espacio antes de cada coma, y DEBE haber un espacio después de cada coma.
 
 Los argumentos de las closures con valores por defecto, DEBEN ir al final de la lista de argumentos.
 
