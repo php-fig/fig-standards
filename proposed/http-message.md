@@ -319,11 +319,11 @@ application-specific rules (such as path matching, scheme matching, host
 matching, etc.). As such, the server request can also provide messaging between
 multiple request consumers.
 
-### 1.6 Uploaded files
+### 1.6 Files
 
-`ServerRequestInterface` specifies a method for retrieving a tree of upload
-files in a normalized structure, with each leaf an instance of
-`UploadedFileInterface`.
+`ServerRequestInterface` specifies a method for retrieving a tree of files sent
+with the request in a normalized structure, with each leaf an instance of
+`RequestFileInterface`.
 
 The `$_FILES` superglobal has some well-known problems when dealing with arrays
 of file inputs. As an example, if you have a form that submits an array of files
@@ -366,7 +366,7 @@ array(
 ```
 
 The result is that consumers need to know this language implementation detail,
-and write code for gathering the data for a given upload.
+and write code for gathering the data for a given file.
 
 Additionally, scenarios exist where `$_FILES` is not populated when file uploads
 occur:
@@ -384,24 +384,24 @@ In such cases, the data will need to be seeded differently. As examples:
 - In unit testing scenarios, developers need to be able to stub and/or mock the
   file upload metadata in order to validate and verify different scenarios.
 
-`getUploadedFiles()` provides the normalized structure for consumers.
-Implementations are expected to:
+`getFiles()` provides the normalized structure for consumers. Implementations 
+are expected to:
 
 - Aggregate all information for a given file upload, and use it to populate a
-  `Psr\Http\Message\UploadedFileInterface` instance.
+  `Psr\Http\Message\RequestFileInterface` instance.
 - Re-create the submitted tree structure, with each leaf being the appropriate
-  `Psr\Http\Message\UploadedFileInterface` instance for the given location in
+  `Psr\Http\Message\RequestFileInterface` instance for the given location in
   the tree.
 
-Because the uploaded files data is derivative (derived from `$_FILES` or the
-request body), a mutator method, `withUploadedFiles()`, is also present in the
-interface, allowing delegation of the normalization to another process.
+Because the files data is derivative (derived from `$_FILES` or the request 
+body), a mutator method, `withFiles()`, is also present in the interface, 
+allowing delegation of the normalization to another process.
 
 In the case of the above examples, consumption resembles the following:
 
 ```php
-$file0 = $request->getUploadedFiles()['files'][0];
-$file1 = $request->getUploadedFiles()['files'][1];
+$file0 = $request->getFiles()['files'][0];
+$file1 = $request->getFiles()['files'][1];
 
 printf(
     "Received the files %s and %s",
@@ -413,7 +413,7 @@ printf(
 ```
 
 This proposal also recognizes that implementations may operate in non-SAPI
-environments. As such, `UploadedFileInterface` provides methods for ensuring
+environments. As such, `RequestFileInterface` provides methods for ensuring
 operations will work regardless of environment. In particular:
 
 - `move($path)` is provided as a safe and recommended alternative to calling
@@ -422,7 +422,7 @@ operations will work regardless of environment. In particular:
 - `getStream()` will return a `StreamInterface` instance. In non-SAPI
   environments, one proposed possibility is to parse individual upload files
   into `php://temp` streams instead of directly to files; in such cases, no
-  upload file is present. `getStream()` is therefore guaranteed to work
+  actual file is present. `getStream()` is therefore guaranteed to work
   regardless of environment.
 
 As examples:
@@ -805,7 +805,7 @@ namespace Psr\Http\Message;
  * - The values represented in $_SERVER.
  * - Any cookies provided (generally via $_COOKIE)
  * - Query string arguments (generally via $_GET, or as parsed via parse_str())
- * - Upload files, if any (as represented by $_FILES)
+ * - Files, if any (as represented by $_FILES)
  * - Deserialized body parameters (generally from $_POST)
  *
  * $_SERVER values MUST be treated as immutable, as they represent application
@@ -908,31 +908,31 @@ interface ServerRequestInterface extends RequestInterface
     public function withQueryParams(array $query);
 
     /**
-     * Retrieve normalized file upload data.
+     * Retrieve normalized files sent with the request.
      *
-     * This method returns upload metadata in a normalized tree, with each leaf
-     * an instance of Psr\Http\Message\UploadedFileInterface.
+     * This method returns file metadata in a normalized tree, with each leaf
+     * an instance of Psr\Http\Message\RequestFileInterface.
      *
      * These values MAY be prepared from $_FILES or the message body during
-     * instantiation, or MAY be injected via withUploadedFiles().
+     * instantiation, or MAY be injected via withFiles().
      *
-     * @return array An array tree of UploadedFileInterface instances; an empty
+     * @return array An array tree of RequestFileInterface instances; an empty
      *     array MUST be returned if no data is present.
      */
-    public function getUploadedFiles();
+    public function getFiles();
 
     /**
-     * Create a new instance with the specified uploaded files.
+     * Create a new instance with the specified files.
      *
      * This method MUST be implemented in such a way as to retain the
      * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
-     * @param array An array tree of UploadedFileInterface instances.
+     * @param array An array tree of RequestFileInterface instances.
      * @return self
      * @throws \InvalidArgumentException if an invalid structure is provided.
      */
-    public function withUploadedFiles(array $uploadedFiles);
+    public function withFiles(array $files);
 
     /**
      * Retrieve any parameters provided in the request body.
@@ -1608,28 +1608,28 @@ interface UriInterface
 }
 ```
 
-### 3.6 `Psr\Http\Message\UploadedFileInterface`
+### 3.6 `Psr\Http\Message\RequestFileInterface`
 
 ```php
 <?php
 namespace Psr\Http\Message;
 
 /**
- * Value object representing a file uploaded through an HTTP request.
+ * Value object representing a file sent with a HTTP request.
  *
  * Instances of this interface are considered immutable; all methods that
  * might change state MUST be implemented such that they retain the internal
  * state of the current instance and return an instance that contains the
  * changed state.
  */
-interface UploadedFileInterface
+interface RequestFileInterface
 {
     /**
-     * Retrieve a stream representing the uploaded file.
+     * Retrieve a stream representing the file.
      *
-     * This method MUST return a StreamInterface instance, representing the
-     * uploaded file. The purpose of this method is to allow utilizing native PHP
-     * stream functionality to manipulate the file upload, such as
+     * This method MUST return a StreamInterface instance, representing the file.
+     * The purpose of this method is to allow utilizing native PHP stream
+     * functionality to manipulate the file upload, such as
      * stream_copy_to_stream() (though the result will need to be decorated in a
      * native PHP stream wrapper to work with such functions).
      *
@@ -1643,7 +1643,7 @@ interface UploadedFileInterface
     public function getStream();
 
     /**
-     * Move the uploaded file to a new location.
+     * Move the file to a new location.
      *
      * Use this method as an alternative to move_uploaded_file(). This method is
      * guaranteed to work in both SAPI and non-SAPI environments.
@@ -1662,7 +1662,7 @@ interface UploadedFileInterface
      *
      * @see http://php.net/is_uploaded_file
      * @see http://php.net/move_uploaded_file
-     * @param string $path Path to which to move the uploaded file.
+     * @param string $path Path to which to move the file.
      * @throws \InvalidArgumentException if the $path specified is invalid.
      * @throws \RuntimeException on any error during the move operation, or on
      *     the second or subsequent call to the method.
@@ -1681,7 +1681,7 @@ interface UploadedFileInterface
     public function getSize();
     
     /**
-     * Retrieve the error associated with the uploaded file.
+     * Retrieve the error associated with the file.
      *
      * The return value MUST be one of PHP's UPLOAD_ERR_XXX constants.
      *
