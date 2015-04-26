@@ -237,7 +237,7 @@ interface CacheItemInterface
     public function exists();
 
     /**
-     * Sets the expiration time this cache item.
+     * Sets the expiration time for this cache item.
      *
      * @param \DateTime|\DateTimeImmutable $expiration
      *   The point in time after which the item MUST be considered expired.
@@ -251,7 +251,7 @@ interface CacheItemInterface
     public function expiresAt($expiration);
 
     /**
-     * Sets the expiration time this cache item.
+     * Sets the expiration time for this cache item.
      *
      * @param int|\DateInterval $time
      *   The period of time from the present after which the item MUST be considered
