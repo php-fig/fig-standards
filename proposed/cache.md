@@ -239,7 +239,7 @@ interface CacheItemInterface
     /**
      * Sets the expiration time for this cache item.
      *
-     * @param \DateTime|\DateTimeImmutable $expiration
+     * @param \DateTimeInterface $expiration
      *   The point in time after which the item MUST be considered expired.
      *   If null is passed explicitly, a default value MAY be used. If none is set,
      *   the value should be stored permanently or for as long as the
