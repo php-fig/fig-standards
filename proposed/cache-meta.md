@@ -203,7 +203,7 @@ function load_widgets(array $ids)
  */
 
 
-interface TaggablePoolInterface extends Psr\Cache\PoolInterface
+interface TaggablePoolInterface extends Psr\Cache\CachePoolInterface
 {
     /**
      * Clears only those items from the pool that have the specified tag.
@@ -211,7 +211,7 @@ interface TaggablePoolInterface extends Psr\Cache\PoolInterface
     clearByTag($tag);
 }
 
-interface TaggableItemInterface extends Psr\Cache\ItemInterface
+interface TaggableItemInterface extends Psr\Cache\CacheItemInterface
 {
     public function setTags(array $tags);
 }
