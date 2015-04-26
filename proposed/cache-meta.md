@@ -67,12 +67,12 @@ This specification adopts a "repository model" or "data mapper" model for cachin
 rather than the more traditional "expire-able key-value" model.  The primary
 reason is flexibility.  A simple key/value model is much more difficult to extend.
 
-The model here mandates the use of a CacheItem object, which represents a cache
-entry, and a Pool object, which is a given store of cached data.  Items are
-retrieved from the pool, interacted with, and returned to it.  While a bit more
-verbose at times it offers a good, robust, flexible approach to caching,
-especially in cases where caching is more involved than simply saving and
-retrieving a string.
+The model here mandates the use of a CacheItemInterface object, which represents
+a cache entry, and a CacheItemPoolInterface object, which is a given store of
+cached data. Items are retrieved from the pool, interacted with, and returned to
+it.  While a bit more verbose at times it offers a good, robust, flexible approach
+to caching, especially in cases where caching is more involved than simply saving
+and retrieving a string.
 
 Most method names were chosen based on common practice and method names in a
 survey of member projects and other popular non-member systems.
@@ -203,7 +203,7 @@ function load_widgets(array $ids)
  */
 
 
-interface TaggablePoolInterface extends Psr\Cache\PoolInterface
+interface TaggablePoolInterface extends Psr\Cache\CacheItemPoolInterface
 {
     /**
      * Clears only those items from the pool that have the specified tag.
@@ -211,7 +211,7 @@ interface TaggablePoolInterface extends Psr\Cache\PoolInterface
     clearByTag($tag);
 }
 
-interface TaggableItemInterface extends Psr\Cache\ItemInterface
+interface TaggableItemInterface extends Psr\Cache\CacheItemInterface
 {
     public function setTags(array $tags);
 }
