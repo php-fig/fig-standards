@@ -416,7 +416,7 @@ This proposal also recognizes that implementations may operate in non-SAPI
 environments. As such, `UploadedFileInterface` provides methods for ensuring
 operations will work regardless of environment. In particular:
 
-- `move($path)` is provided as a safe and recommended alternative to calling
+- `moveTo($targetPath)` is provided as a safe and recommended alternative to calling
   `move_uploaded_file()` directly on the temporary upload file. Implementations
   will detect the correct operation to use based on environment.
 - `getStream()` will return a `StreamInterface` instance. In non-SAPI
@@ -434,7 +434,7 @@ $filename = sprintf(
     create_uuid(),
     pathinfo($file0->getClientFilename(), PATHINFO_EXTENSION)
 );
-$file0->move(DATA_DIR . '/' . $filename);
+$file0->moveTo(DATA_DIR . '/' . $filename);
 
 // Stream a file to Amazon S3.
 // Assume $s3wrapper is a PHP stream that will write to S3, and that
@@ -1633,7 +1633,7 @@ interface UploadedFileInterface
      * stream_copy_to_stream() (though the result will need to be decorated in a
      * native PHP stream wrapper to work with such functions).
      *
-     * If the move() method has been called previously, this method MUST raise
+     * If the moveTo() method has been called previously, this method MUST raise
      * an exception.
      *
      * @return StreamInterface Stream representation of the uploaded file.
@@ -1657,17 +1657,17 @@ interface UploadedFileInterface
      * an exception.
      *
      * When used in an SAPI environment where $_FILES is populated, when writing
-     * files via move(), is_uploaded_file() and move_uploaded_file() SHOULD be
+     * files via moveTo(), is_uploaded_file() and move_uploaded_file() SHOULD be
      * use to ensure permissions and upload status are verified correctly.
      *
      * @see http://php.net/is_uploaded_file
      * @see http://php.net/move_uploaded_file
-     * @param string $path Path to which to move the uploaded file.
+     * @param string $targetPath Path to which to move the uploaded file.
      * @throws \InvalidArgumentException if the $path specified is invalid.
      * @throws \RuntimeException on any error during the move operation, or on
      *     the second or subsequent call to the method.
      */
-    public function move($path);
+    public function moveTo($targetPath);
     
     /**
      * Retrieve the file size.
