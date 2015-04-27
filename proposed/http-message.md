@@ -135,7 +135,7 @@ for retrieving such multi-valued headers.
 
 ##### Host header
 
-In requests, the `Host` header typically mirrors the host segment of the URI, as
+In requests, the `Host` header typically mirrors the host component of the URI, as
 well as the host used when establishing the TCP connection. However, the HTTP
 specification allows the `Host` header to differ from each of the two.
 
