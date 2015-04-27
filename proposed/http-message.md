@@ -550,7 +550,7 @@ interface MessageInterface
     public function getHeader($name);
 
     /**
-     * Retrieves a comma-concatenated string of the values for a single header.
+     * Retrieves a comma-separated string of the values for a single header.
      *
      * This method returns all of the header values of the given
      * case-insensitive header name as a string concatenated together using
