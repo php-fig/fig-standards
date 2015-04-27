@@ -1662,7 +1662,10 @@ interface UploadedFileInterface
      *
      * When used in an SAPI environment where $_FILES is populated, when writing
      * files via moveTo(), is_uploaded_file() and move_uploaded_file() SHOULD be
-     * use to ensure permissions and upload status are verified correctly.
+     * used to ensure permissions and upload status are verified correctly.
+     *
+     * If you wish to move to a stream, use getStream(), as SAPI operations
+     * cannot guarantee writing to stream destinations.
      *
      * @see http://php.net/is_uploaded_file
      * @see http://php.net/move_uploaded_file
