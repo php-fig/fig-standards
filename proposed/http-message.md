@@ -393,11 +393,89 @@ Implementations are expected to:
   `Psr\Http\Message\UploadedFileInterface` instance for the given location in
   the tree.
 
+The tree structure referenced should mimic the naming structure in which files
+were submitted. As an example, if a file form element was provided using the name
+`my-form[details][avatar]`, the corresponding tree returned by
+`getUploadedFiles()` should be:
+
+```php
+array(
+    'my-form' => array(
+        'details' => array(
+            'avatar' => /* UploadedFileInterface instance */
+        ),
+    ),
+)
+```
+
+In cases where an array of files are present, the implementation must aggregate
+all information related to the file at the given index. As an example, if
+multiple files were submitted using the file form element named
+`my-form[details][avatars][]`, `$_FILES` would contain the following structure:
+
+```php
+array(
+    'my-form' => array(
+        'details' => array(
+            'avatars' => array(
+                'tmp_name' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+                'name' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+                'size' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+                'type' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+                'error' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+            ),
+        ),
+    ),
+)
+```
+
+The implementation would convert the above to:
+
+```php
+array(
+    'my-form' => array(
+        'details' => array(
+            'avatars' => array(
+                0 => /* UploadedFileInterface instance */,
+                1 => /* UploadedFileInterface instance */,
+                2 => /* UploadedFileInterface instance */,
+            ),
+        ),
+    ),
+)
+```
+
+Consumers would access index `1` of the nested array using:
+
+```php
+$request->getUploadedFiles()['my-form']['details']['avatars'][1];
+```
+
 Because the uploaded files data is derivative (derived from `$_FILES` or the
 request body), a mutator method, `withUploadedFiles()`, is also present in the
 interface, allowing delegation of the normalization to another process.
 
-In the case of the above examples, consumption resembles the following:
+In the case of the original examples, consumption resembles the following:
 
 ```php
 $file0 = $request->getUploadedFiles()['files'][0];
