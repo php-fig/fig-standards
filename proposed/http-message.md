@@ -562,12 +562,12 @@ interface MessageInterface
      * and supply your own delimiter when concatenating.
      *
      * If the header does not appear in the message, this method MUST return
-     * a null value.
+     * an empty string.
      *
      * @param string $name Case-insensitive header field name.
-     * @return string|null A string of values as provided for the given header
+     * @return string A string of values as provided for the given header
      *    concatenated together using a comma. If the header does not appear in
-     *    the message, this method MUST return a null value.
+     *    the message, this method MUST return an empty string.
      */
     public function getHeaderLine($name);
 
