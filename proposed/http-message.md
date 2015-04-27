@@ -1651,6 +1651,10 @@ interface UploadedFileInterface
      * appropriate method (move_uploaded_file(), rename(), or a stream
      * operation) to perform the operation.
      *
+     * $targetPath may be an absolute path, or a relative path. If it is a
+     * relative path, resolution should be the same as used by PHP's rename()
+     * function.
+     *
      * The original file or stream MUST be removed on completion.
      *
      * If this method is called more than once, any subsequent calls MUST raise
