@@ -285,8 +285,8 @@ do so.
 
 ### 5.2 Sponsors
 
-* Pádraic Brady (Coordinator)
-* John Mertic
+* Pádraic Brady, Zend Framework (Coordinator)
+* Beau Simensen, Sculpin
 
 ### 5.3 Contributors
 
