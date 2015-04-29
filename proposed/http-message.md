@@ -460,10 +460,19 @@ array(
 )
 ```
 
-In cases where an array of files are present, the implementation must aggregate
-all information related to the file at the given index. As an example, if
-multiple files were submitted using the file form element named
-`my-form[details][avatars][]`, `$_FILES` would contain the following structure:
+In some cases, you may specify an array of files:
+
+```html
+Upload an avatar: <input type="file" "name="my-form[details][avatars][]" />
+Upload an avatar: <input type="file" "name="my-form[details][avatars][]" />
+```
+
+(As an example, JavaScript controls might spawn additional file upload inputs to
+allow uploading multiple files at once.)
+
+In such a case, the specification implementation must aggregate all information
+related to the file at the given index. The reason is because `$_FILES` deviates
+from its normal structure in such cases:
 
 ```php
 array(
