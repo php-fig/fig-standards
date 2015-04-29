@@ -866,7 +866,7 @@ interface RequestInterface extends MessageInterface
      * immutability of the message, and MUST return an instance that has the
      * changed request method.
      *
-     * @param string $method Case-insensitive method.
+     * @param string $method Case-sensitive method.
      * @return self
      * @throws \InvalidArgumentException for invalid HTTP methods.
      */
