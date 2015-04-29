@@ -394,9 +394,61 @@ Implementations are expected to:
   the tree.
 
 The tree structure referenced should mimic the naming structure in which files
-were submitted. As an example, if a file form element was provided using the name
-`my-form[details][avatar]`, the corresponding tree returned by
-`getUploadedFiles()` should be:
+were submitted. 
+
+In the simplest example, this might be a single named form element submitted as:
+
+```html
+<input type="file" name="avatar" />
+```
+
+In this case, the structure in `$_FILES` would look like:
+
+```php
+array(
+    'avatar' => array(
+        'tmp_name' => 'phpUxcOty',
+        'name' => 'my-avatar.png',
+        'size' => 90996,
+        'type' => 'image/png',
+        'error' => 0,
+    ),
+)
+```
+
+The normalized form returned by `getUploadedFiles()` would be:
+
+```php
+array(
+    'avatar' => /* UploadedFileInterface instance */
+)
+```
+
+In the case of an input using array notation for the name:
+
+```html
+<input type="file" name="my-form[details][avatar]" />
+```
+
+`$_FILES` ends up looking like this:
+
+```php
+array(
+    'my-form' => array(
+        'details' => array(
+            'avatar' => array(
+                'tmp_name' => 'phpUxcOty',
+                'name' => 'my-avatar.png',
+                'size' => 90996,
+                'type' => 'image/png',
+                'error' => 0,
+            ),
+        ),
+    ),
+)
+```
+
+And the corresponding tree returned by `getUploadedFiles()` should be:
 
 ```php
 array(
