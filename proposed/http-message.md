@@ -449,7 +449,7 @@ array(
 )
 ```
 
-The implementation would convert the above to:
+An implementation of this specification would convert the above to:
 
 ```php
 array(
