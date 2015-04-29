@@ -1533,6 +1533,11 @@ interface UriInterface
      * rootless (not starting with a slash). Implementations MUST support all
      * three syntaxes.
      *
+     * If the path is intended to be domain-relative rather than path relative then
+     * it must begin with a slash ("/"). Paths not starting with a slash ("/")
+     * are assumed to be relative to some base path known to the application or
+     * consumer.
+     *
      * Users can provide both encoded and decoded path characters.
      * Implementations ensure the correct encoding as outlined in getPath().
      *
