@@ -393,11 +393,151 @@ Implementations are expected to:
   `Psr\Http\Message\UploadedFileInterface` instance for the given location in
   the tree.
 
+The tree structure referenced should mimic the naming structure in which files
+were submitted. 
+
+In the simplest example, this might be a single named form element submitted as:
+
+```html
+<input type="file" name="avatar" />
+```
+
+In this case, the structure in `$_FILES` would look like:
+
+```php
+array(
+    'avatar' => array(
+        'tmp_name' => 'phpUxcOty',
+        'name' => 'my-avatar.png',
+        'size' => 90996,
+        'type' => 'image/png',
+        'error' => 0,
+    ),
+)
+```
+
+The normalized form returned by `getUploadedFiles()` would be:
+
+```php
+array(
+    'avatar' => /* UploadedFileInterface instance */
+)
+```
+
+In the case of an input using array notation for the name:
+
+```html
+<input type="file" name="my-form[details][avatar]" />
+```
+
+`$_FILES` ends up looking like this:
+
+```php
+array(
+    'my-form' => array(
+        'details' => array(
+            'avatar' => array(
+                'tmp_name' => 'phpUxcOty',
+                'name' => 'my-avatar.png',
+                'size' => 90996,
+                'type' => 'image/png',
+                'error' => 0,
+            ),
+        ),
+    ),
+)
+```
+
+And the corresponding tree returned by `getUploadedFiles()` should be:
+
+```php
+array(
+    'my-form' => array(
+        'details' => array(
+            'avatar' => /* UploadedFileInterface instance */
+        ),
+    ),
+)
+```
+
+In some cases, you may specify an array of files:
+
+```html
+Upload an avatar: <input type="file" "name="my-form[details][avatars][]" />
+Upload an avatar: <input type="file" "name="my-form[details][avatars][]" />
+```
+
+(As an example, JavaScript controls might spawn additional file upload inputs to
+allow uploading multiple files at once.)
+
+In such a case, the specification implementation must aggregate all information
+related to the file at the given index. The reason is because `$_FILES` deviates
+from its normal structure in such cases:
+
+```php
+array(
+    'my-form' => array(
+        'details' => array(
+            'avatars' => array(
+                'tmp_name' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+                'name' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+                'size' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+                'type' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+                'error' => array(
+                    0 => '...',
+                    1 => '...',
+                    2 => '...',
+                ),
+            ),
+        ),
+    ),
+)
+```
+
+The above `$_FILES` array would correspond to the following structure as
+returned by `getUploadedFiles()`:
+
+```php
+array(
+    'my-form' => array(
+        'details' => array(
+            'avatars' => array(
+                0 => /* UploadedFileInterface instance */,
+                1 => /* UploadedFileInterface instance */,
+                2 => /* UploadedFileInterface instance */,
+            ),
+        ),
+    ),
+)
+```
+
+Consumers would access index `1` of the nested array using:
+
+```php
+$request->getUploadedFiles()['my-form']['details']['avatars'][1];
+```
+
 Because the uploaded files data is derivative (derived from `$_FILES` or the
 request body), a mutator method, `withUploadedFiles()`, is also present in the
 interface, allowing delegation of the normalization to another process.
 
-In the case of the above examples, consumption resembles the following:
+In the case of the original examples, consumption resembles the following:
 
 ```php
 $file0 = $request->getUploadedFiles()['files'][0];
