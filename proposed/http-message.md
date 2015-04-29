@@ -510,7 +510,8 @@ array(
 )
 ```
 
-An implementation of this specification would convert the above to:
+The above `$_FILES` array would correspond to the following structure as
+returned by `getUploadedFiles()`:
 
 ```php
 array(
