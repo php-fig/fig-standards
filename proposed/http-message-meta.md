@@ -314,8 +314,8 @@ function (MvcEvent $e)
 {
     $response = $e->getResponse();
     $e->setResponse(
-        $response->withHeader('x-foo', 'bar');
-    )
+        $response->withHeader('x-foo', 'bar')
+    );
 }
 ```
 
