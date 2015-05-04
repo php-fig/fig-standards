@@ -657,9 +657,9 @@ interface MessageInterface
      * While header names are not case-sensitive, getHeaders() will preserve the
      * exact case in which headers were originally specified.
      *
-     * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be an array of strings
-     *     for that header.
+     * @return string[][] Returns an associative array of the message's headers.
+     *     Each key MUST be a header name, and each value MUST be an array of
+     *     strings for that header.
      */
     public function getHeaders();
 
@@ -1001,7 +1001,7 @@ interface ServerRequestInterface extends RequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated cookie values.
      *
-     * @param array $cookies Array of key/value pairs representing cookies.
+     * @param scalar[] $cookies Array of key/value pairs representing cookies.
      * @return self
      */
     public function withCookieParams(array $cookies);
@@ -1038,7 +1038,7 @@ interface ServerRequestInterface extends RequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated query string arguments.
      *
-     * @param array $query Array of query string arguments, typically from
+     * @param scalar[] $query Array of query string arguments, typically from
      *     $_GET.
      * @return self
      */
@@ -1053,8 +1053,8 @@ interface ServerRequestInterface extends RequestInterface
      * These values MAY be prepared from $_FILES or the message body during
      * instantiation, or MAY be injected via withUploadedFiles().
      *
-     * @return array An array tree of UploadedFileInterface instances; an empty
-     *     array MUST be returned if no data is present.
+     * @return UploadedFileInterface[] An array tree of UploadedFileInterface
+     *     instances; an empty array MUST be returned if no data is present.
      */
     public function getUploadedFiles();
 
@@ -1065,7 +1065,8 @@ interface ServerRequestInterface extends RequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
-     * @param array An array tree of UploadedFileInterface instances.
+     * @param UploadedFileInterface[] An array tree of UploadedFileInterface
+     *     instances;
      * @return self
      * @throws \InvalidArgumentException if an invalid structure is provided.
      */
@@ -1127,7 +1128,7 @@ interface ServerRequestInterface extends RequestInterface
      * deserializing non-form-encoded message bodies; etc. Attributes
      * will be application and request specific, and CAN be mutable.
      *
-     * @return array Attributes derived from the request.
+     * @return mixed[] Attributes derived from the request.
      */
     public function getAttributes();
 
