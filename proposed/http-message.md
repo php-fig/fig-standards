@@ -394,7 +394,7 @@ Implementations are expected to:
   the tree.
 
 The tree structure referenced should mimic the naming structure in which files
-were submitted. 
+were submitted.
 
 In the simplest example, this might be a single named form element submitted as:
 
@@ -595,7 +595,6 @@ The interfaces and classes described are provided as part of the
 
 ```php
 <?php
-
 namespace Psr\Http\Message;
 
 /**
@@ -788,7 +787,6 @@ interface MessageInterface
 
 ```php
 <?php
-
 namespace Psr\Http\Message;
 
 /**
@@ -805,7 +803,7 @@ namespace Psr\Http\Message;
  *
  * During construction, implementations MUST attempt to set the Host header from
  * a provided URI if no Host header is provided.
- * 
+ *
  * Requests are considered immutable; all methods that might change state MUST
  * be implemented such that they retain the internal state of the current
  * message and return an instance that contains the changed state.
@@ -896,8 +894,8 @@ interface RequestInterface extends MessageInterface
      * setting `$preserveHost` to `true`. When `$preserveHost` is set to
      * `true`, this method interacts with the Host header in the following ways:
      *
-     * - If the the Host header is missing or empty, and the new URI contains 
-     *   a host component, this method MUST update the Host header in the returned 
+     * - If the the Host header is missing or empty, and the new URI contains
+     *   a host component, this method MUST update the Host header in the returned
      *   request.
      * - If the Host header is missing or empty, and the new URI does not contain a
      *   host component, this method MUST NOT update the Host header in the returned
@@ -922,7 +920,6 @@ interface RequestInterface extends MessageInterface
 
 ```php
 <?php
-
 namespace Psr\Http\Message;
 
 /**
@@ -1188,7 +1185,6 @@ interface ServerRequestInterface extends RequestInterface
 
 ```php
 <?php
-
 namespace Psr\Http\Message;
 
 /**
@@ -1261,7 +1257,6 @@ interface ResponseInterface extends MessageInterface
 
 ```php
 <?php
-
 namespace Psr\Http\Message;
 
 /**
@@ -1281,7 +1276,7 @@ interface StreamInterface
      *
      * Warning: This could attempt to load a large amount of data into memory.
      *
-     * This method MUST NOT raise an exception in order to conform with PHP's 
+     * This method MUST NOT raise an exception in order to conform with PHP's
      * string casting operations.
      *
      * @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
@@ -1399,7 +1394,7 @@ interface StreamInterface
      * Returns the remaining contents in a string
      *
      * @return string
-     * @throws \RuntimeException if unable to read. 
+     * @throws \RuntimeException if unable to read.
      * @throws \RuntimeException if error occurs while reading.
      */
     public function getContents();
@@ -1816,7 +1811,7 @@ interface UploadedFileInterface
      * @throws \RuntimeException on the second or subsequent call to the method.
      */
     public function moveTo($targetPath);
-    
+
     /**
      * Retrieve the file size.
      *
@@ -1827,7 +1822,7 @@ interface UploadedFileInterface
      * @return int|null The file size in bytes or null if unknown.
      */
     public function getSize();
-    
+
     /**
      * Retrieve the error associated with the uploaded file.
      *
@@ -1843,7 +1838,7 @@ interface UploadedFileInterface
      * @return int One of PHP's UPLOAD_ERR_XXX constants.
      */
     public function getError();
-    
+
     /**
      * Retrieve the filename sent by the client.
      *
@@ -1858,7 +1853,7 @@ interface UploadedFileInterface
      *     was provided.
      */
     public function getClientFilename();
-    
+
     /**
      * Retrieve the media type sent by the client.
      *
