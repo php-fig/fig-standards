@@ -657,9 +657,9 @@ interface MessageInterface
      * While header names are not case-sensitive, getHeaders() will preserve the
      * exact case in which headers were originally specified.
      *
-     * @return array Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be an array of strings
-     *     for that header.
+     * @return string[][] Returns an associative array of the message's headers.
+     *     Each key MUST be a header name, and each value MUST be an array of
+     *     strings for that header.
      */
     public function getHeaders();
 
@@ -1127,7 +1127,7 @@ interface ServerRequestInterface extends RequestInterface
      * deserializing non-form-encoded message bodies; etc. Attributes
      * will be application and request specific, and CAN be mutable.
      *
-     * @return array Attributes derived from the request.
+     * @return mixed[] Attributes derived from the request.
      */
     public function getAttributes();
 
