@@ -741,7 +741,8 @@ interface MessageInterface
      * @param string $name Case-insensitive header field name to add.
      * @param string|string[] $value Header value(s).
      * @return self
-     * @throws \InvalidArgumentException for invalid header names or values.
+     * @throws \InvalidArgumentException for invalid header names.
+     * @throws \InvalidArgumentException for invalid header values.
      */
     public function withAddedHeader($name, $value);
 
@@ -1398,8 +1399,8 @@ interface StreamInterface
      * Returns the remaining contents in a string
      *
      * @return string
-     * @throws \RuntimeException if unable to read or an error occurs while 
-     *     reading.
+     * @throws \RuntimeException if unable to read. 
+     * @throws \RuntimeException if error occurs while reading.
      */
     public function getContents();
 
@@ -1610,7 +1611,8 @@ interface UriInterface
      *
      * @param string $scheme The scheme to use with the new instance.
      * @return self A new instance with the specified scheme.
-     * @throws \InvalidArgumentException for invalid or unsupported schemes.
+     * @throws \InvalidArgumentException for invalid schemes.
+     * @throws \InvalidArgumentException for unsupported schemes.
      */
     public function withScheme($scheme);
 
@@ -1776,8 +1778,8 @@ interface UploadedFileInterface
      * an exception.
      *
      * @return StreamInterface Stream representation of the uploaded file.
-     * @throws \RuntimeException in cases when no stream is available or can be
-     *     created.
+     * @throws \RuntimeException in cases when no stream is available.
+     * @throws \RuntimeException in cases when no stream can be created.
      */
     public function getStream();
 
@@ -1810,8 +1812,8 @@ interface UploadedFileInterface
      * @see http://php.net/move_uploaded_file
      * @param string $targetPath Path to which to move the uploaded file.
      * @throws \InvalidArgumentException if the $path specified is invalid.
-     * @throws \RuntimeException on any error during the move operation, or on
-     *     the second or subsequent call to the method.
+     * @throws \RuntimeException on any error during the move operation.
+     * @throws \RuntimeException on the second or subsequent call to the method.
      */
     public function moveTo($targetPath);
     
