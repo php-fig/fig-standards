@@ -1001,7 +1001,7 @@ interface ServerRequestInterface extends RequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated cookie values.
      *
-     * @param scalar[] $cookies Array of key/value pairs representing cookies.
+     * @param array $cookies Array of key/value pairs representing cookies.
      * @return self
      */
     public function withCookieParams(array $cookies);
@@ -1038,7 +1038,7 @@ interface ServerRequestInterface extends RequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated query string arguments.
      *
-     * @param scalar[] $query Array of query string arguments, typically from
+     * @param array $query Array of query string arguments, typically from
      *     $_GET.
      * @return self
      */
@@ -1053,8 +1053,8 @@ interface ServerRequestInterface extends RequestInterface
      * These values MAY be prepared from $_FILES or the message body during
      * instantiation, or MAY be injected via withUploadedFiles().
      *
-     * @return UploadedFileInterface[] An array tree of UploadedFileInterface
-     *     instances; an empty array MUST be returned if no data is present.
+     * @return array An array tree of UploadedFileInterface instances; an empty
+     *     array MUST be returned if no data is present.
      */
     public function getUploadedFiles();
 
@@ -1065,8 +1065,7 @@ interface ServerRequestInterface extends RequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
-     * @param UploadedFileInterface[] An array tree of UploadedFileInterface
-     *     instances;
+     * @param array An array tree of UploadedFileInterface instances.
      * @return self
      * @throws \InvalidArgumentException if an invalid structure is provided.
      */
