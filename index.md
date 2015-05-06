@@ -53,7 +53,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | D      | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
 | D      | 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith       | Larry Garfield | Korvin Szanto  |
 
-_**Legend:** A = Accepted | D = Draft | R = Review | X = Rejected_
+_**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 
 [psr0]: /psr/psr-0/
 [psr1]: /psr/psr-1/
