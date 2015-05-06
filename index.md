@@ -15,12 +15,16 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
 | 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith       | Larry Garfield | Korvin Szanto  |
 
-
 ### Review
 
 | Num | Title                          | Editor                  |  Coordinator  | Sponsor     |
 |:---:|--------------------------------|-------------------------|---------------|-------------|
 | 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady | John Mertic |
+
+### Voting
+
+| Num | Title                          | Editor                  |  Coordinator  | Sponsor     |
+|:---:|--------------------------------|-------------------------|---------------|-------------|
 | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen | Paul Jones  |
 
 ### Accepted
@@ -44,7 +48,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | A      | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon  | Larry Garfield |
 | D      | 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon  | Donald Gilbert |
 | R      | 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady  | Beau Simensen  |
-| D      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen  | Paul Jones     |
+| V      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen  | Paul Jones     |
 | D      | 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans      | Paul Jones     |
 | D      | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
 | D      | 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith       | Larry Garfield | Korvin Szanto  |
