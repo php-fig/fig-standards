@@ -25,17 +25,17 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 
 | Num | Title                          | Editor                  |  Coordinator  | Sponsor     |
 |:---:|--------------------------------|-------------------------|---------------|-------------|
-| 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen | Paul Jones  |
 
 ### Accepted
 
-| Num | Title                         | Editor         |  Coordinator  | Sponsor        |
-|:---:|-------------------------------|----------------|---------------|--------------  |
-| 0   | [Autoloading Standard][psr0]  | _N/A_          | _N/A_         | _N/A_          |
-| 1   | [Basic Coding Standard][psr1] | _N/A_          | _N/A_         | _N/A_          |
-| 2   | [Coding Style Guide][psr2]    | _N/A_          | _N/A_         | _N/A_          |
-| 3   | [Logger Interface][psr3]      | Jordi Boggiano | _N/A_         | _N/A_          |
-| 4   | [Autoloading Standard][psr4]  | Paul M. Jones  | Phil Sturgeon | Larry Garfield |
+| Num | Title                          | Editor                  |  Coordinator  | Sponsor        |
+|:---:|--------------------------------|-------------------------|---------------|----------------|
+| 0   | [Autoloading Standard][psr0]   | _N/A_                   | _N/A_         | _N/A_          |
+| 1   | [Basic Coding Standard][psr1]  | _N/A_                   | _N/A_         | _N/A_          |
+| 2   | [Coding Style Guide][psr2]     | _N/A_                   | _N/A_         | _N/A_          |
+| 3   | [Logger Interface][psr3]       | Jordi Boggiano          | _N/A_         | _N/A_          |
+| 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon | Larry Garfield |
+| 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen | Paul Jones     |
 
 ## Numerical Index
 
@@ -48,7 +48,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | A      | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon  | Larry Garfield |
 | D      | 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon  | Donald Gilbert |
 | R      | 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady  | Beau Simensen  |
-| V      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen  | Paul Jones     |
+| A      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen  | Paul Jones     |
 | D      | 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans      | Paul Jones     |
 | D      | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
 | D      | 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith       | Larry Garfield | Korvin Szanto  |
@@ -62,7 +62,7 @@ _**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 [psr4]: /psr/psr-4/
 [psr5]: https://github.com/phpDocumentor/fig-standards/tree/master/proposed
 [psr6]: https://github.com/Crell/fig-standards/blob/Cache/proposed/
-[psr7]: https://github.com/php-fig/fig-standards/blob/master/proposed/http-message.md
+[psr7]: /psr/psr-7/
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/psr-8-hug.md
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure.md
 [psr10]: https://github.com/php-fig/fig-standards/pull/473
