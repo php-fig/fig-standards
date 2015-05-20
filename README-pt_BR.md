@@ -5,15 +5,15 @@ A ideia por trás do grupo é falar sobre pontos em comum entre os projetos
 representados e encontrar maneiras de trabalharmos juntos. Nosso público-alvo
 somos nós mesmos, apesar de estarmos conscientes de que o restante da
 comunidade PHP está nos observando. Se outras pessoas quiserem adotar o que
-estivermos fazendo serão bem vindos, mesmo que esse não seja o objetivo do
+estamos fazendo serão bem vindas, mesmo que esse não seja o objetivo do
 grupo.
 
 
 Proposta de uma Recomendação de Padrão
 --------------------------------------
 
-Para propor uma recomendação de padrão (PSR, em inglês, PHP
-Standards Recommendation):
+Para propor uma recomendação de padrão (PSR - PHP Standards Recommendation,
+em inglês):
 
 - faça o fork, crie um branch, faça o checkout desse branch, adicione a PSR na
   pasta `proposed/`, faça o push do branch para o Github e envie um pull
@@ -40,7 +40,7 @@ Para se tornar um membro votante, você precisa enviar um email para a
 - O corpo da mensagem deve conter seu nome, o nome (e o link) do projeto
   que você representa, e outros detalhes que achar relevantes.
 
-- Os membros atuais votarão sobre sua solicitação.
+- Os membros atuais votarão em sua solicitação.
 
 Não misture várias solicitações de associação em uma única mensagem; por
 favor, uma solicitação por mensagem/thread.
