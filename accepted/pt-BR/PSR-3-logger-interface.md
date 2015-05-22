@@ -145,7 +145,7 @@ namespace Psr\Log;
  * A mensagem DEVE ser uma string ou objeto implementando __toString().
  *
  * A mensagem PODE conter placeholders no seguinte formato: {foo}, sendo que foo
- * será substituido pelo dado de contexto presente na chave "foo".
+ * será substituído pelo dado de contexto presente na chave "foo".
  *
  * O array de contexto pode conter dados arbitrários, sendo que a única hipótese que pode ser
  * feita pelos implementadores é que se uma instância de Exception for dada
