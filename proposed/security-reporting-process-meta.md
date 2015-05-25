@@ -4,44 +4,46 @@ Security Disclosure Meta Document
 1. Summary
 ----------
 
-Unfortunately with all software development, security vulnerabilities are a
-fact of life that need to be addressed. It is important that when security
-vulnerabilities are found that researchers have an easy channel to the
-projects in question allowing them to disclose the issue to a controlled
-group of people.
-
+There are two aspects with dealing with security issues: One is the process
+by which security issues are reported and fixed in projects, the other
+is how the general public is informed about the issues and any remedies
+available. While PSR-10 addresses the later, this PSR, ie. PSR-9, deals with
+the former. So the goal of PSR-9 is to define the process by which security
+researchers and report security vulnerabilities to projects. It is important
+that when security vulnerabilities are found that researchers have an easy
+channel to the projects in question allowing them to disclose the issue to a
+controlled group of people.
 
 2. Why Bother?
 --------------
 
-As of right now, there isn't really a common standard for most parts of this
-process. There isn't a standard where researchers can find out about the
+As of right now, there isn't a common standard for most parts of this process.
+That is there isn't a standard where researchers can find out about the
 process for handling security issues for any given project. There is also
 no standard that explains to researchers what they can expect to happen if
-they report a vulnerability.
+they report a vulnerability. More importantly there is no standard on which
+projects can base the security reporting process that best fits them.
 
 3. Scope
 --------
 
 ## 3.1 Goals
 
-* A defined process for how vulnerabilities are reported, how these get fixed
-  and finally disclosed to the public
+* A defined process for how vulnerabilities are reported, the process by which
+  these get fixed and finally disclosed to the public
 
 ## 3.2 Non-Goals
 
 * Methods for reducing security vulnerabilities
-* Publication of security issues and fixes
+* Publication of security issues and fixes (see PSR-10)
 
 4. Approaches
 -------------
 
 Currently the most viable approach seems to be defining a base line workflow
 for how security vulnerabilities go from discovery to fixing to public
-disclosure. Inspiration could be drawn from [1].
-
-For further reference here is a list of security disclosure processes in
-various PHP and non-PHP projects:
+disclosure. Inspiration could be drawn from this list of security disclosure
+processes in various PHP and non-PHP projects:
 
 * http://symfony.com/doc/current/contributing/code/security.html
 * http://framework.zend.com/security/
