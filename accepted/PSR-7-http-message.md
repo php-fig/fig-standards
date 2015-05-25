@@ -643,7 +643,7 @@ interface MessageInterface
      *
      *     // Represent the headers as a string
      *     foreach ($message->getHeaders() as $name => $values) {
-     *         echo $name . ": " . implode(", ", $values);
+     *         echo $name . ': ' . implode(', ', $values);
      *     }
      *
      *     // Emit headers iteratively:
