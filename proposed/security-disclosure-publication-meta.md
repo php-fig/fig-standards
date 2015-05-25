@@ -4,15 +4,15 @@ Security Disclosure Meta Document
 1. Summary
 ----------
 
-There are two aspects with dealing with security issues: One is process
+There are two aspects with dealing with security issues: One is the process
 by which security issues are reported and fixed in projects, the other
 is how the general public is informed about the issues and any remedies
 available. While PSR-9 addresses the former, this PSR, ie. PSR-10, deals with
-the later. That is how security issues are disclosed and what format such
-disclosures should follow. Especially today where PHP developers are sharing
-code across projects more than ever, this PSR aims to ease the challenges in
-keeping an overview of security issues in all dependencies and the steps 
-required to address them.
+the later. So the goal of PSR-10 is to define how security issues are disclosed
+to the public and what format such disclosures should follow. Especially today
+where PHP developers are sharing code across projects more than ever, this PSR
+aims to ease the challenges in keeping an overview of security issues in all
+dependencies and the steps required to address them.
 
 2. Why Bother?
 --------------
@@ -42,7 +42,7 @@ discussions before details about a security issue are made public.
 -------------
 
 A key aspect here is that the information flow should be as structured as
-possible to help in automating things as much possible. For example,
+possible to enable as much automation as possible. For example,
 vulnerabilities should be published in a defined location and in a defined
 format. Inspiration could be taken from [1].
 
