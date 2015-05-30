@@ -35,11 +35,11 @@ spl_autoload_register(function ($class) {
         return;
     }
     
-    // busca o nome de classe relativo
+    // busca o nome relativo da classe
     $relative_class = substr($class, $len);
     
     // substitui o prefixo de namespace com o diretório base, substitui os separadores
-    // de namespace com os separadores de diretório no nome de classe relativo, acrescentando
+    // de namespace com os separadores de diretório no nome relativo da classe, acrescentando
     // .php
     $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
     
@@ -53,7 +53,7 @@ spl_autoload_register(function ($class) {
 Exemplo de Classe
 -----------------
 
-O exemplo a seguir é de implementação de uma classe para lidar com múltiplos
+O exemplo a seguir é da implementação de uma classe para lidar com múltiplos
 namespaces:
 
 ```php
@@ -78,14 +78,14 @@ namespace Example;
  *             Qux/
  *                 QuuxTest.php    # Foo\Bar\Qux\QuuxTest
  * 
- * ... adicionar o caminho para os arquivos de classes para o prefixo de namespace \Foo\Bar\
+ * ... adiciona o caminho para os arquivos de classes para o prefixo de namespace \Foo\Bar\
  * como segue:
  * 
  *      <?php
- *      // instanciar o carregador
+ *      // instancia o carregador
  *      $loader = new \Example\Psr4AutoloaderClass;
  *      
- *      // registrar o carregador automático
+ *      // registra o carregador automático
  *      $loader->register();
  *      
  *      // registrar os diretórios base para o prefixo de namespace
