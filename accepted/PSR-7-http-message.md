@@ -463,8 +463,8 @@ array(
 In some cases, you may specify an array of files:
 
 ```html
-Upload an avatar: <input type="file" "name="my-form[details][avatars][]" />
-Upload an avatar: <input type="file" "name="my-form[details][avatars][]" />
+Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
+Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
 ```
 
 (As an example, JavaScript controls might spawn additional file upload inputs to
