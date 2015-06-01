@@ -191,7 +191,7 @@ If the entry is not part of the container, an exception should be thrown (as req
 - Calls to the `has` method should only return *true* if the entry is part of the container.
 If the entry is not part of the container, *false* should be returned.
  - Finally, the important part: if the entry we are fetching has dependencies,
-**instead** of perfoming the dependency lookup in the container, the lookup is performed on the *delegate container*.
+**instead** of performing the dependency lookup in the container, the lookup is performed on the *delegate container*.
 
 Important! By default, the lookup should be performed on the delegate container **only**, not on the container itself.
 
@@ -221,12 +221,12 @@ in charge the instantiation of both entries.
 However, using the *delegate lookup* feature, here is what happens when we ask the composite container for the
 "myController" instance:
 
-- The composite container asks container 1 if if contains the "myController" instance. The answer is no.
-- The composite container asks container 2 if if contains the "myController" instance. The answer is yes.
+- The composite container asks container 1 if it contains the "myController" instance. The answer is no.
+- The composite container asks container 2 if it contains the "myController" instance. The answer is yes.
 - The composite container performs a `get` call on container 2 for the "myController" instance.
 - Container 2 sees that "myController" has a dependency on "entityManager".
 - Container 2 delegates the lookup of "entityManager" to the composite container.
-- The composite container asks container 1 if if contains the "entityManager" instance. The answer is yes.
+- The composite container asks container 1 if it contains the "entityManager" instance. The answer is yes.
 - The composite container performs a `get` call on container 1 for the "entityManager" instance.
 
 In the end, we get a controller instantiated by container 2 that references an *entityManager* instantiated
@@ -277,7 +277,7 @@ and replace it with a "standard" feature.
 **Pros:**
 
 If we had had an interface, we could have delegated the registration of the delegate/composite container to the
-the delegate/composite container itself.
+delegate/composite container itself.
 For instance:
 
 ```php
