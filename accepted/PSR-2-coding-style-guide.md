@@ -174,7 +174,7 @@ The term "class" refers to all classes, interfaces, and traits.
 The `extends` and `implements` keywords MUST be declared on the same line as
 the class name.
 
-The opening brace for the class MUST go on its own line; the closing brace
+The opening brace for the class MUST go on next line; the closing brace
 for the class MUST go on the next line after the body.
 
 ```php
