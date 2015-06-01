@@ -365,6 +365,7 @@ therefore would be willing to switch to a Container PSR as soon as it is availab
 - [Acclimate](https://github.com/jeremeamia/acclimate-container): Adapters for
   Aura.Di, Laravel, Nette DI, Pimple, Symfony DI, ZF2 Service manager, ZF2
   Dependency injection and any container using `ArrayAccess`
+- [Aura.DI](https://github.com/auraphp/Aura.Di) (v3+)
 - [dcp-di](https://github.com/estelsmith/dcp-di)
 - [Mouf](http://mouf-php.com)
 - [Njasm Container](https://github.com/njasm/container)
@@ -374,6 +375,7 @@ therefore would be willing to switch to a Container PSR as soon as it is availab
 
 ### Projects implementing the *delegate lookup* feature
 
+- [Aura.DI](https://github.com/auraphp/Aura.Di)
 - [Mouf](http://mouf-php.com)
 - [PHP-DI](http://php-di.org)
 - [PimpleInterop](https://github.com/moufmouf/pimple-interop)
@@ -387,6 +389,8 @@ therefore would be willing to switch to a Container PSR as soon as it is availab
 
 ### Projects using `ContainerInterface`
 
+- [Slim Framework](https://github.com/slimphp/Slim/tree/develop) (v3+): a PHP micro-framework
+  that helps you quickly write simple yet powerful web applications and APIs
 - [interop.silex.di](https://github.com/thecodingmachine/interop.silex.di): an
   extension to [Silex](http://silex.sensiolabs.org/) that adds support for any
   *container-interop* compatible container
@@ -394,10 +398,21 @@ therefore would be willing to switch to a Container PSR as soon as it is availab
   micro-framework for writing APIs
 - [Invoker](https://github.com/mnapoli/Invoker): a generic and extensible callable invoker.
 
+9. People
+---------
+### 9.1 Editors
 
-## Contributors
+* [Matthieu Napoli](https://github.com/mnapoli)
+* [David Négrier](https://github.com/moufmouf)
 
-Are listed here all people that contributed in the discussions or votes, by alphabetical order:
+### 9.2 Sponsors
+
+* [Paul M. Jones](https://github.com/pmjones) (Coordinator)
+* [Jeremy Lindblom](https://github.com/jeremeamia)
+
+### 9.3 Contributors
+
+Are listed here all people that contributed in the discussions or votes (on container-interop), by alphabetical order:
 
 - [Alexandru Pătrănescu](https://github.com/drealecs)
 - [Amy Stephen](https://github.com/AmyStephen)
@@ -414,7 +429,8 @@ Are listed here all people that contributed in the discussions or votes, by alph
 - [Stephan Hochdörfer](https://github.com/shochdoerfer)
 - [Taylor Otwell](https://github.com/taylorotwell)
 
-## Relevant links
+10. Relevant links
+------------------
 
 - [Container-interop's `ContainerInterface.php`](https://github.com/container-interop/container-interop/blob/master/src/Interop/Container/ContainerInterface.php)
 - [List of all issues](https://github.com/container-interop/container-interop/issues?labels=ContainerInterface&milestone=&page=1&state=closed)
