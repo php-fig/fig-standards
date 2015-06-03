@@ -38,10 +38,10 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 ### 1.2 Exceptions
 
 Exceptions directly thrown by the container MUST implement the
-[`Psr\Container\Exception\ContainerException`](#container-exception).
+[`Psr\Container\Exception\ContainerExceptionInterface`](#container-exception).
 
 A call to the `get` method with a non-existing id SHOULD throw a
-[`Psr\Container\Exception\NotFoundException`](#not-found-exception).
+[`Psr\Container\Exception\NotFoundExceptionInterface`](#not-found-exception).
 
 ### 1.3 Additional feature: Delegate lookup
 
@@ -91,8 +91,8 @@ The interfaces and classes described as well as relevant exception are provided 
 <?php
 namespace Psr\Container;
 
-use Psr\Container\Exception\ContainerException;
-use Psr\Container\Exception\NotFoundException;
+use Psr\Container\Exception\ContainerExceptionInterface;
+use Psr\Container\Exception\NotFoundExceptionInterface;
 
 /**
  * Describes the interface of a container that exposes methods to read its entries.
@@ -104,8 +104,8 @@ interface ContainerInterface
      *
      * @param string $id Identifier of the entry to look for.
      *
-     * @throws NotFoundException  No entry was found for this identifier.
-     * @throws ContainerException Error while retrieving the entry.
+     * @throws NotFoundExceptionInterface  No entry was found for this identifier.
+     * @throws ContainerExceptionInterface Error while retrieving the entry.
      *
      * @return mixed Entry.
      */
@@ -124,7 +124,7 @@ interface ContainerInterface
 ```
 
 <a name="container-exception"></a>
-### 2.2. `Psr\Container\Exception\ContainerException`
+### 2.2. `Psr\Container\Exception\ContainerExceptionInterface`
 
 ```php
 <?php
@@ -133,13 +133,13 @@ namespace Psr\Container\Exception;
 /**
  * Base interface representing a generic exception in a container.
  */
-interface ContainerException
+interface ContainerExceptionInterface
 {
 }
 ```
 
 <a name="not-found-exception"></a>
-### 2.3. `Psr\Container\Exception\NotFoundException`
+### 2.3. `Psr\Container\Exception\NotFoundExceptionInterface`
 
 ```php
 <?php
@@ -148,7 +148,7 @@ namespace Psr\Container\Exception;
 /**
  * No entry was found in the container.
  */
-interface NotFoundException extends ContainerException
+interface NotFoundExceptionInterface extends ContainerException
 {
 }
 ```
