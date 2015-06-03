@@ -288,7 +288,7 @@ These operations can be accomplished with value objects as well, with a number
 of benefits:
 
 - The original request state can be stored for retrieval by any consumer.
-- A default response state can be created with default headers and/or message body. 
+- A default response state can be created with default headers and/or message body.
 
 Most popular PHP frameworks have fully mutable HTTP messages today. The main
 changes necessary in consuming true value objects are:
@@ -449,7 +449,7 @@ server-side requests and client-side responses.
 
 The `RequestInterface` and `ResponseInterface` have essentially 1:1
 correlations with the request and response messages described in
-[RFC 7230](http://www.ietf.org/rfc/rfc7230.txt) They provide interfaces for
+[RFC 7230](http://www.ietf.org/rfc/rfc7230.txt). They provide interfaces for
 implementing value objects that correspond to the specific HTTP message types
 they model.
 
