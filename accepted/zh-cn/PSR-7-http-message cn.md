@@ -54,15 +54,12 @@ This is the response body
 
 从这里开始，在涉及这些接口时，命名空间（namespace）`Psr\Http\Message`会被省略。
 
-#### 1.2 HTTP头
+#### 1.2 HTTP报头
 
-##### Case-insensitive header field names
+##### 大小写不敏感 的报头字段名称
 
-HTTP messages include case-insensitive header field names. Headers are retrieved
-by name from classes implementing the `MessageInterface` in a case-insensitive
-manner. For example, retrieving the `foo` header will return the same result as
-retrieving the `FoO` header. Similarly, setting the `Foo` header will overwrite
-any previously set `foo` header value.
+HTTP 消息包含 大小写不敏感 的报头字段名称。通过 名称（name） 从实现 `MessageInterface` 的类中获取报头是大小写不敏感的。比如说，获取 `foo` 报头和获取`FoO`得到的结果是一样的，设置`Foo`报头回覆盖掉先前设置的`foo`报头值。
+
 
 ```php
 $message = $message->withHeader('foo', 'bar');
@@ -78,15 +75,13 @@ echo $message->getHeaderLine('foo');
 // Outputs: baz
 ```
 
-Despite that headers may be retrieved case-insensitively, the original case
-MUST be preserved by the implementation, in particular when retrieved with
-`getHeaders()`.
+尽管报头可以被不区分大小写的获取，但是原始大小写
+MUST 被实现保护，尤其是以`getHeaders()`获取时.
 
-Non-conforming HTTP applications may depend on a certain case, so it is useful
-for a user to be able to dictate the case of the HTTP headers when creating a
-request or response.
+不符合要求的HTTP应用可能会依赖于确定的大小写，因此用户可以在创建请求和响应时指定大小写是有用的。
 
-##### Headers with multiple values
+
+##### 多值报头
 
 In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
