@@ -10,7 +10,7 @@ Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS",
 document doivent être interprétés comme décrit dans [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
-[PSR-0]: https://github.com/lesmyrmidons/fig-standards/accepted/fr/PSR-0.md
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/fr/PSR-0.md
 
 1. Vue d'ensemble
 -----------
@@ -23,7 +23,7 @@ document doivent être interprétés comme décrit dans [RFC 2119][].
   constantes, etc.) *soit* causer des effets secondaires (par exemple, générer
   des sorties, modifier paramètres .ini), mais NE DOIVENT PAS faire les deux.
 
-- Les espaces de noms et les classes DOIVENT suivre [PSR-0][].
+- Les espaces de noms et les classes DOIVENT suivre [PSR-0].
 
 - Les noms des classes DOIVENT être déclarés comme `StudlyCaps`.
 
