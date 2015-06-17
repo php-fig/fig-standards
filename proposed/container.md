@@ -148,7 +148,7 @@ namespace Psr\Container\Exception;
 /**
  * No entry was found in the container.
  */
-interface NotFoundExceptionInterface extends ContainerException
+interface NotFoundExceptionInterface extends ContainerExceptionInterface
 {
 }
 ```
