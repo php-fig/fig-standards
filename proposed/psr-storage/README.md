@@ -25,7 +25,7 @@ in this interface are create, read, update and delete.
  *
  * The $key used in this interface must be a string or implement the __toString() method.
  *
- * Methods in this interface (except for read()) should return null, or raise a StorageException in case of failure
+ * The methods create, update and delete in this interface should return null, or raise a StorageException in case of failure
  */
 interface StorageInterface
 {
