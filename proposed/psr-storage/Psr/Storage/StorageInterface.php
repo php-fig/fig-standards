@@ -14,10 +14,11 @@ interface StorageInterface
      *
      * @param   string  $key
      * @param   mixed   $value
+     * @param   array   $options
      * @return  null
      * @throws  StorageException
      */
-    public function create($key, $value);
+    public function create($key, $value, $options = []);
 
     /**
      * Reads the value of a stored record by key
@@ -33,10 +34,11 @@ interface StorageInterface
      *
      * @param   string  $key
      * @param   mixed   $value
+     * @param   array   $options
      * @return  null
      * @throws  StorageException
      */
-    public function update($key, $value);
+    public function update($key, $value, $options = []);
 
     /**
      * Deletes an existing record by key
