@@ -1,8 +1,7 @@
 Storage Interface
 ================
 
-This proposal is to establish a standard in storage libraries. Documentation is 
-heavily based on the Logger Interface accepted PSR.
+This proposal is to establish a standard in storage libraries. 
 
 The goal is to establish a standard in read, write, update and delete operations 
 on storage libraries and/or interfaces. Applications, frameworks and libraries 
