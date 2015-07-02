@@ -14,6 +14,8 @@ in this interface are create, read, update and delete.
 
 - All four methods accept a string or an object implementing the `__toString()` method 
   as a key. If an object is passed the implementor must cast it to a string.
+- The create and update methods accept an optional options parameter to support for
+  options like TTL or permissions (on filesystems).
 
 #### Psr\Storage\StorageInterface
 ```php
