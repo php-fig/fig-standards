@@ -19,11 +19,11 @@ Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", 
 
 - Pliki MUSZĄ korzystać z kodowania UTF-8 bez BOM.
 
-- Pliki POWINNY deklarować "obiekty" języka php (klasy, funkcje, stałe itp.) LUB zachowanie – 
-  tzw. skutki uboczne (np. generowanie wyjścia, zmiana parametrów ini itp.), lecz NIE POWINNY 
-  robić tych dwóch rzeczy naraz.
+- Pliki POWINNY zawierać deklaracje struktur języka php (klas, funkcji, stałych itp.) LUB definować 
+  zachowanie czyli tak zwane skutki uboczne (np. generowanie wyjścia, zmiana parametrów konfiguracyjnych .ini itp.), 
+  lecz NIE POWINNY robić tych dwóch rzeczy naraz.
   
-- Przestrzenie nazw oraz klasy MUSZĄ stosować się do standardów PSR dotyczących autoloadingu: [[PSR-0], [PSR-4]].
+- Przestrzenie nazw oraz klasy MUSZĄ stosować się do standardów PSR dotyczących automatycznego ładowania: [[PSR-0], [PSR-4]].
 
 - Nazwy klas MUSZĄ być zapisywane w notacji `UpperCamelCase`.
 
@@ -103,7 +103,7 @@ if (! function_exists('bar')) {
 3. Przestrzenie nazw oraz nazwy klas
 ------------------------------------
 
-Standardy tworzenia namespace'ów oraz klas MUSZĄ podążać za PSRami dotyczącymi autoloadingu: [[PSR-0], [PSR-4]].
+Standardy tworzenia przestrzeni nazw oraz klas MUSZĄ podążać za PSRami dotyczącymi automatycznego ładowania klas: [[PSR-0], [PSR-4]].
 
 Deklaracji pojedynczej klasy odpowiada jeden plik, a jej przestrzeń nazw znajduje się na 
 najniższym poziomie, gdzie na najwyższym poziomie znajduje się nazwa vendora.
@@ -125,7 +125,7 @@ class Foo
 ```
 
 Kod napisany dla wersji PHP 5.2.x oraz niższych, 
-POWINIEN używać pseudo-namespace'owych konwencji prefiksów (np. `Vendor_` ) dla nazw klas.
+POWINIEN używać konwencji prefiksów (np. `Vendor_` ) dla symulacji przestrzeni nazw w oparciu o nazwy klas.
 
 ```php
 <?php

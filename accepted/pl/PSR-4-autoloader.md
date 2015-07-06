@@ -7,10 +7,10 @@ to w [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ## 1. Podsumowanie
 
-Poniższy PSR opisuje specyfikację [autoloadingu][] klas na podstawie 
-ścieżek plików. Autoloading jest w pełni interoperacyjny i może być użyty 
-jako dodatek do wszelkich innych specyfikacji autoloadingu, włączając [PSR-0][]. 
-Ten PSR opisuje także to gdzie umieszczać pliki, które będę automatycznie 
+Poniższy PSR opisuje specyfikację [automatycznego ładowania][] (autoloadingu) klas na podstawie 
+ścieżek plików. Ten PSR jest w pełni interoperacyjny i może być użyty 
+jako dodatek do wszelkich innych specyfikacji automatycznego ładowania klas, włączając [PSR-0][]. 
+PSR opisuje także gdzie umieszczać pliki, które będę automatycznie 
 ładowane stosownie do specyfikacji.
 
 
@@ -21,12 +21,12 @@ traitów oraz innych podobnych struktur.
 
 2. W pełni poprawna nazwa klasy posiada poniższą formę:
 
-        \<NazwaNamespacea>(\<NazwaPodNamespacea>)*\<NazwaKlasy>
+        \<NazwaPrzestrzeniNazw>(\<NazwyPodprzestrzeniNazw>)*\<NazwaKlasy>
 
-    1. W pełni poprawna nazwa klasy MUSI posiadać namespace bazowy, 
-	zwany także "namespace'm vendora".
+    1. W pełni poprawna nazwa klasy MUSI posiadać bazową przestrzeń nazw, 
+	zwaną także "przestrzenią vendora".
 
-    2. W pełni poprawna nazwa klasy MOŻE posiadać jeden lub wiele podnamespace'ów.
+    2. W pełni poprawna nazwa klasy MOŻE posiadać jedną lub wiele podprzestrzeni nazw.
 
     3. W pełni poprawna nazwa klasy MUSI posiadać nazwę klasy na końcu.
 
@@ -40,14 +40,14 @@ traitów oraz innych podobnych struktur.
 
 3. Kiedy wczytujemy plik, który odpowiada w pełni poprawnej nazwie klasy...
 
-    1. Sąsiadujące ze sobą nazwy namespace'a bazowego oraz podnamespace'ów 
-	(bez uwzględnienia początkowego separatora namespace'a bazowego) w pełni poprawnej 
+    1. Sąsiadujące ze sobą nazwy przestrzeni bazowej oraz podprzestrzeni 
+	(bez uwzględnienia początkowego separatora przestrzeni bazowej) w pełni poprawnej 
 	nazwie klasy zwane są "prefiksem przestrzeni nazw" i odpowiadają przynajmniej jednemu 
 	"katalogowi bazowemu".
 
-    2. Sąsiadujące ze sobą nazwy podnamespace'ów występujące po "prefiksie przestrzeni nazw" 
-	odpowiadają podkatalogowi w "katalogu bazowym", gdzie separatory namespace'ów reprezentują 
-	separatory katalogów. Nazwa (ścieżka) podkatalogu MUSI być zgodna z nazwami podnamespace'ów.
+    2. Sąsiadujące ze sobą nazwy podprzestrzeni występujące po "prefiksie przestrzeni nazw" 
+	odpowiadają podkatalogowi w "katalogu bazowym", gdzie separatory przestrzeni nazw reprezentują 
+	separatory katalogów. Nazwa (ścieżka) podkatalogu MUSI być zgodna z nazwami podprzestrzeni.
 
     3. Końcowa nazwa klasy odpowiada plikowi kończącemu się na `.php`. 
 	Nazwa pliku MUSI być zgodna z ostatnim segmentem w pełni poprawnej nazwy klasy.
@@ -72,6 +72,6 @@ Aby przejrzeć przykładową implementację autloadera zgodnego ze specyfikacja,
 można przejść do [pliku przykładu][]. NIE WOLNO uważać przykładowej implementacji 
 za część specyfikacji, MOŻE się ona zmienić w każdej chwili.
 
-[autoloadingu]: http://php.net/autoload
+[automatycznego ładowania]: http://php.net/autoload
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [pliku przykładu]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
