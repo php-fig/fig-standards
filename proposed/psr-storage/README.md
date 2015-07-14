@@ -87,6 +87,8 @@ interface StorageInterface
 }
 ```
 
+## Exceptions
+
 #### Psr\Storage\Exception\StorageException
 ```php
 <?php namespace Psr\Storage\Exception;
