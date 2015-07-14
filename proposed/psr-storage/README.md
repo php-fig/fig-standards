@@ -89,24 +89,24 @@ interface StorageInterface
 
 ## Exceptions
 
-The `StorageException` is a general exception that can be caught. It is extended by more specific exceptions allow catching of more specific type of exceptions.
 #### Psr\Storage\Exception\StorageException
+The `StorageException` is a general exception that can be caught. It is extended by more specific exceptions allow catching of more specific type of exceptions.
 ```php
 <?php namespace Psr\Storage\Exception;
 
 class StorageException extends \Exception {}
 ```
 
-The `RuntimeException` is an exception that should be thrown when the implementor was unable to perform the action called. (Example: Unable to locate Redis server at 127.0.0.1:6379)
 #### Psr\Storage\Exception\RuntimeException
+The `RuntimeException` is an exception that should be thrown when the implementor was unable to perform the action called. (Example: Unable to locate Redis server at 127.0.0.1:6379)
 ```php
 <?php namespace Psr\Storage\Exception;
 
 class RuntimeException extends StorageException {}
 ```
 
-The `InvalidArgumentException` is thrown when an invalid argument is given in a method. (Example: `$instance->setOptions('peekaboo')`)
 #### Psr\Storage\Exception\InvalidArgumentException
+The `InvalidArgumentException` is thrown when an invalid argument is given in a method. (Example: `$instance->setOptions('peekaboo')`)
 ```php
 <?php namespace Psr\Storage\Exception;
 
