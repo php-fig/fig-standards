@@ -7,9 +7,6 @@ use Psr\Storage\Exception\InvalidArgumentException;
  * Describes a storage interface
  *
  * The $key used in this interface must be a string or implement the __toString() method.
- *
- * Methods in this interface (except for read()) should return null, or raise a StorageException in case of failure.
- * A StorageException will also be raised in case the storage system is unreachable.
  */
 interface StorageInterface
 {
@@ -27,7 +24,7 @@ interface StorageInterface
      *
      * @param   mixed       $value
      * @param   string      $key
-     * @return  mixed
+     * @return  string
      *
      * @throws  RuntimeException
      * @throws  InvalidArgumentException
@@ -48,7 +45,7 @@ interface StorageInterface
      * Updates an existing record by key and value
      *
      * @param   mixed       $value
-     * @param   mixed       $key
+     * @param   string      $key
      *
      * @throws  RuntimeException
      */
@@ -57,7 +54,7 @@ interface StorageInterface
     /**
      * Deletes an existing record by key
      *
-     * @param   mixed       $key
+     * @param   strign      $key
      *
      * @throws  RuntimeException
      */
