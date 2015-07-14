@@ -86,3 +86,24 @@ interface StorageInterface
 
 }
 ```
+
+#### Psr\Storage\Exception\StorageException
+```php
+<?php namespace Psr\Storage\Exception;
+
+class StorageException extends \Exception {}
+```
+
+#### Psr\Storage\Exception\RuntimeException
+```php
+<?php namespace Psr\Storage\Exception;
+
+class RuntimeException extends StorageException {}
+```
+
+#### Psr\Storage\Exception\InvalidArgumentException
+```php
+<?php namespace Psr\Storage\Exception;
+
+class InvalidArgumentException extends StorageException {}
+```
