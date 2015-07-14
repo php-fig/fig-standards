@@ -1,7 +1,7 @@
 Storage Interface
 ================
 
-This proposal is to establish a standard in storage libraries.
+This proposal is to establish a standard in communications with storage libraries.
 
 The goal is to establish a standard in read, write, update and delete operations
 on storage libraries and/or interfaces. Applications, frameworks and libraries
