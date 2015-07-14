@@ -21,6 +21,9 @@ in this interface are create, read, update and delete.
 ```php
 <?php namespace Psr\Storage;
 
+use Psr\Storage\Exception\RuntimeException;
+use Psr\Storage\Exception\InvalidArgumentException;
+
 /**
  * Describes a storage interface
  *
@@ -32,42 +35,52 @@ in this interface are create, read, update and delete.
 interface StorageInterface
 {
     /**
-     * Create a new entry in the storage by key and value or raises a StorageException in case the given key is already used.
+     * Sets the options for the Storage implementor instance
      *
-     * @param   string  $key
-     * @param   mixed   $value
-     * @param   array   $options
-     * @return  null
-     * @throws  StorageException
+     * @param   array       $options
+     *
+     * @throws  InvalidArgumentException
      */
-    public function create($key, $value, $options = []);
+    public function setOptions($options = array());
 
     /**
-     * Reads the value of a stored record by key or raises a StorageException in case the key does not exist.
+     * Creates a new record in the storage by value and key (optional)
      *
-     * @param   string  $key
+     * @param   mixed       $value
+     * @param   string      $key
      * @return  mixed
-     * @throws  StorageException
+     *
+     * @throws  RuntimeException
+     * @throws  InvalidArgumentException
+     */
+    public function create($value, $key = null);
+
+    /**
+     * Reads the value of an existing record
+     *
+     * @param   string      $key
+     * @return  mixed
+     *
+     * @throws  RuntimeException
      */
     public function read($key);
 
     /**
-     * Updates an existing record by key and value.
+     * Updates an existing record by key and value
      *
-     * @param   string  $key
-     * @param   mixed   $value
-     * @param   array   $options
-     * @return  null
-     * @throws  StorageException
+     * @param   mixed       $value
+     * @param   mixed       $key
+     *
+     * @throws  RuntimeException
      */
-    public function update($key, $value, $options = []);
+    public function update($value, $key);
 
     /**
-     * Deletes an existing record by key or raises a StorageException in case the key does not exist.
+     * Deletes an existing record by key
      *
-     * @param   string  $key
-     * @return  null
-     * @throws  StorageException
+     * @param   mixed       $key
+     *
+     * @throws  RuntimeException
      */
     public function delete($key);
 
