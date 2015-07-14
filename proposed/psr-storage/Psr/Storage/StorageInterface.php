@@ -54,7 +54,7 @@ interface StorageInterface
     /**
      * Deletes an existing record by key
      *
-     * @param   strign      $key
+     * @param   string      $key
      *
      * @throws  RuntimeException
      */
