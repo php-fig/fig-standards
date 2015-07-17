@@ -119,7 +119,7 @@ namespace Vendor\Model;
 class Foo
 {
 }
-```f
+```
 
 Kod napisany dla wersji PHP 5.2.x oraz niższych, 
 POWINIEN używać konwencji prefiksów (np. `Vendor_` ) dla symulacji przestrzeni nazw w oparciu o nazwy klas.
