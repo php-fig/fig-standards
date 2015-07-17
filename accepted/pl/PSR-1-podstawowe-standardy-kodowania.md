@@ -1,8 +1,8 @@
-Podstawowe standardy formatowania
-=================================
+Podstawowe standardy kodowania
+================================
 
-Poniższa sekcja standardów zawiera reguły, które są uznawane za konieczne 
-dla zachowania wysokiego poziomu interoperacyjności kodu PHP pochodzącego z różnych źródeł.
+Poniższa sekcja zawiera standardy kodowania, które są uznawane za konieczne 
+aby zapewnić wysoką spójność kodu PHP pochodzącego z różnych źródeł.
 
 Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", "REKOMENDWANE", "MOŻE" oraz 
 "OPCJONALNE" powinny być interpretowane tak jak opisano to w [RFC 2119].
@@ -12,10 +12,10 @@ Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", 
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
 
-1. Podsumowanie
----------------
+1. Ogólny zarys
+----------------
 
-- Pliki z kodem php MUSZĄ korzystać z tagów `<?php` i `<?=`.
+- Pliki php MUSZĄ korzystać z tagów `<?php` i `<?=`.
 
 - Pliki MUSZĄ korzystać z kodowania UTF-8 bez BOM.
 
@@ -47,19 +47,17 @@ Kod php MUSI być zapisywany w kodowaniu UTF-8 bez BOM.
 
 ### 2.3. Skutki uboczne
 
-W programowaniu fraza "skutek/efekt uboczny" tyczy się wyrażenia, wywołania funkcji lub metody, 
-który wykracza poza zwrócenie wartości, np. interakcja z systemem operacyjnym, lub zmiana wartości 
-zmiennej globalnej.
+W programowaniu termin "skutek/efekt uboczny" oznacza efekt wyrażenia, albo wywołania funkcji lub metody, 
+który wykracza poza zwrócenie wartości. Przykładem "skutków ubocznych" może być interakcja z systemem operacyjnym, lub zmiana wartości zmiennej globalnej.
 
-Pojedynczy plik POWINIEN zawierać w sobie deklaracje "obiektów" języka PHP (klasy, funkcje, stałe itp.) 
-bez jakichkolwiek skutków ubocznych lub wykonywać logikę programu, która wiąże się z efektami ubocznymi. 
+Pojedynczy plik POWINIEN zawierać deklaracje struktur języka php (klas, funkcji, stałych itp.) LUB definować 
+  zachowanie czyli tak zwane "skutki uboczne" (np. generowanie wyjścia, zmiana parametrów konfiguracyjnych .ini itp.).
 
-Plik NIE POWINIEN wykonywać tych dwóch rzeczy na raz. Efekty uboczne w php to m.in. generowanie wyjścia, 
+Plik NIE POWINIEN wykonywać tych dwóch rzeczy na raz. Efekty uboczne w php to m.in. generowanie wyjścia (np. `echo`, `var_dump`), 
 używanie `require` lub `include`, podłączenie do zewnętrznej usługi, modyfikacja parametrów ini, 
-rzucanie błędów lub wyjątków, modyfikacja globalnych lub statycznych zmiennych, 
-czytanie lub zapis z/do pliku itd.
+rzucanie błędów lub wyjątków, modyfikacja globalnych lub statycznych zmiennych, czytanie lub zapis z/do pliku itd.
 
-Poniższy przykład pliku php posiada zarówno deklaracje jak i skutki uboczne, należy unikać takich zapisów:
+Poniższy przykład posiada zarówno deklaracje funkcji jak i ma skutki uboczne. Przykład pokazuje czego należy unikać:
 
 ```php
 <?php
@@ -79,8 +77,7 @@ function foo()
 }
 ```
 
-Kolejny przykład pliku php zawiera w sobie tylko deklaracje (tutaj funkcji), 
-czyli zapis, który należy naśladować:
+Kolejny przykład zawiera w sobie tylko deklaracje (tutaj funkcji). Przykład pokazuje jak powinniśmy pisać:
 
 ```php
 <?php
@@ -122,7 +119,7 @@ namespace Vendor\Model;
 class Foo
 {
 }
-```
+```f
 
 Kod napisany dla wersji PHP 5.2.x oraz niższych, 
 POWINIEN używać konwencji prefiksów (np. `Vendor_` ) dla symulacji przestrzeni nazw w oparciu o nazwy klas.
