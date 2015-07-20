@@ -1,7 +1,7 @@
 Standard avtomatskega nalagalnika
 =================================
 
-> Opuščen - Od 2014-10-21 je bil PSR-0 označen za opuščenega. [PSR-4] je sedaj priporočen
+> **Opuščen** - Od 2014-10-21 je bil PSR-0 označen za opuščenega. [PSR-4] je sedaj priporočen
 kot alternativa.
 
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
@@ -80,4 +80,3 @@ avtomatskega nalagalnika. Gre za trenutno priporočljivi način nalaganja PHP
 5.3 razredov, ki sledijo tem standardom.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
-
