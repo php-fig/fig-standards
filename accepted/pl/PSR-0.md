@@ -20,7 +20,7 @@ podczas ładowania z systemu plików.
 * Każdy znak `_` w nazwie klasy jest konwertowany do wartości stałej `DIRECTORY_SEPARATOR`. 
 Znak `_` nie ma żadnego specjalnego znaczenia w przestrzeni nazw.
 * W pełni poprawny plik przestrzeni nazw i klasy musi kończyć się rozszerzeniem `.php` podczas ładowania z systemu plików.
-* Wielkość znaków (duże/małe litery) w przestrzeni bazowej ("Nazwa Vendora), przestrzeniach nazw czy klasach nie ma żadnego znaczenia.
+* Wielkość znaków (duże/małe litery) w przestrzeni bazowej ("Nazwa Vendora"), przestrzeniach nazw czy klasach nie ma żadnego znaczenia.
 
 Przykłady
 ---------
