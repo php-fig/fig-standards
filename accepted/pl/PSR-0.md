@@ -1,16 +1,17 @@
-Standardy automatycznego ładowania
+Standardy autoloadingu
 ==================================
 
-> **Zdeprecjonowany** - Od dnia 2014-10-21 standard PSR-0 jest standardem zdeprecjonowanym. [PSR-4] jest od teraz rekomendowany jako alternatywa.
+> **Porzucony** - W dniu 2014-10-21 standard PSR-0 został porzucony na rzecz [PSR-4].
 
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
 
-Poniższy dokument opisuje obowiązkowe wymagania, które należy stosować w procesie standaryzacji automatycznego ładowania (autoloadingu) klas.
+Poniższy dokument opisuje obowiązkowe wymagania, do których należy się zastosować
+w celu ustandaryzowania procesu autoloadingu klas. 
 
 Wymagania
 ---------
 
-* W pełni poprawna przestrzeń nazw (namespace) i klasa muszą posiadać następującą strukturę 
+* W pełni poprawna przestrzeń nazw (namespace) i nazwa klasy muszą posiadać następującą strukturę 
 `\<Nazwa Vendora>\(<Przestrzeń Nazw>\)*<Nazwa klasy>`
 * Każda przestrzeń nazw musi posiadać przestrzeń bazową ("Nazwa Vendora").
 * Każda przestrzeń nazw może posiadać dowolną ilość podprzestrzeni.
@@ -18,8 +19,8 @@ Wymagania
 podczas ładowania z systemu plików.
 * Każdy znak `_` w nazwie klasy jest konwertowany do wartości stałej `DIRECTORY_SEPARATOR`. 
 Znak `_` nie ma żadnego specjalnego znaczenia w przestrzeni nazw.
-* W pełni poprawny plik przestrzeni nazw i klasy musi kończyć się rozszerzeniem `.php` podcza ładowania z systemu plików.
-* Wielkość znaków (duże/małe litery) w nazwie vendora, przestrzeniach nazw czy klasach nie odgrywa żadnego znaczenia.
+* W pełni poprawny plik przestrzeni nazw i klasy musi kończyć się rozszerzeniem `.php` podczas ładowania z systemu plików.
+* Wielkość znaków (duże/małe litery) w przestrzeni bazowej ("Nazwa Vendora"), przestrzeniach nazw czy klasach nie ma żadnego znaczenia.
 
 Przykłady
 ---------
@@ -35,14 +36,14 @@ Znaki podkreślenia w przestrzeniach nazw i nazwach klas
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
 
-Opisane powyżej reguły powinny być najmniej bolesną odpowiedzią na problem standaryzacji automatycznego ładowania klas w PHP. 
+Opisane powyżej reguły powinny być najbardziej uniwersalnym rozwiązaniem problemu autoloadingu klas w PHP. 
 W każdym momencie można wypróbować działanie powyższych standardów poprzez implementację klasy SplClassLoader – 
 będzie ona działać poprawnie już dla projektów opartych o wersję PHP 5.3.
 
 Przykładowa implementacja
 -------------------------
 
-Poniżej przedstawiono przykładową funkcję aby zademonstrować jak powinna wyglądać implementacja autloadingu na podstawie powyższych standardów.
+Poniższy przykład demonstruje jak powinna wyglądać implementacja autloadingu na podstawie powyższych standardów.
 
 ```php
 <?php
@@ -67,8 +68,9 @@ spl_autoload_register('autoload');
 Implementacja SplClassLoader
 ----------------------------
 
-W poniższym linku znajduje się klasa SplClassLoader implementująca przedstawione powyżej standardy dotyczące automatycznego ładowania klas. 
-Jest to aktualnie zalecane podejście do procesu ładowania klas dla projektów od wersji 5.3 PHP.
+Poniższy link zawiera kod klasy SplClassLoader implementującej przedstawione powyżej standardy. 
+Jest to aktualnie zalecane podejście do procesu autoloadingu klas napisanych dla wersji PHP 5.3 które 
+przestrzegają powyższych standardów.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
 
