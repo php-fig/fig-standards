@@ -17,9 +17,9 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 
 ### Review
 
-| Num | Title                          | Editor                  |  Coordinator  | Sponsor     |
-|:---:|--------------------------------|-------------------------|---------------|-------------|
-| 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady | John Mertic |
+| Num | Title                          | Editor                  |  Coordinator  | Sponsor       |
+|:---:|--------------------------------|-------------------------|---------------|---------------|
+| 6   | [Caching Interface][psr6]      | Larry Garfield          | Beau Simensen | Pádraic Brady |
 
 ### Voting
 
@@ -47,7 +47,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | A      | 3   | [Logger Interface][psr3]       | Jordi Boggiano          | _N/A_          | _N/A_          |
 | A      | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon  | Larry Garfield |
 | D      | 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon  | Donald Gilbert |
-| R      | 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady  | Beau Simensen  |
+| R      | 6   | [Caching Interface][psr6]      | Larry Garfield          | Beau Simensen  | Pádraic Brady  |
 | A      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen  | Paul Jones     |
 | D      | 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans      | Paul Jones     |
 | D      | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
