@@ -11,7 +11,7 @@
 /**
  * Пример реализации для конкретного проекта.
  * 
- * После регистрации этого автозагрузчика через SPL, следующая строчка
+ * После регистрации этого автозагрузчика через SPL следующая строчка
  * заставит функцию попытаться загрузить класс \Foo\Bar\Baz\Qux
  * из файла /path/to/project/src/Baz/Qux.php:
  * 
@@ -153,7 +153,7 @@ class Psr4AutoloaderClass
      * Загружает файл для заданного имени класса.
      *
      * @param string $class Абсолютное имя класса.
-     * @return mixed Если получилось, полное имя файла. Иначе false.
+     * @return mixed Если получилось, полное имя файла. Иначе — false.
      */
     public function loadClass($class)
     {
@@ -202,7 +202,7 @@ class Psr4AutoloaderClass
         foreach ($this->prefixes[$prefix] as $base_dir) {
 
             // заменяем префикс базовой директорией,
-            // заменяем разделители пространства имён на разделители директорий
+            // заменяем разделители пространства имён на разделители директорий,
             // к относительному имени класса добавляем .php
             $file = $base_dir
                   . str_replace('\\', '/', $relative_class)
@@ -223,7 +223,7 @@ class Psr4AutoloaderClass
      * Если файл существует, загружеаем его.
      * 
      * @param string $file файл для загрузки.
-     * @return bool true если файл существует, false если нет.
+     * @return bool true, если файл существует, false — если нет.
      */
     protected function requireFile($file)
     {
