@@ -68,5 +68,5 @@
 их как часть спецификации. Примеры МОГУТ измениться в любое время.
 
 [автозагрузки]: http://php.net/autoload
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[файле примеров]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/ru/PSR-0.md
+[файле примеров]: https://github.com/php-fig/fig-standards/blob/master/accepted/ru/PSR-4-autoloader-examples.md
