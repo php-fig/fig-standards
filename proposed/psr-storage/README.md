@@ -1,14 +1,23 @@
 Storage Interface
 ================
 
-This proposal is to establish a standard in communications with storage libraries.
+## Introduction
 
-The goal is to establish a standard in read, write, update and delete operations
-on storage libraries and/or interfaces. Applications, frameworks and libraries
+Deailing with a [storage](https://en.wikipedia.org/wiki/Computer_data_storage) is a common way to persist data somewere.
+Providing a storage is one of the core features of many frameworks, libraries, modules or components. This had lead to the result, that many frameworks etc. have created their own storage interfaces.
+The differences in the multiple implementations resulting in a bunch of layers (adapters) to uniform the multiple interfaces.
+
+A common interface for storage as abstract as possible will solve this problem and reduce the number of adapters out there in the world and inside each project.
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+
+## Goal
+
+The goal is to establish a standard in read, write, update and delete operations 
+on storage libraries and/or interfaces. 
+Applications, frameworks and libraries 
 will be able to implement the storage interface and perform basic storage operations
-in a uniform way, without having to worry about the backend handling it.
-
-Use-cases are storing session variables, files, or cache data to storage systems like a filesystem, Redis, Memcached or memory.
+in a uniform way, without having to worry about how the backend is handling the operation.
 
 ## Interface
 The interface is based on the CRUD principle. So naturally, the four methods featured
