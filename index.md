@@ -1,4 +1,4 @@
-## Index of PHP Standard Recommendations
+# PHP Standard Recommendations
 
 According to the [PSR Workflow Bylaw](https://github.com/php-fig/fig-standards/blob/master/bylaws/004-psr-workflow.md) each PSR has a status as it is being worked on. Once a proposal has passed the Entrance Vote it will be listed here as "Draft". 
 
