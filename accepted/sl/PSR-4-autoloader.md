@@ -1,8 +1,8 @@
 # Avtomatski nalagalnik
 
-Ključne besede "MORA", "NE SME", "ZAHTEVANO", "BI", "NE BI", "BI MORALO",
-"NE BI SMELO", "PRIPOROČLJIVO", "LAHKO" in "OPCIJSKO" v tem dokumentu se
-interpretira, kot je opisano v [RFC 2119](http://tools.ietf.org/html/rfc2119).
+Ključne besede "MORA", "NE SME", "ZAHTEVA", "PRIPOROČA", "LAHKO" in "NEOBVEZNO"
+v tem dokumentu se tolmačijo, kot je navedeno v
+[RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 
 ## 1. Pregled

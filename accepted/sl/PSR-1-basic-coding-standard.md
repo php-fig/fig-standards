@@ -5,9 +5,9 @@ Ta sekcija standarda obsega, kar bi moralo šteti za standard
 kodnih elementov, ki so potrebni za zagotovitev visokega nivoja tehnične
 interoperabilnosti med skupno PHP kodo.
 
-Ključne besede "MORA", "NE SME", "ZAHTEVANO", "SE", "SE NE", "BI",
-"NE BI", "PRIPOROČLJIVO", "LAHKO" in "OPCIJSKO" se v tem dokumentu
-interpretira kot je opisano v [RFC 2119].
+Ključne besede "MORA", "NE SME", "ZAHTEVA", "PRIPOROČA", "LAHKO" in "NEOBVEZNO"
+v tem dokumentu se tolmačijo, kot je navedeno v
+[RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
@@ -58,7 +58,7 @@ datoteke*.
 "Stranski učinki" vključujejo, vendar niso omejeni na: generiranje izpisa, eksplicitno
 uporabo `require` ali `include`, povezavo z zunanjimi storitvami, spreminjanje ini
 nastavitev, oddajo napak ali izjem, spreminjanje globalnih ali statičnih spremenljivk,
-branje iz ali pisanje v datoteko in tako naprej. 
+branje iz ali pisanje v datoteko in tako naprej.
 
 Sledeči primer je datoteka, ki vljučuje tako deklaracijo in stranske učinke;
 t.j. primer, ki se ga je potrebno izogibati:

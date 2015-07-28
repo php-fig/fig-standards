@@ -47,7 +47,7 @@ Vmesniki opisani v tem dokumentu so abstrakcije okoli sporočil HTTP
 in elementi, ki jih sestavljajo.
 
 Ključne besede "MORA", "NE SME", "ZAHTEVA", "PRIPOROČA", "LAHKO" in "NEOBVEZNO"
-v tem dokumentu se razlagajo, kot je navedeno v
+v tem dokumentu se tolmačijo, kot je navedeno v
 [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ### Reference
