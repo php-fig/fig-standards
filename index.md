@@ -6,26 +6,6 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 
 ## Index by Status
 
-### Draft
-
-| Num | Title                          | Editor                  |  Coordinator   | Sponsor        |
-|:---:|--------------------------------|-------------------------|----------------|----------------|
-| 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon  | Donald Gilbert |
-| 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans      | Paul Jones     |
-| 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
-| 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith       | Larry Garfield | Korvin Szanto  |
-
-### Review
-
-| Num | Title                          | Editor                  |  Coordinator  | Sponsor     |
-|:---:|--------------------------------|-------------------------|---------------|-------------|
-| 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady | John Mertic |
-
-### Voting
-
-| Num | Title                          | Editor                  |  Coordinator  | Sponsor     |
-|:---:|--------------------------------|-------------------------|---------------|-------------|
-
 ### Accepted
 
 | Num | Title                          | Editor                  |  Coordinator  | Sponsor        |
@@ -36,6 +16,26 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | 3   | [Logger Interface][psr3]       | Jordi Boggiano          | _N/A_         | _N/A_          |
 | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon | Larry Garfield |
 | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen | Paul Jones     |
+
+### Voting
+
+| Num | Title                          | Editor                  |  Coordinator  | Sponsor     |
+|:---:|--------------------------------|-------------------------|---------------|-------------|
+
+### Review
+
+| Num | Title                          | Editor                  |  Coordinator  | Sponsor     |
+|:---:|--------------------------------|-------------------------|---------------|-------------|
+| 6   | [Caching Interface][psr6]      | Larry Garfield          | Pádraic Brady | John Mertic |
+
+### Draft
+
+| Num | Title                          | Editor                  |  Coordinator   | Sponsor        |
+|:---:|--------------------------------|-------------------------|----------------|----------------|
+| 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon  | Donald Gilbert |
+| 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans      | Paul Jones     |
+| 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
+| 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith       | Larry Garfield | Korvin Szanto  |
 
 ## Numerical Index
 
