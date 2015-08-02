@@ -285,8 +285,8 @@ do so.
 
 ### 5.2 Sponsors
 
-* Pádraic Brady, Zend Framework (Coordinator)
-* Beau Simensen, Sculpin
+* Beau Simensen, Sculpin (Coordinator)
+* Pádraic Brady, Zend Framework
 
 ### 5.3 Contributors
 
