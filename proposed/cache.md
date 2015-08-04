@@ -173,7 +173,7 @@ interface CacheItemInterface
     public function getKey();
 
     /**
-     * Retrieves the value of the item from the cache associated with this objects key.
+     * Retrieves the value of the item from the cache associated with this object's key.
      *
      * The value returned must be identical to the value original stored by set().
      *
@@ -212,7 +212,7 @@ interface CacheItemInterface
      * and calling get().
      *
      * @return boolean
-     *   True if the request resulted in a cache hit.  False otherwise.
+     *   True if the request resulted in a cache hit. False otherwise.
      */
     public function isHit();
 
