@@ -372,12 +372,10 @@ namespace Psr\Cache;
 /**
  * Exception interface for invalid cache arguments.
  *
- * Any time an invalid argument is passed into a method it must throw a
- * \Psr\Cache\InvalidArgumentException.
+ * Any time an invalid argument is passed into a method it must throw an
+ * exception class which implements Psr\Cache\InvalidArgumentException.
  */
-class InvalidArgumentException extends \InvalidArgumentException
-{
-}
+interface InvalidArgumentException { }
 ```
 
 ### CacheException
@@ -392,9 +390,7 @@ Any exception thrown by an Implementing Library MUST implement this interface.
 namespace Psr\Cache;
 
 /**
- * Base exception for all exceptions thrown by an Implementing Library.
+ * Exception interface for all exceptions thrown by an Implementing Library.
  */
-class CacheException extends \Exception
-{
-}
+interface CacheException {}
 ```
