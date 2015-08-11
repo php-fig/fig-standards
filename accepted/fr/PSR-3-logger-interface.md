@@ -161,7 +161,7 @@ namespace Psr\Log;
  * Le message PEUT contenir des marqueurs à la forme: {foo} où foo
  * sera remplacé par les données de contexte à clé "foo".
  *
- * Le tableau de contexte peut contenir des données arbitraites, la seule
+ * Le tableau de contexte peut contenir des données arbitraires, la seule
  * hypothèse qui peut être faite par des réalisateurs, c'est que si une instance
  * de Exception est donnée pour produire une trace de la pile, il DOIT être dans
  * une clé nommée "exception".
