@@ -18,7 +18,7 @@ document doivent être interprétés comme décrit dans [RFC 2119][].
 Le mot `implementor` dans ce document est à interpréter comme quelqu'un qui
 implémente le `LoggerInterface` dans une bibliothèque relative à de la
 journalisation ou dans un framework.
-Les utilisateurs d'objet `loggers` sont mentionnées comme `utilisateur`.
+Les utilisateurs d'objet `loggers` sont mentionnés comme `utilisateur`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
@@ -28,10 +28,10 @@ Les utilisateurs d'objet `loggers` sont mentionnées comme `utilisateur`.
 ### 1.1 Basique
 
 - L'interface `LoggerInterface` expose huit méthodes pour écrire les logs pour
-les huit [RFC 5424][] levels (debug, info, notice, warning, error, critical,
+les huit [RFC 5424][] niveaux (debug, info, notice, warning, error, critical,
 alert, emergency).
 
-- Un neuvième méthode, `log`, accepte un niveau de journalisation en tant que
+- Une neuvième méthode, `log`, accepte un niveau de journalisation en tant que
 premier argument.
 L'appel de cette méthode avec l'une des constantes du niveau de journalisation
 DOIT avoir le même résultat que l'appel de la méthode de niveau spécifique.
@@ -114,7 +114,7 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
 - La classe `Psr\Log\AbstractLogger` vous permet d'implémenter le
   `LoggerInterface` très facilement en l'étendant et en implémentant la méthode
   générique `log`. Les huit autres méthodes sont la transmission du message et
-  du contexte à cette message.
+  du contexte à ce message.
 
 - De même, l'utilisation du `Psr\Log\LoggerTrait` ne requiert que
   l'implémentation de la méthode générique `log`. A noter que puisque que les
@@ -129,7 +129,7 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
 
 - Le `Psr\Log\LoggerAwareInterface` ne contient que la méthode
   `setLogger(LoggerInterface $logger)` et peut être utilisé par les frameworks
-  pour auto-connecter une instance arbitraires avec le logger.
+  pour auto-connecter une instance arbitraire avec le logger.
 
 - Le trait `Psr\Log\LoggerAwareTrait` peut être utilisé pour implémenter
   facilement l'interface équivalente dans n'importe quelle classe. Il vous donne
@@ -142,7 +142,7 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
 ----------
 
 Les interfaces et les classes décrites ainsi que les classes d'exception
-pertinents et une suite de tests pour vérifier votre mise en œuvre fournies par
+pertinentes et une suite de tests pour vérifier votre mise en œuvre sont fournies par
 [psr/log](https://packagist.org/packages/psr/log) package.
 
 3. `Psr\Log\LoggerInterface`
@@ -161,9 +161,9 @@ namespace Psr\Log;
  * Le message PEUT contenir des marqueurs à la forme: {foo} où foo
  * sera remplacé par les données de contexte à clé "foo".
  *
- * Le tableau de contexte peut contenir des données arbitraires, la seule
+ * Le tableau de contexte peut contenir des données arbitraites, la seule
  * hypothèse qui peut être faite par des réalisateurs, c'est que si une instance
- * de Exception est donné pour produire une trace de la pile, il DOIT être dans
+ * de Exception est donnée pour produire une trace de la pile, il DOIT être dans
  * une clé nommée "exception".
  *
  * Voir https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
@@ -205,8 +205,8 @@ interface LoggerInterface
     public function critical($message, array $context = array());
 
     /**
-     * Erreurs d'exécution qui ne nécessitent pas une action immédiate mais doit
-     * normalement être journalisée et contrôlée.
+     * Erreurs d'exécution qui ne nécessitent pas une action immédiate 
+     * mais qui doivent normalement être journalisées et contrôlées.
      *
      * @param string $message
      * @param array $context
