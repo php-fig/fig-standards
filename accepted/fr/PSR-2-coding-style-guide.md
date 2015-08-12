@@ -322,7 +322,7 @@ class ClassName
 ### 4.5. `abstract`, `final`, et `static`
 
 Lorsqu'elles sont présentes, les déclarations `abstract` et `final` DOIVENT
-précédés la déclaration de la visibilité.
+précéder la déclaration de la visibilité.
 
 Lorsqu'elle est présente, la déclaration `static` DOIT venir après la
 déclaration de la visibilité.
