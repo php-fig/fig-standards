@@ -1306,7 +1306,7 @@ The @param tag MAY have a multi-line description and does not need explicit
 delimiting.
 
 It is RECOMMENDED when documenting to use this tag with every function and
-method. Exceptions to this recommendation are:
+method.
 
 This tag MUST NOT occur more than once per parameter in a "PHPDoc" and is
 limited to "Structural Elements" of type method or function.
@@ -1317,7 +1317,7 @@ limited to "Structural Elements" of type method or function.
 /**
  * Counts the number of items in the provided array.
  *
- * @param mixed[] $array Array structure to count the elements of.
+ * @param mixed[] $items Array structure to count the elements of.
  *
  * @return int Returns the number of elements.
  */
@@ -1328,7 +1328,7 @@ function count(array $items)
 ```
 
 The following example demonstrates the use of an "Inline PHPDoc" to document
-an option array with 2 elements: 'required' and 'label'.
+an option array with two elements: 'required' and 'label'.
 
 ```php
 /**
