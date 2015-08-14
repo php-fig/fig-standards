@@ -1,21 +1,21 @@
-# HTTP message interfaces
+# Vmesniki sporočil HTTP
 
-This document describes common interfaces for representing HTTP messages as
-described in [RFC 7230](http://tools.ietf.org/html/rfc7230) and
-[RFC 7231](http://tools.ietf.org/html/rfc7231), and URIs for use with HTTP
-messages as described in [RFC 3986](http://tools.ietf.org/html/rfc3986).
+Ta dokument opisuje skupne vmesnike za predstavitev sporočil HTTP, kot
+so opisani v [RFC 7230](http://tools.ietf.org/html/rfc7230) in
+[RFC 7231](http://tools.ietf.org/html/rfc7231) ter URI-je za uporabo s sporočili HTTP,
+kot so opisani v [RFC 3986](http://tools.ietf.org/html/rfc3986).
 
-HTTP messages are the foundation of web development. Web browsers and HTTP
-clients such as cURL create HTTP request messages that are sent to a web server,
-which provides an HTTP response message. Server-side code receives an HTTP
-request message, and returns an HTTP response message.
+Sporočila HTTP so osnova spletnega razvoja. Spletni brskalniki in klienti HTTP,
+kot je cURL, ustvarijo sporočila zahtevka HTTP, ki so poslana spletnemu strežniku,
+ki ponuja sporočilo odziva HTTP. Koda strežniške strani prejme sporočilo zahtevka HTTP
+in vrne sporočilo odziva HTTP.
 
-HTTP messages are typically abstracted from the end-user consumer, but as
-developers, we typically need to know how they are structured and how to
-access or manipulate them in order to perform our tasks, whether that might be
-making a request to an HTTP API, or handling an incoming request.
+Sporočila HTTP so običajno izvzeta od končnega uporabnika, vendar kot
+razvijalci moramo običajno vedeti, kako so strukturirana in kako
+do njih dostopati ali z njimi manipulirati, da opravimo naša opravila, bodisi naj bo to
+ustvarjanje zahtevka k API-ju HTTP ali upravljanje prihajajočega zahtevka.
 
-Every HTTP request message has a specific form:
+Vsako sporočilo zahtevka HTTP ima določeno obliko:
 
 ```http
 POST /path HTTP/1.1
@@ -24,12 +24,12 @@ Host: example.com
 foo=bar&baz=bat
 ```
 
-The first line of a request is the "request line", and contains, in order, the
-HTTP request method, the request target (usually either an absolute URI or a
-path on the web server), and the HTTP protocol version. This is followed by one
-or more HTTP headers, an empty line, and the message body.
+Prva vrstica zahtevka je t.i. "vrstica zahtevka" in vsebuje v vrstnem redu
+metodo zahtevka HTTP, cilj zahtevka (običajno bodisi absolutni URI ali
+pot na spletnem strežniku) in verzijo protokola HTTP. Temu sledi ena
+ali več glav HTTP, prazna vrstica in telo sporočila.
 
-HTTP response messages have a similar structure:
+Sporočila odziva HTTP imajo podobno strukturo:
 
 ```http
 HTTP/1.1 200 OK
@@ -38,19 +38,19 @@ Content-Type: text/plain
 This is the response body
 ```
 
-The first line is the "status line", and contains, in order, the HTTP protocol
-version, the HTTP status code, and a "reason phrase," a human-readable
-description of the status code. Like the request message, this is then
-followed by one or more HTTP headers, an empty line, and the message body.
+Prva vrstica je "vrstica stanja" in vsebuje v vrstnem redu verzijo protokola
+HTTP, kodo stanja HTTP in "frazo razloga", berljivi
+opis kode stanja. Kot sporočilo zahtevka temu nato
+sledi ena ali več glav HTTP, prazna vrstica in telo sporočila.
 
-The interfaces described in this document are abstractions around HTTP messages
-and the elements composing them.
+Vmesniki opisani v tem dokumentu so abstrakcije okoli sporočil HTTP
+in elementi, ki jih sestavljajo.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+Ključne besede "MORA", "NE SME", "ZAHTEVA", "PRIPOROČA", "LAHKO" in "NEOBVEZNO"
+v tem dokumentu se tolmačijo, kot je navedeno v
+[RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-### References
+### Reference
 
 - [RFC 2119](http://tools.ietf.org/html/rfc2119)
 - [RFC 3986](http://tools.ietf.org/html/rfc3986)
@@ -58,31 +58,31 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 - [RFC 7231](http://tools.ietf.org/html/rfc7231)
 
 
-## 1. Specification
+## 1. Specifikacija
 
-### 1.1 Messages
+### 1.1 Sporočila
 
-An HTTP message is either a request from a client to a server or a response from
-a server to a client. This specification defines interfaces for the HTTP messages
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
+HTTP sporočilo je bodisi zahtevek klienta strežniku ali odziv
+strežnika klientu. Ta specifikacija definira vmesnike za sporočila HTTP
+`Psr\Http\Message\RequestInterface` in `Psr\Http\Message\ResponseInterface` v tem zaporedju.
 
-Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
-`Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
-implemented directly, implementors SHOULD implement
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
+Tako `Psr\Http\Message\RequestInterface` kot `Psr\Http\Message\ResponseInterface` razširjata
+`Psr\Http\Message\MessageInterface`. Medtem ko `Psr\Http\Message\MessageInterface` je LAHKO
+implementiran direktno, implementatorji BI MORALI implementirati
+`Psr\Http\Message\RequestInterface` in `Psr\Http\Message\ResponseInterface`.
 
-From here forward, the namespace `Psr\Http\Message` will be omitted when
-referring to these interfaces.
+Od tu naprej bo imenski prostor `Psr\Http\Message` opuščen,
+ko se sklicuje na te vmesnike.
 
-#### 1.2 HTTP Headers
+#### 1.2 Glave HTTP
 
-##### Case-insensitive header field names
+##### Imena polj glave z neobčutljivo velikostjo črk
 
-HTTP messages include case-insensitive header field names. Headers are retrieved
-by name from classes implementing the `MessageInterface` in a case-insensitive
-manner. For example, retrieving the `foo` header will return the same result as
-retrieving the `FoO` header. Similarly, setting the `Foo` header will overwrite
-any previously set `foo` header value.
+Sporočila HTTP vključujejo imena polj glave z neobčutljivo velikostjo črk. Glave so vzpostavljene
+z imeni iz razredov, ki implementirajo `MessageInterface` na način neobčutljivih velikosti črk.
+Na primer, vzpostavitev glave `foo` bo vrnilo enak rezultat kot
+vzpostavitev glave `FoO`. Podobno, nastavitev glave `Foo` bo prepisalo
+katerokoli prej nastavljeno vrednost glave `foo`.
 
 ```php
 $message = $message->withHeader('foo', 'bar');
@@ -98,23 +98,23 @@ echo $message->getHeaderLine('foo');
 // Outputs: baz
 ```
 
-Despite that headers may be retrieved case-insensitively, the original case
-MUST be preserved by the implementation, in particular when retrieved with
+Klub temu, da so glave lahko vzpostavljene z neobčutljivo velikostjo črk, prvotna velikost črk
+MORA biti ohranjena v implementaciji, še posebej ko je vzpostavljena z
 `getHeaders()`.
 
-Non-conforming HTTP applications may depend on a certain case, so it is useful
-for a user to be able to dictate the case of the HTTP headers when creating a
-request or response.
+Neskladne aplikacije HTTP so lahko odvisne na določeno velikost črk, tako da je uporabno
+za uporabnika, da je sposoben diktirati velikost črk za glave HTTP, ko se ustvarja
+zahtevek odziva.
 
-##### Headers with multiple values
+##### Glave z večimi vrednostmi
 
-In order to accommodate headers with multiple values yet still provide the
-convenience of working with headers as strings, headers can be retrieved from
-an instance of a `MessageInterface` as an array or a string. Use the
-`getHeaderLine()` method to retrieve a header value as a string containing all
-header values of a case-insensitive header by name concatenated with a comma.
-Use `getHeader()` to retrieve an array of all the header values for a
-particular case-insensitive header by name.
+Za namestitev glav z večimi vrednostmi še vedno ponujajo
+udobje dela z glavami kot nizi, glave so lahko pridobljene iz
+instance `MessageInterface` kot polje nizov. Uporabite
+`getHeaderLine()` metodo za vzpostavitev vrednosti glave saj niz vsebuje vse
+vrednosti glave od glave z neobčutljivo velikostjo črk z imenom združenim z vejico.
+Uporabite `getHeader()` za vpostavitev polja vseh vrednosti glav za
+določeno glavo z neobčutljivo velikostjo črk po imenu.
 
 ```php
 $message = $message
@@ -128,129 +128,128 @@ $header = $message->getHeader('foo');
 // ['bar', 'baz']
 ```
 
-Note: Not all header values can be concatenated using a comma (e.g.,
-`Set-Cookie`). When working with such headers, consumers of
-`MessageInterface`-based classes SHOULD rely on the `getHeader()` method
-for retrieving such multi-valued headers.
+Opomba: Ne vse vrednosti glav so lahko združene z uporabo vejice (npr.,
+`Set-Cookie`). Ko delate s takimi glavami, se BI MORALI uporabniki
+`MessageInterface`-osnovanih razredov zanašati na metodo `getHeader()`
+za pridobivanje takih več-vrednostnih glav.
 
-##### Host header
+##### Glava gostitelj
 
-In requests, the `Host` header typically mirrors the host component of the URI, as
-well as the host used when establishing the TCP connection. However, the HTTP
-specification allows the `Host` header to differ from each of the two.
+V zahtevkih glava `Host` običajno preslika komponento gostitelja URI-ja kot
+tudi uporabljenega gostitelja, ko vzpostavlja TCP povezavo. Vendar specifikacija HTTP
+omogoča, da je glava `Host` drugačna od vsake od teh dveh.
 
-During construction, implementations MUST attempt to set the `Host` header from
-a provided URI if no `Host` header is provided.
+Med ustvarjanjem MORAJO implementacije poskusiti nastaviti glavo `Host` iz
+ponujenega URI-ja, če glava `Host` ni ponujena.
 
-`RequestInterface::withUri()` will, by default, replace the returned request's
-`Host` header with a `Host` header matching the host component of the passed
+`RequestInterface::withUri()` bo privzeto zamenjal vrnjeno glavo zahtevka
+`Host` z glavo `Host`, ki se ujema s komponento gostitelja podanega
 `UriInterface`.
 
-You can opt-in to preserving the original state of the `Host` header by passing
-`true` for the second (`$preserveHost`) argument. When this argument is set to
-`true`, the returned request will not update the `Host` header of the returned
-message -- unless the message contains no `Host` header.
+Lahko poskusite opt-in, da obdržite prvotno stanje glave `Host` s podajanjem
+`true` kot drugi argument (`$preserveHost`). Ko je ta argument nastavljen na
+`true`, vrnjeni zahtevek ne bo posodobil glave `Host` vrnjegega
+sporočila -- razen, če sporočilo vsebuje glavo `Host`.
 
-This table illustrates what `getHeaderLine('Host')` will return for a request
-returned by `withUri()` with the `$preserveHost` argument set to `true` for
-various initial requests and URIs.
+Ta tabela ponazarja, kaj bo `getHeaderLine('Host')` vrnil za zahtevek
+vrnje z `withUri()` z argumentom `$preserveHost` nastavljenim na `true` za
+različne začetne zahtevke in URI-je.
 
-Request Host header<sup>[1](#rhh)</sup> | Request host component<sup>[2](#rhc)</sup> | URI host component<sup>[3](#uhc)</sup> | Result
-----------------------------------------|--------------------------------------------|----------------------------------------|--------
-''                                      | ''                                         | ''                                     | ''
-''                                      | foo.com                                    | ''                                     | foo.com
-''                                      | foo.com                                    | bar.com                                | foo.com
-foo.com                                 | ''                                         | bar.com                                | foo.com
-foo.com                                 | bar.com                                    | baz.com                                | foo.com
+Glava zahtevka gostitelja<sup>[1](#rhh)</sup> | Komponenta zahtevka gostitelja<sup>[2](#rhc)</sup> | Komponenta gostitelja URI<sup>[3](#uhc)</sup> | Rezultat
+----------------------------------------------|----------------------------------------------------|-----------------------------------------------|---------
+''                                            | ''                                                 | ''                                            | ''
+''                                            | foo.com                                            | ''                                            | foo.com
+''                                            | foo.com                                            | bar.com                                       | foo.com
+foo.com                                       | ''                                                 | bar.com                                       | foo.com
+foo.com                                       | bar.com                                            | baz.com                                       | foo.com
 
-- <sup id="rhh">1</sup> `Host` header value prior to operation.
-- <sup id="rhc">2</sup> Host component of the URI composed in the request prior
-  to the operation.
-- <sup id="uhc">3</sup> Host component of the URI being injected via
+- <sup id="rhh">1</sup> vrednost glave `Host` pred operacijo.
+- <sup id="rhc">2</sup> Komponenta gostitelja URI-ja sestavljena v zahtevku pred
+  operacijo.
+- <sup id="uhc">3</sup> Komponenta gostitelja URI-ja injicirana preko
   `withUri()`.
 
-### 1.3 Streams
+### 1.3 Tokovi
 
-HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
-message can be very small or extremely large. Attempting to represent the body
-of a message as a string can easily consume more memory than intended because
-the body must be stored completely in memory. Attempting to store the body of a
-request or response in memory would preclude the use of that implementation from
-being able to work with large message bodies. `StreamInterface` is used in
-order to hide the implementation details when a stream of data is read from
-or written to. For situations where a string would be an appropriate message
-implementation, built-in streams such as `php://memory` and `php://temp` may be
-used.
+HTTP sporočila so sestavljena iz začetne vrstice, glav in telesa. Telo HTTP
+sporočila je lahko zelo majhno ali izjemno veliko. Poskušanje predstavitve telesa
+sporočila kot niz lahko enostavno porabi več spomina, kot je namenjen, ker
+mora telo biti shranjeno v celoti v spomin. Poskušanje shraniti telo iz zahtevka
+ali odziva v spomin bi izključilo uporabo te implementacije, da je zmožna
+delati z velikimi telesi sporočil. `StreamInterface` je uporabljen,
+da skrije podrobnosti implementacije, ko je tok podatkov bran ali
+pisan. Za situacije, kjer bi bil niz ustrezna implementacija sporočila
+vgrajeni tokovi, kot sta lahko uporabljena `php://memory` in `php://temp`.
 
-`StreamInterface` exposes several methods that enable streams to be read
-from, written to, and traversed effectively.
+`StreamInterface` izpostavlja več metod, ki omogočajo, da so tokovi brani
+ali zapisani in efektivno prečkani.
 
-Streams expose their capabilities using three methods: `isReadable()`,
-`isWritable()`, and `isSeekable()`. These methods can be used by stream
-collaborators to determine if a stream is capable of their requirements.
+Tokovi izpostavljajo zmožnosti z uporabo treh metod: `isReadable()`,
+`isWritable()` in `isSeekable()`. Te metode so lahko uporabljene s
+sodelujočimi tokovi za določitev, če je tok zmožen njihovih zahtev.
 
-Each stream instance will have various capabilities: it can be read-only,
-write-only, or read-write. It can also allow arbitrary random access (seeking
-forwards or backwards to any location), or only sequential access (for
-example in the case of a socket, pipe, or callback-based stream).
+Vsaka instanca toku bo imela različne zmožnosti: lahko je samo za branje,
+samo za pisanje ali branje in pisanje. Lahko tudi omogoča arbitrarno naključen dostop (iskanje
+naprej ali nazaj po kateri koli lokaciji), ali samo sekvenčni dostop (za
+primer priključka, cevi ali na osnovi povratno klicanega toka).
 
-Finally, `StreamInterface` defines a `__toString()` method to simplify
-retrieving or emitting the entire body contents at once.
+Končno, `StreamInterface` definira `__toString()` metodo za enostavnejše
+pridobivanje ali oddajanje velotnega telesa vsebin na enkrat.
 
-Unlike the request and response interfaces, `StreamInterface` does not model
-immutability. In situations where an actual PHP stream is wrapped, immutability
-is impossible to enforce, as any code that interacts with the resource can
-potentially change its state (including cursor position, contents, and more).
-Our recommendation is that implementations use read-only streams for
-server-side requests and client-side responses. Consumers should be aware of
-the fact that the stream instance may be mutable, and, as such, could alter
-the state of the message; when in doubt, create a new stream instance and attach
-it to a message to enforce state.
+Z razliko vmesnikov zahtevka in odziva, `StreamInterface` ne modelira
+nespremenljivosti. V situacijah, kjer je dejanski PHP tok ovit, je nespremenljivost
+nemogoča za uveljavitev saj lahko katerakoli koda, ki ima interakcijo z virom,
+potencialno spremeni svoje stanje (vključno s pozicijo kurzorja, vsebinami in več).
+Naše priporočilo je, da implementacije uporabljajo tokove samo za branje za
+zahtevke strežniške strani in odzive klientne strani. Uporabniki bi se morali zavedati
+dejstva, da so instance tokov lahko spremenljive in kot take lahko spremenijo
+stanje sporočila; ko ste v dvomih, ustvarite novo instanco toka in jo prilepite
+sporočilu, da vsilite stanje.
 
-### 1.4 Request Targets and URIs
+### 1.4 Tarče zahtevka in URI-ji
 
-Per RFC 7230, request messages contain a "request-target" as the second segment
-of the request line. The request target can be one of the following forms:
+Glede na RFC 7230 sporočilo zahtevka vsebuje "request-target" kot drugi segment
+vrstice zahtevka. Tarča zahtevka je lahko ena izmed sledečih oblik:
 
-- **origin-form**, which consists of the path, and, if present, the query
-  string; this is often referred to as a relative URL. Messages as transmitted
-  over TCP typically are of origin-form; scheme and authority data are usually
-  only present via CGI variables.
-- **absolute-form**, which consists of the scheme, authority
-  ("[user-info@]host[:port]", where items in brackets are optional), path (if
-  present), query string (if present), and fragment (if present). This is often
-  referred to as an absolute URI, and is the only form to specify a URI as
-  detailed in RFC 3986. This form is commonly used when making requests to
-  HTTP proxies.
-- **authority-form**, which consists of the authority only. This is typically
-  used in CONNECT requests only, to establish a connection between an HTTP
-  client and a proxy server.
-- **asterisk-form**, which consists solely of the string `*`, and which is used
-  with the OPTIONS method to determine the general capabilities of a web server.
+- **origin-form**, ki sestoji iz poti in, če je prisoten, niza poizvedbe;
+  to je pogosto sklicano kot relativni URL. Sporočila kot so posredovana
+  preko TCP imajo običajno origin-form; shema in podatki avtoritete so običajno
+  samo prisotni preko CGI spremenljivk.
+- **absolute-form**, ki sestoji iz sheme, avtoritete
+  ("[user-info@]host[:port]", kjer so elementi v oglatih oklepajih opcijski), poti (če
+  je prisotna), niza poizvedbe (če je prisoten) in fragmenta (če je prisoten). To je pogosto
+  sklicano kot absolutni URI in je edina oblika za določanje URI-ja kot je
+  podrobno opisan v RFC 3986. Ta oblika je pogosto uporabljena, ko se dela zahtevke za
+  proksije HTTP.
+- **authority-form**, ki sestoji samo iz avtoritete. Ta je običajno
+  uporabljena samo v zahtevkih CONNECT za vzpostavitev povezave med klientom
+  HTTP in strežnikom proxy.
+- **asterisk-form**, ki sestoji izključno iz niza `*` in ki je uporabljen
+  z metodo OPTIONS za določitev splošnih zmožnosti spletnega strežnika.
 
-Aside from these request-targets, there is often an 'effective URL' which is
-separate from the request target. The effective URL is not transmitted within
-an HTTP message, but it is used to determine the protocol (http/https), port
-and hostname for making the request.
+Na stran od teh request-targets je pogostokrat 'efektivni URL', ki je
+ločen od tarče zahtevka. Efektivni URL ni posredovan znotraj
+sporočila HTTP, vendar je uporabljen za določitev protokola (http/https), porta
+in imena gostitelja za izdelavo zahtevka.
 
-The effective URL is represented by `UriInterface`. `UriInterface` models HTTP
-and HTTPS URIs as specified in RFC 3986 (the primary use case). The interface
-provides methods for interacting with the various URI parts, which will obviate
-the need for repeated parsing of the URI. It also specifies a `__toString()`
-method for casting the modeled URI to its string representation.
+Efektivni URL je predstavljen z `UriInterface`. `UriInterface` modelira URI-je HTTP
+in HTTPS, kot so določeni v RFC 3986 (primarni primer uporabe). Vmesnik
+ponuja metode za interakcijo z različnimi deli URI-ja, ki bo odpravil
+potrebo po ponavljanju prevajanja URI-ja. Tudi določa metodo `__toString()`
+za igranje vloge modeliranjega URI-ja v njegovo predstavitev z nizom.
 
-When retrieving the request-target with `getRequestTarget()`, by default this
-method will use the URI object and extract all the necessary components to
-construct the _origin-form_. The _origin-form_ is by far the most common
+Ko se pridobiva request-targe z `getRequestTarget()`, bo privzeto ta
+metoda uporabila objekt URI in izvlekla vse potrebne komponente, da sestavi
+_origin-form_. _origin_form_ je najbolj pogosti
 request-target.
 
-If it's desired by an end-user to use one of the other three forms, or if the
-user wants to explicitly override the request-target, it is possible to do so
-with `withRequestTarget()`.
+Če je zaželjeno s strani končnega uporabnika uporabiti eno izmed treh oblik ali če
+uporabnik želi eksplicitno prepisati request-targe, je to možno narediti
+z `withRequestTarget()`.
 
-Calling this method does not affect the URI, as it is returned from `getUri()`.
+Klicanje te metode ne vpliva na URI kot je vrnjen iz `getUri`().
 
-For example, a user may want to make an asterisk-form request to a server:
+Na primer, uporabnik želi narediti zahtevek asterisk-form na strežnik:
 
 ```php
 $request = $request
@@ -259,76 +258,76 @@ $request = $request
     ->withUri(new Uri('https://example.org/'));
 ```
 
-This example may ultimately result in an HTTP request that looks like this:
+Ta primer lahko ultimativno rezultira v zahtevek HTTP, ki izgleda takole:
 
 ```http
 OPTIONS * HTTP/1.1
 ```
 
-But the HTTP client will be able to use the effective URL (from `getUri()`),
-to determine the protocol, hostname and TCP port.
+Vendar klient HTTP bo zmožen uporabiti efektivni URL (iz `getUri()`)
+za določitev protokola, imena gostitelja in porta TCP.
 
-An HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
-and instead use the value returned by `getRequestTarget()`, which defaults
-to concatenating these two values.
+Klient HTTP MORA ignorirati vrednosti `Uri::getPath()` in `Uri::getQuery()`
+in namesto tega uporabiti vrednost vrnjeno od `getRequestTarget()`, ki je privzeto
+združevanje teh dveh vrednosti.
 
-Clients that choose to not implement 1 or more of the 4 request-target forms,
-MUST still use `getRequestTarget()`. These clients MUST reject request-targets
-they do not support, and MUST NOT fall back on the values from `getUri()`.
+Klienti, ki ne izberejo implementirati 1 ali več od 4 request-target oblik,
+MORAJO še vedno uporabiti `getRequestTarget()`. Te klienti MORAJO zavrniti request-target-e,
+ki jih ne podpirajo in se NE SMEJO povrniti na vrednosti iz `getUri()`.
 
-`RequestInterface` provides methods for retrieving the request-target or
-creating a new instance with the provided request-target. By default, if no
-request-target is specifically composed in the instance, `getRequestTarget()`
-will return the origin-form of the composed URI (or "/" if no URI is composed).
-`withRequestTarget($requestTarget)` creates a new instance with the
-specified request target, and thus allows developers to create request messages
-that represent the other three request-target forms (absolute-form,
-authority-form, and asterisk-form). When used, the composed URI instance can
-still be of use, particularly in clients, where it may be used to create the
-connection to the server.
+`RequestInterface` ponuja metode za pridobitev request-target ali
+izdelavo nove instance s ponujenim request-target. Privzeto, če
+request-target ni specifično sestavljen v instanci, bo `getRequestTarge()`
+vrnila origin-form sestavljenega URI-ja (ali "/", če URI ni sestavljen).
+`withRequestTarget($requestTarget)` ustvarja novo instanvo z
+določeno tarčo zahtevka in tako omogoča razvijalcem, da ustvarijo sporočila zahtevka,
+ki predstavljajo ostale tri oblike request-target (absolute-form,
+authority-form in asterisk-form). Ko je uporabljeno, je sestavljena instanca URI-ja
+še vedno uporabljena, posebno v klientih, kjer je lahko uporabljena za izdelavo
+povezave s strežnikom.
 
-### 1.5 Server-side Requests
+### 1.5 Zahtevki strežniške strani
 
-`RequestInterface` provides the general representation of an HTTP request
-message. However, server-side requests need additional treatment, due to the
-nature of the server-side environment. Server-side processing needs to take into
-account Common Gateway Interface (CGI), and, more specifically, PHP's
-abstraction and extension of CGI via its Server APIs (SAPI). PHP has provided
-simplification around input marshaling via superglobals such as:
+`RequestInterface` ponuja splošno predstavitev zahtevka sporočila
+HTTP. Vendar zahtevki strežniške strani potrebujejo dodatno obdelavo zaradi
+naravi okolja strežniške strani. Procesiranje strežniške strani morajo vzeti v
+obzir Common Gateway Interface (CGI) in natančneje PHP-jevo
+abstrakcijo in razširitev CGI preko njegovih strežniških API-jev (SAPI). PHP ponuja
+poenovstavitev okrog ranžiranja vhodov preko superglobals kot so:
 
-- `$_COOKIE`, which deserializes and provides simplified access for HTTP
-  cookies.
-- `$_GET`, which deserializes and provides simplified access for query string
-  arguments.
-- `$_POST`, which deserializes and provides simplified access for urlencoded
-  parameters submitted via HTTP POST; generically, it can be considered the
-  results of parsing the message body.
-- `$_FILES`, which provides serialized metadata around file uploads.
-- `$_SERVER`, which provides access to CGI/SAPI environment variables, which
-  commonly include the request method, the request scheme, the request URI, and
-  headers.
+- `$_COOKIE`, ki deserizaliza in ponuja poenostavljen dostop za piškotke
+  HTTP.
+- `$_GET`, ki deserializira in ponuja poenostavljen dostop za argumente niza
+  poizvedbe.
+- `$_POST`, ki deserializira in ponuja poenostavljen dostop za url-enkodirane
+  parametre poslane preko HTTP POST; generično je lahko smatran kot
+  rezultat prevedenega telesa sporočila.
+- `$_FILES`, ki ponuja serializirane meta podatke okrog nalaganja datotek.
+- `$_SERVER`, ki ponuja dostop do CGI/SAPI spremenljivk okolja, ki
+  skupno vključujejo metodo zahtevka, shemo zahtevka, URI zahtevka in
+  glave.
 
-`ServerRequestInterface` extends `RequestInterface` to provide an abstraction
-around these various superglobals. This practice helps reduce coupling to the
-superglobals by consumers, and encourages and promotes the ability to test
-request consumers.
+`ServerRequestInterface` razširja `RequestInterface`, da ponuja abstrakcijo
+okrog teh različnih superglobals. Ta praksa pomaga zmanjšati sklapljanje
+superglobals s strani uporabnikov in spodbuja in promovira zmožnost testirati
+zahtevke uporabnikov.
 
-The server request provides one additional property, "attributes", to allow
-consumers the ability to introspect, decompose, and match the request against
-application-specific rules (such as path matching, scheme matching, host
-matching, etc.). As such, the server request can also provide messaging between
-multiple request consumers.
+Zahtevek strežnika ponuja dodatno lastnost, "attributes", da omogoča
+uporabnikom zmožnost za introspekcijo, dekompozicijo in ujemanje zahtevka proti
+pravilom specifik aplikacije (kot so ujemanje poti, ujemanje sheme, ujemanje
+gostitelja itd.). Kot tak zahtevek strežnika lahko tudi ponuja sporočanje med
+večimi zahtevki uporabnikov.
 
-### 1.6 Uploaded files
+### 1.6 Naložene datoteke
 
-`ServerRequestInterface` specifies a method for retrieving a tree of upload
-files in a normalized structure, with each leaf an instance of
+`ServerRequestInterface` določa metodo za pridobivanje drevesa naloženih
+datotek v normalizirani strukturi, z vsakim listom instance
 `UploadedFileInterface`.
 
-The `$_FILES` superglobal has some well-known problems when dealing with arrays
-of file inputs. As an example, if you have a form that submits an array of files
-— e.g., the input name "files", submitting `files[0]` and `files[1]` — PHP will
-represent this as:
+Superglobal `$_FILES` ima nekaj dobro znanih težav, ko se dela s polji
+vnosnih datotek. Kot primer, če imate obrazec, ki pošlje polje datotek
+— npr. ime vnosa "files", pošiljanje `files[0]` in `files[1]` — PHP bo
+predstavil to kot:
 
 ```php
 array(
@@ -346,7 +345,7 @@ array(
 )
 ```
 
-instead of the expected:
+namesto pričakovanega:
 
 ```php
 array(
@@ -365,44 +364,44 @@ array(
 )
 ```
 
-The result is that consumers need to know this language implementation detail,
-and write code for gathering the data for a given upload.
+Rezultat je, da morajo uporabniki vedeti to podrobnost implementacije jezika,
+in pisati kodo za pridobivanje podatkov za dano nalaganje.
 
-Additionally, scenarios exist where `$_FILES` is not populated when file uploads
-occur:
+Dodatno, scenariji obstajajo, kjer `$_FILES` ni zapolnjen, ko se zgodi nalaganje
+datoteke:
 
-- When the HTTP method is not `POST`.
-- When unit testing.
-- When operating under a non-SAPI environment, such as [ReactPHP](http://reactphp.org).
+- Ko metoda HTTP ni `POST`.
+- Ko se dela teste enot.
+- Ko se operira pod okoljem ne-SAPI, kot je [ReactPHP](http://reactphp.org).
 
-In such cases, the data will need to be seeded differently. As examples:
+V takih primerih bodo podatki morali biti sejani drugačno. Kot primer:
 
-- A process might parse the message body to discover the file uploads. In such
-  cases, the implementation may choose *not* to write the file uploads to the
-  file system, but instead wrap them in a stream in order to reduce memory,
-  I/O, and storage overhead.
-- In unit testing scenarios, developers need to be able to stub and/or mock the
-  file upload metadata in order to validate and verify different scenarios.
+- Proces lahko prevede telo sporočila, da odkrije nalaganje datotek. V takih
+  primerih lahko implementacija izbere, da *ne* zapiše naloženih datotek
+  v datotečni sistem, vendar jih namesto tega ovije v tok, da zmanjša spomin,
+  I/O in preveliko uporabo shrambe.
+- V scenarijih testiranja enot, morajo biti razvijalci zmožni potrgati in/ali oponašati
+  metapodatke nalaganja datotek, da preverijo in potrdijo različne scenarije.
 
-`getUploadedFiles()` provides the normalized structure for consumers.
-Implementations are expected to:
+`getUploadedFiles()` ponuja normalizirano strukturo za uporabnike.
+Implementacije so pričakovane, da:
 
-- Aggregate all information for a given file upload, and use it to populate a
-  `Psr\Http\Message\UploadedFileInterface` instance.
-- Re-create the submitted tree structure, with each leaf being the appropriate
-  `Psr\Http\Message\UploadedFileInterface` instance for the given location in
-  the tree.
+- Sestavljajo vse informacije za dano nalaganje datoteke in jo uporabijo za polnjenje
+  instance `Psr\Http\Message\UploadedFileInterface`.
+- Ponovno ustvarijo drevesno strukturo, ki je z vsakim listom ustrezna
+  instanca `Psr\Http\Message\UploadedFileInterface` za dano lokacijo v
+  drevesu.
 
-The tree structure referenced should mimic the naming structure in which files
-were submitted.
+Sklicana struktura drevesa bi morala oponašati strukturo poimenovanja v kateri so datoteke
+poslane.
 
-In the simplest example, this might be a single named form element submitted as:
+V najenostavnejšem primeru je to lahko eno poimenovanje elementa obrazca poslanega kot:
 
 ```html
 <input type="file" name="avatar" />
 ```
 
-In this case, the structure in `$_FILES` would look like:
+V tem primeru bi struktura v `$_FILES` izgledala takole:
 
 ```php
 array(
@@ -416,7 +415,7 @@ array(
 )
 ```
 
-The normalized form returned by `getUploadedFiles()` would be:
+Normalizirana oblika vrnjega od `getUploadedFiles()` bi bila:
 
 ```php
 array(
@@ -424,13 +423,13 @@ array(
 )
 ```
 
-In the case of an input using array notation for the name:
+V primeru vnosa z uporabo zapisa polja za ime:
 
 ```html
 <input type="file" name="my-form[details][avatar]" />
 ```
 
-`$_FILES` ends up looking like this:
+`$_FILES` na koncu izgleda takole:
 
 ```php
 array(
@@ -448,7 +447,7 @@ array(
 )
 ```
 
-And the corresponding tree returned by `getUploadedFiles()` should be:
+In pripadajoče drevo vrnjeno z `getUploadedFiles()` bi moralo biti:
 
 ```php
 array(
@@ -460,19 +459,19 @@ array(
 )
 ```
 
-In some cases, you may specify an array of files:
+V nekaterih primerih lahko določite polje datotek:
 
 ```html
-Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
-Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
+Upload an avatar: <input type="file" "name="my-form[details][avatars][]" />
+Upload an avatar: <input type="file" "name="my-form[details][avatars][]" />
 ```
 
-(As an example, JavaScript controls might spawn additional file upload inputs to
-allow uploading multiple files at once.)
+(Kot primer, JavaScript kontrole lahko dodajo dodatne vnose nalaganja datotek, da
+omogočijo nalaganje večih datotek naenkrat.)
 
-In such a case, the specification implementation must aggregate all information
-related to the file at the given index. The reason is because `$_FILES` deviates
-from its normal structure in such cases:
+V takem primeru, mora biti implementacije specifikacije sestavljena iz vseh informacij,
+ki se tičejo datoteke na danem indeksu. Razlog je, ker `$_FILES` odstopa
+od svoje normalne strukture v takih primerih:
 
 ```php
 array(
@@ -510,8 +509,8 @@ array(
 )
 ```
 
-The above `$_FILES` array would correspond to the following structure as
-returned by `getUploadedFiles()`:
+Zgornje polje `$_FILES` bi ustrezalo sledeči strukturi kot
+je vrnjena z `getUploadedFiles()`:
 
 ```php
 array(
@@ -527,17 +526,17 @@ array(
 )
 ```
 
-Consumers would access index `1` of the nested array using:
+Uporabniki bi dostopali do indeksa `1` vgnezdenega polja z uporabo:
 
 ```php
 $request->getUploadedFiles()['my-form']['details']['avatars'][1];
 ```
 
-Because the uploaded files data is derivative (derived from `$_FILES` or the
-request body), a mutator method, `withUploadedFiles()`, is also present in the
-interface, allowing delegation of the normalization to another process.
+Ker so podatki naloženih datotek derivati (pridobljeni iz `$_FILES`) ali
+telesa zahtevka), je metoda mutatorja `ẁithUploadedFiles()` tudi prisotna v
+vmesniku, kar omogoča delegiranje normalizacije drugemu procesu.
 
-In the case of the original examples, consumption resembles the following:
+V primeru prvotnih primerov, uproaba odraža sledeče:
 
 ```php
 $file0 = $request->getUploadedFiles()['files'][0];
@@ -552,20 +551,20 @@ printf(
 // "Received the files file0.txt and file1.html"
 ```
 
-This proposal also recognizes that implementations may operate in non-SAPI
-environments. As such, `UploadedFileInterface` provides methods for ensuring
-operations will work regardless of environment. In particular:
+Ta predlog tudi prepoznava, da implementacije lahko operirajo v ne-SAPI
+okoljih. Kot take `UploadedFileInterface` ponujajo metode za zagotavljanje
+operacij, ki bodo delovale ne glede na okolje. Še posebej:
 
-- `moveTo($targetPath)` is provided as a safe and recommended alternative to calling
-  `move_uploaded_file()` directly on the temporary upload file. Implementations
-  will detect the correct operation to use based on environment.
-- `getStream()` will return a `StreamInterface` instance. In non-SAPI
-  environments, one proposed possibility is to parse individual upload files
-  into `php://temp` streams instead of directly to files; in such cases, no
-  upload file is present. `getStream()` is therefore guaranteed to work
-  regardless of environment.
+- `moveTo($targetPath)` je ponujen kot varnost in priporočena alternativa klicanju
+  `move_uploaded_file()` direktno na začasno naloženi datoteki. Implementacije
+  bodo zaznale ustrezno operacijo za uporabo na osnovi okolja.
+- `getStream()` bo vrnil instanco `StreamInterface`. V ne-SAPI
+  okoljih je ena predlagana možnost prevajanje individualnih naloženih datotek
+  v `php://temp` tokove namesto direktno v datoteke; v takih primerih
+  ni prisotna nobena datoteka. `getStream()` torej garantirano deluje
+  ne glede na okolje.
 
-As examples:
+Kot primeri:
 
 ```
 // Move a file to an upload directory
@@ -584,12 +583,12 @@ $stream = new Psr7StreamWrapper($file1->getStream());
 stream_copy_to_stream($stream, $s3wrapper);
 ```
 
-## 2. Package
+## 2. Paket
 
-The interfaces and classes described are provided as part of the
-[psr/http-message](https://packagist.org/packages/psr/http-message) package.
+Vmesniki in opisani razredi so ponujeni kot del
+paketa [psr/http-message](https://packagist.org/packages/psr/http-message).
 
-## 3. Interfaces
+## 3. Vmesniki
 
 ### 3.1 `Psr\Http\Message\MessageInterface`
 

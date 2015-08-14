@@ -228,11 +228,11 @@ Simensen started an experimental revision with an eye to PSR-0; the Editor and
 Sponsors favored this more terse approach and shepherded the version now under
 consideration, written by Paul M. Jones and contributed to by many.
 
-### Compatability Note with PHP 5.3.2 and below
+### Compatibility Note with PHP 5.3.2 and below
 
 PHP versions before 5.3.3 do not strip the leading namespace separator, so 
 the responsibility to look out for this falls on the implementation. Failing 
-to strip the leading namespace seperator could lead to unexpected behavior. 
+to strip the leading namespace separator could lead to unexpected behavior. 
 
 
 5. People

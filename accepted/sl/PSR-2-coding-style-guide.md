@@ -13,9 +13,9 @@ imeti en skupek smernic, ki so uporabljene med vsemi temi projekti. Tako
 korist tega vodiča ni v samih pravilih, vendar v deljenju
 teh pravil.
 
-Ključne besede "MORA", "NE SME", "ZAHTEVANO", "SE", "SE NE", "BI MORALO",
-"NE BI MORALO", "PRIPOROČLJIVO", "LAHKO" in "OPCIJSKO" v tem dokumentu se
-interpretira, kot je opisano v [RFC 2119].
+Ključne besede "MORA", "NE SME", "ZAHTEVA", "PRIPOROČA", "LAHKO" in "NEOBVEZNO"
+v tem dokumentu se tolmačijo, kot je navedeno v
+[RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
@@ -44,7 +44,7 @@ interpretira, kot je opisano v [RFC 2119].
 - Vidnost MORA biti deklarirana na vseh lastnostih in metodah; `abstract` in
   `final` MORATA biti deklarirana pred vidnostjo; `static` MORA biti deklariran
   za vidnostjo.
-  
+
 - Kontrolne strukture ključnih besed MORAJO imeti za njimi en presledek; klic metode in
   funkcije NE SME.
 
@@ -622,8 +622,8 @@ Prihodnje priporočila LAHKO revidirajo in razširjajo ta vodič, da naslovijo t
 ostale elemente sloga in praks.
 
 
-Appendix A. Raziskava
----------------------
+Priloga A. Raziskava
+--------------------
 
 Pri pisanju tega vodiča stila je skupina izvedla raziskavo projektov članov za
 ugotovitev skupnih praks. Raziskava je dana tu za ponazoritev.
