@@ -64,5 +64,5 @@ _**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 [psr6]: https://github.com/Crell/fig-standards/blob/Cache/proposed/
 [psr7]: /psr/psr-7/
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/psr-8-hug.md
-[psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure.md
+[psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/pull/473
