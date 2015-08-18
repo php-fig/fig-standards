@@ -28,7 +28,6 @@
             <xs:enumeration value="high" />
         </xs:restriction>
     </xs:simpleType>
-    
 
     <xs:simpleType name="status">
         <xs:restriction base="xs:string">
