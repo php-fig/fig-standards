@@ -12,15 +12,15 @@
     <xs:element name="cve" type="xs:string" />
 
     <xs:element name="cwe" type="xs:string" minOccurs="0" />
-    
+
     <xs:element name="reported" type="atom:dateTimeType" minOccurs="0" maxOccurs="1" />
 
     <xs:element name="reportedBy" type="atom:dateTimeType" minOccurs="0" maxOccurs="unbounded" />
-    
+
     <xs:element name="reportedBy" type="atom:personType" minOccurs="0" maxOccurs="unbounded" />
-    
+
     <xs:element name="resolvedBy" type="atom:personType" minOccurs="0" maxOccurs="unbounded" />
-    
+
     <xs:simpleType name="severity">
         <xs:restriction base="xs:string">
             <xs:enumeration value="low" />
