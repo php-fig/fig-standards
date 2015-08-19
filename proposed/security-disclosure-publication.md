@@ -76,6 +76,9 @@ namespace (required tags are labeled with "MUST"):
 
 In addition the following tags are added:
 
+* reported (initial report date)
+* reportedBy (contact information for the persons or entity that initially reported the vulnerability)
+* resolvedBy (contact information for the persons or entity that resolved the vulnerability)
 * name (name of the product, MUST)
 * cve (unique CVE ID)
 * cwe (unique CWE ID)
