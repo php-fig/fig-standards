@@ -49,7 +49,7 @@ by an integer representing time in seconds, or a DateInterval object.
 typically calculated by adding the TTL to the time when an object is stored, but
 may also be explicitly set with DateTime object.
 
-    An item with a 300 second TTL stored at 1:30:00 will have an expiration at
+    An item with a 300 second TTL stored at 1:30:00 will have an expiration of
     1:35:00.
 
     Implementing Libraries MAY expire an item before its requested Expiration Time,
