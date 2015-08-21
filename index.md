@@ -8,12 +8,13 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 
 ### Draft
 
-| Num | Title                          | Editor                  |  Coordinator   | Sponsor        |
-|:---:|--------------------------------|-------------------------|----------------|----------------|
-| 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon  | Donald Gilbert |
-| 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans      | Paul Jones     |
-| 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
-| 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith       | Larry Garfield | Korvin Szanto  |
+| Num | Title                          | Editor(s)                      |  Coordinator   | Sponsor         |
+|:---:|--------------------------------|--------------------------------|----------------|-----------------|
+| 5   | [PHPDoc Standard][psr5]        | Mike van Riel                  | Phil Sturgeon  | Donald Gilbert  |
+| 8   | [Huggable Interface][psr8]     | Larry Garfield                 | Cal Evans      | Paul Jones      |
+| 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith              | Korvin Szanto  | Larry Garfield  |
+| 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith              | Larry Garfield | Korvin Szanto   |
+| 11  | [Container Interface][psr11]   | Matthieu Napoli, David Négrier | Paul M. Jones  | Jeremy Lindblom |
 
 ### Review
 
@@ -39,19 +40,20 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 
 ## Numerical Index
 
-| Status | Num | Title                          | Editor                  |  Coordinator   | Sponsor        |
-|--------|:---:|--------------------------------|-------------------------|----------------|----------------| 
-| A      | 0   | [Autoloading Standard][psr0]   | _N/A_                   | _N/A_          | _N/A_          |
-| A      | 1   | [Basic Coding Standard][psr1]  | _N/A_                   | _N/A_          | _N/A_          |
-| A      | 2   | [Coding Style Guide][psr2]     | _N/A_                   | _N/A_          | _N/A_          |
-| A      | 3   | [Logger Interface][psr3]       | Jordi Boggiano          | _N/A_          | _N/A_          |
-| A      | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon  | Larry Garfield |
-| D      | 5   | [PHPDoc Standard][psr5]        | Mike van Riel           | Phil Sturgeon  | Donald Gilbert |
-| R      | 6   | [Caching Interface][psr6]      | Larry Garfield          | Beau Simensen  | Pádraic Brady  |
-| A      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen  | Paul Jones     |
-| D      | 8   | [Huggable Interface][psr8]     | Larry Garfield          | Cal Evans      | Paul Jones     |
-| D      | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith       | Korvin Szanto  | Larry Garfield |
-| D      | 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith       | Larry Garfield | Korvin Szanto  |
+| Status | Num | Title                          | Editor(s)                      |  Coordinator   | Sponsor         |
+|--------|:---:|--------------------------------|--------------------------------|----------------|-----------------| 
+| A      | 0   | [Autoloading Standard][psr0]   | _N/A_                          | _N/A_          | _N/A_           |
+| A      | 1   | [Basic Coding Standard][psr1]  | _N/A_                          | _N/A_          | _N/A_           |
+| A      | 2   | [Coding Style Guide][psr2]     | _N/A_                          | _N/A_          | _N/A_           |
+| A      | 3   | [Logger Interface][psr3]       | Jordi Boggiano                 | _N/A_          | _N/A_           |
+| A      | 4   | [Autoloading Standard][psr4]   | Paul M. Jones                  | Phil Sturgeon  | Larry Garfield  |
+| D      | 5   | [PHPDoc Standard][psr5]        | Mike van Riel                  | Phil Sturgeon  | Donald Gilbert  |
+| R      | 6   | [Caching Interface][psr6]      | Larry Garfield                 | Beau Simensen  | Pádraic Brady   |
+| A      | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney        | Beau Simensen  | Paul Jones      |
+| D      | 8   | [Huggable Interface][psr8]     | Larry Garfield                 | Cal Evans      | Paul Jones      |
+| D      | 9   | [Security Disclosure][psr9]    | Lukas Kahwe Smith              | Korvin Szanto  | Larry Garfield  |
+| D      | 10  | [Security Advisories][psr10]   | Lukas Kahwe Smith              | Larry Garfield | Korvin Szanto   |
+| D      | 11  | [Container Interface][psr11]   | Matthieu Napoli, David Négrier | Paul M. Jones  | Jeremy Lindblom |
 
 _**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 
@@ -66,3 +68,4 @@ _**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/psr-8-hug.md
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/pull/473
+[psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
