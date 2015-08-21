@@ -358,22 +358,6 @@ interface CacheItemPoolInterface
 }
 ```
 
-### InvalidArgumentException
-
-```php
-namespace Psr\Cache;
-
-/**
- * Exception interface for invalid cache arguments.
- *
- * Any time an invalid argument is passed into a method it must throw an
- * exception class which implements Psr\Cache\InvalidArgumentException.
- */
-interface InvalidArgumentException
-{
-}
-```
-
 ### CacheException
 
 This exception interface is intended for use when critical errors occur,
@@ -389,6 +373,22 @@ namespace Psr\Cache;
  * Exception interface for all exceptions thrown by an Implementing Library.
  */
 interface CacheException
+{
+}
+```
+
+### InvalidArgumentException
+
+```php
+namespace Psr\Cache;
+
+/**
+ * Exception interface for invalid cache arguments.
+ *
+ * Any time an invalid argument is passed into a method it must throw an
+ * exception class which implements Psr\Cache\InvalidArgumentException.
+ */
+interface InvalidArgumentException extends CacheException
 {
 }
 ```
