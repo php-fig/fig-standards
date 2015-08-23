@@ -79,8 +79,8 @@ new functionality as opposed to establishing a new conventions.
 
 ### 5.2 Sponsors
 
-* Another - Another
 * Korvin Szanto - concrete5 (Coordinator)
+* Alexander Makarov - Yii Framework
 
 6. Votes
 --------
