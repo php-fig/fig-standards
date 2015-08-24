@@ -15,7 +15,7 @@ most notably recent changes for PHP 7, which have implications for coding style
 guidelines. Whilst PSR-2 is very comprehensive of PHP functionality that existed at
 the time of writing, new functionality is very open to interpretation. PSR-N seeks
 to provide a set way that both coding style tools can implement, projects can declare
-adhearance to and developers can easily relate on between different projects for these
+adherence to and developers can easily relate on between different projects for these
 coding style reducing cognitive friction.
 
 PSR-2 was created based upon the common practices of the PHP FIG projects at the time
@@ -28,7 +28,7 @@ than descriptive of the projects, but this is in the hope that it will mean that
 are more likely to adhere to it as it becomes a case of following the guide when code is
 initally written as opposed to changing large amounts of existing code.
 
-However it is for a lack of wanting to be dictaorial that we will aim to apply PSR-2
+However it is for a lack of wanting to be dictatorial that we will aim to apply PSR-2
 styling, rationale and stances (Described in Section 4, Approaches) in PSR-N instead of
 establishing new conventions.
 
