@@ -12,10 +12,10 @@ Style PSR. Its goal is to explain the reasons behind each decision.
 
 PSR-2 was accepted in 2012 and since then a number of changes have been made to PHP,
 most notably recent changes for PHP 7, which have implications for coding style
-guidelines. Whilst PSR-2 is very comprehensive of php functionality that existed at
+guidelines. Whilst PSR-2 is very comprehensive of PHP functionality that existed at
 the time of writing, new functionality is very open to interpretation. PSR-N seeks
 to provide a set way that both coding style tools can implement, projects can declare
-ahearance to and developers can easily relate to between different projects for these
+adhearance to and developers can easily relate on between different projects for these
 coding style reducing cognitive friction.
 
 PSR-2 was created based upon the common practices of the PHP FIG projects at the time
