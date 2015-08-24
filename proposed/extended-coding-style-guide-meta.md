@@ -26,7 +26,7 @@ great (losing git history, huge changesets and breaking existing patches/pull re
 this therefore hurt adoption of PSR-2. Therefore, whilst PSR-N will be more prescriptive
 than descriptive of the projects, but this is in the hope that it will mean that projects
 are more likely to adhere to it as it becomes a case of following the guide when code is
-initally written as opposed to changing large amounts of existing code.
+initially written as opposed to changing large amounts of existing code.
 
 However it is for a lack of wanting to be dictatorial that we will aim to apply PSR-2
 styling, rationale and stances (Described in Section 4, Approaches) in PSR-N instead of
@@ -47,7 +47,7 @@ This PSR shares the same goals as PSR-2.
 > not in the rules themselves, but in the sharing of those rules.
 
 This PSR is an extension of PSR-2, and therefore also an extension of PSR-1. It shall be
-included in the document that compliance with PSR-N implictly requires compliance with
+included in the document that compliance with PSR-N implicitly requires compliance with
 PSR-2 and PSR-1.
 
 This PSR will include coding style guidelines related to new functionality added to PHP
@@ -67,7 +67,7 @@ PSR-N will also not change anything stipulated in PSR-1 and PSR-2.
 -------------
 
 The overarching approach is to attempt to apply existing PSR-2 styling and rationale to
-new functionality as opposed to establishing a new conventions.
+new functionality as opposed to establishing new conventions.
 
 
 5. People
@@ -93,4 +93,4 @@ new functionality as opposed to establishing a new conventions.
 _**Note:** Order descending chronologically._
 
 * [Inspiration Mailing List Thread](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/php-fig/wh9avopSR9k)
-* [Inital Mailing List PSR Proposal Thread](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/php-fig/MkFacLdfGso)
+* [Initial Mailing List PSR Proposal Thread](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/php-fig/MkFacLdfGso)
