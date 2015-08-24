@@ -85,7 +85,7 @@ new functionality as opposed to establishing a new conventions.
 6. Votes
 --------
 
-* **Entrance Vote: ** http://groups.google.com...
+* **Entrance Vote: ** https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/php-fig/P9atZLOcUBM/_jwkvlYKEAAJ
 
 7. Relevant Links
 -----------------
