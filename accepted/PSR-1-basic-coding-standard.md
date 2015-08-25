@@ -22,7 +22,7 @@ interpreted as described in [RFC 2119].
 - Files MUST use only UTF-8 without BOM for PHP code.
 
 - Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
-  *or* cause side-effects (e.g. generate output, change INI settings, etc.)
+  *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
   but SHOULD NOT do both.
 
 - Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
@@ -57,7 +57,7 @@ declaring classes, functions, constants, etc., *merely from including the
 file*.
 
 "Side effects" include but are not limited to: generating output, explicit
-use of `require` or `include`, connecting to external services, modifying INI
+use of `require` or `include`, connecting to external services, modifying ini
 settings, emitting errors or exceptions, modifying global or static variables,
 reading from or writing to a file, and so on.
 
