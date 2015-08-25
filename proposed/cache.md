@@ -310,7 +310,7 @@ interface CacheItemPoolInterface
      * To avoid that potential race condition use isHit() instead.
      *
      * @param string $key
-     *    The key for which to check existance.
+     *    The key for which to check existence.
      * @return boolean
      *  True if item exists in the cache, false otherwise.
      */
