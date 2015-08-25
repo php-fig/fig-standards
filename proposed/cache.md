@@ -309,10 +309,12 @@ interface CacheItemPoolInterface
      * reasons, which could result in a race condition between exists() and get().
      * To avoid that potential race condition use isHit() instead.
      *
+     * @param string $key
+     *    The key for which to check existance.
      * @return boolean
      *  True if item exists in the cache, false otherwise.
      */
-    public function itemExists();
+    public function itemExists($key);
 
     /**
      * Deletes all items in the pool.
