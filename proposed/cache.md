@@ -305,9 +305,7 @@ interface CacheItemPoolInterface
     /**
      * Confirms if the cache item exists in the cache.
      *
-     * Note: This method MAY avoid retrieving the cached value for performance
-     * reasons, which could result in a race condition between exists() and get().
-     * To avoid that potential race condition use isHit() instead.
+     * Note: This method MAY avoid retrieving the cached value for performance reasons.
      *
      * @param string $key
      *    The key for which to check existence.
