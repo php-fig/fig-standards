@@ -154,113 +154,120 @@ pertinents et une suite de tests pour vérifier votre mise en œuvre fournies pa
 namespace Psr\Log;
 
 /**
- * Décrit une instance logger
+ * Describes a logger instance.
  *
- * Le message DOIT être une chaîne ou un objet qui implémente __ toString ().
+ * The message MUST be a string or object implementing __toString().
  *
- * Le message PEUT contenir des marqueurs à la forme: {foo} où foo
- * sera remplacé par les données de contexte à clé "foo".
+ * The message MAY contain placeholders in the form: {foo} where foo
+ * will be replaced by the context data in key "foo".
  *
- * Le tableau de contexte peut contenir des données arbitraires, la seule
- * hypothèse qui peut être faite par des réalisateurs, c'est que si une instance
- * de Exception est donné pour produire une trace de la pile, il DOIT être dans
- * une clé nommée "exception".
+ * The context array can contain arbitrary data. The only assumption that
+ * can be made by implementors is that if an Exception instance is given
+ * to produce a stack trace, it MUST be in a key named "exception".
  *
- * Voir https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
- * pour la spécification d'interface complète.
+ * See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
+ * for the full interface specification.
  */
 interface LoggerInterface
 {
     /**
-     * Le système est inutilisable.
+     * System is unusable.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function emergency($message, array $context = array());
 
     /**
-     * Des mesures doivent être prises immédiatement.
-     *
-     * Exemple: Tout le site est hors service, la base de données est
-     * indisponible, etc. Cela devrait déclencher des alertes par SMS et vous
-     * réveiller.
+     * Action must be taken immediately.
+     *
+     * Example: Entire website down, database unavailable, etc. This should
+     * trigger the SMS alerts and wake you up.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function alert($message, array $context = array());
 
     /**
-     * Conditions critiques.
-     *
-     * Exemple: Composant d'application indisponible, exception inattendue.
+     * Critical conditions.
+     *
+     * Example: Application component unavailable, unexpected exception.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function critical($message, array $context = array());
 
     /**
-     * Erreurs d'exécution qui ne nécessitent pas une action immédiate mais doit
-     * normalement être journalisée et contrôlée.
+     * Runtime errors that do not require immediate action but should typically
+     * be logged and monitored.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function error($message, array $context = array());
 
     /**
-     * Événements exceptionnels qui ne sont pas des erreurs.
-     *
-     * Exemple: Utilisation des API obsolètes, mauvaise utilisation d'une API,
-     * indésirables élements qui ne sont pas nécessairement mauvais.
+     * Exceptional occurrences that are not errors.
+     *
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things
+     * that are not necessarily wrong.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function warning($message, array $context = array());
 
     /**
-     * Événements normaux mais significatifs.
+     * Normal but significant events.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function notice($message, array $context = array());
 
     /**
-     * Événements intéressants.
+     * Interesting events.
      *
-     * Exemple: Connexion utilisateur, journaux SQL.
+     * Example: User logs in, SQL logs.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function info($message, array $context = array());
 
     /**
-     * Informations détaillées de débogage.
+     * Detailed debug information.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function debug($message, array $context = array());
 
     /**
-     * Logs avec un niveau arbitraire.
+     * Logs with an arbitrary level.
      *
-     * @param mixed $level
+     * @param mixed  $level
      * @param string $message
-     * @param array $context
+     * @param array  $context
+     *
      * @return null
      */
     public function log($level, $message, array $context = array());
@@ -276,14 +283,15 @@ interface LoggerInterface
 namespace Psr\Log;
 
 /**
- * Décrit une instance logger-aware
+ * Describes a logger-aware instance.
  */
 interface LoggerAwareInterface
 {
     /**
-     * Définit une instance logger sur l'objet
+     * Sets a logger instance on the object.
      *
      * @param LoggerInterface $logger
+     *
      * @return null
      */
     public function setLogger(LoggerInterface $logger);
@@ -299,17 +307,17 @@ interface LoggerAwareInterface
 namespace Psr\Log;
 
 /**
- * Décrit les niveaux de journalisation
+ * Describes log levels.
  */
 class LogLevel
 {
     const EMERGENCY = 'emergency';
-    const ALERT     = 'alert';
-    const CRITICAL  = 'critical';
-    const ERROR     = 'error';
-    const WARNING   = 'warning';
-    const NOTICE    = 'notice';
-    const INFO      = 'info';
-    const DEBUG     = 'debug';
+    const ALERT = 'alert';
+    const CRITICAL = 'critical';
+    const ERROR = 'error';
+    const WARNING = 'warning';
+    const NOTICE = 'notice';
+    const INFO = 'info';
+    const DEBUG = 'debug';
 }
 ```
