@@ -72,4 +72,4 @@ _**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 [psr10]: https://github.com/php-fig/fig-standards/pull/473
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
-[psr12]: https://github.com/cs-extended/fig-standards/blob/pre-draft/proposed/extended-coding-style-guide.md
+[psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
