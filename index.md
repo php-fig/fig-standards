@@ -37,7 +37,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | 9   | [Security Disclosure][psr9]          | Lukas Kahwe Smith              | Korvin Szanto  | Larry Garfield    |
 | 10  | [Security Advisories][psr10]         | Lukas Kahwe Smith              | Larry Garfield | Korvin Szanto     |
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones  | Jeremy Lindblom   |
-| 11  | [Extended Coding Style Guide][psr12] | Michael Cullum                 | Korvin Szanto  | Alexander Makarov |
+| 12  | [Extended Coding Style Guide][psr12] | Michael Cullum                 | Korvin Szanto  | Alexander Makarov |
 
 ## Numerical Index
 
