@@ -10,7 +10,7 @@ l'interfaccia per i loro scopi, ma DOVREBBERO rimanere compatibili con questo
 documento. Questo assicura che librerie di terze parti che un'applicazione
 potrebbe usare possano scrivere sui log centralizzati dell'applicazione.
 
-Le parole "DEVE/DEVONO/NECESSARIO(I)" ("MUST", "SHALL" O "REQUIRED"),
+Le parole "DEVE/DEVONO/RICHIESTO(I)" ("MUST", "SHALL" O "REQUIRED"),
 "NON DEVE/NON DEVONO" ("MUST NOT" O "SHALL NOT"), "DOVREBBE/DOVREBBERO/RACCOMANDATO(I)"
 ("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUÒ/POSSONO" ("MAY") e
 "OPZIONALE" ("OPTIONAL") in questo documento devono essere interpretate come
