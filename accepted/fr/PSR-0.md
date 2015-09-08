@@ -1,6 +1,10 @@
 Normes d'auto-chargement des classes
 ====================================
 
+> ** Obsolète ** - Le 21/10/2014 PSR-0 a été marqué comme obsolète. [PSR-4] est maintenant l'alternative recommandée.
+
+[PSR-4]: http://www.php-fig.org/psr/psr-4/fr/
+
 La section suivante décrit les conditions obligatoires qui doivent être
 respectées pour l'interopérabilité avec un chargeur de classes.
 
