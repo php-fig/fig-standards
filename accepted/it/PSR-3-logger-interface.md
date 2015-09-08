@@ -12,7 +12,7 @@ potrebbe usare possano scrivere sui log centralizzati dell'applicazione.
 
 Le parole "DEVE/DEVONO/NECESSARIO(I)" ("MUST", "SHALL" O "REQUIRED"),
 "NON DEVE/NON DEVONO" ("MUST NOT" O "SHALL NOT"), "DOVREBBE/DOVREBBERO/RACCOMANDATO(I)"
-("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUO'/POSSONO" ("MAY") e
+("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUÒ/POSSONO" ("MAY") e
 "OPZIONALE" ("OPTIONAL") in questo documento devono essere interpretate come
 descritto nella [RFC 2119][].
 
@@ -48,7 +48,7 @@ Gli utilizzatori dei logger saranno indicati con il termine `utente`.
   per gli oggetti passati. In caso contrario, gli implementatori DEVONO
   convertire l'oggetto in una stringa.
 
-- Il messaggio PUO' contenere segnaposto che gli implementatori POSSONO
+- Il messaggio PUÒ contenere segnaposto che gli implementatori POSSONO
   sostituire con valori dall'array di contesto.
 
   I nomi dei segnaposto DEVONO corrispondere alle chiavi dell'array di contesto.
@@ -124,7 +124,7 @@ Gli utilizzatori dei logger saranno indicati con il termine `utente`.
   possono implementare interfacce, in questo caso bisogna sempre implementare
   l'interfaccia `LoggerInterface`.
 
-- La classe `Psr\Log\NullLogger` è fornita assieme all'interfaccia. PUO' essere
+- La classe `Psr\Log\NullLogger` è fornita assieme all'interfaccia. PUÒ essere
   utilizzata dagli utenti dell'interfaccia per fornire un "buco nero" di riserva
   nel caso in cui nessun logger fosse necessario. In ogni caso il logging
   opzionale potrebbe essere un approccio migliore, se la creazione dei dati di 
