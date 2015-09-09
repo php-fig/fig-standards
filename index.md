@@ -59,14 +59,38 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 
 _**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 
+
+
+## Discussion and Voting 
+
+| Num | Title                                | Discussion Link | Vote Link                                  | +1/0/-1/NoVote    |
+|:---:|--------------------------------------|-----------------|--------------------------------------------|-------------------|
+| 0   | [Autoloading Standard][psr0]         | _N/A_           | _N/A_                                       | _N/A_            | 
+| 1   | [Basic Coding Standard][psr1]        | _N/A_           | _N/A_                                       | _N/A_            | 
+| 2   | [Coding Style Guide][psr2]           | _N/A_           | _N/A_                                       | _N/A_            |
+| 3   | [Logger Interface][psr3]             | _N/A_           | [PSR-3: Logger Interface][psr3-vote]        | 17/0/0/_N/A_     |
+| 4   | [Autoloading Standard][psr4]         | _N/A_           | [PSR-4: Autoloader][psr4-vote]              | 30/0/2/1         |
+| 5   | [PHPDoc Standard][psr5]              | _N/A_           | _N/A_                                       | _N/A_            | 
+| 6   | [Caching Interface][psr6]            | _N/A_           | _N/A_                                       | _N/A_            | 
+| 7   | [HTTP Message Interface][psr7]       | _N/A_           | [PSR-7: HTTP message interfaces][psr7-vote] | 34/0/1/4         |
+| 8   | [Huggable Interface][psr8]           | _N/A_           | _N/A_                                       | _N/A_            | 
+| 9   | [Security Disclosure][psr9]          | _N/A_           | _N/A_                                       | _N/A_            | 
+| 10  | [Security Advisories][psr10]         | _N/A_           | _N/A_                                       | _N/A_            | 
+| 11  | [Container Interface][psr11]         | _N/A_           | _N/A_                                       | _N/A_            | 
+| 12  | [Extended Coding Style Guide][psr12] | _N/A_           | _N/A_                                       | _N/A_            |
+
+
 [psr0]: /psr/psr-0/
 [psr1]: /psr/psr-1/
 [psr2]: /psr/psr-2/
 [psr3]: /psr/psr-3/
+[psr3-vote]: https://groups.google.com/forum/?fromgroups#!searchin/php-fig/PSR-3/php-fig/d0yPC7jWPAE/rhexAfz2T_8J
 [psr4]: /psr/psr-4/
+[psr4-vote]: https://groups.google.com/forum/?fromgroups#!searchin/php-fig/PSR-4/php-fig/L8oCDQCzDcs/QNNSO_5_rYgJ
 [psr5]: https://github.com/phpDocumentor/fig-standards/tree/master/proposed
 [psr6]: https://github.com/Crell/fig-standards/blob/Cache/proposed/
 [psr7]: /psr/psr-7/
+[psr7-vote]: https://groups.google.com/forum/?fromgroups#!searchin/php-fig/PSR-7/php-fig/0baLqR6Rvcg/AzZvhnpBYLAJ
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/psr-8-hug.md
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/pull/473
