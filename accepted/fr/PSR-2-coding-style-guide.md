@@ -506,7 +506,7 @@ try {
 6. Closures
 -----------
 
-Les closures DOIVENT être déclarées avec un espace après le mot-clé `fonction`
+Les closures DOIVENT être déclarées avec un espace après le mot-clé `function`
 et un espace avant et après le mot clé `use`.
 
 L'accolade ouvrante DOIT aller sur la même ligne, et l'accolade fermante doit
