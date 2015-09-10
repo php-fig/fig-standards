@@ -108,7 +108,7 @@ Il tag `?>` di chiusura DEVE essere omesso dai file che contengono soltanto PHP.
 NON DEVE esserci un limite rigido nella lunghezza delle righe.
 
 Il limite debole sulla lunghezza delle righe DEVE essere di 120 caratteri; correttori
-automatici di sile DEVONO avvertire ma NON DEVONO andare in errore al raggiungimento
+automatici di stile DEVONO avvertire ma NON DEVONO andare in errore al raggiungimento
 del limite debole.
 
 Le righe NON DOVREBBERO essere più lunghe di 80 caratteri; righe più lunghe DOVREBBERO
