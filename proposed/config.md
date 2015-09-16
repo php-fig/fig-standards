@@ -2,7 +2,9 @@
 
 This document describes common interfaces for configuration of factories.
 
-The goal set by the Config PSR is to standardize how factories uses a configuration to create instances, support for auto discovery of needed configuration, to reduce boilerplate code and to make it more readable and easier to understand. It can also be used to build the name of the *Container* entry.
+The goal set by the Config PSR is to standardize how factories uses a configuration to create instances, support for 
+auto discovery of needed configuration, to reduce boilerplate code and to make it more readable and easier to 
+understand. It can also be used to build the name of the *Container* entry.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -17,10 +19,10 @@ The word `Container` in this document is to be interpreted as the `ContainerInte
 
 ### 1.1 HasConfig
 
-The `PSR\Config\HasConfig` interface exposes two methods: `vendorName` and `componentName`
+The `PSR\Config\HasConfig` interface exposes two methods: `vendorName` and `packageName`
 
 * `vendorName` has no parameters and MUST return a string.
-* `componentName` has no parameters and MUST return a string.
+* `packageName` has no parameters and MUST return a string.
 
 ### 1.2 HasContainerId
 The `PSR\Config\HasContainerId` interface exposes one method: `containerId`
@@ -30,26 +32,36 @@ The `PSR\Config\HasContainerId` interface exposes one method: `containerId`
 ### 1.3 HasMandatoryOptions
 The `PSR\Config\HasMandatoryOptions` interface exposes one method: `mandatoryOptions`
 
-* `mandatoryOptions` has no parameters and MUST return an array of strings which represents the list of mandatory options.
+* `mandatoryOptions` has no parameters and MUST return an array of strings which represents the list of mandatory 
+options.
 
 ### 1.4 ObtainsOptions
 
 The `PSR\Config\ObtainsOptions` interface exposes one method: `options`
 
-* `options` takes one mandatory parameter: a configuration array. It MUST be an array or an object which implements the `ArrayAccess` interface. A call to `options` returns the configuration depending on the implemented interfaces of the class or throws an exception if the parameter is invalid or if the configuration is missing or if a mandatory option is missing.
+* `options` takes one mandatory parameter: a configuration array. It MUST be an array or an object which implements the 
+`ArrayAccess` interface. A call to `options` returns the configuration depending on the implemented interfaces of the 
+class or throws an exception if the parameter is invalid or if the configuration is missing or if a mandatory option is missing.
 
 ### 1.5 Exceptions
 Exceptions directly thrown by the `options` method MUST implement the `PSR\Config\Exception\ExceptionInterface`.
 
-If the configuration parameter is not an array or an object which implementes the `ArrayAccess` interface the method SHOULD throw a `PSR\Config\Exception\InvalidArgumentException`.
+If the configuration parameter is not an array or an object which implementes the `ArrayAccess` interface the method 
+SHOULD throw a `PSR\Config\Exception\InvalidArgumentException`.
 
-If the key which is returned from `vendorName` is not set in the configuration parameter the method SHOULD throw a `PSR\Config\Exception\InvalidArgumentException`.
+If the key which is returned from `vendorName` is not set in the configuration parameter the method SHOULD throw a 
+`PSR\Config\Exception\InvalidArgumentException`.
 
-If the key which is returned from `componentName` is not set under the key of `vendorName` in the configuration parameter the method SHOULD throw a `PSR\Config\Exception\OptionNotFoundException`.
+If the key which is returned from `packageName` is not set under the key of `vendorName` in the configuration parameter 
+the method SHOULD throw a `PSR\Config\Exception\OptionNotFoundException`.
 
-If the class implements the `HasContainerId` interface and if the key which is returned from `containerId` is not set under the key of `componentName` in the configuration parameter the method SHOULD throw a `PSR\Config\Exception\OptionNotFoundException`.
+If the class implements the `HasContainerId` interface and if the key which is returned from `containerId` is not set
+under the key of `packageName` in the configuration parameter the method SHOULD throw a 
+`PSR\Config\Exception\OptionNotFoundException`.
 
-If the class implements the `HasMandatoryOptions` interface and if a mandatory option from `mandatoryOptions` is not set in the options array which was retrieved from the configuration parameter before, the method SHOULD throw a `PSR\Config\Exception\MandatoryOptionNotFoundException`.
+If the class implements the `HasMandatoryOptions` interface and if a mandatory option from `mandatoryOptions` is not set 
+in the options array which was retrieved from the configuration parameter before, the method SHOULD throw a 
+`PSR\Config\Exception\MandatoryOptionNotFoundException`.
 
 ## 2. Package
 
@@ -79,11 +91,11 @@ interface HasConfig
     public function vendorName();
 
     /**
-     * Returns the component name
+     * Returns the package name
      *
      * @return string
      */
-    public function componentName();
+    public function packageName();
 }
 ```
 
@@ -150,14 +162,14 @@ use ArrayAccess;
 interface ObtainsOptions extends HasConfig
 {
     /**
-     * Returns options based on [vendor][component][id] and can perform mandatory option checks if class implements
+     * Returns options based on [vendor][package][id] and can perform mandatory option checks if class implements
      * MandatoryOptionsInterface. The HasContainerId interface is optional.
      *
      * <code>
      * return [
      *      // vendor name
      *     'doctrine' => [
-     *          // component name
+     *          // package name
      *          'connection' => [
      *             // container id, is optional
      *             'orm_default' => [
