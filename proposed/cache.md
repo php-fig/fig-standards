@@ -49,7 +49,7 @@ by an integer representing time in seconds, or a DateInterval object.
 typically calculated by adding the TTL to the time when an object is stored, but
 may also be explicitly set with DateTime object.
 
-    An item with a 300 second TTL stored at 1:30:00 will have an expiration at
+    An item with a 300 second TTL stored at 1:30:00 will have an expiration of
     1:35:00.
 
     Implementing Libraries MAY expire an item before its requested Expiration Time,
@@ -255,16 +255,6 @@ interface CacheItemInterface
      */
     public function expiresAfter($time);
 
-    /**
-     * Returns the expiration time of a not-yet-expired cache item.
-     *
-     * If this cache item is a Cache Miss, this method MAY return the time at
-     * which the item expired or the current time if that is not available.
-     *
-     * @return \DateTime
-     *   The timestamp at which this cache item will expire.
-     */
-    public function getExpiration();
 }
 ```
 
