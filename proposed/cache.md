@@ -67,12 +67,8 @@ supported by implementing libraries: `{}()/\@:`
 
 *    **Hit** - A cache hit occurs when a Calling Library requests an Item by key
 and a matching value is found for that key, and that value has not expired, and
-the value is not invalid for some other reason.
-
-*    **Exists** - When the item exists in the cache at the time of this call.
-As this is separate from isHit() there's a potential race condition between
-the time exists() is called and get() being called so Calling Libraries SHOULD
-make sure to verify isHit() on all of the get() calls.
+the value is not invalid for some other reason. Calling Libraries SHOULD make
+sure to verify isHit() on all of the get() calls.
 
 *    **Miss** - A cache miss is the opposite of a cache hit. A cache miss occurs
 when a Calling Library requests an item by key and that value not found for that
@@ -217,18 +213,6 @@ interface CacheItemInterface
     public function isHit();
 
     /**
-     * Confirms if the cache item exists in the cache.
-     *
-     * Note: This method MAY avoid retrieving the cached value for performance
-     * reasons, which could result in a race condition between exists() and get().
-     * To avoid that potential race condition use isHit() instead.
-     *
-     * @return boolean
-     *  True if item exists in the cache, false otherwise.
-     */
-    public function exists();
-
-    /**
      * Sets the expiration time for this cache item.
      *
      * @param \DateTimeInterface $expiration
@@ -303,6 +287,20 @@ interface CacheItemPoolInterface
      * traversable MUST be returned instead.
      */
     public function getItems(array $keys = array());
+
+    /**
+     * Confirms if the cache contains specified cache item.
+     *
+     * Note: This method MAY avoid retrieving the cached value for performance reasons.
+     * This could result in a race condition with CacheItemInterface::get(). To avoid
+     * such situation use CacheItemInterface::isHit() instead.
+     *
+     * @param string $key
+     *    The key for which to check existence.
+     * @return boolean
+     *  True if item exists in the cache, false otherwise.
+     */
+    public function hasItem($key);
 
     /**
      * Deletes all items in the pool.
