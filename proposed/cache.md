@@ -177,7 +177,7 @@ interface CacheItemInterface
      *
      * The value returned must be identical to the value original stored by set().
      *
-     * if isHit() returns false, this method MUST return null. Note that null
+     * If isHit() returns false, this method MUST return null. Note that null
      * is a legitimate cached value, so the isHit() method SHOULD be used to
      * differentiate between "null value was found" and "no value was found."
      *
