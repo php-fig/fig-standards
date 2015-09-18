@@ -59,13 +59,22 @@ standard.  A participating project MUST make reasonable effort to comply with
 the expectations of this standard.
 
 * **Participating Host** - A *participating host* is a company that offers web
-hosting to customers that includes the ability to execute PHP code.  Such hosts
-MAY be specific to a particular project or projects, or MAY offer general hosting
-for arbitrary PHP code. Such hosts MAY offer "shared hosting", virtual machines,
-dedicated hardware, cloud configurations, or any other form of hosting.  This
-standard applies to all offerings that include the ability to execute PHP code,
-and applies to all offered PHP SAPI configurations.  (That is, it applies to both 
-command line PHP and web scripts.)
+hosting to customers that includes the ability to execute PHP code and openly and
+publicly declares its intent to comply with the expectations of this standard. A
+participating host MUST make reasonable effort to comply with the expecatations of
+this standard.
+
+Such hosts MAY be specific to a particular project or projects, or MAY offer
+general hosting for arbitrary PHP code. Such hosts MAY offer "shared hosting",
+virtual machines, dedicated hardware, cloud configurations, or any other form of
+hosting.  This standard applies to all offerings that include the ability to
+execute PHP code, and applies to all offered PHP SAPI configurations.  (For instance,
+it applies to both  command line PHP and web scripts.)
+
+
+## Expectations of projects
+
+
 
 
 ## Expectations of hosts
