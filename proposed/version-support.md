@@ -53,3 +53,38 @@ PHP, regardless of cost.  A web host MAY require a user to select a non-default
 option in a control panel or similar, but MUST NOT require a custom configuration
 or other special arrangements with the host.
 
+* **Participating Project** - A *participating project* is a PHP project that
+openly and publicly declares its intent to comply with the expectations of this 
+standard.  A participating project MUST make reasonable effort to comply with
+the expectations of this standard.
+
+* **Participating Host** - A *participating host* is a company that offers web
+hosting to customers that includes the ability to execute PHP code.  Such hosts
+MAY be specific to a particular project or projects, or MAY offer general hosting
+for arbitrary PHP code. Such hosts MAY offer "shared hosting", virtual machines,
+dedicated hardware, cloud configurations, or any other form of hosting.  This
+standard applies to all offerings that include the ability to execute PHP code,
+and applies to all offered PHP SAPI configurations.  (That is, it applies to both 
+command line PHP and web scripts.)
+
+
+## Expectations of hosts
+
+A participating host MUST offer a new Minor Release of the PHP runtime within
+six (6) months of the date of its release.  The host MAY offer it at any time
+prior to that date, including the option to run pre-release versions.
+
+A participating host MUST offer a new Major Release of the PHP runtime within
+twelve (12) months of the date of its release.  The host MAY offer it at any time
+prior to that date, including the option to run pre-release versions.
+
+A participating host SHOULD run a Patch Release of the PHP runtime that is no
+older than three (3) months in order to minimize the risk of security vulnerabilities.
+
+A participating host SHOULD NOT offer a PHP release that reached its End-of-Life
+more than twelve (12) months ago. Such versions often have known security flaws.
+
+A participating host MUST NOT offer a PHP release that reached its End-of-Life
+more than twenty-four (24) months ago. Such versions usually have known security
+flaws and are a danger to users of those versions.
+
