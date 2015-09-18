@@ -175,7 +175,7 @@ interface CacheItemInterface
     /**
      * Retrieves the value of the item from the cache associated with this object's key.
      *
-     * The value returned must be identical to the value original stored by set().
+     * The value returned must be identical to the value originally stored by set().
      *
      * If isHit() returns false, this method MUST return null. Note that null
      * is a legitimate cached value, so the isHit() method SHOULD be used to
@@ -193,13 +193,14 @@ interface CacheItemInterface
      * although the method of serialization is left up to the Implementing
      * Library.
      *
-     * Implementing Libraries MAY provide a default TTL if one is not specified.
+     * Implementing Libraries MAY provide a default TTL if none is specified.
      * If no TTL is specified and no default TTL has been set, the TTL MUST
      * be set to the maximum possible duration of the underlying storage
      * mechanism, or permanent if possible.
      *
      * @param mixed $value
      *   The serializable value to be stored.
+     *
      * @return static
      *   The invoked object.
      */
@@ -211,7 +212,7 @@ interface CacheItemInterface
      * Note: This method MUST NOT have a race condition between calling isHit()
      * and calling get().
      *
-     * @return boolean
+     * @return bool
      *   True if the request resulted in a cache hit. False otherwise.
      */
     public function isHit();
@@ -223,8 +224,8 @@ interface CacheItemInterface
      * reasons, which could result in a race condition between exists() and get().
      * To avoid that potential race condition use isHit() instead.
      *
-     * @return boolean
-     *  True if item exists in the cache, false otherwise.
+     * @return bool
+     *  True if item exists in the cache. False otherwise.
      */
     public function exists();
 
@@ -270,11 +271,10 @@ Library.
 namespace Psr\Cache;
 
 /**
- * \Psr\Cache\CacheItemPoolInterface generates Cache\CacheItem objects.
+ * CacheItemPoolInterface generates CacheItemInterface objects.
  */
 interface CacheItemPoolInterface
 {
-
     /**
      * Returns a Cache Item representing the specified key.
      *
@@ -283,11 +283,13 @@ interface CacheItemPoolInterface
      *
      * @param string $key
      *   The key for which to return the corresponding Cache Item.
-     * @return \Psr\Cache\CacheItemInterface
-     *   The corresponding Cache Item.
-     * @throws \Psr\Cache\InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
      *   MUST be thrown.
+     *
+     * @return CacheItemInterface
+     *   The corresponding Cache Item.
      */
     public function getItem($key);
 
@@ -296,18 +298,19 @@ interface CacheItemPoolInterface
      *
      * @param array $keys
      * An indexed array of keys of items to retrieve.
+     *
      * @return array|\Traversable
-     * A traversable collection of Cache Items keyed by the cache keys of
-     * each item. A Cache item will be returned for each key, even if that
-     * key is not found. However, if no keys are specified then an empty
-     * traversable MUST be returned instead.
+     *   A traversable collection of Cache Items keyed by the cache keys of
+     *   each item. A Cache item will be returned for each key, even if that
+     *   key is not found. However, if no keys are specified then an empty
+     *   traversable MUST be returned instead.
      */
     public function getItems(array $keys = array());
 
     /**
      * Deletes all items in the pool.
      *
-     * @return boolean
+     * @return bool
      *   True if the pool was successfully cleared. False if there was an error.
      */
     public function clear();
@@ -316,9 +319,10 @@ interface CacheItemPoolInterface
      * Removes multiple items from the pool.
      *
      * @param array $keys
-     * An array of keys that should be removed from the pool.
+     *   An array of keys that should be removed from the pool.
+     *
      * @return static
-     * The invoked object.
+     *   The invoked object.
      */
     public function deleteItems(array $keys);
 
@@ -338,6 +342,7 @@ interface CacheItemPoolInterface
      *
      * @param CacheItemInterface $item
      *   The cache item to save.
+     *
      * @return static
      *   The invoked object.
      */
@@ -347,10 +352,9 @@ interface CacheItemPoolInterface
      * Persists any deferred cache items.
      *
      * @return bool
-     *   TRUE if all not-yet-saved items were successfully saved. FALSE otherwise.
+     *   True if all not-yet-saved items were successfully saved. False otherwise.
      */
     public function commit();
-
 }
 ```
 
@@ -365,7 +369,9 @@ namespace Psr\Cache;
  * Any time an invalid argument is passed into a method it must throw an
  * exception class which implements Psr\Cache\InvalidArgumentException.
  */
-interface InvalidArgumentException { }
+interface InvalidArgumentException
+{
+}
 ```
 
 ### CacheException
@@ -382,5 +388,7 @@ namespace Psr\Cache;
 /**
  * Exception interface for all exceptions thrown by an Implementing Library.
  */
-interface CacheException {}
+interface CacheException
+{
+}
 ```
