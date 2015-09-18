@@ -38,6 +38,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | 10  | [Security Advisories][psr10]         | Lukas Kahwe Smith              | Larry Garfield | Korvin Szanto     |
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones  | Jeremy Lindblom   |
 | 12  | [Extended Coding Style Guide][psr12] | Michael Cullum                 | Korvin Szanto  | Alexander Makarov |
+| 13  | [Version Support][psr13]             | Larry Garfield                 | Korvin Szanto  | Cal Evans         |
 
 ## Numerical Index
 
@@ -56,6 +57,7 @@ Unless a PSR is marked as "Accepted" it is subject to change. Draft can change d
 | D      | 10  | [Security Advisories][psr10]         | Lukas Kahwe Smith              | Larry Garfield | Korvin Szanto     |
 | D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones  | Jeremy Lindblom   |
 | D      | 12  | [Extended Coding Style Guide][psr12] | Michael Cullum                 | Korvin Szanto  | Alexander Makarov |
+| D      | 13  | [Version Support][psr13]             | Larry Garfield                 | Korvin Szanto  | Cal Evans         |
 
 _**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 
@@ -73,3 +75,4 @@ _**Legend:** A = Accepted | D = Draft | R = Review | V = Voting | X = Rejected_
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
+[psr13]: https://github.com/php-fig/fig-standards/blob/master/proposed/version-support.md
