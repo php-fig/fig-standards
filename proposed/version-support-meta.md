@@ -16,12 +16,22 @@ lag far behind PHP itself in terms of the languages features they adopt.
 2. Why Bother?
 --------------
 
+"What version can we support?" is a frequent challenge for PHP projects. That
+debate can eat up considerable development time, and fear of alienating users
+on older PHP versions can prevent a project from adopting new language features 
+that would benefit the project and its users.  That reluctance, in turn, means
+there is no incentive for public hosts to offer newer PHP versions that would 
+resolve that issue.
 
-Pros:
-* 
+This standard draws inspiration from the GoPHP5 initiative from 2007. In that 
+case, numerous projects and hosts collectively agreed on a drop-dead date for
+all PHP 4 versions, and that future releases would standardize on at least PHP 5.2.
+That initiative was successful in breaking the log-jam that kept PHP 4 alive well
+past its retirement and delayed the implementation of PHP 5.
 
-Cons:
-* 
+Rather than periodic "surge" efforts, this standard creates a rolling-GoPHP process
+that both projects and hosts can build into their planning.
+
 
 3. Scope
 --------
