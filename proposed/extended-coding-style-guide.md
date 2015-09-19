@@ -35,5 +35,43 @@ binding.
 1. Code MUST adhere to a "basic coding standard" PSR, [PSR-1][]
 1. Code MUST adhere to the "coding style guide" PSR, [PSR-2][]
 
-[PSR-2]: http://www.php-fig.org/psr/psr-2/
+3. Anoynmous Classes
+--------------------
+
+Anonymous Classes MUST be [PSR-2][] section 4 compatible barring the following
+exceptions.
+
+
+```
+<?php
+
+$instance = new class {};
+```
+
+The opening bracket MAY be on the same line as the `class` keyword so long as
+the list of `implements` interfaces does not wrap. If the list of interfaces
+wraps, the bracket MUST be placed on the line immediately following the last
+interface.
+
+```
+<?php
+
+// Bracket on the same line
+$instance = new class extends \Foo implements \HandleableInterface {
+
+};
+
+// Bracket on the next line
+$instance = new class extends \Foo implements
+    \ArrayAccess,
+    \Countable,
+    \Serializable
+{
+
+};
+
+
+```
+
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
+[PSR-2]: http://www.php-fig.org/psr/psr-2/
