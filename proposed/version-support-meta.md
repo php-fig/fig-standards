@@ -49,31 +49,61 @@ they can factor into their normal upgrade schedules.
 This document does not seek to impose any architectural decisions on participating
 projects, nor to dictate what language features they use.
 
-4. Participating projects
+
+4. Example release schedule
+---------------------------
+
+The following examples help illustrate with examples how a participating project
+and host could operate with respect to PHP releases.
+
+## 4.1 For projects
+
+### 4.1.1 PHP minor releases.
+
+Flubber 4.2 is the current release.  PHP 9.2.3 is the current stable release.
+
+On 1 March 2020, PHP 9.3.0 is released.
+
+Flubber 4.3 is released on 20 March. It is unaffected, because PHP 9.3 has been
+out for less than 90 days.
+
+Flubber 4.4 is released on 14 July. It is required to support PHP 9.3 because
+it has been out for more than 90 days.
+
+On 1 March 2021, PHP 9.4. is released.
+
+Flubber 5.0 is released on 20 March. It is unaffected, because PHP 9.4 has been
+out for less than 6 months.
+
+
+
+## 4.2
+
+5. Participating projects
 -------------------------
 
 
-5. Participating hosts
+6. Participating hosts
 ----------------------
 
 
-6. People
+7. People
 ---------
 
-### 5.1 Editor
+### 7.1 Editor
 
 * Larry Garfield
 
-### 5.2 Sponsors
+### 7.2 Sponsors
 
 * Korvin Szanto, Concrete5 (Coordinator)
 * Cal Evans, Community
 
 
-7. Votes
+8. Votes
 --------
 
 
-8. Relevant Links
+9. Relevant Links
 -----------------
 
