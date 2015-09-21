@@ -58,7 +58,7 @@ and host could operate with respect to PHP releases.
 
 ## 4.1 For projects
 
-### 4.1.1 PHP minor releases.
+### 4.1.1 PHP minor releases
 
 Flubber 4.2 is the current release.  PHP 9.2.3 is the current stable release.
 
@@ -75,9 +75,30 @@ On 1 March 2021, PHP 9.4. is released.
 Flubber 5.0 is released on 20 March. It is unaffected, because PHP 9.4 has been
 out for less than 6 months.
 
+### 4.1.2 PHP major releases
 
 
-## 4.2
+## 4.2 For hosts
+
+PHP 9.2.3 is the current stable release, and was released on 1 March 2020.
+PHP 9.1 is the legacy release.  PHP  9.0 is in security-only status.  Flubber
+Hosting offers PHP 9.2.1.
+
+Flubber Hosting has until 1 June 2020 to offer PHP 9.2.3.  When it does so it
+replaces all its 9.2.1 offerings with 9.2.3.
+
+PHP 9.3.0 is released on 1 July 2020.  Flubber Hosting has until 1 January 2021
+to offer 9.3.0.  It may make it the default for new accounts or not, but both
+new and old accounts must have the option to use it.
+
+PHP 9.0 security support ends entirely on 1 October 2020.  Flubber Hosting has
+until 1 October 2022 to cease offering PHP 9.0.x.
+
+PHP 10.0 is released on 1 April 2021.  Flubber Hosting has until 1 April 2022
+to offer it for both new and old accounts. It may be the default or not.  If
+a new minor or patch release comes out before then, it should be treated
+accordingly.
+
 
 5. Participating projects
 -------------------------
