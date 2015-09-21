@@ -51,7 +51,8 @@ either way when determining what language features to use.
 to host their application using that PHP version on all hosting plans that offer
 PHP, regardless of cost.  A web host MAY require a user to select a non-default
 option in a control panel or similar, but MUST NOT require a custom configuration
-or other special arrangements with the host.
+or other special arrangements with the host.  This requirement applies to both
+new and existing accounts.
 
 * **Participating Project** - A *participating project* is a PHP project that
 openly and publicly declares its intent to comply with the expectations of this 
