@@ -74,7 +74,21 @@ it applies to both  command line PHP and web scripts.)
 
 ## Expectations of projects
 
+A Major Release of a participating project MUST:
 
+* support the most recent stable Minor release of PHP as of thirty (30) days prior
+to its release.
+
+* support the most recent stable Major release of PHP as of six (6) months prior
+to its release.
+
+A Minor Release of a participating project MUST:
+
+* support the most recent stable Minor release of PHP as of ninety (90) days prior to its
+release.
+
+* support the most recent stable Major release of PHP as of twelve (12) months prior
+to its release.
 
 
 ## Expectations of hosts
@@ -96,4 +110,3 @@ more than twelve (12) months ago. Such versions often have known security flaws.
 A participating host MUST NOT offer a PHP release that reached its End-of-Life
 more than twenty-four (24) months ago. Such versions usually have known security
 flaws and are a danger to users of those versions.
-
