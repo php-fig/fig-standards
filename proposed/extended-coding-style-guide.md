@@ -35,7 +35,7 @@ binding.
 1. Code MUST adhere to a "basic coding standard" PSR, [PSR-1][]
 1. Code MUST adhere to the "coding style guide" PSR, [PSR-2][]
 
-3. Anoynmous Classes
+3. Anonymous Classes
 --------------------
 
 Anonymous Classes MUST be [PSR-2][] section 4 compatible barring the following
