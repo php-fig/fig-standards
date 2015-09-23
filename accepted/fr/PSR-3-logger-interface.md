@@ -46,11 +46,11 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
 
 - Toutes les méthodes acceptent de prendre en paramètre le message sous la forme 
   d'une chaine de caractère ou d'un objet avec une méthode `__toString()`. 
-  Les implémentations PEUVENT appliquer un traitement particulier sur les objets 
-  passés en paramètre. Si ce n'est pas le cas, les implémentations DOIVENT
+  Les développeurs PEUVENT appliquer un traitement particulier sur les objets 
+  passés en paramètre. Si ce n'est pas le cas, les développeurs DOIVENT
   les convertir en chaine de caractères.
 
-- Le message PEUT contenir des élément de substitution que les implémentations 
+- Le message PEUT contenir des élément de substitution que les développeurs 
   PEUVENT remplacer avec des valeurs issuent du tableau de contexte.
 
   Le nom des éléments de substitutions DOIVENT correspondre avec les clés du 
@@ -65,7 +65,7 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
   d'autres caractères est réservée aux modifications futures de la spécification
   des éléments de substitution.
 
-  Les implémentations PEUVENT utiliser des éléments de substitution pour mettre en 
+  Les développeurs PEUVENT utiliser des éléments de substitution pour mettre en 
   place différentes stratégies d'échappement et traduire les logs pour l'affichage.
   Les utilisateurs ne DEVRAIENT PAS pré-échapper les valeurs des éléments de substitutions
   parce qu'ils ne peuvent pas savoir dans quel contexte elles seront affichées.
@@ -168,7 +168,7 @@ namespace Psr\Log;
  * sera remplacé par les données de contexte à clé "foo".
  *
  * Le tableau de contexte peut contenir des données arbitraires, la seule
- * hypothèse qui peut être faite par des réalisateurs, c'est que si une instance
+ * hypothèse qui peut être faite par des développeurs, c'est que si une instance
  * de Exception est donnée pour produire une trace de la pile, il DOIT être dans
  * une clé nommée "exception".
  *
