@@ -44,53 +44,59 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
 
 ### 1.2 Message
 
-- Every method accepts a string as the message, or an object with a
-  `__toString()` method. Implementors MAY have special handling for the passed
-  objects. If that is not the case, implementors MUST cast it to a string.
+- Toutes les méthodes acceptent de prendre en paramètre le message sous la forme 
+  d'une chaine de caractère ou d'un objet avec une méthode `__toString()`. 
+  Les implémentations PEUVENT appliquer un traitement particulier sur les objets 
+  passés en paramètre. Si ce n'est pas le cas, les implémentations DOIVENT
+  les convertir en chaine de caractères.
 
-- The message MAY contain placeholders which implementors MAY replace with
-  values from the context array.
+- Le message PEUT contenir des élément de substitution que les implémentations 
+  PEUVENT remplacer avec des valeurs issuent du tableau de contexte.
 
-  Placeholder names MUST correspond to keys in the context array.
+  Le nom des éléments de substitutions DOIVENT correspondre avec les clés du 
+  tableau de contexte.
 
-  Placeholder names MUST be delimited with a single opening brace `{` and
-  a single closing brace `}`. There MUST NOT be any whitespace between the
-  delimiters and the placeholder name.
+  Les noms d'éléments de substitution DOIVENT être délimités avec une accolade
+  ouvrante `{` et une accolade fermante `}`. Il ne DOIT PAS y avoir d'espace 
+  entre le délimiteur et le nom de l'élément.
 
-  Placeholder names SHOULD be composed only of the characters `A-Z`, `a-z`,
-  `0-9`, underscore `_`, and period `.`. The use of other characters is
-  reserved for future modifications of the placeholders specification.
+  Les noms d'éléments de substitution DEVRAIT être composés uniquement des 
+  caractères `A-Z`, `a-z`, `0-9`, underscore `_`, et point `.`. L'utilisation
+  d'autres caractères est réservée aux modifications futures de la spécification
+  des éléments de substitution.
 
-  Implementors MAY use placeholders to implement various escaping strategies
-  and translate logs for display. Users SHOULD NOT pre-escape placeholder
-  values since they can not know in which context the data will be displayed.
+  Les implémentations PEUVENT utiliser des éléments de substitution pour mettre en 
+  place différentes stratégies d'échappement et traduire les logs pour l'affichage.
+  Les utilisateurs ne DEVRAIENT PAS pré-échapper les valeurs des éléments de substitutions
+  parce qu'ils ne peuvent pas savoir dans quel contexte elles seront affichées.
 
-  The following is an example implementation of placeholder interpolation
-  provided for reference purposes only:
+  Ce qui suit est un exemple d'implémentation d'interpolation des éléments de substitution.
+  Il est uniquement fournit à titre de référence :
 
   ```php
   /**
-   * Interpolates context values into the message placeholders.
+   * Interpolation des valeurs du contexte dans les éléments de substitution du message.
    */
   function interpolate($message, array $context = array())
   {
-      // build a replacement array with braces around the context keys
+      // construction d'un tableau de remplacement avec les accolades 
+      // autour des clés du contexte
       $replace = array();
       foreach ($context as $key => $val) {
           $replace['{' . $key . '}'] = $val;
       }
 
-      // interpolate replacement values into the message and return
+      // interpoler les valeurs dans le message et le retourner
       return strtr($message, $replace);
   }
 
-  // a message with brace-delimited placeholder names
+  // un message avec un élément de substituion délimité par des accolades
   $message = "User {username} created";
 
-  // a context array of placeholder names => replacement values
+  // un tableau de contexte avec noms des éléments de substitution => valeurs de remplacement
   $context = array('username' => 'bolivar');
 
-  // echoes "Username bolivar created"
+  // affiche "Username bolivar created"
   echo interpolate($message, $context);
   ```
 
