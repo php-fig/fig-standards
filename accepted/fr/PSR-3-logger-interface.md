@@ -100,20 +100,20 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
   echo interpolate($message, $context);
   ```
 
-### 1.3 Context
+### 1.3 Contexte
 
-- Every method accepts an array as context data. This is meant to hold any
-  extraneous information that does not fit well in a string. The array can
-  contain anything. Implementors MUST ensure they treat context data with
-  as much lenience as possible. A given value in the context MUST NOT throw
-  an exception nor raise any php error, warning or notice.
+- Toutes les méthodes acceptent de prendre en paramètre un tableau de données de contexte. 
+  Ce tableau contient toutes les informations qui ne peuvent pas être contenues dans une 
+  chaine de caractères. Ce tableau peut contenir n'importe quoi. Les développeurs DOIVENT
+  s'assurer de traiter les données de contexte avec autant d'indulgence que possible. Une
+  valeur dans le contexte ne DOIT PAS lancer une exception ni soulevé aucune erreur de php, 
+  warning ni notice.
 
-- If an `Exception` object is passed in the context data, it MUST be in the
-  `'exception'` key. Logging exceptions is a common pattern and this allows
-  implementors to extract a stack trace from the exception when the log
-  backend supports it. Implementors MUST still verify that the `'exception'`
-  key is actually an `Exception` before using it as such, as it MAY contain
-  anything.
+- Si un objet `Exception` est passé dans le tableau de contexte, il DOIT être placé dans le clé
+  `exception`. La journalisation des exceptions est une pratique commune ce qui permet aux 
+  développeurs d'extraire la pile d'appel de l'exception quand l'outil de journalisation le permet.
+  Les développeurs DOIVENT toujours vérifier que la clé `exception` est vraiment une `Exception` avant
+  de l'utilisation parce qu'elle PEUT contenir n'importe quoi.
 
 ### 1.4 Classes d'aide et interfaces
 
