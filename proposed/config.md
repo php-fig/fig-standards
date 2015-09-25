@@ -10,7 +10,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
 
-The word `Container` in this document is to be interpreted as the `ContainerInterface` of the PSR Container proposal.
+The word `Container` in this document is to be interpreted as the `ContainerInterface` of the PSR Container proposal. See the [config-meta](config-meta.md) documentation for additional details.
 
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
@@ -43,7 +43,17 @@ The `PSR\Config\ObtainsOptions` interface exposes one method: `options`
 `ArrayAccess` interface. A call to `options` returns the configuration depending on the implemented interfaces of the 
 class or throws an exception if the parameter is invalid or if the configuration is missing or if a mandatory option is missing.
 
-### 1.5 Exceptions
+### 1.5 OptionalOptions
+The `PSR\Config\OptionalOptions` interface exposes one method: `optionalOptions`
+
+* `optionalOptions` has no parameters and MUST return an array of strings which represents the list of optional options. This array can have a multiple depth.
+
+### 1.6 DefaultOptions
+The `PSR\Config\DefaultOptions` interface exposes one method: `defaultOptions`
+
+* `defaultOptions` has no parameters and MUST return an key value array where the key is the option name and the value is the default value for this option. This array can have a multiple depth.
+
+### 1.7 Exceptions
 Exceptions directly thrown by the `options` method MUST implement the `PSR\Config\Exception\ExceptionInterface`.
 
 If the configuration parameter is not an array or an object which implementes the `ArrayAccess` interface the method 
@@ -157,13 +167,14 @@ use ArrayAccess;
  * ObtainOptions Interface
  *
  * Use this interface if you want to retrieve options from a configuration and optional to perform a mandatory option
- * check.
+ * check. Default options are merged and overriden of the provided options.
  */
 interface ObtainsOptions extends HasConfig
 {
     /**
      * Returns options based on [vendor][package][id] and can perform mandatory option checks if class implements
-     * MandatoryOptionsInterface. The HasContainerId interface is optional.
+     * MandatoryOptionsInterface. If the HasDefaultOptions interface is implemented, these options must be overriden 
+     * by the provided config. The HasContainerId interface is optional.
      *
      * <code>
      * return [
@@ -195,7 +206,55 @@ interface ObtainsOptions extends HasConfig
 
 ```
 
-## 3.5 `PSR\Config\Exception\ExceptionInterface`
+## 3.5 `PSR\Config\HasOptionalOptions`
+
+```php
+<?php
+namespace PSR\Config;
+
+/**
+ * HasOptionalOptions Interface
+ *
+ * Use this interface if you have optional options. This can be used to auto discover the options for a configuration
+ * file.
+ */
+interface HasOptionalOptions
+{
+    /**
+     * Returns a list of optional options
+     *
+     * @return string[] List with optional options
+     */
+    public function optionalOptions();
+}
+
+```
+
+## 3.6 `PSR\Config\HasDefaultOptions`
+
+```php
+<?php
+namespace PSR\Config;
+
+/**
+ * HasDefaultOptions Interface
+ *
+ * Use this interface if you have default options. These options are merged with the provided options in
+ * \PSR\Config\ObtainsOptions::options
+ */
+interface HasDefaultOptions
+{
+    /**
+     * Returns a list of default options, which are merged in \PSR\Config\ObtainsOptions::options
+     *
+     * @return string[] List with default options and values
+     */
+    public function defaultOptions();
+}
+
+```
+
+## 3.7 `PSR\Config\Exception\ExceptionInterface`
 
 ```php
 <?php
@@ -212,7 +271,7 @@ interface ExceptionInterface
 
 ```
 
-## 3.6 `PSR\Config\Exception\InvalidArgumentException`
+## 3.8 `PSR\Config\Exception\InvalidArgumentException`
 
 
 ```php
@@ -231,7 +290,7 @@ class InvalidArgumentException extends PhpInvalidArgumentException implements Ex
 }
 ```
 
-## 3.7 `PSR\Config\Exception\RuntimeException`
+## 3.9 `PSR\Config\Exception\RuntimeException`
 
 ```php
 <?php
@@ -250,7 +309,7 @@ class RuntimeException extends PhpRuntimeException implements ExceptionInterface
 
 ```
 
-## 3.8 `PSR\Config\Exception\OptionNotFoundException`
+## 3.10 `PSR\Config\Exception\OptionNotFoundException`
 
 ```php
 <?php
@@ -267,7 +326,7 @@ class OptionNotFoundException extends RuntimeException
 
 ```
 
-## 3.8 `PSR\Config\Exception\MandatoryOptionNotFoundException`
+## 3.11 `PSR\Config\Exception\MandatoryOptionNotFoundException`
 
 ```php
 

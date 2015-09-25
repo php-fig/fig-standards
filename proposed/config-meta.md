@@ -29,7 +29,7 @@ The goal of the project was to provide a test-bed for implementing the interface
 for the Config PSR.
 
 ## 5. Interfaces
-There are four interfaces and some interfaces extends from another interface to ensure the uniform configuration structure. 
+There are six interfaces and some interfaces extends from another interface to ensure the uniform configuration structure. 
 If you confused about the naming of the interfaces or methods, note that I have used the Domain Driven Design approach.
 
 ### 5.1 HasConfig
@@ -86,16 +86,42 @@ As an array it looks like this:
 ### 5.4 ObtainsOptions
 The factory retrieves the configuration options e.g. from the *Container*. The method `options($config)` extracts the 
 configuration options from the given array or an object which implements `ArrayAccess` depending on the implemented 
-interfaces and optionally doas a mandatory option check.
+interfaces and optionally doas a mandatory option check. If `HasDefaultOptions` interface is defined, the default 
+options are merged and overriden of the provided config.
 
 This function:
 
-* returns the options depending on the implemented interfaces, optionally mandatory option check
+* returns the options depending on the implemented interfaces, optionally mandatory option check and merging of default options
 * throws an `OptionNotFoundException` if no options are found
 * throws a `MandatoryOptionNotFoundException` if a mandatory option is missing
 * throws an `InvalidArgumentException`if the parameter `config` has the wrong type
 * throws a `RuntimeException` If the vendor name was not found in configuration
 
+### 5.5 HasOptionalOptions
+This interface is useful for auto discovery. `optionalOptions` returns a list of optional options for the instance. So you are able to define the whole configuration of the instance.
+
+As an array it looks like this:
+
+```php
+[
+    'params' => [
+        'host',
+        'port',
+    ],
+];
+```
+
+### 5.6 HasDefaultOptions
+This interface is useful to define default options which are merged in `options` method of `ObtainsOptions` interface. The host and the port can have default values. As an array it looks like this:
+
+```php
+[
+	'params' => [
+        'host' => 'localhost',
+        'port' => '3306',
+    ],
+];
+```
 ## 6. People
 
 ### 6.1 Editors
