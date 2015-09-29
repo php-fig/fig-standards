@@ -59,7 +59,8 @@ note that the version is no longer receiving security fixes.
 
 Every project MUST provide an email address in their security disclosure
 process description as the ``contact email address``. Projects SHALL NOT
-use contact forms.
+use contact forms. Instead projects SHOULD provide a ``public PGP key``
+for encrypted email communication.
 
 **TODO**: Add more things found here https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40StsJ?
 
