@@ -294,6 +294,35 @@ interface CacheItemPoolInterface
     public function getItem($key);
 
     /**
+     * Returns a Cache Item representing the specified key that is a cache hit.
+     *
+     * In the case of a cache miss, the Implementation Library will use the callback
+     * parameters to generate the Cache Item. The Cache Item will then be persisted
+     * and returned.
+     *
+     * @param string $key
+     *   The key for which to return the corresponding Cache Item.
+     *
+     * @param callable $valueCallback
+     *   A callback used to generate the value of the Cache Item in the event of a
+     *   cache miss. The callback is not passed any parameters and it must return
+     *   a serializable value to be stored.
+     *
+     * @param callable|null $metaCallback
+     *   An optional callback that is passed the the Cache Item as a single
+     *   parameter in the event of a cache miss. This callback will be called after
+     *   the $valueCallback is called and before the Cache Item is persisted.
+     *
+     * @throws InvalidArgumentException
+     *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
+     *   MUST be thrown.
+     *
+     * @return CacheItemInterface
+     *   The corresponding Cache Item.
+     */
+    public function resolveItem($key, $valueCallback, $metaCallback = null);
+
+    /**
      * Returns a traversable set of cache items.
      *
      * @param array $keys
