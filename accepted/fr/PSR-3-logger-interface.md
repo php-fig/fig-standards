@@ -50,8 +50,8 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
   passés en paramètre. Si ce n'est pas le cas, les développeurs DOIVENT
   les convertir en chaine de caractères.
 
-- Le message PEUT contenir des élément de substitution que les développeurs 
-  PEUVENT remplacer avec des valeurs issuent du tableau de contexte.
+- Le message PEUT contenir des éléments de substitution que les développeurs 
+  PEUVENT remplacer avec des valeurs issues du tableau de contexte.
 
   Le nom des éléments de substitutions DOIVENT correspondre avec les clés du 
   tableau de contexte.
@@ -60,14 +60,14 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
   ouvrante `{` et une accolade fermante `}`. Il ne DOIT PAS y avoir d'espace 
   entre le délimiteur et le nom de l'élément.
 
-  Les noms d'éléments de substitution DEVRAIT être composés uniquement des 
+  Les noms d'éléments de substitution DEVRAIENT être composés uniquement des 
   caractères `A-Z`, `a-z`, `0-9`, underscore `_`, et point `.`. L'utilisation
   d'autres caractères est réservée aux modifications futures de la spécification
   des éléments de substitution.
 
   Les développeurs PEUVENT utiliser des éléments de substitution pour mettre en 
   place différentes stratégies d'échappement et traduire les logs pour l'affichage.
-  Les utilisateurs ne DEVRAIENT PAS pré-échapper les valeurs des éléments de substitutions
+  Les utilisateurs ne DEVRAIENT PAS pré-échapper les valeurs des éléments de substitution
   parce qu'ils ne peuvent pas savoir dans quel contexte elles seront affichées.
 
   Ce qui suit est un exemple d'implémentation d'interpolation des éléments de substitution.
