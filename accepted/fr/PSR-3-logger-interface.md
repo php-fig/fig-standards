@@ -106,14 +106,14 @@ personnalisé sans savoir avec certitude si l'implémentation le supporte.
   Ce tableau contient toutes les informations qui ne peuvent pas être contenues dans une 
   chaine de caractères. Ce tableau peut contenir n'importe quoi. Les développeurs DOIVENT
   s'assurer de traiter les données de contexte avec autant d'indulgence que possible. Une
-  valeur dans le contexte ne DOIT PAS lancer une exception ni soulevé aucune erreur de php, 
+  valeur dans le contexte ne DOIT PAS lancer une exception ni soulever aucune erreur de php, 
   warning ni notice.
 
-- Si un objet `Exception` est passé dans le tableau de contexte, il DOIT être placé dans le clé
+- Si un objet `Exception` est passé dans le tableau de contexte, il DOIT être placé dans la clé
   `exception`. La journalisation des exceptions est une pratique commune ce qui permet aux 
   développeurs d'extraire la pile d'appel de l'exception quand l'outil de journalisation le permet.
   Les développeurs DOIVENT toujours vérifier que la clé `exception` est vraiment une `Exception` avant
-  de l'utilisation parce qu'elle PEUT contenir n'importe quoi.
+  de l'utiliser parce qu'elle PEUT contenir n'importe quoi.
 
 ### 1.4 Classes d'aide et interfaces
 
