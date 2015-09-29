@@ -294,11 +294,14 @@ interface CacheItemPoolInterface
     public function getItem($key);
 
     /**
-     * Returns a Cache Item representing the specified key that is a cache hit.
+     * Resolves a Cache Item representing the specified key.
      *
-     * In the case of a cache miss, the Implementation Library will use the callback
-     * parameters to generate the Cache Item. The Cache Item will then be persisted
-     * and returned.
+     * In the case of a cache hit, this method will behave identically to the getItem
+     * method and the $valueCallback and $metaCallback parameters will be ignored.
+     *
+     * In the case of a cache miss, the Implementation Library will use the
+     * $valueCallback and $metaCallback parameters to generate the Cache Item. The
+     * Cache Item will then be persisted and returned.
      *
      * @param string $key
      *   The key for which to return the corresponding Cache Item.
