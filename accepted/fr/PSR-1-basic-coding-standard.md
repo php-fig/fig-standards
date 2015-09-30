@@ -23,7 +23,7 @@ document doivent être interprétés comme décrit dans [RFC 2119][].
   constantes, etc.) *soit* causer des effets secondaires (par exemple, générer
   des sorties, modifier paramètres .ini), mais NE DOIVENT PAS faire les deux.
 
-- Les espaces de noms et les classes DOIVENT suivre [PSR-0].
+- Les espaces de nom et les classes DOIVENT suivre [PSR-0].
 
 - Les noms des classes DOIVENT être déclarés comme `StudlyCaps`.
 
@@ -47,7 +47,7 @@ Le code PHP DOIT utiliser uniquement UTF-8 sans BOM.
 ### 2.3. Les effets secondaires
 
 Un fichier DEVRAIT déclarer des nouveaux symboles (classes, fonctions,
-constantes, etc.) et ne pas causer d’effets secondaires, où il DEVRAIT exécuter
+constantes, etc.) et ne pas causer d’effets secondaires, ou il DEVRAIT exécuter
 de la logique avec effets secondaires, mais NE DEVRAIT PAS faire les deux.
 
 La phrase "effets secondaires" signifie l’exécution de la logique qui n’est pas
@@ -104,7 +104,7 @@ if (! function_exists('bar')) {
 3. Espaces de Nom et Noms des Classes
 -------------------------------------
 
-Les espaces de noms et les classes DOIVENT suivre [PSR-0][].
+Les espaces de nom et les classes DOIVENT suivre [PSR-0][].
 
 Cela signifie que chaque classe devra se trouver seule dans un fichier, et dans
 un espace de nom d'au moins un niveau : le nom d'un vendor de plus haut niveau.
