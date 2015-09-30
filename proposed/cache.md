@@ -323,7 +323,7 @@ interface CacheItemPoolInterface
      * @return CacheItemInterface
      *   The corresponding Cache Item.
      */
-    public function resolveItem($key, $valueCallback, $metaCallback = null);
+    public function resolveItem($key, callable $valueCallback, callable $metaCallback = null);
 
     /**
      * Returns a traversable set of cache items.
