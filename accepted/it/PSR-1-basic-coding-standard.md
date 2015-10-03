@@ -7,7 +7,7 @@ livello di interoperabilità tra parti di codice PHP condivise.
 
 Le parole "DEVE/DEVONO/NECESSARIO(I)" ("MUST", "SHALL" O "REQUIRED"),
 "NON DEVE/NON DEVONO" ("MUST NOT" O "SHALL NOT"), "DOVREBBE/DOVREBBERO/RACCOMANDATO(I)"
-("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUO'/POSSONO" ("MAY") e
+("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUÒ/POSSONO" ("MAY") e
 "OPZIONALE" ("OPTIONAL") in questo documento devono essere interpretate come
 descritto nella [RFC 2119][].
 
@@ -18,7 +18,7 @@ descritto nella [RFC 2119][].
 1. Panoramica
 --------------
 
-- Nei file si DEVONO usare soltanto le tag `<?php` o `<?=`.
+- Nei file si DEVONO usare soltanto i tag `<?php` o `<?=`.
 
 - I file DEVONO usare soltanto UTF-8 senza BOM per il codice PHP.
 
@@ -30,7 +30,7 @@ descritto nella [RFC 2119][].
 
 - I nomi delle classi DEVONO essere dichiarati in `StudlyCaps`.
 
-- Le costanti di classe DEVONO  essere dichiarate tutte maiuscole con underscore come separatore.
+- Le costanti di classe DEVONO essere dichiarate tutte maiuscole con underscore come separatore.
 
 - I nomi dei metodi DEVONO essere dichiarati in `camelCase`.
 
@@ -40,7 +40,7 @@ descritto nella [RFC 2119][].
 
 ### 2.1. Tag PHP
 
-Nal codice PHP si DEVE usare la versione lunga dei tag `<?php ?>` o la versione
+Nel codice PHP si DEVE usare la versione lunga dei tag `<?php ?>` o la versione
 dei tag short-echo `<?= ?>`; NON DEVONO essere usate altre varianti dei tag.
 
 ### 2.2. Codifica dei caratteri
