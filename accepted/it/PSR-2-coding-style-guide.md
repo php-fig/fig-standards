@@ -3,19 +3,19 @@ Guida allo stile di scrittura del codice
 
 Questa guida estende ed integra il [PSR-1][], lo standard elementare di scrittura del codice.
 
-L'intento di questa guida è di ridurre l'attrito cognitivo quando il codice
-viene esaminato da diversi autori. Tutto questo è ottenuto grazie ad una serie
-di regole e aspettative condivise su come formattare il codice PHP.
+L'intento di questa guida è di ridurre l'attrito cognitivo quando si esamina codice
+scritto da diversi autori. Questo si ottiene grazie ad un set condiviso
+di regole e aspettative su come formattare il codice PHP.
 
 Le regole di stile qui riportate derivano dalla condivisione tra i vari
-membri del progetto. Quando vari autori collaborano su progetti multipli,
+progetti membri. Quando vari autori collaborano su progetti multipli,
 è di grande aiuto avere un insieme di linee guida da usare in tutti i progetti.
 Il beneficio di questa guida non è determinato dalle regole in sé, ma dalla
 condivisione delle stesse.
 
 Le parole "DEVE/DEVONO/NECESSARIO(I)" ("MUST", "SHALL" O "REQUIRED"),
 "NON DEVE/NON DEVONO" ("MUST NOT" O "SHALL NOT"), "DOVREBBE/DOVREBBERO/RACCOMANDATO(I)"
-("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUO'/POSSONO" ("MAY") e
+("SHOULD") "NON DOVREBBE/NON DOVREBBERO" ("SHOULD NOT"), "PUÒ/POSSONO" ("MAY") e
 "OPZIONALE" ("OPTIONAL") in questo documento devono essere interpretate come
 descritto nella [RFC 2119][].
 
@@ -46,7 +46,7 @@ descritto nella [RFC 2119][].
 - La visibilità DEVE essere dichiarata su tutte le proprietà e i metodi; `abstract` e
   `final` DEVONO essere dichiarate prima della visibilità; `static` DEVE essere dichiarata dopo
   la visibilità.
-  
+
 - Le keyword delle strutture di controllo DEVONO avere uno spazio a seguire; i metodi e le chiamate
   a funzioni NON DEVONO.
 
@@ -119,7 +119,7 @@ NON DEVONO esserci spazi alla fine di righe non vuote.
 Righe vuote POSSONO essere aggiunte per migliorare la leggibilità e per indicare
 blocchi di codice correlati.
 
-NON PUO' esserci più di una dichiarazione per riga.
+NON PUÒ esserci più di una dichiarazione per riga.
 
 ### 2.4. Indentazione
 
@@ -196,7 +196,7 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 ```
 
 Liste di `implements` POSSONO essere divise su righe multiple, dove ogni
-riga seguente è indentata una volta. In questo caso, il primo elemento
+riga successiva è indentata una volta. In questo caso, il primo elemento
 nella lista DEVE andare su una nuova riga e ci DEVE essere una sola interfaccia
 per riga.
 
@@ -223,7 +223,7 @@ La visibilità DEVE essere dichiarata su tutte le proprietà.
 
 La keyword `var` NON DEVE essere usata per dichiarare una proprietà.
 
-NON PUO' esserci più di una proprietà per dichiarazione.
+NON PUÒ esserci più di una proprietà per dichiarazione.
 
 I nomi delle proprietà NON DOVREBBERO avere un underscore come prefisso ad indicare
 visibilità protetta o privata.
@@ -272,7 +272,7 @@ class NomeClass
 
 ### 4.4. Argomenti dei metodi
 
-Nella lista di argomenti, NON PUO' esserci uno spazio prima di ogni virgola, ma
+Nella lista di argomenti, NON PUÒ esserci uno spazio prima di ogni virgola, ma
 DEVE esserci uno spazio dopo ogni virgola.
 
 Gli argomenti dei metodi con valori di default DEVONO andare alla fine della lista
@@ -345,7 +345,7 @@ abstract class NomeClasse
 Quando si fa una chiamata a un metodo o a una funzione, NON DEVE esserci uno
 spazio tra il nome del metodo o della funzione e la parentesi di apertura,
 e NON DEVE esserci uno spazio prima della parentesi di chiusura.
-Nella lista di argomenti NON PUO' esserci uno spazio prima di ogni virgola,
+Nella lista di argomenti NON PUÒ esserci uno spazio prima di ogni virgola,
 e DEVE esserci uno spazio dopo ogni virgola.
 
 ```php
@@ -355,7 +355,7 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
-La lista di argomenti PUO' essere divisa su righe multiple, dove ogni riga seguente
+La lista di argomenti PUÒ essere divisa su righe multiple, dove ogni riga seguente
 è indentata una volta. In questo caso, il primo elemento nella lista DEVE essere
 sulla riga seguente e DEVE esserci un solo argomento per riga.
 
@@ -389,7 +389,7 @@ introdurre errori quando si aggiungono nuove righe al corpo.
 
 Una struttura `if` dovrebbe essere come la seguente. Da notare il posizionamento
 delle parentesi, degli spazi e delle graffe; e il fatto che `else` e `elseif`
- sono sulla stessa riga in cui si trova la graffa di chiusura del corpo precedente.
+sono sulla stessa riga in cui si trova la graffa di chiusura del corpo precedente.
 
 ```php
 <?php
@@ -460,7 +460,7 @@ do {
 
 ### 5.4. `for`
 
-Una dichiarazione `for`  dovrebbe essere come la seguente. Da notare
+Una dichiarazione `for` dovrebbe essere come la seguente. Da notare
 il posizionamento delle parentesi, degli spazi e delle graffe.
 
 ```php
@@ -471,8 +471,8 @@ for ($i = 0; $i < 10; $i++) {
 ```
 
 ### 5.5. `foreach`
-    
-Una dichiarazione `foreach`  dovrebbe essere come la seguente. Da notare
+
+Una dichiarazione `foreach` dovrebbe essere come la seguente. Da notare
 il posizionamento delle parentesi, degli spazi e delle graffe.
 
 ```php
@@ -484,7 +484,7 @@ foreach ($iterable as $key => $value) {
 
 ### 5.6. `try`, `catch`
 
-Una dichiarazione `try catch`  dovrebbe essere come la seguente. Da notare
+Una dichiarazione `try catch` dovrebbe essere come la seguente. Da notare
 il posizionamento delle parentesi, degli spazi e delle graffe.
 
 ```php
@@ -542,7 +542,7 @@ Quando la lista di chiusura (di argomenti o variabili) è divisa su righe multip
 la parentesi di chiusura e la graffa di apertura DEVONO essere posizionate
 insieme su una nuova riga con uno spazio a separarle.
 
-Quello che segue è un esempio di closure con e senza liste di argomenti e liste di variabili 
+Quello che segue è un esempio di closure con e senza liste di argomenti e liste di variabili
 divise su righe multiple.
 
 ```php
@@ -610,9 +610,9 @@ $foo->bar(
 ----------------
 
 Ci sono molti elementi di stile e pratiche tralasciate intenzionalmente da
-questa guida. Questi includono, ma non sono limitati a:
+questa guida. Queste includono, ma non sono limitate a:
 
-- Dichiarazioni di variabili globali e globali costanti
+- Dichiarazioni di variabili globali e costanti globali
 
 - Dichiarazione di funzioni
 
@@ -633,7 +633,7 @@ questi o altri elementi di stile e pratiche.
 Appendix A. Sondaggio
 ----------------------
 
-Nello scrivere questa guida di sitle, il gruppo ha tenuto un sondaggio tra i
+Nello scrivere questa guida di stile, il gruppo ha tenuto un sondaggio tra i
 progetti-membro per determinare le pratiche comuni. Il sondaggio è riportato qui
 di seguito a beneficio futuro.
 

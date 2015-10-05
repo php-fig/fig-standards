@@ -1,5 +1,5 @@
 Quanto segue descrive i requisiti necessari ai quali ci si deve uniformare
-per garantire l''interoperabilità tra gli autoloader.
+per garantire l'interoperabilità tra gli autoloader.
 
 Obblighi
 ---------
@@ -68,9 +68,8 @@ Implementazione dell'SplClassLoader
 
 Il seguente gist è un esempio di implementazione dell'SplClassLoader
 che sarà in grado di caricare automanticamente le tue classi se
-segui gli standard di interoperabilità proposti in precedenza. E' il
+segui gli standard di interoperabilità proposti in precedenza. È il
 modo attualmente raccomandato per caricare le classi PHP 5.3 che adottano
 questi standard.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
-

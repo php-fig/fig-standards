@@ -4,9 +4,9 @@ Interfaccia Logger
 Questo documento descrive un'interfaccia comune per le librerie di log.
 
 L'obiettivo principale è quello di permettere alle librerie di ricevere
-un oggetto `Psr\Log\LoggerInterface` e di usarlo per scrivere log in modo semplice 
-ed universale. Framework e CMS che abbiano necessità specifiche POSSONO estendere 
-l'interfaccia per i loro scopi, ma DOVREBBERO rimanere compatibili con questo 
+un oggetto `Psr\Log\LoggerInterface` e di usarlo per scrivere log in modo semplice
+ed universale. Framework e CMS che abbiano necessità specifiche POSSONO estendere
+l'interfaccia per i loro scopi, ma DOVREBBERO rimanere compatibili con questo
 documento. Questo assicura che librerie di terze parti che un'applicazione
 potrebbe usare possano scrivere sui log centralizzati dell'applicazione.
 
@@ -97,18 +97,18 @@ Gli utilizzatori dei logger saranno indicati con il termine `utente`.
 
 ### 1.3 Contesto
 
-- Ogni metodo accetta un array come dati di contesto. L'array è pensato per 
+- Ogni metodo accetta un array come dati di contesto. L'array è pensato per
   contenere informazioni che non si adattano bene all'interno di una stringa.
   L'array può contenere qualunque cosa. Gli implementatori DEVONO assicurarsi
   di trattare i dati di contesto con la maggior clemenza possibile. Un qualunque
-  valore in un contesto NON DEVE lanciare un'eccezione nè causare alcun errore, 
+  valore in un contesto NON DEVE lanciare un'eccezione nè causare alcun errore,
   warning o notice php.
 
 - Se un oggetto `Exception` viene passato nei dati di contesto, DEVE essere
   passato con la chiave `'exception'`. Eseguire log delle eccezioni è una
   operazione comune, e questo permette agli implementatori di estrarre lo stack
   trace dall'eccezione quando il log di backend lo supporta. Gli implementatori
-  DEVONO comunque verificare che la chiave `'exception'` sia effettivamente 
+  DEVONO comunque verificare che la chiave `'exception'` sia effettivamente
   una `Exception` prima di usarla in tal modo, perché potrebbe contenere
   qualunque cosa.
 
@@ -127,14 +127,14 @@ Gli utilizzatori dei logger saranno indicati con il termine `utente`.
 - La classe `Psr\Log\NullLogger` è fornita assieme all'interfaccia. PUÒ essere
   utilizzata dagli utenti dell'interfaccia per fornire un "buco nero" di riserva
   nel caso in cui nessun logger fosse necessario. In ogni caso il logging
-  opzionale potrebbe essere un approccio migliore, se la creazione dei dati di 
+  opzionale potrebbe essere un approccio migliore, se la creazione dei dati di
   contesto fosse impegnativa.
 
 - L'interfaccia `Psr\Log\LoggerAwareInterface` contiene solo un metodo
   `setLogger(LoggerInterface $logger)` e può essere usata dai framework per
   collegare in modo automatico e arbitrario istanze ad un logger.
 
-- Il trait `Psr\Log\LoggerAwareTrait` può essere usato per implementare 
+- Il trait `Psr\Log\LoggerAwareTrait` può essere usato per implementare
   la corrispondente interfaccia con facilità in ogni classe. Fornisce
   l'accesso a `$this->logger`.
 
@@ -144,7 +144,7 @@ Gli utilizzatori dei logger saranno indicati con il termine `utente`.
 ----------
 
 L'interfaccia e le classi descritte, le classi delle eccezioni corrispondenti  
-e la test suite per verificare la propria implementazione sono fornite come parte del 
+e la test suite per verificare la propria implementazione sono fornite come parte del
 pacchetto [psr/log](https://packagist.org/packages/psr/log).
 
 3. `Psr\Log\LoggerInterface`
