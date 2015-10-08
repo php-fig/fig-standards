@@ -107,7 +107,9 @@ older than three (3) months in order to minimize the risk of security vulnerabil
 
 A participating host SHOULD NOT offer a PHP release that reached its End-of-Life
 more than twelve (12) months ago. Such versions often have known security flaws.
+This expectation applies only to newly created accounts.
 
 A participating host MUST NOT offer a PHP release that reached its End-of-Life
 more than twenty-four (24) months ago. Such versions usually have known security
-flaws and are a danger to users of those versions.
+flaws and are a danger to users of those versions. This expectation applies only
+to newly created accounts.
