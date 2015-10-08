@@ -68,7 +68,7 @@ supported by implementing libraries: `{}()/\@:`
 *    **Hit** - A cache hit occurs when a Calling Library requests an Item by key
 and a matching value is found for that key, and that value has not expired, and
 the value is not invalid for some other reason. Calling Libraries SHOULD make
-sure to verify isHit() on all of the get() calls.
+sure to verify isHit() on all get() calls.
 
 *    **Miss** - A cache miss is the opposite of a cache hit. A cache miss occurs
 when a Calling Library requests an item by key and that value not found for that
