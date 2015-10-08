@@ -70,7 +70,7 @@ general hosting for arbitrary PHP code. Such hosts MAY offer "shared hosting",
 virtual machines, dedicated hardware, cloud configurations, or any other form of
 hosting.  This standard applies to all offerings that include the ability to
 execute PHP code, and applies to all offered PHP SAPI configurations.  (For instance,
-it applies to both  command line PHP and web scripts.)
+it applies to both command line PHP and web scripts.)
 
 
 ## Expectations of projects
