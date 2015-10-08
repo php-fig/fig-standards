@@ -38,10 +38,10 @@ has been put in place.
 > decisions alone.
 
 **Coordinator:** One of the two required Sponsors is the Coordinator, and this must be decided between 
-the Sponsors early on. The Coordinator is in charge of the voting process. He notes the starting and 
-ending dates, the number of voting members at the start of the vote, and the quorum count needed. He 
-sends out reminders by whatever means he feels appropriate to drive the vote. At the end of the voting 
-period, he tallies the votes, notes if quorum was established, and whether or not the application was 
+the Sponsors early on. The Coordinator is in charge of the voting process. They note the starting and 
+ending dates, the number of voting members at the start of the vote, and the quorum count needed. They 
+send out reminders by whatever means they feel appropriate to drive the vote. At the end of the voting 
+period, they tally the votes, note if quorum was established, and whether or not the application was 
 accepted.
 
 > **Note:** Copied from [Paul M. Jones' mail](https://groups.google.com/d/msg/php-fig/I0urcaIsEpk/uqQMb4bqlGwJ)
