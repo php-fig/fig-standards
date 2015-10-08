@@ -77,19 +77,15 @@ it applies to both command line PHP and web scripts.)
 
 A Major Release of a participating project MUST:
 
-* support the most recent stable Minor release of PHP as of thirty (30) days prior
-to its release.
+* support the most recent stable Minor PHP release older than thirty (30) days.
 
-* support the most recent stable Major release of PHP as of six (6) months prior
-to its release.
+* support the most recent stable Major release older than six (6) months.
 
 A Minor Release of a participating project MUST:
 
-* support the most recent stable Minor release of PHP as of ninety (90) days prior to its
-release.
+* support the most recent stable Minor release of PHP older than ninety (90) days.
 
-* support the most recent stable Major release of PHP as of twelve (12) months prior
-to its release.
+* support the most recent stable Major release of PHP older than twelve (12) months.
 
 
 ## Expectations of hosts
