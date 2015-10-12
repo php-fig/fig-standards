@@ -129,7 +129,9 @@ When using multiple classes, functions or constants within one namespace, you
 MUST group use statements within one namespace.
 
 Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces],
-functions or constants). Within each block there MUST be no blank lines. If a block has
+functions or constants). To elaborate, this means that any and all classes are in a block
+together; any and all functions are in a block together; and any and all constants must
+be grouped together. Within each block there MUST be no blank lines. If a block has
 multiple lines there MUST be a blank line before the first line and a blank line after
 the last line.
 
