@@ -111,7 +111,7 @@ Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 PHP [keywords] MUST be in lower case.
 
 The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
-`bool`, `null`, `numeric`, `string` and `resource MUST be in lower case
+`bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
 
 Namespace, Strict Types and Use Declarations
 --------------------------------------------
@@ -128,18 +128,18 @@ There MUST be one `use` keyword per declaration.
 When using multiple classes, functions or constants within one namespace, you
 MUST group use statements within one namespace.
 
-Use statements MUST be in a block according to the entity (class, function or group)
-which is being grouped. Within each block there MUST be no blank lines. If a block
-has multiple lines there MUST be a blank line before the first line and a blank line
-after the last line.
+Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces],
+functions or constants). Within each block there MUST be no blank lines. If a block has
+multiple lines there MUST be a blank line before the first line and a blank line after
+the last line.
 
 Classes, functions or constants grouped together into a single line must be listed
 alphabetically.
 
-The groups MUST be ordered such that classes are first, followed by functions and
-then constants.
+The groups MUST be ordered such that classes (together with interfaces) are first,
+followed by functions and then constants.
 
-For example:
+Example of the above notices about namespace, strict types and use declarations:
 
 ```php
 <?php
