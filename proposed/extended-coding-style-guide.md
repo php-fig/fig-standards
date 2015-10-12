@@ -29,6 +29,11 @@ open to interpretation. This PSR therefore seeks to clarify the content of PSR-2
 a more modern context with new functionality available, and make the errata to PSR-2
 binding.
 
+### Overview
+
+Throughout this document, any instructions MAY be ignored if they do not exist in versions
+of PHP supported by your project.
+
 ### Example
 
 This example encompasses some of the rules below as a quick overview:
@@ -39,13 +44,15 @@ declare(strict_types=1);
 
 namespace Vendor\Package;
 
-use FooInterface;
-use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\Namespace\ClassD as D;
+
+use function Vendor\Package\{func_a, func_b, func_c};
+use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
 
 class Foo extends Bar implements FooInterface
 {
-    public function sampleFunction(string $a, int $b = null): array
+    public function sampleFunction(int $a, int $b = null): array
     {
         if ($a === $b) {
             bar();
@@ -99,11 +106,6 @@ There MUST NOT be more than one statement per line.
 
 Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
-
 ### Keywords and True/False/Null
 
 PHP [keywords] MUST be in lower case.
@@ -111,8 +113,10 @@ PHP [keywords] MUST be in lower case.
 The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string` and `resource MUST be in lower case
 
-Namespace and Use Declarations
----------------------------------
+Namespace, Strict Types and Use Declarations
+--------------------------------------------
+
+When present, there MUST be one blank line before the `namespace` declaration.
 
 When present, there MUST be one blank line after the `namespace` declaration.
 
@@ -121,20 +125,76 @@ declaration.
 
 There MUST be one `use` keyword per declaration.
 
-There MUST be one blank line after the `use` block.
+When using multiple classes, functions or constants within one namespace, you
+MUST group use statements within one namespace.
+
+Use statements MUST be in a block according to the entity (class, function or group)
+which is being grouped. Within each block there MUST be no blank lines. If a block
+has multiple lines there MUST be a blank line before the first line and a blank line
+after the last line.
+
+Classes, functions or constants grouped together into a single line must be listed
+alphabetically.
+
+The groups MUST be ordered such that classes are first, followed by functions and
+then constants.
 
 For example:
 
 ```php
 <?php
+declare(strict_types=1);
+
 namespace Vendor\Package;
 
-use FooClass;
-use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\Namespace\ClassD as D;
+use Vendor\Package\AnotherNamespace\ClassE as E;
+
+use function Vendor\Package\{func_a, func_b, func_c};
+use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
+
+class FooBar
+{
+	// ... additional PHP code ...
+}
+
+```
+
+
+All files MUST declare strict types.
+
+Files containing only PHP MUST contain the strict type declarations on the
+first line preceeding the opening PHP tag.
+
+There MUST not be a blank line before the strict types declaration.
+
+For example:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vendor\Package;
 
 // ... additional PHP code ...
 
+```
+
+Files containing HTML outside PHP opening and closing tags MUST on the first
+line include an opening php tag, the strict types declaration and closing
+tag.
+
+For example:
+```php
+<?php declare(strict_types=1); ?>
+<html>
+<body>
+	<?php
+		// ... additional PHP code ...
+	?>
+</body>
+</html>
 ```
 
 
