@@ -29,21 +29,30 @@ open to interpretation. This PSR therefore seeks to clarify the content of PSR-2
 a more modern context with new functionality available, and make the errata to PSR-2
 binding.
 
+### Overview
+
+Throughout this document, any instructions MAY be ignored if they do not exist in versions
+of PHP supported by your project.
+
 ### Example
 
 This example encompasses some of the rules below as a quick overview:
 
 ```php
 <?php
+declare(strict_types=1);
+
 namespace Vendor\Package;
 
-use FooInterface;
-use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\Namespace\ClassD as D;
+
+use function Vendor\Package\{functionA, functionB, functionC};
+use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
 
 class Foo extends Bar implements FooInterface
 {
-    public function sampleFunction($a, $b = null)
+    public function sampleFunction(int $a, int $b = null): array
     {
         if ($a === $b) {
             bar();
@@ -72,7 +81,7 @@ Code MUST follow all rules outlined in [PSR-1].
 
 All PHP files MUST use the Unix LF (linefeed) line ending.
 
-All PHP files MUST end with a single blank line.
+All PHP files MUST end with a single containing only a single newline (LF) character.
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
@@ -89,7 +98,7 @@ be split into multiple subsequent lines of no more than 80 characters each.
 There MUST NOT be trailing whitespace at the end of non-blank lines.
 
 Blank lines MAY be added to improve readability and to indicate related
-blocks of code.
+blocks of code except where explictly forbidden.
 
 There MUST NOT be more than one statement per line.
 
@@ -97,23 +106,17 @@ There MUST NOT be more than one statement per line.
 
 Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
-
 ### Keywords and True/False/Null
 
 PHP [keywords] MUST be in lower case.
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
+The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
+`bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
 
-[keywords]: http://php.net/manual/en/reserved.keywords.php
+Namespace, Strict Types and Use Declarations
+--------------------------------------------
 
-
-
-Namespace and Use Declarations
----------------------------------
+When present, there MUST be one blank line before the `namespace` declaration.
 
 When present, there MUST be one blank line after the `namespace` declaration.
 
@@ -122,20 +125,77 @@ declaration.
 
 There MUST be one `use` keyword per declaration.
 
-There MUST be one blank line after the `use` block.
+When using multiple classes, functions or constants within one namespace, you
+MUST group use statements within one namespace.
+
+Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces],
+functions or constants). To elaborate, this means that any and all classes are in a block
+together; any and all functions are in a block together; and any and all constants must
+be grouped together. Within each block there MUST be no blank lines. If a block has
+multiple lines there MUST be a blank line before the first line and a blank line after
+the last line.
+
+Classes, functions or constants grouped together into a single line must be listed
+alphabetically.
+
+The groups MUST be ordered such that classes (together with interfaces) are first,
+followed by functions and then constants.
+
+Example of the above notices about namespace, strict types and use declarations:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\Namespace\ClassD as D;
+use Vendor\Package\AnotherNamespace\ClassE as E;
+
+use function Vendor\Package\{functionA, functionB, functionC};
+use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
+
+class FooBar
+{
+    // ... additional PHP code ...
+}
+
+```
+
+All files MUST declare strict types.
+
+Files containing only PHP MUST contain the strict type declarations on the
+first line preceeding the opening PHP tag.
+
+There MUST not be a blank line before the strict types declaration.
 
 For example:
 
 ```php
 <?php
-namespace Vendor\Package;
+declare(strict_types=1);
 
-use FooClass;
-use BarClass as Bar;
-use OtherVendor\OtherPackage\BazClass;
+namespace Vendor\Package;
 
 // ... additional PHP code ...
 
+```
+
+Files containing HTML outside PHP opening and closing tags MUST, on the first
+line, include an opening php tag, the strict types declaration and closing
+tag.
+
+For example:
+```php
+<?php declare(strict_types=1); ?>
+<html>
+<body>
+    <?php
+        // ... additional PHP code ...
+    ?>
+</body>
+</html>
 ```
 
 
@@ -210,14 +270,14 @@ class ClassName
 }
 ```
 
-### Methods
+### Methods and Functions
 
 Visibility MUST be declared on all methods.
 
 Method names SHOULD NOT be prefixed with a single underscore to indicate
 protected or private visibility.
 
-Method names MUST NOT be declared with a space after the method name. The
+Method and Function names MUST NOT be declared with a space after the method name. The
 opening brace MUST go on its own line, and the closing brace MUST go on the
 next line following the body. There MUST NOT be a space after the opening
 parenthesis, and there MUST NOT be a space before the closing parenthesis.
@@ -236,14 +296,26 @@ class ClassName
         // method body
     }
 }
-```    
+```
 
-### Method Arguments
+A function declaration looks like the following. Note the placement of
+parentheses, commas, spaces, and braces:
+
+```php
+<?php
+
+function fooBarBaz($arg1, &$arg2, $arg3 = [])
+{
+    // function body
+}
+```
+
+### Method and function Arguments
 
 In the argument list, there MUST NOT be a space before each comma, and there
 MUST be one space after each comma.
 
-Method arguments with default values MUST go at the end of the argument
+Method and function arguments with default values MUST go at the end of the argument
 list.
 
 ```php
@@ -450,7 +522,7 @@ foreach ($iterable as $key => $value) {
 }
 ```
 
-### 5.6. `try`, `catch`
+### `try`, `catch`
 
 A `try catch` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -575,8 +647,8 @@ $foo->bar(
 Anonymous Classes
 --------------------
 
-Anonymous Classes MUST be [PSR-2][] section 4 compatible barring the following
-exceptions.
+Anonymous Classes MUST follow the same guidelines and principles as closures
+in the above section.
 
 
 ```
@@ -612,3 +684,4 @@ $instance = new class extends \Foo implements
 
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
+[keywords]: http://php.net/manual/en/reserved.keywords.php
