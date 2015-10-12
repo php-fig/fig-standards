@@ -645,8 +645,8 @@ $foo->bar(
 Anonymous Classes
 --------------------
 
-Anonymous Classes MUST be [PSR-2][] section 4 compatible barring the following
-exceptions.
+Anonymous Classes MUST follow the same guidelines and principles as closures
+in the above section.
 
 
 ```
