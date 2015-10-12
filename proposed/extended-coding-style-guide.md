@@ -156,7 +156,7 @@ use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
 
 class FooBar
 {
-	// ... additional PHP code ...
+    // ... additional PHP code ...
 }
 
 ```
@@ -190,9 +190,9 @@ For example:
 <?php declare(strict_types=1); ?>
 <html>
 <body>
-	<?php
-		// ... additional PHP code ...
-	?>
+    <?php
+        // ... additional PHP code ...
+    ?>
 </body>
 </html>
 ```
