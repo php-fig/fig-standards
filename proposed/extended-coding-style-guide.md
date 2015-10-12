@@ -180,8 +180,8 @@ namespace Vendor\Package;
 
 ```
 
-Files containing HTML outside PHP opening and closing tags MUST on the first
-line include an opening php tag, the strict types declaration and closing
+Files containing HTML outside PHP opening and closing tags MUST, on the first
+line, include an opening php tag, the strict types declaration and closing
 tag.
 
 For example:
