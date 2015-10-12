@@ -98,7 +98,7 @@ be split into multiple subsequent lines of no more than 80 characters each.
 There MUST NOT be trailing whitespace at the end of non-blank lines.
 
 Blank lines MAY be added to improve readability and to indicate related
-blocks of code.
+blocks of code except where explictly forbidden.
 
 There MUST NOT be more than one statement per line.
 
