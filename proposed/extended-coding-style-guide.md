@@ -161,7 +161,6 @@ class FooBar
 
 ```
 
-
 All files MUST declare strict types.
 
 Files containing only PHP MUST contain the strict type declarations on the
@@ -269,14 +268,14 @@ class ClassName
 }
 ```
 
-### Methods
+### Methods and Functions
 
 Visibility MUST be declared on all methods.
 
 Method names SHOULD NOT be prefixed with a single underscore to indicate
 protected or private visibility.
 
-Method names MUST NOT be declared with a space after the method name. The
+Method and Function names MUST NOT be declared with a space after the method name. The
 opening brace MUST go on its own line, and the closing brace MUST go on the
 next line following the body. There MUST NOT be a space after the opening
 parenthesis, and there MUST NOT be a space before the closing parenthesis.
@@ -295,14 +294,26 @@ class ClassName
         // method body
     }
 }
-```    
+```
 
-### Method Arguments
+A function declaration looks like the following. Note the placement of
+parentheses, commas, spaces, and braces:
+
+```php
+<?php
+
+function fooBarBaz($arg1, &$arg2, $arg3 = [])
+{
+    // function body
+}
+```
+
+### Method and function Arguments
 
 In the argument list, there MUST NOT be a space before each comma, and there
 MUST be one space after each comma.
 
-Method arguments with default values MUST go at the end of the argument
+Method and function arguments with default values MUST go at the end of the argument
 list.
 
 ```php
