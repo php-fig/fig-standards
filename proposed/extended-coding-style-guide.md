@@ -47,7 +47,7 @@ namespace Vendor\Package;
 use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
 use Vendor\Package\Namespace\ClassD as D;
 
-use function Vendor\Package\{func_a, func_b, func_c};
+use function Vendor\Package\{functionA, functionB, functionC};
 use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
 
 class Foo extends Bar implements FooInterface
@@ -151,7 +151,7 @@ use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
 use Vendor\Package\Namespace\ClassD as D;
 use Vendor\Package\AnotherNamespace\ClassE as E;
 
-use function Vendor\Package\{func_a, func_b, func_c};
+use function Vendor\Package\{functionA, functionB, functionC};
 use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
 
 class FooBar
