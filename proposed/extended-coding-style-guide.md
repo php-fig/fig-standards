@@ -35,6 +35,8 @@ This example encompasses some of the rules below as a quick overview:
 
 ```php
 <?php
+declare(strict_types=1);
+
 namespace Vendor\Package;
 
 use FooInterface;
@@ -43,7 +45,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 class Foo extends Bar implements FooInterface
 {
-    public function sampleFunction($a, $b = null)
+    public function sampleFunction(string $a, int $b = null): array
     {
         if ($a === $b) {
             bar();
@@ -106,11 +108,8 @@ Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
 PHP [keywords] MUST be in lower case.
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
-
-[keywords]: http://php.net/manual/en/reserved.keywords.php
-
-
+The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
+`bool`, `null`, `numeric`, `string` and `resource MUST be in lower case
 
 Namespace and Use Declarations
 ---------------------------------
@@ -450,7 +449,7 @@ foreach ($iterable as $key => $value) {
 }
 ```
 
-### 5.6. `try`, `catch`
+### `try`, `catch`
 
 A `try catch` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -612,3 +611,4 @@ $instance = new class extends \Foo implements
 
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
+[keywords]: http://php.net/manual/en/reserved.keywords.php
