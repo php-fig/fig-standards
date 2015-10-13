@@ -285,12 +285,11 @@ do so.
 
 ### 5.2 Sponsors
 
-* Beau Simensen, Sculpin (Coordinator)
+* Paul Dragoonis, PPI Framework (Coordinator)
 * Pádraic Brady, Zend Framework
 
 ### 5.3 Contributors
 
-* Paul Dragoonis
 * Robert Hafner
 
 6. Votes
