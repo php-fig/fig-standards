@@ -12,8 +12,8 @@ retourne par la suite une réponse HTTP. Le code côtés serveur reçoit alors u
 et retourne ensuite un message sous forme de réponse HTTP.
 
 Les messages HTTP sont en général totalement abstraits pour l'utilisateur final, mais en tant que développeur,
-nous nous devons de connaitre comment ils sont structurés et également quels sont les méthodes pour y accéder,
-ou bien encorecomment les manipuler, afin de pouvoir réaliser nos tâches, à savoir s'il est nécessaire 
+nous nous devons de connaitre comment ils sont structurés et également quelles sont les méthodes pour y accéder,
+ou bien encore comment les manipuler, afin de pouvoir réaliser nos tâches, à savoir s'il est nécessaire 
 de transmettre une requête HTTP auprès d'une API HTTP, ou bien, gérer la reception d'une requête entrante.
 
 Chaque requête HTTP a une forme bien particulière:
