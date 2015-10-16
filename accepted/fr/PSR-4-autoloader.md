@@ -60,7 +60,7 @@ qualifié ...
 
 4. Les implémentations d'auto-chargement de classe NE DOIVENT PAS créer
    d'exceptions, NE DOIVENT PAS provoquer d'erreur de quelque niveau que ce
-   soit, et de NE DEVRAIT PAS retourner de valeur.
+   soit, et NE DEVRAIT PAS retourner de valeur.
 
 
 ## 3. Exemples
