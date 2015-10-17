@@ -81,7 +81,7 @@ Code MUST follow all rules outlined in [PSR-1].
 
 All PHP files MUST use the Unix LF (linefeed) line ending.
 
-All PHP files MUST end with a single containing only a single newline (LF) character.
+All PHP files MUST end with a single line, containing only a single newline (LF) character.
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
