@@ -108,7 +108,7 @@ Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
 ### Keywords and True/False/Null
 
-PHP [keywords] MUST be in lower case.
+PHP [keywords][] MUST be in lower case.
 
 The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
