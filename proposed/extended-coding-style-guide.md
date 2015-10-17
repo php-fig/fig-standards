@@ -653,7 +653,7 @@ Anonymous Classes MUST follow the same guidelines and principles as closures
 in the above section.
 
 
-```
+```php
 <?php
 
 $instance = new class {};
@@ -664,12 +664,12 @@ the list of `implements` interfaces does not wrap. If the list of interfaces
 wraps, the bracket MUST be placed on the line immediately following the last
 interface.
 
-```
+```php
 <?php
 
 // Bracket on the same line
 $instance = new class extends \Foo implements \HandleableInterface {
-
+    // Class content
 };
 
 // Bracket on the next line
@@ -678,10 +678,8 @@ $instance = new class extends \Foo implements
     \Countable,
     \Serializable
 {
-
+    // Class content
 };
-
-
 ```
 
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
