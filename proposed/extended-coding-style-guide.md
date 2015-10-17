@@ -81,7 +81,7 @@ Code MUST follow all rules outlined in [PSR-1].
 
 All PHP files MUST use the Unix LF (linefeed) line ending.
 
-All PHP files MUST end with a single containing only a single newline (LF) character.
+All PHP files MUST end with a single line, containing only a single newline (LF) character.
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
@@ -128,7 +128,7 @@ There MUST be one `use` keyword per declaration.
 When using multiple classes, functions or constants within one namespace, you
 MUST group use statements within one namespace.
 
-Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces],
+Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces and traits],
 functions or constants). To elaborate, this means that any and all classes are in a block
 together; any and all functions are in a block together; and any and all constants must
 be grouped together. Within each block there MUST be no blank lines. If a block has
@@ -138,7 +138,7 @@ the last line.
 Classes, functions or constants grouped together into a single line must be listed
 alphabetically.
 
-The groups MUST be ordered such that classes (together with interfaces) are first,
+The groups MUST be ordered such that classes (together with interfaces and traits) are first,
 followed by functions and then constants.
 
 Example of the above notices about namespace, strict types and use declarations:
