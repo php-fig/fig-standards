@@ -189,11 +189,6 @@ interface CacheItemInterface
      * although the method of serialization is left up to the Implementing
      * Library.
      *
-     * Implementing Libraries MAY provide a default TTL if none is specified.
-     * If no TTL is specified and no default TTL has been set, the TTL MUST
-     * be set to the maximum possible duration of the underlying storage
-     * mechanism, or permanent if possible.
-     *
      * @param mixed $value
      *   The serializable value to be stored.
      *
