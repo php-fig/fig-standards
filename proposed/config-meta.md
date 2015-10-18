@@ -22,18 +22,17 @@ It can also be used to build the name of the *Container* entry.
 * It's not a goal to validate the configuration option values.
 
 ## 4. History
-Before submitting the Config PSR to the PHP-FIG, the interfaces was first proposed in a project named 
+Before submitting the Config PSR to the PHP-FIG, the interfaces were first proposed in a project named 
 [interop-config](https://github.com/sandrokeil/interop-config).
 
-The goal of the project was to provide a test-bed for implementing the interfaces and implementation and to pave the way 
+The goal of the project was to provide a test-bed for implementing the interfaces and to pave the way 
 for the Config PSR.
 
 ## 5. Interfaces
-There are six interfaces and some interfaces extends from another interface to ensure the uniform configuration structure. 
-If you confused about the naming of the interfaces or methods, note that I have used the Domain Driven Design approach.
+This specification defines four interfaces. The naming of the interfaces and methods follows the Domain-Driven Design approach.
 
 ### 5.1 RequiresConfig
-This is the main interface and describes the default configuration structure. Since we have Composer more and more 
+This is the main interface and describes the default configuration structure. Since we have Composer, more and more 
 libraries can be combined to create individual projects. So it is only logical to start the configuration structure 
 with a `vendorName`. A vendor has multiple packages so the next structure depth is `packageName`.
 
