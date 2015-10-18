@@ -17,59 +17,53 @@ The word `Container` in this document is to be interpreted as the `ContainerInte
 
 ## 1. Specification
 
-### 1.1 HasConfig
+This specification defines four interfaces where the `PSR\Config\RequiresConfig` is the main interface and 
+`PSR\Config\RequiresContainerId`, `PSR\Config\RequiresMandatoryOptions`,`PSR\Config\ProvidesDefaultOptions` are optional.
 
-The `PSR\Config\HasConfig` interface exposes two methods: `vendorName` and `packageName`
+### 1.1 RequiresConfig
+
+The `PSR\Config\RequiresConfig` interface exposes four methods: `vendorName`, `packageName`, `canRetrieveOptions` and `options`.
 
 * `vendorName` has no parameters and MUST return a string.
 * `packageName` has no parameters and MUST return a string.
-
-### 1.2 HasContainerId
-The `PSR\Config\HasContainerId` interface exposes one method: `containerId`
-
-* `containerId` has no parameters and MUST return a string.
-
-### 1.3 HasMandatoryOptions
-The `PSR\Config\HasMandatoryOptions` interface exposes one method: `mandatoryOptions`
-
-* `mandatoryOptions` has no parameters and MUST return an array of strings which represents the list of mandatory 
-options.
-
-### 1.4 ObtainsOptions
-
-The `PSR\Config\ObtainsOptions` interface exposes one method: `options`
-
+* `canRetrieveOptions` checks if options are available depending on implemented interfaces and checks that the retrieved options are an array or have implemented \ArrayAccess. The `RequiresContainerId` interface is optional but MUST be supported.
 * `options` takes one mandatory parameter: a configuration array. It MUST be an array or an object which implements the 
 `ArrayAccess` interface. A call to `options` returns the configuration depending on the implemented interfaces of the 
 class or throws an exception if the parameter is invalid or if the configuration is missing or if a mandatory option is missing.
 
-### 1.5 OptionalOptions
-The `PSR\Config\OptionalOptions` interface exposes one method: `optionalOptions`
+### 1.2 RequiresContainerId
+The `PSR\Config\RequiresContainerId` interface exposes one method: `containerId`
 
-* `optionalOptions` has no parameters and MUST return an array of strings which represents the list of optional options. This array can have a multiple depth.
+* `containerId` has no parameters and MUST return a string.
 
-### 1.6 DefaultOptions
-The `PSR\Config\DefaultOptions` interface exposes one method: `defaultOptions`
+### 1.3 RequiresMandatoryOptions
+The `PSR\Config\RequiresMandatoryOptions` interface exposes one method: `mandatoryOptions`
+
+* `mandatoryOptions` has no parameters and MUST return an array of strings which represents the list of mandatory 
+options.
+
+### 1.4 ProvidesDefaultOptions
+The `PSR\Config\ProvidesDefaultOptions` interface exposes one method: `defaultOptions`
 
 * `defaultOptions` has no parameters and MUST return an key value array where the key is the option name and the value is the default value for this option. This array can have a multiple depth.
 
-### 1.7 Exceptions
+### 1.5 Exceptions
 Exceptions directly thrown by the `options` method MUST implement the `PSR\Config\Exception\ExceptionInterface`.
 
 If the configuration parameter is not an array or an object which implementes the `ArrayAccess` interface the method 
 SHOULD throw a `PSR\Config\Exception\InvalidArgumentException`.
 
-If the key which is returned from `vendorName` is not set in the configuration parameter the method SHOULD throw a 
-`PSR\Config\Exception\InvalidArgumentException`.
+If the key which is returned from  `vendorName` is not set in the configuration parameter the method SHOULD throw a 
+`PSR\Config\Exception\OutOfBoundsException`.
 
 If the key which is returned from `packageName` is not set under the key of `vendorName` in the configuration parameter 
 the method SHOULD throw a `PSR\Config\Exception\OptionNotFoundException`.
 
-If the class implements the `HasContainerId` interface and if the key which is returned from `containerId` is not set
+If the class implements the `RequiresContainerId` interface and if the key which is returned from `containerId` is not set
 under the key of `packageName` in the configuration parameter the method SHOULD throw a 
 `PSR\Config\Exception\OptionNotFoundException`.
 
-If the class implements the `HasMandatoryOptions` interface and if a mandatory option from `mandatoryOptions` is not set 
+If the class implements the `RequiresMandatoryOptions` interface and if a mandatory option from `mandatoryOptions` is not set 
 in the options array which was retrieved from the configuration parameter before, the method SHOULD throw a 
 `PSR\Config\Exception\MandatoryOptionNotFoundException`.
 
@@ -80,18 +74,21 @@ The interfaces and classes described as well as relevant exception are provided 
 
 ## 3. Interfaces
 
-## 3.1 `PSR\Config\HasConfig`
+## 3.1 `PSR\Config\RequiresConfig`
 
 ```php
 <?php
 namespace PSR\Config;
 
+use ArrayAccess;
+
 /**
- * HasConfig Interface
+ * RequiresConfig Interface
  *
- * Use this interface if you want to use a configuration
+ * Use this interface if you want to retrieve options from a configuration and optional to perform a mandatory option
+ * check. Default options are merged and overridden of the provided options.
  */
-interface HasConfig
+interface RequiresConfig
 {
     /**
      * Returns the vendor name
@@ -106,75 +103,11 @@ interface HasConfig
      * @return string
      */
     public function packageName();
-}
-```
 
-## 3.2 `PSR\Config\HasContainerId`
-
-```php
-<?php
-namespace PSR\Config;
-
-/**
- * HasContainerId Interface
- *
- * Use this interface if a configuration is for a specific container id.
- */
-interface HasContainerId extends HasConfig
-{
-    /**
-     * Returns the container identifier
-     *
-     * @return string
-     */
-    public function containerId();
-}
-
-```
-
-## 3.3 `PSR\Config\HasMandatoryOptions`
-
-```php
-<?php
-namespace PSR\Config;
-
-/**
- * HasMandatoryOptions Interface
- *
- * Use this interface if you have mandatory options
- */
-interface HasMandatoryOptions
-{
-    /**
-     * Returns a list of mandatory options which must be available
-     *
-     * @return string[] List with mandatory options
-     */
-    public function mandatoryOptions();
-}
-
-```
-
-## 3.4 `PSR\Config\ObtainsOptions`
-
-```php
-<?php
-namespace PSR\Config;
-
-use ArrayAccess;
-
-/**
- * ObtainOptions Interface
- *
- * Use this interface if you want to retrieve options from a configuration and optional to perform a mandatory option
- * check. Default options are merged and overriden of the provided options.
- */
-interface ObtainsOptions extends HasConfig
-{
     /**
      * Returns options based on [vendor][package][id] and can perform mandatory option checks if class implements
-     * MandatoryOptionsInterface. If the HasDefaultOptions interface is implemented, these options must be overriden 
-     * by the provided config. The HasContainerId interface is optional.
+     * MandatoryOptionsInterface. If the ProvidesDefaultOptions interface is implemented, these options must be
+     * overridden by the provided config. The RequiresContainerId interface is optional.
      *
      * <code>
      * return [
@@ -186,7 +119,11 @@ interface ObtainsOptions extends HasConfig
      *             'orm_default' => [
      *                 // mandatory options, is optional
      *                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-     *                 'params' => [],
+     *                 'params' => [
+     *                     // default options, is optional
+     *                     'host' => 'localhost',
+     *                     'port' => '3306',
+     *                 ],
      *             ],
      *         ],
      *     ],
@@ -194,58 +131,89 @@ interface ObtainsOptions extends HasConfig
      * </code>
      *
      * @param array|ArrayAccess $config Configuration
-     * @return mixed options
+     * @return array|ArrayAccess options
      *
-     * @throws Exception\InvalidArgumentException If the $config parameter has the wrong type
-     * @throws Exception\RuntimeException If vendor name was not found
+     * @throws Exception\UnexpectedValueException If the $config parameter has the wrong type
+     * @throws Exception\OutOfBoundsException If vendor name was not found
      * @throws Exception\OptionNotFoundException If no options are available
      * @throws Exception\MandatoryOptionNotFoundException If a mandatory option is missing
      */
     public function options($config);
+
+    /**
+     * Checks if options are available depending on implemented interfaces and checks that the retrieved options are an
+     * array or have implemented \ArrayAccess.
+     *
+     * @param array|ArrayAccess $config Configuration
+     * @return bool True if options are available, otherwise false
+     */
+    public function canRetrieveOptions($config);
 }
 
 ```
 
-## 3.5 `PSR\Config\HasOptionalOptions`
+## 3.2 `PSR\Config\RequiresContainerId`
 
 ```php
 <?php
 namespace PSR\Config;
 
 /**
- * HasOptionalOptions Interface
+ * RequiresContainerId Interface
  *
- * Use this interface if you have optional options. This can be used to auto discover the options for a configuration
- * file.
+ * Use this interface if a configuration is for a specific container id.
  */
-interface HasOptionalOptions
+interface RequiresContainerId extends RequiresConfig
 {
     /**
-     * Returns a list of optional options
+     * Returns the container identifier
      *
-     * @return string[] List with optional options
+     * @return string
      */
-    public function optionalOptions();
+    public function containerId();
 }
 
 ```
 
-## 3.6 `PSR\Config\HasDefaultOptions`
+## 3.3 `PSR\Config\RequiresMandatoryOptions`
 
 ```php
 <?php
 namespace PSR\Config;
 
 /**
- * HasDefaultOptions Interface
+ * RequiresMandatoryOptions Interface
+ *
+ * Use this interface if you have mandatory options
+ */
+interface RequiresMandatoryOptions
+{
+    /**
+     * Returns a list of mandatory options which must be available
+     *
+     * @return string[] List with mandatory options
+     */
+    public function mandatoryOptions();
+}
+
+```
+
+## 3.4 `PSR\Config\ProvidesDefaultOptions`
+
+```php
+<?php
+namespace PSR\Config;
+
+/**
+ * ProvidesDefaultOptions Interface
  *
  * Use this interface if you have default options. These options are merged with the provided options in
- * \PSR\Config\ObtainsOptions::options
+ * \PSR\Config\RequiresConfig::options
  */
-interface HasDefaultOptions
+interface ProvidesDefaultOptions
 {
     /**
-     * Returns a list of default options, which are merged in \PSR\Config\ObtainsOptions::options
+     * Returns a list of default options, which are merged in \PSR\Config\RequiresConfig::options
      *
      * @return string[] List with default options and values
      */
@@ -254,7 +222,7 @@ interface HasDefaultOptions
 
 ```
 
-## 3.7 `PSR\Config\Exception\ExceptionInterface`
+## 3.5 `PSR\Config\Exception\ExceptionInterface`
 
 ```php
 <?php
@@ -271,7 +239,7 @@ interface ExceptionInterface
 
 ```
 
-## 3.8 `PSR\Config\Exception\InvalidArgumentException`
+## 3.6 `PSR\Config\Exception\InvalidArgumentException`
 
 
 ```php
@@ -290,7 +258,7 @@ class InvalidArgumentException extends PhpInvalidArgumentException implements Ex
 }
 ```
 
-## 3.9 `PSR\Config\Exception\RuntimeException`
+## 3.7 `PSR\Config\Exception\RuntimeException`
 
 ```php
 <?php
@@ -309,7 +277,26 @@ class RuntimeException extends PhpRuntimeException implements ExceptionInterface
 
 ```
 
-## 3.10 `PSR\Config\Exception\OptionNotFoundException`
+## 3.8 `PSR\Config\Exception\RuntimeException`
+
+```php
+<?php
+namespace PSR\Config\Exception;
+
+use OutOfBoundsException as PhpOutOfBoundsException;
+
+/**
+ * OutOfBoundsException exception
+ *
+ * Use this exception if the code attempts to access an associative array, but performs a check for the key.
+ */
+class OutOfBoundsException extends PhpOutOfBoundsException implements ExceptionInterface
+{
+}
+
+```
+
+## 3.9 `PSR\Config\Exception\OptionNotFoundException`
 
 ```php
 <?php
@@ -320,13 +307,13 @@ namespace PSR\Config\Exception;
  *
  * Use this exception if an option was not found in the config
  */
-class OptionNotFoundException extends RuntimeException
+class OptionNotFoundException extends OutOfBoundsException
 {
 }
 
 ```
 
-## 3.11 `PSR\Config\Exception\MandatoryOptionNotFoundException`
+## 3.10 `PSR\Config\Exception\MandatoryOptionNotFoundException`
 
 ```php
 
@@ -337,7 +324,7 @@ namespace PSR\Config\Exception;
  *
  * Use this exception if a mandatory option was not found in the config
  */
-class MandatoryOptionNotFoundException extends RuntimeException
+class MandatoryOptionNotFoundException extends OutOfBoundsException
 {
 }
 
