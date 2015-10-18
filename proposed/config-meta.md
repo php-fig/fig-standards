@@ -8,7 +8,7 @@ The word `Container` in this document is to be interpreted as the `ContainerInte
 
 ## 2. Why bother?
 The configuration of instances via factories is not uniform, uses different ways to retrieve and check the needed 
-options and it's not clear which configuration options needs the factory to create the instance.
+options and it's not clear which configuration options the factory needs to create the instance.
 
 ## 3. Scope
 
