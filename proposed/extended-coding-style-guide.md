@@ -166,6 +166,19 @@ class FooBar
 
 ```
 
+Compound namespaces with a depth of two or more MUST not be used. Therefore the
+following is the maximum compounding depth allowed:
+```php
+<?php
+
+use Vendor\Package\Namespace\{
+    SubnamespaceOne\ClassA,
+    SubnamespaceOne\ClassB,
+    SubnamespaceTwo\ClassY,
+    ClassZ,
+};
+```
+
 All files MUST declare strict types.
 
 Files containing only PHP MUST place the strict types declaration on the
