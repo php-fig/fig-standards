@@ -166,8 +166,7 @@ class FooBar
 
 ```
 
-Compound namespaces with a depth of two or more MUST not be used. Therefore the
-following is the maximum compounding depth allowed:
+Compound namespaces with a depth of two or more MUST not be used.
 ```php
 <?php
 
