@@ -13,9 +13,10 @@ options and it's not clear which configuration options the factory needs to crea
 ## 3. Scope
 
 ### 3.1 Goals
-The goal set by the Config PSR is to standardize how factories uses a configuration to create instances, support for 
+* The goal set by the Config PSR is to standardize how factories uses a configuration to create instances, support for 
 auto discovery of needed configuration, to reduce boilerplate code and to make it more readable and easier to understand. 
-It can also be used to build the name of the *Container* entry.
+* Validates the configuration structure depending on the implemented interfaces.
+* It can also be used to build the name of the *Container* entry.
 
 ### 3.2 Non-goals
 * It's not a goal to define a whole project/library configuration structure.
