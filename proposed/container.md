@@ -34,6 +34,8 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 
 - `has` takes one unique parameter: an entry identifier. It MUST return `true`
   if an entry identifier is known to the container and `false` if it is not.
+  `has($id)` returning true does not mean that `get($id)` will not throw an exception.
+  It does however mean that `get($id)` will not throw a `NotFoundException`.
 
 ### 1.2 Exceptions
 
@@ -114,6 +116,9 @@ interface ContainerInterface
     /**
      * Returns true if the container can return an entry for the given identifier.
      * Returns false otherwise.
+     *
+     * `has($id)` returning true does not mean that `get($id)` will not throw an exception.
+     * It does however mean that `get($id)` will not throw a `NotFoundException`.
      *
      * @param string $id Identifier of the entry to look for.
      *
