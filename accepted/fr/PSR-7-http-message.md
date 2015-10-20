@@ -25,31 +25,29 @@ Host: example.com
 foo=bar&baz=bat
 ```
 
-The first line of a request is the "request line", and contains, in order, the
-HTTP request method, the request target (usually either an absolute URI or a
-path on the web server), and the HTTP protocol version. This is followed by one
-or more HTTP headers, an empty line, and the message body.
+La première ligne d'une requête correspond à "la ligne de requête", et contient, dans l'ordre, la mèthode utilisée pour 
+la requête HTTP, la cible de la requête (en générale une URI absolue ou un chemun vers un serveur web), 
+et la version du protocole HTTP. On trouve ensuite un ou plusieurs headers HTTP, une ligne vide, et le contenu du message.
 
-HTTP response messages have a similar structure:
+Les réponses HTTP possédent une structure similaire:
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: text/plain
 
-This is the response body
+C'est le body de la réponse
 ```
 
-The first line is the "status line", and contains, in order, the HTTP protocol
-version, the HTTP status code, and a "reason phrase," a human-readable
-description of the status code. Like the request message, this is then
-followed by one or more HTTP headers, an empty line, and the message body.
+La première ligne correspond à la "ligne de statut", et contient, dans l'ordre, la version du protocole HTTP,
+le code HTTP de statut, et une "phrase explicative", une description compréhensible par L'homme du code de statut.
+Comme pour le message de requête, il est ensuite suivis par un ou plusieurs header HTTP, une ligne vide, et le contenu du message.
 
-The interfaces described in this document are abstractions around HTTP messages
-and the elements composing them.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+Les interfaces décrites dans ce document sont une abstraction autour des messages HTTP et les éléments qui la composent.
+
+Les mots clés "DOIT", "NE DOIT PAS", "OBLIGATOIRE", "DEVRA", "NE DEVRA PAS",
+"DEVRAIT", "NE DEVRAIT PAS", "RECOMMENDÉ", "PEUT" et "OPTIONNELLE" dans ce
+document doivent être interprétés comme décrit dans [RFC 2119]http://tools.ietf.org/html/rfc2119).
 
 ### References
 
