@@ -89,3 +89,6 @@ Logger Interface
   // Выводит "User bolivar created"
   echo interpolate($message, $context);
   ```
+### 1.3 Контекст
+
+- Каждый метод принимает массив в качестве контекста данных. 
