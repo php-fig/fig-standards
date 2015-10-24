@@ -53,7 +53,12 @@ may also be explicitly set with DateTime object.
     1:35:00.
 
     Implementing Libraries MAY expire an item before its requested Expiration Time,
-but MUST treat an item as expired once its Expiration Time is reached.
+but MUST treat an item as expired once its Expiration Time is reached. If a calling
+library asks for an item to be saved but does not specify an expiration time, or
+specifies a null expiration time or TTL, an Implementing Library MAY use a configured
+default duration. If no default duration has been set, the Implementing Library
+MUST interpret that as a request to cache the item forever, or for as long as the
+underlying implementation supports.
 
 *    **Key** - A string of at least one character that uniquely identifies a
 cached item. Implementing libraries MUST support keys consisting of the
@@ -189,11 +194,6 @@ interface CacheItemInterface
      * although the method of serialization is left up to the Implementing
      * Library.
      *
-     * Implementing Libraries MAY provide a default TTL if none is specified.
-     * If no TTL is specified and no default TTL has been set, the TTL MUST
-     * be set to the maximum possible duration of the underlying storage
-     * mechanism, or permanent if possible.
-     *
      * @param mixed $value
      *   The serializable value to be stored.
      *
@@ -233,7 +233,9 @@ interface CacheItemInterface
      * @param int|\DateInterval $time
      *   The period of time from the present after which the item MUST be considered
      *   expired. An integer parameter is understood to be the time in seconds until
-     *   expiration.
+     *   expiration. If null is passed explicitly, a default value MAY be used.
+     *   If none is set, the value should be stored permanently or for as long as the
+     *   implementation allows.
      *
      * @return static
      *   The called object.
