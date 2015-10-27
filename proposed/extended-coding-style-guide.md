@@ -113,12 +113,15 @@ PHP [keywords] MUST be in lower case.
 The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
 
-Namespace, Strict Types and Use Declarations
+Strict Types, Namespace, and Use Declarations
 --------------------------------------------
 
-When present, there MUST be one blank line before the `namespace` declaration.
+When present, there MUST be one blank line after the `declare` declaration.
 
 When present, there MUST be one blank line after the `namespace` declaration.
+
+When present, the `namespace` declaration MUST go after the `declare`
+declaration.
 
 When present, all `use` declarations MUST go after the `namespace`
 declaration.
@@ -511,7 +514,7 @@ for ($i = 0; $i < 10; $i++) {
 ```
 
 ### `foreach`
-    
+
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
