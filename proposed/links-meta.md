@@ -2,7 +2,14 @@
 
 ## 1. Summary
 
+Hypermedia links are becoming an increasingly important part of the web, in both HTML contexts
+and various API format contexts. However, there is no single common hypermedia format, nor
+is there a common way to represent Links between formats.
 
+This specification aims to provide PHP developers with a simple, common way of representing a
+hypermedia link independently of the serialization format that is used. That in turn allows
+a system to serialize a response with hypermedia links into one or more wire formats independently
+of the process of deciding what those links should be.
 
 ### Open questions
 
@@ -21,17 +28,24 @@ The following questions are still outstanding, in the opinion of the Editor, and
 
 ### 2.1 Goals
 
-* 
-
+* This specification aims to extract and standardize hypermedia link representation between different
+formats.
 
 ### 2.2 Non-Goals
 
-* 
+* This specification does not seek to standardize or favor any particular hypermedia serialization format.
 
 ## 3. Design Decisions
 
-### 
+### Why no mutator methods?
 
+One of the key targets for this specification is PSR-7 Response objects.  Response objects by design must be
+immutable.  Other value-object implementations likely would also require an immutable interface. Therefore,
+this specification focuses only on accessor methods that allow links to be extracted from a source object.
+How they got into that object is irrelevant.
+
+In practice, immutable objects will likely incorporate with*()-style methods much like PSR-7 does. The definition
+of those interfaces is out of the scope of this specification, however.
 
 
 ## 4. People
