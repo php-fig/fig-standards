@@ -168,8 +168,8 @@ class FooBar
 
 All files MUST declare strict types.
 
-Files containing only PHP MUST contain the strict type declarations on the
-first line preceeding the opening PHP tag.
+Files containing only PHP MUST place the strict types declaration on the
+first line following the opening PHP tag.
 
 There MUST NOT be a blank line before the strict types declaration.
 
