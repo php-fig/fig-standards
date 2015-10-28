@@ -1,5 +1,13 @@
 # Link definition interfaces
 
+Hypermedia links are becoming an increasingly important part of the web, in both HTML contexts
+and various API format contexts. However, there is no single common hypermedia format, nor
+is there a common way to represent Links between formats.
+
+This specification aims to provide PHP developers with a simple, common way of representing a
+hypermedia link independently of the serialization format that is used. That in turn allows
+a system to serialize a response with hypermedia links into one or more wire formats independently
+of the process of deciding what those links should be.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -8,11 +16,22 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 ### References
 
 - [RFC 2119](http://tools.ietf.org/html/rfc2119)
+- [RFC 4287](https://tools.ietf.org/html/rfc4287)
+- [RFC 5988](https://tools.ietf.org/html/rfc5988)
+- [Microformats Relations List](http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions)
+- [IANA Link Relations Registry](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
 
 
 ## 1. Specification
 
 ### 1.1 
+
+A Hypermedia Link consists of, at minimum:
+- A URI representing the target resource being referenced.
+- A relationship defining how the target resource relates to the source.
+
+Various other attributes of the Link may exist, depending on the format used. As additional attributes 
+are not well-standardized or universal, this specification does not seek to standardize them.
 
 
 ## 2. Package

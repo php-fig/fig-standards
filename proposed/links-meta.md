@@ -23,6 +23,8 @@ The following questions are still outstanding, in the opinion of the Editor, and
   people can easily find it when using it?
 * Currently, technically, URL templates would be disallowed. That's a problem for, say, HAL. How do we want to square
   that, especially if Href becomes an object?
+* Should we allow rels to be multi-value, or force multiple rels to be multiple objects? (IE, each uri/rel combination
+  becomes a distinct object.)
 
 ## 2. Scope
 
@@ -47,6 +49,15 @@ How they got into that object is irrelevant.
 In practice, immutable objects will likely incorporate with*()-style methods much like PSR-7 does. The definition
 of those interfaces is out of the scope of this specification, however.
 
+### Why is rel on a Link object multi-value?
+
+Different hypermedia standards handle multiple links with the same relationship differently. Some have a single
+link that has multiple rel's defined. Others have a single rel entry that then contains multiple links.
+
+Defining each Link uniquely but allowing it to have multiple rels provides a most-compatible-denominator definition.
+A single LinkInterface object may be serialized to one or more link entries in a given hypermedia format, as
+appropriate.  However, specifying multiple link objects each with a single rel yet the same URI is also legal, and
+a hypermedia format can serialize that as appropriate, too.
 
 ## 4. People
 
@@ -66,3 +77,4 @@ of those interfaces is out of the scope of this specification, however.
 ## 6. Relevant links
 
 * [What's in a link?](http://evertpot.com/whats-in-a-link/) by Evert Pot
+* [FIG Link Working Group List](https://groups.google.com/forum/#!forum/php-fig-link)
