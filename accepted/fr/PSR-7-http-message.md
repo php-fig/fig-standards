@@ -61,40 +61,42 @@ document doivent être interprétés comme décrit dans [RFC 2119]http://tools.i
 
 ### 1.1 Messages
 
-An HTTP message is either a request from a client to a server or a response from
-a server to a client. This specification defines interfaces for the HTTP messages
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
+Un message HTTP est soit une requête issue d'un client vers un serveur, soit une réponse
+d'un serveur vers le client. Ces spécifications définissent les interfaces pour les messages HTTP
+`Psr\Http\Message\RequestInterface` et `Psr\Http\Message\ResponseInterface` respectivement.
 
-Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
-`Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
-implemented directly, implementors SHOULD implement
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
+Les deux classes `Psr\Http\Message\RequestInterface` et `Psr\Http\Message\ResponseInterface` 
+étendent `Psr\Http\Message\MessageInterface`. 
+Bien que `Psr\Http\Message\MessageInterface` DEVRAIT être implémentée directement, les développeurs
+DEVRAIENT implémenter `Psr\Http\Message\RequestInterface` et `Psr\Http\Message\ResponseInterface`.
 
-From here forward, the namespace `Psr\Http\Message` will be omitted when
-referring to these interfaces.
+A partir de maintenant, le namespace `Psr\Http\Message` ne sera plus mentionné quand nous ferons 
+appel à ces interaces.
 
 #### 1.2 HTTP Headers
 
-##### Case-insensitive header field names
+##### Nom des champs de header sensibles à la case 
 
-HTTP messages include case-insensitive header field names. Headers are retrieved
-by name from classes implementing the `MessageInterface` in a case-insensitive
-manner. For example, retrieving the `foo` header will return the same result as
-retrieving the `FoO` header. Similarly, setting the `Foo` header will overwrite
-any previously set `foo` header value.
+Les messages HTTP contiennent des noms de champs de header sensibles à la case.
+Les headers sont obtenus par des noms issus des classes implémentant `MessageInterface` 
+en respectant la case.
+Par example, en recherchant le header `foo`, on obtiendra le même résultat qu'en 
+recherchant le header `FoO`. De la même manière, en modifiant le header `Foo` cela écrasera
+tout autre header de type `foo`   
+
 
 ```php
 $message = $message->withHeader('foo', 'bar');
 
 echo $message->getHeaderLine('foo');
-// Outputs: bar
+// Affichera: bar
 
 echo $message->getHeaderLine('FOO');
-// Outputs: bar
+// Affichera: bar
 
 $message = $message->withHeader('fOO', 'baz');
 echo $message->getHeaderLine('foo');
-// Outputs: baz
+// Affichera: baz
 ```
 
 Despite that headers may be retrieved case-insensitively, the original case
