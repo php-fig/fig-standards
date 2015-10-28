@@ -98,24 +98,25 @@ $message = $message->withHeader('fOO', 'baz');
 echo $message->getHeaderLine('foo');
 // Affichera: baz
 ```
+Malgrè le fait que les headers pourraient être retrouvés sans prendre en compte
+la case, la case originale doit être préservée lors de l'implémentation, en particulier
+quand ils sont récupérés via `getHeaders()`.
 
-Despite that headers may be retrieved case-insensitively, the original case
-MUST be preserved by the implementation, in particular when retrieved with
-`getHeaders()`.
+Les applications non conformes avec le protocole HTTP peuvent dépendre d'une certaine case,
+c'est donc très pratique pour un utilisateur de pouvoir imposer la case des headers HTTP lors
+de la création d'une requête ou d'une réponse.
 
-Non-conforming HTTP applications may depend on a certain case, so it is useful
-for a user to be able to dictate the case of the HTTP headers when creating a
-request or response.
+##### Headers composés de plusieurs valeurs
 
-##### Headers with multiple values
-
-In order to accommodate headers with multiple values yet still provide the
-convenience of working with headers as strings, headers can be retrieved from
-an instance of a `MessageInterface` as an array or a string. Use the
-`getHeaderLine()` method to retrieve a header value as a string containing all
-header values of a case-insensitive header by name concatenated with a comma.
-Use `getHeader()` to retrieve an array of all the header values for a
-particular case-insensitive header by name.
+Afin de tenir compte des header comportant plusieurs valeurs, mais toujours
+fournir la possibilité de travailler avec des headers comme chaine de caratère, 
+les headers peuvent être retrouvés depuis une instance de `MessageInterface`
+tout comme depuis un tableau, ou une chaine de caractères. 
+Utilisez la méthode `getHeaderLine()` pour retrouver une valeur de header comme
+une chaine de caractère contenant toutes les valeurs de header d'un header 
+non sensible à la case par nom, concatenné avec des virgules.
+Utilisez  `getHeader()` pour retrouver un tableau comportant toutes les valeurs de header
+pour un header non sensible à la case par nom. 
 
 ```php
 $message = $message
@@ -123,41 +124,44 @@ $message = $message
     ->withAddedHeader('foo', 'baz');
 
 $header = $message->getHeaderLine('foo');
-// $header contains: 'bar, baz'
+// $header contient: 'bar, baz'
 
 $header = $message->getHeader('foo');
 // ['bar', 'baz']
 ```
 
-Note: Not all header values can be concatenated using a comma (e.g.,
-`Set-Cookie`). When working with such headers, consumers of
-`MessageInterface`-based classes SHOULD rely on the `getHeader()` method
-for retrieving such multi-valued headers.
+Note: Toutes les valeurs de header ne peuvent pas être concatennées en utilisant une virgule.(e.g.,
+`Set-Cookie`). En utilisant de tels headers, les utilisateurs des classes `MessageInterface`-based 
+DEVRAIENT s'appuyer sur les retours de la methode `getHeader()` pour pouvoir retrouver
+de telles headers multi-valeur.
+
 
 ##### Host header
 
-In requests, the `Host` header typically mirrors the host component of the URI, as
-well as the host used when establishing the TCP connection. However, the HTTP
-specification allows the `Host` header to differ from each of the two.
+Dans une requête, le header `Host` contient une copie du composant host de l'URI,
+tout comme le host utilisé pour établir la connection TCP.
+Cepandant, les spécifications HTTP autorisent les header `Host`de pouvoir différer 
+les uns des autres.
 
-During construction, implementations MUST attempt to set the `Host` header from
-a provided URI if no `Host` header is provided.
+Durant la construction, les implémentations DOIVENT tenter de renseigner le header `Host` 
+depuis une URI fournie si aucun header `Host` n'est renseigné.
 
-`RequestInterface::withUri()` will, by default, replace the returned request's
-`Host` header with a `Host` header matching the host component of the passed
-`UriInterface`.
 
-You can opt-in to preserving the original state of the `Host` header by passing
-`true` for the second (`$preserveHost`) argument. When this argument is set to
-`true`, the returned request will not update the `Host` header of the returned
-message -- unless the message contains no `Host` header.
+`RequestInterface::withUri()` remplacera, par défault, la valeur du header `Host`
+de la requête par un header `Host` correspondant au composant host du `UriInterface` fourni.
 
-This table illustrates what `getHeaderLine('Host')` will return for a request
-returned by `withUri()` with the `$preserveHost` argument set to `true` for
-various initial requests and URIs.
+Vous pouvez faire le choix de conserver l'état original du header `Host` en passant `true`
+pour le second argument (`$preserveHost`). Quand cet argument a été fourni avec `true`,
+la requête retournée ne mettra alors pas à jour la valeur du header `Host` du message retourné
+-- tant que le message ne contient aucunheader `Host`.
 
-Request Host header<sup>[1](#rhh)</sup> | Request host component<sup>[2](#rhc)</sup> | URI host component<sup>[3](#uhc)</sup> | Result
-----------------------------------------|--------------------------------------------|----------------------------------------|--------
+Ce tableau illustre ce que `getHeaderLine('Host')` retournera pour une requête retourné en passant
+par `withUri()` avec l'argument `$preserveHost` avec pour valeur `true` pour différentes valeurs 
+initialesde requête et d'URIs.
+
+
+Request Host header<sup>[1](#rhh)</sup> | Composant Requête host <sup>[2](#rhc)</sup> | composant URI host<sup>[3](#uhc)</sup> | Resultat
+----------------------------------------|--------------------------------------------|----------------------------------------|----------
 ''                                      | ''                                         | ''                                     | ''
 ''                                      | foo.com                                    | ''                                     | foo.com
 ''                                      | foo.com                                    | bar.com                                | foo.com
