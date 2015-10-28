@@ -332,8 +332,8 @@ interface CacheItemPoolInterface
      * @param CacheItemInterface $item
      *   The cache item to save.
      *
-     * @return static
-     *   The invoked object.
+     * @return boolean
+     *   True if the item was successfully persisted. False if there was an error.
      */
     public function save(CacheItemInterface $item);
 
