@@ -113,3 +113,165 @@ Logger Interface
 
 3. `Psr\Log\LoggerInterface`
 ----------------------------
+
+```php
+<?php
+
+namespace Psr\Log;
+
+/**
+ * Описывает экземляр журнала
+ *
+ * Сообщение должно быть строкой или обьектом реализующим метод __toString().
+ *
+ * Сообщение может содержать заполнители вида : {foo} которые будут заменены
+ * ключами из контекста "foo".
+ *
+ * Массив контекста МОЖЕТ содержать произвольные данные, но если передается 
+ * экземпляр Exception для получения трассировки стека, он ДОЛЖЕН  быть помечен ключом "exception".
+ *
+ * Посмотрите https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
+ * полную спецификацию интерфейса.
+ */
+interface LoggerInterface
+{
+    /**
+     * Система не может использоваться.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function emergency($message, array $context = array());
+
+    /**
+     * Действие должно быть принято немедленно.
+     *
+     * Например: Загрузка сайта, базы данных не доступна. 
+     * Нужно отправитьь смс уведомление и разбудить вас.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function alert($message, array $context = array());
+
+    /**
+     * Критические условия.
+     *
+     * Например: Компонет приложения не доступен, непредвиденное исключение.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function critical($message, array $context = array());
+
+    /**
+     * Ошибки выполнения, которые не требуют немедленных действий, но, как правило, должны быть зарегистрированы и   контролироваться.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function error($message, array $context = array());
+
+    /**
+     * Exceptional occurrences that are not errors.
+     *
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things
+     * that are not necessarily wrong.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function warning($message, array $context = array());
+
+    /**
+     * Normal but significant events.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function notice($message, array $context = array());
+
+    /**
+     * Interesting events.
+     *
+     * Example: User logs in, SQL logs.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function info($message, array $context = array());
+
+    /**
+     * Detailed debug information.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function debug($message, array $context = array());
+
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed $level
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function log($level, $message, array $context = array());
+}
+```
+
+4. `Psr\Log\LoggerAwareInterface`
+---------------------------------
+
+```php
+<?php
+
+namespace Psr\Log;
+
+/**
+ * Describes a logger-aware instance
+ */
+interface LoggerAwareInterface
+{
+    /**
+     * Sets a logger instance on the object
+     *
+     * @param LoggerInterface $logger
+     * @return null
+     */
+    public function setLogger(LoggerInterface $logger);
+}
+```
+
+5. `Psr\Log\LogLevel`
+---------------------
+
+```php
+<?php
+
+namespace Psr\Log;
+
+/**
+ * Describes log levels
+ */
+class LogLevel
+{
+    const EMERGENCY = 'emergency';
+    const ALERT     = 'alert';
+    const CRITICAL  = 'critical';
+    const ERROR     = 'error';
+    const WARNING   = 'warning';
+    const NOTICE    = 'notice';
+    const INFO      = 'info';
+    const DEBUG     = 'debug';
+}
+```
