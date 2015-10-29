@@ -132,6 +132,16 @@ An Item represents a single key/value pair within a Pool. The key is the primary
 unique identifier for an Item and MUST be immutable. The Value MAY be changed
 at any time.
 
+## Error handling
+
+While caching is often an important part of application performance, it should never
+be a critical part of application functionality. Thus, an error in a cache system SHOULD NOT
+result in application failure.  For that reason Implementing Libraries MUST NOT
+throw exceptions other than those defined by the interface, and SHOULD trap any errors
+or exceptions triggered by an underlying data store and not allow them to bubble.
+
+An Implementing Library SHOULD log such errors or otherwise report them to an
+administrator as appropriate.
 
 ## Interfaces
 
