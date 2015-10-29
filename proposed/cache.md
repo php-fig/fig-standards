@@ -132,6 +132,16 @@ An Item represents a single key/value pair within a Pool. The key is the primary
 unique identifier for an Item and MUST be immutable. The Value MAY be changed
 at any time.
 
+## Error handling
+
+While caching is often an important part of application performance, it should never
+be a critical part of application functionality. Thus, an error in a cache system SHOULD NOT
+result in application failure.  For that reason Implementing Libraries MUST NOT
+throw exceptions other than those defined by the interface, and SHOULD trap any errors
+or exceptions triggered by an underlying data store and not allow them to bubble.
+
+An Implementing Library SHOULD log such errors or otherwise report them to an
+administrator as appropriate.
 
 ## Interfaces
 
@@ -321,8 +331,8 @@ interface CacheItemPoolInterface
      * @param array $keys
      *   An array of keys that should be removed from the pool.
      *
-     * @return static
-     *   The invoked object.
+     * @return bool
+     *   True if the items were successfully removed. False if there was an error.
      */
     public function deleteItems(array $keys);
 
@@ -332,8 +342,8 @@ interface CacheItemPoolInterface
      * @param CacheItemInterface $item
      *   The cache item to save.
      *
-     * @return static
-     *   The invoked object.
+     * @return bool
+     *   True if the item was successfully persisted. False if there was an error.
      */
     public function save(CacheItemInterface $item);
 
@@ -343,8 +353,8 @@ interface CacheItemPoolInterface
      * @param CacheItemInterface $item
      *   The cache item to save.
      *
-     * @return static
-     *   The invoked object.
+     * @return bool
+     *   False if the item could not be queued or if a commit was attempted and failed. True otherwise.
      */
     public function saveDeferred(CacheItemInterface $item);
 
@@ -352,7 +362,7 @@ interface CacheItemPoolInterface
      * Persists any deferred cache items.
      *
      * @return bool
-     *   True if all not-yet-saved items were successfully saved. False otherwise.
+     *   True if all not-yet-saved items were successfully saved or there were none. False otherwise.
      */
     public function commit();
 }
