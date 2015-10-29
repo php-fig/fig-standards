@@ -286,11 +286,7 @@ do so.
 ### 5.2 Sponsors
 
 * Paul Dragoonis, PPI Framework (Coordinator)
-* Pádraic Brady, Zend Framework
-
-### 5.3 Contributors
-
-* Robert Hafner
+* Robert Hafner, Stash
 
 6. Votes
 --------
