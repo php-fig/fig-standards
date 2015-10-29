@@ -353,8 +353,8 @@ interface CacheItemPoolInterface
      * @param CacheItemInterface $item
      *   The cache item to save.
      *
-     * @return static
-     *   The invoked object.
+     * @return bool
+     *   False if the item could not be queued or if a commit was attempted and failed. True otherwise.
      */
     public function saveDeferred(CacheItemInterface $item);
 
