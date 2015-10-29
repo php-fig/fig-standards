@@ -321,8 +321,8 @@ interface CacheItemPoolInterface
      * @param array $keys
      *   An array of keys that should be removed from the pool.
      *
-     * @return static
-     *   The invoked object.
+     * @return bool
+     *   True if the items were successfully removed. False if there was an error.
      */
     public function deleteItems(array $keys);
 
@@ -332,8 +332,8 @@ interface CacheItemPoolInterface
      * @param CacheItemInterface $item
      *   The cache item to save.
      *
-     * @return static
-     *   The invoked object.
+     * @return bool
+     *   True if the item was successfully persisted. False if there was an error.
      */
     public function save(CacheItemInterface $item);
 
@@ -352,7 +352,7 @@ interface CacheItemPoolInterface
      * Persists any deferred cache items.
      *
      * @return bool
-     *   True if all not-yet-saved items were successfully saved. False otherwise.
+     *   True if all not-yet-saved items were successfully saved or there were none. False otherwise.
      */
     public function commit();
 }
