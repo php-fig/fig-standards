@@ -293,7 +293,7 @@ interface CacheItemPoolInterface
      * Returns a traversable set of cache items.
      *
      * @param array $keys
-     * An indexed array of keys of items to retrieve.
+     *   An indexed array of keys of items to retrieve.
      *
      * @return array|\Traversable
      *   A traversable collection of Cache Items keyed by the cache keys of
@@ -311,9 +311,9 @@ interface CacheItemPoolInterface
      * such situation use CacheItemInterface::isHit() instead.
      *
      * @param string $key
-     *    The key for which to check existence.
+     *   The key for which to check existence.
      * @return boolean
-     *  True if item exists in the cache, false otherwise.
+     *   True if item exists in the cache, false otherwise.
      */
     public function hasItem($key);
 
