@@ -312,7 +312,7 @@ interface CacheItemPoolInterface
      *
      * @param string $key
      *    The key for which to check existence.
-     * @return boolean
+     * @return bool
      *  True if item exists in the cache, false otherwise.
      */
     public function hasItem($key);
