@@ -362,7 +362,7 @@ interface CacheItemPoolInterface
      * Persists multiple cache items immediately.
      *
      * @param array|\Traversable $items
-     *   A traversable collection or array of CacheItemInterface[] items
+     *   A traversable collection or array of CacheItemInterface items
      *
      * @return bool
      *   True if all items were successfully persisted. False otherwise, or if there was an error
