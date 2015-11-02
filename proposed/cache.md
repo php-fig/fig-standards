@@ -326,6 +326,17 @@ interface CacheItemPoolInterface
     public function clear();
 
     /**
+     * Removes the item from the pool.
+     *
+     * @param string $key
+     *   The key for which to delete
+     *
+     * @return bool
+     *   True if the item was successfully removed. False if there was an error.
+     */
+    public function deleteItem($key);
+
+    /**
      * Removes multiple items from the pool.
      *
      * @param array $keys
@@ -346,6 +357,17 @@ interface CacheItemPoolInterface
      *   True if the item was successfully persisted. False if there was an error.
      */
     public function save(CacheItemInterface $item);
+
+    /**
+     * Persists multiple cache items immediately.
+     *
+     * @param array|\Traversable $items
+     *   A traversable collection or array of CacheItemInterface items
+     *
+     * @return bool
+     *   True if all items were successfully persisted. False otherwise, or if there was an error
+     */
+    public function saveItems(CacheItemInterface $item);
 
     /**
      * Sets a cache item to be persisted later.
