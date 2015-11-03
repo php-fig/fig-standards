@@ -203,6 +203,17 @@ interface CacheItemInterface
     public function get();
 
     /**
+     * Confirms if the cache item lookup resulted in a cache hit.
+     *
+     * Note: This method MUST NOT have a race condition between calling isHit()
+     * and calling get().
+     *
+     * @return bool
+     *   True if the request resulted in a cache hit. False otherwise.
+     */
+    public function isHit();
+
+    /**
      * Sets the value represented by this cache item.
      *
      * The $value argument may be any item that can be serialized by PHP,
@@ -216,17 +227,6 @@ interface CacheItemInterface
      *   The invoked object.
      */
     public function set($value);
-
-    /**
-     * Confirms if the cache item lookup resulted in a cache hit.
-     *
-     * Note: This method MUST NOT have a race condition between calling isHit()
-     * and calling get().
-     *
-     * @return bool
-     *   True if the request resulted in a cache hit. False otherwise.
-     */
-    public function isHit();
 
     /**
      * Sets the expiration time for this cache item.
