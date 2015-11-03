@@ -143,6 +143,11 @@ or exceptions triggered by an underlying data store and not allow them to bubble
 An Implementing Library SHOULD log such errors or otherwise report them to an
 administrator as appropriate.
 
+If a Calling Library requests that one or more Items be deleted, or that a pool be cleared,
+it MUST NOT be considered an error condition if the specified key does not exist. The
+post-condition is the same (the key does not exist, or the pool is empty), thus there is
+no error condition.
+
 ## Interfaces
 
 ### CacheItemInterface
@@ -198,6 +203,17 @@ interface CacheItemInterface
     public function get();
 
     /**
+     * Confirms if the cache item lookup resulted in a cache hit.
+     *
+     * Note: This method MUST NOT have a race condition between calling isHit()
+     * and calling get().
+     *
+     * @return bool
+     *   True if the request resulted in a cache hit. False otherwise.
+     */
+    public function isHit();
+
+    /**
      * Sets the value represented by this cache item.
      *
      * The $value argument may be any item that can be serialized by PHP,
@@ -211,17 +227,6 @@ interface CacheItemInterface
      *   The invoked object.
      */
     public function set($value);
-
-    /**
-     * Confirms if the cache item lookup resulted in a cache hit.
-     *
-     * Note: This method MUST NOT have a race condition between calling isHit()
-     * and calling get().
-     *
-     * @return bool
-     *   True if the request resulted in a cache hit. False otherwise.
-     */
-    public function isHit();
 
     /**
      * Sets the expiration time for this cache item.
