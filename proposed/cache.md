@@ -326,6 +326,17 @@ interface CacheItemPoolInterface
     public function clear();
 
     /**
+     * Removes the item from the pool.
+     *
+     * @param string $key
+     *   The key for which to delete
+     *
+     * @return bool
+     *   True if the item was successfully removed. False if there was an error.
+     */
+    public function deleteItem($key);
+
+    /**
      * Removes multiple items from the pool.
      *
      * @param array $keys
