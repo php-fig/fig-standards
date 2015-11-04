@@ -168,49 +168,50 @@ Request Host header<sup>[1](#rhh)</sup> | Composant Requête host <sup>[2](#rhc)
 foo.com                                 | ''                                         | bar.com                                | foo.com
 foo.com                                 | bar.com                                    | baz.com                                | foo.com
 
-- <sup id="rhh">1</sup> `Host` header value prior to operation.
+- <sup id="rhh">1</sup> la valeur du header `Host` header est prioritaire 
 - <sup id="rhc">2</sup> Host component of the URI composed in the request prior
   to the operation.
-- <sup id="uhc">3</sup> Host component of the URI being injected via
+- <sup id="uhc">3</sup> le composant Host de l'URI est injécté via
   `withUri()`.
 
-### 1.3 Streams
+### 1.3 Flux
 
-HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
-message can be very small or extremely large. Attempting to represent the body
-of a message as a string can easily consume more memory than intended because
-the body must be stored completely in memory. Attempting to store the body of a
-request or response in memory would preclude the use of that implementation from
-being able to work with large message bodies. `StreamInterface` is used in
-order to hide the implementation details when a stream of data is read from
-or written to. For situations where a string would be an appropriate message
-implementation, built-in streams such as `php://memory` and `php://temp` may be
-used.
+Les messages HTTP consistent en une ligne de démarage, les headers, et un body.
+Le body d'une requête HTTP peux être très petit ou extremement large. Tenter de représenter
+le body d'un message en tant que chaine de caractère peux facilement devenir plus gourmand 
+en mémoire que prévu car le body doit être sauvegardé entièrement en mémoire. Tenter d'enregistrer
+le body d'une requête ou réponse en mémoire pourrait nuire à l'utilisation de cette implémentation
+dans des cas où les messages du body seraient de grande taille. 
 
-`StreamInterface` exposes several methods that enable streams to be read
-from, written to, and traversed effectively.
+`StreamInterface` est utilisée dans le but de cacher les détails de l'implémentation quand un flux
+ de données est lu ou écrit. Dans des situations oû une chaine de caractére pourrait être 
+l'implémentation appropriée pour le message, les flux built-in tels que `php://memory` 
+et `php://temp` pourraient être utilisés.
 
-Streams expose their capabilities using three methods: `isReadable()`,
-`isWritable()`, and `isSeekable()`. These methods can be used by stream
-collaborators to determine if a stream is capable of their requirements.
+`StreamInterface` proposent plusieurs méthodes qui permettent de lire, écrire et rechercher 
+efficacementdes dans un flux.
 
-Each stream instance will have various capabilities: it can be read-only,
-write-only, or read-write. It can also allow arbitrary random access (seeking
-forwards or backwards to any location), or only sequential access (for
-example in the case of a socket, pipe, or callback-based stream).
+Les flux exposent leur possibilités en utilisant trois méthodes: `isReadable()`,`isWritable()`, 
+et `isSeekable()`. Ces méthodes peuvent être utilisées par des flux collaborateurs 
+afin de déterminer si le flux est capable de prendre en charge leurs exigences.
 
-Finally, `StreamInterface` defines a `__toString()` method to simplify
-retrieving or emitting the entire body contents at once.
+Chaque instance de flux peut avoir plusieurs propriétés: Il peux être en mode lecture seule,
+écriture seule, ou lecture/écriture. Il peux aussi autoriser des accès aléatoires arbitrairement 
+(dans le cas de recherche avant ou après dans n'importe quel emplacement ) ou uniquement des accès 
+séquentiels (par exemple dans le cas des sockets, pipe, ou des flux basées sur des callback). 
 
-Unlike the request and response interfaces, `StreamInterface` does not model
-immutability. In situations where an actual PHP stream is wrapped, immutability
-is impossible to enforce, as any code that interacts with the resource can
-potentially change its state (including cursor position, contents, and more).
-Our recommendation is that implementations use read-only streams for
-server-side requests and client-side responses. Consumers should be aware of
-the fact that the stream instance may be mutable, and, as such, could alter
-the state of the message; when in doubt, create a new stream instance and attach
-it to a message to enforce state.
+Enfin, `StreamInterface` définie une méthode `__toString()` pour faciliter la récupération ou 
+la transmission du body complet immédiatement.
+
+Contrairement à l'interface requête ou réponse, `StreamInterface` ne modélise pas l'immutabilité.
+Dans des situations ou le flux php actuel est wrappé, l'immutabilité est impossible à forcer, étant donné
+que tout code qui interragit avec une ressource peux potentiellement changé d'état 
+(En intégrant la position du curseur, le contenu, et plus).
+Notre recommandation est que l'implémentation se fasse en utilisant un flux en  lecture seule 
+pour les requêtes côtés serveur, et les réponses côtés clients. Les utilisateurs devraient 
+prendre en compte le fait que l'instance de flux pourrait changée, et, dans cette situation, 
+pourrait altérer le message; En cas de doute, créer une nouvelle instance, et attacher celle ci 
+à un message afin d'appliquer l'état.
 
 ### 1.4 Request Targets and URIs
 
