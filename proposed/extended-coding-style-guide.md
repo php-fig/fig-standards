@@ -113,20 +113,23 @@ PHP [keywords] MUST be in lower case.
 The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
 
-Namespace, Strict Types and Use Declarations
+Strict Types, Namespace, and Use Declarations
 --------------------------------------------
 
-When present, there MUST be one blank line before the `namespace` declaration.
+When present, there MUST be one blank line after the `declare` declaration.
 
 When present, there MUST be one blank line after the `namespace` declaration.
+
+When present, the `namespace` declaration MUST go after the `declare`
+declaration.
 
 When present, all `use` declarations MUST go after the `namespace`
 declaration.
 
 There MUST be one `use` keyword per declaration.
 
-When using multiple classes, functions or constants within one namespace, you
-MUST group use statements within one namespace.
+Multiple classes, functions, or constants within one namespace MUST group use
+statements within one namespace.
 
 Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces and traits],
 functions or constants). To elaborate, this means that any and all classes are in a block
@@ -165,10 +168,10 @@ class FooBar
 
 All files MUST declare strict types.
 
-Files containing only PHP MUST contain the strict type declarations on the
-first line preceeding the opening PHP tag.
+Files containing only PHP MUST place the strict types declaration on the
+first line following the opening PHP tag.
 
-There MUST not be a blank line before the strict types declaration.
+There MUST NOT be a blank line before the strict types declaration.
 
 For example:
 
@@ -511,7 +514,7 @@ for ($i = 0; $i < 10; $i++) {
 ```
 
 ### `foreach`
-    
+
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
