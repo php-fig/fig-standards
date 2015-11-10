@@ -250,6 +250,75 @@ class ClassName extends ParentClass implements
 }
 ```
 
+### Using traits
+
+The `use` keyword used inside the classes to implement traits MUST be
+declared on the next line after the opening brace.
+
+```
+<?php
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+
+class ClassName
+{
+    use FirstTrait;
+}
+```
+
+Using multiple lines for traits, where each subsequent line is indented
+once. When doing so, the first item in the list MUST be on the same line
+of the `use` keyword, and there MUST be only one trait per line.
+
+```
+<?php
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+use Vendor\Package\SecondTrait;
+use Vendor\Package\ThirdTrait;
+
+class ClassName
+{
+    use FirstTrait,
+        SecondTrait,
+        ThirdTrait;
+}
+```
+
+When the class has nothing after the `use` declaration, the class
+closing brace MUST be on the next line after the `use` declaration.
+
+```
+<?php
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+
+class ClassName
+{
+    use FirstTrait;
+}
+```
+
+Otherwise if the class has, it MUST to have a blank line after the
+`use` declaration.
+
+```
+<?php
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+
+class ClassName
+{
+    use FirstTrait;
+
+    private $property;
+}
+```
+
 ### Properties
 
 Visibility MUST be declared on all properties.
