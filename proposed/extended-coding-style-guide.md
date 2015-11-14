@@ -369,7 +369,7 @@ Visibility MUST be declared on all methods.
 Method names SHOULD NOT be prefixed with a single underscore to indicate
 protected or private visibility.
 
-Method and Function names MUST NOT be declared with a space after the method name. The
+Method and function names MUST NOT be declared with a space after the method name. The
 opening brace MUST go on its own line, and the closing brace MUST go on the
 next line following the body. There MUST NOT be a space after the opening
 parenthesis, and there MUST NOT be a space before the closing parenthesis.
