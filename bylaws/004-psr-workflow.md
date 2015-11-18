@@ -27,29 +27,29 @@ has been put in place. A proposal can never progress unless there are two Sponso
 Sponsoring the proposed PSR. Each Sponsor must confirm their Sponsorship of a PSR via individual
 email to the Mailing List and a PSR will not be deemed Sponsored until those emails are delivered.
 
-A Sponsor may not be the Editor or be listed as a Contributor, but there is of course nothing stopping 
-a Sponsor from contributing. A Sponsor may step down to become the Editor or a Contributor for a PSR 
-by posting a message to the Mailing List. In this case, a new Sponsor must be found. Should a vote 
-be underway with a Sponsor who does not consider themselves active listed in the meta document, they 
-should raise an objection on the Mailing List. The vote will then be invalidated until a new Sponsor 
-has been put in place. 
+A Sponsor may not be the Editor or be listed as a Contributor, but there is of course nothing stopping
+a Sponsor from contributing. A Sponsor may step down to become the Editor or a Contributor for a PSR
+by posting a message to the Mailing List. In this case, a new Sponsor must be found. Should a vote
+be underway with a Sponsor who does not consider themselves active listed in the meta document, they
+should raise an objection on the Mailing List. The vote will then be invalidated until a new Sponsor
+has been put in place.
 
-> Requiring two Sponsors instead of just one prevents a single Sponsor from making important 
+> Requiring two Sponsors instead of just one prevents a single Sponsor from making important
 > decisions alone.
 
-**Coordinator:** One of the two required Sponsors is the Coordinator, and this must be decided between 
-the Sponsors early on. The Coordinator is in charge of the voting process. They note the starting and 
-ending dates, the number of voting members at the start of the vote, and the quorum count needed. They 
-send out reminders by whatever means they feel appropriate to drive the vote. At the end of the voting 
-period, they tally the votes, note if quorum was established, and whether or not the application was 
-accepted.
+**Coordinator:** One of the two required Sponsors is the Coordinator, and this must be decided between
+the Sponsors early on. The Coordinator is in charge of the voting process. They note the starting and
+ending dates, the number of voting members at the start of the vote, and the quorum count needed. They
+send out reminders by whatever means they feel appropriate to drive the vote. At the end of the voting
+period, they tally the votes, note if quorum was established, and whether or not the application was
+accepted. They must coordinate and share responsibility for vote counting with the PHP FIG secretary.
 
 > **Note:** Copied from [Paul M. Jones' mail](https://groups.google.com/d/msg/php-fig/I0urcaIsEpk/uqQMb4bqlGwJ)
 
 **Contributor:** Anyone who has contributed significantly to the PSR. That may include sending in a pull
-request during the Pre-Draft or Draft stages, offered significant and meaningful reviews, former Editors, 
+request during the Pre-Draft or Draft stages, offered significant and meaningful reviews, former Editors,
 etc. In case of dispute, the Editor and Coordinator are responsible for determining whether a particular
-individual qualifies as a Contributor. The significance is at the discretion of the Editor(s) and 
+individual qualifies as a Contributor. The significance is at the discretion of the Editor(s) and
 Sponsors. If somebody feels their contributions are being performed without attribution they should
 contact the Editor(s), or a Sponsor, and failing that as a last resort post a thread on the Mailing List
 saying so.
@@ -87,9 +87,9 @@ the proposal. The Coordinator must announce the vote on the Mailing List in a th
 "[VOTE][Entrance] Title of the proposal". The vote must adhere to [the voting protocol][voting].
 
 If the vote passes, the proposal officially enters Draft stage. The proposal receives a PSR number
-incremented from the highest numbered PSR which has passed the Entrance Vote, regardless of the status of 
+incremented from the highest numbered PSR which has passed the Entrance Vote, regardless of the status of
 that PSR. A list of PSRs will be maintained in `index.md` file of the `fig-standards` repo. This
-will be included on the PHP-FIG website, on a page called 
+will be included on the PHP-FIG website, on a page called
 [Index of PHP Standard Recommendations][psrindex], where the PSR entry is to be maintained by
 the Coordinator.
 
@@ -145,28 +145,28 @@ PHP-FIG members agree on, even if they personally disagree.
 > Sponsors must not block the development of the proposal.
 
 In this stage, major additions to the meta document are strictly prohibited. If alternative approaches are
-discovered that are not yet listed in the meta document, the Coordinator must abort the Review by 
-publishing a thread titled "[CANCEL REVIEW] PSR-N: Title of the proposal" on the Mailing List, unless 
-the acceptance vote has started already. However, the Sponsors may choose to abort the vote (by publishing 
-a thread on the mailing list) and the Review even after that, if they agree that this is necessary. The 
-purpose of this rule is to give PHP-FIG members the chance to consider *all* known alternatives during 
+discovered that are not yet listed in the meta document, the Coordinator must abort the Review by
+publishing a thread titled "[CANCEL REVIEW] PSR-N: Title of the proposal" on the Mailing List, unless
+the acceptance vote has started already. However, the Sponsors may choose to abort the vote (by publishing
+a thread on the mailing list) and the Review even after that, if they agree that this is necessary. The
+purpose of this rule is to give PHP-FIG members the chance to consider *all* known alternatives during
 the Review stage.
 
 Unless a proposal is moved to Draft stage again, it must remain in Review stage for a minimum of two weeks
 before an acceptance vote is called. This gives every PHP-FIG Member sufficient time to get familiar
 with and influence a proposal before the final vote is called.
 
-When the Editor(s) and Sponsors agree that the proposal is ready to become a PSR, an acceptance vote is 
-called. The Coordinator must publish a thread on the Mailing List with the subject "[VOTE][Accept] PSR-N: 
+When the Editor(s) and Sponsors agree that the proposal is ready to become a PSR, an acceptance vote is
+called. The Coordinator must publish a thread on the Mailing List with the subject "[VOTE][Accept] PSR-N:
 Title of the proposal" to announce the vote. The vote must adhere to [the voting protocol][voting].
 
 ### 2.4 Accepted
 
-If the acceptance vote passes, then the proposal officially becomes an accepted PSR. The proposal 
-itself is moved from `/proposed` to `/accepted` by a PHP-FIG member with GitHub access and prefixed with 
-its PSR number, such as "PSR-3-logger-interface.md". Comments must be removed from this document, but a 
-copy of the commented proposal must be kept in `/accepted/meta`, bearing the suffix "-commented" (e.g. 
-"PSR-3-logger-interface-commented.md"). The commented version can be used to interpret the rules of the 
+If the acceptance vote passes, then the proposal officially becomes an accepted PSR. The proposal
+itself is moved from `/proposed` to `/accepted` by a PHP-FIG member with GitHub access and prefixed with
+its PSR number, such as "PSR-3-logger-interface.md". Comments must be removed from this document, but a
+copy of the commented proposal must be kept in `/accepted/meta`, bearing the suffix "-commented" (e.g.
+"PSR-3-logger-interface-commented.md"). The commented version can be used to interpret the rules of the
 PSR in case of doubt.
 
 > Reason for having both a commented PSR and a meta document:
@@ -181,13 +181,13 @@ PSR in case of doubt.
 > can judge more easily whether they disagree with a rule fundamentally or
 > whether they agree, but the Editor just happened to formulate the rule badly.
 
-The meta document of the proposal must also be moved to `/accepted/meta` and prefixed with the PSR number, 
+The meta document of the proposal must also be moved to `/accepted/meta` and prefixed with the PSR number,
 for example "PSR-3-logger-interface-meta.md".
 
 ## 3. Meta Document
 
-The purpose of the meta document is to provide the high-level perspective of a proposal for the voters 
-and to give them objective information about both the chosen approach and any alternative approaches in 
+The purpose of the meta document is to provide the high-level perspective of a proposal for the voters
+and to give them objective information about both the chosen approach and any alternative approaches in
 order to make an informed decision.
 
 ### 3.1 Executive Summary
@@ -197,13 +197,13 @@ contributors(s) imagine an implementation of the PSR to be used in practice.
 
 ### 3.2 Why Bother?
 
-An argument for why the proposed topic should be specified in a PSR at all. Should include a list of 
-positive and negative implications of releasing this PSR. The purpose of this section is to convince 
+An argument for why the proposed topic should be specified in a PSR at all. Should include a list of
+positive and negative implications of releasing this PSR. The purpose of this section is to convince
 voters to accept the proposal as draft during the entrance vote.
 
 ### 3.3 Scope
 
-A listing of both goals and non-goals that the PSR should achieve. The goals/non-goals should be specific 
+A listing of both goals and non-goals that the PSR should achieve. The goals/non-goals should be specific
 and measurable.
 
 **Bad:** Make logging easier.
@@ -229,16 +229,16 @@ order. The document should distinguish between the following groups:
 * Sponsors (indicating which of them was Coordinator)
 * Contributors (as defined in Section 1)
 
-If someone considers themselves to be a contributor but is not listed here, they should contact the 
-Editors(s) and Sponsors, including some proof about their contribution. If the proof is valid, the 
+If someone considers themselves to be a contributor but is not listed here, they should contact the
+Editors(s) and Sponsors, including some proof about their contribution. If the proof is valid, the
 contributor must be put on this list by one of the Editors(s) or Sponsors.
 
 ### 3.6 Errata
 
-Errata can be used to add clarification on contentious points that arise after a documents formation. 
+Errata can be used to add clarification on contentious points that arise after a documents formation.
 This is limited to non-binding, backwards compatible explanations and must not include new rules.
 
-Errata may only be added to the meta document. To add new Errata to the meta document a vote must be held 
+Errata may only be added to the meta document. To add new Errata to the meta document a vote must be held
 on the mailing list, and this vote must adhere to [the voting protocol][voting].
 
 ### 3.7 Template
@@ -362,7 +362,7 @@ This is an example template that can be used to build a meta document.
     8. Errata
     ---------
 
-    1. _[08/23/2013]_ This is an example of a non-binding errata rule that was originally missed 
+    1. _[08/23/2013]_ This is an example of a non-binding errata rule that was originally missed
     in the formation of the document. It can include clarification on wording, explanations, etc
     but it cannot create new rules.
 
