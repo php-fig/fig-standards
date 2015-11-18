@@ -38,8 +38,8 @@ to apply it immediately for reasons outside the purview of this group.
 
         - Regarding point 7, it is binding on all members.
 
-9. Responsibility for voting tallying is shared between the member who starts a vote
-and the FIG secretaries, both of whom should confirm the result.
+9. Responsibility for vote tallying is shared between the member who starts a vote
+and the FIG Secretaries, both of whom should confirm the result.
 
 * * *
 
