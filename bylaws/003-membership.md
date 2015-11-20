@@ -169,6 +169,8 @@ standard [Voting Protocol bylaw][voting]).
 professional, up to date and impartial.
 * Moderate discussions on github, the mailing list and IRC channels to ensure
 that an appropriate environment is maintained
+* Should there be a FIG meeting at a conference or other ad hoc gathering any
+Secretary in attendance should take notes to report back to the mailing list.
 
 ### Access and Abilities
 
@@ -189,7 +191,7 @@ different secretary to ensure impartiality.
 Secretaries are selected every year at the end of January after a vote according
 to standard [Voting Protocol bylaw][voting] except with the change that any
 outgoing secretaries may also participate in the vote. Secretaries are then in
-post until such a time as they resign, are removed by a vote of confidence or
+post until such a time as they resign, are removed by a vote of no confidence or
 until the following January.
 
 At all times there should be at one or more FIG secretary from the previous term
