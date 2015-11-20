@@ -194,7 +194,7 @@ outgoing secretaries may also participate in the vote. Secretaries are then in
 post until such a time as they resign, are removed by a vote of no confidence or
 until the following January.
 
-At all times there should be at one or more FIG secretary from the previous term
+At all times there should be at least one FIG secretary from the previous term
 standing for re-election.
 
 On the last Sunday in January the term finishes for existing secretaries and the
