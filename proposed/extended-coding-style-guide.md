@@ -215,7 +215,7 @@ For example:
 ```
 
 
-4. Classes, Properties, and Methods
+Classes, Properties, and Methods
 -----------------------------------
 
 The term "class" refers to all classes, interfaces, and traits.
@@ -428,7 +428,9 @@ class ClassName
 
 Argument lists MAY be split across multiple lines, where each subsequent line
 is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+next line, and there MUST be only one argument per line. A single argument being
+split across multiple lines (As might be the case with an anonymous function or
+array) does not constitute splitting the argument list itself.
 
 When the argument list is split across multiple lines, the closing parenthesis
 and opening brace MUST be placed together on their own line with one space
