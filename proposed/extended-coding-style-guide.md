@@ -455,6 +455,26 @@ class ClassName
 }
 ```
 
+When you have a return type declaration present there MUST be one space after
+the colon with followed by the type declaration. The colon and declaration MUST be
+on the same line as the argument list closing parentheses with no spaces between
+the two characters.
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+class ReturnTypeVariations
+{
+    public function functionName($arg1, $arg2): string
+    {
+        return;
+    }
+}
+```
+
 ### `abstract`, `final`, and `static`
 
 When present, the `abstract` and `final` declarations MUST precede the
