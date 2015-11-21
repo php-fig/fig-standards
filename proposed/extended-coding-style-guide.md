@@ -228,6 +228,9 @@ the class name.
 The opening brace for the class MUST go on its own line; the closing brace
 for the class MUST go on the next line after the body.
 
+There MUST NOT be a blank line preceding a closing brace and the next line
+after the opening brace MUST NOT be a blank line.
+
 ```php
 <?php
 namespace Vendor\Package;
