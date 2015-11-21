@@ -227,6 +227,16 @@ Classes, Properties, and Methods
 
 The term "class" refers to all classes, interfaces, and traits.
 
+Any closing brace must not be followed by any comment or statement on the
+same line.
+
+When instantiating a new class, parenthesis MUST always be present even when
+there are no arguments passed to the constructor.
+
+``php
+new Foo();
+```
+
 ### Extends and Implements
 
 The `extends` and `implements` keywords MUST be declared on the same line as
@@ -271,13 +281,6 @@ class ClassName extends ParentClass implements
 {
     // constants, properties, methods
 }
-```
-
-When instantiating a new class, parenthesis MUST always be present even when
-there are no arguments passed to the constructor.
-
-``php
-new Foo();
 ```
 
 ### Using traits
