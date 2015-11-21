@@ -77,6 +77,9 @@ General
 
 Code MUST follow all rules outlined in [PSR-1].
 
+The term 'StudlyCaps' in PSR-1 MUST be interpreted as PascalCase where the first letter of
+each word is capitalised including the very first letter.
+
 ### Files
 
 All PHP files MUST use the Unix LF (linefeed) line ending.
