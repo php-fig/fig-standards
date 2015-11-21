@@ -458,7 +458,7 @@ class ClassName
 When you have a return type declaration present there MUST be one space after
 the colon with followed by the type declaration. The colon and declaration MUST be
 on the same line as the argument list closing parentheses with no spaces between
-the two characters.
+the two characters. The declaration keyword (e.g. string) MUST be lowercase.
 
 ```php
 <?php
