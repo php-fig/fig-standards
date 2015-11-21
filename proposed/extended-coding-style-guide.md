@@ -266,6 +266,13 @@ class ClassName extends ParentClass implements
 }
 ```
 
+When instantiating a new class, parenthesis MUST always be present even when
+there are no arguments passed to the constructor.
+
+``php
+new Foo();
+```
+
 ### Using traits
 
 The `use` keyword used inside the classes to implement traits MUST be
@@ -333,14 +340,6 @@ class ClassName
 
     private $property;
 }
-
-When instantiating a new class, parenthesis MUST always be present even when
-there are no arguments passed to the constructor.
-
-``php
-new Foo();
->>>>>>> 7fa2283... Clarify brackets are always required on class instantiation
-```
 
 ### Properties
 
