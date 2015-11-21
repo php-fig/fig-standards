@@ -128,6 +128,10 @@ declaration.
 
 There MUST be one `use` keyword per declaration.
 
+You MUST NOT use `use` statements for classes in the root namespace. Therefore
+you should use `throw new \Exception();` instead of
+`use Exception; throw new Exception();`
+
 Multiple classes, functions, or constants within one namespace MUST group use
 statements within one namespace.
 
