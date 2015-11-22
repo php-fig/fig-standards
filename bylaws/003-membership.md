@@ -188,36 +188,47 @@ different secretary to ensure impartiality.
 
 ### Selection:
 
-Secretaries are selected every year at the end of January after a vote according
-to standard [Voting Protocol bylaw][voting] except with the change that any
-outgoing secretaries may also participate in the vote. Secretaries are then in
-post until such a time as they resign, are removed by a vote of no confidence or
-until the following January.
+Secretaries serve a two year term and the three secretaries votes are staggered
+eight months apart. One secretary is elected in January of even numbered years,
+one secretary is elected in August of even numbered years, and one secretary is
+voted upon in May of odd numbered years. For example there would be elections in
+January 2018, August 2018 and May 2019.
 
-At all times there should be at least one FIG secretary from the previous term
-standing for re-election.
+In the special case of the first election of secretaries, the three secretaries
+will be selected using Single Transferable Vote (Using the Droop Quota and Hare
+Counting Method). In the special instance of the first vote electing three
+secretaries. The first candidate to achieve enough votes will serve a term until
+the following January, the second candidate to achieve enough votes will serve a
+term until the following August and the third candidate to achieve enough votes
+will serve a term until the following May. If two or three candidates achieve
+enough votes at the same time then whoever achieved the higher number of first
+place votes will serve the longer term, and in the event that they achieved the
+same number of second place votes, then it shall be done on the number of second
+place votes and so on.
 
-On the last Sunday in January the term finishes for existing secretaries and the
-voted upon secretaries will take up posts. Any secretaries who are still eligible
-may re-stand for election as a secretary at this time. The vote for the new
-secretaries must be started no earlier than the first Sunday in January and
-conclude the day before the previous secretaries leave post and this vote will be
-organised by the longest serving secretary. One mailing list topic will contain
-the vote for all standing secretaries titled '[Vote] PHP FIG Secretaries for
-{YEAR}'.
+If more than one secretary is nominated and only one secretary is being elected
+we use Instant-Runoff Voting. Where only one candidate is nominated then instead
+of Instant Runoff the standard [Voting Protocol][voting] will be used.
+
+Once voted in, Secretaries are then in post until such a time as they resign,
+are removed by a vote of no confidence or until the end of their term.
+
+On the last Sunday in one of the above mentioned months, the term finishes for the
+existing secretary and the voted upon secretary (who may be the same individual)
+will take up post. Any secretaries who are still eligible may re-stand for election
+as a secretary at this time. The vote for the new secretaries must be started no
+earlier than the first Sunday in the month and conclude at least one day before the
+previous secretaries leave post. The vote will be performed by the most recently
+elected secretary. The mailing list topic must be titled '[Vote] PHP FIG Secretary
+{MONTH} {YEAR}'.
 
 Secretaries must be nominated/proposed by an existing PHP FIG representative or
-outgoing secretary to be considered in the vote by an email to the mailing list.
+FIG secretary to be considered in the vote by an email to the mailing list.
 People who wish to stand as secretary may seek proposers in any way they see fit
 (An email to the mailing list appealing or individual contact with FIG Members).
-In a situation where more than three candidates are nominated for the role of
-secretary, the three individuals with the largest majority (Where yes votes count
-as +1, and no votes count as -1 and abstains are excluded) will be elected as
-secretaries. Votes must follow the [Voting Protocol bylaw][voting] (this includes
-the requirement of a quorum and majority for someone to be elected as a
-representative). If three secretaries are not elected then those secretaries that
-are elected may use their discretion as to how to proceed (for example a second
-vote).
+In a situation where no secretary is elected, the other
+secretaries in post may use their discretion as to how to proceed (for example a
+second vote).
 
 Any member project may call a vote of no confidence in a FIG secretary where, if
 the majority (according to the [Voting Protocol bylaw][voting]) vote in favour of
@@ -228,12 +239,11 @@ preceeded by a one-week discussion on the mailing list.
 
 In the event of a resignation of a FIG secretary or a vote of no confidence, they
 shall be removed with immediate effect and an existing FIG secretary should
-commence a vote for a new secretary according to the aforementioned protocols. A
-term that does not begin on the last Sunday in January does not count as a full
-term when interpreting the maximum number of terms a member may stand for. In the
-event of a resignation a special election will be performed following a similar
-procedure to annual elections under the administration of the remaining FIG
-secretaries.
+commence a vote for a new secretary according to the aforementioned protocols.
+In the event of a resignation a special election will be performed following a
+similar procedure to regular elections under the administration of the remaining
+FIG secretaries. The newly elected secretary would serve the remainder of the term
+that the outgoing secretary would have completed.
 
 ### Eligibility Criteria:
 The role should be filled by three people (working together to ensure
