@@ -42,7 +42,7 @@ the Sponsors early on. The Coordinator is in charge of the voting process. They 
 ending dates, the number of voting members at the start of the vote, and the quorum count needed. They
 send out reminders by whatever means they feel appropriate to drive the vote. At the end of the voting
 period, they tally the votes, note if quorum was established, and whether or not the application was
-accepted. They must coordinate and share responsibility for vote counting with the PHP FIG secretary.
+accepted. They must coordinate and share responsibility for vote counting with the PHP FIG Secretary.
 
 > **Note:** Copied from [Paul M. Jones' mail](https://groups.google.com/d/msg/php-fig/I0urcaIsEpk/uqQMb4bqlGwJ)
 

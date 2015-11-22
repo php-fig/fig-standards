@@ -1,7 +1,7 @@
 Voting Protocol
 ===============
 
-1. Only voting members and FIG secretaries may initiate a call for votes on a measure.
+1. Only voting members and FIG Secretaries may initiate a call for votes on a measure.
 
 2. Only voting members may vote on a measure.
 

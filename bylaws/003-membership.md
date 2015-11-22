@@ -144,16 +144,16 @@ other duties as required. As the role has continuity (in that there will always
 be a post holder) and redundancy (There are a number of post holders in case of
 the absence of one) it can be ensured that responsibilities assigned to the
 secretary will always be completed and therefore administrative responsibilities
-such as vote management should always be assigned to the FIG secretary.
+such as vote management should always be assigned to the FIG Secretary.
 
-All FIG secretaries are expected to remain impartial and professional when acting
+All FIG Secretaries are expected to remain impartial and professional when acting
 in an official capacity as secretary and should also remain aware that even when
 not acting in an official capacity, their actions reflect back on the PHP FIG and
 the FIG must not be brought into disrepute.
 
 ### Defined functions
 
-There are a number of defined functions that the FIG secretaries are expected to
+There are a number of defined functions that the FIG Secretaries are expected to
 complete but they may also, within their remit defined in the above overaching
 role above, perform other duties as nessasary.
 
@@ -163,7 +163,7 @@ role above, perform other duties as nessasary.
 * Tracking member project activity, and marking projects as inactive
 * Ensuring bylaws are being followed
 * Clarifying any interpretation of bylaw text (If there is lack of consensus
-between FIG secretaries then it must be put to a full vote according to the
+between FIG Secretaries then it must be put to a full vote according to the
 standard [Voting Protocol bylaw][voting]).
 * Ensure that relevant marketing mediums (e.g. Twitter and Facebook) are kept
 professional, up to date and impartial.
@@ -174,7 +174,7 @@ Secretary in attendance should take notes to report back to the mailing list.
 
 ### Access and Abilities
 
-FIG secretaries will be given access to the GitHub organisation as 'Owners' and
+FIG Secretaries will be given access to the GitHub organisation as 'Owners' and
 full (admin) access to anything relating to official website, marketing and
 communication mediums including but not limited to the domain, twitter, IRC
 channel, packagist packages and mailing list in order to allow them to complete
@@ -183,7 +183,7 @@ by the PHP FIG.
 
 Also, whilst not full members themseleves, they have the ability to start any
 vote (just as any member project), but not cast any votes. However it should be
-noted that any vote started by one FIG secretary must be managed and tallied by a
+noted that any vote started by one FIG Secretary must be managed and tallied by a
 different secretary to ensure impartiality.
 
 ### Selection:
@@ -196,11 +196,10 @@ January 2018, August 2018 and May 2019.
 
 In the special case of the first election of secretaries, the three secretaries
 will be selected using Single Transferable Vote (Using the Droop Quota and Hare
-Counting Method). In the special instance of the first vote electing three
-secretaries. The first candidate to achieve enough votes will serve a term until
-the following January, the second candidate to achieve enough votes will serve a
-term until the following August and the third candidate to achieve enough votes
-will serve a term until the following May. If two or three candidates achieve
+Counting Method). The first candidate to achieve enough votes will serve a term
+until the following January, the second candidate to achieve enough votes will
+serve a term until the following August and the third candidate to achieve enough
+votes will serve a term until the following May. If two or three candidates achieve
 enough votes at the same time then whoever achieved the higher number of first
 place votes will serve the longer term, and in the event that they achieved the
 same number of second place votes, then it shall be done on the number of second
@@ -223,26 +222,25 @@ elected secretary. The mailing list topic must be titled '[Vote] PHP FIG Secreta
 {MONTH} {YEAR}'.
 
 Secretaries must be nominated/proposed by an existing PHP FIG representative or
-FIG secretary to be considered in the vote by an email to the mailing list.
+FIG Secretary to be considered in the vote by an email to the mailing list.
 People who wish to stand as secretary may seek proposers in any way they see fit
 (An email to the mailing list appealing or individual contact with FIG Members).
-In a situation where no secretary is elected, the other
-secretaries in post may use their discretion as to how to proceed (for example a
-second vote).
+In a situation where no secretary is elected, the other secretaries in post may
+use their discretion as to how to proceed (for example a second vote).
 
-Any member project may call a vote of no confidence in a FIG secretary where, if
+Any member project may call a vote of no confidence in a FIG Secretary where, if
 the majority (according to the [Voting Protocol bylaw][voting]) vote in favour of
 their dismissal, they will be removed with immediate effect. The recording and
 tallying of votes in this instance is to be managed by another secretary together
 with the member project who called the vote. A vote of no confidence must be
 preceeded by a one-week discussion on the mailing list.
 
-In the event of a resignation of a FIG secretary or a vote of no confidence, they
-shall be removed with immediate effect and an existing FIG secretary should
+In the event of a resignation of a FIG Secretary or a vote of no confidence, they
+shall be removed with immediate effect and an existing FIG Secretary should
 commence a vote for a new secretary according to the aforementioned protocols.
 In the event of a resignation a special election will be performed following a
 similar procedure to regular elections under the administration of the remaining
-FIG secretaries. The newly elected secretary would serve the remainder of the term
+FIG Secretaries. The newly elected secretary would serve the remainder of the term
 that the outgoing secretary would have completed.
 
 ### Eligibility Criteria:
