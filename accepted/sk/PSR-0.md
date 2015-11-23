@@ -1,83 +1,77 @@
-Autoloading Standard
+Autoloading Štandard
 ====================
 
-> **Deprecated** - As of 2014-10-21 PSR-0 has been marked as deprecated. [PSR-4] is now recommended 
-as an alternative.
+> **Zastarané** - Od 2014-10-21 PSR-0 bolo označené ako zastaralé. [PSR-4] je teraz odporúčané
+ako alternatíva.
 
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
 
-The following describes the mandatory requirements that must be adhered
-to for autoloader interoperability.
+Nasledujd opis povinných požiadaviek, ktoré sa musia dodržať aby bol autoloader schopný operovať.
 
-Mandatory
+Povinné
 ---------
 
-* A fully-qualified namespace and class must have the following
-  structure `\<Vendor Name>\(<Namespace>\)*<Class Name>`
-* Each namespace must have a top-level namespace ("Vendor Name").
-* Each namespace can have as many sub-namespaces as it wishes.
-* Each namespace separator is converted to a `DIRECTORY_SEPARATOR` when
-  loading from the file system.
-* Each `_` character in the CLASS NAME is converted to a
-  `DIRECTORY_SEPARATOR`. The `_` character has no special meaning in the
-  namespace.
-* The fully-qualified namespace and class is suffixed with `.php` when
-  loading from the file system.
-* Alphabetic characters in vendor names, namespaces, and class names may
-  be of any combination of lower case and upper case.
+* Plne definovaný menný priestor a trieda musia byť v tvare
+ `\<Meno balíka>\(<Menný priestor>\)*<Meno triedy>`
+* Každý menný priestor musí mať na najvyššej úrovni menný priestor ("Meno balíka").
+* Každý menný priestor môže mať hocikoľko menných priestorov v pod-úrovniach.
+* Každý oddelovač menného priestoru sa zmení na `DIRECTORY_SEPARATOR` keď sa
+  nahráva zo súborového systému.
+* Každý znak `_` v Mene Triedy sa zmení na `DIRECTORY_SEPARATOR`. Znak `_` nemá špeciálny význam v mennom priestore.
+* Plne definovaný menný priestor a trieda majú príponu `.php` keď sa načítavajú zo súborového systému.
+* Abecedné znaky v menách balíkov, menných priestoroch a menách tried môžu byť v hociakej kombinácii
+  malých a veľkých písmen.
 
-Examples
+Príklady
 --------
 
-* `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
-* `\Symfony\Core\Request` => `/path/to/project/lib/vendor/Symfony/Core/Request.php`
-* `\Zend\Acl` => `/path/to/project/lib/vendor/Zend/Acl.php`
-* `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
+* `\Doctrine\Common\IsolatedClassLoader` => `/cesta/ku/projektu/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
+* `\Symfony\Core\Request` => `/cesta/ku/projektu/lib/vendor/Symfony/Core/Request.php`
+* `\Zend\Acl` => `/cesta/ku/projektu/lib/vendor/Zend/Acl.php`
+* `\Zend\Mail\Message` => `/cesta/ku/projektu/lib/vendor/Zend/Mail/Message.php`
 
-Underscores in Namespaces and Class Names
------------------------------------------
+Podtržítka v menných priestoroch a menách tried
+-----------------------------------------------
 
-* `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
-* `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
+* `\namespace\package\Meno_triedy` => `/cesta/ku/projektu/lib/vendor/namespace/package/Meno/Triedy.php`
+* `\menny_priestor\meno_balika\Meno_triedy` => `/cesta/ku/projektu/lib/vendor/menny_priestor/meno_balika/Meno/Triedy.php`
 
-The standards we set here should be the lowest common denominator for
-painless autoloader interoperability. You can test that you are
-following these standards by utilizing this sample SplClassLoader
-implementation which is able to load PHP 5.3 classes.
+Štandardy ktoré sme tu nastavili, by mali byť najmenším spoločným menovateľom 
+pre bezproblémový chod autoloadera. Môžete otestovať, že nasledujete 
+tieto štandardy, využitím tohto jednoduchého SplClassLoadera,
+jeho implementáciou budete schopný nahrávať PHP 5.3 triedy.
 
-Example Implementation
-----------------------
+Príklad Implementácie
+---------------------
 
-Below is an example function to simply demonstrate how the above
-proposed standards are autoloaded.
+Nižšie je príklad funkcie, ktorá jednoducho demonštruje ako sa vyššie uvedený štandard samo-načítava.
 
 ```php
 <?php
 
-function autoload($className)
+function autoload($menoTriedy)
 {
-    $className = ltrim($className, '\\');
-    $fileName  = '';
-    $namespace = '';
-    if ($lastNsPos = strrpos($className, '\\')) {
-        $namespace = substr($className, 0, $lastNsPos);
-        $className = substr($className, $lastNsPos + 1);
-        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    $menoTriedy = ltrim($menoTriedy, '\\');
+    $menoSuboru  = '';
+    $mennyPriestor = '';
+    if ($poziciaPoslPriestoru = strrpos($menoTriedy, '\\')) {
+        $mennyPriestor = substr($menoTriedy, 0, $poziciaPoslPriestoru);
+        $menoTriedy = substr($menoTriedy, $poziciaPoslPriestoru + 1);
+        $menoSuboru  = str_replace('\\', DIRECTORY_SEPARATOR, $mennyPriestor) . DIRECTORY_SEPARATOR;
     }
-    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+    $menoSuboru .= str_replace('_', DIRECTORY_SEPARATOR, $menoTriedy) . '.php';
 
-    require $fileName;
+    require $menoSuboru;
 }
 spl_autoload_register('autoload');
 ```
 
-SplClassLoader Implementation
------------------------------
+SplClassLoader Implementácia
+----------------------------
 
-The following gist is a sample SplClassLoader implementation that can
-load your classes if you follow the autoloader interoperability
-standards proposed above. It is the current recommended way to load PHP
-5.3 classes that follow these standards.
+Nasledujúci návrh je jednoduchá implementácia SplClassLoader-a, ktorá vie načítať vaše triedy
+použitím autoloadera ak nasledujete kroky uvedené vyššie. Je to momentálne odporúčaný spôsob
+načítavania PHP 5.3 tried, ktoré spĺňajú tento štandard.
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
 
