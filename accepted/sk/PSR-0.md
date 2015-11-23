@@ -6,7 +6,7 @@ ako alternatíva.
 
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
 
-Nasledujd opis povinných požiadaviek, ktoré sa musia dodržať aby bol autoloader schopný operovať.
+Nasleduje opis povinných požiadaviek, ktoré sa musia dodržať aby bol autoloader schopný operovať.
 
 Povinné
 ---------

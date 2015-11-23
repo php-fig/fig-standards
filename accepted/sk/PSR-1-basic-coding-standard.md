@@ -1,125 +1,124 @@
-Basic Coding Standard
-=====================
+Základné štandardy kódovania
+============================
 
-This section of the standard comprises what should be considered the standard
-coding elements that are required to ensure a high level of technical
-interoperability between shared PHP code.
+Táto sekcia štandardu obsahuje, čo by malo byť považované za štandardné prvky kódovania,
+ktoré je potrebné dodržovať, aby sa zaručila vysoká technická úroveň pri zdielanom PHP kóde.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119].
+Kľúčové slová "MUSÍ", "NESMIE", "POTREBNÉ", "SMIE", "NESMIE", "MALO BY",
+"NEMALO BY", "ODPORÚČANÉ", "MôŽE", and "NEPOVINNÉ" v tomto dokumente sú vo význame
+ako opísané v [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
 
-1. Overview
------------
+1. Prehľad
+----------
 
-- Files MUST use only `<?php` and `<?=` tags.
+- Súbory MUSIA používať iba `<?php` a `<?=` tagy.
 
-- Files MUST use only UTF-8 without BOM for PHP code.
+- Súbory MUSIA požívať iba UTF-8 bez BOM(Označenie poradia bajtu) pre PHP kód.
 
-- Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
-  *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
-  but SHOULD NOT do both.
+- Súbory BY MALI deklarovať *buď* symboly (triedy, funkcie, konštanty, atď.)
+  *alebo* spôsovovať vedlajšie účinky (generovať výpis, zmeniť .ini nastavenia, atď.)
+  ale NEMALI BY robiť obe.
 
-- Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
+- Menné priestory a triedy MUSIA dodržovať samonačítávacie PSR: [[PSR-0], [PSR-4]].
 
-- Class names MUST be declared in `StudlyCaps`.
+- Mená triéd MUSIA by deklarované s `VelkymiKapitalnymiPismenami`.
 
-- Class constants MUST be declared in all upper case with underscore separators.
+- Konštanty v triedach MUSIA byť deklarované so všetkými písmenami veľkými s podtržítkovými oddelovačmi.
 
-- Method names MUST be declared in `camelCase`.
+- Mená metód MUSIA byť deklarované v `camelCase`.
 
 
-2. Files
+2. Súbory
 --------
 
-### 2.1. PHP Tags
+### 2.1. PHP Tagy
 
-PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
-MUST NOT use the other tag variations.
+PHP kód MUSÍ používať dlhé `<?php ?>` tagy alebo krátke echo `<?= ?>` tagy; 
+NESMIE používať iné variácie tagov.
 
-### 2.2. Character Encoding
+### 2.2. Znaková sada
 
-PHP code MUST use only UTF-8 without BOM.
+PHP kód MUSÍ používať iba UT-8 bez BOM(Označenie poradia bajtu).
 
-### 2.3. Side Effects
+### 2.3. Vedľajšie efekty
 
-A file SHOULD declare new symbols (classes, functions, constants,
-etc.) and cause no other side effects, or it SHOULD execute logic with side
-effects, but SHOULD NOT do both.
+Súbor BY MAL deklarovať nové symboly (triedy, funkcie, konštanty, atď.) 
+a nespôsobobať ďaľšie vedľajšie účinky, alebo BY MAL vykonávať logiku s vedľajšími účinkami, 
+ale NEMAL BY  robiť oboje.
 
-The phrase "side effects" means execution of logic not directly related to
-declaring classes, functions, constants, etc., *merely from including the
-file*.
+Fráza "vedľajšie efekty" znamená vykonanie logiky, 
+ktorá nesúvisí priamo s deklaráciou, triéd, funkcií, konštánt, atď, *iba ich zahŕňa zo súborov*.
 
-"Side effects" include but are not limited to: generating output, explicit
-use of `require` or `include`, connecting to external services, modifying ini
-settings, emitting errors or exceptions, modifying global or static variables,
-reading from or writing to a file, and so on.
 
-The following is an example of a file with both declarations and side effects;
-i.e, an example of what to avoid:
+"Vedľajšie efekty" zahŕňajú, ale nie sú limitované na: generovanie výpisu, výslovné 
+použitie `require` alebo `include`, pripájanie sa na externé služby, upravovanie .ini nastavení, 
+ohlasovanie chýb a výnimiek, upravovanie globálnych alebo statických premenných,
+čítanie z alebo písanie do súboru, atď.
+
+Nasledujúce je príklad súboru s obidvomi deklaráciami a vedľajšími efektami, 
+to znamená príklad čomu sa vyvarovať:
 
 ```php
 <?php
-// side effect: change ini settings
+// vedľajší efekt: zmena ini nastavenia
 ini_set('error_reporting', E_ALL);
 
-// side effect: loads a file
-include "file.php";
+// vedľajší efekt: načítanie súboru
+include "subor.php";
 
-// side effect: generates output
+// vedľajší efekt: generovanie výpisu
 echo "<html>\n";
 
-// declaration
+// deklarácia
 function foo()
 {
     // function body
 }
 ```
 
-The following example is of a file that contains declarations without side
-effects; i.e., an example of what to emulate:
+Nasledujúci je príklad súboru, ktorý obsahuje deklarácie bez vedľajších efektov;
+to znamená, príklad čoho sa držať:
 
 ```php
 <?php
-// declaration
+// deklarácia
 function foo()
 {
-    // function body
+    // telo funkcie
 }
 
-// conditional declaration is *not* a side effect
+// podmienená deklarácia *nie* je vedľajší efekt
 if (! function_exists('bar')) {
     function bar()
     {
-        // function body
+        // telo funkcie
     }
 }
 ```
 
 
-3. Namespace and Class Names
-----------------------------
+3. Menný priestor a mená tried 
+------------------------------
 
-Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
+Menné priestory a triedy MUSIA dodržiavať samonačítacie PSR: [[PSR-0], [PSR-4]].
 
-This means each class is in a file by itself, and is in a namespace of at
-least one level: a top-level vendor name.
+To znamená ze každá trieda je v súbore sama o sebe a je v mennom priestore 
+aspoň jednej úrovne, a to v najvyššej úrovni menného priestora balíka.
 
-Class names MUST be declared in `StudlyCaps`.
+Meno triedy MUSÍ byť deklarované s `VelkymiKapitalnymiPismenami`.
 
-Code written for PHP 5.3 and after MUST use formal namespaces.
+Kód napísaný pre PHP 5.3 a vyšší MUSI používať formálne menné priestory.
 
-For example:
+Napríklad:
 
 ```php
 <?php
-// PHP 5.3 and later:
+// PHP 5.3 a vyššie:
 namespace Vendor\Model;
 
 class Foo
@@ -127,26 +126,26 @@ class Foo
 }
 ```
 
-Code written for 5.2.x and before SHOULD use the pseudo-namespacing convention
-of `Vendor_` prefixes on class names.
+Kód napísaný pre 5.2.x a nižšie BY MAL používať dohodnuté pseudo-menné priestory
+s predponou `Vendor_` v mene triedy.
 
 ```php
 <?php
-// PHP 5.2.x and earlier:
+// PHP 5.2.x a nižšie:
 class Vendor_Model_Foo
 {
 }
 ```
 
-4. Class Constants, Properties, and Methods
--------------------------------------------
+4. Konštanty, vlastnosti a metódy triéd
+---------------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+Pojmom "trieda" máme na mysli všetky triedy, rozhrania a traits.
 
-### 4.1. Constants
+### 4.1. Konštanty
 
-Class constants MUST be declared in all upper case with underscore separators.
-For example:
+Konštanty triéd MUSIA byť deklarované iba s veľkými písmenami a podtržníkovými oddelovačmi..
+Napríklad:
 
 ```php
 <?php
@@ -159,15 +158,14 @@ class Foo
 }
 ```
 
-### 4.2. Properties
+### 4.2. Vlastnosti
 
-This guide intentionally avoids any recommendation regarding the use of
-`$StudlyCaps`, `$camelCase`, or `$under_score` property names.
+Toto odporúčanie sa zámerne vyhýba hociakému odporúčaniu ohľadne používania
+`$StudlyCaps`, `$camelCase`, alebo `$under_score` názvov vlastností.
 
-Whatever naming convention is used SHOULD be applied consistently within a
-reasonable scope. That scope may be vendor-level, package-level, class-level,
-or method-level.
+Akúkolvek mennú konvenciu použijete MALA BY byť aplikovaná konzistentne 
+v danom rozmedzí. Toto rozmedzie MôŽE byt na úrovni knižnice, balíka, triedy alebo metódy.
 
-### 4.3. Methods
+### 4.3. Metódy
 
-Method names MUST be declared in `camelCase()`.
+Mená metód MUSIA byť deklarované v `camelCase()`.
