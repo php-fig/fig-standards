@@ -1,62 +1,59 @@
-Coding Style Guide
-==================
+Príručka štýlovaním kódu
+========================
 
-This guide extends and expands on [PSR-1], the basic coding standard.
+Táto príručka rozširuje [PSR-1], Základné štandardy kódovania.
 
-The intent of this guide is to reduce cognitive friction when scanning code
-from different authors. It does so by enumerating a shared set of rules and
-expectations about how to format PHP code.
+Účelom tejto príručky je skrátiť spoznávaciu fázu, pri prezeraní kódu od iných autorov.
+Robí to tak vymenovaním sady zdielaných pravidiel a očakávaniami o tom ako sa formátuje PHP kód.
 
-The style rules herein are derived from commonalities among the various member
-projects. When various authors collaborate across multiple projects, it helps
-to have one set of guidelines to be used among all those projects. Thus, the
-benefit of this guide is not in the rules themselves, but in the sharing of
-those rules.
+Pravidlá štýlov tu uvedených sú odvodené od spoločných znakov medzi 
+rôznymi členskými projektami. Keď rôzny autori spolupracujú na mnohých projektoch, 
+pomáha mať jednu sadu pravidiel na všetkých tychto projektoch. Z toho dôvodu, výhodou 
+tejto príručky nie sú pravidlá samotné ale zdielanie týchto pravidiel.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119].
+Kľúčové slová "MUSÍ", "NESMIE", "POTREBNÉ", "SMIE", "NESMIE", "MALO BY",
+"NEMALO BY", "ODPORÚČANÉ", "MôŽE", and "NEPOVINNÉ" v tomto dokumente sú vo význame
+ako opísané v [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 
 
-1. Overview
------------
+1. Prehľad
+----------
 
-- Code MUST follow a "coding style guide" PSR [[PSR-1]].
+- Kód MUSÍ dodržiavať Základné štandardy kódovania PSR [[PSR-1]].
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- Kód MUSÍ byť odsadený použitím 4 medzier, nie s tabulátorom.
 
-- There MUST NOT be a hard limit on line length; the soft limit MUST be 120
-  characters; lines SHOULD be 80 characters or less.
+- Dĺžka riadkov MESMIE byť limitované natvrdo; mäkký limit MUSÍ byť 120 znakov; 
+  Riadky BY MALI mať 80 znakov alebo menej.
 
-- There MUST be one blank line after the `namespace` declaration, and there
-  MUST be one blank line after the block of `use` declarations.
+- Po deklarácii `namespace` MUSÍ nasledovať jeden prázdny riadok, a po bloku 
+  `use` deklarácii MUSÍ nasledovat jeden prázdný riadok.
 
-- Opening braces for classes MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- Otvárajúce zátvorky pre triedy MUSIA ísť na ďaľší riadok a zatvárajúce zátvorky MUSIA
+  ísť na ďalší riadok za telom triedy.
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- Otvárajúce zátvorky pre metódy MUSIA ísť na ďaľší riadok a zatvárajúce zátvorky MUSIA
+  ísť na ďalší riadok za telom metódy.
 
-- Visibility MUST be declared on all properties and methods; `abstract` and
-  `final` MUST be declared before the visibility; `static` MUST be declared
-  after the visibility.
+- Visibilita MUSÍ byť deklarovaná na všetkých vlastnostiach a metódach; `abstract` a
+  `final` MUSIA byť deklarované pred visibilitou; `static` MUSÍ byť deklarované za visibilitou.
   
-- Control structure keywords MUST have one space after them; method and
-  function calls MUST NOT.
+- Klúčové slová pre kontrolné štruktúry MUSIA mať jednu medzeru za nimi; metódy a
+  volania funkcií NEMUSIA mať medzeru za nimi.
 
-- Opening braces for control structures MUST go on the same line, and closing
-  braces MUST go on the next line after the body.
+- Otvárajúce zátvorky pre kontrolné štruktúry MUSIA ísť na rovnaký riadok 
+  a zatvárajúce zátvorky MUSIA ísť na ďalší riadok za telom.
 
-- Opening parentheses for control structures MUST NOT have a space after them,
-  and closing parentheses for control structures MUST NOT have a space before.
+- Otvárajúce zátvorky pre konotrolné štruktúry NEMôŽU mať medzeru za nimi,
+  a zatvárajúce zátvorky pre kontrolné štruktúry NESMÚ mať medzeru pred nimi.
 
-### 1.1. Example
+### 1.1. Príklad
 
-This example encompasses some of the rules below as a quick overview:
+Tento príklad zahŕňa niektoré pravidlá nižšie pre rýchly prehľad:
 
 ```php
 <?php
@@ -81,51 +78,51 @@ class Foo extends Bar implements FooInterface
 
     final public static function bar()
     {
-        // method body
+        // telo metódy
     }
 }
 ```
 
-2. General
-----------
+2. Všeobecne
+------------
 
-### 2.1 Basic Coding Standard
+### 2.1 Základné štandardy kódovania
 
-Code MUST follow all rules outlined in [PSR-1].
+Kód musí dodržovať všetky pravidlá načrtnuté v [PSR-1].
 
-### 2.2 Files
+### 2.2 Súbory
 
-All PHP files MUST use the Unix LF (linefeed) line ending.
+Všetky PHP súbory MUSIA používať Unix LF(riadkovanie) na konci riadku.
 
-All PHP files MUST end with a single blank line.
+Všetky PHP súbory MUSIA končiť s jednným prázdnym riadkom.
 
-The closing `?>` tag MUST be omitted from files containing only PHP.
+Zatvárajúci `?>` tag MUSÍ byť vynechaný zo súborov obsahujúcich iba PHP.
 
-### 2.3. Lines
+### 2.3. Riadky
 
-There MUST NOT be a hard limit on line length.
+Riadky NEMôŽU mať natvrdo nastavenú dĺžku riadku.
 
-The soft limit on line length MUST be 120 characters; automated style checkers
-MUST warn but MUST NOT error at the soft limit.
+Mäkký limit na dĺžku riadkov MUSÍ byť 120 znakov; automatizované testy 
+štýlov MUSIA varovať, ale NESMÚ ohlásiť chybu pri prekročení mäkkého limitu.
 
-Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
-be split into multiple subsequent lines of no more than 80 characters each.
+Riadky BY NEMALI byť dlhšie ako 80 znakov; riadky dlhšie ako to by MALI
+byť rozdelené do viacerých nasledujúcich riadkov, kde ani jeden z riadkov 
+neprekročí 80 znakov.
 
-There MUST NOT be trailing whitespace at the end of non-blank lines.
+Na riadku, ktorý nie je prázdny, NESMÚ byť na konci medzery.
 
-Blank lines MAY be added to improve readability and to indicate related
-blocks of code.
+Prázdne riadky SMÚ byť pridané, aby sa vylepšila čitateľnosť a aby poukázali 
+na spolu suvisiace bloky kódu.
 
-There MUST NOT be more than one statement per line.
+Na jednom riadku NESMIE byt viac ako jeden príkaz.
 
-### 2.4. Indenting
+### 2.4. Odsadenie
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+Kód MUSÍ byť odsadený použitím 4 medzier a nie s tabulátorom.
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
+> Pozn.: Používaním iba medzier a nemixovaním medzier s tabulátorom, pomáha predíst
+> problémom s porovnávaním rozdielov, záplat, histórie a vysvetlivkám. Použite medzier
+> tiež uľahčuje vkladanie jemnejšieho odsadzovania pre medzi riadkové zarovnania.
 
 ### 2.5. Keywords and True/False/Null
 
