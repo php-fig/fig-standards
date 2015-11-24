@@ -1,140 +1,144 @@
-Logger Interface
-================
+Zápisníkové rozhranie
+=====================
 
-This document describes a common interface for logging libraries.
+Tento dokument opisuje spoločné rozhraniepre záznamové knižnice.
 
-The main goal is to allow libraries to receive a `Psr\Log\LoggerInterface`
-object and write logs to it in a simple and universal way. Frameworks
-and CMSs that have custom needs MAY extend the interface for their own
-purpose, but SHOULD remain compatible with this document. This ensures
-that the third-party libraries an application uses can write to the
-centralized application logs.
+Hlavným cieľom je dovoliť knižniciam prijímať objekt `Psr\Log\LoggerInterface`
+a zapisovať záznamy do neho jednoduchým a univerzálnym spôsobom. Frameworky
+a CMS systémy, špeciálne požiadavky MôŽU rozšíriť toto rozhranie pre svoje
+vlastné účely, ale MALI BY zostať kompatibilné s týmto dokumentom. Tým sa zaručí,
+že knižnice tretích strán, ktoré aplikácia používa, budú schopné zapisovať do
+centralizovaného zápisníka.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+Kľúčové slová "MUSÍ", "NESMIE", "POTREBNÉ", "SMIE", "NESMIE", "MALO BY",
+"NEMALO BY", "ODPORÚČANÉ", "MôŽE", and "NEPOVINNÉ" v tomto dokumente sú vo význame
+ako opísané v [RFC 2119].
 
-The word `implementor` in this document is to be interpreted as someone
-implementing the `LoggerInterface` in a log-related library or framework.
-Users of loggers are referred to as `user`.
+Slovom `implementátor` v tomto dokumente sa myslí niekto, kto implementuje
+`LoggerInterface` do knižnice alebo frameworku pracujúcim so záznamami.
+Užívatelia zápisníkov sú označovaný ako `užívatelia`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-1. Specification
------------------
+1. Špecifikácia
+---------------
 
-### 1.1 Basics
+### 1.1 Základy
 
-- The `LoggerInterface` exposes eight methods to write logs to the eight
-  [RFC 5424][] levels (debug, info, notice, warning, error, critical, alert,
+- `LoggerInterface` odhaľuje osem metód na zápis záznamov do ôsmych úrovní
+  [RFC 5424][] (debug, info, notice, warning, error, critical, alert,
   emergency).
 
-- A ninth method, `log`, accepts a log level as first argument. Calling this
-  method with one of the log level constants MUST have the same result as
-  calling the level-specific method. Calling this method with a level not
-  defined by this specification MUST throw a `Psr\Log\InvalidArgumentException`
-  if the implementation does not know about the level. Users SHOULD NOT use a
-  custom level without knowing for sure the current implementation supports it.
+- Deviata metóda, `log`, akceptuje úroveň zaznamenávania ako prvý parameter. 
+  Volanie tejto metódy s jednou z úrovní zápisu ako parametrom MUSÍ mať rovnaký 
+  výsledok ako volanie samotnej úrovne ako metódy. Volanie tejto metódy 
+  bez udania úrovne zaznamenávania definovanej v tejto špecifikácii MUSÍ 
+  hodiť výnimku `Psr\Log\InvalidArgumentException`, ak implementácia nepozná
+  úroveň. Užívatelia BY NEMALI používať rôzne úrovne zaznamenávania 
+  bez znalosti, že ich implementácia podporuje.
 
 [RFC 5424]: http://tools.ietf.org/html/rfc5424
 
-### 1.2 Message
+### 1.2 Správy
 
-- Every method accepts a string as the message, or an object with a
-  `__toString()` method. Implementors MAY have special handling for the passed
-  objects. If that is not the case, implementors MUST cast it to a string.
+- Každá metóda akceptuje textový retazec ako správu alebo objekt s metódou
+  `__toString()`. Implementátor MôŽE nejako špeciálne spracovať podaný objekt.
+   V prípade, že implementátor nepotrebuje ďalej spracovať objekt, MUSÍ podať
+   textový reťazec.
 
-- The message MAY contain placeholders which implementors MAY replace with
-  values from the context array.
+- Správa MôŽE obsahovať zástupné symboly, ktoré môžu byť implementátorom
+  nahradené s hodnotami zo súvisiaceho poľa.
 
-  Placeholder names MUST correspond to keys in the context array.
+  Mená zástupných symbolov MUSIA korešpondovať s kľúčami zo súvisiaceho poľa.
 
-  Placeholder names MUST be delimited with a single opening brace `{` and
-  a single closing brace `}`. There MUST NOT be any whitespace between the
-  delimiters and the placeholder name.
+  Mená zástupných symbolov MUSIA byť oddelené s jednou otvárajúcou hranatou 
+  zátvorkou `{` a jednou zatvárajúcou hranatou zátvorkou `}`. Medzi oddelovačmi
+  a zástupnými symbolmi NESMIE byť žiadna medzera.
 
-  Placeholder names SHOULD be composed only of the characters `A-Z`, `a-z`,
-  `0-9`, underscore `_`, and period `.`. The use of other characters is
-  reserved for future modifications of the placeholders specification.
+  Mená zástupných symbolov BY MALI používať iba `A-Z`, `a-z`, `0-9`, 
+  podtržítko `_`, a bodku `.`. Použitie ostatných znakov je rezervované
+  pre budúce možnosti rozšírenia špecifikácie.
 
-  Implementors MAY use placeholders to implement various escaping strategies
-  and translate logs for display. Users SHOULD NOT pre-escape placeholder
-  values since they can not know in which context the data will be displayed.
+  Implementátori MôŽU použit zástupné symboly na implementovanie rôznych 
+  escape-ových sekvencií alebo prekladanie logov pre výpis. Užívatelia 
+  BY NEMALI pred escape-ovať hodnoty zástupných symbolov, pretože nemôžu
+  vedieť, v akom kontexte sa dáta zobrazia.
 
-  The following is an example implementation of placeholder interpolation
-  provided for reference purposes only:
+  Nasleduje príklad implementácie nahradenia zástupnych symbolov ukazujúca
+  odporúčaný spôsob:
 
   ```php
   /**
-   * Interpolates context values into the message placeholders.
+   * Nahradzuje zástupné symboly v správe kontextovými hodnotami.
    */
-  function interpolate($message, array $context = array())
+  function nahrad($message, array $context = array())
   {
-      // build a replacement array with braces around the context keys
+      // postav náhradzujúce pole s hranatými zátvorkami okolo kontextových kľúčov
       $replace = array();
       foreach ($context as $key => $val) {
           $replace['{' . $key . '}'] = $val;
       }
 
-      // interpolate replacement values into the message and return
+      // vlož nahradzujúce hodnoty do správy a vráť správu
       return strtr($message, $replace);
   }
 
-  // a message with brace-delimited placeholder names
-  $message = "User {username} created";
+  // správa s menom zástupného symbolu v hranatých zátvorkách
+  $message = "Užívateľ {username} vytvorený";
 
-  // a context array of placeholder names => replacement values
-  $context = array('username' => 'bolivar');
+  // kontextové pole s menami => hodnotami zástupných symbolov
+  $context = array('username' => 'Štefan');
 
-  // echoes "User bolivar created"
-  echo interpolate($message, $context);
+  // vypíše "Užívateľ Štefan vytvorený"
+  echo nahrad($message, $context);
   ```
 
-### 1.3 Context
+### 1.3 Kontext
 
-- Every method accepts an array as context data. This is meant to hold any
-  extraneous information that does not fit well in a string. The array can
-  contain anything. Implementors MUST ensure they treat context data with
-  as much lenience as possible. A given value in the context MUST NOT throw
-  an exception nor raise any php error, warning or notice.
+- Každá metóda prijíma pole s kontextovým poľom. Toto slúži na uchovanie 
+  nejakých vonkajších informácií, ktoré nezapadajú dobre v textovom reťazci.
+  Pole môže obsahovať hocičo. Implementátori MUSIA zaistiť čo najvyššiu 
+  bezproblémovosť s kontextovými dátami. Dané hodnoty v kontexte NESMÚ
+  hodiť výnimku alebo spôsobiť php chybu, upozornenie alebo varovanie.
 
-- If an `Exception` object is passed in the context data, it MUST be in the
-  `'exception'` key. Logging exceptions is a common pattern and this allows
-  implementors to extract a stack trace from the exception when the log
-  backend supports it. Implementors MUST still verify that the `'exception'`
-  key is actually an `Exception` before using it as such, as it MAY contain
-  anything.
+- Ak je do kontextových dát vložený objekt `Exception`, tak MUSÍ byť
+  v kľúči `'exception'`. Zaznamenávanie výnimiek je častý postup a umožňuje
+  implementátorovi vyňať z výnimky kompletný cestu zásobníka, ak to backend 
+  logu podporuje. Implementátor MUSÍ stále kontrolovať že v kľúči `'exception'`
+  je naozaj `Exception` pred tým ako ju použije, pretože SMIE obsahovať
+  čokoľvek.
 
-### 1.4 Helper classes and interfaces
+### 1.4 Pomocné triedy a rozhrania
 
-- The `Psr\Log\AbstractLogger` class lets you implement the `LoggerInterface`
-  very easily by extending it and implementing the generic `log` method.
-  The other eight methods are forwarding the message and context to it.
+- Trieda `Psr\Log\AbstractLogger` umožnuje implementovať `LoggerInterface`
+  jednoducho jej rozšírením a implementovaním spoločnej metódy `log`.
+  Zvyšných osem metód posúvajú správu a kontext do nej.
 
-- Similarly, using the `Psr\Log\LoggerTrait` only requires you to
-  implement the generic `log` method. Note that since traits can not implement
-  interfaces, in this case you still have to implement `LoggerInterface`.
+- Podobne, aj `Psr\Log\LoggerTrait` potrebuje aby ste implementovali všeobecnú
+  `log` metódu. Všimnite si, že aj keď traits nemôžu implementovať rozhranie,
+  v tomto prípade musíte stále implementovať `LoggerInterface`.
 
-- The `Psr\Log\NullLogger` is provided together with the interface. It MAY be
-  used by users of the interface to provide a fall-back "black hole"
-  implementation if no logger is given to them. However conditional logging
-  may be a better approach if context data creation is expensive.
+- `Psr\Log\NullLogger` je poskytnutá spolu s rozhraním. MôŽE byť použitá
+  užívateľmi rozhrania na poskytnutie rezervnej implementácie, pokiaľ im
+  nebol daný žiadny záznamník. V každom prípade záznamník vybratý podmienkou 
+  môže byť lepší prístup, ak je vytvorenie kontextových dát náročné.
 
-- The `Psr\Log\LoggerAwareInterface` only contains a
-  `setLogger(LoggerInterface $logger)` method and can be used by frameworks to
-  auto-wire arbitrary instances with a logger.
+- `Psr\Log\LoggerAwareInterface` obsahuje iba
+  `setLogger(LoggerInterface $logger)` metódu a môže byť použitý vo frameworkoch
+  na automatické privinutie ľubovoľnej inštancie so záznamíkom.
 
-- The `Psr\Log\LoggerAwareTrait` trait can be used to implement the equivalent
-  interface easily in any class. It gives you access to `$this->logger`.
+- `Psr\Log\LoggerAwareTrait` trait môže byť použitý na implementáciu rovnakého 
+  rozhrania jednoducho v každej triede. Potom možete k záznamníku pristupovať
+  cez `$this->logger`.
 
-- The `Psr\Log\LogLevel` class holds constants for the eight log levels.
+- Trieda `Psr\Log\LogLevel` obsahuje konštanty pre osem úrovní záznamníka.
 
-2. Package
+2. Balík
 ----------
 
-The interfaces and classes described as well as relevant exception classes
-and a test suite to verify your implementation is provided as part of the
-[psr/log](https://packagist.org/packages/psr/log) package.
+Rozhrania a triedy opísané vyššie ako aj relevantné triedy Výnimiek a testov
+na otestovanie implementacie je poskytnutá ako súčat balíka
+[psr/log](https://packagist.org/packages/psr/log).
 
 3. `Psr\Log\LoggerInterface`
 ----------------------------
@@ -145,24 +149,24 @@ and a test suite to verify your implementation is provided as part of the
 namespace Psr\Log;
 
 /**
- * Describes a logger instance
+ * Opisuje inštanciu záznamníka
  *
- * The message MUST be a string or object implementing __toString().
+ * Správa MUSÍ byť textový reťazec alebo objekty implementujúce __toString().
  *
- * The message MAY contain placeholders in the form: {foo} where foo
- * will be replaced by the context data in key "foo".
+ * Správa MôŽE obsahovať symbolické znaky vo forme {foo} kde foo
+ * bude nahradené hodnotou z kontextovými poľa s kľúčom "foo".
  *
- * The context array can contain arbitrary data, the only assumption that
- * can be made by implementors is that if an Exception instance is given
- * to produce a stack trace, it MUST be in a key named "exception".
+ * Kontextové pole môže obsahovať ľubovolné dáta, jediné čo implementátor
+ * môže predpokladať je, že ak inštancia Výnimky je daná kvôli zásobníku
+ * volaní metód, tak MUSÍ byť v kľúči zvanom "exception".
  *
- * See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
- * for the full interface specification.
+ * Pozri https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
+ * pre špecifikáciu celého rozhrania.
  */
 interface LoggerInterface
 {
     /**
-     * System is unusable.
+     * System je nepoužívateľný.
      *
      * @param string $message
      * @param array $context
@@ -171,10 +175,10 @@ interface LoggerInterface
     public function emergency($message, array $context = array());
 
     /**
-     * Action must be taken immediately.
+     * Akcia musí byť vykonaná okamžite.
      *
-     * Example: Entire website down, database unavailable, etc. This should
-     * trigger the SMS alerts and wake you up.
+     * Napríklad: Celý web je dole, databáza je nepristupná, atď. Toto by malo
+     * poslať SMS poplach a zobudiť Vás.
      *
      * @param string $message
      * @param array $context
@@ -183,9 +187,9 @@ interface LoggerInterface
     public function alert($message, array $context = array());
 
     /**
-     * Critical conditions.
+     * Kritické stavy.
      *
-     * Example: Application component unavailable, unexpected exception.
+     * Príklady: Časť aplikácie nefunkčná, neočakávaná výnimka.
      *
      * @param string $message
      * @param array $context
@@ -194,9 +198,8 @@ interface LoggerInterface
     public function critical($message, array $context = array());
 
     /**
-     * Runtime errors that do not require immediate action but should typically
-     * be logged and monitored.
-     *
+     * Chyby za pochodu, ktoré nepotrebujú okamžité riešenie, 
+     * ale mali by byť zaznamenané a monitorované
      * @param string $message
      * @param array $context
      * @return null
@@ -204,10 +207,10 @@ interface LoggerInterface
     public function error($message, array $context = array());
 
     /**
-     * Exceptional occurrences that are not errors.
+     * Výnimočne stavy, ktoré ale nie su chyby
      *
-     * Example: Use of deprecated APIs, poor use of an API, undesirable things
-     * that are not necessarily wrong.
+     * Príklady: Používanie zastaralých API, zlé používanie API, nežiadúce veci
+     * ktoré nie sú nevyhnutne zlé.
      *
      * @param string $message
      * @param array $context
@@ -216,7 +219,7 @@ interface LoggerInterface
     public function warning($message, array $context = array());
 
     /**
-     * Normal but significant events.
+     * Bežné ale významné udalosti.
      *
      * @param string $message
      * @param array $context
@@ -225,9 +228,9 @@ interface LoggerInterface
     public function notice($message, array $context = array());
 
     /**
-     * Interesting events.
+     * Zaujímavé udalosti
      *
-     * Example: User logs in, SQL logs.
+     * Príklady: Záznam prihlasovania užívateľov, SQL záznamy
      *
      * @param string $message
      * @param array $context
@@ -236,7 +239,7 @@ interface LoggerInterface
     public function info($message, array $context = array());
 
     /**
-     * Detailed debug information.
+     * Detailné informácie na odstraňovanie chýb
      *
      * @param string $message
      * @param array $context
@@ -245,7 +248,7 @@ interface LoggerInterface
     public function debug($message, array $context = array());
 
     /**
-     * Logs with an arbitrary level.
+     * Záznamy s ľubovolnou úrovňou.
      *
      * @param mixed $level
      * @param string $message
@@ -265,12 +268,12 @@ interface LoggerInterface
 namespace Psr\Log;
 
 /**
- * Describes a logger-aware instance
+ * Opisuje inštanciu vedomú si záznamníka 
  */
 interface LoggerAwareInterface
 {
     /**
-     * Sets a logger instance on the object
+     * Nastaví inšntanciu záznamníka na objekt
      *
      * @param LoggerInterface $logger
      * @return null
@@ -288,7 +291,7 @@ interface LoggerAwareInterface
 namespace Psr\Log;
 
 /**
- * Describes log levels
+ * Popis úrovní zaznamenávania
  */
 class LogLevel
 {
