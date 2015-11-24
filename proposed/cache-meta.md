@@ -181,8 +181,7 @@ function load_widgets(array $ids)
     foreach ($items as $key => $item) {
         if ($item->isHit()) {
             $value = $item->get();
-        }
-        else {
+        } else {
             $value = expensive_widget_load($id);
             $item->set($value, 3600);
             $pool->saveDeferred($item, true);
