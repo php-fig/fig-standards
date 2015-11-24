@@ -1,47 +1,47 @@
-PSR-2 Meta Document
+PSR-2 Meta Dokument
 ===================
 
-1. Summary
-----------
+1. Zhrnutie
+-----------
 
-The intent of this guide is to reduce cognitive friction when scanning code from different authors. It does so 
-by enumerating a shared set of rules and expectations about how to format PHP code.
+Učelom tejto príručky je zníženie poznávacieho trenia pri prezeraní kódu od rôznych autorov. Robí sa to
+vymenovaním spoločnej sady pravidiel a očakávaní o tom ako formátovať PHP kód.
 
-The style rules herein are derived from commonalities among the various member projects. When various authors 
-collaborate across multiple projects, it helps to have one set of guidelines to be used among all those 
-projects. Thus, the benefit of this guide is not in the rules themselves, but in the sharing of those rules.
+Pravidlá štýlovania tu sú ódvodené zo spoločných prvkov medzi rôznymi členskými projektami. Keď rôzny autori
+spolupracujú na rozličných projektoch, pomáha mať jednu sadu pravidiel, ktoré sa používajú vo všetkých
+projektoch. Teda, výhodou tejto príručky nie sú samotné pravdilá ale zdielanie týchto pravidiel.
 
 
-2. Votes
+2. Hlasy
 --------
 
 - **Acceptance Vote:** [ML](https://groups.google.com/d/msg/php-fig/c-QVvnZdMQ0/TdDMdzKFpdIJ)
 
 
-3. Errata
----------
+3. Tlačová chyba
+----------------
 
-### 3.1 - Multi-line Arguments (09/08/2013)
+### 3.1 - VIac riadkové parametre (09/08/2013)
 
-Using one or more multi-line arguments (i.e: arrays or anonymous functions) does not constitute 
-splitting the argument list itself, therefore Section 4.6 is not automatically enforced. Arrays and anonymous 
-functions are able to span multiple lines.
+Používaním jedného alebo viacerých viacriadkových parametrov(napr: polia alebo anonymné funkcie) nepredstavujú
+samotne rozdelenie zoznamu parametrov, preto Sekcia 4.6 nie je automaticky uplatnovaná. Polia a anonymné
+funkcie sú schopné presahovať do viacerých riadkov.
 
-The following examples are perfectly valid in PSR-2:
+Nasledujúce je úplne platne v PSR-2:
 
 ```php
 <?php
-somefunction($foo, $bar, [
+nejakafunkcia($foo, $bar, [
   // ...
 ], $baz);
 
-$app->get('/hello/{name}', function ($name) use ($app) { 
-    return 'Hello '.$app->escape($name); 
+$app->get('/ahoj/{name}', function ($name) use ($app) { 
+    return 'Ahoj '.$app->escape($name); 
 });
 ```
 
-### 3.2 - Extending Multiple Interfaces (10/17/2013)
+### 3.2 - Rozširovanie viacero rozhraní (10/17/2013)
 
-When extending multiple interfaces, the list of `extends` should be treated the same as a list
-of `implements`, as declared in Section 4.1.
+Keď rozširujeme viacero rozhraní, tak so zoznamom rozšírení `extends` BY sa MALO zaobchádzať rovnako ako
+so zoznamom `implements`, ako je deklarované v Sekcii 4.1.
 
