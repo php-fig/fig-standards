@@ -1,78 +1,75 @@
 # Autoloader
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+Kľúčové slová "MUSÍ", "NESMIE", "POTREBNÉ", "SMIE", "NESMIE", "MALO BY",
+"NEMALO BY", "ODPORÚČANÉ", "MôŽE", and "NEPOVINNÉ" v tomto dokumente sú vo význame
+ako opísané v [RFC 2119](http://tools.ietf.org/html/rfc2119).
+
+## 1. Prehľad
+
+Toto PSR opisuje špecifikáciu pre samonačítanie [autoloading][] tried z ciest 
+súborov. Je plne nahraditeľné, a môže byť použité spolu s inou samonačítavacou
+špecifikáciou, vrátane [PSR-0][]. Toto PSR tiež popisuje kde umiestniť súbory,
+ktoré sa budú samonačítavať podľa tejto špecifikácie.
+
+## 2. Špecifikácia
+
+1. Výraz "trieda" odkazuje na triedy, rozhrania, traits a ostatné podobné 
+   štruktúry.
+
+2. Plné meno triedy má nasledujúci tvar:
+
+        \<MenoMennehoPriestoru>(\<MenaVnorenychMennychPriestorov>)*\<MenoTriedy>
+
+    1. Plné meno triedy MUSÍ mať menný priestor najvyššej úrovne, tiež známy ako
+       "vendor namespace" (menný priestor výrobcu).
+
+    2. Plné meno triedy MôŽE obsahovať jedno alebo viac mien vnorených menných
+       priestorov.
+
+    3. Plné meno triedy MUSÍ byť zakončené menom triedy.
+
+    4. Podtržítka nemajú žiadny špeciálny význam v žiadnej časťi plného mena triedy.
+
+    5. Abecedné znaky v plnom mene triedy MôŽU byť kombináciou veľkých
+       a malých pismen.
+
+    6. Všetky mená tried MUSIA byť uvádzané s ohľadom na velkosť písmen (case-sensitive).
+
+3. Keď načítavame súbor, ktorý sa zhoduje s plným menom triedy ...
+
+    1. Séria jednej alebo viacerých susediacich menných a vnorených menných 
+       priestorov od začiatku bez začiatočného oddelovača menných priestorov `\` 
+       korešponduje aspoň s jedným koreňovým adresárom. Takúto sériu nazývame
+       predponoou menného priestoru (namespace prefix)
+
+    2. Séria mien vnorených menných priestorov po predpone menneho priestoru
+       korešponduje s podadresárom v korenoňovom adresári, v ktorom oddelovače
+       menných priestorov predstavujú oddelovače adresárov. Mená podadresárov sa
+       MUSÍ zhodovať s menami vnorených menných priestorov s ohľadom na veľké a
+       malé písmená v názvoch.
+
+    3. Meno triedy na konci korešponduje s menom súboru a končiacim s `.php`
+       príponou. Meno súboru sa MUSÍ zhodovať s menom triedy s ohľadom na veľké
+       a malé písmena v názvoch.
+
+4. Implementácia autoloaderu NESMIE vyhadzovať výnimky, NESMIE vyvolávať chyby
+   žiadnej úrovne a NEMALA BY vracať hodnotu.
 
 
-## 1. Overview
+## 3. Príklady
 
-This PSR describes a specification for [autoloading][] classes from file
-paths. It is fully interoperable, and can be used in addition to any other
-autoloading specification, including [PSR-0][]. This PSR also describes where
-to place files that will be autoloaded according to the specification.
+Tabuľka nižšie ukazuje cestu, ktorá korešponduje s plným menom triedy, predponu menného priestoru a koreňový adresár.
 
-
-## 2. Specification
-
-1. The term "class" refers to classes, interfaces, traits, and other similar
-   structures.
-
-2. A fully qualified class name has the following form:
-
-        \<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>
-
-    1. The fully qualified class name MUST have a top-level namespace name,
-       also known as a "vendor namespace".
-
-    2. The fully qualified class name MAY have one or more sub-namespace
-       names.
-
-    3. The fully qualified class name MUST have a terminating class name.
-
-    4. Underscores have no special meaning in any portion of the fully
-       qualified class name.
-
-    5. Alphabetic characters in the fully qualified class name MAY be any
-       combination of lower case and upper case.
-
-    6. All class names MUST be referenced in a case-sensitive fashion.
-
-3. When loading a file that corresponds to a fully qualified class name ...
-
-    1. A contiguous series of one or more leading namespace and sub-namespace
-       names, not including the leading namespace separator, in the fully
-       qualified class name (a "namespace prefix") corresponds to at least one
-       "base directory".
-
-    2. The contiguous sub-namespace names after the "namespace prefix"
-       correspond to a subdirectory within a "base directory", in which the
-       namespace separators represent directory separators. The subdirectory
-       name MUST match the case of the sub-namespace names.
-
-    3. The terminating class name corresponds to a file name ending in `.php`.
-       The file name MUST match the case of the terminating class name.
-
-4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
-   of any level, and SHOULD NOT return a value.
-
-
-## 3. Examples
-
-The table below shows the corresponding file path for a given fully qualified
-class name, namespace prefix, and base directory.
-
-| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Resulting File Path
+| Plné meno triedy              | Namespace Prefix   | Koreňový adresár         | Konečná cesta k súboru
 | ----------------------------- |--------------------|--------------------------|-------------------------------------------
 | \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
 | \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
 | \Symfony\Core\Request         | Symfony\Core       | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
 | \Zend\Acl                     | Zend               | /usr/includes/Zend/      | /usr/includes/Zend/Acl.php
 
-For example implementations of autoloaders conforming to the specification,
-please see the [examples file][]. Example implementations MUST NOT be regarded
-as part of the specification and MAY change at any time.
+Pre príkladné implementácie autoloaderov podľa tejto špecifikácie si pozrite [súbor príkladov][]. 
+Príklady implementácie NESMÚ byť považované za súčasť špecifikácie a MôŽU sa zmenit časom.
 
 [autoloading]: http://php.net/autoload
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[examples file]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
+[súbor príkladov]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
