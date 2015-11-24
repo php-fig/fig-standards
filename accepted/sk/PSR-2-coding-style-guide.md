@@ -33,23 +33,23 @@ ako opísané v [RFC 2119].
 - Po deklarácii `namespace` MUSÍ nasledovať jeden prázdny riadok, a po bloku 
   `use` deklarácii MUSÍ nasledovat jeden prázdný riadok.
 
-- Otvárajúce zátvorky pre triedy MUSIA ísť na ďaľší riadok a zatvárajúce zátvorky MUSIA
+- Otvárajúce zátvorky `{` pre triedy MUSIA ísť na ďaľší riadok a zatvárajúce zátvorky `}` MUSIA
   ísť na ďalší riadok za telom triedy.
 
-- Otvárajúce zátvorky pre metódy MUSIA ísť na ďaľší riadok a zatvárajúce zátvorky MUSIA
+- Otvárajúce zátvorky `{` pre metódy MUSIA ísť na ďaľší riadok a zatvárajúce zátvorky `}` MUSIA
   ísť na ďalší riadok za telom metódy.
 
 - Visibilita MUSÍ byť deklarovaná na všetkých vlastnostiach a metódach; `abstract` a
   `final` MUSIA byť deklarované pred visibilitou; `static` MUSÍ byť deklarované za visibilitou.
   
-- Klúčové slová pre kontrolné štruktúry MUSIA mať jednu medzeru za nimi; metódy a
+- Klúčové slová pre riadiace štruktúry MUSIA mať jednu medzeru za nimi; metódy a
   volania funkcií NEMUSIA mať medzeru za nimi.
 
-- Otvárajúce zátvorky pre kontrolné štruktúry MUSIA ísť na rovnaký riadok 
-  a zatvárajúce zátvorky MUSIA ísť na ďalší riadok za telom.
+- Otvárajúce zátvorky `{` pre riadiace štruktúry MUSIA ísť na rovnaký riadok 
+  a zatvárajúce zátvorky `}` MUSIA ísť na ďaľší riadok za telom.
 
-- Otvárajúce zátvorky pre konotrolné štruktúry NEMôŽU mať medzeru za nimi,
-  a zatvárajúce zátvorky pre kontrolné štruktúry NESMÚ mať medzeru pred nimi.
+- Otvárajúce zátvorky `{` pre riadiace štruktúry NEMôŽU mať medzeru za nimi,
+  a zatvárajúce zátvorky `}` pre riadiace štruktúry NESMÚ mať medzeru pred nimi.
 
 ### 1.1. Príklad
 
@@ -124,29 +124,28 @@ Kód MUSÍ byť odsadený použitím 4 medzier a nie s tabulátorom.
 > problémom s porovnávaním rozdielov, záplat, histórie a vysvetlivkám. Použite medzier
 > tiež uľahčuje vkladanie jemnejšieho odsadzovania pre medzi riadkové zarovnania.
 
-### 2.5. Keywords and True/False/Null
+### 2.5. Kľúčové slová a True/False/Null
 
-PHP [keywords] MUST be in lower case.
+PHP [kľúčové slová] MUSIA byť v malých písmenách.
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
+PHP konštanty `true`, `false`, a `null` MUSIA byť v malých písmenách.
 
-[keywords]: http://php.net/manual/en/reserved.keywords.php
+[kľúčové slová]: http://php.net/manual/en/reserved.keywords.php
 
 
 
-3. Namespace and Use Declarations
----------------------------------
+3. Menné priestory a deklarácie Use
+-----------------------------------
 
-When present, there MUST be one blank line after the `namespace` declaration.
+Keď je `namespace` deklarácia prítomná, tak po nej MUSÍ nasledovať jeden prázdny riadok.
 
-When present, all `use` declarations MUST go after the `namespace`
-declaration.
+Keď je `use` deklarované, tak MUSÍ nasledovať po deklarácii `namespace`.
 
-There MUST be one `use` keyword per declaration.
+Každá deklarácia `use`, MUSÍ obsahovať klúčové slovo `use`.
 
-There MUST be one blank line after the `use` block.
+Po bloku `use` deklarácií MUSÍ nasledovať jeden prázdny riadok.
 
-For example:
+Napríklad:
 
 ```php
 <?php
@@ -156,23 +155,23 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-// ... additional PHP code ...
+// ... ďaľší PHP kód ...
 
 ```
 
 
-4. Classes, Properties, and Methods
------------------------------------
+4. Triedy, Vlastnosti a Metódy
+------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+Pojmom "trieda" máme na mysli všetky triedy, rozhrania a traits.
 
-### 4.1. Extends and Implements
+### 4.1. Extends a Implements
 
-The `extends` and `implements` keywords MUST be declared on the same line as
-the class name.
+Klúčové slová rozšírenia `extends` a implementácie `implements` MUSIA byť deklarované
+na rovnakom riadku ako meno triedy.
 
-The opening brace for the class MUST go on its own line; the closing brace
-for the class MUST go on the next line after the body.
+Otvárajúca hranatá zátvorka pre triedu MUSÍ ísť na svôj vlastný riadok; zatvárajúca 
+hranatá zátvorka pre triedu MUSÍ ísť na ďaľší riadok za telom triedy.
 
 ```php
 <?php
@@ -182,15 +181,16 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-class ClassName extends ParentClass implements \ArrayAccess, \Countable
+class MenoTriedy extends ParentClass implements \ArrayAccess, \Countable
 {
-    // constants, properties, methods
+    // konštanty, vlastnosti, metódy
 }
 ```
 
-Lists of `implements` MAY be split across multiple lines, where each
-subsequent line is indented once. When doing so, the first item in the list
-MUST be on the next line, and there MUST be only one interface per line.
+Zoznam implementacií `implements` MôŽE byť rozdelený na viacerých riadkoch,
+pričom každý ďaľší riadok je odsadený raz. Keď použijete tento spôsob,
+tak prvá položka implementácie v zozname MUSÍ byť na ďaľšom riadkua MUSÍ
+byť definované po jednom rozhraní na jeden riadok.
 
 ```php
 <?php
@@ -200,124 +200,125 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-class ClassName extends ParentClass implements
+class MenoTriedy extends RodicovskaTrieda implements
     \ArrayAccess,
     \Countable,
     \Serializable
 {
-    // constants, properties, methods
+    // konštanty, vlastnosti, metódy
 }
 ```
 
-### 4.2. Properties
+### 4.2. Vlastnosti
 
-Visibility MUST be declared on all properties.
+Visibilita MUSÍ byť deklarovaná pre všetky vlastnosti.
 
-The `var` keyword MUST NOT be used to declare a property.
+Kľúčové slovo `var` NESMIE byť použité na deklarovanie vlastnosti.
 
-There MUST NOT be more than one property declared per statement.
+V jednej deklarácii sa NESMIE nastaviť viac ako jedna vlastnosť.
 
-Property names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Mená vlastností BY NEMALI mať predponu s jedným podtržítkom na naznačenie,
+že sa jedná o protected alebo private visibilitu.
 
-A property declaration looks like the following.
+Deklarácia vlastnosti vypadá napríklad nasledovne:
 
 ```php
 <?php
 namespace Vendor\Package;
 
-class ClassName
+class MenoTriedy
 {
-    public $foo = null;
+    public $vlastnost = null;
 }
 ```
 
-### 4.3. Methods
+### 4.3. Metódy
 
-Visibility MUST be declared on all methods.
+Visibilita MUSÍ byť deklarovaná na všetkých metódach.
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Mená metód BY NEMALI mať predponu s jedným podtržítkom na naznačenie,
+že sa jedná o protected alebo private visibilitu.
 
-Method names MUST NOT be declared with a space after the method name. The
-opening brace MUST go on its own line, and the closing brace MUST go on the
-next line following the body. There MUST NOT be a space after the opening
-parenthesis, and there MUST NOT be a space before the closing parenthesis.
+Mená metód NESMÚ byť deklarované s medzerou po mene metódy. Otvárajúca 
+hranatá zátvorka `{` MUSÍ ísť na svoj vlastný riadok a zatvárajúca hranatá zátvorka `}`
+MUSÍ ísť na svoj vlastný riadok a zároveň zatvárajúca hranatá zátvorka `{` MUSÍ 
+ísť na ďaľší riadok za telom metódy. Za otvárajucou obyčajnou zátvorkou `(`
+NESMIE byť medzera a tiež medzera NESMIE byť pred zatvárajúcou obyčajnou zátvorkou `)`.
 
-A method declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+Deklarácoa metódy vypadá nasledobne. Všimnite si umiestnenie zátvoriek, 
+čiariek, medzier a hranatých zátvoriek:
 
 ```php
 <?php
 namespace Vendor\Package;
 
-class ClassName
+class MenoTriedy
 {
     public function fooBarBaz($arg1, &$arg2, $arg3 = [])
     {
-        // method body
+        // telo metódy
     }
 }
 ```    
 
-### 4.4. Method Arguments
+### 4.4. Parametre Metódy
 
-In the argument list, there MUST NOT be a space before each comma, and there
-MUST be one space after each comma.
+V liste parametrov NESMIE byť medzera pred žiadnou čiarkou a každá čiarka 
+MUSÍ mať jednu medzeru za sebou.
 
-Method arguments with default values MUST go at the end of the argument
-list.
+Parametre metódy s predvolenmi hodnotami MUSIA ísť na koniec zoznamu 
+parametrov.
 
 ```php
 <?php
 namespace Vendor\Package;
 
-class ClassName
+class MenoTriedy
 {
     public function foo($arg1, &$arg2, $arg3 = [])
     {
-        // method body
+        // telo metódy
     }
 }
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+Zoznam parametrov MôŽE byť rozdelený na viacerých riadkoch, kde každý ďaľší
+riadok je odsadený raz. Keď robíte tak, prvá položka na zozname MUSÍ byť
+na ďaľšom riadku, a na každóm riadku MUSÍ byť práve jeden parameter.
 
-When the argument list is split across multiple lines, the closing parenthesis
-and opening brace MUST be placed together on their own line with one space
-between them.
+Keď je zoznam parametrov rozdelený na viacerých riadkoch, zatvárajúca 
+zátvorka `)` a otvárajúca hranatá zátvorka `}` musia byť spolu na jednom
+vlastnom riadku s jednou medzerou medzi nimi.
 
 ```php
 <?php
 namespace Vendor\Package;
 
-class ClassName
+class MenoTriedy
 {
     public function aVeryLongMethodName(
         ClassTypeHint $arg1,
         &$arg2,
         array $arg3 = []
     ) {
-        // method body
+        // telo metódy
     }
 }
 ```
 
-### 4.5. `abstract`, `final`, and `static`
+### 4.5. `abstract`, `final`, a `static`
 
-When present, the `abstract` and `final` declarations MUST precede the
-visibility declaration.
+Ak je prítomná deklarácia `abstract` a `final`, tak MUSÍ predchádzať 
+deklaráciu visibility.
 
-When present, the `static` declaration MUST come after the visibility
-declaration.
+Keď je prítomná deklarácia `static`, tak MUSÍ byť za deklaráciou 
+visibility.
 
 ```php
 <?php
 namespace Vendor\Package;
 
-abstract class ClassName
+abstract class MenoTriedy
 {
     protected static $foo;
 
@@ -325,18 +326,19 @@ abstract class ClassName
 
     final public static function bar()
     {
-        // method body
+        // telo metódy
     }
 }
 ```
 
-### 4.6. Method and Function Calls
+### 4.6. Volania metod a funkcií
 
-When making a method or function call, there MUST NOT be a space between the
-method or function name and the opening parenthesis, there MUST NOT be a space
-after the opening parenthesis, and there MUST NOT be a space before the
-closing parenthesis. In the argument list, there MUST NOT be a space before
-each comma, and there MUST be one space after each comma.
+Keď voláme metódu alebo funkciu tak:
+- medzi metódou alebo funkciou a otvárajúcou zátvorkou `(` NESMIE byť medzera
+- za otvárajúcou zátvorkou `(` NESMIE byť medzera
+- NESMIE byť medzera pred zatvárajúcou zátvorkou `)`.
+- v zozname parametrov NESMIE byt medzera pred čiarkou a MUSÍ byť 
+  jedna medzera za každou čiarkou. 
 
 ```php
 <?php
@@ -345,9 +347,9 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
-Argument lists MAY be split across multiple lines, where each subsequent line
-is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+Zoznam parametrov MôŽE byť rozdelený na viacero riadkov, kde každý 
+ďaľší riadok je odsadený raz. V takom prípade, prvá položka v zozname 
+MUSÍ byt na ďaľšom riadku a každý parameter MUSÍ byt na vlastnom riadku
 
 ```php
 <?php
@@ -358,69 +360,70 @@ $foo->bar(
 );
 ```
 
-5. Control Structures
+5. Riadiace štruktúry
 ---------------------
+  
+Všeobecné štýlové pravidlá pre riadiace štruktúry sú nasledovné:
 
-The general style rules for control structures are as follows:
+- Za kľúčovým slovom riadiacej štruktúry MUSÍ byť jedna medzera
+- Za otvárajúcou zátvorkou `(` MUSÍ byť medzera
+- Pred zatvárajúcou zátvorkou `)` NESMIE byť medzera
+- Medzi zatvárajúcou zátvorkou `)` a otvárajúcou hranatou 
+  zátvorkou `{` MUSÍ byť jedna medzera
+- Telo štruktúry MUSÍ byť odsadené raz
+- Zatvárajúca hranatá zátvorka `}` MUSÍ byť na ďaľšom riadku za telom
 
-- There MUST be one space after the control structure keyword
-- There MUST NOT be a space after the opening parenthesis
-- There MUST NOT be a space before the closing parenthesis
-- There MUST be one space between the closing parenthesis and the opening
-  brace
-- The structure body MUST be indented once
-- The closing brace MUST be on the next line after the body
-
-The body of each structure MUST be enclosed by braces. This standardizes how
-the structures look, and reduces the likelihood of introducing errors as new
-lines get added to the body.
+Telo každej štruktúry MUSÍ byť uzavreté do hranatých zátvoriek `{ }`. Toto 
+štandardizuje, ako štruktúry vypadajú a znižuje možnost zavedenia nových chýb,
+keď sa nové riadky pridajú do tela.
 
 
 ### 5.1. `if`, `elseif`, `else`
 
-An `if` structure looks like the following. Note the placement of parentheses,
-spaces, and braces; and that `else` and `elseif` are on the same line as the
-closing brace from the earlier body.
+Štruktúra ak `if` vypadá nasledovne. Všimnite si umiestnenie zátvoriek, medzier,
+hranatých zátvoriek; a tiež že `else` a `elseif` sú na rovnakom riadku 
+ako zatvárajúce hranaté zátvorky predošlého tela.
 
 ```php
 <?php
 if ($expr1) {
-    // if body
+    // tela pre if
 } elseif ($expr2) {
-    // elseif body
+    // telo pre elseif
 } else {
-    // else body;
+    // telo pre else;
 }
 ```
 
-The keyword `elseif` SHOULD be used instead of `else if` so that all control
-keywords look like single words.
+Klúčové slovo `elseif` BY MALO byť použité namiesto `else if`, 
+takže riadiace klúčové slovo vyzerá ako jedno slovo.
 
 
 ### 5.2. `switch`, `case`
 
-A `switch` structure looks like the following. Note the placement of
-parentheses, spaces, and braces. The `case` statement MUST be indented once
-from `switch`, and the `break` keyword (or other terminating keyword) MUST be
-indented at the same level as the `case` body. There MUST be a comment such as
-`// no break` when fall-through is intentional in a non-empty `case` body.
+Štruktúra `switch` vyzerá nasledovne. Všimnite si umiestnenie zátvoriek, 
+medzier a hranatých zátvoriek. Kľúčové slovo `case` MUSÍ byť odsadené raz
+od `switch`, a kľúčové slovo `break` (alebo ostatné ukončovacie kľúčové slová) 
+MUSIA byť odsadené na rovnakej úrovni ako telo `case`. Ak telo `case`
+nie je prázdne a zámerne nemá `break`, tak MUSÍ obsahovať komment
+ako `// no break`.
 
 ```php
 <?php
-switch ($expr) {
+switch ($vyraz) {
     case 0:
-        echo 'First case, with a break';
+        echo 'Prvý prípad s breakom';
         break;
     case 1:
-        echo 'Second case, which falls through';
+        echo 'Druhý prípad s prechodom';
         // no break
     case 2:
     case 3:
     case 4:
-        echo 'Third case, return instead of break';
+        echo 'Tretí prípad s returnom namiesto breaku';
         return;
     default:
-        echo 'Default case';
+        echo 'Štandardný prípad';
         break;
 }
 ```
@@ -428,110 +431,110 @@ switch ($expr) {
 
 ### 5.3. `while`, `do while`
 
-A `while` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Kľúčové slovo `while` vypadá nasledovne. Všimnite si
+umiestnenie zátvoriek, medzier a hranatých zátvoriek.
 
 ```php
 <?php
-while ($expr) {
-    // structure body
+while ($vyraz) {
+    // telo štruktúry
 }
 ```
 
-Similarly, a `do while` statement looks like the following. Note the placement
-of parentheses, spaces, and braces.
+Podobne, štruktúra `do while` vypadá nasledovne. Všimnite si umiestnenie
+zátvoriek, medzier a hranatých zátvoriek.
 
 ```php
 <?php
 do {
-    // structure body;
-} while ($expr);
+    // telo štruktúry;
+} while ($vyraz);
 ```
 
 ### 5.4. `for`
 
-A `for` statement looks like the following. Note the placement of parentheses,
-spaces, and braces.
+Povel `for` vypadá nasledovne. Všimnite si umiestnenie
+zátvoriek, medzier a hranatých zátvoriek.
 
 ```php
 <?php
 for ($i = 0; $i < 10; $i++) {
-    // for body
+    // telo
 }
 ```
 
 ### 5.5. `foreach`
     
-A `foreach` statement looks like the following. Note the placement of
-parentheses, spaces, and braces.
+Povel `foreach` vyzerá nasledovne. Všimnite si umiestnenie
+zátvoriek, medzier a hranatých zátvoriek.
 
 ```php
 <?php
 foreach ($iterable as $key => $value) {
-    // foreach body
+    // telo foreach
 }
 ```
 
 ### 5.6. `try`, `catch`
 
-A `try catch` block looks like the following. Note the placement of
-parentheses, spaces, and braces.
+BLok `try catch` vyzerá nasledovne. Všimnite si umiestnenie
+zátvoriek, medzier a hranatých zátvoriek.
 
 ```php
 <?php
 try {
-    // try body
+    // telo try
 } catch (FirstExceptionType $e) {
-    // catch body
+    // telo catch
 } catch (OtherExceptionType $e) {
-    // catch body
+    // telo catch
 }
 ```
 
-6. Closures
------------
+6. Uzavretia `Closures`
+-----------------------
 
-Closures MUST be declared with a space after the `function` keyword, and a
-space before and after the `use` keyword.
+Uzavretia MUSIA byť deklarované s medzerou za kľúčovým slovom `function` a
+s medzerou pred a po kľúčovom slove `use`.
 
-The opening brace MUST go on the same line, and the closing brace MUST go on
-the next line following the body.
+Otvárajúce hranaté zátvorky `{` MUSIA ísť na rovnaký riadok a zatvárajúce 
+hranaté zátvorky `}` MUSIA ísť na samostatný riadok nasledujúci po tele.
 
-There MUST NOT be a space after the opening parenthesis of the argument list
-or variable list, and there MUST NOT be a space before the closing parenthesis
-of the argument list or variable list.
+Po otvárajúcej zátvorke `(` zoznamu parametrov alebo zoznamu premenných 
+NESMIE byť medzera. Pred zatvárajúcou zátvorkou `)` zoznamu parametrov 
+alebo premenných NESMIE byť medzera.
 
-In the argument list and variable list, there MUST NOT be a space before each
-comma, and there MUST be one space after each comma.
+V zozname parametrov a premenných NESMIE byť medzera pred každou čiarkou a
+za každou čiarkou MUSÍ byť jedna medzera.
 
-Closure arguments with default values MUST go at the end of the argument
-list.
+Parametry uzavretia s prednastavenými hodnotami MUSIA ísť na koniec 
+zoznamu parametrov.
 
-A closure declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+Deklarácia Uzavretia vypadá nasledovne.Všimnite si umiestnenie
+zátvoriek, medzier, čiarok a hranatých zátvoriek.
 
 ```php
 <?php
-$closureWithArgs = function ($arg1, $arg2) {
-    // body
+$uzavretieSArgumentami = function ($arg1, $arg2) {
+    // telo
 };
 
-$closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
-    // body
+$uzavretieSArgumentamiAPremennymi = function ($arg1, $arg2) use ($var1, $var2) {
+    // telo
 };
 ```
 
-Argument lists and variable lists MAY be split across multiple lines, where
-each subsequent line is indented once. When doing so, the first item in the
-list MUST be on the next line, and there MUST be only one argument or variable
-per line.
+Zoznam parametrov a premenných MOŽE byť rozdelený na viacero riadkov, kde 
+každý ďaľší riadok je odsadený raz. V takomto prípade, prvá položka na zozname
+MUSÍ byt na ďaľšom riadku a na riadku MUSÍ byť iba jeden parameter
+alebo premenná.
 
-When the ending list (whether or arguments or variables) is split across
-multiple lines, the closing parenthesis and opening brace MUST be placed
-together on their own line with one space between them.
+Keď je zoznam (buď parametrov alebo premenných)rozdelený na viacero riadkov, 
+tak na konci zoznamu MUSÍ byť uzatvárajúca zátvorka a otvárajúca hranatá 
+zátvorka umiestnená spolu na jednom riadku s jednou medzerou medzi nimi.
 
-The following are examples of closures with and without argument lists and
-variable lists split across multiple lines.
+Nasledujúce príklady uzavretí s alebo bez zoznamu argumentov a premenných
+rozdelených na viacero riadkov:
 
 ```php
 <?php
@@ -540,7 +543,7 @@ $longArgs_noVars = function (
     $longerArgument,
     $muchLongerArgument
 ) {
-   // body
+   // telo
 };
 
 $noArgs_longVars = function () use (
@@ -548,7 +551,7 @@ $noArgs_longVars = function () use (
     $longerVar2,
     $muchLongerVar3
 ) {
-   // body
+   // telo
 };
 
 $longArgs_longVars = function (
@@ -560,7 +563,7 @@ $longArgs_longVars = function (
     $longerVar2,
     $muchLongerVar3
 ) {
-   // body
+   // telo
 };
 
 $longArgs_shortVars = function (
@@ -568,7 +571,7 @@ $longArgs_shortVars = function (
     $longerArgument,
     $muchLongerArgument
 ) use ($var1) {
-   // body
+   // telo
 };
 
 $shortArgs_longVars = function ($arg) use (
@@ -576,56 +579,57 @@ $shortArgs_longVars = function ($arg) use (
     $longerVar2,
     $muchLongerVar3
 ) {
-   // body
+   // telo
 };
 ```
 
-Note that the formatting rules also apply when the closure is used directly
-in a function or method call as an argument.
+Všimnite si že pravidlá formátovania tiež platia keď je uzavretie
+použité priamo vo volaní funkcie alebo metódy ako parameter:
 
 ```php
 <?php
 $foo->bar(
     $arg1,
     function ($arg2) use ($var1) {
-        // body
+        // telo
     },
     $arg3
 );
 ```
 
 
-7. Conclusion
---------------
+7. Záver
+--------
 
-There are many elements of style and practice intentionally omitted by this
-guide. These include but are not limited to:
+Mnohé elementy štýlovania a cvičenia sú zámerne vynechané v tejto
+príručke. Okrem iných sú to napríklad aj tieto:
 
-- Declaration of global variables and global constants
+- Deklarácia globálnych premenných a globálnych konštánt
 
-- Declaration of functions
+- Deklarácia funkcií
 
-- Operators and assignment
+- Operátori a priradenia
 
-- Inter-line alignment
+- Zarovnanie medzi riadkami
 
-- Comments and documentation blocks
+- Komentáre a bloky dokumentácie
 
-- Class name prefixes and suffixes
+- Predpony a prípony mien tried.
 
-- Best practices
+- Najlepšie postupy
 
-Future recommendations MAY revise and extend this guide to address those or
-other elements of style and practice.
+Budúce odporúčania MôŽU prepracovať alebo rozšíriť túto príručku 
+o uvedené ale iné elementy štýlovania a postupov.
 
 
-Appendix A. Survey
-------------------
+Dodatok A. Prieskum
+-------------------
 
-In writing this style guide, the group took a survey of member projects to
-determine common practices.  The survey is retained herein for posterity.
+Pri písaní tejto príručky, skupina použila prieskum členských 
+projektov na určenie spoločných postupov. In writing this style guide, the group took a survey of member projects to
+determine common practices. Vysledky prieskumu sú tu ponechané pre potomstvo.
 
-### A.1. Survey Data
+### A.1. Dáta priskumu
 
     url,http://www.horde.org/apps/horde/docs/CODING_STANDARDS,http://pear.php.net/manual/en/standards.php,http://solarphp.com/manual/appendix-standards.style,http://framework.zend.com/manual/en/coding-standard.html,http://symfony.com/doc/2.0/contributing/code/standards.html,http://www.ppi.io/docs/coding-standards.html,https://github.com/ezsystems/ezp-next/wiki/codingstandards,http://book.cakephp.org/2.0/en/contributing/cakephp-coding-conventions.html,https://github.com/UnionOfRAD/lithium/wiki/Spec%3A-Coding,http://drupal.org/coding-standards,http://code.google.com/p/sabredav/,http://area51.phpbb.com/docs/31x/coding-guidelines.html,https://docs.google.com/a/zikula.org/document/edit?authkey=CPCU0Us&hgd=1&id=1fcqb93Sn-hR9c0mkN6m_tyWnmEvoswKBtSc0tKkZmJA,http://www.chisimba.com,n/a,https://github.com/Respect/project-info/blob/master/coding-standards-sample.php,n/a,Object Calisthenics for PHP,http://doc.nette.org/en/coding-standard,http://flow3.typo3.org,https://github.com/propelorm/Propel2/wiki/Coding-Standards,http://developer.joomla.org/coding-standards.html
     voting,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,no,no,?,yes,no,yes
@@ -651,70 +655,70 @@ determine common practices.  The survey is retained herein for posterity.
     blank_line_after_php,no,no,no,no,yes,no,no,no,no,yes,yes,no,no,yes,?,yes,yes,no,yes,no,yes,no
     class_method_control_brace,next/next/same,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/next,same/same/same,same/same/same,same/same/same,same/same/same,next/next/next,next/next/same,next/same/same,next/next/next,next/next/same,next/next/same,next/next/same,next/next/same,same/same/same,next/next/same,next/next/next
 
-### A.2. Survey Legend
+### A.2. Vysvetlivky prieskumu
 
 `indent_type`:
-The type of indenting. `tab` = "Use a tab", `2` or `4` = "number of spaces"
+Typ odsadenia. `tab` = "Používanie tabu", `2` alebo `4` = "počet medzier"
 
 `line_length_limit_soft`:
-The "soft" line length limit, in characters. `?` = not discernible or no response, `no` means no limit.
+Limit pre "mäkkú" dĺžku riadku v znakoch. `?` = nerozonavať alebo neriešiť, `no` znamená bez limitu.
 
 `line_length_limit_hard`:
-The "hard" line length limit, in characters. `?` = not discernible or no response, `no` means no limit.
+Limit pre "tvrdú" dĺžku riadku v znakoch. `?` = nerozonavať alebo neriešiť, `no` znamená bez limitu.
 
 `class_names`:
-How classes are named. `lower` = lowercase only, `lower_under` = lowercase with underscore separators, `studly` = StudlyCase.
+Ako sú triedy menované. `lower` = iba malé písmená, `lower_under` = malé písmená s podtržítkami, `studly` = StudlyCase.
 
 `class_brace_line`:
-Does the opening brace for a class go on the `same` line as the class keyword, or on the `next` line after it?
+Majú otvárajúce hranaté zátvorky ísť na `same` riadok ako kľúčové slovo triedy, alebo na `next` riadok za ním?
 
 `constant_names`:
-How are class constants named? `upper` = Uppercase with underscore separators.
+Ako sú konštanty pomenované? `upper` = Veľké písmená s podrtžítkami.
 
 `true_false_null`:
-Are the `true`, `false`, and `null` keywords spelled as all `lower` case, or all `upper` case?
+Sú `true`, `false`, a `null` klúčové slová použivané ako `lower` písmenami, alebo `upper` písmenami?
 
 `method_names`:
-How are methods named? `camel` = `camelCase`, `lower_under` = lowercase with underscore separators.
+Ako sú metódy pomenované? `camel` = `camelCase`, `lower_under` = malými písmenami s podtržítkami.
 
 `method_brace_line`:
-Does the opening brace for a method go on the `same` line as the method name, or on the `next` line?
+Sú otvárajúce hranaté zátvorky metódy na `same` rovnakom riadku ako meno metódy alebo na `next` riadku?
 
 `control_brace_line`:
-Does the opening brace for a control structure go on the `same` line, or on the `next` line?
+Sú otvárajúce hranaté zátvorky riadiacej štruktúry na `same` riadku, alebo na `next` riadku?
 
 `control_space_after`:
-Is there a space after the control structure keyword?
+Je medzera po klǔčovom slove riadiacej štruktúry?
 
 `always_use_control_braces`:
-Do control structures always use braces?
+Používajú riadiace štruktúry vždy hranaté zátvorky?
 
 `else_elseif_line`:
-When using `else` or `elseif`, does it go on the `same` line as the previous closing brace, or does it go on the `next` line?
+Keď použivate `else` alebo `elseif`, idú na `same` riadok ako predchádzajúce zatvárajúce hranaté zátvorky alebo idú na `next` riadok?
 
 `case_break_indent_from_switch`:
-How many times are `case` and `break` indented from an opening `switch` statement?
+Koľko krát sú `case` a `break` odsadené od otvárajúceho povelu `switch`?
 
 `function_space_after`:
-Do function calls have a space after the function name and before the opening parenthesis?
+Majú volania funkcií medzeru po mene funkcie a pred otvárajúcou zátvorkou?
 
 `closing_php_tag_required`:
-In files containing only PHP, is the closing `?>` tag required?
+Je v súboroch obsahujúcich len PHP potrebný uzatvárajúci `?>` tag?
 
 `line_endings`:
-What type of line ending is used?
+Aký typ ukončenia riadku používať?
 
 `static_or_visibility_first`:
-When declaring a method, does `static` come first, or does the visibility come first?
+Keď sa deklaruje metóda, je `static` prvé alebo je visibilita prvá?
 
 `control_space_parens`:
-In a control structure expression, is there a space after the opening parenthesis and a space before the closing parenthesis? `yes` = `if ( $expr )`, `no` = `if ($expr)`.
+Je vo výraze riadiacej štruktúre medzera po otvárajúcej zátvorke a medzera pred zatvárajúcou zátvorkou? `yes` = `if ( $expr )`, `no` = `if ($expr)`.
 
 `blank_line_after_php`:
-Is there a blank line after the opening PHP tag?
+Je prázdny riadok za PHP otvárajúcim tagom?
 
 `class_method_control_brace`:
-A summary of what line the opening braces go on for classes, methods, and control structures.
+Zhrnutie na ktorý riadok idú otvárajúce hranaté zátvorky pre triedy, metódy a riadiace štruktury.
 
 ### A.3. Survey Results
 
