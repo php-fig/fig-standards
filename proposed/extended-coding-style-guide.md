@@ -116,7 +116,7 @@ PHP [keywords][] MUST be in lower case.
 The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
 
-Declare declarations, Namespace, and Use Declarations
+Declare Statements, Namespace, and Use Declarations
 --------------------------------------------
 
 When present, there MUST be one blank line after the `declare` statement(s)
@@ -245,8 +245,11 @@ the class name.
 The opening brace for the class MUST go on its own line; the closing brace
 for the class MUST go on the next line after the body.
 
-There MUST NOT be a blank line preceding a closing brace and the next line
-after the opening brace MUST NOT be a blank line.
+Opening braces MUST be on their own line and MUST NOT be preceeded or followed
+by a blank line.
+
+Closing braces MUST be on their own line and MUST NOT be preceeded by a blank
+line.
 
 ```php
 <?php
@@ -464,6 +467,18 @@ class ClassName
 }
 ```
 
+```php
+<?php
+
+somefunction($foo, $bar, [
+  // ...
+], $baz);
+
+$app->get('/hello/{name}', function ($name) use ($app) {
+    return 'Hello '.$app->escape($name);
+});
+```
+
 When you have a return type declaration present there MUST be one space after
 the colon with followed by the type declaration. The colon and declaration MUST be
 on the same line as the argument list closing parentheses with no spaces between
@@ -479,7 +494,7 @@ class ReturnTypeVariations
 {
     public function functionName($arg1, $arg2): string
     {
-        return;
+        return 'foo';
     }
 }
 ```
