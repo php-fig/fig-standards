@@ -116,10 +116,20 @@ PHP [keywords][] MUST be in lower case.
 The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
 
-Strict Types, Namespace, and Use Declarations
+Declare declarations, Namespace, and Use Declarations
 --------------------------------------------
 
-When present, there MUST be one blank line after the `declare` declaration.
+When present, there MUST be one blank line after the `declare` statement(s)
+e.g. `declare(ticks=);`
+
+There MUST NOT be a blank line before declare statements such as those for strict
+types or ticks. They MUST be contained on the lines immediately following the
+opening tag (which must be on the first line when declare statement(s) are present).
+
+Each declare statement (e.g. `declare(ticks=);`) MUST be on its own line.
+
+When no declare declarations are present there MUST be a blank line after the
+opening `<?php` tag.
 
 When present, there MUST be one blank line after the `namespace` declaration.
 
@@ -186,25 +196,6 @@ use Vendor\Package\Namespace\{
 };
 ```
 
-All files MUST declare strict types.
-
-Files containing only PHP MUST place the strict types declaration on the
-first line following the opening PHP tag.
-
-There MUST NOT be a blank line before the strict types declaration.
-
-For example:
-
-```php
-<?php
-declare(strict_types=1);
-
-namespace Vendor\Package;
-
-// ... additional PHP code ...
-
-```
-
 Files containing HTML outside PHP opening and closing tags MUST, on the first
 line, include an opening php tag, the strict types declaration and closing
 tag.
@@ -220,6 +211,17 @@ For example:
 </body>
 </html>
 ```
+
+Declare statements MUST contain no spaces and MUST look like `declare(strict_types=1);`.
+
+Block declare statements are allowed and MUST be formatted as below. Note position of
+braces and spacing:
+```php
+declare(ticks=1) {
+    //some code
+}
+```
+
 
 
 Classes, Properties, and Methods
