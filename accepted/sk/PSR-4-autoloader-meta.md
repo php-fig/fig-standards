@@ -1,24 +1,23 @@
-PSR-4 Meta Document
-===================
+PSR-4 Dodatok
+=============
 
-1. Summary
+1. Zhrnutie
 ----------
 
-The purpose is to specify the rules for an interoperable PHP autoloader that
-maps namespaces to file system paths, and that can co-exist with any other SPL
-registered autoloader.  This would be an addition to, not a replacement for,
-PSR-0.
+Účelom je špecifikovanie pravidiel pre spoluprácu PHP autoloadera, ktorý 
+mapuje menné priestory do ciest súboroých systémov a ktorý môže existovať spolu
+s ostatnými registrovanými SPL autoloadermi. Týmto vlastne doplňuje PSR-0 a nie
+ho nahrádza.
 
-2. Why Bother?
+2. Prečo sa unúvať?
 --------------
 
-### History of PSR-0
+### Minulosť PSR-0
 
-The PSR-0 class naming and autoloading standard rose out of the broad
-acceptance of the Horde/PEAR convention under the constraints of PHP 5.2 and
-previous. With that convention, the tendency was to put all PHP source classes
-in a single main directory, using underscores in the class name to indicate
-pseudo-namespaces, like so:
+Štandard o pomenúvaní a autoloadovaní PSR-0 vyrástol po širšom prijatí Horde/PEAR
+dohody a pod tlakom PHP 5.2 a predošlých. Podľa tej dohody, zámerom bolo položiť
+všetky zdrojové triedy PHP do jedného hlavného adresára a používaním podtržítka
+v menách tried sa určovali pseudo menné priestory, napríklad takto:
 
     /path/to/src/
         VendorFoo/
@@ -28,11 +27,11 @@ pseudo-namespaces, like so:
             Zim/
                 Gir.php     # Vendor_Dib_Zim_Gir
 
-With the release of PHP 5.3 and the availability of namespaces proper, PSR-0
-was introduced to allow both the old Horde/PEAR underscore mode *and* the use
-of the new namespace notation. Underscores were still allowed in the class
-name to ease transition from the older namespace naming to the newer naming,
-and thereby to encourage wider adoption.
+S vydaním PHP 5.3 a s dostupnosťou skutočných menných priestorov bolo predstavené
+PSR-0 aby bolo možné používať oba spôsoby, starý podtržítkový Horde/PEAR mód *a* 
+nový spôsob s mennými priestormi. Podtržítka boli stále povolené v mene triedy aby
+sa uľahčil prechod zo starého spôsobu pomenovávania menných prirestorov na novší
+a tým sa tak podporilo širšie prijatie štandardu.
 
     /path/to/src/
         VendorFoo/
@@ -46,10 +45,10 @@ and thereby to encourage wider adoption.
                 V1.php
                 V2.php      # Irk_Operation\Impending_Doom\V2
 
-This structure is informed very much by the fact that the PEAR installer moved
-source files from PEAR packages into a single central directory.
+Táto štruktúra je dobre informovaná o fakte že inštalátor PEARu presunul súbory
+z adresára PEAR balíkov do jedného centrálneho adresára.
 
-### Along Comes Composer
+### V tom prichádza Composer
 
 With Composer, package sources are no longer copied to a single global
 location. They are used from their installed location and are not moved
