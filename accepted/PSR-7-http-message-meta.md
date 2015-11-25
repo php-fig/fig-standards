@@ -339,7 +339,7 @@ allowed.
 
 ### Using streams instead of X
 
-`MessageInterface` uses a body value that must implement `StreamableInterface`. This
+`MessageInterface` uses a body value that must implement `StreamInterface`. This
 design decision was made so that developers can send and receive (and/or receive
 and send) HTTP messages that contain more data than can practically be stored in
 memory while still allowing the convenience of interacting with message bodies
@@ -360,7 +360,7 @@ number of bytes downloaded reflects the number of bytes reported in the
 and [Node](http://nodejs.org/api/stream.html#stream_class_stream_transform_1)
 communities that allows for very flexible streams.
 
-The majority of the `StreamableInterface` API is based on
+The majority of the `StreamInterface` API is based on
 [Python's io module](http://docs.python.org/3.1/library/io.html), which provides
 a practical and consumable API. Instead of implementing stream
 capabilities using something like a `WritableStreamInterface` and
@@ -385,13 +385,13 @@ Note that the above omits sending appropriate `Content-Type` and
 `Content-Length` headers; the developer would need to emit these prior to
 calling the above code.
 
-The equivalent using HTTP messages would be to use a `StreamableInterface`
+The equivalent using HTTP messages would be to use a `StreamInterface`
 implementation that accepts a filename and/or stream resource, and to provide
 this to the response instance. A complete example, including setting appropriate
 headers:
 
 ```php
-// where Stream is a concrete StreamableInterface:
+// where Stream is a concrete StreamInterface:
 $stream   = new Stream($filename);
 $finfo    = new finfo(FILEINFO_MIME);
 $response = $response
@@ -408,10 +408,10 @@ Directly emitting output (e.g. via `echo`, `printf`, or writing to the
 `php://output` stream) is generally only advisable as a performance optimization
 or when emitting large data sets. If it needs to be done and you still wish
 to work in an HTTP message paradigm, one approach would be to use a
-callback-based `StreamableInterface` implementation, per [this
+callback-based `StreamInterface` implementation, per [this
 example](https://github.com/phly/psr7examples#direct-output). Wrap any code
 emitting output directly in a callback, pass that to an appropriate
-`StreamableInterface` implementation, and provide it to the message body:
+`StreamInterface` implementation, and provide it to the message body:
 
 ```php
 $output = new CallbackStream(function () use ($request) {
@@ -427,18 +427,18 @@ return (new Response())
 
 Ruby's Rack implementation uses an iterator-based approach for server-side
 response message bodies. This can be emulated using an HTTP message paradigm via
-an iterator-backed `StreamableInterface` approach, as [detailed in the
+an iterator-backed `StreamInterface` approach, as [detailed in the
 psr7examples repository](https://github.com/phly/psr7examples#iterators-and-generators).
 
 ### Why are streams mutable?
 
-The `StreamableInterface` API includes methods such as `write()` which can
+The `StreamInterface` API includes methods such as `write()` which can
 change the message content -- which directly contradicts having immutable
 messages.
 
 The problem that arises is due to the fact that the interface is intended to
 wrap a PHP stream or similar. A write operation therefore will proxy to writing
-to the stream. Even if we made `StreamableInterface` immutable, once the stream
+to the stream. Even if we made `StreamInterface` immutable, once the stream
 has been updated, any instance that wraps that stream will also be updated --
 making immutability impossible to enforce.
 
