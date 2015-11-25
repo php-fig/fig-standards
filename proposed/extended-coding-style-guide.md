@@ -233,7 +233,7 @@ same line.
 When instantiating a new class, parenthesis MUST always be present even when
 there are no arguments passed to the constructor.
 
-``php
+```php
 new Foo();
 ```
 
@@ -350,6 +350,7 @@ class ClassName
 
     private $property;
 }
+```
 
 ### Properties
 
