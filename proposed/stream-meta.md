@@ -1,4 +1,4 @@
-# HTTP Message Meta Document
+# Stream Meta Document
 
 ## 1. Summary
 
