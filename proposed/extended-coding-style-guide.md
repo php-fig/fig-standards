@@ -668,6 +668,26 @@ try {
 }
 ```
 
+Operators
+-----------
+All binary and ternary operators MUST be preceded and followed by a space
+excluding string concatenation operators. This includes all [arithmetic][],
+[comparison][], [assignment][], [bitwise][], [logical][] (excluding `!`)
+and [type][] operators.
+
+For example:
+
+```php
+<?php
+
+if ($a === $b) {
+    $foo = $bar ?? $a ?? $b;
+} elseif ($a > $b) {
+    $variable = $foo ? 'foo' : 'bar';
+}
+```
+
+
 Closures
 -----------
 
@@ -813,3 +833,9 @@ $instance = new class extends \Foo implements
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
 [keywords]: http://php.net/manual/en/reserved.keywords.php
+[arithmetic]: http://php.net/manual/en/language.operators.arithmetic.php
+[assignment]: http://php.net/manual/en/language.operators.assignment.php
+[comparison]: http://php.net/manual/en/language.operators.comparison.php
+[bitwise]: http://php.net/manual/en/language.operators.bitwise.php
+[logical]: http://php.net/manual/en/language.operators.logical.php
+[type]: http://php.net/manual/en/language.operators.type.php
