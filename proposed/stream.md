@@ -1,11 +1,12 @@
-# Stream interface
+# Stream Interface
 
 This document describes a common interface for representing streams.
 
 Input and output streams are a fundamental concept in programming. Typically
-in PHP streams are represented as resources but there are benefits to a more
-object oriented approach. These benefits include exception handling on failure
-and more testable code.
+in PHP streams are represented as resources, but there are benefits to taking an
+object oriented approach. This specification seeks to improve interopability by
+providing a generic interface that PHP software utilising streams can depend
+upon without concern for the underlying implementation.
 
 ## 1. Specification
 
