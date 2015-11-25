@@ -222,8 +222,6 @@ declare(ticks=1) {
 }
 ```
 
-
-
 Classes, Properties, and Methods
 -----------------------------------
 
@@ -424,13 +422,15 @@ MUST be one space after each comma.
 Method and function arguments with default values MUST go at the end of the argument
 list.
 
+Method and function argument scalar type hints MUST be lowercase.
+
 ```php
 <?php
 namespace Vendor\Package;
 
 class ClassName
 {
-    public function foo($arg1, &$arg2, $arg3 = [])
+    public function foo(int $arg1, &$arg2, $arg3 = [])
     {
         // method body
     }
