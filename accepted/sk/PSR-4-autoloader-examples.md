@@ -1,46 +1,47 @@
-Example Implementations of PSR-4
-================================
+Príkladné implementácie PSR-4
+=============================
 
-The following are examples illustrate PSR-4 compliant code:
+Nasledujúce príklady znázorňujú kódy vyhovujúce štandardu PSR-4:
 
-Closure Example
----------------
+Príklad Uzávierky (Closure)
+---------------------------
 
 ```php
 <?php
 /**
- * An example of a project-specific implementation.
+ * Príklad implementácie špecifickej pre projekt.
  * 
- * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
- * from /path/to/project/src/Baz/Qux.php:
+ * Po zaregistrovaní autoloadera s SPL, sa bude nasledujúci
+ * riadok snažiť načítať triedu \Foo\Bar\Baz\Qux
+ * z cesty /path/to/project/src/Baz/Qux.php:
  * 
  *      new \Foo\Bar\Baz\Qux;
  *      
- * @param string $class The fully-qualified class name.
+ * @param string $class Plné meno triedy.
  * @return void
  */
 spl_autoload_register(function ($class) {
     
-    // project-specific namespace prefix
+    // predpona menného priestoru pre daný projekt
     $prefix = 'Foo\\Bar\\';
 
-    // base directory for the namespace prefix
+    // koreňový adresár pre predponu menného priestoru
     $base_dir = __DIR__ . '/src/';
     
-    // does the class use the namespace prefix?
+    // Používa trieda predponu menného priestoru?
     $len = strlen($prefix);
     if (strncmp($prefix, $class, $len) !== 0) {
-        // no, move to the next registered autoloader
+        // nie, tak sa presuň na ďaľší registrovaný autoloader
         return;
     }
     
-    // get the relative class name
+    // získaj časť s meno triedy
     $relative_class = substr($class, $len);
     
-    // replace the namespace prefix with the base directory, replace namespace
-    // separators with directory separators in the relative class name, append
-    // with .php
+    // nahraď predponu menného priestoru s koreňovým adresárom,
+    // oddelovače mených priestorov nahrad s oddelovačmi adresárov,
+    // pridaj časť s menom triedy
+    // a nakoniec pridaj .php na koniec 
     $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
     
     // if the file exists, require it
@@ -50,25 +51,23 @@ spl_autoload_register(function ($class) {
 });
 ```
 
-Class Example
--------------
+Príklad triedy
+--------------
 
-The following is an example class implementation to handle multiple
-namespaces:
+Nasledujúci príklad implementuje prácu s mnohými mennými priestormi:
 
 ```php
 <?php
 namespace Example;
 
 /**
- * An example of a general-purpose implementation that includes the optional
- * functionality of allowing multiple base directories for a single namespace
- * prefix.
+ * Príklad implementuje všeobecne použitelnú nepovinnú funkcionalitu,
+ * kde povoľuje použitie viacerých koreňových adresárov 
+ * pre jednu predponu menného priestoru
  * 
- * Given a foo-bar package of classes in the file system at the following
- * paths ...
+ * Je daný balík foo-bar s triedami v súborovom systéme s tymito cestami
  * 
- *     /path/to/packages/foo-bar/
+ *     /cesta/ku/kniznici/foo-bar/
  *         src/
  *             Baz.php             # Foo\Bar\Baz
  *             Qux/
@@ -78,28 +77,28 @@ namespace Example;
  *             Qux/
  *                 QuuxTest.php    # Foo\Bar\Qux\QuuxTest
  * 
- * ... add the path to the class files for the \Foo\Bar\ namespace prefix
- * as follows:
+ * ... pridanie cesty k súborom tried pre predponu menného priestoru \Foo\Bar\ 
+ * je nasledovná:
  * 
  *      <?php
- *      // instantiate the loader
+ *      // vytvorte inštanciu autoloadera
  *      $loader = new \Example\Psr4AutoloaderClass;
  *      
- *      // register the autoloader
+ *      // registrujte autoloader
  *      $loader->register();
  *      
- *      // register the base directories for the namespace prefix
- *      $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/src');
- *      $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/tests');
+ *      // registrujte koreňové adresáre pre predpony menných priestorov
+ *      $loader->addNamespace('Foo\Bar', '/cesta/ku/kniznici/foo-bar/src');
+ *      $loader->addNamespace('Foo\Bar', '/cesta/ku/kniznici/foo-bar/tests');
  * 
- * The following line would cause the autoloader to attempt to load the
- * \Foo\Bar\Qux\Quux class from /path/to/packages/foo-bar/src/Qux/Quux.php:
+ * Na nasledujúcom riadku by sa autoloader snažil načítať triedu \Foo\Bar\Qux\Quux 
+ * z /cesta/ku/kniznici/foo-bar/src/Qux/Quux.php:
  * 
  *      <?php
  *      new \Foo\Bar\Qux\Quux;
  * 
- * The following line would cause the autoloader to attempt to load the 
- * \Foo\Bar\Qux\QuuxTest class from /path/to/packages/foo-bar/tests/Qux/QuuxTest.php:
+ * Na nasledujúcom riadku by sa autoloader snažil načítať triedu \Foo\Bar\Qux\QuuxTest
+ * z /path/to/packages/foo-bar/tests/Qux/QuuxTest.php:
  * 
  *      <?php
  *      new \Foo\Bar\Qux\QuuxTest;
@@ -107,15 +106,15 @@ namespace Example;
 class Psr4AutoloaderClass
 {
     /**
-     * An associative array where the key is a namespace prefix and the value
-     * is an array of base directories for classes in that namespace.
+     * Associatívne pole, kde kľúč je predpona menného priestoru a hodnota
+     * je pole koreňových adresárov pre triedy v danom mennom priestore.
      *
      * @var array
      */
     protected $prefixes = array();
 
     /**
-     * Register loader with SPL autoloader stack.
+     * Registruj loader do zásobníka SPL autoloaderu.
      * 
      * @return void
      */
@@ -125,30 +124,30 @@ class Psr4AutoloaderClass
     }
 
     /**
-     * Adds a base directory for a namespace prefix.
+     * Pridá koreňový adresár pre predponu menného priestoru.
      *
-     * @param string $prefix The namespace prefix.
-     * @param string $base_dir A base directory for class files in the
-     * namespace.
-     * @param bool $prepend If true, prepend the base directory to the stack
-     * instead of appending it; this causes it to be searched first rather
-     * than last.
+     * @param string $prefix Predpona menného priestoru.
+     * @param string $base_dir Koreňový adresár pre súbory tried v mennom
+     * priestore.
+     * @param bool $prepend Ak pravda, tak pripojí koreňový adresár na začiatok
+     * zásobnika, namieto pripojenia ku koncu; to znamená, že bude 
+     * hľadané skorej ako posledné
      * @return void
      */
     public function addNamespace($prefix, $base_dir, $prepend = false)
     {
-        // normalize namespace prefix
+        // normalizuje predponu menného priestoru
         $prefix = trim($prefix, '\\') . '\\';
         
-        // normalize the base directory with a trailing separator
+        // normalizuje koreňový adresár s oddeľovačom na konci
         $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
 
-        // initialize the namespace prefix array
+        // vytvorí pole pre predpony menných priestorov
         if (isset($this->prefixes[$prefix]) === false) {
             $this->prefixes[$prefix] = array();
         }
         
-        // retain the base directory for the namespace prefix
+        // uchová koreňový adresár pre predpony menného priestoru.
         if ($prepend) {
             array_unshift($this->prefixes[$prefix], $base_dir);
         } else {
@@ -157,83 +156,83 @@ class Psr4AutoloaderClass
     }
 
     /**
-     * Loads the class file for a given class name.
+     * Načíta súbor triedy pre danú triedu.
      *
-     * @param string $class The fully-qualified class name.
-     * @return mixed The mapped file name on success, or boolean false on
-     * failure.
+     * @param string $class Plné meno triedy.
+     * @return mixed Namapované meno súboru v prípade úspechu, 
+     * alebo binárne false v prípade zlyhania.
      */
     public function loadClass($class)
     {
-        // the current namespace prefix
+        // predpona menného priestoru
         $prefix = $class;
         
-        // work backwards through the namespace names of the fully-qualified
-        // class name to find a mapped file name
+        // choď naspäť cez mená menných priestorov s plným menom triedy
+        // aby si našiel namapované meno súboru 
         while (false !== $pos = strrpos($prefix, '\\')) {
             
-            // retain the trailing namespace separator in the prefix
+            // pridaj oddelovač menných priestorov na koniec predpony
             $prefix = substr($class, 0, $pos + 1);
 
-            // the rest is the relative class name
+            // zvyšok je časť s menom triedy
             $relative_class = substr($class, $pos + 1);
 
-            // try to load a mapped file for the prefix and relative class
+            // skús načítať namapovaný súbor pre predponu a časť mena triedy
             $mapped_file = $this->loadMappedFile($prefix, $relative_class);
             if ($mapped_file) {
                 return $mapped_file;
             }
 
-            // remove the trailing namespace separator for the next iteration
-            // of strrpos()
+            // odstráň oddelovač menného priestora z konca pre daľší cyklus
+            // a pre funkciu strrpos()
             $prefix = rtrim($prefix, '\\');   
         }
         
-        // never found a mapped file
+        // nenašiel sa namapovaný súbor
         return false;
     }
     
     /**
-     * Load the mapped file for a namespace prefix and relative class.
+     * Načítaj namapovaný súbor pre predponu menného priesotru a časti s menom triedy
      * 
-     * @param string $prefix The namespace prefix.
-     * @param string $relative_class The relative class name.
-     * @return mixed Boolean false if no mapped file can be loaded, or the
-     * name of the mapped file that was loaded.
+     * @param string $prefix Predpona menného priestoru
+     * @param string $relative_class časť s menom triedy
+     * @return mixed Binárne false ak namapovaný súbor nebol načítaný alebo meno 
+     * namapovaného súboru ktoré sa načítalo.
      */
     protected function loadMappedFile($prefix, $relative_class)
     {
-        // are there any base directories for this namespace prefix?
+        // sú tam nejaké adresáre pre predponu tohto menného priestoru?
         if (isset($this->prefixes[$prefix]) === false) {
             return false;
         }
             
-        // look through base directories for this namespace prefix
+        // Pozri do koreňových adresárov pre túto predponu menného priestoru
         foreach ($this->prefixes[$prefix] as $base_dir) {
 
-            // replace the namespace prefix with the base directory,
-            // replace namespace separators with directory separators
-            // in the relative class name, append with .php
+            // nahraď predponu menného priestoru s koreňovým adresárom,
+            // nahraď oddeľovač menných priestorov s oddeľovačom adresárov
+            // v časti s menom triedy a pripoj .php
             $file = $base_dir
                   . str_replace('\\', '/', $relative_class)
                   . '.php';
 
-            // if the mapped file exists, require it
+            // Ak namapovaný súbor existuje tak ho načítaj
             if ($this->requireFile($file)) {
-                // yes, we're done
+                // áno, skončili sme
                 return $file;
             }
         }
         
-        // never found it
+        // nikde sa nenašlo
         return false;
     }
     
     /**
-     * If a file exists, require it from the file system.
+     * Ak súbor existuje, tak ho načítaj zo súboru
      * 
-     * @param string $file The file to require.
-     * @return bool True if the file exists, false if not.
+     * @param string $file Súbor na načítanie.
+     * @return bool Binárne True ak súbor existuje, false ak nie.
      */
     protected function requireFile($file)
     {
@@ -246,9 +245,10 @@ class Psr4AutoloaderClass
 }
 ```
 
-### Unit Tests
+### Jednotkové testovanie
 
-The following example is one way of unit testing the above class loader:
+Nasledujúci príklad je jedna z možností ako testovať 
+vyššie uvedený načítávač tried:
 
 ```php
 <?php
