@@ -691,6 +691,8 @@ excluding string concatenation operators. This includes all [arithmetic][],
 [comparison][], [assignment][], [bitwise][], [logical][] (excluding `!`)
 and [type][] operators.
 
+Other operators such as string concatenation operators are left to interpetation.
+
 For example:
 
 ```php
