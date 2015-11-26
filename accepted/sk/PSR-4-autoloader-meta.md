@@ -50,14 +50,12 @@ z adresára PEAR balíkov do jedného centrálneho adresára.
 
 ### V tom prichádza Composer
 
-With Composer, package sources are no longer copied to a single global
-location. They are used from their installed location and are not moved
-around. This means that with Composer there is no "single main directory" for
-PHP sources as with PEAR. Instead, there are multiple directories; each
-package is in a separate directory for each project.
+Súbory balíkov už nie sú kopírované do jedného globálneho adresára. Používajú sa
+z adresára v ktorom sú inštalované a nepresúvajú sa sem a tam. To znamená že
+s Composerom nemáme jeden hlavný adresár pre PHP súbory ako s PEARom. Namiesto toho
+sú v mnohých adresároch, každý balík je vo vlastnom adresári pre každý jeden projekt.
 
-To meet the requirements of PSR-0, this leads to Composer packages looking
-like this:
+Aby sa zároveň splnili požiadavky PSR-0, tak balíky Composera vypadajú takto:
 
     vendor/
         vendor_name/
@@ -71,12 +69,12 @@ like this:
                         Package_Name/
                             ClassNameTest.php   # Vendor_Name\Package_Name\ClassNameTest
 
-The "src" and "tests" directories have to include vendor and package directory
-names. This is an artifact of PSR-0 compliance.
+Adresáre "src" a "tests" musia zahrnúť aj mená adresárov vendora a balíka.
+Toto je predmetom dodržiavania PSR-0.
 
-Many find this structure to be deeper and more-repetitive than necessary. This
-proposal suggests that an additional or superseding PSR would be useful so
-that we can have packages that look more like the following:
+Mnohý považujú toto členenie za hlbšie ako potrebné a viacej sa opakujúce. Tento
+návrh navrhuje, že dodatočné alebo nahradzujúce PSR by bolo užitočné tak,
+že môžme mať balíky, ktoré budú vypadať takto:
 
     vendor/
         vendor_name/
@@ -86,152 +84,150 @@ that we can have packages that look more like the following:
                 tests/
                     ClassNameTest.php   # Vendor_Name\Package_Name\ClassNameTest
 
-This would require an implementation of what was initially called
-"package-oriented autoloading" (as vs the traditional "direct class-to-file
-autoloading").
+Toto by potrebovalo implementáciu pôvodne nazývanú ako *balíkovo-orientované 
+autoloadovanie* (oproti tradičnému *priame autoloadovanie triedy na súbor*).
 
-### Package-Oriented Autoloading
+### Balíkovo-orientované Autoloadovanie
 
-It's difficult to implement package-oriented autoloading via an extension or
-amendment to PSR-0, because PSR-0 does not allow for an intercessory path
-between any portions of the class name. This means the implementation of a
-package-oriented autoloader would be more complicated than PSR-0. However, it
-would allow for cleaner packages.
+Je ťažké implementovať balíkovo-orientované autoloadovanie rozšírením alebo
+zmenením PSR-0, pretože PSR-0 nedovoľuje skracovanie adresárovej cesty 
+žiadnej časti z plného mena triedy. To znamená že implementovanie 
+balíkovo-orientovaného autoloadovania by bolo komplikovanejšie ako PSR-0,
+aj napriek tomu, že by nám povolilo jednoduchšie balíky.
 
-Initially, the following rules were suggested:
+Pôvodne boli navrhnuté tieto pravdilá:
 
-1. Implementors MUST use at least two namespace levels: a vendor name, and
-package name within that vendor. (This top-level two-name combination is
-hereinafter referred to as the vendor-package name or the vendor-package
-namespace.)
+1. Implementétor MUSÍ použiť aspoň dve úrovne menných priestorov: meno 
+poskytovateľa a meno balíka od daného poskytovateľa. Táto dvojúrovňová
+kombinácia je potom označovaná ako poskytovateľ-balík alebo menný priestor
+poskýtovateľ-balík
 
-2. Implementors MUST allow a path infix between the vendor-package namespace
-and the remainder of the fully qualified class name.
+2. Implementátor MUSÍ dodržať cestu medzi menným priestorom poskytovateľ-balík
+a zvyškom plného mena triedy.
 
-3. The vendor-package namespace MAY map to any directory. The remaining
-portion of the fully-qualified class name MUST map the namespace names to
-identically-named directories, and MUST map the class name to an
-identically-named file ending in .php.
+3. Menný priestor poskytovateľ-balík MôŽE byť namapovaný do hociktorého 
+adresára. Zvyšná časť plného mena triedy MUSÍ mapovať mená menných priestorov
+do zhodne nazvaných adresárov a MUSÍ mapovať meno triedy do zhodne nazvaného
+súboru s príponou .php.
 
-Note that this means the end of underscore-as-directory-separator in the class
-name. One might think underscores should be honored as they are under
-PSR-0, but seeing as their presence in that document is in reference to
-transitioning away from PHP 5.2 and previous pseudo-namespacing, it is
-acceptable to remove them here as well.
+Všimnite si, že toto znamená koniec podtržítkových oddeľovačov adresárov
+v menách tried. Mohli by sme predpokladať, že kvôli zachovaniu spätnej
+kompatibility s PSR-0 sa podtržítka budú naďalej akceptovať, ale kvôli
+odklonu od PHP 5.2 a predošlých pseudo menných priestorov sa rozhodlo,
+že bude prijateľné ak sa odstránia tu.
 
 
-3. Scope
+3. Rámec
 --------
 
-### 3.1 Goals
+### 3.1 Ciele
 
-- Retain the PSR-0 rule that implementors MUST use at least two namespace
-  levels: a vendor name, and package name within that vendor.
+- Zachovať pravidlo z PSR-0, podľa ktorého implementátori MUSIA použiť aspoň
+  dve úrovne menných priestorov a to: meno poskytovateľa a meno balíka v ňom.
 
-- Allow a path infix between the vendor-package namespace and the remainder of
-  the fully qualified class name.
+- Umožniť pevnú cestu medzi mennyćh priestorom poskytovateľ-balík a zvyškom
+  plného mena triedy.
 
-- Allow the vendor-package namespace MAY map to any directory, perhaps
-  multiple directories.
+- Umožniť aby menný priestor poskytovateľ-balík MOHOL byť namapovaný do 
+  hociktorého adresára, možno aj do viacerých adresárov.
 
-- End the honoring of underscores in class names as directory separators
+- Ukončiť rešpektovanie podtržítka v mene triedy ako oddeľovača adresárov.
 
-### 3.2 Non-Goals
+### 3.2 Nie Ciele
 
-- Provide a general transformation algorithm for non-class resources
-
-
-4. Approaches
--------------
-
-### 4.1 Chosen Approach
-
-This approach retains key characteristics of PSR-0 while eliminating the
-deeper directory structures it requires. In addition, it specifies certain
-additional rules that make implementations explicitly more interoperable.
-
-Although not related to directory mapping, the final draft also specifies how
-autoloaders should handle errors.  Specifically, it forbids throwing exceptions
-or raising errors.  The reason is two-fold.
-
-1. Autoloaders in PHP are explicitly designed to be stackable so that if one
-autoloader cannot load a class another has a chance to do so. Having an autoloader
-trigger a breaking error condition violates that compatibility.
-
-2. `class_exists()` and `interface_exists()` allow "not found, even after trying to
-autoload" as a legitimate, normal use case. An autoloader that throws exceptions
-renders `class_exists()` unusable, which is entirely unacceptable from an interoperability
-standpoint.  Autoloaders that wish to provide additional debugging information
-in a class-not-found case should do so via logging instead, either to a PSR-3
-compatible logger or otherwise.
-
-Pros:
-
-- Shallower directory structures
-
-- More flexible file locations
-
-- Stops underscore in class name from being honored as directory separator
-
-- Makes implementations more explicitly interoperable
-
-Cons:
-
-- It is no longer possible, as under PSR-0, to merely examine a class name to
-  determine where it is in the file system (the "class-to-file" convention
-  inherited from Horde/PEAR).
+- Poskytnúť všeobecnú transformačnú sadu pravidiel pre zdrojové kódy, ktoré
+  nie sú v triedach.
 
 
-### 4.2 Alternative: Stay With PSR-0 Only
+4. Postupy
+----------
 
-Staying with PSR-0 only, although reasonable, does leave us with relatively
-deeper directory structures.
+### 4.1 Vybratý postup
 
-Pros:
+Tento prístup zachová kľúčové charakteristiky PSR-0 a zároveň odstráni hlbšie 
+štruktúry adresárov ktoré potrebuje. Zároveň, špecifikuje určité dodatočné 
+pravidlá, vďaka ktorým budú implementácie výslovne lepšie použiteľné.
 
-- No need to change anyone's habits or implementations
+Hoci konečný návrh nie je prepojený s mapovaním adresárov, buďe tiež
+špecifikovať ako autoloader spracúvava chyby. Osobitne, zakazuje vyhadzovanie
+výnimiek a tvorenie akýchkoľvek chýb. Dôvod je dvojaký.
 
-Cons:
+1. Autoloadery v PHP sa skladajú na seba, to znamená že ak jeden autoloader nevie
+načítať triedy, tak ďaľší v poradí má šancu to urobiť. Ak by autoloader vyhadzoval
+chyby, tak by sa narušila táto zľúčiteľnosť.
 
-- Leaves us with deeper directory structures
+2. `class_exists()` a `interface_exists()` povoľujú "nenájdené, aj po vyskúšaní
+autoloadu" ako platný a normálny stav. Autoloader, ktorý hádže výnimky spôsobí 
+`class_exists()` nepoužiteľným, čo je absolútne neprijateľné z pohľadu 
+použiteľnosti. Autoloadery ktoré chcú poskytovať dodatočné informácie 
+na ľadenie chýb pre prípady nenajdených tried by tak mali robiť zapisovaním
+do záznamov (logov), buď do PSR-3 kompatibilných záznamov alebo iných.
 
-- Leaves us with underscores in the class name being honored as directory
-  separators
+Pre:
+
+- Menej hlboká štruktúra adresárov
+
+- Flexibilnejšie umiestnenie súborob
+
+- Ukončenie podpory podtržítka v mene triedy ako oddeľovača adresára
+
+- Implementácie sú výslovne lepšie spolupracujúce
+
+Proti:
+
+- Už viac nie je možné vďaka PSR-0 určiť vďaka menu triedu, kde sa fyzicky
+  daný súbor nachádza v súborovom systéme (konvencia "trieda-subor" konvencia)
+  zdedená z Horde/PEAR).
 
 
-### 4.3 Alternative: Split Up Autoloading And Transformation
+### 4.2 Alternatíva: Zostať iba pri PSR-0
 
-Beau Simensen and others suggested that the transformation algorithm might be
-split out from the autoloading proposal, so that the transformation rules
-could be referenced by other proposals. After doing the work to separate them,
-followed by a poll and some discussion, the combined version (i.e.,
-transformation rules embedded in the autoloader proposal) was revealed as the
-preference.
+Ak zostaneme iba pri PSR-0, tak nám ostane pomerne hlbšia adresárová štruktúra.
 
-Pros:
+Pre:
 
-- Transformation rules could be referenced separately by other proposal
+- Nie je potreba zmeniť nikoho zvyky a implementácie
 
-Cons:
+Proti:
 
-- Not in line with the wishes of poll respondents and some collaborators
+- Ostane nám hlbšia adresárová štruktúra
 
-### 4.4 Alternative: Use More Imperative And Narrative Language
+- Zostanú nám podtržítka v menách tried, ktoré sa budú počítať ako oddelovače
+  adresárov
 
-After the second vote was pulled by a Sponsor after hearing from multiple +1 
-voters that they supported the idea but did not agree with (or understand) the 
-wording of the proposal, there was a period during which the voted-on proposal
-was expanded with greater narrative and somewhat more imperative language. This
-approach was decried by a vocal minority of participants. After some time, Beau
-Simensen started an experimental revision with an eye to PSR-0; the Editor and
-Sponsors favored this more terse approach and shepherded the version now under
-consideration, written by Paul M. Jones and contributed to by many.
 
-### Compatibility Note with PHP 5.3.2 and below
+### 4.3 Alternatíva: Rozdeliť Autoloadovanie a transformovať
 
-PHP versions before 5.3.3 do not strip the leading namespace separator, so 
-the responsibility to look out for this falls on the implementation. Failing 
-to strip the leading namespace separator could lead to unexpected behavior. 
+Beau Simensen a ostatní navrhovali že sada pravidiel na transformácia by mala 
+byť odčlenená z návrhu na nový autoloader tak, že pravidlá transformácie by
+mali byť udané v iných návrhoch. Po tom ako táto sada oddelila, nasledovalo
+hlasovanie  a diskusia, sa rozhodlo, že preferovaná verzia bude kombinovaná.
+To znamená, pravidlá pre transformáciu budu súčasťou návrhu autoloader.
+
+Pre:
+
+- Transformačné pravidlá by mohli byť odkazované osobitne inými návrhmi.
+
+Proti:
+
+- Nie celkom v súlade so želaniami respondentov ankety a spolupracovníkov
+
+### 4.4 Alternatíva: Používat viacej prikazujúci a vodiaci jazyk
+
+Po druhom hlasovaní, a po tom ako navrhovateľ počul od mnohých hlasujúcich, že
+podporili návrh, ale nerozumeli alebo nesúhlasili celkom zneniu návrhu, tu
+bolo obdobie, kedy odhlasovaný návrh bol prepísaný s viacej prikazujúcim tónom
+a širším vysvetlovaním. Tento prístup bol kritizovaný hlasnou menšinou 
+zúčastnených. Po nejakom čase začal Beau Simensen s experimentálnou opravou
+s prihliadaním na PSR-0. Navrhovateľ a pozmenovatelia si obľúbili tento stručný
+prístup a doviedli túto verziu k rozhodovaniu, spísanú Paulom M. Jones-eom 
+s prispením mnohých ďaľších.
+
+### Poznámky ku kompatibilite s PHP 5.3.2 a nižšie
+
+PHP verzie pre 5.3.3 neodoberajú začiatočný oddelovač menného priestoru, takže
+je povinnosťou implementácie sa postarať o toto. Bez odobratia začiatočného
+oddelovača by mohlo prísť k neočakávanému chovaniu.
 
 
 5. People
