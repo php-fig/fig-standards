@@ -339,7 +339,7 @@ dovoljeno.
 
 ### Uporaba tokov namesto X
 
-`MessageInterface` uporablja vrednost telesa, ki mora implementirati `StreamableInterface`. Ta
+`MessageInterface` uporablja vrednost telesa, ki mora implementirati `StreamInterface`. Ta
 načrtovalska odločitev je bila sprejeta, da razvijalci lahko pošljejo in pridobijo (in/ali pridobijo
 in pošljejo) sporočila HTTP, ki vsebujejo več podatkov, kot se jih lahko shrani v
 spomin, medtem ko še vedno omogoča priročnost interakcije s telesi sporočil
@@ -360,7 +360,7 @@ vzorec v skupnostih [Java](http://docs.oracle.com/javase/7/docs/api/java/io/pack
 in [Node](http://nodejs.org/api/stream.html#stream_class_stream_transform_1),
 kar omogoča zelo fleksibilne tokove.
 
-Glavnina API-ja `StreamableInterface` je osnovan na
+Glavnina API-ja `StreamInterface` je osnovan na
 [Python io modulu](http://docs.python.org/3.1/library/io.html), kar omogoča
 praktičen in uporaben API. Namesto implementacije zmožnosti
 toka, ki uporablja nekaj kot je `WritableStreamInterface` in
@@ -385,13 +385,13 @@ Bodite pozorni, da ima zgornje opuščeno pošiljanje ustreznih glav `Content-Ty
 `Content-Lenght`; razvijalec bi moral poslati te pred
 klicem zgornje kode.
 
-Ekvivalentna uporaba sporočil HTTP bi bila uporaba implementacije `StreamableInterface`,
+Ekvivalentna uporaba sporočil HTTP bi bila uporaba implementacije `StreamInterface`,
 ki sprejema ime datoteke in/ali vir toka ter ponuja
 to instanci odziva. Celoten primer, vključno z nastavitvijo ustreznih
 glav:
 
 ```php
-// where Stream is a concrete StreamableInterface:
+// where Stream is a concrete StreamInterface:
 $stream   = new Stream($filename);
 $finfo    = new finfo(FILEINFO_MIME);
 $response = $response
@@ -408,10 +408,10 @@ Direktno pošiljanje izhoda (npr. preko `echo`, `printf` ali pisanje v
 tok `php://output`) je v splošnem priporočljivo samo kot optimizacija uspešnosti
 ali kot se pošilja večji skupek podatkov. Če je potrebno to narediti in še vedno želite
 delati s paradigmo sporočila HTTP, bi bil en pristop uporabiti
-implementacijo `StreamableInterface` na osnovi povratnega klica, kot je [v tem
+implementacijo `StreamInterface` na osnovi povratnega klica, kot je [v tem
 primeru](https://github.com/phly/psr7examples#direct-output). Ovijte katerokoli kodo,
 ki pošilja izhod direktno v povratni klic, pošljite to k ustrezni
-implementaciji `StreamableInterface` in ga ponudite telesu sporočila:
+implementaciji `StreamInterface` in ga ponudite telesu sporočila:
 
 ```php
 $output = new CallbackStream(function () use ($request) {
@@ -427,18 +427,18 @@ return (new Response())
 
 Ruby-jeva implementacija Rack uporablja pristop na osnovi iteratorja za telesa sporočila
 odziva strežniške strani. To je lahko emulirano z uporabo paradigme sporočila HTTP preko
-iteratorja, ki podpira pristor `StreamableInterface` kot je [podrobno opisano
+iteratorja, ki podpira pristor `StreamInterface` kot je [podrobno opisano
 v repozitoriju psr7examples](https://github.com/phly/psr7examples#iterators-and-generators).
 
 ### Zakaj so tokovi spremenljivi?
 
-API `StreamableInterface` vključuje metode, kot je `write()`, ki lahko
+API `StreamInterface` vključuje metode, kot je `write()`, ki lahko
 spremeni vsebino sporočila -- kar direktno nasprotuje imetju nespremenljivih
 sporočil.
 
 Težava, ki nastane, je zaradi dejstva, da je vmesnik namenjen
 ovitju toka PHP ali podobnega. Operacija pisanje bo zato proxy za pisanje
-v tok. Tudi če naredimo `StreamableInterface` nespremenljiv, ko je enkrat tok
+v tok. Tudi če naredimo `StreamInterface` nespremenljiv, ko je enkrat tok
 posodobljen, bo katerakoli instanca, ki ovija ta tok, tudi posodobljena --
 kar naredi nespremenljivost nemogočo za vsiljanje.
 
