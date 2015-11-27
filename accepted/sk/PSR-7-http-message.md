@@ -133,54 +133,53 @@ $header = $message->getHeader('foo');
 ```
 
 Poznámka: Nie všetky hodnoty hlavičiek môžu byť spojené s čiarkou (napr.
-`Set-Cookie`). Keď pracujeme s takými hlavičkami, spotrebiteľ tried 
-implementujúcich `MessageInterface` BY sa MAL spoliehať na metódu `getHeader()`
+`Set-Cookie` obsahuje rôzne znaky) a keď pracujeme s takými hlavičkami, kód 
+implementujúci `MessageInterface` BY MAL použiť radšej metódu `getHeader()`
 na vyťahovanie takých viac hodnotových hlavičiek.
 
-##### Host header
+##### Hlavička hostiteľa
 
-In requests, the `Host` header typically mirrors the host component of the URI, as
-well as the host used when establishing the TCP connection. However, the HTTP
-specification allows the `Host` header to differ from each of the two.
+Pri posielaní požiadavky, hlavička hostiteľa zvyčajne odzrkadluje hostiteľa
+z celkovej URI, takisto ako aj hostiteľa použitého pri nadväzovaní TCP spojenia.
+Napriek tomu, špecifikácia HTTP povoľuje, aby sa hlavička `Hostiteľa` líšila
+od obidvoch.
 
-During construction, implementations MUST attempt to set the `Host` header from
-a provided URI if no `Host` header is provided.
+Pri vytváraní hostiteľa sa implementácia MUSÍ snažiť nastaviť hlavičku 
+`Hostiteteľa` z poskytnutej URI, ak nie je poskytnutá žiadna hlavička hostiteľa.
 
-`RequestInterface::withUri()` will, by default, replace the returned request's
-`Host` header with a `Host` header matching the host component of the passed
+`RequestInterface::withUri()` predvolene nahradí vrátenú hlavičku `hostiteľa`
+z požiadavky s hlavičkou `hostiteľa` z časti hostiteľ podaného rozhraním 
 `UriInterface`.
 
-You can opt-in to preserving the original state of the `Host` header by passing
-`true` for the second (`$preserveHost`) argument. When this argument is set to
-`true`, the returned request will not update the `Host` header of the returned
-message -- unless the message contains no `Host` header.
+Ak chcete zachovať pôvodný stav hlavičky `Hostiteľ`, nastavte hodnotu `true` 
+druhému parametru `$preserveHost`. Keď je tento parameter nastavený ako
+`true`, tak vrátená požiadavka neaktualizuje hlavičku `Hostiteľ` vrátenej
+správe, ale len vtedy, keď správa neobsahuje žiadnu hlavičku `Hostiteľa`.
 
-This table illustrates what `getHeaderLine('Host')` will return for a request
-returned by `withUri()` with the `$preserveHost` argument set to `true` for
-various initial requests and URIs.
+Táto tabuľka znázorňuje rôzne požiadavky a URI, a tiež čo bude 
+`getHeaderLine('Host')`  vracať pre požiadavky vrátené s `withUri()` a 
+s parametrom `$preserveHost` nastaveným na `true`.
 
-Request Host header<sup>[1](#rhh)</sup> | Request host component<sup>[2](#rhc)</sup> | URI host component<sup>[3](#uhc)</sup> | Result
-----------------------------------------|--------------------------------------------|----------------------------------------|--------
-''                                      | ''                                         | ''                                     | ''
-''                                      | foo.com                                    | ''                                     | foo.com
-''                                      | foo.com                                    | bar.com                                | foo.com
-foo.com                                 | ''                                         | bar.com                                | foo.com
-foo.com                                 | bar.com                                    | baz.com                                | foo.com
+Hlavička hostiteľa požiadavky <sup>[1](#rhh)</sup> | časť hostiteľa požiadavky<sup>[2](#rhc)</sup> | časť URI hostiteľa<sup>[3](#uhc)</sup> | Výsledok
+---------------------------------------------------|-----------------------------------------------|----------------------------------------|---------
+''                                                 | ''                                            | ''                                     | ''
+''                                                 | foo.com                                       | ''                                     | foo.com
+''                                                 | foo.com                                       | bar.com                                | foo.com
+foo.com                                            | ''                                            | bar.com                                | foo.com
+foo.com                                            | bar.com                                       | baz.com                                | foo.com
 
-- <sup id="rhh">1</sup> `Host` header value prior to operation.
-- <sup id="rhc">2</sup> Host component of the URI composed in the request prior
-  to the operation.
-- <sup id="uhc">3</sup> Host component of the URI being injected via
-  `withUri()`.
+- <sup id="rhh">1</sup> Hodnota hlavičky `Hostiteľa` pred operáciu.
+- <sup id="rhc">2</sup> Časť hostiteľa v zloženej URI v požiadavke pred operáciou.
+- <sup id="uhc">3</sup> Časť hostiteľa v URI vložená cez `withUri()`.
 
-### 1.3 Streams
+### 1.3 Prúdy (Streams)
 
-HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
-message can be very small or extremely large. Attempting to represent the body
-of a message as a string can easily consume more memory than intended because
-the body must be stored completely in memory. Attempting to store the body of a
-request or response in memory would preclude the use of that implementation from
-being able to work with large message bodies. `StreamInterface` is used in
+HTTP správy sa skladajú zo začiatočného riadku, hlavičiek a tela. Telo HTTP
+správy môže mať akúkoľvek veľkosť. Pokus znázorniť telo správy ako textového
+reťazca môže veľmi ľahko spotrebovať viac pamäte ako bolo zamýšlané, pretože
+celé telo sa musí uložiť do pamäte. Takéto načítanie a uloženie tela
+do pamäte by bránilo využitiu takejto implementácie pri práci s extrémne 
+veľkými telami správ. `StreamInterface` is used in
 order to hide the implementation details when a stream of data is read from
 or written to. For situations where a string would be an appropriate message
 implementation, built-in streams such as `php://memory` and `php://temp` may be
