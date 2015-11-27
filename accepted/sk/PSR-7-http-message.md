@@ -1,21 +1,23 @@
-# HTTP message interfaces
+# Rozhrania HTTP správ
 
-This document describes common interfaces for representing HTTP messages as
-described in [RFC 7230](http://tools.ietf.org/html/rfc7230) and
-[RFC 7231](http://tools.ietf.org/html/rfc7231), and URIs for use with HTTP
-messages as described in [RFC 3986](http://tools.ietf.org/html/rfc3986).
+Tento dokument opisuje spoločné rozhrania pre znázornenie HTTP správ ako
+sú opísané v [RFC 7230](http://tools.ietf.org/html/rfc7230) a
+[RFC 7231](http://tools.ietf.org/html/rfc7231), a URI cesty pre použitie 
+s HTTP správami, popísané v [RFC 3986](http://tools.ietf.org/html/rfc3986).
 
-HTTP messages are the foundation of web development. Web browsers and HTTP
-clients such as cURL create HTTP request messages that are sent to a web server,
-which provides an HTTP response message. Server-side code receives an HTTP
-request message, and returns an HTTP response message.
+HTTP správy sú základom vývoja webu. Webové prehliadače a HTTP klienti, 
+ako napríklad cURL, vytvárajú HTTP správu s požiadavkou, ktorá je následne
+odoslaná na web server a tento poskytne HTTP spravu s odpoveďou. Kód na
+strane servera prijme HTTP správu s požiadavkou a vráti HTTP správu 
+s odpoveďou.
 
-HTTP messages are typically abstracted from the end-user consumer, but as
-developers, we typically need to know how they are structured and how to
-access or manipulate them in order to perform our tasks, whether that might be
-making a request to an HTTP API, or handling an incoming request.
+HTTP správy sú zvyčajne nepozorované koncovým užívateľom. Na druhej strane 
+my vývojári potrebujeme zvyčajne vedieť, ako sú tieto správy štrukturované 
+a ako k nim pristupovať alebo s nimi manipulovať, aby sme dosiahli našu úlohu,
+či už je to vytvorenie požiadavky na HTTP API server alebo spracovanie
+prichádzajúcej požiadavky.
 
-Every HTTP request message has a specific form:
+Každá HTTP správa s požiadavkou má špecifický tvar:
 
 ```http
 POST /path HTTP/1.1
@@ -24,33 +26,33 @@ Host: example.com
 foo=bar&baz=bat
 ```
 
-The first line of a request is the "request line", and contains, in order, the
-HTTP request method, the request target (usually either an absolute URI or a
-path on the web server), and the HTTP protocol version. This is followed by one
-or more HTTP headers, an empty line, and the message body.
+Prvý riadok požiadavky je "riadok požiadavky" a obsahuje v tomto poradí, metódu
+HTTP požiadavky, cieľ požiadavky (zvyčajne buď absolútne URI alebo cesta na 
+web serveri) a nakoniec verzia HTTP protokolu. Toto je nasledované jednou alebo
+viac HTTP hlavičkami, prázdnym riadkom a teľom správy.
 
-HTTP response messages have a similar structure:
+HTTP správa s odpoveďou má podobný tvar:
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: text/plain
 
-This is the response body
+Toto je telo odpoveďe
 ```
 
-The first line is the "status line", and contains, in order, the HTTP protocol
-version, the HTTP status code, and a "reason phrase," a human-readable
-description of the status code. Like the request message, this is then
-followed by one or more HTTP headers, an empty line, and the message body.
+Prvý riadok je "stavový riadok" a obsahuje v tomto poradí: verziu HTTP protokolu,
+HTTP kód stavu a "frázu dôvodu" ktorá je človekom čitateľný opis kódu stavu.
+Podobne, ako správa požiadavky, je tento riadok nasledovaný jedným alebo 
+viacerými HTTP hlavičkami, prázdnym riadkom a telom správy.
 
-The interfaces described in this document are abstractions around HTTP messages
-and the elements composing them.
+Rozhrania opísané v tomto dokumente sú zhrnutia okolo HTTP správ a prvkov
+z ktorých sa skladajú.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+Kľúčové slová "MUSÍ", "NESMIE", "POTREBNÉ", "SMIE", "NESMIE", "MALO BY",
+"NEMALO BY", "ODPORÚČANÉ", "MôŽE", and "NEPOVINNÉ" v tomto dokumente sú vo význame
+ako opísané v [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-### References
+### Referencie
 
 - [RFC 2119](http://tools.ietf.org/html/rfc2119)
 - [RFC 3986](http://tools.ietf.org/html/rfc3986)
@@ -58,63 +60,65 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 - [RFC 7231](http://tools.ietf.org/html/rfc7231)
 
 
-## 1. Specification
+## 1. Špecifikácia
 
-### 1.1 Messages
+### 1.1 Správy
 
-An HTTP message is either a request from a client to a server or a response from
-a server to a client. This specification defines interfaces for the HTTP messages
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
+HTTP správa je buď požiadavka od klienta na server alebo odpoveď zo servera 
+ku klientovi. Toto rozčlenenie vymedzuje rozhrania pre HTTP správy
+`Psr\Http\Message\RequestInterface` a `Psr\Http\Message\ResponseInterface`.
 
-Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
-`Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
-implemented directly, implementors SHOULD implement
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
+Obe rozhrania `Psr\Http\Message\RequestInterface` aj `Psr\Http\Message\ResponseInterface`
+rozširujú `Psr\Http\Message\MessageInterface`. Hoci `Psr\Http\Message\MessageInterface` 
+MôŽE byť implementované priamo, implementátori BY MALI implementovať aj rozhrania
+`Psr\Http\Message\RequestInterface` a `Psr\Http\Message\ResponseInterface`.
 
-From here forward, the namespace `Psr\Http\Message` will be omitted when
-referring to these interfaces.
+Odtialto nižšie bude menný priestor `Psr\Http\Message` vynechaný, keď budeme
+odkazovať na tieto rozhrania.
 
-#### 1.2 HTTP Headers
+#### 1.2 HTTP Hlavičky
 
-##### Case-insensitive header field names
+##### Polia mien hlavičiek bez dôrazu na veľkosť písmen
 
-HTTP messages include case-insensitive header field names. Headers are retrieved
-by name from classes implementing the `MessageInterface` in a case-insensitive
-manner. For example, retrieving the `foo` header will return the same result as
-retrieving the `FoO` header. Similarly, setting the `Foo` header will overwrite
-any previously set `foo` header value.
+HTTP správy zahŕňajú polia mien hlavičiek, ktoré akceptujú malé aj veľké písmená
+a na ich veľkosti nezáleží. Hlavičky sú získavané poďla mena z tried, ktoré
+implementujú `MessageInterface` spôsobom, pri ktorom nezáleží na veľkosti písmen.
+Napríklad hlavička `foo` vráti rovnaký výsledok ako hlavička `FoO`. Podobne,
+nastavenie hlavičky `Foo` prepíše hocijakú predošle nastavenú hodnotu 
+hlavičky `foo`.
 
 ```php
 $message = $message->withHeader('foo', 'bar');
 
 echo $message->getHeaderLine('foo');
-// Outputs: bar
+// Vypíše: bar
 
 echo $message->getHeaderLine('FOO');
-// Outputs: bar
+// Vypíše: bar
 
 $message = $message->withHeader('fOO', 'baz');
 echo $message->getHeaderLine('foo');
-// Outputs: baz
+// Vypíše: baz
 ```
 
-Despite that headers may be retrieved case-insensitively, the original case
-MUST be preserved by the implementation, in particular when retrieved with
-`getHeaders()`.
+Napriek tomu že hlavičky sa dajú čítať bez ohladu na veľkosť písmen, pôvodná
+veľkosť písmen MUSÍ byť zachovaná implementáciou, zvlášte keď si ju pýtame
+s `getHeaders()`.
 
-Non-conforming HTTP applications may depend on a certain case, so it is useful
-for a user to be able to dictate the case of the HTTP headers when creating a
-request or response.
+Neprispôsobené HTTP aplikácie môžu byť závislé na určitej veľkosti písmen,
+takže je užitočné pre užívatela, aby bol schopný nastaviť veľkosť písmen 
+pre HTTP hlavičky keď sa vytvára požiadavka alebo odpoveď.
 
-##### Headers with multiple values
+##### Hlavičky s viacerými hodnotami
 
-In order to accommodate headers with multiple values yet still provide the
-convenience of working with headers as strings, headers can be retrieved from
-an instance of a `MessageInterface` as an array or a string. Use the
-`getHeaderLine()` method to retrieve a header value as a string containing all
-header values of a case-insensitive header by name concatenated with a comma.
-Use `getHeader()` to retrieve an array of all the header values for a
-particular case-insensitive header by name.
+Aby sa dalo vyhovieť hlavičkám s mnohými hodnotami a zároveň poskytovať
+pohodlie práce s hlavičkami ako textovými reťazcami, hlavičky môžu byť 
+vytiahnuté z inštancie `MessageInterface` ako pole alebo ako textový reťazec.
+Použite metódu `getHeaderLine()` na vytiahnutie hodnoty hlavičky ako
+textového reťazca obsahujúceho všetky hodnoty mena hlavičky bez ohľadu na veľkosť 
+písmen oddelené s čiarkou.
+Použite `getHeader()` na vytiahnutie pola so všetkými hodnotami hlavičiek
+pre určité meno hlavičky bez ohľadu na veľkosť písmen.
 
 ```php
 $message = $message
@@ -122,16 +126,16 @@ $message = $message
     ->withAddedHeader('foo', 'baz');
 
 $header = $message->getHeaderLine('foo');
-// $header contains: 'bar, baz'
+// $header obsahuje: 'bar, baz'
 
 $header = $message->getHeader('foo');
 // ['bar', 'baz']
 ```
 
-Note: Not all header values can be concatenated using a comma (e.g.,
-`Set-Cookie`). When working with such headers, consumers of
-`MessageInterface`-based classes SHOULD rely on the `getHeader()` method
-for retrieving such multi-valued headers.
+Poznámka: Nie všetky hodnoty hlavičiek môžu byť spojené s čiarkou (napr.
+`Set-Cookie`). Keď pracujeme s takými hlavičkami, spotrebiteľ tried 
+implementujúcich `MessageInterface` BY sa MAL spoliehať na metódu `getHeader()`
+na vyťahovanie takých viac hodnotových hlavičiek.
 
 ##### Host header
 

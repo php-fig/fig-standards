@@ -230,19 +230,19 @@ je povinnosťou implementácie sa postarať o toto. Bez odobratia začiatočnéh
 oddelovača by mohlo prísť k neočakávanému chovaniu.
 
 
-5. People
+5. Ľudia
 ---------
 
-### 5.1 Editor
+### 5.1 Vedúci
 
 - Paul M. Jones, Solar/Aura
 
-### 5.2 Sponsors
+### 5.2 Navhrovatelia
 
 - Phil Sturgeon, PyroCMS (Coordinator)
 - Larry Garfield, Drupal
 
-### 5.3 Contributors
+### 5.3 Prispievatelia
 
 - Andreas Hennings
 - Bernhard Schussek
@@ -250,37 +250,37 @@ oddelovača by mohlo prísť k neočakávanému chovaniu.
 - Donald Gilbert 
 - Mike van Riel
 - Paul Dragoonis
-- Too many others to name and count
+- Mnohý ďaľší
 
 
-6. Votes
+6. Hlasy
 --------
 
-- **Entrance Vote:** <https://groups.google.com/d/msg/php-fig/_LYBgfcEoFE/ZwFTvVTIl4AJ>
+- **Prvé hlasovanie:** <https://groups.google.com/d/msg/php-fig/_LYBgfcEoFE/ZwFTvVTIl4AJ>
 
-- **Acceptance Vote:**
+- **Hlasovanie za prijatie:**
 
-    - 1st attempt: <https://groups.google.com/forum/#!topic/php-fig/Ua46E344_Ls>,
-      presented prior to new workflow; aborted due to accidental proposal modification
+    - 1. pokus: <https://groups.google.com/forum/#!topic/php-fig/Ua46E344_Ls>,
+      predstavený pred novým postupom; prerušené kvôli zmene v návrhu
       
-    - 2nd attempt: <https://groups.google.com/forum/#!topic/php-fig/NWfyAeF7Psk>,
-      cancelled at the discretion of the sponsor <https://groups.google.com/forum/#!topic/php-fig/t4mW2TQF7iE>
+    - 2. pokus: <https://groups.google.com/forum/#!topic/php-fig/NWfyAeF7Psk>,
+      zrušené na návrh navrhovateľa <https://groups.google.com/forum/#!topic/php-fig/t4mW2TQF7iE>
     
-    - 3rd attempt: TBD
+    - 3. pokus: TBD
 
 
-7. Relevant Links
------------------
+7. Relevantné linky
+-------------------
 
-- [Autoloader, round 4](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/lpmJcmkNYjM)
-- [POLL: Autoloader: Split or Combined?](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/fGwA6XHlYhI)
-- [PSR-X autoloader spec: Loopholes, ambiguities](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/kUbzJAbHxmg)
-- [Autoloader: Combine Proposals?](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/422dFBGs1Yc)
-- [Package-Oriented Autoloader, Round 2](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/Y4xc71Q3YEQ)
-- [Autoloader: looking again at namespace](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/bnoiTxE8L28)
-- [DISCUSSION: Package-Oriented Autoloader - vote against](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/SJTL1ec46II)
-- [VOTE: Package-Oriented Autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/Ua46E344_Ls)
-- [Proposal: Package-Oriented Autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/qT7mEy0RIuI)
-- [Towards a Package Oriented Autoloader](https://groups.google.com/forum/#!searchin/php-fig/package$20oriented$20autoloader/php-fig/JdR-g8ZxKa8/jJr80ard-ekJ)
-- [List of Alternative PSR-4 Proposals](https://groups.google.com/forum/#!topic/php-fig/oXr-2TU1lQY)
-- [Summary of [post-Acceptance Vote pull] PSR-4 discussions](https://groups.google.com/forum/#!searchin/php-fig/psr-4$20summary/php-fig/bSTwUX58NhE/YPcFgBjwvpEJ)
+- [Autoloader, 4. kolo](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/lpmJcmkNYjM)
+- [Hlasovanie: Autoloader: Rozdelené alebo kombinované?](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/fGwA6XHlYhI)
+- [PSR-X špecifikácia autoloaderu: medzery, nejasnosti](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/kUbzJAbHxmg)
+- [Autoloader: Kombinovaný návrh?](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/422dFBGs1Yc)
+- [Balíkovo orientovaný autoloader, 2. kolo](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/Y4xc71Q3YEQ)
+- [Autoloader: pozeranie znovu na menné priestory](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/bnoiTxE8L28)
+- [DISKUSIA: Balíko orientovaný autoloader - znovu hlasovanie](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/SJTL1ec46II)
+- [HLASOVANIE: Balíkovo orientovaný autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/Ua46E344_Ls)
+- [Návrh: Balíkovo orientovaný autoloader](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/qT7mEy0RIuI)
+- [Smerom k balíkovo orientovanému autoloaderu](https://groups.google.com/forum/#!searchin/php-fig/package$20oriented$20autoloader/php-fig/JdR-g8ZxKa8/jJr80ard-ekJ)
+- [Zoznam alternatívnych návrhov PSR-4](https://groups.google.com/forum/#!topic/php-fig/oXr-2TU1lQY)
+- [Zhrnutie [po hlasovaní o akceptovaní] PSR-4 diskusií](https://groups.google.com/forum/#!searchin/php-fig/psr-4$20summary/php-fig/bSTwUX58NhE/YPcFgBjwvpEJ)
