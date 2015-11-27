@@ -291,7 +291,7 @@ class ClassName extends ParentClass implements
 The `use` keyword used inside the classes to implement traits MUST be
 declared on the next line after the opening brace.
 
-```
+```php
 <?php
 namespace Vendor\Package;
 
@@ -307,7 +307,7 @@ Using multiple lines for traits, where each subsequent line is indented
 once. When doing so, the first item in the list MUST be on the same line
 of the `use` keyword, and there MUST be only one trait per line.
 
-```
+```php
 <?php
 namespace Vendor\Package;
 
@@ -326,7 +326,7 @@ class ClassName
 When the class has nothing after the `use` declaration, the class
 closing brace MUST be on the next line after the `use` declaration.
 
-```
+```php
 <?php
 namespace Vendor\Package;
 
@@ -341,7 +341,7 @@ class ClassName
 Otherwise if the class has, it MUST to have a blank line after the
 `use` declaration.
 
-```
+```php
 <?php
 namespace Vendor\Package;
 
