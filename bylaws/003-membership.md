@@ -154,7 +154,7 @@ the FIG must not be brought into disrepute.
 ### Defined functions
 
 There are a number of defined functions that the FIG Secretaries are expected to
-complete but they may also, within their remit defined in the above overaching
+complete but they may also, within their remit defined in the above overarching
 role above, perform other duties as nessasary.
 
 * Keeping the website, twitter and other marketing mediums up-to-date
@@ -181,7 +181,7 @@ channel, packagist packages and mailing list in order to allow them to complete
 their duties and ensure that FIG mediums are managed by representatives elected
 by the PHP FIG.
 
-Also, whilst not full members themseleves, they have the ability to start any
+Also, whilst not full members themselves, they have the ability to start any
 vote (just as any member project), but not cast any votes. However it should be
 noted that any vote started by one FIG Secretary must be managed and tallied by a
 different secretary to ensure impartiality.
