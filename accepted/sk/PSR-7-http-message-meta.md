@@ -1,144 +1,144 @@
-# HTTP Message Meta Document
+# Dodatok k HTTP Správam
 
-## 1. Summary
+## 1. Zhrnutie
 
-The purpose of this proposal is to provide a set of common interfaces for HTTP
-messages as described in [RFC 7230](http://tools.ietf.org/html/rfc7230) and
-[RFC 7231](http://tools.ietf.org/html/rfc7231), and URIs as described in
-[RFC 3986](http://tools.ietf.org/html/rfc3986) (in the context of HTTP messages).
+Účelom tohto návrhu je poskytnúť sadu spoločných rozhraní pre HTTP správy ako
+je to opísané v [RFC 7230](http://tools.ietf.org/html/rfc7230) a
+[RFC 7231](http://tools.ietf.org/html/rfc7231), a URI cesty ako je to opísané
+ v [RFC 3986](http://tools.ietf.org/html/rfc3986) (v súvislosti s HTTP správami).
 
 - RFC 7230: http://www.ietf.org/rfc/rfc7230.txt
 - RFC 7231: http://www.ietf.org/rfc/rfc7231.txt
 - RFC 3986: http://www.ietf.org/rfc/rfc3986.txt
 
-All HTTP messages consist of the HTTP protocol version being used, headers, and
-a message body. A _Request_ builds on the message to include the HTTP method
-used to make the request, and the URI to which the request is made. A
-_Response_ includes the HTTP status code and reason phrase.
+Všetky HTTP správy sa skladajú z verzie použitého HTTP protokolu, hlavičiek
+a tela správy. _Požiadavka_ navyše obsahuje HTTP metódu ktorou sa má požiadať
+a URI cestu kde sa požiadavka má odoslať. _Odpoveď_ má navyše kód HTTP stavu
+a frázu s dôvodom daného stavu.
 
-In PHP, HTTP messages are used in two contexts:
+PHP používa HTTP správy v dvoch súvislostiach:
 
-- To send an HTTP request, via the `ext/curl` extension, PHP's native stream
-  layer, etc., and process the received HTTP response. In other words, HTTP
-  messages are used when using PHP as an _HTTP client_.
-- To process an incoming HTTP request to the server, and return an HTTP response
-  to the client making the request. PHP can use HTTP messages when used as a
-  _server-side application_ to fulfill HTTP requests.
+- odosiela HTTP požiadavky, cez `ext/curl` rozšírenie, cez vstavaný PHP prúd a podobne, 
+  a spracuváva prijaté HTTP odpovede. Inými slovami, PHP správy sa používajú
+  ako _HTTP klient_.
+- Spracovávanie prichádzajúcich HTTP požiadaviek na serveri a vracanie HTTP
+  odpovedí klientovi, ktorí požiadavku spravil. Teda PHP správy sú používané
+  ako _aplikácia na strane servera_ na vykonianie HTTP požiadaviek.
 
-This proposal presents an API for fully describing all parts of the various
-HTTP messages within PHP.
+Tento návrh predstavuje API plne opisujúc všetky časti HTTP správ v rámci PHP.
 
-## 2. HTTP Messages in PHP
+## 2. HTTP Správy v PHP
 
-PHP does not have built-in support for HTTP messages.
+PHP nemá vstavanú podporu pre HTTP správy.
 
-### Client-side HTTP support
+### HTTP podpora na strane klienta
 
-PHP supports sending HTTP requests via several mechanisms:
+PHP podporuje odosielanie HTTP požiadaviek rôznymi spôsobmi:
 
-- [PHP streams](http://php.net/streams)
-- The [cURL extension](http://php.net/curl)
-- [ext/http](http://php.net/http) (v2 also attempts to address server-side support)
+- [PHP prúdy](http://php.net/streams)
+- Rozšírenie [cURL](http://php.net/curl)
+- [ext/http](http://php.net/http) (v2 sa snaží venovať aj podpore na strane 
+  servera)
 
-PHP streams are the most convenient and ubiquitous way to send HTTP requests,
-but pose a number of limitations with regards to properly configuring SSL
-support, and provide a cumbersome interface around setting things such as
-headers. cURL provides a complete and expanded feature-set, but, as it is not a
-default extension, is often not present. The http extension suffers from the
-same problem as cURL, as well as the fact that it has traditionally had far
-fewer examples of usage.
+PHP prúdy sú najjednoduchší a všadeprítomný spôsob ako odosielať 
+HTTP požiadavky, ale predstavuje rad obmädzení s ohľadom na správne 
+nakonfigurovanie SSL podpory a  poskytuje ťažkopádne rozhranie okolo nastavení
+ako sú hlavičky. cURL poskytuje kompletnú a rozšírenú sadu funkcií, ale
+pretože nie je základným rozšírením, často chýba na roznych serveroch.
+Http rozšírenie trpí rovnakým problémom ako cURL, ako aj faktom že 
+zvyčajne má oveľa menej príkladov použitia.
 
-Most modern HTTP client libraries tend to abstract the implementation, to
-ensure they can work on whatever environment they are executed on, and across
-any of the above layers.
+Najmodernejšie knižnice HTTP klientov sa snažia zovšeobecniť implementáciu tak,
+aby sa dali používať na čo najväčšom množstve prostredí a naprieč hociktorým
+z vyššie uvedených spôsobov.
 
-### Server-side HTTP Support
+### HTTP podpora na strane servera
 
-PHP uses Server APIs (SAPI) to interpret incoming HTTP requests, marshal input,
-and pass off handling to scripts. The original SAPI design mirrored [Common
-Gateway Interface](http://www.w3.org/CGI/), which would marshal request data
-and push it into environment variables before passing delegation to a script;
-the script would then pull from the environment variables in order to process
-the request and return a response.
+PHP používa Serverové API (SAPI) na prekladanie prichádzajúcich HTTP požiadaviek,
+vyjadrenie vstupu a podanie spracovania skriptom. Pôvodné SAPI kopírovalo 
+[Rozhranie spoločnej brány (CGI)](http://www.w3.org/CGI/), ktoré vyňalo dáta
+požiadavky a odoslalo ich do premenných prostredia pred samotným spustením
+skriptu; skript by si potom ťahal premenné prostredia na to aby spracovalo 
+požiadavku a vrátilo odpoveď.
 
-PHP's SAPI design abstracts common input sources such as cookies, query string
-arguments, and url-encoded POST content via superglobals (`$_COOKIE`, `$_GET`,
-and `$_POST`, respectively), providing a layer of convenience for web developers.
+SAPI dizajn pre phpčko zovšeobecňuje spoločné vstupné zdroje ako sú cookies,
+parametre reťazca dotazu a url-zakódované POST obsahy cez superglobálne
+premenné (`$_COOKIE`, `$_GET` a `$_POST`, respektívne), poskytujúc úroveň
+pohodlia pre webových vývojárov.
 
-On the response side of the equation, PHP was originally developed as a
-templating language, and allows intermixing HTML and PHP; any HTML portions of
-a file are immediately flushed to the output buffer. Modern applications and
-frameworks eschew this practice, as it can lead to issues with
-regards to emitting a status line and/or response headers; they tend to
-aggregate all headers and content, and emit them at once when all other
-application processing is complete. Special care needs to be paid to ensure
-that error reporting and other actions that send content to the output buffer
-do not flush the output buffer.
+V tejto rovnici na strane odpovedí, treba poznamenať že PHP bol pôvodne 
+vyvinutý ako šablónový jazyk a umožnovanie miešanie HTML a PHP; hocijaká
+časť HTML kódu je okamžite zapísaná do výstupného zásobníka.  Moderné
+aplikácie a frameworky sa vyhýbajú tejto praktike, pretože to môže smerovať
+k problémom s výpisom stavového riadku a/alebo hlavičiek odpovede. Radšej
+sa snažia zozbierať všetky hlavičky a obsah a vypísať naraz, keď je sú všetky
+procesy aplikácie kompletné. Špeciálny pozor sa musí dávať aby chybové hlášky
+a ostatné akcie ktoré posielajú normálne obsah na výpis neboli odoslané priamo
+do výstupného zásobníka.
 
-## 3. Why Bother?
+## 3. Prečo sa tým trápiť?
 
-HTTP messages are used in a wide number of PHP projects -- both clients and
-servers. In each case, we observe one or more of the following patterns or
-situations:
+HTTP správy sa používajú v množstve PHP projektov -- klientských
+aj serverovských. V každom prípade pozorujeme jeden alebo viacero nasledujúcich
+vzorcov a situácií:
 
-1. Projects use PHP's superglobals directly.
-2. Projects will create implementations from scratch.
-3. Projects may require a specific HTTP client/server library that provides
-   HTTP message implementations.
-4. Projects may create adapters for common HTTP message implementations.
+1. Projekty používajú PHP supreglobálne priamo.
+2. Prejekty vytvárajú implementácie z ničoho
+3. Projekty môžu požadovať určité HTTP klientské/serverské knižnice ktoré 
+   poskytujú implementácie HTTP správ
+4. Projekty môžu vytvárať adaptéry pre spoločné implementácie HTTP správ.
 
-As examples:
+Príklady:
 
-1. Just about any application that began development before the rise of
-   frameworks, which includes a number of very popular CMS, forum, and shopping
-   cart systems, have historically used superglobals.
-2. Frameworks such as Symfony and Zend Framework each define HTTP components
-   that form the basis of their MVC layers; even small, single-purpose
-   libraries such as oauth2-server-php provide and require their own HTTP
-   request/response implementations. Guzzle, Buzz, and other HTTP client
-   implementations each create their own HTTP message implementations as well.
-3. Projects such as Silex, Stack, and Drupal 8 have hard dependencies on
-   Symfony's HTTP kernel. Any SDK built on Guzzle has a hard requirement on
-   Guzzle's HTTP message implementations.
-4. Projects such as Geocoder create redundant [adapters for common
-   libraries](https://github.com/geocoder-php/Geocoder/tree/6a729c6869f55ad55ae641c74ac9ce7731635e6e/src/Geocoder/HttpAdapter).
+1. Každá aplikácia ktorá začala byť vyvíjaná pred nástupom frameworkov, ktoré 
+   zahŕňajú množstvo veľmi populárnych CMS, fórumov a systémov elektronických
+   obchodov používalil historicky superglobálne premenné.
+2. Frameworky ako Symfony a Zend Framework definovali HTTP súčasti,
+   ktoré sformovali základy ich MVC vrstiev; dokonca aj malé a jednoúčelové
+   knižnice ako je oauth2-server-php poskytujú a potrebujú ich vlastnú 
+   implementáciu HTTP požiadaviek a odpovedí. Guzzle, Buzz a ostatné
+   implementácie HTTP klientov, každý vytvára takisto ich vlastné implementácie
+   HTTP správ.
+3. Projekty ako Silex, Stack, and Drupal 8 sú ťažko závislé na HTTP jadre 
+   Symfony. Každé SDK postavené na Guzzle je ťažko závislé na implementácii
+   HTTP správ v Guzzle.
+4. Projekty ako Geocoder vytvárajú nepotrebné [adaptéry pre spoločné knižnice](https://github.com/geocoder-php/Geocoder/tree/6a729c6869f55ad55ae641c74ac9ce7731635e6e/src/Geocoder/HttpAdapter).
 
-Direct usage of superglobals has a number of concerns. First, these are
-mutable, which makes it possible for libraries and code to alter the values,
-and thus alter state for the application. Additionally, superglobals make unit
-and integration testing difficult and brittle, leading to code quality
-degradation.
+Priame použitie superglobálnych premenných má množstvo znepokojojúcich vecí.
+Za prvé, sú premenlivé, čo znamená že knižnice a koód s nimi môžu manipulovať a 
+meniť ich hodnoty a tým meniť stav aplikácie. Ďalej superpremenné zťažujú unit
+a integračné testovanie a tým sa kvalita kódu degraduje a stáva krehkým.
 
-In the current ecosystem of frameworks that implement HTTP message abstractions,
-the net result is that projects are not capable of interoperability or
-cross-pollination. In order to consume code targeting one framework from
-another, the first order of business is building a bridge layer between the
-HTTP message implementations. On the client-side, if a particular library does
-not have an adapter you can utilize, you need to bridge the request/response
-pairs if you wish to use an adapter from another library.
+V súčasnom eko systéme frameworkov ktoré implementujú všeobecne HTTP správy,
+sú výsledkom projekty ktoré nie sú schopné spolupracovať alebo sa spolu
+obohacovať. V prípadoch kedy jeden framework má využiť kód toho druhého,
+prvým krokom vývoja je postavenie mostovej vrstvy medzi implementáciami HTTP
+správ. Ak daná knižnica nemá adaptér ktorý by sa dal využiť, tak na strane
+klienta musíte premostiť páry požiadavka/odpoveď ak chcete použiť adapter
+z inej knižnice.
 
-Finally, when it comes to server-side responses, PHP gets in its own way: any
-content emitted before a call to `header()` will result in that call becoming a
-no-op; depending on error reporting settings, this can often mean headers
-and/or response status are not correctly sent. One way to work around this is
-to use PHP's output buffering features, but nesting of output buffers can
-become problematic and difficult to debug. Frameworks and applications thus
-tend to create response abstractions for aggregating headers and content that
-can be emitted at once - and these abstractions are often incompatible.
+Nakoniec keď už prídeme k odpovediam zo servera, PHP to spraví svojím spôsobom: 
+hocijaký obsah vypísaný pred odoslaním hlavičky `header()` spôsobí že volanie
+zastaví beh. Záleží od nastavenia vypisovania chýb ale toto často znamená
+že hlavičky a stav odpoveďe nie sú odoslané správne. Jeden zo spôsobov ako
+tomuto predisť je zabalenie výpisu do PHP zásobníku, ale zabalenie
+výstupného zásobníka môže byť ťažké a náročné na ľadenie chýb. Frameworky a
+a aplikácie sa tak snažia vytvoriť všeobecné odpovede zozbieraním hlavičiek a 
+obsahu, ktorý je potom odoslaný naraz - a tieto abstrakcie sú potom často
+nekompatibilné.
 
-Thus, the goal of this proposal is to abstract both client- and server-side
-request and response interfaces in order to promote interoperability between
-projects. If projects implement these interfaces, a reasonable level of
-compatibility may be assumed when adopting code from different libraries.
+Takže, cieľom tohto návrhu je zovšeobecniť požiadavky na strane klienta a
+servera a tiež zovšeobecniť rozhrania odpovedí aby sa umožnila spolupráca
+medzi projektami. Ak projekty implementujú tieto rozhrania, môžeme
+predpokladať rozumnú úroveň kompatibility keď použijeme kód z iných knižníc.
 
-It should be noted that the goal of this proposal is not to obsolete the
-current interfaces utilized by existing PHP libraries. This proposal is aimed
-at interoperability between PHP packages for the purpose of describing HTTP
-messages.
+Malo by byť tiež poznamenané, že cieľom tohoto návrhu nie je zastarať
+momentálne rozhrania existujúcich PHP knižníc. Tento návrh je zameraný
+na spoluprácu medzi PHP balíkmi pre účely opísania HTTP správ.
 
-## 4. Scope
+## 4. Rozsah
 
-### 4.1 Goals
+### 4.1 Ciele
 
 * Provide the interfaces needed for describing HTTP messages.
 * Focus on practical applications and usability.
