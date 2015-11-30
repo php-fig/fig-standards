@@ -179,81 +179,78 @@ správy môže mať akúkoľvek veľkosť. Pokus znázorniť telo správy ako te
 reťazca môže veľmi ľahko spotrebovať viac pamäte ako bolo zamýšlané, pretože
 celé telo sa musí uložiť do pamäte. Takéto načítanie a uloženie tela
 do pamäte by bránilo využitiu takejto implementácie pri práci s extrémne 
-veľkými telami správ. `StreamInterface` is used in
-order to hide the implementation details when a stream of data is read from
-or written to. For situations where a string would be an appropriate message
-implementation, built-in streams such as `php://memory` and `php://temp` may be
-used.
+veľkými telami správ. Rozhranie `StreamInterface` sa používa na skrytie
+detailov implementácie keď je prúd dát čítaný alebo zapisovaný.
+V situáciách, kde je vhodný textový reťazec sa môže použiť vstavaný prúd
+`php://memory` a `php://temp`.
 
-`StreamInterface` exposes several methods that enable streams to be read
-from, written to, and traversed effectively.
+`StreamInterface` obsahuje niekoľko metód, ktoré umožňujú aby boli prúdy 
+čítané z, zapisované do a pretínajúce sa efektívne.
 
-Streams expose their capabilities using three methods: `isReadable()`,
-`isWritable()`, and `isSeekable()`. These methods can be used by stream
-collaborators to determine if a stream is capable of their requirements.
+Prúdy vystavujú svoje schopnosti tromi metódami: `isReadable()`,
+`isWritable()`, a `isSeekable()`. Týmito metódami môžeme zistiť či prúd
+spĺňa požiadavky nejakej inštancie.
 
-Each stream instance will have various capabilities: it can be read-only,
-write-only, or read-write. It can also allow arbitrary random access (seeking
-forwards or backwards to any location), or only sequential access (for
-example in the case of a socket, pipe, or callback-based stream).
+Každá inštancia prúdu bude mať rôzne schopnosti: iba na čítanie, iba na zápis
+alebo na čitanie a zápis. Tiež môže mať vlastný prístup (hľadanie dopredu 
+alebo dozadu na hociktoré miesto), alebo iba prístup ku sekvencii (napríklad
+keď ide o socket, pipe alebo prúd založený na callbacku).
 
-Finally, `StreamInterface` defines a `__toString()` method to simplify
-retrieving or emitting the entire body contents at once.
+Rozhranie `StreamInterface` definuje `__toString()` metódu na zjednodušenie
+získania alebo vyslania celého tela obsahu naraz.
 
-Unlike the request and response interfaces, `StreamInterface` does not model
-immutability. In situations where an actual PHP stream is wrapped, immutability
-is impossible to enforce, as any code that interacts with the resource can
-potentially change its state (including cursor position, contents, and more).
-Our recommendation is that implementations use read-only streams for
-server-side requests and client-side responses. Consumers should be aware of
-the fact that the stream instance may be mutable, and, as such, could alter
-the state of the message; when in doubt, create a new stream instance and attach
-it to a message to enforce state.
+`StreamInterface` narozdiel od rozhraní požiadavky a odpovede nepredvádza 
+nemennosť. V prípadoch keď je aktuálny PHP prúd zabalený, je nemožné dodržať
+nemennosť, pretože hocijaký kód spolupracujúci s prúdom môže zmeniť jeho stav
+vrátane pozície kurzoru, obsahu, ... Naše odporúčanie je, že implementácie
+používajú iba read-only prúdy pre požiadavky na server a odpovede pre klientov.
+Užívatelia prúdu by mali mať na pamäti, že inštancie sa môžu meniť a teda
+meniť stav správy. Keď ste si neistí, vytvorte novú inštanciu prúdu a pripojte
+ju ku správe aby ste presadili stav.
 
-### 1.4 Request Targets and URIs
+### 1.4 Ciele a URI požiadaviek
 
-Per RFC 7230, request messages contain a "request-target" as the second segment
-of the request line. The request target can be one of the following forms:
+Ako je popísané v RFC 7230, správy požiadaviek obsahujú "cieľ požiadavky" v
+druhej časťi riadku na riadku požiadavky. Cieľ požiadavky môže byť jeden
+z nasledujúcich:
 
-- **origin-form**, which consists of the path, and, if present, the query
-  string; this is often referred to as a relative URL. Messages as transmitted
-  over TCP typically are of origin-form; scheme and authority data are usually
-  only present via CGI variables.
-- **absolute-form**, which consists of the scheme, authority
-  ("[user-info@]host[:port]", where items in brackets are optional), path (if
-  present), query string (if present), and fragment (if present). This is often
-  referred to as an absolute URI, and is the only form to specify a URI as
-  detailed in RFC 3986. This form is commonly used when making requests to
-  HTTP proxies.
-- **authority-form**, which consists of the authority only. This is typically
-  used in CONNECT requests only, to establish a connection between an HTTP
-  client and a proxy server.
-- **asterisk-form**, which consists solely of the string `*`, and which is used
-  with the OPTIONS method to determine the general capabilities of a web server.
+- **tvar pôvodu**, ktorá pozostáva z cesty a ak existuje, tak aj reťazec dotazu; 
+  toto sa nazýva často aj ako relatívna cesta. Správy presúvané cez TCP sú
+  zvyčajne tohto typu; Metóda a autorita sú zvyčajne prítomné iba cez CGI
+  premenné.
+- **absolútny tvar**, ktorý pozostáva z metódy, autority,
+  ("[user-info@]host[:port]", kde položky v hranatých zátvorkách nie sú povinné),
+  cesty (ak existuje), reťazec dotazu (ak existuje), a fragment (ak existuje).
+  Toto je často nazývané ako absolútna cesta, a je to jediný tvar cesty detailne
+  popísaný v RFC 3986. Tento tvar je často používaný keď sa posiela požiadavka
+  na HTTP proxy servre.
+- **tvar autority**, ktorý pozostáva iba z autority. Tento tvar je zvyčajne
+  používaný iba v CONNECT požiadavkách, keď sa vytvára spojenie medzi 
+  HTTP klientom a proxy servrom.
+- **hviezdičkový tvar**, ktorý pozostáva čisto iba zo znaku `*`, a ktorý sa 
+  používa s OPTIONS metódou na zistenie všeobecných schopností web servra.
 
-Aside from these request-targets, there is often an 'effective URL' which is
-separate from the request target. The effective URL is not transmitted within
-an HTTP message, but it is used to determine the protocol (http/https), port
-and hostname for making the request.
+Bokom týchto cieľov požiadavky je ešte často 'efektívna cesta' ktorá je
+oddelená od cieľa požiadavky. Efektívna cesta sa neprenáša v HTTP správe, ale
+sa používa na určenie protokolu (http/https), portu a mena hostiteľa kam sa
+pošle požiadavka.
 
-The effective URL is represented by `UriInterface`. `UriInterface` models HTTP
-and HTTPS URIs as specified in RFC 3986 (the primary use case). The interface
-provides methods for interacting with the various URI parts, which will obviate
-the need for repeated parsing of the URI. It also specifies a `__toString()`
-method for casting the modeled URI to its string representation.
+Efektívna cesta je reprezentovaná pomocou `UriInterface`. `UriInterface` 
+vytvorí HTTP a HTTPS cestu podľa špecifikácie RFC 3986 (základné využitie). 
+Rozhranie poskytuje metódy pre pôsobobenie s rôznými časťami cesty,
+ktoré predchádza potrebe opätovného parsovania cesty. Taktiež obsahuje
+`__toString()` metódu získanie vytvorenej cesty vo forme textového reťazca.
 
-When retrieving the request-target with `getRequestTarget()`, by default this
-method will use the URI object and extract all the necessary components to
-construct the _origin-form_. The _origin-form_ is by far the most common
-request-target.
+Metóda na získanie cieľa požiadavaky `getRequestTarget()` predvolene použije
+URI objekt a extrahuje z neho všetko potrebné na zostrojenie _origin-form_,
+ktorý je načastejšie používaným cieľom požiadavky.
 
-If it's desired by an end-user to use one of the other three forms, or if the
-user wants to explicitly override the request-target, it is possible to do so
-with `withRequestTarget()`.
+Ak užívateľ chce použiť jeden z ostatných troch tvarov, alebo ak chce výslovne
+prepísať cieľ požiadavky, môže tak urobiť s metódou `withRequestTarget()`.
 
-Calling this method does not affect the URI, as it is returned from `getUri()`.
+Volanie tejto metódy nezmeni URI cesta, napr pri volaní metódy `getUri()`.
 
-For example, a user may want to make an asterisk-form request to a server:
+Napríklad, ak chce užívateľ urobiť požiadavku na server v hviezdičkovom tvare:
 
 ```php
 $request = $request
@@ -262,76 +259,73 @@ $request = $request
     ->withUri(new Uri('https://example.org/'));
 ```
 
-This example may ultimately result in an HTTP request that looks like this:
+Výsledkom tohto príkladu môže nakoniec byť HTTP požiadavka ktorá vyzerá takto:
 
 ```http
 OPTIONS * HTTP/1.1
 ```
 
-But the HTTP client will be able to use the effective URL (from `getUri()`),
-to determine the protocol, hostname and TCP port.
+HTTP klient bude schopný použiť efektívnu cestu (z `getUri()`),
+aby zistil protokol, meno hostiteľa a TCP port.
 
-An HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
-and instead use the value returned by `getRequestTarget()`, which defaults
-to concatenating these two values.
+HTTP klient MUSÍ ignorovať hodnoty `Uri::getPath()` a `Uri::getQuery()`,
+a namiesto nich použiť hodnotu vrátenú metódou `getRequestTarget()`, ktorá 
+je rovnaká ako spojenie týchto dvoch hodnôt.
 
-Clients that choose to not implement 1 or more of the 4 request-target forms,
-MUST still use `getRequestTarget()`. These clients MUST reject request-targets
-they do not support, and MUST NOT fall back on the values from `getUri()`.
+Klienti, ktorí sa rozhodnú neiplementovať niektorú z tvarov cieľov požiadaviek
+MUSIA stále použiť `getRequestTarget()`. Títo klienti MUSIA odmietnúť
+požiadavky cieľov ktoré nepodporujú a NESMÚ použiť hodnoty z `getUri()`.
 
-`RequestInterface` provides methods for retrieving the request-target or
-creating a new instance with the provided request-target. By default, if no
-request-target is specifically composed in the instance, `getRequestTarget()`
-will return the origin-form of the composed URI (or "/" if no URI is composed).
-`withRequestTarget($requestTarget)` creates a new instance with the
-specified request target, and thus allows developers to create request messages
-that represent the other three request-target forms (absolute-form,
-authority-form, and asterisk-form). When used, the composed URI instance can
-still be of use, particularly in clients, where it may be used to create the
-connection to the server.
+`RequestInterface` poskytuje metódy na získanie cieľu požiadavky alebo 
+vytvoriť novú inŠtanciu s poskytnutým cielom požiadavky. Ak cieľ požiadavky
+nie je špecifikovaný v inštancii rozhrania, metóda `getRequestTarget()` 
+vráti tvar pôvodu z vytvorenej URI cesty (alebo "/" ak URI cesta nie je 
+zostrojená), `withRequestTarget($requestTarget)` vytvorí novú inštanciu 
+zo zadaného cieľa požiadavky a tak povoľí vývojárom vytvoriť správy 
+požiadaviek, ktoré reprezentujú ostatné tri tvary cieľu požiadavky 
+(absolútny tvar, tvar autority a hviezdičkový tvar). Inštancia zostrojenej
+URI cesty môže byť stále užitočná, napríklad v klientoch, kde ju môžme 
+využit na vytvorenie spojenia k serveru. 
 
-### 1.5 Server-side Requests
+### 1.5 Požiadavky na strane servera
 
-`RequestInterface` provides the general representation of an HTTP request
-message. However, server-side requests need additional treatment, due to the
-nature of the server-side environment. Server-side processing needs to take into
-account Common Gateway Interface (CGI), and, more specifically, PHP's
-abstraction and extension of CGI via its Server APIs (SAPI). PHP has provided
-simplification around input marshaling via superglobals such as:
+Rozhranie `RequestInterface` poskytuje všeobecné znázornenie o správe požiadavky.
+Napriek tomu požiadavky na strane servera potrebujú ďaľšiu úpravu kvôli povahe
+prostredia na strane servera. Spracovanie na strane servera musí brať v úvahu 
+Rozhranie Spoločnej Brány (Common Gateway Interface alebo CGI), a špecifickejšie
+oddelenie PHP a rozšírenia Brány (CGI) cez Rozhranie aplikácie programu 
+na servri (Server APIs alebo SAPI). PHP poskytlo zjednodušenie okolo zaraďovania
+vstupu cez superglobálne premenné ako sú:
 
-- `$_COOKIE`, which deserializes and provides simplified access for HTTP
-  cookies.
-- `$_GET`, which deserializes and provides simplified access for query string
-  arguments.
-- `$_POST`, which deserializes and provides simplified access for urlencoded
-  parameters submitted via HTTP POST; generically, it can be considered the
-  results of parsing the message body.
-- `$_FILES`, which provides serialized metadata around file uploads.
-- `$_SERVER`, which provides access to CGI/SAPI environment variables, which
-  commonly include the request method, the request scheme, the request URI, and
-  headers.
+- `$_COOKIE`, ktoré deserializuje a poskytuje zjednodušený prístup 
+  k HTTP cookies.
+- `$_GET`, ktoré deserializuje a poskytuje zjednodušený prístup ku parametrom
+  dotazu.
+- `$_POST`, ktoré deserializuje a poskytuje zjednodušený prístup parametrom 
+  dotazu poslaných cez HTTP POST. Môže byť považované za telo správy.
+- `$_FILES`, ktoré poskytujú serializované metadata pri nahrávaní súborov.
+- `$_SERVER`, ktorý poskytuje prístup k CGI/SAPI premmeným prostredia a vrátane
+  typu požiadavky, schémy požiadavky, URI cesty požiadavky a hlavičiek.
 
-`ServerRequestInterface` extends `RequestInterface` to provide an abstraction
-around these various superglobals. This practice helps reduce coupling to the
-superglobals by consumers, and encourages and promotes the ability to test
-request consumers.
+`ServerRequestInterface` rozširuje `RequestInterface`  a poskytuje abstrakciu
+okolo týchto rôznych superglobálnych premenných. Táto praktika pomáha znížiť
+väzbu superglobálov a užívateľov a zlepšuje schopnosť testovať požiadavky
+používateľov.
 
-The server request provides one additional property, "attributes", to allow
-consumers the ability to introspect, decompose, and match the request against
-application-specific rules (such as path matching, scheme matching, host
-matching, etc.). As such, the server request can also provide messaging between
-multiple request consumers.
+Požiadavka servera poskytuje ešte jednu vlastnosť, "atribúty", ktorá dáva
+užívateľom schopnosť požiadavku skúmať, rozložiť alebo porovnať s nejakým
+špecifickým pravidlom danej aplikácie (napríklad porovnanie cesty, porovnanie
+schémy, porovnanie hostiteľa, atď.). Požiadavka servera ako taká, môže
+tiež poskytnúť správy medzi rôznymi požiadavkami užívateľov.
 
-### 1.6 Uploaded files
+### 1.6 Nahrané súbory
 
-`ServerRequestInterface` specifies a method for retrieving a tree of upload
-files in a normalized structure, with each leaf an instance of
-`UploadedFileInterface`.
+`ServerRequestInterface` špecifikuje spôsob k získaniu stromu nahraných súborov
+v normalizovanej štruktúre, a každý súbor ako inštancia `UploadedFileInterface`.
 
-The `$_FILES` superglobal has some well-known problems when dealing with arrays
-of file inputs. As an example, if you have a form that submits an array of files
-— e.g., the input name "files", submitting `files[0]` and `files[1]` — PHP will
-represent this as:
+Superglobálna premenná `$_FILES` má určité známe problémy keď pracuje s poľom 
+vstupných s´uborov. Ako príklad, ak máte formulár, ktorý odošle pole súborov, 
+názov poľa "files", odosielajúce `files[0]` a `files[1]` — PHP ich znázorní:
 
 ```php
 array(
@@ -349,7 +343,7 @@ array(
 )
 ```
 
-instead of the expected:
+namiesto očakávaného:
 
 ```php
 array(
@@ -368,44 +362,42 @@ array(
 )
 ```
 
-The result is that consumers need to know this language implementation detail,
-and write code for gathering the data for a given upload.
+Výsledkom je, že užívatelia potrebujú poznať detaily implementácie jazyka
+a naprogramovať kód, ktorý správne nahrá dané súbory.
 
-Additionally, scenarios exist where `$_FILES` is not populated when file uploads
-occur:
+Dodatočne, existujú scenáre kde `$_FILES` nie je vytvorené, pri nahrávaní súborov:
 
-- When the HTTP method is not `POST`.
-- When unit testing.
-- When operating under a non-SAPI environment, such as [ReactPHP](http://reactphp.org).
+- a HTTP metóda nie je `POST`.
+- keď sa unit testuje.
+- keď kód nebeží v SAPI prostredí, napríklad [ReactPHP](http://reactphp.org).
 
-In such cases, the data will need to be seeded differently. As examples:
+V takých prípadoch, dáta budú musieť byť posielané iným spôsobom. Napríklad:
 
-- A process might parse the message body to discover the file uploads. In such
-  cases, the implementation may choose *not* to write the file uploads to the
-  file system, but instead wrap them in a stream in order to reduce memory,
-  I/O, and storage overhead.
-- In unit testing scenarios, developers need to be able to stub and/or mock the
-  file upload metadata in order to validate and verify different scenarios.
+- proces môže naparsovať telo správy aby objavilo, že obsahuje súbory. V takých
+  prípadoch, by implementácia nemala zapisovať súbory do súborového systému,
+  ale zabaliť ich do prúdu aby sa znížil strop pamäti, vstupy a výstupy a 
+  úložisko.
+- pri unit testovaní, vývojári musia byť schopný podvrhnúť falošné metadáta 
+  nahrávaných súborov aby overili funkčnosť rôznych variánt.
 
-`getUploadedFiles()` provides the normalized structure for consumers.
-Implementations are expected to:
+`getUploadedFiles()` poskytuje normalizovanú štruktúru pre užívateľov.
+Od implementácií sa očakáva:
 
-- Aggregate all information for a given file upload, and use it to populate a
-  `Psr\Http\Message\UploadedFileInterface` instance.
-- Re-create the submitted tree structure, with each leaf being the appropriate
-  `Psr\Http\Message\UploadedFileInterface` instance for the given location in
-  the tree.
+- zgrupiť všetky informácie pre dané nahrávanie súborov a použiť ich
+  na vytvorenie inštancie`Psr\Http\Message\UploadedFileInterface`.
+- znovu vytvoriť odoslanú stromovú štruktúru s každým súborom ako inštanciou
+  `Psr\Http\Message\UploadedFileInterface` v danom mieste stromu.
 
-The tree structure referenced should mimic the naming structure in which files
-were submitted.
+Štruktúra stromu by mala odkazovať na mennú štruktúru v ktorej boli súbory 
+odoslané.
 
-In the simplest example, this might be a single named form element submitted as:
+V najjednoduchšom príklade, toto môže byť jednoducho nazvaný element formulára:
 
 ```html
 <input type="file" name="avatar" />
 ```
 
-In this case, the structure in `$_FILES` would look like:
+V tomto prípade štruktúra v `$_FILES` by vyzerala takto:
 
 ```php
 array(
@@ -419,21 +411,21 @@ array(
 )
 ```
 
-The normalized form returned by `getUploadedFiles()` would be:
+Normalizovaný formulár vrátený cez `getUploadedFiles()` by bol:
 
 ```php
 array(
-    'avatar' => /* UploadedFileInterface instance */
+    'avatar' => /* inštancia UploadedFileInterface */
 )
 ```
 
-In the case of an input using array notation for the name:
+V prípade vstupu používajúce pomenované polia:
 
 ```html
 <input type="file" name="my-form[details][avatar]" />
 ```
 
-`$_FILES` ends up looking like this:
+`$_FILES` by vyzeralo takto:
 
 ```php
 array(
@@ -451,31 +443,31 @@ array(
 )
 ```
 
-And the corresponding tree returned by `getUploadedFiles()` should be:
+A korenšpondujúci strom vrátený s `getUploadedFiles()` by bol:
 
 ```php
 array(
     'my-form' => array(
         'details' => array(
-            'avatar' => /* UploadedFileInterface instance */
+            'avatar' => /* inštancia UploadedFileInterface */
         ),
     ),
 )
 ```
 
-In some cases, you may specify an array of files:
+V niektorých prípadoch môžete špecifikovať pole súborob:
 
 ```html
 Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
 Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
 ```
 
-(As an example, JavaScript controls might spawn additional file upload inputs to
-allow uploading multiple files at once.)
+(Ako príklad, JavaScript môže vytvoriť viacej vstupných polí pre nahratie
+viacerých súborov naraz.)
 
-In such a case, the specification implementation must aggregate all information
-related to the file at the given index. The reason is because `$_FILES` deviates
-from its normal structure in such cases:
+V takom prípade, implementácia špecifikácie musí zhrnúť všetky informácie
+ohľadne súboru v danom indexe. Príčinou je `$_FILES` ktorý sa odchyľuje
+od svojej normálnej štruktúry v takých prípadoch:
 
 ```php
 array(
@@ -513,8 +505,8 @@ array(
 )
 ```
 
-The above `$_FILES` array would correspond to the following structure as
-returned by `getUploadedFiles()`:
+Vyššie pole `$_FILES` by korešpondovalo s nasledujúcou štruktúrou vrátenou
+metódou `getUploadedFiles()`:
 
 ```php
 array(
@@ -530,48 +522,48 @@ array(
 )
 ```
 
-Consumers would access index `1` of the nested array using:
+Užívatelia by pristupovali do vnoreného poľa k indexu `1` takto:
 
 ```php
 $request->getUploadedFiles()['my-form']['details']['avatars'][1];
 ```
 
-Because the uploaded files data is derivative (derived from `$_FILES` or the
-request body), a mutator method, `withUploadedFiles()`, is also present in the
-interface, allowing delegation of the normalization to another process.
+Pretože nahraté dáta súborov sú odvodené (z `$_FILES` alebo tela požiadavky),
+rozhranie obsahuje aj "setter" metódu `withUploadedFiles()` ktoré dovoľuje
+prenesenie normalizáciena iný proces.
 
-In the case of the original examples, consumption resembles the following:
+V prípade pôvodného príkladu, sa použitie podobá na toto:
 
 ```php
 $file0 = $request->getUploadedFiles()['files'][0];
 $file1 = $request->getUploadedFiles()['files'][1];
 
 printf(
-    "Received the files %s and %s",
+    "Prijali sa súbory %s a %s",
     $file0->getClientFilename(),
     $file1->getClientFilename()
 );
 
-// "Received the files file0.txt and file1.html"
+// "Prijali sa súbory file0.txt a file1.html"
 ```
 
-This proposal also recognizes that implementations may operate in non-SAPI
-environments. As such, `UploadedFileInterface` provides methods for ensuring
-operations will work regardless of environment. In particular:
+Toto riešenie tiež počíta s implementáciami mimo SAPI prostredia a v takých
+prípadoch poskytuje `UploadedFileInterface` metódy na zaistenie, že operácie
+budú pracovať nezávisle na prostredí. Špecificky:
 
-- `moveTo($targetPath)` is provided as a safe and recommended alternative to calling
-  `move_uploaded_file()` directly on the temporary upload file. Implementations
-  will detect the correct operation to use based on environment.
-- `getStream()` will return a `StreamInterface` instance. In non-SAPI
-  environments, one proposed possibility is to parse individual upload files
-  into `php://temp` streams instead of directly to files; in such cases, no
-  upload file is present. `getStream()` is therefore guaranteed to work
-  regardless of environment.
+- `moveTo($targetPath)` je bezpečná a odporúčaná alternatíva namiesto volania
+  `move_uploaded_file()` priamo na dočasný nahratý súbor. Implementácie
+  zisťia a použijú správnu operáciu v danom prostredí.
+- `getStream()` vráti `StreamInterface` inštanciu. V prostrediach mimo SAPI
+  je jednou z navrhnutých možností parsovať individuálne nahrávané súbory
+  do prúdov `php://temp` namiesto priamo do súborov; v takýchto prípadoch
+  nie je prítomný dočasný nahratý súbor a preto metóda `getStream()` 
+  garantuje že bude pracovať v hocijakom prostredí.
 
-As examples:
+Príklad:
 
 ```
-// Move a file to an upload directory
+// Presuň súbor do upload adresára
 $filename = sprintf(
     '%s.%s',
     create_uuid(),
@@ -579,20 +571,20 @@ $filename = sprintf(
 );
 $file0->moveTo(DATA_DIR . '/' . $filename);
 
-// Stream a file to Amazon S3.
-// Assume $s3wrapper is a PHP stream that will write to S3, and that
-// Psr7StreamWrapper is a class that will decorate a StreamInterface as a PHP
+// Prúd súboru do Amazonu S3.
+// Predpokladajme že $s3wrapper je PHP prúd ktorý bude zapisovať do S3 a že
+// Psr7StreamWrapper je trieda ktorá bude dekorovať StreamInterface ako PHP
 // StreamWrapper.
 $stream = new Psr7StreamWrapper($file1->getStream());
 stream_copy_to_stream($stream, $s3wrapper);
 ```
 
-## 2. Package
+## 2. Balík
 
-The interfaces and classes described are provided as part of the
-[psr/http-message](https://packagist.org/packages/psr/http-message) package.
+Opísané rozhrania a triedy sú poskytnuté ako časť balíka
+[psr/http-message](https://packagist.org/packages/psr/http-message).
 
-## 3. Interfaces
+## 3. Rozhrania
 
 ### 3.1 `Psr\Http\Message\MessageInterface`
 
@@ -601,13 +593,13 @@ The interfaces and classes described are provided as part of the
 namespace Psr\Http\Message;
 
 /**
- * HTTP messages consist of requests from a client to a server and responses
- * from a server to a client. This interface defines the methods common to
- * each.
+ * HTTP správy pozostávajú z požiadaviek od klienta na server a z odpovedí
+ * zo servera ku klientovi. Toto rozhranie definuje metódy spoločné pre obe
+ * správy
  *
- * Messages are considered immutable; all methods that might change state MUST
- * be implemented such that they retain the internal state of the current
- * message and return an instance that contains the changed state.
+ * Správy sú považované za nemeniteľné; všetky metódy ktoré by mohli zmeniť
+ * stav MUSIA byť implementované tak aby zachovali interný stav správy a
+ * vrátili inštanciu ktorá obsahuje ktorá obsahuje zmenený stav.
  *
  * @see http://www.ietf.org/rfc/rfc7230.txt
  * @see http://www.ietf.org/rfc/rfc7231.txt
@@ -615,23 +607,21 @@ namespace Psr\Http\Message;
 interface MessageInterface
 {
     /**
-     * Retrieves the HTTP protocol version as a string.
+     * Získa verziu HTTP protokolu ako textový reťazec.
      *
-     * The string MUST contain only the HTTP version number (e.g., "1.1", "1.0").
+     * Text MUSÍ obsahovať iba číslo HTTP verzie (napr., "1.1", "1.0").
      *
      * @return string HTTP protocol version.
      */
     public function getProtocolVersion();
 
     /**
-     * Return an instance with the specified HTTP protocol version.
+     * Vráti inštanciu so špecifikovanou verziou HTTP protokolu
      *
-     * The version string MUST contain only the HTTP version number (e.g.,
-     * "1.1", "1.0").
+     * Text MUSÍ obsahovať iba číslo HTTP verzie (napr., "1.1", "1.0").
      *
-     * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return an instance that has the
-     * new protocol version.
+     * Táto metóda MUSÍ byť implementovaná tak aby nezmenila pôvodnú správu
+     * a MUSÍ vrátiť inštanciu ktorá bude mať novú verziu protokolu.
      *
      * @param string $version HTTP protocol version
      * @return self
@@ -639,29 +629,29 @@ interface MessageInterface
     public function withProtocolVersion($version);
 
     /**
-     * Retrieves all message header values.
+     * Získa všetky hodnotu hlavičiek správy.
      *
-     * The keys represent the header name as it will be sent over the wire, and
-     * each value is an array of strings associated with the header.
+     * Kľúče reprezentujú meno hlavičky v poradí v ktorom boli prijaté a každá 
+     * hodnota je pole textových reťazcov priradené k danej hlavičke.
      *
-     *     // Represent the headers as a string
+     *     // Representuje hlavičky ako reťazec
      *     foreach ($message->getHeaders() as $name => $values) {
      *         echo $name . ": " . implode(", ", $values);
      *     }
      *
-     *     // Emit headers iteratively:
+     *     // Vypisuje hlavičky iteratívne:
      *     foreach ($message->getHeaders() as $name => $values) {
      *         foreach ($values as $value) {
      *             header(sprintf('%s: %s', $name, $value), false);
      *         }
      *     }
      *
-     * While header names are not case-sensitive, getHeaders() will preserve the
-     * exact case in which headers were originally specified.
+     * Hoci nezáleží na veľkosti písmen v názvoch hlavičiek, getHeaders() 
+     * zachová písmená hlavičiek v presnej veľkosti písmen ako boli špecifikované.
      *
-     * @return string[][] Returns an associative array of the message's headers.
-     *     Each key MUST be a header name, and each value MUST be an array of
-     *     strings for that header.
+     * @return string[][] Vráti asociatívne pole s hlavičkami správy.
+     *     Každý kľúč MUSÍ byť názvom hlavičky a každá hodnota MUSÍ byť pole
+     *     textových reťazcov pre danú hlavičku.
      */
     public function getHeaders();
 
