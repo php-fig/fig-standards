@@ -48,7 +48,7 @@ This PSR shares the same goals as PSR-2.
 
 This PSR is an extension of PSR-2, and therefore also an extension of PSR-1. The basis of
 PSR-12 is PSR-2 and therefore a list of differences is provided below to assist with migration
-but it should should be considered as a different specification.
+but it should be considered as an independent specification.
 
 This PSR will include coding style guidelines related to new functionality added to PHP
 after the publication of PSR-2; this includes PHP 5.5, PHP 5.6 and PHP 7.0. This PSR will
@@ -85,9 +85,9 @@ specification that came from PSR-2.
 5. Changelog from PSR-2
 ------------------------
 
-Please note this changelog is not a verbose list of changes from PSR-2 but highlights
-most of the most notable changes. It should be considered a new specification and therefore
-you should read the specification for a full understanding of its contents.
+Please note this changelog is not a verbose list of changes from PSR-2 but highlights the most
+notable changes. It should be considered a new specification and therefore you should read the
+specification for a full understanding of its contents.
 
 ### New statements
 
