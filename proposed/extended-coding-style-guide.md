@@ -70,17 +70,17 @@ class Foo extends Bar implements FooInterface
 }
 ```
 
-General
+2. General
 ----------
 
-### Basic Coding Standard
+### 2.1 Basic Coding Standard
 
 Code MUST follow all rules outlined in [PSR-1].
 
 The term 'StudlyCaps' in PSR-1 MUST be interpreted as PascalCase where the first letter of
 each word is capitalised including the very first letter.
 
-### Files
+### 2.2 Files
 
 All PHP files MUST use the Unix LF (linefeed) line ending.
 
@@ -88,7 +88,7 @@ All PHP files MUST end with a single line, containing only a single newline (LF)
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
-### Lines
+### 2.3 Lines
 
 There MUST NOT be a hard limit on line length.
 
@@ -105,18 +105,18 @@ blocks of code except where explictly forbidden.
 
 There MUST NOT be more than one statement per line.
 
-### Indenting
+### 2.4 Indenting
 
 Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
-### Keywords and True/False/Null
+### 2.5 Keywords and True/False/Null
 
 PHP [keywords][] MUST be in lower case.
 
 The PHP reserved words `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
 
-Declare Statements, Namespace, and Use Declarations
+3. Declare Statements, Namespace, and Use Declarations
 --------------------------------------------
 
 When present, there MUST be one blank line after the `declare` statement(s)
@@ -222,7 +222,7 @@ declare(ticks=1) {
 }
 ```
 
-Classes, Properties, and Methods
+4. Classes, Properties, and Methods
 -----------------------------------
 
 The term "class" refers to all classes, interfaces, and traits.
@@ -237,7 +237,7 @@ there are no arguments passed to the constructor.
 new Foo();
 ```
 
-### Extends and Implements
+### 4.1 Extends and Implements
 
 The `extends` and `implements` keywords MUST be declared on the same line as
 the class name.
@@ -286,7 +286,7 @@ class ClassName extends ParentClass implements
 }
 ```
 
-### Using traits
+### 4.2 Using traits
 
 The `use` keyword used inside the classes to implement traits MUST be
 declared on the next line after the opening brace.
@@ -355,7 +355,7 @@ class ClassName
 }
 ```
 
-### Properties
+### 4.3 Properties
 
 Visibility MUST be declared on all properties.
 
@@ -378,7 +378,7 @@ class ClassName
 }
 ```
 
-### Methods and Functions
+### 4.4 Methods and Functions
 
 Visibility MUST be declared on all methods.
 
@@ -418,7 +418,7 @@ function fooBarBaz($arg1, &$arg2, $arg3 = [])
 }
 ```
 
-### Method and function Arguments
+### 4.5 Method and function Arguments
 
 In the argument list, there MUST NOT be a space before each comma, and there
 MUST be one space after each comma.
@@ -499,7 +499,7 @@ class ReturnTypeVariations
 }
 ```
 
-### `abstract`, `final`, and `static`
+### 4.6 `abstract`, `final`, and `static`
 
 When present, the `abstract` and `final` declarations MUST precede the
 visibility declaration.
@@ -524,7 +524,7 @@ abstract class ClassName
 }
 ```
 
-### Method and Function Calls
+### 4.7 Method and Function Calls
 
 When making a method or function call, there MUST NOT be a space between the
 method or function name and the opening parenthesis, there MUST NOT be a space
@@ -552,7 +552,7 @@ $foo->bar(
 );
 ```
 
-Control Structures
+5. Control Structures
 ---------------------
 
 The general style rules for control structures are as follows:
@@ -570,7 +570,7 @@ the structures look, and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
 
-### `if`, `elseif`, `else`
+### 5.1 `if`, `elseif`, `else`
 
 An `if` structure looks like the following. Note the placement of parentheses,
 spaces, and braces; and that `else` and `elseif` are on the same line as the
@@ -591,7 +591,7 @@ The keyword `elseif` SHOULD be used instead of `else if` so that all control
 keywords look like single words.
 
 
-### `switch`, `case`
+### 5.2 `switch`, `case`
 
 A `switch` structure looks like the following. Note the placement of
 parentheses, spaces, and braces. The `case` statement MUST be indented once
@@ -620,7 +620,7 @@ switch ($expr) {
 ```
 
 
-### `while`, `do while`
+### 5.3 `while`, `do while`
 
 A `while` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -642,7 +642,7 @@ do {
 } while ($expr);
 ```
 
-### `for`
+### 5.4 `for`
 
 A `for` statement looks like the following. Note the placement of parentheses,
 spaces, and braces.
@@ -654,7 +654,7 @@ for ($i = 0; $i < 10; $i++) {
 }
 ```
 
-### `foreach`
+### 5.5 `foreach`
 
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -666,7 +666,7 @@ foreach ($iterable as $key => $value) {
 }
 ```
 
-### `try`, `catch`, `finally`
+### 5.6 `try`, `catch`, `finally`
 
 A `try catch finally` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
@@ -684,7 +684,7 @@ try {
 }
 ```
 
-Operators
+6. Operators
 -----------
 All binary and ternary operators MUST be preceded and followed by a space
 excluding string concatenation operators. This includes all [arithmetic][],
@@ -706,7 +706,7 @@ if ($a === $b) {
 ```
 
 
-Closures
+7. Closures
 -----------
 
 Closures MUST be declared with a space after the `function` keyword, and a
@@ -812,7 +812,7 @@ $foo->bar(
 );
 ```
 
-Anonymous Classes
+8. Anonymous Classes
 --------------------
 
 Anonymous Classes MUST follow the same guidelines and principles as closures
