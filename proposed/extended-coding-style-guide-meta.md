@@ -91,26 +91,26 @@ you should read the specification for a full understanding of its contents.
 
 ### New statements
 
-* Anonymous classes - Section 8
+* Lowercase for all keywords - Section 2.5
+* Don't import (using use statements) classes in the root namespace - Section 3
 * Use statement grouping - Section 3
 * Use statement blocks - Section 3
 * Declare statement/Strict types declaration usage - Section 3
-* Lowercase for all keywords - Section 2.5
-* Add finally block - Section 5.6
 * Brackets are always required for class instantiation - Section 4
-* Don't import (using use statements) classes in the root namespace - Section 3
-* Operators - Section 6
 * Return type declarations - Section 4.5
 * Type hints - Section 4.5
+* Add finally block - Section 5.6
+* Operators - Section 6
+* Anonymous classes - Section 8
 
 ### Clarifications and Errata
 * Adjust 'methods' to 'methods and functions' in a number of instances - Throughout
+* Adjust references to classes and interfaces to also include traits - Throughout
+* StudlyCaps meaning clarified as PascalCase - Section 2.1
 * The last line should not be blank but contain an EOL character - Section 2.2
 * Blank lines may be added for readability except where explicitly forbidden within the PSR - Section 2.3
-* Adjust references to classes and interfaces to also include traits - Throughout
-* PSR-2 errata statement about multi-line arguments
-* PSR-2 errata statement about extending multiple interfaces
-* StudlyCaps meaning clarified as PascalCase - Section 2.1
+* PSR-2 errata statement about multi-line arguments - Section 4
+* PSR-2 errata statement about extending multiple interfaces - Section 4
 * Forbid blank lines before/after closing/opening braces for classes - Section 4
 
 6. People
