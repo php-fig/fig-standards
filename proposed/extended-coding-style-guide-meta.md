@@ -13,7 +13,7 @@ Style PSR. Its goal is to explain the reasons behind each decision.
 PSR-2 was accepted in 2012 and since then a number of changes have been made to PHP,
 most notably recent changes for PHP 7, which have implications for coding style
 guidelines. Whilst PSR-2 is very comprehensive of PHP functionality that existed at
-the time of writing, new functionality is very open to interpretation. PSR-N seeks
+the time of writing, new functionality is very open to interpretation. PSR-12 seeks
 to provide a set way that both coding style tools can implement, projects can declare
 adherence to and developers can easily relate on between different projects for these
 coding style reducing cognitive friction.
@@ -23,13 +23,13 @@ but ultimately this meant it was a compromise of many of the different projects'
 The repercussions of projects changing their coding guidelines to align with PSR-2 (Almost
 all projects do align with PSR-1, even if it is not explicitly stated) were seen to be too
 great (losing git history, huge changesets and breaking existing patches/pull requests) and
-this therefore hurt adoption of PSR-2. Therefore, whilst PSR-N will be more prescriptive
+this therefore hurt adoption of PSR-2. Therefore, whilst PSR-12 will be more prescriptive
 than descriptive of the projects, but this is in the hope that it will mean that projects
 are more likely to adhere to it as it becomes a case of following the guide when code is
 initially written as opposed to changing large amounts of existing code.
 
 However it is for a lack of wanting to be dictatorial that we will aim to apply PSR-2
-styling, rationale and stances (Described in Section 4, Approaches) in PSR-N instead of
+styling, rationale and stances (Described in Section 4, Approaches) in PSR-12 instead of
 establishing new conventions.
 
 3. Scope
@@ -46,22 +46,18 @@ This PSR shares the same goals as PSR-2.
 > of guidelines to be used among all those projects. Thus, the benefit of this guide is
 > not in the rules themselves, but in the sharing of those rules.
 
-This PSR is an extension of PSR-2, and therefore also an extension of PSR-1. It shall be
-included in the document that compliance with PSR-N implicitly requires compliance with
-PSR-2 and PSR-1.
+This PSR is an extension of PSR-2, and therefore also an extension of PSR-1. The basis of
+PSR-12 is PSR-2 and therefore a list of differences is provided below to assist with migration
+but it should should be considered as a different specification.
 
 This PSR will include coding style guidelines related to new functionality added to PHP
-after the publication of PSR-2; this includes PHP 5.5, PHP 5.6 and PHP 7.0.
-
-This PSR will also include clarifications on the text of PSR-2, as described in the
-PSR-2 Errata.
+after the publication of PSR-2; this includes PHP 5.5, PHP 5.6 and PHP 7.0. This PSR will
+also include clarifications on the text of PSR-2, as described in the PSR-2 Errata.
 
 ## 3.2 Non-Goals
 
-It is not the intention of this PSR to add entirely new coding style guidelines that
-were available to be considered for inclusion in PSR-1 or PSR-2.
-
-PSR-N will also not change anything stipulated in PSR-1 and PSR-2.
+It is not the intention of this PSR to add entirely new coding style guidelines PSR-12 will
+also not change anything stipulated in PSR-1 and PSR-2.
 
 4. Approaches
 -------------
@@ -69,8 +65,55 @@ PSR-N will also not change anything stipulated in PSR-1 and PSR-2.
 The overarching approach is to attempt to apply existing PSR-2 styling and rationale to
 new functionality as opposed to establishing new conventions.
 
+### Strict Types Declarations
 
-5. People
+There was a discussion about whether or not strict types should be enforced in the standard
+https://github.com/cs-extended/fig-standards/issues/7. All were in agreement we should only
+use a MUST or MUST NOT statement and avoid the use of a SHOULD statement and nobody wanted
+to say that strict types could not be declared. The discussion was whether it should be
+considered a coding style item which should be covered or whether it was out of scope and it
+was decided to be out of scope of a coding style guide.
+
+## Finally and return types declartion spacing
+
+Numerous different options were suggested and they can be seen
+[here for return type declarations](https://gist.github.com/michaelcullum/c025f3870c9ea1dd2668#file-returntypesspacing-php) or
+[here for finally blocks](https://gist.github.com/michaelcullum/c025f3870c9ea1dd2668#file-finallyblocks-php)
+and the current implementation was chosen due to consistency with other parts of the PSR-12
+specification that came from PSR-2.
+
+5. Changelog from PSR-2
+------------------------
+
+Please note this changelog is not a verbose list of changes from PSR-2 but highlights
+most of the most notable changes. It should be considered a new specification and therefore
+you should read the specification for a full understanding of its contents.
+
+### New statements
+
+* Anonymous classes - Section 8
+* Use statement grouping - Section 3
+* Use statement blocks - Section 3
+* Declare statement/Strict types declaration usage - Section 3
+* Lowercase for all keywords - Section 2.5
+* Add finally block - Section 5.6
+* Brackets are always required for class instantiation - Section 4
+* Don't import (using use statements) classes in the root namespace - Section 3
+* Operators - Section 6
+* Return type declarations - Section 4.5
+* Type hints - Section 4.5
+
+### Clarifications and Errata
+* Adjust 'methods' to 'methods and functions' in a number of instances - Throughout
+* The last line should not be blank but contain an EOL character - Section 2.2
+* Blank lines may be added for readability except where explicitly forbidden within the PSR - Section 2.3
+* Adjust references to classes and interfaces to also include traits - Throughout
+* PSR-2 errata statement about multi-line arguments
+* PSR-2 errata statement about extending multiple interfaces
+* StudlyCaps meaning clarified as PascalCase - Section 2.1
+* Forbid blank lines before/after closing/opening braces for classes - Section 4
+
+6. People
 ---------
 
 ### 5.1 Editor(s)
@@ -82,12 +125,12 @@ new functionality as opposed to establishing new conventions.
 * Korvin Szanto - concrete5 (Coordinator)
 * Alexander Makarov - Yii Framework
 
-6. Votes
+7. Votes
 --------
 
 * **Entrance Vote: ** https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/php-fig/P9atZLOcUBM/_jwkvlYKEAAJ
 
-7. Relevant Links
+8. Relevant Links
 -----------------
 
 _**Note:** Order descending chronologically._
