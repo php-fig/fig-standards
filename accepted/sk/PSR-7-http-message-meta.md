@@ -161,51 +161,50 @@ na spoluprácu medzi PHP balíkmi pre účely opísania HTTP správ.
   there will be a certain amount of invention needed to describe HTTP message
   interfaces in PHP.
 
-## 5. Design Decisions
+## 5. Návrhové rozhodnutia
 
-### Message design
+### Návrh správy
 
-The `MessageInterface` provides accessors for the elements common to all HTTP
-messages, whether they are for requests or responses. These elements include:
+Rozhranie `MessageInterface` poskytuje prístupové metódy pre elementy spoločné
+všetkym HTTP správam, či už sú požiadavkami alebo odpoveďami. Tieto elementy
+sú:
 
-- HTTP protocol version (e.g., "1.0", "1.1")
-- HTTP headers
-- HTTP message body
+- verzia HTTP protokolu (napr. "1.0", "1.1")
+- HTTP hlavičky
+- telo HTTP správy
 
-More specific interfaces are used to describe requests and responses, and more
-specifically the context of each (client- vs. server-side). These divisions are
-partly inspired by existing PHP usage, but also by other languages such as
-Ruby's [Rack](https://rack.github.io),
-Python's [WSGI](https://www.python.org/dev/peps/pep-0333/),
-Go's [http package](http://golang.org/pkg/net/http/),
-Node's [http module](http://nodejs.org/api/http.html), etc.
+Špecifickejšie rozhrania opisujú zvlášte požiadavky a odpovede a osobitne
+ich obsah (klientský aj serverovský). Tieto rozdelenia sú čiastočne inšpirované
+existujúcim používaním v PHP ako aj v iných jazykoch ako Ruby-ne [Rack](https://rack.github.io),
+Python-ov [WSGI](https://www.python.org/dev/peps/pep-0333/),
+[http balík](http://golang.org/pkg/net/http/) pre Go,
+[http modul](http://nodejs.org/api/http.html) pre Node, atď.
 
-### Why are there header methods on messages rather than in a header bag?
+### Prečo sú v správach metódy hlavičiek, namiesto aby boli v hlavičke?
 
-The message itself is a container for the headers (as well as the other message
-properties). How these are represented internally is an implementation detail,
-but uniform access to headers is a responsibility of the message.
+Správa o sebe je kontajner pre hlavičky (ako aj iné vlastnosti správy). Ako sú
+tieto reprezentované vnútorne je detail implementácie, ale jednotný prístup 
+k hlavičkám je zodpovednosťou správy.
 
-### Why are URIs represented as objects?
+### Prečo sú URI cesty representované ako objekty?
 
-URIs are values, with identity defined by the value, and thus should be modeled
-as value objects.
+URI sú hodnoty, s identitou definovanou v hodnote a teda by mali byť 
+predstavované ako hodnoty objektov.
 
-Additionally, URIs contain a variety of segments which may be accessed many
-times in a given request -- and which would require parsing the URI in order to
-determine (e.g., via `parse_url()`). Modeling URIs as value objects allows
-parsing once only, and simplifies access to individual segments. It also
-provides convenience in client applications by allowing users to create new
-instances of a base URI instance with only the segments that change (e.g.,
-updating the path only).
+Dodatočne, URI obsahujú rôzne segmenty ktoré môžu byť prístupné veľa krát
+v danej požiadavke -- a ktoré by potrebovali parsovanie URI za účelom
+zistenia (napr. cez `parse_url()`). Sformovaním URI ako hodnty objektov
+umožnuje parsovanie iba raz a zjednodušuje prístup k jednotlivým častiam.
+V klientských aplikáciach tiež poskytuje užívateľom pohodlné vytvorenie
+nových inštancií zo základnej URI inštancie iba s časťami ktoré chceme
+zmeniť (napr. zmena URL cesty).
 
-### Why does the request interface have methods for dealing with the request-target AND compose a URI?
+### Prečo má rozhranie požiadavky metódy pre prácu s cieľom požiadavky a na vytvorenie URI?
 
-RFC 7230 details the request line as containing a "request-target". Of the four
-forms of request-target, only one is a URI compliant with RFC 3986; the most
-common form used is origin-form, which represents the URI without the
-scheme or authority information. Moreover, since all forms are valid for
-purposes of requests, the proposal must accommodate each.
+RFC 7230 opisuje riadok požiadavky ako obsahujúci cieľ požiadavky. Zo štyroch
+tvarov cieľa požiadavky iba jedna vyhovuje s RFC 3986; najčastejšie používaný
+je tvar pôvodu, ktorý reprezentuje URI cestu bez schémy alebo autority. Navyše, 
+keďže všetky tvary sú platné pre účely požiadaviek, návrh musí vyhovieť všetkým.
 
 `RequestInterface` thus has methods relating to the request-target. By default,
 it will use the composed URI to present an origin-form request-target, and, in
