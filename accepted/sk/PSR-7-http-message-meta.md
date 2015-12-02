@@ -235,16 +235,18 @@ metódy sú všeobecne s predponou `with` alebo `without`.
 
 Objekty hodnôt poskytujú rôzne výhody keď sa modelujú HTTP správy:
 
-- Changes in URI state cannot alter the request composing the URI instance.
-- Changes in headers cannot alter the message composing them.
+- Zmeny v URI nemôžu zmeniť požiadavku pre ktorú vytvárajúcu URI inštanciu
+  s odpoveďou.
+- Zmeny v hlavičkách nemôžu zmeniť správu pre ktorú ju vytvárajú.
 
-In essence, modeling HTTP messages as value objects ensures the integrity of
-the message state, and prevents the need for bi-directional dependencies, which
-can often go out-of-sync or lead to debugging or performance issues.
+V podstate, modelovanie HTTP správ ako objektov hodnôt zaisťuje integritu
+stavu správy a chráni pred obojstrannými závislosťami, ktoré nemusia byť
+práve synchronizované a viesť k problémom s ľadením chýb alebo výkonom.
 
-For HTTP clients, they allow consumers to build a base request with data such
-as the base URI and required headers, without needing to build a brand new
-request or reset request state for each message the client sends:
+Pre HTTP klientov, umožňujú užívaťelom vytvárať základné požiadavky
+s dátami ako základné URI a potrebnými hlavičkami bez potreby vytvárať
+úplne nové požiadavky alebo zrušiť stav požiadavky pre kažú správu ktorú
+klient pošle:
 
 ```php
 $uri = new Uri('http://api.example.com');
@@ -256,7 +258,7 @@ $baseRequest = new Request($uri, null, [
 $request = $baseRequest->withUri($uri->withPath('/user'))->withMethod('GET');
 $response = $client->send($request);
 
-// get user id from $response
+// získaj user Id z odpovede $response
 
 $body = new StringStream(json_encode(['tasks' => [
     'Code',
@@ -269,31 +271,32 @@ $request = $baseRequest
     ->withBody($body);
 $response = $client->send($request)
 
-// No need to overwrite headers or body!
+// Nie je potrebné prepisovať hlavičky alebo telo!
 $request = $baseRequest->withUri($uri->withPath('/tasks'))->withMethod('GET');
 $response = $client->send($request);
 ```
 
-On the server-side, developers will need to:
+Na strane servera budú developeri potrebovať:
 
-- Deserialize the request message body.
-- Decrypt HTTP cookies.
-- Write to the response.
+- Deserializovať telo správy požiadavky.
+- Odkryptovať HTTP koláčik.
+- Napísať odpovedi.
 
-These operations can be accomplished with value objects as well, with a number
-of benefits:
+Tieto operácie môžu byť vykonané tiež s objektami hodnôt, s množstvom výhod:
 
-- The original request state can be stored for retrieval by any consumer.
-- A default response state can be created with default headers and/or message body.
+- Pôvodný stav požiadavky môže byť uložený aby ho užívateľ mohol opätovne 
+  vytiahnúť.
+- Môžeme vytvoriť predvolený stav odpovede s predvolenou hlavičkou a telom
+  správy.
 
-Most popular PHP frameworks have fully mutable HTTP messages today. The main
-changes necessary in consuming true value objects are:
+Najpoužívanejšie PHP frameworky majú dnes plne zameniteľné HTTP správy. Hlavné
+zmeny potrebné pre používanie objektov hodnôt sú:
 
-- Instead of calling setter methods or setting public properties, mutator
-  methods will be called, and the result assigned.
-- Developers must notify the application on a change in state.
+- Namiesto volania "setter"-a pre nastavenie hodnoty alebo nastavovania hodnoty 
+  verejne, sa budú volať "mutator" metódy a výsledky sa priradia.
+- Vývojári musia upozorniť aplikáciu na zmenu v stave.
 
-As an example, in Zend Framework 2, instead of the following:
+Pre príklad v Zend Framework 2, by namiesto tohto:
 
 ```php
 function (MvcEvent $e)
@@ -303,7 +306,7 @@ function (MvcEvent $e)
 }
 ```
 
-one would now write:
+bolo napísané radšej toto:
 
 ```php
 function (MvcEvent $e)
@@ -315,34 +318,33 @@ function (MvcEvent $e)
 }
 ```
 
-The above combines assignment and notification in a single call.
+Príklad kombinuje priradenie hodnoty s notifikáciou v jedinom volaní.
 
-This practice has a side benefit of making explicit any changes to application
-state being made.
+Tento postup má vedľajšiu výhodu v tom, že je jasné, kedy sa robí nejaká
+zmena do stavu aplikácie.
 
-### New instances vs returning $this
+### Nové inštancie vezus vracajúce $this
 
-One observation made on the various `with*()` methods is that they can likely
-safely `return $this;` if the argument presented will not result in a change in
-the value. One rationale for doing so is performance (as this will not result in
-a cloning operation).
+Pri pozorovaní rôznych metód `with*()` vidíme že môžu pravdepodobne bezpečne
+vracať `return $this;`, ak parameter metódy nespôsobí zmenu hodnoty. Jedným
+z dôvodov tohoto je výkon (pretože výsledkom nebude operácia klonovania).
 
-The various interfaces have been written with verbiage indicating that
-immutability MUST be preserved, but only indicate that "an instance" must be
-returned containing the new state. Since instances that represent the same value
-are considered equal, returning `$this` is functionally equivalent, and thus
-allowed.
+Rôzne rozhrania boli napísané s táraninami naznačujúcimi že nemeniteľnosť 
+MUSÍ byť zachovaná, avšak bez naznačenia že vrátená musí byť inštancia 
+s novým stavom. Keďže inštancie ktoré reprezentujú rovnaké hodnoty sú považované
+za rovnaké, vracanie `$this` je funkčne zhodné a teda povolené.
 
-### Using streams instead of X
+### Pužívanie prúdov (tokov) namiesto X
 
-`MessageInterface` uses a body value that must implement `StreamableInterface`. This
-design decision was made so that developers can send and receive (and/or receive
-and send) HTTP messages that contain more data than can practically be stored in
-memory while still allowing the convenience of interacting with message bodies
-as a string. While PHP provides a stream abstraction by way of stream wrappers,
-stream resources can be cumbersome to work with: stream resources can only be
-cast to a string using `stream_get_contents()` or manually reading the remainder
-of a string. Adding custom behavior to a stream as it is consumed or populated
+`MessageInterface` používa hodnotu teľa, ktoré musí implementovať 
+`StreamableInterface`. Toto dizajnové rozhodnutie bolo urobené preto, aby
+vývojári mogli posielať a prijímať (a naopak) HTTP správy ktoré obsahujú oveľa 
+viac dát ako je prakticky možné uložiť do pamäti a stále mať pohodlie 
+interaktovať s telami správy ako s textovým reťazcom. Dokial PHP poskytuje
+abstrakciu prúdu vďaka obaľovačom prúdu (stream wrappers), môže byť ťažkopádne
+pracovať s nimi: prúd môže byť zmenený na textový reťazec IBA 
+so `stream_get_contents()` alebo manuálne čítaním zvyšku reťazca. 
+Adding custom behavior to a stream as it is consumed or populated
 requires registering a stream filter; however, stream filters can only be added
 to a stream after the filter is registered with PHP (i.e., there is no stream
 filter autoloading mechanism).
