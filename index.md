@@ -47,7 +47,7 @@ According to the [PSR Workflow Bylaw](https://github.com/php-fig/fig-standards/b
 | A      | 3   | [Logger Interface][psr3]             | Jordi Boggiano                 | _N/A_          | _N/A_             |
 | A      | 4   | [Autoloading Standard][psr4]         | Paul M. Jones                  | Phil Sturgeon  | Larry Garfield    |
 | D      | 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  | Phil Sturgeon  | Donald Gilbert    |
-| R      | 6   | [Caching Interface][psr6]            | Larry Garfield                 | Paul Dragoonis | Pádraic Brady     |
+| V      | 6   | [Caching Interface][psr6]            | Larry Garfield                 | Paul Dragoonis | Pádraic Brady     |
 | A      | 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        | Beau Simensen  | Paul M. Jones        |
 | D      | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Cal Evans      | Paul M. Jones        |
 | D      | 9   | [Security Disclosure][psr9]          | Lukas Kahwe Smith              | Korvin Szanto  | Larry Garfield    |
