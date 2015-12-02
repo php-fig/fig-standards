@@ -152,14 +152,13 @@ na spoluprácu medzi PHP balíkmi pre účely opísania HTTP správ.
 
 ### 4.2 Nie ciele
 
-* This proposal does not expect all HTTP client libraries or server-side
-  frameworks to change their interfaces to conform. It is strictly meant for
-  interoperability.
-* While everyone's perception of what is and is not an implementation detail
-  varies, this proposal should not impose implementation details. As
-  RFCs 7230, 7231, and 3986 do not force any particular implementation,
-  there will be a certain amount of invention needed to describe HTTP message
-  interfaces in PHP.
+* Účelom tohto návrhu nie je očakávanie, že všetky HTTP klientské knižnice alebo
+  frameworky na strane servera zmenia svoje rozhrania aby vyhovovali. Je to
+  čiste určený pre spoluprácu.
+* Zatiaľčo každý vníma trošku odlišne čo je detailom implementácie, tento návrh
+  by nemal predpisovať detaily implementácií.Tak ako
+  RFCs 7230, 7231, a 3986 nenútia do žiadnej presnej implementácie, bude tu 
+  potrebné určité množstvo vynaliezavosti na opísanie rozhraní HTTP správ v PHP.
 
 ## 5. Návrhové rozhodnutia
 
@@ -206,37 +205,35 @@ tvarov cieľa požiadavky iba jedna vyhovuje s RFC 3986; najčastejšie použív
 je tvar pôvodu, ktorý reprezentuje URI cestu bez schémy alebo autority. Navyše, 
 keďže všetky tvary sú platné pre účely požiadaviek, návrh musí vyhovieť všetkým.
 
-`RequestInterface` thus has methods relating to the request-target. By default,
-it will use the composed URI to present an origin-form request-target, and, in
-the absence of a URI instance, return the string "/".  Another method,
-`withRequestTarget()`, allows specifying an instance with a specific
-request-target, allowing users to create requests that use one of the other
-valid request-target forms.
+`RequestInterface` teda má metódy vzťahujúce sa na cieľ požiadavky. Predvolene
+bude používať zostrojené URI aby ukázalo tvar pôvodu cieľu požiadavky a 
+v neprítomnosti URI inštancie, vráti reťazec "/".  Ďaľšia metóda,
+`withRequestTarget()`, dovoľuje špecifikovať inštanciu so špecifickým cieľom 
+požiadavky a tým povoľujú užívateľom vytvoriť požiadavky, ktoré používajú jednu
+z ostatných validných foriem cieľa požiadavky. 
 
-The URI is kept as a discrete member of the request for a variety of reasons.
-For both clients and servers, knowledge of the absolute URI is typically
-required. In the case of clients, the URI, and specifically the scheme and
-authority details, is needed in order to make the actual TCP connection. For
-server-side applications, the full URI is often required in order to validate
-the request or to route to an appropriate handler.
+URI je držané ako oddelený člen požiadavky pre rôzne dôvody. Pre obe, klientov
+aj servere, znalosť absolútnej URI je zvyčajne potrebné. V prípade klientov je
+URI a špecificky schéma a autorita potrebná, aby sa dalo vytvoriť samotné TCP
+spojenie. Pre aplikácie na strane servera je plné URI často potrebné aby sa
+dala overiť požiadavka alebo cesta k správnemu spracovateľovi požiadavky.
 
-### Why value objects?
+### Prečo objekty hodnôť?
 
-The proposal models messages and URIs as [value objects](http://en.wikipedia.org/wiki/Value_object).
+Návrh predpisuje správu a URI ako [objekty hodnôt](http://en.wikipedia.org/wiki/Value_object).
 
-Messages are values where the identity is the aggregate of all parts of the
-message; a change to any aspect of the message is essentially a new message.
-This is the very definition of a value object. The practice by which changes
-result in a new instance is termed [immutability](http://en.wikipedia.org/wiki/Immutable_object),
-and is a feature designed to ensure the integrity of a given value.
+Správy su hodnoty, kde identita je množinou všetkých častí správy; zmena
+hociktorej časti správy je v podstate nová správa. Toto je veľmi presná
+definícia objektu hodnôt. Postup pri ktorom sa mení výsledok na novú inštanciu
+sa volá [nemeniteľnosť](http://en.wikipedia.org/wiki/Immutable_object),
+a je rysom navrhnutým na zaistenie integrity danej hodnote.
 
-The proposal also recognizes that most clients and server-side
-applications will need to be able to easily update message aspects, and, as
-such, provides interface methods that will create new message instances with
-the updates. These are generally prefixed with the verbiage `with` or
-`without`.
+Návrh tiež rozoznáva že väčšina klientov a aplikácií na strane servera bude
+potrebovať jednoducho meniť časti správy a ako také poskytuje metódy
+rozhrania, ktoré vytvoria inštanciu novej správy s pozmenenými údajmi. Tieto
+metódy sú všeobecne s predponou `with` alebo `without`.
 
-Value objects provides several benefits when modeling HTTP messages:
+Objekty hodnôt poskytujú rôzne výhody keď sa modelujú HTTP správy:
 
 - Changes in URI state cannot alter the request composing the URI instance.
 - Changes in headers cannot alter the message composing them.
