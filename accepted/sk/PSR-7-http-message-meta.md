@@ -140,17 +140,17 @@ na spoluprácu medzi PHP balíkmi pre účely opísania HTTP správ.
 
 ### 4.1 Ciele
 
-* Provide the interfaces needed for describing HTTP messages.
-* Focus on practical applications and usability.
-* Define the interfaces to model all elements of the HTTP message and URI
-  specifications.
-* Ensure that the API does not impose arbitrary limits on HTTP messages. For
-  example, some HTTP message bodies can be too large to store in memory, so we
-  must account for this.
-* Provide useful abstractions both for handling incoming requests for
-  server-side applications and for sending outgoing requests in HTTP clients.
+* Poskytnúť rozhrania potrebné pre opis HTTP správ.
+* Sústrediť sa na praktickosť a použiteľnosť.
+* Definovať rozhrania na načrtnutie všetkych elementov HTTP správ a
+  URI špecifikácií.
+* Zaistiť, že API nevytvorí svojvoľné limity na HTTP správy. Napríklad 
+  niektoré telá HTTP správ môžu byť príliš veľké na uloženie do pamäti, takže
+  to musíme brať do úvahy.
+* Poskytnúť užitočné abstrakcie pre prichádzajúce požiadavky pre serverovú
+  časť aplikácií a pre odosielanie odchadzajúcich požiadaviek v HTTP klientoch.
 
-### 4.2 Non-Goals
+### 4.2 Nie ciele
 
 * This proposal does not expect all HTTP client libraries or server-side
   frameworks to change their interfaces to conform. It is strictly meant for
