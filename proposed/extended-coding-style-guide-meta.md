@@ -22,11 +22,13 @@ PSR-2 was created based upon the common practices of the PHP FIG projects at the
 but ultimately this meant it was a compromise of many of the different projects' guidelines.
 The repercussions of projects changing their coding guidelines to align with PSR-2 (Almost
 all projects do align with PSR-1, even if it is not explicitly stated) were seen to be too
-great (losing git history, huge changesets and breaking existing patches/pull requests) and
-this therefore hurt adoption of PSR-2. Therefore, whilst PSR-12 will be more prescriptive
-than descriptive of the projects, but this is in the hope that it will mean that projects
-are more likely to adhere to it as it becomes a case of following the guide when code is
-initially written as opposed to changing large amounts of existing code.
+great (losing git history, huge changesets and breaking existing patches/pull requests).
+
+PSR-2 required adopters to reformat large amounts of existing code which stifled adoption.
+To help alleviate this issue with PSR-12, we have taken a more prescriptive approach and
+defined the standards for new language features as they are released. We hope that because
+this specification is defined prior to mass amounts of code being written, it will have a
+better chance of being adopted but this is in the hope that it will mean that projects.
 
 However it is for a lack of wanting to be dictatorial that we will aim to apply PSR-2
 styling, rationale and stances (Described in Section 4, Approaches) in PSR-12 instead of
@@ -74,7 +76,7 @@ to say that strict types could not be declared. The discussion was whether it sh
 considered a coding style item which should be covered or whether it was out of scope and it
 was decided to be out of scope of a coding style guide.
 
-## Finally and return types declartion spacing
+## Finally and Return Types Declaration Spacing
 
 Numerous different options were suggested and they can be seen
 [here for return type declarations](https://gist.github.com/michaelcullum/c025f3870c9ea1dd2668#file-returntypesspacing-php) or
@@ -89,7 +91,7 @@ Please note this changelog is not a verbose list of changes from PSR-2 but highl
 notable changes. It should be considered a new specification and therefore you should read the
 specification for a full understanding of its contents.
 
-### New statements
+### New Statements
 
 * Lowercase for all keywords - Section 2.5
 * Don't import (using use statements) classes in the root namespace - Section 3
