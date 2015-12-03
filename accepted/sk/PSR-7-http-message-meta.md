@@ -344,34 +344,33 @@ interaktovať s telami správy ako s textovým reťazcom. Dokial PHP poskytuje
 abstrakciu prúdu vďaka obaľovačom prúdu (stream wrappers), môže byť ťažkopádne
 pracovať s nimi: prúd môže byť zmenený na textový reťazec IBA 
 so `stream_get_contents()` alebo manuálne čítaním zvyšku reťazca. 
-Adding custom behavior to a stream as it is consumed or populated
-requires registering a stream filter; however, stream filters can only be added
-to a stream after the filter is registered with PHP (i.e., there is no stream
-filter autoloading mechanism).
+Pridávanie rôznych funkcií prúdu tak ako je koznumovaný alebo tvorený vyžaduje
+zaznamenávanie filtra prúdu; avšak filtre prúdu môžu byť pridané do prúdu iba 
+po zaznamenaní s PHP. (prúd nemá autoloadovací mechanizmus na filtre).
 
-The use of a well- defined stream interface allows for the potential of
-flexible stream decorators that can be added to a request or response
-pre-flight to enable things like encryption, compression, ensuring that the
-number of bytes downloaded reflects the number of bytes reported in the
-`Content-Length` of a response, etc. Decorating streams is a well-established
-[pattern in the Java](http://docs.oracle.com/javase/7/docs/api/java/io/package-tree.html)
-and [Node](http://nodejs.org/api/stream.html#stream_class_stream_transform_1)
-communities that allows for very flexible streams.
+Dobre definované rozhrania prúdov zlepšujú potenciál flexibilných dekorátov
+prúdov ktoré môžu byť pridané do požiadavky alebo odpovede pred odoslaním a
+umožňujú také veci ako zakódovanie, kompresiu, zaistenie že počet bytov súhlasí
+s počtom bytov nahlásených v `Content-Length` odpovede atď. Dekorovanie prúdov
+je zabehnutý
+[vzor v Jave](http://docs.oracle.com/javase/7/docs/api/java/io/package-tree.html)
+a v [Node](http://nodejs.org/api/stream.html#stream_class_stream_transform_1)
+komunitách a povoľujú veľmi flexibilné prúdy.
 
-The majority of the `StreamableInterface` API is based on
-[Python's io module](http://docs.python.org/3.1/library/io.html), which provides
-a practical and consumable API. Instead of implementing stream
-capabilities using something like a `WritableStreamInterface` and
-`ReadableStreamInterface`, the capabilities of a stream are provided by methods
-like `isReadable()`, `isWritable()`, etc. This approach is used by Python,
+Väčšina `StreamableInterface` API je založená na
+[Python-ovom io module](http://docs.python.org/3.1/library/io.html), ktorý
+poskytuje praktické a konzumovateľné API. Namiesto implementovania schopností
+prúdu použitím `WritableStreamInterface` a
+`ReadableStreamInterface`, sú schopnosti prúdu poskytované metódami ako 
+`isReadable()`, `isWritable()`, atď. Tento prístup sa používa v Python-e,
 [C#, C++](http://msdn.microsoft.com/en-us/library/system.io.stream.aspx),
 [Ruby](http://www.ruby-doc.org/core-2.0.0/IO.html),
-[Node](http://nodejs.org/api/stream.html), and likely others.
+[Node](http://nodejs.org/api/stream.html) a pravdepodobne ďaľších.
 
-#### What if I just want to return a file?
+#### Čo keď chcem naspäť iba súbor?
 
-In some cases, you may want to return a file from the filesystem. The typical
-way to do this in PHP is one of the following:
+V niektorých prípadoch, by Ste mohli chcieť naspäť súbor zo súborobého systému.
+Štandardne by Ste to v PHP uroblili takto:
 
 ```php
 readfile($filename);
@@ -379,17 +378,15 @@ readfile($filename);
 stream_copy_to_stream(fopen($filename, 'r'), fopen('php://output', 'w'));
 ```
 
-Note that the above omits sending appropriate `Content-Type` and
-`Content-Length` headers; the developer would need to emit these prior to
-calling the above code.
+Všimnite si, že vyššie vynechalo odosielanie správnych hlavičiek `Content-Type`
+a `Content-Length`; vývojár by ich musel vypísať pred volaním daného kódu.
 
-The equivalent using HTTP messages would be to use a `StreamableInterface`
-implementation that accepts a filename and/or stream resource, and to provide
-this to the response instance. A complete example, including setting appropriate
-headers:
+Porovnateľné s použitím HTTP správ by bolo cez `StreamableInterface`
+implementáciu, ktorá akceptuje súbor a/alebo zdroj prúdu a poskytuje ho inštancii
+odpovede. Kompletný príklad, vrátane nastavenia vhodných hlavičiek:
 
 ```php
-// where Stream is a concrete StreamableInterface:
+// kde stream je konkrétne StreamableInterface:
 $stream   = new Stream($filename);
 $finfo    = new finfo(FILEINFO_MIME);
 $response = $response
@@ -398,18 +395,18 @@ $response = $response
     ->withBody($stream);
 ```
 
-Emitting this response will send the file to the client.
+Vyslanie tejto odpovede vyšle súbor ku klientovi.
 
-#### What if I want to directly emit output?
+#### Čo keď potrebujem priamo vypísať výstup?
 
-Directly emitting output (e.g. via `echo`, `printf`, or writing to the
-`php://output` stream) is generally only advisable as a performance optimization
-or when emitting large data sets. If it needs to be done and you still wish
-to work in an HTTP message paradigm, one approach would be to use a
-callback-based `StreamableInterface` implementation, per [this
-example](https://github.com/phly/psr7examples#direct-output). Wrap any code
-emitting output directly in a callback, pass that to an appropriate
-`StreamableInterface` implementation, and provide it to the message body:
+Priame vypísanie výstupu (napr. cez `echo`, `printf`, alebo vypísaním do
+`php://output` prúdu) je všeobecne iba odporúčané ako optimalizácia výkonu
+alebo keď vypisujeme obrovské sety dát. Ak to potrebujete spraviť a stále
+chcete použit vzor HTTP správ, jeden z postupov by bolo použitie implementácie
+založeneje na callbacku `StreamableInterface` opísaný [v tomto 
+príklade](https://github.com/phly/psr7examples#direct-output). Zabaľ hocijaký kód
+ktorý vysiela výstup priamo do callbacku a pošli ho do správnej 
+implementácie `StreamableInterface`, a poskytni ho do tela správy:
 
 ```php
 $output = new CallbackStream(function () use ($request) {
@@ -421,27 +418,25 @@ return (new Response())
     ->withBody($output);
 ```
 
-#### What if I want to use an iterator for content?
+#### Čo keď chcem použiť opakovanie obsahu?
 
-Ruby's Rack implementation uses an iterator-based approach for server-side
-response message bodies. This can be emulated using an HTTP message paradigm via
-an iterator-backed `StreamableInterface` approach, as [detailed in the
-psr7examples repository](https://github.com/phly/psr7examples#iterators-and-generators).
+Implementácia Ruby-ho Racku používa prístup založený na opakovaní pre telá
+správ odpovedí na strane servera. Toto môže byť emulované so vzorom HTTP
+správ cez prístup založený na `StreamableInterface`, ako je [popísané v
+ropozitári psr7 príkladov](https://github.com/phly/psr7examples#iterators-and-generators).
 
-### Why are streams mutable?
+### Prečo sú prúdy menlivé?
 
-The `StreamableInterface` API includes methods such as `write()` which can
-change the message content -- which directly contradicts having immutable
-messages.
+`StreamableInterface` API zahŕňa metódy ako je `write()`, ktoré môžu meniť
+obsah správy -- to priamo odporuje tvrdeniu o nemenlivých správach.
 
-The problem that arises is due to the fact that the interface is intended to
-wrap a PHP stream or similar. A write operation therefore will proxy to writing
-to the stream. Even if we made `StreamableInterface` immutable, once the stream
-has been updated, any instance that wraps that stream will also be updated --
-making immutability impossible to enforce.
+Problém ktorý vzniká je spôsobneý faktom že rozhranie je určené k zabaleniu
+PHP prúdu a podobne. Operácia zápisu teda zastupuje zapisovanie do prúdu. 
+Aj keď sme urobili `StreamableInterface` nemenným, inštancia ktorá zabalí prúd 
+bude zmenená, keď zmeníme prúd -- a toto znemožní dodržanie nemeniteľnosti.
 
-Our recommendation is that implementations use read-only streams for
-server-side requests and client-side responses.
+Naše odporúčanie je že implementácie budú používať iba na čítanie (read-only)
+prúdy pre požiadavky na strane servera a odpovede na strane klienta.
 
 ### Rationale for ServerRequestInterface
 
