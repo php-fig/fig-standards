@@ -128,8 +128,8 @@ opening tag (which must be on the first line when declare statement(s) are prese
 
 Each declare statement (e.g. `declare(ticks=);`) MUST be on its own line.
 
-When no declare declarations are present there MUST be a blank line after the
-opening `<?php` tag.
+When the opening `<?php` tag is on the first line of the file, it MUST be on it's
+own line with no other statements.
 
 When present, there MUST be one blank line after the `namespace` declaration.
 
