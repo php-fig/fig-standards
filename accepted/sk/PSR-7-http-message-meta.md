@@ -438,53 +438,51 @@ bude zmenená, keď zmeníme prúd -- a toto znemožní dodržanie nemeniteľnos
 Naše odporúčanie je že implementácie budú používať iba na čítanie (read-only)
 prúdy pre požiadavky na strane servera a odpovede na strane klienta.
 
-### Rationale for ServerRequestInterface
+### Zdvôvodnenie pre ServerRequestInterface
 
-The `RequestInterface` and `ResponseInterface` have essentially 1:1
-correlations with the request and response messages described in
-[RFC 7230](http://www.ietf.org/rfc/rfc7230.txt). They provide interfaces for
-implementing value objects that correspond to the specific HTTP message types
-they model.
+`RequestInterface` a `ResponseInterface` majú v podstate vzájomné vzťahy 1:1
+s požiadavkou a odpoveďou správy opísanej 
+v [RFC 7230](http://www.ietf.org/rfc/rfc7230.txt). Poskytujú rozhrania pre
+implementovanie objektov hodnôt korešpondujúce s danýn modelom HTTP správy.
 
-For server-side applications there are other considerations for
-incoming requests:
+Pre aplikácie na strane servera treba brať v úvahu ďaľšie fakty
+pre prichádzajúce požiadavky:
 
-- Access to server parameters (potentially derived from the request, but also
-  potentially the result of server configuration, and generally represented
-  via the `$_SERVER` superglobal; these are part of the PHP Server API (SAPI)).
-- Access to the query string arguments (usually encapsulated in PHP via the
-  `$_GET` superglobal).
-- Access to the parsed body (i.e., data deserialized from the incoming request
-  body; in PHP, this is typically the result of POST requests using
-  `application/x-www-form-urlencoded` content types, and encapsulated in the
-  `$_POST` superglobal, but for non-POST, non-form-encoded data, could be
-  an array or an object).
-- Access to uploaded files (encapsulated in PHP via the `$_FILES` superglobal).
-- Access to cookie values (encapsulated in PHP via the `$_COOKIE` superglobal).
-- Access to attributes derived from the request (usually, but not limited to,
-  those matched against the URL path).
+- Prístup k parametrom servera (odvodené od požiadavky ale tiež z nastavenia
+  servera a všeobecne reprezentované superglobálnou premennou `$_SERVER`; 
+  tieto sú časťou PHP Server API (SAPI)).
+- Prístup k reťazcu dotazu (zvyčajne zabalené v superglobálnej premennej `$_GET`).
+- Prístup k naparsovanému telu (napr., dáta deserializované z tela prichádzajúcej
+  požiadavky; v PHP je toto zvyčajne výsledkom požiadavky POST s typom obsahu
+  `application/x-www-form-urlencoded`, a zabaleným do superglobálnej premennej
+  `$_POST`, ale nezakódované dáta poslané inou ako POST metódou by mohli byť
+  pole alebo objekt).
+- Prístup k nahratým súborom (zabalené do superglobálnej premennej `$_FILES`).
+- Prístup ku cookie hodnotám (zabalené do superglobálnej premennej `$_COOKIE`).
+- Prístup k atribútom odvodeným z požiadavky (zvyčajne tie v URL ceste ale nemusia
+  byť len tie).
 
-Uniform access to these parameters increases the viability of interoperability
-between frameworks and libraries, as they can now assume that if a request
-implements `ServerRequestInterface`, they can get at these values. It also
-solves problems within the PHP language itself:
+Zjednotený prístup k týmto parametrom zvyšuje životaschopnosť spolupráce medzi 
+frameworkami a knižnicami, keďže teraz môžu predpokladať, že ak požiadavka 
+implementuje `ServerRequestInterface`, tak môžu získať tieto hodnoty. Tiež rieši
+problémy so samotným jazykom PHP:
 
-- Until 5.6.0, `php://input` was read-once; as such, instantiating multiple
-  request instances from multiple frameworks/libraries could lead to
-  inconsistent state, as the first to access `php://input` would be the only
-  one to receive the data.
-- Unit testing against superglobals (e.g., `$_GET`, `$_FILES`, etc.) is
-  difficult and typically brittle. Encapsulating them inside the
-  `ServerRequestInterface` implementation eases testing considerations.
+- Do 5.6.0, `php://input` bol iba na čítanie; ako také, inicializovanie
+  viacerých inštancií požiadaviek z viacerých frameworkou a knižníc mohlo
+  viesť k nekonzistentnosti, keďže prvý prístup do `php://input` by bol jediný
+  ktorý by prijímal dáta.
+- Unit testovanie so superglobálnymi premennými (napr., `$_GET`, `$_FILES`, atď.)
+  je zložité a krehké. Ich zabalenie do `ServerRequestInterface` implementácie
+  uľahčuje testovanie.
 
-### Why "parsed body" in the ServerRequestInterface?
+### Prečo "parsované telo" v ServerRequestInterface?
 
-Arguments were made to use the terminology "BodyParams", and require the value
-to be an array, with the following rationale:
+Argumenty boli urobené aby používali terminológiu "BodyParams" a potrebujú aby
+hodnoty boli polia s nasledovným vysvetlením:
 
-- Consistency with other server-side parameter access.
-- `$_POST` is an array, and the 80% use case would target that superglobal.
-- A single type makes for a strong contract, simplifying usage.
+- Konzistencia prístupu s ostatnými parametrami na strane servera.
+- `$_POST` je pole a 80% prípadov by sa zameralo na túto superglobálnu premennú.
+- Jeden typ vytvára silnú dohodu a tak zjednodušuje používanie.
 
 The main argument is that if the body parameters are an array, developers have
 predictable access to values:
