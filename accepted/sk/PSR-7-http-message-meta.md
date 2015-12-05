@@ -218,7 +218,7 @@ URI a špecificky schéma a autorita potrebná, aby sa dalo vytvoriť samotné T
 spojenie. Pre aplikácie na strane servera je plné URI často potrebné aby sa
 dala overiť požiadavka alebo cesta k správnemu spracovateľovi požiadavky.
 
-### Prečo objekty hodnôť?
+### Prečo objekty hodnôt?
 
 Návrh predpisuje správu a URI ako [objekty hodnôt](http://en.wikipedia.org/wiki/Value_object).
 
@@ -484,8 +484,8 @@ hodnoty boli polia s nasledovným vysvetlením:
 - `$_POST` je pole a 80% prípadov by sa zameralo na túto superglobálnu premennú.
 - Jeden typ vytvára silnú dohodu a tak zjednodušuje používanie.
 
-The main argument is that if the body parameters are an array, developers have
-predictable access to values:
+Hlavným dôvodom je, že ak parametre tela sú v poli, tak vývojári vedia
+predpovedať prístup k hodnotám:
 
 ```php
 $foo = isset($request->getBodyParams()['foo'])
@@ -493,22 +493,22 @@ $foo = isset($request->getBodyParams()['foo'])
     : null;
 ```
 
-The argument for using "parsed body" was made by examining the domain. A message
-body can contain literally anything. While traditional web applications use
-forms and submit data using POST, this is a use case that is quickly being
-challenged in current web development trends, which are often API centric, and
-thus use alternate request methods (notably PUT and PATCH), as well as
-non-form-encoded content (generally JSON or XML) that _can_ be coerced to arrays
-in many cases, but in many cases also _cannot_ or _should not_.
+Dôvod pre používanie "parsovaného tela" bol urobený skúmaním okruhu pôsobnosti.
+Telo správy môže doslovne obsahovať čokoľvek. Tradičné webové aplikácie
+používajú formuláre a odosielajú dáta cez POST a toto je prípad ktorý sa 
+v momentálnych trendoch webového vývoja stáva spochybňovaným. Moderné trendy
+sú založené okolo API a teda používajú ďaľšie metódy (napr. PUT a PATCH) ako
+aj obsah nezakódovaný formulárom (hlavne JSON alebo XML) ktorý _môže_ byť
+vložený do pola, alebo aj _nemôže_ či dokonca _nemal by_.
 
-If forcing the property representing the parsed body to be only an array,
-developers then need a shared convention about where to put the results of
-parsing the body. These might include:
+Ak nútime vlastnosť predstavujúcu parsované telo aby bolo iba poľom, tak
+budú vývojári potrebovať zdielanú dohodu o tom, tak sa uložia výsledky
+parsovania tela. Tieto môžu obsahovať:
 
-- A special key under the body parameters, such as `__parsed__`.
-- A special named attribute, such as `__body__`.
+- Špeciálny kľúč pod parametrami tela, napríklad `__parsed__`.
+- Špeciálne pomenovaný atribút, napríklad `__body__`.
 
-The end result is that a developer now has to look in multiple locations:
+Konečný výsledok je že vývojár sa teraz musí pozrieť na viaceré miesta:
 
 ```php
 $data = $request->getBodyParams();
@@ -516,119 +516,117 @@ if (isset($data['__parsed__']) && is_object($data['__parsed__'])) {
     $data = $data['__parsed__'];
 }
 
-// or:
+// alebo:
 $data = $request->getBodyParams();
 if ($request->hasAttribute('__body__')) {
     $data = $request->getAttribute('__body__');
 }
 ```
 
-The solution presented is to use the terminology "ParsedBody", which implies
-that the values are the results of parsing the message body. This also means
-that the return value _will_ be ambiguous; however, because this is an attribute
-of the domain, this is also expected. As such, usage will become:
+Predstavené riešenie je použiť názov "ParsedBody", ktoré nám naznačuje
+že hodnoty sú naparsované výsledky z tela správy. To tiež znamená, že
+vracajúca sa hodnota _bude_ dvojznačná; ale pretože je toto atribút rozsahu,
+tak je to aj očakávané. Použite bude asi takéto:
 
 ```php
 $data = $request->getParsedBody();
 if (! $data instanceof \stdClass) {
-    // raise an exception!
+    // zavolaj výnimku
 }
-// otherwise, we have what we expected
+// v opačnom prípade, máme čo sme chceli
 ```
 
-This approach removes the limitations of forcing an array, at the expense of
-ambiguity of return value. Considering that the other suggested solutions —
-pushing the parsed data into a special body parameter key or into an attribute —
-also suffer from ambiguity, the proposed solution is simpler as it does not
-require additions to the interface specification. Ultimately, the ambiguity
-enables the flexibility required when representing the results of parsing the
-body.
+Tento prístup odstraňuje obmädzenia nútených polí, za cenu dvojzmyselnosti
+vrátenej hodnoty. Vzhľadom k ďaľším navrhovaným riešeniam - tlačenie parsovaných
+dát do špeciálneho kľúča parametra tela alebo do atribútu - ktoré tiež trpia
+dvojzmyselnosťou, je navrhované riešenie jednoduchšie pretože nepotrebuje
+ďaľšie špecifikácie rozhrania. A nakoniec, flexibilita dvojzmyselnosťi je 
+potrebná pri znázorňovaní výsledkov parsovania tela.
 
-### Why is no functionality included for retrieving the "base path"?
+### Prečo nie je pridaná funkcionalita na získanie "základnej cesty"?
 
-Many frameworks provide the ability to get the "base path," usually considered
-the path up to and including the front controller. As an example, if the
-application is served at `http://example.com/b2b/index.php`, and the current URI
-used to request it is `http://example.com/b2b/index.php/customer/register`, the
-functionality to retrieve the base path would return `/b2b/index.php`. This value
-can then be used by routers to strip that path segment prior to attempting a
-match.
+Mnoho frameworkov poskytuje schoponosť na získanie "základnej cesty", zvyčajne
+sa ňou považuje cesta po controller vrátane kontroléra. Ako príklad, ak je 
+aplikácia obsluhovaná z `http://example.com/b2b/index.php`, a momentálne použité 
+URI na požiadavku je `http://example.com/b2b/index.php/customer/register`, 
+tak schopnosť na získanie základnej cesty by vrátilo `/b2b/index.php`. Táto
+hodnota môže byť smerovačmi potom očistená od časti URI cesty pred tým ako
+sa nájde zhoda.
 
-This value is often also then used for URI generation within applications;
-parameters will be passed to the router, which will generate the path, and
-prefix it with the base path in order to return a fully-qualified URI. Other
-tools — typically view helpers, template filters, or template functions — are
-used to resolve a path relative to the base path in order to generate a URI for
-linking to resources such as static assets.
+Táto hodnota je potom často tiež používaná na generovanie URI v rámci aplikácie;
+parametre sa posunú routeru, ktorý vygeneruje cestu a pridá sa základná cesta
+ako predpona a takto sa vráti celá cesta URI. Ostatné nástroje - zvyčajne pomocné
+views, filtre template-ov alebo funkcie template-ov - sa používajú na rozuzlenie
+cesty relatívnej k základnej ceste za účelom generovania URI adries pre statické 
+zdroje ako sú obrázky atď.
 
-On examination of several different implementations, we noticed the following:
+Pozorovaním rôznych implementácií sme zistili nasledovné:
 
-- The logic for determining the base path varies widely between implementations.
-  As an example, compare the [logic in ZF2](https://github.com/zendframework/zf2/blob/release-2.3.7/library/Zend/Http/PhpEnvironment/Request.php#L477-L575)
-  to the [logic in Symfony 2](https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/HttpFoundation/Request.php#L1858-L1877).
-- Most implementations appear to allow manual injection of a base path to the
-  router and/or any facilities used for URI generation.
-- The primary use cases — routing and URI generation — typically are the only
-  consumers of the functionality; developers usually do not need to be aware
-  of the base path concept as other objects take care of that detail for them.
-  As examples:
-  - A router will strip off the base path for you during routing; you do not
-    need to pass the modified path to the router.
-  - View helpers, template filters, etc. typically are injected with a base path
-    prior to invocation. Sometimes this is manually done, though more often it
-    is the result of framework wiring.
-- All sources necessary for calculating the base path *are already in the
-  `RequestInterface` instance*, via server parameters and the URI instance.
+- Logika na určovanie základnej cesty sa dosť líši medzi implementáciami.
+  Ako príklad, porovnajte [logiku v ZF2](https://github.com/zendframework/zf2/blob/release-2.3.7/library/Zend/Http/PhpEnvironment/Request.php#L477-L575)
+  s [logikou v Symfony 2](https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/HttpFoundation/Request.php#L1858-L1877).
+- Väčšina implementácií povoľuje vsunutie základnej cesty do smerovača manuálne
+  a/alebo služieb generujúcich URI adresu.
+- Primárne využitia — smerovanie a generovanie URI — sú typicky jediný konzumenti
+  tejto funkcionality. Vývojári nemusia mať vedomosť o prevedení získania
+  základnej cesty, keďže iné objekty to urobia za nich.
+  Ako príklad:
+  - Smerovač odstrihne základnú cestu počas smerovania, teda vývojár nemusí
+    smerovaču posúvať modifikovanú cestu.
+  - Pomocník pre View, filtre template-ov, atď. sú zvyčajne vsunuté so základnou
+    cestou pred volaním. Niekedy je toto spravené manuálne, hoci najčastejšie
+    ma toto na starosti framework.
+- Všetky zdroje potrebné pre výpočet základnej cesty *sú už v inštancii
+  `RequestInterface`* cez parametre servera a URI inštanciu.
 
-Our stance is that base path detection is framework and/or application
-specific, and the results of detection can be easily injected into objects that
-need it, and/or calculated as needed using utility functions and/or classes from
-the `RequestInterface` instance itself.
+Náš postoj je že detekcia základnej cesty je špecifická pre každy framework
+alebo aplikáciu a výsledky detekcie sa dajú ľahko vsunúť do objektov ktoré 
+ich potrebujú. Tiež môžu byť vypočítané cez pomocné funkcie a triedy
+zo samotnej inštancie `RequestInterface`.
 
-### Why does getUploadedFiles() return objects instead of arrays?
+### Prečo vracia getUploadedFiles() objekty namiesto polí?
 
-`getUploadedFiles()` returns a tree of `Psr\Http\Message\UploadedFileInterface`
-instances. This is done primarily to simplify specification: instead of
-requiring paragraphs of implementation specification for an array, we specify an
-interface.
+`getUploadedFiles()` vracia strom `Psr\Http\Message\UploadedFileInterface`
+inštancií. Toto je spravené pre zjednodušenie špecifikácie: teda namiesto
+odstavcov s textom implementácie špecifikácie poľa sme špecifikovali rozhranie.
 
-Additionally, the data in an `UploadedFileInterface` is normalized to work in
-both SAPI and non-SAPI environments. This allows creation of processes to parse
-the message body manually and assign contents to streams without first writing
-to the filesystem, while still allowing proper handling of file uploads in SAPI
-environments.
+Dodatočne sú dáta v `UploadedFileInterface` normalizované pre prácu so SAPI 
+a aj nie-SAPI prostrediami. Týmto sa dajú vytvárať manuálne procesy 
+na parsovanie tela správy a priraďovať obsah do prúdu bez zápisu do súborového
+systému a zároveň dovoľuje správne ovládať nahrávanie súborob v SAPI 
+prostrediach.
 
-### What about "special" header values?
+### Čo so "special" hodnotami hlavičiek?
 
-A number of header values contain unique representation requirements which can
-pose problems both for consumption as well as generation; in particular, cookies
-and the `Accept` header.
+Množstvo hodnôt hlavičiek obsahuje unikátne požiadavky zobrazenia, ktoré môžu
+spôsobiť problémy pri spracovaní ako aj pri generovaní. Konkrétne cookies
+a hlavička `Accept`.
 
-This proposal does not provide any special treatment of any header types. The
-base `MessageInterface` provides methods for header retrieval and setting, and
-all header values are, in the end, string values.
+Tento návrh neposkytuje žiadne špeciálne zaobchádzanie s typmi hlavičiek. 
+Základne rozhranie `MessageInterface` poskytuje metódy pre získanie a 
+nastavenie hlavičky. Napokon všetky hodnoty hlavičiek sú textové reťazce.
 
-Developers are encouraged to write commodity libraries for interacting with
-these header values, either for the purposes of parsing or generation. Users may
-then consume these libraries when needing to interact with those values.
-Examples of this practice already exist in libraries such as
-[willdurand/Negotiation](https://github.com/willdurand/Negotiation) and
-[aura/accept](https://github.com/pmjones/Aura.Accept). So long as the object
-has functionality for casting the value to a string, these objects can be
-used to populate the headers of an HTTP message.
+Vývojári sú vítaný aby tvorili užitočné knižnice spolupracujúce s týmito
+hodnotami hlavičiek za účelom parsovania alebo generovania. Tieto knižnice
+potom môžu používať užívatelia ktorý potrebujú pracovať s týmito hodnotami.
+Takéto príklady existujú v knižniciach ako sú 
+[willdurand/Negotiation](https://github.com/willdurand/Negotiation) a
+[aura/accept](https://github.com/pmjones/Aura.Accept). Pokiaľ objekt
+bude mať funkcionalitu aby zmenil hodnotu na textový reťazec, tak takýto 
+objekt môže byť použitý na tvorenie hlavičiek HTTP správ.
 
-## 6. People
+## 6. Ľudia
 
-### 6.1 Editor(s)
+### 6.1 Vedúci návrhu
 
 * Matthew Weier O'Phinney
 
-### 6.2 Sponsors
+### 6.2 Navrhovateľia
 
 * Paul M. Jones
 * Beau Simensen (coordinator)
 
-### 6.3 Contributors
+### 6.3 Prispievatelia
 
 * Michael Dowling
 * Larry Garfield

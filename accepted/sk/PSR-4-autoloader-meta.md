@@ -233,7 +233,7 @@ oddelovača by mohlo prísť k neočakávanému chovaniu.
 5. Ľudia
 ---------
 
-### 5.1 Moderátor
+### 5.1 Vedúci návrhu
 
 - Paul M. Jones, Solar/Aura
 
