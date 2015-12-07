@@ -335,8 +335,7 @@ class ClassName
 }
 ```
 
-Otherwise if the class has, it MUST to have a blank line after the
-`use` declaration.
+Otherwise it MUST have a blank line after the `use` declaration.
 
 ```php
 <?php
