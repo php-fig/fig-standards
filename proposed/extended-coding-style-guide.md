@@ -142,7 +142,7 @@ declaration.
 There MUST be one `use` keyword per declaration.
 
 You MUST NOT use `use` statements for classes in the root namespace. Therefore
-you should use `throw new \Exception();` instead of
+you should use `throw new \Exception();` or `throw new Exception();` instead of
 `use Exception; throw new Exception();`
 
 Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces and traits],
