@@ -296,9 +296,10 @@ class ClassName
 }
 ```
 
-Using multiple lines for traits, where each subsequent line is indented
-once. When doing so, the first item in the list MUST be on the same line
-of the `use` keyword, and there MUST be only one trait per line.
+Each individual Trait that is imported into a class MUST be included 
+one-per-line, and each inclusion MUST have its own `use` statement. 
+This matches the PSR-2 format for including Namespaces and Namespace 
+Aliases.
 
 ```php
 <?php
@@ -310,9 +311,9 @@ use Vendor\Package\ThirdTrait;
 
 class ClassName
 {
-    use FirstTrait,
-        SecondTrait,
-        ThirdTrait;
+    use FirstTrait;
+    use SecondTrait;
+    use ThirdTrait;
 }
 ```
 
