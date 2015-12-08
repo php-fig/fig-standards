@@ -193,9 +193,9 @@ use Vendor\Package\Namespace\{
 };
 ```
 
-Files containing markup outside PHP opening and closing tags MUST, on the first
-line, include an opening php tag, the strict types declaration and closing
-tag.
+When wishing to declare strict types in files containing markup outside PHP
+opening and closing tags MUST, on the first line, include an opening php tag,
+the strict types declaration and closing tag.
 
 For example:
 ```php
