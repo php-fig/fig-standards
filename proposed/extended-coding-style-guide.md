@@ -142,7 +142,7 @@ declaration.
 There MUST be one `use` keyword per declaration.
 
 You MUST NOT use `use` statements for classes in the root namespace. Therefore
-you should use `throw new \Exception();` instead of
+you should use `throw new \Exception();` or `throw new Exception();` instead of
 `use Exception; throw new Exception();`
 
 Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces and traits],
@@ -193,9 +193,9 @@ use Vendor\Package\Namespace\{
 };
 ```
 
-Files containing markup outside PHP opening and closing tags MUST, on the first
-line, include an opening php tag, the strict types declaration and closing
-tag.
+When wishing to declare strict types in files containing markup outside PHP
+opening and closing tags MUST, on the first line, include an opening php tag,
+the strict types declaration and closing tag.
 
 For example:
 ```php
