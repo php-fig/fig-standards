@@ -145,7 +145,7 @@ class Foo
 
 Este guia intencionalmente evita qualquer recomentação em relação ao uso de nomes de propriedades utilizando `$StudlyCaps`, `$camelCase` ou `$under_score`.
 
-Qualquer que seja a convenção de nomeação utilizada, esta DEVE ser aplicada consistentemente dentro de um escopo rasoável. Este escopo podendo ser à nível de vendor, pacotes, classes ou métodos.
+Qualquer que seja a convenção de nomeação utilizada, esta DEVE ser aplicada consistentemente dentro de um escopo razoável. Este escopo podendo ser à nível de vendor, pacotes, classes ou métodos.
 
 ### 4.3. Métodos
 
