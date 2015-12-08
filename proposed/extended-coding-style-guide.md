@@ -526,6 +526,7 @@ each comma, and there MUST be one space after each comma.
 
 ```php
 <?php
+
 bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
@@ -537,6 +538,7 @@ next line, and there MUST be only one argument per line.
 
 ```php
 <?php
+
 $foo->bar(
     $longArgument,
     $longerArgument,
@@ -570,6 +572,7 @@ closing brace from the earlier body.
 
 ```php
 <?php
+
 if ($expr1) {
     // if body
 } elseif ($expr2) {
@@ -593,6 +596,7 @@ indented at the same level as the `case` body. There MUST be a comment such as
 
 ```php
 <?php
+
 switch ($expr) {
     case 0:
         echo 'First case, with a break';
@@ -619,6 +623,7 @@ parentheses, spaces, and braces.
 
 ```php
 <?php
+
 while ($expr) {
     // structure body
 }
@@ -629,6 +634,7 @@ of parentheses, spaces, and braces.
 
 ```php
 <?php
+
 do {
     // structure body;
 } while ($expr);
@@ -641,6 +647,7 @@ spaces, and braces.
 
 ```php
 <?php
+
 for ($i = 0; $i < 10; $i++) {
     // for body
 }
@@ -653,6 +660,7 @@ parentheses, spaces, and braces.
 
 ```php
 <?php
+
 foreach ($iterable as $key => $value) {
     // foreach body
 }
@@ -665,6 +673,7 @@ parentheses, spaces, and braces.
 
 ```php
 <?php
+
 try {
     // try body
 } catch (FirstThrowableType $e) {
@@ -722,6 +731,7 @@ parentheses, commas, spaces, and braces:
 
 ```php
 <?php
+
 $closureWithArgs = function ($arg1, $arg2) {
     // body
 };
@@ -745,6 +755,7 @@ variable lists split across multiple lines.
 
 ```php
 <?php
+
 $longArgs_noVars = function (
     $longArgument,
     $longerArgument,
@@ -795,6 +806,7 @@ in a function or method call as an argument.
 
 ```php
 <?php
+
 $foo->bar(
     $arg1,
     function ($arg2) use ($var1) {
