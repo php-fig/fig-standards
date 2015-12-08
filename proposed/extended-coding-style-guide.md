@@ -141,10 +141,6 @@ declaration.
 
 There MUST be one `use` keyword per declaration.
 
-You MUST NOT use `use` statements for classes in the root namespace. Therefore
-you should use `throw new \Exception();` or `throw new Exception();` instead of
-`use Exception; throw new Exception();`
-
 Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces and traits],
 functions or constants). To elaborate, this means that any and all classes are in a block
 together; any and all functions are in a block together; and any and all constants must

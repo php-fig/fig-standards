@@ -94,7 +94,6 @@ specification for a full understanding of its contents.
 ### New Statements
 
 * Lowercase for all keywords - Section 2.5
-* Don't import (using use statements) classes in the root namespace - Section 3
 * Use statement grouping - Section 3
 * Use statement blocks - Section 3
 * Declare statement/Strict types declaration usage - Section 3
