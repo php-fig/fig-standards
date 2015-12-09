@@ -297,9 +297,7 @@ class ClassName
 ```
 
 Each individual Trait that is imported into a class MUST be included 
-one-per-line, and each inclusion MUST have its own `use` statement. 
-This matches the PSR-2 format for including Namespaces and Namespace 
-Aliases.
+one-per-line, and each inclusion MUST have its own `use` statement.
 
 ```php
 <?php
