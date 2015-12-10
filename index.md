@@ -6,11 +6,16 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 ## Index by Status
 
-### Accepted
+### Deprecated
 
 | Num | Title                          | Editor                  |  Coordinator  | Sponsor        |
 |:---:|--------------------------------|-------------------------|---------------|----------------|
 | 0   | [Autoloading Standard][psr0]   | _N/A_                   | _N/A_         | _N/A_          |
+
+### Accepted
+
+| Num | Title                          | Editor                  |  Coordinator  | Sponsor        |
+|:---:|--------------------------------|-------------------------|---------------|----------------|
 | 1   | [Basic Coding Standard][psr1]  | _N/A_                   | _N/A_         | _N/A_          |
 | 2   | [Coding Style Guide][psr2]     | _N/A_                   | _N/A_         | _N/A_          |
 | 3   | [Logger Interface][psr3]       | Jordi Boggiano          | _N/A_         | _N/A_          |
@@ -38,7 +43,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Status | Num | Title                                | Editor(s)                      |  Coordinator   | Sponsor           |
 |--------|:---:|--------------------------------------|--------------------------------|----------------|-------------------|
-| A      | 0   | [Autoloading Standard][psr0]         | _N/A_                          | _N/A_          | _N/A_             |
+| X      | 0   | [Autoloading Standard][psr0]         | _N/A_                          | _N/A_          | _N/A_             |
 | A      | 1   | [Basic Coding Standard][psr1]        | _N/A_                          | _N/A_          | _N/A_             |
 | A      | 2   | [Coding Style Guide][psr2]           | _N/A_                          | _N/A_          | _N/A_             |
 | A      | 3   | [Logger Interface][psr3]             | Jordi Boggiano                 | _N/A_          | _N/A_             |
@@ -52,7 +57,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones  | Jeremy Lindblom   |
 | D      | 12  | [Extended Coding Style Guide][psr12] | Michael Cullum                 | Korvin Szanto  | Alexander Makarov |
 
-_**Legend:** A = Accepted | D = Draft | R = Review_
+_**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 
 [workflow]: http://www.php-fig.org/bylaws/psr-workflow/
 [psr0]: /psr/psr-0/
