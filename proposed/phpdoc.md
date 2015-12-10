@@ -17,36 +17,36 @@ PSR-5: PHPDoc
   - [5.4. Inline PHPDoc](#54-inline-phpdoc)
   - [5.5. Examples](#55-examples)
 - [6. Inheritance](#6-inheritance)
-  - [6.1. Class Or Interface](#61-class-or-interface)
-  - [6.2. Function Or Method](#62-function-or-method)
-  - [6.3. Constant Or Property](#63-constant-or-property)
-- [7. Describing hashes](#7-describing-hashes)
-- [8. Tags](#8-tags)
-  - [8.1.  @api](#81-api)
-  - [8.2.  @author](#82-author)
-  - [8.3.  @category [deprecated]](#83-category-deprecated) 
-  - [8.4.  @copyright](#84-copyright)
-  - [8.5.  @deprecated](#85-deprecated)
-  - [8.6.  @example](#86-example)
-  - [8.7.  @global](#87-global)
-  - [8.8.  @internal](#88-internal)
-  - [8.9.  @license](#89-license)
-  - [8.10. @link [deprecated]](#810-link-deprecated)
-  - [8.11. @method](#811-method)
-  - [8.12. @package](#812-package)
-  - [8.13. @param](#813-param)
-  - [8.14. @property](#814-property)
-  - [8.15. @return](#815-return)
-  - [8.16. @see](#816-see)
-  - [8.17. @since](#817-since)
-  - [8.18. @struct](#818-struct)
-  - [8.19. @subpackage [deprecated]](#819-subpackage-deprecated)
-  - [8.20. @throws](#820-throws)
-  - [8.21. @todo](#821-todo)
-  - [8.22. @typedef](#822-typedef)
-  - [8.23. @uses](#823-uses)
-  - [8.24. @var](#824-var)
-  - [8.25. @version](#825-version)
+  - [6.1. Making inheritance explicit using the @inheritDoc tag](#61-making-inheritance-explicit-using-the-inheritdoc-tag)
+  - [6.2. Using the {@inheritDoc} inline tag to augment a Description](#62-using-the-inheritdoc-inline-tag-to-augment-a-description)
+  - [6.3. Element-specific inherited parts]
+    - [6.3.1. Class Or Interface](#61-class-or-interface)
+    - [6.3.2. Function Or Method](#62-function-or-method)
+    - [6.3.3. Constant Or Property](#63-constant-or-property)
+- [7. Tags](#7-tags)
+  - [7.1.  @api](#71-api)
+  - [7.2.  @author](#72-author)
+  - [7.3.  @category [deprecated]](#73-category-deprecated) 
+  - [7.4.  @copyright](#74-copyright)
+  - [7.5.  @deprecated](#75-deprecated)
+  - [7.6.  @example](#76-example)
+  - [7.7.  @global](#77-global)
+  - [7.8.  @internal](#78-internal)
+  - [7.9.  @license](#79-license)
+  - [7.10. @link [deprecated]](#710-link-deprecated)
+  - [7.11. @method](#711-method)
+  - [7.12. @package](#712-package)
+  - [7.13. @param](#713-param)
+  - [7.14. @property](#714-property)
+  - [7.15. @return](#715-return)
+  - [7.16. @see](#716-see)
+  - [7.17. @since](#717-since)
+  - [7.18. @subpackage [deprecated]](#719-subpackage-deprecated)
+  - [7.19. @throws](#720-throws)
+  - [7.20. @todo](#721-todo)
+  - [7.21. @uses](#723-uses)
+  - [7.22. @var](#724-var)
+  - [7.23. @version](#725-version)
 - [Appendix A. Types](#appendix-a-types)
   - [ABFN](#abfn)
   - [Details](#details)
@@ -81,15 +81,15 @@ interpreted as described in [RFC 2119][RFC2119].
 
 ## 3. Definitions
 
-* "PHPDoc" is a section of documentation which provides information on several
-  aspects of a "Structural Element".
+* "PHPDoc" is a section of documentation which provides information on aspects 
+  of a "Structural Element".
 
-  > It is important to note that the PHPDoc and the DocBlock are two separate
+  > It is important to note that a PHPDoc and a DocBlock are two separate
   > entities. The DocBlock is the combination of a DocComment, which is a type
   > of comment, and a PHPDoc entity. It is the PHPDoc entity that contains the
-  > syntax as described in chapter 5 such as the description and tags.
+  > syntax as described in this specification such as the description and tags.
 
-* "Structural Element" is a collection of Programming Constructs which SHOULD be
+* "Structural Element" is a collection of Programming Constructs which MAY be
   preceded by a DocBlock. The collection contains the following constructs:
 
   * file
@@ -103,9 +103,10 @@ interpreted as described in [RFC 2119][RFC2119].
   * constant
   * variables, both local and global scope.
 
-  It is RECOMMENDED to precede a "Structural Element" with a DocBlock with its
-  definition and not with each usage. It is common practice to have the DocBlock
-  precede a Structural Element but it MAY also be separated by a an empty line.
+  It is RECOMMENDED to precede a "Structural Element" with a DocBlock where it is
+  defined and not with each usage. It is common practice to have the DocBlock
+  precede a Structural Element but it MAY also be separated by a an undetermined 
+  number of empty lines.
 
   Example:
 
@@ -507,7 +508,7 @@ their usage be restricted to tags and locations that are documented.
 ### 5.5. Examples
 
 The following examples serve to illustrate the basic use of DocBlocks; it is
-advised to read through the list of tags in chapter 8.
+advised to read through the list of tags in chapter 7.
 
 A complete example could look like the following example:
 
@@ -593,54 +594,121 @@ class MyMagicClass
 
 ## 6. Inheritance
 
-PHPDoc's also have the ability to inherit information when the succeeding
-"Structural Element" has a super-element (such as a super-class or a method with
-the same name in a super-class or implemented in a super-interface).
+A PHPDoc that is associated with a "Structural Element" that implements, extends 
+or overrides a "Structural Element" has the ability to inherit parts of 
+information from the PHPDoc associated with the "Structural Element" that is 
+implemented, extended or overridden.
 
-Every "Structural Element" MUST inherit the following PHPDoc parts by default:
+The PHPDoc for every type of "Structural Element" MUST inherit the following 
+parts if that part is absent:
 
 * [Summary](#51-summary)
-* [Description](#52-description)
-* A specific subset of [tags](#53-tags)
-  * [@version](#825-version)
-  * [@author](#82-author)
-  * [@copyright](#84-copyright)
+* [Description](#52-description) and
+* A specific subset of [tags](#53-tags):
+  * [@version](#725-version)
+  * [@author](#72-author)
+  * [@copyright](#74-copyright)
 
-Each specific "Structural Element" MUST also inherit a specialized subset as
-defined in the sub-chapters.
+The PHPDoc for each type of "Structural Element" MUST also inherit a 
+specialized subset of tags depending on which "Structural Element" is 
+associated. 
 
-The PHPDoc parts MUST NOT be inherited when a replacement is available in the
-sub-element. The exception to this rule is when the {@inheritdoc} inline tag is
-present in the Description. When present the parser MUST insert the
-super-element's Description at the location of the {@inheritdoc} inline
-tag, while still including the current element's description.
+If a PHPDoc does not feature a part, such as Summary or Description, that is 
+present in the PHPDoc of a super-element, then that part is always implicitly
+inherited.
+The following is a list of all elements whose DocBlocks are able to inherit 
+information from a super-element's DocBlock:
+
+1. a Class' or Interface's DocBlock can inherit information from a Class or 
+   Interface which it extends.
+2. a Property's DocBlock can inherit information from a Property with the same 
+   name that is declared in a superclass.
+3. a Method's DocBlock can inherit information from a Method with the same 
+   name that is declared in a superclass.
+4. a Method's DocBlock can inherit information from a Method with the same 
+   name that is declared in an implemented interface in the current Class
+   or that is implemented in a superclass.   
+
+> For example:
+>
+> Let's assume you have a method `\SubClass::myMethod()` and its class 
+> `\SubClass` extends the class `\SuperClass`. And in the class `\SuperClass` 
+> there is a method with the same name (e.g. `\SuperClass::myMethod`). 
+>
+> If the above applies then the DocBlock of `\SubClass::myMethod()` will
+> inherit any of the parts mentioned above from the PHPDoc of 
+> `\SuperClass::myMethod`. So if the `@version` tag was not redefined then it 
+> is assumed that `\SubClass::myMethod()` will have the same `@version` 
+> tag.
 
 Inheritance takes place from the root of a class hierarchy graph to its leafs.
-This means that anything inherited in the bottom of the tree MUST 'bubble' up to
-the top unless overridden.
+This means that anything inherited in the bottom of the tree MUST 'bubble' up 
+to the top unless overridden.
 
-> Note: a special circumstance here would be when the Description must be
-> overridden but the Summary should stay intact. It would be difficult
-> for a reader to distinguish which is overridden.
->
-> In this case the writer MUST use the {@inheritdoc} inline tag as
-> Summary and override the Description with the intended text.
->
-> Without the {@inheritdoc} inline tag the reader MUST interpret any text
-> as if the Summary would be overridden and Description MAY
-> appear overridden if the block of text contains a Summary ending
-> as defined in the ABNF.
+## 6.1. Making inheritance explicit using the @inheritDoc tag
 
-### 6.1. Class Or Interface
+Because inheritance is implicit it may happen that it is not necessary to 
+include a PHPDoc with a "Structural Element". This can cause confusion as it 
+is now ambiguous whether the PHPDoc was omitted on purpose or whether the 
+author of the code had forgotten to add documentation.
+
+In order to resolve this ambiguity the `@inheritDoc` tag can be used to 
+indicate that this element will inherit its information from a super-element.
+
+Example:
+
+    /**
+     * This is a summary.
+     */
+    class SuperClass 
+    {
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    class SubClass extends SuperClass
+    {
+    }
+
+In the example above the SubClass' Summary can be considered equal to that of 
+the SuperClass element, which is thus "This is a summary.".
+
+## 6.2. Using the {@inheritDoc} inline tag to augment a Description 
+
+Sometimes you want to inherit the Description of a super-element and add your 
+own text with it to provide information specific to your "Structural Element". 
+This MUST be done using the `{@inheritDoc}` inline tag.
+
+The `{@inheritDoc}` inline tag will indicate that at that location the 
+super-element's description MUST be injected or inferred.
+
+Example:
+
+    /**
+     * This is the Summary for this element.
+     * 
+     * {@inheritDoc}
+     *
+     * In addition this description will contain more information that
+     * will provide a detailed piece of information specific to this
+     * element.
+     */
+
+In the example above it is indicated that the Description of this PHPDoc is a 
+combination of the Description of the super-element, indicated by the 
+`{@inheritDoc}` inline tag, and the subsequent body text.
+
+### 6.3. Class Or Interface
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a class or interface MUST inherit the following tags:
 
-* [@package](#812-package)
+* [@package](#712-package)
 
 A class or interface SHOULD inherit the following deprecated tags if supplied:
 
-* [@subpackage](#819-subpackage-deprecated)
+* [@subpackage](#719-subpackage-deprecated)
 
 The @subpackage MUST NOT be inherited if the @package name of the
 super-class (or interface) is not the same as the @package of the child class
@@ -670,69 +738,28 @@ class My_ActionController extends Framework_ActionController
 In the example above the My_ActionController MUST NOT inherit the subpackage
 _Controllers_.
 
-### 6.2. Function Or Method
+### 6.4. Method
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a function or method in a class or interface MUST inherit the following tags:
 
-* [@param](#813-param)
-* [@return](#815-return)
-* [@throws](#820-throws)
+* [@param](#713-param)
+* [@return](#715-return)
+* [@throws](#720-throws)
 
-### 6.3. Constant Or Property
+### 6.5. Constant Or Property
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a constant or property in a class MUST inherit the following tags:
 
-* [@var](#822-type)
+* [@var](#722-type)
 
-## 7. Describing hashes
-
-The structure of a hash may be described using an "Inline PHPDoc" as part of a
-@var, @param or @return declaration or using the @struct tag in the Class'
-DocBlock.
-
-In either case each element of the hash is denoted with a @var declaration in
-the "Inline PHPDoc". Using this tag it is possible to indicate type, name and
-purpose of the element.
-
-Please note that the variable name part of the @var tag still needs to be
-preceded by a dollar sign for readability and parsability of the tag.
-
-Example:
-
-```php
-/**
- * Initializes this class with the given options.
- *
- * @param array $options {
- *     @var bool   $required Whether this element is required
- *     @var string $label    The display name for this element
- * }
- */
-public function __construct(array $options = array())
-{
-    <...>
-}
-```
-
-### As @struct declaration
-
-In some cases a hash should be documented multiple times in the same class. For
-these purposes you COULD declare it as a 'virtual' "Structural Element" using
-the @struct tag in the declaration of a Class or Interface.
-
-It is RECOMMENDED to use native language constructs in these situations, such as
-a class.
-
-Please see the @struct documentation on how to use this tag.
-
-## 8. Tags
+## 7. Tags
 
 Unless specifically mentioned in the description each tag MAY occur zero or more
 times in each "DocBlock".
 
-### 8.1. @api
+### 7.1.. @api
 
 The @api tag is used to declare "Structural Elements" as being suitable for
 consumption by third parties.
@@ -769,7 +796,7 @@ function showVersion()
 }
 ```
 
-### 8.2. @author
+### 7.2. @author
 
 The @author tag is used to document the author of any "Structural Element".
 
@@ -794,7 +821,7 @@ adhere to the syntax defined in RFC 2822.
  */
 ```
 
-### 8.3. @category [deprecated]
+### 7.3. @category [deprecated]
 
 The @category tag is used to organize groups of packages together but is
 deprecated in favour of occupying the top-level with the @package tag.
@@ -829,7 +856,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 8.4. @copyright
+### 7.4. @copyright
 
 The @copyright tag is used to document the copyright information of any
 "Structural element".
@@ -856,7 +883,7 @@ covered by this copyright and the organization involved.
  */
 ```
 
-### 8.5. @deprecated
+### 7.5. @deprecated
 
 The @deprecated tag is used to indicate which 'Structural elements' are
 deprecated and are to be removed in a future version.
@@ -916,7 +943,7 @@ If the associated element is superseded by another it is RECOMMENDED to add a
  */
 ```
 
-### 8.6. @example
+### 7.6. @example
 
 The @example tag is used to link to an external source code file which contains
 an example of use for the current "Structural element". An inline variant exists
@@ -990,7 +1017,7 @@ function count()
 }
 ```
 
-### 8.7. @global
+### 7.7. @global
 
 TODO: The definition of this item should be discussed and whether it may or
 may not be superceded in part or in whole by the @var tag.
@@ -1031,7 +1058,7 @@ variable and a variable documented in the project.
 
 (TODO: Examples for this tag should be added)
 
-### 8.8. @internal
+### 7.8. @internal
 
 The @internal tag is used to denote that the associated "Structural Element" is
 a structure internal to this application or library. It may also be used inside
@@ -1094,7 +1121,7 @@ function count()
 }
 ```
 
-### 8.9. @license
+### 7.9. @license
 
 The @license tag is used to indicate which license is applicable for the
 associated 'Structural Elements'.
@@ -1134,7 +1161,7 @@ license.
  */
 ```
 
-### 8.10. @link [deprecated]
+### 7.10. @link [deprecated]
 
 *This tag is deprecated in favor of the `@see` tag, which since this
 specification may relate to URIs.*
@@ -1187,7 +1214,7 @@ function count()
 }
 ```
 
-### 8.11. @method
+### 7.11. @method
 
 The @method allows a class to know which 'magic' methods are callable.
 
@@ -1237,7 +1264,7 @@ class Child extends Parent
 }
 ```
 
-### 8.12. @package
+### 7.12. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -1286,7 +1313,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 8.13. @param
+### 7.13. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -1345,7 +1372,7 @@ public function __construct(array $options = array())
 }
 ```
 
-### 8.14. @property
+### 7.14. @property
 
 The @property tag allows a class to know which 'magic' properties are present.
 
@@ -1387,7 +1414,7 @@ class Child extends Parent
 }
 ```
 
-### 8.15. @return
+### 7.15. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -1436,7 +1463,7 @@ function getLabel()
 }
 ```
 
-### 8.16. @see
+### 7.16. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -1478,7 +1505,7 @@ function count()
 }
 ```
 
-### 8.17. @since
+### 7.17. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -1528,12 +1555,7 @@ class Foo
 }
 ```
 
-### 8.18. @struct
-
-TODO: specify details
-TODO: determine whether this is a correct approach
-
-### 8.19. @subpackage [deprecated]
+### 7.18. @subpackage [deprecated]
 
 The @subpackage tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -1567,7 +1589,7 @@ DocBlock.
  */
 ```
 
-### 8.20. @throws
+### 7.19. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of exception.
@@ -1611,7 +1633,7 @@ function count($items)
 }
 ```
 
-### 8.21. @todo
+### 7.20. @todo
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -1643,114 +1665,7 @@ function count()
 }
 ```
 
-### 8.22. @typedef
-
-Allows the author to define a custom type composed of one or more types that
-may be augmented with key definitions, properties or methods.
-
-#### Syntax
-
-    @typedef ["Type"] [<"QCN">] [<"Inline PHPDoc">]
-
-#### Description
-
-Using the `@typedef` tag it is possible to define a new pseudo-type or 
-associative array definition for use in PHPDoc blocks.
-
-Let's explain this concept by presenting the following use-cases:
-
-1. You want to document the properties of a class that is dynamically 
-   constructed, such as the `\stdClass` coming from `json_decode`.
-2. You have a configuration array for which you want to document its keys and 
-   associated values.
-3. You consume a library with magic methods who does not implement the `@method`
-   tag but still want to document which methods are on it yourself.
-4. You want a pseudo-type called Scalar that represents either a string, float,
-   bool or int.
-5. You have used class_alias() to create an alias and want PHPDoc to know which
-   class it is based from so that methods and properties could be inherited.
-
-The first parameter for the `@typedef` tag is the base "Type", 
-including compound types and collection classes, that is the defining "Type" 
-for the second parameter. The second parameter is used to name your pseudo-type, 
-and MUST be a Qualified Class Name.
-
-The second parameter MAY be omitted, in which case an "Inline PHPDoc" MUST be
-defined. The information in the "Inline PHPDoc" will augment the existing base
-class. Using this mechanism it is possible to provide additional information
-with an existing class, such as methods or properties that could or were not
-documented in the original.
-
-It is also possible to combine multiple "Types" into a single pseudo-type by 
-using the pipe operator (`|`), the examples section contains an example of use.
-
-##### Location
-
-A `@typedef` tag MUST always be placed on a DocBlock that belongs to a File or 
-Class. 
-
-When associated with a File the type definition is considered to be 
-global and available throughout your project. It is NOT RECOMMENDED to use it
-in this fashion without due consideration as you are making your documentation
-harder to read without generator or IDE.
-
-Type definitions that are associated with a Class MUST only be used inside that
-class, or its descendants, and are considered to have a visibility similar to 
-protected.
-
-##### Adding methods and properties on objects
-
-It is also possible to add new properties or methods using an "Inline PHPDoc",
-and the `@property` and `@method` tags on any object. In this context an object
-is any Qualified Class Name (QCN) that does not match one of PHP's primitive 
-types. A notable exception is the 'object' keyword, which may have methods and 
-properties added onto it.
-
-#### Examples
-
-##### Providing an alias for another class
-
-An example may be that the `\Storage` class is aliased using the 
-`class_alias()` function as `\Session`, and the elements of the `\Session` 
-class must be documented. 
-
-The above can be accomplished with the following tag:
-
-    @typedef \Storage \Session
-
-##### Defining additional elements on an aliased class
-
-Here is an example where we add a property and a summary on the new `\Session`
-class.
-
-```
-@typedef \Storage \Session {
-  This class represents a session that stores user specific information.
-
-  @property string $session_id
-}
-```
-
-##### Combining multiple types into one
-
-An example of combining multiple types may be a class that is regularly 
-stubbed in unit tests:
-
-    @typedef \Mockery\MockInterface|\My\DiContainer DicStub
-
-The above example will construct a pseudo-type DicStub that combines the methods
-and properties of both the MockInterface and the DiContainer.
-
-##### Defining an associative array as pseudo-type
-
-```
-@typedef array \Configuration {
-  @var string $setting1
-  @var string $setting2
-}
-```
-
-### 8.23. @uses
+### 7.21. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1803,7 +1718,7 @@ function executeMyView()
 }
 ```
 
-### 8.24. @var
+### 7.22. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1907,7 +1822,7 @@ class Foo
 }
 ```
 
-### 8.25. @version
+### 7.23. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
