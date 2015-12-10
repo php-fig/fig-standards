@@ -1670,8 +1670,8 @@ interface UriInterface
      * rootless (not starting with a slash). Implementations MUST support all
      * three syntaxes.
      *
-     * If the path is intended to be domain-relative rather than path relative then
-     * it must begin with a slash ("/"). Paths not starting with a slash ("/")
+     * If an HTTP path is intended to be host-relative rather than path-relative
+     * then it must begin with a slash ("/"). HTTP paths not starting with a slash
      * are assumed to be relative to some base path known to the application or
      * consumer.
      *
