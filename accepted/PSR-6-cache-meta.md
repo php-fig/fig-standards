@@ -183,7 +183,8 @@ function load_widgets(array $ids)
             $value = $item->get();
         } else {
             $value = expensive_widget_load($id);
-            $item->set($value, 3600);
+            $item->set($value);
+            $item->expiresAfter(3600);
             $pool->saveDeferred($item, true);
         }
         $widget[$value->id()] = $value;
@@ -289,6 +290,7 @@ do so.
 
 6. Votes
 --------
+[Acceptance vote on the mailing list][https://groups.google.com/forum/#!msg/php-fig/dSw5IhpKJ1g/O9wpqizWAwAJ]
 
 
 7. Relevant Links
