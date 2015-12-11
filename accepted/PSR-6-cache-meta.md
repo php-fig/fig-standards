@@ -183,7 +183,8 @@ function load_widgets(array $ids)
             $value = $item->get();
         } else {
             $value = expensive_widget_load($id);
-            $item->set($value, 3600);
+            $item->set($value);
+            $item->expiresAfter(3600);
             $pool->saveDeferred($item, true);
         }
         $widget[$value->id()] = $value;
