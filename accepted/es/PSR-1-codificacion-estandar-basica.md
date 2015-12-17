@@ -7,6 +7,7 @@ En el documento original se usa el [RFC 2119][] para el uso de las palabras MUST
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/es/PSR-0.md
+[PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
 1. Visión general
 ----------------------
@@ -17,7 +18,7 @@ En el documento original se usa el [RFC 2119][] para el uso de las palabras MUST
 
 - Los archivos DEBERÍAN declarar *cualquier* estructura (clases, funciones, constantes, etc,...) *o* realizar partes de la lógica de negocio (por ejemplo, generar una salida, cambio de configuración ini, etc,...) pero NO DEBERÍAN hacer las dos cosas.
 
-- Los espacios de nombres y las clases DEBEN cumplir el estándar [PSR-0][].
+- Los espacios de nombres y las clases DEBEN cumplir un estándar "autocarga": [[PSR-0][], [PSR-4][]].
 
 - Los nombres de las clases DEBEN declararse en notación `StudlyCaps`. [^1]
 
@@ -87,7 +88,7 @@ if (! function_exists('bar')) {
 3. Espacios de nombres y nombres de las Clases
 ----------------------------------------------
 
-Los espacios de nombres y las clases DEBEN seguir el estándar [PSR-0][].
+Los espacios de nombres y las clases DEBEN seguir un estándar "autocarga": [[PSR-0][], [PSR-4][]].
 
 Esto significa que cada clase estará en un fichero independiente y está dentro de un espacio de nombres en al menos un nivel: un nombre de proveedor de nivel superior.
 
