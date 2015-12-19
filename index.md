@@ -69,7 +69,7 @@ _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 [psr6]: /psr/psr-6/
 [psr7]: /psr/psr-7/
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/psr-8-hug.md
-[psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
-[psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
+[psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
+[psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
