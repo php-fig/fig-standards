@@ -3,8 +3,8 @@
 ## 1. Resumo
 
 O objetivo desta proposta é fornecer um conjunto de interfaces comuns para mensagens HTTP
-, tal como descrito em [RFC 7230] (http://tools.ietf.org/html/rfc7230) e
-[RFC 7231] (http://tools.ietf.org/html/rfc7231), e URIs como descrito em 
+, tal como descrito na [RFC 7230] (http://tools.ietf.org/html/rfc7230) e
+[RFC 7231] (http://tools.ietf.org/html/rfc7231), e URIs como descrito na
 [RFC 3986] (http://tools.ietf.org/html/rfc3986) (no contexto de mensagens HTTP).
 
 - RFC 7230: http://www.ietf.org/rfc/rfc7230.txt
@@ -90,15 +90,15 @@ situações:
 Como exemplos:
 
 1. Apenas sobre qualquer aplicação que iniciou o desenvolvimento antes do surgimento dos
-   frameworks, que inclui uma série de CMS muito populares, fórum, e sistemas de compras
+   frameworks, o que inclui uma série de CMS muito populares, fórum, e sistemas de compras
    , têm historicamente utilizado superglobais.
-2. Frameworks, como Symfony e Zend Framework, definem componentes HTTP
-   que formam a base de suas camadas MVC; mesmo bibliotecas pequenas, de finalidade única
+2. Frameworks, como Symfony e Zend Framework, cada um define componentes HTTP
+   que formam a base de suas camadas MVC; mesmo bibliotecas pequenas, de finalidade única,
    como oauth2-server-php fornecem e exigem suas próprias implementações de requisição/resposta
    HTTP. Guzzle, Buzz, e outras implementações de cliente HTTP
    cada um cria suas próprias implementações de mensagem HTTP também.
 3. Projetos como Silex, Stack e Drupal 8 têm dependências rígidas no
-   kernel HTTP do Symfony. Qualquer SDK construído sobre Guzzle tem uma exigência rígida nas
+   kernel HTTP do Symfony. Qualquer SDK construído sobre Guzzle tem uma dependência rígida nas
    implementações de mensagem HTTP do Guzzle.
 4. Projetos como Geocoder criam [adaptadores redundantes para bibliotecas comuns
    ](https://github.com/geocoder-php/Geocoder/tree/6a729c6869f55ad55ae641c74ac9ce7731635e6e/src/Geocoder/HttpAdapter).
@@ -111,7 +111,7 @@ código.
 
 No ecossistema atual dos frameworks que implementam abstrações de mensagem HTTP,
 o resultado final é que os projetos não são capazes de interoperabilidade ou
-polinização cruzada. A fim de consumir código visando um framework de
+polinização cruzada. A fim de consumir código visando um framework a partir de
 outro, a primeira ordem de negócio é a construção de uma camada ponte entre as
 implementações de mensagem HTTP. No lado do cliente, se uma determinada biblioteca
 não tem um adaptador que você pode utilizar, você precisa cobrir os pares requisição/resposta
@@ -145,7 +145,7 @@ HTTP.
 * Definir as interfaces para modelar todos os elementos da mensagem HTTP e
   especificações URI.
 * Garantir que a API não impõe limites arbitrários sobre mensagens HTTP. Por
-  exemplo, alguns corpos de mensagens HTTP podem ser muito grandes para armazenar na memória, por isso,
+  exemplo, alguns corpos de mensagens HTTP podem ser muito grandes para armazenar na memória, portanto,
   devemos levar isso em consideração.
 * Fornecer abstrações úteis tanto para lidar com solicitações de entrada para
   aplicações do lado do servidor quanto para o envio de requisições de saída em clientes HTTP.
