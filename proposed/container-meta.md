@@ -162,6 +162,8 @@ interface FactoryInterface
 
 class ExampleFactory implements FactoryInterface
 {
+    protected $container;
+    
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
@@ -169,7 +171,7 @@ class ExampleFactory implements FactoryInterface
 
     public function newInstance()
     {
-        return new Example($container->get('db'));
+        return new Example($this->container->get('db'));
     }
 }
 ```
