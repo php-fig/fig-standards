@@ -179,3 +179,160 @@ inspiradas parcialmente pelo uso PHP existente, mas também por outras linguagen
 [WSGI](https://www.python.org/dev/peps/pep-0333/) do Python,
 [http package](http://golang.org/pkg/net/http/) do Go,
 [http module](http://nodejs.org/api/http.html) do Node, etc.
+
+### Por que existem métodos de cabeçalho nas mensagens em vez de em um header bag?
+
+A mensagem em si é um recipiente para os cabeçalhos (bem como as outras propriedades da
+mensagem). Como eles são representados internamente é um detalhe de implementação,
+mas o acesso uniforme aos cabeçalhos é uma responsabilidade da mensagem.
+
+### Por que URIs são representados como objetos?
+
+URIs são valores, com identidade definida pelo valor e, portanto, devem ser modelados
+como value objects.
+
+Além disso, URIs contêm uma variedade de segmentos que podem ser acessados muitas
+vezes em uma determinada requisição - e que necessitaria do parse da URI a fim de
+determinar (por exemplo, via `parse_url()`). Modelar URIs como value objects permite
+fazer o parse uma única vez, e simplifica o acesso aos segmentos individuais. Isso também
+proporciona comodidade em aplicações do cliente ao permitir que os usuários criem novas
+instâncias de uma instância URI base com apenas os segmentos que mudam (por exemplo,
+atualizando apenas o caminho).
+
+### Porque a interface de requisição tem métodos para lidar com request-target E compor um URI?
+
+O RFC 7230 detalha a linha de requisição como contendo um "request-target". Das quatro
+formas de request-target, apenas uma é um URI compatível com o RFC 3986; a forma mais
+comum usada é origin-form, que representa um URI sem a informação de esquema ou
+autoridade. Além disso, uma vez que todas as formas são válidas
+para efeito de requisições, a proposta deve acomodar cada uma.
+
+`RequestInterface` portanto, tem métodos relacionados ao request-target. Por padrão,
+ele usará o URI composto para apresentar um origin-form request-target, e, na
+ausência de uma instância URI, retorna a string "/".  Outro método,
+`withRequestTarget()`, permite especificar uma instância com um request-target
+específico, permitindo aos usuários criar requisições que usam uma das outras formas
+request-target válidas.
+
+O URI é mantido como um membro discreto da requisição por várias razões.
+Para ambos os clientes e servidores, o conhecimento do URI absoluto é tipicamente
+exigido. No caso dos clientes, o URI, e especificamente os detalhes do esquema
+e autoridade, são necessários a fim de estabelecer a conexão TCP. Para aplicações
+do lado do servidor, o URI completo é frequentemente necessário a fim de validar
+a requisição ou para encaminhar a um manipulador apropriado.
+
+### Por que value objects?
+
+A proposta modela mensagens e URIs como [value objects](http://en.wikipedia.org/wiki/Value_object).
+
+Mensagens são valores onde a identidade é o agregado de todas as partes da
+mensagem; uma alteração em qualquer aspecto da mensagem é essencialmente uma nova mensagem.
+Essa é a própria definição do value object. A prática pela qual alterações
+resultam em uma nova instância é denominada [imutabilidade](http://en.wikipedia.org/wiki/Immutable_object),
+e é uma característica projetada para assegurar a integridade de um determinado valor.
+
+A proposta também reconhece que a maioria das aplicações ao lado do cliente e do servidor
+deverão ser capaz de atualizar facilmente os aspectos da mensagem, e, como
+tal, fornecer métodos de interface que irão criar novas instâncias de mensagem com
+as atualizações. Esses geralmente são prefixados com as palavras `with`
+ou `without`.
+
+Value objects oferecem vários benefícios ao modelar mensagens HTTP:
+
+- Alterações no estado do URI não podem alterar a requisição compondo a instância URI.
+- Alterações nos cabeçalhos não podem alterar a mensagem compondo eles.
+
+Em essência, a modelagem de mensagens HTTP como value objects garante a integridade do
+estado da mensagem, e evita a necessidade de dependências bi-direcionais, que
+muitas vezes podem sair de sincronia ou levar a problemas de depuração ou de desempenho.
+
+Para os clientes HTTP, eles permitem que os consumidores construam uma requisição base com dados tais
+como o URI base e os cabeçalhos necessários, sem a necessidade de construir uma nova
+requisição ou redefinir o estado da requisição para cada mensagem que o cliente enviar:
+
+```php
+$uri = new Uri('http://api.example.com');
+$baseRequest = new Request($uri, null, [
+    'Authorization' => 'Bearer ' . $token,
+    'Accept'        => 'application/json',
+]);;
+
+$request = $baseRequest->withUri($uri->withPath('/user'))->withMethod('GET');
+$response = $client->send($request);
+
+// get user id from $response
+
+$body = new StringStream(json_encode(['tasks' => [
+    'Code',
+    'Coffee',
+]]));;
+$request = $baseRequest
+    ->withUri($uri->withPath('/tasks/user/' . $userId))
+    ->withMethod('POST')
+    ->withHeader('Content-Type', 'application/json')
+    ->withBody($body);
+$response = $client->send($request)
+
+// No need to overwrite headers or body!
+$request = $baseRequest->withUri($uri->withPath('/tasks'))->withMethod('GET');
+$response = $client->send($request);
+```
+
+No lado do servidor, os desenvolvedores terão que:
+
+- Desserializar o corpo da mensagem da requisição.
+- Descriptografar cookies HTTP.
+- Escrever para a resposta.
+
+Essas operações podem ser realizadas também com value objects, com uma série
+de benefícios:
+
+- O estado da requisição original pode ser armazenado para recuperação por qualquer consumidor.
+- Um estado de resposta padrão pode ser criado com cabeçalhos padrão e/ou corpo da mensagem.
+
+A maioria dos frameworks PHP populares tem mensagens HTTP totalmente mutáveis ​​hoje. As principais
+mudanças necessárias ao consumir value objects verdadeiros são:
+
+- Em vez de chamar métodos setter ou definir propriedades públicas, métodos
+  mutator serão chamados, e o resultado atribuído.
+- Os desenvolvedores devem notificar a aplicação sobre uma mudança de estado.
+
+Como um exemplo, no Zend Framework 2, em vez do seguinte:
+
+```php
+function (MvcEvent $e)
+{
+    $response = $e->getResponse();
+    $response->setHeaderLine('x-foo', 'bar');
+}
+```
+
+agora poderia escrever:
+
+```php
+function (MvcEvent $e)
+{
+    $response = $e->getResponse();
+    $e->setResponse(
+        $response->withHeader('x-foo', 'bar')
+    );
+}
+```
+
+O código acima combina atribuição e notificação em uma única chamada.
+
+Essa prática tem um benefício adicional de tornar explícitas quaisquer alterações sendo feitas no estado
+da aplicação.
+
+### Novas instâncias vs retornando $this
+
+Uma observação relacionada aos vários métodos `with*()` é que eles provavelmente podem
+`return $this;` com segurança se o argumento apresentado não vai resultar numa alteração
+do valor. Uma razão para fazer assim é o desempenho (pois isso não vai resultar em
+uma operação de clonagem).
+
+As várias interfaces foram escritas com palavras indicando que a
+imutabilidade DEVE ser preservada, mas apenas indicam que "uma instância" deve ser
+retornada contendo o novo estado. Uma vez que instâncias que representam o mesmo valor
+são consideradas iguais, retornar `$this` é funcionalmente equivalente, e, assim,
+permitido.
