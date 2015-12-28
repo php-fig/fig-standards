@@ -103,7 +103,7 @@ interface LinkInterface
      * context. Attributes such as those may be specified as an array of
      * strings.
      *
-     * @return array
+     * @return string[]
      */
     public function getAttributes();
 }
@@ -125,7 +125,7 @@ interface LinkableInterface
      *
      * The collection may be an array or any PHP \Traversable object.
      *
-     * @return array|\Traversable
+     * @return LinkInterface[]|\Traversable
      */
     public function getLinks();
 
@@ -134,7 +134,7 @@ interface LinkableInterface
      *
      * The collection may be an array or any PHP \Traversable object.
      *
-     * @return array|\Traversable
+     * @return LinkInterface[]|\Traversable
      */
     public function getLinksByRel($rel);
 }
