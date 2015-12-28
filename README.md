@@ -22,6 +22,16 @@ To propose a PHP Standard Recommendation (PSR):
 
 [mailing list]: http://groups.google.com/group/php-fig/
 
+GitHub usage
+------------
+
+All discussion regarding a PSR happens on the [mailing list][]. Issues filed
+in GitHub are rarely monitored, and PRs are likely to be missed unless a message
+is sent to the mailing list regarding them.  Reviews of a proposed PSR should be
+conducted on the mailing list, not through PR comments for the same reason.
+
+Please do not simply file an issue or PR and walk-away.  The most likely outcome
+is that it will never get seen or addressed.
 
 Requesting Membership
 ---------------------
