@@ -109,7 +109,7 @@ interface LinkInterface
 }
 ```
 
-#### 3.2.1 `Psr\Http\Message\LinkableInterface`
+#### 3.2.1 `Psr\Http\Link\LinkableInterface`
 
 ```php
 <?php
