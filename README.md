@@ -51,6 +51,14 @@ To become a voting member, you must send an email to the [mailing list][].
 Do not combine separate membership requests in a single thread; one request
 per thread, please.
 
+Language & Translations
+-----------------------
+
+All PSRs are written in British English or American English (Different specifications
+may vary, but it is consistent within the same specification). The PHP FIG does not
+offer official translations into other languages but other external entities are free
+to translate the specifications in accordance with the license.
+
 
 Voting Members
 --------------
