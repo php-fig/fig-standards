@@ -16,7 +16,6 @@ of the process of deciding what those links should be.
 The following questions are still outstanding, in the opinion of the Editor, and should be resolved.
 
 * LinkableInterface is a terrible name. Please suggest another one.
-* How do we support "empty" attributes, as HTML5 permits but few other systems do?
 * Should Href be a string, or can/should we use PSR-7 URI objects? I'm very very tempted to go with the latter.
 * Is there wording we should clean up around rel definitions?
 * Should the rel definition information move from the interfaces to the spec, or stay in the interface docblocks where
