@@ -24,7 +24,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ## 1. Specification
 
-### 1.1 
+### 1.1 Basic links
 
 A Hypermedia Link consists of, at minimum:
 - A URI representing the target resource being referenced.
@@ -33,6 +33,43 @@ A Hypermedia Link consists of, at minimum:
 Various other attributes of the Link may exist, depending on the format used. As additional attributes 
 are not well-standardized or universal, this specification does not seek to standardize them.
 
+For the purposes of this specification, the following definitions apply.
+
+*    **Implementing Object** -An object that implements one of the interfaces
+defined by this specification.
+
+*    **Serializer** - A library or other system that takes one or more Link objects
+and produces a serialized representation of it in some defined format.
+
+
+### 1.2 Attributes
+
+All links MAY include zero or more additional attributes beyond the URI and relationship.
+There is no formal registry of the values that are allowed here, and validity of values
+is dependant on context and often on a particular serialization format.  Commonly supported
+values include  'hreflang', 'title', and 'type'.
+
+Serializers MAY omit attributes on a link object if required to do so by the serialization
+format. However, serializers SHOULD encode all provided attributes possible in order to
+allow for user-extension unless prevented by a serialization format's definition.
+
+Some attributes (commonly hreflang) may appear more than once in their context. Therefore,
+an attribute value MAY be an array of values rather than a simple value. Serializers MAY
+encode that array in whatever format is appropriate for the serialized format (such
+as a space-separated list, comma-separated list, etc.).  If a given attribute is not
+allowed to have multiple values in a particular context, serializers MUST use the first
+value provided and ignore all subsequent values.
+
+If an attribute is boolean True, serializers MAY use abbreviated forms if appropriate
+and supported by a serialization format. For example, HTML permits attributes to
+have no value when the attribute's presence has a boolean meaning.  This rule applies
+if and only if the attribute is boolean True, not for any other "truthy" value
+in PHP such as integer 1.
+
+If an attribute is boolean False, serializers SHOULD omit the attribute entirely
+unless doing so changes the semantic meaning of the result. This rule applies if
+and only if the attribute is boolean False, not for any other "falsy" value in PHP
+such as integer 0.
 
 ## 2. Package
 
@@ -87,23 +124,10 @@ interface LinkInterface
     /**
      * Returns a list of attributes that describe the target URI.
      *
-     * The list should be specified as a key-value list.
-     *
-     * There is no formal registry of the values that are allowed here, and
-     * validity of values is dependant on context.
-     *
-     * Common values are 'hreflang', 'title', and 'type'. Implementors
-     * embedding a serialized version of a link are responsible for only
-     * encoding the values they support.
-     *
-     * Any value that appears that is not valid in the context in which it is
-     * used should be ignored.
-     *
-     * Some attributes, (commonly hreflang) may appear more than once in their
-     * context. Attributes such as those may be specified as an array of
-     * strings.
-     *
-     * @return string[]
+     * @return array
+     *   A key-value list of attributes, where the key is a string and the value
+     *  is either a PHP primitive or an array of PHP strings. If no values are
+     *  found an empty array MUST be returned.
      */
     public function getAttributes();
 }
