@@ -47,7 +47,7 @@ and produces a serialized representation of it in some defined format.
 All links MAY include zero or more additional attributes beyond the URI and relationship.
 There is no formal registry of the values that are allowed here, and validity of values
 is dependant on context and often on a particular serialization format.  Commonly supported
-values include  'hreflang', 'title', and 'type'.
+values include 'hreflang', 'title', and 'type'.
 
 Serializers MAY omit attributes on a link object if required to do so by the serialization
 format. However, serializers SHOULD encode all provided attributes possible in order to
@@ -68,7 +68,7 @@ in PHP such as integer 1.
 
 If an attribute is boolean False, serializers SHOULD omit the attribute entirely
 unless doing so changes the semantic meaning of the result. This rule applies if
-and only if the attribute is boolean False, not for any other "falsy" value in PHP
+and only if the attribute is boolean False, not for any other "falsey" value in PHP
 such as integer 0.
 
 ## 2. Package
