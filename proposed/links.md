@@ -133,7 +133,7 @@ interface LinkInterface
 }
 ```
 
-#### 3.2.1 `Psr\Http\Message\LinkableInterface`
+#### 3.2.1 `Psr\Http\Link\LinkCollectionInterface`
 
 ```php
 <?php
@@ -142,12 +142,13 @@ namespace Psr\Http\Link;
 /**
  * 
  */
-interface LinkableInterface
+interface LinkCollectionInterface
 {
     /**
      * Returns a collection of LinkInterface objects.
      *
-     * The collection may be an array or any PHP \Traversable object.
+     * The collection may be an array or any PHP \Traversable object. If no links
+     * are available, an empty array or \Traversable MUST be returned.
      *
      * @return LinkInterface[]|\Traversable
      */
@@ -156,7 +157,8 @@ interface LinkableInterface
     /**
      * Returns a collection of LinkInterface objects that have a specific relationship.
      *
-     * The collection may be an array or any PHP \Traversable object.
+     * The collection may be an array or any PHP \Traversable object. If no links
+     * with that relationship are available, an empty array or \Traversable MUST be returned.
      *
      * @return LinkInterface[]|\Traversable
      */

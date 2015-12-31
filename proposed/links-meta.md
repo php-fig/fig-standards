@@ -15,7 +15,7 @@ of the process of deciding what those links should be.
 
 The following questions are still outstanding, in the opinion of the Editor, and should be resolved.
 
-* LinkableInterface is a terrible name. Please suggest another one.
+* How do we support "empty" attributes, as HTML5 permits but few other systems do?
 * Should Href be a string, or can/should we use PSR-7 URI objects? I'm very very tempted to go with the latter.
 * Is there wording we should clean up around rel definitions?
 * Should the rel definition information move from the interfaces to the spec, or stay in the interface docblocks where
@@ -57,6 +57,20 @@ Defining each Link uniquely but allowing it to have multiple rels provides a mos
 A single LinkInterface object may be serialized to one or more link entries in a given hypermedia format, as
 appropriate.  However, specifying multiple link objects each with a single rel yet the same URI is also legal, and
 a hypermedia format can serialize that as appropriate, too.
+
+### Why is a LinkCollectionInterface needed?
+
+In many contexts, a set of links will be attached to some other object.  Those objects may be used in situations
+where all that is relevant is their links, or some subset of their links. For example, various different value
+objects may be defined that represent different REST formats such as HAL, JSON-LD, or Atom.  It may be useful
+to extract those links from such an object uniformly for further processing. For instance, next/previous links
+may be extracted from an object and added to a PSR-7 Response object as Link headers.  Alternatively, many links
+would make sense to represent with a "preload" link relationship, which would indicate to an HTTP 2-compatible
+web server that the linked resources should be streamed to a client in anticipation of a subsequent request.
+
+All of those cases are independent of the payload or encoding of the object. By providing a common interface
+to access such links, we enable generic handling of the links themselves regardless of the value object or
+domain object that is producing them.
 
 ## 4. People
 
