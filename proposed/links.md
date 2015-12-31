@@ -35,28 +35,28 @@ are not well-standardized or universal, this specification does not seek to stan
 
 For the purposes of this specification, the following definitions apply.
 
-*    **Implementing Object** -An object that implements one of the interfaces
-defined by this specification.
+*    **Implementing Object** -An object that implements one of the interfaces defined by this
+specification.
 
-*    **Serializer** - A library or other system that takes one or more Link objects
-and produces a serialized representation of it in some defined format.
+*    **Serializer** - A library or other system that takes one or more Link objects and produces
+a serialized representation of it in some defined format.
 
 
 ### 1.2 Attributes
 
 All links MAY include zero or more additional attributes beyond the URI and relationship.
 There is no formal registry of the values that are allowed here, and validity of values
-is dependant on context and often on a particular serialization format.  Commonly supported
+is dependent on context and often on a particular serialization format.  Commonly supported
 values include 'hreflang', 'title', and 'type'.
 
 Serializers MAY omit attributes on a link object if required to do so by the serialization
 format. However, serializers SHOULD encode all provided attributes possible in order to
 allow for user-extension unless prevented by a serialization format's definition.
 
-Some attributes (commonly hreflang) may appear more than once in their context. Therefore,
+Some attributes (commonly `hreflang`) may appear more than once in their context. Therefore,
 an attribute value MAY be an array of values rather than a simple value. Serializers MAY
 encode that array in whatever format is appropriate for the serialized format (such
-as a space-separated list, comma-separated list, etc.).  If a given attribute is not
+as a space-separated list, comma-separated list, etc.). If a given attribute is not
 allowed to have multiple values in a particular context, serializers MUST use the first
 value provided and ignore all subsequent values.
 
