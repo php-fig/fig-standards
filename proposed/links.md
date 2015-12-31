@@ -60,15 +60,15 @@ as a space-separated list, comma-separated list, etc.). If a given attribute is 
 allowed to have multiple values in a particular context, serializers MUST use the first
 value provided and ignore all subsequent values.
 
-If an attribute is boolean True, serializers MAY use abbreviated forms if appropriate
+If an attribute value is boolean `true`, serializers MAY use abbreviated forms if appropriate
 and supported by a serialization format. For example, HTML permits attributes to
 have no value when the attribute's presence has a boolean meaning.  This rule applies
-if and only if the attribute is boolean True, not for any other "truthy" value
+if and only if the attribute is boolean `true`, not for any other "truthy" value
 in PHP such as integer 1.
 
-If an attribute is boolean False, serializers SHOULD omit the attribute entirely
+If an attribute value is boolean `false`, serializers SHOULD omit the attribute entirely
 unless doing so changes the semantic meaning of the result. This rule applies if
-and only if the attribute is boolean False, not for any other "falsey" value in PHP
+and only if the attribute is boolean `false`, not for any other "falsey" value in PHP
 such as integer 0.
 
 ## 2. Package
