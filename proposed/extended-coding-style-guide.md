@@ -10,12 +10,12 @@ interpreted as described in [RFC 2119][].
 1. Overview
 -----------
 
-This guide extends and expands on [PSR-2][], the coding style guide and
-[PSR-1][], the basic coding standard.
+This specification extends, expands and replaces [PSR-2][], the coding style guide and
+requires adherance to [PSR-1][], the basic coding standard.
 
-Like [PSR-2][], the intent of this guide is to reduce cognitive friction when scanning
-code from different authors. It does so by enumerating a shared set of rules and
-expectations about how to format PHP code. This PSR seeks to provide a set way that
+Like [PSR-2][], the intent of this specification is to reduce cognitive friction when
+scanning code from different authors. It does so by enumerating a shared set of rules
+and expectations about how to format PHP code. This PSR seeks to provide a set way that
 coding style tools can implement, projects can declare adherence to and developers
 can easily relate to between different projects. When various authors collaborate
 across multiple projects, it helps to have one set of guidelines to be used among
@@ -107,14 +107,15 @@ There MUST NOT be more than one statement per line.
 
 ### 2.4 Indenting
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+Code MUST use an indent of 4 spaces for each indent level, and MUST NOT use
+tabs for indenting.
 
-### 2.5 Keywords and True/False/Null
+### 2.5 Keywords and Types
 
 PHP [keywords][] MUST be in lower case.
 
 The PHP types and keywords `int`, `true`, `object`, `float`, `false`, `mixed`,
-`bool`, `null`, `numeric`, `string` and `resource` MUST be in lower case
+`bool`, `null`, `numeric`, `string`, `void` and `resource` MUST be in lower case.
 
 3. Declare Statements, Namespace, and Use Declarations
 --------------------------------------------
@@ -128,8 +129,9 @@ opening tag (which must be on the first line when declare statement(s) are prese
 
 Each declare statement (e.g. `declare(ticks=);`) MUST be on its own line.
 
-When the opening `<?php` tag is on the first line of the file, it MUST be on it's
-own line with no other statements.
+When the opening `<?php` tag is on the first line of the file, it MUST be on its
+own line with no other statements unless it is a file containing markup outside of PHP
+opening and closing tags.
 
 When present, there MUST be one blank line after the `namespace` declaration.
 
@@ -147,9 +149,6 @@ together; any and all functions are in a block together; and any and all constan
 be grouped together. Within each block there MUST be no blank lines. If a block has
 multiple lines there MUST be a blank line before the first line and a blank line after
 the last line.
-
-Classes, functions or constants grouped together into a single line must be listed
-alphabetically.
 
 The groups MUST be ordered such that classes (together with interfaces and traits) are first,
 followed by functions and then constants.
@@ -185,6 +184,17 @@ use Vendor\Package\Namespace\{
     SubnamespaceOne\ClassA,
     SubnamespaceOne\ClassB,
     SubnamespaceTwo\ClassY,
+    ClassZ,
+};
+```
+
+And the following would not be allowed:
+```php
+<?php
+
+use Vendor\Package\Namespace\{
+    SubnamespaceOne\AnotherNamespace\ClassA,
+    SubnamespaceOne\ClassB,
     ClassZ,
 };
 ```
@@ -296,7 +306,7 @@ class ClassName
 }
 ```
 
-Each individual Trait that is imported into a class MUST be included 
+Each individual Trait that is imported into a class MUST be included
 one-per-line, and each inclusion MUST have its own `use` statement.
 
 ```php
@@ -686,9 +696,9 @@ try {
 
 6. Operators
 -----------
-All binary and ternary operators MUST be preceded and followed by a space
-excluding string concatenation operators. This includes all [arithmetic][],
-[comparison][], [assignment][], [bitwise][], [logical][] (excluding `!`)
+All binary and ternary (but not unary) operators MUST be preceded and followed by at least
+one space excluding string concatenation operators. This includes all [arithmetic][],
+[comparison][], [assignment][], [bitwise][], [logical][] (excluding `!` which is unary)
 and [type][] operators.
 
 Other operators such as string concatenation operators are left to interpetation.
@@ -704,7 +714,6 @@ if ($a === $b) {
     $variable = $foo ? 'foo' : 'bar';
 }
 ```
-
 
 7. Closures
 -----------
