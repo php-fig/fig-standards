@@ -119,12 +119,15 @@ specification for a full understanding of its contents.
 
 ### 5.1 Editor(s)
 
-* Michael Cullum
+* Korvin Szanto (Former coordinator)
 
 ### 5.2 Sponsors
 
-* Korvin Szanto - concrete5 (Coordinator)
-* Alexander Makarov - Yii Framework
+* Alexander Makarov - Yii Framework (Coordinator)
+* Temporarily Vacant
+
+### 5.3 Contributors
+* Michael Cullum (Former Editor)
 
 7. Votes
 --------
