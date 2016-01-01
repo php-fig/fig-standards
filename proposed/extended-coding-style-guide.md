@@ -114,7 +114,7 @@ tabs for indenting.
 
 PHP [keywords][] MUST be in lower case.
 
-The PHP types and keywords `int`, `true`, `object`, `float`, `false`, `mixed`,
+The PHP types and keywords `array`, `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string`, `void` and `resource` MUST be in lower case.
 
 3. Declare Statements, Namespace, and Use Declarations
