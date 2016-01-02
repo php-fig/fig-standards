@@ -135,8 +135,7 @@ opening and closing tags.
 
 When present, there MUST be one blank line after the `namespace` declaration.
 
-When present, the `namespace` declaration MUST go after the `declare`
-declaration.
+When present, the `namespace` declaration MUST be on it's own line.
 
 When present, all `use` declarations MUST go after the `namespace`
 declaration.
