@@ -97,7 +97,7 @@ specification for a full understanding of its contents.
 * Use statement grouping - Section 3
 * Use statement blocks - Section 3
 * Declare statement/Strict types declaration usage - Section 3
-* Brackets are always required for class instantiation - Section 4
+* Parentheses are always required for class instantiation - Section 4
 * Return type declarations - Section 4.5
 * Type hints - Section 4.5
 * Add finally block - Section 5.6

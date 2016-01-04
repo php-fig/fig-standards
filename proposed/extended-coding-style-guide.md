@@ -836,20 +836,20 @@ in the above section.
 $instance = new class {};
 ```
 
-The opening bracket MAY be on the same line as the `class` keyword so long as
+The opening parenthesis MAY be on the same line as the `class` keyword so long as
 the list of `implements` interfaces does not wrap. If the list of interfaces
-wraps, the bracket MUST be placed on the line immediately following the last
+wraps, the parenthesis MUST be placed on the line immediately following the last
 interface.
 
 ```php
 <?php
 
-// Bracket on the same line
+// Parenthesis on the same line
 $instance = new class extends \Foo implements \HandleableInterface {
     // Class content
 };
 
-// Bracket on the next line
+// Parenthesis on the next line
 $instance = new class extends \Foo implements
     \ArrayAccess,
     \Countable,
