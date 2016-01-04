@@ -676,7 +676,7 @@ foreach ($iterable as $key => $value) {
 
 ### 5.6 `try`, `catch`, `finally`
 
-A `try catch finally` block looks like the following. Note the placement of
+A `try-catch-finally` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
 ```php
