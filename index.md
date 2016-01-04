@@ -56,7 +56,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | D      | 9   | [Security Disclosure][psr9]          | Lukas Kahwe Smith              | Korvin Szanto           | Larry Garfield    |
 | D      | 10  | [Security Advisories][psr10]         | Lukas Kahwe Smith              | Larry Garfield          | Korvin Szanto     |
 | D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Jeremy Lindblom   |
-| D      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Vacant            |
+| D      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | D      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Evert Pot         |
 
 _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
