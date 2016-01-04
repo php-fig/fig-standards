@@ -124,7 +124,7 @@ specification for a full understanding of its contents.
 ### 5.2 Sponsors
 
 * Alexander Makarov - Yii Framework (Coordinator)
-* Temporarily Vacant
+* Robert Deutz - Joomla
 
 ### 5.3 Contributors
 * Michael Cullum (Former Editor)
