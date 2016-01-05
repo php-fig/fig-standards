@@ -120,42 +120,34 @@ The PHP types and keywords `array`, `int`, `true`, `object`, `float`, `false`, `
 3. Declare Statements, Namespace, and Use Declarations
 --------------------------------------------
 
-When present, there MUST be one blank line after the `declare` statement(s)
-e.g. `declare(ticks=);`
+The header of a PHP file may consist of a number of different blocks.  If present,
+each of the blocks below MUST be separated by a single blank line, and MUST NOT contain
+a blank line.  Each block MUST be in the order listed below, although blocks that are
+not relevant may be omitted.
 
-There MUST NOT be a blank line before declare statements such as those for strict
-types or ticks. They MUST be contained on the lines immediately following the
-opening tag (which must be on the first line when declare statement(s) are present).
+* Opening PHP tag <?php
+* File-level docblock.
+* One or more declare statements.
+* The namespace declaration of the file.
+* One or more class-based `use` statements.
+* One or more function-based `use` statements.
+* One or more `const`-based use statements.
+* The remainder of the code in the file.
 
-Each declare statement (e.g. `declare(ticks=);`) MUST be on its own line.
+When a file contains a mix of HTML and PHP, any of the above sections may still
+be used.  If so, they MUST be present at the top of the file, even if the
+remainder of the code consists a closing PHP tag and then a mixture of HTML and
+PHP.
 
 When the opening `<?php` tag is on the first line of the file, it MUST be on its
 own line with no other statements unless it is a file containing markup outside of PHP
 opening and closing tags.
 
-When present, there MUST be one blank line after the `namespace` declaration.
-
-When present, the `namespace` declaration MUST be on its own line.
-
-When present, all `use` declarations MUST go after the `namespace`
-declaration.
-
-There MUST be one `use` keyword per declaration.
-
-Use statements MUST be in blocks, grouped by varying entity (classes [inc. interfaces and traits],
-functions or constants). To elaborate, this means that any and all classes are in a block
-together; any and all functions are in a block together; and any and all constants must
-be grouped together. Within each block there MUST be no blank lines. If a block has
-multiple lines there MUST be a blank line before the first line and a blank line after
-the last line.
-
-The groups MUST be ordered such that classes (together with interfaces and traits) are first,
-followed by functions and then constants.
-
-Example of the above notices about namespace, strict types and use declarations:
+The following example illustrates a complete list of all blocks:
 
 ```php
 <?php
+
 declare(strict_types=1);
 
 namespace Vendor\Package;
@@ -165,7 +157,10 @@ use Vendor\Package\Namespace\ClassD as D;
 use Vendor\Package\AnotherNamespace\ClassE as E;
 
 use function Vendor\Package\{functionA, functionB, functionC};
-use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
+use function Another\Vendor\function D;
+
+use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
+use const Another\Vendor\CONSTANT_D;
 
 class FooBar
 {
