@@ -363,8 +363,9 @@ The `var` keyword MUST NOT be used to declare a property.
 
 There MUST NOT be more than one property declared per statement.
 
-Property names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Property names MUST NOT be prefixed with a single underscore to indicate
+protected or private visibility.  That is, an underscore prefix explicitly has
+no meaning.
 
 A property declaration looks like the following.
 
@@ -382,8 +383,9 @@ class ClassName
 
 Visibility MUST be declared on all methods.
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Method names MUST NOT be prefixed with a single underscore to indicate
+protected or private visibility.  That is, an underscore prefix explicitly has
+no meaning.
 
 Method and function names MUST NOT be declared with a space after the method name. The
 opening brace MUST go on its own line, and the closing brace MUST go on the
