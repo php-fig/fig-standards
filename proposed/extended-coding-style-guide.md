@@ -479,8 +479,8 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ```
 
-When you have a return type declaration present there MUST be one space after
-the colon with followed by the type declaration. The colon and declaration MUST be
+When you have a return type declaration present there MUST be one space preceeding and following
+the colon followed by the type declaration. The colon and declaration MUST be
 on the same line as the argument list closing parentheses with no spaces between
 the two characters. The declaration keyword (e.g. string) MUST be lowercase.
 
@@ -492,7 +492,7 @@ namespace Vendor\Package;
 
 class ReturnTypeVariations
 {
-    public function functionName($arg1, $arg2): string
+    public function functionName($arg1, $arg2) : string
     {
         return 'foo';
     }
