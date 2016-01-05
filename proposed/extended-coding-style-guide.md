@@ -696,11 +696,10 @@ try {
 6. Operators
 -----------
 All binary and ternary (but not unary) operators MUST be preceded and followed by at least
-one space excluding string concatenation operators. This includes all [arithmetic][],
-[comparison][], [assignment][], [bitwise][], [logical][] (excluding `!` which is unary)
-and [type][] operators.
+one space. This includes all [arithmetic][], [comparison][], [assignment][], [bitwise][],
+[logical][] (excluding `!` which is unary), [string concatenation][], and [type][] operators.
 
-Other operators such as string concatenation operators are left to interpetation.
+Other operators are left undefined.
 
 For example:
 
@@ -867,4 +866,5 @@ $instance = new class extends \Foo implements
 [comparison]: http://php.net/manual/en/language.operators.comparison.php
 [bitwise]: http://php.net/manual/en/language.operators.bitwise.php
 [logical]: http://php.net/manual/en/language.operators.logical.php
+[string concatenation]: http://php.net/manual/en/language.operators.string.php
 [type]: http://php.net/manual/en/language.operators.type.php
