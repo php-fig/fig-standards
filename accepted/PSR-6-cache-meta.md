@@ -290,7 +290,8 @@ do so.
 
 6. Votes
 --------
-[Acceptance vote on the mailing list][https://groups.google.com/forum/#!msg/php-fig/dSw5IhpKJ1g/O9wpqizWAwAJ]
+
+[Acceptance vote on the mailing list](https://groups.google.com/forum/#!msg/php-fig/dSw5IhpKJ1g/O9wpqizWAwAJ)
 
 
 7. Relevant Links
