@@ -247,10 +247,10 @@ the class name.
 The opening brace for the class MUST go on its own line; the closing brace
 for the class MUST go on the next line after the body.
 
-Opening braces MUST be on their own line and MUST NOT be preceeded or followed
+Opening braces MUST be on their own line and MUST NOT be preceded or followed
 by a blank line.
 
-Closing braces MUST be on their own line and MUST NOT be preceeded by a blank
+Closing braces MUST be on their own line and MUST NOT be preceded by a blank
 line.
 
 ```php
