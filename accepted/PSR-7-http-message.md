@@ -74,9 +74,9 @@ implemented directly, implementors SHOULD implement
 From here forward, the namespace `Psr\Http\Message` will be omitted when
 referring to these interfaces.
 
-#### 1.2 HTTP Headers
+### 1.2 HTTP Headers
 
-##### Case-insensitive header field names
+#### Case-insensitive header field names
 
 HTTP messages include case-insensitive header field names. Headers are retrieved
 by name from classes implementing the `MessageInterface` in a case-insensitive
@@ -106,7 +106,7 @@ Non-conforming HTTP applications may depend on a certain case, so it is useful
 for a user to be able to dictate the case of the HTTP headers when creating a
 request or response.
 
-##### Headers with multiple values
+#### Headers with multiple values
 
 In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
@@ -133,7 +133,7 @@ Note: Not all header values can be concatenated using a comma (e.g.,
 `MessageInterface`-based classes SHOULD rely on the `getHeader()` method
 for retrieving such multi-valued headers.
 
-##### Host header
+#### Host header
 
 In requests, the `Host` header typically mirrors the host component of the URI, as
 well as the host used when establishing the TCP connection. However, the HTTP
