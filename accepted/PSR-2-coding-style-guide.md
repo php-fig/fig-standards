@@ -13,7 +13,7 @@ to have one set of guidelines to be used among all those projects. Thus, the
 benefit of this guide is not in the rules themselves, but in the sharing of
 those rules.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119].
 
@@ -129,9 +129,9 @@ Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
 
 ### 2.5. Keywords and True/False/Null
 
-PHP [keywords] MUST be in lower case.
+PHP [keywords] MUST be in lowercase.
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
+The PHP constants `true`, `false`, and `null` MUST be in lowercase.
 
 [keywords]: http://php.net/manual/en/reserved.keywords.php
 
@@ -392,7 +392,7 @@ if ($expr1) {
 } elseif ($expr2) {
     // elseif body
 } else {
-    // else body;
+    // else body
 }
 ```
 
@@ -412,18 +412,18 @@ indented at the same level as the `case` body. There MUST be a comment such as
 <?php
 switch ($expr) {
     case 0:
-        echo 'First case, with a break';
+        echo 'First case, with a break.';
         break;
     case 1:
-        echo 'Second case, which falls through';
+        echo 'Second case, which falls through.';
         // no break
     case 2:
     case 3:
     case 4:
-        echo 'Third case, return instead of break';
+        echo 'Third case, return instead of break.';
         return;
     default:
-        echo 'Default case';
+        echo 'Default case.';
         break;
 }
 ```
@@ -547,9 +547,9 @@ $longArgs_noVars = function (
 };
 
 $noArgs_longVars = function () use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $longVar,
+    $longerVar,
+    $muchLongerVar
 ) {
    // body
 };
@@ -559,9 +559,9 @@ $longArgs_longVars = function (
     $longerArgument,
     $muchLongerArgument
 ) use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $longVar,
+    $longerVar,
+    $muchLongerVar
 ) {
    // body
 };
@@ -570,14 +570,14 @@ $longArgs_shortVars = function (
     $longArgument,
     $longerArgument,
     $muchLongerArgument
-) use ($var1) {
+) use ($var) {
    // body
 };
 
 $shortArgs_longVars = function ($arg) use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $longVar,
+    $longerVar,
+    $muchLongerVar
 ) {
    // body
 };

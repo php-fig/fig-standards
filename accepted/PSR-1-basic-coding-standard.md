@@ -5,7 +5,7 @@ This section of the standard comprises what should be considered the standard
 coding elements that are required to ensure a high level of technical
 interoperability between shared PHP code.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119].
 
@@ -17,7 +17,7 @@ interpreted as described in [RFC 2119].
 1. Overview
 -----------
 
-- Files MUST use only `<?php` and `<?=` tags.
+- Files MUST use only `<?php ?>` and `<?= ?>` tags.
 
 - Files MUST use only UTF-8 without BOM for PHP code.
 
@@ -29,7 +29,7 @@ interpreted as described in [RFC 2119].
 
 - Class names MUST be declared in `StudlyCaps`.
 
-- Class constants MUST be declared in all upper case with underscore separators.
+- Class constants MUST be declared in all uppercase with underscore separators.
 
 - Method names MUST be declared in `camelCase`.
 
@@ -62,7 +62,7 @@ settings, emitting errors or exceptions, modifying global or static variables,
 reading from or writing to a file, and so on.
 
 The following is an example of a file with both declarations and side effects;
-i.e, an example of what to avoid:
+i.e., an example of what to avoid:
 
 ```php
 <?php
@@ -145,7 +145,7 @@ The term "class" refers to all classes, interfaces, and traits.
 
 ### 4.1. Constants
 
-Class constants MUST be declared in all upper case with underscore separators.
+Class constants MUST be declared in all uppercase with underscore separators.
 For example:
 
 ```php
