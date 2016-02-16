@@ -445,9 +445,7 @@ class ClassName
 
 Argument lists MAY be split across multiple lines, where each subsequent line
 is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line. A single argument being
-split across multiple lines (As might be the case with an anonymous function or
-array) does not constitute splitting the argument list itself.
+next line, and there MUST be only one argument per line.
 
 When the argument list is split across multiple lines, the closing parenthesis
 and opening brace MUST be placed together on their own line with one space
@@ -467,18 +465,6 @@ class ClassName
         // method body
     }
 }
-```
-
-```php
-<?php
-
-somefunction($foo, $bar, [
-  // ...
-], $baz);
-
-$app->get('/hello/{name}', function ($name) use ($app) {
-    return 'Hello ' . $app->escape($name);
-});
 ```
 
 When you have a return type declaration present there MUST be one space after
@@ -544,7 +530,9 @@ Foo::bar($arg2, $arg3);
 
 Argument lists MAY be split across multiple lines, where each subsequent line
 is indented once. When doing so, the first item in the list MUST be on the
-next line, and there MUST be only one argument per line.
+next line, and there MUST be only one argument per line. A single argument being
+split across multiple lines (as might be the case with an anonymous function or
+array) does not constitute splitting the argument list itself.
 
 ```php
 <?php
@@ -554,6 +542,18 @@ $foo->bar(
     $longerArgument,
     $muchLongerArgument
 );
+```
+
+```php
+<?php
+
+somefunction($foo, $bar, [
+  // ...
+], $baz);
+
+$app->get('/hello/{name}', function ($name) use ($app) {
+    return 'Hello ' . $app->escape($name);
+});
 ```
 
 5. Control Structures
