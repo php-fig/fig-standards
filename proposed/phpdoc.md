@@ -48,7 +48,7 @@ PSR-5: PHPDoc
   - [7.22. @var](#724-var)
   - [7.23. @version](#725-version)
 - [Appendix A. Types](#appendix-a-types)
-  - [ABFN](#abfn)
+  - [ABNF](#abnf)
   - [Details](#details)
   - [Valid Class Name](#valid-class-name)
   - [Keyword](#keyword)
