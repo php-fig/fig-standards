@@ -29,7 +29,7 @@ interpreted as described in [RFC 2119].
 
 - Class names MUST be declared in `StudlyCaps`.
 
-- Class constants MUST be declared in all upper case with underscore separators.
+- Constants MUST be declared in all upper case with underscore separators.
 
 - Method names MUST be declared in `camelCase`.
 
@@ -138,14 +138,14 @@ class Vendor_Model_Foo
 }
 ```
 
-4. Class Constants, Properties, and Methods
+4. Constants, Class Properties, and Methods
 -------------------------------------------
 
 The term "class" refers to all classes, interfaces, and traits.
 
 ### 4.1. Constants
 
-Class constants MUST be declared in all upper case with underscore separators.
+Constants MUST be declared in all upper case with underscore separators.
 For example:
 
 ```php
@@ -153,6 +153,17 @@ For example:
 namespace Vendor\Model;
 
 class Foo
+{
+    const VERSION = '1.0';
+    const DATE_APPROVED = '2012-06-01';
+}
+```
+
+```php
+<?php
+namespace Vendor\Model;
+
+function bar()
 {
     const VERSION = '1.0';
     const DATE_APPROVED = '2012-06-01';
