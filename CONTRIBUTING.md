@@ -7,7 +7,7 @@ Community Member, who can influence standards, make suggestions, give feedback,
 etc. Only PHP-FIG Voting Members can start or participate in votes, but the
 discussion and formation stages involve everyone.
 
-See the [PHP-FIG FAQ](http://www.php-fig.org/faq/) for more information.
+See the [PHP-FIG FAQ](http://www.php-fig.org/faqs/) for more information.
 
 # Licensing
 

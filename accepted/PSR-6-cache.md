@@ -49,11 +49,16 @@ by an integer representing time in seconds, or a DateInterval object.
 typically calculated by adding the TTL to the time when an object is stored, but
 may also be explicitly set with DateTime object.
 
-    An item with a 300 second TTL stored at 1:30:00 will have an expiration at
+    An item with a 300 second TTL stored at 1:30:00 will have an expiration of
     1:35:00.
 
     Implementing Libraries MAY expire an item before its requested Expiration Time,
-but MUST treat an item as expired once its Expiration Time is reached.
+but MUST treat an item as expired once its Expiration Time is reached. If a calling
+library asks for an item to be saved but does not specify an expiration time, or
+specifies a null expiration time or TTL, an Implementing Library MAY use a configured
+default duration. If no default duration has been set, the Implementing Library
+MUST interpret that as a request to cache the item forever, or for as long as the
+underlying implementation supports.
 
 *    **Key** - A string of at least one character that uniquely identifies a
 cached item. Implementing libraries MUST support keys consisting of the
@@ -67,12 +72,8 @@ supported by implementing libraries: `{}()/\@:`
 
 *    **Hit** - A cache hit occurs when a Calling Library requests an Item by key
 and a matching value is found for that key, and that value has not expired, and
-the value is not invalid for some other reason.
-
-*    **Exists** - When the item exists in the cache at the time of this call.
-As this is separate from isHit() there's a potential race condition between
-the time exists() is called and get() being called so Calling Libraries SHOULD
-make sure to verify isHit() on all of the get() calls.
+the value is not invalid for some other reason. Calling Libraries SHOULD make
+sure to verify isHit() on all get() calls.
 
 *    **Miss** - A cache miss is the opposite of a cache hit. A cache miss occurs
 when a Calling Library requests an item by key and that value not found for that
@@ -131,6 +132,21 @@ An Item represents a single key/value pair within a Pool. The key is the primary
 unique identifier for an Item and MUST be immutable. The Value MAY be changed
 at any time.
 
+## Error handling
+
+While caching is often an important part of application performance, it should never
+be a critical part of application functionality. Thus, an error in a cache system SHOULD NOT
+result in application failure.  For that reason Implementing Libraries MUST NOT
+throw exceptions other than those defined by the interface, and SHOULD trap any errors
+or exceptions triggered by an underlying data store and not allow them to bubble.
+
+An Implementing Library SHOULD log such errors or otherwise report them to an
+administrator as appropriate.
+
+If a Calling Library requests that one or more Items be deleted, or that a pool be cleared,
+it MUST NOT be considered an error condition if the specified key does not exist. The
+post-condition is the same (the key does not exist, or the pool is empty), thus there is
+no error condition.
 
 ## Interfaces
 
@@ -175,9 +191,9 @@ interface CacheItemInterface
     /**
      * Retrieves the value of the item from the cache associated with this object's key.
      *
-     * The value returned must be identical to the value original stored by set().
+     * The value returned must be identical to the value originally stored by set().
      *
-     * if isHit() returns false, this method MUST return null. Note that null
+     * If isHit() returns false, this method MUST return null. Note that null
      * is a legitimate cached value, so the isHit() method SHOULD be used to
      * differentiate between "null value was found" and "no value was found."
      *
@@ -187,46 +203,30 @@ interface CacheItemInterface
     public function get();
 
     /**
+     * Confirms if the cache item lookup resulted in a cache hit.
+     *
+     * Note: This method MUST NOT have a race condition between calling isHit()
+     * and calling get().
+     *
+     * @return bool
+     *   True if the request resulted in a cache hit. False otherwise.
+     */
+    public function isHit();
+
+    /**
      * Sets the value represented by this cache item.
      *
      * The $value argument may be any item that can be serialized by PHP,
      * although the method of serialization is left up to the Implementing
      * Library.
      *
-     * Implementing Libraries MAY provide a default TTL if one is not specified.
-     * If no TTL is specified and no default TTL has been set, the TTL MUST
-     * be set to the maximum possible duration of the underlying storage
-     * mechanism, or permanent if possible.
-     *
      * @param mixed $value
      *   The serializable value to be stored.
+     *
      * @return static
      *   The invoked object.
      */
     public function set($value);
-
-    /**
-     * Confirms if the cache item lookup resulted in a cache hit.
-     *
-     * Note: This method MUST NOT have a race condition between calling isHit()
-     * and calling get().
-     *
-     * @return boolean
-     *   True if the request resulted in a cache hit. False otherwise.
-     */
-    public function isHit();
-
-    /**
-     * Confirms if the cache item exists in the cache.
-     *
-     * Note: This method MAY avoid retrieving the cached value for performance
-     * reasons, which could result in a race condition between exists() and get().
-     * To avoid that potential race condition use isHit() instead.
-     *
-     * @return boolean
-     *  True if item exists in the cache, false otherwise.
-     */
-    public function exists();
 
     /**
      * Sets the expiration time for this cache item.
@@ -248,23 +248,15 @@ interface CacheItemInterface
      * @param int|\DateInterval $time
      *   The period of time from the present after which the item MUST be considered
      *   expired. An integer parameter is understood to be the time in seconds until
-     *   expiration.
+     *   expiration. If null is passed explicitly, a default value MAY be used.
+     *   If none is set, the value should be stored permanently or for as long as the
+     *   implementation allows.
      *
      * @return static
      *   The called object.
      */
     public function expiresAfter($time);
 
-    /**
-     * Returns the expiration time of a not-yet-expired cache item.
-     *
-     * If this cache item is a Cache Miss, this method MAY return the time at
-     * which the item expired or the current time if that is not available.
-     *
-     * @return \DateTime
-     *   The timestamp at which this cache item will expire.
-     */
-    public function getExpiration();
 }
 ```
 
@@ -280,11 +272,10 @@ Library.
 namespace Psr\Cache;
 
 /**
- * \Psr\Cache\CacheItemPoolInterface generates Cache\CacheItem objects.
+ * CacheItemPoolInterface generates CacheItemInterface objects.
  */
 interface CacheItemPoolInterface
 {
-
     /**
      * Returns a Cache Item representing the specified key.
      *
@@ -293,11 +284,13 @@ interface CacheItemPoolInterface
      *
      * @param string $key
      *   The key for which to return the corresponding Cache Item.
-     * @return \Psr\Cache\CacheItemInterface
-     *   The corresponding Cache Item.
-     * @throws \Psr\Cache\InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
      *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
      *   MUST be thrown.
+     *
+     * @return CacheItemInterface
+     *   The corresponding Cache Item.
      */
     public function getItem($key);
 
@@ -306,29 +299,73 @@ interface CacheItemPoolInterface
      *
      * @param array $keys
      * An indexed array of keys of items to retrieve.
+     *
+     * @throws InvalidArgumentException
+     *   If any of the keys in $keys are not a legal value a \Psr\Cache\InvalidArgumentException
+     *   MUST be thrown.
+     *
      * @return array|\Traversable
-     * A traversable collection of Cache Items keyed by the cache keys of
-     * each item. A Cache item will be returned for each key, even if that
-     * key is not found. However, if no keys are specified then an empty
-     * traversable MUST be returned instead.
+     *   A traversable collection of Cache Items keyed by the cache keys of
+     *   each item. A Cache item will be returned for each key, even if that
+     *   key is not found. However, if no keys are specified then an empty
+     *   traversable MUST be returned instead.
      */
     public function getItems(array $keys = array());
 
     /**
+     * Confirms if the cache contains specified cache item.
+     *
+     * Note: This method MAY avoid retrieving the cached value for performance reasons.
+     * This could result in a race condition with CacheItemInterface::get(). To avoid
+     * such situation use CacheItemInterface::isHit() instead.
+     *
+     * @param string $key
+     *    The key for which to check existence.
+     *
+     * @throws InvalidArgumentException
+     *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
+     *   MUST be thrown.
+     *
+     * @return bool
+     *  True if item exists in the cache, false otherwise.
+     */
+    public function hasItem($key);
+
+    /**
      * Deletes all items in the pool.
      *
-     * @return boolean
+     * @return bool
      *   True if the pool was successfully cleared. False if there was an error.
      */
     public function clear();
 
     /**
+     * Removes the item from the pool.
+     *
+     * @param string $key
+     *   The key for which to delete
+     *
+     * @throws InvalidArgumentException
+     *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
+     *   MUST be thrown.
+     *
+     * @return bool
+     *   True if the item was successfully removed. False if there was an error.
+     */
+    public function deleteItem($key);
+
+    /**
      * Removes multiple items from the pool.
      *
      * @param array $keys
-     * An array of keys that should be removed from the pool.
-     * @return static
-     * The invoked object.
+     *   An array of keys that should be removed from the pool.
+
+     * @throws InvalidArgumentException
+     *   If any of the keys in $keys are not a legal value a \Psr\Cache\InvalidArgumentException
+     *   MUST be thrown.
+     *
+     * @return bool
+     *   True if the items were successfully removed. False if there was an error.
      */
     public function deleteItems(array $keys);
 
@@ -338,8 +375,8 @@ interface CacheItemPoolInterface
      * @param CacheItemInterface $item
      *   The cache item to save.
      *
-     * @return static
-     *   The invoked object.
+     * @return bool
+     *   True if the item was successfully persisted. False if there was an error.
      */
     public function save(CacheItemInterface $item);
 
@@ -348,8 +385,9 @@ interface CacheItemPoolInterface
      *
      * @param CacheItemInterface $item
      *   The cache item to save.
-     * @return static
-     *   The invoked object.
+     *
+     * @return bool
+     *   False if the item could not be queued or if a commit was attempted and failed. True otherwise.
      */
     public function saveDeferred(CacheItemInterface $item);
 
@@ -357,25 +395,10 @@ interface CacheItemPoolInterface
      * Persists any deferred cache items.
      *
      * @return bool
-     *   TRUE if all not-yet-saved items were successfully saved. FALSE otherwise.
+     *   True if all not-yet-saved items were successfully saved or there were none. False otherwise.
      */
     public function commit();
-
 }
-```
-
-### InvalidArgumentException
-
-```php
-namespace Psr\Cache;
-
-/**
- * Exception interface for invalid cache arguments.
- *
- * Any time an invalid argument is passed into a method it must throw an
- * exception class which implements Psr\Cache\InvalidArgumentException.
- */
-interface InvalidArgumentException { }
 ```
 
 ### CacheException
@@ -392,5 +415,23 @@ namespace Psr\Cache;
 /**
  * Exception interface for all exceptions thrown by an Implementing Library.
  */
-interface CacheException {}
+interface CacheException
+{
+}
+```
+
+### InvalidArgumentException
+
+```php
+namespace Psr\Cache;
+
+/**
+ * Exception interface for invalid cache arguments.
+ *
+ * Any time an invalid argument is passed into a method it must throw an
+ * exception class which implements Psr\Cache\InvalidArgumentException.
+ */
+interface InvalidArgumentException extends CacheException
+{
+}
 ```

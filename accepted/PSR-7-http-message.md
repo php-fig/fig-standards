@@ -74,9 +74,9 @@ implemented directly, implementors SHOULD implement
 From here forward, the namespace `Psr\Http\Message` will be omitted when
 referring to these interfaces.
 
-#### 1.2 HTTP Headers
+### 1.2 HTTP Headers
 
-##### Case-insensitive header field names
+#### Case-insensitive header field names
 
 HTTP messages include case-insensitive header field names. Headers are retrieved
 by name from classes implementing the `MessageInterface` in a case-insensitive
@@ -106,7 +106,7 @@ Non-conforming HTTP applications may depend on a certain case, so it is useful
 for a user to be able to dictate the case of the HTTP headers when creating a
 request or response.
 
-##### Headers with multiple values
+#### Headers with multiple values
 
 In order to accommodate headers with multiple values yet still provide the
 convenience of working with headers as strings, headers can be retrieved from
@@ -133,7 +133,7 @@ Note: Not all header values can be concatenated using a comma (e.g.,
 `MessageInterface`-based classes SHOULD rely on the `getHeader()` method
 for retrieving such multi-valued headers.
 
-##### Host header
+#### Host header
 
 In requests, the `Host` header typically mirrors the host component of the URI, as
 well as the host used when establishing the TCP connection. However, the HTTP
@@ -643,7 +643,7 @@ interface MessageInterface
      *
      *     // Represent the headers as a string
      *     foreach ($message->getHeaders() as $name => $values) {
-     *         echo $name . ": " . implode(", ", $values);
+     *         echo $name . ': ' . implode(', ', $values);
      *     }
      *
      *     // Emit headers iteratively:
@@ -1240,7 +1240,7 @@ interface ResponseInterface extends MessageInterface
      * Gets the response reason phrase associated with the status code.
      *
      * Because a reason phrase is not a required element in a response
-     * status line, the reason phrase value MAY be null. Implementations MAY
+     * status line, the reason phrase value MAY be empty. Implementations MAY
      * choose to return the default RFC 7231 recommended reason phrase (or those
      * listed in the IANA HTTP Status Code Registry) for the response's
      * status code.
@@ -1670,8 +1670,8 @@ interface UriInterface
      * rootless (not starting with a slash). Implementations MUST support all
      * three syntaxes.
      *
-     * If the path is intended to be domain-relative rather than path relative then
-     * it must begin with a slash ("/"). Paths not starting with a slash ("/")
+     * If an HTTP path is intended to be host-relative rather than path-relative
+     * then it must begin with a slash ("/"). HTTP paths not starting with a slash
      * are assumed to be relative to some base path known to the application or
      * consumer.
      *

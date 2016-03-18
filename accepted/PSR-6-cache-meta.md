@@ -1,5 +1,5 @@
 PSR-Cache Meta Document
-===================
+=======================
 
 1. Summary
 ----------
@@ -181,10 +181,10 @@ function load_widgets(array $ids)
     foreach ($items as $key => $item) {
         if ($item->isHit()) {
             $value = $item->get();
-        }
-        else {
+        } else {
             $value = expensive_widget_load($id);
-            $item->set($value, 3600);
+            $item->set($value);
+            $item->expiresAfter(3600);
             $pool->saveDeferred($item, true);
         }
         $widget[$value->id()] = $value;
@@ -285,16 +285,13 @@ do so.
 
 ### 5.2 Sponsors
 
-* Beau Simensen, Sculpin (Coordinator)
-* Pádraic Brady, Zend Framework
-
-### 5.3 Contributors
-
-* Paul Dragoonis
-* Robert Hafner
+* Paul Dragoonis, PPI Framework (Coordinator)
+* Robert Hafner, Stash
 
 6. Votes
 --------
+
+[Acceptance vote on the mailing list](https://groups.google.com/forum/#!msg/php-fig/dSw5IhpKJ1g/O9wpqizWAwAJ)
 
 
 7. Relevant Links
