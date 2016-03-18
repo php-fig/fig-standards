@@ -14,11 +14,11 @@ This document describes the process and discussions that led to the Event Manage
 3. Scope
 --------
 
-## 3.1 Goals
+### 3.1 Goals
 
 
 
-## 3.2 Non-Goals
+### 3.2 Non-Goals
 
 
 
