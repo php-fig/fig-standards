@@ -43,7 +43,8 @@ This document describes the process and discussions that led to the Event Manage
 6. Votes
 --------
 
-* **Entrance Vote: ** https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/php-fig/P9atZLOcUBM/_jwkvlYKEAAJ
+* **Entrance Vote: **  ADD LINK HERE
+
 
 7. Relevant Links
 -----------------
