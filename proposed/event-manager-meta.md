@@ -1,4 +1,4 @@
-Extended Coding Style Guide Meta Document
+Event Manager Meta Document
 =========================================
 
 1. Summary
