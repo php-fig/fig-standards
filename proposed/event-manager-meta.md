@@ -1,5 +1,5 @@
 Event Manager Meta Document
-=========================================
+===========================
 
 1. Summary
 ----------
@@ -8,7 +8,9 @@ This document describes the process and discussions that led to the Event Manage
 
 2. Why Bother?
 --------------
-
+Event Dispatching allows developer to inject logic into an application easily.
+Many frameworks implement some form of a event dispatching that allows users to
+inject functionality with the need to extend classes.
 
 
 3. Scope
