@@ -6,12 +6,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 ## Index by Status
 
-### Deprecated
-
-| Num | Title                          | Editor                  |  Coordinator  | Sponsor        |
-|:---:|--------------------------------|-------------------------|---------------|----------------|
-| 0   | [Autoloading Standard][psr0]   | _N/A_                   | _N/A_         | _N/A_          |
-
 ### Accepted
 
 | Num | Title                          | Editor                  |  Coordinator  | Sponsor        |
@@ -39,6 +33,12 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Evert Pot         |
+
+### Deprecated
+
+| Num | Title                          | Editor                  |  Coordinator  | Sponsor        |
+|:---:|--------------------------------|-------------------------|---------------|----------------|
+| 0   | [Autoloading Standard][psr0]   | _N/A_                   | _N/A_         | _N/A_          |
 
 ## Numerical Index
 
