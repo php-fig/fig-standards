@@ -131,7 +131,7 @@ not relevant may be omitted.
 * The namespace declaration of the file.
 * One or more class-based `use` statements.
 * One or more function-based `use` statements.
-* One or more `const`-based use statements.
+* One or more constant-based `use` statements.
 * The remainder of the code in the file.
 
 When a file contains a mix of HTML and PHP, any of the above sections may still
@@ -147,6 +147,10 @@ The following example illustrates a complete list of all blocks:
 
 ```php
 <?php
+
+/**
+ * @file Contains an example of coding styles.
+ */
 
 declare(strict_types=1);
 
