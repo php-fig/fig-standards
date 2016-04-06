@@ -98,7 +98,7 @@ MUST warn but MUST NOT error at the soft limit.
 Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
 be split into multiple subsequent lines of no more than 80 characters each.
 
-There MUST NOT be trailing whitespace at the end of non-blank lines.
+There MUST NOT be trailing whitespace at the end of lines.
 
 Blank lines MAY be added to improve readability and to indicate related
 blocks of code except where explictly forbidden.
