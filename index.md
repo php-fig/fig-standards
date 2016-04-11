@@ -44,9 +44,9 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Status | Num | Title                                | Editor(s)                      |  Coordinator            | Sponsor           |
 |--------|:---:|--------------------------------------|--------------------------------|-------------------------|-------------------|
-| X      | 0   | [Autoloading Standard][psr0]         | _N/A_                          | _N/A_                   | _N/A_             |
-| A      | 1   | [Basic Coding Standard][psr1]        | _N/A_                          | _N/A_                   | _N/A_             |
-| A      | 2   | [Coding Style Guide][psr2]           | _N/A_                          | _N/A_                   | _N/A_             |
+| X      | 0   | [Autoloading Standard][psr0]         | Matthew Weier O'Phinney        | _N/A_                   | _N/A_             |
+| A      | 1   | [Basic Coding Standard][psr1]        | Paul M. Jones                  | _N/A_                   | _N/A_             |
+| A      | 2   | [Coding Style Guide][psr2]           | Paul M. Jones                  | _N/A_                   | _N/A_             |
 | A      | 3   | [Logger Interface][psr3]             | Jordi Boggiano                 | _N/A_                   | _N/A_             |
 | A      | 4   | [Autoloading Standard][psr4]         | Paul M. Jones                  | Phil Sturgeon           | Larry Garfield    |
 | D      | 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  | Vacant                  | Vacant            |
