@@ -118,7 +118,7 @@ interface EventInterface
      *
      * @param  bool $flag
      */
-    public function stopPropagation();
+    public function stopPropagation($flag);
 
     /**
      * Has this event indicated event propagation should stop?
