@@ -14,10 +14,7 @@ document itself, and this document outlines those cases.
 If a PSR is found to require substantive updates or errata is no longer able to clarify confusion,
 then the PSR must be replaced, following the workflow set out in [workflow bylaw].
 
-The original PSR may at some point in time be deprecated, and the new PSR becomes the recommended
-document. Deprecation and recommendation changes must be made with a vote according to the rules
-of the [voting protocol], with a subject like "[VOTE] Deprecate PSR-X", at which point a
-superseding PSR should be specified as a recommendation.
+The original PSR may at some point in time be deprecated, as specified in the [votes bylaw].
 
 Once a vote to deprecate a PSR and supersede it with another PSR has passed, the deprecated PSR must
 be marked as such in the original document and a link should be placed in the body.
@@ -71,7 +68,7 @@ This will be done as part of the errata vote, not its own.
 ### 3.2. Formatting & Typos
 
 If formatting is broken for any reason then changing formatting must not be considered a
-change to the document. These can be merged or pushed without hesitation, as long as they
+change to the document. These can be merged or pushed without hesitation by a secretary, as long as they
 don't change anything of any meaning or syntax.
 
 Some typos as trivial as a misplaced comma could have a subtle impact on meaning. Take special care not to
@@ -83,5 +80,5 @@ Examples:
 2. Somebody spelled something wrong and nobody spotted it for a year.
 3. Problems with GitHub Markdown
 
-[workflow bylaw]: https://github.com/php-fig/fig-standards/blob/master/bylaws/004-psr-workflow.md
-[voting protocol]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-voting-protocol.md
+[workflow bylaw]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
+[votes bylaw]: https://github.com/php-fig/fig-standards/blob/master/bylaws/003-votes.md
