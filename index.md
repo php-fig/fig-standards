@@ -33,6 +33,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Evert Pot         |
+| 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
 
 ### Deprecated
 
@@ -58,6 +59,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
 | D      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | D      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Evert Pot         |
+| D      | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
 
 _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 
@@ -76,3 +78,4 @@ _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
 [psr13]: https://github.com/php-fig/fig-standards/blob/master/proposed/links.md
+[psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
