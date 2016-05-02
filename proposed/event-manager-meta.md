@@ -35,7 +35,7 @@ inject functionality with the need to extend classes.
 
 ### 5.1 Editor(s)
 
-* 
+* Chuck Reeves 
 
 ### 5.2 Sponsors
 
