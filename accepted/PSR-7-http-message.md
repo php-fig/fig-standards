@@ -231,7 +231,7 @@ of the request line. The request target can be one of the following forms:
 Aside from these request-targets, there is often an 'effective URL' which is
 separate from the request target. The effective URL is not transmitted within
 an HTTP message, but it is used to determine the protocol (http/https), port
-and hostname for making the request.
+and host for making the request.
 
 The effective URL is represented by `UriInterface`. `UriInterface` models HTTP
 and HTTPS URIs as specified in RFC 3986 (the primary use case). The interface
@@ -266,7 +266,7 @@ OPTIONS * HTTP/1.1
 ```
 
 But the HTTP client will be able to use the effective URL (from `getUri()`),
-to determine the protocol, hostname and TCP port.
+to determine the protocol, host and TCP port.
 
 An HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
 and instead use the value returned by `getRequestTarget()`, which defaults
@@ -777,7 +777,7 @@ interface MessageInterface
      *
      * @param StreamInterface $body Body.
      * @return self
-     * @throws \InvalidArgumentException When the body is not valid.
+     * @throws \InvalidArgumentException when the body is not valid.
      */
     public function withBody(StreamInterface $body);
 }
@@ -1232,7 +1232,7 @@ interface ResponseInterface extends MessageInterface
      *     provided status code; if none is provided, implementations MAY
      *     use the defaults as suggested in the HTTP specification.
      * @return self
-     * @throws \InvalidArgumentException For invalid status code arguments.
+     * @throws \InvalidArgumentException for invalid status code arguments.
      */
     public function withStatus($code, $reasonPhrase = '');
 
@@ -1606,8 +1606,9 @@ interface UriInterface
      *
      * @param string $scheme The scheme to use with the new instance.
      * @return self A new instance with the specified scheme.
-     * @throws \InvalidArgumentException for invalid schemes.
      * @throws \InvalidArgumentException for unsupported schemes.
+     * @throws \InvalidArgumentException for transformations that would result
+     *     in a state that cannot be represented as a valid URI reference.
      */
     public function withScheme($scheme);
 
@@ -1624,6 +1625,8 @@ interface UriInterface
      * @param string $user The user name to use for authority.
      * @param null|string $password The password associated with $user.
      * @return self A new instance with the specified user information.
+     * @throws \InvalidArgumentException for transformations that would result
+     *     in a state that cannot be represented as a valid URI reference.
      */
     public function withUserInfo($user, $password = null);
 
@@ -1635,9 +1638,10 @@ interface UriInterface
      *
      * An empty host value is equivalent to removing the host.
      *
-     * @param string $host The hostname to use with the new instance.
+     * @param string $host The host to use with the new instance.
      * @return self A new instance with the specified host.
-     * @throws \InvalidArgumentException for invalid hostnames.
+     * @throws \InvalidArgumentException for transformations that would result
+     *     in a state that cannot be represented as a valid URI reference.
      */
     public function withHost($host);
 
@@ -1656,7 +1660,8 @@ interface UriInterface
      * @param null|int $port The port to use with the new instance; a null value
      *     removes the port information.
      * @return self A new instance with the specified port.
-     * @throws \InvalidArgumentException for invalid ports.
+     * @throws \InvalidArgumentException for transformations that would result
+     *     in a state that cannot be represented as a valid URI reference.
      */
     public function withPort($port);
 
@@ -1680,7 +1685,8 @@ interface UriInterface
      *
      * @param string $path The path to use with the new instance.
      * @return self A new instance with the specified path.
-     * @throws \InvalidArgumentException for invalid paths.
+     * @throws \InvalidArgumentException for transformations that would result
+     *     in a state that cannot be represented as a valid URI reference.
      */
     public function withPath($path);
 
@@ -1697,7 +1703,8 @@ interface UriInterface
      *
      * @param string $query The query string to use with the new instance.
      * @return self A new instance with the specified query string.
-     * @throws \InvalidArgumentException for invalid query strings.
+     * @throws \InvalidArgumentException for transformations that would result
+     *     in a state that cannot be represented as a valid URI reference.
      */
     public function withQuery($query);
 
@@ -1714,6 +1721,8 @@ interface UriInterface
      *
      * @param string $fragment The fragment to use with the new instance.
      * @return self A new instance with the specified fragment.
+     * @throws \InvalidArgumentException for transformations that would result
+     *     in a state that cannot be represented as a valid URI reference.
      */
     public function withFragment($fragment);
 
@@ -1727,13 +1736,7 @@ interface UriInterface
      *
      * - If a scheme is present, it MUST be suffixed by ":".
      * - If an authority is present, it MUST be prefixed by "//".
-     * - The path can be concatenated without delimiters. But there are two
-     *   cases where the path has to be adjusted to make the URI reference
-     *   valid as PHP does not allow to throw an exception in __toString():
-     *     - If the path is rootless and an authority is present, the path MUST
-     *       be prefixed by "/".
-     *     - If the path is starting with more than one "/" and no authority is
-     *       present, the starting slashes MUST be reduced to one.
+     * - The path can be concatenated without delimiters.
      * - If a query is present, it MUST be prefixed by "?".
      * - If a fragment is present, it MUST be prefixed by "#".
      *

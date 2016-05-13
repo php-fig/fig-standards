@@ -647,3 +647,21 @@ used to populate the headers of an HTTP message.
 * Anton Serdyuk
 * Phil Sturgeon
 * Chris Wilkinson
+
+## 7 Errata
+
+### 7.1 Invalid `UriInterface` after modification of a component (2016/05/13)
+
+It is expected that an instance of `UriInterface` can be represented as a valid
+URI reference via the `UriInterface::__toString` method. This means that the
+modifying methods of the URI components, e.g. `withHost($host)`, have to ensure
+this is still the case. If a modification would result in an invalid URI, the
+methods MUST throw an `\InvalidArgumentException`. Invalid URIs can not only be
+caused by invalid characters in a URI component but also because the given
+URI components cannot be recomposed to a valid URI reference which may even
+depend on the current URI scheme. Two examples are:
+
+- `$uri->withHost('')->withPort(8080)` should fail because there cannot be a
+  port without a host.
+- `$uri->withPath('rootless')->withHost('example.com')` should fail because
+  a URI with an authority cannot have a relative path.
