@@ -41,7 +41,7 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
 
   El siguiente código es un ejemplo de implementación de interpolación de marcadores únicamente a modo de referencia:
 
-  ```php
+  ~~~php
   /**
    * Reemplaza los valores de contexto por los marcadores del mensaje.
    */
@@ -66,7 +66,7 @@ en una librería de logs relacionada o un framework. Los usuarios de los logs so
 
   // imprime "Usuario Pedro creado"
   echo interpolacion($mensaje, $contexto);
-  ```
+  ~~~
 
 ### 1.3 Contexto
 
@@ -98,14 +98,14 @@ implementación se proveen como parte del paquete [psr/log](https://packagist.or
 3. `Psr\Log\LoggerInterface`
 ----------------------------
 
-```php
+~~~php
 <?php
 
 namespace Psr\Log;
 
 /**
  * Describe una instancia de logger
- * 
+ *
  * El mensaje DEBE ser una cadena o un objecto que implemente __toString().
  *
  * El mensaje PUEDE contener marcadores con el formato: {foo} donde foo
@@ -214,12 +214,12 @@ interface LoggerInterface
      */
     public function log($level, $message, array $context = array());
 }
-```
+~~~
 
 4. `Psr\Log\LoggerAwareInterface`
 ---------------------------------
 
-```php
+~~~php
 <?php
 
 namespace Psr\Log;
@@ -237,12 +237,12 @@ interface LoggerAwareInterface
      */
     public function setLogger(LoggerInterface $logger);
 }
-```
+~~~
 
 5. `Psr\Log\LogLevel`
 ---------------------
 
-```php
+~~~php
 <?php
 
 namespace Psr\Log;
@@ -261,7 +261,7 @@ class LogLevel
     const INFO      = 'info';
     const DEBUG     = 'debug';
 }
-```
+~~~
 Notas
 --------
 

@@ -64,7 +64,7 @@ Uporabniki dnevnikov so navedeni kot `uporabnik`.
   Sledi primer implementacije ogradne interpolacije
   ponujen samo za namene sklicevanja:
 
-  ```php
+  ~~~php
   /**
    * Interpolates context values into the message placeholders.
    */
@@ -88,7 +88,7 @@ Uporabniki dnevnikov so navedeni kot `uporabnik`.
 
   // echoes "User bolivar created"
   echo interpolate($message, $context);
-  ```
+  ~~~
 
 ### 1.3 Kontekst
 
@@ -139,7 +139,7 @@ paketa [psr/log](https://packagist.org/packages/psr/log).
 3. `Psr\Log\LoggerInterface`
 ----------------------------
 
-```php
+~~~php
 <?php
 
 namespace Psr\Log;
@@ -254,12 +254,12 @@ interface LoggerInterface
      */
     public function log($level, $message, array $context = array());
 }
-```
+~~~
 
 4. `Psr\Log\LoggerAwareInterface`
 ---------------------------------
 
-```php
+~~~php
 <?php
 
 namespace Psr\Log;
@@ -277,12 +277,12 @@ interface LoggerAwareInterface
      */
     public function setLogger(LoggerInterface $logger);
 }
-```
+~~~
 
 5. `Psr\Log\LogLevel`
 ---------------------
 
-```php
+~~~php
 <?php
 
 namespace Psr\Log;
@@ -301,4 +301,4 @@ class LogLevel
     const INFO      = 'info';
     const DEBUG     = 'debug';
 }
-```
+~~~

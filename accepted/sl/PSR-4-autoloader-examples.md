@@ -6,7 +6,7 @@ Sledeči primeri ponazarjajo PSR-4 skladno kodo:
 Primer zaprtja - Closure
 ------------------------
 
-```php
+~~~php
 <?php
 /**
  * An example of a project-specific implementation.
@@ -48,7 +48,7 @@ spl_autoload_register(function ($class) {
         require $file;
     }
 });
-```
+~~~
 
 Primer razreda
 --------------
@@ -56,7 +56,7 @@ Primer razreda
 Sledeči primer je izvedba razreda, ki obravnava več
 imenskih prostorov:
 
-```php
+~~~php
 <?php
 namespace Example;
 
@@ -244,13 +244,13 @@ class Psr4AutoloaderClass
         return false;
     }
 }
-```
+~~~
 
 ### Testi enot
 
 Sledeči primer je eden izmed načinov testiranja enot za zgornji nalagalni razred:
 
-```php
+~~~php
 <?php
 namespace Example\Tests;
 

@@ -48,7 +48,7 @@ Exemple d'implémentation
 Le code ci-dessous est un exemple de fonction permettant de montrer comment les
 standards proposés ci-dessus peuvent être chargés automatiquement.
 
-```php
+~~~php
 <?php
 
 function autoload($className)
@@ -65,7 +65,7 @@ function autoload($className)
 
     require $fileName;
 }
-```
+~~~
 
 Implémentation de SplClassLoader
 --------------------------------

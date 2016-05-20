@@ -49,7 +49,7 @@ O termo "efeitos colaterais" significa execução de lógica não diretamente re
 
 A seguir um exemplo de um arquivo com declarações e efeitos colaterais; ou seja um exemplo do que evitar:
 
-```php
+~~~php
 <?php
 // efeito colateral: mofificar php.ini
 ini_set('error_reporting', E_ALL);
@@ -65,11 +65,11 @@ function foo()
 {
     // corpo da função
 }
-```
+~~~
 
 A seguir um exemplo de um arquivo que contém somente declarações; ou seja, um exemplo do que seguir:
 
-```php
+~~~php
 <?php
 // declaração
 function foo()
@@ -84,7 +84,7 @@ if (! function_exists('bar')) {
         // corpo da função
     }
 }
-```
+~~~
 
 
 3. Nomes de Namespaces and Classes
@@ -100,7 +100,7 @@ Códigos escritos para PHP 5.3 e acima, DEVEM utilizar namespaces formais.
 
 Por exemplo:
 
-```php
+~~~php
 <?php
 // PHP 5.3 e acima:
 namespace Vendor\Model;
@@ -108,17 +108,17 @@ namespace Vendor\Model;
 class Foo
 {
 }
-```
+~~~
 
 Códigos escritos para PHP 5.2.x e abaixo, DEVERIAM utilizar a convenção de pseudo-namespace de prefixos `Vendor_` em nomes de classes.
 
-```php
+~~~php
 <?php
 // PHP 5.2.x e abaixo:
 class Vendor_Model_Foo
 {
 }
-```
+~~~
 
 4. Constantes de Classes, Propriedades e Métodos
 ------------------------------------------------
@@ -130,7 +130,7 @@ O termo "classes" se refere a todas as classes, interfaces e traits.
 Constantes de classes DEVEM ser declaradas totalmente com letras maiúsculas separadas pelo underscore.
 Por exemplo:
 
-```php
+~~~php
 <?php
 namespace Vendor\Model;
 
@@ -139,7 +139,7 @@ class Foo
     const VERSION = '1.0';
     const DATE_APPROVED = '2012-06-01';
 }
-```
+~~~
 
 ### 4.2. Propriedades
 

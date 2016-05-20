@@ -63,7 +63,7 @@ document doivent être interprétés comme décrit dans [RFC 2119][].
 Cet exemple comprend certaines des règles citées ci-dessus comme étant un
 aperçu:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -89,7 +89,7 @@ class Foo extends Bar implements FooInterface
         // corps de la fonction
     }
 }
-```
+~~~
 
 2. Général
 ----------
@@ -160,7 +160,7 @@ Il DOIT y avoir une ligne vide après le block de déclaration `use`.
 
 Par exemple:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -170,7 +170,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 // ... Code PHP additionnel ...
 
-```
+~~~
 
 4. Classes, Propriétés et Méthodes
 -----------------------------------
@@ -179,13 +179,13 @@ Le terme "class" réfère à toutes les classes, interfaces, et traits.
 
 ### 4.1. Héritages et Implémentations
 
-Les mots clés `extends` et `implements` DOIVENT être déclarés sur la même ligne 
+Les mots clés `extends` et `implements` DOIVENT être déclarés sur la même ligne
 que le nom de la classe.
 
 L'accolade d'ouverture de la classe DOIT être sur sa propre ligne; l'accolade
  de fermeture DOIT être sur la ligne après le corps de la classe.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -197,14 +197,14 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
     // constantes, propriétés, méthodes
 }
-```
+~~~
 
-La liste d'`implements` PEUT être répartie sur plusieurs lignes, où chaque 
+La liste d'`implements` PEUT être répartie sur plusieurs lignes, où chaque
 ligne subséquente est indentée une fois. Ce faisant, le premier élément de la
 liste DOIT être sur la ligne suivante, et il NE DOIT y avoir qu'une seule
 interface par ligne.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -219,7 +219,7 @@ class ClassName extends ParentClass implements
 {
     // constantes, propriétés, méthodes
 }
-```
+~~~
 
 ### 4.2. Propriétés
 
@@ -234,7 +234,7 @@ indiquer la visibilité protégée ou privée.
 
 Une déclaration de propriété ressemble à ce qui suit.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -242,7 +242,7 @@ class ClassName
 {
     public $foo = null;
 }
-```
+~~~
 
 ### 4.3. Méthodes
 
@@ -260,7 +260,7 @@ avoir d'espace avant la parenthèse de fermeture.
 Une déclaration de méthode ressemble à la suivante. Notez l'emplacement des
 parenthèses, virgules, espaces et accolades:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -271,7 +271,7 @@ class ClassName
         // corps de la fonction
     }
 }
-```
+~~~
 
 ### 4.4. Arguments des méthodes
 
@@ -281,7 +281,7 @@ virgule, et il DOIT y avoir un espace après chaque virgule.
 Les arguments de méthode avec les valeurs par défaut DOIVENT être placés à la
 fin de la liste d'arguments.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -292,18 +292,18 @@ class ClassName
         // corps de la fonction
     }
 }
-```
-La liste d'arguments PEUT être répartie sur plusieurs lignes, où chaque ligne 
-subséquente est indentée une fois. Ce faisant, le premier élément de la liste 
+~~~
+La liste d'arguments PEUT être répartie sur plusieurs lignes, où chaque ligne
+subséquente est indentée une fois. Ce faisant, le premier élément de la liste
 DOIT figurer sur la ligne suivante, et il NE DOIT y avoir qu'un seul argument
 par ligne.
 
-Lorsque la liste des arguments est répartie sur plusieurs lignes, la parenthèse 
+Lorsque la liste des arguments est répartie sur plusieurs lignes, la parenthèse
 de fermeture et l'accolades d'ouverture DOIVENT être placée ensemble sur leur
 propre ligne avec un espace entre eux.
 
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -317,7 +317,7 @@ class ClassName
         // corps de la fonction
     }
 }
-```
+~~~
 
 ### 4.5. `abstract`, `final`, et `static`
 
@@ -327,7 +327,7 @@ précédés la déclaration de la visibilité.
 Lorsqu'elle est présente, la déclaration `static` DOIT venir après la
 déclaration de la visibilité.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -342,37 +342,37 @@ abstract class ClassName
         // corps de la fonction
     }
 }
-```
+~~~
 
 ### 4.6. Appels de Méthodes et Fonctions
 
-Lorsque vous effectuez l'appel d'une méthode ou d'une fonction, il NE DOIT PAS 
+Lorsque vous effectuez l'appel d'une méthode ou d'une fonction, il NE DOIT PAS
 y avoir d'espace entre le nom de la méthode ou de la fonction et la parenthèse
 ouvrante, il NE DOIT PAS y avoir d'espace après la parenthèse ouvrante et il
 NE DOIT PAS y avoir d'espace avant la parenthèse fermante. Dans la liste
 d'arguments, il NE DOIT PAS y avoir d'espace avant chaque virgule, et il DOIT y
 avoir un espace après chaque virgule.
 
-```php
+~~~php
 <?php
 bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
-```
+~~~
 
-La liste d'arguments PEUT être répartie sur plusieurs lignes, où chaque ligne 
+La liste d'arguments PEUT être répartie sur plusieurs lignes, où chaque ligne
 subséquente est indentée une fois. Ce faisant, le premier élément de la liste
 DOIT figurer sur la ligne suivante, et il NE DOIT y avoir qu'un seul argument
 par ligne.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $longArgument,
     $longerArgument,
     $muchLongerArgument
 );
-```
+~~~
 
 5. Structures de contrôle
 ---------------------
@@ -398,7 +398,7 @@ Une structure `if` ressemble à ce qui suit. Notez l'emplacement des parenthèse
 espaces et accolades, et que `else` et `elseif` sont sur la même ligne que
 l'accolade fermante du corps précédant.
 
-```php
+~~~php
 <?php
 if ($expr1) {
     // corps du if
@@ -407,7 +407,7 @@ if ($expr1) {
 } else {
     // corps du else;
 }
-```
+~~~
 
 Le mot-clé `elseif` DEVRAIT être utilisé au lieu de `else if` afin que tout les
 mots-clés de contrôle ressemblent à des mots simples.
@@ -421,7 +421,7 @@ terminaison) DOIT être indenté au même niveau que le corps de `case`. Il DOIT
 avoir un commentaire comme `// no break` lorsque son omission est
 intentionnelle dans un corps de `case` non vide.
 
-```php
+~~~php
 <?php
 switch ($expr) {
     case 0:
@@ -439,60 +439,60 @@ switch ($expr) {
         echo 'case par défaut';
         break;
 }
-```
+~~~
 
 ### 5.3. `while`, `do while`
 
 Une structure `while` ressemble à ce qui suit. Notez l'emplacement des
 parenthèses, espaces et accolades.
 
-```php
+~~~php
 <?php
 while ($expr) {
     // corps de la structure
 }
-```
+~~~
 
 De même, une structure `do while` ressemble à ce qui suit. Notez l'emplacement
 des parenthèses, espaces et accolades.
 
-```php
+~~~php
 <?php
 do {
     // corps de la structure
 } while ($expr);
-```
+~~~
 
 ### 5.4. `for`
 
 Une structure `for` ressemble à ce qui suit. Notez l'emplacement des
 parenthèses, espaces et accolades.
 
-```php
+~~~php
 <?php
 for ($i = 0; $i < 10; $i++) {
     // corps de la structure for
 }
-```
+~~~
 
 ### 5.5. `foreach`
 
 Une structure `foreach` ressemble à ce qui suit. Notez l'emplacement des
 parenthèses, espaces et accolades.
 
-```php
+~~~php
 <?php
 foreach ($iterable as $key => $value) {
     // corps de la structure foreach
 }
-```
+~~~
 
 ### 5.6. `try`, `catch`
 
 Une structure `try catch` ressemble à ce qui suit. Notez l'emplacement des
 parenthèses, espaces et accolades.
 
-```php
+~~~php
 <?php
 try {
     // corps du try
@@ -501,7 +501,7 @@ try {
 } catch (OtherExceptionType $e) {
     // corps du catch
 }
-```
+~~~
 
 6. Closures
 -----------
@@ -525,7 +525,7 @@ la liste des arguments.
 Une déclaration de closure se présente comme suit. Notez l'emplacement des
 parenthèses, virgules, espaces et accolades.
 
-```php
+~~~php
 <?php
 $closureWithArgs = function ($arg1, $arg2) {
     // corps
@@ -534,7 +534,7 @@ $closureWithArgs = function ($arg1, $arg2) {
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
     // corps
 };
-```
+~~~
 
 Les listes d'arguments et de variables peuvent être réparties sur plusieurs
 lignes, où chaque ligne subséquente est en retrait une fois. Ce faisant, le
@@ -548,7 +548,7 @@ ensemble sur leur ligne avec un espace entre eux.
 Voici des exemples de closure avec et sans liste d'arguments et de variables
 réparties sur plusieurs lignes.
 
-```php
+~~~php
 <?php
 $ArgsLong_pasDeVars = function (
     $argumentLong,
@@ -593,13 +593,13 @@ $argsCourt_varsLong = function ($arg) use (
 ) {
    // corps
 };
-```
+~~~
 
 Notez que les règles de formatage s'appliquent également lorsque la closure est
 utilisée directement dans un appel d'une fonction ou méthode en tant
 qu'argument.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $arg1,
@@ -608,7 +608,7 @@ $foo->bar(
     },
     $arg3
 );
-```
+~~~
 
 7. Conclusion
 --------------

@@ -46,7 +46,7 @@ descritto nella [RFC 2119][].
 - La visibilità DEVE essere dichiarata su tutte le proprietà e i metodi; `abstract` e
   `final` DEVONO essere dichiarate prima della visibilità; `static` DEVE essere dichiarata dopo
   la visibilità.
-  
+
 - Le keyword delle strutture di controllo DEVONO avere uno spazio a seguire; i metodi e le chiamate
   a funzioni NON DEVONO.
 
@@ -60,7 +60,7 @@ descritto nella [RFC 2119][].
 
 Questo esempio comprende alcune delle regole riportate come panoramica:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -86,7 +86,7 @@ class Foo extends Bar implements FooInterface
         // corpo del metodo
     }
 }
-```
+~~~
 
 2. Regole Generali
 -------------------
@@ -155,7 +155,7 @@ DEVE esserci una riga vuota dopo il blocco `use`.
 
 Per esempio:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -165,7 +165,7 @@ use AltroVendor\AltroPackage\BazClass;
 
 // ... ulteriore codice PHP ...
 
-```
+~~~
 
 
 4. Classi, Proprietà e Metodi
@@ -181,7 +181,7 @@ della classe.
 La graffa di apertura della classe DEVE andare su una nuova riga; la graffa
 di chiusura per la classe DEVE andare su una nuova riga dopo il corpo.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -193,14 +193,14 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
     // costanti, proprietà, metodi
 }
-```
+~~~
 
 Liste di `implements` POSSONO essere divise su righe multiple, dove ogni
 riga seguente è indentata una volta. In questo caso, il primo elemento
 nella lista DEVE andare su una nuova riga e ci DEVE essere una sola interfaccia
 per riga.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -215,7 +215,7 @@ class ClassName extends ParentClass implements
 {
     // costanti, proprietà, metodi
 }
-```
+~~~
 
 ### 4.2. Proprietà
 
@@ -230,7 +230,7 @@ visibilità protetta o privata.
 
 La dichiarazione di una proprietà dovrebbe essere simile alla seguente:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -238,7 +238,7 @@ class ClassName
 {
     public $foo = null;
 }
-```
+~~~
 
 ### 4.3. Metodi
 
@@ -257,7 +257,7 @@ La dichiarazione di un metodo dovrebbe essere simile alla seguente.
 Da notare il posizionamento delle parentesi, delle virgole, degli spazi e
 delle graffe:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -268,7 +268,7 @@ class NomeClass
         // corpo del metodo
     }
 }
-```    
+~~~
 
 ### 4.4. Argomenti dei metodi
 
@@ -278,7 +278,7 @@ DEVE esserci uno spazio dopo ogni virgola.
 Gli argomenti dei metodi con valori di default DEVONO andare alla fine della lista
 di argomenti.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -289,7 +289,7 @@ class NomeClasse
         // corpo del metodo
     }
 }
-```
+~~~
 
 Le liste di argomenti POSSONO essere divise su righe multiple, dove ogni riga
 seguente è indentata una volta. In questo caso, il primo elemento della lista
@@ -299,7 +299,7 @@ Quando la lista di argomenti è divisa su righe multiple, le parentesi di chiusu
 e la graffa di apertura DEVONO essere sulla stessa riga con uno spazio a
 separarle.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -313,7 +313,7 @@ class ClassName
         // corpo del metodo
     }
 }
-```
+~~~
 
 ### 4.5. `abstract`, `final`, `static`
 
@@ -323,7 +323,7 @@ le dichiarazioni di visibilità.
 Quando presente, la dichiarazione `static` DEVE andare dopo la dichiarazione
 di visibilità.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -338,7 +338,7 @@ abstract class NomeClasse
         // corpo del metodo
     }
 }
-```
+~~~
 
 ### 4.6. Chiamate a metodi e funzioni
 
@@ -348,25 +348,25 @@ e NON DEVE esserci uno spazio prima della parentesi di chiusura.
 Nella lista di argomenti NON PUO' esserci uno spazio prima di ogni virgola,
 e DEVE esserci uno spazio dopo ogni virgola.
 
-```php
+~~~php
 <?php
 bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
-```
+~~~
 
 La lista di argomenti PUO' essere divisa su righe multiple, dove ogni riga seguente
 è indentata una volta. In questo caso, il primo elemento nella lista DEVE essere
 sulla riga seguente e DEVE esserci un solo argomento per riga.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $argomentoLungo,
     $argomentoPiuLungo,
     $argomentoAncoraPiuLungo
 );
-```
+~~~
 
 5. Strutture di controllo
 --------------------------
@@ -391,7 +391,7 @@ Una struttura `if` dovrebbe essere come la seguente. Da notare il posizionamento
 delle parentesi, degli spazi e delle graffe; e il fatto che `else` e `elseif`
  sono sulla stessa riga in cui si trova la graffa di chiusura del corpo precedente.
 
-```php
+~~~php
 <?php
 if ($expr1) {
     // if corpo
@@ -400,7 +400,7 @@ if ($expr1) {
 } else {
     // else corpo;
 }
-```
+~~~
 
 La keyword `elseif` DOVREBBE essere usata al posto di `else if` affinché tutte
 le keyword delle strutture di controllo siano assimilabili a singola parola.
@@ -415,7 +415,7 @@ altra keyword di chiusura) DEVE essere indentata allo stesso livello del corpo d
 DEVE esserci un commento come `// no break` quando il passare oltre è intenzionale nel corpo
 di un `case` non vuoto.
 
-```php
+~~~php
 <?php
 switch ($expr) {
     case 0:
@@ -433,7 +433,7 @@ switch ($expr) {
         echo 'Caso di default';
         break;
 }
-```
+~~~
 
 
 ### 5.3. `while`, `do while`
@@ -441,53 +441,53 @@ switch ($expr) {
 Una dichiarazione `while` dovrebbe essere come la seguente. Da notare
 il posizionamento delle parentesi, degli spazi e delle graffe.
 
-```php
+~~~php
 <?php
 while ($expr) {
     // corpo della struttura
 }
-```
+~~~
 
 In modo simile, una dichiarazione `do while` dovrebbe essere come la seguente.
 Da notare il posizionamento delle parentesi, degli spazi e delle graffe.
 
-```php
+~~~php
 <?php
 do {
     // corpo della struttura;
 } while ($expr);
-```
+~~~
 
 ### 5.4. `for`
 
 Una dichiarazione `for`  dovrebbe essere come la seguente. Da notare
 il posizionamento delle parentesi, degli spazi e delle graffe.
 
-```php
+~~~php
 <?php
 for ($i = 0; $i < 10; $i++) {
     // corpo del for
 }
-```
+~~~
 
 ### 5.5. `foreach`
-    
+
 Una dichiarazione `foreach`  dovrebbe essere come la seguente. Da notare
 il posizionamento delle parentesi, degli spazi e delle graffe.
 
-```php
+~~~php
 <?php
 foreach ($iterable as $key => $value) {
     // corpo del foreach
 }
-```
+~~~
 
 ### 5.6. `try`, `catch`
 
 Una dichiarazione `try catch`  dovrebbe essere come la seguente. Da notare
 il posizionamento delle parentesi, degli spazi e delle graffe.
 
-```php
+~~~php
 <?php
 try {
     // corpo del try
@@ -496,7 +496,7 @@ try {
 } catch (TipoAltraEccezione $e) {
     // corpo del catch
 }
-```
+~~~
 
 6. Le Closure
 --------------
@@ -522,7 +522,7 @@ La dichiarazione di una closure dovrebbe essere come la seguente. Da notare
 il posizionamento delle parentesi, delle virgole, degli spazi e delle graffe.
 
 
-```php
+~~~php
 <?php
 $closureWithArgs = function ($arg1, $arg2) {
     // corpo
@@ -531,7 +531,7 @@ $closureWithArgs = function ($arg1, $arg2) {
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
     // corpo
 };
-```
+~~~
 
 Le liste di argomenti e variabili POSSONO essere divise su righe multiple,
 dove ogni riga seguente è indentata una volta. In questo caso, il primo
@@ -542,10 +542,10 @@ Quando la lista di chiusura (di argomenti o variabili) è divisa su righe multip
 la parentesi di chiusura e la graffa di apertura DEVONO essere posizionate
 insieme su una nuova riga con uno spazio a separarle.
 
-Quello che segue è un esempio di closure con e senza liste di argomenti e liste di variabili 
+Quello che segue è un esempio di closure con e senza liste di argomenti e liste di variabili
 divise su righe multiple.
 
-```php
+~~~php
 <?php
 $longArgs_noVars = function (
     $argomentoLungo,
@@ -590,11 +590,11 @@ $shortArgs_longVars = function ($arg) use (
 ) {
    // body
 };
-```
+~~~
 Da notare che le regole di formattazione si applicano anche quando la closure
 è usata direttamente in una chiamata a funzione o metodo come argomento.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $arg1,
@@ -603,7 +603,7 @@ $foo->bar(
     },
     $arg3
 );
-```
+~~~
 
 
 7. Conclusioni

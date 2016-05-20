@@ -63,7 +63,7 @@ d'exceptions, modification de variables globales ou statiques, lecture ou
 Le code suivant est un exemple d’un fichier avec déclarations et effets
 secondaires ; c’est-à-dire, un exemple de ce qu’il faut éviter :
 
-```php
+~~~php
 <?php
 // Effet secondaire: change ini settings
 ini_set('error_reporting', E_ALL);
@@ -79,12 +79,12 @@ function foo()
 {
     // corps de la fonction
 }
-```
+~~~
 
 L'exemple suivant est un fichier qui contient des déclarations sans
 effets secondaires, c’est-à-dire, un exemple à émuler :
 
-```php
+~~~php
 <?php
 // déclaration
 function foo()
@@ -99,7 +99,7 @@ if (! function_exists('bar')) {
         // corps de la fonction
     }
 }
-```
+~~~
 
 3. Espaces de Nom et Noms des Classes
 -------------------------------------
@@ -115,7 +115,7 @@ Le code écrit pour PHP 5.3 et après, DOIT utiliser les espaces de noms formels
 
 Par exemple :
 
-```php
+~~~php
 <?php
 // PHP 5.3 et supérieur:
 namespace Vendor\Model;
@@ -123,18 +123,18 @@ namespace Vendor\Model;
 class Foo
 {
 }
-```
+~~~
 
 Le code écrit pour 5.2.x et avant DEVRAIT utiliser la convention pseudo-espace
 de nom `Vendor_` préfixée par les noms de classes.
 
-```php
+~~~php
 <?php
 // PHP 5.2.x and earlier:
 class Vendor_Model_Foo
 {
 }
-```
+~~~
 
 4. Constantes de Classe, Propriétés et Méthodes
 -------------------------------------------
@@ -148,7 +148,7 @@ Les constantes de classe DOIVENT être déclarées en majuscules avec un tiret b
 séparateur.
 Par exemple :
 
-```php
+~~~php
 <?php
 namespace Vendor\Model;
 
@@ -157,7 +157,7 @@ class Foo
     const VERSION = '1.0';
     const DATE_APPROVED = '2012-06-01';
 }
-```
+~~~
 
 ### 4.2. Les Propriétés
 

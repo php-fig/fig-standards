@@ -32,7 +32,7 @@ As palavras chave "DEVE", "NÃO DEVE", "OBRIGATÓRIO", "TEM QUE", "NÃO TEM QUE"
 - Visibilidade DEVE ser declarada em todas as propriedades e métodos; `abstract` e `final` DEVEM ser declarados antes da visibilidade; `static` DEVE ser declarado depois da visibilidade.
 
 - Palavras-chave de estruturas de controle DEVEM ter um espaço depois delas; chamadas de métodos e funções NÃO DEVEM.
-  
+
 - Chaves de abertura para estruturas de controle DEVEM ser colocadas na mesma linha e chaves de fechamento DEVEM ser colocadas na linha após o corpo da estrutura de controle.
 
 - Parenteses de abertura para estruturas de controle NÃO DEVEM ter um espaço depois delas e parenteses de fechamento para estruturas de controle NÃO DEVEM ter um espaço antes.
@@ -42,7 +42,7 @@ As palavras chave "DEVE", "NÃO DEVE", "OBRIGATÓRIO", "TEM QUE", "NÃO TEM QUE"
 
 Este exemplo engloba algumas das regras abaixo como uma rápida visão geral:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -68,7 +68,7 @@ class Foo extends Bar implements FooInterface
         // corpo do método
     }
 }
-```
+~~~
 
 2. Geral
 --------
@@ -104,8 +104,8 @@ NÃO DEVE haver mais do que uma declaração por linha.
 Códigos DEVEM utilizar uma indentação de 4 espaços e NÃO DEVEM utilizar tabs para indentação.
 
 > Utilizando somente espaços e não misturando com tabs, ajuda a evitar
-> problemas com diffs, patches, history e annotations em sistemas de 
-> versionamento. A utilização de espaços também torna fácil incluir 
+> problemas com diffs, patches, history e annotations em sistemas de
+> versionamento. A utilização de espaços também torna fácil incluir
 > sub-indentações granuladas para alinhamento inter-linhas.
 
 ### 2.5. Palavras-chave e True/False/Null
@@ -130,7 +130,7 @@ DEVE haver uma linha em branco depois do bloco de `use`.
 
 Por exemplo:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -140,7 +140,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 // ... mais código PHP ...
 
-```
+~~~
 
 
 4. Classes, Propriedades e Métodos
@@ -154,7 +154,7 @@ As palavras-chave `extends` e `implements` DEVEM ser declaradas na mesma linha q
 
 A chave de abertura para a classe DEVE ser colocada em sua própria linha; a chave de fechamento DEVE ser coloca na linha após o corpo da classe.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -166,11 +166,11 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
     // constantes, propriedades, métodos
 }
-```
+~~~
 
 Listas de `implements` PODEM ser divididas em múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fazendo isto, o primeiro item da lista DEVE ser colocado na linha seguinte e DEVE haver somente uma interface por linha.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -185,7 +185,7 @@ class ClassName extends ParentClass implements
 {
     // constantes, propriedades, métodos
 }
-```
+~~~
 
 ### 4.2. Propriedades
 
@@ -199,7 +199,7 @@ Nomes de propriedades NÃO DEVERIAM ser prefixadas com `_` para indicar visibili
 
 Uma declaração de propriedade se parece com o seguinte:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -207,7 +207,7 @@ class ClassName
 {
     public $foo = null;
 }
-```
+~~~
 
 ### 4.3. Métodos
 
@@ -219,7 +219,7 @@ Assinaturas de métodos NÃO DEVEM ser declaradas com um espaço após o nome do
 
 Uma declaração de método se parece com o seguinte. Note o posicionamento dos parenteses, virgulas, espaços e chaves:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -230,7 +230,7 @@ class ClassName
         // corpo do método
     }
 }
-```    
+~~~
 
 ### 4.4. Argumentos de Métodos
 
@@ -238,7 +238,7 @@ Na lista de argumentos, NÃO DEVE haver um espaço antes de cada vírgula e DEVE
 
 Argumentos de métodos com valores default DEVEM ser colocados ao fim da lista de argumentos.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -249,13 +249,13 @@ class ClassName
         // corpo do método
     }
 }
-```
+~~~
 
 Lista de argumentos PODEM ser divididas entre múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fazendo isto, o primeiro item da lista DEVE estar na linha seguinte e DEVE haver somente um argumento por linha.
 
 Quando a lista de argumento é dividida em multiplas linhas, o parenteses de fechamento e a chave abertura DEVEM ser colocadas juntas em sua própria linha com um espaço entre elas.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -269,7 +269,7 @@ class ClassName
         // corpo do método
     }
 }
-```
+~~~
 
 ### 4.5. `abstract`, `final` e `static`
 
@@ -277,7 +277,7 @@ Quando presente, as declarações `abstract` e `final` DEVEM preceder as declara
 
 Quando presente, a declaração `static` DEVEM vir depois da declaração de visibilidade.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -292,29 +292,29 @@ abstract class ClassName
         // corpo do método
     }
 }
-```
+~~~
 
 ### 4.6. Method and Function Calls
 
 Quando fazendo uma chamada de métodos ou funções, NÃO DEVE haver um espaço entre o nome do método e o parenteses de abertura, NÃO DEVE haver um espaço após o parenteses de abertura e NÃO DEVE haver um espaço antes do parenteses de fechamento. Na lista de argumentos, NÃO DEVE haver um espaço antes de cada vírgula e DEVE haver um espaço após cada vírgula.
 
-```php
+~~~php
 <?php
 bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
-```
+~~~
 
 Listas de argumentos PODEM ser divididas em múltiplas linhas, onde cada linha subsequente é indentada uma vez. Quando fazendo isto, o primeiro item da lista DEVE estar na linha seguinte e DEVE haver somente um argumento por linha.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $longArgument,
     $longerArgument,
     $muchLongerArgument
 );
-```
+~~~
 
 5. Estruturas de Controle
 -------------------------
@@ -335,7 +335,7 @@ O corpo de cada estrutura DEVE ser envolta por chaves. Isso padroniza como as es
 
 Uma estrutura `if` se parece com o seguinte. Note o posicionamento dos parenteses, espaços e chaves; e que `else` e `elseif` estão na mesma linha que a chave de fechamento do corpo da estrutura anterior.
 
-```php
+~~~php
 <?php
 if ($expr1) {
     // corpo do if
@@ -344,7 +344,7 @@ if ($expr1) {
 } else {
     // corpo do else
 }
-```
+~~~
 
 A palavra-chave `elseif` DEVERIA ser utilizada ao invés de `else if` para que todas as palavras-chave de controle se pareçam com uma só palavra.
 
@@ -353,7 +353,7 @@ A palavra-chave `elseif` DEVERIA ser utilizada ao invés de `else if` para que t
 
 Uma estrutura `switch` se parece com o seguinte. Note o posicionamento dos parenteses, espaços e chaves. A declaração `case` DEVE ser identada uma vez do `switch` e a palavra-chave `case` (ou qualquer outra palavra-chave de terminação) DEVE ser indentada no mesmo nível que o corpo do `case`. DEVE haver um comentário como `//sem break` quando a passagem próximo case é intencional em um corpo de `case` que não está vazio.
 
-```php
+~~~php
 <?php
 switch ($expr) {
     case 0:
@@ -371,56 +371,56 @@ switch ($expr) {
         echo 'Default case';
         break;
 }
-```
+~~~
 
 
 ### 5.3. `while`, `do while`
 
 Uma estrutura `while` se parece com o seguinte. Note o posicionamento dos  parenteses, espaços e chaves.
 
-```php
+~~~php
 <?php
 while ($expr) {
     // corpo da estrutura
 }
-```
+~~~
 
 Similarmente, uma estrutura `do while` se parece com o seguinte. Note o posicionamento dos  parenteses, espaços e chaves.
 
-```php
+~~~php
 <?php
 do {
     // corpo da estrutura
 } while ($expr);
-```
+~~~
 
 ### 5.4. `for`
 
 Uma estrutura `for` se parece com o seguinte. Note o posicionamento dos  parenteses, espaços e chaves.
 
-```php
+~~~php
 <?php
 for ($i = 0; $i < 10; $i++) {
     // corpo do for
 }
-```
+~~~
 
 ### 5.5. `foreach`
 
 Uma estrutura `foreach` se parece com o seguinte. Note o posicionamento dos  parenteses, espaços e chaves.
 
-```php
+~~~php
 <?php
 foreach ($iterable as $key => $value) {
     // corpo do foreach
 }
-```
+~~~
 
 ### 5.6. `try`, `catch`
 
 Uma estrutura `try catch` se parece com o seguinte. Note o posicionamento dos  parenteses, espaços e chaves.
 
-```php
+~~~php
 <?php
 try {
     // corpo do try
@@ -429,7 +429,7 @@ try {
 } catch (OtherExceptionType $e) {
     // corpo do catch
 }
-```
+~~~
 
 6. Closures
 -----------
@@ -446,7 +446,7 @@ Argumentos de closures com valores default DEVEM ser colocados ao fim da lista d
 
 Uma declaração de closure se parece com o seguinte. Note o posicionamento dos parenteses, vírgulas, espaços e chaves:
 
-```php
+~~~php
 <?php
 $closureWithArgs = function ($arg1, $arg2) {
     // corpo
@@ -455,7 +455,7 @@ $closureWithArgs = function ($arg1, $arg2) {
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
     // corpo
 };
-```
+~~~
 
 Listas de argumentos e variáveis PODEM ser dividas em múltiplas linhas, onde cada linha subsequente  é indentada uma vez. Quando fazendo isto, o primeiro item da lista DEVE estar na próxima linha e DEVE haver somente um argumento ou variável por linha.
 
@@ -463,7 +463,7 @@ Quando uma lista finalizando (sendo argumentos ou variáveis) é divida em múlt
 
 A seguir estão exemplos de closures com e sem listas de argumentos e variáveis que se dividem por múltiplas linhas.
 
-```php
+~~~php
 <?php
 $longArgs_noVars = function (
     $longArgument,
@@ -508,11 +508,11 @@ $shortArgs_longVars = function ($arg) use (
 ) {
    // corpo
 };
-```
+~~~
 
 Note que as regras de formatação também se aplicam em closures que são utilizadas diretamente numa chamada de função ou método como um argumento.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $arg1,
@@ -521,7 +521,7 @@ $foo->bar(
     },
     $arg3
 );
-```
+~~~
 
 
 7. Conclusão

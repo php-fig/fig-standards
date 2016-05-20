@@ -39,7 +39,7 @@ En el documento original se usa el RFC 2119 para el uso de las palabras MUST, MU
 
 Este ejemplo incluye algunas de las siguientes reglas a modo de visión general rápida:
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -65,7 +65,7 @@ class Foo extends Bar implements FooInterfaz
         // cuerpo del método
     }
 }
-```
+~~~
 
 2. General
 ----------
@@ -125,7 +125,7 @@ DEBE haber una línea en blanco después del bloque de declaraciones `use`.
 
 Por ejemplo:
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -135,7 +135,7 @@ use OtroProveedor\OtroPaquete\BazClase;
 
 // ... código PHP adicional ...
 
-```
+~~~
 
 
 4. Clases, propiedades y métodos
@@ -149,7 +149,7 @@ Las palabras clave `extends` e `implements` DEBEN declararse en la misma línea 
 
 La llave de apertura de la clase DEBE ir en la línea siguiente; la llave de cierre DEBE ir en la línea siguiente al cuerpo de la clase.
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -161,11 +161,11 @@ class NombreDeClase extends ClasePadre implements \ArrayAccess, \Countable
 {
     // constantes, propiedades, métodos
 }
-```
+~~~
 
 La lista de `implements` PUEDE ser dividida en múltiples líneas, donde las líneas subsiguientes serán indentadas una vez. Al hacerlo, el primer elemento de la lista DEBE estar en la línea siguiente, y DEBE haber una sola interfaz por línea.
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -180,7 +180,7 @@ class NombreDeClase extends ClasePadre implements
 {
     // constantes, propiedades, métodos
 }
-```
+~~~
 
 ### 4.2. Propiedades
 
@@ -194,7 +194,7 @@ Los nombres de las propiedades NO DEBERÍAN usar un guión bajo como prefijo par
 
 Una declaración de propiedas tendrá el siguiente aspecto.
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -202,7 +202,7 @@ class NombreDeClase
 {
     public $foo = null;
 }
-```
+~~~
 
 ### 4.3. Métodos
 
@@ -214,7 +214,7 @@ Los nombres de métodos NO DEBEN estar declarados con un espacio después del no
 
 La declaración de un método tendrá el siguiente aspecto. Fíjese en la situación de los paréntesis, las comas, los espacios y las llaves:
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -225,7 +225,7 @@ class NombreDeClase
         // cuerpo del método
     }
 }
-```
+~~~
 
 ### 4.4. Argumentos de los métodos
 
@@ -233,7 +233,7 @@ En la lista de argumentos NO DEBE haber un espacio antes de cada coma y DEBE hab
 
 Los argumentos con valores por defecto del método DEBEN ir al final de la lista de argumentos.
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -244,13 +244,13 @@ class NombreDeClase
         // cuerpo del método
     }
 }
-```
+~~~
 
 La lista de argumentos PUEDE dividirse en múltiples líneas, donde cada línea será indentada una vez. Cuando se dividan de esta forma, el primer argumento DEBE estar en la línea siguiente, y DEBE haber sólo un argumento por línea.
 
 Cuando la lista de argumentos se divide en varias líneas, el paréntesis de cierre y la llave de apertura DEBEN estar juntos en su propia línea separados por un espacio.
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -264,7 +264,7 @@ class NombreDeClase
         // cuerpo del método
     }
 }
-```
+~~~
 
 ### 4.5. `abstract`, `final`, y `static`
 
@@ -272,7 +272,7 @@ Cuando estén presentes las declaraciones `abstract` y `final`, DEBEN preceder a
 
 Cuando esté presente la declaración `static`, DEBE ir después de la declaración de visibilidad.
 
-```php
+~~~php
 <?php
 namespace Proveedor\Paquete;
 
@@ -287,29 +287,29 @@ abstract class NombreDeClase
         // cuerpo del método
     }
 }
-```
+~~~
 
 ### 4.6. Llamadas a métodos y funciones
 
 Cuando se realize una llamada a un método o a una función, NO DEBE haber un espacio entre el nombre del método o la función y el paréntesis de apertura, NO DEBE haber un espacio después del paréntesis de apertura, y NO DEBE haber un espacio antes del paréntesis de cierre. En la lista de argumentos, NO DEBE haber espacio antes de cada coma y DEBE haber un espacio después de cada coma.
 
-```php
+~~~php
 <?php
 bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
-```
+~~~
 
 La lista de argumentos PUEDE dividirse en múltiples líneas, donde cada una se indenta una vez. Cuando esto suceda, el primer argumento DEBE estar en la línea siguiente, y DEBE haber sólo un argumento por línea.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $argumentoLargo,
     $argumentoMaslargo,
     $argumentoTodaviaMasLargo
 );
-```
+~~~
 
 5. Estructuras de control
 -------------------------
@@ -330,7 +330,7 @@ El cuerpo de cada estructura DEBE estar encerrado entre llaves. Esto estandariza
 
 Una estructura `if` tendrá el siguiente aspecto. Fíjese en el lugar de los paréntesis, los espacios y las llaves; y que `else` y `elseif` están en la misma línea que las llaves de cierre del cuerpo anterior.
 
-```php
+~~~php
 <?php
 if ($expr1) {
     // if cuerpo
@@ -339,7 +339,7 @@ if ($expr1) {
 } else {
     // else cuerpo;
 }
-```
+~~~
 
 La palabra clave `elseif` DEBERÍA ser usada en lugar de `else if` de forma que todas las palabras clave de la estructura estén compuestas por palabras de un solo término.
 
@@ -348,7 +348,7 @@ La palabra clave `elseif` DEBERÍA ser usada en lugar de `else if` de forma que 
 
 Una estructura `switch` tendrá el siguiente aspecto. Fíjese en el lugar donde están los paréntesis, los espacios y las llaves. La palabra clave `case` DEBE estar indentada una vez respecto al `switch` y la palabra clave `break` o cualquier otra palabra clave de finalización DEBE estar indentada al mismo nivel que el cuerpo del `case`. DEBE haber un comentario como `// no break` cuando hay `case` en cascada no vacío.
 
-```php
+~~~php
 <?php
 switch ($expr) {
     case 0:
@@ -366,57 +366,57 @@ switch ($expr) {
         echo 'Case por defecto';
         break;
 }
-```
+~~~
 
 
 ### 5.3. `while`, `do while`
 
 Una instrucción `while` tendrá el siguiente aspecto. Fíjese en el lugar donde están los paréntesis, los espacios y las llaves.
 
-```php
+~~~php
 <?php
 while ($expr) {
     // cuerpo de la estructura
 }
-```
+~~~
 
 Igualmente, una sentencia `do while` tendrá el siguiente aspecto. Fíjese en el lugar donde están los paréntesis, los espacios y las llaves.
 
-```php
+~~~php
 <?php
 do {
     // cuerpo de la estructura;
 } while ($expr);
-```
+~~~
 
 ### 5.4. `for`
 
 Una sentencia `for` tendrá el siguiente aspecto. Fíjese en el lugar donde aparecen los paréntesis, los espacios y las llaves.
 
-```php
+~~~php
 <?php
 for ($i = 0; $i < 10; $i++) {
     // cuerpo del for
 }
-```
+~~~
 
 ### 5.5. `foreach`
 
 Un sentencia `foreach` tendrá el siguiente aspecto. Fíjese en el lugar donde aparecen los paréntesis, los espacios y las llaves.
 
-```php
+~~~php
 <?php
 foreach ($iterable as $key => $value) {
     // cuerpo foreach
 }
-```
+~~~
 
 ### 5.6. `try`, `catch`
 
 Un bloque `try catch` tendrá el siguiente aspecto. Fíjese en el lugar donde aparecen los paréntesis, los espacios y los llaves.
 
 
-```php
+~~~php
 <?php
 try {
     // cuerpo del try
@@ -425,7 +425,7 @@ try {
 } catch (OtroTipoDeExcepcion $e) {
     // cuerpo catch
 }
-```
+~~~
 
 6. Closures
 -----------
@@ -442,7 +442,7 @@ Los argumentos de las closures con valores por defecto, DEBEN ir al final de la 
 
 Una declaración de una closure tendrá el siguiente aspecto. Fíjese en el lugar donde aparecen los paréntesis, las comas, los espacios y las llaves.
 
-```php
+~~~php
 <?php
 $closureConArgumentos = function ($arg1, $arg2) {
     // cuerpo
@@ -451,7 +451,7 @@ $closureConArgumentos = function ($arg1, $arg2) {
 $closureConArgumentosYVariables = function ($arg1, $arg2) use ($var1, $var2) {
     // cuerpo
 };
-```
+~~~
 
 La lista de argumetos y la lista de variables PUEDEN ser divididas en múltiples líneas, donde cada nueva línea se indentará una vez. Cuando esto suceda, el primer elemento de la lista DEBE ir en una nueva línea y DEBE haber sólo un argumento o variable por línea.
 
@@ -459,7 +459,7 @@ Cuando la lista de argumentos o variables se divide en varias líneas, el parén
 
 A continuación se muestran ejemplos de closures con y sin lista de argumentos y variables, así como con listas de argumentos y variables en múltiples líneas.
 
-```php
+~~~php
 <?php
 $listaLargaDeArgumentos_sinVariables = function (
     $argumentoLargo,
@@ -504,11 +504,11 @@ $listaDeArgumentos_listaLargaDeVariables = function ($arg) use (
 ) {
     // cuerpo
 };
-```
+~~~
 
 Fíjese que las reglas de formateo se aplican también cuando una closure se usa directamente en una función o llamada a método como argumento.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $arg1,
@@ -517,7 +517,7 @@ $foo->bar(
     },
     $arg3
 );
-```
+~~~
 
 
 7. Conclusión

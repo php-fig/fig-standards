@@ -65,7 +65,7 @@ modifica di variabili globali o statiche, lettura o scrittura di file, e così v
 Di seguito un esempio con un file in cui sono presenti sia dichiarazioni che effetti
 collaterali; ecco un esempio di quello che va evitato:
 
-```php
+~~~php
 <?php
 // effetto collaterale: cambiare le impostazioni ini
 ini_set('error_reporting', E_ALL);
@@ -81,12 +81,12 @@ function foo()
 {
     // corpo della funzione
 }
-```
+~~~
 
 L'esempio che segue è un file che contiene dichiarazioni senza effetti
 collaterali; ecco un esempio da imitare:
 
-```php
+~~~php
 <?php
 // dichiarazione
 function foo()
@@ -101,7 +101,7 @@ if (! function_exists('bar')) {
         // corpo della funzione
     }
 }
-```
+~~~
 
 
 3. Namespace e Nomi delle Classi
@@ -119,7 +119,7 @@ Il codice scritto per PHP 5.3 e versioni successive DEVE usare namespace formali
 
 Per esempio:
 
-```php
+~~~php
 <?php
 // PHP 5.3 e successive:
 namespace Vendor\Model;
@@ -127,18 +127,18 @@ namespace Vendor\Model;
 class Foo
 {
 }
-```
+~~~
 
 Codice scritto per le versioni 5.2.x e precedenti DOVREBBE usare la convenzione
 di pseudo-namespace con il prefisso `Vendor_` nei nomi delle classi.
 
-```php
+~~~php
 <?php
 // PHP 5.2.x e precedenti:
 class Vendor_Model_Foo
 {
 }
-```
+~~~
 
 4. Costanti di Classe, Proprietà, e Metodi
 -------------------------------------------
@@ -151,7 +151,7 @@ Le costanti di classe DEVONO essere dichiarate tutte maiuscole con undescore
 come separatori.
 Per esempio:
 
-```php
+~~~php
 <?php
 namespace Vendor\Model;
 
@@ -160,7 +160,7 @@ class Foo
     const VERSIONE = '1.0';
     const DATA_APPROVAZIONE = '2012-06-01';
 }
-```
+~~~
 
 ### 4.2. Proprietà
 

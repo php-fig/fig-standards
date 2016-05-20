@@ -40,7 +40,7 @@
 
 Ниже приведён пример функции, показывающей, как стандарты, предлагаемые выше, могут использоваться автозагрузчиком.
 
-```php
+~~~php
 <?php
 
 function autoload($className)
@@ -58,7 +58,7 @@ function autoload($className)
     require $fileName;
 }
 spl_autoload_register('autoload');
-```
+~~~
 
 Реализация SplClassLoader
 -------------------------

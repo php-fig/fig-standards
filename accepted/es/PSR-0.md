@@ -40,7 +40,7 @@ Ejemplo de implementación
 
 A continuación, se muestra una función de ejemplo para demostrar de forma sencilla cómo se cargan de automáticamente las clases con la propuesta anterior.
 
-```php
+~~~php
 <?php
 
 function autoload($nombreDeClase)
@@ -57,7 +57,7 @@ function autoload($nombreDeClase)
 
     require $nombreDeFichero;
 }
-```
+~~~
 
 Implementación de SplClassLoader
 ------------------------------------

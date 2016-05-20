@@ -46,7 +46,7 @@ La frase "efectos secundarios" significa: que la ejecución de la lógica de neg
 
 El siguiente ejemplo muestra un archivo que incluye las dos: declaraciones y efectos secundarios; Un ejemplo de lo que debe evitar:
 
-```php
+~~~php
 <?php
 // efecto secundario: cambiar configuracion inicial
 ini_set('error_reporting', E_ALL);
@@ -62,11 +62,11 @@ function foo()
 {
     // cuerpo de la función
 }
-```
+~~~
 
 El siguiente ejemplo es el de un archivo que contiene declaraciones sin efectos secundarios; Un ejemplo que puede seguir:
 
-```php
+~~~php
 <?php
 // declaración
 function foo()
@@ -82,7 +82,7 @@ if (! function_exists('bar')) {
         // cuerpo de la función
     }
 }
-```
+~~~
 
 3. Espacios de nombres y nombres de las Clases
 ----------------------------------------------
@@ -97,7 +97,7 @@ El código escrito para PHP 5.3 o superior DEBE hacer un uso formal de los espac
 
 Por ejemplo:
 
-```php
+~~~php
 <?php
 // PHP 5.3 o superior:
 namespace Proveedor\Modelo;
@@ -105,17 +105,17 @@ namespace Proveedor\Modelo;
 class Foo
 {
 }
-```
+~~~
 
 El código escrito para PHP 5.2.x o inferior DEBERÍA emplear una convención de pseudo-espacios de nombres con prefijos en los nombres de las clases con el formato `Proveedor_`.
 
-```php
+~~~php
 <?php
 // PHP 5.2.x o inferior:
 class Proveedor_Modelo_Foo
 {
 }
-```
+~~~
 
 4. Constantes de Clases, Propiedades y Métodos
 ---------------------------------------------------------------
@@ -126,7 +126,7 @@ El término "clases" hace referencia a todas las clases, interfaces y traits.
 
 Las constantes de las clases DEBEN declararse siempre en mayúsculas y separadas por guiones bajos. Por ejemplo:
 
-```php
+~~~php
 <?php
 namespace Proveedor\Modelo;
 
@@ -135,7 +135,7 @@ class Foo
     const VERSION = '1.0';
     const FECHA_DE_APROBACION = '2012-06-01';
 }
-```
+~~~
 
 ### 4.2. Propiedades
 

@@ -51,7 +51,7 @@ Primer izvedbe
 Spodaj je primer funkcije, ki enostavno ponazarja, kako so zgoraj
 predlagani standardi avtomatsko naloženi.
 
-```php
+~~~php
 <?php
 
 function autoload($className)
@@ -69,7 +69,7 @@ function autoload($className)
     require $fileName;
 }
 spl_autoload_register('autoload');
-```
+~~~
 
 SplClassLoader izvedba
 ----------------------

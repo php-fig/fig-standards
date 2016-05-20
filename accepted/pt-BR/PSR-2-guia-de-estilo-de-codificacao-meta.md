@@ -22,16 +22,16 @@ As regras de estilo incluídas aqui são derivadas de semelhanças entre vários
 
 Os exemplos a seguir são perfeitamente válidos na PSR-2:
 
-```php
+~~~php
 <?php
 somefunction($foo, $bar, [
   // ...
 ], $baz);
 
-$app->get('/hello/{name}', function ($name) use ($app) { 
-    return 'Hello '.$app->escape($name); 
+$app->get('/hello/{name}', function ($name) use ($app) {
+    return 'Hello '.$app->escape($name);
 });
-```
+~~~
 
 2. _[10/17/2013]_ Quando extendendo múltiplas interfaces, a lista de `extends` deveria ser tratada do mesmo jeito que uma lista de`implements`, como declarado na seção 4.1.
 

@@ -63,7 +63,7 @@ branje iz ali pisanje v datoteko in tako naprej.
 Sledeči primer je datoteka, ki vljučuje tako deklaracijo in stranske učinke;
 t.j. primer, ki se ga je potrebno izogibati:
 
-```php
+~~~php
 <?php
 // side effect: change ini settings
 ini_set('error_reporting', E_ALL);
@@ -79,12 +79,12 @@ function foo()
 {
     // function body
 }
-```
+~~~
 
 Sledeči primer je datoteka, ki vključuje deklaracijo brez stranskih
 učinkov; t.j. primer, ki ga je dobro posnemati:
 
-```php
+~~~php
 <?php
 // declaration
 function foo()
@@ -99,7 +99,7 @@ if (! function_exists('bar')) {
         // function body
     }
 }
-```
+~~~
 
 
 3. Imenski prostori in imena razredov
@@ -116,7 +116,7 @@ Koda napisana za PHP 5.3 in kasnejše MORA uporabljati formalne imenske prostore
 
 Na primer:
 
-```php
+~~~php
 <?php
 // PHP 5.3 and later:
 namespace Vendor\Model;
@@ -124,17 +124,17 @@ namespace Vendor\Model;
 class Foo
 {
 }
-```
+~~~
 
 Koda napisana za 5.2.x in prej BI MORALA uporabljati konvencijo pseudo-imenskih prostorov z `Vendor_` predponami na imenih razredov.
 
-```php
+~~~php
 <?php
 // PHP 5.2.x and earlier:
 class Vendor_Model_Foo
 {
 }
-```
+~~~
 
 4. Konstante razredov, lastnosti in metode
 ------------------------------------------
@@ -146,7 +146,7 @@ Izraz "razred" se nanaša na vse razrede, vmesnike in lastnosti (traits).
 Konstante razredov MORAJO biti deklarirane v celoti z velikimi črkami z ločilom podčrtajev.
 Na primer:
 
-```php
+~~~php
 <?php
 namespace Vendor\Model;
 
@@ -155,7 +155,7 @@ class Foo
     const VERSION = '1.0';
     const DATE_APPROVED = '2012-06-01';
 }
-```
+~~~
 
 ### 4.2. Lastnosti
 

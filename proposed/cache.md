@@ -153,7 +153,7 @@ be requested from a Pool object via the getItem() method.  Calling Libraries
 SHOULD NOT assume that an Item created by one Implementing Library is
 compatible with a Pool from another Implementing Library.
 
-```php
+~~~php
 namespace Psr\Cache;
 
 /**
@@ -266,7 +266,7 @@ interface CacheItemInterface
      */
     public function getExpiration();
 }
-```
+~~~
 
 ### CacheItemPoolInterface
 
@@ -276,7 +276,7 @@ It is also the primary point of interaction with the entire cache collection.
 All configuration and initialization of the Pool is left up to an Implementing
 Library.
 
-```php
+~~~php
 namespace Psr\Cache;
 
 /**
@@ -362,11 +362,11 @@ interface CacheItemPoolInterface
     public function commit();
 
 }
-```
+~~~
 
 ### InvalidArgumentException
 
-```php
+~~~php
 namespace Psr\Cache;
 
 /**
@@ -376,7 +376,7 @@ namespace Psr\Cache;
  * exception class which implements Psr\Cache\InvalidArgumentException.
  */
 interface InvalidArgumentException { }
-```
+~~~
 
 ### CacheException
 
@@ -386,11 +386,11 @@ or invalid credentials supplied.
 
 Any exception thrown by an Implementing Library MUST implement this interface.
 
-```php
+~~~php
 namespace Psr\Cache;
 
 /**
  * Exception interface for all exceptions thrown by an Implementing Library.
  */
 interface CacheException {}
-```
+~~~

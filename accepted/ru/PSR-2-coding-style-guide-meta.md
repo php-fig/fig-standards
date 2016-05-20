@@ -31,16 +31,16 @@ PHP-кода.
 
 Следующие примеры полностью удовлетворяют PSR-2:
 
-```php
+~~~php
 <?php
 somefunction($foo, $bar, [
   // ...
 ], $baz);
 
-$app->get('/hello/{name}', function ($name) use ($app) { 
-    return 'Hello '.$app->escape($name); 
+$app->get('/hello/{name}', function ($name) use ($app) {
+    return 'Hello '.$app->escape($name);
 });
-```
+~~~
 
 ### 3.2 - Расширение нескольких интерфейсов (17.10.2013)
 

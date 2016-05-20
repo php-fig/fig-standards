@@ -1,10 +1,10 @@
 Podstawowe standardy kodowania
 ================================
 
-Poniższa sekcja zawiera standardy kodowania, które są uznawane za konieczne 
+Poniższa sekcja zawiera standardy kodowania, które są uznawane za konieczne
 aby zapewnić wysoką spójność kodu PHP pochodzącego z różnych źródeł.
 
-Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", "REKOMENDWANE", "MOŻE" oraz 
+Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", "REKOMENDWANE", "MOŻE" oraz
 "OPCJONALNE" powinny być interpretowane tak jak opisano to w [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
@@ -19,15 +19,15 @@ Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", 
 
 - Pliki MUSZĄ korzystać z kodowania UTF-8 bez BOM.
 
-- Pliki POWINNY zawierać deklaracje struktur języka php (klas, funkcji, stałych itp.) LUB definować 
-  zachowanie czyli tak zwane skutki uboczne (np. generowanie wyjścia, zmiana parametrów konfiguracyjnych .ini itp.), 
+- Pliki POWINNY zawierać deklaracje struktur języka php (klas, funkcji, stałych itp.) LUB definować
+  zachowanie czyli tak zwane skutki uboczne (np. generowanie wyjścia, zmiana parametrów konfiguracyjnych .ini itp.),
   lecz NIE POWINNY robić tych dwóch rzeczy naraz.
-  
+
 - Przestrzenie nazw oraz klasy MUSZĄ stosować się do standardów PSR dotyczących automatycznego ładowania: [[PSR-0], [PSR-4]].
 
 - Nazwy klas MUSZĄ być zapisywane w notacji `UpperCamelCase`.
 
-- Stałe w klasach MUSZĄ być deklarowane wielkimi literami, ze znakiem podkreślenia 
+- Stałe w klasach MUSZĄ być deklarowane wielkimi literami, ze znakiem podkreślenia
  (`_`) używanym jako separator.
 
 - Nazwy metod MUSZĄ być tworzone w notacji `camelCase`.
@@ -38,7 +38,7 @@ Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", 
 
 ### 2.1. Tagi PHP
 
-Kod PHP MUSI korzystać z "długich" tagów `<?php ?>` lub z krótkich `<?= ?>`, 
+Kod PHP MUSI korzystać z "długich" tagów `<?php ?>` lub z krótkich `<?= ?>`,
 NIE WOLNO korzystać z innych tagów otwierających/zamykających.
 
 ### 2.2. Kodowanie znaków
@@ -47,19 +47,19 @@ Kod php MUSI być zapisywany w kodowaniu UTF-8 bez BOM.
 
 ### 2.3. Skutki uboczne
 
-W programowaniu termin "skutek/efekt uboczny" oznacza efekt wyrażenia, albo wywołania funkcji lub metody, 
+W programowaniu termin "skutek/efekt uboczny" oznacza efekt wyrażenia, albo wywołania funkcji lub metody,
 który wykracza poza zwrócenie wartości. Przykładem "skutków ubocznych" może być interakcja z systemem operacyjnym, lub zmiana wartości zmiennej globalnej.
 
-Pojedynczy plik POWINIEN zawierać deklaracje struktur języka php (klas, funkcji, stałych itp.) LUB definować 
+Pojedynczy plik POWINIEN zawierać deklaracje struktur języka php (klas, funkcji, stałych itp.) LUB definować
   zachowanie czyli tak zwane "skutki uboczne" (np. generowanie wyjścia, zmiana parametrów konfiguracyjnych .ini itp.).
 
-Plik NIE POWINIEN wykonywać tych dwóch rzeczy na raz. Efekty uboczne w php to m.in. generowanie wyjścia (np. `echo`, `var_dump`), 
-używanie `require` lub `include`, podłączenie do zewnętrznej usługi, modyfikacja parametrów ini, 
+Plik NIE POWINIEN wykonywać tych dwóch rzeczy na raz. Efekty uboczne w php to m.in. generowanie wyjścia (np. `echo`, `var_dump`),
+używanie `require` lub `include`, podłączenie do zewnętrznej usługi, modyfikacja parametrów ini,
 rzucanie błędów lub wyjątków, modyfikacja globalnych lub statycznych zmiennych, czytanie lub zapis z/do pliku itd.
 
 Poniższy przykład posiada zarówno deklaracje funkcji jak i ma skutki uboczne. Przykład pokazuje czego należy unikać:
 
-```php
+~~~php
 <?php
 // skutek uboczny: zmiana ustawień ini
 ini_set('error_reporting', E_ALL);
@@ -75,11 +75,11 @@ function foo()
 {
     // ciało funkcji
 }
-```
+~~~
 
 Kolejny przykład zawiera w sobie tylko deklaracje (tutaj funkcji). Przykład pokazuje jak powinniśmy pisać:
 
-```php
+~~~php
 <?php
 // deklaracja
 function foo()
@@ -94,7 +94,7 @@ if (! function_exists('bar')) {
         // ciało funkcji
     }
 }
-```
+~~~
 
 
 3. Przestrzenie nazw oraz nazwy klas
@@ -102,7 +102,7 @@ if (! function_exists('bar')) {
 
 Standardy tworzenia przestrzeni nazw oraz klas MUSZĄ podążać za PSRami dotyczącymi automatycznego ładowania klas: [[PSR-0], [PSR-4]].
 
-Deklaracji pojedynczej klasy odpowiada jeden plik, a jej przestrzeń nazw znajduje się na 
+Deklaracji pojedynczej klasy odpowiada jeden plik, a jej przestrzeń nazw znajduje się na
 najniższym poziomie, gdzie na najwyższym poziomie znajduje się nazwa vendora.
 
 Nazwa klasy MUSI być zadeklarowana w notacji `UpperCamelCase`.
@@ -111,7 +111,7 @@ Kod napisany w PHP 5.3 i późniejszych wersjach MUSI używać przestrzeni nazw.
 
 Na przykład:
 
-```php
+~~~php
 <?php
 // PHP wersja 5.3 i późniejsze:
 namespace Vendor\Model;
@@ -119,18 +119,18 @@ namespace Vendor\Model;
 class Foo
 {
 }
-```
+~~~
 
-Kod napisany dla wersji PHP 5.2.x oraz niższych, 
+Kod napisany dla wersji PHP 5.2.x oraz niższych,
 POWINIEN używać konwencji prefiksów (np. `Vendor_` ) dla symulacji przestrzeni nazw w oparciu o nazwy klas.
 
-```php
+~~~php
 <?php
 // PHP wersja 5.2.x i wcześniejsze:
 class Vendor_Model_Foo
 {
 }
-```
+~~~
 
 4. Stałe klas, właściwości i metody
 -----------------------------------
@@ -139,11 +139,11 @@ Termin "klasa" odnosi się poniżej do wszystkich klas, interfejsów i traitów.
 
 ### 4.1. Stałe
 
-Stałe klas MUSZĄ być deklarowane wielkimi literami, ze znakiem podkreślenia (underscore) 
-używanym jako separator. 
+Stałe klas MUSZĄ być deklarowane wielkimi literami, ze znakiem podkreślenia (underscore)
+używanym jako separator.
 Przykład:
 
-```php
+~~~php
 <?php
 namespace Vendor\Model;
 
@@ -152,15 +152,15 @@ class Foo
     const VERSION = '1.0';
     const DATE_APPROVED = '2012-06-01';
 }
-```
+~~~
 
 ### 4.2. Właściwości
 
-Powyższy przewodnik celowo nie rekomenduje żadnych standardów dotyczących nazewnictwa właściwości 
+Powyższy przewodnik celowo nie rekomenduje żadnych standardów dotyczących nazewnictwa właściwości
 klas (np. `$camelCase`, `$UpperCamelCase` czy `$znak_podkreslenia`).
 
-Jakakolwiek forma nazewnictwa właściwości jest używana – POWINNA być stosowana 
-konsekwentnie dla danego obszaru kodu. Obszar ten może zostać określony na poziomie 
+Jakakolwiek forma nazewnictwa właściwości jest używana – POWINNA być stosowana
+konsekwentnie dla danego obszaru kodu. Obszar ten może zostać określony na poziomie
 vendora, paczki, klasy czy metody.
 
 ### 4.3. Metody

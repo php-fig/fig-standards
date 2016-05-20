@@ -35,7 +35,7 @@ Implementação de Exemplo
 
 Abaixo está um exemplo de função para simplesmente demonstrar como os padrões propostos acima funcionam para o carregamento automático.
 
-```php
+~~~php
 <?php
 
 function autoload($className)
@@ -52,7 +52,7 @@ function autoload($className)
 
     require $fileName;
 }
-```
+~~~
 
 Implementação do SplClassLoader
 -------------------------------

@@ -12,7 +12,7 @@ członków PHP-FIG.  Kiedy różni autorzy współpracują w ramach kilku projek
 wytycznych używany we wszystkich tych projektach jest bardzo pomocny. Dlatego też, główną korzyścią tego
 poradnika nie są zasady same w sobie, lecz dzielenie się nimi.
 
-Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO", 
+Następujące słowa "MUSI", "NIE WOLNO", "WYMAGANE", "POWINNO", "NIE POWINNO",
 "REKOMENDWANE", "MOŻE" oraz "OPCJONALNE" będą interpretowane tak jak opisano to w [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
@@ -39,11 +39,11 @@ MUSI znajdować się jedną linię poniżej kodu ciała klasy.
 - Otwierający nawias klamrowy dla metod MUSI rozpoczynać się od nowej linii, a zamykający
 MUSI znajdować się jedną linię poniżej kodu ciała metody.
 
-- Widoczność MUSI być deklarowana dla wszystkich właściwości i metod; deklaracje 
-`abstract` i `final` MUSZĄ znajdować się przed widocznością, deklaracja 
+- Widoczność MUSI być deklarowana dla wszystkich właściwości i metod; deklaracje
+`abstract` i `final` MUSZĄ znajdować się przed widocznością, deklaracja
 `static` MUSI znajdować się po widoczności.
-  
-- Słowa kluczowe definiujące instrukcje sterujące MUSZĄ posiadać jedną spację po ich deklaracji, 
+
+- Słowa kluczowe definiujące instrukcje sterujące MUSZĄ posiadać jedną spację po ich deklaracji,
 NIE WOLNO stosować tej przerwy dla wywołań metod i funkcji.
 
 - Otwierający nawias klamrowy dla instrukcji sterujących MUSI rozpoczynać się od tej samej linii,
@@ -56,7 +56,7 @@ NIE WOLNO dodawać żadnej spacji przed nawiasem zamykającym instrukcji steruj�
 
 Poniższy przykład zawiera w sobie niektóre zasady opisane powyżej:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -82,7 +82,7 @@ class Foo extends Bar implements FooInterface
         // ciało metody
     }
 }
-```
+~~~
 
 2. Zasady ogólne
 ----------------
@@ -104,15 +104,15 @@ Tag zamykający `?>` MUSI zostać pominięty w plikach zawierających tylko kod 
 NIE WOLNO ustalać sztywnych limitów na długość linii.
 
 "Miękki" limit na liczbę znaków w linii MUSI być równy 120 znaków, narzędzie do sprawdzania
-stylów MUSI wyświetlić wtedy ostrzeżenie o przekroczeniu "miękkiego limitu", jednakże 
+stylów MUSI wyświetlić wtedy ostrzeżenie o przekroczeniu "miękkiego limitu", jednakże
 NIE WOLNO mu wyświetlić błędu.
 
-Linia NIE POWINNA być dłuższa niż 80 znaków, linie przekraczające tą wielkość POWINNY być 
+Linia NIE POWINNA być dłuższa niż 80 znaków, linie przekraczające tą wielkość POWINNY być
 rozbite na pomniejsze linie nieprzekraczające 80 znaków.
 
 NIE WOLNO dodawać spacji na końcu niepustej linii.
 
-Puste linie MOGĄ być dodawane, aby zwiększyć czytelność i uwidocznić 
+Puste linie MOGĄ być dodawane, aby zwiększyć czytelność i uwidocznić
 powiązane ze sobą bloki kodu.
 
 NIE WOLNO używać więcej niż jednego wyrażenia na linię.
@@ -122,7 +122,7 @@ NIE WOLNO używać więcej niż jednego wyrażenia na linię.
 Kod php MUSI używać 4 spacji jako wcięcie, NIE WOLNO używać znaków tabulacji do wcięć.
 
 > Notabene: Używanie tylko spacji oraz nie mieszanie tego podejścia ze znakami tabulacji, pomaga uniknąć
-> problemów z porównywaniem plików, patche'ami, historią oraz adnotacjami. Używanie spacji pozwala w łatwy 
+> problemów z porównywaniem plików, patche'ami, historią oraz adnotacjami. Używanie spacji pozwala w łatwy
 > sposób dodawać niewielkie wcięcia dla dodatkowego wyrównania w linii.
 
 ### 2.5. Znaki specjalne oraz True/False/Null
@@ -149,7 +149,7 @@ Po bloku deklaracji `use`, MUSI występować jedna pusta linia.
 
 Na przykład:
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -159,7 +159,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 // ... dodatkowy kod php ...
 
-```
+~~~
 
 
 4. Klasy, właściwości i metody
@@ -171,10 +171,10 @@ Termin "klasa" odnosi się poniżej do wszystkich klas, interfejsów i traitów.
 
 Słowa kluczowe `extends` i `implements` MUSZĄ być deklarowane w tej samej linii, co nazwa klasy.
 
-Otwierający nawias klamrowy klasy MUSI znajdować się w nowej linii, zamykający nawias klamrowy 
+Otwierający nawias klamrowy klasy MUSI znajdować się w nowej linii, zamykający nawias klamrowy
 MUSI znajdować się jedną linię poniżej kodu ciała klasy.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -186,13 +186,13 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
     // stałe, właściwości, metody
 }
-```
+~~~
 
-Lista implementowanych interfejsów MOŻE być rozbita na pojedyncze linie, 
-gdzie każda linia posiada jedno wcięcie. Kiedy używamy tego podejścia, 
+Lista implementowanych interfejsów MOŻE być rozbita na pojedyncze linie,
+gdzie każda linia posiada jedno wcięcie. Kiedy używamy tego podejścia,
 każdy implementowany interfejs MUSI znajdować się w nowej linii.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -207,7 +207,7 @@ class ClassName extends ParentClass implements
 {
     // stałe, właściwości, metody
 }
-```
+~~~
 
 ### 4.2. Właściwości
 
@@ -217,12 +217,12 @@ NIE WOLNO używać słowa kluczowego `var` przy deklaracji właściwości.
 
 NIE WOLNO deklarować więcej niż jednej właściwości na wyrażenie.
 
-Nazwa właściwości NIE POWINNA rozpoczynać się od znaku podkreślenia, 
+Nazwa właściwości NIE POWINNA rozpoczynać się od znaku podkreślenia,
 aby zaznaczyć chronioną lub prywatną widoczność.
 
 Deklaracja właściwości wygląda tak jak w poniższym przykładzie.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -230,23 +230,23 @@ class ClassName
 {
     public $foo = null;
 }
-```
+~~~
 
 ### 4.3. Metody
 
 Widoczność MUSI być deklarowana dla wszystkich metod.
 
-Nazwa metody NIE POWINNA rozpoczynać się od znaku podkreślenia, 
+Nazwa metody NIE POWINNA rozpoczynać się od znaku podkreślenia,
 aby zaznaczyć chronioną lub prywatną widoczność.
 
-NIE WOLNO deklarować metod ze spacją po nazwie metody. Otwierający nawias klamrowy 
-metody MUSI znajdować się w nowej linii, zamykający nawias klamrowy MUSI znajdować się 
-jedną linię poniżej kodu ciała metody. NIE WOLNO dodawać żadnej spacji po nawiasie otwierającym 
+NIE WOLNO deklarować metod ze spacją po nazwie metody. Otwierający nawias klamrowy
+metody MUSI znajdować się w nowej linii, zamykający nawias klamrowy MUSI znajdować się
+jedną linię poniżej kodu ciała metody. NIE WOLNO dodawać żadnej spacji po nawiasie otwierającym
 metody, NIE WOLNO dodawać żadnej spacji przed nawiasem zamykającym metody.
 
 Deklaracja metody wygląda tak jak w poniższym przykładzie. Należy zapamiętać miejsce nawiasów, przecinków, spacji oraz nawiasów klamrowych.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -257,17 +257,17 @@ class ClassName
         // ciało metody
     }
 }
-```    
+~~~
 
 ### 4.4. Argumenty metod
 
-NIE WOLNO dodawać spacji przed przecinkami w liście argumentów, 
+NIE WOLNO dodawać spacji przed przecinkami w liście argumentów,
 po każdym przecinku MUSI znajdować się jeden znak spacji.
 
-Argumenty metody z domyślną wartością MUSZĄ znajdować się na końcu 
+Argumenty metody z domyślną wartością MUSZĄ znajdować się na końcu
 listy argumentów.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -278,15 +278,15 @@ class ClassName
         // ciało metody
     }
 }
-```
+~~~
 
-Lista argumentów MOŻE być rozdzielona na kilka linii, gdzie każda nowa linia 
-posiada pojedyncze wcięcie. Kiedy używamy wielu linii do prezentacji argumentów, 
+Lista argumentów MOŻE być rozdzielona na kilka linii, gdzie każda nowa linia
+posiada pojedyncze wcięcie. Kiedy używamy wielu linii do prezentacji argumentów,
 każdy z argumentów MUSI znajdować się w osobnej linii.
 
 Jeżeli używamy wieloliniowych argumentów, nawias zamykający oraz nawias klamrowy otwierający metody MUSZĄ znajdować się w jednej linii, ze znakiem spacji pomiędzy nimi.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -300,17 +300,17 @@ class ClassName
         // ciało metody
     }
 }
-```
+~~~
 
 ### 4.5. `abstract`, `final` i `static`
 
-Kiedy używamy słów kluczowych `abstract` lub `final`, ich deklaracje MUSZĄ 
+Kiedy używamy słów kluczowych `abstract` lub `final`, ich deklaracje MUSZĄ
 znajdować się przed deklaracjami widoczności.
 
-Kiedy używamy słowa kluczowego `static`, jego deklaracja MUSI znajdować 
+Kiedy używamy słowa kluczowego `static`, jego deklaracja MUSI znajdować
 się zawsze za deklaracją widoczności.
 
-```php
+~~~php
 <?php
 namespace Vendor\Package;
 
@@ -325,35 +325,35 @@ abstract class ClassName
         // ciało metody
     }
 }
-```
+~~~
 
 ### 4.6. Wywołania metod i funkcji
 
-Kiedy wywołujemy metodę lub funkcję, NIE WOLNO dodawać spacji między nazwą metody 
-a nawiasem otwierającym. NIE WOLNO dodawać znaku spacji po nawiasie otwierającym, 
-podobnie dla nawiasu zamykającego – NIE WOLNO dodawać przed nim znaku spacji. 
-NIE WOLNO dodawać spacji przed przecinkami w liście argumentów, po każdym przecinku 
+Kiedy wywołujemy metodę lub funkcję, NIE WOLNO dodawać spacji między nazwą metody
+a nawiasem otwierającym. NIE WOLNO dodawać znaku spacji po nawiasie otwierającym,
+podobnie dla nawiasu zamykającego – NIE WOLNO dodawać przed nim znaku spacji.
+NIE WOLNO dodawać spacji przed przecinkami w liście argumentów, po każdym przecinku
 MUSI znajdować się jeden znak spacji.
 
-```php
+~~~php
 <?php
 bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
-```
+~~~
 
-Lista argumentów MOŻE być rozdzielona na kilka linii, gdzie każda nowa linia 
-posiada pojedyncze wcięcie. Kiedy używamy wielu linii do prezentacji argumentów, 
+Lista argumentów MOŻE być rozdzielona na kilka linii, gdzie każda nowa linia
+posiada pojedyncze wcięcie. Kiedy używamy wielu linii do prezentacji argumentów,
 każdy z argumentów MUSI znajdować się w osobnej linii.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $longArgument,
     $longerArgument,
     $muchLongerArgument
 );
-```
+~~~
 
 5. Instrukcje sterujące
 -----------------------
@@ -363,23 +363,23 @@ Ogólne zasady stylowania instrukcji sterujących:
 - Po słowie kluczowym instrukcji sterującej MUSI znajdować się jeden znak spacji
 - NIE WOLNO dodawać znaku spacji po nawiasie otwierającym
 - NIE WOLNO dodawać znaku spacji przed nawiasem zamykającym
-- Pomiędzy nawiasem zamykającym a nawiasem klamrowym otwierającym, MUSI znajdować 
+- Pomiędzy nawiasem zamykającym a nawiasem klamrowym otwierającym, MUSI znajdować
 się jeden znak spacji
 - Ciało instrukcji sterującej POWINNO posiadać jedno wcięcie
 - Zamykający nawias klamrowy MUSI znajdować się jedną linię poniżej ciała instrukcji sterującej
 
-Ciało każdej instrukcji sterującej MUSI być otoczone nawiasami klamrowymi. 
-Ta zasada nadaje jedną formę strukturom oraz zmniejsza prawdopodobieństwo błędów 
+Ciało każdej instrukcji sterującej MUSI być otoczone nawiasami klamrowymi.
+Ta zasada nadaje jedną formę strukturom oraz zmniejsza prawdopodobieństwo błędów
 wynikających z niepoprawnego dodania kodu do ciała instrukcji.
 
 
 ### 5.1. `if`, `elseif`, `else`
 
-Instrukcja `if` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów, 
-spacji oraz nawiasów klamrowych oraz to, że `else` oraz `elseif` znajdują się w 
+Instrukcja `if` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów,
+spacji oraz nawiasów klamrowych oraz to, że `else` oraz `elseif` znajdują się w
 tej samej linii co zamykający nawias klamrowy poprzedniego ciała instrukcji.
 
-```php
+~~~php
 <?php
 if ($expr1) {
     // ciało if
@@ -388,21 +388,21 @@ if ($expr1) {
 } else {
     // ciało else
 }
-```
-Słowo kluczowe `elseif` POWINNO być używane zamiast `else if`, tak aby wszystkie 
+~~~
+Słowo kluczowe `elseif` POWINNO być używane zamiast `else if`, tak aby wszystkie
 słowa kluczowe instrukcji sterujących składały się z jednej frazy.
 
 
 ### 5.2. `switch`, `case`
 
-Instrukcja `switch` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów, 
-spacji oraz nawiasów klamrowych. Wyrażenie `case` MUSI posiadać jedno wcięcie w 
-odniesieniu do instrukcji `switch`. Słowo kluczowe `break` (lub inne słowo kluczowe 
-kończące działanie switch'a) MUSI posiadać wcięcie na tym samym poziomie co ciało 
-wyrażenia `case`. Jeśli intencją programisty jest wywołanie kolejnych case'ów po nie 
-pustym wyrażeniu `case` – MUSI zostać dodany komentarz taki jak np. `// no break`. 
+Instrukcja `switch` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów,
+spacji oraz nawiasów klamrowych. Wyrażenie `case` MUSI posiadać jedno wcięcie w
+odniesieniu do instrukcji `switch`. Słowo kluczowe `break` (lub inne słowo kluczowe
+kończące działanie switch'a) MUSI posiadać wcięcie na tym samym poziomie co ciało
+wyrażenia `case`. Jeśli intencją programisty jest wywołanie kolejnych case'ów po nie
+pustym wyrażeniu `case` – MUSI zostać dodany komentarz taki jak np. `// no break`.
 
-```php
+~~~php
 <?php
 switch ($expr) {
     case 0:
@@ -420,61 +420,61 @@ switch ($expr) {
         echo 'Default case';
         break;
 }
-```
+~~~
 
 
 ### 5.3. `while`, `do while`
 
-Pętla `while` wygląda jak w przykładzie poniżej. 
+Pętla `while` wygląda jak w przykładzie poniżej.
 Zapamiętaj pozycję nawiasów, spacji oraz nawiasów klamrowych.
 
-```php
+~~~php
 <?php
 while ($expr) {
     // ciało struktury
 }
-```
+~~~
 
-Analogicznie, pętla `do while` wygląda jak w przykładzie poniżej. 
+Analogicznie, pętla `do while` wygląda jak w przykładzie poniżej.
 Zapamiętaj pozycję nawiasów, spacji oraz nawiasów klamrowych.
 
-```php
+~~~php
 <?php
 do {
     // ciało struktury
 } while ($expr);
-```
+~~~
 
 ### 5.4. `for`
 
-Pętla `for` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów, 
+Pętla `for` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów,
 spacji oraz nawiasów klamrowych.
 
-```php
+~~~php
 <?php
 for ($i = 0; $i < 10; $i++) {
     // ciało pętli for
 }
-```
+~~~
 
 ### 5.5. `foreach`
-    
-Pętla `foreach` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów, 
+
+Pętla `foreach` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów,
 spacji oraz nawiasów klamrowych.
 
-```php
+~~~php
 <?php
 foreach ($iterable as $key => $value) {
     // ciało pętli foreach
 }
-```
+~~~
 
 ### 5.6. `try`, `catch`
 
-Blok `try catch` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję 
+Blok `try catch` wygląda jak w przykładzie poniżej. Zapamiętaj pozycję
 nawiasów, spacji oraz nawiasów klamrowych.
 
-```php
+~~~php
 <?php
 try {
     // ciało bloku try
@@ -483,31 +483,31 @@ try {
 } catch (OtherExceptionType $e) {
     // ciało bloku catch
 }
-```
+~~~
 
 6. Funkcje anonimowe
 --------------------
 
-Funkcje anonimowe MUSZĄ być deklarowane ze znakiem spacji po słowie 
+Funkcje anonimowe MUSZĄ być deklarowane ze znakiem spacji po słowie
 kluczowym `function`, oraz ze spacją przed i po słowie kluczowym `use`.
 
-Otwierający nawias klamrowy MUSI znajdować się w tej samej linii, 
+Otwierający nawias klamrowy MUSI znajdować się w tej samej linii,
 a zamykający nawias klamrowy MUSI znajdować się w następnej linii za ciałem funkcji.
 
-NIE WOLNO dodawać znaku spacji po nawiasie otwierającym listy argumentów i 
-listy zmiennych oraz NIE WOLNO dodawać znaku spacji przed nawiasem zamykającym 
+NIE WOLNO dodawać znaku spacji po nawiasie otwierającym listy argumentów i
+listy zmiennych oraz NIE WOLNO dodawać znaku spacji przed nawiasem zamykającym
 listy argumentów i listy zmiennych.
 
-NIE WOLNO dodawać znaku spacji przed przecinkami w listach argumentów i 
+NIE WOLNO dodawać znaku spacji przed przecinkami w listach argumentów i
 listach zmiennych, natomiast po każdym  przecinku MUSI znajdować się jeden znak spacji.
 
-Argumenty funkcji anonimowej posiadające domyślne właściwości MUSZĄ znajdować się 
+Argumenty funkcji anonimowej posiadające domyślne właściwości MUSZĄ znajdować się
 na końcu listy argumentów.
 
-Funkcje anonimowe wyglądają jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów, 
+Funkcje anonimowe wyglądają jak w przykładzie poniżej. Zapamiętaj pozycję nawiasów,
 przecinków, spacji oraz nawiasów klamrowych:
 
-```php
+~~~php
 <?php
 $closureWithArgs = function ($arg1, $arg2) {
     // ciało
@@ -516,21 +516,21 @@ $closureWithArgs = function ($arg1, $arg2) {
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
     // ciało
 };
-```
+~~~
 
-Lista argumentów i lista zmiennych MOŻE być rozdzielona na kilka linii, gdzie 
-każda nowa linia posiada pojedyncze wcięcie. Kiedy używamy wielu linii do 
-prezentacji argumentów lub zmiennych, każdy z argumentów lub każda ze 
+Lista argumentów i lista zmiennych MOŻE być rozdzielona na kilka linii, gdzie
+każda nowa linia posiada pojedyncze wcięcie. Kiedy używamy wielu linii do
+prezentacji argumentów lub zmiennych, każdy z argumentów lub każda ze
 zmiennych MUSZĄ znajdować się w osobnej linii.
 
-Jeśli ostatnia lista (niezależnie czy jest to lista argumentów czy wartości) 
-jest rozdzielona na kilka linii, nawias zamykający i nawias klamrowy 
+Jeśli ostatnia lista (niezależnie czy jest to lista argumentów czy wartości)
+jest rozdzielona na kilka linii, nawias zamykający i nawias klamrowy
 otwierający MUSZĄ znajdować się razem w nowej linii ze znakiem spacji między nimi.
 
-Poniżej kilka przykładów wieloliniowych funkcji anonimowych, 
+Poniżej kilka przykładów wieloliniowych funkcji anonimowych,
 wykorzystujących lub nie listy argumentów i listy zmiennych.
 
-```php
+~~~php
 <?php
 $longArgs_noVars = function (
     $longArgument,
@@ -575,12 +575,12 @@ $shortArgs_longVars = function ($arg) use (
 ) {
    // ciało
 };
-```
+~~~
 
-Zapamiętaj, że zasady formatowania obowiązują także wtedy, 
-jeśli funkcja anonimowa użyta jest jako argument w wywołaniu funkcji lub metody. 
+Zapamiętaj, że zasady formatowania obowiązują także wtedy,
+jeśli funkcja anonimowa użyta jest jako argument w wywołaniu funkcji lub metody.
 
-```php
+~~~php
 <?php
 $foo->bar(
     $arg1,
@@ -589,13 +589,13 @@ $foo->bar(
     },
     $arg3
 );
-```
+~~~
 
 
 7. Wnioski
 ----------
 
-Istnieje wiele rodzajów stylów i praktyk celowo pominiętych w powyższym przewodniku. 
+Istnieje wiele rodzajów stylów i praktyk celowo pominiętych w powyższym przewodniku.
 Mowa tutaj m.in. o:
 
 - Deklaracjach zmiennych globalnych i stałych globalnych
@@ -612,7 +612,7 @@ Mowa tutaj m.in. o:
 
 - Najlepszych praktykach
 
-Przyszłe rekomendacje MOGĄ poprawić i rozszerzyć ten przewodnik o nowe pozycje – 
+Przyszłe rekomendacje MOGĄ poprawić i rozszerzyć ten przewodnik o nowe pozycje –
 także o takie, które nie zostały opisane w powyższej liście.
 
 
@@ -659,11 +659,11 @@ Typ wcięcia. `tab` = "Użycie tabulatora", `2` lub `4` = "liczba spacji".
 Sztywny limit długości linii, w znakach. `?` – nieczytelne lub brak odpowiedzi , `no` – brak limitu.
 
 `class_names`:
-Z jakich liter zbudowana jest nazwa klasy. `lower` = tylko małe, `lower_under` = małe litery 
+Z jakich liter zbudowana jest nazwa klasy. `lower` = tylko małe, `lower_under` = małe litery
 ze znakiem podkreślenia jako separator, `studly` = UpperCamelCase.
 
 `class_brace_line`:
-Czy otwierający nawias klamrowy klasy znajduje się w tej samej (`same`) czy nowej linii (`next`), 
+Czy otwierający nawias klamrowy klasy znajduje się w tej samej (`same`) czy nowej linii (`next`),
 co słowo kluczowe class.
 
 `constant_names`:
@@ -673,14 +673,14 @@ Z jakich liter zbudowane są stale klasy? `upper` – wielkie litery ze znakiem 
 Słowa kluczowe `true`, `false`, i `null` są zapisywane małymi czy dużymi literami?
 
 `method_names`:
-Jak formatowane są nazwy metod? `camel` = camelCase, `lower_under` = małe litery ze znakiem 
+Jak formatowane są nazwy metod? `camel` = camelCase, `lower_under` = małe litery ze znakiem
 pokreślenia jako separator.
 
 `method_brace_line`:
 Czy nawias klamrowy otwierający znajduje się w tej samej linii, co nazwa metody, czy w następnej?
 
 `control_brace_line`:
-Czy nawias klamrowy otwierający znajduje się w tej samej linii, co słowo kluczowe instrukcji 
+Czy nawias klamrowy otwierający znajduje się w tej samej linii, co słowo kluczowe instrukcji
 sterującej, czy w następnej?
 
 `control_space_after`:
@@ -708,14 +708,14 @@ Jaki jest kod końca linii?
 Co jest pierwsze podczas deklarowania metody – widoczność czy słowo kluczowe `static`?
 
 `control_space_parens`:
-Czy w instrukcjach sterujących znajdują się spacje po nawiasie otwierającym i przed 
+Czy w instrukcjach sterujących znajdują się spacje po nawiasie otwierającym i przed
 nawiasem zamykającym? `yes` = `if ( $expr )`, `no` = `if ($expr)`.
 
 `blank_line_after_php`:
 Czy po otwierającym tagu PHP istnieje pusta linia?
 
 `class_method_control_brace`:
-Podsumowanie - w którym miejscu znajduje się otwierający nawias klamrowy dla metod, 
+Podsumowanie - w którym miejscu znajduje się otwierający nawias klamrowy dla metod,
 klas oraz instrukcji sterujących.
 
 ### A.3. Wyniki ankiety
