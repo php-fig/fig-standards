@@ -30,7 +30,7 @@ A Hypermedia Link consists of, at minimum:
 - A URI representing the target resource being referenced.
 - A relationship defining how the target resource relates to the source.
 
-Various other attributes of the Link may exist, depending on the format used. As additional attributes 
+Various other attributes of the Link may exist, depending on the format used. As additional attributes
 are not well-standardized or universal, this specification does not seek to standardize them.
 
 For the purposes of this specification, the following definitions apply.
@@ -80,12 +80,12 @@ The interfaces and classes described are provided as part of the
 
 ### 3.1 `Psr\Http\Link\LinkInterface`
 
-```php
+~~~php
 <?php
 namespace Psr\Http\Link;
 
 /**
- * 
+ *
  */
 interface LinkInterface
 {
@@ -131,16 +131,16 @@ interface LinkInterface
      */
     public function getAttributes();
 }
-```
+~~~
 
 #### 3.2.1 `Psr\Http\Link\LinkCollectionInterface`
 
-```php
+~~~php
 <?php
 namespace Psr\Http\Link;
 
 /**
- * 
+ *
  */
 interface LinkCollectionInterface
 {
@@ -164,4 +164,4 @@ interface LinkCollectionInterface
      */
     public function getLinksByRel($rel);
 }
-```
+~~~

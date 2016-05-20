@@ -87,7 +87,7 @@ The interfaces and classes described as well as relevant exception are provided 
 <a name="container-interface"></a>
 ### 2.1. `Psr\Container\ContainerInterface`
 
-```php
+~~~php
 <?php
 namespace Psr\Container;
 
@@ -121,12 +121,12 @@ interface ContainerInterface
      */
     public function has($id);
 }
-```
+~~~
 
 <a name="container-exception"></a>
 ### 2.2. `Psr\Container\Exception\ContainerExceptionInterface`
 
-```php
+~~~php
 <?php
 namespace Psr\Container\Exception;
 
@@ -136,12 +136,12 @@ namespace Psr\Container\Exception;
 interface ContainerExceptionInterface
 {
 }
-```
+~~~
 
 <a name="not-found-exception"></a>
 ### 2.3. `Psr\Container\Exception\NotFoundExceptionInterface`
 
-```php
+~~~php
 <?php
 namespace Psr\Container\Exception;
 
@@ -151,4 +151,4 @@ namespace Psr\Container\Exception;
 interface NotFoundExceptionInterface extends ContainerExceptionInterface
 {
 }
-```
+~~~
