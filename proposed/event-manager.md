@@ -51,7 +51,7 @@ OPTIONALLY the event can have additional parameters for use within the event.
 The event MUST contain a propegation flag that signals the EventManager to stop
 passing along the event to other listeners.
 
-```php
+~~~php
 
 namespace Psr\EventManager;
 
@@ -127,7 +127,7 @@ interface EventInterface
      */
     public function isPropagationStopped();
 }
-```
+~~~
 
 ### EventManagerInterface
 
@@ -135,7 +135,7 @@ The EventManager holds all the listeners for a particular event.  Since an
 event can have many listeners that each return a result, the EventManager
  MUST return the result from the last listener.
 
-```php
+~~~php
 
 namespace Psr\EventManager;
 
@@ -183,4 +183,4 @@ interface EventManagerInterface
      */
     public function trigger($event, $target = null, $argv = array());
 }
-```
+~~~

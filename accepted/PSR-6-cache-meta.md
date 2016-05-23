@@ -92,7 +92,7 @@ Examples:
 Some common usage patterns are shown below.  These are non-normative but should
 demonstrate the application of some design decisions.
 
-```php
+~~~php
 /**
  * Gets a list of available widgets.
  *
@@ -110,9 +110,9 @@ function get_widget_list()
     }
     return $item->get();
 }
-```
+~~~
 
-```php
+~~~php
 /**
  * Caches a list of available widgets.
  *
@@ -126,9 +126,9 @@ function save_widget_list($list)
     $item->set($list);
     $pool->save($item);
 }
-```
+~~~
 
-```php
+~~~php
 /**
  * Clears the list of available widgets.
  *
@@ -140,9 +140,9 @@ function clear_widget_list()
     $pool = get_cache_pool('widgets');
     $pool->deleteItems(['widget_list']);
 }
-```
+~~~
 
-```php
+~~~php
 /**
  * Clears all widget information.
  *
@@ -154,9 +154,9 @@ function clear_widget_cache()
     $pool = get_cache_pool('widgets');
     $pool->clear();
 }
-```
+~~~
 
-```php
+~~~php
 /**
  * Load widgets.
  *
@@ -193,9 +193,9 @@ function load_widgets(array $ids)
 
     return $widgets;
 }
-```
+~~~
 
-```php
+~~~php
 /**
  * This examples reflects functionality that is NOT included in this
  * specification, but is shown as an example of how such functionality MIGHT
@@ -228,7 +228,7 @@ function set_widget(TaggablePoolInterface $pool, Widget $widget)
     $item->set($widget);
     $pool->save($item);
 }
-```
+~~~
 
 ### 4.2 Alternative: "Weak item" approach
 

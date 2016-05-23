@@ -255,7 +255,7 @@ It was proposed here: https://github.com/container-interop/container-interop/pul
 The interface would have had the behaviour of the delegate lookup feature but would have forced the addition of
 a `setParentContainter` method:
 
-```php
+~~~php
 interface ParentAwareContainerInterface extends ReadableContainerInterface {
     /**
      * Sets the parent container associated to that container. This container will call
@@ -265,7 +265,7 @@ interface ParentAwareContainerInterface extends ReadableContainerInterface {
      */
     public function setParentContainer(ContainerInterface $container);
 }
-```
+~~~
 
 The interface idea was first questioned by @Ocramius [here](https://github.com/container-interop/container-interop/pull/8#issuecomment-51721777).
 @Ocramius expressed the idea that an interface should not contain setters, otherwise, it is forcing implementation
@@ -280,7 +280,7 @@ If we had had an interface, we could have delegated the registration of the dele
 delegate/composite container itself.
 For instance:
 
-```php
+~~~php
 $containerA = new ContainerA();
 $containerB = new ContainerB();
 
@@ -301,7 +301,7 @@ class CompositeContainer {
   }
 }
 
-```
+~~~
 
 **Cons:**
 
