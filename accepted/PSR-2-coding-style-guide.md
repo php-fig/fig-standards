@@ -529,7 +529,7 @@ each subsequent line is indented once. When doing so, the first item in the
 list MUST be on the next line, and there MUST be only one argument or variable
 per line.
 
-When the ending list (whether or arguments or variables) is split across
+When the ending list (whether of arguments or variables) is split across
 multiple lines, the closing parenthesis and opening brace MUST be placed
 together on their own line with one space between them.
 
