@@ -147,6 +147,8 @@ declaration.
 
 There MUST be one `use` keyword per declaration.
 
+Namespaces in `use` declarations MUST NOT have a leading backslash.
+
 There MUST be one blank line after the `use` block.
 
 For example:
