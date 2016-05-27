@@ -133,11 +133,8 @@ FIG Secretary
 
 ### Overarching role
 
-The primary responsibility of the FIG Secretary is to serve as an impartial
-administrator of the FIG. They serve at the member projects pleasure but act as
-independent and impartial adjudicators. FIG Secretaries will also represent the
-FIG as a whole to the general community and public on matters relating to the
-FIG's activities.
+The only responsibility of the FIG Secretary is to serve as an administrative
+assistant to the FIG.
 
 Whilst there are a number of defined functions below but they should also perform
 other duties as required. As the role has continuity (in that there will always
@@ -162,9 +159,6 @@ role above, perform other duties as nessasary.
 * Tallying votes
 * Tracking member project activity, and marking projects as inactive
 * Ensuring bylaws are being followed
-* Clarifying any interpretation of bylaw text (If there is lack of consensus
-between FIG Secretaries then it must be put to a full vote according to the
-standard [Voting Protocol bylaw][voting]).
 * Ensure that relevant marketing mediums (e.g. Twitter and Facebook) are kept
 professional, up to date and impartial.
 * Moderate discussions on github, the mailing list and IRC channels to ensure
