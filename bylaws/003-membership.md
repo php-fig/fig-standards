@@ -133,8 +133,8 @@ FIG Secretary
 
 ### Overarching role
 
-The only responsibility of the FIG Secretary is to serve as an administrative
-assistant to the FIG.
+The responsibility of the FIG Secretary is to serve as a trusted lieutenant and
+executive assistant to the FIG.
 
 Whilst there are a number of defined functions below but they should also perform
 other duties as required. As the role has continuity (in that there will always
