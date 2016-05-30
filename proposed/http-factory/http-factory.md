@@ -22,7 +22,7 @@ interpreted as described in [RFC 2119][rfc2119].
 
 An HTTP factory is a method by which a new HTTP object, as defined by PSR-7,
 is created. HTTP factories MUST implement these interfaces for each object type
-that is implemented.
+that is provided by the package.
 
 ## 2. Interfaces
 
@@ -31,10 +31,15 @@ in separate classes.
 
 ### 2.1 RequestFactoryInterface
 
+Has the ability to create complete client requests, including the request URI
+and body stream.
+
 ```php
 namespace Psr\Http\Message;
 
-interface RequestFactoryInterface
+interface RequestFactoryInterface extends
+    UriFactoryInterface,
+    StreamFactoryInterface
 {
     /**
      * Create a new request.
@@ -47,10 +52,13 @@ interface RequestFactoryInterface
 
 ### 2.2 ResponseFactoryInterface
 
+Has the ability to create complete responses, including the body stream.
+
 ```php
 namespace Psr\Http\Message;
 
-interface ResponseFactoryInterface
+interface ResponseFactoryInterface extends
+    StreamFactoryInterface
 {
     /**
      * Create a new response.
@@ -63,10 +71,16 @@ interface ResponseFactoryInterface
 
 ### 2.3 ServerRequestFactoryInterface
 
+Has the ability to create complete server requests, including the request URI,
+uploaded files, and body stream.
+
 ```php
 namespace Psr\Http\Message;
 
-interface ServerRequestFactoryInterface
+interface ServerRequestFactoryInterface extends
+    UploadedFileFactoryInterface,
+    UriFactoryInterface,
+    StreamFactoryInterface
 {
     /**
      * Create a new server request.
@@ -78,6 +92,8 @@ interface ServerRequestFactoryInterface
 ```
 
 ### 2.4 StreamFactoryInterface
+
+Has the ability to create streams for requests and responses.
 
 ```php
 namespace Psr\Http\Message;
@@ -113,6 +129,8 @@ fwrite($resource, $body);
 ```
 
 ### 2.5 UploadedFileFactoryInterface
+
+Has the ability to create streams for uploaded files.
 
 ```php
 namespace Psr\Http\Message;
@@ -161,6 +179,8 @@ fwrite($resource, $body);
 ```
 
 ### 2.6 UriFactoryInterface
+
+Has the ability to creates URIs for client and server requests.
 
 ```php
 namespace Psr\Http\Message;
