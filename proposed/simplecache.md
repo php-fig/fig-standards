@@ -59,7 +59,7 @@ support TTL, the user-specified TTL MUST be silently ignored.
 
 If your implementation is expected to work across many different platforms then
 it is recommended to have your cache keys consist of no more than 32 ASCII characters
- or the following symbols. ``,._-``
+ or the following symbols. ``{}()/\@:``
 
 2. Interfaces
 -------------
@@ -94,9 +94,9 @@ interface CacheInterface
     /**
      * Persisting our data in the cache, uniquely referenced by a key with an optional expiration TTL time.
      *
-     * @param string       $key   The key of the item to store
-     * @param mixed        $value The value of the item to store
-     * @param null|integer $ttl   Optional. The TTL value of this item. If no value is sent and the driver supports TTL
+     * @param string $key The key of the item to store
+     * @param mixed $value The value of the item to store
+     * @param null|integer|DateInterval $ttl Optional. The TTL value of this item. If no value is sent and the driver supports TTL
      *                            then the library may set a default value for it or let the driver take care of that.
      *
      * @return boolean True on success and false otherwise
@@ -141,7 +141,7 @@ interface MultipleInterface
      *
      * @param array|Traversable $keys A list of keys that can obtained in a single operation.
      *
-     * @return array An array of items to cache. The array key is the value return from the cache. Items not found in the cache are not part of the return array. This is how you detect if an item exists or not.
+     * @return array An array of items to cache. Cache keys that don't exist will be part of the return array with a value of NULL.
       *
      */
     public function getMultiple($keys);
@@ -150,7 +150,7 @@ interface MultipleInterface
      * Persisting a set of key => value pairs in the cache, with an optional TTL.
      *
      * @param array|Traversable   $items An array of key => value pairs for a multiple-set operation.
-     * @param null|integer $ttl   Optional. The amount of seconds from the current time that the item will exist in the cache for. I this is null then the cache backend will fall back to its own default behaviour.
+     * @param null|integer|DateInterval $ttl   Optional. The amount of seconds from the current time that the item will exist in the cache for. I this is null then the cache backend will fall back to its own default behaviour.
      *
      * @return boolean The result of the multiple-set operation
      */
