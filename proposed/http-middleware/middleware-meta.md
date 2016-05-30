@@ -116,7 +116,7 @@ This may be resolved in the future with [functional interfaces][php-functional].
 6. Votes
 --------
 
-* **Entrance Vote:**  _(not yet taken)_
+* [Entrance Vote](https://groups.google.com/forum/#!topic/php-fig/v9AijALWJhI)
 * **Acceptance Vote:** _(not yet taken)_
 
 7. Relevant Links
