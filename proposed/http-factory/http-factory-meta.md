@@ -86,7 +86,7 @@ the interfaces have methods to copy-and-modify the object.
 6. Votes
 --------
 
-* **Entrance Vote:**  _(not yet taken)_
+* [Entrance Vote](https://groups.google.com/forum/#!topic/php-fig/6rZPZ8VglIM)
 * **Acceptance Vote:** _(not yet taken)_
 
 7. Relevant Links
