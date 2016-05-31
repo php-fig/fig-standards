@@ -76,8 +76,8 @@ the interfaces have methods to copy-and-modify the object.
 
 ### 5.2 Sponsors
 
-* Paul M Jones, <pmjones88@gmail.com> (Coordinator)
-* ?
+* Roman Tsjupa, <draconyster@gmail.com> (Coordinator)
+* Paul M Jones, <pmjones88@gmail.com>
 
 ### 5.3 Contributors
 
