@@ -60,9 +60,12 @@ of convenience on top of PSR-6.
 
 For their role in the writing the initial version of this cache PSR:
 
-* Evert Pot
-* Florin Pățan
-* dannym87
+* Evert Pot (@evert)
+* Florin Pățan (@dlsniper)
+
+For being an early reviewer
+
+* Daniel Messenger (@dannym87)
 
 
 6. Votes
