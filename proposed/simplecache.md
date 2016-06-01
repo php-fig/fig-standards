@@ -42,7 +42,7 @@ implementation of those caching services.
 
 *    **Implementing Library** - This library is responsible for implementing
 this standard in order to provide caching services to any Calling Library. The
-Implementing Library MUST provide classes which implement the Psr\SimpleCache\CacheItemInterface interfaces.
+Implementing Library MUST provide classes which implement the Psr\SimpleCache\CacheInterface interfaces.
 Implementing Libraries MUST support at minimum TTL functionality as described
 below with whole-second granularity.
 
