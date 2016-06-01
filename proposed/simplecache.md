@@ -97,12 +97,18 @@ support TTL, the user-specified TTL MUST be silently ignored.
 
 ### 2.1 CacheInterface
 
-This is the base interface class that developers should be looking to begin with. It provides
-the most basic functionality imaginable by a cache server which entails basic reading, writing
-and deleting of cache items.
+The cache interface provides the most basic functionality of cache servers which
+entails basic reading, writing and deleting of cache items.
 
-It will provide a generic API for library developers to allow applications to communicate to
-all popular cache backends.
+In addition it has methods for dealing with multiple sets of cache entries such as writing, reading or
+deleting multiple cache entries at a time. This is useful when you have lots of cache reads/writes
+to perform, and lets you perform your operations in a single call to the cache server cutting down latency
+times dramatically.
+
+Finally for atomic counters it provides the ability to increment and decrement cache entries by their
+specified value. Some cache backends support this natively so that you don't have to read the item and
+then increment it and write it back to the cache server, this can be done in a single call to the cache
+server since it's natively supported by many modern cache servers.
 
 ```php
 <?php
@@ -151,23 +157,7 @@ interface CacheInterface
      * @return bool True on success and false on failure
      */
     public function clear();
-}
-```
 
-### 2.3 MultipleInterface
-
-This interface has methods for dealing with multiple sets of cache entries such as writing, reading or
-deleting multiple cache entries at a time. This is useful when you have lots of cache reads/writes
-to perform, and lets you perform your operations in a single call to the cache server cutting down latency
-times dramatically.
-
-```php
-<?php
-
-namespace Psr\SimpleCache;
-
-interface MultipleInterface
-{
     /**
      * Obtain multiple cache items by their unique keys
      *
@@ -196,23 +186,7 @@ interface MultipleInterface
      * @return bool True on success and false on failure
      */
     public function removeMultiple($keys);
-}
-```
 
-### 2.4 IncrementableInterface
-
-This interface provides the ability to increment and decrement cache entries by their specified value.
-Some cache backends support this natively so that you don't have to read the item and then increment it
-and write it back to the cache server, this can be done in a single call to the cache server since it's
-natively supported by many modern cache servers.
-
-```php
-<?php
-
-namespace Psr\SimpleCache;
-
-interface IncrementableInterface
-{
     /**
      * Increment a value in the cache by its step value, which defaults to 1
      *
@@ -232,5 +206,114 @@ interface IncrementableInterface
      * @return int|bool The new value on success and false on failure
      */
     public function decrement($key, $step = 1);
+}
+```
+
+
+3. Adapter
+----------
+
+### 3.1 CacheAdapter
+
+This PSR comes with an adapter class that can wrap a PSR-6 implementation
+and expose it as a PSR-Simple-Cache object. This allows users and libraries
+to easily rely on this even though cache libraries might only implement PSR-6.
+
+Of course, cache implementations might down the line choose to implement
+either or both PSRs.
+
+```php
+namespace Psr\SimpleCache;
+
+use Psr\Cache\CacheItemPoolInterface;
+
+class CacheAdapter implements CacheInterface
+{
+    private $pool;
+
+    public function __construct(CacheItemPoolInterface $pool)
+    {
+        $this->pool = $pool;
+    }
+
+    public function get($key)
+    {
+        $item = $this->pool->getItem($key);
+        if ($item->isHit()) {
+            return $item->get();
+        }
+
+        return null;
+    }
+
+    public function set($key, $value, $ttl = null)
+    {
+        $item = $this->pool->getItem($key)->set($value);
+        if (null !== $ttl) {
+            $item->expiresAfter($ttl);
+        }
+
+        return $this->pool->save($item);
+    }
+
+    public function remove($key)
+    {
+        return $this->pool->deleteItem($key);
+    }
+
+    public function clear()
+    {
+        return $this->pool->clear();
+    }
+
+    public function getMultiple($keys)
+    {
+        $result = array();
+        foreach ($this->pool->getItems($keys) as $key => $item) {
+            $result[$key] = $item->isHit() ? $item->get() : null;
+        }
+
+        return $result;
+    }
+
+    public function setMultiple($items, $ttl = null)
+    {
+        foreach ($items as $key => $value) {
+            $item = $this->pool->getItem($key)->set($value);
+            if (null !== $ttl) {
+                $item->expiresAfter($ttl);
+            }
+            if (!$this->pool->saveDeferred($item)) {
+                return false;
+            }
+        }
+
+        return $this->pool->commit();
+    }
+
+    public function removeMultiple($keys)
+    {
+        return $this->pool->deleteItems($keys);
+    }
+
+    public function increment($key, $step = 1)
+    {
+        $value = $this->get($key) + $step;
+        if ($this->set($key, $value)) {
+            return $value;
+        }
+
+        return false;
+    }
+
+    public function decrement($key, $step = 1)
+    {
+        $value = $this->get($key) - $step;
+        if ($this->set($key, $value)) {
+            return $value;
+        }
+
+        return false;
+    }
 }
 ```

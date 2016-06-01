@@ -28,6 +28,7 @@ standardized layer of simplicity on top of the existing PSR-6 interfaces.
 * A few more advanced ones for more specialized operations.
 * Providing an adapter class that turns a PSR-6 implementation into a
   PSR-Simple-Cache one.
+* It should be possible to expose both caching PSRs from a caching library.
 
 ### 3.2 Non-Goals
 
