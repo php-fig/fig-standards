@@ -42,8 +42,7 @@ implementation of those caching services.
 
 *    **Implementing Library** - This library is responsible for implementing
 this standard in order to provide caching services to any Calling Library. The
-Implementing Library MUST provide classes which implement the
-Cache\CacheItemPoolInterface and Cache\CacheItemInterface interfaces.
+Implementing Library MUST provide classes which implement the Psr\SimpleCache\CacheItemInterface interfaces.
 Implementing Libraries MUST support at minimum TTL functionality as described
 below with whole-second granularity.
 
@@ -98,7 +97,7 @@ support TTL, the user-specified TTL MUST be silently ignored.
 ### 2.1 CacheInterface
 
 The cache interface provides the most basic functionality of cache servers which
-entails basic reading, writing and deleting of cache items.
+entails basic reading, writing and deleting of single cache items.
 
 In addition it has methods for dealing with multiple sets of cache entries such as writing, reading or
 deleting multiple cache entries at a time. This is useful when you have lots of cache reads/writes
