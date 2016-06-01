@@ -24,7 +24,7 @@ standardized layer of simplicity on top of the existing PSR-6 interfaces.
 
 ### 3.1 Goals
 
-* A very simple interface for basic cache opereations.
+* A very simple interface for basic cache operations.
 * A few more advanced ones for more specialized operations.
 * Providing an adapter class that turns a PSR-6 implementation into a
   PSR-Simple-Cache one.
