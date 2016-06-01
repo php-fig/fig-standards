@@ -170,6 +170,8 @@ SHOULD NOT assume that an Item created by one Implementing Library is
 compatible with a Pool from another Implementing Library.
 
 ~~~php
+<?php
+
 namespace Psr\Cache;
 
 /**
@@ -269,6 +271,8 @@ All configuration and initialization of the Pool is left up to an Implementing
 Library.
 
 ~~~php
+<?php
+
 namespace Psr\Cache;
 
 /**
@@ -410,6 +414,8 @@ or invalid credentials supplied.
 Any exception thrown by an Implementing Library MUST implement this interface.
 
 ~~~php
+<?php
+
 namespace Psr\Cache;
 
 /**
@@ -423,6 +429,8 @@ interface CacheException
 ### InvalidArgumentException
 
 ~~~php
+<?php
+
 namespace Psr\Cache;
 
 /**
