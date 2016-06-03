@@ -8,7 +8,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
 
-The final implementations MAY be able to decorate the objects with more
+The final implementations MAY decorate the objects with more
 functionality than the one proposed but they MUST implement the indicated
 interfaces/functionality first.
 

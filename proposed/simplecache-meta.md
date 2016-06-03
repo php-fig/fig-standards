@@ -25,7 +25,6 @@ standardized layer of simplicity on top of the existing PSR-6 interfaces.
 ### 3.1 Goals
 
 * A very simple interface for basic cache operations.
-* A few more advanced ones for more specialized operations.
 * Providing an adapter class that turns a PSR-6 implementation into a
   PSR-Simple-Cache one.
 * It should be possible to expose both caching PSRs from a caching library.
@@ -49,12 +48,12 @@ of convenience on top of PSR-6.
 
 ### 5.1 Editor(s)
 
-* Paul Dragoonis - PPI Framework
+* Paul Dragoonis (@dragoonis)
 
 ### 5.2 Sponsors
 
-* Jordi Boggiano - Composer (Coordinator)
-* Fabien Potencier - Symfony
+* Jordi Boggiano (@seldaek)
+* Fabien Potencier (@fabpot)
 
 ### 5.3 Contributors
 
