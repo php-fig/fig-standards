@@ -24,7 +24,11 @@ standardized layer of simplicity on top of the existing PSR-6 interfaces.
 
 ### 3.1 Goals
 
-* A very simple interface for basic cache operations.
+* A simple interface for basic cache operations.
+* Basic support for operations on multiple keys for performance (round-trip-time)
+  reasons.
+* Support for atomic counters which are essential to implement security features
+  like login-attempt counters and overall counting things under high load.
 * Providing an adapter class that turns a PSR-6 implementation into a
   PSR-Simple-Cache one.
 * It should be possible to expose both caching PSRs from a caching library.

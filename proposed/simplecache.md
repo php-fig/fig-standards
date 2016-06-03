@@ -42,7 +42,7 @@ implementation of those caching services.
 
 *    **Implementing Library** - This library is responsible for implementing
 this standard in order to provide caching services to any Calling Library. The
-Implementing Library MUST provide classes which implement the Psr\SimpleCache\CacheInterface interfaces.
+Implementing Library MUST provide a class implementing the Psr\SimpleCache\CacheInterface interface.
 Implementing Libraries MUST support at minimum TTL functionality as described
 below with whole-second granularity.
 
@@ -104,10 +104,8 @@ deleting multiple cache entries at a time. This is useful when you have lots of 
 to perform, and lets you perform your operations in a single call to the cache server cutting down latency
 times dramatically.
 
-Finally for atomic counters it provides the ability to increment and decrement cache entries by their
-specified value. Some cache backends support this natively so that you don't have to read the item and
-then increment it and write it back to the cache server, this can be done in a single call to the cache
-server since it's natively supported by many modern cache servers.
+Finally for counters it provides the ability to increment and decrement a cache key
+atomatically.
 
 ```php
 <?php
@@ -187,7 +185,7 @@ interface CacheInterface
     public function removeMultiple($keys);
 
     /**
-     * Increment a value in the cache by its step value, which defaults to 1
+     * Increment a value atomically in the cache by its step value, which defaults to 1
      *
      * @param string  $key  The cache item key
      * @param integer $step The value to increment by, defaulting to 1
@@ -197,7 +195,7 @@ interface CacheInterface
     public function increment($key, $step = 1);
 
     /**
-     * Decrement a value in the cache by its step value, which defaults to 1
+     * Decrement a value atomically in the cache by its step value, which defaults to 1
      *
      * @param string  $key  The cache item key
      * @param integer $step The value to decrement by, defaulting to 1
@@ -220,6 +218,9 @@ to easily rely on this even though cache libraries might only implement PSR-6.
 
 Of course, cache implementations might down the line choose to implement
 either or both PSRs.
+
+Note that the adapter's increment & decrement methods are not strictly spec-compliant
+as they can not be implemented atomically on top of PSR-6.
 
 ```php
 namespace Psr\SimpleCache;
