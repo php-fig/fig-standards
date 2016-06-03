@@ -52,8 +52,8 @@ of convenience on top of PSR-6.
 
 ### 5.2 Sponsors
 
-* Jordi Boggiano (@seldaek)
-* Fabien Potencier (@fabpot)
+* Jordi Boggiano (@seldaek) - Composer (Coordinator)
+* Fabien Potencier (@fabpot) - Symfony
 
 ### 5.3 Contributors
 
