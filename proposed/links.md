@@ -18,8 +18,8 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 - [RFC 2119](http://tools.ietf.org/html/rfc2119)
 - [RFC 4287](https://tools.ietf.org/html/rfc4287)
 - [RFC 5988](https://tools.ietf.org/html/rfc5988)
-- [Microformats Relations List](http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions)
 - [IANA Link Relations Registry](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+- [Microformats Relations List](http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions)
 
 
 ## 1. Specification
