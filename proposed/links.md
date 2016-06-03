@@ -71,6 +71,25 @@ unless doing so changes the semantic meaning of the result. This rule applies if
 and only if the attribute is boolean `false`, not for any other "falsey" value in PHP
 such as integer 0.
 
+### 1.3 Relationships
+
+Link relationships are defined as strings, and are either a simple keyword in
+case of a publicly defined relationship or an absolute URI in the case of a
+private relationships.
+
+In case a simple keyword is used, it SHOULD match one from the IANA registry at:
+
+http://www.iana.org/assignments/link-relations/link-relations.xhtml
+
+Optionally the microformats.org registry MAY be used, but this may not be valid
+in every context:
+
+http://microformats.org/wiki/existing-rel-values
+
+A relationship that is not defined in one of the above registries or a similar
+public registry is considered "private", that is, specific to a particular
+application or use case.  Such relationships MUST use an absolute URI.
+
 ## 2. Package
 
 The interfaces and classes described are provided as part of the
@@ -103,19 +122,6 @@ interface LinkInterface
      *
      * This method returns 0 or more relationship types for a link, expressed
      * as an array of strings.
-     *
-     * The returned values should be either a simple keyword or an absolute
-     * URI. In case a simple keyword is used, it should match one from the
-     * IANA registry at:
-     *
-     * http://www.iana.org/assignments/link-relations/link-relations.xhtml
-     *
-     * Optionally the microformats.org registry may be used, but this may not
-     * be valid in every context:
-     *
-     * http://microformats.org/wiki/existing-rel-values
-     *
-     * Private relationship types should always be an absolute URI.
      *
      * @return string[]
      */
