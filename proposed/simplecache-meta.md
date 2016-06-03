@@ -4,11 +4,11 @@ PSR-Simple-Cache Meta Document
 1. Summary
 ----------
 
-Caching is a common way to improve the performance of any project, making
-caching libraries one of the most common features of many frameworks and
-libraries. Interoperability at this level means libraries can drop their
-own caching implementations and easily rely on the one given to them by the
-framework, or another dedicated cache library.
+Caching is a common way to improve the performance of any project, and many
+libraries make use or could make use of it. Interoperability at this level
+means libraries can drop their own caching implementations and easily rely
+on the one given to them by the framework, or another dedicated cache
+library the user picked.
 
 
 2. Why Bother?
