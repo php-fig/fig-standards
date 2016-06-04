@@ -140,13 +140,13 @@ interface CacheInterface
     public function set($key, $value, $ttl = null);
 
     /**
-     * Remove an item from the cache by its unique key
+     * Delete an item from the cache by its unique key
      *
-     * @param string $key The unique cache key of the item to remove
+     * @param string $key The unique cache key of the item to delete
      *
      * @return bool True on success and false on failure
      */
-    public function remove($key);
+    public function delete($key);
 
     /**
      * Wipe clean the entire cache's keys
@@ -176,13 +176,13 @@ interface CacheInterface
     public function setMultiple($items, $ttl = null);
 
     /**
-     * Remove multiple cache items in a single operation
+     * Delete multiple cache items in a single operation
      *
-     * @param array|Traversable $keys The array of string-based Keys to be removed
+     * @param array|Traversable $keys The array of string-based Keys to be delete
      *
      * @return bool True on success and false on failure
      */
-    public function removeMultiple($keys);
+    public function deleteMultiple($keys);
 
     /**
      * Increment a value atomically in the cache by its step value, which defaults to 1
@@ -256,7 +256,7 @@ class CacheAdapter implements CacheInterface
         return $this->pool->save($item);
     }
 
-    public function remove($key)
+    public function delete($key)
     {
         return $this->pool->deleteItem($key);
     }
@@ -291,7 +291,7 @@ class CacheAdapter implements CacheInterface
         return $this->pool->commit();
     }
 
-    public function removeMultiple($keys)
+    public function deleteMultiple($keys)
     {
         return $this->pool->deleteItems($keys);
     }
