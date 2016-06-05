@@ -661,7 +661,7 @@ caused by invalid characters in a URI component but also because the given
 URI components cannot be recomposed to a valid URI reference which may even
 depend on the current URI scheme. Two examples are:
 
-- `$uri->withHost('')->withPort(8080)` should fail because there cannot be a
-  port without a host.
+- `$uri->withHost('example.org')->withPath('//two-slashes')->withHost('')` should
+  fail because the path of a URI without an authority must not start with two slashes.
 - `$uri->withPath('rootless')->withHost('example.com')` should fail because
   a URI with an authority cannot have a relative path.
