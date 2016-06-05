@@ -178,7 +178,7 @@ interface CacheInterface
     /**
      * Delete multiple cache items in a single operation
      *
-     * @param array|Traversable $keys The array of string-based Keys to be deleted
+     * @param array|Traversable $keys The array of string-based keys to be deleted
      *
      * @return bool True on success and false on failure
      */
