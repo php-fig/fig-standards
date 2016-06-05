@@ -105,7 +105,7 @@ to perform, and lets you perform your operations in a single call to the cache s
 times dramatically.
 
 Finally for counters it provides the ability to increment and decrement a cache key
-atomatically.
+atomically.
 
 ```php
 <?php
