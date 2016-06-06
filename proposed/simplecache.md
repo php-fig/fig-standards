@@ -104,10 +104,7 @@ deleting multiple cache entries at a time. This is useful when you have lots of 
 to perform, and lets you perform your operations in a single call to the cache server cutting down latency
 times dramatically.
 
-Finally for counters it provides the ability to increment and decrement a cache key
-atomically.
-
-```php
+``` php
 <?php
 
 namespace Psr\SimpleCache;
@@ -167,9 +164,9 @@ interface CacheInterface
     /**
      * Persisting a set of key => value pairs in the cache, with an optional TTL.
      *
-     * @param array|Traversable         $items An array of key => value pairs for a multiple-set operation.
+     * @param array|Traversable     $items An array of key => value pairs for a multiple-set operation.
      * @param null|int|DateInterval $ttl   Optional. The amount of seconds from the current time that the item will exist in the cache for.
-     *                                         If this is null then the cache backend will fall back to its own default behaviour.
+     *                                     If this is null then the cache backend will fall back to its own default behaviour.
      *
      * @return bool True on success and false on failure
      */
@@ -184,6 +181,32 @@ interface CacheInterface
      */
     public function deleteMultiple($keys);
 
+    /**
+     * Identify if an item is in the cache.
+     * NOTE: It is recommended that exists() is only to be used for cache warming type purposes
+     * and not to be used within your live applications operations for get/set, as this method
+     * is subject to a race condition where your exists() will return true and immediately after,
+     * another script can remove it making the state of your app out of date.
+     *
+     * @param string $key The cache item key
+     *
+     * @return bool
+     */
+    public function exists($key);
+
+}
+```
+
+### 2.2 CounterInterface
+
+For counters it provides the ability to increment and decrement a cache key atomically.
+
+``` php
+<?php
+namespace Psr\SimpleCache;
+
+interface CounterInterface
+{
     /**
      * Increment a value atomically in the cache by its step value, which defaults to 1
      *
@@ -203,19 +226,5 @@ interface CacheInterface
      * @return int|bool The new value on success and false on failure
      */
     public function decrement($key, $step = 1);
-
-    /**
-     * Identify if an item is in the cache.
-     * NOTE: It is recommended that exists() is only to be used for cache warming type purposes
-     * and not to be used within your live applications operations for get/set, as this method
-     * is subject to a race condition where your exists() will return true and immediately after,
-     * another script can remove it making the state of your app out of date.
-     *
-     * @param string $key The cache item key
-     *
-     * @return bool
-     */
-    public function exists($key);
-
 }
 ```
