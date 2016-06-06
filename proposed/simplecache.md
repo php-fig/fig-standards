@@ -144,14 +144,14 @@ interface CacheInterface
      *
      * @param string $key The unique cache key of the item to delete
      *
-     * @return bool True on success and false on failure
+     * @return void
      */
     public function delete($key);
 
     /**
      * Wipe clean the entire cache's keys
      *
-     * @return bool True on success and false on failure
+     * @return void
      */
     public function clear();
 
@@ -180,7 +180,7 @@ interface CacheInterface
      *
      * @param array|Traversable $keys The array of string-based keys to be deleted
      *
-     * @return bool True on success and false on failure
+     * @return void
      */
     public function deleteMultiple($keys);
 
