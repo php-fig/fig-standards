@@ -132,7 +132,7 @@ interface CacheInterface
      *
      * @param string $key The key of the item to store
      * @param mixed $value The value of the item to store
-     * @param null|integer|DateInterval $ttl Optional. The TTL value of this item. If no value is sent and the driver supports TTL
+     * @param null|int|DateInterval $ttl Optional. The TTL value of this item. If no value is sent and the driver supports TTL
      *                                       then the library may set a default value for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure
@@ -168,7 +168,7 @@ interface CacheInterface
      * Persisting a set of key => value pairs in the cache, with an optional TTL.
      *
      * @param array|Traversable         $items An array of key => value pairs for a multiple-set operation.
-     * @param null|integer|DateInterval $ttl   Optional. The amount of seconds from the current time that the item will exist in the cache for.
+     * @param null|int|DateInterval $ttl   Optional. The amount of seconds from the current time that the item will exist in the cache for.
      *                                         If this is null then the cache backend will fall back to its own default behaviour.
      *
      * @return bool True on success and false on failure
@@ -188,7 +188,7 @@ interface CacheInterface
      * Increment a value atomically in the cache by its step value, which defaults to 1
      *
      * @param string  $key  The cache item key
-     * @param integer $step The value to increment by, defaulting to 1
+     * @param int $step The value to increment by, defaulting to 1
      *
      * @return int|bool The new value on success and false on failure
      */
@@ -198,7 +198,7 @@ interface CacheInterface
      * Decrement a value atomically in the cache by its step value, which defaults to 1
      *
      * @param string  $key  The cache item key
-     * @param integer $step The value to decrement by, defaulting to 1
+     * @param int $step The value to decrement by, defaulting to 1
      *
      * @return int|bool The new value on success and false on failure
      */
