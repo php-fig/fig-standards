@@ -44,9 +44,12 @@ interface RequestFactoryInterface extends
     /**
      * Create a new request.
      *
+     * @param string $method
+     * @param UriInterface|string $uri
+     *
      * @return RequestInterface
      */
-    public function createRequest();
+    public function createRequest($method, $uri);
 }
 ```
 
@@ -63,9 +66,11 @@ interface ResponseFactoryInterface extends
     /**
      * Create a new response.
      *
+     * @param integer $code HTTP status code
+     *
      * @return ResponseInterface
      */
-    public function createResponse();
+    public function createResponse($code = 200);
 }
 ```
 
@@ -85,9 +90,19 @@ interface ServerRequestFactoryInterface extends
     /**
      * Create a new server request.
      *
+     * @param string $method
+     * @param UriInterface|string $uri
+     *
      * @return ServerRequestInterface
      */
-    public function createServerRequest();
+    public function createServerRequest($method, $uri);
+
+    /**
+     * Create a new server request from PHP globals.
+     *
+     * @return ServerRequestInterface
+     */
+    public function createServerRequestFromGlobals();
 }
 ```
 
