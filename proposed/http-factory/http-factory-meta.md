@@ -100,7 +100,8 @@ _**Note:** Order descending chronologically._
 * [shadowhand All About PSR-7 Middleware](http://shadowhand.me/all-about-psr-7-middleware/)
 * [AndrewCarterUK PSR-7 Objects Are Not Immutable](http://andrewcarteruk.github.io/programming/2016/05/22/psr-7-is-not-immutable.html)
 * [shadowhand Dependency Inversion and PSR-7 Bodies](http://shadowhand.me/dependency-inversion-and-psr-7-bodies/)
-* [PHP-FIG mailing list thread about factories](https://groups.google.com/forum/#!topic/php-fig/G5pgQfQ9fpA)
+* [PHP-FIG mailing list thread discussing factories](https://groups.google.com/d/msg/php-fig/G5pgQfQ9fpA/UWeM1gm1CwAJ)
+* [PHP-FIG mailing list thread feedback on proposal](https://groups.google.com/d/msg/php-fig/piRtB2Z-AZs/8UIwY1RtDgAJ)
 
 8. Errata
 ---------
