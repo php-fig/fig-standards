@@ -31,15 +31,12 @@ in separate classes.
 
 ### 2.1 RequestFactoryInterface
 
-Has the ability to create complete client requests, including the request URI
-and body stream.
+Has the ability to create client requests.
 
 ```php
 namespace Psr\Http\Message;
 
-interface RequestFactoryInterface extends
-    UriFactoryInterface,
-    StreamFactoryInterface
+interface RequestFactoryInterface
 {
     /**
      * Create a new request.
@@ -55,13 +52,12 @@ interface RequestFactoryInterface extends
 
 ### 2.2 ResponseFactoryInterface
 
-Has the ability to create complete responses, including the body stream.
+Has the ability to create responses.
 
 ```php
 namespace Psr\Http\Message;
 
-interface ResponseFactoryInterface extends
-    StreamFactoryInterface
+interface ResponseFactoryInterface
 {
     /**
      * Create a new response.
@@ -76,16 +72,12 @@ interface ResponseFactoryInterface extends
 
 ### 2.3 ServerRequestFactoryInterface
 
-Has the ability to create complete server requests, including the request URI,
-uploaded files, and body stream.
+Has the ability to create server requests.
 
 ```php
 namespace Psr\Http\Message;
 
-interface ServerRequestFactoryInterface extends
-    UploadedFileFactoryInterface,
-    UriFactoryInterface,
-    StreamFactoryInterface
+interface ServerRequestFactoryInterface
 {
     /**
      * Create a new server request.
@@ -215,4 +207,3 @@ interface UriFactoryInterface
     public function createUri($uri = '');
 }
 ```
-
