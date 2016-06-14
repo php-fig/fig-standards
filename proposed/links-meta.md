@@ -74,10 +74,12 @@ domain object that is producing them.
 
 ### 4.2 Sponsors
 
-* Evert Pot
 * Matthew Weier O'Phinney (coordinator)
+* Michiel Rook
 
 ### 4.3 Contributors
+
+* Evert Pot
 
 ## 5. Votes
 
