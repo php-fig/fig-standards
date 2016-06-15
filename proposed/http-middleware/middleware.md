@@ -78,7 +78,7 @@ use Psr\Http\Message\ResponseInterface;
 interface ClientMiddlewareInterface extends MiddlewareInterface
 {
     /**
-     * Handle a client request and return a response.
+     * Process a client request and return a response.
      *
      * Takes the incoming request and optionally modifies it before delegating
      * to the next frame to get a response.
@@ -88,7 +88,7 @@ interface ClientMiddlewareInterface extends MiddlewareInterface
      *
      * @return ResponseInterface
      */
-    public function handle(
+    public function process(
         RequestInterface $request,
         FrameInterface $next
     );
@@ -108,7 +108,7 @@ use Psr\Http\Message\ServerRequestInterface;
 interface ServerMiddlewareInterface extends MiddlewareInterface
 {
     /**
-     * Handle a server request and return a response.
+     * Process a server request and return a response.
      *
      * Takes the incoming request and optionally modifies it before delegating
      * to the next frame to get a response.
@@ -118,7 +118,7 @@ interface ServerMiddlewareInterface extends MiddlewareInterface
      *
      * @return ResponseInterface
      */
-    public function handle(
+    public function process(
         ServerRequestInterface $request,
         FrameInterface $frame
     );
