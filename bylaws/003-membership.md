@@ -148,7 +148,7 @@ in an official capacity as secretary and should also remain aware that even when
 not acting in an official capacity, their actions reflect back on the PHP FIG and
 the FIG must not be brought into disrepute.
 
-### Defined functions
+### Defined Functions
 
 There are a number of defined functions that the FIG Secretaries are expected to
 complete but they may also, within their remit defined in the above overarching
@@ -165,6 +165,15 @@ professional, up to date and impartial.
 that an appropriate environment is maintained
 * Should there be a FIG meeting at a conference or other ad hoc gathering any
 Secretary in attendance should take notes to report back to the mailing list.
+
+In pursuit of the above functions, the Secretaries may be uncertain as to the
+proper application of relevant bylaws. If so, they are expected to use their
+best professional judgment to resolve the uncertainty and determine a course of
+action. They are to notify the voting members of their intended action in
+advance of that action. If 2 or more voting members object to the intended
+action, the Secretaries must determine an alternative course of action and
+present it to the voting members for objection, or put the matter to a full vote
+according to the standard [Voting Protocol bylaw][voting]).
 
 ### Access and Abilities
 
