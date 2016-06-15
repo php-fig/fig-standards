@@ -33,7 +33,7 @@ use a type declaration against one of the middleware interfaces:
 - `Psr\Http\Middleware\ClientMiddlewareInterface` if only client middleware is supported
 - `Psr\Http\Middleware\ServerMiddlewareInterface` if only server middleware is supported
 
-Generally consumers SHOULD type hint against `MiddlewareInterface` unless the
+Generally consumers SHOULD declare the type as `MiddlewareInterface` unless the
 consumer only processes client requests.
 
 ### 1.1 Containers
@@ -56,8 +56,8 @@ in order to prevent dependence on a specific HTTP message implementation.
 
 ### 2.1 Psr\Http\Middleware\MiddlewareInterface
 
-The following interface is only used for type hints that accept middleware components
-and MUST NOT be implemented directly.
+The following interface is only used for type declarations that accept middleware
+components and MUST NOT be implemented directly.
 
 ```php
 namespace Psr\Http\Middleware;
