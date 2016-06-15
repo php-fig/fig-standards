@@ -133,9 +133,6 @@ interface StreamFactoryInterface
      * @param resource $body
      *
      * @return StreamInterface
-     *
-     * @throws \InvalidArgumentException
-     *  If a passed resource is not readable.
      */
     public function createStreamFromResource($body);
 
@@ -173,8 +170,7 @@ interface UploadedFileFactoryInterface
     /**
      * Create a new uploaded file.
      *
-     * If a string is used to create the file, a temporary resource will be
-     * created with the content of the string.
+     * If a string is passed it is assumed to be a file path.
      *
      * If a size is not provided it will be determined by checking the size of
      * the file.
@@ -189,9 +185,6 @@ interface UploadedFileFactoryInterface
      * @param string $clientMediaType
      *
      * @return UploadedFileInterface
-     *
-     * @throws \InvalidArgumentException
-     *  If the file resource is not readable.
      */
     public function createUploadedFile(
         $file,

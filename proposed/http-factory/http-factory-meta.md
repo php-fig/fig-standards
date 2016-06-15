@@ -1,5 +1,5 @@
-PSR-N Meta Document
-===================
+PSR-17 Meta Document
+====================
 
 1. Summary
 ----------
