@@ -18,6 +18,7 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 - [RFC 2119](http://tools.ietf.org/html/rfc2119)
 - [RFC 4287](https://tools.ietf.org/html/rfc4287)
 - [RFC 5988](https://tools.ietf.org/html/rfc5988)
+- [RFC 6570](https://tools.ietf.org/html/rfc6570)
 - [IANA Link Relations Registry](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
 - [Microformats Relations List](http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions)
 
@@ -90,6 +91,14 @@ A relationship that is not defined in one of the above registries or a similar
 public registry is considered "private", that is, specific to a particular
 application or use case.  Such relationships MUST use an absolute URI.
 
+## 1.4 Link Templates
+
+[RFC 6570](https://tools.ietf.org/html/rfc6570) defines a format for URI templates, that is,
+a pattern for a URI that is expected to be filled in with values provided by a client
+tool.  Some hypermedia formats support templated links while others do not, and may 
+have a special way to denote that a link is a template.  A Serializer for a format 
+that does not support URI Templates MUST ignore any templated Links it encounters.
+
 ## 2. Package
 
 The interfaces and classes described are provided as part of the
@@ -111,11 +120,25 @@ interface LinkInterface
     /**
      * Returns the target of the link.
      *
-     * The target must be a URI or a Relative URI reference.
+     * The target link must be one of:
+     * - An absolute URI, as defined by RFC 5988.
+     * - A relative URI, as defined by RFC 5988. The base of the relative link
+     *     is assumed to be known based on context by the client.
+     * - A URI template as defined by RFC 6570.
+     *
+     * If a URI template is returned, isTemplated() MUST return True.
      *
      * @return string
      */
     public function getHref();
+
+    /**
+     * Returns whether or not this is a templated link.
+     *
+     * @return bool
+     *   True if this link object is templated, False otherwise.
+     */
+    public function isTemplated();
 
     /**
      * Returns the relationship type(s) of the link.
