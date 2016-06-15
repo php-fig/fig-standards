@@ -166,11 +166,11 @@ that an appropriate environment is maintained
 * Should there be a FIG meeting at a conference or other ad hoc gathering any
 Secretary in attendance should take notes to report back to the mailing list.
 
-In pursuit of the above functions, the Secretaries may be uncertain as to the
-proper application of relevant bylaws. If so, they are expected to use their
-best professional judgment to resolve the uncertainty and determine a course of
-action. They are to notify the voting members of their intended action in
-advance of that action. If 2 or more voting members object to the intended
+In pursuit of the above functions and duties, the Secretaries may be uncertain
+as to the proper application of relevant bylaws. If so, they are expected to use
+their best professional judgment to resolve the uncertainty and determine a
+course of action. They are to notify the voting members of their intended action
+in advance of that action. If 2 or more voting members object to the intended
 action, the Secretaries must determine an alternative course of action and
 present it to the voting members for objection, or put the matter to a full vote
 according to the standard [Voting Protocol bylaw][voting]).
