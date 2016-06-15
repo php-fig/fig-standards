@@ -32,11 +32,13 @@ provides a number of benefits:
 ## 3.1 Goals
 
 * Create a middleware interface that uses HTTP Messages.
+* Provide a suggested interface for middleware stack containers.
 * Ensure that middleware will not be tied to a specific implementation of HTTP Messages.
 * Implement a middleware signature that is based on best practices.
+
 ## 3.2 Non-Goals
 
-* Attempting to define the mechanism by which middleware is managed or dispatched.
+* Attempting to define the mechanism by which HTTP responses are created.
 
 4. Approaches
 -------------
