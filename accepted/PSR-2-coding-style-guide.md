@@ -237,15 +237,17 @@ class ClassName
 
 ### 4.3. Methods
 
-Visibility MUST be declared on all methods.
+The general style rules for methods are as follows:
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
+- Visibility MUST be declared on all methods.
+- Method names SHOULD NOT be prefixed with a single underscore to indicate
 protected or private visibility.
-
-Method names MUST NOT be declared with a space after the method name. The
-opening brace MUST go on its own line, and the closing brace MUST go on the
-next line following the body. There MUST NOT be a space after the opening
-parenthesis, and there MUST NOT be a space before the closing parenthesis.
+- Method names MUST NOT be declared with a space after the method name.
+- The opening brace MUST go on its own line
+- There MUST NOT be a space after the opening parenthesis
+- There MUST NOT be a space before the closing parenthesis
+- The method body MUST be indented once
+- The closing brace MUST be on the next line after the body
 
 A method declaration looks like the following. Note the placement of
 parentheses, commas, spaces, and braces:
