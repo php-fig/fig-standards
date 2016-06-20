@@ -176,7 +176,6 @@ that are based around StackPHP.
 The double pass approach is much newer but has already been widely adopted by
 early adopters of HTTP Messages.
 
-
 ### 4.4 Chosen Approach
 
 The double-pass approach has some significant issues regarding implementation.
@@ -213,6 +212,13 @@ Using interface declarations instead of `callable` eliminates some flexibility
 in favor of better runtime safety and debugging. Using stricter interfaces also
 makes it easier for existing implementations to provide wrappers or adapters
 to provide forward compatibility with the proposed interfaces.
+
+#### 4.5 Middleware Stack and Dispatching
+
+This proposal also includes a definition of a middleware stack container that
+is an entry point for middleware dispatching. This interface is entirely optional
+and is intended to illustrate that client middleware can be used in a server
+context but server middleware cannot be used in a client context.
 
 5. `FrameInterface`
 -------------------

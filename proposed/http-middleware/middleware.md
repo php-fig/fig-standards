@@ -155,6 +155,9 @@ interface FrameInterface
 
 The following interface MAY be implemented by middleware stack containers.
 
+The following interface SHOULD NOT be used for type declarations that would
+restrict the usage of alternate stack containers.
+
 ```php
 namespace Psr\Http\Middleware;
 
