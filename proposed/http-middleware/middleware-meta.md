@@ -6,14 +6,18 @@ PSR-15 Meta Document
 
 The purpose of this PSR is to provide an interface that defines the formal
 method signature for HTTP Middleware that is compatible with HTTP Messages,
-as defined in PSR-7.
+as defined in [PSR-7][psr7].
+
+[psr7]: http://www.php-fig.org/psr/psr-7/
 
 2. Why Bother?
 --------------
 
-The general concept of reusable middleware was popularized by [StackPHP][stackphp].
-Since the release of the HTTP Messages standard, a number of frameworks have
-adopted middleware that uses HTTP Message interfaces.
+The design pattern used by middle has existed for many years as [pipeline][pipeline],
+or more specifically, "linear pipeline processing". The general concept of reusable
+middleware was popularized within PHP by [StackPHP][stackphp]. Since the release
+of the HTTP Messages standard, a number of frameworks have adopted middleware that
+use HTTP Message interfaces.
 
 Agreeing on a formal middleware interface eliminates several problems and
 provides a number of benefits:
@@ -23,8 +27,8 @@ provides a number of benefits:
 * Avoids minor discrepancies in method signatures.
 * Enables any middleware component to run in any compatible framework.
 
+[pipeline]: https://en.wikipedia.org/wiki/Pipeline_(computing)
 [stackphp]: http://stackphp.com/
-[express]: http://expressjs.com/en/guide/writing-middleware.html
 
 3. Scope
 --------
@@ -53,6 +57,8 @@ and is based on [Express middleware][express], which is defined as:
 ```
 fn(request, response, next): response
 ```
+
+[express]: http://expressjs.com/en/guide/writing-middleware.html
 
 Based on the middleware implementations already used by frameworks that have
 adopted this signature, the following commonalities are observed:
