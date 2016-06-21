@@ -57,7 +57,7 @@ other people to build centralized tools around this information.
 
 ### 5.1 Editor
 
-* Lukas Kahwe Smith
+* Michael Hess
 
 ### 5.2 Sponsors
 
@@ -67,6 +67,11 @@ other people to build centralized tools around this information.
 ### 5.3 Coordinator
 
 * Korvin Szanto (concrete5)
+
+### 5.4 Contributors
+
+* Lukas Kahwe Smith
+
 
 6. Votes
 --------
