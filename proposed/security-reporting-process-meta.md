@@ -70,7 +70,7 @@ https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40Sts
 
 ### 5.1 Editor
 
-* Lukas Kahwe Smith
+* Michael Hess
 
 ### 5.2 Sponsors
 
@@ -79,7 +79,11 @@ https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40Sts
 
 ### 5.3 Coordinator
 
-* Korvin Szanto (concrete5)
+* Larry Garfield (Drupal)
+
+### 5.4 Contributors
+
+* Lukas Kahwe Smith
 
 6. Votes
 --------

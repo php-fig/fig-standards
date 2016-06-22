@@ -28,8 +28,8 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 |:---:|--------------------------------------|--------------------------------|-------------------------|-------------------|
 | 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  | Vacant                  | Vacant            |
 | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Paul M. Jones     |
-| 9   | [Security Advisories][psr9]          | Lukas Kahwe Smith              | Korvin Szanto           | Larry Garfield    |
-| 10  | [Security Reporting Process][psr10]  | Lukas Kahwe Smith              | Larry Garfield          | Korvin Szanto     |
+| 9   | [Security Advisories][psr9]          | Michael Hess                   | Korvin Szanto           | Larry Garfield    |
+| 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
@@ -54,8 +54,8 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | A      | 6   | [Caching Interface][psr6]            | Larry Garfield                 | Paul Dragoonis          | Robert Hafner     |
 | A      | 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        | Beau Simensen           | Paul M. Jones     |
 | D      | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Paul M. Jones     |
-| D      | 9   | [Security Advisories][psr9]          | Lukas Kahwe Smith              | Korvin Szanto           | Larry Garfield    |
-| D      | 10  | [Security Reporting Process][psr10]  | Lukas Kahwe Smith              | Larry Garfield          | Korvin Szanto     |
+| D      | 9   | [Security Advisories][psr9]          | Michael Hess                   | Korvin Szanto           | Larry Garfield    |
+| D      | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
 | D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
 | D      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | D      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
