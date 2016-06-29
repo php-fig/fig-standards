@@ -379,6 +379,22 @@ class ClassName
 }
 ~~~
 
+A property MAY have a default value to improve readability and to indicate the type of the property.
+
+~~~php
+<?php
+namespace Vendor\Package;
+
+class ClassName
+{
+    public $foo = null;
+    public $isFoo = false;
+    public $fooName = '';
+    public $foos = [];
+    public $fooCount = 0;
+}
+~~~
+
 ### 4.4 Methods and Functions
 
 Visibility MUST be declared on all methods.
