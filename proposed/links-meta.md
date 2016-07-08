@@ -11,14 +11,6 @@ hypermedia link independently of the serialization format that is used. That in 
 a system to serialize a response with hypermedia links into one or more wire formats independently
 of the process of deciding what those links should be.
 
-### Open questions
-
-The following questions are still outstanding, in the opinion of the Editor, and should be resolved.
-
-* Should Href be a string, or can/should we use PSR-7 URI objects? I'm very very tempted to go with the latter.
-* Currently, technically, URL templates would be disallowed. That's a problem for, say, HAL. How do we want to square
-  that, especially if Href becomes an object?
-
 ## 2. Scope
 
 ### 2.1 Goals
