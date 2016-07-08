@@ -31,7 +31,7 @@ pseudo-namespaces, like so:
 With the release of PHP 5.3 and the availability of namespaces proper, PSR-0
 was introduced to allow both the old Horde/PEAR underscore mode *and* the use
 of the new namespace notation. Underscores were still allowed in the class
-name to ease transition from the older namespace naming to the newer naming,
+name to ease the transition from the older namespace naming to the newer naming,
 and thereby to encourage wider adoption.
 
     /path/to/src/
@@ -75,7 +75,7 @@ like this:
 The "src" and "tests" directories have to include vendor and package directory
 names. This is an artifact of PSR-0 compliance.
 
-Many find this structure to be deeper and more-repetitive than necessary. This
+Many find this structure to be deeper and more repetitive than necessary. This
 proposal suggests that an additional or superseding PSR would be useful so
 that we can have packages that look more like the following:
 
@@ -203,7 +203,7 @@ Cons:
 ### 4.3 Alternative: Split Up Autoloading And Transformation
 
 Beau Simensen and others suggested that the transformation algorithm might be
-split out from the autoloading proposal, so that the transformation rules
+split out from the autoloading proposal so that the transformation rules
 could be referenced by other proposals. After doing the work to separate them,
 followed by a poll and some discussion, the combined version (i.e.,
 transformation rules embedded in the autoloader proposal) was revealed as the
@@ -211,7 +211,7 @@ preference.
 
 Pros:
 
-- Transformation rules could be referenced separately by other proposal
+- Transformation rules could be referenced separately by other proposals
 
 Cons:
 
