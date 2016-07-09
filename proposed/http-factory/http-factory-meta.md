@@ -58,7 +58,93 @@ implement multiple interfaces when appropriate.
 #### 4.2 Existing Implementations
 
 All of the current implementations of PSR-7 have defined their own requirements.
-In most cases, these requirements are the same or very similar.
+In most cases, the required parameters the same or less strict than the proposed
+factory methods.
+
+##### 4.2.1 Diactoros
+
+Zend Diactoros is currently the most popular HTTP Messages implementation for
+server usage.
+
+- [`Request`][diactoros-request] No required parameters, method and URI default to `null`.
+- [`Response`][diactoros-response] No required parameters, status code defaults to `200`.
+- [`ServerRequest`][diactoros-server-request] No required parameters. Contains a separate
+  [`ServerRequestFactory`][diactoros-server-request-factory] for creating requests from globals.
+- [`Stream`][diactoros-stream] Requires `string|resource $stream` for the body.
+- [`UploadedFile`][diactoros-uploaded-file] Requires `string|resource $streamOrFile`, `int $size`,
+  `int $errorStatus`. Error status must be a PHP upload constant.
+- [`Uri`][diactoros-uri] No required parameters, `string $uri` is empty by default.
+
+[diactoros-request]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Request.php#L33)
+[diactoros-response]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Response.php#L114
+[diactoros-server-request]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/ServerRequest.php#L78-L89
+[diactoros-server-request-factory]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/ServerRequestFactory.php#L52-L58
+[diactoros-stream]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Stream.php#L36
+[diactoros-uploaded-file]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/UploadedFile.php#L62
+[diactoros-uri]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Uri.php#L94
+
+Overall this approach is quite similar to the proposed factories. In some cases,
+more options are given by Diactoros which are not required for a valid object.
+The proposed uploaded file factory allows for size and error status to be optional.
+
+##### 4.2.2 Guzzle
+
+Guzzle is currently the most popular HTTP Messages implementation for client usage.
+
+- [`Request`][guzzle-request] Requires both `string $method` and `string|UriInterface $uri`.
+- [`Response`][guzzle-response] No required parameters, status code defaults to `200`.
+- [`Stream`][guzzle-stream] Requires `resource $stream` for the body.
+- [`Uri`][guzzle-uri] No required parameters, `string $uri` is empty by default.
+
+_Being geared towards client usage, Guzzle does not contain a `ServerRequest` or
+`UploadedFile` implementation._
+
+[guzzle-request]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/Request.php#L32-L38
+[guzzle-response]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/Response.php#L88-L94
+[guzzle-stream]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/Stream.php#L51
+[guzzle-uri]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/Uri.php#L48
+
+Overall this approach is also quite similar to the proposed factories. One notable
+difference is that Guzzle requires streams to be constructed with a resource and
+does not allow a string. However, it does contain a helper function [`stream_for`][guzzle-stream-for]
+that will create a stream from a string of content and a function [`try_fopen`][guzzle-try-fopen]
+that create a resource from a file path.
+
+[guzzle-stream-for]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/functions.php#L78
+[guzzle-try-fopen]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/functions.php#L295
+
+##### 4.2.3 Slim
+
+Slim is a popular micro-framework that makes use of HTTP Messages from version
+3.0 forward.
+
+- [`Request`][slim-request] Requires `string $method`, `UriInterface $uri`,
+  `HeadersInterface $headers`, `array $cookies`, `array $serverParams`, and
+  `StreamInterface $body`. Contains a factory method `createFromEnvironment(Environment $environment)`
+  that is framework specific but analogous to the proposed `createServerRequestFromGlobals`.
+- [`Response`][slim-response] No required parameters, status code defaults to `200`.
+- [`Stream`][slim-stream] Requires `resource $stream` for the body.
+- [`UploadedFile`][slim-uploaded-file] Requires `string $file` for the source file.
+  Contains a factory method `parseUploadedFiles(array $uploadedFiles)` for creating
+  an array of `UploadedFile` instances from `$_FILES` or similar format. Also contains
+  a factory method `createFromEnvironment(Environment $env)` that is framework specific
+  and makes use of `parseUploadedFiles`.
+- [`Uri`][slim-uri] Requires `string $scheme` and `string $host`. Contains a factory
+  method `createFromString($uri)` that can be used to create a `Uri` from a string.
+
+_Being geared towards server usage only, Slim does not contain an implementation
+of `Request`. The implementation listed above is an implementation of `ServerRequest`._
+
+[slim-request]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/Request.php#L170-L178
+[slim-response]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/Response.php#L123
+[slim-stream]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/Stream.php#L96
+[slim-uploaded-file]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/UploadedFile.php#L151
+[slim-uri]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/Uri.php#L112-L121
+
+Of the compared approaches, Slim is most different from the proposed factories.
+Most notably, the `Request` implementation contains requirements that specific
+to the framework and are not defined in HTTP Messages specification. The factory
+methods that are included are generally similar with the proposed factories.
 
 #### 4.3 Potential Issues
 
@@ -102,8 +188,3 @@ _**Note:** Order descending chronologically._
 * [shadowhand Dependency Inversion and PSR-7 Bodies](http://shadowhand.me/dependency-inversion-and-psr-7-bodies/)
 * [PHP-FIG mailing list thread discussing factories](https://groups.google.com/d/msg/php-fig/G5pgQfQ9fpA/UWeM1gm1CwAJ)
 * [PHP-FIG mailing list thread feedback on proposal](https://groups.google.com/d/msg/php-fig/piRtB2Z-AZs/8UIwY1RtDgAJ)
-
-8. Errata
----------
-
-...
