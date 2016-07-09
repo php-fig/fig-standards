@@ -34,6 +34,8 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 
 - `has` takes one unique parameter: an entry identifier. It MUST return `true`
   if an entry identifier is known to the container and `false` if it is not.
+  `has($id)` returning true does not mean that `get($id)` will not throw an exception.
+  It does however mean that `get($id)` will not throw a `NotFoundException`.
 
 ### 1.2 Exceptions
 
@@ -81,6 +83,10 @@ into the same container (or another container) instead of the delegate container
 The interfaces and classes described as well as relevant exception are provided as part of the
 [psr/container](https://packagist.org/packages/psr/container) package. (still to-be-created)
 
+Packages providing a psr container implementation should declare that they provide psr/container-implementation 1.0.0
+
+Projects requiring an implementation should require psr/container-implementation 1.0.0
+
 2. Interfaces
 -------------
 
@@ -114,6 +120,9 @@ interface ContainerInterface
     /**
      * Returns true if the container can return an entry for the given identifier.
      * Returns false otherwise.
+     *
+     * `has($id)` returning true does not mean that `get($id)` will not throw an exception.
+     * It does however mean that `get($id)` will not throw a `NotFoundException`.
      *
      * @param string $id Identifier of the entry to look for.
      *
