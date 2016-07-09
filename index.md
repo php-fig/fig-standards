@@ -34,6 +34,9 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
 | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
+| 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     | Paul M Jones            | Jason Coward      |
+| 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier  |
+| 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Roman Tsiupa            | Paul M Jones      |
 
 ### Deprecated
 
@@ -60,6 +63,9 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | D      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | D      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
 | D      | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
+| D      | 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     | Paul M Jones            | Jason Coward      |
+| D      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier  |
+| D      | 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Roman Tsiupa            | Paul M Jones      |
 
 _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 
@@ -72,10 +78,13 @@ _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 [psr5]: https://github.com/phpDocumentor/fig-standards/tree/master/proposed
 [psr6]: /psr/psr-6/
 [psr7]: /psr/psr-7/
-[psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/psr-8-hug.md
+[psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
 [psr13]: https://github.com/php-fig/fig-standards/blob/master/proposed/links.md
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
+[psr15]: https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware
+[psr16]: https://github.com/php-fig/fig-standards/blob/master/proposed/simplecache.md
+[psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory
