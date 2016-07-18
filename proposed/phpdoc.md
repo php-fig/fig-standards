@@ -2018,7 +2018,7 @@ The following keywords are recognized by this PSR:
     **Example 2:**
     ```php
     /**
-     * @param bool $quite when true 'Hello world' is echo-ed.
+     * @param bool $quiet when true 'Hello world' is echo-ed.
      *
      * @return void
      */
