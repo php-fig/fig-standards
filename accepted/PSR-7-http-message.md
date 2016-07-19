@@ -231,7 +231,7 @@ of the request line. The request target can be one of the following forms:
 Aside from these request-targets, there is often an 'effective URL' which is
 separate from the request target. The effective URL is not transmitted within
 an HTTP message, but it is used to determine the protocol (http/https), port
-and host for making the request.
+and hostname for making the request.
 
 The effective URL is represented by `UriInterface`. `UriInterface` models HTTP
 and HTTPS URIs as specified in RFC 3986 (the primary use case). The interface
@@ -266,7 +266,7 @@ OPTIONS * HTTP/1.1
 ```
 
 But the HTTP client will be able to use the effective URL (from `getUri()`),
-to determine the protocol, host and TCP port.
+to determine the protocol, hostname and TCP port.
 
 An HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
 and instead use the value returned by `getRequestTarget()`, which defaults
@@ -777,7 +777,7 @@ interface MessageInterface
      *
      * @param StreamInterface $body Body.
      * @return self
-     * @throws \InvalidArgumentException when the body is not valid.
+     * @throws \InvalidArgumentException When the body is not valid.
      */
     public function withBody(StreamInterface $body);
 }
@@ -1232,7 +1232,7 @@ interface ResponseInterface extends MessageInterface
      *     provided status code; if none is provided, implementations MAY
      *     use the defaults as suggested in the HTTP specification.
      * @return self
-     * @throws \InvalidArgumentException for invalid status code arguments.
+     * @throws \InvalidArgumentException For invalid status code arguments.
      */
     public function withStatus($code, $reasonPhrase = '');
 
@@ -1638,7 +1638,7 @@ interface UriInterface
      *
      * An empty host value is equivalent to removing the host.
      *
-     * @param string $host The host to use with the new instance.
+     * @param string $host The hostname to use with the new instance.
      * @return self A new instance with the specified host.
      * @throws \InvalidArgumentException for transformations that would result
      *     in a state that cannot be represented as a valid URI reference.
