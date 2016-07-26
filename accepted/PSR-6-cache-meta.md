@@ -276,25 +276,59 @@ default control information is all that's possible), and because it's trivial
 for a particular implementation to include as an add-on should it desire to
 do so.
 
-5. People
+5. Errata
 ---------
 
-### 5.1 Editor
+### 5.1 Handling of incorrect DateTime values in expiresAt()
+
+The `CacheItemInterface::expiresAt()` method's `$expiration` parameter is untyped
+in the interface, but in the docblock is specified as `\DateTimeInterface`.  The
+intent is that either a `\DateTime` or `\DateTimeImmutable` object is allowed.
+However, `\DateTimeInterface` and `\DateTimeImmutable` were added in PHP 5.5, and
+the authors chose not to impose a hard syntactic requirement for PHP 5.5 on the
+specification.
+
+Despite that, any value that is not an object of  `\DateTimeInterface` (either
+`\DateTime` or `\DateTimeImmutable`, or possibly others added to the language in
+the future) MUST be treated as an invalid syntax error.  Implementers are
+encouraged to actively reject values that do not implement that interface. The
+recommended way of doing so is by using an assertion, as assertions are the
+closest equivalent to type checks.  Throwing `\InvalidArgumentException` is
+another widely used alternative, however, that would be a change in the
+specification (as Calling Libraries would then need to know to catch that
+exception as well).
+
+Example of a PHP 5.3-compatible assertion:
+
+```php
+assert('$expiration instanceof \DateTime || $expiration instanceof \DateTimeImmutable');
+```
+
+PHP 5.5-and-higher implementations can assert against `\DateTimeInterface`
+instead.  PHP 7.0-and-higher implementations can omit the quotation marks, as
+`assert()` is now smart enough to not run that code anyway when assertions are
+disabled. 
+
+
+6. People
+---------
+
+### 6.1 Editor
 
 * Larry Garfield
 
-### 5.2 Sponsors
+### 6.2 Sponsors
 
 * Paul Dragoonis, PPI Framework (Coordinator)
 * Robert Hafner, Stash
 
-6. Votes
+7. Votes
 --------
 
 [Acceptance vote on the mailing list](https://groups.google.com/forum/#!msg/php-fig/dSw5IhpKJ1g/O9wpqizWAwAJ)
 
 
-7. Relevant Links
+8. Relevant Links
 -----------------
 
 _**Note:** Order descending chronologically._
