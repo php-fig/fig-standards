@@ -70,7 +70,7 @@ become a Member Project.
 Voting Representatives
 -----------------------
 
-The votes of all Member Projects are cast by Voting Representives who have been
+The votes of all Member Projects are cast by Voting Representatives who have been
 authorised to do so by the Member Project. Each Voting Representative is chosen
 solely by a Member Project and their selection is not subject to the approval
 of PHP-FIG. A Voting Representative may be replaced by the Member Project which
@@ -98,9 +98,13 @@ will be assumed.
 
 If, in the judgement of PHP-FIG, a Voting Representative is acting
 inappropriately and to the detriment of PHP-FIG's ability to meet its
-objectives, a vote may be taken to request a replacement Voting Representative in
-accordance with the [Voting Protocol bylaw][voting] or to expel the Member
-Project where replacing a Voting Representative is not possible.
+objectives, a vote may be taken to request a replacement Voting Representative,
+or to expel the Member Project where replacing a Voting Representative is not
+possible.
+
+The expulsion of a Voting Representative requires a vote in accordance with the
+[Voting Protocol bylaw][voting], with the exception that said Voting Representative
+will not have the ability to vote in their expulsion.
 
 Resignation Of Member Projects
 ------------------------------
@@ -126,7 +130,8 @@ to a replacement request from PHP-FIG but a suitable replacement is not
 available.
 
 The expulsion of a Member Project requires a vote in accordance with the
-[Voting Protocol bylaw][voting].
+[Voting Protocol bylaw][voting], with the exception that the Voting Representative
+for said Member Project will not have the ability to vote.
 
 FIG Secretary
 -------------
