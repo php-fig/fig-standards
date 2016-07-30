@@ -116,7 +116,7 @@ interface CacheInterface
     const TTL_DAY = 86400;
 
     /**
-     * Fetched a value from the cache.
+     * Fetch a value from the cache.
      *
      * @param string $key The unique key of this item in the cache
      *
