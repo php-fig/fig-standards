@@ -128,6 +128,13 @@ specification for a full understanding of its contents.
 
 ### 5.3 Contributors
 * Michael Cullum (Former Editor)
+* Larry Garfield
+* Rafael Reis
+* Dane MacMillan
+* Teoh Han Hui
+* Ryan Parman
+* Douglas Greenshields
+* Woody Gilk
 
 7. Votes
 --------
