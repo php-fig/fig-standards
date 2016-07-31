@@ -291,23 +291,23 @@ specification.
 Despite that, any value that is not an object of  `\DateTimeInterface` (either
 `\DateTime` or `\DateTimeImmutable`, or possibly others added to the language in
 the future) MUST be treated as an invalid syntax error.  Implementers are
-encouraged to actively reject values that do not implement that interface. The
-recommended way of doing so is by using an assertion, as assertions are the
-closest equivalent to type checks.  Throwing `\InvalidArgumentException` is
-another widely used alternative, however, that would be a change in the
-specification (as Calling Libraries would then need to know to catch that
-exception as well).
+encouraged to actively reject values that do not implement that interface.
+Simulating a failed type check unfortunately varies between PHP versions. In PHP 5,
+it is a trigger_error().  In PHP 7, it is a thrown `\TypeError`. Implementing
+Libraries SHOULD try to mimic the behavior of the appropriate PHP version.
 
-Example of a PHP 5.3-compatible assertion:
+The following sample code is recommended in order to enforce the type check on
+the expiresAt() method:
 
 ```php
-assert('$expiration instanceof \DateTime || $expiration instanceof \DateTimeImmutable');
+if (! ($expiration instanceof \DateTime || $expiration instanceof \DateTimeImmutable)) {
+  $error = sprintf('Argument 1 passed to %s::expiresAt() must be an instance of DateTime or DateTimeImmutable, %s given', get_class($this), gettype($expiration));
+  if (class_exists('\TypeError')) {
+    throw new \TypeError($error);
+  }
+  trigger_error($error, E_USER_ERROR);
+}
 ```
-
-PHP 5.5-and-higher implementations can assert against `\DateTimeInterface`
-instead.  PHP 7.0-and-higher implementations can omit the quotation marks, as
-`assert()` is now smart enough to not run that code anyway when assertions are
-disabled. 
 
 
 6. People
