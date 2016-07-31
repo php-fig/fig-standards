@@ -148,7 +148,7 @@ The following example illustrates a complete list of all blocks:
 <?php
 
 /**
- * @file Contains an example of coding styles.
+ * This file contains an example of coding styles.
  */
 
 declare(strict_types=1);
@@ -165,6 +165,9 @@ use function Another\Vendor\function D;
 use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
 use const Another\Vendor\CONSTANT_D;
 
+/**
+ * FooBar is an example class.
+ */
 class FooBar
 {
     // ... additional PHP code ...
