@@ -84,6 +84,12 @@ Numerous different options were suggested and they can be seen
 and the current implementation was chosen due to consistency with other parts of the PSR-12
 specification that came from PSR-2.
 
+## Enforcing short form for all type keywords
+
+PHP 7.0 introduced [scalar types declaration](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
+which does not support long type aliases. Therefore it makes sense to enforce primary short type forms to be used to
+have uniform syntax and prevent possible confusion.
+
 5. Changelog from PSR-2
 ------------------------
 
@@ -94,6 +100,7 @@ specification for a full understanding of its contents.
 ### New Statements
 
 * Lowercase for all keywords - Section 2.5
+* Short form for all type keywords - Section 2.5
 * Use statement grouping - Section 3
 * Use statement blocks - Section 3
 * Declare statement/Strict types declaration usage - Section 3
