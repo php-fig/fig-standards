@@ -120,12 +120,11 @@ The PHP types and keywords `array`, `int`, `true`, `object`, `float`, `false`, `
 3. Declare Statements, Namespace, and Use Declarations
 --------------------------------------------
 
-The header of a PHP file may consist of a number of different blocks.  If present,
+The header of a PHP file may consist of a number of different blocks. If present,
 each of the blocks below MUST be separated by a single blank line, and MUST NOT contain
-a blank line.  Each block MUST be in the order listed below, although blocks that are
+a blank line. Each block MUST be in the order listed below, although blocks that are
 not relevant may be omitted.
 
-* Opening PHP tag <?php
 * File-level docblock.
 * One or more declare statements.
 * The namespace declaration of the file.
@@ -135,7 +134,7 @@ not relevant may be omitted.
 * The remainder of the code in the file.
 
 When a file contains a mix of HTML and PHP, any of the above sections may still
-be used.  If so, they MUST be present at the top of the file, even if the
+be used. If so, they MUST be present at the top of the file, even if the
 remainder of the code consists a closing PHP tag and then a mixture of HTML and
 PHP.
 
@@ -363,7 +362,7 @@ The `var` keyword MUST NOT be used to declare a property.
 There MUST NOT be more than one property declared per statement.
 
 Property names MUST NOT be prefixed with a single underscore to indicate
-protected or private visibility.  That is, an underscore prefix explicitly has
+protected or private visibility. That is, an underscore prefix explicitly has
 no meaning.
 
 A property declaration looks like the following.
@@ -383,7 +382,7 @@ class ClassName
 Visibility MUST be declared on all methods.
 
 Method names MUST NOT be prefixed with a single underscore to indicate
-protected or private visibility.  That is, an underscore prefix explicitly has
+protected or private visibility. That is, an underscore prefix explicitly has
 no meaning.
 
 Method and function names MUST NOT be declared with a space after the method name. The
