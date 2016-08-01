@@ -227,7 +227,7 @@ interface EvolvableLinkInterface extends LinkInterface
     /**
      * Returns an instance with the specified relationship included.
      *
-     * If the specified rel is already present, this methid MUST return
+     * If the specified rel is already present, this method MUST return
      * normally without errors, but without adding the rel a second time.
      *
      * @param string $rel
