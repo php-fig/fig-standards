@@ -101,7 +101,7 @@ that does not support URI Templates MUST ignore any templated Links it encounter
 
 ## 1.5 Evolvable collections
 
-In some cases, a Link Collection may need the ability to hbave additional links
+In some cases, a Link Collection may need the ability to have additional links
 added to it. In others, a link collection is necessarily read-only, with links
 derived at runtime from some other data source. For that reason, modifiable collections
 are a secondary interface that may optionally be implemented.
