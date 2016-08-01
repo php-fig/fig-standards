@@ -108,14 +108,17 @@ are a secondary interface that may optionally be implemented.
 
 Additionally, some Link Collection objects, such as PSR-7 Response objects, are
 by design immutable.  That means methods to add links to them in-place would be
-incompatible.
+incompatible. Therefore, the EvolvableLinkCollectionInterface's single method
+requires that a new object be returned, identical to the original but with
+an additional link object included.
 
 ## 1.6 Evolvable link objects
 
 Link objects are in most cases value objects. As such, allowing them to evolve
 in the same fashion as PSR-7 value objects is a useful option. For that reason,
-an additional EvolvableLinkInterface is included that provides immutable modifiers
-using the same pattern as PSR-7.
+an additional EvolvableLinkInterface is included that provides methods to
+produce new object instances with a single change.  The same model is used by PSR-7
+and, thanks to PHP's copy-on-write behavior, is still CPU and memory efficient.
 
 ## 2. Package
 
