@@ -99,6 +99,24 @@ tool.  Some hypermedia formats support templated links while others do not, and 
 have a special way to denote that a link is a template.  A Serializer for a format 
 that does not support URI Templates MUST ignore any templated Links it encounters.
 
+## 1.5 Evolvable collections
+
+In some cases, a Link Collection may need the ability to hbave additional links
+added to it. In others, a link collection is necessarily read-only, with links
+derived at runtime from some other data source. For that reason, modifiable collections
+are a secondary interface that may optionally be implemented.
+
+Additionally, some Link Collection objects, such as PSR-7 Response objects, are
+by design immutable.  That means methods to add links to them in-place would be
+incompatible.
+
+## 1.6 Evolvable link objects
+
+Link objects are in most cases value objects. As such, allowing them to evolve
+in the same fashion as PSR-7 value objects is a useful option. For that reason,
+an additional EvolvableLinkInterface is included that provides immutable modifiers
+using the same pattern as PSR-7.
+
 ## 2. Package
 
 The interfaces and classes described are provided as part of the
@@ -110,10 +128,11 @@ The interfaces and classes described are provided as part of the
 
 ~~~php
 <?php
+
 namespace Psr\Http\Link;
 
 /**
- *
+ * A readable link object.
  */
 interface LinkInterface
 {
@@ -162,14 +181,92 @@ interface LinkInterface
 }
 ~~~
 
-#### 3.2.1 `Psr\Http\Link\LinkCollectionInterface`
+### 3.2 `Psr\Http\Link\EvolvableLinkInterface`
 
 ~~~php
 <?php
+
 namespace Psr\Http\Link;
 
 /**
- *
+ * An evolvable link value object.
+ */
+interface EvolvableLinkInterface extends LinkInterface
+{
+    /**
+     * Returns an instance with the specified href.
+     *
+     * @param string $href
+     *   The href value to include.  It must be one of:
+     *     - An absolute URI, as defined by RFC 5988.
+     *     - A relative URI, as defined by RFC 5988. The base of the relative link
+     *       is assumed to be known based on context by the client.
+     *     - A URI template as defined by RFC 6570.
+     *     - An object implementing __toString() that produces one of the above
+     *       values.
+     *
+     * An implementing library SHOULD evaluate a passed object to a string
+     * immediately rather than waiting for it to be returned later.
+     *
+     * @return self
+     */
+    public function withHref($href);
+
+    /**
+     * Returns an instance with a specified templated value set.
+     *
+     * @param bool $templated
+     *   True if the link object should be templated, False otherwise.
+     * @return self
+     */
+    public function withTemplated($templated);
+
+    /**
+     * Returns an instance with the specified relationship included.
+     *
+     * If the specified rel is already present, this methid MUST return
+     * normally without errors, but without adding the rel a second time.
+     *
+     * @param string $rel
+     *   The relationship value to add.
+     * @return self
+     */
+    public function withRel($rel);
+
+    /**
+     * Returns an instance with the specified relationship excluded.
+     *
+     * If the specified rel is already not present, this method MUST return
+     * normally without errors.
+     *
+     * @param string $rel
+     *   The relationship value to exclude.
+     * @return self
+     */
+    public function withoutRel($rel);
+
+    /**
+     * Returns an instance with the specified attribute added.
+     *
+     * @param string $attribute
+     *   The attribute to include.
+     * @param string $value
+     *   The value of the attribute to set.
+     * @return self
+     */
+    public function withAttribute($attribute, $value);
+}
+~~~
+
+#### 3.2 `Psr\Http\Link\LinkCollectionInterface`
+
+~~~php
+<?php
+
+namespace Psr\Http\Link;
+
+/**
+ * A link collection object.
  */
 interface LinkCollectionInterface
 {
@@ -192,5 +289,29 @@ interface LinkCollectionInterface
      * @return LinkInterface[]|\Traversable
      */
     public function getLinksByRel($rel);
+}
+~~~
+
+#### 3.3 `Psr\Http\Link\EvolvableLinkCollectionInterface`
+
+~~~php
+<?php
+
+namespace Psr\Http\Link;
+
+/**
+ * An evolvable link collection value object.
+ */
+interface EvolvableLinkCollectionInterface extends LinkCollectionInterface
+{
+    /**
+     * Returns an instance with the specified link included.
+     *
+     * @param LinkInterface $link
+     *   A link object that should be included in this collection.
+     *
+     * @return self
+     */
+    public function withLink(LinkInterface $link);
 }
 ~~~
