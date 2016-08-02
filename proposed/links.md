@@ -95,8 +95,8 @@ application or use case.  Such relationships MUST use an absolute URI.
 
 [RFC 6570](https://tools.ietf.org/html/rfc6570) defines a format for URI templates, that is,
 a pattern for a URI that is expected to be filled in with values provided by a client
-tool.  Some hypermedia formats support templated links while others do not, and may 
-have a special way to denote that a link is a template.  A Serializer for a format 
+tool.  Some hypermedia formats support templated links while others do not, and may
+have a special way to denote that a link is a template.  A Serializer for a format
 that does not support URI Templates MUST ignore any templated Links it encounters.
 
 ## 1.5 Evolvable collections
@@ -127,12 +127,12 @@ The interfaces and classes described are provided as part of the
 
 ## 3. Interfaces
 
-### 3.1 `Psr\Http\Link\LinkInterface`
+### 3.1 `Psr\Link\LinkInterface`
 
 ~~~php
 <?php
 
-namespace Psr\Http\Link;
+namespace Psr\Link;
 
 /**
  * A readable link object.
@@ -184,12 +184,12 @@ interface LinkInterface
 }
 ~~~
 
-### 3.2 `Psr\Http\Link\EvolvableLinkInterface`
+### 3.2 `Psr\Link\EvolvableLinkInterface`
 
 ~~~php
 <?php
 
-namespace Psr\Http\Link;
+namespace Psr\Link;
 
 /**
  * An evolvable link value object.
@@ -261,12 +261,12 @@ interface EvolvableLinkInterface extends LinkInterface
 }
 ~~~
 
-#### 3.2 `Psr\Http\Link\LinkCollectionInterface`
+#### 3.2 `Psr\Link\LinkCollectionInterface`
 
 ~~~php
 <?php
 
-namespace Psr\Http\Link;
+namespace Psr\Link;
 
 /**
  * A link collection object.
@@ -295,12 +295,12 @@ interface LinkCollectionInterface
 }
 ~~~
 
-#### 3.3 `Psr\Http\Link\EvolvableLinkCollectionInterface`
+#### 3.3 `Psr\Link\EvolvableLinkCollectionInterface`
 
 ~~~php
 <?php
 
-namespace Psr\Http\Link;
+namespace Psr\Link;
 
 /**
  * An evolvable link collection value object.
