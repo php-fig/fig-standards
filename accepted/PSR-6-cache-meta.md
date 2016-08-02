@@ -300,7 +300,7 @@ The following sample code is recommended in order to enforce the type check on
 the expiresAt() method:
 
 ```php
-if (! (is_null($expiration) || $expiration instanceof \DateTime || $expiration instanceof \DateTimeInterface)) {
+if (!(null === $expiration || $expiration instanceof \DateTime || $expiration instanceof \DateTimeInterface)) {
   $error = sprintf('Argument 1 passed to %s::expiresAt() must be an instance of DateTime or DateTimeImmutable, %s given', get_class($this), gettype($expiration));
   if (class_exists('\TypeError')) {
     throw new \TypeError($error);
