@@ -288,7 +288,7 @@ However, `\DateTimeInterface` and `\DateTimeImmutable` were added in PHP 5.5, an
 the authors chose not to impose a hard syntactic requirement for PHP 5.5 on the
 specification.
 
-Despite that, any value that is not null or an object of  `\DateTimeInterface` (either
+Despite that, any value that is not null or an object of `\DateTimeInterface` (either
 `\DateTime` or `\DateTimeImmutable`, or possibly others added to the language in
 the future) MUST be treated as an invalid syntax error.  Implementers are
 encouraged to actively reject values that do not implement that interface.
