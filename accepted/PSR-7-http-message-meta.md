@@ -505,7 +505,7 @@ $foo = isset($request->getBodyParams()['foo'])
 The argument for using "parsed body" was made by examining the domain. A message
 body can contain literally anything. While traditional web applications use
 forms and submit data using POST, this is a use case that is quickly being
-challenged in current web development trends, which are often API centric, and
+challenged in current web development trends, which are often API-centric, and
 thus use alternate request methods (notably PUT and PATCH), as well as
 non-form-encoded content (generally JSON or XML) that _can_ be coerced to arrays
 in many cases, but in many cases also _cannot_ or _should not_.
@@ -515,7 +515,7 @@ developers then need a shared convention about where to put the results of
 parsing the body. These might include:
 
 - A special key under the body parameters, such as `__parsed__`.
-- A special named attribute, such as `__body__`.
+- A specially named attribute, such as `__body__`.
 
 The end result is that a developer now has to look in multiple locations:
 
@@ -602,7 +602,7 @@ requiring paragraphs of implementation specification for an array, we specify an
 interface.
 
 Additionally, the data in an `UploadedFileInterface` is normalized to work in
-both SAPI and non-SAPI environments. This allows creation of processes to parse
+both SAPI and non-SAPI environments. This allows the creation of processes to parse
 the message body manually and assign contents to streams without first writing
 to the filesystem, while still allowing proper handling of file uploads in SAPI
 environments.

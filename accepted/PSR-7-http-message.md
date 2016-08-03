@@ -296,9 +296,9 @@ account Common Gateway Interface (CGI), and, more specifically, PHP's
 abstraction and extension of CGI via its Server APIs (SAPI). PHP has provided
 simplification around input marshaling via superglobals such as:
 
-- `$_COOKIE`, which deserializes and provides simplified access for HTTP
+- `$_COOKIE`, which deserializes and provides simplified access to HTTP
   cookies.
-- `$_GET`, which deserializes and provides simplified access for query string
+- `$_GET`, which deserializes and provides simplified access to query string
   arguments.
 - `$_POST`, which deserializes and provides simplified access for urlencoded
   parameters submitted via HTTP POST; generically, it can be considered the
@@ -934,7 +934,7 @@ namespace Psr\Http\Message;
  * - Headers
  * - Message body
  *
- * Additionally, it encapsulates all data as it has arrived to the
+ * Additionally, it encapsulates all data as it has arrived at the
  * application from the CGI and/or PHP environment, including:
  *
  * - The values represented in $_SERVER.
@@ -1435,7 +1435,7 @@ namespace Psr\Http\Message;
  * state of the current instance and return an instance that contains the
  * changed state.
  *
- * Typically the Host header will be also be present in the request message.
+ * Typically the Host header will also be present in the request message.
  * For server-side requests, the scheme will typically be discoverable in the
  * server parameters.
  *
