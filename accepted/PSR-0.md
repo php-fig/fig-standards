@@ -21,7 +21,7 @@ Mandatory
 * Each `_` character in the CLASS NAME is converted to a
   `DIRECTORY_SEPARATOR`. The `_` character has no special meaning in the
   namespace.
-* The fully-qualified namespace and class is suffixed with `.php` when
+* The fully-qualified namespace and class are suffixed with `.php` when
   loading from the file system.
 * Alphabetic characters in vendor names, namespaces, and class names may
   be of any combination of lower case and upper case.

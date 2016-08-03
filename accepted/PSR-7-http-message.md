@@ -296,9 +296,9 @@ account Common Gateway Interface (CGI), and, more specifically, PHP's
 abstraction and extension of CGI via its Server APIs (SAPI). PHP has provided
 simplification around input marshaling via superglobals such as:
 
-- `$_COOKIE`, which deserializes and provides simplified access for HTTP
+- `$_COOKIE`, which deserializes and provides simplified access to HTTP
   cookies.
-- `$_GET`, which deserializes and provides simplified access for query string
+- `$_GET`, which deserializes and provides simplified access to query string
   arguments.
 - `$_POST`, which deserializes and provides simplified access for urlencoded
   parameters submitted via HTTP POST; generically, it can be considered the
@@ -840,7 +840,7 @@ interface RequestInterface extends MessageInterface
      * immutability of the message, and MUST return an instance that has the
      * changed request target.
      *
-     * @see http://tools.ietf.org/html/rfc7230#section-2.7 (for the various
+     * @see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
      *     request-target forms allowed in request messages)
      * @param mixed $requestTarget
      * @return self
@@ -894,7 +894,7 @@ interface RequestInterface extends MessageInterface
      * setting `$preserveHost` to `true`. When `$preserveHost` is set to
      * `true`, this method interacts with the Host header in the following ways:
      *
-     * - If the the Host header is missing or empty, and the new URI contains
+     * - If the Host header is missing or empty, and the new URI contains
      *   a host component, this method MUST update the Host header in the returned
      *   request.
      * - If the Host header is missing or empty, and the new URI does not contain a
@@ -934,7 +934,7 @@ namespace Psr\Http\Message;
  * - Headers
  * - Message body
  *
- * Additionally, it encapsulates all data as it has arrived to the
+ * Additionally, it encapsulates all data as it has arrived at the
  * application from the CGI and/or PHP environment, including:
  *
  * - The values represented in $_SERVER.
@@ -1063,7 +1063,7 @@ interface ServerRequestInterface extends RequestInterface
      * immutability of the message, and MUST return an instance that has the
      * updated body parameters.
      *
-     * @param array An array tree of UploadedFileInterface instances.
+     * @param array $uploadedFiles An array tree of UploadedFileInterface instances.
      * @return self
      * @throws \InvalidArgumentException if an invalid structure is provided.
      */
@@ -1435,7 +1435,7 @@ namespace Psr\Http\Message;
  * state of the current instance and return an instance that contains the
  * changed state.
  *
- * Typically the Host header will be also be present in the request message.
+ * Typically the Host header will also be present in the request message.
  * For server-side requests, the scheme will typically be discoverable in the
  * server parameters.
  *
@@ -1806,7 +1806,7 @@ interface UploadedFileInterface
      * @see http://php.net/is_uploaded_file
      * @see http://php.net/move_uploaded_file
      * @param string $targetPath Path to which to move the uploaded file.
-     * @throws \InvalidArgumentException if the $path specified is invalid.
+     * @throws \InvalidArgumentException if the $targetPath specified is invalid.
      * @throws \RuntimeException on any error during the move operation.
      * @throws \RuntimeException on the second or subsequent call to the method.
      */
