@@ -120,6 +120,10 @@ an additional EvolvableLinkInterface is included that provides methods to
 produce new object instances with a single change.  The same model is used by PSR-7
 and, thanks to PHP's copy-on-write behavior, is still CPU and memory efficient.
 
+There is no evolvable method for templated, however, as the templated value of a
+link is based exclusively on the href value.  It MUST NOT be set independently, but
+derived from whether or not the href value is an RFC 6570 link template.
+
 ## 2. Package
 
 The interfaces and classes described are provided as part of the
@@ -214,15 +218,6 @@ interface EvolvableLinkInterface extends LinkInterface
      * @return static
      */
     public function withHref($href);
-
-    /**
-     * Returns an instance with a specified templated value set.
-     *
-     * @param bool $templated
-     *   True if the link object should be templated, False otherwise.
-     * @return static
-     */
-    public function withTemplated($templated);
 
     /**
      * Returns an instance with the specified relationship included.
