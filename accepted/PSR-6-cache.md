@@ -302,7 +302,7 @@ interface CacheItemPoolInterface
      * Returns a traversable set of cache items.
      *
      * @param array $keys
-     * An indexed array of keys of items to retrieve.
+     *   An indexed array of keys of items to retrieve.
      *
      * @throws InvalidArgumentException
      *   If any of the keys in $keys are not a legal value a \Psr\Cache\InvalidArgumentException
@@ -324,14 +324,14 @@ interface CacheItemPoolInterface
      * such situation use CacheItemInterface::isHit() instead.
      *
      * @param string $key
-     *    The key for which to check existence.
+     *   The key for which to check existence.
      *
      * @throws InvalidArgumentException
      *   If the $key string is not a legal value a \Psr\Cache\InvalidArgumentException
      *   MUST be thrown.
      *
      * @return bool
-     *  True if item exists in the cache, false otherwise.
+     *   True if item exists in the cache, false otherwise.
      */
     public function hasItem($key);
 
