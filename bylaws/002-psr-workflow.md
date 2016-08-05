@@ -46,7 +46,7 @@ Once four weeks have passed and two viable trial implementations can be demonstr
 
 ## Accepted
 
-If the Acceptance Vote passes, then the proposal officially becomes an accepted PSR. At this time the Working Group is automatically dissolved however the Editor's input (or a nominated individual communicated to the secretaries) may be called upon in the future should typos, changes or Errata on the specification be raised.
+If the Acceptance Vote passes, then the proposal officially becomes an accepted PSR. At this time the Working Group is automatically dissolved, however the Editor's input (or a nominated individual communicated to the secretaries) may be called upon in the future should typos, changes or Errata on the specification be raised.
 
 ## Deprecated
 

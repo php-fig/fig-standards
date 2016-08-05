@@ -44,7 +44,7 @@ Whilst there are a number of defined functions below but they should also perfor
 
 All FIG Secretaries are expected to remain impartial and professional when acting in an official capacity as Secretary and should also remain aware that even when not acting in an official capacity, their actions reflect back on the PHP FIG and the FIG must not be brought into disrepute.
 
-In order to ensure impartiality, Secretaries may not concurrently serve as a Project Representative, Core Committee Member, or Editor of a PSR. They may, however, be a member of a Working Group. They must declare all conflicts of interest (for example being on the core team of member projects or involvement in PSR working groups)
+In order to ensure impartiality, Secretaries may not concurrently serve as a Project Representative, Core Committee Member, or Editor of a PSR. They may, however, be a member of a Working Group. Secretaries must also publicly declare all conflicts of interest for example if they are participating in a working group or are a core team member of a Member Project.
 
 ### Defined functions
 
@@ -55,13 +55,13 @@ There are a number of defined functions that the FIG Secretaries are expected to
 * Tallying votes and managing the voting system
 * Tracking member project activity
 * Ensuring bylaws are being followed
-* Clarifying any interpretation of bylaw text (If there is lack of consensus between FIG Secretaries then it must be put to a full vote); subject to a lack of objection from Core Committee members and Project Representatives**
+* Clarifying any interpretation of bylaw text; subject to a lack of objection from Core Committee members and Project Representatives**
 * Ensure that relevant marketing mediums (e.g. Twitter and Facebook) are kept professional, up to date and impartial
 * Moderate discussions on github, the mailing list, IRC channels and other official communication mediums to ensure that an appropriate environment is maintained. This includes the ability to restrict posting and impose bans with the exception that they cannot permanently ban or restrict a Core Committee member or Project Representative
 * Should there be a FIG meeting at a conference or other ad hoc gathering any Secretary in attendance should take notes to report back to the mailing list
 * Acting throughout their term essentially as Developer Advocates for the PHP FIG
 
- ** Should any bylaw clarification by challenged or objected to by three or more project representatives or core committee members it must go to a vote; secretaries can choose to put it to a vote nonetheless at any point
+ ** Should any bylaw clarification by challenged or objected to by three or more project representatives or core committee members it must go to a vote. If between Secretaries consensus cannot be found on a clarification, it must go to a full vote.
 
 ### Access and Abilities
 

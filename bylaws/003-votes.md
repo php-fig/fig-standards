@@ -8,7 +8,7 @@ Votes may be changed at will until the end of the voting period.
 
 In some cases, votes may overlap such that an individual would become eligible to cast a vote only as a result of another overlapping vote, such as a membership vote. In all cases, eligibility to vote will be defined based on membership at the moment a given vote starts. For nominations for Secretary or Core Committee member, eligibility to vote will be defined based on membership at the moment the nominating period begins.
 
-A secretary can trigger any type of vote.
+A secretary may trigger any type of vote.
 
 Rounding of quorums and majorities would occur such that:
 
