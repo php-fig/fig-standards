@@ -27,12 +27,14 @@ formats.
 ### Why no mutator methods?
 
 One of the key targets for this specification is PSR-7 Response objects.  Response objects by design must be
-immutable.  Other value-object implementations likely would also require an immutable interface. Therefore,
-this specification focuses only on accessor methods that allow links to be extracted from a source object.
-How they got into that object is irrelevant.
+immutable.  Other value-object implementations likely would also require an immutable interface.
 
-In practice, immutable objects will likely incorporate with*()-style methods much like PSR-7 does. The definition
-of those interfaces is out of the scope of this specification, however.
+Additionally, some Link Collection objects may not be value objects but other objects within a given
+domain, which are able to generate Links on the fly, perhaps off of a database result or other underlying
+representation.  In those cases a writeable collection definition would be incompatible.
+
+Therefore, this specification splits accessor methods and evolvable methods into separate interfaces,
+allowing objects to implement just the read-only or evolvable versions as appropriate to their use case.
 
 ### Why is rel on a Link object multi-value?
 
