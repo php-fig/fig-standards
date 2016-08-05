@@ -8,8 +8,6 @@ The election calendar will be established by the Secretaries at least one week b
 
 The election process will be overseen by either of the Secretaries whose term is not expiring, and both the Secretary and Core Committee elections may be overseen by the same Secretary or different Secretaries.
 
-An individual may stand in both the secretary and Core Committee election simultaneously, and should they be elected to both, they may have the choice of which role to accept unless there are no other candidates in the election to fill the position they would vacate.
-
 ## Eligibility
 
 Any individual may run for election as Secretary, including the outgoing Secretary. If they are a Core Committee Member or PSR Editor and are elected they must resign between the vote ending and taking office.
