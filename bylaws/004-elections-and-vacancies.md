@@ -12,9 +12,9 @@ An individual may stand in both the secretary and Core Committee election simult
 
 ## Eligibility
 
-Any individual not already serving as a Core Committee member whose term is not expiring may run for election as Secretary, including the outgoing Secretary.
+Any individual may run for election as Secretary, including the outgoing Secretary. If they are a Core Committee Member or PSR Editor and are elected they must resign between the vote ending and taking office.
 
-Any individual not already serving as a Secretary whose term is not expiring may run for election as a Core Committee member, including the outgoing Core Committee member.
+Any individual may run for election as a Core Committee member, including the outgoing Core Committee member. If they are a Secretary and are elected they must resign between the vote ending and taking office.
 
 ## Nomination
 

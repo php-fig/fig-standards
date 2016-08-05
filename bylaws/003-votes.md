@@ -8,7 +8,7 @@ Votes may be changed at will until the end of the voting period.
 
 In some cases, votes may overlap such that an individual would become eligible to cast a vote only as a result of another overlapping vote, such as a membership vote. In all cases, eligibility to vote will be defined based on membership at the moment a given vote starts. For nominations for Secretary or Core Committee member, eligibility to vote will be defined based on membership at the moment the nominating period begins.
 
-A secretary may trigger any type of vote.
+A secretary may trigger any type of vote if appropriate and necessary.
 
 Rounding of quorums and majorities would occur such that:
 
@@ -35,7 +35,7 @@ A Deprecation Vote is called by any Core Committee Member. Only Core Committee m
 
 ## Abandonment Vote
 
-An Abandonment Vote is called by any Core Committee Member. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+An Abandonment Vote is called by any Secretary or Core Committee Member. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
 
 ## Membership Vote
 
@@ -49,7 +49,7 @@ Both the Core Committee and Project Representative votes must pass for the Membe
 
 ## Expulsion vote
 
-An Expulsion Vote is called by any Core Committee member and consists of a separate concurrent vote by the Core Committee and Project Representatives.
+An Expulsion Vote is called by any Secretary or Core Committee member and consists of a separate concurrent vote by the Core Committee and Project Representatives.
 
 For the Core Committee vote, Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 50% majority is required for passage.
 
