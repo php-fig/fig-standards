@@ -19,8 +19,9 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 ### Review
 
-| Num | Title                          | Editor                  |  Coordinator   | Sponsor       |
-|:---:|--------------------------------|-------------------------|----------------|---------------|
+| Num | Title                          | Editor                  |  Coordinator            | Sponsor           |
+|:---:|--------------------------------|-------------------------|-------------------------|-------------------|
+| 13  | [Hypermedia Links][psr13]      | Larry Garfield          | Matthew Weier O'Phinney | Marc Alexander    |
 
 ### Draft
 
@@ -32,7 +33,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
-| 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
 | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
 | 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     | Paul M Jones            | Jason Coward      |
 | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier  |
@@ -61,7 +61,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | D      | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
 | D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
 | D      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
-| D      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
+| R      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
 | D      | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
 | D      | 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     | Paul M Jones            | Jason Coward      |
 | D      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier  |
