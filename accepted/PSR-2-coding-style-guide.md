@@ -89,11 +89,11 @@ class Foo extends Bar implements FooInterface
 2. General
 ----------
 
-### 2.1 Basic Coding Standard
+### 2.1. Basic Coding Standard
 
 Code MUST follow all rules outlined in [PSR-1].
 
-### 2.2 Files
+### 2.2. Files
 
 All PHP files MUST use the Unix LF (linefeed) line ending.
 
@@ -543,7 +543,7 @@ $longArgs_noVars = function (
     $longerArgument,
     $muchLongerArgument
 ) {
-   // body
+    // body
 };
 
 $noArgs_longVars = function () use (
@@ -551,7 +551,7 @@ $noArgs_longVars = function () use (
     $longerVar2,
     $muchLongerVar3
 ) {
-   // body
+    // body
 };
 
 $longArgs_longVars = function (
@@ -563,7 +563,7 @@ $longArgs_longVars = function (
     $longerVar2,
     $muchLongerVar3
 ) {
-   // body
+    // body
 };
 
 $longArgs_shortVars = function (
@@ -571,7 +571,7 @@ $longArgs_shortVars = function (
     $longerArgument,
     $muchLongerArgument
 ) use ($var1) {
-   // body
+    // body
 };
 
 $shortArgs_longVars = function ($arg) use (
@@ -579,7 +579,7 @@ $shortArgs_longVars = function ($arg) use (
     $longerVar2,
     $muchLongerVar3
 ) {
-   // body
+    // body
 };
 ~~~
 
