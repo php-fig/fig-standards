@@ -24,7 +24,8 @@ All Editors, Coordinators and Sponsors of specifications in draft & review stage
 have access to push to this (php-fig/fig-standards) repository; subject to
 secretary discretion
 
-All Editors, Coordinators and Sponsors of specifications have push access to utility and interface repositories and retrain this even after acceptance; subject to secretary
+All Editors, Coordinators and Sponsors of specifications have push access to utility
+and interface repositories and retrain this even after acceptance; subject to secretary
 discretion.
 
 The master branch of all repositories are protected and therefore cannot be forced
