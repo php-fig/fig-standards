@@ -158,7 +158,7 @@ interface EventManagerInterface
     /**
      * Detaches a listener from an event
      *
-     * @param string $event the event to attach to
+     * @param string $event the event to remove from the listener
      * @param callable $callback a callable function
      * @return bool true on success; false on failure
      */
