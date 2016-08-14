@@ -174,7 +174,7 @@ interface LinkInterface
      *
      * @return string[]
      */
-    public function getRel();
+    public function getRels();
 
     /**
      * Returns a list of attributes that describe the target URI.
