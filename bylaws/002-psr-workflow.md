@@ -61,3 +61,7 @@ An Abandoned PSR is one that is not actively being worked upon. A PSR will can b
 At this time the Working Group is automatically dissolved.
 
 Once a PSR is in "Abandoned" stage it may only once again be moved to Draft after a fresh Entrance vote by the Core Committee following the same procedure as if it was a pre-draft, except it may retain its previously assigned number. If the aims of the PSR differ from the original entrance vote, it is up to the discretion of the Core Committee whether or not it should be considered a fresh PSR or a restart of activity on the Abandoned PSR.
+
+## Project Referendum
+
+At any time the Editor of a PSR in Draft or Review Phase may call for a non-binding Referendum of Project Representatives on the current state of a PSR.  Such a Referendum may be called multiple times if appropriate as the PSR evolves, or never, at the Editor's discretion.  The Core Committee may also require such a Referendum as a condition of an Acceptance Vote if appropriate.  Referendum results are non-binding but the Working Group and Core Committee are expected to give the results due consideration.
