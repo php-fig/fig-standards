@@ -47,8 +47,9 @@ A call to the `get` method with a non-existing id SHOULD throw a
 
 ### 1.3 Recommended usage
 
-Users SHOULD NOT pass a container into an object, so the object can retrieve *its own dependencies*.
-Users doing so are using the container as a Service Locator. Service Locator usage is generally discouraged.
+Users SHOULD NOT pass a container into an object so that the object can retrieve *its own dependencies*.
+This means the container is used as a [Service Locator](https://en.wikipedia.org/wiki/Service_locator_pattern)
+which is a pattern that is generally discouraged.
 
 Please refer to section 4 of the META document for more details.
 
