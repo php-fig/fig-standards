@@ -43,8 +43,6 @@ reviewers:
         teams:
             - psr-12
         conditions:
-            labels:
-                - "Coding Standards"
             files:
                 - "proposed/extended-coding-style-guide*"
     -
@@ -53,8 +51,6 @@ reviewers:
         teams:
             - psr-16
         conditions:
-            labels:
-                - Cache
             files:
                 - "proposed/simplecache*"
     -
@@ -63,8 +59,6 @@ reviewers:
         teams:
             - psr-9-10
         conditions:
-            labels:
-                - "Security"
             files:
                 - "proposed/security-*"
     -
@@ -73,8 +67,6 @@ reviewers:
         teams:
             - psr-5
         conditions:
-            labels:
-                - "PHPDoc"
             files:
                 - "proposed/phpdoc*"
     -
@@ -83,8 +75,6 @@ reviewers:
         teams:
             - psr-11
         conditions:
-            labels:
-                - "Container Interop"
             files:
                 - "proposed/container*"
     -
@@ -93,8 +83,6 @@ reviewers:
         teams:
             - psr-13
         conditions:
-            labels:
-                - "Link"
             files:
                 - "proposed/links*"
     -
@@ -103,7 +91,5 @@ reviewers:
         teams:
             - psr-14
         conditions:
-            labels:
-                - "Event Manager"
             files:
                 - "proposed/event-manager*"
