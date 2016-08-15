@@ -20,7 +20,7 @@ reviewers:
         conditions:
             files:
                 - "bylaws/*"
-                - "approved/*"
+                - "accepted/*"
                 - "README.md"
                 - "CONTRIBUTING.md"
                 - "LICENSE*"
