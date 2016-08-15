@@ -5,13 +5,19 @@ reset_on_push: false
 author_approval: default
 reviewers:
     -
-        name: secretaries
+        name: secretaries-tag
         required: 1
         teams:
             - secretaries
         conditions:
             labels:
                 - "Internal: Bylaw or Admin Change"
+    -
+        name: secretaries-files
+        required: 1
+        teams:
+            - secretaries
+        conditions:
             files:
                 - "bylaws/*"
                 - "approved/*"
