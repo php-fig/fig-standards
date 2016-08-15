@@ -59,9 +59,8 @@ This is why this interface focuses only on how entries can be fetched from a con
 How entries are set in the container and how they are configured is out of the
 scope of this PSR. This is what makes a container implementation unique. Some
 containers have no configuration at all (they rely on autowiring), others rely
-on PHP code defined via callback, others on configuration files... this is very
-good and does not need to be standardized. We only focus on how entries are
-fetched.
+on PHP code defined via callback, others on configuration files... This standard
+only focuses on how entries are fetched.
 
 Also, naming conventions used for entries are not part of the scope of this
 PSR. Indeed, when you look at naming conventions, there are 2 strategies:
