@@ -1,0 +1,103 @@
+approve_by_comment: true
+approve_regex: '^:\+1:'
+reject_regex: '^No'
+reset_on_push: true
+author_approval: default
+reviewers:
+    -
+        name: secretaries
+        required: 1
+        teams:
+            - secretaries
+        conditions:
+            labels:
+                - "Internal: Bylaw or Admin Change"
+            files:
+                - "bylaws/*"
+                - "approved/*"
+                - "README.md"
+                - "CONTRIBUTING.md"
+                - "LICENSE*"
+                - "index.md"
+    -
+        name: http
+        required: 1
+        teams:
+            - psr-15
+            - psr-17
+        conditions:
+            labels:
+                - http
+            files:
+                - "proposed/http-factory/*"
+                - "proposed/http-middleware/*"
+    -
+        name: cs-extended
+        required: 1
+        teams:
+            - psr-12
+        conditions:
+            labels:
+                - "Coding Standards"
+            files:
+                - "proposed/extended-coding-style-guide*"
+    -
+        name: cache
+        required: 1
+        teams:
+            - psr-16
+        conditions:
+            labels:
+                - Cache
+            files:
+                - "proposed/simplecache*"
+    -
+        name: security
+        required: 1
+        teams:
+            - psr-9-10
+        conditions:
+            labels:
+                - "Security"
+            files:
+                - "proposed/security-*"
+    -
+        name: doc
+        required: 1
+        teams:
+            - psr-5
+        conditions:
+            labels:
+                - "PHPDoc"
+            files:
+                - "proposed/phpdoc*"
+    -
+        name: container
+        required: 1
+        teams:
+            - psr-11
+        conditions:
+            labels:
+                - "Container Interop"
+            files:
+                - "proposed/container*"
+    -
+        name: link
+        required: 1
+        teams:
+            - psr-13
+        conditions:
+            labels:
+                - "Link"
+            files:
+                - "proposed/links*"
+    -
+        name: event
+        required: 1
+        teams:
+            - psr-14
+        conditions:
+            labels:
+                - "Event Manager"
+            files:
+                - "proposed/event-manager*"
