@@ -2,7 +2,7 @@ approve_by_comment: true
 approve_regex: '^:\+1:'
 reject_regex: '^No'
 reset_on_push: false
-author_approval: default
+author_approval: ignored
 reviewers:
     -
         name: secretaries
