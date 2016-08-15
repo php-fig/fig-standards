@@ -12,6 +12,7 @@ reviewers:
         conditions:
             labels:
                 - "Internal: Bylaw or Admin Change"
+                - "New PSR"
     -
         name: secretaries-files
         required: 1
