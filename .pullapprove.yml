@@ -27,7 +27,7 @@ reviewers:
             - psr-17
         conditions:
             labels:
-                - http
+                - "HTTP"
             files:
                 - "proposed/http-factory/*"
                 - "proposed/http-middleware/*"
