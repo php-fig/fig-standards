@@ -45,7 +45,14 @@ Exceptions directly thrown by the container MUST implement the
 A call to the `get` method with a non-existing id SHOULD throw a
 [`Psr\Container\Exception\NotFoundExceptionInterface`](#not-found-exception).
 
-### 1.3 Additional feature: Delegate lookup
+### 1.3 Recommended usage
+
+Users SHOULD NOT pass a container into an object, so the object can retrieve *its own dependencies*.
+Users doing so are using the container as a Service Locator. Service Locator usage is generally discouraged.
+
+Please refer to section 4 of the META document for more details.
+
+### 1.4 Additional feature: Delegate lookup
 
 This section describes an additional feature that MAY be added to a container. Containers are not
 required to implement the *delegate lookup* to respect the `ContainerInterface`.
