@@ -68,7 +68,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 class Foo extends Bar implements FooInterface
 {
-    public function sampleFunction($a, $b = null)
+    public function sampleMethod($a, $b = null)
     {
         if ($a === $b) {
             bar();
