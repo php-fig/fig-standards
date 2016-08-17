@@ -181,9 +181,11 @@ Using `__invoke()` as the method name was considered but was not kept. That solu
 would have had the benefit of keeping the existing practice of invoking `$next`
 directly (`$response = $next($request)`). However many existing middleware systems
 already use a class that implements `__invoke()` for the `$next` argument with
-a different signature: `$request` *and* `$response`. Using the same method name
-has the potential to make PSR-15 completely incompatible with these existing
-systems without major changes.
+a different signature: `$request` *and* `$response`. By selecting a different method,
+PSR-15 may be implemented within existing systems in parallel with existing features,
+providing a migration path for these libraries and their consumers. In some cases,
+existing `__invoke()` implementations could even proxy to the method defined by
+PSR-15, or vice versa.
 
 You can read [the relevant discussion in the mailing list](https://groups.google.com/d/topic/php-fig/V12AAcT_SxE/discussion).
 
