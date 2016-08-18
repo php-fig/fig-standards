@@ -171,29 +171,48 @@ that are based around StackPHP.
 The double pass approach is much newer but has already been widely adopted by
 early adopters of HTTP Messages.
 
-5. People
+5. `FrameInterface`
+-------------------
+
+The `$next` argument is a callable in most existing middleware systems. However using
+an interface allows to improve type safety and IDE support.
+
+Using `__invoke()` as the method name was considered but was not kept. That solution
+would have had the benefit of keeping the existing practice of invoking `$next`
+directly (`$response = $next($request)`). However many existing middleware systems
+already use a class that implements `__invoke()` for the `$next` argument with
+a different signature: `$request` *and* `$response`. By selecting a different method,
+PSR-15 may be implemented within existing systems in parallel with existing features,
+providing a migration path for these libraries and their consumers. In some cases,
+existing `__invoke()` implementations could even proxy to the method defined by
+PSR-15, or vice versa.
+
+You can read [the relevant discussion in the mailing list](https://groups.google.com/d/topic/php-fig/V12AAcT_SxE/discussion).
+
+
+6. People
 ---------
 
-### 5.1 Editor(s)
+### 6.1 Editor(s)
 
 * Woody Gilk, <woody.gilk@gmail.com>
 
-### 5.2 Sponsors
+### 6.2 Sponsors
 
 * Paul M Jones, <pmjones88@gmail.com> (Coordinator)
 * Jason Coward, <jason@opengeek.com> (Sponsor)
 
-### 5.3 Contributors
+### 6.3 Contributors
 
 * Rasmus Schultz, <rasmus@mindplay.dk>
 
-6. Votes
+7. Votes
 --------
 
 * [Entrance Vote](https://groups.google.com/forum/#!topic/php-fig/v9AijALWJhI)
 * **Acceptance Vote:** _(not yet taken)_
 
-7. Relevant Links
+8. Relevant Links
 -----------------
 
 _**Note:** Order descending chronologically._
@@ -201,7 +220,7 @@ _**Note:** Order descending chronologically._
 * [PHP-FIG mailing list thread](https://groups.google.com/d/msg/php-fig/vTtGxdIuBX8/NXKieN9vDQAJ)
 * [The PHP League middleware proposal](https://groups.google.com/d/msg/thephpleague/jyztj-Nz_rw/I4lHVFigAAAJ)
 
-8. Errata
+9. Errata
 ---------
 
 ...
