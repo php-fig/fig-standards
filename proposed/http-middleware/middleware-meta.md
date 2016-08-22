@@ -171,7 +171,7 @@ that are based around StackPHP.
 The double pass approach is much newer but has already been widely adopted by
 early adopters of HTTP Messages.
 
-5. `FrameInterface`
+5. `DelegateInterface`
 -------------------
 
 The `$next` argument is a callable in most existing middleware systems. However using

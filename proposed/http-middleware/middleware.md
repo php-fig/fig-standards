@@ -84,13 +84,13 @@ interface ClientMiddlewareInterface extends MiddlewareInterface
      * to the next frame to get a response.
      *
      * @param RequestInterface $request
-     * @param FrameInterface $next
+     * @param DelegateInterface $next
      *
      * @return ResponseInterface
      */
     public function process(
         RequestInterface $request,
-        FrameInterface $next
+        DelegateInterface $next
     );
 }
 ```
@@ -114,13 +114,13 @@ interface ServerMiddlewareInterface extends MiddlewareInterface
      * to the next frame to get a response.
      *
      * @param ServerRequestInterface $request
-     * @param FrameInterface $frame
+     * @param DelegateInterface $frame
      *
      * @return ResponseInterface
      */
     public function process(
         ServerRequestInterface $request,
-        FrameInterface $frame
+        DelegateInterface $frame
     );
 }
 ```
@@ -128,9 +128,9 @@ interface ServerMiddlewareInterface extends MiddlewareInterface
 Note that the only difference between server and client middleware is that server
 middleware must be passed a server request for processing.
 
-### 2.5 Psr\Http\Middleware\FrameInterface
+### 2.5 Psr\Http\Middleware\DelegateInterface
 
-The following interface MUST be implemented by middleware stack frames.
+The following interface MUST be implemented by middleware delegates.
 
 ```php
 namespace Psr\Http\Middleware;
@@ -138,7 +138,7 @@ namespace Psr\Http\Middleware;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-interface FrameInterface
+interface DelegateInterface
 {
     /**
      * Dispatch the next available middleware and return the response.
