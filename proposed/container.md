@@ -42,7 +42,7 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 Exceptions directly thrown by the container MUST implement the
 [`Psr\Container\Exception\ContainerExceptionInterface`](#container-exception).
 
-A call to the `get` method with a non-existing id SHOULD throw a
+A call to the `get` method with a non-existing id MUST throw a
 [`Psr\Container\Exception\NotFoundExceptionInterface`](#not-found-exception).
 
 ### 1.3 Recommended usage
