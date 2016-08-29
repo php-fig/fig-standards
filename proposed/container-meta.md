@@ -254,6 +254,36 @@ object that would describe how to create an instance.
 The conclusion of the discussion was that this was beyond the scope of getting entries from a container without
 knowing how the container provided them, and it was more fit for a factory.
 
+### 7.3. Exceptions thrown
+
+This PSR provides 2 interfaces meant to be implemented by container exceptions.
+
+#### 7.3.1 Base exception
+
+The `Psr\Container\Exception\ContainerExceptionInterface` is the base interface. It SHOULD be implemented by custom exceptions thrown directly by the container.
+
+It is expected that any exception that is part of the domain of the container implements the `ContainerExceptionInterface`. A few examples:
+
+- if a container relies on a configuration file and if that configuration file is flawed, the container might throw an `InvalidFileException` implementing the `ContainerExceptionInterface`.
+- if a cyclic dependency is detected between dependencies, the container might throw an `CyclicDependencyException` implementing the `ContainerExceptionInterface`.
+
+However, if the exception is thrown by some code out of the container's scope (for instance an exception thrown while instantiating an entry), the container is not required to wrap this exception in a custom exception implementing the `ContainerExceptionInterface`.
+
+A [discussion about the usefulness of the base exception](https://groups.google.com/forum/#!topic/php-fig/_vdn5nLuPBI) was held on the PHP-FIG's discussion group
+
+#### 7.3.2 Not found exception
+
+A call to the `get` method with a non-existing id must throw an exception implementing the `Psr\Container\Exception\NotFoundExceptionInterface`.
+
+There is a strong relationship with the behaviour of the `has` method.
+
+For a given identifier:
+
+- if the `has` method returns `false`, then the `get` method MUST throw a `Psr\Container\Exception\NotFoundExceptionInterface` on this identifier (i.e. a call to `$exception->getIdentifier()` MUST return the identifier).
+- if the `has` method returns `true`, then the `get` method MUST NOT throw a `Psr\Container\Exception\NotFoundExceptionInterface` on this identifier. However, this does not mean that the `get` method will succeed and throw no exception.
+
+Behaviour of the `NotFoundException` was discussed in [container-interop's issue #37](https://github.com/container-interop/container-interop/issues/37).
+
 ## 8. Delegate lookup feature
 
 ### 8.1. Purpose of the delegate lookup feature
