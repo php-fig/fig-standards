@@ -279,8 +279,33 @@ There is a strong relationship with the behaviour of the `has` method.
 
 For a given identifier:
 
-- if the `has` method returns `false`, then the `get` method MUST throw a `Psr\Container\Exception\NotFoundExceptionInterface` on this identifier (i.e. a call to `$exception->getIdentifier()` MUST return the identifier).
-- if the `has` method returns `true`, then the `get` method MUST NOT throw a `Psr\Container\Exception\NotFoundExceptionInterface` on this identifier. However, this does not mean that the `get` method will succeed and throw no exception.
+- if the `has` method returns `false`, then the `get` method MUST throw a `Psr\Container\Exception\NotFoundExceptionInterface`.
+- if the `has` method returns `true`, then the `get` method MUST NOT throw a `Psr\Container\Exception\NotFoundExceptionInterface`. However, this does not mean that the `get` method will succeed and throw no exception.
+
+When discussing the `ǸotFoundException`, a question arose to know whether the `NotFoundExceptionInterface` should have a `getMissingIdentifier()` method allowing the user catching the exception to know which identifier was not found.
+Indeed, a `ǸotFoundExceptionInterface` may have been triggered by a call to `get` in one of the dependencies, which is different from a call to `get` on a non existing identifier.
+
+After some discussion, it was decided that the `getIdentifier` method was not needed. Instead, it is important to stress out that the `get` method of the container SHOULD NOT throw a `NotFoundExceptionInterface` in case of a missing dependency. Instead, the container is expected to wrap the `NotFoundExceptionInterface` into another exception simply implementing the `ContainerExceptionInterface`.
+
+In pseudo-code, a correct implementation of `get` should look like this:
+
+~~~php
+public function get($identifier) {
+    if (identifier not found) {
+        throw NotFoundException::entryNotFound($identifier);
+    }
+    try {
+        // Do instantiation work
+        // Note: this instantiation work triggers additional calls to `get` for dependencies
+        // Returns the entry
+    } catch (NotFoundExceptionInterface $e) {
+        // Wrap the NotFoundExceptionInterface into another exception that does not implement the `NotFoundExceptionInterface`.
+        throw new MissingDependencyException('some text', 0, $e);
+    }
+}
+~~~
+
+With this rule in place, a user of a container can safely know that a `NotFoundExceptionInterface` means the identifier he provided to the `get` method is missing, and not that some dependency is missing.
 
 Behaviour of the `NotFoundException` was discussed in [container-interop's issue #37](https://github.com/container-interop/container-interop/issues/37).
 

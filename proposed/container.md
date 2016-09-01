@@ -24,7 +24,7 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 - The `Psr\Container\ContainerInterface` exposes two methods : `get` and `has`.
 
 - `get` takes one mandatory parameter: an entry identifier. It MUST be a string.
-  A call to `get` can return anything (a *mixed* value), or throws an exception if the identifier
+  A call to `get` can return anything (a *mixed* value), or throws a `NotFoundExceptionInterface` if the identifier
   is not known to the container. Two successive calls to `get` with the same
   identifier SHOULD return the same value. However, depending on the `implementor`
   design and/or `user` configuration, different values might be returned, so
@@ -35,7 +35,7 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 - `has` takes one unique parameter: an entry identifier. It MUST return `true`
   if an entry identifier is known to the container and `false` if it is not.
   `has($id)` returning true does not mean that `get($id)` will not throw an exception.
-  It does however mean that `get($id)` will not throw a `NotFoundException`.
+  It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
 
 ### 1.2 Exceptions
 
@@ -44,6 +44,12 @@ Exceptions directly thrown by the container SHOULD implement the
 
 A call to the `get` method with a non-existing id SHOULD throw a
 [`Psr\Container\Exception\NotFoundExceptionInterface`](#not-found-exception).
+
+A call to `get` can trigger additional calls to `get` (to fetch the dependencies).
+If one of those dependencies is missing, the `NotFoundExceptionInterface` triggered by the
+inner `get` call SHOULD NOT bubble out. Instead, it should be wrapped in an exception 
+implementing the `ContainerExceptionInterface` that does not implement the 
+`NotFoundExceptionInterface`.
 
 ### 1.3 Recommended usage
 
@@ -118,7 +124,7 @@ interface ContainerInterface
      *
      * @param string $id Identifier of the entry to look for.
      *
-     * @throws NotFoundExceptionInterface  No entry was found for this identifier.
+     * @throws NotFoundExceptionInterface  No entry was found for **this** identifier.
      * @throws ContainerExceptionInterface Error while retrieving the entry.
      *
      * @return mixed Entry.
@@ -167,11 +173,5 @@ namespace Psr\Container\Exception;
  */
 interface NotFoundExceptionInterface extends ContainerExceptionInterface
 {
-    /**
-     * Returns the name of the identifier that was not found.
-     * 
-     * @return string
-     */
-    public function getIdentifier();
 }
 ~~~
