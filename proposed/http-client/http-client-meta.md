@@ -14,6 +14,8 @@ HTTP Client Meta Document
 ### Non-Goals
 
 * The purpose of this PSR is not to support asynchronous HTTP clients.  
+* This PSR will not include how to configure a HTTP client. It does only
+specify the default behaviours. 
 
 ## People
 
