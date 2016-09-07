@@ -6,13 +6,13 @@ This document describes common interfaces for sending HTTP messages.
 ## Specification
 
 An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7 
-response. When there is an error with the request, network or the response an 
+response. When there is an error during sending the request, network or the response an 
 exception should be thrown. 
 
 ## Goal
 
-The goal of this PSR is to allow developers to create libraries decoupled from libraries
-sending HTTP requests. This would make libraries more stable since the reduced number of 
+The goal of this PSR is to allow developers to create libraries decoupled from HTTP Client 
+implementations. This would make libraries more stable since the reduced number of 
 dependencies and the likelihood to get in version conflicts is reduced.
 
 ## Interfaces
