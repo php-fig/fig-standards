@@ -47,7 +47,6 @@ interface HttpClient
    * @return ResponseInterface
    *
    * @throws \Psr\Http\Client\Exception If an error happens during processing the request.
-   * @throws \Exception             If processing the request is impossible (eg. bad configuration).
    */
   public function sendRequest(RequestInterface $request);
 ```
