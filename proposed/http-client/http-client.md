@@ -103,6 +103,8 @@ use Psr\Http\Client\Exception;
  * Thrown when the request cannot be completed because of network issues.
  *
  * There is no response object as this exception is thrown when no response has been received.
+ *
+ * For example when the target host name can not be resolved or the connection failed.
  */
 interface NetworkException extends Exception
 {
@@ -126,7 +128,10 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Client\Exception;
 
 /**
- * Thrown when a response was received but the request itself failed.
+ * Thrown when a response was received but the request itself failed. 
+ * 
+ * This exception MAY be thrown on HTTP response codes 4xx and 5xx. This exception MUST NOT 
+ * be thrown when using the client's default configuration. 
  */
 interface HttpException extends Exception
 {
@@ -147,4 +152,5 @@ interface HttpException extends Exception
   public function getResponse();
 }
 ```
+
 [Liskov]: https://en.wikipedia.org/wiki/Liskov_substitution_principle
