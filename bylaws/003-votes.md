@@ -2,6 +2,8 @@
 
 There are a number of different types of vote, each of which has its own rule set and expected threshold. Unless otherwise specified, all votes take place over a period of two weeks, or until all eligible voters have voted, whichever comes first, and votes are public. Explicit abstentions (+0) will count toward quorum, if applicable, but do not count toward majority.
 
+Non-trivial votes should be preceded by at least two weeks of discussion, although no formal discussion mechanism is required.
+
 The mechanics of voting (email, forum, any conventional subject lines, etc.) may be established and publicized by the Secretaries.
 
 Votes may be changed at will until the end of the voting period.
