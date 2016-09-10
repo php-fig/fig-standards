@@ -1,30 +1,30 @@
 # Mission Statement
 
-The PHP Framework Interoperability Group (PHP-FIG) aims to advance the PHP ecosystem and promote good standards by bringing together projects and people to collaborate. It develops and publicises standards, informed by real-world experience as well as research and experimentation by itself and others, to form PHP Standard Recommendations (PSRs).
+The PHP Framework Interoperability Group (The PHP FIG) aims to advance the PHP ecosystem and promote good standards by bringing together projects and people to collaborate. It develops and publicises standards, informed by real-world experience as well as research and experimentation by itself and others, to form PHP Standard Recommendations (PSRs).
 
 # Structure
 
 ## Member Projects
 
-FIG member projects are known, publicly available PHP projects or significant PHP stakeholder organizations that have shown an interest in supporting FIG's mission and work. Member Projects must be released projects with known production deployments, not aspirational projects. Member Projects are not required to implement any particular PSR, although are expected to give relevant PSRs due consideration.
+The PHP FIG member projects are known, publicly available PHP projects or significant PHP stakeholder organizations that have shown an interest in supporting the FIG's mission and work. Member Projects must be released projects with known production deployments, not aspirational projects. Member Projects are not required to implement any particular PSR, although are expected to give relevant PSRs due consideration.
 
 A project that exists solely as an extension or plugin of another project is not eligible. However, projects may leverage code, libraries, or frameworks from other projects without being disqualified. In cases where that distinction is unclear Project Representatives should use their best judgment to implement the spirit of this clause.
 
-An application for membership by a project must include a current Project Representative or Core Committee member as a sponsor, the name of the proposed Project Representative, and a description of the project and its relevance to FIG. The application once posted must be given a discussion period of at least two weeks. Once that period has passed, the sponsoring Representative may call for a Membership Vote. If it passes, the project is recognized as a Member Project with the stated Project Representative. If it does not, a project may reapply at any time if a sponsor may still be found.
+An application for membership by a project must include a current Project Representative or Core Committee member as a sponsor, the name of the proposed Project Representative, and a description of the project and its relevance to the FIG. The application once posted must be given a discussion period of at least two weeks. Once that period has passed, the sponsoring Representative may call for a Membership Vote. If it passes, the project is recognized as a Member Project with the stated Project Representative. If it does not, a project may reapply at any time if a sponsor may still be found.
 
-A Member Project may resign from PHP-FIG in writing to an official FIG public channel. Once such a statement is published and the resignation is confirmed by a secretary, a PHP project immediately ceases to be a Member Project.
+A Member Project may resign from the PHP FIG in writing to an official FIG public channel. Once such a statement is published and the resignation is confirmed by a secretary, a PHP project immediately ceases to be a Member Project.
 
 A former Member Project may reapply for membership at any future date.
 
 ## Project Representatives
 
-The votes of all Member Projects are cast by Project Representatives who have been authorised to do so by the Member Project. Each Project Representative is chosen solely by a Member Project and their selection is not subject to the approval of PHP-FIG. A Project Representative may be replaced by the Member Project which they represent at any time.
+The votes of all Member Projects are cast by Project Representatives who have been authorised to do so by the Member Project. Each Project Representative is chosen solely by a Member Project and their selection is not subject to the approval of the PHP FIG. A Project Representative may be replaced by the Member Project which they represent at any time.
 
 A Member Project may not have more than one Project Representative at a time. No individual may represent more than one project at a time.
 
-A Project Representative may temporarily confer their voting rights or Working Group eligibility onto another individual who is authorised by the Member Project which they represent. This conferral must be notified to PHP-FIG by the current Project Representative, and must state the name of the temporary Project Representative and the period of time for which their temporary voting rights or eligibility will remain valid. All voting rights will automatically return to the original Project Representative at the end of the period of time stated.
+A Project Representative may temporarily confer their voting rights or Working Group eligibility onto another individual who is authorised by the Member Project which they represent. This conferral must be notified to the PHP FIG by the current Project Representative, and must state the name of the temporary Project Representative and the period of time for which their temporary voting rights or eligibility will remain valid. All voting rights will automatically return to the original Project Representative at the end of the period of time stated.
 
-If, in the judgement of PHP-FIG, a Project Representative is acting inappropriately and to the detriment of PHP-FIG's ability to meet its objectives, any member of the Core Committee may call an Expulsion Vote to request a replacement Project Representative or to expel the Member Project where replacing a Project Representative is not possible. In these instances the Member Project/Project Represenative concerned may not vote. If a member project is expelled it may reapply for membership after a minimum of one year. If a project representative is voted to be replaced, they may not return to represent the project they represented at the time of the vote, or any other project, indefinitely.
+If, in the judgement of the PHP FIG, a Project Representative is acting inappropriately and to the detriment of the PHP FIG's ability to meet its objectives, any member of the Core Committee may call an Expulsion Vote to request a replacement Project Representative or to expel the Member Project where replacing a Project Representative is not possible. In these instances the Member Project/Project Represenative concerned may not vote. If a member project is expelled it may reapply for membership after a minimum of one year. If a project representative is voted to be replaced, they may not return to represent the project they represented at the time of the vote, or any other project, indefinitely.
 
 A Project Representative may also simultaneously serve as a Core Committee member, PSR Editor or Working Group member but not as a Secretary.
 
@@ -38,7 +38,7 @@ Core Committee members are expected to take an active interest in all topics bro
 
 ## Secretaries
 
-The primary responsibility of the FIG Secretary is to serve as an impartial administrator of the FIG. They serve at the member projects and core committee's pleasure but act as independent and impartial adjudicators. FIG Secretaries also represent the FIG as a whole to the general community and public on matters relating to the FIG's activities.
+The primary responsibility of a FIG Secretary is to serve as an impartial administrator of the FIG. They serve at the member projects and core committee's pleasure but act as independent and impartial adjudicators. FIG Secretaries also represent the FIG as a whole to the general community and public on matters relating to the FIG's activities.
 
 Whilst there are a number of defined functions below but they should also perform other duties as required. As the role has continuity (in that there will always be a post holder) and redundancy (There are a number of post holders in case of the absence of one) it can be ensured that responsibilities assigned to the secretary will always be completed and therefore administrative responsibilities such as vote management should always be assigned to the FIG Secretary.
 
@@ -65,7 +65,7 @@ There are a number of defined functions that the FIG Secretaries are expected to
 
 ### Access and Abilities
 
-FIG Secretaries will be given access to the GitHub organisation as "Owners" and full (admin) access to anything relating to official website, marketing and communication mediums including but not limited to the domain, Twitter, IRC channel, packagist.org packages and mailing list in order to allow them to complete their duties and ensure that FIG mediums are managed by representatives elected by the PHP-FIG.
+FIG Secretaries will be given access to the GitHub organisation as "Owners" and full (admin) access to anything relating to official website, marketing and communication mediums including but not limited to the domain, Twitter, IRC channel, packagist.org packages and mailing list in order to allow them to complete their duties and ensure that FIG mediums are managed by representatives elected by the PHP FIG.
 
 Also, whilst not full members themselves, they have the ability to start any vote, but not cast any votes. However it should be noted that any vote started by one FIG Secretary must be managed and tallied by a different secretary to ensure impartiality.
 
@@ -79,7 +79,7 @@ A Working Group member may be removed at any time by the Editor and Sponsor if, 
 
 ### Editor
 
-The Editor of a PSR is an individual who is actively involved in managing and tracking a PSR as it is written. The Editor is responsible for managing the development of a PSR; for representing the PSR in discussions with the rest of PHP-FIG; for coordinating other contributors; and for working with the Sponsor to see the PSR through the review process. Any individual may be an Editor, provided they are not also a Secretary. If the Editor of a proposal is missing for more than 45 days without notice then the Sponsor and Core Committee may agree upon a new Editor. The Editor is the final authority on the content of a PSR while it is in Draft.
+The Editor of a PSR is an individual who is actively involved in managing and tracking a PSR as it is written. The Editor is responsible for managing the development of a PSR; for representing the PSR in discussions with the rest of the PHP FIG; for coordinating other contributors; and for working with the Sponsor to see the PSR through the review process. Any individual may be an Editor, provided they are not also a Secretary. If the Editor of a proposal is missing for more than 45 days without notice then the Sponsor and Core Committee may agree upon a new Editor. The Editor is the final authority on the content of a PSR while it is in Draft.
 
 ### Sponsor
 

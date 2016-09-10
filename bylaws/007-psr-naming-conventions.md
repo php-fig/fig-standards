@@ -1,4 +1,4 @@
-Naming conventions for code released by PHP-FIG
+Naming conventions for code released by PHP FIG
 ===============================================
 
 1. Interfaces MUST be suffixed by `Interface`: e.g. `Psr\Foo\BarInterface`.

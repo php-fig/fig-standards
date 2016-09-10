@@ -20,7 +20,7 @@ Once a vote to deprecate a PSR and supersede it with another PSR has passed, the
 be marked as such in the original document and a link should be placed in the body.
 
 For example, the following Markdown be placed at the very top of the relevant standard file in the
-official PHP-FIG GitHub repo `fig-standards`.
+official PHP FIG GitHub repo `fig-standards`.
 
 > **Deprecated** - As of 2014-12-30 PSR-0 has been marked as deprecated. [PSR-4] is now recommended
 as an alternative.

@@ -32,7 +32,7 @@ The election will be conducted using Single Transferable Vote with specific algo
 
 ## Recall Votes
 
-Should a Secretary or Core Committee member be determined to be acting with gross negligence or in a way that undermines FIG's mission or good standing, a Recall Vote may be called by any two of a Secretary, Core Committee member, and Project Representative. Any such vote must be preceded by at least a two week discussion period. The vote will be overseen by a Secretary other than the subject of the Recall Vote. Should the vote pass the individual in question is removed immediately. If it does not pass the matter is considered closed and a new vote may not be called for the same incident, if applicable.
+Should a Secretary or Core Committee member be determined to be acting with gross negligence or in a way that undermines the FIG's mission or good standing, a Recall Vote may be called by any two of a Secretary, Core Committee member, and Project Representative. Any such vote must be preceded by at least a two week discussion period. The vote will be overseen by a Secretary other than the subject of the Recall Vote. Should the vote pass the individual in question is removed immediately. If it does not pass the matter is considered closed and a new vote may not be called for the same incident, if applicable.
 
 # Vacancies
 

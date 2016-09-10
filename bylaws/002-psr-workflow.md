@@ -2,9 +2,9 @@
 
 ## Pre-Draft
 
-The goal of the Pre-Draft stage is to determine whether a majority of the PHP-FIG is interested in publishing a PSR for a proposed concept.
+The goal of the Pre-Draft stage is to determine whether a majority of the PHP FIG is interested in publishing a PSR for a proposed concept.
 
-Interested parties may discuss a possible proposal, including possible implementations, by whatever means they feel is appropriate. That includes informal discussion on official FIG discussion mediums of whether or not the idea has merit and is within the scope of PHP-FIG's goals.
+Interested parties may discuss a possible proposal, including possible implementations, by whatever means they feel is appropriate. That includes informal discussion on official FIG discussion mediums of whether or not the idea has merit and is within the scope of the PHP FIG's goals.
 
 Once those parties have determined to move forward, they must form a Working Group. A Working Group consists of, at minimum:
 
@@ -22,7 +22,7 @@ The Working Group may continue to work on the proposal during the complete votin
 
 ## Draft
 
-The goal of the Draft stage is to discuss and polish a PSR proposal up to the point that it can be considered for review by the PHP-FIG Core Committee.
+The goal of the Draft stage is to discuss and polish a PSR proposal up to the point that it can be considered for review by the FIG Core Committee.
 
 In Draft stage, members of the Working Group may make any changes they see fit via pull requests, comments on GitHub, Mailing List threads, IRC and similar tools. Change here is not limited by any strict rules, and fundamental rewrites are possible if supported by the Editor. Alternative approaches may be proposed and discussed at any time. If the Editor and Sponsor are convinced that an alternative proposal is superior to the original proposal, then the alternative may replace the original. Working Group members are expected to remain engaged throughout the Draft Phase. Discussions are public and anyone, regardless of FIG affiliation, is welcome to offer constructive input. During this phase, the Editor has final authority on changes made to the proposed specification.
 
