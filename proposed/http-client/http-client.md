@@ -3,26 +3,30 @@ HTTP Client
 
 This document describes common interfaces for sending HTTP messages.
 
+
 ## Specification
 
-An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7 
-response. When there is an error during sending the request, network or the response an 
+An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
+response. When there is an error during sending the request, network or the response an
 exception should be thrown. 
+
 
 ## Goal
 
-The goal of this PSR is to allow developers to create libraries decoupled from HTTP Client 
-implementations. This would make libraries more stable since the reduced number of 
+The goal of this PSR is to allow developers to create libraries decoupled from HTTP Client
+implementations. This would make libraries more stable since the reduced number of
 dependencies and the likelihood to get in version conflicts is reduced.
 
-The second goal is that all HTTP clients should follow the [Liskov substitutions principle][Liskov]. 
-This means that all clients should act the same when sending a request. By default a HTTP client 
-should not follow redirect nor throw exceptions on HTTP responses with status 4xx or 5xx. 
+The second goal is that all HTTP clients should follow the [Liskov substitutions principle][Liskov].
+This means that all clients should act the same when sending a request. By default a HTTP client
+should not follow redirect nor throw exceptions on HTTP responses with status 4xx or 5xx.
+
 
 ## Interfaces
 
 The following interfaces MAY be implemented together within a single class or
 in separate classes.
+
 
 ### HttpClientInterface
 
@@ -34,22 +38,23 @@ use Psr\Http\Message\ResponseInterface;
 
 interface HttpClient
 {
-  /**
-   * Sends a PSR-7 request.
-   *
-   * If a request is sent without any prior configuration, an exception MUST NOT be thrown 
-   * when a response is recieved, no matter the HTTP status code.  
-   * 
-   * If a request is sent without any prior configuration, a HTTP client MUST NOT follow redirects.
-   *
-   * @param RequestInterface $request
-   *
-   * @return ResponseInterface
-   *
-   * @throws \Psr\Http\Client\Exception If an error happens during processing the request.
-   */
-  public function sendRequest(RequestInterface $request);
+    /**
+     * Sends a PSR-7 request.
+     *
+     * If a request is sent without any prior configuration, an exception MUST NOT be thrown
+     * when a response is recieved, no matter the HTTP status code.
+     *
+     * If a request is sent without any prior configuration, a HTTP client MUST NOT follow redirects.
+     *
+     * @param RequestInterface $request
+     *
+     * @return ResponseInterface
+     *
+     * @throws \Psr\Http\Client\Exception If an error happens during processing the request.
+     */
+    public function sendRequest(RequestInterface $request);
 ```
+
 
 ### Exception
 
@@ -63,6 +68,7 @@ interface Exception
 {
 }
 ```
+
 
 ### RequestException
 
@@ -81,14 +87,14 @@ use Psr\Http\Client\Exception;
  */
 interface RequestException extends Exception
 {
-  /**
-   * Returns the request.
-   *
-   * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
-   *
-   * @return RequestInterface
-   */
-  public function getRequest();
+    /**
+     * Returns the request.
+     *
+     * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
+     *
+     * @return RequestInterface
+     */
+    public function getRequest();
 }
 ```
 
@@ -109,16 +115,17 @@ use Psr\Http\Client\Exception;
  */
 interface NetworkException extends Exception
 {
-  /**
-   * Returns the request.
-   *
-   * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
-   *
-   * @return RequestInterface
-   */
-  public function getRequest();
+    /**
+     * Returns the request.
+     *
+     * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
+     *
+     * @return RequestInterface
+     */
+    public function getRequest();
 }
 ```
+
 
 ### HttpException
 
@@ -129,28 +136,28 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Client\Exception;
 
 /**
- * Thrown when a response was received but the request itself failed. 
- * 
- * This exception MAY be thrown on HTTP response codes 4xx and 5xx. This exception MUST NOT 
- * be thrown when using the client's default configuration. 
+ * Thrown when a response was received but the request itself failed.
+ *
+ * This exception MAY be thrown on HTTP response codes 4xx and 5xx.
+ * This exception MUST NOT be thrown when using the client's default configuration.
  */
 interface HttpException extends Exception
 {
-  /**
-   * Returns the request.
-   *
-   * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
-   *
-   * @return RequestInterface
-   */
-  public function getRequest();
-  
-  /**
-   * Returns the response.
-   *
-   * @return ResponseInterface
-   */
-  public function getResponse();
+    /**
+     * Returns the request.
+     *
+     * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
+     *
+     * @return RequestInterface
+     */
+    public function getRequest();
+
+    /**
+     * Returns the response.
+     *
+     * @return ResponseInterface
+     */
+    public function getResponse();
 }
 ```
 
