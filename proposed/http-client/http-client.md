@@ -73,17 +73,18 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Client\Exception;
 
 /**
- * Exception for when a request failed, providing access to the failed request.
+ * Exception for when a request failed.
  *
- * This could be due to an invalid request, example when you can seek in the request body stream
- * or due invalid request object. 
+ * Examples:
+ *      - Request is invalid (eg. method is missing)
+ *      - Runtime request errors (like the body stream is not seekable)
  */
 interface RequestException extends Exception
 {
   /**
    * Returns the request.
    *
-   * The request object MAY be the same as passed to HttpClient::sendRequest()
+   * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
    *
    * @return RequestInterface
    */
@@ -104,14 +105,14 @@ use Psr\Http\Client\Exception;
  *
  * There is no response object as this exception is thrown when no response has been received.
  *
- * For example when the target host name can not be resolved or the connection failed.
+ * Example: the target host name can not be resolved or the connection failed.
  */
 interface NetworkException extends Exception
 {
   /**
    * Returns the request.
    *
-   * The request object MAY be the same as passed to HttpClient::sendRequest()
+   * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
    *
    * @return RequestInterface
    */
@@ -138,7 +139,7 @@ interface HttpException extends Exception
   /**
    * Returns the request.
    *
-   * The request object MAY be the same as passed to HttpClient::sendRequest()
+   * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
    *
    * @return RequestInterface
    */
