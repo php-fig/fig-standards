@@ -1,7 +1,7 @@
 Naming conventions for code released by PHP-FIG
 ===============================================
 
-1. Interfaces MUST be suffixed by `Interface`: e.g. `Psr\Foo\BarInterface`.
+1. Interfaces MUST NOT be suffixed by `Interface`: e.g. `Psr\Foo\Bar` (not `Psr\Foo\BarInterface`).
 2. Abstract classes MUST be prefixed by `Abstract`: e.g. `Psr\Foo\AbstractBar`.
 3. Traits MUST be suffixed by `Trait`: e.g. `Psr\Foo\BarTrait`.
 4. PSR-1, 2 and 4 MUST be followed.
