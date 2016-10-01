@@ -28,7 +28,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | Num | Title                                | Editor(s)                      |  Coordinator            | Sponsor           |
 |:---:|--------------------------------------|--------------------------------|-------------------------|-------------------|
 | 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  | Vacant                  | Vacant            |
-| 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Paul M. Jones     |
+| 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Vacant            |
 | 9   | [Security Advisories][psr9]          | Michael Hess                   | Korvin Szanto           | Larry Garfield    |
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Korvin Szanto     |
@@ -56,7 +56,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | D      | 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  | Vacant                  | Vacant            |
 | A      | 6   | [Caching Interface][psr6]            | Larry Garfield                 | Paul Dragoonis          | Robert Hafner     |
 | A      | 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        | Beau Simensen           | Paul M. Jones     |
-| D      | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Paul M. Jones     |
+| D      | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Vacant            |
 | D      | 9   | [Security Advisories][psr9]          | Michael Hess                   | Korvin Szanto           | Larry Garfield    |
 | D      | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
 | D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
