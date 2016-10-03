@@ -59,7 +59,6 @@ There are a number of defined functions that the FIG Secretaries are expected to
 * Ensure that relevant marketing mediums (e.g. Twitter and Facebook) are kept professional, up to date and impartial
 * Moderate discussions on github, the mailing list, IRC channels and other official communication mediums to ensure that an appropriate environment is maintained. This includes the ability to restrict posting and impose bans with the exception that they cannot permanently ban or restrict a Core Committee member or Project Representative
 * Should there be a FIG meeting at a conference or other ad hoc gathering any Secretary in attendance should take notes to report back to the mailing list
-* Acting throughout their term essentially as Developer Advocates for the PHP FIG
 
  ** Should any bylaw clarification by challenged or objected to by three or more project representatives or core committee members it must go to a vote. If between Secretaries consensus cannot be found on a clarification, it must go to a full vote.
 
