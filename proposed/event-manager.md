@@ -3,7 +3,7 @@ Event Manager
 
 Event Dispatching allows developer to inject logic into an application easily.
 Many frameworks implement some form of a event dispatching that allows users to
-inject functionality with the need to extend classes.
+inject functionality without the need to extend classes.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
