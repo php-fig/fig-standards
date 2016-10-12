@@ -36,6 +36,20 @@ specify the default behaviours.
 
 ## Approaches
 
+### Default behavior
+
+The intention of this PSR is ensure library developers that all HTTP clients have the same 
+**default behavior**. That means that all HTTP clients MUST follow Liskov substitution principle
+when no configuration is provided. The PSR does not try to restrict nor define configuration for 
+HTTP clients. An implementing library is free to be configured by the application author to follow
+redirects, to throw exceptions or any other possible setting.  
+
+An alternative approach would be to pass configuration to the client. That approach would have
+a few drawbacks: 
+
+* Configuration must be defined by the PSR
+* All client must support the defined configuration
+* If no configuration are passed to the client, the behavior will not be predictable
 
 ### Exceptions
 
