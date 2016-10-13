@@ -54,13 +54,14 @@ a few drawbacks:
 ### Exceptions
 
 Our the domain exceptions `NetworkException`, `RequestException` and `HttpException` define
-a contract very similar to eachother. The choosen approach is to not let them extend each other
+a contract very similar to each other. The chosen approach is to not let them extend each other
 because inheritance does not make sense in the domain model. A `RequestException` is not a
 `NetworkException`.
 
 Allowing exception to extend a `RequestAwareException` and/or `ResponseAwareException` interface
 has been discussed but that is a convenience shortcut that one should not take. One should rather
 catch the specific exceptions and handle them accordingly.
+
 
 
 ## People
