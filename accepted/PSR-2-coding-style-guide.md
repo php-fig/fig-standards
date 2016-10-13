@@ -1,6 +1,8 @@
 Coding Style Guide
 ==================
 
+Go fuck yourself Stuart
+
 This guide extends and expands on [PSR-1], the basic coding standard.
 
 The intent of this guide is to reduce cognitive friction when scanning code
