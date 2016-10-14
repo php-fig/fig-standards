@@ -29,9 +29,9 @@ formats.
 One of the key targets for this specification is PSR-7 Response objects.  Response objects by design must be
 immutable.  Other value-object implementations likely would also require an immutable interface.
 
-Additionally, some Link Collection objects may not be value objects but other objects within a given
+Additionally, some Link Provider objects may not be value objects but other objects within a given
 domain, which are able to generate Links on the fly, perhaps off of a database result or other underlying
-representation.  In those cases a writeable collection definition would be incompatible.
+representation.  In those cases a writeable provider definition would be incompatible.
 
 Therefore, this specification splits accessor methods and evolvable methods into separate interfaces,
 allowing objects to implement just the read-only or evolvable versions as appropriate to their use case.
@@ -46,7 +46,7 @@ A single LinkInterface object may be serialized to one or more link entries in a
 appropriate.  However, specifying multiple link objects each with a single rel yet the same URI is also legal, and
 a hypermedia format can serialize that as appropriate, too.
 
-### Why is a LinkCollectionInterface needed?
+### Why is a LinkCProviderInterface needed?
 
 In many contexts, a set of links will be attached to some other object.  Those objects may be used in situations
 where all that is relevant is their links, or some subset of their links. For example, various different value

@@ -99,16 +99,16 @@ tool.  Some hypermedia formats support templated links while others do not, and 
 have a special way to denote that a link is a template.  A Serializer for a format
 that does not support URI Templates MUST ignore any templated Links it encounters.
 
-## 1.5 Evolvable collections
+## 1.5 Evolvable providers
 
-In some cases, a Link Collection may need the ability to have additional links
-added to it. In others, a link collection is necessarily read-only, with links
-derived at runtime from some other data source. For that reason, modifiable collections
+In some cases, a Link Provider may need the ability to have additional links
+added to it. In others, a link provider is necessarily read-only, with links
+derived at runtime from some other data source. For that reason, modifiable providers
 are a secondary interface that may optionally be implemented.
 
-Additionally, some Link Collection objects, such as PSR-7 Response objects, are
+Additionally, some Link Provider objects, such as PSR-7 Response objects, are
 by design immutable.  That means methods to add links to them in-place would be
-incompatible. Therefore, the EvolvableLinkCollectionInterface's single method
+incompatible. Therefore, the `EvolvableLinkProviderInterface`'s single method
 requires that a new object be returned, identical to the original but with
 an additional link object included.
 
@@ -272,7 +272,7 @@ interface EvolvableLinkInterface extends LinkInterface
 }
 ~~~
 
-#### 3.2 `Psr\Link\LinkCollectionInterface`
+#### 3.2 `Psr\Link\LinkProviderInterface`
 
 ~~~php
 <?php
@@ -280,14 +280,14 @@ interface EvolvableLinkInterface extends LinkInterface
 namespace Psr\Link;
 
 /**
- * A link collection object.
+ * A link provider object.
  */
-interface LinkCollectionInterface
+interface LinkProviderInterface
 {
     /**
-     * Returns a collection of LinkInterface objects.
+     * Returns an iterable of LinkInterface objects.
      *
-     * The collection may be an array or any PHP \Traversable object. If no links
+     * The iterable may be an array or any PHP \Traversable object. If no links
      * are available, an empty array or \Traversable MUST be returned.
      *
      * @return LinkInterface[]|\Traversable
@@ -295,9 +295,9 @@ interface LinkCollectionInterface
     public function getLinks();
 
     /**
-     * Returns a collection of LinkInterface objects that have a specific relationship.
+     * Returns an iterable of LinkInterface objects that have a specific relationship.
      *
-     * The collection may be an array or any PHP \Traversable object. If no links
+     * The iterable may be an array or any PHP \Traversable object. If no links
      * with that relationship are available, an empty array or \Traversable MUST be returned.
      *
      * @return LinkInterface[]|\Traversable
@@ -306,7 +306,7 @@ interface LinkCollectionInterface
 }
 ~~~
 
-#### 3.3 `Psr\Link\EvolvableLinkCollectionInterface`
+#### 3.3 `Psr\Link\EvolvableLinkProviderInterface`
 
 ~~~php
 <?php
@@ -314,9 +314,9 @@ interface LinkCollectionInterface
 namespace Psr\Link;
 
 /**
- * An evolvable link collection value object.
+ * An evolvable link provider value object.
  */
-interface EvolvableLinkCollectionInterface extends LinkCollectionInterface
+interface EvolvableLinkProviderInterface extends LinkProviderInterface
 {
     /**
      * Returns an instance with the specified link included.
