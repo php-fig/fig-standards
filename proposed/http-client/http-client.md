@@ -7,9 +7,12 @@ This document describes common interfaces for sending HTTP messages.
 ## Specification
 
 An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
-response. When there is an error during sending the request, network or the response an
+response. When there is an error during sending the request or an error with network an
 exception should be thrown. 
 
+An implementing library MUST implement `Psr\Http\Client\Exception` for each exception it throws. 
+It SHOULD implement exceptions for `Psr\Http\Client\Exception\NetworkException` and
+`Psr\Http\Client\Exception\RequestException`.
 
 ## Goal
 
@@ -26,7 +29,6 @@ should not follow redirect nor throw exceptions on HTTP responses with status 4x
 
 The following interfaces MAY be implemented together within a single class or
 in separate classes.
-
 
 ### HttpClientInterface
 
