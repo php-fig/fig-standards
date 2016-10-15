@@ -46,6 +46,13 @@ interface HttpClient
      *
      * If a request is sent without any prior configuration, a HTTP client MUST NOT follow redirects.
      *
+     * The client MAY do motifications to the Request before sending it. Because PSR-7 objects are
+     * immutable, one cannot assume that the object passed to HttpClient::sendRequest will be the same
+     * object that is actually sent. For example the Request object that is returned by an exception MAY
+     * be a different object than the one passed to sendRequest, so comparison by reference (===) is not possible.
+     * 
+     * {@link https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message-meta.md#why-value-objects}
+     * 
      * @param RequestInterface $request
      *
      * @return ResponseInterface
