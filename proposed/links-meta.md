@@ -46,7 +46,7 @@ A single LinkInterface object may be serialized to one or more link entries in a
 appropriate.  However, specifying multiple link objects each with a single rel yet the same URI is also legal, and
 a hypermedia format can serialize that as appropriate, too.
 
-### Why is a LinkCProviderInterface needed?
+### Why is a LinkProviderInterface needed?
 
 In many contexts, a set of links will be attached to some other object.  Those objects may be used in situations
 where all that is relevant is their links, or some subset of their links. For example, various different value
