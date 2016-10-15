@@ -62,7 +62,9 @@ Allowing exception to extend a `RequestAwareException` and/or `ResponseAwareExce
 has been discussed but that is a convenience shortcut that one should not take. One should rather
 catch the specific exceptions and handle them accordingly.
 
-
+One could be more granular when defining exception. For example, `TimeOutException` and `HostNotFoundException`
+could be subtypes of `NetworkException`. The chosen approach is not to define such subtypes because
+the exception handling in a consuming library would not be different between those exceptions. 
 
 ## People
 
