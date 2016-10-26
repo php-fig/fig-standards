@@ -561,8 +561,8 @@ therefore would be willing to switch to a Container PSR as soon as it is availab
 
 ### 10.2 Sponsors
 
-* [Paul M. Jones](https://github.com/pmjones) (Coordinator)
-* [Jeremy Lindblom](https://github.com/jeremeamia)
+* [Matthew Weier O'Phinney](https://github.com/weierophinney) (Coordinator)
+* [Korvin Szanto](https://github.com/KorvinSzanto)
 
 ### 10.3 Contributors
 
