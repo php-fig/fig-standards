@@ -95,7 +95,7 @@ into the same container (or another container) instead of the delegate container
 ----------
 
 The interfaces and classes described as well as relevant exception are provided as part of the
-[psr/container](https://packagist.org/packages/psr/container) package. (still to-be-created)
+[psr/container](https://packagist.org/packages/psr/container) package.
 
 Packages providing a psr container implementation should declare that they provide `psr/container-implementation` `1.0.0`.
 
