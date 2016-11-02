@@ -40,10 +40,10 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 ### 1.2 Exceptions
 
 Exceptions directly thrown by the container SHOULD implement the
-[`Psr\Container\Exception\ContainerExceptionInterface`](#container-exception).
+[`Psr\Container\ContainerExceptionInterface`](#container-exception).
 
 A call to the `get` method with a non-existing id MUST throw a
-[`Psr\Container\Exception\NotFoundExceptionInterface`](#not-found-exception).
+[`Psr\Container\NotFoundExceptionInterface`](#not-found-exception).
 
 A call to `get` can trigger additional calls to `get` (to fetch the dependencies).
 If one of those dependencies is missing, the `NotFoundExceptionInterface` triggered by the
@@ -111,9 +111,6 @@ Projects requiring an implementation should require psr/container-implementation
 <?php
 namespace Psr\Container;
 
-use Psr\Container\Exception\ContainerExceptionInterface;
-use Psr\Container\Exception\NotFoundExceptionInterface;
-
 /**
  * Describes the interface of a container that exposes methods to read its entries.
  */
@@ -147,11 +144,11 @@ interface ContainerInterface
 ~~~
 
 <a name="container-exception"></a>
-### 2.2. `Psr\Container\Exception\ContainerExceptionInterface`
+### 2.2. `Psr\Container\ContainerExceptionInterface`
 
 ~~~php
 <?php
-namespace Psr\Container\Exception;
+namespace Psr\Container;
 
 /**
  * Base interface representing a generic exception in a container.
@@ -162,11 +159,11 @@ interface ContainerExceptionInterface
 ~~~
 
 <a name="not-found-exception"></a>
-### 2.3. `Psr\Container\Exception\NotFoundExceptionInterface`
+### 2.3. `Psr\Container\NotFoundExceptionInterface`
 
 ~~~php
 <?php
-namespace Psr\Container\Exception;
+namespace Psr\Container;
 
 /**
  * No entry was found in the container.
