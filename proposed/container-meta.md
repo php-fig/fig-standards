@@ -239,7 +239,18 @@ While `ContainerInterface` only defines one mandatory parameter in `get()`, it i
 existing containers that have additional optional parameters. PHP allows an implementation to offer more parameters
 as long as they are optional, because the implementation *does* satisfy the interface.
 
-This issue has been discussed in [container-interop's issue #6](https://github.com/container-interop/container-interop/issues/6).
+Early drafts of the spec (and [the container-interop spec](https://github.com/container-interop/container-interop/blob/master/docs/ContainerInterface.md)) stated that:
+
+> While `ContainerInterface` only defines one mandatory parameter in `get()`, implementations MAY accept additional optional parameters.
+
+This sentence was removed because:
+
+- It is something that stems from OO principles in PHP, so this is not directly related to PSR-11
+- We do not want to encourage implementors to add additional parameters as we recommend coding against the interface and not the implementation
+
+Yet, some implementations have extra optional parameters; that's technically legal. Such implementations are compatible with PSR-11.
+
+This issue has been discussed in [container-interop's issue #6](https://github.com/container-interop/container-interop/issues/6) and on [PHP-FIG mailing list](https://groups.google.com/forum/#!topic/php-fig/zY6FAG4-oz8).
 
 ### 7.2. Type of the `$id` parameter
 
