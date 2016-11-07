@@ -82,43 +82,9 @@ interface EventInterface
     public function getParams();
 
     /**
-     * Get a single parameter by name
-     *
-     * @param  string $name
-     * @return mixed
+     * Indicate to stop propagating this event
      */
-    public function getParam($name);
-
-    /**
-     * Set the event name
-     *
-     * @param  string $name
-     * @return void
-     */
-    public function setName($name);
-
-    /**
-     * Set the event target
-     *
-     * @param  null|string|object $target
-     * @return void
-     */
-    public function setTarget($target);
-
-    /**
-     * Set event parameters
-     *
-     * @param  array $params
-     * @return void
-     */
-    public function setParams(array $params);
-
-    /**
-     * Indicate whether or not to stop propagating this event
-     *
-     * @param  bool $flag
-     */
-    public function stopPropagation($flag);
+    public function stopPropagation();
 
     /**
      * Has this event indicated event propagation should stop?
@@ -142,7 +108,7 @@ namespace Psr\EventManager;
 /**
  * Interface for EventManager
  */
-interface EventManagerInterface
+interface EventNotifierInterface
 {
     /**
      * Attaches a listener to an event
@@ -164,14 +130,6 @@ interface EventManagerInterface
     public function detach($event, $callback);
 
     /**
-     * Clear all listeners for a given event
-     *
-     * @param  string $event
-     * @return void
-     */
-    public function clearListeners($event);
-
-    /**
      * Trigger an event
      *
      * Can accept an EventInterface or will create one if not passed
@@ -181,6 +139,6 @@ interface EventManagerInterface
      * @param  array|object $argv
      * @return mixed
      */
-    public function trigger($event, $target = null, $argv = array());
+    public function notify($event, $target = null, $argv = array());
 }
 ~~~
