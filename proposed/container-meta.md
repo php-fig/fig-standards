@@ -248,7 +248,7 @@ This sentence was removed from PSR-11 because:
 - It is something that stems from OO principles in PHP, so this is not directly related to PSR-11
 - We do not want to encourage implementors to add additional parameters as we recommend coding against the interface and not the implementation
 
-Yet, some implementations have extra optional parameters; that's technically legal. Such implementations are compatible with PSR-11. [[6]](#link_get_optional_parameters)
+However, some implementations have extra optional parameters; that's technically legal. Such implementations are compatible with PSR-11. [[6]](#link_get_optional_parameters)
 
 ### 7.2. Type of the `$id` parameter
 
