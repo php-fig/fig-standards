@@ -239,18 +239,16 @@ While `ContainerInterface` only defines one mandatory parameter in `get()`, it i
 existing containers that have additional optional parameters. PHP allows an implementation to offer more parameters
 as long as they are optional, because the implementation *does* satisfy the interface.
 
-Early drafts of the spec (and [the container-interop spec](https://github.com/container-interop/container-interop/blob/master/docs/ContainerInterface.md)) stated that:
+Difference with container-interop: [The container-interop spec](https://github.com/container-interop/container-interop/blob/master/docs/ContainerInterface.md) stated that:
 
 > While `ContainerInterface` only defines one mandatory parameter in `get()`, implementations MAY accept additional optional parameters.
 
-This sentence was removed because:
+This sentence was removed from PSR-11 because:
 
 - It is something that stems from OO principles in PHP, so this is not directly related to PSR-11
 - We do not want to encourage implementors to add additional parameters as we recommend coding against the interface and not the implementation
 
-Yet, some implementations have extra optional parameters; that's technically legal. Such implementations are compatible with PSR-11.
-
-This issue has been discussed in [container-interop's issue #6](https://github.com/container-interop/container-interop/issues/6) and on [PHP-FIG mailing list](https://groups.google.com/forum/#!topic/php-fig/zY6FAG4-oz8).
+Yet, some implementations have extra optional parameters; that's technically legal. Such implementations are compatible with PSR-11. [[6]](#link_get_optional_parameters)
 
 ### 7.2. Type of the `$id` parameter
 
@@ -597,8 +595,9 @@ Are listed here all people that contributed in the discussions or votes (on cont
 11. Relevant links
 ------------------
 
-- [Discussion about the container PSR and the service locator](https://groups.google.com/forum/#!topic/php-fig/pyTXRvLGpsw)
-- [Container-interop's `ContainerInterface.php`](https://github.com/container-interop/container-interop/blob/master/src/Interop/Container/ContainerInterface.php)
-- [List of all issues](https://github.com/container-interop/container-interop/issues?labels=ContainerInterface&milestone=&page=1&state=closed)
-- [Vote for the interface name](https://github.com/container-interop/container-interop/wiki/%231-interface-name:-Vote)
-- [Original article exposing the delegate lookup idea along many others](http://mouf-php.com/container-interop-whats-next)
+1. [Discussion about the container PSR and the service locator](https://groups.google.com/forum/#!topic/php-fig/pyTXRvLGpsw)
+1. [Container-interop's `ContainerInterface.php`](https://github.com/container-interop/container-interop/blob/master/src/Interop/Container/ContainerInterface.php)
+1. [List of all issues](https://github.com/container-interop/container-interop/issues?labels=ContainerInterface&milestone=&page=1&state=closed)
+1. [Vote for the interface name](https://github.com/container-interop/container-interop/wiki/%231-interface-name:-Vote)
+1. [Original article exposing the delegate lookup idea along many others](http://mouf-php.com/container-interop-whats-next)
+1. <a name="link_get_optional_parameters"></a>Discussion about get optional parameters [in container-interop](https://github.com/container-interop/container-interop/issues/6) and on the [PHP-FIG mailing list](https://groups.google.com/forum/#!topic/php-fig/zY6FAG4-oz8)
