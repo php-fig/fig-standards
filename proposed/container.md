@@ -23,8 +23,8 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 
 - The `Psr\Container\ContainerInterface` exposes two methods : `get` and `has`.
 
-- `get` takes one mandatory parameter: an entry identifier. It MUST be a string.
-  A call to `get` can return anything (a *mixed* value), or throws a `NotFoundExceptionInterface` if the identifier
+- `get` takes one mandatory parameter: an entry identifier, which MUST be a string.
+  `get` can return anything (a *mixed* value), or throw a `NotFoundExceptionInterface` if the identifier
   is not known to the container. Two successive calls to `get` with the same
   identifier SHOULD return the same value. However, depending on the `implementor`
   design and/or `user` configuration, different values might be returned, so
@@ -32,8 +32,8 @@ Users of dependency injections containers (DIC) are referred to as `user`.
   While `ContainerInterface` only defines one mandatory parameter in `get()`, implementations
   MAY accept additional optional parameters.
 
-- `has` takes one unique parameter: an entry identifier, that MUST be a string. `has` MUST return `true`
-  if an entry identifier is known to the container and `false` if it is not.
+- `has` takes one unique parameter: an entry identifier, which MUST be a string.
+  `has` MUST return `true` if an entry identifier is known to the container and `false` if it is not.
   `has($id)` returning true does not mean that `get($id)` will not throw an exception.
   It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
 
