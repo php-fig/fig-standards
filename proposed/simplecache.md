@@ -111,10 +111,6 @@ namespace Psr\SimpleCache;
 
 interface CacheInterface
 {
-    const TTL_MINUTE = 60;
-    const TTL_HOUR = 3600;
-    const TTL_DAY = 86400;
-
     /**
      * Fetch a value from the cache.
      *
