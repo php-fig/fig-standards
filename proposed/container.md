@@ -21,6 +21,12 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 
 ### 1.1 Basics
 
+#### 1.1.1 Entry Identifiers
+
+An entry identifier is a string of at least one character that uniquely identifies an item within a container.  Implementing libraries MUST support identifiers consisting of the characters A-Z, a-z, 0-9, _, and . in any order in UTF-8 encoding and a length of up to 64 characters. Implementing libraries MAY support additional characters and encodings or longer lengths, but must support at least that minimum.  An entry identifier is an opaque string, so callers SHOULD NOT assume that the structure of the string caries any semantic meaning.
+
+#### 1.1.2 Reading from a container
+
 - The `Psr\Container\ContainerInterface` exposes two methods : `get` and `has`.
 
 - `get` takes one mandatory parameter: an entry identifier. It MUST be a string.
@@ -36,6 +42,7 @@ Users of dependency injections containers (DIC) are referred to as `user`.
   if an entry identifier is known to the container and `false` if it is not.
   `has($id)` returning true does not mean that `get($id)` will not throw an exception.
   It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
+
 
 ### 1.2 Exceptions
 
