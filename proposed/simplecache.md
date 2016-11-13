@@ -119,9 +119,9 @@ interface CacheInterface
      * Fetch a value from the cache.
      *
      * @param string $key The unique key of this item in the cache
-     * @param mixed $default Default value to return if the key doesn't exist
+     * @param mixed $default Default value to return if the key does not exist
      *
-     * @return mixed The value of the item from the cache, or null in case of cache miss
+     * @return mixed The value of the item from the cache, or $default in case of cache miss
      */
     public function get($key, $default = null);
 
