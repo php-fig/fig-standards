@@ -114,8 +114,8 @@ interface CacheInterface
     /**
      * Fetch a value from the cache.
      *
-     * @param string $key The unique key of this item in the cache
-     * @param mixed $default Default value to return if the key does not exist
+     * @param string $key     The unique key of this item in the cache
+     * @param mixed  $default Default value to return if the key does not exist
      *
      * @return mixed The value of the item from the cache, or $default in case of cache miss
      */
@@ -124,10 +124,11 @@ interface CacheInterface
     /**
      * Persist data in the cache, uniquely referenced by a key with an optional expiration TTL time.
      *
-     * @param string $key The key of the item to store
-     * @param mixed $value The value of the item to store
-     * @param null|int|DateInterval $ttl Optional. The TTL value of this item. If no value is sent and the driver supports TTL
-     *                                       then the library may set a default value for it or let the driver take care of that.
+     * @param string                $key   The key of the item to store
+     * @param mixed                 $value The value of the item to store
+     * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
+     *                                     the driver supports TTL then the library may set a default value
+     *                                     for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure
      */
@@ -162,8 +163,9 @@ interface CacheInterface
      * Persisting a set of key => value pairs in the cache, with an optional TTL.
      *
      * @param array|Traversable     $items An array of key => value pairs for a multiple-set operation.
-     * @param null|int|DateInterval $ttl   Optional. The amount of seconds from the current time that the item will exist in the cache for.
-     *                                     If this is null then the cache backend will fall back to its own default behaviour.
+     * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
+     *                                     the driver supports TTL then the library may set a default value
+     *                                     for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure
      */
@@ -190,7 +192,6 @@ interface CacheInterface
      * @return bool
      */
     public function exists($key);
-
 }
 ```
 
@@ -200,25 +201,30 @@ For counters it provides the ability to increment and decrement a cache key atom
 
 ``` php
 <?php
+
 namespace Psr\SimpleCache;
 
 interface CounterInterface
 {
     /**
-     * Increment a value atomically in the cache by its step value, which defaults to 1
+     * Increment a value atomically in the cache by the given step value and return the new value
      *
-     * @param string  $key  The cache item key
-     * @param int $step The value to increment by, defaulting to 1
+     * If the key does not exist, it is initialized to the value of $step
+     *
+     * @param string $key  The cache item key
+     * @param int    $step The value to increment by, defaulting to 1
      *
      * @return int|bool The new value on success and false on failure
      */
     public function increment($key, $step = 1);
 
     /**
-     * Decrement a value atomically in the cache by its step value, which defaults to 1
+     * Decrement a value atomically in the cache by the given step value and return the new value
      *
-     * @param string  $key  The cache item key
-     * @param int $step The value to decrement by, defaulting to 1
+     * If the key does not exist, it is initialized to the value of -$step
+     *
+     * @param string $key  The cache item key
+     * @param int    $step The value to decrement by, defaulting to 1
      *
      * @return int|bool The new value on success and false on failure
      */
