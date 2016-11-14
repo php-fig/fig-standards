@@ -51,8 +51,7 @@ when that item is stored and it is considered stale. The TTL is normally defined
 by an integer representing time in seconds, or a DateInterval object.
 
 *    **Expiration** - The actual time when an item is set to go stale. This it
-typically calculated by adding the TTL to the time when an object is stored, but
-may also be explicitly set with DateTime object.
+calculated by adding the TTL to the time when an object is stored.
 
     An item with a 300 second TTL stored at 1:30:00 will have an expiration of
     1:35:00.
@@ -64,6 +63,9 @@ specifies a null expiration time or TTL, an Implementing Library MAY use a confi
 default duration. If no default duration has been set, the Implementing Library
 MUST interpret that as a request to cache the item forever, or for as long as the
 underlying implementation supports.
+
+    If a negative or zero TTL is provided, then the item MAY not be written to
+the cache, as it will be considered expired already.
 
 *    **Key** - A string of at least one character that uniquely identifies a
 cached item. Implementing libraries MUST support keys consisting of the
