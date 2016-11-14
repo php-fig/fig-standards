@@ -51,8 +51,7 @@ when that item is stored and it is considered stale. The TTL is normally defined
 by an integer representing time in seconds, or a DateInterval object.
 
 *    **Expiration** - The actual time when an item is set to go stale. This it
-typically calculated by adding the TTL to the time when an object is stored, but
-may also be explicitly set with DateTime object.
+calculated by adding the TTL to the time when an object is stored.
 
     An item with a 300 second TTL stored at 1:30:00 will have an expiration of
     1:35:00.
@@ -64,6 +63,9 @@ specifies a null expiration time or TTL, an Implementing Library MAY use a confi
 default duration. If no default duration has been set, the Implementing Library
 MUST interpret that as a request to cache the item forever, or for as long as the
 underlying implementation supports.
+
+    If a negative or zero TTL is provided, then the item MAY not be written to
+the cache, as it will be considered expired already.
 
 *    **Key** - A string of at least one character that uniquely identifies a
 cached item. Implementing libraries MUST support keys consisting of the
@@ -111,26 +113,24 @@ namespace Psr\SimpleCache;
 
 interface CacheInterface
 {
-    const TTL_MINUTE = 60;
-    const TTL_HOUR = 3600;
-    const TTL_DAY = 86400;
-
     /**
      * Fetch a value from the cache.
      *
-     * @param string $key The unique key of this item in the cache
+     * @param string $key     The unique key of this item in the cache
+     * @param mixed  $default Default value to return if the key does not exist
      *
-     * @return mixed The value of the item from the cache, or null in case of cache miss
+     * @return mixed The value of the item from the cache, or $default in case of cache miss
      */
-    public function get($key);
+    public function get($key, $default = null);
 
     /**
      * Persist data in the cache, uniquely referenced by a key with an optional expiration TTL time.
      *
-     * @param string $key The key of the item to store
-     * @param mixed $value The value of the item to store
-     * @param null|int|DateInterval $ttl Optional. The TTL value of this item. If no value is sent and the driver supports TTL
-     *                                       then the library may set a default value for it or let the driver take care of that.
+     * @param string                $key   The key of the item to store
+     * @param mixed                 $value The value of the item to store
+     * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
+     *                                     the driver supports TTL then the library may set a default value
+     *                                     for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure
      */
@@ -165,8 +165,9 @@ interface CacheInterface
      * Persisting a set of key => value pairs in the cache, with an optional TTL.
      *
      * @param array|Traversable     $items An array of key => value pairs for a multiple-set operation.
-     * @param null|int|DateInterval $ttl   Optional. The amount of seconds from the current time that the item will exist in the cache for.
-     *                                     If this is null then the cache backend will fall back to its own default behaviour.
+     * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
+     *                                     the driver supports TTL then the library may set a default value
+     *                                     for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure
      */
@@ -183,17 +184,17 @@ interface CacheInterface
 
     /**
      * Identify if an item is in the cache.
-     * NOTE: It is recommended that exists() is only to be used for cache warming type purposes
+     *
+     * NOTE: It is recommended that has() is only to be used for cache warming type purposes
      * and not to be used within your live applications operations for get/set, as this method
-     * is subject to a race condition where your exists() will return true and immediately after,
+     * is subject to a race condition where your has() will return true and immediately after,
      * another script can remove it making the state of your app out of date.
      *
      * @param string $key The cache item key
      *
      * @return bool
      */
-    public function exists($key);
-
+    public function has($key);
 }
 ```
 
@@ -203,25 +204,30 @@ For counters it provides the ability to increment and decrement a cache key atom
 
 ``` php
 <?php
+
 namespace Psr\SimpleCache;
 
 interface CounterInterface
 {
     /**
-     * Increment a value atomically in the cache by its step value, which defaults to 1
+     * Increment a value atomically in the cache by the given step value and return the new value
      *
-     * @param string  $key  The cache item key
-     * @param int $step The value to increment by, defaulting to 1
+     * If the key does not exist, it is initialized to the value of $step
+     *
+     * @param string $key  The cache item key
+     * @param int    $step The value to increment by, defaulting to 1
      *
      * @return int|bool The new value on success and false on failure
      */
     public function increment($key, $step = 1);
 
     /**
-     * Decrement a value atomically in the cache by its step value, which defaults to 1
+     * Decrement a value atomically in the cache by the given step value and return the new value
      *
-     * @param string  $key  The cache item key
-     * @param int $step The value to decrement by, defaulting to 1
+     * If the key does not exist, it is initialized to the value of -$step
+     *
+     * @param string $key  The cache item key
+     * @param int    $step The value to decrement by, defaulting to 1
      *
      * @return int|bool The new value on success and false on failure
      */
