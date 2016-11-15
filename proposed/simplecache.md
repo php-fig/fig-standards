@@ -64,8 +64,8 @@ default duration. If no default duration has been set, the Implementing Library
 MUST interpret that as a request to cache the item forever, or for as long as the
 underlying implementation supports.
 
-    If a negative or zero TTL is provided, then the item MAY not be written to
-the cache, as it will be considered expired already.
+    If a negative or zero TTL is provided, the item MUST be deleted from the cache
+if it exists, as it is expired already.
 
 *    **Key** - A string of at least one character that uniquely identifies a
 cached item. Implementing libraries MUST support keys consisting of the
