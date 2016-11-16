@@ -16,12 +16,12 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon | Larry Garfield |
 | 6   | [Caching Interface][psr6]      | Larry Garfield          | Paul Dragoonis | Robert Hafner |
 | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen | Paul M. Jones  |
+| 13  | [Hypermedia Links][psr13]      | Larry Garfield          | Matthew Weier O'Phinney | Marc Alexander    |
 
 ### Review
 
 | Num | Title                          | Editor                  |  Coordinator            | Sponsor           |
 |:---:|--------------------------------|-------------------------|-------------------------|-------------------|
-| 13  | [Hypermedia Links][psr13]      | Larry Garfield          | Matthew Weier O'Phinney | Marc Alexander    |
 
 ### Draft
 
@@ -83,7 +83,7 @@ _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 [psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
-[psr13]: https://github.com/php-fig/fig-standards/blob/master/proposed/links.md
+[psr13]: /psr/psr-13/
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
 [psr15]: https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware
 [psr16]: https://github.com/php-fig/fig-standards/blob/master/proposed/simplecache.md
