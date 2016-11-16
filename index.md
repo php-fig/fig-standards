@@ -22,6 +22,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Num | Title                          | Editor                  |  Coordinator            | Sponsor           |
 |:---:|--------------------------------|-------------------------|-------------------------|-------------------|
+| 11  | [Container Interface][psr11]   | Matthieu Napoli, David Négrier | Matthew Weier O'Phinney | Korvin Szanto     |
 
 ### Draft
 
@@ -31,7 +32,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Vacant            |
 | 9   | [Security Advisories][psr9]          | Michael Hess                   | Korvin Szanto           | Larry Garfield    |
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
-| 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Korvin Szanto     |
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
 | 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     | Paul M Jones            | Jason Coward      |
