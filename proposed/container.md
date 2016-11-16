@@ -23,7 +23,7 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 
 #### 1.1.1 Entry Identifiers
 
-An entry identifier is a string of at least one character that uniquely identifies an item within a container.  Implementing libraries MUST support identifiers consisting of the characters A-Z, a-z, 0-9, _, and . in any order in UTF-8 encoding and a length of up to 64 characters. Implementing libraries MAY support additional characters and encodings or longer lengths, but must support at least that minimum.  An entry identifier is an opaque string, so callers SHOULD NOT assume that the structure of the string caries any semantic meaning.
+An entry identifier is a string of at least one character that uniquely identifies an item within a container.  Implementing libraries MUST support identifiers consisting of any valid non-empty string of arbitrary length in UTF-8 encoding.  Implementing libraries MAY support additional encodings, but must support at least UTF-8 at minimum.  An entry identifier is an opaque string, so callers SHOULD NOT assume that the structure of the string caries any semantic meaning.
 
 #### 1.1.2 Reading from a container
 
