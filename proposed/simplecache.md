@@ -127,7 +127,7 @@ interface CacheInterface
      * Persist data in the cache, uniquely referenced by a key with an optional expiration TTL time.
      *
      * @param string                $key   The key of the item to store
-     * @param mixed                 $value The value of the item to store
+     * @param mixed                 $value The value of the item to store, must be serializable
      * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
      *                                     the driver supports TTL then the library may set a default value
      *                                     for it or let the driver take care of that.
@@ -212,24 +212,26 @@ interface CounterInterface
     /**
      * Increment a value atomically in the cache by the given step value and return the new value
      *
-     * If the key does not exist, it is initialized to the value of $step
+     * If the key does not exist, it is initialized to the value of $step.
+     * If the value is increased above PHP_INT_MAX the return value is undefined.
      *
      * @param string $key  The cache item key
      * @param int    $step The value to increment by, defaulting to 1
      *
-     * @return int|bool The new value on success and false on failure
+     * @return int|false The new value on success and false on failure
      */
     public function increment($key, $step = 1);
 
     /**
      * Decrement a value atomically in the cache by the given step value and return the new value
      *
-     * If the key does not exist, it is initialized to the value of -$step
+     * If the key does not exist, it is initialized to the value of -$step.
+     * If the value is decreased below PHP_INT_MIN the return value is undefined.
      *
      * @param string $key  The cache item key
      * @param int    $step The value to decrement by, defaulting to 1
      *
-     * @return int|bool The new value on success and false on failure
+     * @return int|false The new value on success and false on failure
      */
     public function decrement($key, $step = 1);
 }
