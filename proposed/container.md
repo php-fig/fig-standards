@@ -45,11 +45,10 @@ Exceptions directly thrown by the container SHOULD implement the
 A call to the `get` method with a non-existing id MUST throw a
 [`Psr\Container\Exception\NotFoundExceptionInterface`](#not-found-exception).
 
-A call to `get` can trigger additional calls to `get` (to fetch the dependencies).
-If one of those dependencies is missing, the `NotFoundExceptionInterface` triggered by the
-inner `get` call SHOULD NOT bubble out. Instead, it should be wrapped in an exception 
-implementing the `ContainerExceptionInterface` that does not implement the 
-`NotFoundExceptionInterface`.
+A cal to the `get` method for a a service that is defined but cannot be instantiated
+due to misconfiguration, missing dependency, or other issue related to the container MUST
+throw a [`Psr\Container\Exception\MisconfiguredServiceExceptionInterface`](#misconfigured-exception).
+Implementers MAY throw more specific subclasses of that exception interface if appropriate.
 
 ### 1.3 Recommended usage
 
@@ -172,6 +171,21 @@ namespace Psr\Container\Exception;
  * No entry was found in the container.
  */
 interface NotFoundExceptionInterface extends ContainerExceptionInterface
+{
+}
+~~~
+
+<a name="misconfigured-exception"></a>
+### 2.4. `Psr\Container\Exception\MisconfiguredServiceExceptionInterface`
+
+~~~php
+<?php
+namespace Psr\Container\Exception;
+
+/**
+ * A requested entry was found but could not be returned.
+ */
+interface MisconfiguredServiceExceptionInterface extends ContainerExceptionInterface
 {
 }
 ~~~
