@@ -16,12 +16,13 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 4   | [Autoloading Standard][psr4]   | Paul M. Jones           | Phil Sturgeon | Larry Garfield |
 | 6   | [Caching Interface][psr6]      | Larry Garfield          | Paul Dragoonis | Robert Hafner |
 | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney | Beau Simensen | Paul M. Jones  |
+| 13  | [Hypermedia Links][psr13]      | Larry Garfield          | Matthew Weier O'Phinney | Marc Alexander    |
 
 ### Review
 
 | Num | Title                          | Editor                  |  Coordinator            | Sponsor           |
 |:---:|--------------------------------|-------------------------|-------------------------|-------------------|
-| 13  | [Hypermedia Links][psr13]      | Larry Garfield          | Matthew Weier O'Phinney | Marc Alexander    |
+| 11  | [Container Interface][psr11]   | Matthieu Napoli, David Négrier | Matthew Weier O'Phinney | Korvin Szanto     |
 
 ### Draft
 
@@ -31,7 +32,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Vacant            |
 | 9   | [Security Advisories][psr9]          | Michael Hess                   | Korvin Szanto           | Larry Garfield    |
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
-| 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Korvin Szanto     |
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
 | 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     | Paul M Jones            | Jason Coward      |
@@ -61,7 +61,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | D      | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
 | D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
 | D      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
-| R      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
+| A      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
 | D      | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
 | D      | 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     | Paul M Jones            | Jason Coward      |
 | D      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier  |
@@ -83,7 +83,7 @@ _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 [psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
 [psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
-[psr13]: https://github.com/php-fig/fig-standards/blob/master/proposed/links.md
+[psr13]: /psr/psr-13/
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
 [psr15]: https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware
 [psr16]: https://github.com/php-fig/fig-standards/blob/master/proposed/simplecache.md
