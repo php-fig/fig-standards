@@ -197,3 +197,33 @@ interface CacheInterface
     public function has($key);
 }
 ```
+
+### 2.2 CacheException
+```
+namespace Psr\SimpleCache;
+
+/**
+ * Interface used for all types of exceptions thrown by the implementing library.
+ */
+interface CacheException
+{
+}
+```
+
+
+### 2.3 InvalidArgumentException
+```
+<?php
+
+namespace Psr\SimpleCache;
+
+/**
+ * Exception interface for invalid cache arguments.
+ *
+ * When an invalid argument is passed it must throw an exception which implements
+ * this interface
+ */
+interface InvalidArgumentException extends CacheException
+{
+}
+```
