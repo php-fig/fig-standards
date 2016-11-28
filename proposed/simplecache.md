@@ -98,8 +98,8 @@ support TTL, the user-specified TTL MUST be silently ignored.
 
 ### 2.1 CacheInterface
 
-The cache interface provides the most basic functionality of cache servers which
-entails basic reading, writing and deleting of single cache items.
+The cache interface defines the most basic operations on a collection of cache-entries, which
+entails basic reading, writing and deleting individual cache items.
 
 In addition it has methods for dealing with multiple sets of cache entries such as writing, reading or
 deleting multiple cache entries at a time. This is useful when you have lots of cache reads/writes
@@ -183,7 +183,7 @@ interface CacheInterface
     public function deleteMultiple($keys);
 
     /**
-     * Identify if an item is in the cache.
+     * Determine whether an item is present in the cache.
      *
      * NOTE: It is recommended that has() is only to be used for cache warming type purposes
      * and not to be used within your live applications operations for get/set, as this method
