@@ -27,7 +27,9 @@ framework, or another dedicated cache library.
 
 PSR-6 solves this problem already, but in a rather formal and verbose way for
 what the most simple use cases need. This simpler approach aims to build a
-standardized layer of simplicity on top of the existing PSR-6 interfaces.
+standardized streamlined interface for common cases.  It is independent of
+PSR-6 but has been designed to make compatibility with PSR-6 as straightforward
+as possible.
 
 
 ### 1.2 Definitions
