@@ -27,7 +27,9 @@ framework, or another dedicated cache library.
 
 PSR-6 solves this problem already, but in a rather formal and verbose way for
 what the most simple use cases need. This simpler approach aims to build a
-standardized layer of simplicity on top of the existing PSR-6 interfaces.
+standardized streamlined interface for common cases.  It is independent of
+PSR-6 but has been designed to make compatibility with PSR-6 as straightforward
+as possible.
 
 
 ### 1.2 Definitions
@@ -105,6 +107,10 @@ In addition it has methods for dealing with multiple sets of cache entries such 
 deleting multiple cache entries at a time. This is useful when you have lots of cache reads/writes
 to perform, and lets you perform your operations in a single call to the cache server cutting down latency
 times dramatically.
+
+An instance of CacheInterface corresponds to a single collection of cache items with a single key namespace,
+and is equivalent to a "Pool" in PSR-6.  Different CacheInterface instances MAY be backed by the same
+datastore, but MUST be logically independent.
 
 ``` php
 <?php
