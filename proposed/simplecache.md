@@ -109,8 +109,7 @@ to perform, and lets you perform your operations in a single call to the cache s
 times dramatically.
 
 An instance of CacheInterface corresponds to a single collection of cache items with a single key namespace,
-and is equivalent to a "Pool" in PSR-6.  Different CacheInterface instances MAY be backed by the same
-datastore, but MUST be logically independent.
+and is equivalent to a "Pool" in PSR-6.
 
 ``` php
 <?php
