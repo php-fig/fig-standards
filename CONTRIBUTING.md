@@ -72,7 +72,7 @@ Versioning should follow semantic versioning and primarily just be simple patch
 fix increments (following semantic versioning). The first 1.0.0 tag should be
 created on PSR approval.
 
-All tags should be PGP signed by Secretaries.
+All tags should be PGP signed.
 
 A changelog should be provided including a list of changes, crediting the
 contributor and referencing the pull request/issue.
