@@ -184,7 +184,7 @@ In the rest of this meta document, you will see frequent references to
 
 The interface name is the same as the one discussed for `container-interop`
 (only the namespace is changed to match the other PSRs).
-It has been thoroughly discussed on `container-interop` [[1]](#link_naming_discussion) and was decided by a vote [[2]](#link_naming_vote).
+It has been thoroughly discussed on `container-interop` [[4]](#link_naming_discussion) and was decided by a vote [[5]](#link_naming_vote).
 
 The list of options considered with their respective votes are:
 
@@ -199,7 +199,7 @@ The list of options considered with their respective votes are:
 
 ## 7. Interface methods
 
-The choice of which methods the interface would contain was made after a statistical analysis of existing containers. [[3]](#link_statistical_analysis).
+The choice of which methods the interface would contain was made after a statistical analysis of existing containers. [[6]](#link_statistical_analysis).
 
 The summary of the analysis showed that:
 
@@ -213,7 +213,7 @@ The summary of the analysis showed that:
 - a large majority of the containers throw an exception rather than returning null when an entry is not found in `get()`
 - a large majority of the containers don't implement `ArrayAccess`
 
-The question of whether to include methods to define entries has been discussed at the very start of the container-interop project [[1]](#link_naming_discussion).
+The question of whether to include methods to define entries has been discussed at the very start of the container-interop project [[4]](#link_naming_discussion).
 It has been judged that such methods do not belong in the interface described here because it is out of its scope
 (see the "Goal" section).
 
@@ -228,7 +228,16 @@ While `ContainerInterface` only defines one mandatory parameter in `get()`, it i
 existing containers that have additional optional parameters. PHP allows an implementation to offer more parameters
 as long as they are optional, because the implementation *does* satisfy the interface.
 
-This issue has been discussed in [container-interop's issue #6](https://github.com/container-interop/container-interop/issues/6).
+Difference with container-interop: [The container-interop spec](https://github.com/container-interop/container-interop/blob/master/docs/ContainerInterface.md) stated that:
+
+> While `ContainerInterface` only defines one mandatory parameter in `get()`, implementations MAY accept additional optional parameters.
+
+This sentence was removed from PSR-11 because:
+
+- It is something that stems from OO principles in PHP, so this is not directly related to PSR-11
+- We do not want to encourage implementors to add additional parameters as we recommend coding against the interface and not the implementation
+
+However, some implementations have extra optional parameters; that's technically legal. Such implementations are compatible with PSR-11. [[11]](#link_get_optional_parameters)
 
 ### 7.2. Type of the `$id` parameter
 
@@ -240,7 +249,7 @@ anything (such as objects) could allow containers to offer a more advanced query
 An example given was to use the container as an object builder. The `$id` parameter would then be an
 object that would describe how to create an instance.
 
-The conclusion of the discussion [[4]](#link_method_and_parameters_details) was that this was beyond the scope of getting entries from a container without
+The conclusion of the discussion [[7]](#link_method_and_parameters_details) was that this was beyond the scope of getting entries from a container without
 knowing how the container provided them, and it was more fit for a factory.
 
 ### 7.3. Exceptions thrown
@@ -258,7 +267,7 @@ It is expected that any exception that is part of the domain of the container im
 
 However, if the exception is thrown by some code out of the container's scope (for instance an exception thrown while instantiating an entry), the container is not required to wrap this exception in a custom exception implementing the `ContainerExceptionInterface`.
 
-The usefulness of the base exception interface was questioned: it is not an exception one would typically catch [[5]](#link_base_exception_usefulness).
+The usefulness of the base exception interface was questioned: it is not an exception one would typically catch [[8]](#link_base_exception_usefulness).
 
 However, most PHP-FIG members considered it to be a best practice. Base exception interface are implemented in previous PSRs and several member projects. The base exception interface was therefore kept.
 
@@ -276,7 +285,7 @@ For a given identifier:
 When discussing the `ǸotFoundException`, a question arose to know whether the `NotFoundExceptionInterface` should have a `getMissingIdentifier()` method allowing the user catching the exception to know which identifier was not found.
 Indeed, a `ǸotFoundExceptionInterface` may have been triggered by a call to `get` in one of the dependencies, which is different from a call to `get` on a non existing identifier.
 
-After some discussion [[6]](#link_not_found_behaviour), it was decided that the `getIdentifier` method was not needed. Instead, it is important to stress out that the `get` method of the container SHOULD NOT throw a `NotFoundExceptionInterface` in case of a missing dependency. Instead, the container is expected to wrap the `NotFoundExceptionInterface` into another exception simply implementing the `ContainerExceptionInterface`.
+After some discussion [[9]](#link_not_found_behaviour), it was decided that the `getIdentifier` method was not needed. Instead, it is important to stress out that the `get` method of the container SHOULD NOT throw a `NotFoundExceptionInterface` in case of a missing dependency. Instead, the container is expected to wrap the `NotFoundExceptionInterface` into another exception simply implementing the `ContainerExceptionInterface`.
 
 In pseudo-code, a correct implementation of `get` should look like this:
 
@@ -369,12 +378,13 @@ Are listed here all people that contributed in the discussions or votes (on cont
 10. Relevant links
 ------------------
 
-- [Discussion about the container PSR and the service locator](https://groups.google.com/forum/#!topic/php-fig/pyTXRvLGpsw)
-- [Container-interop's `ContainerInterface.php`](https://github.com/container-interop/container-interop/blob/master/src/Interop/Container/ContainerInterface.php)
-- [List of all issues](https://github.com/container-interop/container-interop/issues?labels=ContainerInterface&milestone=&page=1&state=closed)
-- <a name="link_naming_discussion"></a>[Discussion about the interface name and container-interop scope](https://github.com/container-interop/container-interop/issues/1)
-- <a name="link_naming_vote"></a>[Vote for the interface name](https://github.com/container-interop/container-interop/wiki/%231-interface-name:-Vote)
-- <a name="link_statistical_analysis"></a>[Statistical analysis of existing containers method names](https://gist.github.com/mnapoli/6159681)
-- <a name="link_method_and_parameters_details"></a>[Discussion about the method names and parameters](https://github.com/container-interop/container-interop/issues/6)
-- <a name="link_base_exception_usefulness"></a>[Discussion about the usefulness of the base exception](https://groups.google.com/forum/#!topic/php-fig/_vdn5nLuPBI)
-- <a name="link_not_found_behaviour"></a>[Discussion about the `NotFoundExceptionInterface` structure](https://github.com/container-interop/container-interop/issues/37)
+1. [Discussion about the container PSR and the service locator](https://groups.google.com/forum/#!topic/php-fig/pyTXRvLGpsw)
+1. [Container-interop's `ContainerInterface.php`](https://github.com/container-interop/container-interop/blob/master/src/Interop/Container/ContainerInterface.php)
+1. [List of all issues](https://github.com/container-interop/container-interop/issues?labels=ContainerInterface&milestone=&page=1&state=closed)
+1. <a name="link_naming_discussion"></a>[Discussion about the interface name and container-interop scope](https://github.com/container-interop/container-interop/issues/1)
+1. <a name="link_naming_vote"></a>[Vote for the interface name](https://github.com/container-interop/container-interop/wiki/%231-interface-name:-Vote)
+1. <a name="link_statistical_analysis"></a>[Statistical analysis of existing containers method names](https://gist.github.com/mnapoli/6159681)
+1. <a name="link_method_and_parameters_details"></a>[Discussion about the method names and parameters](https://github.com/container-interop/container-interop/issues/6)
+1. <a name="link_base_exception_usefulness"></a>[Discussion about the usefulness of the base exception](https://groups.google.com/forum/#!topic/php-fig/_vdn5nLuPBI)
+1. <a name="link_not_found_behaviour"></a>[Discussion about the `NotFoundExceptionInterface` structure](https://github.com/container-interop/container-interop/issues/37)
+1. <a name="link_get_optional_parameters"></a>Discussion about get optional parameters [in container-interop](https://github.com/container-interop/container-interop/issues/6) and on the [PHP-FIG mailing list](https://groups.google.com/forum/#!topic/php-fig/zY6FAG4-oz8)

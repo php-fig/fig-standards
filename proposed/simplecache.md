@@ -1,5 +1,5 @@
-Common Interface for Caching libraries
-================
+Common Interface for Caching Libraries
+======================================
 
 This document describes a simple yet extensible interface for a cache item and
 a cache driver.
@@ -54,8 +54,7 @@ by an integer representing time in seconds, or a DateInterval object.
 *    **Expiration** - The actual time when an item is set to go stale. This is
 calculated by adding the TTL to the time when an object is stored.
 
-    An item with a 300 second TTL stored at 1:30:00 will have an expiration of
-    1:35:00.
+    An item with a 300 second TTL stored at 1:30:00 will have an expiration of 1:35:00.
 
     Implementing Libraries MAY expire an item before its requested Expiration Time,
 but MUST treat an item as expired once its Expiration Time is reached. If a calling
@@ -91,6 +90,31 @@ if one is not specified for a specific cache item.  If no user-specified default
 is provided implementations MUST default to the maximum legal value allowed by
 the underlying implementation.  If the underlying implementation does not
 support TTL, the user-specified TTL MUST be silently ignored.
+
+### 1.4 Data
+
+Implementing libraries MUST support all serializable PHP data types, including:
+
+*    **Strings** - Character strings of arbitrary size in any PHP-compatible encoding.
+*    **Integers** - All integers of any size supported by PHP, up to 64-bit signed.
+*    **Floats** - All signed floating point values.
+*    **Boolean** - True and False.
+*    **Null** - The null value (although it will not be distinguishable from a 
+cache miss when reading it back out).
+*    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
+*    **Object** - Any object that supports lossless serialization and
+deserialization such that $o == unserialize(serialize($o)). Objects MAY
+leverage PHP's Serializable interface, `__sleep()` or `__wakeup()` magic methods,
+or similar language functionality if appropriate.
+
+All data passed into the Implementing Library MUST be returned exactly as
+passed. That includes the variable type. That is, it is an error to return
+(string) 5 if (int) 5 was the value saved.  Implementing Libraries MAY use PHP's
+serialize()/unserialize() functions internally but are not required to do so.
+Compatibility with them is simply used as a baseline for acceptable object values.
+
+If it is not possible to return the exact saved value for any reason, implementing
+libraries MUST respond with a cache miss rather than corrupted data.
 
 
 2. Interfaces
@@ -168,10 +192,10 @@ interface CacheInterface
     /**
      * Obtains multiple cache items by their unique keys.
      *
-     * @param array|\Traversable $keys    A list of keys that can obtained in a single operation.
-     * @param mixed              $default Default value to return for keys that do not exist.
+     * @param iterable $keys    A list of keys that can obtained in a single operation.
+     * @param mixed    $default Default value to return for keys that do not exist.
      *
-     * @return array|\Traversable A list of key => value pairs. Cache keys that do not exist or are stale will have $default as value.
+     * @return iterable A list of key => value pairs. Cache keys that do not exist or are stale will have $default as value.
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      *   MUST be thrown if $keys is neither an array nor a Traversable,
@@ -182,7 +206,7 @@ interface CacheInterface
     /**
      * Persists a set of key => value pairs in the cache, with an optional TTL.
      *
-     * @param array|\Traversable    $values A list of key => value pairs for a multiple-set operation.
+     * @param iterable              $values A list of key => value pairs for a multiple-set operation.
      * @param null|int|DateInterval $ttl    Optional. The TTL value of this item. If no value is sent and
      *                                      the driver supports TTL then the library may set a default value
      *                                      for it or let the driver take care of that.
@@ -198,9 +222,9 @@ interface CacheInterface
     /**
      * Deletes multiple cache items in a single operation.
      *
-     * @param array|\Traversable $keys A list of string-based keys to be deleted.
+     * @param iterable $keys A list of string-based keys to be deleted.
      *
-     * @return bool True if the item was successfully removed. False if there was an error.
+     * @return bool True if the items were successfully removed. False if there was an error.
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      *   MUST be thrown if $keys is neither an array nor a Traversable,
