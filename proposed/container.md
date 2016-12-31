@@ -64,38 +64,6 @@ which is a pattern that is generally discouraged.
 
 Please refer to section 4 of the META document for more details.
 
-### 1.4 Additional feature: Delegate lookup
-
-This section describes an additional feature that MAY be added to a container. Containers are not
-required to implement the *delegate lookup* to respect the `ContainerInterface`.
-
-The goal of the *delegate lookup* feature is to allow several containers to share entries.
-Containers implementing this feature can perform dependency lookups in other containers.
-
-Containers implementing this feature will offer a greater lever of interoperability
-with other containers. Implementation of this feature is therefore RECOMMENDED.
-
-A container implementing this feature:
-
-- MUST implement the `ContainerInterface`
-- MUST provide a way to register a delegate container (using a constructor parameter, or a setter,
-  or any possible way). The delegate container MUST implement the `ContainerInterface`.
-
-When a container is configured to use a delegate container for dependencies:
-
-- Calls to the `get` method should only return an entry if the entry is part of the container.
-  If the entry is not part of the container, an exception should be thrown
-  (as requested by the `ContainerInterface`).
-- Calls to the `has` method should only return `true` if the entry is part of the container.
-  If the entry is not part of the container, `false` should be returned.
-- If the fetched entry has dependencies, **instead** of performing
-  the dependency lookup in the container, the lookup is performed on the *delegate container*.
-
-Important! By default, the lookup SHOULD be performed on the delegate container **only**, not on the container itself.
-
-It is however allowed for containers to provide exception cases for special entries, and a way to lookup
-into the same container (or another container) instead of the delegate container.
-
 2. Package
 ----------
 
@@ -106,11 +74,11 @@ Packages providing a psr container implementation should declare that they provi
 
 Projects requiring an implementation should require `psr/container-implementation` `1.0.0`.
 
-2. Interfaces
+3. Interfaces
 -------------
 
 <a name="container-interface"></a>
-### 2.1. `Psr\Container\ContainerInterface`
+### 3.1. `Psr\Container\ContainerInterface`
 
 ~~~php
 <?php
