@@ -335,14 +335,19 @@ therefore would be willing to switch to a Container PSR as soon as it is availab
 
 ### Projects using `ContainerInterface`
 
-- [Slim Framework](https://github.com/slimphp/Slim/tree/develop) (v3+): a PHP micro-framework
-  that helps you quickly write simple yet powerful web applications and APIs
-- [interop.silex.di](https://github.com/thecodingmachine/interop.silex.di): an
-  extension to [Silex](http://silex.sensiolabs.org/) that adds support for any
-  *container-interop* compatible container
-- [Woohoo Labs. API Framework](https://github.com/woohoolabs/api-framework): a
-  micro-framework for writing APIs
-- [Invoker](https://github.com/mnapoli/Invoker): a generic and extensible callable invoker.
+The list below contains only a sample of all the projects consuming `ContainerInterface`. For a more complete list have a look [here](http://packanalyst.com/class?q=Interop%5CContainer%5CContainerInterface).
+
+| | Downloads |
+| --- | --- |
+| [Behat](https://github.com/Behat/Behat/pull/974) | ![](https://img.shields.io/packagist/dt/behat/behat.svg) |
+| [interop.silex.di](https://github.com/thecodingmachine/interop.silex.di): an extension to [Silex](http://silex.sensiolabs.org/) that adds support for any *container-interop* compatible container | ![](https://img.shields.io/packagist/dt/mouf/interop.silex.di.svg) |
+| [mindplay/middleman](https://github.com/mindplay-dk/middleman): minimalist PSR-7 middleware dispatcher | ![](https://img.shields.io/packagist/dt/mindplay/middleman.svg) |
+| [PHP-DI/Invoker](https://github.com/PHP-DI/Invoker): extensible and configurable invoker/dispatcher | ![](https://img.shields.io/packagist/dt/php-di/invoker.svg) |
+| [Prophiler](https://github.com/fabfuel/prophiler) | ![](https://img.shields.io/packagist/dt/fabfuel/prophiler.svg) |
+| [Silly](https://github.com/mnapoli/silly): CLI micro-framework | ![](https://img.shields.io/packagist/dt/mnapoli/silly.svg) |
+| [Slim v3](https://github.com/slimphp/Slim) | ![](https://img.shields.io/packagist/dt/slim/slim.svg) |
+| [Splash](http://mouf-php.com/packages/mouf/mvc.splash-common/version/8.0-dev/README.md) | ![](https://img.shields.io/packagist/dt/mouf/mvc.splash-common.svg) |
+| [zend-expressive](https://github.com/zendframework/zend-expressive) | ![](https://img.shields.io/packagist/dt/zendframework/zend-expressive.svg) |
 
 9. People
 ---------
