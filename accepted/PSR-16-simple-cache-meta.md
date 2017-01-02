@@ -1,5 +1,5 @@
-PSR-Simple-Cache Meta Document
-==============================
+PSR-16 Meta Document
+====================
 
 1. Summary
 ----------
@@ -73,6 +73,7 @@ For being an early reviewer
 --------
 
 * **Entrance Vote:**  https://groups.google.com/d/topic/php-fig/vyQTKHS6pJ8/discussion
+* **Acceptance Vote:**  https://groups.google.com/d/msg/php-fig/A8e6GvDRGIk/HQBJGEhbDQAJ
 
 
 7. Relevant Links
