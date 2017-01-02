@@ -166,7 +166,8 @@ interface CacheInterface
      * @return bool True on success and false on failure.
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
+     *   MUST be thrown if the $key string is not a legal value
+     *   OR if $ttl is neither an integer or a \DateInterval object.
      */
     public function set($key, $value, $ttl = null);
 
@@ -178,8 +179,7 @@ interface CacheInterface
      * @return bool True if the item was successfully removed. False if there was an error.
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value 
-     *   OR if $ttl is neither an integer or a \DateInterval object.
+     *   MUST be thrown if the $key string is not a legal value.
      */
     public function delete($key);
 
