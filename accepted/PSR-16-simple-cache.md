@@ -134,7 +134,7 @@ An instance of CacheInterface corresponds to a single collection of cache items 
 and is equivalent to a "Pool" in PSR-6.  Different CacheInterface instances MAY be backed by the same
 datastore, but MUST be logically independent.
 
-``` php
+~~~php
 <?php
 
 namespace Psr\SimpleCache;
@@ -249,10 +249,12 @@ interface CacheInterface
      */
     public function has($key);
 }
-```
+~~~
 
 ### 2.2 CacheException
-```
+~~~php
+
+<?php
 namespace Psr\SimpleCache;
 
 /**
@@ -261,11 +263,11 @@ namespace Psr\SimpleCache;
 interface CacheException
 {
 }
-```
+~~~
 
 ### 2.3 InvalidArgumentException
 
-```
+~~~php
 <?php
 
 namespace Psr\SimpleCache;
@@ -279,4 +281,4 @@ namespace Psr\SimpleCache;
 interface InvalidArgumentException extends CacheException
 {
 }
-```
+~~~
