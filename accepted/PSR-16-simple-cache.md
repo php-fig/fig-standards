@@ -252,7 +252,8 @@ interface CacheInterface
 ```
 
 ### 2.2 CacheException
-```
+``` php
+<?php
 namespace Psr\SimpleCache;
 
 /**
@@ -265,7 +266,7 @@ interface CacheException
 
 ### 2.3 InvalidArgumentException
 
-```
+``` php
 <?php
 
 namespace Psr\SimpleCache;
