@@ -86,5 +86,5 @@ _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 [psr13]: /psr/psr-13/
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
 [psr15]: https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware
-[psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
+[psr16]: /psr/psr-16/
 [psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory
