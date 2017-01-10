@@ -142,7 +142,8 @@ remainder of the code consists a closing PHP tag and then a mixture of HTML and
 PHP.
 
 When the opening `<?php` tag is on the first line of the file, it MUST be on its
-own line with no other statements unless it is a file containing markup outside of PHP
+own line with no other statements, and it MUST be separated by a blank line from
+the following block unless it is a file containing markup outside of PHP
 opening and closing tags.
 
 The following example illustrates a complete list of all blocks:
