@@ -258,7 +258,7 @@ This PSR provides 2 interfaces meant to be implemented by container exceptions.
 
 #### 7.3.1 Base exception
 
-The `Psr\Container\Exception\ContainerExceptionInterface` is the base interface. It SHOULD be implemented by custom exceptions thrown directly by the container.
+The `Psr\Container\ContainerExceptionInterface` is the base interface. It SHOULD be implemented by custom exceptions thrown directly by the container.
 
 It is expected that any exception that is part of the domain of the container implements the `ContainerExceptionInterface`. A few examples:
 
@@ -273,14 +273,14 @@ However, most PHP-FIG members considered it to be a best practice. Base exceptio
 
 #### 7.3.2 Not found exception
 
-A call to the `get` method with a non-existing id must throw an exception implementing the `Psr\Container\Exception\NotFoundExceptionInterface`.
+A call to the `get` method with a non-existing id must throw an exception implementing the `Psr\Container\NotFoundExceptionInterface`.
 
 There is a strong relationship with the behaviour of the `has` method.
 
 For a given identifier:
 
-- if the `has` method returns `false`, then the `get` method MUST throw a `Psr\Container\Exception\NotFoundExceptionInterface`.
-- if the `has` method returns `true`, then the `get` method MUST NOT throw a `Psr\Container\Exception\NotFoundExceptionInterface`. However, this does not mean that the `get` method will succeed and throw no exception.
+- if the `has` method returns `false`, then the `get` method MUST throw a `Psr\Container\NotFoundExceptionInterface`.
+- if the `has` method returns `true`, then the `get` method MUST NOT throw a `Psr\Container\NotFoundExceptionInterface`. However, this does not mean that the `get` method will succeed and throw no exception.
 
 When discussing the `ǸotFoundException`, a question arose to know whether the `NotFoundExceptionInterface` should have a `getMissingIdentifier()` method allowing the user catching the exception to know which identifier was not found.
 Indeed, a `ǸotFoundExceptionInterface` may have been triggered by a call to `get` in one of the dependencies, which is different from a call to `get` on a non existing identifier.
