@@ -363,7 +363,7 @@ The list below contains only a sample of all the projects consuming `ContainerIn
 
 ### 9.3 Contributors
 
-Are listed here all people that contributed in the discussions or votes (on container-interop), by alphabetical order:
+Are listed here all people that contributed in the discussions or votes (on container-interop and during migration to PSR-11), by alphabetical order:
 
 - [Alexandru Pătrănescu](https://github.com/drealecs)
 - [Amy Stephen](https://github.com/AmyStephen)
@@ -372,6 +372,7 @@ Are listed here all people that contributed in the discussions or votes (on cont
 - [Don Gilbert](https://github.com/dongilbert)
 - [Jason Judge](https://github.com/judgej)
 - [Jeremy Lindblom](https://github.com/jeremeamia)
+- [Larry Garfield](https://github.com/crell)
 - [Marco Pivetta](https://github.com/Ocramius)
 - [Matthieu Napoli](https://github.com/mnapoli)
 - [Nelson J Morais](https://github.com/njasm)
