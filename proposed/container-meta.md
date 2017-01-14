@@ -289,7 +289,7 @@ After some discussion [[9]](#link_not_found_behaviour), it was decided that the 
 
 In pseudo-code, a correct implementation of `get` should look like this:
 
-~~~php
+```php
 public function get($identifier) {
     if (identifier not found) {
         throw NotFoundException::entryNotFound($identifier);
@@ -303,7 +303,7 @@ public function get($identifier) {
         throw new MissingDependencyException('some text', 0, $e);
     }
 }
-~~~
+```
 
 With this rule in place, a user of a container can safely know that a `NotFoundExceptionInterface` means the identifier he provided to the `get` method is missing, and not that some dependency is missing.
 
@@ -365,24 +365,23 @@ The list below contains only a sample of all the projects consuming `ContainerIn
 
 Are listed here all people that contributed in the discussions or votes (on container-interop and during migration to PSR-11), by alphabetical order:
 
-- [Alexandru Pătrănescu](https://github.com/drealecs)
-- [Amy Stephen](https://github.com/AmyStephen)
-- [Ben Peachey](https://github.com/potherca)
-- [David Négrier](https://github.com/moufmouf)
-- [Don Gilbert](https://github.com/dongilbert)
-- [Jason Judge](https://github.com/judgej)
-- [Jeremy Lindblom](https://github.com/jeremeamia)
-- [Larry Garfield](https://github.com/crell)
-- [Marco Pivetta](https://github.com/Ocramius)
-- [Matthieu Napoli](https://github.com/mnapoli)
-- [Nelson J Morais](https://github.com/njasm)
-- [Paul M. Jones](https://github.com/pmjones)
-- [Phil Sturgeon](https://github.com/philsturgeon)
-- [Stephan Hochdörfer](https://github.com/shochdoerfer)
-- [Taylor Otwell](https://github.com/taylorotwell)
+* [Alexandru Pătrănescu](https://github.com/drealecs)
+* [Amy Stephen](https://github.com/AmyStephen)
+* [Ben Peachey](https://github.com/potherca)
+* [David Négrier](https://github.com/moufmouf)
+* [Don Gilbert](https://github.com/dongilbert)
+* [Jason Judge](https://github.com/judgej)
+* [Jeremy Lindblom](https://github.com/jeremeamia)
+* [Larry Garfield](https://github.com/crell)
+* [Marco Pivetta](https://github.com/Ocramius)
+* [Matthieu Napoli](https://github.com/mnapoli)
+* [Nelson J Morais](https://github.com/njasm)
+* [Paul M. Jones](https://github.com/pmjones)
+* [Phil Sturgeon](https://github.com/philsturgeon)
+* [Stephan Hochdörfer](https://github.com/shochdoerfer)
+* [Taylor Otwell](https://github.com/taylorotwell)
 
-10. Relevant links
-------------------
+## 10. Relevant links
 
 1. [Discussion about the container PSR and the service locator](https://groups.google.com/forum/#!topic/php-fig/pyTXRvLGpsw)
 1. [Container-interop's `ContainerInterface.php`](https://github.com/container-interop/container-interop/blob/master/src/Interop/Container/ContainerInterface.php)
