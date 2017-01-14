@@ -12,7 +12,7 @@ interpreted as described in [RFC 2119][].
 
 The word `implementor` in this document is to be interpreted as someone
 implementing the `ContainerInterface` in a dependency injection-related library or framework.
-Users of dependency injections containers (DIC) are referred to as `user`.
+Users of dependency injection containers (DIC) are referred to as `user`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
@@ -21,13 +21,13 @@ Users of dependency injections containers (DIC) are referred to as `user`.
 
 ### 1.1 Basics
 
-#### 1.1.1 Entry Identifiers
+#### 1.1.1 Entry identifiers
 
-An entry identifier is any PHP-legal string of at least one character that uniquely identifies an item within a container.  An entry identifier is an opaque string, so callers SHOULD NOT assume that the structure of the string caries any semantic meaning.
+An entry identifier is any PHP-legal string of at least one character that uniquely identifies an item within a container.  An entry identifier is an opaque string, so callers SHOULD NOT assume that the structure of the string carries any semantic meaning.
 
 #### 1.1.2 Reading from a container
 
-- The `Psr\Container\ContainerInterface` exposes two methods : `get` and `has`.
+- The `Psr\Container\ContainerInterface` exposes two methods: `get` and `has`.
 
 - `get` takes one mandatory parameter: an entry identifier, which MUST be a string.
   `get` can return anything (a *mixed* value), or throw a `NotFoundExceptionInterface` if the identifier
@@ -40,7 +40,6 @@ An entry identifier is any PHP-legal string of at least one character that uniqu
   `has` MUST return `true` if an entry identifier is known to the container and `false` if it is not.
   `has($id)` returning true does not mean that `get($id)` will not throw an exception.
   It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
-
 
 ### 1.2 Exceptions
 
@@ -67,10 +66,10 @@ Please refer to section 4 of the META document for more details.
 2. Package
 ----------
 
-The interfaces and classes described as well as relevant exception are provided as part of the
+The interfaces and classes described as well as relevant exceptions are provided as part of the
 [psr/container](https://packagist.org/packages/psr/container) package.
 
-Packages providing a psr container implementation should declare that they provide `psr/container-implementation` `1.0.0`.
+Packages providing a PSR container implementation should declare that they provide `psr/container-implementation` `1.0.0`.
 
 Projects requiring an implementation should require `psr/container-implementation` `1.0.0`.
 
@@ -110,7 +109,7 @@ interface ContainerInterface
      *
      * @param string $id Identifier of the entry to look for.
      *
-     * @return boolean
+     * @return bool
      */
     public function has($id);
 }
