@@ -1,5 +1,5 @@
-PSR-17 Meta Document
-====================
+HTTP Factories Meta
+===================
 
 1. Summary
 ----------
@@ -21,12 +21,12 @@ creating immutable copies. However, there are two notable exceptions:
 The former is a significant pain point for PSR-7 middleware, as it can leave
 the response in an incomplete state. If the stream attached to the response body
 is not seekable or not writable, there is no way to recover from an error
-condition in which the body has already been written too.
+condition in which the body has already been written to.
 
 This scenario can be avoided by providing a factory to create new streams. Due to
 the lack of formal standard for HTTP object factories, a developer must rely on
 a specific vendor implementation in order to create these objects. Creating a
-formal standard for factories will allow for developers to avoid dependency on
+formal standard for factories will allow developers to avoid dependency on
 specific implementations while having the ability to create new objects when
 necessary.
 
@@ -150,7 +150,7 @@ methods that are included are generally similar with the proposed factories.
 
 The most difficult part of defining the method signatures for the interfaces.
 As there is no clear declaration in PSR-7 as to what values are explicitly
-required, the properties that are read only must be inferred based on whether
+required, the properties that are read-only must be inferred based on whether
 the interfaces have methods to copy-and-modify the object.
 
 5. People

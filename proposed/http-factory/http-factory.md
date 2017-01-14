@@ -36,6 +36,9 @@ Has the ability to create client requests.
 ```php
 namespace Psr\Http\Message;
 
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\UriInterface;
+
 interface RequestFactoryInterface
 {
     /**
@@ -57,6 +60,8 @@ Has the ability to create responses.
 ```php
 namespace Psr\Http\Message;
 
+use Psr\Http\Message\ResponseInterface;
+
 interface ResponseFactoryInterface
 {
     /**
@@ -77,24 +82,30 @@ Has the ability to create server requests.
 ```php
 namespace Psr\Http\Message;
 
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriInterface;
+
 interface ServerRequestFactoryInterface
 {
     /**
      * Create a new server request.
      *
-     * @param string $method
-     * @param UriInterface|string $uri
+     * The method and URI of the request SHOULD be derived from the given
+     * server parameters.
+     *
+     * If the method or URI parameter is passed, these values MUST be used
+     * instead of the server parameters.
+     *
+     * @param array $server
+     * @param string|null $method
+     * @param UriInterface|string|null $uri
+     *
+     * @throws \InvalidArgumentException
+     *  If no valid method or URI can be determined.
      *
      * @return ServerRequestInterface
      */
-    public function createServerRequest($method, $uri);
-
-    /**
-     * Create a new server request from PHP globals.
-     *
-     * @return ServerRequestInterface
-     */
-    public function createServerRequestFromGlobals();
+    public function createServerRequest(array $server, $method = null, $uri = null);
 }
 ```
 
@@ -105,48 +116,44 @@ Has the ability to create streams for requests and responses.
 ```php
 namespace Psr\Http\Message;
 
+use Psr\Http\Message\StreamInterface;
+
 interface StreamFactoryInterface
 {
     /**
-     * Create a new stream with no content.
-     *
-     * The stream will be writable and seekable.
-     *
-     * @return StreamInterface
-     */
-    public function createStream();
-
-    /**
-     * Create a new stream from a callback.
-     *
-     * The stream will be read-only and not seekable.
-     *
-     * @param callable $callback
-     *
-     * @return StreamInterface
-     */
-    public function createStreamFromCallback(callable $callback);
-
-    /**
-     * Create a new stream from a resource.
-     *
-     * @param resource $body
-     *
-     * @return StreamInterface
-     */
-    public function createStreamFromResource($body);
-
-    /**
      * Create a new stream from a string.
      *
-     * A temporary resource will be created with the content of the string.
-     * The resource will be writable and seekable.
+     * The stream SHOULD be created with a temporary resource.
      *
-     * @param string $body
+     * @param string $content
      *
      * @return StreamInterface
      */
-    public function createStreamFromString($body);
+    public function createStream($content = '');
+
+    /**
+     * Create a stream from an existing file.
+     *
+     * The file MUST be opened using the given mode, which may be any mode
+     * supported by the `fopen` function.
+     *
+     * @param string $file
+     * @param string $mode
+     *
+     * @return StreamInterface
+     */
+    public function createStreamFromFile($file, $mode = 'r');
+
+    /**
+     * Create a new stream from an existing resource.
+     *
+     * The stream MUST be readable and may be writable.
+     *
+     * @param resource $resource
+     *
+     * @return StreamInterface
+     */
+    public function createStreamFromResource($resource);
 }
 ```
 
@@ -165,12 +172,15 @@ Has the ability to create streams for uploaded files.
 ```php
 namespace Psr\Http\Message;
 
+use Psr\Http\Message\UploadedFileInterface;
+
 interface UploadedFileFactoryInterface
 {
     /**
      * Create a new uploaded file.
      *
-     * If a string is passed it is assumed to be a file path.
+     * If a string is used to create the file, a temporary resource will be
+     * created with the content of the string.
      *
      * If a size is not provided it will be determined by checking the size of
      * the file.
@@ -185,6 +195,9 @@ interface UploadedFileFactoryInterface
      * @param string $clientMediaType
      *
      * @return UploadedFileInterface
+     *
+     * @throws \InvalidArgumentException
+     *  If the file resource is not readable.
      */
     public function createUploadedFile(
         $file,
@@ -210,6 +223,8 @@ Has the ability to creates URIs for client and server requests.
 
 ```php
 namespace Psr\Http\Message;
+
+use Psr\Http\Message\UriInterface;
 
 interface UriFactoryInterface
 {
