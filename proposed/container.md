@@ -38,8 +38,7 @@ An entry identifier is any PHP-legal string of at least one character that uniqu
 
 - `has` takes one unique parameter: an entry identifier, which MUST be a string.
   `has` MUST return `true` if an entry identifier is known to the container and `false` if it is not.
-  `has($id)` returning true does not mean that `get($id)` will not throw an exception.
-  It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
+  If `has($id)` returns false, `get($id)` MUST throw a `NotFoundExceptionInterface`.
 
 ### 1.2 Exceptions
 
@@ -48,12 +47,6 @@ Exceptions directly thrown by the container SHOULD implement the
 
 A call to the `get` method with a non-existing id MUST throw a
 [`Psr\Container\NotFoundExceptionInterface`](#not-found-exception).
-
-A call to `get` can trigger additional calls to `get` (to fetch the dependencies).
-If one of those dependencies is missing, the `NotFoundExceptionInterface` triggered by the
-inner `get` call SHOULD NOT bubble out. Instead, it should be wrapped in an exception 
-implementing the `ContainerExceptionInterface` that does not implement the 
-`NotFoundExceptionInterface`.
 
 ### 1.3 Recommended usage
 
