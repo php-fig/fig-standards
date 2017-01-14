@@ -26,23 +26,25 @@ An HTTP middleware component is an individual component participating, together
 with other middleware components, in the processing of an incoming HTTP Request
 and the creation of a resulting HTTP Response, as defined by PSR-7.
 
-Middleware consumers such as frameworks and middleware stack containers MUST
-use a type declaration against one of the middleware interfaces:
+Middleware using this standard MUST implement the following interface:
 
-- `Psr\Http\Middleware\MiddlewareInterface` if both client and server middleware are supported
-- `Psr\Http\Middleware\ClientMiddlewareInterface` if only client middleware is supported
-- `Psr\Http\Middleware\ServerMiddlewareInterface` if only server middleware is supported
+- `Psr\Http\ServerMiddleware\MiddlewareInterface`
 
-Generally consumers SHOULD declare the type as `MiddlewareInterface` unless the
-consumer only processes client requests.
+Middleware dispatching systems using this standard MUST implement the following
+interface:
 
-### 1.1 Containers
+- `Psr\Http\ServerMiddleware\DelegateInterface`
 
-An HTTP middleware container is an object that holds multiple middleware
+Legacy middleware implementing a double pass approach MUST be wrapped using an
+object that implements the `MiddlewareInterface`.
+
+### 1.1 Dispatchers
+
+An HTTP middleware dispatcher is an object that holds multiple middleware
 components that can be used to process one or more requests in sequence.
 
-The middleware container MUST pass the request and a dispatcher to each
-middleware component that it executes. The dispatcher MUST be able to execute
+The middleware dispatcher MUST pass the request and a delegate to each
+middleware component that it executes. The delegate MUST be able to execute
 the next available middleware or if no more middleware is available, create a
 default response.
 
@@ -54,151 +56,56 @@ in order to prevent dependence on a specific HTTP message implementation.
 
 ## 2. Interfaces
 
-### 2.1 Psr\Http\Middleware\MiddlewareInterface
-
-The following interface is only used for type declarations that accept middleware
-components and MUST NOT be implemented directly.
-
-```php
-namespace Psr\Http\Middleware;
-
-interface MiddlewareInterface {}
-```
-
-### 2.3 Psr\Http\Middleware\ClientMiddlewareInterface
-
-The following interface MUST be implemented by compatible client middleware components.
-
-```php
-namespace Psr\Http\Middleware;
-
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
-
-interface ClientMiddlewareInterface extends MiddlewareInterface
-{
-    /**
-     * Process a client request and return a response.
-     *
-     * Takes the incoming request and optionally modifies it before delegating
-     * to the next frame to get a response.
-     *
-     * @param RequestInterface $request
-     * @param DelegateInterface $next
-     *
-     * @return ResponseInterface
-     */
-    public function process(
-        RequestInterface $request,
-        DelegateInterface $next
-    );
-}
-```
-
-### 2.4 Psr\Http\Middleware\ServerMiddlewareInterface
+### 2.1 Psr\Http\ServerMiddleware\MiddlewareInterface
 
 The following interface MUST be implemented by compatible server middleware components.
 
 ```php
-namespace Psr\Http\Middleware;
+namespace Psr\Http\ServerMiddleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-interface ServerMiddlewareInterface extends MiddlewareInterface
+interface MiddlewareInterface
 {
     /**
-     * Process a server request and return a response.
-     *
-     * Takes the incoming request and optionally modifies it before delegating
-     * to the next frame to get a response.
+     * Process an incoming server request and return a response, optionally delegating
+     * to the next middleware component to create the response.
      *
      * @param ServerRequestInterface $request
-     * @param DelegateInterface $frame
+     * @param DelegateInterface $delegate
      *
      * @return ResponseInterface
      */
     public function process(
         ServerRequestInterface $request,
-        DelegateInterface $frame
+        DelegateInterface $delegate
     );
 }
 ```
 
-Note that the only difference between server and client middleware is that server
-middleware must be passed a server request for processing.
-
-### 2.5 Psr\Http\Middleware\DelegateInterface
+### 2.2 Psr\Http\ServerMiddleware\DelegateInterface
 
 The following interface MUST be implemented by middleware delegates.
 
 ```php
-namespace Psr\Http\Middleware;
+namespace Psr\Http\ServerMiddleware;
 
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 interface DelegateInterface
 {
     /**
      * Dispatch the next available middleware and return the response.
      *
-     * @param RequestInterface $request
+     * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
-    public function next(RequestInterface $request);
+    public function process(ServerRequestInterface $request);
 }
 ```
 
-### 2.6 Psr\Http\Middleware\StackInterface
-
-The following interface MAY be implemented by middleware stack containers.
-
-```php
-namespace Psr\Http\Middleware;
-
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
-
-interface StackInterface
-{
-    /**
-     * Return an instance with the specified middleware added to the stack.
-     *
-     * This method MUST be implemented in such a way as to retain the
-     * immutability of the stack, and MUST return an instance that contains
-     * the specified middleware.
-     *
-     * @param MiddlewareInterface $middleware
-     *
-     * @return self
-     */
-    public function withMiddleware(MiddlewareInterface $middleware);
-
-    /**
-     * Return an instance without the specified middleware.
-     *
-     * This method MUST be implemented in such a way as to retain the
-     * immutability of the stack, and MUST return an instance that does not
-     * contain the specified middleware.
-     *
-     * @param MiddlewareInterface $middleware
-     *
-     * @return self
-     */
-    public function withoutMiddleware(MiddlewareInterface $middleware);
-
-    /**
-     * Process the request through middleware and return the response.
-     *
-     * This method MUST be implemented in such a way as to allow the same
-     * stack to be reused for processing multiple requests in sequence.
-     *
-     * @param RequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function process(RequestInterface $request);
-}
-```
+If there is no available middleware to dispatch, the delegate MUST return a
+default response.
