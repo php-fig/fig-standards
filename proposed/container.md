@@ -48,6 +48,10 @@ Exceptions directly thrown by the container SHOULD implement the
 A call to the `get($id)` MUST throw a [`Psr\Container\NotFoundExceptionInterface`](#not-found-exception) if and only 
 if `has($id)` returns `false`.
 
+A call to `get` can trigger additional calls to `get` (to fetch the dependencies). If `has($id)` returns `true` but 
+one of the dependencies if the entry `$id` is missing, `get($id)` MUST throw a 
+[`Psr\Container\MissingDependencyExceptionInterface`](#missing-dependency-exception).
+
 ### 1.3 Recommended usage
 
 Users SHOULD NOT pass a container into an object so that the object can retrieve *its own dependencies*.
@@ -135,5 +139,26 @@ namespace Psr\Container;
  */
 interface NotFoundExceptionInterface extends ContainerExceptionInterface
 {
+}
+~~~
+
+<a name="missing-dependency-exception"></a>
+### 2.3. `Psr\Container\MissingDependencyExceptionInterface`
+
+~~~php
+<?php
+namespace Psr\Container;
+
+/**
+ * An entry was found in the container but one of the dependencies of this entry is missing.
+ */
+interface MissingDependencyExceptionInterface extends ContainerExceptionInterface
+{
+    /**
+     * Returns the identifier that is missing.
+     * 
+     * @return string 
+     */
+    public function getMissingIdentifier();
 }
 ~~~
