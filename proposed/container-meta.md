@@ -280,7 +280,7 @@ For a given identifier:
 - if the `has` method returns `false`, then the `get` method MUST throw a `Psr\Container\NotFoundExceptionInterface`.
 - if the `has` method returns `true`, this does not mean that the `get` method will succeed and throw no exception. It can even throw a `Psr\Container\NotFoundExceptionInterface` if one of the dependencies of the requested entry is missing.
 
-Therefore, when a user catches the `Psr\Container\NotFoundExceptionInterface`, it has 2 possibles meanings [[9]](#link_not_found_behaviour):
+Therefore, when a user catches the `Psr\Container\NotFoundExceptionInterface`, it has 2 possible meanings [[9]](#link_not_found_behaviour):
 
 - the requested entry does not exist (bad request)
 - or a dependency of the requested entry does not exist (i.e. the container is misconfigured)
