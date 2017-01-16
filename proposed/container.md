@@ -49,7 +49,7 @@ A call to the `get($id)` MUST throw a [`Psr\Container\NotFoundExceptionInterface
 if `has($id)` returns `false`.
 
 A call to `get` can trigger additional calls to `get` (to fetch the dependencies). If `has($id)` returns `true` but 
-one of the dependencies if the entry `$id` is missing, `get($id)` MUST throw a 
+one of the dependencies of the entry `$id` is missing, `get($id)` MUST throw a 
 [`Psr\Container\MissingDependencyExceptionInterface`](#missing-dependency-exception).
 
 ### 1.3 Recommended usage
