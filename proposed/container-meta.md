@@ -275,37 +275,31 @@ However, most PHP-FIG members considered it to be a best practice. Base exceptio
 
 A call to the `get` method with a non-existing id must throw an exception implementing the `Psr\Container\NotFoundExceptionInterface`.
 
-There is a strong relationship with the behaviour of the `has` method.
-
 For a given identifier:
 
 - if the `has` method returns `false`, then the `get` method MUST throw a `Psr\Container\NotFoundExceptionInterface`.
-- if the `has` method returns `true`, then the `get` method MUST NOT throw a `Psr\Container\NotFoundExceptionInterface`. However, this does not mean that the `get` method will succeed and throw no exception.
+- if the `has` method returns `true`, this does not mean that the `get` method will succeed and throw no exception. It can even throw a `Psr\Container\NotFoundExceptionInterface` if one of the dependencies of the requested entry is missing.
 
-When discussing the `ǸotFoundException`, a question arose to know whether the `NotFoundExceptionInterface` should have a `getMissingIdentifier()` method allowing the user catching the exception to know which identifier was not found.
-Indeed, a `ǸotFoundExceptionInterface` may have been triggered by a call to `get` in one of the dependencies, which is different from a call to `get` on a non existing identifier.
+Therefore, when a user catches the `Psr\Container\NotFoundExceptionInterface`, it has 2 possibles meanings [[9]](#link_not_found_behaviour):
 
-After some discussion [[9]](#link_not_found_behaviour), it was decided that the `getIdentifier` method was not needed. Instead, it is important to stress out that the `get` method of the container SHOULD NOT throw a `NotFoundExceptionInterface` in case of a missing dependency. Instead, the container is expected to wrap the `NotFoundExceptionInterface` into another exception simply implementing the `ContainerExceptionInterface`.
+- the requested entry does not exist (bad request)
+- or a dependency of the requested entry does not exist (i.e. the container is misconfigured)
 
-In pseudo-code, a correct implementation of `get` should look like this:
+The user can however easily make a distinction with a call to `has`.
+
+In pseudo-code:
 
 ```php
-public function get($identifier) {
-    if (identifier not found) {
-        throw NotFoundException::entryNotFound($identifier);
-    }
-    try {
-        // Do instantiation work
-        // Note: this instantiation work triggers additional calls to `get` for dependencies
-        // Returns the entry
-    } catch (NotFoundExceptionInterface $e) {
-        // Wrap the NotFoundExceptionInterface into another exception that does not implement the `NotFoundExceptionInterface`.
-        throw new MissingDependencyException('some text', 0, $e);
-    }
+if (!$container->has($id)) {
+    // The requested instance does not exist
+    return;
+}
+try {
+    $entry = $container->get($id);
+} catch (NotFoundExceptionInterface $e) {
+    // Since the requested entry DOES exist, a NotFoundExceptionInterface means that the container is misconfigured and a dependency is missing.
 }
 ```
-
-With this rule in place, a user of a container can safely know that a `NotFoundExceptionInterface` means the identifier he provided to the `get` method is missing, and not that some dependency is missing.
 
 8. Implementations
 ------------------
@@ -391,5 +385,5 @@ Are listed here all people that contributed in the discussions or votes (on cont
 1. <a name="link_statistical_analysis"></a>[Statistical analysis of existing containers method names](https://gist.github.com/mnapoli/6159681)
 1. <a name="link_method_and_parameters_details"></a>[Discussion about the method names and parameters](https://github.com/container-interop/container-interop/issues/6)
 1. <a name="link_base_exception_usefulness"></a>[Discussion about the usefulness of the base exception](https://groups.google.com/forum/#!topic/php-fig/_vdn5nLuPBI)
-1. <a name="link_not_found_behaviour"></a>[Discussion about the `NotFoundExceptionInterface` structure](https://github.com/container-interop/container-interop/issues/37)
+1. <a name="link_not_found_behaviour"></a>[Discussion about the `NotFoundExceptionInterface`](https://groups.google.com/forum/#!topic/php-fig/I1a2Xzv9wN8)
 1. <a name="link_get_optional_parameters"></a>Discussion about get optional parameters [in container-interop](https://github.com/container-interop/container-interop/issues/6) and on the [PHP-FIG mailing list](https://groups.google.com/forum/#!topic/php-fig/zY6FAG4-oz8)
