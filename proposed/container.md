@@ -39,21 +39,18 @@ An entry identifier is any PHP-legal string of at least one character that uniqu
 - `has` takes one unique parameter: an entry identifier, which MUST be a string.
   `has` MUST return `true` if an entry identifier is known to the container and `false` if it is not.
   `has($id)` returning true does not mean that `get($id)` will not throw an exception.
-  It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
 
 ### 1.2 Exceptions
 
 Exceptions directly thrown by the container SHOULD implement the
 [`Psr\Container\ContainerExceptionInterface`](#container-exception).
 
-A call to the `get` method with a non-existing id MUST throw a
-[`Psr\Container\NotFoundExceptionInterface`](#not-found-exception).
+A call to the `get($id)` MUST throw a [`Psr\Container\NotFoundExceptionInterface`](#not-found-exception) if and only 
+if `has($id)` returns `false`.
 
-A call to `get` can trigger additional calls to `get` (to fetch the dependencies).
-If one of those dependencies is missing, the `NotFoundExceptionInterface` triggered by the
-inner `get` call SHOULD NOT bubble out. Instead, it should be wrapped in an exception 
-implementing the `ContainerExceptionInterface` that does not implement the 
-`NotFoundExceptionInterface`.
+A call to `get` can trigger additional calls to `get` (to fetch the dependencies). If `has($id)` returns `true` but 
+one of the dependencies of the entry `$id` is missing, `get($id)` MUST throw a 
+[`Psr\Container\MissingDependencyExceptionInterface`](#missing-dependency-exception).
 
 ### 1.3 Recommended usage
 
@@ -142,5 +139,26 @@ namespace Psr\Container;
  */
 interface NotFoundExceptionInterface extends ContainerExceptionInterface
 {
+}
+~~~
+
+<a name="missing-dependency-exception"></a>
+### 2.3. `Psr\Container\MissingDependencyExceptionInterface`
+
+~~~php
+<?php
+namespace Psr\Container;
+
+/**
+ * An entry was found in the container but one of the dependencies of this entry is missing.
+ */
+interface MissingDependencyExceptionInterface extends ContainerExceptionInterface
+{
+    /**
+     * Returns the identifier that is missing.
+     * 
+     * @return string 
+     */
+    public function getMissingIdentifier();
 }
 ~~~
