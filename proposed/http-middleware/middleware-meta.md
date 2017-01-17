@@ -32,7 +32,7 @@ provides a number of benefits:
 ## 3.1 Goals
 
 * Create a middleware interface that uses HTTP Messages.
-* Provide a suggested interface for middleware stack containers.
+* Provide a suggested interface for middleware containers.
 * Ensure that middleware will not be tied to a specific implementation of HTTP Messages.
 * Implement a middleware signature that is based on best practices.
 
@@ -171,8 +171,8 @@ that are based around StackPHP.
 The double pass approach is much newer but has already been widely adopted by
 early adopters of HTTP Messages.
 
-5. `DelegateInterface`
--------------------
+5. `RequestHandlerInterface`
+----------------------------
 
 The `$next` argument is a callable in most existing middleware systems. However using
 an interface allows to improve type safety and IDE support.
