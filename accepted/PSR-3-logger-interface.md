@@ -66,9 +66,10 @@ Users of loggers are referred to as `user`.
 
   ~~~php
   <?php
+ 
   /**
-   * Interpolates context values into the message placeholders.
-   */
+     * Interpolates context values into the message placeholders.
+     */
   function interpolate($message, array $context = array())
   {
       // build a replacement array with braces around the context keys
