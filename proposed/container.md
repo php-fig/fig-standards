@@ -109,7 +109,7 @@ interface ContainerInterface
 ~~~
 
 <a name="container-exception"></a>
-### 2.2. `Psr\Container\ContainerExceptionInterface`
+### 3.2. `Psr\Container\ContainerExceptionInterface`
 
 ~~~php
 <?php
@@ -124,7 +124,7 @@ interface ContainerExceptionInterface
 ~~~
 
 <a name="not-found-exception"></a>
-### 2.3. `Psr\Container\NotFoundExceptionInterface`
+### 3.3. `Psr\Container\NotFoundExceptionInterface`
 
 ~~~php
 <?php
