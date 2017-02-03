@@ -117,8 +117,8 @@ PHP [keywords][] MUST be in lower case.
 The PHP types and keywords `array`, `int`, `true`, `object`, `float`, `false`, `mixed`,
 `bool`, `null`, `numeric`, `string`, `void` and `resource` MUST be in lower case.
 
-Short form of type keywords MUST be used in both code and documentation blocks i.e.
-`bool` instead of `boolean`, `int` instead of `integer` etc.
+Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
+`int` instead of `integer` etc.
 
 3. Declare Statements, Namespace, and Use Declarations
 --------------------------------------------

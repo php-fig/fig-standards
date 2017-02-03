@@ -1,5 +1,5 @@
-PSR-Simple-Cache Meta Document
-==============================
+PSR-16 Meta Document
+====================
 
 1. Summary
 ----------
@@ -24,11 +24,9 @@ standardized layer of simplicity on top of the existing PSR-6 interfaces.
 
 ### 3.1 Goals
 
-* A simple interface for basic cache operations.
+* A simple interface for cache operations.
 * Basic support for operations on multiple keys for performance (round-trip-time)
   reasons.
-* Support for atomic counters which are essential to implement security features
-  like login-attempt counters and overall counting things in high a concurrency environment.
 * Providing an adapter class that turns a PSR-6 implementation into a
   PSR-Simple-Cache one.
 * It should be possible to expose both caching PSRs from a caching library.
@@ -74,7 +72,8 @@ For being an early reviewer
 6. Votes
 --------
 
-* **Entrance Vote: **  ADD LINK HERE
+* **Entrance Vote:**  https://groups.google.com/d/topic/php-fig/vyQTKHS6pJ8/discussion
+* **Acceptance Vote:**  https://groups.google.com/d/msg/php-fig/A8e6GvDRGIk/HQBJGEhbDQAJ
 
 
 7. Relevant Links
