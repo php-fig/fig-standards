@@ -47,14 +47,6 @@ reviewers:
             files:
                 - "proposed/extended-coding-style-guide*"
     -
-        name: cache
-        required: 1
-        teams:
-            - psr-16
-        conditions:
-            files:
-                - "proposed/simplecache*"
-    -
         name: security
         required: 1
         teams:
@@ -78,14 +70,6 @@ reviewers:
         conditions:
             files:
                 - "proposed/container*"
-    -
-        name: link
-        required: 1
-        teams:
-            - psr-13
-        conditions:
-            files:
-                - "proposed/links*"
     -
         name: event
         required: 1
