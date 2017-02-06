@@ -146,7 +146,7 @@ with one notable exception.
 [Guzzle middleware][guzzle-middleware] is focused on outgoing (client) requests
 and uses this signature:
 
-```
+```php
 function (RequestInterface $request, array $options): ResponseInterface
 ```
 
