@@ -1,5 +1,5 @@
-HTTP Server Middleware
-======================
+HTTP Server Middleware Meta Document
+====================================
 
 1. Summary
 ----------
@@ -83,10 +83,10 @@ request and response being passed to the middleware.
 
 #### 4.1.1 Projects Using Double Pass
 
-* [mindplay/middleman](https://github.com/mindplay-dk/middleman/blob/1.0.0/src/MiddlewareInterface.php#L24)
-* [relay/relay](https://github.com/relayphp/Relay.Relay/blob/1.0.0/src/MiddlewareInterface.php#L24)
-* [slim/slim](https://github.com/slimphp/Slim/blob/3.4.0/Slim/MiddlewareAwareTrait.php#L66-L75)
-* [zendframework/zend-stratigility](https://github.com/zendframework/zend-stratigility/blob/1.0.0/src/MiddlewarePipe.php#L69-L79)
+* [mindplay/middleman v1](https://github.com/mindplay-dk/middleman/blob/1.0.0/src/MiddlewareInterface.php#L24)
+* [relay/relay v1](https://github.com/relayphp/Relay.Relay/blob/1.0.0/src/MiddlewareInterface.php#L24)
+* [slim/slim v3](https://github.com/slimphp/Slim/blob/3.4.0/Slim/MiddlewareAwareTrait.php#L66-L75)
+* [zendframework/zend-stratigility v1](https://github.com/zendframework/zend-stratigility/blob/1.0.0/src/MiddlewarePipe.php#L69-L79)
 
 #### 4.1.2 Middleware Implementing Double Pass
 
@@ -181,7 +181,7 @@ community for many years. This is most evident with the large number of packages
 that are based around StackPHP.
 
 The double pass approach is much newer but has been almost universally used by
-early adopters of HTTP Messages.
+early adopters of PSR-7 (HTTP Messages).
 
 ### 4.4 Chosen Approach
 
@@ -256,8 +256,9 @@ following were commonly used:
 [DispatchableInterface]: https://github.com/zendframework/zend-stdlib/blob/980ce463c29c1a66c33e0eb67961bba895d0e19e/src/DispatchableInterface.php
 
 We chose to allow a forwards-compatible approach for such classes to repurpose
-themselves as middleware, and, as such, needed to choose a name not in common
-usage. As such, we chose `process`, to indicate _processing_ a request.
+themselves as middleware (or middleware compatible with this specification),
+and, as such, needed to choose a name not in common usage. As such, we chose
+`process`, to indicate _processing_ a request.
 
 #### Why is a server request required?
 
@@ -269,7 +270,7 @@ server request interface, external requests are typically handled asynchronously
 and would typically return a [promise][promises] of a response. (This is primarily
 due to the fact that multiple requests can be made in parallel and processed as
 they are returned.) It is outside the scope of this proposal to address the needs
-of asynchronous request/response life cycle.
+of asynchronous request/response life cycles.
 
 Attempting to define client middleware would be premature at this point. Any future
 proposal that is focused on client side request processing should have the opportunity
@@ -313,10 +314,11 @@ return a response.
 
 #### Why does the delegate conflict with middleware?
 
-Both the middleware and delegate interface define a `process` method to discourage
-misuse of middleware as delegates.
+Both the middleware and delegate interface define a `process` method to
+discourage misuse of middleware as delegates.
 
-The implementation of delegate should be defined within middleware dispatching systems.
+The implementation of the delegate should be defined within middleware
+dispatching systems.
 
 6. People
 ---------
