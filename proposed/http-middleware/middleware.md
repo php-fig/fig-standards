@@ -1,8 +1,8 @@
-HTTP Middleware
-===============
+HTTP Server Middleware
+======================
 
-This document describes a common standard for HTTP middleware components using
-HTTP Messages defined by [PSR-7](http://www.php-fig.org/psr/psr-7/).
+This document describes a common standard for HTTP server middleware components
+using HTTP Messages defined by [PSR-7](http://www.php-fig.org/psr/psr-7/).
 
 HTTP middleware has been an important concept on other web development platforms
 for a good number of years, and since the introduction of a formal HTTP Messages
@@ -10,6 +10,9 @@ standard has been growing increasingly popular with web frameworks.
 
 The interfaces described in this document are abstractions for HTTP middleware
 and the containers that are used to process HTTP requests.
+
+_**Note:** Any references to "middleware" in this document are specific to
+**server middleware**._
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
