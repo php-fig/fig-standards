@@ -235,11 +235,29 @@ and a delegate and must return a response. The middleware may:
 #### Why doesn't middleware use `__invoke`?
 
 Doing so would conflict with existing middleware that implements the double-pass
-approach and may want to implement the middleware interface.
+approach and may want to implement the middleware interface for purposes of
+forwards compatibility with this specification.
 
-In addition, classes that define `__invoke` can be type hinted as `callable`,
-which results in less strict typing. This is generally undesirable, especially
-when the `__invoke` method uses strict typing.
+In addition, classes that define `__invoke` can be more loosely type hinted as
+`callable`, which results in less strict typing. This is generally undesirable,
+especially when the `__invoke` method uses strict typing.
+
+#### Why the name `process()`?
+
+We reviewed a number of existing MVC and middleware frameworks to determine
+what method(s) each defined for handling incoming requests. We found the
+following were commonly used:
+
+- `__invoke` (within middleware systems, such as Slim, Expressive, Relay, etc.)
+- `handle` (in particular, software derived from Symfony's [HttpKernel][HttpKernel])
+- `dispatch` (Zend Framework's [DispatchableInterface][DispatchableInterface])
+
+[HttpKernel]: https://symfony.com/doc/current/components/http_kernel.html
+[DispatchableInterface]: https://github.com/zendframework/zend-stdlib/blob/980ce463c29c1a66c33e0eb67961bba895d0e19e/src/DispatchableInterface.php
+
+We chose to allow a forwards-compatible approach for such classes to repurpose
+themselves as middleware, and, as such, needed to choose a name not in common
+usage. As such, we chose `process`, to indicate _processing_ a request.
 
 #### Why is a server request required?
 
