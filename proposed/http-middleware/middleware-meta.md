@@ -1,8 +1,6 @@
-HTTP Server Middleware Meta Document
-====================================
+# HTTP Server Middleware Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 The purpose of this PSR is to provide an interface that defines the formal
 method signature for HTTP Server Middleware ("middleware") that is compatible
@@ -13,8 +11,7 @@ _**Note:** Any references to "middleware" in this document are specific to
 
 [psr7]: http://www.php-fig.org/psr/psr-7/
 
-2. Why Bother?
---------------
+## 2. Why Bother?
 
 The HTTP Messages specification does not contain any reference to HTTP Middleware.
 
@@ -35,8 +32,7 @@ provides a number of benefits:
 [pipeline]: https://en.wikipedia.org/wiki/Pipeline_(computing)
 [stackphp]: http://stackphp.com/
 
-3. Scope
---------
+## 3. Scope
 
 ### 3.1 Goals
 
@@ -50,8 +46,7 @@ provides a number of benefits:
 * Attempting to define interfaces for client/asynchronous middleware.
 * Attempting to define the mechanism by which HTTP responses are created.
 
-4. Approaches
--------------
+## 4. Approaches
 
 There are currently two common approaches to middleware that use HTTP Messages.
 
@@ -218,8 +213,7 @@ being passed implements a middleware signature, which reduces runtime safety.
 
 **Due to these significant issues the lambda approach has been choosen for this proposal.**
 
-5. Design Decisions
--------------------
+## 5. Design Decisions
 
 ### 5.1 Middleware Design
 
@@ -324,8 +318,7 @@ discourage misuse of middleware as delegates.
 The implementation of the delegate should be defined within middleware
 dispatching systems.
 
-6. People
----------
+## 6. People
 
 ### 6.1 Editor(s)
 
@@ -341,14 +334,12 @@ dispatching systems.
 * Rasmus Schultz, <rasmus@mindplay.dk>
 * Matthew Weier O'Phinney, <mweierophinney@gmail.com>
 
-7. Votes
---------
+## 7. Votes
 
 * [Entrance Vote](https://groups.google.com/d/msg/php-fig/v9AijALWJhI/04XCwqgIEAAJ)
 * **Acceptance Vote:** _(not yet taken)_
 
-8. Relevant Links
------------------
+## 8. Relevant Links
 
 _**Note:** Order descending chronologically._
 
@@ -357,7 +348,6 @@ _**Note:** Order descending chronologically._
 * [PHP-FIG discussion of FrameInterface](https://groups.google.com/d/msg/php-fig/V12AAcT_SxE/aRXmNnIVCwAJ)
 * [PHP-FIG discussion about client vs server side middleware](https://groups.google.com/d/msg/php-fig/vBk0BRgDe2s/GTaT0yKNBgAJ)
 
-9. Errata
----------
+## 9. Errata
 
 ...
