@@ -292,7 +292,7 @@ dispatcher that uses middleware implementing `MiddlewareInterface`.
 The term "delegate" means something designated to act for or represent another.
 In terms of middleware design, a delegate is called upon by middleware when the
 middleware is unable to handle the request itself; the delegate then processes
-the request to return a response.
+the request _for the original middleware_ in order to return a response.
 
 #### Why isn't the delegate a `callable`?
 
