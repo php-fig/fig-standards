@@ -309,8 +309,12 @@ define `$next` as a `callable`, which we note was undesirable for purposes of
 this specification in the previous section.
 
 Additionally, since we are defining an object, we chose to use a noun instead of
-a verb to name the interface. The delegate then _processes_ the request to
-return a response.
+a verb to name the interface.
+
+Further, we did not choose the term `next` for the action delegates invoke, as
+that verb implies a queue or stack. The delegate is not required to implement
+either pattern internally in order to do its work; its only job is to _process_
+the request to return a response.
 
 #### Why does the delegate conflict with middleware?
 
