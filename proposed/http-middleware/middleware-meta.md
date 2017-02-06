@@ -286,12 +286,30 @@ The `DelegateInterface` defines a single method that accepts a request and
 returns a response. The delegate interface must be implemented by any middleware
 dispatcher that uses middleware implementing `MiddlewareInterface`.
 
+#### Why the term "delegate"?
+
+The term "delegate" means something designated to act for or represent another.
+In terms of middleware design, a delegate is called upon by middleware when the
+middleware is unable to handle the request itself; the delegate then processes
+the request to return a response.
+
 #### Why isn't the delegate a `callable`?
 
 Using an interface type hint improves runtime safety and IDE support.
 
 _See "discussion of FrameInterface" in [relevant links](#8-relevant-links) for
 additional information._
+
+#### Why not the term `$next`?
+
+Several existing middleware libraries use the term `$next` instead of
+`$delegate`. `$next` implies an action: "Next, please!" As such, these libraries
+define `$next` as a `callable`, which we note was undesirable for purposes of
+this specification in the previous section.
+
+Additionally, since we are defining an object, we chose to use a noun instead of
+a verb to name the interface. The delegate then _processes_ the request to
+return a response.
 
 #### Why does the delegate conflict with middleware?
 
