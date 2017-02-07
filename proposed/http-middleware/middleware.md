@@ -47,7 +47,7 @@ An HTTP middleware dispatcher is an object that holds multiple middleware
 components that can be used to process one or more requests in sequence.
 
 The middleware dispatcher MUST pass the request and a delegate to each
-middleware component that it executes. The delegate MUST be able to execute
+middleware for further processing. The delegate MUST be able to dispatch
 the next available middleware or if no more middleware is available, create a
 default response.
 
