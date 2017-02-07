@@ -301,7 +301,7 @@ additional information._
 
 Classes that define `__invoke` can be more loosely type hinted as
 `callable`, which results in less strict typing. This is generally undesirable,
-especially when the `__invoke` method uses strict typing.
+especially when the method uses strict typing.
 
 #### Why does the delegate conflict with middleware?
 
