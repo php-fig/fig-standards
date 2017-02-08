@@ -31,7 +31,7 @@ condition that will prevent an infinite loop.  For example, an object MAY be
 configured to only allow up to 3 mutual hugs, after which it will break the hug
 chain and return.
 
-4. An object whose mayHug() method is invoked MUST return a boolean representing
+4. An object whose willHug() method is invoked MUST return a boolean representing
 its current willingness to engage in a hug with the Huggable passed as the first
 parameter. However, the return value is not a guarantee that future invocations
 will return the same result.
