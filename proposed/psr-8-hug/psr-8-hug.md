@@ -22,7 +22,7 @@ This specification defines two interfaces, \Psr\Hug\Huggable and
 1. A Huggable object expresses affection and support for another object by invoking
 its hug() method, passing $this as the first parameter.
 
-2. An object whose hug() method is invoked MUST hug() the calling object back
+2. An object whose hug() method is invoked MAY hug() the calling object back
 at least once.
 
 3. Two objects that are engaged in a hug MAY continue to hug each other back for
@@ -31,7 +31,15 @@ condition that will prevent an infinite loop.  For example, an object MAY be
 configured to only allow up to 3 mutual hugs, after which it will break the hug
 chain and return.
 
-4. An object MAY take additional actions, including modifying state, when hugged.
+4. An object whose mayHug() method is invoked MUST return a boolean representing
+its current willingness to engage in a hug with the Huggable passed as the first
+parameter. However, the return value is not a guarantee that future invocations
+will return the same result.
+
+5. An object MUST NOT take additional actions or modify state when mayHug() is
+invoked.
+
+6. An object MAY take additional actions, including modifying state, when hugged.
 A common example is to increment an internal happiness or satisfaction counter.
 
 ### GroupHuggable objects
@@ -56,9 +64,21 @@ interface Huggable
 {
 
     /**
+     * Asks whether a hug will be reciprocated.
+     *
+     * Well-behaved Huggables MAY use this method to verify that their
+     * invocation of hug() will be handled by target object.
+     *
+     * @param Huggable $h
+     *   The object that desires a hug.
+     * @return boolean
+     */
+    public function willHug(Huggable $h);
+
+    /**
      * Hugs this object.
      *
-     * All hugs are mutual. An object that is hugged MUST in turn hug the other
+     * All hugs are mutual. An object that is hugged MAY in turn hug the other
      * object back by calling hug() on the first parameter. All objects MUST
      * implement a mechanism to prevent an infinite loop of hugging.
      *
@@ -83,7 +103,7 @@ interface GroupHuggable extends Huggable
   /**
    * Hugs a series of huggable objects.
    *
-   * When called, this object MUST invoke the hug() method of every object
+   * When called, this object MAY invoke the hug() method of every object
    * provided. The order of the collection is not significant, and this object
    * MAY hug each of the objects in any order provided that all are hugged.
    *
