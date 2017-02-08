@@ -36,7 +36,7 @@ its current willingness to engage in a hug with the Huggable passed as the first
 parameter. However, the return value is not a guarantee that future invocations
 will return the same result.
 
-5. An object MUST NOT take additional actions or modify state when mayHug() is
+5. An object MUST NOT take additional actions or modify state when willHug() is
 invoked.
 
 6. An object MAY take additional actions, including modifying state, when hugged.
