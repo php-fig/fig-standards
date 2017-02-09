@@ -306,27 +306,33 @@ try {
 
 At the time of writing, the following projects already implement and/or consume the `container-interop` version of the interface.
 
+### Implementors
+
 - [Acclimate](https://github.com/jeremeamia/acclimate-container)
-- [Alias-Container](https://github.com/thecodingmachine/alias-container)
 - [Aura.DI](https://github.com/auraphp/Aura.Di)
-- [Behat](https://github.com/Behat/Behat)
 - [dcp-di](https://github.com/estelsmith/dcp-di)
-- [interop.silex.di](https://github.com/thecodingmachine/interop.silex.di)
 - [League Container](https://github.com/thephpleague/container)
 - [Mouf](http://mouf-php.com)
-- [mindplay/middleman](https://github.com/mindplay-dk/middleman)
 - [Njasm Container](https://github.com/njasm/container)
 - [PHP-DI](http://php-di.org)
-- [PHP-DI Invoker](https://github.com/PHP-DI/Invoker)
 - [PimpleInterop](https://github.com/moufmouf/pimple-interop)
+- [XStatic](https://github.com/jeremeamia/xstatic)
+- [Zend ServiceManager](https://github.com/zendframework/zend-servicemanager)
+
+### Middleware
+- [Alias-Container](https://github.com/thecodingmachine/alias-container)
 - [Prefixer-Container](https://github.com/thecodingmachine/prefixer-container)
+
+### Consumers
+- [Behat](https://github.com/Behat/Behat)
+- [interop.silex.di](https://github.com/thecodingmachine/interop.silex.di)
+- [mindplay/middleman](https://github.com/mindplay-dk/middleman)
+- [PHP-DI Invoker](https://github.com/PHP-DI/Invoker)
 - [Prophiler](https://github.com/fabfuel/prophiler)
 - [Silly](https://github.com/mnapoli/silly)
 - [Slim](https://github.com/slimphp/Slim)
 - [Splash](http://mouf-php.com/packages/mouf/mvc.splash-common/version/8.0-dev/README.md)
-- [XStatic](https://github.com/jeremeamia/xstatic)
 - [Zend Expressive](https://github.com/zendframework/zend-expressive)
-- [Zend ServiceManager](https://github.com/zendframework/zend-servicemanager)
 
 This list is not comprehensive and should be only taken as an example showing that there is considerable interest in the PSR.
 
