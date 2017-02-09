@@ -467,6 +467,15 @@ class ClassName
     {
         // method body
     }
+
+    public function aVeryLongMethodNameWithReturnTypeHint(
+        ClassTypeHint $arg1,
+        &$arg2,
+        array $arg3 = []
+    ): string
+    {
+        // method body
+    }
 }
 ~~~
 
