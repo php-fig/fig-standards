@@ -238,10 +238,6 @@ Doing so would conflict with existing middleware that implements the double-pass
 approach and may want to implement the middleware interface for purposes of
 forwards compatibility with this specification.
 
-In addition, classes that define `__invoke` can be more loosely type hinted as
-`callable`, which results in less strict typing. This is generally undesirable,
-especially when the `__invoke` method uses strict typing.
-
 #### Why the name `process()`?
 
 We reviewed a number of existing MVC and middleware frameworks to determine
@@ -301,6 +297,20 @@ Using an interface type hint improves runtime safety and IDE support.
 _See "discussion of FrameInterface" in [relevant links](#8-relevant-links) for
 additional information._
 
+#### Why doesn't delegate use `__invoke`?
+
+Classes that define `__invoke` can be more loosely type hinted as
+`callable`, which results in less strict typing. This is generally undesirable,
+especially when the method uses strict typing.
+
+#### Why does the delegate conflict with middleware?
+
+Both the middleware and delegate interface define a `process` method to
+discourage misuse of middleware as delegates.
+
+The implementation of the delegate should be defined within middleware
+dispatching systems.
+
 #### Why not the term `$next`?
 
 Several existing middleware libraries use the term `$next` instead of
@@ -315,14 +325,6 @@ Further, we did not choose the term `next` for the action delegates invoke, as
 that verb implies a queue or stack. The delegate is not required to implement
 either pattern internally in order to do its work; its only job is to _process_
 the request to return a response.
-
-#### Why does the delegate conflict with middleware?
-
-Both the middleware and delegate interface define a `process` method to
-discourage misuse of middleware as delegates.
-
-The implementation of the delegate should be defined within middleware
-dispatching systems.
 
 6. People
 ---------
