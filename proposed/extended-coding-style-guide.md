@@ -434,6 +434,8 @@ list.
 
 Method and function argument scalar type hints MUST be lowercase.
 
+Opening brace MUST always be on a new line.
+
 ~~~php
 <?php
 namespace Vendor\Package;
@@ -451,10 +453,6 @@ Argument lists MAY be split across multiple lines, where each subsequent line
 is indented once. When doing so, the first item in the list MUST be on the
 next line, and there MUST be only one argument per line.
 
-When the argument list is split across multiple lines, the closing parenthesis
-and opening brace MUST be placed together on their own line with one space
-between them.
-
 ~~~php
 <?php
 namespace Vendor\Package;
@@ -465,7 +463,8 @@ class ClassName
         ClassTypeHint $arg1,
         &$arg2,
         array $arg3 = []
-    ) {
+    )
+    {
         // method body
     }
 }
