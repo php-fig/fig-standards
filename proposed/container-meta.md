@@ -307,7 +307,6 @@ try {
 At the time of writing, the following projects already implement and/or consume the `container-interop` version of the interface.
 
 ### Implementors
-
 - [Acclimate](https://github.com/jeremeamia/acclimate-container)
 - [Aura.DI](https://github.com/auraphp/Aura.Di)
 - [dcp-di](https://github.com/estelsmith/dcp-di)
