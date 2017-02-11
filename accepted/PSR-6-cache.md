@@ -1,4 +1,4 @@
-## Introduction
+# Caching Interface
 
 Caching is a common way to improve the performance of any project, making
 caching libraries one of the most common features of many frameworks and
