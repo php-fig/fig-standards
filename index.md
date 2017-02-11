@@ -59,7 +59,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | D      | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Vacant                  | Vacant            |
 | D      | 9   | [Security Advisories][psr9]          | Michael Hess                   | Korvin Szanto           | Larry Garfield    |
 | D      | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Larry Garfield          | Korvin Szanto     |
-| D      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Paul M. Jones           | Vacant            |
+| R      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Matthew Weier O'Phinney | Korvin Szanto     |
 | D      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Alexander Makarov       | Robert Deutz      |
 | A      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander    |
 | D      | 14  | [Event Manager][psr14]               | Chuck Reeves                   | Brian Retterer          | Roman Tsiupa      |
@@ -81,7 +81,7 @@ _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
-[psr11]: https://github.com/container-interop/fig-standards/blob/master/proposed/container.md
+[psr11]: https://github.com/php-fig/fig-standards/blob/master/proposed/container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
 [psr13]: /psr/psr-13/
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
