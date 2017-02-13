@@ -318,6 +318,7 @@ therefore would be willing to switch to a Container PSR as soon as it is availab
 - [Njasm Container](https://github.com/njasm/container)
 - [PHP-DI](http://php-di.org)
 - [PimpleInterop](https://github.com/moufmouf/pimple-interop)
+- [Ultra-Lite](https://github.com/ultra-lite/container)
 - [XStatic](https://github.com/jeremeamia/xstatic)
 
 ### Middlewares implementing `ContainerInterface`
