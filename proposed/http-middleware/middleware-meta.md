@@ -185,7 +185,7 @@ significant issues regarding implementation.
 
 The most severe is that passing an empty response has no guarantees that the
 response is in a usable state. This is further exacerbated by the fact that a
-middleware may modify the response before passing it for further dispatching.
+middleware may modify the response before passing it for further processing.
 
 Further compounding the problem is that there is no way to ensure that the
 response body has not been written to, which can lead to incomplete output or
@@ -224,7 +224,7 @@ and a delegate and must return a response. The middleware may:
   available middleware.
 - Evolve the response received from the delegate before returning it.
 - Create and return a response without passing it to the delegate, thereby
-  preventing any further middleware from executing.
+  preventing any further middleware from processing.
 
 #### Why doesn't middleware use `__invoke`?
 
@@ -235,7 +235,7 @@ forwards compatibility with this specification.
 #### Why the name `process()`?
 
 We reviewed a number of existing MVC and middleware frameworks to determine
-what method(s) each defined for handling incoming requests. We found the
+what method(s) each defined for processing incoming requests. We found the
 following were commonly used:
 
 - `__invoke` (within middleware systems, such as Slim, Expressive, Relay, etc.)
@@ -256,7 +256,7 @@ To make it clear that the middleware can only be used in a synchronous, server
 side context.
 
 While not all middleware will need to use the additional methods defined by the
-server request interface, external requests are typically handled asynchronously
+server request interface, external requests are typically processed asynchronously
 and would typically return a [promise][promises] of a response. (This is primarily
 due to the fact that multiple requests can be made in parallel and processed as
 they are returned.) It is outside the scope of this proposal to address the needs
@@ -281,7 +281,7 @@ dispatcher that uses middleware implementing `MiddlewareInterface`.
 
 The term "delegate" means something designated to act for or represent another.
 In terms of middleware design, a delegate is called upon by middleware when the
-middleware is unable to handle the request itself; the delegate then processes
+middleware is unable to process the request itself; the delegate then processes
 the request _for the original middleware_ in order to return a response.
 
 #### Why isn't the delegate a `callable`?
