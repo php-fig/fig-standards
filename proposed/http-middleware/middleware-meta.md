@@ -320,14 +320,6 @@ that verb implies a queue or stack. The delegate is not required to implement
 either pattern internally in order to do its work; its only job is to _process_
 the request to return a response.
 
-#### Why does the delegate conflict with middleware?
-
-Both the middleware and delegate interface define a `process` method to
-discourage misuse of middleware as delegates.
-
-The implementation of the delegate should be defined within middleware
-dispatching systems.
-
 ## 6. People
 
 ### 6.1 Editor(s)
