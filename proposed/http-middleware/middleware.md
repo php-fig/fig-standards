@@ -33,23 +33,19 @@ Middleware using this standard MUST implement the following interface:
 
 - `Psr\Http\ServerMiddleware\MiddlewareInterface`
 
-Middleware dispatching systems using this standard MUST implement the following
-interface:
-
-- `Psr\Http\ServerMiddleware\DelegateInterface`
-
 Legacy middleware implementing a double pass approach MUST be wrapped using an
 object that implements the `MiddlewareInterface`.
 
-### 1.1 Dispatchers
+### 1.1 Dispatchers and Delegates
 
-An HTTP middleware dispatcher is an object that holds multiple middleware
-components that can be used to process one or more requests in sequence.
+An HTTP middleware dispatcher is a component that is able to process server
+requests by dispatching middlewares. In order to dispatch a middleware the
+dispatcher MUST pass the request and a delegate to the middleware for further
+processing.
 
-The middleware dispatcher MUST pass the request and a delegate to each
-middleware for further processing. The delegate MUST be able to dispatch
-the next available middleware or if no more middleware is available, create a
-default response.
+Delegate using this standard MUST implement the following interface:
+
+- `Psr\Http\ServerMiddleware\DelegateInterface`
 
 ### 1.2 Generating Responses
 
