@@ -178,7 +178,7 @@ class FooBar
 
 ~~~
 
-Compound namespaces with a depth of more than two MUST not be used. Therefore the
+Compound namespaces with a depth of two or more MUST NOT be used. Therefore the
 following is the maximum compounding depth allowed:
 ~~~php
 <?php
