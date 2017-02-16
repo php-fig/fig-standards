@@ -314,7 +314,9 @@ At the time of writing, the following projects already implement and/or consume 
 - [Mouf](http://mouf-php.com)
 - [Njasm Container](https://github.com/njasm/container)
 - [PHP-DI](http://php-di.org)
+- [Picotainer](https://github.com/thecodingmachine/picotainer)
 - [PimpleInterop](https://github.com/moufmouf/pimple-interop)
+- [Ultra-Lite](https://github.com/ultra-lite/container)
 - [XStatic](https://github.com/jeremeamia/xstatic)
 - [Zend ServiceManager](https://github.com/zendframework/zend-servicemanager)
 
