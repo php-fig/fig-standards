@@ -363,6 +363,22 @@ class ClassName
 }
 ~~~
 
+When using the `insteadof` and `as` operators they must be used as follows taking
+note of indentation, spacing and new lines.
+
+
+~~~php
+<?php
+
+class Talker {
+    use A, B, C {
+        B::smallTalk insteadof A;
+        A::bigTalk insteadof C;
+        C::mediumTalk as FooBar;
+    }
+}
+~~~
+
 ### 4.3 Properties and Constants
 
 Visibility MUST be declared on all properties.
@@ -736,8 +752,9 @@ try {
 -----------
 All binary and ternary (but not unary) operators MUST be preceded and followed by at least
 one space. This includes all [arithmetic][], [comparison][], [assignment][], [bitwise][],
-[logical][] (excluding `!` which is unary), [string concatenation][], [type][] operators, 
-and the single pipe operator (e.g. `ExceptionType1 | ExceptionType2 $e`).
+[logical][] (excluding `!` which is unary), [string concatenation][], [type][] operators,
+trait operators (`insteadof` and `as`), and the single pipe operator(e.g.
+`ExceptionType1 | ExceptionType2 $e`).
 
 Other operators are left undefined.
 
