@@ -82,9 +82,9 @@ each word is capitalised including the very first letter.
 
 ### 2.2 Files
 
-All PHP files MUST use the Unix LF (linefeed), and only LF line ending.
+All PHP files MUST use the Unix LF (linefeed) line ending only.
 
-All PHP files MUST end with a single line, containing only a single newline (LF) character.
+All PHP files MUST end with a non-blank line, terminated with a single LF.
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
@@ -181,7 +181,7 @@ class FooBar
 
 ~~~
 
-Compound namespaces with a depth of more than two MUST not be used. Therefore the
+Compound namespaces with a depth of more than two MUST NOT be used. Therefore the
 following is the maximum compounding depth allowed:
 ~~~php
 <?php
@@ -495,7 +495,7 @@ class ClassName
 ~~~
 
 When you have a return type declaration present there MUST be one space after
-the colon with followed by the type declaration. The colon and declaration MUST be
+the colon followed by the type declaration. The colon and declaration MUST be
 on the same line as the argument list closing parentheses with no spaces between
 the two characters. The declaration keyword (e.g. string) MUST be lowercase.
 
