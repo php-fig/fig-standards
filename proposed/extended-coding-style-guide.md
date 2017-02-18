@@ -145,6 +145,9 @@ When the opening `<?php` tag is on the first line of the file, it MUST be on its
 own line with no other statements unless it is a file containing markup outside of PHP
 opening and closing tags.
 
+Use declarations [Import statements] MUST never begin with a leading backslash as they
+must always be fully qualified.
+
 The following example illustrates a complete list of all blocks:
 
 ~~~php
@@ -208,7 +211,7 @@ the strict types declaration and closing tag.
 
 For example:
 ~~~php
-<?php declare(strict_types=1); ?>
+<?php declare(strict_types=1) ?>
 <html>
 <body>
     <?php
@@ -218,7 +221,8 @@ For example:
 </html>
 ~~~
 
-Declare statements MUST contain no spaces and MUST look like `declare(strict_types=1);`.
+Declare statements MUST contain no spaces and MUST be exactly `declare(strict_types=1)`
+(with an optional semi-colon terminator).
 
 Block declare statements are allowed and MUST be formatted as below. Note position of
 braces and spacing:
@@ -233,7 +237,7 @@ declare(ticks=1) {
 
 The term "class" refers to all classes, interfaces, and traits.
 
-Any closing brace must not be followed by any comment or statement on the
+Any closing brace MUST NOT be followed by any comment or statement on the
 same line.
 
 When instantiating a new class, parenthesis MUST always be present even when
@@ -359,9 +363,28 @@ class ClassName
 }
 ~~~
 
-### 4.3 Properties
+When using the `insteadof` and `as` operators they must be used as follows taking
+note of indentation, spacing and new lines.
+
+
+~~~php
+<?php
+
+class Talker {
+    use A, B, C {
+        B::smallTalk insteadof A;
+        A::bigTalk insteadof C;
+        C::mediumTalk as FooBar;
+    }
+}
+~~~
+
+### 4.3 Properties and Constants
 
 Visibility MUST be declared on all properties.
+
+Visibility MUST be declared on all constants if your project PHP minimum
+version supports constant visibilities (PHP 7.1 or later).
 
 The `var` keyword MUST NOT be used to declare a property.
 
@@ -484,7 +507,33 @@ namespace Vendor\Package;
 
 class ReturnTypeVariations
 {
-    public function functionName($arg1, $arg2): string
+    public function functionName(int $arg1, $arg2): string
+    {
+        return 'foo';
+    }
+
+    public function anotherFunction(
+        string $foo,
+        string $bar,
+        int $baz
+    ): string {
+        return 'foo';
+    }
+}
+~~~
+
+In nullable type declarations there MUST not be a space between the question mark
+and the type.
+
+~~~php
+<?php
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+class ReturnTypeVariations
+{
+    public function functionName(?string $arg1, ?int $arg2): ?bool
     {
         return 'foo';
     }
@@ -703,7 +752,9 @@ try {
 -----------
 All binary and ternary (but not unary) operators MUST be preceded and followed by at least
 one space. This includes all [arithmetic][], [comparison][], [assignment][], [bitwise][],
-[logical][] (excluding `!` which is unary), [string concatenation][], and [type][] operators.
+[logical][] (excluding `!` which is unary), [string concatenation][], [type][] operators,
+trait operators (`insteadof` and `as`), and the single pipe operator (e.g.
+`ExceptionType1 | ExceptionType2 $e`).
 
 Other operators are left undefined.
 
