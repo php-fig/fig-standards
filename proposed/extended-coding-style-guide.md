@@ -359,9 +359,12 @@ class ClassName
 }
 ~~~
 
-### 4.3 Properties
+### 4.3 Properties and Constants
 
 Visibility MUST be declared on all properties.
+
+Visibility MUST be declared on all constants if your project PHP minimum
+version supports constant visibilities (PHP 7.1 or later).
 
 The `var` keyword MUST NOT be used to declare a property.
 
