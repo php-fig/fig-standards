@@ -491,8 +491,16 @@ namespace Vendor\Package;
 
 class ReturnTypeVariations
 {
-    public function functionName($arg1, $arg2): string
+    public function functionName(int $arg1, $arg2): string
     {
+        return 'foo';
+    }
+
+    public function anotherFunction(
+        string $foo,
+        string $bar,
+        int $baz
+    ): string {
         return 'foo';
     }
 }
