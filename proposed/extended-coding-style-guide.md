@@ -82,7 +82,7 @@ each word is capitalised including the very first letter.
 
 ### 2.2 Files
 
-All PHP files MUST use the Unix LF (linefeed) line ending.
+All PHP files MUST use the Unix LF (linefeed), and only LF line ending.
 
 All PHP files MUST end with a single line, containing only a single newline (LF) character.
 
