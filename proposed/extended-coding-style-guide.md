@@ -145,10 +145,13 @@ When the opening `<?php` tag is on the first line of the file, it MUST be on its
 own line with no other statements unless it is a file containing markup outside of PHP
 opening and closing tags.
 
+Use declarations [Import statements] MUST never begin with a leading backslash as they
+must always be fully qualified.
+
 The following example illustrates a complete list of all blocks:
 
 ~~~php
-<?php
+<?
 
 /**
  * This file contains an example of coding styles.
@@ -234,7 +237,7 @@ declare(ticks=1) {
 
 The term "class" refers to all classes, interfaces, and traits.
 
-Any closing brace must not be followed by any comment or statement on the
+Any closing brace MUST NOT be followed by any comment or statement on the
 same line.
 
 When instantiating a new class, parenthesis MUST always be present even when
