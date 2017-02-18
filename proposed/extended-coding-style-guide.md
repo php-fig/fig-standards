@@ -370,7 +370,8 @@ note of indentation, spacing and new lines.
 ~~~php
 <?php
 
-class Talker {
+class Talker
+{
     use A, B, C {
         B::smallTalk insteadof A;
         A::bigTalk insteadof C;
