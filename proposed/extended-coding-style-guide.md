@@ -151,7 +151,7 @@ must always be fully qualified.
 The following example illustrates a complete list of all blocks:
 
 ~~~php
-<?
+<?php
 
 /**
  * This file contains an example of coding styles.
