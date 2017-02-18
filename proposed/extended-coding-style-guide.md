@@ -120,7 +120,7 @@ The PHP types and keywords `array`, `int`, `true`, `object`, `float`, `false`, `
 Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
 `int` instead of `integer` etc.
 
-3. Declare Statements, Namespace, and Use Declarations
+3. Declare Statements, Namespace, and Import Statements
 --------------------------------------------
 
 The header of a PHP file may consist of a number of different blocks. If present,
@@ -131,9 +131,9 @@ not relevant may be omitted.
 * File-level docblock.
 * One or more declare statements.
 * The namespace declaration of the file.
-* One or more class-based `use` statements.
-* One or more function-based `use` statements.
-* One or more constant-based `use` statements.
+* One or more class-based `use` import statements.
+* One or more function-based `use` import statements.
+* One or more constant-based `use` import statements.
 * The remainder of the code in the file.
 
 When a file contains a mix of HTML and PHP, any of the above sections may still
@@ -145,7 +145,7 @@ When the opening `<?php` tag is on the first line of the file, it MUST be on its
 own line with no other statements unless it is a file containing markup outside of PHP
 opening and closing tags.
 
-Use declarations [Import statements] MUST never begin with a leading backslash as they
+Import statements MUST never begin with a leading backslash as they
 must always be fully qualified.
 
 The following example illustrates a complete list of all blocks:
@@ -314,7 +314,7 @@ class ClassName
 ~~~
 
 Each individual Trait that is imported into a class MUST be included
-one-per-line, and each inclusion MUST have its own `use` statement.
+one-per-line, and each inclusion MUST have its own `use` import statement.
 
 ~~~php
 <?php
@@ -332,8 +332,8 @@ class ClassName
 }
 ~~~
 
-When the class has nothing after the `use` declaration, the class
-closing brace MUST be on the next line after the `use` declaration.
+When the class has nothing after the `use` import statement, the class
+closing brace MUST be on the next line after the `use` import statement.
 
 ~~~php
 <?php
@@ -347,7 +347,7 @@ class ClassName
 }
 ~~~
 
-Otherwise it MUST have a blank line after the `use` declaration.
+Otherwise it MUST have a blank line after the `use` import statement.
 
 ~~~php
 <?php
