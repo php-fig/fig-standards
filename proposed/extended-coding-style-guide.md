@@ -208,7 +208,7 @@ the strict types declaration and closing tag.
 
 For example:
 ~~~php
-<?php declare(strict_types=1); ?>
+<?php declare(strict_types=1) ?>
 <html>
 <body>
     <?php
@@ -218,7 +218,8 @@ For example:
 </html>
 ~~~
 
-Declare statements MUST contain no spaces and MUST look like `declare(strict_types=1);`.
+Declare statements MUST contain no spaces and MUST be exactly `declare(strict_types=1)`
+(with an optional semi-colon terminator).
 
 Block declare statements are allowed and MUST be formatted as below. Note position of
 braces and spacing:
