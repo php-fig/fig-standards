@@ -494,6 +494,24 @@ class ReturnTypeVariations
 }
 ~~~
 
+In nullable type declarations there MUST not be a space between the question mark
+and the type.
+
+~~~php
+<?php
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+class ReturnTypeVariations
+{
+    public function functionName(?string $arg1, ?int $arg2): ?bool
+    {
+        return 'foo';
+    }
+}
+~~~
+
 ### 4.6 `abstract`, `final`, and `static`
 
 When present, the `abstract` and `final` declarations MUST precede the
