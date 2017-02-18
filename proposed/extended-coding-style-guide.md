@@ -52,7 +52,7 @@ use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
 
 class Foo extends Bar implements FooInterface
 {
-    public function sampleFunction(int $a, int $b = null): array
+    public function sampleFunction(int $a, int $b = null) : array
     {
         if ($a === $b) {
             bar();
@@ -471,10 +471,34 @@ class ClassName
 }
 ~~~
 
-When you have a return type declaration present there MUST be one space after
+When you have a return type declaration present there MUST be one space before and after
 the colon with followed by the type declaration. The colon and declaration MUST be
 on the same line as the argument list closing parentheses with no spaces between
 the two characters. The declaration keyword (e.g. string) MUST be lowercase.
+If parameters span multiple lines and a return type declaration is present the opening
+brace MUST be on next line.
+
+~~~php
+<?php
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function someMethod() : string
+    {
+        // method body
+    }
+    
+    public function aVeryLongMethodName(
+        ClassTypeHint $arg1,
+        &$arg2,
+        array $arg3 = []
+    ) : array
+    {
+        // method body
+    }
+}
+~~~
 
 ~~~php
 <?php
