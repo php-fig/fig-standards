@@ -79,7 +79,6 @@ _**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
 [psr5]: https://github.com/phpDocumentor/fig-standards/tree/master/proposed
 [psr6]: /psr/psr-6/
 [psr7]: /psr/psr-7/
-[psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
 [psr11]: /psr/psr-11/
