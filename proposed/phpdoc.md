@@ -1220,7 +1220,7 @@ The @method allows a class to know which 'magic' methods are callable.
 
 #### Syntax
 
-    @method <static|> [name]([type] [parameter], [...])[: return type] [description]
+    @method [static] [name]([type] [parameter], [...])[: return type] [description]
 
 #### Description
 
