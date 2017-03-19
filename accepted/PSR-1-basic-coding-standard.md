@@ -42,6 +42,8 @@ interpreted as described in [RFC 2119].
 PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
 MUST NOT use the other tag variations.
 
+Starting with PHP `5.4` short echo tag `<?=` is always recognized and valid, regardless of the `short_open_tag` setting.
+
 ### 2.2. Character Encoding
 
 PHP code MUST use only UTF-8 without BOM.
