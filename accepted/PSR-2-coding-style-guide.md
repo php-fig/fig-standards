@@ -38,9 +38,6 @@ interpreted as described in [RFC 2119].
 - Opening braces for classes MUST go on the next line, and closing braces MUST
   go on the next line after the body.
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
-
 - Visibility MUST be declared on all properties and methods; `abstract` and
   `final` MUST be declared before the visibility; `static` MUST be declared
   after the visibility.
