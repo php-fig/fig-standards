@@ -89,7 +89,6 @@ request and response being passed to the middleware.
 * [akrabat/rka-ip-address-middleware](https://github.com/akrabat/rka-ip-address-middleware)
 * [akrabat/rka-scheme-and-host-detection-middleware](https://github.com/akrabat/rka-scheme-and-host-detection-middleware)
 * [bear/middleware](https://github.com/bearsunday/BEAR.Middleware)
-* [hannesvdvreken/psr7-middlewares](https://github.com/hannesvdvreken/psr7-middlewares)
 * [los/api-problem](https://github.com/Lansoweb/api-problem)
 * [los/los-rate-limit](https://github.com/Lansoweb/LosRateLimit)
 * [monii/monii-action-handler-psr7-middleware](https://github.com/monii/monii-action-handler-psr7-middleware)
