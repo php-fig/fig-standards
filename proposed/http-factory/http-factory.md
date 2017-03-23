@@ -90,22 +90,24 @@ interface ServerRequestFactoryInterface
     /**
      * Create a new server request.
      *
-     * The method and URI of the request SHOULD be derived from the given
-     * server parameters.
-     *
-     * If the method or URI parameter is passed, these values MUST be used
-     * instead of the server parameters.
-     *
-     * @param array $server
-     * @param string|null $method
-     * @param UriInterface|string|null $uri
-     *
-     * @throws \InvalidArgumentException
-     *  If no valid method or URI can be determined.
+     * @param string $method
+     * @param UriInterface|string $uri
      *
      * @return ServerRequestInterface
      */
-    public function createServerRequest(array $server, $method = null, $uri = null);
+    public function createServerRequest($method, $uri);
+
+    /**
+     * Create a new server request from server variables.
+     *
+     * @param array $server Typically $_SERVER or similar structure.
+     *
+     * @return ServerRequestInterface
+     *
+     * @throws \InvalidArgumentException
+     *  If no valid method or URI can be determined.
+     */
+    public function createServerRequestFromArray(array $server);
 }
 ```
 
