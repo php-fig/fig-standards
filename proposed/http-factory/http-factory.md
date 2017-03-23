@@ -139,12 +139,14 @@ interface StreamFactoryInterface
      * The file MUST be opened using the given mode, which may be any mode
      * supported by the `fopen` function.
      *
-     * @param string $file
+     * The `$filename` MAY be any string supported by `fopen()`.
+     *
+     * @param string $filename
      * @param string $mode
      *
      * @return StreamInterface
      */
-    public function createStreamFromFile($file, $mode = 'r');
+    public function createStreamFromFile($filename, $mode = 'r');
 
     /**
      * Create a new stream from an existing resource.
