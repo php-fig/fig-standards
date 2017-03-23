@@ -132,6 +132,9 @@ interface StreamFactoryInterface
      *
      * @param string $filename The filename or stream URI to use as basis of stream.
      * @param string $mode The mode with which to open the underlying filename/stream.
+     *
+     * @throws \RuntimeException If the file cannot be opened.
+     * @throws \InvalidArgumentException If the mode is invalid.
      */
     public function createStreamFromFile(string $filename, string $mode = 'r'): StreamInterface;
 
