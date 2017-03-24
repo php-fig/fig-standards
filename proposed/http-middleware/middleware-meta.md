@@ -222,7 +222,7 @@ and a delegate and must return a response. The middleware may:
 - Evolve the request before passing it to the delegate to execute the next
   available middleware.
 - Evolve the response received from the delegate before returning it.
-- Create and return a response without passing it to the delegate, thereby
+- Create and return a response without passing the request to the delegate, thereby
   preventing any further middleware from processing.
 
 #### Why doesn't middleware use `__invoke`?
