@@ -116,7 +116,7 @@ interface EventInterface
     /**
      * Indicate whether or not to stop propagating this event
      *
-     * @param  bool $flag
+     * @param bool $flag
      */
     public function stopPropagation($flag);
 
