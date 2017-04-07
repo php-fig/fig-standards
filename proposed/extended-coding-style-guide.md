@@ -101,7 +101,8 @@ be split into multiple subsequent lines of no more than 80 characters each.
 There MUST NOT be trailing whitespace at the end of lines.
 
 Blank lines MAY be added to improve readability and to indicate related
-blocks of code except where explictly forbidden.
+blocks of code except where explictly forbidden. These lines SHOULD preserve
+indentation whitespace.
 
 There MUST NOT be more than one statement per line.
 
