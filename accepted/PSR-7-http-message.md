@@ -39,7 +39,7 @@ This is the response body
 ~~~
 
 The first line is the "status line", and contains, in order, the HTTP protocol
-version, the HTTP status code, and a "reason phrase," a human-readable
+version, the HTTP status code, and a "reason phrase", a human-readable
 description of the status code. Like the request message, this is then
 followed by one or more HTTP headers, an empty line, and the message body.
 
