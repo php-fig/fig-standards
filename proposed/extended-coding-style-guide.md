@@ -7,8 +7,7 @@ interpreted as described in [RFC 2119][].
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-1. Overview
------------
+## 1. Overview
 
 This specification extends, expands and replaces [PSR-2][], the coding style guide and
 requires adherance to [PSR-1][], the basic coding standard.
@@ -70,8 +69,7 @@ class Foo extends Bar implements FooInterface
 }
 ~~~
 
-2. General
-----------
+## 2. General
 
 ### 2.1 Basic Coding Standard
 
@@ -120,8 +118,7 @@ The PHP types and keywords `array`, `int`, `true`, `object`, `float`, `false`, `
 Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
 `int` instead of `integer` etc.
 
-3. Declare Statements, Namespace, and Import Statements
---------------------------------------------
+## 3. Declare Statements, Namespace, and Import Statements
 
 The header of a PHP file may consist of a number of different blocks. If present,
 each of the blocks below MUST be separated by a single blank line, and MUST NOT contain
@@ -232,8 +229,7 @@ declare(ticks=1) {
 }
 ~~~
 
-4. Classes, Properties, and Methods
------------------------------------
+## 4. Classes, Properties, and Methods
 
 The term "class" refers to all classes, interfaces, and traits.
 
@@ -610,8 +606,7 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ~~~
 
-5. Control Structures
----------------------
+## 5. Control Structures
 
 The general style rules for control structures are as follows:
 
@@ -749,8 +744,8 @@ try {
 }
 ~~~
 
-6. Operators
------------
+## 6. Operators
+
 All binary and ternary (but not unary) operators MUST be preceded and followed by at least
 one space. This includes all [arithmetic][], [comparison][], [assignment][], [bitwise][],
 [logical][] (excluding `!` which is unary), [string concatenation][], [type][] operators,
@@ -771,8 +766,7 @@ if ($a === $b) {
 }
 ~~~
 
-7. Closures
------------
+## 7. Closures
 
 Closures MUST be declared with a space after the `function` keyword, and a
 space before and after the `use` keyword.
@@ -880,12 +874,10 @@ $foo->bar(
 );
 ~~~
 
-8. Anonymous Classes
---------------------
+## 8. Anonymous Classes
 
 Anonymous Classes MUST follow the same guidelines and principles as closures
 in the above section.
-
 
 ~~~php
 <?php
