@@ -303,3 +303,37 @@ _**Note:** Order descending chronologically._
 [1]: https://docs.google.com/spreadsheet/ccc?key=0Ak2JdGialLildEM2UjlOdnA4ekg3R1Bfeng5eGlZc1E#gid=0
 [2]: https://docs.google.com/spreadsheet/ccc?key=0AsMrMKNHL1uGdDdVd2llN1kxczZQejZaa3JHcXA3b0E#gid=0
 [3]: https://docs.google.com/spreadsheet/ccc?key=0AsMrMKNHL1uGdEE3SU8zclNtdTNobWxpZnFyR0llSXc#gid=1
+
+8. Errata
+----------
+
+### 8.1 Handling of incorrect DateTime values in expiresAt()
+
+The `CacheItemInterface::expiresAt()` method's `$expiration` parameter is untyped
+in the interface, but in the docblock is specified as `\DateTimeInterface`.  The
+intent is that either a `\DateTime` or `\DateTimeImmutable` object is allowed.
+However, `\DateTimeInterface` and `\DateTimeImmutable` were added in PHP 5.5, and
+the authors chose not to impose a hard syntactic requirement for PHP 5.5 on the
+specification.
+
+Despite that, any value that is not null or an object of `\DateTimeInterface` (either
+`\DateTime` or `\DateTimeImmutable`, or possibly others added to the language in
+the future) MUST be treated as an invalid syntax error.  Implementers are
+encouraged to actively reject values that do not implement that interface.
+
+Simulating a failed type check unfortunately varies between PHP versions and thus is not
+recommended.  Instead, implementors SHOULD throw an instance of `\Psr\Cache\InvalidArgumentException`.  
+The following sample code is recommended in order to enforce the type check on the expiresAt()
+method:
+
+```php
+
+class ExpiresAtInvalidParameterException implements Psr\Cache\InvalidArgumentException {}
+
+// ...
+
+if (!(null === $expiration || $expiration instanceof \DateTime || $expiration instanceof \DateTimeInterface)) {
+  $error = sprintf('Argument 1 passed to %s::expiresAt() must be an instance of DateTime or DateTimeImmutable, %s given', get_class($this), gettype($expiration));
+  throw new ExpiresAtInvalidParameterException($error);
+}
+```
