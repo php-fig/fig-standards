@@ -1,5 +1,5 @@
-Security Disclosure Meta Document
-=================================
+Security Reporting Process Meta Document
+========================================
 
 1. Summary
 ----------
