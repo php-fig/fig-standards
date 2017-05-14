@@ -65,6 +65,8 @@ Users of loggers are referred to as `user`.
   provided for reference purposes only:
 
   ~~~php
+  <?php
+ 
   /**
    * Interpolates context values into the message placeholders.
    */
