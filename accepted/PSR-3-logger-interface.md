@@ -76,7 +76,7 @@ Users of loggers are referred to as `user`.
       $replace = array();
       foreach ($context as $key => $val) {
           // check that the value can be casted to string
-          if (! is_array($val) && (! is_object($val) || method_exists($val, '__toString'))) {
+          if (!is_array($val) && (!is_object($val) || method_exists($val, '__toString'))) {
               $replace['{' . $key . '}'] = $val;
           }
       }
