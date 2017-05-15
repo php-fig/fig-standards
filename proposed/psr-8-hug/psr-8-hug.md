@@ -20,7 +20,7 @@ This specification defines two interfaces, \Psr\Hug\Huggable and
 ### Huggable objects
 
 1. A Huggable object expresses affection and support for another object by invoking
-its hug() method, passing $this as the first parameter.
+its own hug() method, passing the other object as the first parameter. 
 
 2. An object whose hug() method is invoked MUST hug() the calling object back
 at least once.
