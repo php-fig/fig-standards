@@ -265,7 +265,7 @@ class ClassName
 
 ### 4.4. Method Arguments
 
-In the argument list, there MUST NOT be a space before each comma, and there
+In the argument list, there MUST NOT be a space before each comma, and if not split across multiple lines, there
 MUST be one space after each comma.
 
 Method arguments with default values MUST go at the end of the argument
@@ -339,7 +339,7 @@ When making a method or function call, there MUST NOT be a space between the
 method or function name and the opening parenthesis, there MUST NOT be a space
 after the opening parenthesis, and there MUST NOT be a space before the
 closing parenthesis. In the argument list, there MUST NOT be a space before
-each comma, and there MUST be one space after each comma.
+each comma, and if not split across multiple lines, there MUST be one space after each comma.
 
 ~~~php
 <?php
@@ -505,7 +505,7 @@ or variable list, and there MUST NOT be a space before the closing parenthesis
 of the argument list or variable list.
 
 In the argument list and variable list, there MUST NOT be a space before each
-comma, and there MUST be one space after each comma.
+comma, and if not split across multiple lines, there MUST be one space after each comma.
 
 Closure arguments with default values MUST go at the end of the argument
 list.
