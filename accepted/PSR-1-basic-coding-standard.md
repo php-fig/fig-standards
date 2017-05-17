@@ -42,6 +42,13 @@ interpreted as described in [RFC 2119].
 PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
 MUST NOT use the other tag variations.
 
+The main opening PHP tag in a class/interface file MUST restrict access using
+the 'ACCESS_GRANTED' constant.
+
+```
+<?php defined('ACCESS_GRANTED') or die('No direct script access.');
+```
+
 ### 2.2. Character Encoding
 
 PHP code MUST use only UTF-8 without BOM.
