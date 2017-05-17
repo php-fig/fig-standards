@@ -171,3 +171,20 @@ or method-level.
 ### 4.3. Methods
 
 Method names MUST be declared in `camelCase()`.
+
+#### 4.3.1. Abbreviations in methods
+
+Method names MUST NOT contain abbreviations; they MUST be written out instead
+(e.g., `getTemplate()` vs. `getTpl()`).
+
+#### 4.3.2. Acronyms in methods
+
+Acronyms in method names SHOULD follow the letter casing of the more recent
+object-oriented extensions in PHP core; e.g., [DOM][], [PDOException][],
+[XMLReader][], [SimpleXMLElement][].
+
+[DOM]: http://php.net/manual/en/book.dom.php
+[PDOException]: http://php.net/manual/en/class.pdoexception.php
+[XMLReader]: http://php.net/manual/en/class.xmlreader.php
+[SimpleXMLElement]: http://php.net/manual/en/class.simplexmlelement.php
+
