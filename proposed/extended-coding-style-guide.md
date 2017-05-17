@@ -454,7 +454,7 @@ In the argument list, there MUST NOT be a space before each comma, and there
 MUST be one space after each comma.
 
 Method and function arguments with default values MUST go at the end of the argument
-list.
+list including objects that are allowed to be null.
 
 Method and function argument scalar type hints MUST be lowercase.
 
@@ -464,7 +464,7 @@ namespace Vendor\Package;
 
 class ClassName
 {
-    public function foo(int $arg1, &$arg2, $arg3 = [])
+    public function foo(int $arg1, &$arg2, $arg3 = [], MyClass $obj = null)
     {
         // method body
     }
