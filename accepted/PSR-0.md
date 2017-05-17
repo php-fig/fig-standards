@@ -66,7 +66,9 @@ function autoload($className)
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-    require $fileName;
+    if (file_exists($fileName)) {
+       require $fileName;
+    }
 }
 spl_autoload_register('autoload');
 ~~~
