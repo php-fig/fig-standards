@@ -627,6 +627,51 @@ The body of each structure MUST be enclosed by braces. This standardizes how
 the structures look, and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
+A compound boolean expression MAY be split across multiple lines, where each
+subsequent line is indented once. When doing so, the first item in the
+compound MUST be on the next line, and there MUST be only one boolean
+expression per line unless it is a compound boolean expression in which case
+it MUST be enclosed by parentheses. The logical operator MUST be placed at the
+beginning of the same line as the boolean expression. A single boolean
+expression being split across multiple lines (as might be the case with a
+compound boolean expression or a boolean expression containing an array) does
+not constitute splitting the compound boolean expression itself.
+
+When the compound boolean expression is split across multiple lines, the
+closing parenthesis and opening brace MUST be placed together on their own
+line with one space between them.
+
+~~~php
+if (
+    $foo
+    && $bar
+    || ($baz < 0 && false !== strpos('foobarbazqux', $qux))
+    || in_array($qux, [
+        'foo',
+        'bar',
+    ])
+    && $baz > 30
+) {
+    // body
+}
+~~~
+
+~~~php
+if ($foo && (
+    $bar > 30
+    || !$baz
+) && false !== strpos('foobarbazqux', $qux)) {
+    // body
+}
+
+if (in_array($foo, [
+    'foo',
+    'bar',
+]) && $baz) {
+    // body
+}
+~~~
+
 
 ### 5.1 `if`, `elseif`, `else`
 
@@ -769,6 +814,46 @@ if ($a === $b) {
 } elseif ($a > $b) {
     $variable = $foo ? 'foo' : 'bar';
 }
+~~~
+
+A compound boolean expression MAY be split across multiple lines, where each
+subsequent line is indented once. When doing so, the first item in the
+compound MUST be on the next line, and there MUST be only one boolean
+expression per line unless it is a compound boolean expression in which case
+it MUST be enclosed by parentheses. The logical operator MUST be placed at the
+beginning of the same line as the boolean expression. A single boolean
+expression being split across multiple lines (as might be the case with a
+compound boolean expression or a boolean expression containing an array) does
+not constitute splitting the compound boolean expression itself.
+
+When the compound boolean expression is split across multiple lines, it MUST
+be enclosed by parentheses. The opening parenthesis MUST be placed on the line
+immediately before the first boolean expression, and the closing parenthesis
+MUST be placed on the line immediately following the last boolean expression.
+
+~~~php
+$var1 = (
+    $foo
+    && $bar
+    || ($baz < 0 && false !== strpos('foobarbazqux', $qux))
+    || in_array($qux, [
+        'foo',
+        'bar',
+    ])
+    && $baz > 30
+);
+~~~
+
+~~~php
+$foo && (
+    $bar > 30
+    || !$baz
+) && var_dump('foobar');
+
+$var2 = in_array($foo, [
+    'foo',
+    'bar',
+]) && $baz;
 ~~~
 
 7. Closures
