@@ -70,11 +70,16 @@ class Foo extends Bar implements FooInterface
 {
     public function sampleMethod($a, $b = null)
     {
-        if ($a === $b) {
+        if ($a === $b)
+        {
             bar();
-        } elseif ($a > $b) {
+        }
+        elseif ($a > $b)
+        {
             $foo->bar($arg1);
-        } else {
+        }
+        else
+        {
             BazClass::bar($arg2, $arg3);
         }
     }
