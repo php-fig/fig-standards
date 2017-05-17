@@ -421,7 +421,7 @@ switch ($expr) {
     case 3:
     case 4:
         echo 'Third case, return instead of break';
-        return;
+        break;
     default:
         echo 'Default case';
         break;
