@@ -97,7 +97,7 @@ Code MUST follow all rules outlined in [PSR-1].
 
 All PHP files MUST use the Unix LF (linefeed) line ending.
 
-All PHP files MUST end with a single blank line.
+All PHP files MUST NOT end with a single blank line.
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
