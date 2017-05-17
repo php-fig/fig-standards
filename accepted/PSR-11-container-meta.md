@@ -317,6 +317,7 @@ At the time of writing, the following projects already implement and/or consume 
 - [PimpleInterop](https://github.com/moufmouf/pimple-interop)
 - [XStatic](https://github.com/jeremeamia/xstatic)
 - [Zend ServiceManager](https://github.com/zendframework/zend-servicemanager)
+- [Symfony](https://github.com/symfony/symfony)
 
 ### Middleware
 - [Alias-Container](https://github.com/thecodingmachine/alias-container)
@@ -332,6 +333,8 @@ At the time of writing, the following projects already implement and/or consume 
 - [Slim](https://github.com/slimphp/Slim)
 - [Splash](http://mouf-php.com/packages/mouf/mvc.splash-common/version/8.0-dev/README.md)
 - [Zend Expressive](https://github.com/zendframework/zend-expressive)
+- [Symfony](https://github.com/symfony/symfony)
+- [Twig](https://github.com/twigphp/twig)
 
 This list is not comprehensive and should be only taken as an example showing that there is considerable interest in the PSR.
 
