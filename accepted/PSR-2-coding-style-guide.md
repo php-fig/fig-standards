@@ -27,7 +27,7 @@ interpreted as described in [RFC 2119].
 
 - Code MUST follow a "coding style guide" PSR [[PSR-1]].
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- Code MUST use tabs for indenting, not 4 spaces.
 
 - There MUST NOT be a hard limit on line length; the soft limit MUST be 120
   characters; lines SHOULD be 80 characters or less.
