@@ -210,6 +210,16 @@ interface UploadedFileFactoryInterface
         $clientFilename = null,
         $clientMediaType = null
     );
+    
+    /**
+     * Create a normalized array tree of UploadedFileInterface from source array.
+     *
+     * @param array $source $_FILES like array data.
+     *
+     * @return array An array tree of UploadedFileInterface instances.
+     * @throws \InvalidArgumentException if an invalid structure is provided.
+     */
+    public function createUploadedFiles(array $source);
 }
 ```
 
