@@ -35,10 +35,10 @@ interpreted as described in [RFC 2119].
 - There MUST be one blank line after the `namespace` declaration, and there
   MUST be one blank line after the block of `use` declarations.
 
-- Opening braces for classes MUST go on the next line, and closing braces MUST
+- Opening braces for `classes` MUST go on the next line, and closing braces MUST
   go on the next line after the body.
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
+- Opening braces for `methods` MUST go on the next line, and closing braces MUST
   go on the next line after the body.
 
 - Visibility MUST be declared on all properties and methods; `abstract` and
