@@ -40,7 +40,9 @@ interpreted as described in [RFC 2119].
 ### 2.1. PHP Tags
 
 PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
-MUST NOT use the other tag variations.
+MUST NOT use the other tag variations. 
+
+The closing ?> tag may be omitted from the bottom of the file.
 
 ### 2.2. Character Encoding
 
