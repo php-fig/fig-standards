@@ -47,6 +47,8 @@ interpreted as described in [RFC 2119].
 
 - Control structure keywords MUST have one space after them; method and
   function calls MUST NOT.
+  
+- Equal signs for property declarations MUST have one space after and before.
 
 - Opening braces for control structures MUST go on the same line, and closing
   braces MUST go on the next line after the body.
