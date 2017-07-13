@@ -391,6 +391,8 @@ The `var` keyword MUST NOT be used to declare a property.
 
 There MUST NOT be more than one property declared per statement.
 
+There MUST be one space after and before the equal sign.
+
 Property names MUST NOT be prefixed with a single underscore to indicate
 protected or private visibility. That is, an underscore prefix explicitly has
 no meaning.
