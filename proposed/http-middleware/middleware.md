@@ -33,25 +33,23 @@ Middleware using this standard MUST implement the following interface:
 
 - `Psr\Http\ServerMiddleware\MiddlewareInterface`
 
-Middleware dispatching systems using this standard MUST implement the following
-interface:
-
-- `Psr\Http\ServerMiddleware\DelegateInterface`
-
 Legacy middleware implementing a double pass approach MUST be wrapped using an
 object that implements the `MiddlewareInterface`.
 
 ### 1.1 Dispatchers
 
-An HTTP middleware dispatcher is an object that holds multiple middleware
-components that can be used to process one or more requests in sequence.
+An HTTP middleware dispatcher is a component that is able to process server
+requests by dispatching middlewares. In order to dispatch a middleware the
+dispatcher MUST pass the request and a delegate to the middleware for further
+processing.
 
-The middleware dispatcher MUST pass the request and a delegate to each
-middleware for further processing. The delegate MUST be able to dispatch
-the next available middleware or if no more middleware is available, create a
-default response.
+### 1.2 Delegates
 
-### 1.2 Generating Responses
+Delegate using this standard MUST implement the following interface:
+
+- `Psr\Http\ServerMiddleware\DelegateInterface`
+
+### 1.3 Generating Responses
 
 It is RECOMMENDED that any middleware that needs to generate a response will
 use HTTP Factories as defined in [PSR-17](https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory),
