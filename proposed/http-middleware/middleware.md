@@ -54,7 +54,7 @@ default response.
 ### 1.2 Generating Responses
 
 It is RECOMMENDED that any middleware that needs to generate a response will
-use HTTP Factories as defined in [PSR-17](http://www.php-fig.org/psr/psr-17/),
+use HTTP Factories as defined in [PSR-17](https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory),
 in order to prevent dependence on a specific HTTP message implementation.
 
 ## 2. Interfaces
