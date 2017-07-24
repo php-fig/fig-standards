@@ -647,3 +647,12 @@ used to populate the headers of an HTTP message.
 * Anton Serdyuk
 * Phil Sturgeon
 * Chris Wilkinson
+
+## 7 Errata
+
+### 7.1 Invalid `UriInterface` after modification (2015/09/02)
+
+Supplying a valid value to a `UriInterface` modifying method does not guarantee that the resulting `UriInterface` 
+object will generate a valid URI string. Because no exception can be thrown in a `__toString` method, the invalid 
+URI string can only be detected when the new instance is created. In such situation, a `RuntimeException` exception 
+may be thrown to indicate an invalid URI on runtime.
