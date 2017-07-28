@@ -166,7 +166,7 @@ use Vendor\Package\Namespace\ClassD as D;
 use Vendor\Package\AnotherNamespace\ClassE as E;
 
 use function Vendor\Package\{functionA, functionB, functionC};
-use function Another\Vendor\function D;
+use function Another\Vendor\functionD;
 
 use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
 use const Another\Vendor\CONSTANT_D;
