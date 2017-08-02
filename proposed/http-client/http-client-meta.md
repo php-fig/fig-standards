@@ -70,6 +70,24 @@ the exception handling in a consuming library would not be different between tho
 
 ### 5.1 Editor
 
-* Tobias Nyholm and the PHP-HTTP team
+* Tobias Nyholm as representative of the PHP-HTTP team. 
 
 ### 5.2 Sponsors
+
+* Sara Golemon
+
+### 5.3 Workgroup
+
+* Simon Asika (Windwalker)
+* David Buchmann (HTTPlug)
+* David De Boer (HTTPlug)
+* Sara Golemon (Sponsor)
+* Jermey Lindstrom (Guzzle)
+* Christian Lück (Buzz react)
+* Tobias Nyholm (Editor)
+* Matthew O'Phinney (Zend)
+* Mark Sagi-Kazar (Guzzle)
+* Joel Wurtz (HTTPlug)
+
+
+
