@@ -68,7 +68,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | A      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier  |
 | D      | 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Roman Tsiupa            | Paul M Jones      |
 
-_**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated_
+**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated
 
 [workflow]: http://www.php-fig.org/bylaws/psr-workflow/
 [psr0]: /psr/psr-0/
