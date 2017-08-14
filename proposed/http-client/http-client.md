@@ -16,7 +16,7 @@ It SHOULD implement exceptions for `Psr\Http\Client\Exception\NetworkException` 
 
 ## Goal
 
-The goal of this PSR is to allow developers to create libraries decoupled from HTTP Client
+The goal of this PSR is to allow developers to create libraries decoupled from HTTP client
 implementations. This would make libraries more stable since the reduced number of
 dependencies and the likelihood to get in version conflicts is reduced.
 
@@ -71,7 +71,7 @@ interface HttpClient
 namespace Psr\Http\Client;
 
 /**
- * Every HTTP Client related Exception MUST implement this interface.
+ * Every HTTP client related Exception MUST implement this interface.
  */
 interface ClientException
 {
