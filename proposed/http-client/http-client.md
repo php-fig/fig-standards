@@ -10,7 +10,7 @@ An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
 response. When there is an error during sending the request or an error with network an
 exception should be thrown. 
 
-An implementing library MUST implement `Psr\Http\Client\Exception` for each exception it throws. 
+An implementing library MUST implement `Psr\Http\Client\ClientException` for each exception it throws. 
 It SHOULD implement exceptions for `Psr\Http\Client\Exception\NetworkException` and
 `Psr\Http\Client\Exception\RequestException`.
 
@@ -73,7 +73,7 @@ namespace Psr\Http\Client;
 /**
  * Every HTTP Client related Exception MUST implement this interface.
  */
-interface Exception
+interface ClientException
 {
 }
 ```
@@ -85,7 +85,7 @@ interface Exception
 namespace Psr\Http\Client\Exception;
 
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Client\Exception;
+use Psr\Http\Client\ClientException;
 
 /**
  * Exception for when a request failed.
@@ -94,7 +94,7 @@ use Psr\Http\Client\Exception;
  *      - Request is invalid (eg. method is missing)
  *      - Runtime request errors (like the body stream is not seekable)
  */
-interface RequestException extends Exception
+interface RequestException extends ClientException
 {
     /**
      * Returns the request.
@@ -113,7 +113,7 @@ interface RequestException extends Exception
 ```php
 namespace Psr\Http\Client\Exception;
 
-use Psr\Http\Client\Exception;
+use Psr\Http\Client\ClientException;
 
 /**
  * Thrown when the request cannot be completed because of network issues.
@@ -122,7 +122,7 @@ use Psr\Http\Client\Exception;
  *
  * Example: the target host name can not be resolved or the connection failed.
  */
-interface NetworkException extends Exception
+interface NetworkException extends ClientException
 {
     /**
      * Returns the request.
@@ -142,7 +142,7 @@ interface NetworkException extends Exception
 namespace Psr\Http\Client\Exception;
 
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Client\Exception;
+use Psr\Http\Client\ClientException;
 
 /**
  * Thrown when a response was received but the request itself failed.
@@ -150,7 +150,7 @@ use Psr\Http\Client\Exception;
  * This exception MAY be thrown on HTTP response codes 4xx and 5xx.
  * This exception MUST NOT be thrown when using the client's default configuration.
  */
-interface HttpException extends Exception
+interface HttpException extends ClientException
 {
     /**
      * Returns the request.
