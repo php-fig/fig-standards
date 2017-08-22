@@ -15,7 +15,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 There are currently 5 RDF-libraries for PHP available ([EasyRdf][], [Erfurt][], [hardf][], [ARC2][] and [Saft][]). Each implements different areas with various quality and feature-coverage. Combined, they provide a rich feature-set from RDF data handling, serialization and parsing to database access. Therefore it is important, that each library uses the same data model for RDF data to allow data interchange.
 
-The goal of this PSR is to provide a base of RDF interfaces which can help to integrate RDF libraries and make data interchange over library borders possible.
+The goal of this PSR is to provide a base of RDF interfaces which can help to integrate RDF libraries and make data interchange over library borders possible. Furthermore, RDF implementations in general may also benefit.
 
 
 ## 2. Definitions
@@ -118,12 +118,199 @@ interface Node
     public function equals(Node $toCompare);
 
     /**
-     * Returns true, if this pattern matches the given node. This method is the same as equals for concrete nodes
-     * and is overwritten for pattern/variable nodes.
+     * Returns true, if this pattern matches the given node. This method is the 
+     * same as equals for concrete nodes and is overwritten for pattern/variable nodes.
      *
      * @param Node $toMatch Node instance to apply the pattern on.
      * @return boolean true, if this pattern matches the node, false otherwise.
      */
     public function matches(Node $toMatch);
+}
+```
+
+### 3.2 `Psr\RDF\NamedNode`
+
+```php
+<?php
+namespace Psr\RDF;
+
+/**
+ * This interface is common for named nodes according to RDF 1.1.
+ * {@url http://www.w3.org/TR/rdf11-concepts/#section-IRIs}
+ */
+interface NamedNode extends Node
+{
+    /**
+     * Returns the URI of the node.
+     *
+     * @return string URI of the node.
+     */
+    public function getUri();
+}
+```
+
+### 3.3 `Psr\RDF\Literal`
+
+```php
+<?php
+namespace Psr\Rdf;
+
+/**
+ * This interface is common for literals according to RDF 1.1
+ * {@url http://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal}
+ */
+interface Literal extends Node
+{
+    /**
+     * Get the value of the Literal in its string representations
+     *
+     * @return string the value of the Literal
+     */
+    public function getValue();
+
+    /**
+     * Get the datatype URI of the Literal (this is always set according to the standard).
+     *
+     * @return Node the datatype of the Literal
+     */
+    public function getDatatype();
+
+    /**
+     * Get the language tag of this Literal or null if the Literal has no language tag.
+     *
+     * @return string|null Language tag or null, if none is given.
+     */
+    public function getLanguage();
+}
+```
+
+### 3.4 `Psr\RDF\BlankNode`
+
+```php
+<?php
+namespace Psr\Rdf;
+
+/**
+ * This interface is common for blank nodes according to RDF 1.1.
+ * {@url http://www.w3.org/TR/rdf11-concepts/#section-blank-nodes}
+ */
+interface BlankNode extends Node
+{
+    /**
+     * Returns the blank ID of this blank node.
+     *
+     * @return string Blank ID.
+     */
+    public function getBlankId();
+}
+```
+
+### 3.5 `Psr\RDF\Statement`
+
+```php
+<?php
+namespace Psr\RDF;
+
+/**
+ * This interface is common for RDF statement. It represents a 3-tuple and 4-tuple. A 3-tuple consists
+ * of subject, predicate and object, whereas a 4-tuple is a 3-tuple but also contains a graph.
+ */
+interface Statement
+{
+    /**
+     * Returns Statements subject.
+     *
+     * @return Node Subject node.
+     */
+    public function getSubject();
+
+    /**
+     * Returns Statements predicate.
+     *
+     * @return Node Predicate node.
+     */
+    public function getPredicate();
+
+    /**
+     * Returns Statements object.
+     *
+     * @return Node Object node.
+     */
+    public function getObject();
+
+    /**
+     * Returns Statements graph, if available.
+     *
+     * @return Node|null Graph node, if available.
+     */
+    public function getGraph();
+
+    /**
+     * If this statement consists of subject, predicate, object and graph, this 
+     * function returns true, false otherwise.
+     *
+     * @return boolean True, if this statement consists of subject, predicate, object 
+     *                 and graph, false otherwise.
+     */
+    public function isQuad();
+
+    /**
+     * If this statement consists of subject, predicate and object, but no graph, 
+     * this function returns true, false otherwise.
+     *
+     * @return boolean True, if this statement consists of subject, predicate and 
+     *                 object, but no graph, false otherwise.
+     */
+    public function isTriple();
+
+    /**
+     * Returns true if neither subject, predicate, object nor, if available, graph, 
+     * are patterns.
+     *
+     * @return boolean True, if neither subject, predicate, object nor, if available, 
+     *                 graph, are patterns, false otherwise.
+     */
+    public function isConcrete();
+
+    /**
+     * Returns true if at least subject, predicate, object or, if available, graph, 
+     * are patterns.
+     *
+     * @return boolean True, if at least subject, predicate, object or, if available, 
+     *                 graph, are patterns, false otherwise.
+      */
+    public function isPattern();
+
+    /**
+     * Get a valid NQuads serialization of the statement. If the statement is not 
+     * concrete i.e. it contains variable parts this method will throw an exception.
+     *
+     * @throws \Exception if the statment is not concrete
+     * @return string a string representation of the statement in valid NQuads syntax.
+     */
+    public function toNQuads();
+
+    /**
+     * Get a string representation of the current statement. It should contain
+     * a human readable description of the parts of the statement.
+     *
+     * @return string A string representation of the statement.
+     */
+    public function __toString();
+
+    /**
+     * Returns true, if the given argument matches the is statement-pattern.
+     *
+     * @param Statement $toCompare the statement to where this pattern shoul be applied to.
+     */
+    public function matches(Statement $toCompare);
+
+    /**
+     * Checks if a given Statement instance is equal to this instance.
+     *
+     * @param Statement $toCompare the statement to compare with
+     * @return boolean True, if the given Statement instance is equal to this one.
+     */
+    public function equals(Statement $toCompare);
 }
 ```
