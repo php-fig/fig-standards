@@ -90,6 +90,54 @@ PHP 7.0 introduced [scalar types declaration](http://php.net/manual/en/functions
 which does not support long type aliases. Therefore it makes sense to enforce primary short type forms to be used to
 have uniform syntax and prevent possible confusion.
 
+## Survey
+
+In order to settle things using data, survey was conducted and responses from 142 people 
+including 17 project representatives were gathered:
+
+### Fig Representative Results
+
+| Representative          | Project           | Compound namespaces with a depth of two or more MUST not be used | Header statement grouping and ordering | Declare statements must each be on their own line | Declare statements in PHP files containing markup | Declare statements have no spaces: `declare(strict_types=1);` | Block declare statement formatting | `new` keyword usage, parenthesis required |Return type declaration formatting |Use statement leading slashes disallowed | Block namespace declaration formatting | General operator spacing |Try, Catch, Finally formatting | Anonymous class declaration formatting | Keyword casing, only lower case | Type keywords, short form only |
+| --------------          | -------           | ---------------------------------------------------- | ---------------------------------- | ----------------------------------------- | ------------------------------------------- | -------------------------------------------------------- | ------------------------------- | ------------------------------------- |------------------------------- |------------------------------------ | ----------------------------------- | ---------------------- |--------------------------- | ----------------------------------- | --------------------------- | -------------------------- |
+| Alexander Makarov       |  Yii framework    | +1 | +1 | +1 | -1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Korvin Szanto           | concrete5         | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Leo Feyer               | Contao            | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Larry Garfield          | Drupal            | +1 | +1 | +1 | +1 | +1 | -1 | +1 | +1 | +1 | -1 | +1 | +1 | -1 | +1 | +1 |
+| André R.                | eZ                | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Jan Schneider           | Horde             | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Karsten Dambekalns      | Neos and Flow     | +1 | +1 | +1 | +1 | -1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Andres Gutierrez        | Phalcon           | -1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Ryan Thompson           | PyroCMS           | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | -1 | -1 | +1 | +1 | +1 | +1 | +1 |
+| Matteo Beccati          | Revive Adserver   | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | -1 | +1 | +1 | +1 | +1 |
+| Damian Mooyman          | SilverStripe      | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Brian Retterer          | Stormpath PHP SDK | +1 | +1 | +1 | -1 | -1 | +1 | -1 | +1 | -1 | +1 | +1 | +1 | +1 | -1 | -1 |
+| Matthew Weier O'Phinney | Zend Framework    | -1 | +1 | +1 | -1 | +1 | +1 | +1 | -1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Jordi Boggiano          | Composer          | -1 | -1 | -1 | +1 | +1 | +1 | -1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Ben Marks               | Magento           | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Chuck Burgess           | PEAR              | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+|                         | **Totals**:       |13/3|15/1|15/1|13/3|14/2|15/1|14/2|15/1|14/2|14/2|15/1|16/0|15/1|15/1|15/1|
+
+### General non-representative voters
+
+| Question | For | Against | Percentage For |
+| -------- | --- | ------- | -------------- |
+| Compound namespaces with a depth of two or more MUST not be used | 114 | 12 | 89.47% | 
+| Header statement grouping and ordering | 113 | 13 | 88.5% |
+| Declare statements must each be on their own line | 120 | 6 | 95% |
+| Declare statements in PHP files containing markup | 119 | 7 | 94.12% |
+| Declare statements have no spaces: `declare(strict_types=1);` | 116 | 10 | 91.38% |
+| Block declare statement formatting | 118 | 8 | 93.22% |
+| `new` keyword usage, parenthesis required | 116 | 10 | 91.38% |
+| Return type declaration formatting | 115 | 11 | 90.43% |
+| Use statement leading slashes disallowed | 118 | 8 | 93.22% |
+| Block namespace declaration formatting | 120 | 6 | 95% |
+| General operator spacing | 123 | 3 | 97.56% |
+| Try, Catch, Finally formatting | 124 | 2 | 98.39% |
+| Anonymous class declaration formatting | 117 | 9 | 92.31% |
+| Keyword casing, only lower case | 124 | 2 | 98.39% |
+| Type keywords, short form only | 121 | 5 | 95.87% |
+
+
 5. Changelog from PSR-2
 ------------------------
 
