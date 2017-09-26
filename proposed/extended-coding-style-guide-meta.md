@@ -101,20 +101,20 @@ including 17 project representatives were gathered:
 
 | Representative          | Project           | Compound namespaces with a depth of two or more MUST not be used | Header statement grouping and ordering | Declare statements must each be on their own line | Declare statements in PHP files containing markup | Declare statements have no spaces: `declare(strict_types=1);` | Block declare statement formatting | `new` keyword usage, parenthesis required |Return type declaration formatting |Use statement leading slashes disallowed | Block namespace declaration formatting | General operator spacing |Try, Catch, Finally formatting | Anonymous class declaration formatting | Keyword casing, only lower case | Type keywords, short form only |
 | --------------          | -------           | ---------------------------------------------------- | ---------------------------------- | ----------------------------------------- | ------------------------------------------- | -------------------------------------------------------- | ------------------------------- | ------------------------------------- |------------------------------- |------------------------------------ | ----------------------------------- | ---------------------- |--------------------------- | ----------------------------------- | --------------------------- | -------------------------- |
-| Alexander Makarov       |  Yii framework    | +1 | +1 | +1 | __x__ | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Alexander Makarov       |  Yii framework    | +1 | +1 | +1 | :heavy_multiplication_x: | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
 | Korvin Szanto           | concrete5         | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
 | Leo Feyer               | Contao            | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
-| Larry Garfield          | Drupal            | +1 | +1 | +1 | +1 | +1 | __x__ | +1 | +1 | +1 | __x__ | +1 | +1 | __x__ | +1 | +1 |
+| Larry Garfield          | Drupal            | +1 | +1 | +1 | +1 | +1 | :heavy_multiplication_x: | +1 | +1 | +1 | :heavy_multiplication_x: | +1 | +1 | :heavy_multiplication_x: | +1 | +1 |
 | André R.                | eZ                | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
 | Jan Schneider           | Horde             | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
-| Karsten Dambekalns      | Neos and Flow     | +1 | +1 | +1 | +1 | __x__ | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
-| Andres Gutierrez        | Phalcon           | __x__ | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
-| Ryan Thompson           | PyroCMS           | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | __x__ | __x__ | +1 | +1 | +1 | +1 | +1 |
-| Matteo Beccati          | Revive Adserver   | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | __x__ | +1 | +1 | +1 | +1 |
+| Karsten Dambekalns      | Neos and Flow     | +1 | +1 | +1 | +1 | :heavy_multiplication_x: | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Andres Gutierrez        | Phalcon           | :heavy_multiplication_x: | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Ryan Thompson           | PyroCMS           | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | :heavy_multiplication_x: | :heavy_multiplication_x: | +1 | +1 | +1 | +1 | +1 |
+| Matteo Beccati          | Revive Adserver   | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | :heavy_multiplication_x: | +1 | +1 | +1 | +1 |
 | Damian Mooyman          | SilverStripe      | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
-| Brian Retterer          | Stormpath PHP SDK | +1 | +1 | +1 | __x__ | __x__ | +1 | __x__ | +1 | __x__ | +1 | +1 | +1 | +1 | __x__ | __x__ |
-| Matthew Weier O'Phinney | Zend Framework    | __x__ | +1 | +1 | __x__ | +1 | +1 | +1 | __x__ | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
-| Jordi Boggiano          | Composer          | __x__ | __x__ | __x__ | +1 | +1 | +1 | __x__ | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Brian Retterer          | Stormpath PHP SDK | +1 | +1 | +1 | :heavy_multiplication_x: | :heavy_multiplication_x: | +1 | :heavy_multiplication_x: | +1 | :heavy_multiplication_x: | +1 | +1 | +1 | +1 | :heavy_multiplication_x: | :heavy_multiplication_x: |
+| Matthew Weier O'Phinney | Zend Framework    | :heavy_multiplication_x: | +1 | +1 | :heavy_multiplication_x: | +1 | +1 | +1 | :heavy_multiplication_x: | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
+| Jordi Boggiano          | Composer          | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | +1 | +1 | +1 | :heavy_multiplication_x: | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
 | Ben Marks               | Magento           | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
 | Chuck Burgess           | PEAR              | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 | +1 |
 |                         | **Totals**:       |13/3|15/1|15/1|13/3|14/2|15/1|14/2|15/1|14/2|14/2|15/1|16/0|15/1|15/1|15/1|
