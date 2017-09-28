@@ -622,7 +622,7 @@ these header values, either for the purposes of parsing or generation. Users may
 then consume these libraries when needing to interact with those values.
 Examples of this practice already exist in libraries such as
 [willdurand/Negotiation](https://github.com/willdurand/Negotiation) and
-[aura/accept](https://github.com/pmjones/Aura.Accept). So long as the object
+[Aura.Accept](https://github.com/auraphp/Aura.Accept). So long as the object
 has functionality for casting the value to a string, these objects can be
 used to populate the headers of an HTTP message.
 

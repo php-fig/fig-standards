@@ -1,5 +1,4 @@
-Extended Coding Style Guide
-===========================
+# Extended Coding Style Guide
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -28,7 +27,7 @@ open to interpretation. This PSR therefore seeks to clarify the content of PSR-2
 a more modern context with new functionality available, and make the errata to PSR-2
 binding.
 
-### Overview
+### Previous language versions
 
 Throughout this document, any instructions MAY be ignored if they do not exist in versions
 of PHP supported by your project.
@@ -163,7 +162,7 @@ use Vendor\Package\Namespace\ClassD as D;
 use Vendor\Package\AnotherNamespace\ClassE as E;
 
 use function Vendor\Package\{functionA, functionB, functionC};
-use function Another\Vendor\function D;
+use function Another\Vendor\functionD;
 
 use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
 use const Another\Vendor\CONSTANT_D;
