@@ -6,7 +6,7 @@ interpreted as described in [RFC 2119][].
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-## Overview
+## 1. Overview
 
 This specification extends, expands and replaces [PSR-2][], the coding style guide and
 requires adherance to [PSR-1][], the basic coding standard.
@@ -877,7 +877,6 @@ $foo->bar(
 
 Anonymous Classes MUST follow the same guidelines and principles as closures
 in the above section.
-
 
 ~~~php
 <?php
