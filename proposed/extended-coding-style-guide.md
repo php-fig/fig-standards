@@ -109,7 +109,7 @@ tabs for indenting.
 
 ### 2.5 Keywords and Types
 
-All PHP reserved types and keywords [[1]][keywords][[2]][types] MUST be in lower case.
+All PHP reserved keywords and types [[1]][keywords][[2]][types] MUST be in lower case.
 
 Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
 `int` instead of `integer` etc.
