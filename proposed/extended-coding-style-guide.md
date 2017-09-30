@@ -109,10 +109,7 @@ tabs for indenting.
 
 ### 2.5 Keywords and Types
 
-PHP [keywords][] MUST be in lower case.
-
-The PHP types and keywords `array`, `int`, `true`, `object`, `float`, `false`, `mixed`,
-`bool`, `null`, `numeric`, `string`, `void` and `resource` MUST be in lower case.
+All PHP reserved keywords and types [[1]][keywords][[2]][types] MUST be in lower case.
 
 Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
 `int` instead of `integer` etc.
@@ -911,6 +908,7 @@ $instance = new class extends \Foo implements
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
 [keywords]: http://php.net/manual/en/reserved.keywords.php
+[types]: https://secure.php.net/manual/en/reserved.other-reserved-words.php
 [arithmetic]: http://php.net/manual/en/language.operators.arithmetic.php
 [assignment]: http://php.net/manual/en/language.operators.assignment.php
 [comparison]: http://php.net/manual/en/language.operators.comparison.php
