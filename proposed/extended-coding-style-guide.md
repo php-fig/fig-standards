@@ -905,6 +905,68 @@ $instance = new class extends \Foo implements
 };
 ~~~
 
+## 9. Compound boolean statements
+
+A compound boolean expression MAY be split across multiple lines. When splitted, 
+there MUST be only one boolean expression per line, or an other compound boolean
+expression that MUST be enclosed by parentheses. The logical operator MUST be placed 
+at the beginning of each line. 
+
+~~~php
+    return $firstBoolean
+        && ($secondBoolean || $thirdBoolean)
+        && $fourthBoolean;
+~~~
+~~~php
+    $otherBoolean = in_array($foo, [
+            'foo',
+            'bar',
+        ]) 
+        && $baz;
+~~~
+
+If the inner elements of compound expression are to be splitted, the parenthesis 
+MUST stay on the same line of the logical operator, and each inner boolean
+expression MUST be splitted with the same rules, but with an additional
+level of indentation; the closing parenthesis MUST stay on their own line.
+
+~~~php
+    return $firstBoolean
+        && (
+            $secondBoolean 
+            || $thirdBoolean
+        )
+        && $fourthBoolean;
+~~~
+
+When used in a control structure, splitted compound boolean expressions MUST 
+start on a new line, leaving the opening and closing parentheses of the structure
+on their own lines.
+
+~~~php
+if (
+    $foo
+    && $bar
+    || ($baz < 0 && false !== strpos('foobarbazqux', $qux))
+    || in_array($qux, [
+        'foo',
+        'bar',
+    ])
+    && $baz > 30
+) {
+    // body
+}
+~~~
+
+~~~php
+if ($foo && (
+    $bar > 30
+    || !$baz
+) && false !== strpos('foobarbazqux', $qux)) {
+    // body
+}
+~~~
+
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
 [keywords]: http://php.net/manual/en/reserved.keywords.php
