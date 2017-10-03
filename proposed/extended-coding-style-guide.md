@@ -9,7 +9,7 @@ interpreted as described in [RFC 2119][].
 ## Overview
 
 This specification extends, expands and replaces [PSR-2][], the coding style guide and
-requires adherance to [PSR-1][], the basic coding standard.
+requires adherence to [PSR-1][], the basic coding standard.
 
 Like [PSR-2][], the intent of this specification is to reduce cognitive friction when
 scanning code from different authors. It does so by enumerating a shared set of rules
@@ -75,7 +75,7 @@ class Foo extends Bar implements FooInterface
 Code MUST follow all rules outlined in [PSR-1].
 
 The term 'StudlyCaps' in PSR-1 MUST be interpreted as PascalCase where the first letter of
-each word is capitalised including the very first letter.
+each word is capitalized including the very first letter.
 
 ### 2.2 Files
 
@@ -98,7 +98,7 @@ be split into multiple subsequent lines of no more than 80 characters each.
 There MUST NOT be trailing whitespace at the end of lines.
 
 Blank lines MAY be added to improve readability and to indicate related
-blocks of code except where explictly forbidden.
+blocks of code except where explicitly forbidden.
 
 There MUST NOT be more than one statement per line.
 
@@ -199,7 +199,7 @@ use Vendor\Package\Namespace\{
 ~~~
 
 When wishing to declare strict types in files containing markup outside PHP
-opening and closing tags MUST, on the first line, include an opening php tag,
+opening and closing tags MUST, on the first line, include an opening PHP tag,
 the strict types declaration and closing tag.
 
 For example:
@@ -645,7 +645,7 @@ keywords look like single words.
 
 A `switch` structure looks like the following. Note the placement of
 parentheses, spaces, and braces. The `case` statement MUST be indented once
-from `switch`, and the `break` keyword (or other terminating keyword) MUST be
+from `switch`, and the `break` keyword (or other terminating keywords) MUST be
 indented at the same level as the `case` body. There MUST be a comment such as
 `// no break` when fall-through is intentional in a non-empty `case` body.
 
