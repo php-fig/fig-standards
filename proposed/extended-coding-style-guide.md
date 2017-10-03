@@ -928,7 +928,7 @@ at the beginning of each line.
 If the inner elements of compound expression are to be splitted, the parenthesis 
 MUST stay on the same line of the logical operator, and each inner boolean
 expression MUST be splitted with the same rules, but with an additional
-level of indentation; the closing parenthesis MUST stay on their own line.
+level of indentation; the closing parenthesis MUST stay on its own line.
 
 ~~~php
     return $firstBoolean
