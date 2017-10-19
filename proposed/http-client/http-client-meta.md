@@ -70,7 +70,7 @@ the exception handling in a consuming library would not be different between tho
 
 ### 5.1 Editor
 
-* Tobias Nyholm as representative of the PHP-HTTP team. 
+* Tobias Nyholm
 
 ### 5.2 Sponsors
 
