@@ -1,14 +1,12 @@
 Extended Coding Style Guide Meta Document
 =========================================
 
-1. Summary
-----------
+# 1. Summary
 
 This document describes the process and discussions that led to the Extended Coding
 Style PSR. Its goal is to explain the reasons behind each decision.
 
-2. Why Bother?
---------------
+# 2. Why Bother?
 
 PSR-2 was accepted in 2012 and since then a number of changes have been made to PHP,
 most notably recent changes for PHP 7, which have implications for coding style
@@ -34,10 +32,9 @@ However it is for a lack of wanting to be dictatorial that we will aim to apply 
 styling, rationale and stances (Described in Section 4, Approaches) in PSR-12 instead of
 establishing new conventions.
 
-3. Scope
---------
+# 3. Scope
 
-## 3.1 Goals
+## 3.1. Goals
 
 This PSR shares the same goals as PSR-2.
 
@@ -56,18 +53,17 @@ This PSR will include coding style guidelines related to new functionality added
 after the publication of PSR-2; this includes PHP 5.5, PHP 5.6 and PHP 7.0. This PSR will
 also include clarifications on the text of PSR-2, as described in the PSR-2 Errata.
 
-## 3.2 Non-Goals
+## 3.2. Non-Goals
 
 It is not the intention of this PSR to add entirely new coding style guidelines PSR-12 will
 also not change anything stipulated in PSR-1 and PSR-2.
 
-4. Approaches
--------------
+# 4. Approaches
 
 The overarching approach is to attempt to apply existing PSR-2 styling and rationale to
 new functionality as opposed to establishing new conventions.
 
-### Strict Types Declarations
+## 4.1. Strict Types Declarations
 
 There was a discussion about whether or not strict types should be enforced in the standard
 https://github.com/cs-extended/fig-standards/issues/7. All were in agreement we should only
@@ -76,7 +72,7 @@ to say that strict types could not be declared. The discussion was whether it sh
 considered a coding style item which should be covered or whether it was out of scope and it
 was decided to be out of scope of a coding style guide.
 
-## Finally and Return Types Declaration Spacing
+## 4.2. Finally and Return Types Declaration Spacing
 
 Numerous different options were suggested and they can be seen
 [here for return type declarations](https://gist.github.com/michaelcullum/c025f3870c9ea1dd2668#file-returntypesspacing-php) or
@@ -84,20 +80,18 @@ Numerous different options were suggested and they can be seen
 and the current implementation was chosen due to consistency with other parts of the PSR-12
 specification that came from PSR-2.
 
-## Enforcing short form for all type keywords
+## 4.3. Enforcing short form for all type keywords
 
 PHP 7.0 introduced [scalar types declaration](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
 which does not support long type aliases. Therefore it makes sense to enforce primary short type forms to be used to
 have uniform syntax and prevent possible confusion.
 
-
-
-## Public Survey
+## 4.4. Public Survey
 
 In order to settle things using data, survey was conducted and responses from 142 people 
 including 17 project representatives were gathered:
 
-### Fig Representative Results
+### 4.4.1. Fig Representative Results
 
 | Representative          | Project           | Compound namespaces with a depth of two or more MUST not be used | Header statement grouping and ordering | Declare statements must each be on their own line | Declare statements in PHP files containing markup | Declare statements have no spaces: `declare(strict_types=1);` | Block declare statement formatting | `new` keyword usage, parenthesis required |Return type declaration formatting |Use statement leading slashes disallowed | Block namespace declaration formatting | General operator spacing |Try, Catch, Finally formatting | Anonymous class declaration formatting | Keyword casing, only lower case | Type keywords, short form only |
 | --------------          | -------           | ---------------------------------------------------- | ---------------------------------- | ----------------------------------------- | ------------------------------------------- | -------------------------------------------------------- | ------------------------------- | ------------------------------------- |------------------------------- |------------------------------------ | ----------------------------------- | ---------------------- |--------------------------- | ----------------------------------- | --------------------------- | -------------------------- |
@@ -119,7 +113,7 @@ including 17 project representatives were gathered:
 | Chuck Burgess           | PEAR              | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |                         | **Totals**:       |13/3|15/1|15/1|13/3|14/2|15/1|14/2|15/1|14/2|14/2|15/1|16/0|15/1|15/1|15/1|
 
-### General non-representative voters
+### 4.4.2. General non-representative voters
 
 | Question | For | Against | Percentage For |
 | -------- | --- | ------- | -------------- |
@@ -139,15 +133,22 @@ including 17 project representatives were gathered:
 | Keyword casing, only lower case | 124 | 2 | 98.39% |
 | Type keywords, short form only | 121 | 5 | 95.87% |
 
+## 4.5. Multiline Function Arguments Mixed With Multiline Return
 
-5. Changelog from PSR-2
-------------------------
+A potential readability issue [was raised on the mailing list](https://groups.google.com/d/msg/php-fig/ULSL4gqK8GY/cgDELuPOCQAJ)].
+We reviewed options for changes to the specification that could provide better readability and
+the floated option was to require a blank line after the opening bracket of a function if the
+arguments and the return are both multiline. Instead it was pointed out that this specification
+_already_ allows you to decide where you'd like to add blank lines and so we will leave it to
+the implementors to decide.
+
+# 5. Changelog from PSR-2
 
 Please note this changelog is not a verbose list of changes from PSR-2 but highlights the most
 notable changes. It should be considered a new specification and therefore you should read the
 specification for a full understanding of its contents.
 
-### New Statements
+## 5.1. New Statements
 
 * Lowercase for all keywords - Section 2.5
 * Short form for all type keywords - Section 2.5
@@ -161,7 +162,7 @@ specification for a full understanding of its contents.
 * Operators - Section 6
 * Anonymous classes - Section 8
 
-### Clarifications and Errata
+## 5.2. Clarifications and Errata
 * Adjust 'methods' to 'methods and functions' in a number of instances - Throughout
 * Adjust references to classes and interfaces to also include traits - Throughout
 * StudlyCaps meaning clarified as PascalCase - Section 2.1
@@ -171,28 +172,29 @@ specification for a full understanding of its contents.
 * PSR-2 errata statement about extending multiple interfaces - Section 4
 * Forbid blank lines before/after closing/opening braces for classes - Section 4
 
-6. People
----------
+# 6. People
 
-### 5.1 Editor(s)
+## 6.1.  Editor:
+* **Korvin Szanto**
 
-* Korvin Szanto (Former coordinator)
+## 6.2. Sponsor:
+* **Chris Tankersley**
 
-### 5.2 Sponsors
+## 6.3. Working Group Members:
+* **Alexander Makarov**
+* **Michael Cullum**
+* **Robert Deutz**
 
-* Alexander Makarov - Yii Framework (Coordinator)
-* Robert Deutz - Joomla
+## 6.4. Special Thanks
+* **Michael Cullum** for drafting the original specification
+* **Alexandar Makarov** for coordinating the draft during FIG 2.0
+* **Cees-Jan Kiewiet** for moral support
 
-### 5.3 Contributors
-* Michael Cullum (Former Editor)
-
-7. Votes
---------
+# 7. Votes
 
 * **Entrance Vote: ** https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/php-fig/P9atZLOcUBM/_jwkvlYKEAAJ
 
-8. Relevant Links
------------------
+# 8. Relevant Links
 
 _**Note:** Order descending chronologically._
 
