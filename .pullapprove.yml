@@ -47,6 +47,14 @@ reviewers:
             files:
                 - "proposed/extended-coding-style-guide*"
     -
+        name: http-client
+        required: 1
+        teams:
+            - psr-18
+        conditions:
+            files:
+                - "proposed/http-client/*"
+    -
         name: security
         required: 1
         teams:
@@ -62,14 +70,6 @@ reviewers:
         conditions:
             files:
                 - "proposed/phpdoc*"
-    -
-        name: container
-        required: 1
-        teams:
-            - psr-11
-        conditions:
-            files:
-                - "proposed/container*"
     -
         name: event
         required: 1
