@@ -19,12 +19,8 @@ groups:
             - secretaries
         conditions:
             files:
-                - "bylaws/*"
-                - "accepted/*"
-                - "README.md"
-                - "CONTRIBUTING.md"
-                - "LICENSE*"
-                - "index.md"
+                exclude:
+                    - "proposed/*"
     http:
         required: 1
         teams:
