@@ -1,9 +1,14 @@
 version: 2
-approve_by_comment: true
-approve_regex: '^:\+1:'
-reject_regex: '^No'
-reset_on_push: false
-author_approval: default
+group_defaults:
+    approve_by_comment:
+        enabled: true
+        approve_regex: '^:\+1:'
+    reset_on_push:
+        enabled: false
+    github_reviews:
+        enabled: true
+    author_approval:
+        ignored: true
 groups:
     secretaries-tag:
         required: 1
