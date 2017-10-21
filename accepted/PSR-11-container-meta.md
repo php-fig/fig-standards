@@ -315,6 +315,7 @@ At the time of writing, the following projects already implement and/or consume 
 - [Njasm Container](https://github.com/njasm/container)
 - [PHP-DI](http://php-di.org)
 - [PimpleInterop](https://github.com/moufmouf/pimple-interop)
+- [Strix](https://github.com/anned20/strix)
 - [XStatic](https://github.com/jeremeamia/xstatic)
 - [Zend ServiceManager](https://github.com/zendframework/zend-servicemanager)
 
