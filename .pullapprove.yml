@@ -1,11 +1,11 @@
+version: 2
 approve_by_comment: true
 approve_regex: '^:\+1:'
 reject_regex: '^No'
 reset_on_push: false
 author_approval: default
-reviewers:
-    -
-        name: secretaries-tag
+groups:
+    secretaries-tag:
         required: 1
         teams:
             - secretaries
@@ -13,8 +13,7 @@ reviewers:
             labels:
                 - "Internal: Bylaw or Admin Change"
                 - "New PSR"
-    -
-        name: secretaries-files
+    secretaries-files:
         required: 1
         teams:
             - secretaries
@@ -26,8 +25,7 @@ reviewers:
                 - "CONTRIBUTING.md"
                 - "LICENSE*"
                 - "index.md"
-    -
-        name: http
+    http:
         required: 1
         teams:
             - psr-15
@@ -38,40 +36,35 @@ reviewers:
             files:
                 - "proposed/http-factory/*"
                 - "proposed/http-middleware/*"
-    -
-        name: cs-extended
+    cs-extended:
         required: 1
         teams:
             - psr-12
         conditions:
             files:
                 - "proposed/extended-coding-style-guide*"
-    -
-        name: http-client
+    http-client:
         required: 1
         teams:
             - psr-18
         conditions:
             files:
                 - "proposed/http-client/*"
-    -
-        name: security
+    security:
         required: 1
         teams:
             - psr-9-10
         conditions:
             files:
                 - "proposed/security-*"
-    -
-        name: doc
+    doc:
         required: 1
         teams:
             - psr-5
         conditions:
             files:
                 - "proposed/phpdoc*"
-    -
-        name: event
+    event:
         required: 1
         teams:
             - psr-14
