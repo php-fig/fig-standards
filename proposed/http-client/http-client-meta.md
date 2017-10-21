@@ -41,7 +41,8 @@ would delay the HTTP client PSR.
 
 A separate interface for asynchronous requests can be defined in a separate PSR 
 once the promise PSR is accepted. The method signature for asynchronous requests 
-has to be different.
+has to be different from the method signature for synchronous requests because 
+the return types of asynchronous calls will be a Promise.
 
 ## Approaches
 
