@@ -41,12 +41,9 @@ use Psr\Http\Message\ResponseInterface;
 interface ClientInterface
 {
     /**
-     * Sends a PSR-7 request.
-     *
-     * If a request is sent without any prior configuration, an exception MUST NOT be thrown
-     * when a response is recieved, no matter the HTTP status code.
-     *
-     * If a request is sent without any prior configuration, a HTTP client MUST NOT follow redirects.
+     * Sends a PSR-7 request and returns a PSR-7 response. No response will get a special treatment. Ie: 
+     *   - Redirects will not be followed
+     *   - No exceptions will be thrown on 4xx or 5xx responses 
      *
      * The client MAY do modifications to the Request before sending it. Because PSR-7 objects are
      * immutable, one cannot assume that the object passed to Client::sendRequest will be the same
@@ -136,39 +133,5 @@ interface NetworkException extends ClientException
 }
 ```
 
-
-### HttpException
-
-```php
-namespace Psr\Http\Client\Exception;
-
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Client\ClientException;
-
-/**
- * Thrown when a response was received but the request itself failed.
- *
- * This exception MAY be thrown on HTTP response codes 4xx and 5xx.
- * This exception MUST NOT be thrown when using the client's default configuration.
- */
-interface HttpException extends ClientException
-{
-    /**
-     * Returns the request.
-     *
-     * The request object MAY be a different object from the one passed to Client::sendRequest()
-     *
-     * @return RequestInterface
-     */
-    public function getRequest();
-
-    /**
-     * Returns the response.
-     *
-     * @return ResponseInterface
-     */
-    public function getResponse();
-}
-```
 
 [Liskov]: https://en.wikipedia.org/wiki/Liskov_substitution_principle
