@@ -42,7 +42,7 @@ client PSR was written there was no PSR for Promises.
 A separate interface for asynchronous requests can be defined in a separate PSR 
 once the promise PSR is accepted. The method signature for asynchronous requests 
 has to be different from the method signature for synchronous requests because 
-the return types of asynchronous calls will be a Promise.
+the return type of asynchronous calls will be a Promise.
 
 ## Approaches
 
