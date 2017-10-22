@@ -39,10 +39,8 @@ specify the default behaviours.
 ### Default behavior
 
 The intention of this PSR is ensure library developers that all HTTP clients have the same 
-**default behavior**. That means that all HTTP clients MUST follow Liskov substitution principle
-when no configuration is provided. The PSR does not try to restrict nor define configuration for 
-HTTP clients. An implementing library is free to be configured by the application author to follow
-redirects, to throw exceptions or any other possible setting.  
+behavior. That means that all HTTP clients MUST follow Liskov substitution principle. 
+The PSR does not try to restrict nor define configuration for HTTP clients. 
 
 An alternative approach would be to pass configuration to the client. That approach would have
 a few drawbacks: 
@@ -53,9 +51,9 @@ a few drawbacks:
 
 ### Exceptions
 
-The domain exceptions `NetworkException`, `RequestException` and `HttpException` define
+The domain exceptions `NetworkException` and `RequestException` define
 a contract very similar to each other. The chosen approach is to not let them extend each other
-because inheritance does not make sense in the domain model. A `RequestException` is not a
+because inheritance does not make sense in the domain model. A `RequestException` is simply not a
 `NetworkException`.
 
 Allowing exception to extend a `RequestAwareException` and/or `ResponseAwareException` interface
