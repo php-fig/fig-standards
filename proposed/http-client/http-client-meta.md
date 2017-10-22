@@ -36,8 +36,8 @@ specify the default behaviours.
 #### Asynchronous HTTP client
 
 The reason asynchronous support is a non-goal is because a PSR for HTTP clients 
-should not define Promises. That should be a separate PSR. Waiting for a such PSR 
-would delay the HTTP client PSR.
+should not define Promises. That should be a separate PSR. At the time the HTTP 
+client PSR was written there where no PSR for Promises. 
 
 A separate interface for asynchronous requests can be defined in a separate PSR 
 once the promise PSR is accepted. The method signature for asynchronous requests 
