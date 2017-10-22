@@ -30,7 +30,7 @@ should not follow redirect nor throw exceptions on HTTP responses with status 4x
 The following interfaces MAY be implemented together within a single class or
 in separate classes.
 
-### Client interface
+### ClientInterface
 
 ```php
 namespace Psr\Http\Client;
@@ -38,7 +38,7 @@ namespace Psr\Http\Client;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-interface Client
+interface ClientInterface
 {
     /**
      * Sends a PSR-7 request.
