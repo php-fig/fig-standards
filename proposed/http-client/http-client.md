@@ -3,16 +3,27 @@ HTTP Client
 
 This document describes common interfaces for sending HTTP messages.
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ## Specification
 
+### Client
+
 An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
-response. When there is an error during sending the request or an error with network an
-exception should be thrown. 
+response. The HTTP client MAY modify the response from the server before returning 
+the PSR-7 response. 
+
+### Exceptions
 
 An implementing library MUST implement `Psr\Http\Client\ClientException` for each exception it throws. 
-It SHOULD implement exceptions for `Psr\Http\Client\Exception\NetworkException` and
-`Psr\Http\Client\Exception\RequestException`.
+
+When there is an error with the network or the remote server cannot be reached, the
+HTTP client SHOULD thrown a `Psr\Http\Client\Exception\NetworkException`. If the 
+request is invalid and cannot be sent the HTTP client SHOULD throw a 
+`Psr\Http\Client\Exception\RequestException`. Smaller issues like wrong HTTP version
+is not blocking the HTTP client to send the request and SHOULD not cause any exception. 
 
 ## Goal
 
