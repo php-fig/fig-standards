@@ -41,9 +41,8 @@ use Psr\Http\Message\ResponseInterface;
 interface ClientInterface
 {
     /**
-     * Sends a PSR-7 request and returns a PSR-7 response. No response will get a special treatment. Ie: 
-     *   - Redirects will not be followed
-     *   - No exceptions will be thrown on 4xx or 5xx responses 
+     * Sends a PSR-7 request and returns a PSR-7 response. Every technically correct HTTP respons 
+     * MUST be returned as is, even if it represents a HTTP error response or a redirect instruction.
      *
      * The client MAY do modifications to the Request before sending it. Because PSR-7 objects are
      * immutable, one cannot assume that the object passed to Client::sendRequest will be the same
