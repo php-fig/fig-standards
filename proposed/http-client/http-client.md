@@ -30,7 +30,7 @@ should not follow redirect nor throw exceptions on HTTP responses with status 4x
 The following interfaces MAY be implemented together within a single class or
 in separate classes.
 
-### HttpClientInterface
+### ClientInterface
 
 ```php
 namespace Psr\Http\Client;
@@ -38,7 +38,7 @@ namespace Psr\Http\Client;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-interface HttpClient
+interface ClientInterface
 {
     /**
      * Sends a PSR-7 request.
@@ -49,7 +49,7 @@ interface HttpClient
      * If a request is sent without any prior configuration, a HTTP client MUST NOT follow redirects.
      *
      * The client MAY do modifications to the Request before sending it. Because PSR-7 objects are
-     * immutable, one cannot assume that the object passed to HttpClient::sendRequest will be the same
+     * immutable, one cannot assume that the object passed to Client::sendRequest will be the same
      * object that is actually sent. For example the Request object that is returned by an exception MAY
      * be a different object than the one passed to sendRequest, so comparison by reference (===) is not possible.
      * 
@@ -100,7 +100,7 @@ interface RequestException extends ClientException
     /**
      * Returns the request.
      *
-     * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
+     * The request object MAY be a different object from the one passed to Client::sendRequest()
      *
      * @return RequestInterface
      */
@@ -128,7 +128,7 @@ interface NetworkException extends ClientException
     /**
      * Returns the request.
      *
-     * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
+     * The request object MAY be a different object from the one passed to Client::sendRequest()
      *
      * @return RequestInterface
      */
@@ -156,7 +156,7 @@ interface HttpException extends ClientException
     /**
      * Returns the request.
      *
-     * The request object MAY be a different object from the one passed to HttpClient::sendRequest()
+     * The request object MAY be a different object from the one passed to Client::sendRequest()
      *
      * @return RequestInterface
      */
