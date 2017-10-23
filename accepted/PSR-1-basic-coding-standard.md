@@ -1,4 +1,4 @@
-Basic Coding Standard
+## Basic Coding Standard
 =====================
 
 This section of the standard comprises what should be considered the standard
@@ -14,7 +14,7 @@ interpreted as described in [RFC 2119].
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
 
-1. Overview
+### 1. Overview
 -----------
 
 - Files MUST use only `<?php` and `<?=` tags.
@@ -34,19 +34,19 @@ interpreted as described in [RFC 2119].
 - Method names MUST be declared in `camelCase`.
 
 
-2. Files
+### 2. Files
 --------
 
-### 2.1. PHP Tags
+#### 2.1. PHP Tags
 
 PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
 MUST NOT use the other tag variations.
 
-### 2.2. Character Encoding
+#### 2.2. Character Encoding
 
 PHP code MUST use only UTF-8 without BOM.
 
-### 2.3. Side Effects
+#### 2.3. Side Effects
 
 A file SHOULD declare new symbols (classes, functions, constants,
 etc.) and cause no other side effects, or it SHOULD execute logic with side
@@ -103,7 +103,7 @@ if (! function_exists('bar')) {
 ~~~
 
 
-3. Namespace and Class Names
+### 3. Namespace and Class Names
 ----------------------------
 
 Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
@@ -138,12 +138,12 @@ class Vendor_Model_Foo
 }
 ~~~
 
-4. Class Constants, Properties, and Methods
+### 4. Class Constants, Properties, and Methods
 -------------------------------------------
 
 The term "class" refers to all classes, interfaces, and traits.
 
-### 4.1. Constants
+#### 4.1. Constants
 
 Class constants MUST be declared in all upper case with underscore separators.
 For example:
@@ -159,7 +159,7 @@ class Foo
 }
 ~~~
 
-### 4.2. Properties
+#### 4.2. Properties
 
 This guide intentionally avoids any recommendation regarding the use of
 `$StudlyCaps`, `$camelCase`, or `$under_score` property names.
@@ -168,6 +168,6 @@ Whatever naming convention is used SHOULD be applied consistently within a
 reasonable scope. That scope may be vendor-level, package-level, class-level,
 or method-level.
 
-### 4.3. Methods
+#### 4.3. Methods
 
 Method names MUST be declared in `camelCase()`.
