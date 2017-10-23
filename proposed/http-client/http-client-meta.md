@@ -66,6 +66,16 @@ One could be more granular when defining exception. For example, `TimeOutExcepti
 could be subtypes of `NetworkException`. The chosen approach is not to define such subtypes because
 the exception handling in a consuming library would not be different between those exceptions. 
 
+### Background
+
+The HTTP client PSR has been inspired and created by the [php-http team](https://github.com/orgs/php-http/people). 
+Back in 2015 they created HTTPlug which was an interface for HTTP clients. 
+They wanted an abstraction that third party libraries can use to not rely
+on a specific HTTP client implementation like Guzzle 5, Guzzle 6 or Buzz.
+A stable version was tagged in January 2016 and the project became widely 
+popular short there after. With over 3 million downloads the next
+two years it was time to convert this "de-facto" standard into a real PSR. 
+
 ## People
 
 ### 5.1 Editor
