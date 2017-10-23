@@ -254,6 +254,7 @@ interface CacheInterface
 ~~~php
 
 <?php
+
 namespace Psr\SimpleCache;
 
 /**
