@@ -2,7 +2,7 @@
 
 Hypermedia links are becoming an increasingly important part of the web, in both HTML contexts
 and various API format contexts. However, there is no single common hypermedia format, nor
-is there a common way to represent Links between formats.
+is there a common way to represent links between formats.
 
 This specification aims to provide PHP developers with a simple, common way of representing a
 hypermedia link independently of the serialization format that is used. That in turn allows
