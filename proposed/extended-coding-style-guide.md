@@ -1,5 +1,4 @@
-Extended Coding Style Guide
-===========================
+# Extended Coding Style Guide
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -7,11 +6,10 @@ interpreted as described in [RFC 2119][].
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-1. Overview
------------
+## Overview
 
 This specification extends, expands and replaces [PSR-2][], the coding style guide and
-requires adherance to [PSR-1][], the basic coding standard.
+requires adherence to [PSR-1][], the basic coding standard.
 
 Like [PSR-2][], the intent of this specification is to reduce cognitive friction when
 scanning code from different authors. It does so by enumerating a shared set of rules
@@ -29,7 +27,7 @@ open to interpretation. This PSR therefore seeks to clarify the content of PSR-2
 a more modern context with new functionality available, and make the errata to PSR-2
 binding.
 
-### Overview
+### Previous language versions
 
 Throughout this document, any instructions MAY be ignored if they do not exist in versions
 of PHP supported by your project.
@@ -70,15 +68,14 @@ class Foo extends Bar implements FooInterface
 }
 ~~~
 
-2. General
-----------
+## 2. General
 
 ### 2.1 Basic Coding Standard
 
 Code MUST follow all rules outlined in [PSR-1].
 
 The term 'StudlyCaps' in PSR-1 MUST be interpreted as PascalCase where the first letter of
-each word is capitalised including the very first letter.
+each word is capitalized including the very first letter.
 
 ### 2.2 Files
 
@@ -101,7 +98,7 @@ be split into multiple subsequent lines of no more than 80 characters each.
 There MUST NOT be trailing whitespace at the end of lines.
 
 Blank lines MAY be added to improve readability and to indicate related
-blocks of code except where explictly forbidden.
+blocks of code except where explicitly forbidden.
 
 There MUST NOT be more than one statement per line.
 
@@ -112,16 +109,12 @@ tabs for indenting.
 
 ### 2.5 Keywords and Types
 
-PHP [keywords][] MUST be in lower case.
-
-The PHP types and keywords `array`, `int`, `true`, `object`, `float`, `false`, `mixed`,
-`bool`, `null`, `numeric`, `string`, `void` and `resource` MUST be in lower case.
+All PHP reserved keywords and types [[1]][keywords][[2]][types] MUST be in lower case.
 
 Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
 `int` instead of `integer` etc.
 
-3. Declare Statements, Namespace, and Import Statements
---------------------------------------------
+## 3. Declare Statements, Namespace, and Import Statements
 
 The header of a PHP file may consist of a number of different blocks. If present,
 each of the blocks below MUST be separated by a single blank line, and MUST NOT contain
@@ -166,7 +159,7 @@ use Vendor\Package\Namespace\ClassD as D;
 use Vendor\Package\AnotherNamespace\ClassE as E;
 
 use function Vendor\Package\{functionA, functionB, functionC};
-use function Another\Vendor\function D;
+use function Another\Vendor\functionD;
 
 use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
 use const Another\Vendor\CONSTANT_D;
@@ -206,7 +199,7 @@ use Vendor\Package\Namespace\{
 ~~~
 
 When wishing to declare strict types in files containing markup outside PHP
-opening and closing tags MUST, on the first line, include an opening php tag,
+opening and closing tags MUST, on the first line, include an opening PHP tag,
 the strict types declaration and closing tag.
 
 For example:
@@ -232,8 +225,7 @@ declare(ticks=1) {
 }
 ~~~
 
-4. Classes, Properties, and Methods
------------------------------------
+## 4. Classes, Properties, and Methods
 
 The term "class" refers to all classes, interfaces, and traits.
 
@@ -610,8 +602,7 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ~~~
 
-5. Control Structures
----------------------
+## 5. Control Structures
 
 The general style rules for control structures are as follows:
 
@@ -654,7 +645,7 @@ keywords look like single words.
 
 A `switch` structure looks like the following. Note the placement of
 parentheses, spaces, and braces. The `case` statement MUST be indented once
-from `switch`, and the `break` keyword (or other terminating keyword) MUST be
+from `switch`, and the `break` keyword (or other terminating keywords) MUST be
 indented at the same level as the `case` body. There MUST be a comment such as
 `// no break` when fall-through is intentional in a non-empty `case` body.
 
@@ -749,8 +740,8 @@ try {
 }
 ~~~
 
-6. Operators
------------
+## 6. Operators
+
 All binary and ternary (but not unary) operators MUST be preceded and followed by at least
 one space. This includes all [arithmetic][], [comparison][], [assignment][], [bitwise][],
 [logical][] (excluding `!` which is unary), [string concatenation][], [type][] operators,
@@ -771,8 +762,7 @@ if ($a === $b) {
 }
 ~~~
 
-7. Closures
------------
+## 7. Closures
 
 Closures MUST be declared with a space after the `function` keyword, and a
 space before and after the `use` keyword.
@@ -880,8 +870,7 @@ $foo->bar(
 );
 ~~~
 
-8. Anonymous Classes
---------------------
+## 8. Anonymous Classes
 
 Anonymous Classes MUST follow the same guidelines and principles as closures
 in the above section.
@@ -919,6 +908,7 @@ $instance = new class extends \Foo implements
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
 [keywords]: http://php.net/manual/en/reserved.keywords.php
+[types]: https://secure.php.net/manual/en/reserved.other-reserved-words.php
 [arithmetic]: http://php.net/manual/en/language.operators.arithmetic.php
 [assignment]: http://php.net/manual/en/language.operators.assignment.php
 [comparison]: http://php.net/manual/en/language.operators.comparison.php
