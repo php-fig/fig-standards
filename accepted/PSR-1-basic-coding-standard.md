@@ -1,5 +1,4 @@
 # Basic Coding Standard
-=====================
 
 This section of the standard comprises what should be considered the standard
 coding elements that are required to ensure a high level of technical
@@ -15,7 +14,6 @@ interpreted as described in [RFC 2119].
 
 
 ## 1. Overview
------------
 
 - Files MUST use only `<?php` and `<?=` tags.
 
@@ -35,7 +33,6 @@ interpreted as described in [RFC 2119].
 
 
 ## 2. Files
---------
 
 ### 2.1. PHP Tags
 
@@ -104,7 +101,6 @@ if (! function_exists('bar')) {
 
 
 ## 3. Namespace and Class Names
-----------------------------
 
 Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
 
@@ -139,7 +135,6 @@ class Vendor_Model_Foo
 ~~~
 
 ## 4. Class Constants, Properties, and Methods
--------------------------------------------
 
 The term "class" refers to all classes, interfaces, and traits.
 
