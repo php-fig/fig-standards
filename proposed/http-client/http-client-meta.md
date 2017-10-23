@@ -33,6 +33,16 @@ client will allow libraries to be decoupled from an implementation such as Guzzl
 specify the default behaviours.
 * The purpose is not to be opinionated about the use of middlewares (PSR-15).
 
+#### Asynchronous HTTP client
+
+The reason asynchronous support is a non-goal is because a PSR for HTTP clients 
+should not define Promises. That should be a separate PSR. At the time the HTTP 
+client PSR was written there was no PSR for Promises. 
+
+A separate interface for asynchronous requests can be defined in a separate PSR 
+once the promise PSR is accepted. The method signature for asynchronous requests 
+has to be different from the method signature for synchronous requests because 
+the return type of asynchronous calls will be a Promise.
 
 ## Approaches
 
