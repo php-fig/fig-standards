@@ -1,5 +1,4 @@
-Container interface
-===================
+# Container interface
 
 This document describes a common interface for dependency injection containers.
 
@@ -16,8 +15,7 @@ Users of dependency injection containers (DIC) are referred to as `user`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-1. Specification
------------------
+## 1. Specification
 
 ### 1.1 Basics
 
@@ -56,8 +54,7 @@ which is a pattern that is generally discouraged.
 
 Please refer to section 4 of the META document for more details.
 
-2. Package
-----------
+## 2. Package
 
 The interfaces and classes described as well as relevant exceptions are provided as part of the
 [psr/container](https://packagist.org/packages/psr/container) package.
@@ -66,8 +63,7 @@ Packages providing a PSR container implementation should declare that they provi
 
 Projects requiring an implementation should require `psr/container-implementation` `1.0.0`.
 
-3. Interfaces
--------------
+## 3. Interfaces
 
 <a name="container-interface"></a>
 ### 3.1. `Psr\Container\ContainerInterface`
