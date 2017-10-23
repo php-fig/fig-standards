@@ -26,6 +26,15 @@ groups:
             files:
                 exclude:
                     - "proposed/*"
+    abandoned-psrs:
+        required: 1
+        teams:
+            - secretaries
+        conditions:
+            files:
+                - "proposed/security-*"
+                - "proposed/event-manager*"
+                - "proposed/phpdoc*"
     http:
         required: 1
         teams:
