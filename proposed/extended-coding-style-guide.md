@@ -742,7 +742,8 @@ try {
 
 ## 6. Operators
 
-All binary and ternary (but not unary) operators MUST be preceded and followed by at least
+### 6.1. Binary and Ternary Operators
+All binary and ternary operators MUST be preceded and followed by at least
 one space. This includes all [arithmetic][], [comparison][], [assignment][], [bitwise][],
 [logical][] (excluding `!` which is unary), [string concatenation][], [type][] operators,
 trait operators (`insteadof` and `as`), and the single pipe operator (e.g.
@@ -761,6 +762,20 @@ if ($a === $b) {
     $variable = $foo ? 'foo' : 'bar';
 }
 ~~~
+
+## 6.2. Unary Operators
+Unary operators MUST NOT have a space in between the operator and the item it is operating on. Unary operators are operators that do work on exactly one input item. Examples of unary operators in PHP include the "not" operator `!`, the "assignment by reference" operator `&`, and incremental operators like `++` and `--`.
+
+For example:
+~~~php
+<?php
+
+$foo = &$bar;
+$foo = ++$bar;
+$foo = $bar++;
+$foo = !$bar;
+$foo = !true;
+~~~ 
 
 ## 7. Closures
 
