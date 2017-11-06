@@ -95,7 +95,7 @@ interface RequestHandlerInterface
      *
      * @return ResponseInterface
      */
-    public function handle(ServerRequestInterface $request);
+    public function handle(ServerRequestInterface $request): ResponseInterface
 }
 ```
 
@@ -125,9 +125,6 @@ interface MiddlewareInterface
      *
      * @return ResponseInterface
      */
-    public function process(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    );
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
 }
 ```
