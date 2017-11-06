@@ -44,7 +44,7 @@ groups:
                 - "HTTP"
             files:
                 - "proposed/http-factory/*"
-                - "proposed/http-middleware/*"
+                - "proposed/http-handlers/*"
     cs-extended:
         required: 1
         teams:
