@@ -324,9 +324,11 @@ This PSR was produced by a FIG Working Group with the following members:
 
 * Matthew Weier O'Phinney (sponsor), <mweierophinney@gmail.com>
 * Woody Gilk (editor), <woody.gilk@gmail.com>
+* Glenn Eggleton
 * Matthieu Napoli
 * Oscar Otero
 * Korvin Szanto
+* Stefano Torresi
 
 The working group would also like to acknowledge the contributions of:
 
