@@ -35,14 +35,15 @@ The following list contains all interfaces which exist in both documents:
 * NamedNode
 * Literal
 
-In the following an overview about the interfaces which differ.
+In the following an overview about the interfaces, which differ.
 
-| Interface   | Interface from Representation Task Force specification |
-|:------------|:-------------------------------------------------------|
-| Node        | Term                                                   |
-| Statement   | Triple + Quad                                          |
-| AnyPattern  | Variable                                               |
-| NodeFactory | DataFactory                                            |
+| Interface         | Interface from Representation Task Force specification |
+|:------------------|:-------------------------------------------------------|
+| Node              | Term                                                   |
+| Statement         | Triple + Quad                                          |
+| AnyPattern        | Variable                                               |
+| NodeFactory       | DataFactory                                            |
+| StatementIterator | -                                                      |
 
 ## 4. Definitions and concepts
 
@@ -529,7 +530,7 @@ interface Statement
 | rewind  |
 | valid   |
 
-```
+```php
 <?php
 
 namespace Psr\Rdf;
