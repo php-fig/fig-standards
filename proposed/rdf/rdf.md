@@ -44,7 +44,7 @@ In the following an overview about the interfaces which differ.
 | AnyPattern  | Variable                                               |
 | NodeFactory | DataFactory                                            |
 
-## 4. Definitions
+## 4. Definitions and concepts
 
 * **RDF** - The Resource Description Framework (RDF) is a family of World Wide Web Consortium (W3C) specifications originally designed as a metadata data model. It has come to be used as a general method for conceptual description or modeling of information that is implemented in web resources, using a variety of syntax notations and data serialization formats ([Source](https://en.wikipedia.org/wiki/Resource_Description_Framework)).
 
@@ -70,26 +70,29 @@ In the following an overview about the interfaces which differ.
 
 * **AnyPattern** - A pattern is variable and acts as a placeholder. See section "Data interfaces and design principles" for detailed information about its usage.
 
+* **StatementIterator** - A StatementIterator is a `Iterator` ([PHP documentation](http://php.net/manual/de/class.iterator.php)) but forces entries to be of type **Statement**.
+
 ## 5. Data interfaces
 
-In the following an overview of all interfaces and according example implementation
+In the following an overview of all interfaces and according example implementations.
 
-|  Interface  | According Class |
-|:-----------:|:---------------:|
-|    Node     |        -        |
-|  BlankNode  |  BlankNodeImpl  |
-|   Literal   |   LiteralImpl   |
-|  NamedNode  |  NamedNodeImpl  |
-|  Statement  |  StatementImpl  |
-| NodeFactory | NodeFactoryImpl |
-|      -      | AnyPatternImpl  |
+|     Interface     |      According Class       |
+|:-----------------:|:--------------------------:|
+|       Node        |             -              |
+|     BlankNode     |       BlankNodeImpl        |
+|      Literal      |        LiteralImpl         |
+|     NamedNode     |       NamedNodeImpl        |
+|     Statement     |       StatementImpl        |
+|    NodeFactory    |      NodeFactoryImpl       |
+|         -         |       AnyPatternImpl       |
+| StatementIterator | ArrayStatementIteratorImpl |
 
 
 ### 5.2 Additional information
 
 * **AnyPattern** is implicit to Node and has no seperated interface. See the example implementation below, how it manifests in the code. Its purpose is to act as placeholder in a SPARQL query string. Its other purpose is to act as placeholder in a **Statement** to outline that either subject, predicate, object or graph is not specified.
 
-## 6. Interfaces and example implementations
+## 6. PHP-Interfaces
 
 Repository [Saft/PsrRdf](https://github.com/SaftIng/PsrRdf) contains the following interfaces and example implementations. The following interfaces are represent all relevant RDF concepts.
 
@@ -314,7 +317,88 @@ interface NamedNode extends Node
 
 ```
 
-### 6.5 `Psr\Rdf\Statement`
+### 6.5 `Psr\Rdf\NodeFactory`
+
+| Methods                             |
+|:------------------------------------|
+| createLiteral                       |
+| createNamedNode                     |
+| createBlankNode                     |
+| createAnyPattern                    |
+| createNodeFromNQuads                |
+| createNodeInstanceFromNodeParameter |
+
+```php
+<?php
+
+namespace Psr\Rdf;
+
+/**
+ * The NodeFactory interface abstracts the creation of new instances of RDF nodes by hiding different implementation details.
+ */
+interface NodeFactory
+{
+    /**
+     * Create a new RDF literal node instance. Details how to create such an instance may differ between different
+     * implementations of the NodeFactory.
+     *
+     * @param string $value The value of the literal
+     * @param string|Node $datatype The datatype of the literal (NamedNode, optional)
+     * @param string $lang The language tag of the literal (optional)
+     * @return Literal Instance of Literal.
+     */
+    public function createLiteral($value, $datatype = null, $lang = null);
+
+    /**
+     * Create a new RDF named node. Details how to create such an instance may differ between different
+     * implementations of the NodeFactory.
+     *
+     * @param string $uri The URI of the named node
+     * @return NamedNode Instance of NamedNode.
+     */
+    public function createNamedNode($uri);
+
+    /**
+     * Create a new RDF blank node. Details how to create such an instance may differ between different
+     * implementations of the NodeFactory.
+     *
+     * @param string $blankId The identifier for the blank node
+     * @return BlankNode Instance of BlankNode.
+     */
+    public function createBlankNode($blankId);
+
+    /**
+     * Create a new pattern node, which matches any RDF Node instance.
+     *
+     * @return Node Instance of Node, which acts like an AnyPattern.
+     */
+    public function createAnyPattern();
+
+    /**
+     * Creates an RDF Node based on a n-triples/n-quads node string.
+     *
+     * @param string $string N-triples/n-quads node string to use.
+     * @return Node Node instance, which type must be one of the following: NamedNode, BlankNode, Literal
+     * @throws \Exception if no node could be created e.g. because of a syntax error in the node string
+     */
+    public function createNodeFromNQuads($string);
+
+    /**
+     * Helper function, which is useful, if you have all the meta information about a Node and want to create
+     * the according Node instance.
+     *
+     * @param string      $value       Value of the node.
+     * @param string      $type        Can be uri, bnode, var or literal
+     * @param string      $datatype    URI of the datatype (optional)
+     * @param string      $language    Language tag (optional)
+     * @return Node Node instance, which type is one of: NamedNode, BlankNode, Literal, AnyPattern
+     * @throws \Exception if an unknown type was given.
+     */
+    public function createNodeInstanceFromNodeParameter($value, $type, $datatype = null, $language = null);
+}
+```
+
+### 6.6 `Psr\Rdf\Statement`
 
 | Methods      |
 |:-------------|
@@ -435,83 +519,61 @@ interface Statement
 }
 ```
 
-### 6.6 `Psr\Rdf\NodeFactory`
+### 6.7 `Psr\Rdf\StatementIterator`
 
-| Methods                             |
-|:------------------------------------|
-| createLiteral                       |
-| createNamedNode                     |
-| createBlankNode                     |
-| createAnyPattern                    |
-| createNodeFromNQuads                |
-| createNodeInstanceFromNodeParameter |
+| Methods |
+|:--------|
+| current |
+| key     |
+| next    |
+| rewind  |
+| valid   |
 
-```php
+```
 <?php
 
 namespace Psr\Rdf;
 
 /**
- * The NodeFactory interface abstracts the creation of new instances of RDF nodes by hiding different implementation details.
+ * The StatementIterator interface extends the \Iterator interface by restricting it to Statements.
+ *
+ * Note: It extends \Iterator, but contains its methods too, to be compatible to all implementations
+ *       requiring an \Iterator instance.
  */
-interface NodeFactory
+interface StatementIterator extends \Iterator
 {
     /**
-     * Create a new RDF literal node instance. Details how to create such an instance may differ between different
-     * implementations of the NodeFactory.
+     * Get current Statement instance.
      *
-     * @param string $value The value of the literal
-     * @param string|Node $datatype The datatype of the literal (NamedNode, optional)
-     * @param string $lang The language tag of the literal (optional)
-     * @return Literal Instance of Literal.
+     * @return Statement
      */
-    public function createLiteral($value, $datatype = null, $lang = null);
+    public function current();
 
     /**
-     * Create a new RDF named node. Details how to create such an instance may differ between different
-     * implementations of the NodeFactory.
+     * Get key of current Statement.
      *
-     * @param string $uri The URI of the named node
-     * @return NamedNode Instance of NamedNode.
+     * @return scalar May not be meaningful, but must be unique.
      */
-    public function createNamedNode($uri);
+    public function key();
 
     /**
-     * Create a new RDF blank node. Details how to create such an instance may differ between different
-     * implementations of the NodeFactory.
-     *
-     * @param string $blankId The identifier for the blank node
-     * @return BlankNode Instance of BlankNode.
+     * Go to the next Statement instance. Any returned value is ignored.
      */
-    public function createBlankNode($blankId);
+    public function next();
 
     /**
-     * Create a new pattern node, which matches any RDF Node instance.
+     * Reset this iterator.
      *
-     * @return Node Instance of Node, which acts like an AnyPattern.
+     * Be aware, it may not be implemented! This can be the case if the implementation is based
+     * on a stream.
      */
-    public function createAnyPattern();
+    public function rewind();
 
     /**
-     * Creates an RDF Node based on a n-triples/n-quads node string.
+     * Checks if the current Statement is valid.
      *
-     * @param string $string N-triples/n-quads node string to use.
-     * @return Node Node instance, which type must be one of the following: NamedNode, BlankNode, Literal
-     * @throws \Exception if no node could be created e.g. because of a syntax error in the node string
+     * @return boolean
      */
-    public function createNodeFromNQuads($string);
-
-    /**
-     * Helper function, which is useful, if you have all the meta information about a Node and want to create
-     * the according Node instance.
-     *
-     * @param string      $value       Value of the node.
-     * @param string      $type        Can be uri, bnode, var or literal
-     * @param string      $datatype    URI of the datatype (optional)
-     * @param string      $language    Language tag (optional)
-     * @return Node Node instance, which type is one of: NamedNode, BlankNode, Literal, AnyPattern
-     * @throws \Exception if an unknown type was given.
-     */
-    public function createNodeInstanceFromNodeParameter($value, $type, $datatype = null, $language = null);
+    public function valid();
 }
 ```
