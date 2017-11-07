@@ -2,27 +2,53 @@
 
 The [Resource Description Framework](https://www.w3.org/RDF/) (RDF) is a model for data interchange on the Web. Data is modeled using triples or quads. 
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119][].
-
-[ARC2]: https://github.com/semsol/arc2
-[EasyRdf]: https://github.com/njh/easyrdf
-[Erfurt]: https://github.com/AKSW/Erfurt
-[hardf]: https://github.com/pietercolpaert/hardf
-[RFC 2119]: http://tools.ietf.org/html/rfc2119
-[Saft]: https://github.com/SaftIng/Saft
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ## 1. Goal
 
-There are currently 5 RDF-libraries for PHP available ([EasyRdf][], [Erfurt][], [hardf][], [ARC2][] and [Saft][]). Each implements different areas with various quality and feature-coverage. Combined, they provide a rich feature-set from RDF data handling, serialization and parsing to database access. Therefore it is important, that each library uses the same data model for RDF data to allow data interchange.
+The goal of this PSR is to provide a base of RDF interfaces which can help to integrate RDF libraries and make data interchange over library borders possible.
 
-The goal of this PSR is to provide a base of RDF interfaces which can help to integrate RDF libraries and make data interchange over library borders possible. Furthermore, RDF implementations in general may also benefit.
+## 2. Motivation
+
+There are currently 5 RDF-libraries for PHP available ([EasyRdf](https://github.com/njh/easyrdf), [Erfurt](https://github.com/AKSW/Erfurt), [hardf](https://github.com/pietercolpaert/hardf), [ARC2](https://github.com/semsol/arc2) and [Saft](https://github.com/SaftIng/Saft)). Each implements different areas with various quality and feature-coverage. Combined, they provide a rich feature-set from RDF data handling, serialization and parsing to database access. Therefore it is important, that each library uses the same data model for RDF data to allow data interchange.
+
+## 3. Background information
+
+In this section further background information are shared.
+
+### Representation Task Force (RDFJS)
+
+The Representation Task Force (RDFJS, [Link 1](https://www.w3.org/community/rdfjs/), [Link 2](https://github.com/rdfjs/representation-task-force)) published an interface documentation ([Link](https://github.com/rdfjs/representation-task-force/blob/master/interface-spec.md)) describing the representation of RDF in JavaScript.
+
+The approach is partly object orientied and relies on the direct usage of instance properties. Direct Access to properties violates the object oriented approach. Implementation details of an interface should not be visible to the outside world.
+
+Nevertheless, this document shares some parts with the interface documentation or is directly influenced:
+
+* Some of the terms of the RDFJS document are to same as in this document. These are: **NamedNode**, **BlankNode**, **Literals**. 
+* The terms **triple** and **quad** can be represented by the **Statement** interface of this document.
+* Interface **Term** is equal to **Node** in this document.
+* Interface **DataFactory** is equal to **NodeFactory** in this document.
 
 
-## 2. Definitions
+The following list contains all interfaces which exist in both documents:
+* BlankNode
+* NamedNode
+* Literal
+
+In the following an overview about the interfaces which differ.
+
+| Interface   | Interface from Representation Task Force specification |
+|:------------|:-------------------------------------------------------|
+| Node        | Term                                                   |
+| Statement   | Triple + Quad                                          |
+| AnyPattern  | Variable                                               |
+| NodeFactory | DataFactory                                            |
+
+## 4. Definitions
 
 * **RDF** - The Resource Description Framework (RDF) is a family of World Wide Web Consortium (W3C) specifications originally designed as a metadata data model. It has come to be used as a general method for conceptual description or modeling of information that is implemented in web resources, using a variety of syntax notations and data serialization formats ([Source](https://en.wikipedia.org/wiki/Resource_Description_Framework)).
 
-* **Resource** - Anything can be a resource, including physical things, documents, abstract concepts, numbers and strings; the term is synonymous with "entity" as it is used in the RDF Semantics specification. ([Source](https://www.w3.org/TR/rdf11-concepts/))
+* **Resource** - Anything can be a resource, including physical things, documents, abstract concepts, numbers and strings; the term is synonymous with "entity" as it is used in the RDF Semantics specification. ([Source](https://www.w3.org/TR/rdf11-concepts/#resources-and-statements))
 
 * **IRI** and **URI** - IRIs are a generalization of URIs [RFC3986](http://www.ietf.org/rfc/rfc3986.txt) that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987](http://www.ietf.org/rfc/rfc3987.txt). A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names. ([Source](https://www.w3.org/TR/rdf11-concepts/#section-IRIs))
 
@@ -38,20 +64,55 @@ The goal of this PSR is to provide a base of RDF interfaces which can help to in
 
 * **Named Node** - A synonym for Resource.
 
-* **Node** - A node is either a literal, a blank node or resource.
+* **Node** - A node is an abstract concept and is either of type literal, a blank node, any pattern or resource.
 
-## 3. Interfaces
+* **NodeFactory** - A node factory creates instances of Node. This has to be one of the following: BlankNode, NamedNode, Literal or AnyPatternImpl. It also has to provide methods to create a Node instance by given n-triples/n-quads string and via a parameter list ($value, $type, $datatype, $language).
 
-The following interfaces are represent all relevant RDF concepts.
+* **AnyPattern** - A pattern is variable and acts as a placeholder. See section "Data interfaces and design principles" for detailed information about its usage.
 
-### 3.1 `Psr\RDF\Node`
+## 5. Data interfaces
+
+In the following an overview of all interfaces and according example implementation
+
+|  Interface  | According Class |
+|:-----------:|:---------------:|
+|    Node     |        -        |
+|  BlankNode  |  BlankNodeImpl  |
+|   Literal   |   LiteralImpl   |
+|  NamedNode  |  NamedNodeImpl  |
+|  Statement  |  StatementImpl  |
+| NodeFactory | NodeFactoryImpl |
+|      -      | AnyPatternImpl  |
+
+
+### 5.2 Additional information
+
+* **AnyPattern** is implicit to Node and has no seperated interface. See the example implementation below, how it manifests in the code. Its purpose is to act as placeholder in a SPARQL query string. Its other purpose is to act as placeholder in a **Statement** to outline that either subject, predicate, object or graph is not specified.
+
+## 6. Interfaces and example implementations
+
+Repository [Saft/PsrRdf](https://github.com/SaftIng/PsrRdf) contains the following interfaces and example implementations. The following interfaces are represent all relevant RDF concepts.
+
+### 6.1 `Psr\RDF\Node`
+
+| Methods                        |
+|:-------------------------------|
+| isBlank                        |
+| isLiteral                      |
+| isNamed                        |
+| isConcrete                     |
+| isPattern (*means AnyPattern*) |
+| toNQuads                       |
+| equals                         |
+| matches                        |
 
 ```php
 <?php
-namespace Psr\RDF;
+
+namespace Psr\Rdf;
 
 /**
- * TODO
+ * A node is an abstract concept and is either of type literal, a blank node, any pattern or resource
  */
 interface Node
 {
@@ -104,8 +165,6 @@ interface Node
      * should contain the the URI for NamedNodes and the value for Literals.
      *
      * @return string A human readable string representation of the node.
-     * @api
-     * @since 0.1
      */
     public function __toString();
 
@@ -118,8 +177,8 @@ interface Node
     public function equals(Node $toCompare);
 
     /**
-     * Returns true, if this pattern matches the given node. This method is the 
-     * same as equals for concrete nodes and is overwritten for pattern/variable nodes.
+     * Returns true, if this pattern matches the given node. This method is the same as equals for concrete nodes
+     * and is overwritten for pattern/variable nodes.
      *
      * @param Node $toMatch Node instance to apply the pattern on.
      * @return boolean true, if this pattern matches the node, false otherwise.
@@ -128,36 +187,67 @@ interface Node
 }
 ```
 
-### 3.2 `Psr\RDF\NamedNode`
+### 6.2 `Psr\RDF\BlankNode`
+
+Bold methods are unique to this interface, the rest *comes* from the Node.
+
+| Methods                        |
+|:-------------------------------|
+| **getBlankId**                 |
+| isBlank                        |
+| isLiteral                      |
+| isNamed                        |
+| isConcrete                     |
+| isPattern (*means AnyPattern*) |
+| toNQuads                       |
+| equals                         |
+| matches                        |
 
 ```php
 <?php
-namespace Psr\RDF;
 
-/**
- * This interface is common for named nodes according to RDF 1.1.
- * {@url http://www.w3.org/TR/rdf11-concepts/#section-IRIs}
- */
-interface NamedNode extends Node
-{
-    /**
-     * Returns the URI of the node.
-     *
-     * @return string URI of the node.
-     */
-    public function getUri();
-}
-```
-
-### 3.3 `Psr\RDF\Literal`
-
-```php
-<?php
 namespace Psr\Rdf;
 
 /**
- * This interface is common for literals according to RDF 1.1
- * {@url http://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal}
+ * This interface is common for blank nodes according to RDF 1.1.
+ * For more information see http://www.w3.org/TR/rdf11-concepts/#section-blank-nodes
+ */
+interface BlankNode extends Node
+{
+    /**
+     * Returns the blank ID of this blank node.
+     *
+     * @return string Blank ID.
+     */
+    public function getBlankId();
+}
+
+```
+
+### 6.3 `Psr\RDF\Literal`
+
+Bold methods are unique to this interface, the rest *comes* from the Node.
+
+| Methods                        |
+|:-------------------------------|
+| **getValue**                   |
+| isBlank                        |
+| isLiteral                      |
+| isNamed                        |
+| isConcrete                     |
+| isPattern (*means AnyPattern*) |
+| toNQuads                       |
+| equals                         |
+| matches                        |
+
+```php
+<?php
+
+namespace Psr\Rdf;
+
+/**
+ * Literals are used for values such as strings, numbers, and dates.
+ * For more information see https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal
  */
 interface Literal extends Node
 {
@@ -169,14 +259,17 @@ interface Literal extends Node
     public function getValue();
 
     /**
-     * Get the datatype URI of the Literal (this is always set according to the standard).
+     * Get the datatype of the Literal. It can be one of the XML Schema datatypes (XSD) or anything else. If the URI is
+     * needed it can be retrieved by calling ->getDatatype()->getUri().
      *
-     * @return Node the datatype of the Literal
+     * An overview about all XML Schema datatypes: {@url http://www.w3.org/TR/xmlschema-2/#built-in-datatypes}
+     *
+     * @return Node the datatype of the Literal as named node
      */
     public function getDatatype();
 
     /**
-     * Get the language tag of this Literal or null if the Literal has no language tag.
+     * Get the language tag of this Literal or null of the Literal has no language tag.
      *
      * @return string|null Language tag or null, if none is given.
      */
@@ -184,36 +277,68 @@ interface Literal extends Node
 }
 ```
 
-### 3.4 `Psr\RDF\BlankNode`
+### 6.4 `Psr\Rdf\NamedNode`
+
+Bold methods are unique to this interface, the rest *comes* from the Node.
+
+| Methods                        |
+|:-------------------------------|
+| **getUri**                     |
+| isBlank                        |
+| isLiteral                      |
+| isNamed                        |
+| isConcrete                     |
+| isPattern (*means AnyPattern*) |
+| toNQuads                       |
+| equals                         |
+| matches                        |
 
 ```php
 <?php
+
 namespace Psr\Rdf;
 
 /**
- * This interface is common for blank nodes according to RDF 1.1.
- * {@url http://www.w3.org/TR/rdf11-concepts/#section-blank-nodes}
+ * This interface is common for named nodes according to RDF 1.1 specification.
+ * For more information see http://www.w3.org/TR/rdf11-concepts/#section-IRIs.
  */
-interface BlankNode extends Node
+interface NamedNode extends Node
 {
     /**
-     * Returns the blank ID of this blank node.
+     * Returns the URI of the node.
      *
-     * @return string Blank ID.
+     * @return string URI of the node.
      */
-    public function getBlankId();
+    public function getUri();
 }
+
 ```
 
-### 3.5 `Psr\RDF\Statement`
+### 6.5 `Psr\Rdf\Statement`
+
+| Methods      |
+|:-------------|
+| getSubject   |
+| getPredicate |
+| getObject    |
+| getGraph     |
+| isTriple     |
+| isQuad       |
+| isConcrete   |
+| isPattern    |
+| equals       |
+| matches      |
+| toNQuads     |
+| __toString   |
 
 ```php
 <?php
-namespace Psr\RDF;
+
+namespace Psr\Rdf;
 
 /**
- * This interface is common for RDF statement. It represents a 3-tuple and 4-tuple. A 3-tuple consists
- * of subject, predicate and object, whereas a 4-tuple is a 3-tuple but also contains a graph.
+ * This interface is common for RDF statement. It can represent a 3- or 4-tuple. A 3-tuple (triple) consists
+ * of subject, predicate and object, whereas a 4-tuple (quad) is a 3-tuple with a graph.
  */
 interface Statement
 {
@@ -246,44 +371,39 @@ interface Statement
     public function getGraph();
 
     /**
-     * If this statement consists of subject, predicate, object and graph, this 
-     * function returns true, false otherwise.
+     * Determines if this statement contains graph information.
      *
-     * @return boolean True, if this statement consists of subject, predicate, object 
-     *                 and graph, false otherwise.
+     * @return boolean True, if this statement consists of subject, predicate, object and graph, false otherwise.
      */
     public function isQuad();
 
     /**
-     * If this statement consists of subject, predicate and object, but no graph, 
-     * this function returns true, false otherwise.
+     * Determines if this statement contains no graph information.
      *
-     * @return boolean True, if this statement consists of subject, predicate and 
-     *                 object, but no graph, false otherwise.
+     * @return boolean True, if this statement consists of subject, predicate and object,
+     *                 but no graph, false otherwise.
      */
     public function isTriple();
 
     /**
-     * Returns true if neither subject, predicate, object nor, if available, graph, 
-     * are patterns.
+     * Checks if this statement contains no pattern.
      *
-     * @return boolean True, if neither subject, predicate, object nor, if available, 
-     *                 graph, are patterns, false otherwise.
+     * @return boolean True, if neither subject, predicate, object nor, if available, graph, are patterns,
+     *                 false otherwise.
      */
     public function isConcrete();
 
     /**
-     * Returns true if at least subject, predicate, object or, if available, graph, 
-     * are patterns.
+     * Checks if this statement contains a pattern.
      *
-     * @return boolean True, if at least subject, predicate, object or, if available, 
-     *                 graph, are patterns, false otherwise.
-      */
+     * @return boolean True, if at least subject, predicate, object or, if available, graph, are patterns,
+     *                 false otherwise.
+     */
     public function isPattern();
 
     /**
-     * Get a valid NQuads serialization of the statement. If the statement is not 
-     * concrete i.e. it contains variable parts this method will throw an exception.
+     * Get a valid NQuads serialization of the statement. If the statement is not concrete because
+     * it contains pattern, this method has to throw an exception.
      *
      * @throws \Exception if the statment is not concrete
      * @return string a string representation of the statement in valid NQuads syntax.
@@ -291,8 +411,8 @@ interface Statement
     public function toNQuads();
 
     /**
-     * Get a string representation of the current statement. It should contain
-     * a human readable description of the parts of the statement.
+     * Get a string representation of the current statement. It should contain a human readable description of the parts
+     * of the statement.
      *
      * @return string A string representation of the statement.
      */
@@ -312,5 +432,86 @@ interface Statement
      * @return boolean True, if the given Statement instance is equal to this one.
      */
     public function equals(Statement $toCompare);
+}
+```
+
+### 6.6 `Psr\Rdf\NodeFactory`
+
+| Methods                             |
+|:------------------------------------|
+| createLiteral                       |
+| createNamedNode                     |
+| createBlankNode                     |
+| createAnyPattern                    |
+| createNodeFromNQuads                |
+| createNodeInstanceFromNodeParameter |
+
+```php
+<?php
+
+namespace Psr\Rdf;
+
+/**
+ * The NodeFactory interface abstracts the creation of new instances of RDF nodes by hiding different implementation details.
+ */
+interface NodeFactory
+{
+    /**
+     * Create a new RDF literal node instance. Details how to create such an instance may differ between different
+     * implementations of the NodeFactory.
+     *
+     * @param string $value The value of the literal
+     * @param string|Node $datatype The datatype of the literal (NamedNode, optional)
+     * @param string $lang The language tag of the literal (optional)
+     * @return Literal Instance of Literal.
+     */
+    public function createLiteral($value, $datatype = null, $lang = null);
+
+    /**
+     * Create a new RDF named node. Details how to create such an instance may differ between different
+     * implementations of the NodeFactory.
+     *
+     * @param string $uri The URI of the named node
+     * @return NamedNode Instance of NamedNode.
+     */
+    public function createNamedNode($uri);
+
+    /**
+     * Create a new RDF blank node. Details how to create such an instance may differ between different
+     * implementations of the NodeFactory.
+     *
+     * @param string $blankId The identifier for the blank node
+     * @return BlankNode Instance of BlankNode.
+     */
+    public function createBlankNode($blankId);
+
+    /**
+     * Create a new pattern node, which matches any RDF Node instance.
+     *
+     * @return Node Instance of Node, which acts like an AnyPattern.
+     */
+    public function createAnyPattern();
+
+    /**
+     * Creates an RDF Node based on a n-triples/n-quads node string.
+     *
+     * @param string $string N-triples/n-quads node string to use.
+     * @return Node Node instance, which type must be one of the following: NamedNode, BlankNode, Literal
+     * @throws \Exception if no node could be created e.g. because of a syntax error in the node string
+     */
+    public function createNodeFromNQuads($string);
+
+    /**
+     * Helper function, which is useful, if you have all the meta information about a Node and want to create
+     * the according Node instance.
+     *
+     * @param string      $value       Value of the node.
+     * @param string      $type        Can be uri, bnode, var or literal
+     * @param string      $datatype    URI of the datatype (optional)
+     * @param string      $language    Language tag (optional)
+     * @return Node Node instance, which type is one of: NamedNode, BlankNode, Literal, AnyPattern
+     * @throws \Exception if an unknown type was given.
+     */
+    public function createNodeInstanceFromNodeParameter($value, $type, $datatype = null, $language = null);
 }
 ```
