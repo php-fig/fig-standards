@@ -20,6 +20,12 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 13  | [Hypermedia Links][psr13]      | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander   |
 | 16  | [Simple Cache][psr16]          | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier |
 
+### Review
+
+| Num | Title                                | Editor(s)                      |
+|:---:|--------------------------------------|--------------------------------|
+| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
+
 ### Draft
 
 | Num | Title                                | Editor(s)                      |
@@ -35,7 +41,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 8   | [Huggable Interface][psr8]           | Larry Garfield                 |
 | 9   | [Security Advisories][psr9]          | Michael Hess                   |
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   |
-| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 | 14  | [Event Manager][psr14]               | Chuck Reeves                   |
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 
