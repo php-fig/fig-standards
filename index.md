@@ -30,7 +30,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
-| 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     |
+| 15  | [HTTP Handlers][psr15]            | Woody Gilk                     |
 | 18  | [HTTP Factories][psr18]              | Tobias Nylhom                  |
 
 ### Abandoned
@@ -69,7 +69,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | B      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 | A      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 |
 | B      | 14  | [Event Manager][psr14]               | Chuck Reeves                   |
-| D      | 15  | [HTTP Middlewares][psr15]            | Woody Gilk                     |
+| D      | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
 | A      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 |
 | B      | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 | D      | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
@@ -92,7 +92,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
 [psr13]: /psr/psr-13/
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
-[psr15]: https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware
+[psr15]: https://github.com/php-fig/fig-standards/blob/master/proposed/http-handlers
 [psr16]: /psr/psr-16/
 [psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory
 [psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client
