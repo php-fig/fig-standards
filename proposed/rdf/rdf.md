@@ -235,6 +235,8 @@ Bold methods are unique to this interface, the rest *comes* from the Node.
 | Methods                        |
 |:-------------------------------|
 | **getValue**                   |
+| **getDatatype**                |
+| **getLanguage**                |
 | isBlank                        |
 | isLiteral                      |
 | isNamed                        |
