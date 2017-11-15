@@ -12,11 +12,11 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 ### Client
 
 An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
-response. The HTTP client MAY modify the request, given by the user and sent to 
-the server or the response from the server before returning. In this case the 
-request and the response must be consistent between the body and headers. I.e. a 
+response. Under the hood the HTTP client MAY modify the request/response received 
+from the user/server. In this case the request and the response MUST be consistent
+between the body and headers. For example a 
 server may return a gzip encoded body and the client may know how to decode this, 
-when it decodes the body the client MUST also remove the header that specifies this 
+when it decodes the body the client MUST also remove the header that specifies the 
 encoding.
 
 ### Exceptions
