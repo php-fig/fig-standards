@@ -24,10 +24,10 @@ encoding and adjust the Content-Length header.
 An implementing library MUST implement `Psr\Http\Client\ClientException` for each exception it throws. 
 
 When there is an error with the network or the remote server cannot be reached, the
-HTTP client SHOULD thrown a `Psr\Http\Client\Exception\NetworkException`. If the 
-request is invalid and cannot be sent the HTTP client SHOULD throw a 
+HTTP client MUST thrown a `Psr\Http\Client\Exception\NetworkException`. If the 
+request is invalid and cannot be sent the HTTP client MUST throw a 
 `Psr\Http\Client\Exception\RequestException`. Smaller issues like wrong HTTP version
-is not blocking the HTTP client to send the request and SHOULD not cause any exception. 
+is not blocking the HTTP client to send the request and MUST not cause any exception. 
 
 ## Goal
 
