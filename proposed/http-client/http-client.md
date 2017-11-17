@@ -17,7 +17,7 @@ from the user/server. In this case the request and the response MUST be consiste
 between the body and headers. For example a 
 server may return a gzip encoded body and the client may know how to decode this, 
 when it decodes the body the client MUST also remove the header that specifies the 
-encoding.
+encoding and adjust the Content-Length header. 
 
 ### Exceptions
 
