@@ -27,9 +27,6 @@ should not follow redirect nor throw exceptions on HTTP responses with status 4x
 
 ## Interfaces
 
-The following interfaces MAY be implemented together within a single class or
-in separate classes.
-
 ### ClientInterface
 
 ```php
