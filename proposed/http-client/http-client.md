@@ -23,11 +23,17 @@ encoding and adjust the Content-Length header.
 
 An implementing library MUST implement `Psr\Http\Client\ClientException` for each exception it throws. 
 
-When there is an error with the network or the remote server cannot be reached, the
-HTTP client MUST thrown a `Psr\Http\Client\Exception\NetworkException`. If the 
-request is invalid and cannot be sent the HTTP client MUST throw a 
-`Psr\Http\Client\Exception\RequestException`. Smaller issues like wrong HTTP version
-is not blocking the HTTP client to send the request and MUST not cause any exception. 
+When the client get a request that is invalid and cannot be sent, the HTTP client 
+MUST throw a `Psr\Http\Client\Exception\RequestException`. If there is an error
+with the network or the remote server cannot be reached, the HTTP client MUST throw
+a `Psr\Http\Client\Exception\NetworkException`. 
+
+Smaller issues like wrong HTTP version is not blocking the HTTP client to send the
+request and MUST not cause any exception. 
+
+No exception should be thrown if the remote server answers with an response that can
+be parsed onto a PSR-7 Response. For example a 400 or 500 response should not cause 
+an exception.
 
 ## Goal
 
