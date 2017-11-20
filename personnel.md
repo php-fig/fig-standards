@@ -17,17 +17,14 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| **Group 1**                                                     |
 | Beau Siemensen ([@beausimensen])      | 2016-12-24 - 2019-04-30 |
 | Larry Garfield ([@Crell])             | 2016-12-24 - 2019-04-30 |
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2019-04-30 |
 | Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-04-30 |
-| **Group 2**                                                     |
 | Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2018-08-31 |
 | Gary Hockin ([@GeeH])                 | 2016-12-24 - 2018-08-31 |
 | Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2018-08-31 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2018-08-31 |
-| **Group 3**                                                     |
 | Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2018-01-31 |
 | Graham Hoefer ([@greydnls])           | 2016-12-24 - 2018-01-31 |
 | Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2018-01-31 |
