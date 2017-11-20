@@ -4,7 +4,7 @@
 
 ### Secretaries
 
-| Secretary                             | Term                    |
+| Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2018-08-31 |
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
@@ -15,7 +15,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 ### Core Committee Members
 
-| Member                                | Term                    |
+| Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2019-04-30 |
 | Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-04-30 |
@@ -78,7 +78,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 ### Former Secretaries
 
-| Secretary                             | Term                    |
+| Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | Amanda Folsom ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-02-28 - 2016-12-24 |
@@ -87,7 +87,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 ### Former Core Committee Members
 
-| Member                                | Term                    |
+| Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | TBD                                   |                         |
 
