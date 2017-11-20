@@ -10,7 +10,7 @@
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
 | Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
 
-Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](/bylaws).
+Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](http://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
 
 ### Core Committee Members
