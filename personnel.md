@@ -14,9 +14,9 @@ If you think that your project would benefit from implementing PSRs and/or you w
 
 | Secretary                                             | Term                    |
 |-------------------------------------------------------|-------------------------|
-| [Michael Cullum](https://twitter.com/michaelcullumuk) | 2016-01-31 - 2018-01-31 |
-| [Margret Staples](https://twitter.com/dead_lugosi)    | 2017-11-12 - 2019-05-31 |
 | [Alessandro Lai](https://twitter.com/AlessandroLai)   | 2017-11-12 - 2018-08-31 |
+| [Margret Staples](https://twitter.com/dead_lugosi)    | 2017-11-12 - 2019-05-31 |
+| [Michael Cullum](https://twitter.com/michaelcullumuk) | 2016-01-31 - 2018-01-31 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](/bylaws).
 
