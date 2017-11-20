@@ -131,6 +131,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@ieatkillerbees]: https://twitter.com/ieatkillerbees
 [@jeremeamia]: https://twitter.com/jeremeamia
 [@JeroenDeDauw]: https://twitter.com/JeroenDeDauw
+[@joepferguson]: https://twitter.com/joepferguson
 [@kdambekalns]: https://twitter.com/kdambekalns
 [@korvinszanto]: https://twitter.com/korvinszanto
 [@kriswallsmith]: https://twitter.com/kriswallsmith
