@@ -42,7 +42,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Composer]                        | Jordi Boggiano ([@seldaek])           |
 | [concrete5]                       | Korvin Szanto ([@korvinszanto])       |
 | [Contao Open Source CMS]          | Leo Feyer ([@leofeyer])               |
-| [Drupal]                          | Larry Garfield ([@Crell])             |
+| [Drupal]                          | *vacant*                              |
 | [eZ Publish]                      | Andre Romcke ([@andrerom])            |
 | [Horde]                           | Jan Schneider ([@yunosh])             |
 | [IBM i Toolkit]                   | Adam Culp ([@adamculp])               |
