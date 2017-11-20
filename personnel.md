@@ -83,7 +83,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Amanda Folsom ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
+| Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-02-28 - 2016-12-24 |
 | Joe Ferguson ([@joepferguson])        | 2016-01-31 - 2016-06-29 |
 
