@@ -3,16 +3,37 @@ HTTP Client
 
 This document describes common interfaces for sending HTTP messages.
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ## Specification
 
+### Client
+
 An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
-response. When there is an error during sending the request or an error with network an
-exception should be thrown. 
+response. Under the hood the HTTP client MAY modify the request/response received 
+from the user/server. In this case the request and the response MUST be consistent
+between the body and headers. For example a 
+server may return a gzip encoded body and the client may know how to decode this, 
+when it decodes the body the client MUST also remove the header that specifies the 
+encoding and adjust the Content-Length header. 
+
+### Exceptions
 
 An implementing library MUST implement `Psr\Http\Client\ClientException` for each exception it throws. 
-It SHOULD implement exceptions for `Psr\Http\Client\Exception\NetworkException` and
-`Psr\Http\Client\Exception\RequestException`.
+
+When the HTTP client is passed a request that is invalid and cannot be sent, the client 
+MUST throw a `Psr\Http\Client\Exception\RequestException`. If there is an error
+with the network or the remote server cannot be reached, the HTTP client MUST throw
+a `Psr\Http\Client\Exception\NetworkException`. 
+
+Smaller issues like wrong HTTP version is not blocking the HTTP client to send the
+request and MUST not cause any exception. 
+
+If the remote server answers with a response that can be parsed into a PSR-7 response,
+the client MUST NOT throw an exception. For example, response status codes in the 
+400 and 500 range MUST NOT cause an exception.
 
 ## Goal
 
