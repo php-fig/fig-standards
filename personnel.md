@@ -4,7 +4,7 @@
 The PHP-FIG represents a cross-section of the community, and over time that cross-section has increased to include a wider selection of people and projects.
 </p>
 
-The group was bootstrapped by a number of framework developers at php|tek in 2009. Since then various other projects have applied and been voted in as members, increasing the size of the group from the first 5 to over 20.
+The group was bootstrapped by a number of framework developers at php\|tek in 2009. Since then various other projects have applied and been voted in as members, increasing the size of the group from the first 5 to over 20.
 
 Initially, projects were strictly frameworks, but it was quickly discovered that CMS, applications, package developers, etc. have as much to add. The idea is to get a cross-section of the ecosystem and not JUST one specific group of developers. Having the implementors working alongside the people creating packages and the people developing systems with the frameworks are all of equal importance.
 
