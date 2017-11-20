@@ -41,8 +41,7 @@ specify the default behaviours.
 The intention of this PSR is to provide library developers with HTTP clients that 
 have a well defined behaviour. A library should be able to use any compliant client
 without special code to handle client implementation details (Liskov substitution
-principle). The PSR does not try to restrict nor define configuration interface 
-for HTTP clients. 
+principle). The PSR does not try to restrict nor define how to configure HTTP clients. 
 
 An alternative approach would be to pass configuration to the client. That approach
 would have a few drawbacks: 
