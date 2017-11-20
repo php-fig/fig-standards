@@ -6,9 +6,9 @@
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
+| Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
 | Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2018-08-31 |
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
-| Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](http://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -83,9 +83,9 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
-| Samantha Quiñones ([@ieatkillerbees]) | 2016-02-28 - 2016-12-24 |
 | Joe Ferguson ([@joepferguson])        | 2016-01-31 - 2016-06-29 |
+| Samantha Quiñones ([@ieatkillerbees]) | 2016-02-28 - 2016-12-24 |
+| Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
 
 
 ### Former Core Committee Members
