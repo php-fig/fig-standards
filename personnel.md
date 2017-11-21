@@ -80,6 +80,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
+| Gary Hockin ([@GeeH])                 | 2016-01-31 - 2016-01-31 |
 | Joe Ferguson ([@joepferguson])        | 2016-01-31 - 2016-06-29 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-02-28 - 2016-12-24 |
 | Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
@@ -90,6 +91,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | TBD                                   |                         |
+
 
 ### Former Member Projects
 
