@@ -142,7 +142,7 @@ of `Request`. The implementation listed above is an implementation of `ServerReq
 [slim-uri]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/Uri.php#L112-L121
 
 Of the compared approaches, Slim is most different from the proposed factories.
-Most notably, the `Request` implementation contains requirements that specific
+Most notably, the `Request` implementation contains requirements specific
 to the framework and are not defined in HTTP Messages specification. The factory
 methods that are included are generally similar with the proposed factories.
 
