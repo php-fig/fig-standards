@@ -156,10 +156,11 @@ methods that are included are generally similar with the proposed factories.
 
 ### 4.3 Potential Issues
 
-The most difficult task in establishing this standard will be defining the method signatures for the interfaces.
-As there is no clear declaration in PSR-7 as to what values are explicitly
-required, the properties that are read-only must be inferred based on whether
-the interfaces have methods to copy-and-modify the object.
+The most difficult task in establishing this standard will be defining the
+method signatures for the interfaces. As there is no clear declaration in PSR-7
+as to what values are explicitly required, the properties that are read-only
+must be inferred based on whether the interfaces have methods to copy-and-modify
+the object.
 
 ## 5. Design Decisions
 
