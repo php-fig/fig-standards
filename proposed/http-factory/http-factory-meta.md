@@ -143,7 +143,7 @@ of `Request`. The implementation listed above is an implementation of `ServerReq
 
 Of the compared approaches, Slim is most different from the proposed factories.
 Most notably, the `Request` implementation contains requirements specific
-to the framework and are not defined in HTTP Messages specification. The factory
+to the framework that are not defined in HTTP Messages specification. The factory
 methods that are included are generally similar with the proposed factories.
 
 #### 4.3 Potential Issues
