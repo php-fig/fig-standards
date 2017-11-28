@@ -66,7 +66,7 @@ interface ClientInterface
      * assembled in the HTTP client. 
      *
      * The client MAY do modifications to the Request before sending it. Because PSR-7 objects are
-     * immutable, one cannot assume that the object passed to Client::sendRequest will be the same
+     * immutable, one cannot assume that the object passed to ClientInterface::sendRequest() will be the same
      * object that is actually sent. For example the Request object that is returned by an exception MAY
      * be a different object than the one passed to sendRequest, so comparison by reference (===) is not possible.
      * 
@@ -117,7 +117,7 @@ interface RequestException extends ClientException
     /**
      * Returns the request.
      *
-     * The request object MAY be a different object from the one passed to Client::sendRequest()
+     * The request object MAY be a different object from the one passed to ClientInterface::sendRequest()
      *
      * @return RequestInterface
      */
@@ -145,7 +145,7 @@ interface NetworkException extends ClientException
     /**
      * Returns the request.
      *
-     * The request object MAY be a different object from the one passed to Client::sendRequest()
+     * The request object MAY be a different object from the one passed to ClientInterface::sendRequest()
      *
      * @return RequestInterface
      */
