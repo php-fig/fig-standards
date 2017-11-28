@@ -28,7 +28,7 @@ MUST throw a `Psr\Http\Client\Exception\RequestException`. If there is an error
 with the network or the remote server cannot be reached, the HTTP client MUST throw
 a `Psr\Http\Client\Exception\NetworkException`. 
 
-Smaller issues like wrong HTTP version is not blocking the HTTP client to send the
+Smaller issues, like wrong HTTP version, is not blocking the HTTP client to send the
 request and MUST not cause any exception. 
 
 If the remote server answers with a response that can be parsed into a PSR-7 response,
