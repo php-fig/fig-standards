@@ -78,7 +78,7 @@ interface ClientInterface
      *
      * @throws \Psr\Http\Client\Exception If an error happens during processing the request.
      */
-    public function sendRequest(RequestInterface $request): Response;
+    public function sendRequest(RequestInterface $request): ResponseInterface;
 }
 ```
 
