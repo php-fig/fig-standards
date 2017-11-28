@@ -73,7 +73,17 @@ catch the specific exceptions and handle them accordingly.
 
 One could be more granular when defining exception. For example, `TimeOutException` and `HostNotFoundException`
 could be subtypes of `NetworkException`. The chosen approach is not to define such subtypes because
-the exception handling in a consuming library would not be different between those exceptions. 
+the exception handling in a consuming library would not be different between those exceptions.
+
+#### Throwing exceptions for 4xx and 5xx responses
+
+The initial idea was to allow the client to be configured to throw exceptions for responses
+with HTTP status 4xx and 5xx. That approach is not desired because consuming libraries would 
+have to check for 4xx and 5xx responses twice. First by simply verifying the status code and 
+then to catch possible exceptions. 
+
+To make the specification more predictable, it was decided that HTTP clients never will throw
+exceptions for 4xx and 5xx responses.   
 
 ### Background
 
