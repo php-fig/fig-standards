@@ -26,7 +26,7 @@ client will allow libraries to be decoupled from specific implementation such as
 * Support for asynchronous HTTP requests is left for another future PSR;
 * This PSR does not define how to configure a HTTP client. It only specifies the 
   default behaviours;
-* We want to not be opinionated about the use of middlewares (PSR-15).
+* We aim to be neutral about the use of middlewares (PSR-15).
 
 #### Asynchronous HTTP client
 
