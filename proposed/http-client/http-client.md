@@ -61,8 +61,8 @@ interface ClientInterface
      * Sends a PSR-7 request and returns a PSR-7 response. 
      * 
      * Every technically correct HTTP response MUST be returned as is, even if it represents a HTTP 
-     * error response or a redirect instruction. The only exception are 1xx responses which MUST be 
-     * assembled in the HTTP client.
+     * error response or a redirect instruction. The only special case is 1xx responses, which MUST
+     * be assembled in the HTTP client.
      *
      * The client MAY do modifications to the Request before sending it. Because PSR-7 objects are
      * immutable, one cannot assume that the object passed to ClientInterface::sendRequest() will be the same
