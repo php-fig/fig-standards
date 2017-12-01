@@ -12,39 +12,38 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 ### Client
 
 An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
-response. Under the hood the HTTP client MAY modify the request/response received 
-from the user/server. In this case the request and the response MUST be consistent
-between the body and headers. For example a 
-server may return a gzip encoded body and the client may know how to decode this, 
-when it decodes the body the client MUST also remove the header that specifies the 
-encoding and adjust the Content-Length header. 
+response. Under the hood, the HTTP client MAY modify the request/response received
+from the user/server. In this case, the request and the response MUST be consistent
+between the body and headers. For example, a
+server may return a gzip encoded body and the client may know how to decode this.
+If it decodes the body, the client MUST also remove the header that specifies the
+encoding and adjust the Content-Length header.
 
 ### Exceptions
 
-An implementing library MUST implement `Psr\Http\Client\ClientException` for each exception it throws. 
+All exceptions thrown by the client MUST implement `Psr\Http\Client\ClientException`.
 
-When the HTTP client is passed a request that is invalid and cannot be sent, the client 
+When the HTTP client is passed a request that is invalid and cannot be sent, the client
 MUST throw a `Psr\Http\Client\Exception\RequestException`. If there is an error
 with the network or the remote server cannot be reached, the HTTP client MUST throw
-a `Psr\Http\Client\Exception\NetworkException`. 
+a `Psr\Http\Client\Exception\NetworkException`.
 
-Smaller issues, like wrong HTTP version, is not blocking the HTTP client to send the
-request and MUST not cause any exception. 
+Smaller issues, like wrong HTTP versions, that are not blocking the HTTP client from
+sending the request MUST not cause any exception.
 
 If the remote server answers with a response that can be parsed into a PSR-7 response,
-the client MUST NOT throw an exception. For example, response status codes in the 
+the client MUST NOT throw an exception. For example, response status codes in the
 400 and 500 range MUST NOT cause an exception.
 
 ## Goal
 
 The goal of this PSR is to allow developers to create libraries decoupled from HTTP client
-implementations. This would make libraries more stable since the reduced number of
-dependencies and the likelihood to get in version conflicts is reduced.
+implementations. This will make libraries more reusable as it reduces the number of
+dependencies and lowers the likelihood to get version conflicts.
 
-The second goal is that all HTTP clients should follow the [Liskov substitutions principle][Liskov].
-This means that all clients should act the same when sending a request. By default a HTTP client
-should not follow redirect nor throw exceptions on HTTP responses with status 4xx or 5xx.
-
+The second goal is that HTTP clients can be replaced as per the
+[Liskov substitutions principle][Liskov]. This means that all clients MUST behave in the
+same when sending a request.
 
 ## Interfaces
 
@@ -62,8 +61,8 @@ interface ClientInterface
      * Sends a PSR-7 request and returns a PSR-7 response. 
      * 
      * Every technically correct HTTP response MUST be returned as is, even if it represents a HTTP 
-     * error response or a redirect instruction. The only exception is 1xx responses which MUST be 
-     * assembled in the HTTP client. 
+     * error response or a redirect instruction. The only exception are 1xx responses which MUST be 
+     * assembled in the HTTP client.
      *
      * The client MAY do modifications to the Request before sending it. Because PSR-7 objects are
      * immutable, one cannot assume that the object passed to ClientInterface::sendRequest() will be the same
