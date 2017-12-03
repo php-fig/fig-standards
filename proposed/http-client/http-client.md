@@ -101,8 +101,8 @@ interface ClientException extends \Throwable
 ```php
 namespace Psr\Http\Client\Exception;
 
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Client\ClientException;
+use Psr\Http\Message\RequestInterface;
 
 /**
  * Exception for when a request failed.
@@ -131,6 +131,7 @@ interface RequestException extends ClientException
 namespace Psr\Http\Client\Exception;
 
 use Psr\Http\Client\ClientException;
+use Psr\Http\Message\RequestInterface;
 
 /**
  * Thrown when the request cannot be completed because of network issues.
