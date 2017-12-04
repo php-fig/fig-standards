@@ -515,7 +515,7 @@ class ReturnTypeVariations
 }
 ~~~
 
-In nullable type declarations there MUST not be a space between the question mark
+In nullable type declarations there MUST NOT be a space between the question mark
 and the type.
 
 ~~~php
