@@ -66,7 +66,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | B      | 9   | [Security Advisories][psr9]          | Michael Hess                   |
 | B      | 10  | [Security Reporting Process][psr10]  | Michael Hess                   |
 | A      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier |
-| B      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
+| R      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 | A      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 |
 | B      | 14  | [Event Manager][psr14]               | Chuck Reeves                   |
 | R      | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
