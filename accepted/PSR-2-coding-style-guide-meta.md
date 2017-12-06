@@ -1,8 +1,6 @@
-PSR-2 Meta Document
-===================
+# PSR-2 Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 The intent of this guide is to reduce cognitive friction when scanning code from different authors. It does so
 by enumerating a shared set of rules and expectations about how to format PHP code.
@@ -12,14 +10,12 @@ collaborate across multiple projects, it helps to have one set of guidelines to 
 projects. Thus, the benefit of this guide is not in the rules themselves, but in the sharing of those rules.
 
 
-2. Votes
---------
+## 2. Votes
 
 - **Acceptance Vote:** [ML](https://groups.google.com/d/msg/php-fig/c-QVvnZdMQ0/TdDMdzKFpdIJ)
 
 
-3. Errata
----------
+## 3. Errata
 
 ### 3.1 - Multi-line Arguments (09/08/2013)
 
@@ -44,4 +40,3 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 
 When extending multiple interfaces, the list of `extends` should be treated the same as a list
 of `implements`, as declared in Section 4.1.
-
