@@ -44,7 +44,7 @@ Request handlers using this standard MUST implement the following interface:
 
 ### 1.2 Middleware
 
-An middleware component is an individual component participating, often together
+A middleware component is an individual component participating, often together
 with other middleware components, in the processing of an incoming request and
 the creation of a resulting response, as defined by PSR-7.
 
