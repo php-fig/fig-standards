@@ -50,6 +50,8 @@ same when sending a request.
 ### ClientInterface
 
 ```php
+declare(strict_types=1);
+
 namespace Psr\Http\Client;
 
 use Psr\Http\Message\RequestInterface;
@@ -85,6 +87,8 @@ interface ClientInterface
 ### Exception
 
 ```php
+declare(strict_types=1);
+
 namespace Psr\Http\Client;
 
 /**
@@ -99,6 +103,8 @@ interface ClientException extends \Throwable
 ### RequestException
 
 ```php
+declare(strict_types=1);
+
 namespace Psr\Http\Client\Exception;
 
 use Psr\Http\Client\ClientException;
@@ -128,6 +134,8 @@ interface RequestException extends ClientException
 ### NetworkException
 
 ```php
+declare(strict_types=1);
+
 namespace Psr\Http\Client\Exception;
 
 use Psr\Http\Client\ClientException;
