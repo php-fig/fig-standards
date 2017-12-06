@@ -69,7 +69,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | B      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 | A      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 |
 | B      | 14  | [Event Manager][psr14]               | Chuck Reeves                   |
-| D      | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
+| R      | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
 | A      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 |
 | B      | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 | D      | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
