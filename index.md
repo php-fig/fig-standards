@@ -25,12 +25,12 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
+| 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
 
 ### Draft
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
-| 15  | [HTTP Handlers][psr15]            | Woody Gilk                     |
 | 18  | [HTTP Factories][psr18]              | Tobias Nylhom                  |
 
 ### Abandoned
