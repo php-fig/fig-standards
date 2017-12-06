@@ -93,6 +93,8 @@ interface RequestHandlerInterface
      *
      * @param ServerRequestInterface $request
      *
+     * @throws \Exception MAY throw an exception if request conditions prevent it from producing a response
+     *
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface;
