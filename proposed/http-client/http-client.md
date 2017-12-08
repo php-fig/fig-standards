@@ -7,6 +7,16 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
+## Goal
+
+The goal of this PSR is to allow developers to create libraries decoupled from HTTP client
+implementations. This will make libraries more reusable as it reduces the number of
+dependencies and lowers the likelihood to get version conflicts.
+
+The second goal is that HTTP clients can be replaced as per the
+[Liskov substitutions principle][Liskov]. This means that all clients MUST behave in the
+same when sending a request.
+
 ## Specification
 
 ### Client
@@ -34,16 +44,6 @@ sending the request MUST not cause any exception.
 If the remote server answers with a response that can be parsed into a PSR-7 response,
 the client MUST NOT throw an exception. For example, response status codes in the
 400 and 500 range MUST NOT cause an exception.
-
-## Goal
-
-The goal of this PSR is to allow developers to create libraries decoupled from HTTP client
-implementations. This will make libraries more reusable as it reduces the number of
-dependencies and lowers the likelihood to get version conflicts.
-
-The second goal is that HTTP clients can be replaced as per the
-[Liskov substitutions principle][Liskov]. This means that all clients MUST behave in the
-same when sending a request.
 
 ## Interfaces
 
