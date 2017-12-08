@@ -1,7 +1,7 @@
 HTTP Client
 ===========
 
-This document describes common interfaces for sending HTTP messages.
+This document describes a common interface for requesting HTTP resources.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
