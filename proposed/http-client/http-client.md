@@ -39,11 +39,11 @@ the client MUST NOT throw an exception. For example, response status codes in th
 
 The goal of this PSR is to allow developers to create libraries decoupled from HTTP client
 implementations. This will make libraries more reusable as it reduces the number of
-dependencies and lowers the likelihood to get version conflicts.
+dependencies and lowers the likelihood of version conflicts.
 
-The second goal is that HTTP clients can be replaced as per the
+A second goal is that HTTP clients can be replaced as per the
 [Liskov substitutions principle][Liskov]. This means that all clients MUST behave in the
-same when sending a request.
+same way when sending a request.
 
 ## Interfaces
 
@@ -108,8 +108,8 @@ use Psr\Http\Message\RequestInterface;
  * Exception for when a request failed.
  *
  * Examples:
- *      - Request is invalid (eg. method is missing)
- *      - Runtime request errors (like the body stream is not seekable)
+ *      - Request is invalid (e.g. method is missing)
+ *      - Runtime request errors (e.g. the body stream is not seekable)
  */
 interface RequestException extends ClientException
 {
