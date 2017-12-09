@@ -24,7 +24,7 @@ condition in which the body has already been written to.
 This scenario can be avoided by providing a factory to create new streams. Due to
 the lack of formal standard for HTTP object factories, a developer must rely on
 a specific vendor implementation in order to create these objects. Creating a
-formal standard for factories will allow developers to avoid dependency on
+formal standard for factories will allow developers to avoid dependencies on
 specific implementations while having the ability to create new objects when
 necessary.
 
@@ -54,7 +54,7 @@ implement multiple interfaces when appropriate.
 ### 4.2 Existing Implementations
 
 All of the current implementations of PSR-7 have defined their own requirements.
-In most cases, the required parameters the same or less strict than the proposed
+In most cases, the required parameters are the same or less strict than the proposed
 factory methods.
 
 #### 4.2.1 Diactoros
@@ -144,7 +144,7 @@ methods that are included are generally similar with the proposed factories.
 
 ### 4.3 Potential Issues
 
-The most difficult part of defining the method signatures for the interfaces.
+The most difficult part is defining the method signatures for the interfaces.
 As there is no clear declaration in PSR-7 as to what values are explicitly
 required, the properties that are read-only must be inferred based on whether
 the interfaces have methods to copy-and-modify the object.
@@ -158,7 +158,7 @@ the interfaces have methods to copy-and-modify the object.
 ### 5.2 Sponsors
 
 * Roman Tsjupa, <draconyster@gmail.com> (Coordinator)
-* Paul M Jones, <pmjones88@gmail.com>
+* Paul M. Jones, <pmjones88@gmail.com>
 
 ### 5.3 Contributors
 
