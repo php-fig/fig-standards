@@ -38,6 +38,7 @@ This example encompasses some of the rules below as a quick overview:
 
 ~~~php
 <?php
+
 declare(strict_types=1);
 
 namespace Vendor\Package;
@@ -121,6 +122,7 @@ each of the blocks below MUST be separated by a single blank line, and MUST NOT 
 a blank line. Each block MUST be in the order listed below, although blocks that are
 not relevant may be omitted.
 
+* Opening `<?php` tag.
 * File-level docblock.
 * One or more declare statements.
 * The namespace declaration of the file.
@@ -255,6 +257,7 @@ line.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 use FooClass;
@@ -273,6 +276,7 @@ list MUST be on the next line, and there MUST be only one interface per line.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 use FooClass;
@@ -295,6 +299,7 @@ declared on the next line after the opening brace.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 use Vendor\Package\FirstTrait;
@@ -310,6 +315,7 @@ one-per-line, and each inclusion MUST have its own `use` import statement.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 use Vendor\Package\FirstTrait;
@@ -329,6 +335,7 @@ closing brace MUST be on the next line after the `use` import statement.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 use Vendor\Package\FirstTrait;
@@ -343,6 +350,7 @@ Otherwise it MUST have a blank line after the `use` import statement.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 use Vendor\Package\FirstTrait;
@@ -391,6 +399,7 @@ A property declaration looks like the following.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 class ClassName
@@ -417,6 +426,7 @@ parentheses, commas, spaces, and braces:
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 class ClassName
@@ -452,6 +462,7 @@ Method and function argument scalar type hints MUST be lowercase.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 class ClassName
@@ -473,6 +484,7 @@ between them.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 class ClassName
@@ -494,6 +506,7 @@ the two characters. The declaration keyword (e.g. string) MUST be lowercase.
 
 ~~~php
 <?php
+
 declare(strict_types=1);
 
 namespace Vendor\Package;
@@ -520,6 +533,7 @@ and the type.
 
 ~~~php
 <?php
+
 declare(strict_types=1);
 
 namespace Vendor\Package;
@@ -543,6 +557,7 @@ declaration.
 
 ~~~php
 <?php
+
 namespace Vendor\Package;
 
 abstract class ClassName
