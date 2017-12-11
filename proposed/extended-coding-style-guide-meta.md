@@ -16,7 +16,7 @@ to provide a set way that both coding style tools can implement, projects can de
 adherence to and developers can easily relate on between different projects for these
 coding style reducing cognitive friction.
 
-PSR-2 was created based upon the common practices of the PHP FIG projects at the time
+PSR-2 was created based upon the common practices of the PHP-FIG projects at the time
 but ultimately this meant it was a compromise of many of the different projects' guidelines.
 The repercussions of projects changing their coding guidelines to align with PSR-2 (Almost
 all projects do align with PSR-1, even if it is not explicitly stated) were seen to be too
@@ -26,7 +26,7 @@ PSR-2 required adopters to reformat large amounts of existing code which stifled
 To help alleviate this issue with PSR-12, we have taken a more prescriptive approach and
 defined the standards for new language features as they are released. We hope that because
 this specification is defined prior to mass amounts of code being written, it will have a
-better chance of being adopted but this is in the hope that it will mean that projects.
+better chance of being adopted.
 
 However it is for a lack of wanting to be dictatorial that we will aim to apply PSR-2
 styling, rationale and stances (Described in Section 4, Approaches) in PSR-12 instead of
@@ -135,7 +135,7 @@ including 17 project representatives were gathered:
 
 ## 4.5. Multiline Function Arguments Mixed With Multiline Return
 
-A potential readability issue [was raised on the mailing list](https://groups.google.com/d/msg/php-fig/ULSL4gqK8GY/cgDELuPOCQAJ)].
+A potential readability issue [was raised on the mailing list](https://groups.google.com/d/msg/php-fig/ULSL4gqK8GY/cgDELuPOCQAJ).
 We reviewed options for changes to the specification that could provide better readability and
 the floated option was to require a blank line after the opening bracket of a function if the
 arguments and the return are both multiline. Instead it was pointed out that this specification
@@ -175,24 +175,24 @@ specification for a full understanding of its contents.
 # 6. People
 
 ## 6.1.  Editor:
-* **Korvin Szanto**
+* Korvin Szanto
 
 ## 6.2. Sponsor:
-* **Chris Tankersley**
+* Chris Tankersley
 
 ## 6.3. Working Group Members:
-* **Alexander Makarov**
-* **Michael Cullum**
-* **Robert Deutz**
+* Alexander Makarov
+* Michael Cullum
+* Robert Deutz
 
 ## 6.4. Special Thanks
-* **Michael Cullum** for drafting the original specification
-* **Alexandar Makarov** for coordinating the draft during FIG 2.0
-* **Cees-Jan Kiewiet** for moral support
+* Michael Cullum for drafting the original specification
+* Alexandar Makarov for coordinating the draft during FIG 2.0
+* Cees-Jan Kiewiet for moral support
 
 # 7. Votes
 
-* **Entrance Vote: ** https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/php-fig/P9atZLOcUBM/_jwkvlYKEAAJ
+* **Entrance Vote:** https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/php-fig/P9atZLOcUBM/_jwkvlYKEAAJ
 
 # 8. Relevant Links
 
