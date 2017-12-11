@@ -3,7 +3,8 @@ HTTP Server Request Handlers
 
 This document describes common interfaces for HTTP server request handlers
 ("request handlers") and HTTP server middleware components ("middleware")
-that use HTTP messages as described by [PSR-7][psr7].
+that use HTTP messages as described by [PSR-7][psr7] or subsequent
+replacement PSRs.
 
 HTTP request handlers are a fundamental part of any web application. Server side
 code receives a request message, processes it, and produces a response message.
@@ -58,10 +59,9 @@ Middleware using this standard MUST implement the following interface:
 ### 1.3 Generating Responses
 
 It is RECOMMENDED that any middleware or request handler that generates a response
-will use HTTP factories as defined in [PSR-17][psr17] in order to prevent dependence
-on a specific HTTP message implementation.
-
-[psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory
+will either compose a prototype of a PSR-7 `ResponseInterface` or a factory capable
+of generating a `ResponseInterface` instance in order to prevent dependence on a
+specific HTTP message implementation.
 
 ### 1.4 Handling Exceptions
 
@@ -83,17 +83,17 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * An HTTP request handler process an HTTP request and produces an HTTP response.
- * This interface defines the methods required to use the request handler.
+ * Handles a server request and produces a response
+ *
+ * An HTTP request handler process an HTTP request in order to produce an
+ * HTTP response.
  */
 interface RequestHandlerInterface
 {
     /**
-     * Handle the request and return a response.
+     * Handles a request and produces a response
      *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
+     * May call other collaborating code to generate the response.
      */
     public function handle(ServerRequestInterface $request): ResponseInterface;
 }
@@ -110,20 +110,20 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
+ * Participant in processing a server request and response
+ *
  * An HTTP middleware component participates in processing an HTTP message,
- * either by acting on the request or the response. This interface defines the
- * methods required to use the middleware.
+ * either by acting on the request, generating the response, or forwarding the
+ * request to a subsequent middleware and possibly acting on its response.
  */
 interface MiddlewareInterface
 {
     /**
-     * Process an incoming server request and return a response, optionally delegating
-     * response creation to a handler.
+     * Process an incoming server request
      *
-     * @param ServerRequestInterface $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
+     * Processes an incoming server request in order to produce a response.
+     * If unable to produce the response itself, it may delegate to the provided
+     * request handler to do so.
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;
 }

@@ -5,7 +5,8 @@ HTTP Server Request Handlers Meta Document
 
 The purpose of this PSR is to define formal interfaces for HTTP server request
 handlers ("request handlers") and HTTP server request middleware ("middleware")
-that are compatible with HTTP messages as defined in [PSR-7][psr7].
+that are compatible with HTTP messages as defined in [PSR-7][psr7] or subsequent
+replacement PSRs.
 
 _Note: All references to "request handlers" and "middleware" are specific to
 **server request** processing._
@@ -275,6 +276,10 @@ and a request handler and must return a response. The middleware may:
 - Create and return a response without passing the request to the request handler,
   thereby handling the request itself.
 
+It is expected that a middleware dispatching system will use the request handler
+to delegate response creation to the next available middleware. The last middleware
+would then act as a domain gateway to execute application code.
+
 #### Why doesn't middleware use `__invoke`?
 
 Doing so would conflict with existing middleware that implements the double-pass
@@ -305,8 +310,8 @@ To make it clear that the middleware can only be used in a synchronous, server
 side context.
 
 While not all middleware will need to use the additional methods defined by the
-server request interface, external requests are typically processed asynchronously
-and would usually return a [promise][promises] of a response. (This is primarily
+server request interface, outbound requests are typically processed asynchronously
+and would typically return a [promise][promises] of a response. (This is primarily
 due to the fact that multiple requests can be made in parallel and processed as
 they are returned.) It is outside the scope of this proposal to address the needs
 of asynchronous request/response life cycles.
