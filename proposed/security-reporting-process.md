@@ -3,10 +3,9 @@
 There are two aspects with dealing with security issues: One is the process
 by which security issues are reported and fixed in projects, the other
 is how the general public is informed about the issues and any remedies
-available. While PSR-10 addresses the later, this PSR, ie. PSR-9, deals with
-the former. So the goal of PSR-9 is to define the process by which security
-researchers and report security vulnerabilities to projects. It is important
-that when security vulnerabilities are found that researchers have an easy
+available.  This PSR, deals with reporting. So the goal of 
+PSR-9 is to define the process by which vulnerablities are reported to projects.
+It is important that when security vulnerabilities are found that researchers have an easy
 channel to the projects in question allowing them to disclose the issue to a
 controlled group of people.
 
@@ -25,7 +24,9 @@ vulnerabilities.
 ## Security Disclosure Process Discovery
 
 Every project MUST provide a link to its security disclosure process in
-an obvious place. Ideally this should be on the root page the main domain of
+an obvious place. Every project, that has a dedicated webiste MUST redirect 
+https://www.example.com/reportsecurityvuln to this place. 
+Ideally a link should be on the root page the main domain of
 the given project. This MAY be a sub-domain in case it is a sub-project of a
 larger initiative. The link MAY use the custom link relation
 ``php-vuln-reporting``, ie. for example
@@ -55,13 +56,19 @@ for each major version. In the case a major version is no longer receiving
 security fixes, instead of an URL a project MAY opt to instead simply
 note that the version is no longer receiving security fixes.
 
+Every project SHOULD have a method to report that does not involve the software being used by the project. 
+For example framework X, SHOULD have a method of reporting that does not use framework X.  By default, it is assumed this an email address. 
+
 ## Security Disclosure Process
 
 Every project MUST provide an email address in their security disclosure
 process description as the ``contact email address``. Projects SHALL NOT
 use contact forms.
 
-**TODO**: Add more things found here https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40StsJ?
+
+## Security.josn
+Projects MUST create a security.json file in their root level directory for automated parsing, it should take the following format. 
+
 
 ## Default Procedures
 
@@ -70,4 +77,3 @@ use contact forms.
 
 If not specified otherwise, the ``contact email address`` is ``security@[project domain]``.
 
-**TODO**: Add more things noted in the previous section
