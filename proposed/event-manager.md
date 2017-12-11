@@ -25,6 +25,8 @@ doesn't have permission.
 
 ## Terms
 
+**TODO**
+
 *   **Event** - An action that about to take place (or has taken place).  The
 event name MUST only contain the characters `A-Z`, `a-z`, `0-9`, `_`, and '.'.
 It is RECOMMENDED that words in event names be separated using '.'
@@ -36,151 +38,209 @@ priority.  Listeners MUST BE called based on priority.
 
 ## Components
 
-There are 2 interfaces needed for managing events:
+**TODO**
 
-1. An event object which contains all the information about the event.
-2. The event manager which holds all the listeners
+### Event
 
-### EventInterface
-
-The EventInterface defines the methods needed to dispatch an event.  Each event
-MUST contain a event name in order trigger the listeners. Each event MAY have a
-target which is an object that is the context the event is being triggered for.
-OPTIONALLY the event can have additional parameters for use within the event.
-
-The event MUST contain a propegation flag that signals the EventManager to stop
-passing along the event to other listeners.
+The Event defines base contract needed to dispatch an event. Each event MUST contain a event name in order trigger the listeners. Each event MUST be immutable. Event class OPTIONALLY may be inherited by concrete event class. OPTIONALLY the event can have additional parameters for use within the event.
 
 ~~~php
 
-namespace Psr\EventManager;
-
 /**
- * Representation of an event
+ * Immutable message that represents something took place in the past.
  */
-interface EventInterface
+class Event
 {
+    private $name;
+    private $params;
+
     /**
-     * Get event name
-     *
+     * @param string $name
+     * @param array $params
+     */
+    public function __construct($name, array $params = array())
+    {
+        $this->name = $name;
+        $this->params = $params;
+    }
+
+    /**
      * @return string
      */
-    public function getName();
+    public function getName()
+    {
+        return $this->name;
+    }
 
     /**
-     * Get target/context from which event was triggered
-     *
-     * @return null|string|object
-     */
-    public function getTarget();
-
-    /**
-     * Get parameters passed to the event
-     *
      * @return array
      */
-    public function getParams();
-
-    /**
-     * Get a single parameter by name
-     *
-     * @param  string $name
-     * @return mixed
-     */
-    public function getParam($name);
-
-    /**
-     * Set the event name
-     *
-     * @param  string $name
-     * @return void
-     */
-    public function setName($name);
-
-    /**
-     * Set the event target
-     *
-     * @param  null|string|object $target
-     * @return void
-     */
-    public function setTarget($target);
-
-    /**
-     * Set event parameters
-     *
-     * @param  array $params
-     * @return void
-     */
-    public function setParams(array $params);
-
-    /**
-     * Indicate whether or not to stop propagating this event
-     *
-     * @param  bool $flag
-     */
-    public function stopPropagation($flag);
-
-    /**
-     * Has this event indicated event propagation should stop?
-     *
-     * @return bool
-     */
-    public function isPropagationStopped();
+    public function getParams()
+    {
+        return $this->params;
+    }
 }
 ~~~
 
-### EventManagerInterface
+### Hook
 
-The EventManager holds all the listeners for a particular event.  Since an
-event can have many listeners that each return a result, the EventManager
- MUST return the result from the last listener.
+The Hook defines base contract for hook message. Unlike an event, hook message is mutable. Hook OPTIONALLY may be inherited by concrete hook class.
 
 ~~~php
-
-namespace Psr\EventManager;
-
 /**
- * Interface for EventManager
+ * Mutable message that represents a message for hook-point.
  */
-interface EventManagerInterface
+class Hook
+{
+    private $name;
+    private $params;
+    private $propagationStopped = false;
+
+    /**
+     * @param string $name
+     * @param array $params
+     */
+    public function __construct($name, array $params = array())
+    {
+        $this->name = $name;
+        $this->params = $params;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * @param array $params
+     * @return void
+     */
+    public function setParams(array $params)
+    {
+        $this->params = $params;
+    }
+
+    /**
+     * @param array $params
+     * @return void
+     */
+    public function mergeParamsWith(array $params)
+    {
+        $this->params = array_merge($this->params, $params);
+    }
+
+    /**
+     * @param string $param
+     * @param mixed $value
+     * @return void
+     */
+    public function setParam($param, $value)
+    {
+        $this->params[$param] = $value;
+    }
+
+    /**
+     * @param string $param
+     * @return void
+     */
+    public function unsetParam($param)
+    {
+        unset($this->params[$param);
+    }
+
+    /**
+     * Stop propagating this hook message.
+     *
+     * @return void
+     */
+    public function stopPropagation()
+    {
+        $this->propagationStopped = true;
+    }
+
+    /**
+     * Has this hook message indicated hook propagation should stop?
+     *
+     * @return bool
+     */
+    public function isPropagationStopped()
+    {
+        return $this->propagationStopped;
+    }
+}
+~~~
+
+### EventDispatcherInterface
+
+Dispatcher allows to notify listeners about events and send hook messages.
+
+~~~php
+/**
+ *
+ */
+interface EventDispatcherInterface
 {
     /**
-     * Attaches a listener to an event
+     * Dispatch an event.
      *
-     * @param string $event the event to attach too
+     * @param Event $event
+     * @return void
+     */
+    public function dispatch(Event $event);
+
+    /**
+     * Initialize a hook-point.
+     *
+     * @param Hook $hook
+     * @return Hook
+     */
+    public function hook(Hook $hook);
+}
+~~~
+
+### EventSubscriberInterface
+
+Subscriber allows to manage listeners at runtime.
+
+~~~php
+interface EventSubscriberInterface
+{
+    /**
+     * Attaches a listener to an event.
+     *
+     * @param string $eventName the event to attach too
      * @param callable $callback a callable function
      * @param int $priority the priority at which the $callback executed
-     * @return bool true on success false on failure
+     * @return void
      */
-    public function attach($event, $callback, $priority = 0);
+    public function attach($eventName, callable $callback, $priority = 0);
 
     /**
-     * Detaches a listener from an event
+     * Detaches a listener from an event.
      *
-     * @param string $event the event to attach too
+     * @param string $eventName the event to attach too
      * @param callable $callback a callable function
-     * @return bool true on success false on failure
+     * @return void
      */
-    public function detach($event, $callback);
+    public function detach($eventName, callable $callback);
 
     /**
-     * Clear all listeners for a given event
+     * Clear all listeners for a given event.
      *
      * @param  string $event
      * @return void
      */
     public function clearListeners($event);
-
-    /**
-     * Trigger an event
-     *
-     * Can accept an EventInterface or will create one if not passed
-     *
-     * @param  string|EventInterface $event
-     * @param  object|string $target
-     * @param  array|object $argv
-     * @return mixed
-     */
-    public function trigger($event, $target = null, $argv = array());
 }
 ~~~
