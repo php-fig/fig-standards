@@ -323,7 +323,7 @@ additional information._
 Middleware has the following roles:
 
 - Producing a response on its own. If specific request conditions are met, the
-  middleware an produce and return a response.
+  middleware can produce and return a response.
 
 - Returning the result of the request handler. In cases where the middleware
   cannot produce its own response, it can delegate to the request handler to
@@ -352,8 +352,8 @@ response.
 
 In one common scenario, the handler implements a _queue_ or a _stack_ of
 middleware instances internally. In such cases, calling
-`$handler->handle($request)` will pull the advance the internal pointer, pull
-the middleware associated with that pointer, and call it using
+`$handler->handle($request)` will advance the internal pointer, pull the
+middleware associated with that pointer, and call it using
 `$middleware->process($request, $this)`. If no more middleware exists, it will
 generally either raise an exception or return a canned response.
 
