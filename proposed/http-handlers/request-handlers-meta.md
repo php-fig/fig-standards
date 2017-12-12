@@ -229,7 +229,7 @@ middleware typically uses the `callable` type hint to refer to middleware.
 This makes strict typing impossible, as there is no assurance that the `callable`
 being passed implements a middleware signature, which reduces runtime safety.
 
-**Due to these significant issues, the lambda approach has been choosen for this proposal.**
+**Due to these significant issues, the lambda approach has been chosen for this proposal.**
 
 ## 6. Design Decisions
 
