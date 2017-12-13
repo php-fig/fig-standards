@@ -135,7 +135,7 @@ including 17 project representatives were gathered:
 
 ## 4.5. Multiline Function Arguments Mixed With Multiline Return
 
-A potential readability issue [was raised on the mailing list](https://groups.google.com/d/msg/php-fig/ULSL4gqK8GY/cgDELuPOCQAJ)].
+A potential readability issue [was raised on the mailing list](https://groups.google.com/d/msg/php-fig/ULSL4gqK8GY/cgDELuPOCQAJ).
 We reviewed options for changes to the specification that could provide better readability and
 the floated option was to require a blank line after the opening bracket of a function if the
 arguments and the return are both multiline. Instead it was pointed out that this specification
