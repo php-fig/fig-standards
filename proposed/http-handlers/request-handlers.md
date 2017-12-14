@@ -83,7 +83,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * An HTTP request handler process a HTTP request and produces an HTTP response.
+ * An HTTP request handler process an HTTP request and produces an HTTP response.
  * This interface defines the methods required to use the request handler.
  */
 interface RequestHandlerInterface

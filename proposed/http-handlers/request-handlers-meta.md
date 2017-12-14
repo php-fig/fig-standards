@@ -23,11 +23,11 @@ that works with HTTP messages will have some kind of request handler.
 
 [Middleware][middleware] has existed for many years in the PHP ecosystem. The
 general concept of reusable middleware was popularized by [StackPHP][stackphp].
-Since the release of HTTP messages as a PSR many frameworks have adopted
-middleware the use HTTP message interfaces.
+Since the release of HTTP messages as a PSR, many frameworks have adopted
+middleware that use HTTP message interfaces.
 
 Agreeing on formal request handler and middleware interfaces eliminates several
-problems and provides a number of benefits:
+problems and has a number of benefits:
 
 * Provides a formal standard for developers to commit to.
 * Enables any middleware component to run in any compatible framework.
@@ -87,7 +87,7 @@ adopted this signature, the following commonalities are observed:
 * The middleware is passed 3 arguments during invocation:
   1. A `ServerRequestInterface` implementation.
   2. A `ResponseInterface` implementation.
-  3. A `callable` that receives the request and response to delegate the next middleware.
+  3. A `callable` that receives the request and response to delegate to the next middleware.
 
 [php-callable]: http://php.net/manual/language.types.callable.php
 
@@ -141,7 +141,7 @@ Middleware taking this approach generally has the following commonalities:
 * The middleware is defined with a specific interface with a method that takes
   the request for processing.
 * The middleware is passed 2 arguments during invocation:
-  1. A HTTP request message.
+  1. An HTTP request message.
   2. A request handler to which the middleware can delegate the responsibility
      of producing an HTTP response message.
 
@@ -198,7 +198,7 @@ early adopters of HTTP messages (PSR-7).
 
 ### 5.4 Chosen Approach
 
-Despite the nearly universal adoption of the double-pass approach there are
+Despite the nearly universal adoption of the double-pass approach, there are
 significant issues regarding implementation.
 
 The most severe is that passing an empty response has no guarantees that the
@@ -229,7 +229,7 @@ middleware typically uses the `callable` type hint to refer to middleware.
 This makes strict typing impossible, as there is no assurance that the `callable`
 being passed implements a middleware signature, which reduces runtime safety.
 
-**Due to these significant issues the lambda approach has been choosen for this proposal.**
+**Due to these significant issues, the lambda approach has been chosen for this proposal.**
 
 ## 6. Design Decisions
 
@@ -241,7 +241,7 @@ MUST return a response. The request handler MAY delegate to another handler.
 #### Why is a server request required?
 
 To make it clear that the request handler can only be used in a server side context.
-In an client side context a [promise][promises] would likely be returned instead
+In an client side context, a [promise][promises] would likely be returned instead
 of a response.
 
 [promises]: https://promisesaplus.com/
@@ -253,7 +253,7 @@ request processing, a request handler is the point where the request must be
 acted upon to create a response.
 
 As opposed to the term "delegate", which was used in a previous version of this
-specification, the internal behavior of the this interface is not specified.
+specification, the internal behavior of this interface is not specified.
 As long as the request handler ultimately produces a response, it is valid.
 
 #### Why doesn't request handler use `__invoke`?
@@ -279,7 +279,7 @@ and a request handler and must return a response. The middleware may:
 
 Doing so would conflict with existing middleware that implements the double-pass
 approach and may want to implement the middleware interface for purposes of
-forwards compatibility with this specification.
+forward compatibility with this specification.
 
 #### Why the name `process()`?
 
@@ -294,9 +294,9 @@ the following were commonly used:
 [HttpKernel]: https://symfony.com/doc/current/components/http_kernel.html
 [DispatchableInterface]: https://github.com/zendframework/zend-stdlib/blob/980ce463c29c1a66c33e0eb67961bba895d0e19e/src/DispatchableInterface.php
 
-We chose to allow a forwards-compatible approach for such classes to repurpose
+We chose to allow a forward-compatible approach for such classes to repurpose
 themselves as middleware (or middleware compatible with this specification),
-and, as such, needed to choose a name not in common usage. As such, we chose
+and thus needed to choose a name not in common usage. As such, we chose
 `process`, to indicate _processing_ a request.
 
 #### Why is a server request required?
@@ -306,7 +306,7 @@ side context.
 
 While not all middleware will need to use the additional methods defined by the
 server request interface, external requests are typically processed asynchronously
-and would typically return a [promise][promises] of a response. (This is primarily
+and would usually return a [promise][promises] of a response. (This is primarily
 due to the fact that multiple requests can be made in parallel and processed as
 they are returned.) It is outside the scope of this proposal to address the needs
 of asynchronous request/response life cycles.
@@ -378,7 +378,7 @@ This PSR was produced by a FIG Working Group with the following members:
 The working group would also like to acknowledge the contributions of:
 
 * Jason Coward, <jason@opengeek.com>
-* Paul M Jones, <pmjones88@gmail.com>
+* Paul M. Jones, <pmjones88@gmail.com>
 * Rasmus Schultz, <rasmus@mindplay.dk>
 
 ## 8. Votes
