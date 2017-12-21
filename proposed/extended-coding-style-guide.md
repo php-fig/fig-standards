@@ -39,7 +39,7 @@ This example encompasses some of the rules below as a quick overview:
 ~~~php
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Vendor\Package;
 
@@ -152,7 +152,7 @@ The following example illustrates a complete list of all blocks:
  * This file contains an example of coding styles.
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Vendor\Package;
 
@@ -206,7 +206,7 @@ the strict types declaration and closing tag.
 
 For example:
 ~~~php
-<?php declare(strict_types=1) ?>
+<?php declare(strict_types = 1) ?>
 <html>
 <body>
     <?php
@@ -216,13 +216,13 @@ For example:
 </html>
 ~~~
 
-Declare statements MUST contain no spaces and MUST be exactly `declare(strict_types=1)`
+Declare statements MUST be exactly `declare(strict_types = 1)`
 (with an optional semi-colon terminator).
 
 Block declare statements are allowed and MUST be formatted as below. Note position of
 braces and spacing:
 ~~~php
-declare(ticks=1) {
+declare(ticks = 1) {
     //some code
 }
 ~~~
@@ -507,7 +507,7 @@ the two characters. The declaration keyword (e.g. string) MUST be lowercase.
 ~~~php
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Vendor\Package;
 
@@ -534,7 +534,7 @@ and the type.
 ~~~php
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Vendor\Package;
 
