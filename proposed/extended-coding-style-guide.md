@@ -90,8 +90,7 @@ The closing `?>` tag MUST be omitted from files containing only PHP.
 
 There MUST NOT be a hard limit on line length.
 
-The soft limit on line length MUST be 120 characters; automated style checkers
-MUST warn but MUST NOT error at the soft limit.
+The soft limit on line length MUST be 120 characters.
 
 Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
 be split into multiple subsequent lines of no more than 80 characters each.
