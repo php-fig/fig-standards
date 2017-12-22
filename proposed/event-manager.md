@@ -48,7 +48,7 @@ MUST contain a event name in order trigger the listeners. Each event MAY have a
 target which is an object that is the context the event is being triggered for.
 OPTIONALLY the event can have additional parameters for use within the event.
 
-The event MUST contain a propegation flag that signals the EventManager to stop
+The event MUST contain a propagation flag that signals the EventManager to stop
 passing along the event to other listeners.
 
 ~~~php
