@@ -183,30 +183,48 @@ interface UploadedFileFactoryInterface
     /**
      * Create a new uploaded file.
      *
-     * If a string is used to create the file, a temporary resource will be
-     * created with the content of the string.
+     * The file SHOULD be opened in read only mode.
      *
-     * If a size is not provided it will be determined by checking the size of
-     * the file.
+     * The underlying stream SHOULD be created in the same way as
+     * `StreamFactoryInterface::createStreamFromFile()`.
      *
      * @see http://php.net/manual/features.file-upload.post-method.php
      * @see http://php.net/manual/features.file-upload.errors.php
      *
-     * @param string|resource $file
-     * @param integer $size in bytes
+     * @param string $file
+     * @param integer|null $size in bytes
      * @param integer $error PHP file upload error
-     * @param string $clientFilename
-     * @param string $clientMediaType
+     * @param string|null $clientFilename
+     * @param string|null $clientMediaType
      *
      * @return UploadedFileInterface
      *
      * @throws \InvalidArgumentException
-     *  If the file resource is not readable.
+     *  If the file is not readable.
      */
     public function createUploadedFile(
         $file,
         $size = null,
         $error = \UPLOAD_ERR_OK,
+        $clientFilename = null,
+        $clientMediaType = null
+    );
+
+    /**
+     * Create a new uploaded file from an existing stream.
+     *
+     * The uploaded file SHOULD report a size equal to the length of the stream.
+     *
+     * The uploaded file SHOULD have an error status of `UPLOAD_ERR_OK`.
+     *
+     * @param StreamInterface $stream
+     * @param string|null $clientFilename
+     * @param string|null $clientMediaType
+     *
+     * @return UploadedFileInterface
+     */
+    public function createUploadedFileFromStream(
+        StreamInterface $stream,
         $clientFilename = null,
         $clientMediaType = null
     );
