@@ -219,8 +219,8 @@ Cons:
 
 ### 4.4 Alternative: Use More Imperative And Narrative Language
 
-After the second vote was pulled by a Sponsor after hearing from multiple +1 
-voters that they supported the idea but did not agree with (or understand) the 
+After the second vote was pulled by a Sponsor after hearing from multiple +1
+voters that they supported the idea but did not agree with (or understand) the
 wording of the proposal, there was a period during which the voted-on proposal
 was expanded with greater narrative and somewhat more imperative language. This
 approach was decried by a vocal minority of participants. After some time, Beau
@@ -230,9 +230,9 @@ consideration, written by Paul M. Jones and contributed to by many.
 
 ### Compatibility Note with PHP 5.3.2 and below
 
-PHP versions before 5.3.3 do not strip the leading namespace separator, so 
-the responsibility to look out for this falls on the implementation. Failing 
-to strip the leading namespace separator could lead to unexpected behavior. 
+PHP versions before 5.3.3 do not strip the leading namespace separator, so
+the responsibility to look out for this falls on the implementation. Failing
+to strip the leading namespace separator could lead to unexpected behavior.
 
 
 5. People
@@ -252,7 +252,7 @@ to strip the leading namespace separator could lead to unexpected behavior.
 - Andreas Hennings
 - Bernhard Schussek
 - Beau Simensen
-- Donald Gilbert 
+- Donald Gilbert
 - Mike van Riel
 - Paul Dragoonis
 - Too many others to name and count
@@ -267,10 +267,10 @@ to strip the leading namespace separator could lead to unexpected behavior.
 
     - 1st attempt: <https://groups.google.com/forum/#!topic/php-fig/Ua46E344_Ls>,
       presented prior to new workflow; aborted due to accidental proposal modification
-      
+
     - 2nd attempt: <https://groups.google.com/forum/#!topic/php-fig/NWfyAeF7Psk>,
       cancelled at the discretion of the sponsor <https://groups.google.com/forum/#!topic/php-fig/t4mW2TQF7iE>
-    
+
     - 3rd attempt: TBD
 
 

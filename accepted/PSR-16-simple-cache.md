@@ -98,7 +98,7 @@ Implementing libraries MUST support all serializable PHP data types, including:
 *    **Integers** - All integers of any size supported by PHP, up to 64-bit signed.
 *    **Floats** - All signed floating point values.
 *    **Boolean** - True and False.
-*    **Null** - The null value (although it will not be distinguishable from a 
+*    **Null** - The null value (although it will not be distinguishable from a
 cache miss when reading it back out).
 *    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
 *    **Object** - Any object that supports lossless serialization and

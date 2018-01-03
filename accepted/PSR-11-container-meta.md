@@ -157,7 +157,7 @@ interface FactoryInterface
 class ExampleFactory implements FactoryInterface
 {
     protected $container;
-    
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
