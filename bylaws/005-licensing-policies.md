@@ -9,7 +9,6 @@ Licensing Policies
    functions, interfaces and procedural code), as well as any code inside of
    examples, tutorials, supporting documents, website code and the PSRs themselves.
 
-
 ## 2. Documentation
 
 All remaining non-code items must be licensed under the Creative Commons BY 3.0

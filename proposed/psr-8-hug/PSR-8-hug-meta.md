@@ -14,11 +14,8 @@ affection and support.
 - **Entrance Vote:**
 - **Acceptance Vote:**
 
-
 3. Errata
 ---------
-
-
 
 4. People
 ---------

@@ -366,7 +366,6 @@ class ClassName
 When using the `insteadof` and `as` operators they must be used as follows taking
 note of indentation, spacing and new lines.
 
-
 ~~~php
 <?php
 
@@ -633,7 +632,6 @@ The body of each structure MUST be enclosed by braces. This standardizes how
 the structures look, and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
-
 ### 5.1 `if`, `elseif`, `else`
 
 An `if` structure looks like the following. Note the placement of parentheses,
@@ -654,7 +652,6 @@ if ($expr1) {
 
 The keyword `elseif` SHOULD be used instead of `else if` so that all control
 keywords look like single words.
-
 
 ### 5.2 `switch`, `case`
 
@@ -684,7 +681,6 @@ switch ($expr) {
         break;
 }
 ~~~
-
 
 ### 5.3 `while`, `do while`
 
@@ -889,7 +885,6 @@ $foo->bar(
 
 Anonymous Classes MUST follow the same guidelines and principles as closures
 in the above section.
-
 
 ~~~php
 <?php

@@ -115,7 +115,6 @@ Compatibility with them is simply used as a baseline for acceptable object value
 If it is not possible to return the exact saved value for any reason, implementing
 libraries MUST respond with a cache miss rather than corrupted data.
 
-
 # 2. Interfaces
 
 ## 2.1 CacheInterface

@@ -335,7 +335,6 @@ At the time of writing, the following projects already implement and/or consume 
 
 This list is not comprehensive and should be only taken as an example showing that there is considerable interest in the PSR.
 
-
 9. People
 ---------
 ### 9.1 Editors

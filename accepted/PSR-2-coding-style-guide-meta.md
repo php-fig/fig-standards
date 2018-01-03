@@ -9,11 +9,9 @@ The style rules herein are derived from commonalities among the various member p
 collaborate across multiple projects, it helps to have one set of guidelines to be used among all those
 projects. Thus, the benefit of this guide is not in the rules themselves, but in the sharing of those rules.
 
-
 ## 2. Votes
 
 - **Acceptance Vote:** [ML](https://groups.google.com/d/msg/php-fig/c-QVvnZdMQ0/TdDMdzKFpdIJ)
-
 
 ## 3. Errata
 

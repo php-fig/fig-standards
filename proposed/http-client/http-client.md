@@ -81,7 +81,6 @@ interface ClientInterface
 }
 ```
 
-
 ### Exception
 
 ```php
@@ -94,7 +93,6 @@ interface ClientException extends \Throwable
 {
 }
 ```
-
 
 ### RequestException
 
@@ -124,7 +122,6 @@ interface RequestException extends ClientException
 }
 ```
 
-
 ### NetworkException
 
 ```php
@@ -152,6 +149,5 @@ interface NetworkException extends ClientException
     public function getRequest(): RequestInterface;
 }
 ```
-
 
 [Liskov]: https://en.wikipedia.org/wiki/Liskov_substitution_principle

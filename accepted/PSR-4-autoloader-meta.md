@@ -120,7 +120,6 @@ PSR-0, but seeing as their presence in that document is in reference to
 transitioning away from PHP 5.2 and previous pseudo-namespacing, it is
 acceptable to remove them here as well.
 
-
 3. Scope
 --------
 
@@ -140,7 +139,6 @@ acceptable to remove them here as well.
 ### 3.2 Non-Goals
 
 - Provide a general transformation algorithm for non-class resources
-
 
 4. Approaches
 -------------
@@ -182,7 +180,6 @@ Cons:
   determine where it is in the file system (the "class-to-file" convention
   inherited from Horde/PEAR).
 
-
 ### 4.2 Alternative: Stay With PSR-0 Only
 
 Staying with PSR-0 only, although reasonable, does leave us with relatively
@@ -198,7 +195,6 @@ Cons:
 
 - Leaves us with underscores in the class name being honored as directory
   separators
-
 
 ### 4.3 Alternative: Split Up Autoloading And Transformation
 
@@ -234,7 +230,6 @@ PHP versions before 5.3.3 do not strip the leading namespace separator, so
 the responsibility to look out for this falls on the implementation. Failing
 to strip the leading namespace separator could lead to unexpected behavior.
 
-
 5. People
 ---------
 
@@ -257,7 +252,6 @@ to strip the leading namespace separator could lead to unexpected behavior.
 - Paul Dragoonis
 - Too many others to name and count
 
-
 6. Votes
 --------
 
@@ -272,7 +266,6 @@ to strip the leading namespace separator could lead to unexpected behavior.
       cancelled at the discretion of the sponsor <https://groups.google.com/forum/#!topic/php-fig/t4mW2TQF7iE>
 
     - 3rd attempt: TBD
-
 
 7. Relevant Links
 -----------------

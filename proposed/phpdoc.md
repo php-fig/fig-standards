@@ -54,7 +54,6 @@ PSR-5: PHPDoc
   - [Keyword](#keyword)
 - Appendix B. Differences Compared With The De-facto PHPDoc Standard
 
-
 ## 1. Introduction
 
 The main purpose of this PSR is to provide a complete and formal definition of
@@ -114,7 +113,6 @@ interpreted as described in [RFC 2119][RFC2119].
   /** @var int $int This is a counter. */
   $int = 0;
 
-
   // there should be no docblock here
   $int++;
   ```
@@ -129,7 +127,6 @@ interpreted as described in [RFC 2119][RFC2119].
     {
         /** @var string|null $title contains a title for the Foo with a max. length of 24 characters */
         protected $title = null;
-
 
         /**
          * Sets a single-line title.
