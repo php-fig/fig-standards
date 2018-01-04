@@ -112,8 +112,8 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Participant in processing a server request and response
  *
- * An HTTP middleware component participates in processing an HTTP message,
- * either by acting on the request, generating the response, or forwarding the
+ * An HTTP middleware component participates in processing an HTTP message;
+ * for example, by acting on the request, generating the response, or forwarding the
  * request to a subsequent middleware and possibly acting on its response.
  */
 interface MiddlewareInterface
