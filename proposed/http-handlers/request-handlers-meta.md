@@ -368,6 +368,237 @@ executing that handler. If unable to route to a handler, it would instead
 execute the handler provided to the middleware. (This sort of mechanism can even
 be used in conjunction with middleware queues and stacks.)
 
+### 6.3 Example Interface Interactions
+
+The two interfaces, `RequestHandlerInterface` and `MiddlewareInterface`, were
+designed to work in conjunction with one another. While a
+`RequestHandlerInterface` can feasibly be used in isolation, it gains more power
+when used as a part of a middleware dispatch system. Middleware gains more
+flexibility by being de-coupled from any over-arching application layer, and
+instead only relying on the provided request handler to produce a response.
+
+Two approaches to middleware dispatch systems that the Working Group observed
+and/or implemented are demonstrated below. Additionally, examples of re-usable
+middleware are provided to demonstrate how to write middleware that is
+loosely-coupled.
+
+Please note that these are not suggested as definitive or exclusive approaches
+to defining middleware dispatch systems.
+
+#### Queue-based request handler
+
+In this approach, a request handler maintains a queue of middleware, and a
+fallback response to return if the queue is exhausted without returning a
+response. When executing the first middleware, the queue passes itself as a
+request handler to the middleware.
+
+```php
+class QueueRequestHandler implements RequestHandlerInterface
+{
+    private $middleware = [];
+    private $fallbackResponse;
+    
+    public function __construct(ResponseInterface $fallbackResponse)
+    {
+        $this->fallbackResponse = $fallbackResponse;
+    }
+    
+    public function add(MiddlewareInterface $middleware)
+    {
+        $this->middleware[] = $middleware;
+    }
+    
+    public function handle(ServerRequestInterface $request) : ResponseInterface
+    {
+        // Last middleware in the queue has called on the request handler.
+        if (0 === count($this->middleware)) {
+            return $this->fallbackResponse;
+        }
+        
+        $middleware = array_shift($this->middleware);
+        return $middleware->process($request, $this);
+    }
+}
+```
+
+An application bootstrap might then look like this:
+
+```php
+// Fallback response:
+$response = (new Response())->withStatus(500);
+
+// Create request handler instance:
+$app = new QueueResponseHandler($response);
+
+// Add one or more middleware:
+$app->add(new CorsMiddleware());
+$app->add(new RoutingMiddleware());
+
+// execute it:
+$response = $app->handle(ServerRequestFactory::fromGlobals());
+```
+
+This system has essentially two request handlers, one that will produce a
+response if no middleware generates one, and one for dispatching the middleware
+layers. (In this example, the `RoutingMiddleware` will likely execute composed
+handlers on a successful route match; see more on that below.)
+
+This approach has the following benefits:
+
+- Middleware does not need to know anything about any other middleware or how it
+  is composed in the application.
+- The `QueueRequestHandler` is agnostic of the PSR-7 implementation in use
+- Middleware is executed in the order it is added to the application, making the
+  code explicit.
+
+#### Decoration-based request handler
+
+In this approach, a request handler implementation decorates both a middleware
+instance and a fallback request handler to pass to it. The application is built
+from the outside-in, passing each request handler "layer" to the next outer one.
+
+```php
+class DecoratedRequestHandler implements RequestHandlerInterface
+{
+    private $middleware;
+    private $nextHandler;
+
+    public function __construct(MiddlewareInterface $middleware, RequestHandlerInterface $nextHandler)
+    {
+        $this->middleware = $middleware;
+        $this->nextHandler = $nextHandler;
+    }
+
+    public function handle(ServerRequestInterface $request) : ResponseInterface
+    {
+        return $this->middleware->process($request, $this->nextHandler);
+    }
+}
+
+$innerHandler = new class ($responsePrototype) implements RequestHandlerInterface {
+    private $responsePrototype;
+
+    public function __construct(ResponseInterface $responsePrototype)
+    {
+        $this->responsePrototype = $responsePrototype;
+    }
+
+    public function handle(ServerRequestInterface $request) : ResponseInterface
+    {
+        return $this->responsePrototype;
+    }
+};
+
+$layer1 = new DecoratedRequestHandler(new RoutingMiddleware(), $innerHandler);
+$layer2 = new DecoratedRequestHandler(new CorsMiddleware(), $layer1);
+
+$response = $layer2->handle(ServerRequestFactory::fromGlobals());
+```
+
+Similar to the queue-based middleware, request handlers serve two purposes in
+this system:
+
+- Producing a fallback response if no other layer does.
+- Dispatching middleware.
+
+#### Reusable Middleware Examples
+
+In the examples above, we have two middleware composed in each. In order for
+these to work in either situation, we need to write them such that they interact
+appropriately.
+
+Generally speaking, implementors of middleware should follow these guidelines:
+
+- Test the request for a required condition. If it does not satisfy that
+  condition, use a composed prototype response or a composed response factory
+  to generate and return a response.
+
+- If pre-conditions are met, delegate creation of the response to the provided
+  request handler, optionally providing a "new" request by manipulating the
+  provided request (e.g., `$handler->handle($request->withAttribute('foo',
+  'bar')`).
+
+- Either pass the response returned by the request handler unaltered, or provide
+  a new response by manipulating the one returned (e.g., `return
+  $response->withHeader('X-Foo-Bar', 'baz')`).
+
+The `CorsMiddleware` is one that will exercise all three of these guidelines: if
+certain request conditions are not met, it needs to return an error response. In
+the case of a "pre-flight" request, it will return a response immediately with
+details for the client. In a case where the pre-flight request has already been
+made and expected headers are present, it delegates to the request handler, and
+then injects headers into the returned response.
+
+```php
+class CorsMiddleware implements MiddlewareInterface
+{
+    private $analyzer;
+    private $responsePrototype;
+
+    public function __construct(CorsAnalyzer $analyzer, ResponseInterface $responsePrototype)
+    {
+        $this->analyzer = $analyzer;
+        $this->responsePrototype = $responsePrototype;
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    {
+        $corsResult = $this->analyzer->analyze($request);
+
+        if ($corsResult->isInvalid()) {
+            return $corsResult->prepareForbiddenResponse($this->responsePrototype);
+        }
+
+        if ($corsResult->isPreFlight()) {
+            return $corsResult->preparePreFlightResponse($this->responsePrototype);
+        }
+
+        $response = $handler->handle($request);
+
+        return $corsResult->isCorsScoped()
+            ? $corsResult->prepareResponse($this->responsePrototype)
+            : $response;
+    }
+}
+```
+
+Note the use of a "response prototype" in the above example; this approach
+allows the middleware to be agnostic of which PSR-7 implementation is in use,
+and yet still return a response in cases where it determines it should not
+delegate to the handler.Similarly, it is not concerned with how the request
+handler is implemented; it merely uses it to produce a response when
+pre-conditions have been met.
+
+The `RoutingMiddleware` implementation described below follows a similar
+process: it analyzes the request to see if it matches known routes. In this
+particular implementation, routes map to request handlers, and the middleware
+essentially delegates to them in order to produce a response. However, in the
+case that no route is matched, it will execute the handler passed to it to
+produce the response to return.
+
+```php
+class RoutingMiddleware implements MiddlewareInterface
+{
+    private $router;
+
+    public function __construct(Router $router)
+    {
+        $this->router = $router;
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    {
+        $result = $this->router->match($request);
+
+        if ($result->isSuccess()) {
+            return $result->getHandler()->handle($request);
+        }
+
+        return $handler->handle($request);
+    }
+}
+```
+
 ## 7. People
 
 This PSR was produced by a FIG Working Group with the following members:
