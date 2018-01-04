@@ -389,6 +389,7 @@ The working group would also like to acknowledge the contributions of:
 ## 8. Votes
 
 * [Working Group Formation](https://groups.google.com/d/msg/php-fig/rPFRTa0NODU/tIU9BZciAgAJ)
+* [Review Period Initiation](https://groups.google.com/d/msg/php-fig/mfTrFinTvEM/PiYvU2S6BAAJ)
 
 ## 9. Relevant Links
 
