@@ -223,7 +223,7 @@ Block declare statements are allowed and MUST be formatted as below. Note positi
 braces and spacing:
 ~~~php
 declare(ticks=1) {
-    //some code
+    // some code
 }
 ~~~
 
