@@ -429,7 +429,7 @@ $fallbackHandler = new NotFoundHandler();
 $app = new QueueResponseHandler($fallbackHandler);
 
 // Add one or more middleware:
-$app->add(new CorsMiddleware());
+$app->add(new AuthorizationMiddleware());
 $app->add(new RoutingMiddleware());
 
 // execute it:
@@ -494,7 +494,7 @@ $innerHandler = new class ($responsePrototype) implements RequestHandlerInterfac
 };
 
 $layer1 = new DecoratedRequestHandler(new RoutingMiddleware(), $innerHandler);
-$layer2 = new DecoratedRequestHandler(new CorsMiddleware(), $layer1);
+$layer2 = new DecoratedRequestHandler(new AuthorizationMiddleware(), $layer1);
 
 $response = $layer2->handle(ServerRequestFactory::fromGlobals());
 ```
@@ -526,42 +526,41 @@ Generally speaking, implementors of middleware should follow these guidelines:
   a new response by manipulating the one returned (e.g., `return
   $response->withHeader('X-Foo-Bar', 'baz')`).
 
-The `CorsMiddleware` is one that will exercise all three of these guidelines: if
-certain request conditions are not met, it needs to return an error response. In
-the case of a "pre-flight" request, it will return a response immediately with
-details for the client. In a case where the pre-flight request has already been
-made and expected headers are present, it delegates to the request handler, and
-then injects headers into the returned response.
+The `AuthorizationMiddleware` is one that will exercise all three of these guidelines:
+
+- If authorization is required, but the request is not authorized, it will use a
+  composed prototype response to produce an "unauthorized" response.
+- If authorization is not required, it will delegate the request to the handler
+  without changes.
+- If authorization is required and the request is authorized, it will delegate
+  the request to the handler, and sign the response returned based on the request.
 
 ```php
-class CorsMiddleware implements MiddlewareInterface
+class AuthorizationMiddleware implements MiddlewareInterface
 {
-    private $analyzer;
+    private $authorizationMap;
     private $responsePrototype;
 
-    public function __construct(CorsAnalyzer $analyzer, ResponseInterface $responsePrototype)
-    {
-        $this->analyzer = $analyzer;
+    public function __construct(
+        AuthorizationMap $authorizationMap,
+        ResponseInterface $responsePrototype
+    ) {
+        $this->authorizationMap = $authorizationMap;
         $this->responsePrototype = $responsePrototype;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $corsResult = $this->analyzer->analyze($request);
-
-        if ($corsResult->isInvalid()) {
-            return $corsResult->prepareForbiddenResponse($this->responsePrototype);
+        if (! $authorizationMap->requestRequiresAuthorization($request)) {
+            return $handler->handle($request);
         }
 
-        if ($corsResult->isPreFlight()) {
-            return $corsResult->preparePreFlightResponse($this->responsePrototype);
+        if (! $authorizationMap->isAuthorized($request)) {
+            return $authorizationMap->prepareUnauthorizedResponse($this->responsePrototype);
         }
 
         $response = $handler->handle($request);
-
-        return $corsResult->isCorsScoped()
-            ? $corsResult->prepareResponse($this->responsePrototype)
-            : $response;
+        return $authorizationMap->signResponse($response, $request);
     }
 }
 ```
