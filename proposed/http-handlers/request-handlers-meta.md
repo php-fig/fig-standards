@@ -396,11 +396,11 @@ request handler to the middleware.
 class QueueRequestHandler implements RequestHandlerInterface
 {
     private $middleware = [];
-    private $fallbackResponse;
+    private $fallbackHandler;
     
-    public function __construct(ResponseInterface $fallbackResponse)
+    public function __construct(RequestHandlerInterface $fallbackHandler)
     {
-        $this->fallbackResponse = $fallbackResponse;
+        $this->fallbackHandler = $fallbackHandler;
     }
     
     public function add(MiddlewareInterface $middleware)
@@ -412,7 +412,7 @@ class QueueRequestHandler implements RequestHandlerInterface
     {
         // Last middleware in the queue has called on the request handler.
         if (0 === count($this->middleware)) {
-            return $this->fallbackResponse;
+            return $this->fallbackHandler->handle($request);
         }
         
         $middleware = array_shift($this->middleware);
@@ -424,11 +424,11 @@ class QueueRequestHandler implements RequestHandlerInterface
 An application bootstrap might then look like this:
 
 ```php
-// Fallback response:
-$response = (new Response())->withStatus(500);
+// Fallback handler:
+$fallbackHandler = new NotFoundHandler();
 
 // Create request handler instance:
-$app = new QueueResponseHandler($response);
+$app = new QueueResponseHandler($fallbackHandler);
 
 // Add one or more middleware:
 $app->add(new CorsMiddleware());
@@ -438,10 +438,10 @@ $app->add(new RoutingMiddleware());
 $response = $app->handle(ServerRequestFactory::fromGlobals());
 ```
 
-This system has essentially two request handlers, one that will produce a
-response if no middleware generates one, and one for dispatching the middleware
-layers. (In this example, the `RoutingMiddleware` will likely execute composed
-handlers on a successful route match; see more on that below.)
+This system has two request handlers: one that will produce a response if the
+last middleware delegates to the request handler, and one for dispatching the
+middleware layers. (In this example, the `RoutingMiddleware` will likely execute
+composed handlers on a successful route match; see more on that below.)
 
 This approach has the following benefits:
 
@@ -450,6 +450,9 @@ This approach has the following benefits:
 - The `QueueRequestHandler` is agnostic of the PSR-7 implementation in use.
 - Middleware is executed in the order it is added to the application, making the
   code explicit.
+- Generation of the "fallback" response is delegated to the application
+  developer. This allows the developer to determine whether that should be a
+  "404 Not Found" condition, a default page, etc.
 
 #### Decoration-based request handler
 
