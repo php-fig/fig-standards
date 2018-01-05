@@ -447,7 +447,7 @@ This approach has the following benefits:
 
 - Middleware does not need to know anything about any other middleware or how it
   is composed in the application.
-- The `QueueRequestHandler` is agnostic of the PSR-7 implementation in use
+- The `QueueRequestHandler` is agnostic of the PSR-7 implementation in use.
 - Middleware is executed in the order it is added to the application, making the
   code explicit.
 
@@ -565,7 +565,7 @@ class CorsMiddleware implements MiddlewareInterface
 Note the use of a "response prototype" in the above example; this approach
 allows the middleware to be agnostic of which PSR-7 implementation is in use,
 and yet still return a response in cases where it determines it should not
-delegate to the handler.Similarly, it is not concerned with how the request
+delegate to the handler. Similarly, it is not concerned with how the request
 handler is implemented; it merely uses it to produce a response when
 pre-conditions have been met.
 
