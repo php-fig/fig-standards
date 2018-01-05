@@ -478,6 +478,9 @@ class DecoratedRequestHandler implements RequestHandlerInterface
     }
 }
 
+// Create a response prototype to return if no middleware can produce a response
+// on its own. This could be a 404, 500, or default page.
+$responsePrototype = (new Response())->withStatus(404);
 $innerHandler = new class ($responsePrototype) implements RequestHandlerInterface {
     private $responsePrototype;
 
