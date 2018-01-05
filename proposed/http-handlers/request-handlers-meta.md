@@ -276,9 +276,11 @@ and a request handler and must return a response. The middleware may:
 - Create and return a response without passing the request to the request handler,
   thereby handling the request itself.
 
-It is expected that a middleware dispatching system will use the request handler
-to delegate response creation to the next available middleware. The last middleware
-would then act as a domain gateway to execute application code.
+When delegating from one middleware to the next in a sequence, a dispatching
+system should use an intermediary request handler as a way to link middleware
+together. The final or innermost middleware will act as a gateway to application
+code and generate a response from its results; alternately, the middleware may
+delegate this responsibility to a _request handler_.
 
 #### Why doesn't middleware use `__invoke`?
 
