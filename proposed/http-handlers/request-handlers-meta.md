@@ -371,11 +371,9 @@ be used in conjunction with middleware queues and stacks.)
 ### 6.3 Example Interface Interactions
 
 The two interfaces, `RequestHandlerInterface` and `MiddlewareInterface`, were
-designed to work in conjunction with one another. While a
-`RequestHandlerInterface` can feasibly be used in isolation, it gains more power
-when used as a part of a middleware dispatch system. Middleware gains more
-flexibility by being de-coupled from any over-arching application layer, and
-instead only relying on the provided request handler to produce a response.
+designed to work in conjunction with one another. Middleware gains flexibility
+when de-coupled from any over-arching application layer, and instead only
+relying on the provided request handler to produce a response.
 
 Two approaches to middleware dispatch systems that the Working Group observed
 and/or implemented are demonstrated below. Additionally, examples of re-usable
