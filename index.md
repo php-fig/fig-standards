@@ -76,7 +76,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 **Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated | B = Abandoned
 
-[workflow]: http://www.php-fig.org/bylaws/psr-workflow/
+[workflow]: /bylaws/psr-workflow/
 [psr0]: /psr/psr-0/
 [psr1]: /psr/psr-1/
 [psr2]: /psr/psr-2/
