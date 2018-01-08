@@ -402,7 +402,7 @@ class QueueRequestHandler implements RequestHandlerInterface
         $this->middleware[] = $middleware;
     }
     
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         // Last middleware in the queue has called on the request handler.
         if (0 === count($this->middleware)) {
@@ -466,7 +466,7 @@ class DecoratedRequestHandler implements RequestHandlerInterface
         $this->nextHandler = $nextHandler;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return $this->middleware->process($request, $this->nextHandler);
     }
@@ -483,7 +483,7 @@ $innerHandler = new class ($responsePrototype) implements RequestHandlerInterfac
         $this->responsePrototype = $responsePrototype;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return $this->responsePrototype;
     }
@@ -545,7 +545,7 @@ class AuthorizationMiddleware implements MiddlewareInterface
         $this->responsePrototype = $responsePrototype;
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (! $authorizationMap->requestRequiresAuthorization($request)) {
             return $handler->handle($request);
@@ -585,7 +585,7 @@ class RoutingMiddleware implements MiddlewareInterface
         $this->router = $router;
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $result = $this->router->match($request);
 
