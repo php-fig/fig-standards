@@ -52,6 +52,12 @@ the creation of a resulting response, as defined by PSR-7.
 A middleware component MAY create and return a response without delegating to
 a request handler, if sufficient conditions are met.
 
+When delegating from one middleware to the next in a sequence, a dispatching
+system should use an intermediary request handler as a way to link middleware
+together. The final or innermost middleware will act as a gateway to application
+code and generate a response from its results; alternately, the middleware may
+delegate this responsibility to a dedicated request handler.
+
 Middleware using this standard MUST implement the following interface:
 
 - `Psr\Http\Server\MiddlewareInterface`
