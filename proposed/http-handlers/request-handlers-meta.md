@@ -455,7 +455,7 @@ instance and a fallback request handler to pass to it. The application is built
 from the outside-in, passing each request handler "layer" to the next outer one.
 
 ```php
-class DecoratedRequestHandler implements RequestHandlerInterface
+class DecoratingRequestHandler implements RequestHandlerInterface
 {
     private $middleware;
     private $nextHandler;
@@ -489,8 +489,8 @@ $innerHandler = new class ($responsePrototype) implements RequestHandlerInterfac
     }
 };
 
-$layer1 = new DecoratedRequestHandler(new RoutingMiddleware(), $innerHandler);
-$layer2 = new DecoratedRequestHandler(new AuthorizationMiddleware(), $layer1);
+$layer1 = new DecoratingRequestHandler(new RoutingMiddleware(), $innerHandler);
+$layer2 = new DecoratingRequestHandler(new AuthorizationMiddleware(), $layer1);
 
 $response = $layer2->handle(ServerRequestFactory::fromGlobals());
 ```
