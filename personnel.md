@@ -70,7 +70,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Flow] and [Neos]                 | Karsten Dambekalns ([@kdambekalns])   |
 | [Wikibase] and [Semantic Media]   | Jeroen De Dauw ([@JeroenDeDauw])      |
 | [Yii framework]                   | Alexander Makarov ([@sam_dark])       |
-| [Zend Framework 2]                | Matthew Weier O'Phinney ([@mwop])     |
+| [Zend Framework]                | Matthew Weier O'Phinney ([@mwop])     |
 | [Zikula]                          | Shefik Macauley ([@shefik_info])      |
 
 
