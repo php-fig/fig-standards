@@ -535,24 +535,20 @@ The `AuthorizationMiddleware` is one that will exercise all three of these guide
 class AuthorizationMiddleware implements MiddlewareInterface
 {
     private $authorizationMap;
-    private $responsePrototype;
 
-    public function __construct(
-        AuthorizationMap $authorizationMap,
-        ResponseInterface $responsePrototype
-    ) {
+    public function __construct(AuthorizationMap $authorizationMap)
+    {
         $this->authorizationMap = $authorizationMap;
-        $this->responsePrototype = $responsePrototype;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (! $authorizationMap->requestRequiresAuthorization($request)) {
+        if (! $authorizationMap->needsAuthorization($request)) {
             return $handler->handle($request);
         }
 
         if (! $authorizationMap->isAuthorized($request)) {
-            return $authorizationMap->prepareUnauthorizedResponse($this->responsePrototype);
+            return $authorizationMap->prepareUnauthorizedResponse();
         }
 
         $response = $handler->handle($request);
@@ -561,12 +557,9 @@ class AuthorizationMiddleware implements MiddlewareInterface
 }
 ```
 
-Note the use of a "response prototype" in the above example; this approach
-allows the middleware to be agnostic of which PSR-7 implementation is in use,
-and yet still return a response in cases where it determines it should not
-delegate to the handler. Similarly, it is not concerned with how the request
-handler is implemented; it merely uses it to produce a response when
-pre-conditions have been met.
+Note that the middleware is not concerned with how the request handler is
+implemented; it merely uses it to produce a response when pre-conditions have
+been met.
 
 The `RoutingMiddleware` implementation described below follows a similar
 process: it analyzes the request to see if it matches known routes. In this
