@@ -280,7 +280,7 @@ When delegating from one middleware to the next in a sequence, a dispatching
 system should use an intermediary request handler as a way to link middleware
 together. The final or innermost middleware will act as a gateway to application
 code and generate a response from its results; alternately, the middleware may
-delegate this responsibility to a _request handler_.
+delegate this responsibility to a dedicated request handler.
 
 #### Why doesn't middleware use `__invoke`?
 
