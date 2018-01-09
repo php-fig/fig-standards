@@ -276,6 +276,13 @@ and a request handler and must return a response. The middleware may:
 - Create and return a response without passing the request to the request handler,
   thereby handling the request itself.
 
+When delegating from one middleware to another in a sequence, one approach for
+dispatching systems is to use an intermediary request handler composing the
+middleware sequence as a way to link middleware together. The final or innermost
+middleware will act as a gateway to application code and generate a response
+from its results; alternately, the middleware MAY delegate this responsibility
+to a dedicated request handler.
+
 #### Why doesn't middleware use `__invoke`?
 
 Doing so would conflict with existing middleware that implements the double-pass
