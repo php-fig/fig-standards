@@ -514,7 +514,8 @@ In the examples above, we have two middleware composed in each. In order for
 these to work in either situation, we need to write them such that they interact
 appropriately.
 
-Generally speaking, implementors of middleware should follow these guidelines:
+Implementors of middleware striving for maximum interoperability may want to
+consider the following guidelines:
 
 - Test the request for a required condition. If it does not satisfy that
   condition, use a composed prototype response or a composed response factory
