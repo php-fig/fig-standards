@@ -276,9 +276,12 @@ and a request handler and must return a response. The middleware may:
 - Create and return a response without passing the request to the request handler,
   thereby handling the request itself.
 
-It is expected that a middleware dispatching system will use the request handler
-to delegate response creation to the next available middleware. The last middleware
-would then act as a domain gateway to execute application code.
+When delegating from one middleware to another in a sequence, one approach for
+dispatching systems is to use an intermediary request handler composing the
+middleware sequence as a way to link middleware together. The final or innermost
+middleware will act as a gateway to application code and generate a response
+from its results; alternately, the middleware MAY delegate this responsibility
+to a dedicated request handler.
 
 #### Why doesn't middleware use `__invoke`?
 
@@ -368,6 +371,234 @@ executing that handler. If unable to route to a handler, it would instead
 execute the handler provided to the middleware. (This sort of mechanism can even
 be used in conjunction with middleware queues and stacks.)
 
+### 6.3 Example Interface Interactions
+
+The two interfaces, `RequestHandlerInterface` and `MiddlewareInterface`, were
+designed to work in conjunction with one another. Middleware gains flexibility
+when de-coupled from any over-arching application layer, and instead only
+relying on the provided request handler to produce a response.
+
+Two approaches to middleware dispatch systems that the Working Group observed
+and/or implemented are demonstrated below. Additionally, examples of re-usable
+middleware are provided to demonstrate how to write middleware that is
+loosely-coupled.
+
+Please note that these are not suggested as definitive or exclusive approaches
+to defining middleware dispatch systems.
+
+#### Queue-based request handler
+
+In this approach, a request handler maintains a queue of middleware, and a
+fallback response to return if the queue is exhausted without returning a
+response. When executing the first middleware, the queue passes itself as a
+request handler to the middleware.
+
+```php
+class QueueRequestHandler implements RequestHandlerInterface
+{
+    private $middleware = [];
+    private $fallbackHandler;
+    
+    public function __construct(RequestHandlerInterface $fallbackHandler)
+    {
+        $this->fallbackHandler = $fallbackHandler;
+    }
+    
+    public function add(MiddlewareInterface $middleware)
+    {
+        $this->middleware[] = $middleware;
+    }
+    
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        // Last middleware in the queue has called on the request handler.
+        if (0 === count($this->middleware)) {
+            return $this->fallbackHandler->handle($request);
+        }
+        
+        $middleware = array_shift($this->middleware);
+        return $middleware->process($request, $this);
+    }
+}
+```
+
+An application bootstrap might then look like this:
+
+```php
+// Fallback handler:
+$fallbackHandler = new NotFoundHandler();
+
+// Create request handler instance:
+$app = new QueueResponseHandler($fallbackHandler);
+
+// Add one or more middleware:
+$app->add(new AuthorizationMiddleware());
+$app->add(new RoutingMiddleware());
+
+// execute it:
+$response = $app->handle(ServerRequestFactory::fromGlobals());
+```
+
+This system has two request handlers: one that will produce a response if the
+last middleware delegates to the request handler, and one for dispatching the
+middleware layers. (In this example, the `RoutingMiddleware` will likely execute
+composed handlers on a successful route match; see more on that below.)
+
+This approach has the following benefits:
+
+- Middleware does not need to know anything about any other middleware or how it
+  is composed in the application.
+- The `QueueRequestHandler` is agnostic of the PSR-7 implementation in use.
+- Middleware is executed in the order it is added to the application, making the
+  code explicit.
+- Generation of the "fallback" response is delegated to the application
+  developer. This allows the developer to determine whether that should be a
+  "404 Not Found" condition, a default page, etc.
+
+#### Decoration-based request handler
+
+In this approach, a request handler implementation decorates both a middleware
+instance and a fallback request handler to pass to it. The application is built
+from the outside-in, passing each request handler "layer" to the next outer one.
+
+```php
+class DecoratingRequestHandler implements RequestHandlerInterface
+{
+    private $middleware;
+    private $nextHandler;
+
+    public function __construct(MiddlewareInterface $middleware, RequestHandlerInterface $nextHandler)
+    {
+        $this->middleware = $middleware;
+        $this->nextHandler = $nextHandler;
+    }
+
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        return $this->middleware->process($request, $this->nextHandler);
+    }
+}
+
+// Create a response prototype to return if no middleware can produce a response
+// on its own. This could be a 404, 500, or default page.
+$responsePrototype = (new Response())->withStatus(404);
+$innerHandler = new class ($responsePrototype) implements RequestHandlerInterface {
+    private $responsePrototype;
+
+    public function __construct(ResponseInterface $responsePrototype)
+    {
+        $this->responsePrototype = $responsePrototype;
+    }
+
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        return $this->responsePrototype;
+    }
+};
+
+$layer1 = new DecoratingRequestHandler(new RoutingMiddleware(), $innerHandler);
+$layer2 = new DecoratingRequestHandler(new AuthorizationMiddleware(), $layer1);
+
+$response = $layer2->handle(ServerRequestFactory::fromGlobals());
+```
+
+Similar to the queue-based middleware, request handlers serve two purposes in
+this system:
+
+- Producing a fallback response if no other layer does.
+- Dispatching middleware.
+
+#### Reusable Middleware Examples
+
+In the examples above, we have two middleware composed in each. In order for
+these to work in either situation, we need to write them such that they interact
+appropriately.
+
+Implementors of middleware striving for maximum interoperability may want to
+consider the following guidelines:
+
+- Test the request for a required condition. If it does not satisfy that
+  condition, use a composed prototype response or a composed response factory
+  to generate and return a response.
+
+- If pre-conditions are met, delegate creation of the response to the provided
+  request handler, optionally providing a "new" request by manipulating the
+  provided request (e.g., `$handler->handle($request->withAttribute('foo',
+  'bar')`).
+
+- Either pass the response returned by the request handler unaltered, or provide
+  a new response by manipulating the one returned (e.g., `return
+  $response->withHeader('X-Foo-Bar', 'baz')`).
+
+The `AuthorizationMiddleware` is one that will exercise all three of these guidelines:
+
+- If authorization is required, but the request is not authorized, it will use a
+  composed prototype response to produce an "unauthorized" response.
+- If authorization is not required, it will delegate the request to the handler
+  without changes.
+- If authorization is required and the request is authorized, it will delegate
+  the request to the handler, and sign the response returned based on the request.
+
+```php
+class AuthorizationMiddleware implements MiddlewareInterface
+{
+    private $authorizationMap;
+
+    public function __construct(AuthorizationMap $authorizationMap)
+    {
+        $this->authorizationMap = $authorizationMap;
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        if (! $authorizationMap->needsAuthorization($request)) {
+            return $handler->handle($request);
+        }
+
+        if (! $authorizationMap->isAuthorized($request)) {
+            return $authorizationMap->prepareUnauthorizedResponse();
+        }
+
+        $response = $handler->handle($request);
+        return $authorizationMap->signResponse($response, $request);
+    }
+}
+```
+
+Note that the middleware is not concerned with how the request handler is
+implemented; it merely uses it to produce a response when pre-conditions have
+been met.
+
+The `RoutingMiddleware` implementation described below follows a similar
+process: it analyzes the request to see if it matches known routes. In this
+particular implementation, routes map to request handlers, and the middleware
+essentially delegates to them in order to produce a response. However, in the
+case that no route is matched, it will execute the handler passed to it to
+produce the response to return.
+
+```php
+class RoutingMiddleware implements MiddlewareInterface
+{
+    private $router;
+
+    public function __construct(Router $router)
+    {
+        $this->router = $router;
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $result = $this->router->match($request);
+
+        if ($result->isSuccess()) {
+            return $result->getHandler()->handle($request);
+        }
+
+        return $handler->handle($request);
+    }
+}
+```
+
 ## 7. People
 
 This PSR was produced by a FIG Working Group with the following members:
@@ -389,6 +620,7 @@ The working group would also like to acknowledge the contributions of:
 ## 8. Votes
 
 * [Working Group Formation](https://groups.google.com/d/msg/php-fig/rPFRTa0NODU/tIU9BZciAgAJ)
+* [Review Period Initiation](https://groups.google.com/d/msg/php-fig/mfTrFinTvEM/PiYvU2S6BAAJ)
 
 ## 9. Relevant Links
 
