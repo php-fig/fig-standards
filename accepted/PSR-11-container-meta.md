@@ -157,7 +157,7 @@ interface FactoryInterface
 class ExampleFactory implements FactoryInterface
 {
     protected $container;
-    
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
@@ -334,7 +334,6 @@ At the time of writing, the following projects already implement and/or consume 
 - [Zend Expressive](https://github.com/zendframework/zend-expressive)
 
 This list is not comprehensive and should be only taken as an example showing that there is considerable interest in the PSR.
-
 
 9. People
 ---------

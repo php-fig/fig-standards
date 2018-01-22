@@ -12,7 +12,6 @@ interpreted as described in [RFC 2119].
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
-
 ## 1. Overview
 
 - Files MUST use only `<?php` and `<?=` tags.
@@ -30,7 +29,6 @@ interpreted as described in [RFC 2119].
 - Class constants MUST be declared in all upper case with underscore separators.
 
 - Method names MUST be declared in `camelCase`.
-
 
 ## 2. Files
 
@@ -98,7 +96,6 @@ if (! function_exists('bar')) {
     }
 }
 ~~~
-
 
 ## 3. Namespace and Class Names
 

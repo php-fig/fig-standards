@@ -58,9 +58,9 @@ use Psr\Http\Message\ResponseInterface;
 interface ClientInterface
 {
     /**
-     * Sends a PSR-7 request and returns a PSR-7 response. 
-     * 
-     * Every technically correct HTTP response MUST be returned as is, even if it represents a HTTP 
+     * Sends a PSR-7 request and returns a PSR-7 response.
+     *
+     * Every technically correct HTTP response MUST be returned as is, even if it represents a HTTP
      * error response or a redirect instruction. The only special case is 1xx responses, which MUST
      * be assembled in the HTTP client.
      *
@@ -68,9 +68,9 @@ interface ClientInterface
      * immutable, one cannot assume that the object passed to ClientInterface::sendRequest() will be the same
      * object that is actually sent. For example the Request object that is returned by an exception MAY
      * be a different object than the one passed to sendRequest, so comparison by reference (===) is not possible.
-     * 
+     *
      * {@link https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message-meta.md#why-value-objects}
-     * 
+     *
      * @param RequestInterface $request
      *
      * @return ResponseInterface
@@ -80,7 +80,6 @@ interface ClientInterface
     public function sendRequest(RequestInterface $request): ResponseInterface;
 }
 ```
-
 
 ### Exception
 
@@ -94,7 +93,6 @@ interface ClientException extends \Throwable
 {
 }
 ```
-
 
 ### RequestException
 
@@ -124,7 +122,6 @@ interface RequestException extends ClientException
 }
 ```
 
-
 ### NetworkException
 
 ```php
@@ -152,6 +149,5 @@ interface NetworkException extends ClientException
     public function getRequest(): RequestInterface;
 }
 ```
-
 
 [Liskov]: https://en.wikipedia.org/wiki/Liskov_substitution_principle

@@ -10,14 +10,12 @@ means libraries can drop their own caching implementations and easily rely
 on the one given to them by the framework, or another dedicated cache
 library the user picked.
 
-
 2. Why Bother?
 --------------
 
 PSR-6 solves this problem already, but in a rather formal and verbose way for
 what the most simple use cases need. This simpler approach aims to build a
 standardized layer of simplicity on top of the existing PSR-6 interfaces.
-
 
 3. Scope
 --------
@@ -35,7 +33,6 @@ standardized layer of simplicity on top of the existing PSR-6 interfaces.
 
 * Solving all possible edge cases, PSR-6 does this well already.
 
-
 4. Approaches
 -------------
 
@@ -43,7 +40,6 @@ The approach chosen here is very barebones by design, as it is to be used
 only by the most simple cases. It does not have to be implementable by all
 possible cache backends, nor be usable for all usages. It is merely a layer
 of convenience on top of PSR-6.
-
 
 5. People
 ---------
@@ -68,13 +64,11 @@ For being an early reviewer
 
 * Daniel Messenger (@dannym87)
 
-
 6. Votes
 --------
 
 * **Entrance Vote:**  https://groups.google.com/d/topic/php-fig/vyQTKHS6pJ8/discussion
 * **Acceptance Vote:**  https://groups.google.com/d/msg/php-fig/A8e6GvDRGIk/HQBJGEhbDQAJ
-
 
 7. Relevant Links
 -----------------

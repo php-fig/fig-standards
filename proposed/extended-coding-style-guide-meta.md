@@ -88,7 +88,7 @@ have uniform syntax and prevent possible confusion.
 
 ## 4.4. Public Survey
 
-In order to settle things using data, survey was conducted and responses from 142 people 
+In order to settle things using data, survey was conducted and responses from 142 people
 including 17 project representatives were gathered:
 
 ### 4.4.1. Fig Representative Results
@@ -117,7 +117,7 @@ including 17 project representatives were gathered:
 
 | Question | For | Against | Percentage For |
 | -------- | --- | ------- | -------------- |
-| Compound namespaces required depth | 114 | 12 | 89.47% | 
+| Compound namespaces required depth | 114 | 12 | 89.47% |
 | Header statement grouping and ordering | 113 | 13 | 88.5% |
 | Declare statements must each be on their own line | 120 | 6 | 95% |
 | Declare statements in PHP files containing markup | 119 | 7 | 94.12% |

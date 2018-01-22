@@ -7,7 +7,6 @@ audience is each other, but we’re very aware that the rest of the PHP communit
 is watching. If other folks want to adopt what we’re doing they are welcome to
 do so, but that is not the aim.
 
-
 Proposing a Standard Recommendation
 ------------------------------------
 
@@ -58,7 +57,6 @@ All PSRs are written in British English or American English (Different specifica
 may vary, but it is consistent within the same specification). The PHP FIG does not
 offer official translations into other languages but other external entities are free
 to translate the specifications in accordance with the license.
-
 
 Voting Members
 --------------

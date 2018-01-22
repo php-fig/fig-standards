@@ -13,7 +13,6 @@ provide the functionality they need. In addition, the developers of caching
 libraries themselves face a choice between only supporting a limited number
 of frameworks or creating a large number of adapter classes.
 
-
 2. Why Bother?
 --------------
 
@@ -202,7 +201,6 @@ function load_widgets(array $ids)
  * be added by extending implementations.
  */
 
-
 interface TaggablePoolInterface extends Psr\Cache\CachePoolInterface
 {
     /**
@@ -292,7 +290,6 @@ do so.
 --------
 
 [Acceptance vote on the mailing list](https://groups.google.com/forum/#!msg/php-fig/dSw5IhpKJ1g/O9wpqizWAwAJ)
-
 
 7. Relevant Links
 -----------------

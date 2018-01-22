@@ -26,7 +26,6 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
 can be integrated into existing frameworks and systems without the need for
 custom development.
 
-
 ## Definitions
 
 *    **Calling Library** - The library or code that actually needs the cache
@@ -91,7 +90,6 @@ MAY use whatever logic is appropriate to determine when to persist deferred
 items, such as an object destructor, persisting all on save(), a timeout or
 max-items check or any other appropriate logic. Requests for a cache item that
 has been deferred MUST return the deferred but not-yet-persisted item.
-
 
 ## Data
 

@@ -12,30 +12,22 @@ Event Dispatching allows developer to inject logic into an application easily.
 Many frameworks implement some form of a event dispatching that allows users to
 inject functionality with the need to extend classes.
 
-
 3. Scope
 --------
 
 ### 3.1 Goals
 
-
-
 ### 3.2 Non-Goals
-
-
 
 4. Approaches
 -------------
-
-
-
 
 5. People
 ---------
 
 ### 5.1 Editor(s)
 
-* Chuck Reeves 
+* Chuck Reeves
 
 ### 5.2 Sponsors
 
@@ -46,7 +38,6 @@ inject functionality with the need to extend classes.
 --------
 
 * **Entrance Vote: **  ADD LINK HERE
-
 
 7. Relevant Links
 -----------------

@@ -33,11 +33,11 @@ client will allow libraries to be decoupled from specific implementation such as
 The reason asynchronous requests are not covered by this PSR is the lack of a
 common standard for Promises. And an HTTP client PSR should not define its own
 promises. At the time the HTTP client PSR was written there was no final PSR
-for Promises. 
+for Promises.
 
-A separate interface for asynchronous requests can be defined in a separate PSR 
-once the promise PSR is accepted. The method signature for asynchronous requests 
-has to be different from the method signature for synchronous requests because 
+A separate interface for asynchronous requests can be defined in a separate PSR
+once the promise PSR is accepted. The method signature for asynchronous requests
+has to be different from the method signature for synchronous requests because
 the return type of asynchronous calls will be a Promise. Thus we are forward
 compatible and clients will be able to implement one or both interfaces as makes
 sense for them.
@@ -46,13 +46,13 @@ sense for them.
 
 ### Default behavior
 
-The intention of this PSR is to provide library developers with HTTP clients that 
+The intention of this PSR is to provide library developers with HTTP clients that
 have a well defined behaviour. A library should be able to use any compliant client
 without special code to handle client implementation details (Liskov substitution
-principle). The PSR does not try to restrict nor define how to configure HTTP clients. 
+principle). The PSR does not try to restrict nor define how to configure HTTP clients.
 
 An alternative approach would be to pass configuration to the client. That approach
-would have a few drawbacks: 
+would have a few drawbacks:
 
 * Configuration must be defined by the PSR;
 * All clients must support the defined configuration;
