@@ -18,6 +18,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney        | Beau Simensen           | Paul M. Jones    |
 | 11  | [Container Interface][psr11]   | Matthieu Napoli, David Négrier | Matthew Weier O'Phinney | Korvin Szanto    |
 | 13  | [Hypermedia Links][psr13]      | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander   |
+| 15  | [HTTP Handlers][psr15]         | Woody Gilk                     | _N/A_                   | Matthew Weier O'Phinney |
 | 16  | [Simple Cache][psr16]          | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier |
 
 ### Review
@@ -25,7 +26,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
-| 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
 
 ### Draft
 
@@ -69,7 +69,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | R      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 | A      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 |
 | B      | 14  | [Event Manager][psr14]               | Chuck Reeves                   |
-| R      | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
+| A      | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
 | A      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 |
 | B      | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 | D      | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
@@ -92,7 +92,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
 [psr13]: /psr/psr-13/
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
-[psr15]: https://github.com/php-fig/fig-standards/blob/master/proposed/http-handlers
+[psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-http-handlers.md
 [psr16]: /psr/psr-16/
 [psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory
 [psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client
