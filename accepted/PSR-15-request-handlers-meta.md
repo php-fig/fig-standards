@@ -621,6 +621,7 @@ The working group would also like to acknowledge the contributions of:
 
 * [Working Group Formation](https://groups.google.com/d/msg/php-fig/rPFRTa0NODU/tIU9BZciAgAJ)
 * [Review Period Initiation](https://groups.google.com/d/msg/php-fig/mfTrFinTvEM/PiYvU2S6BAAJ)
+* [Acceptance](https://groups.google.com/d/msg/php-fig/bhQmHt39hJE/ZCYrK_O2AQAJ)
 
 ## 9. Relevant Links
 
