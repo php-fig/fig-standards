@@ -92,7 +92,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
 [psr13]: /psr/psr-13/
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
-[psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-http-handlers.md
+[psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md
 [psr16]: /psr/psr-16/
 [psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory
 [psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client
