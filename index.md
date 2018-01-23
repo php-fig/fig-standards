@@ -88,7 +88,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
-[psr11]: https://github.com/php-fig/fig-standards/blob/master/accepted/PPSR-11-container.md
+[psr11]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
 [psr13]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-13-links.md
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
