@@ -263,7 +263,7 @@ Using `__invoke` is less transparent than using a named method. It also makes
 it easier to call the request handler when it is assigned to a class variable,
 without using `call_user_func` or other less common syntax.
 
-_See "discussion of FrameInterface" in [relevant links](#8-relevant-links) for
+_See "discussion of FrameInterface" in [relevant links](#9-relevant-links) for
  additional information._
 
 ### 6.2 Middleware Design
