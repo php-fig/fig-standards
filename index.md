@@ -76,23 +76,23 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 **Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated | B = Abandoned
 
-[workflow]: /bylaws/psr-workflow/
-[psr0]: /psr/psr-0/
-[psr1]: /psr/psr-1/
-[psr2]: /psr/psr-2/
-[psr3]: /psr/psr-3/
-[psr4]: /psr/psr-4/
-[psr5]: https://github.com/phpDocumentor/fig-standards/tree/master/proposed
-[psr6]: /psr/psr-6/
-[psr7]: /psr/psr-7/
-[psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug
+[workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
+[psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+[psr1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
+[psr2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+[psr3]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
+[psr4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-meta.md
+[psr5]: https://github.com/phpDocumentor/fig-standards/tree/master/proposed/phpdoc.md
+[psr6]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-6-cache.md
+[psr7]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message.md
+[psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
-[psr11]: /psr/psr-11/
+[psr11]: https://github.com/php-fig/fig-standards/blob/master/accepted/PPSR-11-container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
-[psr13]: /psr/psr-13/
+[psr13]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-13-links.md
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
 [psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md
-[psr16]: /psr/psr-16/
-[psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory
-[psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client
+[psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
+[psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory/
+[psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client/
