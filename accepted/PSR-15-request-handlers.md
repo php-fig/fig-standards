@@ -59,9 +59,9 @@ Middleware using this standard MUST implement the following interface:
 ### 1.3 Generating Responses
 
 It is RECOMMENDED that any middleware or request handler that generates a response
-will either compose a prototype of a PSR-7 `ResponseInterface` or a factory capable
-of generating a `ResponseInterface` instance in order to prevent dependence on a
-specific HTTP message implementation.
+will either compose a prototype of a PSR-7 `ResponseInterface` or make use of a
+factory capable of generating a `ResponseInterface` instance in order to prevent
+dependence on a specific HTTP message implementation.
 
 ### 1.4 Handling Exceptions
 
