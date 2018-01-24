@@ -323,7 +323,7 @@ Attempting to define client middleware would be premature at this point. Any fut
 proposal that is focused on client side request processing should have the opportunity
 to define a standard that is specific to the nature of asynchronous middleware.
 
-_See "client vs server side middleware" in [relevant links](#8-relevant-links) for
+_See "client vs server side middleware" in [relevant links](#9-relevant-links) for
 additional information._
 
 #### What is the role of the request handler?
