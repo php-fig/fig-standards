@@ -50,6 +50,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Magento]                         | Ben Marks ([@benmarks])               |
 | [PEAR]                            | Chuck Burgess ([@ashnazg])            |
 | [Phalcon]                         | Andres Gutierrez ([@phalconphp])      |
+| [Phergie]                         | Joe Ferguson ([@joepferguson])        |
 | [Phing]                           | Michiel Rook ([@michieltcs])          |
 | [phpBB]                           | Marc Alexander ([@marc1706])          |
 | [phpDocumentor]                   | Mike van Riel ([@mvriel])             |
@@ -187,6 +188,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Neos]: http://neos.io
 [PEAR]: http://pear.php.net
 [Phalcon]: http://www.phalconphp.com
+[Phergie]: https://www.phergie.org
 [Phing]: http://www.phing.info
 [phpBB]: http://www.phpbb.com
 [phpDocumentor]: http://www.phpdoc.org
