@@ -6,9 +6,9 @@
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
 | Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2018-08-31 |
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
+| Mark Railton ([@railto])              | 2018-01-28 - 2020-01-31 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](http://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -25,10 +25,10 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Gary Hockin ([@GeeH])                 | 2016-12-24 - 2018-08-31 |
 | Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2018-08-31 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2018-08-31 |
-| Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2018-01-31 |
-| Graham Hoefer ([@greydnls])           | 2016-12-24 - 2018-01-31 |
-| Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2018-01-31 |
-| Stefano Torresi ([@storresi])         | 2016-12-24 - 2018-01-31 |
+| Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2020-01-31 |
+| Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2020-01-31 |
+| Stefano Torresi ([@storresi])         | 2016-12-24 - 2020-01-31 |
+| Michael Cullum ([@michaelcullumuk])   | 2018-01-28 - 2020-01-31 |
 
 
 ### Member Projects
@@ -85,13 +85,14 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Joe Ferguson ([@joepferguson])        | 2016-01-31 - 2016-06-29 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-02-28 - 2016-12-24 |
 | Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
+| Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
 
 
 ### Former Core Committee Members
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| TBD                                   |                         |
+| Graham Hoefer ([@greydnls])           | 2016-12-24 - 2018-01-31 |
 
 
 ### Former Member Projects
@@ -150,6 +151,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@phalconphp]: https://twitter.com/phalconphp
 [@PhpNut]: https://twitter.com/PhpNut
 [@pmjones]: https://twitter.com/pmjones
+[@railto]: https://twitter.com/railto
 [@rdeutz]: https://twitter.com/rdeutz
 [@RyanThePyro]: https://twitter.com/RyanThePyro
 [@sam_dark]: https://twitter.com/sam_dark
