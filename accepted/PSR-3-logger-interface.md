@@ -168,7 +168,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function emergency($message, array $context = array());
 
@@ -180,7 +180,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function alert($message, array $context = array());
 
@@ -191,7 +191,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function critical($message, array $context = array());
 
@@ -201,7 +201,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function error($message, array $context = array());
 
@@ -213,7 +213,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function warning($message, array $context = array());
 
@@ -222,7 +222,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function notice($message, array $context = array());
 
@@ -233,7 +233,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function info($message, array $context = array());
 
@@ -242,7 +242,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function debug($message, array $context = array());
 
@@ -252,7 +252,7 @@ interface LoggerInterface
      * @param mixed $level
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function log($level, $message, array $context = array());
 }
@@ -274,7 +274,7 @@ interface LoggerAwareInterface
      * Sets a logger instance on the object
      *
      * @param LoggerInterface $logger
-     * @return null
+     * @return void
      */
     public function setLogger(LoggerInterface $logger);
 }
