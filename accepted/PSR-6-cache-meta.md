@@ -319,7 +319,7 @@ specification.
 Despite that, any value that is not null or an object of `\DateTimeInterface` (either
 `\DateTime` or `\DateTimeImmutable`, or possibly others added to the language in
 the future) MUST be treated as an invalid argument error.  Implementers are
-encouraged to actively reject values that do not implement that interface.
+required to actively reject values that do not implement that interface.
 
 Simulating a failed type check unfortunately varies between PHP versions and thus is not
 recommended.  Instead, implementors SHOULD throw an instance of `\Psr\Cache\InvalidArgumentException`.  
