@@ -332,8 +332,15 @@ class ExpiresAtInvalidParameterException implements Psr\Cache\InvalidArgumentExc
 
 // ...
 
-if (!(null === $expiration || $expiration instanceof \DateTime || $expiration instanceof \DateTimeInterface)) {
-  $error = sprintf('Argument 1 passed to %s::expiresAt() must be an instance of DateTime or DateTimeImmutable, %s given', get_class($this), gettype($expiration));
-  throw new ExpiresAtInvalidParameterException($error);
+if (! (
+        null === $expiration
+        || $expiration instanceof \DateTime
+        || $expiration instanceof \DateTimeInterface
+)) {
+    throw new ExpiresAtInvalidParameterException(sprintf(
+        'Argument 1 passed to %s::expiresAt() must be an instance of DateTime or DateTimeImmutable; %s given',
+        get_class($this),
+        is_object($expiration) ? get_class($expiration) : gettype($expiration)
+    ));
 }
 ```
