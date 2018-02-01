@@ -17,7 +17,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Beau Siemensen ([@beausimensen])      | 2016-12-24 - 2019-04-30 |
+| Beau Simensen ([@beausimensen])       | 2016-12-24 - 2019-04-30 |
 | Larry Garfield ([@Crell])             | 2016-12-24 - 2019-04-30 |
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2019-04-30 |
 | Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-04-30 |
