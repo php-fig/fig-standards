@@ -316,10 +316,9 @@ However, `\DateTimeInterface` and `\DateTimeImmutable` were added in PHP 5.5, an
 the authors chose not to impose a hard syntactic requirement for PHP 5.5 on the
 specification.
 
-Despite that, any value that is not null or an object of `\DateTimeInterface` (either
-`\DateTime` or `\DateTimeImmutable`, or possibly others added to the language in
-the future) MUST be treated as an invalid argument error.  Implementers are
-required to actively reject values that do not implement that interface.
+Despite that, implementers MUST accept only `\DateTimeInterface` or compatible types
+(such as `\DateTime` and `\DateTimeImmutable`) as if the method was explicitly typed.
+(Note that the variance rules for a typed parameter may vary between language versions.)
 
 Simulating a failed type check unfortunately varies between PHP versions and thus is not
 recommended.  Instead, implementors SHOULD throw an instance of `\Psr\Cache\InvalidArgumentException`.  
