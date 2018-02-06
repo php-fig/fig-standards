@@ -46,8 +46,8 @@ namespace Vendor\Package;
 use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
 use Vendor\Package\Namespace\ClassD as D;
 
-use function Vendor\Package\{functionA, functionB, functionC};
 use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
+use function Vendor\Package\{functionA, functionB, functionC};
 
 class Foo extends Bar implements FooInterface
 {
@@ -127,8 +127,8 @@ not relevant may be omitted.
 * One or more declare statements.
 * The namespace declaration of the file.
 * One or more class-based `use` import statements.
-* One or more function-based `use` import statements.
 * One or more constant-based `use` import statements.
+* One or more function-based `use` import statements.
 * The remainder of the code in the file.
 
 When a file contains a mix of HTML and PHP, any of the above sections may still
@@ -160,11 +160,11 @@ use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
 use Vendor\Package\Namespace\ClassD as D;
 use Vendor\Package\AnotherNamespace\ClassE as E;
 
-use function Vendor\Package\{functionA, functionB, functionC};
-use function Another\Vendor\functionD;
-
 use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
 use const Another\Vendor\CONSTANT_D;
+
+use function Vendor\Package\{functionA, functionB, functionC};
+use function Another\Vendor\functionD;
 
 /**
  * FooBar is an example class.
