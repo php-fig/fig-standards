@@ -429,7 +429,7 @@ An application bootstrap might then look like this:
 $fallbackHandler = new NotFoundHandler();
 
 // Create request handler instance:
-$app = new QueueResponseHandler($fallbackHandler);
+$app = new QueueRequestHandler($fallbackHandler);
 
 // Add one or more middleware:
 $app->add(new AuthorizationMiddleware());
