@@ -111,6 +111,8 @@ tabs for indenting.
 
 All PHP reserved keywords and types [[1]][keywords][[2]][types] MUST be in lower case.
 
+Any new types and keywords added to future PHP versions MUST be in lower case.
+
 Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
 `int` instead of `integer` etc.
 
@@ -456,8 +458,6 @@ MUST be one space after each comma.
 Method and function arguments with default values MUST go at the end of the argument
 list.
 
-Method and function argument scalar type hints MUST be lowercase.
-
 ~~~php
 <?php
 
@@ -500,7 +500,7 @@ class ClassName
 When you have a return type declaration present there MUST be one space after
 the colon followed by the type declaration. The colon and declaration MUST be
 on the same line as the argument list closing parentheses with no spaces between
-the two characters. The declaration keyword (e.g. string) MUST be lowercase.
+the two characters.
 
 ~~~php
 <?php
