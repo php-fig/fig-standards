@@ -24,7 +24,7 @@ vulnerabilities.
 ## Security Disclosure Process Discovery
 
 Every project MUST provide a link to its security disclosure process in
-an obvious place. Every project, that has a dedicated webiste MUST redirect 
+an obvious place. Every project, that has a dedicated website MUST redirect 
 https://www.example.com/reportsecurityvuln to this place. 
 Ideally a link should be on the root page the main domain of
 the given project. This MAY be a sub-domain in case it is a sub-project of a
@@ -66,7 +66,7 @@ process description as the ``contact email address``. Projects SHALL NOT
 use contact forms.
 
 
-## Security.josn
+## Security.json
 Projects MUST create a security.json file in their root level directory for automated parsing, it should take the following format. 
 
 
