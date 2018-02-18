@@ -44,7 +44,7 @@ declare(strict_types=1);
 namespace Vendor\Package;
 
 use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
-use Vendor\Package\Namespace\ClassD as D;
+use Vendor\Package\SomeNamespace\ClassD as D;
 
 use function Vendor\Package\{functionA, functionB, functionC};
 use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
@@ -158,7 +158,7 @@ declare(strict_types=1);
 namespace Vendor\Package;
 
 use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
-use Vendor\Package\Namespace\ClassD as D;
+use Vendor\Package\SomeNamespace\ClassD as D;
 use Vendor\Package\AnotherNamespace\ClassE as E;
 
 use function Vendor\Package\{functionA, functionB, functionC};
@@ -182,7 +182,7 @@ following is the maximum compounding depth allowed:
 ~~~php
 <?php
 
-use Vendor\Package\Namespace\{
+use Vendor\Package\SomeNamespace\{
     SubnamespaceOne\ClassA,
     SubnamespaceOne\ClassB,
     SubnamespaceTwo\ClassY,
@@ -194,7 +194,7 @@ And the following would not be allowed:
 ~~~php
 <?php
 
-use Vendor\Package\Namespace\{
+use Vendor\Package\SomeNamespace\{
     SubnamespaceOne\AnotherNamespace\ClassA,
     SubnamespaceOne\ClassB,
     ClassZ,
