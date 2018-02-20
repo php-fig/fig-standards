@@ -652,6 +652,29 @@ if ($expr1) {
 The keyword `elseif` SHOULD be used instead of `else if` so that all control
 keywords look like single words.
 
+Expressions in parentheses MAY be split across multiple lines, where each
+subsequent line is indented at least once. When doing so, the first condition
+MUST be on the next line. The closing parenthesis and opening brace MUST be
+placed together on their own line with one space between them. Boolean
+operators between conditions MUST always be at the beginning or at the end of
+the line, not a mix of both.
+
+~~~php
+<?php
+
+if (
+    $expr1
+    && $expr2
+) {
+    // if body
+} elseif (
+    $expr3
+    && $expr4
+) {
+    // elseif body
+}
+~~~
+
 ### 5.2 `switch`, `case`
 
 A `switch` structure looks like the following. Note the placement of
@@ -681,6 +704,24 @@ switch ($expr) {
 }
 ~~~
 
+Expressions in parentheses MAY be split across multiple lines, where each
+subsequent line is indented at least once. When doing so, the first condition
+MUST be on the next line. The closing parenthesis and opening brace MUST be
+placed together on their own line with one space between them. Boolean
+operators between conditions MUST always be at the beginning or at the end of
+the line, not a mix of both.
+
+~~~php
+<?php
+
+switch (
+    $expr1
+    && $expr2
+) {
+    // structure body
+}
+
+
 ### 5.3 `while`, `do while`
 
 A `while` statement looks like the following. Note the placement of
@@ -690,6 +731,24 @@ parentheses, spaces, and braces.
 <?php
 
 while ($expr) {
+    // structure body
+}
+~~~
+
+Expressions in parentheses MAY be split across multiple lines, where each
+subsequent line is indented at least once. When doing so, the first condition
+MUST be on the next line. The closing parenthesis and opening brace MUST be
+placed together on their own line with one space between them. Boolean
+operators between conditions MUST always be at the beginning or at the end of
+the line, not a mix of both.
+
+~~~php
+<?php
+
+while (
+    $expr1
+    && $expr2
+) {
     // structure body
 }
 ~~~
@@ -705,6 +764,23 @@ do {
 } while ($expr);
 ~~~
 
+Expressions in parentheses MAY be split across multiple lines, where each
+subsequent line is indented at least once. When doing so, the first condition
+MUST be on the next line. The closing parenthesis and opening brace MUST be
+placed together on their own line. Boolean operators between conditions MUST
+always be at the beginning or at the end of the line, not a mix of both.
+
+~~~php
+<?php
+
+do {
+    // structure body;
+} while (
+    $expr1
+    && $expr2
+);
+~~~
+
 ### 5.4 `for`
 
 A `for` statement looks like the following. Note the placement of parentheses,
@@ -714,6 +790,23 @@ spaces, and braces.
 <?php
 
 for ($i = 0; $i < 10; $i++) {
+    // for body
+}
+~~~
+
+Expressions in parentheses MAY be split across multiple lines, where each
+subsequent line is indented at least once. When doing so, the first expression
+MUST be on the next line. The closing parenthesis and opening brace MUST be
+placed together on their own line with one space between them.
+
+~~~php
+<?php
+
+for (
+    $i = 0;
+    $i < 10;
+    $i++
+) {
     // for body
 }
 ~~~
