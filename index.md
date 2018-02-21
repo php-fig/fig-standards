@@ -31,6 +31,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
+| 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 | 18  | [HTTP Client][psr18]                 | Tobias Nylhom                  |
 
 ### Abandoned
@@ -42,7 +43,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 9   | [Security Advisories][psr9]          | Michael Hess                   |
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   |
 | 14  | [Event Manager][psr14]               | Chuck Reeves                   |
-| 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 
 ### Deprecated
 
@@ -71,7 +71,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | B      | 14  | [Event Manager][psr14]               | Chuck Reeves                   |
 | A      | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
 | A      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 |
-| B      | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
+| D      | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 | D      | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
 
 **Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated | B = Abandoned
