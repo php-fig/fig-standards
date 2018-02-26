@@ -720,7 +720,7 @@ switch (
 ) {
     // structure body
 }
-
+~~~
 
 ### 5.3 `while`, `do while`
 
