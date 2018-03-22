@@ -46,17 +46,14 @@ by an integer representing time in seconds, or a DateInterval object.
 
 *    **Expiration** - The actual time when an item is set to go stale. This is
 typically calculated by adding the TTL to the time when an object is stored, but
-may also be explicitly set with DateTime object.
-
-    An item with a 300 second TTL stored at 1:30:00 will have an expiration of
-    1:35:00.
-
-    Implementing Libraries MAY expire an item before its requested Expiration Time,
-but MUST treat an item as expired once its Expiration Time is reached. If a calling
-library asks for an item to be saved but does not specify an expiration time, or
-specifies a null expiration time or TTL, an Implementing Library MAY use a configured
-default duration. If no default duration has been set, the Implementing Library
-MUST interpret that as a request to cache the item forever, or for as long as the
+may also be explicitly set with DateTime object. An item with a 300 second TTL
+stored at 1:30:00 will have an expiration of 1:35:00. Implementing Libraries MAY
+expire an item before its requested Expiration Time, but MUST treat an item as
+expired once its Expiration Time is reached. If a calling library asks for an
+item to be saved but does not specify an expiration time, or specifies a null
+expiration time or TTL, an Implementing Library MAY use a configured default
+duration. If no default duration has been set, the Implementing Library MUST
+interpret that as a request to cache the item forever, or for as long as the
 underlying implementation supports.
 
 *    **Key** - A string of at least one character that uniquely identifies a
