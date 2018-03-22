@@ -44,7 +44,7 @@ below with whole-second granularity.
 when that item is stored and it is considered stale. The TTL is normally defined
 by an integer representing time in seconds, or a DateInterval object.
 
-*    **Expiration** - The actual time when an item is set to go stale. This is
+*    **Expiration** - The actual time when an item is set to go stale. This is
 typically calculated by adding the TTL to the time when an object is stored, but
 may also be explicitly set with DateTime object.
 
