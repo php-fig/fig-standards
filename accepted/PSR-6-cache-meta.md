@@ -1,8 +1,6 @@
-PSR-Cache Meta Document
-=======================
+# PSR-Cache Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 Caching is a common way to improve the performance of any project, making
 caching libraries one of the most common features of many frameworks and
@@ -13,8 +11,7 @@ provide the functionality they need. In addition, the developers of caching
 libraries themselves face a choice between only supporting a limited number
 of frameworks or creating a large number of adapter classes.
 
-2. Why Bother?
---------------
+## 2. Why Bother?
 
 A common interface for caching systems will solve these problems. Library and
 framework developers can count on the caching systems working the way they're
@@ -41,24 +38,22 @@ being "not the Way It's Done(tm)".  However, we believe caching is a sufficientl
 commoditized problem space that the extension capability offered here mitigates
 any potential risk of stagnation.
 
-3. Scope
---------
+## 3. Scope
 
-## 3.1 Goals
+### 3.1 Goals
 
 * A common interface for basic and intermediate-level caching needs.
 * A clear mechanism for extending the specification to support advanced features,
 both by future PSRs or by individual implementations. This mechanism must allow
 for multiple independent extensions without collision.
 
-## 3.2 Non-Goals
+### 3.2 Non-Goals
 
 * Architectural compatibility with all existing cache implementations.
 * Advanced caching features such as namespacing or tagging that are used by a
 minority of users.
 
-4. Approaches
--------------
+## 4. Approaches
 
 ### 4.1 Chosen Approach
 
@@ -274,8 +269,7 @@ default control information is all that's possible), and because it's trivial
 for a particular implementation to include as an add-on should it desire to
 do so.
 
-5. People
----------
+## 5. People
 
 ### 5.1 Editor
 
@@ -286,13 +280,11 @@ do so.
 * Paul Dragoonis, PPI Framework (Coordinator)
 * Robert Hafner, Stash
 
-6. Votes
---------
+## 6. Votes
 
 [Acceptance vote on the mailing list](https://groups.google.com/forum/#!msg/php-fig/dSw5IhpKJ1g/O9wpqizWAwAJ)
 
-7. Relevant Links
------------------
+## 7. Relevant Links
 
 _**Note:** Order descending chronologically._
 
@@ -304,8 +296,7 @@ _**Note:** Order descending chronologically._
 [2]: https://docs.google.com/spreadsheet/ccc?key=0AsMrMKNHL1uGdDdVd2llN1kxczZQejZaa3JHcXA3b0E#gid=0
 [3]: https://docs.google.com/spreadsheet/ccc?key=0AsMrMKNHL1uGdEE3SU8zclNtdTNobWxpZnFyR0llSXc#gid=1
 
-8. Errata
-----------
+## 8. Errata
 
 ### 8.1 Handling of incorrect DateTime values in expiresAt()
 
