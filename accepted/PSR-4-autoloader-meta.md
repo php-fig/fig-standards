@@ -1,16 +1,13 @@
-PSR-4 Meta Document
-===================
+# PSR-4 Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 The purpose is to specify the rules for an interoperable PHP autoloader that
 maps namespaces to file system paths, and that can co-exist with any other SPL
 registered autoloader.  This would be an addition to, not a replacement for,
 PSR-0.
 
-2. Why Bother?
---------------
+## 2. Why Bother?
 
 ### History of PSR-0
 
@@ -120,8 +117,7 @@ PSR-0, but seeing as their presence in that document is in reference to
 transitioning away from PHP 5.2 and previous pseudo-namespacing, it is
 acceptable to remove them here as well.
 
-3. Scope
---------
+## 3. Scope
 
 ### 3.1 Goals
 
@@ -140,8 +136,7 @@ acceptable to remove them here as well.
 
 - Provide a general transformation algorithm for non-class resources
 
-4. Approaches
--------------
+## 4. Approaches
 
 ### 4.1 Chosen Approach
 
@@ -230,8 +225,7 @@ PHP versions before 5.3.3 do not strip the leading namespace separator, so
 the responsibility to look out for this falls on the implementation. Failing
 to strip the leading namespace separator could lead to unexpected behavior.
 
-5. People
----------
+## 5. People
 
 ### 5.1 Editor
 
@@ -252,8 +246,7 @@ to strip the leading namespace separator could lead to unexpected behavior.
 - Paul Dragoonis
 - Too many others to name and count
 
-6. Votes
---------
+## 6. Votes
 
 - **Entrance Vote:** <https://groups.google.com/d/msg/php-fig/_LYBgfcEoFE/ZwFTvVTIl4AJ>
 
@@ -267,8 +260,7 @@ to strip the leading namespace separator could lead to unexpected behavior.
 
     - 3rd attempt: TBD
 
-7. Relevant Links
------------------
+## 7. Relevant Links
 
 - [Autoloader, round 4](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/lpmJcmkNYjM)
 - [POLL: Autoloader: Split or Combined?](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/fGwA6XHlYhI)
