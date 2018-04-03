@@ -547,11 +547,13 @@ class ReturnTypeVariations
 
 ### 4.6 `abstract`, `final`, and `static`
 
-When present, the `abstract` and `final` declarations MUST precede the
+When present, the `abstract` and `final` declarations MUST follow the
 visibility declaration.
 
 When present, the `static` declaration MUST come after the visibility
 declaration.
+
+When present, the `static` declaration MUST come before the final declaration.
 
 ~~~php
 <?php
@@ -562,9 +564,9 @@ abstract class ClassName
 {
     protected static $foo;
 
-    abstract protected function zim();
+    protected abstract function zim();
 
-    final public static function bar()
+    public static final function bar()
     {
         // method body
     }
