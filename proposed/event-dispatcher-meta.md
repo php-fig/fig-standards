@@ -45,6 +45,7 @@ Cees-Jan Kiewiet
 Elizabeth Smith
 Benjamin Mack
 Matthew Weier O'Phinney
+Ryan Weaver
 
 ## 6. Votes
 
