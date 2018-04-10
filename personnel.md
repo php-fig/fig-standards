@@ -22,7 +22,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2019-04-30 |
 | Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-04-30 |
 | Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2018-08-31 |
-| Gary Hockin ([@GeeH])                 | 2016-12-24 - 2018-08-31 |
 | Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2018-08-31 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2018-08-31 |
 | Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2020-01-31 |
