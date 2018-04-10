@@ -92,6 +92,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | Graham Hoefer ([@greydnls])           | 2016-12-24 - 2018-01-31 |
+| Gary Hockin ([@GeeH])                 | 2016-12-24 - 2018-04-04 |
 
 
 ### Former Member Projects
