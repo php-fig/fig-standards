@@ -164,14 +164,6 @@ interface EventManagerInterface
     public function detach($event, $callback);
 
     /**
-     * Clear all listeners for a given event
-     *
-     * @param  string $event
-     * @return void
-     */
-    public function clearListeners($event);
-
-    /**
      * Trigger an event
      *
      * Can accept an EventInterface or will create one if not passed
