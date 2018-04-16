@@ -122,7 +122,7 @@ that create a resource from a file path.
 
 #### 4.2.3 Slim
 
-Slim is a popular micro-framework that makes use of HTTP Messages from version
+[Slim][slim] is a popular micro-framework that makes use of HTTP Messages from version
 3.0 forward.
 
 - [`Request`][slim-request] Requires `string $method`, `UriInterface $uri`,
@@ -142,6 +142,7 @@ Slim is a popular micro-framework that makes use of HTTP Messages from version
 _Being geared towards server usage only, Slim does not contain an implementation
 of `Request`. The implementation listed above is an implementation of `ServerRequest`._
 
+[slim]: https://www.slimframework.com/
 [slim-request]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/Request.php#L170-L178
 [slim-response]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/Response.php#L123
 [slim-stream]: https://github.com/slimphp/Slim/blob/30cfe3c07dac28ec1129c0577e64b90ba11a54c4/Slim/Http/Stream.php#L96
