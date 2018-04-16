@@ -37,9 +37,13 @@ Has the ability to create client requests.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-interface RequestFactoryInterface
+interface RequestFactoryInterface extends
+    StreamFactoryInterface,
+    UriFactoryInterface,
 {
     /**
      * Create a new request.
@@ -61,8 +65,9 @@ Has the ability to create responses.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
-interface ResponseFactoryInterface
+interface ResponseFactoryInterface extends StreamFactoryInterface
 {
     /**
      * Create a new response.
@@ -83,9 +88,15 @@ Has the ability to create server requests.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-interface ServerRequestFactoryInterface
+interface ServerRequestFactoryInterface extends
+    StreamFactoryInterface,
+    UploadedFileFactoryInterface,
+    UriFactoryInterface
 {
     /**
      * Create a new server request.
