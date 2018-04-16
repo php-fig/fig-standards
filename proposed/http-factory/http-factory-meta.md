@@ -161,7 +161,39 @@ As there is no clear declaration in PSR-7 as to what values are explicitly
 required, the properties that are read-only must be inferred based on whether
 the interfaces have methods to copy-and-modify the object.
 
-## 5. People
+## 5. Design Decisions
+
+### 6.1 Why multiple interfaces?
+
+Each proposed interface is (primarily) responsible for producing one PSR-7 type.
+This allows consumers to typehint on exactly what they need: if they need a
+response, they typehint on `ResponseFactoryInterface`; if they need a URI, they
+typehint on `UriFactoryInterface`. In this way, users can be granular about what
+they need.
+
+Doing so also allows application developers to provide anonymous implementations
+based on the PSR-7 implementation they are using, producing only the instances
+they need for the specific context. This reduces boilerplate; developers do not
+need to write stubs for unused methods.
+
+### 6.2 Why does `ServerRequestFactoryInterface::createServerRequestFromArray()` exist?
+
+One element of `Psr\Http\Message\ServerRequestInterface` has no corresponding
+"mutator"-cum-cloning method: `getServerParams()`. These are meant to represent
+environment parameters created by the Server API (SAPI) in current use.
+Generally speaking those parameters can be used to create all _required_ aspects
+of a server-side request as well, and, specifically, the request URI and HTTP
+method (e.g., via `$_SERVER['REQUEST_URI']` and `$_SERVER['REQUEST_METHOD'` when
+using mod_php under Apache or when using php-fpm via a FastCGI process).
+Creating the server request using that array allows you to minimally populate
+the instance, while simultaneously providing the SAPI environment.
+
+In SAPI environments that do not populate `$_SERVER` with this information
+(e.g., async application runners that run via the CLI environment), the
+`ServerRequestFactoryInterface::createServerRequest()` method exists, allowing
+you to create a minimal server request instance with the request method and URI.
+
+## 6. People
 
 This PSR was produced by a FIG Working Group with the following members:
 
@@ -180,14 +212,14 @@ The working group would also like to acknowledge the contributions of:
 * Rasmus Schultz, <rasmus@mindplay.dk>
 * Roman Tsjupa, <draconyster@gmail.com>
 
-## 6. Votes
+## 7. Votes
 
 * [Entrance Vote](https://groups.google.com/forum/#!topic/php-fig/6rZPZ8VglIM)
 * [Working Group Formation](https://groups.google.com/d/msg/php-fig/A5mZYTn5Jm8/j0FN6eZtBAAJ)
 * Review Period Initiation _(not yet begun)_
 * Acceptance Vote _(not yet taken)_
 
-## 7. Relevant Links
+## 8. Relevant Links
 
 _**Note:** Order descending chronologically._
 
