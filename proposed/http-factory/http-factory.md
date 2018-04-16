@@ -166,7 +166,6 @@ resources from strings. The RECOMMENDED method for doing so is:
 
 ```php
 $resource = fopen('php://temp', 'r+');
-fwrite($resource, $body);
 ```
 
 ### 2.5 UploadedFileFactoryInterface
