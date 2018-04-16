@@ -4,7 +4,9 @@ HTTP Factories Meta
 ## 1. Summary
 
 The purpose of this PSR is to provide factory interfaces that define methods to
-create PSR-7 objects.
+create [PSR-7][psr7] objects.
+
+[psr7]: https://www.php-fig.org/psr/psr-7/
 
 ## 2. Why Bother?
 
