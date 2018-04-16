@@ -95,7 +95,7 @@ The proposed uploaded file factory allows for size and error status to be option
 
 #### 4.2.2 Guzzle
 
-Guzzle is currently the most popular HTTP Messages implementation for client usage.
+[Guzzle][guzzle] is currently the most popular HTTP Messages implementation for client usage.
 
 - [`Request`][guzzle-request] Requires both `string $method` and `string|UriInterface $uri`.
 - [`Response`][guzzle-response] No required parameters, status code defaults to `200`.
@@ -105,6 +105,7 @@ Guzzle is currently the most popular HTTP Messages implementation for client usa
 _Being geared towards client usage, Guzzle does not contain a `ServerRequest` or
 `UploadedFile` implementation._
 
+[guzzle]: https://github.com/guzzle/psr7
 [guzzle-request]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/Request.php#L32-L38
 [guzzle-response]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/Response.php#L88-L94
 [guzzle-stream]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/Stream.php#L51
