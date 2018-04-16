@@ -175,9 +175,11 @@ Has the ability to create streams for uploaded files.
 ```php
 namespace Psr\Http\Message;
 
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-interface UploadedFileFactoryInterface
+interface UploadedFileFactoryInterface extends StreamFactoryInterface
 {
     /**
      * Create a new uploaded file.
@@ -191,7 +193,7 @@ interface UploadedFileFactoryInterface
      * @see http://php.net/manual/features.file-upload.post-method.php
      * @see http://php.net/manual/features.file-upload.errors.php
      *
-     * @param string|resource $file
+     * @param string|resource|StreamInterface $file
      * @param int $size in bytes
      * @param int $error PHP file upload error
      * @param string $clientFilename
@@ -217,7 +219,6 @@ resources from strings. The RECOMMENDED method for doing so is:
 
 ```php
 $resource = fopen('php://temp', 'r+');
-fwrite($resource, $body);
 ```
 
 ### 2.6 UriFactoryInterface
