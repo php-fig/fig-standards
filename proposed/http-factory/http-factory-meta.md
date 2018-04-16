@@ -68,7 +68,7 @@ factory methods.
 
 #### 4.2.1 Diactoros
 
-Zend Diactoros is currently the most popular HTTP Messages implementation for
+[Diactoros][zend-diactoros] is currently the most popular HTTP Messages implementation for
 server usage.
 
 - [`Request`][diactoros-request] No required parameters, method and URI default to `null`.
@@ -80,6 +80,7 @@ server usage.
   `int $errorStatus`. Error status must be a PHP upload constant.
 - [`Uri`][diactoros-uri] No required parameters, `string $uri` is empty by default.
 
+[zend-diactoros]: https://docs.zendframework.com/zend-diactoros/
 [diactoros-request]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Request.php#L33)
 [diactoros-response]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Response.php#L114
 [diactoros-server-request]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/ServerRequest.php#L78-L89
