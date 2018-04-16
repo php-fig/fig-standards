@@ -128,7 +128,7 @@ that create a resource from a file path.
 - [`Request`][slim-request] Requires `string $method`, `UriInterface $uri`,
   `HeadersInterface $headers`, `array $cookies`, `array $serverParams`, and
   `StreamInterface $body`. Contains a factory method `createFromEnvironment(Environment $environment)`
-  that is framework specific but analogous to the proposed `createServerRequestFromGlobals`.
+  that is framework specific but analogous to the proposed `createServerRequestFromArray`.
 - [`Response`][slim-response] No required parameters, status code defaults to `200`.
 - [`Stream`][slim-stream] Requires `resource $stream` for the body.
 - [`UploadedFile`][slim-uploaded-file] Requires `string $file` for the source file.
