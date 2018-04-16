@@ -25,10 +25,17 @@ condition in which the body has already been written to.
 
 This scenario can be avoided by providing a factory to create new streams. Due to
 the lack of formal standard for HTTP object factories, a developer must rely on
-a specific vendor implementation in order to create these objects. Creating a
-formal standard for factories will allow developers to avoid dependencies on
-specific implementations while having the ability to create new objects when
-necessary.
+a specific vendor implementation in order to create these objects.
+
+Another pain point is when writing re-usable middleware or request handlers. In
+such cases, package authors may need to create and return a response. However,
+creating discrete instances then ties the package to a specific PSR-7
+implementation. If these packages rely on a request factory instead, they can
+remain agnostic of the PSR-7 implementation.
+
+Creating a formal standard for factories will allow developers to avoid
+dependencies on specific implementations while having the ability to create new
+objects when necessary.
 
 ## 3. Scope
 
