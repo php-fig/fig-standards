@@ -161,7 +161,7 @@ interface StreamFactoryInterface
 }
 ```
 
-Implementations of this interface SHOULD use a temporary file when creating
+Implementations of this interface SHOULD use a temporary stream when creating
 resources from strings. The RECOMMENDED method for doing so is:
 
 ```php
