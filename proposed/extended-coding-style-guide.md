@@ -47,6 +47,7 @@ use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
 use Vendor\Package\SomeNamespace\ClassD as D;
 
 use function Vendor\Package\{functionA, functionB, functionC};
+
 use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
 
 class Foo extends Bar implements FooInterface
