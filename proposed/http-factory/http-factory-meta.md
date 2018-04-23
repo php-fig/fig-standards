@@ -163,7 +163,7 @@ the interfaces have methods to copy-and-modify the object.
 
 ## 5. Design Decisions
 
-### 6.1 Why multiple interfaces?
+### 5.1 Why multiple interfaces?
 
 Each proposed interface is (primarily) responsible for producing one PSR-7 type.
 This allows consumers to typehint on exactly what they need: if they need a
