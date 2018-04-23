@@ -22,6 +22,7 @@ This is a well-established model, but a standard mechanism by which libraries do
 ### 3.2 Non-Goals
 
 * Asynchronous systems often have a concept of an "event loop" to manage interleaving coroutines.  That is an unrelated matter and explicitly irrelevant to this specification.
+* Storage systems implementing an "Event Source" pattern also have a concept of an "event".  That is unrelated to the events discussed here and explicitly out of scope.
 * Strict backward compatibility with existing event systems is not a priority and is not expected.
 * While this specification will undoubtedly suggest implementation patterns, it does not seek to define One True Event Dispatcher Implementation, only how callers and listeners communicate with that dispatcher.
 
