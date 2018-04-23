@@ -176,23 +176,6 @@ based on the PSR-7 implementation they are using, producing only the instances
 they need for the specific context. This reduces boilerplate; developers do not
 need to write stubs for unused methods.
 
-### 6.2 Why does `ServerRequestFactoryInterface::createServerRequestFromArray()` exist?
-
-One element of `Psr\Http\Message\ServerRequestInterface` has no corresponding
-"mutator"-cum-cloning method: `getServerParams()`. These are meant to represent
-environment parameters created by the Server API (SAPI) in current use.
-Generally speaking those parameters can be used to create all _required_ aspects
-of a server-side request as well, and, specifically, the request URI and HTTP
-method (e.g., via `$_SERVER['REQUEST_URI']` and `$_SERVER['REQUEST_METHOD'` when
-using mod_php under Apache or when using php-fpm via a FastCGI process).
-Creating the server request using that array allows you to minimally populate
-the instance, while simultaneously providing the SAPI environment.
-
-In SAPI environments that do not populate `$_SERVER` with this information
-(e.g., async application runners that run via the CLI environment), the
-`ServerRequestFactoryInterface::createServerRequest()` method exists, allowing
-you to create a minimal server request instance with the request method and URI.
-
 ## 6. People
 
 This PSR was produced by a FIG Working Group with the following members:
