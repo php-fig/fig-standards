@@ -48,12 +48,14 @@ interface RequestFactoryInterface extends
     /**
      * Create a new request.
      *
-     * @param string $method
-     * @param UriInterface|string $uri
+     * @param string $method The HTTP method associated with the request.
+     * @param UriInterface|string $uri The URI associated with the request. If
+     *     the value is a string, the factory MUST create a UriInterface
+     *     instance based on it.
      *
      * @return RequestInterface
      */
-    public function createRequest($method, $uri);
+    public function createRequest(string $method, $uri): RequestInterface;
 }
 ```
 
@@ -131,11 +133,11 @@ interface StreamFactoryInterface
      *
      * The stream SHOULD be created with a temporary resource.
      *
-     * @param string $content
+     * @param string $content String content with which to populate the stream.
      *
      * @return StreamInterface
      */
-    public function createStream($content = '');
+    public function createStream(string $content = ''): StreamInterface;
 
     /**
      * Create a stream from an existing file.
@@ -145,23 +147,23 @@ interface StreamFactoryInterface
      *
      * The `$filename` MAY be any string supported by `fopen()`.
      *
-     * @param string $filename
-     * @param string $mode
+     * @param string $filename Filename or stream URI to use as basis of stream.
+     * @param string $mode Mode with which to open the underlying filename/stream.
      *
      * @return StreamInterface
      */
-    public function createStreamFromFile($filename, $mode = 'r');
+    public function createStreamFromFile(string $filename, string $mode = 'r'): StreamInterface;
 
     /**
      * Create a new stream from an existing resource.
      *
      * The stream MUST be readable and may be writable.
      *
-     * @param resource $resource
+     * @param resource $resource PHP resource to use as basis of stream.
      *
      * @return StreamInterface
      */
-    public function createStreamFromResource($resource);
+    public function createStreamFromResource($resource): StreamInterface;
 }
 ```
 
@@ -197,24 +199,24 @@ interface UploadedFileFactoryInterface extends StreamFactoryInterface
      * @see http://php.net/manual/features.file-upload.post-method.php
      * @see http://php.net/manual/features.file-upload.errors.php
      *
-     * @param string|resource|StreamInterface $file
+     * @param string|resource|StreamInterface $file Underlying file, PHP stream
+     *     resource, or StreamInterface representing the uploaded file content.
      * @param int $size in bytes
      * @param int $error PHP file upload error
-     * @param string $clientFilename
-     * @param string $clientMediaType
+     * @param string $clientFilename Filename as provided by the client, if any.
+     * @param string $clientMediaType Media type as provided by the client, if any.
      *
      * @return UploadedFileInterface
      *
-     * @throws \InvalidArgumentException
-     *  If the file resource is not readable.
+     * @throws \InvalidArgumentException If the file resource is not readable.
      */
     public function createUploadedFile(
         $file,
-        $size = null,
-        $error = \UPLOAD_ERR_OK,
-        $clientFilename = null,
-        $clientMediaType = null
-    );
+        int $size = null,
+        int $error = \UPLOAD_ERR_OK,
+        string $clientFilename = null,
+        string $clientMediaType = null
+    ): UploadedFileInterface;
 }
 ```
 
@@ -243,9 +245,8 @@ interface UriFactoryInterface
      *
      * @return UriInterface
      *
-     * @throws \InvalidArgumentException
-     *  If the given URI cannot be parsed.
+     * @throws \InvalidArgumentException If the given URI cannot be parsed.
      */
-    public function createUri($uri = '');
+    public function createUri(string $uri = '') : UriInterface;
 }
 ```
