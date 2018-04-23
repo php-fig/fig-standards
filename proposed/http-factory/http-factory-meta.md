@@ -163,7 +163,27 @@ the interfaces have methods to copy-and-modify the object.
 
 ## 5. Design Decisions
 
-### 5.1 Why multiple interfaces?
+### 5.1 Why PHP 7?
+
+While PSR-7 does not target PHP 7, the authors of this specification note that,
+at the time of writing (April 2018), PHP 5.6 stopped receiving bugfixes 15
+months ago, and will no longer receive security patches in 8 months; PHP 7.0
+itself will stop receiving security fixes in 7 months (see the [PHP supported
+versions document][php-support] for current support details). Since
+specifications are meant to be long-term, the authors feel the specification
+should target versions that will be supported for the foreseeable future; PHP 5
+will not. As such, from a security standpoint, targeting anything under PHP 7 is
+a disservice to users, as doing so would be tacit approval of usage of
+unsupported PHP versions.
+
+Additionally, and equally importantly, PHP 7 gives us the ability to provide
+return type hints to interfaces we define. This guarantees a strong,
+predicatable contract for end users, as they can assume that the values returned
+by implementations will be exactly what they expect.
+
+[php-support]: http://php.net/supported-versions.php
+
+### 5.2 Why multiple interfaces?
 
 Each proposed interface is (primarily) responsible for producing one PSR-7 type.
 This allows consumers to typehint on exactly what they need: if they need a
@@ -175,6 +195,76 @@ Doing so also allows application developers to provide anonymous implementations
 based on the PSR-7 implementation they are using, producing only the instances
 they need for the specific context. This reduces boilerplate; developers do not
 need to write stubs for unused methods.
+
+### 5.3 Why do some interfaces extend others?
+
+In many cases, factories depend on one or more collaborators. As examples:
+
+- The `RequestFactoryInterface` and `ServerRequestFactoryInterface` may each
+  need to build a `UriInterface` from a string URI.
+
+- Each of `RequestFactoryInterface`, `ServerRequestFactoryInterface`, and
+  `ResponseFactoryInterface`  may need to build a `StreamInterface` with which
+  to populate the initial instance.
+
+- The `UploadedFileFactoryInterface` may need to build a `StreamInterface` with
+  which to populate itself.
+
+- Consumers of the `ServerRequestFactoryInterface` may need to populate the
+  instance with uploaded files.
+
+As such, we have chosen to have any interface generating an instance that MUST
+or MAY contain collaborators extend the interfaces of any factories that will
+create those collaborators. This ensures they can create fully usable instances
+immediately, and also provides consumers with the factories they need to produce
+collaborators for those instances.
+
+### 5.4 Why does the $reasonPhrase argument to the ResponseFactoryInterface exist?
+
+`ResponseFactoryInterface::createResponse()` includes an optional string
+argument, `$reasonPhrase`. In the PSR-7 specification, you can only provide a
+reason phrase at the same time you provide a status code, as the two are related
+pieces of data. The authors of this specification have chosen to mimic the PSR-7
+`ResponseInterface::withStatus()` signature to ensure both sets of data may be
+present in the response created.
+
+### 5.5 Why does the $serverParams argument to the ServerRequestFactoryInterface exist?
+
+`ServerRequestFactoryInterface::createServerRequest()` includes an optional
+`$serverParams` array argument. The reason this is provided is to ensure that an
+instance can be created with the server params populated. Of the data accessible
+via the `ServerRequestInterface`, the only data that does not have a mutator
+method is the one corresponding to the server params. As such, this data MUST be
+provided at initial creation. For this reason, it exists as an argument to the
+factory method.
+
+### 5.6 Why is there no factory for creating a ServerRequestInterface from superglobals?
+
+The primary use case of `ServerRequestFactoryInterface` is for creating a new
+`ServerRequestInterface` instance from known data. Any solution around
+marshaling data from superglobals assumes that:
+
+- superglobals are present
+- superglobals follow a specific structure
+
+These two assumptions are not always true. When using asynchronous systems such
+as [Swoole][swoole], [ReactPHP][reactphp], and others:
+
+- will not populate standard superglobals such as `$_GET`, `$_POST`, `$_COOKIE`,
+  and `$_FILES`
+- will not populate `$_SERVER` with the same elements as a standard SAPI (such as
+  mod_php, mod-cgi, and mod-fpm)
+
+Moreover, different standard SAPIs provide different information to `$_SERVER`
+and access to request headers, requiring different approaches for initial
+population of the request.
+
+As such, designing an interface for population of an instance from superglobals
+is out of scope of this specification, and should largely be
+implementation-specfic.
+
+[swoole]: https://www.swoole.co.uk/
+[reactphp]: https://reactphp.org/
 
 ## 6. People
 
