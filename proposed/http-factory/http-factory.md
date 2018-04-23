@@ -110,6 +110,8 @@ interface ServerRequestFactoryInterface extends
      * @param UriInterface|string $uri The URI associated with the request. If
      *     the value is a string, the factory MUST create a UriInterface
      *     instance based on it.
+     * @param array $serverParams Array of SAPI parameters with which to seed
+     *     the generated request instance.
      *
      * @return ServerRequestInterface
      */
