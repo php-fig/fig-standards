@@ -4,14 +4,12 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-
 ## 1. Overview
 
 This PSR describes a specification for [autoloading][] classes from file
 paths. It is fully interoperable, and can be used in addition to any other
 autoloading specification, including [PSR-0][]. This PSR also describes where
 to place files that will be autoloaded according to the specification.
-
 
 ## 2. Specification
 
@@ -55,7 +53,6 @@ to place files that will be autoloaded according to the specification.
 
 4. Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
    of any level, and SHOULD NOT return a value.
-
 
 ## 3. Examples
 

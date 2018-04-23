@@ -2,7 +2,7 @@
 
 Hypermedia links are becoming an increasingly important part of the web, in both HTML contexts
 and various API format contexts. However, there is no single common hypermedia format, nor
-is there a common way to represent Links between formats.
+is there a common way to represent links between formats.
 
 This specification aims to provide PHP developers with a simple, common way of representing a
 hypermedia link independently of the serialization format that is used. That in turn allows
@@ -22,7 +22,6 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 - [IANA Link Relations Registry](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
 - [Microformats Relations List](http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions)
 
-
 ## 1. Specification
 
 ### 1.1 Basic links
@@ -41,7 +40,6 @@ specification.
 
 *    **Serializer** - A library or other system that takes one or more Link objects and produces
 a serialized representation of it in some defined format.
-
 
 ### 1.2 Attributes
 
@@ -256,7 +254,6 @@ interface EvolvableLinkInterface extends LinkInterface
      * @return static
      */
     public function withAttribute($attribute, $value);
-
 
     /**
      * Returns an instance with the specified attribute excluded.

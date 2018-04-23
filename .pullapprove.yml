@@ -1,11 +1,16 @@
-approve_by_comment: true
-approve_regex: '^:\+1:'
-reject_regex: '^No'
-reset_on_push: false
-author_approval: default
-reviewers:
-    -
-        name: secretaries-tag
+version: 2
+group_defaults:
+    approve_by_comment:
+        enabled: true
+        approve_regex: '^:\+1:'
+    reset_on_push:
+        enabled: false
+    github_reviews:
+        enabled: true
+    author_approval:
+        ignored: true
+groups:
+    secretaries-tag:
         required: 1
         teams:
             - secretaries
@@ -13,68 +18,44 @@ reviewers:
             labels:
                 - "Internal: Bylaw or Admin Change"
                 - "New PSR"
-    -
-        name: secretaries-files
+    secretaries-files:
         required: 1
         teams:
             - secretaries
         conditions:
             files:
-                - "bylaws/*"
-                - "accepted/*"
-                - "README.md"
-                - "CONTRIBUTING.md"
-                - "LICENSE*"
-                - "index.md"
-    -
-        name: http
+                exclude:
+                    - "proposed/*"
+    abandoned-psrs:
+        required: 1
+        teams:
+            - secretaries
+        conditions:
+            files:
+                - "proposed/security-*"
+                - "proposed/event-manager*"
+                - "proposed/phpdoc*"
+    http:
         required: 1
         teams:
             - psr-15
-            - psr-17
         conditions:
             labels:
                 - "HTTP"
             files:
                 - "proposed/http-factory/*"
-                - "proposed/http-middleware/*"
-    -
-        name: cs-extended
+                - "proposed/http-handlers/*"
+    cs-extended:
         required: 1
         teams:
             - psr-12
         conditions:
             files:
                 - "proposed/extended-coding-style-guide*"
-    -
-        name: security
+    http-client:
         required: 1
         teams:
-            - psr-9-10
+            - psr-18
         conditions:
             files:
-                - "proposed/security-*"
-    -
-        name: doc
-        required: 1
-        teams:
-            - psr-5
-        conditions:
-            files:
-                - "proposed/phpdoc*"
-    -
-        name: container
-        required: 1
-        teams:
-            - psr-11
-        conditions:
-            files:
-                - "proposed/container*"
-    -
-        name: event
-        required: 1
-        teams:
-            - psr-14
-        conditions:
-            files:
-                - "proposed/event-manager*"
+                - "proposed/http-client/*"

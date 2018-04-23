@@ -26,7 +26,6 @@ The goal of this PSR is to allow developers to create cache-aware libraries that
 can be integrated into existing frameworks and systems without the need for
 custom development.
 
-
 ## Definitions
 
 *    **Calling Library** - The library or code that actually needs the cache
@@ -45,19 +44,16 @@ below with whole-second granularity.
 when that item is stored and it is considered stale. The TTL is normally defined
 by an integer representing time in seconds, or a DateInterval object.
 
-*    **Expiration** - The actual time when an item is set to go stale. This it
+*    **Expiration** - The actual time when an item is set to go stale. This is
 typically calculated by adding the TTL to the time when an object is stored, but
-may also be explicitly set with DateTime object.
-
-    An item with a 300 second TTL stored at 1:30:00 will have an expiration of
-    1:35:00.
-
-    Implementing Libraries MAY expire an item before its requested Expiration Time,
-but MUST treat an item as expired once its Expiration Time is reached. If a calling
-library asks for an item to be saved but does not specify an expiration time, or
-specifies a null expiration time or TTL, an Implementing Library MAY use a configured
-default duration. If no default duration has been set, the Implementing Library
-MUST interpret that as a request to cache the item forever, or for as long as the
+may also be explicitly set with DateTime object. An item with a 300 second TTL
+stored at 1:30:00 will have an expiration of 1:35:00. Implementing Libraries MAY
+expire an item before its requested Expiration Time, but MUST treat an item as
+expired once its Expiration Time is reached. If a calling library asks for an
+item to be saved but does not specify an expiration time, or specifies a null
+expiration time or TTL, an Implementing Library MAY use a configured default
+duration. If no default duration has been set, the Implementing Library MUST
+interpret that as a request to cache the item forever, or for as long as the
 underlying implementation supports.
 
 *    **Key** - A string of at least one character that uniquely identifies a
@@ -91,7 +87,6 @@ MAY use whatever logic is appropriate to determine when to persist deferred
 items, such as an object destructor, persisting all on save(), a timeout or
 max-items check or any other appropriate logic. Requests for a cache item that
 has been deferred MUST return the deferred but not-yet-persisted item.
-
 
 ## Data
 

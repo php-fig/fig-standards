@@ -26,7 +26,6 @@ official PHP FIG GitHub repo `fig-standards`.
 as an alternative.
 > [PSR-4]: http://php-fig.org/psr/psr-4
 
-
 ## 2. Dependencies
 
 As documents are expected to be replaced rather than amended, dependencies on

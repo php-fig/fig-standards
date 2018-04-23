@@ -72,10 +72,8 @@ other people to build centralized tools around this information.
 
 * Lukas Kahwe Smith
 
-
 6. Votes
 --------
-
 
 7. Relevant Links
 -----------------

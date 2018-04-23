@@ -1,5 +1,4 @@
-Basic Coding Standard
-=====================
+# Basic Coding Standard
 
 This section of the standard comprises what should be considered the standard
 coding elements that are required to ensure a high level of technical
@@ -12,7 +11,6 @@ interpreted as described in [RFC 2119].
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
-
 
 ## 1. Overview
 
@@ -31,7 +29,6 @@ interpreted as described in [RFC 2119].
 - Class constants MUST be declared in all upper case with underscore separators.
 
 - Method names MUST be declared in `camelCase`.
-
 
 ## 2. Files
 
@@ -99,7 +96,6 @@ if (! function_exists('bar')) {
     }
 }
 ~~~
-
 
 ## 3. Namespace and Class Names
 

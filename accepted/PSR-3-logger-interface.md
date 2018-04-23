@@ -20,8 +20,7 @@ Users of loggers are referred to as `user`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-1. Specification
------------------
+## 1. Specification
 
 ### 1.1 Basics
 
@@ -65,6 +64,8 @@ Users of loggers are referred to as `user`.
   provided for reference purposes only:
 
   ~~~php
+  <?php
+
   /**
    * Interpolates context values into the message placeholders.
    */
@@ -132,15 +133,13 @@ Users of loggers are referred to as `user`.
 
 - The `Psr\Log\LogLevel` class holds constants for the eight log levels.
 
-2. Package
-----------
+## 2. Package
 
 The interfaces and classes described as well as relevant exception classes
 and a test suite to verify your implementation are provided as part of the
 [psr/log](https://packagist.org/packages/psr/log) package.
 
-3. `Psr\Log\LoggerInterface`
-----------------------------
+## 3. `Psr\Log\LoggerInterface`
 
 ~~~php
 <?php
@@ -169,7 +168,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function emergency($message, array $context = array());
 
@@ -181,7 +180,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function alert($message, array $context = array());
 
@@ -192,7 +191,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function critical($message, array $context = array());
 
@@ -202,7 +201,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function error($message, array $context = array());
 
@@ -214,7 +213,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function warning($message, array $context = array());
 
@@ -223,7 +222,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function notice($message, array $context = array());
 
@@ -234,7 +233,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function info($message, array $context = array());
 
@@ -243,7 +242,7 @@ interface LoggerInterface
      *
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function debug($message, array $context = array());
 
@@ -253,14 +252,13 @@ interface LoggerInterface
      * @param mixed $level
      * @param string $message
      * @param array $context
-     * @return null
+     * @return void
      */
     public function log($level, $message, array $context = array());
 }
 ~~~
 
-4. `Psr\Log\LoggerAwareInterface`
----------------------------------
+## 4. `Psr\Log\LoggerAwareInterface`
 
 ~~~php
 <?php
@@ -276,14 +274,13 @@ interface LoggerAwareInterface
      * Sets a logger instance on the object
      *
      * @param LoggerInterface $logger
-     * @return null
+     * @return void
      */
     public function setLogger(LoggerInterface $logger);
 }
 ~~~
 
-5. `Psr\Log\LogLevel`
----------------------
+## 5. `Psr\Log\LogLevel`
 
 ~~~php
 <?php

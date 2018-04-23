@@ -57,7 +57,6 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 - [RFC 7230](http://tools.ietf.org/html/rfc7230)
 - [RFC 7231](http://tools.ietf.org/html/rfc7231)
 
-
 ## 1. Specification
 
 ### 1.1 Messages

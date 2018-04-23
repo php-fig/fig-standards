@@ -1,5 +1,4 @@
-Coding Style Guide
-==================
+# Coding Style Guide
 
 This guide extends and expands on [PSR-1], the basic coding standard.
 
@@ -21,9 +20,7 @@ interpreted as described in [RFC 2119].
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 
-
-1. Overview
------------
+## 1. Overview
 
 - Code MUST follow a "coding style guide" PSR [[PSR-1]].
 
@@ -86,8 +83,7 @@ class Foo extends Bar implements FooInterface
 }
 ~~~
 
-2. General
-----------
+## 2. General
 
 ### 2.1. Basic Coding Standard
 
@@ -135,10 +131,7 @@ The PHP constants `true`, `false`, and `null` MUST be in lower case.
 
 [keywords]: http://php.net/manual/en/reserved.keywords.php
 
-
-
-3. Namespace and Use Declarations
----------------------------------
+## 3. Namespace and Use Declarations
 
 When present, there MUST be one blank line after the `namespace` declaration.
 
@@ -163,9 +156,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 ~~~
 
-
-4. Classes, Properties, and Methods
------------------------------------
+## 4. Classes, Properties, and Methods
 
 The term "class" refers to all classes, interfaces, and traits.
 
@@ -361,8 +352,7 @@ $foo->bar(
 );
 ~~~
 
-5. Control Structures
----------------------
+## 5. Control Structures
 
 The general style rules for control structures are as follows:
 
@@ -377,7 +367,6 @@ The general style rules for control structures are as follows:
 The body of each structure MUST be enclosed by braces. This standardizes how
 the structures look, and reduces the likelihood of introducing errors as new
 lines get added to the body.
-
 
 ### 5.1. `if`, `elseif`, `else`
 
@@ -398,7 +387,6 @@ if ($expr1) {
 
 The keyword `elseif` SHOULD be used instead of `else if` so that all control
 keywords look like single words.
-
 
 ### 5.2. `switch`, `case`
 
@@ -427,7 +415,6 @@ switch ($expr) {
         break;
 }
 ~~~
-
 
 ### 5.3. `while`, `do while`
 
@@ -491,8 +478,7 @@ try {
 }
 ~~~
 
-6. Closures
------------
+## 6. Closures
 
 Closures MUST be declared with a space after the `function` keyword, and a
 space before and after the `use` keyword.
@@ -597,9 +583,7 @@ $foo->bar(
 );
 ~~~
 
-
-7. Conclusion
---------------
+## 7. Conclusion
 
 There are many elements of style and practice intentionally omitted by this
 guide. These include but are not limited to:
@@ -621,9 +605,7 @@ guide. These include but are not limited to:
 Future recommendations MAY revise and extend this guide to address those or
 other elements of style and practice.
 
-
-Appendix A. Survey
-------------------
+## Appendix A. Survey
 
 In writing this style guide, the group took a survey of member projects to
 determine common practices.  The survey is retained herein for posterity.
