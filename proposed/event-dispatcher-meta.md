@@ -42,10 +42,10 @@ Cees-Jan Kiewiet
 
 ### Working Group Members
 
-Elizabeth Smith
 Benjamin Mack
-Matthew Weier O'Phinney
+Elizabeth Smith
 Ryan Weaver
+Matthew Weier O'Phinney
 
 ## 6. Votes
 
