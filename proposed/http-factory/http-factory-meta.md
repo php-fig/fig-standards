@@ -13,9 +13,9 @@ create [PSR-7][psr7] objects.
 The current specification for PSR-7 allows for most objects to be modified by
 creating immutable copies. However, there are two notable exceptions:
 
-* `StreamInterface` is a mutable object based on a resource that only allows
+- `StreamInterface` is a mutable object based on a resource that only allows
   the resource to be written to when the resource is writable.
-* `UploadedFileInterface` is a read-only object based on a resource that offers
+- `UploadedFileInterface` is a read-only object based on a resource that offers
   no modification capabilities.
 
 The former is a significant pain point for PSR-7 middleware, as it can leave
@@ -41,11 +41,11 @@ objects when necessary.
 
 ### 3.1 Goals
 
-* Provide a set of interfaces that define methods to create PSR-7 compatible objects.
+- Provide a set of interfaces that define methods to create PSR-7 compatible objects.
 
 ### 3.2 Non-Goals
 
-* Provide a specific implementation of PSR-7 factories.
+- Provide a specific implementation of PSR-7 factories.
 
 ## 4. Approaches
 
@@ -197,37 +197,37 @@ you to create a minimal server request instance with the request method and URI.
 
 This PSR was produced by a FIG Working Group with the following members:
 
-* Woody Gilk (editor), <woody.gilk@gmail.com>
-* Matthew Weier O'Phinney (sponsor), <mweierophinney@gmail.com>
-* Stefano Torresi
-* Matthieu Napoli
-* Korvin Szanto
-* Glenn Eggleton
-* Oscar Otero
-* Tobias Nyholm
+- Woody Gilk (editor), <woody.gilk@gmail.com>
+- Matthew Weier O'Phinney (sponsor), <mweierophinney@gmail.com>
+- Stefano Torresi
+- Matthieu Napoli
+- Korvin Szanto
+- Glenn Eggleton
+- Oscar Otero
+- Tobias Nyholm
 
 The working group would also like to acknowledge the contributions of:
 
-* Paul M. Jones, <pmjones88@gmail.com>
-* Rasmus Schultz, <rasmus@mindplay.dk>
-* Roman Tsjupa, <draconyster@gmail.com>
+- Paul M. Jones, <pmjones88@gmail.com>
+- Rasmus Schultz, <rasmus@mindplay.dk>
+- Roman Tsjupa, <draconyster@gmail.com>
 
 ## 7. Votes
 
-* [Entrance Vote](https://groups.google.com/forum/#!topic/php-fig/6rZPZ8VglIM)
-* [Working Group Formation](https://groups.google.com/d/msg/php-fig/A5mZYTn5Jm8/j0FN6eZtBAAJ)
-* Review Period Initiation _(not yet begun)_
-* Acceptance Vote _(not yet taken)_
+- [Entrance Vote](https://groups.google.com/forum/#!topic/php-fig/6rZPZ8VglIM)
+- [Working Group Formation](https://groups.google.com/d/msg/php-fig/A5mZYTn5Jm8/j0FN6eZtBAAJ)
+- Review Period Initiation _(not yet begun)_
+- Acceptance Vote _(not yet taken)_
 
 ## 8. Relevant Links
 
 _**Note:** Order descending chronologically._
 
-* [PSR-7 Middleware Proposal](https://github.com/php-fig/fig-standards/pull/755)
-* [PHP-FIG mailing list discussion of middleware](https://groups.google.com/forum/#!topic/php-fig/vTtGxdIuBX8)
-* [ircmaxwell All About Middleware](http://blog.ircmaxell.com/2016/05/all-about-middleware.html)
-* [shadowhand All About PSR-7 Middleware](http://shadowhand.me/all-about-psr-7-middleware/)
-* [AndrewCarterUK PSR-7 Objects Are Not Immutable](http://andrewcarteruk.github.io/programming/2016/05/22/psr-7-is-not-immutable.html)
-* [shadowhand Dependency Inversion and PSR-7 Bodies](http://shadowhand.me/dependency-inversion-and-psr-7-bodies/)
-* [PHP-FIG mailing list thread discussing factories](https://groups.google.com/d/msg/php-fig/G5pgQfQ9fpA/UWeM1gm1CwAJ)
-* [PHP-FIG mailing list thread feedback on proposal](https://groups.google.com/d/msg/php-fig/piRtB2Z-AZs/8UIwY1RtDgAJ)
+- [PSR-7 Middleware Proposal](https://github.com/php-fig/fig-standards/pull/755)
+- [PHP-FIG mailing list discussion of middleware](https://groups.google.com/forum/#!topic/php-fig/vTtGxdIuBX8)
+- [ircmaxwell All About Middleware](http://blog.ircmaxell.com/2016/05/all-about-middleware.html)
+- [shadowhand All About PSR-7 Middleware](http://shadowhand.me/all-about-psr-7-middleware/)
+- [AndrewCarterUK PSR-7 Objects Are Not Immutable](http://andrewcarteruk.github.io/programming/2016/05/22/psr-7-is-not-immutable.html)
+- [shadowhand Dependency Inversion and PSR-7 Bodies](http://shadowhand.me/dependency-inversion-and-psr-7-bodies/)
+- [PHP-FIG mailing list thread discussing factories](https://groups.google.com/d/msg/php-fig/G5pgQfQ9fpA/UWeM1gm1CwAJ)
+- [PHP-FIG mailing list thread feedback on proposal](https://groups.google.com/d/msg/php-fig/piRtB2Z-AZs/8UIwY1RtDgAJ)
