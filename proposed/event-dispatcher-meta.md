@@ -16,7 +16,7 @@ This is a well-established model, but a standard mechanism by which libraries do
 ### 3.1 Goals
 
 * Simplify and standardize the process by which libraries and components may expose themselves to extension via "events" so that they may be more easily incorporated into applications and frameworks.
-* Simplify and standardize the process by which libraries and components may register an interest in responding to an event so that they may be more easily 
+* Simplify and standardize the process by which libraries and components may register an interest in responding to an event so that they may be more easily incorporated into arbitrary applications and frameworks.
 * To the extent feasible, ease the process for existing code bases to transition toward this specification.
 
 ### 3.2 Non-Goals
