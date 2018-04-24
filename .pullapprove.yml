@@ -33,7 +33,6 @@ groups:
         conditions:
             files:
                 - "proposed/security-*"
-                - "proposed/event-manager*"
                 - "proposed/phpdoc*"
     http:
         required: 1
