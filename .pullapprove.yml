@@ -52,6 +52,13 @@ groups:
         conditions:
             files:
                 - "proposed/extended-coding-style-guide*"
+    cs-extended:
+        required: 1
+        teams:
+            - psr-14
+        conditions:
+            files:
+                - "proposed/event-dispatcher*"
     http-client:
         required: 1
         teams:
