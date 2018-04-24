@@ -52,7 +52,7 @@ groups:
         conditions:
             files:
                 - "proposed/extended-coding-style-guide*"
-    cs-extended:
+    event-dispatcher:
         required: 1
         teams:
             - psr-14
