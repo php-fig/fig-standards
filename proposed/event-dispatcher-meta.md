@@ -16,12 +16,13 @@ This is a well-established model, but a standard mechanism by which libraries do
 ### 3.1 Goals
 
 * Simplify and standardize the process by which libraries and components may expose themselves to extension via "events" so that they may be more easily incorporated into applications and frameworks.
-* Simplify and standardize the process by which libraries and components may register an interest in responding to an event so that they may be more easily 
+* Simplify and standardize the process by which libraries and components may register an interest in responding to an event so that they may be more easily incorporated into arbitrary applications and frameworks.
 * To the extent feasible, ease the process for existing code bases to transition toward this specification.
 
 ### 3.2 Non-Goals
 
 * Asynchronous systems often have a concept of an "event loop" to manage interleaving coroutines.  That is an unrelated matter and explicitly irrelevant to this specification.
+* Storage systems implementing an "Event Source" pattern also have a concept of an "event".  That is unrelated to the events discussed here and explicitly out of scope.
 * Strict backward compatibility with existing event systems is not a priority and is not expected.
 * While this specification will undoubtedly suggest implementation patterns, it does not seek to define One True Event Dispatcher Implementation, only how callers and listeners communicate with that dispatcher.
 
@@ -42,10 +43,10 @@ Cees-Jan Kiewiet
 
 ### Working Group Members
 
-Elizabeth Smith
 Benjamin Mack
-Matthew Weier O'Phinney
+Elizabeth Smith
 Ryan Weaver
+Matthew Weier O'Phinney
 
 ## 6. Votes
 
@@ -55,3 +56,4 @@ Ryan Weaver
 -----------------
 
 * [Inspiration Mailing List Thread](https://groups.google.com/forum/#!topic/php-fig/-EJOStgxAwY)
+* [Entrance vote](https://groups.google.com/d/topic/php-fig/6kQFX-lhuk4/discussion)
