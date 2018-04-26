@@ -33,6 +33,12 @@ groups:
         conditions:
             files:
                 - "proposed/security-*"
+    phpdoc:
+        required: 1
+        teams:
+            - psr-5
+        conditions:
+            files:
                 - "proposed/phpdoc*"
     http:
         required: 1
