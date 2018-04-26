@@ -35,18 +35,19 @@ PSR-5: PHPDoc
   - [7.9.  @license](#79-license)
   - [7.10. @link [deprecated]](#710-link-deprecated)
   - [7.11. @method](#711-method)
-  - [7.12. @package](#712-package)
-  - [7.13. @param](#713-param)
-  - [7.14. @property](#714-property)
-  - [7.15. @return](#715-return)
-  - [7.16. @see](#716-see)
-  - [7.17. @since](#717-since)
-  - [7.18. @subpackage [deprecated]](#718-subpackage-deprecated)
-  - [7.19. @throws](#719-throws)
-  - [7.20. @todo](#720-todo)
-  - [7.21. @uses](#721-uses)
-  - [7.22. @var](#722-var)
-  - [7.23. @version](#723-version)
+  - [7.12. @min](#712-min)
+  - [7.13. @package](#713-package)
+  - [7.14. @param](#714-param)
+  - [7.15. @property](#715-property)
+  - [7.16. @return](#716-return)
+  - [7.17. @see](#717-see)
+  - [7.18. @since](#718-since)
+  - [7.19. @subpackage [deprecated]](#719-subpackage-deprecated)
+  - [7.20. @throws](#720-throws)
+  - [7.21. @todo](#721-todo)
+  - [7.22. @uses](#722-uses)
+  - [7.23. @var](#723-var)
+  - [7.24. @version](#724-version)
 - [Appendix A. Types](#appendix-a-types)
   - [ABNF](#abnf)
   - [Details](#details)
@@ -1261,7 +1262,45 @@ class Child extends Parent
 }
 ```
 
-### 7.12. @package
+### 7.12. @min
+
+The @min allows a developer to tag a structure with a minimum PHP version requirment.
+
+#### Syntax
+
+    @min [<"Semantic Version">] [<description>]
+
+#### Description
+
+The @min tag is used to identify the minimum PHP version required to run a method,
+function, class, interface, trait.
+
+With continuous updates on the PHP language, this tag will enable automatic identification
+of the minimum PHP version required by a given solution. 
+
+@min tags MUST ALWAYS be used in a PHPDoc associated with a *function* or *method*.
+
+@min tags on *classes*, *traits* or *interfaces* are optional, as they can be retrieved
+from their *methods*.
+
+#### Examples
+
+```php
+class ExampleMinimumVersion
+{
+    /**
+     * @min 7.0.1
+     */
+    public function first();
+    
+    /**
+     * @min 5.3.0
+     */
+    public function second();
+}
+```
+
+### 7.13. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -1310,7 +1349,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 7.13. @param
+### 7.14. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -1369,7 +1408,7 @@ public function __construct(array $options = array())
 }
 ```
 
-### 7.14. @property
+### 7.15. @property
 
 The @property tag allows a class to know which 'magic' properties are present.
 
@@ -1411,7 +1450,7 @@ class Child extends Parent
 }
 ```
 
-### 7.15. @return
+### 7.16. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -1460,7 +1499,7 @@ function getLabel()
 }
 ```
 
-### 7.16. @see
+### 7.17. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -1502,7 +1541,7 @@ function count()
 }
 ```
 
-### 7.17. @since
+### 7.18. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -1552,7 +1591,7 @@ class Foo
 }
 ```
 
-### 7.18. @subpackage [deprecated]
+### 7.19. @subpackage [deprecated]
 
 The @subpackage tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -1586,7 +1625,7 @@ DocBlock.
  */
 ```
 
-### 7.19. @throws
+### 7.20. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of exception.
@@ -1630,7 +1669,7 @@ function count($items)
 }
 ```
 
-### 7.20. @todo
+### 7.21. @todo
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -1662,7 +1701,7 @@ function count()
 }
 ```
 
-### 7.21. @uses
+### 7.22. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1715,7 +1754,7 @@ function executeMyView()
 }
 ```
 
-### 7.22. @var
+### 7.23. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1819,7 +1858,7 @@ class Foo
 }
 ```
 
-### 7.23. @version
+### 7.24. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
