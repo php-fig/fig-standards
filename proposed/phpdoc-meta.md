@@ -87,7 +87,7 @@ Cons:
 
 ### 5.2 Sponsor
 
- * Mchael Cullum
+ * Michael Cullum
 
 ### 5.3 Working group members
 
