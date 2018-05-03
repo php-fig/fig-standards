@@ -181,6 +181,7 @@ specification for a full understanding of its contents.
 * Chris Tankersley
 
 ## 6.3. Working Group Members:
+* Alessandro Lai
 * Alexander Makarov
 * Michael Cullum
 * Robert Deutz
