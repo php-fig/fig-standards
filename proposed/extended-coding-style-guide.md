@@ -118,7 +118,7 @@ Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
 
 ### 2.6 Language Constructs
 
-Language contstructs (http://php.net/manual/en/reserved.keywords.php) where parentheses are optional, such as `echo`, `include`, and `require`, SHOULD NOT use parentheses.  Use of parentheses (or lack thereof) for language constructs SHOULD be consistent across the entire code base, and MUST be consitent across all specific language constructs.
+Language contstructs (http://php.net/manual/en/reserved.keywords.php) where parentheses are optional, such as `echo`, `include`, and `require`, SHOULD NOT use parentheses.  Use of parentheses (or lack thereof) for language constructs SHOULD be consistent across the entire code base, and MUST be consistent across all specific language constructs.
 
 The following is an example of a file where language constructs do not use parentheses, i.e., an example of what to emulate:
 
