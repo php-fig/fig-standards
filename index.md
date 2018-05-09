@@ -89,7 +89,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr11]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
 [psr13]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-13-links.md
-[psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-manager.md
+[psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-dispatcher.md
 [psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md
 [psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
 [psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory/
