@@ -26,7 +26,7 @@ PSR-5: PHPDoc
 - [7. Tags](#7-tags)
   - [7.1.  @api](#71-api)
   - [7.2.  @author](#72-author)
-  - [7.3.  @category [deprecated]](#73-category-deprecated) 
+  - [7.3.  @category [deprecated]](#73-category-deprecated)
   - [7.4.  @copyright](#74-copyright)
   - [7.5.  @deprecated](#75-deprecated)
   - [7.6.  @example](#76-example)
@@ -54,7 +54,6 @@ PSR-5: PHPDoc
   - [Keyword](#keyword)
 - Appendix B. Differences Compared With The De-facto PHPDoc Standard
 
-
 ## 1. Introduction
 
 The main purpose of this PSR is to provide a complete and formal definition of
@@ -81,7 +80,7 @@ interpreted as described in [RFC 2119][RFC2119].
 
 ## 3. Definitions
 
-* "PHPDoc" is a section of documentation which provides information on aspects 
+* "PHPDoc" is a section of documentation which provides information on aspects
   of a "Structural Element".
 
   > It is important to note that a PHPDoc and a DocBlock are two separate
@@ -105,7 +104,7 @@ interpreted as described in [RFC 2119][RFC2119].
 
   It is RECOMMENDED to precede a "Structural Element" with a DocBlock where it is
   defined and not with each usage. It is common practice to have the DocBlock
-  precede a Structural Element but it MAY also be separated by a an undetermined 
+  precede a Structural Element but it MAY also be separated by a an undetermined
   number of empty lines.
 
   Example:
@@ -113,7 +112,6 @@ interpreted as described in [RFC 2119][RFC2119].
   ```php
   /** @var int $int This is a counter. */
   $int = 0;
-
 
   // there should be no docblock here
   $int++;
@@ -129,7 +127,6 @@ interpreted as described in [RFC 2119][RFC2119].
     {
         /** @var string|null $title contains a title for the Foo with a max. length of 24 characters */
         protected $title = null;
-
 
         /**
          * Sets a single-line title.
@@ -241,21 +238,21 @@ interpreted as described in [RFC 2119][RFC2119].
 * A DocBlock MUST directly precede a "Structural Element"
 
   > An exception to this principle is the File-level DocBlock which MUST be
-  > placed at the top of a PHP source code file as the first DocBlock in a 
-  > file. 
+  > placed at the top of a PHP source code file as the first DocBlock in a
+  > file.
   >
   > To prevent ambiguity when a Structural Element comes directly after a
-  > File-level DocBlock MUST that element have its own DocBlock in 
+  > File-level DocBlock MUST that element have its own DocBlock in
   > addition to the File-level DocBlock.
   >
   > Example of a valid File-level DocBlock:
   >
-  > ``` 
+  > ```
   > <?php
   > /**
   >  * This is a file-level DocBlock
   >  */
-  >  
+  >
   > /**
   >  * This is a class DocBlock
   >  */
@@ -264,7 +261,7 @@ interpreted as described in [RFC 2119][RFC2119].
   > ```
   >
   > Example of an invalid File-level DocBlock
-  > 
+  >
   > ```
   > <?php
   > /**
@@ -311,10 +308,10 @@ If a Description is provided, then it MUST be preceded by a Summary. Otherwise
 the Description will be considered the Summary, until the end of the Summary
 is reached.
 
-Because a Summary is comparable to a chapter title it is beneficial to use as 
-little formatting as possible. As such, contrary to the Description (see next 
-chapter), no recommendation is done to support a mark-up language. It is 
-explicitly left up to the implementing application whether it wants to support 
+Because a Summary is comparable to a chapter title it is beneficial to use as
+little formatting as possible. As such, contrary to the Description (see next
+chapter), no recommendation is done to support a mark-up language. It is
+explicitly left up to the implementing application whether it wants to support
 this or not.
 
 ### 5.2. Description
@@ -594,12 +591,12 @@ class MyMagicClass
 
 ## 6. Inheritance
 
-A PHPDoc that is associated with a "Structural Element" that implements, extends 
-or overrides a "Structural Element" has the ability to inherit parts of 
-information from the PHPDoc associated with the "Structural Element" that is 
+A PHPDoc that is associated with a "Structural Element" that implements, extends
+or overrides a "Structural Element" has the ability to inherit parts of
+information from the PHPDoc associated with the "Structural Element" that is
 implemented, extended or overridden.
 
-The PHPDoc for every type of "Structural Element" MUST inherit the following 
+The PHPDoc for every type of "Structural Element" MUST inherit the following
 parts if that part is absent:
 
 * [Summary](#51-summary)
@@ -609,50 +606,50 @@ parts if that part is absent:
   * [@author](#72-author)
   * [@copyright](#74-copyright)
 
-The PHPDoc for each type of "Structural Element" MUST also inherit a 
-specialized subset of tags depending on which "Structural Element" is 
-associated. 
+The PHPDoc for each type of "Structural Element" MUST also inherit a
+specialized subset of tags depending on which "Structural Element" is
+associated.
 
-If a PHPDoc does not feature a part, such as Summary or Description, that is 
+If a PHPDoc does not feature a part, such as Summary or Description, that is
 present in the PHPDoc of a super-element, then that part is always implicitly
 inherited.
-The following is a list of all elements whose DocBlocks are able to inherit 
+The following is a list of all elements whose DocBlocks are able to inherit
 information from a super-element's DocBlock:
 
-1. a Class' or Interface's DocBlock can inherit information from a Class or 
+1. a Class' or Interface's DocBlock can inherit information from a Class or
    Interface which it extends.
-2. a Property's DocBlock can inherit information from a Property with the same 
+2. a Property's DocBlock can inherit information from a Property with the same
    name that is declared in a superclass.
-3. a Method's DocBlock can inherit information from a Method with the same 
+3. a Method's DocBlock can inherit information from a Method with the same
    name that is declared in a superclass.
-4. a Method's DocBlock can inherit information from a Method with the same 
+4. a Method's DocBlock can inherit information from a Method with the same
    name that is declared in an implemented interface in the current Class
-   or that is implemented in a superclass.   
+   or that is implemented in a superclass.
 
 > For example:
 >
-> Let's assume you have a method `\SubClass::myMethod()` and its class 
-> `\SubClass` extends the class `\SuperClass`. And in the class `\SuperClass` 
-> there is a method with the same name (e.g. `\SuperClass::myMethod`). 
+> Let's assume you have a method `\SubClass::myMethod()` and its class
+> `\SubClass` extends the class `\SuperClass`. And in the class `\SuperClass`
+> there is a method with the same name (e.g. `\SuperClass::myMethod`).
 >
 > If the above applies then the DocBlock of `\SubClass::myMethod()` will
-> inherit any of the parts mentioned above from the PHPDoc of 
-> `\SuperClass::myMethod`. So if the `@version` tag was not redefined then it 
-> is assumed that `\SubClass::myMethod()` will have the same `@version` 
+> inherit any of the parts mentioned above from the PHPDoc of
+> `\SuperClass::myMethod`. So if the `@version` tag was not redefined then it
+> is assumed that `\SubClass::myMethod()` will have the same `@version`
 > tag.
 
 Inheritance takes place from the root of a class hierarchy graph to its leafs.
-This means that anything inherited in the bottom of the tree MUST 'bubble' up 
+This means that anything inherited in the bottom of the tree MUST 'bubble' up
 to the top unless overridden.
 
 ## 6.1. Making inheritance explicit using the @inheritDoc tag
 
-Because inheritance is implicit it may happen that it is not necessary to 
-include a PHPDoc with a "Structural Element". This can cause confusion as it 
-is now ambiguous whether the PHPDoc was omitted on purpose or whether the 
+Because inheritance is implicit it may happen that it is not necessary to
+include a PHPDoc with a "Structural Element". This can cause confusion as it
+is now ambiguous whether the PHPDoc was omitted on purpose or whether the
 author of the code had forgotten to add documentation.
 
-In order to resolve this ambiguity the `@inheritDoc` tag can be used to 
+In order to resolve this ambiguity the `@inheritDoc` tag can be used to
 indicate that this element will inherit its information from a super-element.
 
 Example:
@@ -660,10 +657,10 @@ Example:
     /**
      * This is a summary.
      */
-    class SuperClass 
+    class SuperClass
     {
     }
-    
+
     /**
      * @inheritDoc
      */
@@ -671,23 +668,23 @@ Example:
     {
     }
 
-In the example above the SubClass' Summary can be considered equal to that of 
+In the example above the SubClass' Summary can be considered equal to that of
 the SuperClass element, which is thus "This is a summary.".
 
-## 6.2. Using the {@inheritDoc} inline tag to augment a Description 
+## 6.2. Using the {@inheritDoc} inline tag to augment a Description
 
-Sometimes you want to inherit the Description of a super-element and add your 
-own text with it to provide information specific to your "Structural Element". 
+Sometimes you want to inherit the Description of a super-element and add your
+own text with it to provide information specific to your "Structural Element".
 This MUST be done using the `{@inheritDoc}` inline tag.
 
-The `{@inheritDoc}` inline tag will indicate that at that location the 
+The `{@inheritDoc}` inline tag will indicate that at that location the
 super-element's description MUST be injected or inferred.
 
 Example:
 
     /**
      * This is the Summary for this element.
-     * 
+     *
      * {@inheritDoc}
      *
      * In addition this description will contain more information that
@@ -695,8 +692,8 @@ Example:
      * element.
      */
 
-In the example above it is indicated that the Description of this PHPDoc is a 
-combination of the Description of the super-element, indicated by the 
+In the example above it is indicated that the Description of this PHPDoc is a
+combination of the Description of the super-element, indicated by the
 `{@inheritDoc}` inline tag, and the subsequent body text.
 
 ### 6.3. Class Or Interface
@@ -1791,11 +1788,11 @@ Even compound statements may be documented:
 ```php
 class Foo
 {
-  protected 
+  protected
       /**
        * @var string Should contain a description
        */
-      $name, 
+      $name,
       /**
        * @var string Should contain a description
        */
@@ -1809,11 +1806,11 @@ Or constants:
 ```php
 class Foo
 {
-  const 
+  const
       /**
        * @var string Should contain a description
        */
-      MY_CONST1 = "1", 
+      MY_CONST1 = "1",
       /**
        * @var string Should contain a description
        */

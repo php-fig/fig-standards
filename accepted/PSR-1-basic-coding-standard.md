@@ -1,5 +1,4 @@
-Basic Coding Standard
-=====================
+# Basic Coding Standard
 
 This section of the standard comprises what should be considered the standard
 coding elements that are required to ensure a high level of technical
@@ -13,9 +12,7 @@ interpreted as described in [RFC 2119].
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
-
-1. Overview
------------
+## 1. Overview
 
 - Files MUST use only `<?php` and `<?=` tags.
 
@@ -33,9 +30,7 @@ interpreted as described in [RFC 2119].
 
 - Method names MUST be declared in `camelCase`.
 
-
-2. Files
---------
+## 2. Files
 
 ### 2.1. PHP Tags
 
@@ -102,9 +97,7 @@ if (! function_exists('bar')) {
 }
 ~~~
 
-
-3. Namespace and Class Names
-----------------------------
+## 3. Namespace and Class Names
 
 Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
 
@@ -138,8 +131,7 @@ class Vendor_Model_Foo
 }
 ~~~
 
-4. Class Constants, Properties, and Methods
--------------------------------------------
+## 4. Class Constants, Properties, and Methods
 
 The term "class" refers to all classes, interfaces, and traits.
 

@@ -14,8 +14,7 @@ interfaces/functionality first.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-1. Specification
------------------
+# 1. Specification
 
 ## 1.1 Introduction
 
@@ -31,7 +30,7 @@ standardized streamlined interface for common cases.  It is independent of
 PSR-6 but has been designed to make compatibility with PSR-6 as straightforward
 as possible.
 
-### 1.2 Definitions
+## 1.2 Definitions
 
 Definitions for Calling Library, Implementing Library, TTL, Expiration and Key
 are copied from PSR-6 as the same assumptions are true.
@@ -51,21 +50,21 @@ below with whole-second granularity.
 when that item is stored and it is considered stale. The TTL is normally defined
 by an integer representing time in seconds, or a DateInterval object.
 
-*    **Expiration** - The actual time when an item is set to go stale. This is
-calculated by adding the TTL to the time when an object is stored.
+* **Expiration** - The actual time when an item is set to go stale. This is
+  calculated by adding the TTL to the time when an object is stored.
 
-    An item with a 300 second TTL stored at 1:30:00 will have an expiration of 1:35:00.
+  An item with a 300 second TTL stored at 1:30:00 will have an expiration of 1:35:00.
 
-    Implementing Libraries MAY expire an item before its requested Expiration Time,
-but MUST treat an item as expired once its Expiration Time is reached. If a calling
-library asks for an item to be saved but does not specify an expiration time, or
-specifies a null expiration time or TTL, an Implementing Library MAY use a configured
-default duration. If no default duration has been set, the Implementing Library
-MUST interpret that as a request to cache the item forever, or for as long as the
-underlying implementation supports.
+  Implementing Libraries MAY expire an item before its requested Expiration Time,
+  but MUST treat an item as expired once its Expiration Time is reached. If a calling
+  library asks for an item to be saved but does not specify an expiration time, or
+  specifies a null expiration time or TTL, an Implementing Library MAY use a configured
+  default duration. If no default duration has been set, the Implementing Library
+  MUST interpret that as a request to cache the item forever, or for as long as the
+  underlying implementation supports.
 
-    If a negative or zero TTL is provided, the item MUST be deleted from the cache
-if it exists, as it is expired already.
+  If a negative or zero TTL is provided, the item MUST be deleted from the cache
+  if it exists, as it is expired already.
 
 *    **Key** - A string of at least one character that uniquely identifies a
 cached item. Implementing libraries MUST support keys consisting of the
@@ -83,7 +82,7 @@ supported by implementing libraries: `{}()/\@:`
 if one stored `null` is not possible. This is the main deviation from PSR-6's
 assumptions.
 
-### 1.3 Cache
+## 1.3 Cache
 
 Implementations MAY provide a mechanism for a user to specify a default TTL
 if one is not specified for a specific cache item.  If no user-specified default
@@ -91,7 +90,7 @@ is provided implementations MUST default to the maximum legal value allowed by
 the underlying implementation.  If the underlying implementation does not
 support TTL, the user-specified TTL MUST be silently ignored.
 
-### 1.4 Data
+## 1.4 Data
 
 Implementing libraries MUST support all serializable PHP data types, including:
 
@@ -99,7 +98,7 @@ Implementing libraries MUST support all serializable PHP data types, including:
 *    **Integers** - All integers of any size supported by PHP, up to 64-bit signed.
 *    **Floats** - All signed floating point values.
 *    **Boolean** - True and False.
-*    **Null** - The null value (although it will not be distinguishable from a 
+*    **Null** - The null value (although it will not be distinguishable from a
 cache miss when reading it back out).
 *    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
 *    **Object** - Any object that supports lossless serialization and
@@ -116,11 +115,9 @@ Compatibility with them is simply used as a baseline for acceptable object value
 If it is not possible to return the exact saved value for any reason, implementing
 libraries MUST respond with a cache miss rather than corrupted data.
 
+# 2. Interfaces
 
-2. Interfaces
--------------
-
-### 2.1 CacheInterface
+## 2.1 CacheInterface
 
 The cache interface defines the most basic operations on a collection of cache-entries, which
 entails basic reading, writing and deleting individual cache items.
@@ -157,11 +154,11 @@ interface CacheInterface
     /**
      * Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
      *
-     * @param string                $key   The key of the item to store.
-     * @param mixed                 $value The value of the item to store, must be serializable.
-     * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
-     *                                     the driver supports TTL then the library may set a default value
-     *                                     for it or let the driver take care of that.
+     * @param string                 $key   The key of the item to store.
+     * @param mixed                  $value The value of the item to store, must be serializable.
+     * @param null|int|\DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
+     *                                      the driver supports TTL then the library may set a default value
+     *                                      for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure.
      *
@@ -206,10 +203,10 @@ interface CacheInterface
     /**
      * Persists a set of key => value pairs in the cache, with an optional TTL.
      *
-     * @param iterable              $values A list of key => value pairs for a multiple-set operation.
-     * @param null|int|DateInterval $ttl    Optional. The TTL value of this item. If no value is sent and
-     *                                      the driver supports TTL then the library may set a default value
-     *                                      for it or let the driver take care of that.
+     * @param iterable               $values A list of key => value pairs for a multiple-set operation.
+     * @param null|int|\DateInterval $ttl    Optional. The TTL value of this item. If no value is sent and
+     *                                       the driver supports TTL then the library may set a default value
+     *                                       for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure.
      *
@@ -251,10 +248,12 @@ interface CacheInterface
 }
 ~~~
 
-### 2.2 CacheException
+## 2.2 CacheException
+
 ~~~php
 
 <?php
+
 namespace Psr\SimpleCache;
 
 /**
@@ -265,7 +264,7 @@ interface CacheException
 }
 ~~~
 
-### 2.3 InvalidArgumentException
+## 2.3 InvalidArgumentException
 
 ~~~php
 <?php

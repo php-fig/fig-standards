@@ -67,7 +67,7 @@ interface ResponseFactoryInterface
     /**
      * Create a new response.
      *
-     * @param integer $code HTTP status code
+     * @param int $code HTTP status code
      *
      * @return ResponseInterface
      */
@@ -193,8 +193,8 @@ interface UploadedFileFactoryInterface
      * @see http://php.net/manual/features.file-upload.errors.php
      *
      * @param string|resource $file
-     * @param integer $size in bytes
-     * @param integer $error PHP file upload error
+     * @param int $size in bytes
+     * @param int $error PHP file upload error
      * @param string $clientFilename
      * @param string $clientMediaType
      *

@@ -1,16 +1,13 @@
-PSR-4 Meta Document
-===================
+# PSR-4 Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 The purpose is to specify the rules for an interoperable PHP autoloader that
 maps namespaces to file system paths, and that can co-exist with any other SPL
 registered autoloader.  This would be an addition to, not a replacement for,
 PSR-0.
 
-2. Why Bother?
---------------
+## 2. Why Bother?
 
 ### History of PSR-0
 
@@ -120,9 +117,7 @@ PSR-0, but seeing as their presence in that document is in reference to
 transitioning away from PHP 5.2 and previous pseudo-namespacing, it is
 acceptable to remove them here as well.
 
-
-3. Scope
---------
+## 3. Scope
 
 ### 3.1 Goals
 
@@ -141,9 +136,7 @@ acceptable to remove them here as well.
 
 - Provide a general transformation algorithm for non-class resources
 
-
-4. Approaches
--------------
+## 4. Approaches
 
 ### 4.1 Chosen Approach
 
@@ -182,7 +175,6 @@ Cons:
   determine where it is in the file system (the "class-to-file" convention
   inherited from Horde/PEAR).
 
-
 ### 4.2 Alternative: Stay With PSR-0 Only
 
 Staying with PSR-0 only, although reasonable, does leave us with relatively
@@ -198,7 +190,6 @@ Cons:
 
 - Leaves us with underscores in the class name being honored as directory
   separators
-
 
 ### 4.3 Alternative: Split Up Autoloading And Transformation
 
@@ -219,8 +210,8 @@ Cons:
 
 ### 4.4 Alternative: Use More Imperative And Narrative Language
 
-After the second vote was pulled by a Sponsor after hearing from multiple +1 
-voters that they supported the idea but did not agree with (or understand) the 
+After the second vote was pulled by a Sponsor after hearing from multiple +1
+voters that they supported the idea but did not agree with (or understand) the
 wording of the proposal, there was a period during which the voted-on proposal
 was expanded with greater narrative and somewhat more imperative language. This
 approach was decried by a vocal minority of participants. After some time, Beau
@@ -230,13 +221,11 @@ consideration, written by Paul M. Jones and contributed to by many.
 
 ### Compatibility Note with PHP 5.3.2 and below
 
-PHP versions before 5.3.3 do not strip the leading namespace separator, so 
-the responsibility to look out for this falls on the implementation. Failing 
-to strip the leading namespace separator could lead to unexpected behavior. 
+PHP versions before 5.3.3 do not strip the leading namespace separator, so
+the responsibility to look out for this falls on the implementation. Failing
+to strip the leading namespace separator could lead to unexpected behavior.
 
-
-5. People
----------
+## 5. People
 
 ### 5.1 Editor
 
@@ -252,14 +241,12 @@ to strip the leading namespace separator could lead to unexpected behavior.
 - Andreas Hennings
 - Bernhard Schussek
 - Beau Simensen
-- Donald Gilbert 
+- Donald Gilbert
 - Mike van Riel
 - Paul Dragoonis
 - Too many others to name and count
 
-
-6. Votes
---------
+## 6. Votes
 
 - **Entrance Vote:** <https://groups.google.com/d/msg/php-fig/_LYBgfcEoFE/ZwFTvVTIl4AJ>
 
@@ -267,15 +254,13 @@ to strip the leading namespace separator could lead to unexpected behavior.
 
     - 1st attempt: <https://groups.google.com/forum/#!topic/php-fig/Ua46E344_Ls>,
       presented prior to new workflow; aborted due to accidental proposal modification
-      
+
     - 2nd attempt: <https://groups.google.com/forum/#!topic/php-fig/NWfyAeF7Psk>,
       cancelled at the discretion of the sponsor <https://groups.google.com/forum/#!topic/php-fig/t4mW2TQF7iE>
-    
+
     - 3rd attempt: TBD
 
-
-7. Relevant Links
------------------
+## 7. Relevant Links
 
 - [Autoloader, round 4](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/lpmJcmkNYjM)
 - [POLL: Autoloader: Split or Combined?](https://groups.google.com/forum/#!topicsearchin/php-fig/autoload/php-fig/fGwA6XHlYhI)
