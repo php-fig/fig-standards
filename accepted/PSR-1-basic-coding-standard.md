@@ -90,6 +90,7 @@ function foo()
 
 // conditional declaration is *not* a side effect
 if (! function_exists('bar')) {
+    // note: the space proceeding the unary operator above is *not* part of the standard.
     function bar()
     {
         // function body
