@@ -52,29 +52,27 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 ## Numerical Index
 
-| Status | Num | Title                                | Editor(s)                      |
-|--------|:---:|--------------------------------------|--------------------------------|
-| X      | 0   | [Autoloading Standard][psr0]         | Matthew Weier O'Phinney        |
-| A      | 1   | [Basic Coding Standard][psr1]        | Paul M. Jones                  |
-| A      | 2   | [Coding Style Guide][psr2]           | Paul M. Jones                  |
-| A      | 3   | [Logger Interface][psr3]             | Jordi Boggiano                 |
-| A      | 4   | [Autoloading Standard][psr4]         | Paul M. Jones                  |
-| B      | 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  |
-| A      | 6   | [Caching Interface][psr6]            | Larry Garfield                 |
-| A      | 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        |
-| B      | 8   | [Huggable Interface][psr8]           | Larry Garfield                 |
-| B      | 9   | [Security Advisories][psr9]          | Michael Hess                   |
-| B      | 10  | [Security Reporting Process][psr10]  | Michael Hess                   |
-| A      | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier |
-| R      | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
-| A      | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 |
-| D      | 14  | [Event Manager][psr14]               | Larry Garfield                 |
-| A      | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
-| A      | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 |
-| D      | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
-| D      | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
-
-**Legend:** A = Accepted | D = Draft | R = Review | X = Deprecated | B = Abandoned
+| Num | Title                                | Editor(s)                      | Status     |
+|:---:|--------------------------------------|--------------------------------|------------|
+| 0   | [Autoloading Standard][psr0]         | Matthew Weier O'Phinney        | Deprecated |
+| 1   | [Basic Coding Standard][psr1]        | Paul M. Jones                  | Accepted   |
+| 2   | [Coding Style Guide][psr2]           | Paul M. Jones                  | Accepted   |
+| 3   | [Logger Interface][psr3]             | Jordi Boggiano                 | Accepted   |
+| 4   | [Autoloading Standard][psr4]         | Paul M. Jones                  | Accepted   |
+| 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  | Abandoned  |
+| 6   | [Caching Interface][psr6]            | Larry Garfield                 | Accepted   |
+| 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        | Accepted   |
+| 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Abandoned  |
+| 9   | [Security Advisories][psr9]          | Michael Hess                   | Abandoned  |
+| 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Abandoned  |
+| 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Accepted   |
+| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Review     |
+| 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Accepted   |
+| 14  | [Event Manager][psr14]               | Larry Garfield                 | Draft      |
+| 15  | [HTTP Handlers][psr15]               | Woody Gilk                     | Accepted   |
+| 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Accepted   |
+| 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Draft      |
+| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Draft      |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
 [psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
