@@ -15,8 +15,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][rfc2119].
 
-[psr7]: http://www.php-fig.org/psr/psr-7/
-[rfc2119]: http://tools.ietf.org/html/rfc2119
+[psr7]: https://www.php-fig.org/psr/psr-7/
+[rfc2119]: https://tools.ietf.org/html/rfc2119
 
 ## 1. Specification
 
@@ -37,19 +37,25 @@ Has the ability to create client requests.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-interface RequestFactoryInterface
+interface RequestFactoryInterface extends
+    StreamFactoryInterface,
+    UriFactoryInterface,
 {
     /**
      * Create a new request.
      *
-     * @param string $method
-     * @param UriInterface|string $uri
+     * @param string $method The HTTP method associated with the request.
+     * @param UriInterface|string $uri The URI associated with the request. If
+     *     the value is a string, the factory MUST create a UriInterface
+     *     instance based on it.
      *
      * @return RequestInterface
      */
-    public function createRequest($method, $uri);
+    public function createRequest(string $method, $uri): RequestInterface;
 }
 ```
 
@@ -61,17 +67,21 @@ Has the ability to create responses.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
-interface ResponseFactoryInterface
+interface ResponseFactoryInterface extends StreamFactoryInterface
 {
     /**
      * Create a new response.
      *
-     * @param int $code HTTP status code
+     * @param int $code HTTP status code; defaults to 200
+     * @param string $reasonPhrase Reason phrase to associate with status code
+     *     in generated response; if none is provided implementations MAY use
+     *     the defaults as suggested in the HTTP specification.
      *
      * @return ResponseInterface
      */
-    public function createResponse($code = 200);
+    public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface;
 }
 ```
 
@@ -83,31 +93,29 @@ Has the ability to create server requests.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-interface ServerRequestFactoryInterface
+interface ServerRequestFactoryInterface extends
+    StreamFactoryInterface,
+    UploadedFileFactoryInterface,
+    UriFactoryInterface
 {
     /**
      * Create a new server request.
      *
-     * @param string $method
-     * @param UriInterface|string $uri
+     * @param string $method The HTTP method associated with the request.
+     * @param UriInterface|string $uri The URI associated with the request. If
+     *     the value is a string, the factory MUST create a UriInterface
+     *     instance based on it.
+     * @param array $serverParams Array of SAPI parameters with which to seed
+     *     the generated request instance.
      *
      * @return ServerRequestInterface
      */
-    public function createServerRequest($method, $uri);
-
-    /**
-     * Create a new server request from server variables.
-     *
-     * @param array $server Typically $_SERVER or similar structure.
-     *
-     * @return ServerRequestInterface
-     *
-     * @throws \InvalidArgumentException
-     *  If no valid method or URI can be determined.
-     */
-    public function createServerRequestFromArray(array $server);
+    public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface;
 }
 ```
 
@@ -127,11 +135,11 @@ interface StreamFactoryInterface
      *
      * The stream SHOULD be created with a temporary resource.
      *
-     * @param string $content
+     * @param string $content String content with which to populate the stream.
      *
      * @return StreamInterface
      */
-    public function createStream($content = '');
+    public function createStream(string $content = ''): StreamInterface;
 
     /**
      * Create a stream from an existing file.
@@ -141,32 +149,31 @@ interface StreamFactoryInterface
      *
      * The `$filename` MAY be any string supported by `fopen()`.
      *
-     * @param string $filename
-     * @param string $mode
+     * @param string $filename Filename or stream URI to use as basis of stream.
+     * @param string $mode Mode with which to open the underlying filename/stream.
      *
      * @return StreamInterface
      */
-    public function createStreamFromFile($filename, $mode = 'r');
+    public function createStreamFromFile(string $filename, string $mode = 'r'): StreamInterface;
 
     /**
      * Create a new stream from an existing resource.
      *
      * The stream MUST be readable and may be writable.
      *
-     * @param resource $resource
+     * @param resource $resource PHP resource to use as basis of stream.
      *
      * @return StreamInterface
      */
-    public function createStreamFromResource($resource);
+    public function createStreamFromResource($resource): StreamInterface;
 }
 ```
 
-Implementations of this interface SHOULD use a temporary file when creating
+Implementations of this interface SHOULD use a temporary stream when creating
 resources from strings. The RECOMMENDED method for doing so is:
 
 ```php
 $resource = fopen('php://temp', 'r+');
-fwrite($resource, $body);
 ```
 
 ### 2.5 UploadedFileFactoryInterface
@@ -176,15 +183,14 @@ Has the ability to create streams for uploaded files.
 ```php
 namespace Psr\Http\Message;
 
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-interface UploadedFileFactoryInterface
+interface UploadedFileFactoryInterface extends StreamFactoryInterface
 {
     /**
      * Create a new uploaded file.
-     *
-     * If a string is used to create the file, a temporary resource will be
-     * created with the content of the string.
      *
      * If a size is not provided it will be determined by checking the size of
      * the file.
@@ -192,34 +198,29 @@ interface UploadedFileFactoryInterface
      * @see http://php.net/manual/features.file-upload.post-method.php
      * @see http://php.net/manual/features.file-upload.errors.php
      *
-     * @param string|resource $file
+     * @param StreamInterface $stream Underlying stream representing the
+     *     uploaded file content.
      * @param int $size in bytes
      * @param int $error PHP file upload error
-     * @param string $clientFilename
-     * @param string $clientMediaType
+     * @param string $clientFilename Filename as provided by the client, if any.
+     * @param string $clientMediaType Media type as provided by the client, if any.
      *
      * @return UploadedFileInterface
      *
-     * @throws \InvalidArgumentException
-     *  If the file resource is not readable.
+     * @throws \InvalidArgumentException If the file resource is not readable.
      */
     public function createUploadedFile(
-        $file,
-        $size = null,
-        $error = \UPLOAD_ERR_OK,
-        $clientFilename = null,
-        $clientMediaType = null
-    );
+        StreamInterface $stream,
+        int $size = null,
+        int $error = \UPLOAD_ERR_OK,
+        string $clientFilename = null,
+        string $clientMediaType = null
+    ): UploadedFileInterface;
 }
 ```
 
-Implementations of this interface SHOULD use a temporary file when creating
-resources from strings. The RECOMMENDED method for doing so is:
-
-```php
-$resource = fopen('php://temp', 'r+');
-fwrite($resource, $body);
-```
+The interface extends `StreamFactoryInterface`, which CAN be used to create the
+`$stream` argument for the `createUploadedFile()` method.
 
 ### 2.6 UriFactoryInterface
 
@@ -239,9 +240,8 @@ interface UriFactoryInterface
      *
      * @return UriInterface
      *
-     * @throws \InvalidArgumentException
-     *  If the given URI cannot be parsed.
+     * @throws \InvalidArgumentException If the given URI cannot be parsed.
      */
-    public function createUri($uri = '');
+    public function createUri(string $uri = '') : UriInterface;
 }
 ```
