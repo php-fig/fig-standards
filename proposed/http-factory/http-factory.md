@@ -192,17 +192,14 @@ interface UploadedFileFactoryInterface extends StreamFactoryInterface
     /**
      * Create a new uploaded file.
      *
-     * If a string is used to create the file, a temporary resource will be
-     * created with the content of the string.
-     *
      * If a size is not provided it will be determined by checking the size of
      * the file.
      *
      * @see http://php.net/manual/features.file-upload.post-method.php
      * @see http://php.net/manual/features.file-upload.errors.php
      *
-     * @param string|resource|StreamInterface $file Underlying file, PHP stream
-     *     resource, or StreamInterface representing the uploaded file content.
+     * @param StreamInterface $stream Underlying stream representing the
+     *     uploaded file content.
      * @param int $size in bytes
      * @param int $error PHP file upload error
      * @param string $clientFilename Filename as provided by the client, if any.
@@ -213,7 +210,7 @@ interface UploadedFileFactoryInterface extends StreamFactoryInterface
      * @throws \InvalidArgumentException If the file resource is not readable.
      */
     public function createUploadedFile(
-        $file,
+        StreamInterface $stream,
         int $size = null,
         int $error = \UPLOAD_ERR_OK,
         string $clientFilename = null,
@@ -222,12 +219,8 @@ interface UploadedFileFactoryInterface extends StreamFactoryInterface
 }
 ```
 
-Implementations of this interface SHOULD use a temporary file when creating
-resources from strings. The RECOMMENDED method for doing so is:
-
-```php
-$resource = fopen('php://temp', 'r+');
-```
+The interface extends `StreamFactoryInterface`, which CAN be used to create the
+`$stream` argument for the `createUploadedFile()` method.
 
 ### 2.6 UriFactoryInterface
 
