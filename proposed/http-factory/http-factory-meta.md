@@ -81,7 +81,7 @@ server usage.
 - [`Uri`][diactoros-uri] No required parameters, `string $uri` is empty by default.
 
 [zend-diactoros]: https://docs.zendframework.com/zend-diactoros/
-[diactoros-request]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Request.php#L33)
+[diactoros-request]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Request.php#L33
 [diactoros-response]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/Response.php#L114
 [diactoros-server-request]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/ServerRequest.php#L78-L89
 [diactoros-server-request-factory]: https://github.com/zendframework/zend-diactoros/blob/b4e7758556c97b5bb9a5260d898e9788ee800538/src/ServerRequestFactory.php#L52-L58
