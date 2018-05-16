@@ -46,7 +46,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Jackalope]                       | Lukas Kahwe Smith ([@lsmith])         |
 | [Joomla]                          | Robert Deutz ([@rdeutz])              |
 | [Lithium]                         | Nate Abele ([@nateabele])             |
-| [Magento]                         | Ben Marks ([@benmarks])               |
+| [Magento]                         | Anton Kril ([@AntonKril])             |
 | [PEAR]                            | Chuck Burgess ([@ashnazg])            |
 | [Phalcon]                         | Andres Gutierrez ([@phalconphp])      |
 | [Phergie]                         | Joe Ferguson ([@joepferguson])        |
@@ -114,9 +114,9 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@AlessandroLai]: https://twitter.com/AlessandroLai
 [@ambassadorawsum]: https://twitter.com/ambassadorawsum
 [@andrerom]: https://twitter.com/andrerom
+[@AntonKril]: https://twitter.com/AntonKril
 [@ashnazg]: https://twitter.com/ashnazg
 [@beausimensen]: https://twitter.com/beausimensen
-[@benmarks]: https://twitter.com/benmark
 [@bernhard_rusch]: https://twitter.com/bernhard_rusch
 [@bretterer]: https://twitter.com/bretterer
 [@couac]: https://twitter.com/couac
