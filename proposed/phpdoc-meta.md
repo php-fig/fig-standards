@@ -92,8 +92,8 @@ Cons:
 ### 5.3 Working group members
 
  * Alexey Gopachenko
- * Matthew Brown
- * Ondrej Mirtes
+ * Matthew Brown - [Psalm](https://github.com/vimeo/psalm)
+ * Ondrej Mirtes - [PHPStan](https://github.com/phpstan/phpstan)
 
 ## 6. Votes
 
