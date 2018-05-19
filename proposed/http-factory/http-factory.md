@@ -43,7 +43,7 @@ use Psr\Http\Message\UriInterface;
 
 interface RequestFactoryInterface extends
     StreamFactoryInterface,
-    UriFactoryInterface,
+    UriFactoryInterface
 {
     /**
      * Create a new request.
