@@ -1,8 +1,6 @@
-PHPDoc Meta Document
-====================
+# PHPDoc Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 The purpose of documentation using PHPDoc is to provide a comprehensive but flexible way to describe a software system
 at the smallest possible level of detail. This type of documentation aids contributors and consumers of your source
@@ -15,8 +13,7 @@ susceptible to becoming out of date.
 PHPDoc as a notation has existed for more than ten years now, is heavily inspired by JavaDoc, and is currently in use by a
 significant percentage of public PHP projects in the field.
 
-2. Why Bother?
---------------
+## 2. Why Bother?
 
 PHPDocumentor has spearheaded and facilitated the growth of the PHPDoc notation, but with the growing number of other
 tools that use the PHPDoc notation, it is becoming increasingly important to have an official and formal standard
@@ -44,16 +41,15 @@ Cons:
 * Given the age of the current standard and widespread adoption, it is not possible to introduce significant breaks in
   backwards compatibility with the current practices without a significant risk of alienating existing users or vendors.
 
-3. Scope
---------
+## 3. Scope
 
-## 3.1 Goals
+### 3.1 Goals
 
 * Provide a complete technical definition, or schema, of the PHPDoc notation.
 * Introduce new concepts matching best practices or design patterns in use today and in the foreseeable future.
 * Deprecate old concepts that are replaced by newer concepts or are no longer in use in today's PHP landscape.
 
-## 3.2 Non-Goals
+### 3.2 Non-Goals
 
 * This PSR does not provide a recommendation on how and when to use the concepts described in this document,
   so it is not a coding standard.
@@ -61,8 +57,7 @@ Cons:
   annotations, but does not describe a style of annotations or which "defined annotations" exist in use. The concept of annotations is only
   alluded to and is out of scope for this PSR.
 
-4. Approaches
--------------
+## 4. Approaches
 
 ### 4.1 Chosen Approach
 
@@ -84,31 +79,28 @@ Cons:
 * Technical and verbose.
 * Can only be extended when the syntax is not affected.
 
-5. People
----------
+## 5. People
 
-### 5.1 Editor(s)
+### 5.1 Editor
 
-* Mike van Riel
+ * Chuck Burgess
 
-### 5.2 Sponsors
+### 5.2 Sponsor
 
-* Phil Sturgeon
-* Donald Gilbert
+ * Michael Cullum
 
-### 5.3 Contributors
+### 5.3 Working group members
 
-* Chuck Burgess
-* Gary Jones
+ * Alexey Gopachenko
+ * Matthew Brown - [Psalm](https://github.com/vimeo/psalm)
+ * Ondrej Mirtes - [PHPStan](https://github.com/phpstan/phpstan)
 
-6. Votes
---------
+## 6. Votes
 
-* **Entrance Vote: ** TBD
-* **Acceptance Vote:** TBD
+* **Entrance Vote**: TBD
+* **Acceptance Vote**: TBD
 
-7. Relevant Links
------------------
+## 7. Relevant Links
 
 Most of the relevant links are mentioned in the PSR itself as support for individual chapters.
 
