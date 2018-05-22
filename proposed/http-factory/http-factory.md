@@ -37,13 +37,9 @@ Has the ability to create client requests.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\StreamFactoryInterface;
-use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-interface RequestFactoryInterface extends
-    StreamFactoryInterface,
-    UriFactoryInterface
+interface RequestFactoryInterface
 {
     /**
      * Create a new request.
@@ -65,9 +61,8 @@ Has the ability to create responses.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamFactoryInterface;
 
-interface ResponseFactoryInterface extends StreamFactoryInterface
+interface ResponseFactoryInterface
 {
     /**
      * Create a new response.
@@ -89,15 +84,9 @@ Has the ability to create server requests.
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamFactoryInterface;
-use Psr\Http\Message\UploadedFileFactoryInterface;
-use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-interface ServerRequestFactoryInterface extends
-    StreamFactoryInterface,
-    UploadedFileFactoryInterface,
-    UriFactoryInterface
+interface ServerRequestFactoryInterface
 {
     /**
      * Create a new server request.
@@ -175,11 +164,10 @@ Has the ability to create streams for uploaded files.
 ```php
 namespace Psr\Http\Message;
 
-use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-interface UploadedFileFactoryInterface extends StreamFactoryInterface
+interface UploadedFileFactoryInterface
 {
     /**
      * Create a new uploaded file.

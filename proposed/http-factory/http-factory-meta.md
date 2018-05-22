@@ -196,30 +196,7 @@ based on the PSR-7 implementation they are using, producing only the instances
 they need for the specific context. This reduces boilerplate; developers do not
 need to write stubs for unused methods.
 
-### 5.3 Why do some interfaces extend others?
-
-In many cases, factories depend on one or more collaborators. As examples:
-
-- The `RequestFactoryInterface` and `ServerRequestFactoryInterface` may each
-  need to build a `UriInterface` from a string URI.
-
-- Each of `RequestFactoryInterface`, `ServerRequestFactoryInterface`, and
-  `ResponseFactoryInterface`  may need to build a `StreamInterface` with which
-  to populate the initial instance.
-
-- The `UploadedFileFactoryInterface` may need to build a `StreamInterface` with
-  which to populate itself.
-
-- Consumers of the `ServerRequestFactoryInterface` may need to populate the
-  instance with uploaded files.
-
-As such, we have chosen to have any interface generating an instance that MUST
-or MAY contain collaborators extend the interfaces of any factories that will
-create those collaborators. This ensures they can create fully usable instances
-immediately, and also provides consumers with the factories they need to produce
-collaborators for those instances.
-
-### 5.4 Why does the $reasonPhrase argument to the ResponseFactoryInterface exist?
+### 5.3 Why does the $reasonPhrase argument to the ResponseFactoryInterface exist?
 
 `ResponseFactoryInterface::createResponse()` includes an optional string
 argument, `$reasonPhrase`. In the PSR-7 specification, you can only provide a
@@ -228,7 +205,7 @@ pieces of data. The authors of this specification have chosen to mimic the PSR-7
 `ResponseInterface::withStatus()` signature to ensure both sets of data may be
 present in the response created.
 
-### 5.5 Why does the $serverParams argument to the ServerRequestFactoryInterface exist?
+### 5.4 Why does the $serverParams argument to the ServerRequestFactoryInterface exist?
 
 `ServerRequestFactoryInterface::createServerRequest()` includes an optional
 `$serverParams` array argument. The reason this is provided is to ensure that an
@@ -238,7 +215,7 @@ method is the one corresponding to the server params. As such, this data MUST be
 provided at initial creation. For this reason, it exists as an argument to the
 factory method.
 
-### 5.6 Why is there no factory for creating a ServerRequestInterface from superglobals?
+### 5.5 Why is there no factory for creating a ServerRequestInterface from superglobals?
 
 The primary use case of `ServerRequestFactoryInterface` is for creating a new
 `ServerRequestInterface` instance from known data. Any solution around
