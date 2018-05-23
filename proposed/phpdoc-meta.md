@@ -83,7 +83,7 @@ Cons:
 
 ### 5.1 Editor
 
- * Chuck Burgess
+ * Chuck Burgess - [PEAR](https://pear.php.net)
 
 ### 5.2 Sponsor
 
@@ -91,7 +91,7 @@ Cons:
 
 ### 5.3 Working group members
 
- * Alexey Gopachenko
+ * Alexey Gopachenko - [PhpStorm](https://www.jetbrains.com/phpstorm)
  * Matthew Brown - [Psalm](https://github.com/vimeo/psalm)
  * Ondrej Mirtes - [PHPStan](https://github.com/phpstan/phpstan)
 
