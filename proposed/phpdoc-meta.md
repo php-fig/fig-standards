@@ -7,11 +7,11 @@ at the smallest possible level of detail. This type of documentation aids contri
 code to, for example, understand what type of information needs to be passed to specific methods, or how to be able to
 consume a class of the project that a consumer want to use.
 
-By documenting specific elements inside the source code the documentation for that part of the source code will be less
+By documenting specific elements inside the source code, the documentation for that part of the source code will be less
 susceptible to becoming out of date.
 
-PHPDoc as a notation has existed for more than ten years now, is heavily inspired by JavaDoc, and is currently in use by a
-significant percentage of public PHP projects in the field.
+PHPDoc as a notation has existed for more than fifteen years now, is heavily inspired by JavaDoc, 
+and is currently in use by a significant percentage of public PHP projects in the field.
 
 ## 2. Why Bother?
 
@@ -19,7 +19,7 @@ PHPDocumentor has spearheaded and facilitated the growth of the PHPDoc notation,
 tools that use the PHPDoc notation, it is becoming increasingly important to have an official and formal standard
 instead of the de-facto status that is currently provided.
 
-An additional goal for this PSR is to deprecate obsolete elements and introduce new concepts and syntaxes to reflect the
+An additional goal for this PSR is to introduce new concepts and syntaxes to reflect the
 current status of the PHP language, and to facilitate best practices and design patterns in use today and in the
 foreseeable future.
 
@@ -36,8 +36,6 @@ Cons:
 
 * If there are different uses of elements in the PHPDoc notation, then it is desirable for projects to align with this
   specification, which will cost effort to introduce.
-* Deprecation of well-known PHPDoc elements may lead to a period of confusion or resistance to the proposed changes. It
-  is for this reason that concepts are deprecated and not removed.
 * Given the age of the current standard and widespread adoption, it is not possible to introduce significant breaks in
   backwards compatibility with the current practices without a significant risk of alienating existing users or vendors.
 
@@ -72,7 +70,7 @@ affect the Syntax of PHPDoc itself.
 
 Pros:
 
-* Delivers a machine-parsable and verifyable specification.
+* Delivers a machine-parsable and verifiable specification.
 * Well-rounded proposal due to the number of factors considered.
 
 Cons:
@@ -88,7 +86,7 @@ Cons:
 
 ### 5.2 Sponsor
 
- * Michael Cullum
+ * Michael Cullum - [PHP-FIG](https://www.php-fig.org/)
 
 ### 5.3 Working group members
 
