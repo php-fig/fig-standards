@@ -21,7 +21,6 @@ PSR-5: PHPDoc
   - [Details](#details)
   - [Valid Class Name](#valid-class-name)
   - [Keyword](#keyword)
-- Appendix B. Differences Compared With The De-facto PHPDoc Standard
 
 ## 1. Introduction
 
