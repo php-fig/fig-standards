@@ -45,9 +45,7 @@ interface RequestFactoryInterface
      * Create a new request.
      *
      * @param string $method The HTTP method associated with the request.
-     * @param UriInterface|string $uri The URI associated with the request. If
-     *     the value is a string, the factory MUST create a UriInterface
-     *     instance based on it.
+     * @param UriInterface|string $uri The URI associated with the request. 
      */
     public function createRequest(string $method, $uri): RequestInterface;
 }
@@ -96,9 +94,7 @@ interface ServerRequestFactoryInterface
      * determine the HTTP method or URI, which must be provided explicitly.
      *
      * @param string $method The HTTP method associated with the request.
-     * @param UriInterface|string $uri The URI associated with the request. If
-     *     the value is a string, the factory MUST create a UriInterface
-     *     instance based on it.
+     * @param UriInterface|string $uri The URI associated with the request. 
      * @param array $serverParams An array of Server API (SAPI) parameters with
      *     which to seed the generated request instance.
      */
