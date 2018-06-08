@@ -30,8 +30,8 @@ a specific vendor implementation in order to create these objects.
 Another pain point is when writing re-usable middleware or request handlers. In
 such cases, package authors may need to create and return a response. However,
 creating discrete instances then ties the package to a specific PSR-7
-implementation. If these packages rely on a request factory instead, they can
-remain agnostic of the PSR-7 implementation.
+implementation. If these packages rely on a request factory interface instead,
+they can remain agnostic of the PSR-7 implementation.
 
 Creating a formal standard for factories will allow developers to avoid
 dependencies on specific implementations while having the ability to create new
