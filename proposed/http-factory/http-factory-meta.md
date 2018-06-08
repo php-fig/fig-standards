@@ -115,7 +115,7 @@ Overall this approach is also quite similar to the proposed factories. One notab
 difference is that Guzzle requires streams to be constructed with a resource and
 does not allow a string. However, it does contain a helper function [`stream_for`][guzzle-stream-for]
 that will create a stream from a string of content and a function [`try_fopen`][guzzle-try-fopen]
-that create a resource from a file path.
+that will create a resource from a file path.
 
 [guzzle-stream-for]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/functions.php#L78
 [guzzle-try-fopen]: https://github.com/guzzle/psr7/blob/58828615f7bb87013ce6365e9b1baa08580c7fc8/src/functions.php#L295
