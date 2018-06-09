@@ -8,7 +8,7 @@ PSR-7 did not include a recommendation on how to create HTTP objects, which lead
 to difficulty when needing to create new HTTP objects within components that are
 not tied to a specific implementation of PSR-7.
 
-The interfaces described in this document describe methods by which PSR-7 objects
+The interfaces outlined in this document describe methods by which PSR-7 objects
 can be instantiated.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -67,9 +67,9 @@ interface ResponseFactoryInterface
     /**
      * Create a new response.
      *
-     * @param int $code HTTP status code; defaults to 200
-     * @param string $reasonPhrase Reason phrase to associate with status code
-     *     in generated response; if none is provided implementations MAY use
+     * @param int $code The HTTP status code. Defaults to 200.
+     * @param string $reasonPhrase The reason phrase to associate with the status code
+     *     in generated response. If none is provided, implementations MAY use
      *     the defaults as suggested in the HTTP specification.
      */
     public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface;
@@ -91,16 +91,16 @@ interface ServerRequestFactoryInterface
     /**
      * Create a new server request.
      *
-     * Note that server-params are taken precisely as given - no parsing/processing
-     * of the given values is performed, and, in particular, no attempt is made to
+     * Note that server parameters are taken precisely as given - no parsing/processing
+     * of the given values is performed. In particular, no attempt is made to
      * determine the HTTP method or URI, which must be provided explicitly.
      *
      * @param string $method The HTTP method associated with the request.
      * @param UriInterface|string $uri The URI associated with the request. If
      *     the value is a string, the factory MUST create a UriInterface
      *     instance based on it.
-     * @param array $serverParams Array of SAPI parameters with which to seed
-     *     the generated request instance.
+     * @param array $serverParams An array of Server API (SAPI) parameters with
+     *     which to seed the generated request instance.
      */
     public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface;
 }
@@ -134,8 +134,8 @@ interface StreamFactoryInterface
      *
      * The `$filename` MAY be any string supported by `fopen()`.
      *
-     * @param string $filename Filename or stream URI to use as basis of stream.
-     * @param string $mode Mode with which to open the underlying filename/stream.
+     * @param string $filename The filename or stream URI to use as basis of stream.
+     * @param string $mode The mode with which to open the underlying filename/stream.
      */
     public function createStreamFromFile(string $filename, string $mode = 'r'): StreamInterface;
 
@@ -144,7 +144,7 @@ interface StreamFactoryInterface
      *
      * The stream MUST be readable and may be writable.
      *
-     * @param resource $resource PHP resource to use as basis of stream.
+     * @param resource $resource The PHP resource to use as basis of stream.
      */
     public function createStreamFromResource($resource): StreamInterface;
 }
@@ -178,12 +178,12 @@ interface UploadedFileFactoryInterface
      * @link http://php.net/manual/features.file-upload.post-method.php
      * @link http://php.net/manual/features.file-upload.errors.php
      *
-     * @param StreamInterface $stream Underlying stream representing the
+     * @param StreamInterface $stream The underlying stream representing the
      *     uploaded file content.
-     * @param int $size in bytes
-     * @param int $error PHP file upload error
-     * @param string $clientFilename Filename as provided by the client, if any.
-     * @param string $clientMediaType Media type as provided by the client, if any.
+     * @param int $size The size of the file in bytes.
+     * @param int $error The PHP file upload error.
+     * @param string $clientFilename The filename as provided by the client, if any.
+     * @param string $clientMediaType The media type as provided by the client, if any.
      *
      * @throws \InvalidArgumentException If the file resource is not readable.
      */

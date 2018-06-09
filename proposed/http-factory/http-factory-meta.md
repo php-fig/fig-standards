@@ -24,7 +24,7 @@ is not seekable or not writable, there is no way to recover from an error
 condition in which the body has already been written to.
 
 This scenario can be avoided by providing a factory to create new streams. Due to
-the lack of formal standard for HTTP object factories, a developer must rely on
+the lack of a formal standard for HTTP object factories, a developer must rely on
 a specific vendor implementation in order to create these objects.
 
 Another pain point is when writing re-usable middleware or request handlers. In
