@@ -2,18 +2,18 @@
 
 ## 1. Summary
 
-The purpose of this PSR is to document (in a catalog style) the de facto list of Tags historically in use
+The purpose of this PSR is to document (in a catalog style) the de facto list of tags historically in use
 in the PHP community.
 
 ## 2. Why Bother?
 
-We wish to properly standardize the de facto usage of Tags as code documentation.
+We wish to properly standardize the de facto usage of tags as code documentation.
 
 ## 3. Scope
 
 ### 3.1 Goals
 
-* Provide a complete technical definition, or schema, of the common Tags in PHPDoc notation.
+* Provide a complete technical definition, or schema, of the common tags in PHPDoc notation.
 * Introduce new concepts matching best practices or design patterns in use today.
 
 ### 3.2 Non-Goals
