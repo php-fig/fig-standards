@@ -69,7 +69,7 @@ interface ResponseFactoryInterface
      *
      * @param int $code The HTTP status code. Defaults to 200.
      * @param string $reasonPhrase The reason phrase to associate with the status code
-     *     in generated response. If none is provided, implementations MAY use
+     *     in the generated response. If none is provided, implementations MAY use
      *     the defaults as suggested in the HTTP specification.
      */
     public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface;
@@ -144,7 +144,7 @@ interface StreamFactoryInterface
      *
      * The stream MUST be readable and may be writable.
      *
-     * @param resource $resource The PHP resource to use as basis of stream.
+     * @param resource $resource The PHP resource to use as the basis for the stream.
      */
     public function createStreamFromResource($resource): StreamInterface;
 }
