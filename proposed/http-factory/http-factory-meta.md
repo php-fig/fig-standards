@@ -68,8 +68,8 @@ factory methods.
 
 #### 4.2.1 Diactoros
 
-[Diactoros][zend-diactoros] is currently the most popular HTTP Messages implementation for
-server usage.
+[Diactoros][zend-diactoros] was one of the first HTTP Messages implementations for
+server usage, and was developed parallel to the PSR-7 specification.
 
 - [`Request`][diactoros-request] No required parameters, method and URI default to `null`.
 - [`Response`][diactoros-response] No required parameters, status code defaults to `200`.
@@ -95,7 +95,7 @@ The proposed uploaded file factory allows for size and error status to be option
 
 #### 4.2.2 Guzzle
 
-[Guzzle][guzzle] is currently the most popular HTTP Messages implementation for client usage.
+[Guzzle][guzzle] is an HTTP Messages implementation that focuses on client usage.
 
 - [`Request`][guzzle-request] Requires both `string $method` and `string|UriInterface $uri`.
 - [`Response`][guzzle-response] No required parameters, status code defaults to `200`.
@@ -122,7 +122,7 @@ that will create a resource from a file path.
 
 #### 4.2.3 Slim
 
-[Slim][slim] is a popular micro-framework that makes use of HTTP Messages from version
+[Slim][slim] is a micro-framework that makes use of HTTP Messages from version
 3.0 forward.
 
 - [`Request`][slim-request] Requires `string $method`, `UriInterface $uri`,
