@@ -244,6 +244,30 @@ implementation-specfic.
 [swoole]: https://www.swoole.co.uk/
 [reactphp]: https://reactphp.org/
 
+### 5.6 Why does RequestFactoryInterface::createRequest allow a string URI?
+
+The primary use case of `RequestFactoryInterface` is to create a request, and
+the only required values for any request are the request method and a URI. While
+`RequestFactoryInterface::createRequest()` can accept a `UriInterface` instance,
+it also allows a string.
+
+The rationale is two-fold. First, the majority use case is to create a request
+instance; creation of the URI instance is secondary. Requiring a `UriInterface`
+means users would either need to also have access to a `UriFactoryInterface`, or
+the `RequestFactoryInterface` would have a hard requirement on a
+`UriFactoryInterface`. The first complicates usage for consumers of the factory,
+the second complicates usage for either developers of the factory, or those
+creating the factory instance.
+
+Second, `UriFactoryInterface` provides exactly one way to create a
+`UriInterface` instance, and that is from a string URI. If creation of the URI
+is based on a string, there's no reason for the `RequestFactoryInterface` not to
+allow the same semantics. Additionally, every PSR-7 implementation surveyed at
+the time this proposal was developed allowed a string URI when creating a
+`RequestInterface` instance, as the value was then passed to whatever
+`UriInterface` implementation they provided. As such, accepting a string is
+expedient and follows existing semantics.
+
 ## 6. People
 
 This PSR was produced by a FIG Working Group with the following members:
