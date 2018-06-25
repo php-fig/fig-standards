@@ -45,22 +45,22 @@ for how security vulnerabilities go from discovery to fixing to public
 disclosure. Inspiration could be drawn from this list of security disclosure
 processes in various PHP and non-PHP projects:
 
-* http://symfony.com/security
-* http://framework.zend.com/security/
-* http://www.yiiframework.com/security/
+* https://symfony.com/security
+* https://framework.zend.com/security
+* https://www.yiiframework.com/security
 * https://www.drupal.org/security
-* http://codex.wordpress.org/FAQ_Security
-* http://www.sugarcrm.com/page/sugarcrm-security-policy/en
-* http://typo3.org/teams/security/
-* http://cakephp.org/development
-* http://www.concrete5.org/developers/security/
-* http://developer.joomla.org/security.html
-* http://wiki.horde.org/SecurityManagement
-* http://www.revive-adserver.com/support/bugs/
-* http://magento.com/security
-* http://www.apache.org/security/committers.html
+* https://codex.wordpress.org/FAQ_Security
+* https://www.sugarcrm.com/legal/security-policy
+* https://typo3.org/teams/security/
+* https://book.cakephp.org/3.0/en/contributing/tickets.html#reporting-security-issues
+* https://www.concrete5.org/developers/security/
+* https://developer.joomla.org/security.html
+* https://wiki.horde.org/SecurityManagement
+* https://www.revive-adserver.com/support/bugs/
+* https://magento.com/security
+* https://www.apache.org/security/committers.html
 * https://www.mozilla.org/en-US/about/governance/policies/security-group/bugs/
-* http://www.openbsd.org/security.html
+* https://www.openbsd.org/security.html
 
 A summary of the differences and similarities can be found here:
 https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40StsJ
