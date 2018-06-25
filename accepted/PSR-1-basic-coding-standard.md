@@ -131,7 +131,7 @@ class Vendor_Model_Foo
 }
 ~~~
 
-## 4. Class Constants, Properties, and Methods
+## 4. Class Constants, Properties and Methods
 
 The term "class" refers to all classes, interfaces, and traits.
 
