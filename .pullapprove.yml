@@ -41,16 +41,13 @@ groups:
         conditions:
             files:
                 - "proposed/phpdoc*"
-    http:
+    http-factory:
         required: 1
         teams:
-            - psr-15
+            - psr-17
         conditions:
-            labels:
-                - "HTTP"
             files:
                 - "proposed/http-factory/*"
-                - "proposed/http-handlers/*"
     cs-extended:
         required: 1
         teams:
