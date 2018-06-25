@@ -45,7 +45,7 @@ for how security vulnerabilities go from discovery to fixing to public
 disclosure. Inspiration could be drawn from this list of security disclosure
 processes in various PHP and non-PHP projects:
 
-* http://symfony.com/doc/current/contributing/code/security.html
+* http://symfony.com/security
 * http://framework.zend.com/security/
 * http://www.yiiframework.com/security/
 * https://www.drupal.org/security
@@ -90,5 +90,3 @@ https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40Sts
 
 7. Relevant Links
 -----------------
-
-[1]: http://symfony.com/doc/current/contributing/code/security.html
