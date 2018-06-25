@@ -65,7 +65,7 @@ i.e, an example of what to avoid:
 ini_set('error_reporting', E_ALL);
 
 // side effect: loads a file
-include "file.php";
+include 'file.php';
 
 // side effect: generates output
 echo "<html>\n";
