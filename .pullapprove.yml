@@ -31,7 +31,9 @@ groups:
         teams:
             - secretaries
         conditions:
-            files: []
+            files:
+                - "proposed/psr-8*"
+                - "proposed/security*"
     phpdoc:
         required: 1
         teams:
