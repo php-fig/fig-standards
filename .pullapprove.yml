@@ -31,8 +31,7 @@ groups:
         teams:
             - secretaries
         conditions:
-            files:
-                - "proposed/security-*"
+            files: []
     phpdoc:
         required: 1
         teams:
