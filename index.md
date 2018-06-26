@@ -33,7 +33,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 |:---:|--------------------------------------|--------------------------------|
 | 14  | [Event Manager][psr14]               | Larry Garfield                 |
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
-| 18  | [HTTP Client][psr18]                 | Tobias Nylhom                  |
+| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
 
 ### Abandoned
 
