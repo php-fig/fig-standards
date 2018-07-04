@@ -110,3 +110,7 @@ Or some combination of those, or some other mechanism as desired.
 All Listeners returned by a Listener Provider MUST be type-compatible with the Event.  That is, calling `$listener($event)` MUST NOT produce a `TypeError`.
 
 It is RECOMMENDED that a Listener Provider be implemented as a distinct object from the Event Dispatcher but that is NOT REQUIRED.
+
+## Interfaces
+
+See [the repository](https://github.com/php-fig/event-dispatcher).  The final interfaces will be copied back here before it goes up for a vote.  For now it's easier to just single-source them.
