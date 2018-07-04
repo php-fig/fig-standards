@@ -92,6 +92,8 @@ A Stoppable Dispatcher
 * MUST call Listeners synchronously in the order they are returned from a ListenerProvider.
 * MUST call `isStopped()` on the event after each Listener has been called.  If that method returns `true` it MUST return the event to the Emitter immediately and MUST NOT call any further Listeners.
 
+Note that is it NOT REQUIRED that a Listener have called `stopPropagation()`.  If no Listener stops propagation the dispatcher MUST continue to call all Listeners until it runs out, and then return the event.  That is, in that case it behaves exactly the same as a Modify Dispatcher.
+
 It is RECOMMENDED that Stoppable Events invoke `stopPropagation()` on themselves automatically when the answer is provided.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which calls `$this->stopPropagation()` once the response is set.
 
 ## Listener Provider
