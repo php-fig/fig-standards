@@ -29,7 +29,7 @@ doesn't have permission.
 * **Listener** - A Listener is any PHP callable that expects to be passed an Event.  Zero or more Listeners may be passed the same Event.
 * **Emitter** - An Emitter is any arbitrary code that wishes to send an Event.  This is also known as the "calling code".  It is not represented by any particular data structure but refers to the use case.
 * **Dispatcher** - A Dispatcher is an object that is given an Event object by an Emitter.  The Dispatcher is responsible for ensuring the Event is passed to all relevant Listeners.
-* **Listener Provider** - A Listener Provider is responsible for determining what Listeners are relevant for a given Event, but MUST NOT call the Listeners itself.
+* **Listener Provider** - A Listener Provider is responsible for determining what Listeners are relevant for a given Event, but MUST NOT call the Listeners itself.  A Listener Provider may specify zero or more relevant Listeners.
 
 ## Events
 
@@ -47,10 +47,11 @@ A Listener MUST have a `void` return, and SHOULD type hint that return explicitl
 
 A Listener MAY delegate actions to other code.  That includes a Listener being a thin wrapper around retrieving an object from a service container that contains the actual business logic to run, or other similar forms of indirection.  In that case the callable containing the actual business logic SHOULD conform to the same rules as if it were called directly as a Listener.
 
-
-## Types of Dispatcher
+## Dispatchers
 
 This specification defines three (3) general categories of Dispatcher.  Each is represented by a different interface.  Implementers MAY implement all three interfaces on a single object if they so choose or implement them on distinct objects.
+
+All Dispatchers MUST allow for the case where zero Listeners are found and MUST NOT generate an error condition in that case.
 
 ### Notify Dispatcher
 
