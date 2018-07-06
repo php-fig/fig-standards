@@ -28,6 +28,51 @@ This is a well-established model, but a standard mechanism by which libraries do
 
 ## 4. Approaches
 
+### 4.1 Use cases considered
+
+The Working Group identified four possible workflows for event passing, based on use cases seen in the wild in various systems.
+
+* One-way notification.  ("I did a thing, if you care.")
+* Object enhancement.  ("Here's a thing, please modify it before I do something with it.")
+* Collection.  ("Give me all your things, that I may do something with that list.")
+* Alternative chain.  ("Here's a thing; the first one of you that can handle it do so, then stop.")
+
+On further review, it was determined that Collection was a special case of Object enhancement (the collection being the object that is enhanced), leading to three workflows:
+
+* Notification
+* Modification
+* Interception
+
+Of those, the first can safely be done asynchronously (including delaying it through a queue) but the other two by nature involve passing data back to the caller and thus must be synchronous.  Despite that difference the Working Group determined that the use cases were close enough to be considered in a single PSR.  The three different workflows however are represented by three different but related dispatcher interfaces.
+
+### 4.2 Immutable events
+
+Initially the Working Group wished to define all Events as immutable message objects, similar to PSR-7.  However, that proved problematic in the Modification and Interception use cases.  In both of those cases Listeners needed a way to return data to the caller.  In concept there were three possible avenues:
+
+* Make the event mutable and modify it in place.
+* Require that events be evolvable (immutable but with `with*()` methods like PSR-7 and PSR-13) and that listeners return the event to pass along.
+* Make the Event immutable but aggregate and return the return value from each Listener.
+
+However, Stoppable Events (the Interception case) also needed to have a channel by which to indicate that further listeners should not be called.  That could be done either by:
+
+* Modifying the event (`stopPropagation()`)
+* Evolving the event to be stopped (`withPropagationStopped()`)
+* Returning a sentinel value from the listener (`true` or `false`) to indicate that propagation should terminate.
+
+Of those, the third would mandate a mutable event object as the return value was already in use.  The first would mandate a mutable event in at least some cases.  And the second seemed unnecessarily ceremonial and pedantic.
+
+Having listeners return evolvable events also posed a challenge.  That pattern is not used by any known implementations in PHP or elsewhere.  It also relies on the listener to remember to return the object (extra work for the listener author) and to not return some other, new object that might not be fully compatible with later listeners (such as a subclass or superclass of the event).
+
+Immutable events also rely on the event definer to respect the admonition to be immutable.  Events are, by nature, very loosely designed and the potential for implementers to ignore that part of the spec, even inadvertently, is high.
+
+That left two possible options:
+
+* Allow events to be mutable.
+* Require, but be unable to enforce, immutable objects with a high-ceremony interface, more work for listener authors, and a higher potential for breakage that may not be detectable at compile time.
+
+Given those options the Working Group felt mutable events was the safer alternative.
+
+As the Notification use case would technically allow for immutable events to be viable, however, the specification defines that those events SHOULD be immutable, or at least treated as such, and dispatcher implementers are welcome to take steps to enforce that.
 
 ## 5. People
 
@@ -50,7 +95,7 @@ Matthew Weier O'Phinney
 
 ## 6. Votes
 
-* **Entrance Vote: **  ADD LINK HERE
+* [Entrance vote](https://groups.google.com/d/topic/php-fig/6kQFX-lhuk4/discussion)
 
 7. Relevant Links
 -----------------
