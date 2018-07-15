@@ -98,6 +98,7 @@ A Listener Provider is a service object responsible for determining what Listene
 * Deriving a list of applicable Listeners through reflection based on the type and implemented interfaces of the Event.
 * Generating a compiled list of Listeners ahead of time that may be consulted at runtime.
 * Implementing some form of access control so that certain Listeners will only be called if the current user has a certain permission.
+* Extracting some information from an object referenced by the Event, such as an Entity, and calling pre-defined lifecycle methods on that object.
 
 Or some combination of those, or some other mechanism as desired.
 
