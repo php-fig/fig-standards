@@ -5,9 +5,7 @@ Event Dispatching is a common and well-tested mechanism to allow developers to i
 
 The goal of this PSR is to establish a common mechanism for event-based extension and collaboration so that libraries and components may be reused more freely between various applications and frameworks.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119][].
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
@@ -17,15 +15,14 @@ Having common interfaces for dispatching and handling events, allows developers 
 
 Some examples:
 
-* A security framework that will prevent saving/accessing data when a user
-doesn't have permission.
-* A common full page caching system
+* A security framework that will prevent saving/accessing data when a user doesn't have permission.
+* A common full page caching system.
 * Libraries that extent other specific libraries, regardless of what framework they are both integrated into.
 * A logging package to track all actions taken within the application
 
 ## Definitions
 
-* **Event** - An Event is a message produced by a *Caller*.  It is represented as an object that implements `EventInterface`.
+* **Event** - An Event is a message produced by an *Emitter*.  It is represented as an object that implements `EventInterface`.
 * **Listener** - A Listener is any PHP callable that expects to be passed an Event.  Zero or more Listeners may be passed the same Event.
 * **Emitter** - An Emitter is any arbitrary code that wishes to send an Event.  This is also known as the "calling code".  It is not represented by any particular data structure but refers to the use case.
 * **Dispatcher** - A Dispatcher is an object that is given an Event object by an Emitter.  The Dispatcher is responsible for ensuring the Event is passed to all relevant Listeners.
@@ -72,7 +69,7 @@ That is, an Emitter calling a Notify Dispatcher MUST NOT assume that any listene
 A Modify Dispatcher is used for cases where an Emitter wishes to provide data to listeners and receive data back from them.  Examples of modify use cases include:
 
 * Passing an object to a series of Listeners to allow it to be modified before it is saved to a persistence system.
-* Passing a collection to a series of Listeners to allow them to register values with it  so that the Emitter may act on all of the collected information.
+* Passing a collection to a series of Listeners to allow them to register values with it so that the Emitter may act on all of the collected information.
 * Passing a collection to a series of Listeners to allow them to modify the collection in some way before the Emitter takes action.
 * Passing some contextual information to a series of Listeners so that all of them may "vote" on what action to take, with the Emitter deciding based on the aggregate information provided.
 
