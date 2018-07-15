@@ -34,6 +34,8 @@ Events are messages.  Depending on the use case that message may expect a respon
 
 A **Stoppable Event** is a special case of Event that contains additional ways to prevent further Listeners from being called.  It is indicated by implementing the `StoppableEventInterface`.
 
+It is RECOMMENDED that Stoppable Events invoke `stopPropagation()` on themselves automatically when the answer is provided.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which calls `$this->stopPropagation()` once the response is set.
+
 All Events are identified primarily by their PHP type, that is, their class and any interfaces they implement.  Events SHOULD NOT have any other identifier, such as an arbitrary string ID.
 
 ## Listeners
@@ -46,7 +48,7 @@ A Listener MAY delegate actions to other code.  That includes a Listener being a
 
 ## Dispatchers
 
-This specification defines three (3) general categories of Dispatcher.  Each is represented by a different interface.  Implementers MAY implement all three interfaces on a single object if they so choose or implement them on distinct objects.
+This specification defines two (2) general categories of Dispatcher.  Each is represented by a different interface.  Implementers MAY implement both interfaces on a single object if they so choose or implement them on distinct objects.
 
 All Dispatchers MUST allow for the case where zero Listeners are found and MUST NOT generate an error condition in that case.
 
@@ -62,7 +64,9 @@ A Notify Dispatcher
 * MAY delay calling listeners until some later point, such as using a queue system.
 * MAY call multiple Listeners concurrently (such as in an asynchronous system or a queue system with multiple worker processes).
 
-That is, an Emitter calling a Notify Dispatcher MUST NOT assume that any listeners have fired yet by the time the Notify Dispatcher has returned.
+An Emitter calling a Notify Dispatcher MUST NOT assume that any listeners have fired yet by the time the Notify Dispatcher has returned.
+
+A Notify Dispatcher is incompatible with Stoppable Events.  If passed a Stoppable Event the Dispatcher MUST throw an `InvalidArgumentException`.
 
 ### Modify Dispatcher
 
@@ -72,6 +76,7 @@ A Modify Dispatcher is used for cases where an Emitter wishes to provide data to
 * Passing a collection to a series of Listeners to allow them to register values with it so that the Emitter may act on all of the collected information.
 * Passing a collection to a series of Listeners to allow them to modify the collection in some way before the Emitter takes action.
 * Passing some contextual information to a series of Listeners so that all of them may "vote" on what action to take, with the Emitter deciding based on the aggregate information provided.
+* Passing an object to a series of listeners and allowing one of them to set a value and then prevent further listeners from running.
 
 Events passed to a Modify Dispatcher SHOULD have some sort of mutator methods on them to allow Listeners to modify the object.  The nature of those methods is up to each implementation to determine.
 
@@ -81,18 +86,9 @@ A Modify Dispatcher
 * MUST NOT return to the Emitter until all Listeners have executed.
 * As an exception to the previous point, if the Event is a Promise then the the Dispatcher MAY return that Promise before all Listeners have executed.  However, the Promise MUST NOT be treated as fulfilled until all Listeners have executed.
 
-### Stoppable Dispatcher
+If passed a Stoppable Event, a Modify Dispatcher 
 
-A Stoppable Dispatcher is a special case of a Modify Dispatcher.  A Stoppable Dispatcher is used in cases where the Emitter is asking for a response to a question posed by the Event.  Each listener in turn is called and MAY indicate the answer to that question.  Listeners are called until one of them indicates that it has provided an answer by calling `stopPropagation()` on the event.
-
-A Stoppable Dispatcher
-
-* MUST call Listeners synchronously in the order they are returned from a ListenerProvider.
 * MUST call `isStopped()` on the event after each Listener has been called.  If that method returns `true` it MUST return the event to the Emitter immediately and MUST NOT call any further Listeners.
-
-Note that is it NOT REQUIRED that a Listener have called `stopPropagation()`.  If no Listener stops propagation the dispatcher MUST continue to call all Listeners until it runs out, and then return the event.  That is, in that case it behaves exactly the same as a Modify Dispatcher.
-
-It is RECOMMENDED that Stoppable Events invoke `stopPropagation()` on themselves automatically when the answer is provided.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which calls `$this->stopPropagation()` once the response is set.
 
 ## Listener Provider
 

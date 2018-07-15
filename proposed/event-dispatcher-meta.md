@@ -37,23 +37,22 @@ The Working Group identified four possible workflows for event passing, based on
 * Collection.  ("Give me all your things, that I may do something with that list.")
 * Alternative chain.  ("Here's a thing; the first one of you that can handle it do so, then stop.")
 
-On further review, it was determined that Collection was a special case of Object enhancement (the collection being the object that is enhanced), leading to three workflows:
+On further review, it was determined that Collection was a special case of Object enhancement (the collection being the object that is enhanced).  Alternative chain is similarly a special case of Object enhancement, as the signature is identical and the dispatch workflow is nearly identical.  That leaves two relevant workflows workflows:
 
 * Notification
 * Modification
-* Interception
 
-Of those, the first can safely be done asynchronously (including delaying it through a queue) but the other two by nature involve passing data back to the caller and thus must be synchronous.  Despite that difference the Working Group determined that the use cases were close enough to be considered in a single PSR.  The three different workflows however are represented by three different but related dispatcher interfaces.
+Notification can safely be done asynchronously (including delaying it through a queue) but Modificatoin by nature involve passing data back to the caller and thus must be synchronous.  Despite that difference the Working Group determined that the use cases were close enough to be considered in a single PSR.  The two different workflows however are represented by two different but related dispatcher interfaces.
 
 ### 4.2 Immutable events
 
-Initially the Working Group wished to define all Events as immutable message objects, similar to PSR-7.  However, that proved problematic in the Modification and Interception use cases.  In both of those cases Listeners needed a way to return data to the caller.  In concept there were three possible avenues:
+Initially the Working Group wished to define all Events as immutable message objects, similar to PSR-7.  However, that proved problematic in the Modification case.  In both of those cases Listeners needed a way to return data to the caller.  In concept there were three possible avenues:
 
 * Make the event mutable and modify it in place.
 * Require that events be evolvable (immutable but with `with*()` methods like PSR-7 and PSR-13) and that listeners return the event to pass along.
 * Make the Event immutable but aggregate and return the return value from each Listener.
 
-However, Stoppable Events (the Interception case) also needed to have a channel by which to indicate that further listeners should not be called.  That could be done either by:
+However, Stoppable Events (the alternative chain case) also needed to have a channel by which to indicate that further listeners should not be called.  That could be done either by:
 
 * Modifying the event (`stopPropagation()`)
 * Evolving the event to be stopped (`withPropagationStopped()`)
