@@ -55,10 +55,10 @@ Initially the Working Group wished to define all Events as immutable message obj
 However, Stoppable Events (the alternative chain case) also needed to have a channel by which to indicate that further listeners should not be called.  That could be done either by:
 
 * Modifying the event (`stopPropagation()`)
-* Evolving the event to be stopped (`withPropagationStopped()`)
 * Returning a sentinel value from the listener (`true` or `false`) to indicate that propagation should terminate.
+* Evolving the event to be stopped (`withPropagationStopped()`)
 
-Of those, the third would mandate a mutable event object as the return value was already in use.  The first would mandate a mutable event in at least some cases.  And the second seemed unnecessarily ceremonial and pedantic.
+Of those, the first would mandate a mutable event in at least some cases.  The second would mandate a mutable event as the return value was already in use.  And the third seemed unnecessarily ceremonial and pedantic.
 
 Having listeners return evolvable events also posed a challenge.  That pattern is not used by any known implementations in PHP or elsewhere.  It also relies on the listener to remember to return the object (extra work for the listener author) and to not return some other, new object that might not be fully compatible with later listeners (such as a subclass or superclass of the event).
 
