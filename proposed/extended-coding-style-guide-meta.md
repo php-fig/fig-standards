@@ -24,9 +24,7 @@ great (losing git history, huge changesets and breaking existing patches/pull re
 
 PSR-2 required adopters to reformat large amounts of existing code which stifled adoption.
 To help alleviate this issue with PSR-12, we have taken a more prescriptive approach and
-defined the standards for new language features as they are released. We hope that because
-this specification is defined prior to mass amounts of code being written, it will have a
-better chance of being adopted.
+defined the standards for new language features as they are released.
 
 However it is for a lack of wanting to be dictatorial that we will aim to apply PSR-2
 styling, rationale and stances (Described in Section 4, Approaches) in PSR-12 instead of
@@ -91,7 +89,7 @@ have uniform syntax and prevent possible confusion.
 In order to settle things using data, survey was conducted and responses from 142 people
 including 17 project representatives were gathered:
 
-### 4.4.1. Fig Representative Results
+### 4.4.1. PHP-FIG Representative Results
 
 | Representative          | Project           | Compound namespaces with a depth of two or more MUST not be used | Header statement grouping and ordering | Declare statements must each be on their own line | Declare statements in PHP files containing markup | Declare statements have no spaces: `declare(strict_types=1);` | Block declare statement formatting | `new` keyword usage, parenthesis required |Return type declaration formatting |Use statement leading slashes disallowed | Block namespace declaration formatting | General operator spacing |Try, Catch, Finally formatting | Anonymous class declaration formatting | Keyword casing, only lower case | Type keywords, short form only |
 | --------------          | -------           | ---------------------------------------------------- | ---------------------------------- | ----------------------------------------- | ------------------------------------------- | -------------------------------------------------------- | ------------------------------- | ------------------------------------- |------------------------------- |------------------------------------ | ----------------------------------- | ---------------------- |--------------------------- | ----------------------------------- | --------------------------- | -------------------------- |
@@ -188,7 +186,7 @@ specification for a full understanding of its contents.
 
 ## 6.4. Special Thanks
 * Michael Cullum for drafting the original specification
-* Alexandar Makarov for coordinating the draft during FIG 2.0
+* Alexandar Makarov for coordinating the draft during PHP-FIG 2.0
 * Cees-Jan Kiewiet for moral support
 
 # 7. Votes
