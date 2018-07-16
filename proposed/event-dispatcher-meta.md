@@ -37,12 +37,12 @@ The Working Group identified four possible workflows for event passing, based on
 * Collection.  ("Give me all your things, that I may do something with that list.")
 * Alternative chain.  ("Here's a thing; the first one of you that can handle it do so, then stop.")
 
-On further review, it was determined that Collection was a special case of Object enhancement (the collection being the object that is enhanced).  Alternative chain is similarly a special case of Object enhancement, as the signature is identical and the dispatch workflow is nearly identical.  That leaves two relevant workflows workflows:
+On further review, it was determined that Collection was a special case of Object enhancement (the collection being the object that is enhanced).  Alternative chain is similarly a special case of Object enhancement, as the signature is identical and the dispatch workflow is nearly identical.  That leaves two relevant workflows:
 
 * Notification
 * Modification
 
-Notification can safely be done asynchronously (including delaying it through a queue) but Modificatoin by nature involve passing data back to the caller and thus must be synchronous.  Despite that difference the Working Group determined that the use cases were close enough to be considered in a single PSR.  The two different workflows however are represented by two different but related dispatcher interfaces.
+Notification can safely be done asynchronously (including delaying it through a queue) but Modification by nature involve passing data back to the caller and thus must be synchronous.  Despite that difference the Working Group determined that the use cases were close enough to be considered in a single PSR.  The two different workflows however are represented by two different but related dispatcher interfaces.
 
 ### 4.2 Immutable events
 
