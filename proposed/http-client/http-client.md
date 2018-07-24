@@ -12,18 +12,17 @@ interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 ### Client
 
 An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
-response. Under the hood, the HTTP client MAY modify the request/response received
-from the user/server. In this case, the request and the response MUST be consistent
-between the body and headers. For example, a
-server may return a gzip encoded body and the client may know how to decode this.
-If it decodes the body, the client MUST also remove the header that specifies the
-encoding and adjust the Content-Length header.
+response. Under the hood, the HTTP client MAY modify the request received from the user
+and/or the response received from the server. In this case, the request and the response
+MUST be consistent between the body and headers. For example, a server may return a gzip
+encoded body and the client may decides to decode the body. If the client decodes the body,
+the client MUST also remove the Content-Encoding header and adjust the Content-Length header.
 
 ### Exceptions
 
 All exceptions thrown by the client MUST implement `Psr\Http\Client\ClientException`.
 
-When the HTTP client is passed a request that is invalid and cannot be sent, the client
+When the HTTP client is called with a request that is invalid and cannot be sent, the client
 MUST throw a `Psr\Http\Client\Exception\RequestException`. If there is an error
 with the network or the remote server cannot be reached, the HTTP client MUST throw
 a `Psr\Http\Client\Exception\NetworkException`.
