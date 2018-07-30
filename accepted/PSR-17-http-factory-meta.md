@@ -291,8 +291,8 @@ The working group would also like to acknowledge the contributions of:
 
 - [Entrance Vote](https://groups.google.com/forum/#!topic/php-fig/6rZPZ8VglIM)
 - [Working Group Formation](https://groups.google.com/d/msg/php-fig/A5mZYTn5Jm8/j0FN6eZtBAAJ)
-- Review Period Initiation _(not yet begun)_
-- Acceptance Vote _(not yet taken)_
+- [Review Period Initiation](https://groups.google.com/d/msg/php-fig/OpUnkrnFhe0/y2dT7CakAQAJ)
+- [Acceptance Vote](https://groups.google.com/d/msg/php-fig/M8PapGXXE1E/uBq2Dq-ZAwAJ)
 
 ## 8. Relevant Links
 

@@ -20,6 +20,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 13  | [Hypermedia Links][psr13]      | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander   |
 | 15  | [HTTP Handlers][psr15]         | Woody Gilk                     | _N/A_                   | Matthew Weier O'Phinney |
 | 16  | [Simple Cache][psr16]          | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier |
+| 17  | [HTTP Factories][psr17]        | Woody Gilk                     | _N/A_                   | Matthew Weier O'Phinney |
 
 ### Review
 
@@ -32,7 +33,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
 | 14  | [Event Manager][psr14]               | Larry Garfield                 |
-| 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
 
 ### Abandoned
@@ -71,7 +71,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 14  | [Event Manager][psr14]               | Larry Garfield                 | Draft      |
 | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     | Accepted   |
 | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Accepted   |
-| 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Draft      |
+| 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Accepted   |
 | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Draft      |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
@@ -92,5 +92,5 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-dispatcher.md
 [psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md
 [psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
-[psr17]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-factory/
+[psr17]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-17-http-factory.md
 [psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client/
