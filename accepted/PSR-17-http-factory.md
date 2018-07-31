@@ -196,9 +196,6 @@ interface UploadedFileFactoryInterface
 }
 ```
 
-The interface extends `StreamFactoryInterface`, which CAN be used to create the
-`$stream` argument for the `createUploadedFile()` method.
-
 ### 2.6 UriFactoryInterface
 
 Has the ability to creates URIs for client and server requests.
