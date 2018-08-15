@@ -24,9 +24,9 @@ body. If the client decodes the body, the client MUST also remove the
 All exceptions thrown by the client MUST implement `Psr\Http\Client\ClientException`.
 
 When the HTTP client is called with a request that is invalid and cannot be sent, the client
-MUST throw a `Psr\Http\Client\Exception\RequestException`. If there is an error
+MUST throw a `Psr\Http\Client\RequestException`. If there is an error
 with the network or the remote server cannot be reached, the HTTP client MUST throw
-a `Psr\Http\Client\Exception\NetworkException`.
+a `Psr\Http\Client\NetworkException`.
 
 Smaller issues that do not block the client from sending the request (such as
 invalid HTTP versions) MUST NOT result in exceptions.
