@@ -85,6 +85,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-02-28 - 2016-12-24 |
 | Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
 | Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
+| Mark Railton ([@railto])              | 2018-01-28 - 2018-06-05 |
 
 
 ### Former Core Committee Members
