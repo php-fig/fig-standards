@@ -81,7 +81,7 @@ Listeners for a Notify event MUST NOT assume any awareness of other Listeners th
 A Notifier
 
 * MAY call relevant Listeners in any order it wishes.
-* MAY delay calling listeners until some later point, such as using a queue system.
+* MAY delay calling Listeners until some later point, such as using a queue system.
 * MAY call multiple Listeners concurrently (such as in an asynchronous system or a queue system with multiple worker processes).
 
 An Emitter calling a Notifier MUST NOT assume that any listeners have fired yet by the time the Notifier has returned.
