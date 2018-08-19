@@ -6,9 +6,9 @@
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2018-08-31 |
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
-| Mark Railton ([@railto])              | 2018-01-28 - 2020-01-31 |
+| Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-31 |
+| Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2020-08-31 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](http://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
