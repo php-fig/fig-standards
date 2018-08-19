@@ -107,6 +107,7 @@ Tasks passed to a Processor SHOULD have some sort of mutator methods on them to 
 A Processor
 
 * MUST call Listeners synchronously in the order they are returned from a ListenerProvider.
+* MUST return the Task it was passed after it is done invoking Listeners.
 * MUST NOT return to the Emitter until all Listeners have executed.
 * As an exception to the previous point, if the Task is a Promise then the the Dispatcher MAY return that Promise before all Listeners have executed.  However, the Promise MUST NOT be treated as fulfilled until all Listeners have executed.
 
