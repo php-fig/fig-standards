@@ -29,6 +29,7 @@ Some examples:
 * **Emitter** - An Emitter is any arbitrary code that wishes to send an Event.  This is also known as the "calling code".  It is not represented by any particular data structure but refers to the use case.
 * **Notifier** - A Notifier is a service object that is given a Message object by an Emitter.  The Notifier is responsible for ensuring that the Message is passed to all relevant Listeners, but MUST defer determining the responsible listeners to a Listener Provider. 
 * **Processor** - A Processor is a service object that is given a Task object by an Emitter.  The Processor is responsible for ensuring that the Task is passed to all relevant Listeners, but MUST defer determining the responsible listeners to a Listener Provider.
+* **Dispatcher** - A Dispatcher refers to either a Notifier or a Processor.  It is not a discrete object defined by this specification but a collective noun for "A Notifier or Processor" for those cases where they can be addressed collectively.
 * **Listener Provider** - A Listener Provider is responsible for determining what Listeners are relevant for a given Event, but MUST NOT call the Listeners itself.  A Listener Provider may specify zero or more relevant Listeners.
 
 ## Events
