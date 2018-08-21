@@ -21,13 +21,14 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Larry Garfield ([@Crell])             | 2016-12-24 - 2019-04-30 |
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2019-04-30 |
 | Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-04-30 |
-| Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2018-08-31 |
-| Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2018-08-31 |
-| Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2018-08-31 |
+| Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2020-08-31 |
+| Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2020-08-31 |
+| Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2020-08-31 |
 | Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2020-01-31 |
 | Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2020-01-31 |
 | Stefano Torresi ([@storresi])         | 2016-12-24 - 2020-01-31 |
 | Michael Cullum ([@michaelcullumuk])   | 2018-01-28 - 2020-01-31 |
+| Chuck Burgess ([@ashnazg])            | 2018-08-26 - 2020-08-31 |
 
 
 ### Member Projects
