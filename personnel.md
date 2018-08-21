@@ -140,6 +140,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@kdambekalns]: https://twitter.com/kdambekalns
 [@korvinszanto]: https://twitter.com/korvinszanto
 [@kriswallsmith]: https://twitter.com/kriswallsmith
+[@iansltx]: https://twitter.com/iansltx
 [@leofeyer]: https://twitter.com/leofeyer
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
