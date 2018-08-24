@@ -108,7 +108,7 @@ standard into a formal specification.
 * David Buchmann (HTTPlug)
 * David De Boer (HTTPlug)
 * Sara Golemon (Sponsor)
-* Jermey Lindblom (Guzzle)
+* Jeremy Lindblom (Guzzle)
 * Christian Lück (Buzz react)
 * Tobias Nyholm (Editor)
 * Matthew Weier O'Phinney (Zend)
