@@ -49,7 +49,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Lithium]                         | Nate Abele ([@nateabele])             |
 | [Magento]                         | Anton Kril ([@AntonKril])             |
 | [PEAR]                            | Chuck Burgess ([@ashnazg])            |
-| [Phalcon]                         | Andres Gutierrez ([@phalconphp])      |
+| [Phalcon]                         | Nikolaos Dimopoulos ([@phalconphp])   |
 | [Phergie]                         | Joe Ferguson ([@joepferguson])        |
 | [Phing]                           | Michiel Rook ([@michieltcs])          |
 | [phpBB]                           | Marc Alexander ([@marc1706])          |
