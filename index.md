@@ -26,14 +26,14 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
-| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
+| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
 
 ### Draft
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
+| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 | 14  | [Event Manager][psr14]               | Larry Garfield                 |
-| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
 
 ### Abandoned
 
@@ -66,13 +66,13 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 9   | [Security Advisories][psr9]          | Michael Hess                   | Abandoned  |
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Abandoned  |
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Accepted   |
-| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Review     |
+| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Draft      |
 | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Accepted   |
 | 14  | [Event Manager][psr14]               | Larry Garfield                 | Draft      |
 | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     | Accepted   |
 | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Accepted   |
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Accepted   |
-| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Draft      |
+| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Review     |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
 [psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
