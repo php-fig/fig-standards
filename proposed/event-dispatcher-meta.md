@@ -42,7 +42,7 @@ On further review, it was determined that Collection was a special case of Objec
 * Notification
 * Modification
 
-Notification can safely be done asynchronously (including delaying it through a queue) but Modification by nature involve passing data back to the caller and thus must be synchronous.  Despite that difference the Working Group determined that the use cases were close enough to be considered in a single PSR.  The two different workflows however are represented by two different but interfaces, `MessageNotifierInterface` (for Messages) and `TaskProcessorInterface` (for Tasks).
+Notification can safely be done asynchronously (including delaying it through a queue) but Modification by nature involve passing data back to the caller and thus must be synchronous.  Despite that difference the Working Group determined that the use cases were close enough to be considered in a single PSR.  The two different workflows however are represented by two different interfaces, `MessageNotifierInterface` (for Messages) and `TaskProcessorInterface` (for Tasks).
 
 ### 4.2 Immutable events
 
