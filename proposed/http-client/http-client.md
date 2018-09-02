@@ -21,12 +21,12 @@ body. If the client decodes the body, the client MUST also remove the
 
 ### Exceptions
 
-All exceptions thrown by the client MUST implement `Psr\Http\Client\ClientException`.
+All exceptions thrown by the client MUST implement `Psr\Http\Client\ClientExceptionInterface`.
 
 When the HTTP client is called with a request that is invalid and cannot be sent, the client
-MUST throw a `Psr\Http\Client\RequestException`. If there is an error
+MUST throw a `Psr\Http\Client\RequestExceptionInterface`. If there is an error
 with the network or the remote server cannot be reached, the HTTP client MUST throw
-a `Psr\Http\Client\NetworkException`.
+a `Psr\Http\Client\NetworkExceptionInterface`.
 
 Smaller issues that do not block the client from sending the request (such as
 invalid HTTP versions) MUST NOT result in exceptions.
@@ -75,26 +75,26 @@ interface ClientInterface
      *
      * @return ResponseInterface
      *
-     * @throws \Psr\Http\Client\ClientException If an error happens while processing the request.
+     * @throws \Psr\Http\Client\ClientExceptionInterface If an error happens while processing the request.
      */
     public function sendRequest(RequestInterface $request): ResponseInterface;
 }
 ```
 
-### Exception
+### ExceptionInterface
 
 ```php
 namespace Psr\Http\Client;
 
 /**
- * Every HTTP client related Exception MUST implement this interface.
+ * Every HTTP client related exception MUST implement this interface.
  */
-interface ClientException extends \Throwable
+interface ClientExceptionInterface extends \Throwable
 {
 }
 ```
 
-### RequestException
+### RequestExceptionInterface
 
 ```php
 namespace Psr\Http\Client;
@@ -108,7 +108,7 @@ use Psr\Http\Message\RequestInterface;
  *      - Request is invalid (e.g. method is missing)
  *      - Runtime request errors (e.g. the body stream is not seekable)
  */
-interface RequestException extends ClientException
+interface RequestExceptionInterface extends ClientExceptionInterface
 {
     /**
      * Returns the request.
@@ -121,7 +121,7 @@ interface RequestException extends ClientException
 }
 ```
 
-### NetworkException
+### NetworkExceptionInterface
 
 ```php
 namespace Psr\Http\Client;
@@ -135,7 +135,7 @@ use Psr\Http\Message\RequestInterface;
  *
  * Example: the target host name can not be resolved or the connection failed.
  */
-interface NetworkException extends ClientException
+interface NetworkExceptionInterface extends ClientExceptionInterface
 {
     /**
      * Returns the request.
