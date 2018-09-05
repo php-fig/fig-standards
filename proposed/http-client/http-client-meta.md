@@ -84,12 +84,12 @@ exceptions for 4xx and 5xx responses.
 
 #### Why "sendRequest"?
 
-The method signature `ClientInterface::sendRequst(RequstInterface $request): ResponseInterface`
+The method signature `ClientInterface::sendRequest(RequestInterface $request): ResponseInterface`
 could be considered to be a bit too verbose. An initial idea would be to name it
-`ClientInterface::send(RequstInterface $request): ResponseInterface`. That would
+`ClientInterface::send(RequestInterface $request): ResponseInterface`. That would
 cause issues when major HTTP client libraries will implement the `ClientInterface` because
 most of them already have defined a function `send`. To allow those libraries implement
-`ClientInterface` without breaking backward compatibility we simply renamed it `sendReqeust`.
+`ClientInterface` without breaking backward compatibility we simply renamed it `sendRequest`.
 
 ### Background
 
