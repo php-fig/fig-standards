@@ -59,17 +59,17 @@ would have a few drawbacks:
 
 ### Exception Model
 
-The domain exceptions `NetworkException` and `RequestException` define
+The domain exceptions `NetworkExceptionInterface` and `RequestExceptionInterface` define
 a contract very similar to each other. The chosen approach is to not let them extend each other
-because inheritance does not make sense in the domain model. A `RequestException` is simply not a
-`NetworkException`.
+because inheritance does not make sense in the domain model. A `RequestExceptionInterface` is simply not a
+`NetworkExceptionInterface`.
 
 Allowing exceptions to extend a `RequestAwareException` and/or `ResponseAwareException` interface
 has been discussed but that is a convenience shortcut that one should not take. One should rather
 catch the specific exceptions and handle them accordingly.
 
 One could be more granular when defining exceptions. For example, `TimeOutException` and `HostNotFoundException`
-could be subtypes of `NetworkException`. The chosen approach is not to define such subtypes because
+could be subtypes of `NetworkExceptionInterface`. The chosen approach is not to define such subtypes because
 the exception handling in a consuming library would in most cases not be different between those exceptions.
 
 #### Throwing exceptions for 4xx and 5xx responses
