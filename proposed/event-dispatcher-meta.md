@@ -90,6 +90,21 @@ The Working Group therefore chose to encapsulate the registration of listeners b
 
 While combining the Notifier, Processor, and Provider into a single object is a valid and permissible degenerate case, it is NOT RECOMMENDED as it reduces the flexibility of system integrators.  Instead, the provider should be composed as a dependent object.
 
+### 4.4 Distinction
+
+Despite their similarities, the Message and Task pipelines have two distinct workflows and use cases.
+
+| Messages                      | Tasks
+|-------------------------------|-------------------------------
+| Must be immutable             | May me mutable
+| Must be serializable          | May be serializable
+| May be delayed                | Must be processed immediately
+| Listener order not guaranteed | Listener order is guaranteed
+| All listeners will fire       | Listeners may short-circuit the pipeline
+| One-way communication only    | May be one-way or two-way communication
+
+
+
 ## 5. People
 
 The Event Manager Working Group consisted of:
