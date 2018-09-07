@@ -65,7 +65,7 @@ As a general guideline, a Message Notifier is appropriate when:
 
 A Task Processor is appropriate when:
 
-* The event is being used as a "hook" or "pointcut" to extent or modify the Emitter's behavior.
+* The event is being used as a "hook" or "pointcut" to extend or modify the Emitter's behavior.
 * The Emitter wishes to allow listeners to interact with each other (through mutating the event).
 * NEED A 3RD EXAMPLE HERE.
 
