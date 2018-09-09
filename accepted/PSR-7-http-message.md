@@ -1082,6 +1082,7 @@ interface ServerRequestInterface extends RequestInterface
      *
      * @return null|array|object The deserialized body parameters, if any.
      *     These will typically be an array or object.
+     * @throws \InvalidArgumentException if body cannot be deserialize.                           
      */
     public function getParsedBody();
 
