@@ -17,6 +17,12 @@ A second goal is that HTTP clients can be replaced as per the
 [Liskov substitutions principle][Liskov]. This means that all clients MUST behave in the
 same way when sending a request.
 
+## Definitions
+
+* **Client** - A Client is a library that implements this specification for the purposes of
+sending PSR-7-compatible HTTP Request messages and returning a PSR-7-compatible HTTP Response message to a Caller.
+* **Caller** - A Caller is any code that makes use of a Client.
+
 ## Specification
 
 ### Client
