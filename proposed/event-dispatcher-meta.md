@@ -67,7 +67,7 @@ A Task Processor is appropriate when:
 
 * The event is being used as a "hook" or "pointcut" to extend or modify the Emitter's behavior.
 * The Emitter wishes to allow listeners to interact with each other (through mutating the event).
-* NEED A 3RD EXAMPLE HERE.
+* The Emitter wishes to allow a listener to terminate the pipeline early before other listeners have completed.
 
 If uncertain which is appropriate, the Task Processor offers more functionality and is therefore the safer default.
 
