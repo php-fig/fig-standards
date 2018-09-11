@@ -62,6 +62,9 @@ of `Psr\Http\Client\RequestExceptionInterface`.
 If the request cannot be sent due to a network failure of any kind the Client MUST throw an instance of
 `Psr\Http\Client\NetworkExceptionInterface`.
 
+Clients MAY throw more specific exceptions than those defined here (a `TimeOutException` or `HostNotFoundException` for
+example), provided they implement the appropriate interface defined above.
+
 ## Interfaces
 
 ### ClientInterface
