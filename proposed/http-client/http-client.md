@@ -20,8 +20,9 @@ same way when sending a request.
 ## Definitions
 
 * **Client** - A Client is a library that implements this specification for the purposes of
-sending PSR-7-compatible HTTP Request messages and returning a PSR-7-compatible HTTP Response message to a Caller.
-* **Caller** - A Caller is any code that makes use of a Client.
+sending PSR-7-compatible HTTP Request messages and returning a PSR-7-compatible HTTP Response message to a Calling library.
+* **Calling Library** - A Calling Library is any code that makes use of a Client.  It does not implement
+this specification's interfaces but consumes an object that implements them (a Client).
 
 ## Client
 
@@ -31,7 +32,7 @@ A Client MAY:
 
 * Elect to send an altered HTTP request from the one it was provided.  For example, it could
 compress an outgoing message body.
-* Elect to alter a received HTTP response before returning it to the caller. For example, it could
+* Elect to alter a received HTTP response before returning it to the calling library. For example, it could
 decompress an incoming message body.
 
 If a Client chooses to alter either the HTTP request or HTTP response, it MUST ensure that the
@@ -39,19 +40,19 @@ response remains internally consistent.  For example, if a Client chooses to dec
 body then it MUST also remove the `Content-Encoding` header and adjust the `Content-Length` header.
 
 Note that as a result, since [PSR-7 objects are immutable](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message-meta.md#why-value-objects),
-the Caller MUST NOT assume that the object passed to `ClientInterface::sendRequest()` will be the same PHP object
+the Calling Library MUST NOT assume that the object passed to `ClientInterface::sendRequest()` will be the same PHP object
 that is actually sent. For example, the Request object that is returned by an exception MAY be a different object than
 the one passed to `sendRequest()`, so comparison by reference (===) is not possible.
 
 A Client MUST:
 
-* Reassemble a multi-step HTTP 1xx response itself so that what is returned to the Caller is an valid HTTP response
+* Reassemble a multi-step HTTP 1xx response itself so that what is returned to the Calling Library is an valid HTTP response
 of status code 200 or higher.
 
 ## Error handling
 
 A Client MUST NOT treat a well-formed HTTP request or HTTP response as an error condition.  For example, response
-status codes in the 400 and 500 range MUST NOT cause an exception and MUST be returned to the Caller as normal.
+status codes in the 400 and 500 range MUST NOT cause an exception and MUST be returned to the Calling Library as normal.
 
 A Client MUST throw an instance of `Psr\Http\Client\ClientExceptionInterface` if and only if it is unable to send
 the HTTP request at all or if no HTTP response is ever returned (such as a timeout).
