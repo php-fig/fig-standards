@@ -23,17 +23,20 @@ same way when sending a request.
 sending PSR-7-compatible HTTP Request messages and returning a PSR-7-compatible HTTP Response message to a Caller.
 * **Caller** - A Caller is any code that makes use of a Client.
 
-## Specification
+## Client
 
-### Client
+A Client is an object implementing `ClientInterface`.
 
-An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
-response. Under the hood, the HTTP client MAY modify the request received from
-the user and/or the response received from the server. In this case, the request
-and the response MUST be consistent between the body and headers. For example, a
-server may return a gzip-encoded body and the client may decide to decode the
-body. If the client decodes the body, the client MUST also remove the
-`Content-Encoding` header and adjust the `Content-Length` header.
+A Client MAY:
+
+* Elect to send an altered HTTP request from the one it was provided.  For example, it could
+compress an outgoing message body.
+* Elect to alter a received HTTP response before returning it to the caller. For example, it could
+decompress an incoming message body.
+
+If a Client chooses to alter either the HTTP request or HTTP response, it MUST ensure that the
+response remains internally consistent.  For example, if a Client chooses to decompress the message
+body then it MUST also remove the `Content-Encoding` header and adjust the `Content-Length` header.
 
 ### Exceptions
 
