@@ -38,21 +38,24 @@ If a Client chooses to alter either the HTTP request or HTTP response, it MUST e
 response remains internally consistent.  For example, if a Client chooses to decompress the message
 body then it MUST also remove the `Content-Encoding` header and adjust the `Content-Length` header.
 
-### Exceptions
+A Client MUST:
 
-All exceptions thrown by the client MUST implement `Psr\Http\Client\ClientExceptionInterface`.
+* Reassemble a multi-step HTTP 1xx response itself so that what is returned to the Caller is an valid HTTP response
+of status code 200 or higher.
 
-When the HTTP client is called with a request that is invalid and cannot be sent, the client
-MUST throw a `Psr\Http\Client\RequestExceptionInterface`. If there is an error
-with the network or the remote server cannot be reached, the HTTP client MUST throw
-a `Psr\Http\Client\NetworkExceptionInterface`.
+## Error handling
 
-Smaller issues that do not block the client from sending the request (such as
-invalid HTTP versions) MUST NOT result in exceptions.
+A Client MUST NOT treat a well-formed HTTP request or HTTP response as an error condition.  For example, response
+status codes in the 400 and 500 range MUST NOT cause an exception and MUST be returned to the Caller as normal.
 
-If the remote server answers with a response that can be parsed into a PSR-7 response,
-the client MUST NOT throw an exception. For example, response status codes in the
-400 and 500 range MUST NOT cause an exception.
+A Client MUST throw an instance of `Psr\Http\Client\ClientExceptionInterface` if and only if it is unable to send
+the HTTP request at all or if no HTTP response is ever returned (such as a timeout).
+
+If a request cannot be sent because the request message is not a valid HTTP request, the Client MUST throw an instance
+of `Psr\Http\Client\RequestExceptionInterface`.
+
+If the request cannot be sent due to a network failure of any kind the Client MUST throw an instance of
+`Psr\Http\Client\NetworkExceptionInterface`.
 
 ## Interfaces
 
