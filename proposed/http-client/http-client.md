@@ -78,8 +78,7 @@ interface ClientInterface
      * Sends a PSR-7 request and returns a PSR-7 response.
      *
      * Every technically correct HTTP response MUST be returned as-is, even if it represents an HTTP
-     * error response or a redirect instruction. The only special case is 1xx responses, which MUST
-     * be assembled in the HTTP client.
+     * error response or a redirect instruction.
      *
      * {@link https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message-meta.md#why-value-objects}
      *
