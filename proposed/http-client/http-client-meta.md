@@ -85,11 +85,17 @@ exceptions for 4xx and 5xx responses.
 #### Why "sendRequest"?
 
 The method signature `ClientInterface::sendRequest(RequestInterface $request): ResponseInterface`
-could be considered to be a bit too verbose. An initial idea would be to name it
-`ClientInterface::send(RequestInterface $request): ResponseInterface`. That would
-cause issues when major HTTP client libraries will implement the `ClientInterface` because
-most of them already have defined a function `send`. To allow those libraries implement
-`ClientInterface` without breaking backward compatibility we simply renamed it `sendRequest`.
+might sound a bit verbose at first. An obvious improvement would be to just
+call the method `send`.
+
+The reason behind this verbosity is how existing HTTP client libraries are implemented.
+Most of them already have a method called `send` with an arbitrary signature.
+To make adoption easier we decided to choose a more verbose name.
+Besides the backward compatibility argument, future HTTP client implementations
+will also have the ability to implement an arbitrary API using the name `send`
+and still implement this standard. For example a simplified method signature like
+`send(string $method, string $url, array $headers, string $body): ResponseInterface`
+can be a common use case.
 
 ### Background
 
