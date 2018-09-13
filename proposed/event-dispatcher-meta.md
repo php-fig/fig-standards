@@ -50,7 +50,7 @@ Despite their similarities, the Message and Task pipelines have two distinct wor
 
 | Messages                      | Tasks
 |-------------------------------|-------------------------------
-| Must be immutable             | May me mutable
+| Must be immutable             | May be mutable
 | Must be serializable          | May be serializable
 | May be delayed                | Must be processed immediately
 | Listener order not guaranteed | Listener order is guaranteed
