@@ -52,8 +52,8 @@ Despite their similarities, the Message and Task pipelines have two distinct wor
 |-------------------------------|-------------------------------
 | Must be immutable             | May be mutable
 | Must be serializable          | May be serializable
-| May be delayed                | Must be processed immediately
-| Listener order not guaranteed | Listener order is guaranteed
+| Listeners may be delayed      | Listeners must be called synchronously immediately
+| Listener order not guaranteed | Listeners must be called in the order returned from the Provider
 | All listeners will fire       | Listeners may short-circuit the pipeline (if the Stoppable interface is implemented)
 | One-way communication only    | May be one-way or two-way communication
 
