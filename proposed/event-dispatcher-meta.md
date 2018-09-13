@@ -44,9 +44,36 @@ On further review, it was determined that Collection was a special case of Objec
 
 Notification can safely be done asynchronously (including delaying it through a queue) but Modification by nature involve passing data back to the caller and thus must be synchronous.  Despite that difference the Working Group determined that the use cases were close enough to be considered in a single PSR.  The two different workflows however are represented by two different interfaces, `MessageNotifierInterface` (for Messages) and `TaskProcessorInterface` (for Tasks).
 
-### 4.2 Immutable events
+### 4.2 Intended use cases
 
-Initially the Working Group wished to define all Events as immutable message objects, similar to PSR-7.  However, that proved problematic in the Processor case.  In both of those cases Listeners needed a way to return data to the caller.  In concept there were three possible avenues:
+Despite their similarities, the Message and Task pipelines have two distinct workflows and use cases.
+
+| Messages                      | Tasks
+|-------------------------------|-------------------------------
+| Must be immutable             | May be mutable
+| Must be serializable          | May be serializable
+| Listeners may be delayed      | Listeners must be called synchronously immediately
+| Listener order not guaranteed | Listeners must be called in the order returned from the Provider
+| All listeners will fire       | Listeners may short-circuit the pipeline (if the Stoppable interface is implemented)
+| One-way communication only    | May be one-way or two-way communication
+
+As a general guideline, a Message Notifier is appropriate when:
+
+* The Emitter does not care what actions listeners take in response to an event.
+* The common case would be that only a single listener is registered, that is, when the Message Notifier is being used as a Command Bus.
+* The Emitter anticipates listeners to be expensive and therefore likely to be deferred for later processing.
+
+A Task Processor is appropriate when:
+
+* The event is being used as a "hook" or "pointcut" to extend or modify the Emitter's behavior.
+* The Emitter wishes to allow listeners to interact with each other (through mutating the event).
+* The Emitter wishes to allow a listener to terminate the pipeline early before other listeners have completed.
+
+If uncertain which is appropriate, the Task Processor offers more functionality and is therefore the safer default.
+
+### 4.3 Immutable events
+
+Initially the Working Group wished to define all Events as immutable message objects, similar to PSR-7.  However, that proved problematic in the Processor case.  In that case Listeners needed a way to return data to the caller.  In concept there were three possible avenues:
 
 * Make the event mutable and modify it in place.
 * Require that events be evolvable (immutable but with `with*()` methods like PSR-7 and PSR-13) and that listeners return the event to pass along.
@@ -73,7 +100,7 @@ Given those options the Working Group felt mutable tasks were the safer alternat
 
 The Message Notification use case, however, has no need for return communication so those issues are moot.  Those objects therefore MUST be treated as immutable, regardless of what the object's methods are.
 
-### 4.3 Listener registration
+### 4.4 Listener registration
 
 Experimentation during development of the specification determined that there were a wide range of viable, legitimate means by which a Notifier or Processor could be informed of a listener.
 
