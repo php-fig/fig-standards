@@ -59,7 +59,7 @@ Despite their similarities, the Message and Task pipelines have two distinct wor
 
 As a general guideline, a Message Notifier is appropriate when:
 
-* The Emitter does not care what responses are taken to an event.
+* The Emitter does not care what actions listeners take in response to an event.
 * The common case would be that only a single listener is registered, that is, when the Message Notifier is being used as a Command Bus.
 * The Emitter anticipates listeners to be expensive and therefore likely to be deferred for later processing.
 
