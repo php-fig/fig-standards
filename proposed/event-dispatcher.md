@@ -115,15 +115,9 @@ If passed a Stoppable Task, a Processor
 
 ### Error handling
 
-In most cases, an Exception or Error thrown by a Listener on a Processor SHOULD interrupt further Listener invocation.  A Processor MAY choose to handle a `Throwable` from a listener in any way it chooses.  For example, it may:
+An Exception or Error thrown by a Listener MUST block the execution of any further Listeners.  An Error or Exception thrown by a Listener MUST be allowed to propagate back up to the caller.
 
-* Ignore it and let the exception bubble up the stack.
-* Wrap the exception in its own exception and rethrow it.
-* Log the exception and then take either of the previous actions.
-* Wrap the exception in a new Event and allow that Event to be processed like any other.
-* Any combination of the above, or some other approach.
-
-However, should the Processor elect to pass information about the error condition to another object it MUST do so via an object that implements `EventErrorInterface`.  For example, if it rethrows a wrapped Exception then the wrapping Exception MUST implement that interface.  If it triggers a new Event then that Event MUST implement that interface.
+A Processor MAY catch a thrown object to log it, allow additional action to be taken, etc., but then MUST rethrow the original throwable.
 
 ## Listener Provider
 
