@@ -46,8 +46,6 @@ Message objects SHOULD be treated as immutable.  While they MAY have mutator met
 
 Message objects MUST support lossless serialization and deserialization.  That is, `$m == unserialize(serialize($m))` must always hold true.  Objects MAY leverage PHP’s Serializable interface, `__sleep()` or `__wakeup()` magic methods, or similar language functionality if appropriate.
 
-It is RECOMMENDED that Message classes use the suffix `Message`.
-
 ### Tasks
 
 A Task is an Event where a response from the listeners is permitted, and depending on the use case may be expected.
@@ -59,8 +57,6 @@ A **Stoppable Task** is a special case of Task that contains additional ways to 
 A Task that implements `StoppableTaskInterface` MUST return `true` from `isPropagationStopped()` when whatever task it represents has been completed.  It is up to the implementer of the class to determine when that is.  For example, a Task that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which sets an internal flag that `isPropagationStopped()` will use to return `true` once the response has been set.
 
 It is RECOMMENDED, but NOT REQUIRED, that Task objects support lossless serialization and deserialization.
-
-It is RECOMMENDED that Task classes use the suffix `Task`.
 
 ## Listeners
 
