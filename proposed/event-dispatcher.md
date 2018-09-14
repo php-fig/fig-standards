@@ -56,9 +56,7 @@ Task objects MAY be treated as mutable and MAY have mutator methods on them if a
 
 A **Stoppable Task** is a special case of Task that contains additional ways to prevent further Listeners from being called.  It is indicated by implementing the `StoppableTaskInterface`.
 
-It is RECOMMENDED that Stoppable Task invoke `stopPropagation()` on themselves automatically when the answer is provided.  For example, a Task that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which calls `$this->stopPropagation()` once the response is set.
-
-Once the `stopPropagation()` method on a Stoppable Task has been called then `isStopped()` MUST return `true`.  However, `isStopped()` MAY also return true in other circumstances deemed appropriate by the class author.
+A Task that implements `StoppableTaskInterface` MUST return `true` from `isPropagationStopped()` when whatever task it represents has been completed.  It is up to the implementer of the class to determine when that is.  For example, a Task that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which sets an internal flag that `isPropagationStopped()` will use to return `true` once the response has been set.
 
 It is RECOMMENDED, but NOT REQUIRED, that Task objects support lossless serialization and deserialization.
 
@@ -113,7 +111,7 @@ A Processor
 
 If passed a Stoppable Task, a Processor
 
-* MUST call `isStopped()` on the Task after each Listener has been called.  If that method returns `true` it MUST return the Task to the Emitter immediately and MUST NOT call any further Listeners.
+* MUST call `isPropagationStopped()` on the Task after each Listener has been called.  If that method returns `true` it MUST return the Task to the Emitter immediately and MUST NOT call any further Listeners.
 
 ### Error handling
 
