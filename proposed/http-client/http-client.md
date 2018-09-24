@@ -55,13 +55,13 @@ A Client MUST NOT treat a well-formed HTTP request or HTTP response as an error 
 status codes in the 400 and 500 range MUST NOT cause an exception and MUST be returned to the Calling Library as normal.
 
 A Client MUST throw an instance of `Psr\Http\Client\ClientExceptionInterface` if and only if it is unable to send
-the HTTP request at all or if no HTTP response is ever returned (such as a timeout).
+the HTTP request at all or if the HTTP response could not be parsed into a PSR-7 response object.
 
 If a request cannot be sent because the request message is not a valid HTTP request, the Client MUST throw an instance
 of `Psr\Http\Client\RequestExceptionInterface`.
 
-If the request cannot be sent due to a network failure of any kind the Client MUST throw an instance of
-`Psr\Http\Client\NetworkExceptionInterface`.
+If the request cannot be sent due to a network failure of any kind, including a timeout, the Client MUST throw an
+instance of `Psr\Http\Client\NetworkExceptionInterface`.
 
 Clients MAY throw more specific exceptions than those defined here (a `TimeOutException` or `HostNotFoundException` for
 example), provided they implement the appropriate interface defined above.
