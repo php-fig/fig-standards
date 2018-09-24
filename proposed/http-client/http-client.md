@@ -30,13 +30,13 @@ A Client is an object implementing `ClientInterface`.
 
 A Client MAY:
 
-* Elect to send an altered HTTP request from the one it was provided. For example, it could
+* Choose to send an altered HTTP request from the one it was provided. For example, it could
 compress an outgoing message body.
-* Elect to alter a received HTTP response before returning it to the calling library. For example, it could
+* Choose to alter a received HTTP response before returning it to the calling library. For example, it could
 decompress an incoming message body.
 
 If a Client chooses to alter either the HTTP request or HTTP response, it MUST ensure that the
-response remains internally consistent.  For example, if a Client chooses to decompress the message
+object remains internally consistent.  For example, if a Client chooses to decompress the message
 body then it MUST also remove the `Content-Encoding` header and adjust the `Content-Length` header.
 
 Note that as a result, since [PSR-7 objects are immutable](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message-meta.md#why-value-objects),
