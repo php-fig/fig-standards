@@ -30,7 +30,7 @@ A Client is an object implementing `ClientInterface`.
 
 A Client MAY:
 
-* Elect to send an altered HTTP request from the one it was provided.  For example, it could
+* Elect to send an altered HTTP request from the one it was provided. For example, it could
 compress an outgoing message body.
 * Elect to alter a received HTTP response before returning it to the calling library. For example, it could
 decompress an incoming message body.
@@ -51,7 +51,7 @@ of status code 200 or higher.
 
 ## Error handling
 
-A Client MUST NOT treat a well-formed HTTP request or HTTP response as an error condition.  For example, response
+A Client MUST NOT treat a well-formed HTTP request or HTTP response as an error condition. For example, response
 status codes in the 400 and 500 range MUST NOT cause an exception and MUST be returned to the Calling Library as normal.
 
 A Client MUST throw an instance of `Psr\Http\Client\ClientExceptionInterface` if and only if it is unable to send
