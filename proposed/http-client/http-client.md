@@ -7,34 +7,6 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
-## Specification
-
-### Client
-
-An HTTP client has the responsibility to send a PSR-7 request and return a PSR-7
-response. Under the hood, the HTTP client MAY modify the request received from
-the user and/or the response received from the server. In this case, the request
-and the response MUST be consistent between the body and headers. For example, a
-server may return a gzip-encoded body and the client may decide to decode the
-body. If the client decodes the body, the client MUST also remove the
-`Content-Encoding` header and adjust the `Content-Length` header.
-
-### Exceptions
-
-All exceptions thrown by the client MUST implement `Psr\Http\Client\ClientExceptionInterface`.
-
-When the HTTP client is called with a request that is invalid and cannot be sent, the client
-MUST throw a `Psr\Http\Client\RequestExceptionInterface`. If there is an error
-with the network or the remote server cannot be reached, the HTTP client MUST throw
-a `Psr\Http\Client\NetworkExceptionInterface`.
-
-Smaller issues that do not block the client from sending the request (such as
-invalid HTTP versions) MUST NOT result in exceptions.
-
-If the remote server answers with a response that can be parsed into a PSR-7 response,
-the client MUST NOT throw an exception. For example, response status codes in the
-400 and 500 range MUST NOT cause an exception.
-
 ## Goal
 
 The goal of this PSR is to allow developers to create libraries decoupled from HTTP client
@@ -44,6 +16,55 @@ dependencies and lowers the likelihood of version conflicts.
 A second goal is that HTTP clients can be replaced as per the
 [Liskov substitutions principle][Liskov]. This means that all clients MUST behave in the
 same way when sending a request.
+
+## Definitions
+
+* **Client** - A Client is a library that implements this specification for the purposes of
+sending PSR-7-compatible HTTP Request messages and returning a PSR-7-compatible HTTP Response message to a Calling library.
+* **Calling Library** - A Calling Library is any code that makes use of a Client.  It does not implement
+this specification's interfaces but consumes an object that implements them (a Client).
+
+## Client
+
+A Client is an object implementing `ClientInterface`.
+
+A Client MAY:
+
+* Choose to send an altered HTTP request from the one it was provided. For example, it could
+compress an outgoing message body.
+* Choose to alter a received HTTP response before returning it to the calling library. For example, it could
+decompress an incoming message body.
+
+If a Client chooses to alter either the HTTP request or HTTP response, it MUST ensure that the
+object remains internally consistent.  For example, if a Client chooses to decompress the message
+body then it MUST also remove the `Content-Encoding` header and adjust the `Content-Length` header.
+
+Note that as a result, since [PSR-7 objects are immutable](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message-meta.md#why-value-objects),
+the Calling Library MUST NOT assume that the object passed to `ClientInterface::sendRequest()` will be the same PHP object
+that is actually sent. For example, the Request object that is returned by an exception MAY be a different object than
+the one passed to `sendRequest()`, so comparison by reference (===) is not possible.
+
+A Client MUST:
+
+* Reassemble a multi-step HTTP 1xx response itself so that what is returned to the Calling Library is an valid HTTP response
+of status code 200 or higher.
+
+## Error handling
+
+A Client MUST NOT treat a well-formed HTTP request or HTTP response as an error condition. For example, response
+status codes in the 400 and 500 range MUST NOT cause an exception and MUST be returned to the Calling Library as normal.
+
+A Client MUST throw an instance of `Psr\Http\Client\ClientExceptionInterface` if and only if it is unable to send
+the HTTP request at all or if the HTTP response could not be parsed into a PSR-7 response object.
+
+If a request cannot be sent because the request message is not a valid HTTP request, the Client MUST throw an instance
+of `Psr\Http\Client\RequestExceptionInterface`.
+
+If the request cannot be sent due to a network failure of any kind, including a timeout, the Client MUST throw an
+instance of `Psr\Http\Client\NetworkExceptionInterface`.
+
+Clients MAY throw more specific exceptions than those defined here (a `TimeOutException` or `HostNotFoundException` for
+example), provided they implement the appropriate interface defined above.
 
 ## Interfaces
 
@@ -59,17 +80,6 @@ interface ClientInterface
 {
     /**
      * Sends a PSR-7 request and returns a PSR-7 response.
-     *
-     * Every technically correct HTTP response MUST be returned as-is, even if it represents an HTTP
-     * error response or a redirect instruction. The only special case is 1xx responses, which MUST
-     * be assembled in the HTTP client.
-     *
-     * The client MAY do modifications to the Request before sending it. Because PSR-7 objects are
-     * immutable, one cannot assume that the object passed to ClientInterface::sendRequest() will be the same
-     * object that is actually sent. For example, the Request object that is returned by an exception MAY
-     * be a different object than the one passed to sendRequest, so comparison by reference (===) is not possible.
-     *
-     * {@link https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message-meta.md#why-value-objects}
      *
      * @param RequestInterface $request
      *
