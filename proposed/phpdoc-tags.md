@@ -1,4 +1,4 @@
-PSR-5: PHPDoc
+PSR-19: PHPDoc tags
 =============
 
 ## Table Of Contents

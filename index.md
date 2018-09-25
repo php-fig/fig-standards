@@ -32,14 +32,15 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
+| 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  |
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 | 14  | [Event Manager][psr14]               | Larry Garfield                 |
+| 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  |
 
 ### Abandoned
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
-| 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  |
 | 8   | [Huggable Interface][psr8]           | Larry Garfield                 |
 | 9   | [Security Advisories][psr9]          | Michael Hess                   |
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   |
@@ -59,7 +60,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 2   | [Coding Style Guide][psr2]           | Paul M. Jones                  | Accepted   |
 | 3   | [Logger Interface][psr3]             | Jordi Boggiano                 | Accepted   |
 | 4   | [Autoloading Standard][psr4]         | Paul M. Jones                  | Accepted   |
-| 5   | [PHPDoc Standard][psr5]              | Mike van Riel                  | Abandoned  |
+| 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  | Draft      |
 | 6   | [Caching Interface][psr6]            | Larry Garfield                 | Accepted   |
 | 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        | Accepted   |
 | 8   | [Huggable Interface][psr8]           | Larry Garfield                 | Abandoned  |
@@ -73,6 +74,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Accepted   |
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Accepted   |
 | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Review     |
+| 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Draft      |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
 [psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
@@ -94,3 +96,4 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
 [psr17]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-17-http-factory.md
 [psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client/
+[psr19]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
