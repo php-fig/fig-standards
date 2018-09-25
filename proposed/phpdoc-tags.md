@@ -489,7 +489,7 @@ function count()
 ### 5.7. @global
 
 TODO: The definition of this item should be discussed and whether it may or
-may not be superceded in part or in whole by the @var tag.
+may not be superseded in part or in whole by the @var tag.
 
 The @global tag is used to denote a global variable or its usage.
 
@@ -651,7 +651,7 @@ or inline
 The @link tag can be used to define a relation, or link, between the
 "Structural Element", or part of the description when used inline, to an URI.
 
-The URI MUST be complete and welformed as specified in [RFC 2396][RFC2396].
+The URI MUST be complete and well-formed as specified in [RFC 2396][RFC2396].
 
 The @link tag MAY have a description appended to indicate the type of relation
 defined by this occurrence.
@@ -1349,4 +1349,4 @@ class Foo
 [SEMVER2]:      http://www.semver.org
 [PHP_SUBSTR]:   https://php.net/manual/function.substr.php
 [SPDX]:         https://www.spdx.org/licenses
-[PHPDOC_PSR]:   TDB
+[PHPDOC_PSR]:   https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
