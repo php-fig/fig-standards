@@ -72,7 +72,7 @@ interpreted as described in [RFC 2119][RFC2119].
 
   It is RECOMMENDED to precede a "Structural Element" with a DocBlock where it is
   defined and not with each usage. It is common practice to have the DocBlock
-  precede a Structural Element but it MAY also be separated by a an undetermined
+  precede a Structural Element but it MAY also be separated by an undetermined
   number of empty lines.
 
   Example:
