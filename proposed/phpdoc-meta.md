@@ -94,6 +94,15 @@ Cons:
 
 Most of the relevant links are mentioned in the PSR itself as support for individual chapters.
 
+## 8. Past contributors
+
+Since this document stems from the work of a lot of people in previous years, we should recognize their effort:
+
+ * Mike van Riel (previous Editor)
+ * Phil Sturgeon (previous sponsor)
+ * Donald Gilbert (previous sponsor)
+ * Gary Jones (contributor)
+
 _**Note:** Order descending chronologically._
 
 * [Original draft](https://github.com/phpDocumentor/phpDocumentor2/commit/0dbdbfa318d197279b414e5c0d1ffb142b31a528#docs/PSR.md)
