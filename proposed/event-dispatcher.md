@@ -226,7 +226,7 @@ interface TaskInterface extends EventInterface
 namespace Psr\EventDispatcher;
 
 /**
- * A Task whose processing may be interrupted when the task is complete.
+ * A Task event whose processing my be interrupted when a listener has completed processing this event.
  *
  * A Processor implementation MUST check to determine if a Task
  * is marked as stopped after each listener is called.  If it is then it should
