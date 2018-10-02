@@ -624,7 +624,7 @@ license.
 /**
  * @license MIT
  *
- * @license GPL-2.0+
+ * @license GPL-2.0-or-later
  *
  * @license http://www.spdx.org/licenses/MIT MIT License
  */
