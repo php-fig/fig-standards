@@ -221,7 +221,8 @@ interpreted as described in [RFC 2119][RFC2119].
   > /**
   >  * This is a class DocBlock
   >  */
-  > class MyClass {
+  > class MyClass 
+  > {
   > }
   > ```
   >
@@ -232,7 +233,8 @@ interpreted as described in [RFC 2119][RFC2119].
   > /**
   >  * This is a class DocBlock
   >  */
-  > class MyClass {
+  > class MyClass 
+  > {
   > }
   > ```
 
