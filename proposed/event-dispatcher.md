@@ -255,7 +255,7 @@ interface StoppableTaskInterface extends TaskInterface
 interface TaskProcessorInterface
 {
     /**
-     * Provide all listeners with a task event to process.
+     * Dispatches a Task to all registered listeners.
      *
      * @param TaskInterface $event
      *  The task to process.
