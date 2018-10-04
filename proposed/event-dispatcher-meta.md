@@ -145,3 +145,5 @@ Matthew Weier O'Phinney
 
 * [Inspiration Mailing List Thread](https://groups.google.com/forum/#!topic/php-fig/-EJOStgxAwY)
 * [Entrance vote](https://groups.google.com/d/topic/php-fig/6kQFX-lhuk4/discussion)
+* [Informal poll on package structure](https://docs.google.com/forms/d/1fvhYUH6xvPgJ1UW9I-3pMGPUtxkt5_Ph6_x_3qXHIuM/edit#responses)
+* [Informal poll on naming structure](https://docs.google.com/forms/d/1Rs6APuwNx4k2VzJbTgieeNvN48kLu7CG8qn6Dd2FhTw/edit#responses)

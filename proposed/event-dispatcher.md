@@ -137,4 +137,132 @@ It is RECOMMENDED that a Notifier and Processor be implemented as distinct objec
 
 ## Interfaces
 
-See [the repository](https://github.com/php-fig/event-dispatcher).  The final interfaces will be copied back here before it goes up for a vote.  For now it's easier to just single-source them.
+### General event interfaces
+
+```php
+namespace Psr\EventDispatcher;
+
+/**
+ * Marker interface indicating an event instance.
+ *
+ * Event instances may contain zero methods, or as many methods as they
+ * want. The interface MUST be implemented, however, to provide type-safety
+ * to both listeners as well as listener providers.
+ */
+interface EventInterface
+{
+}
+```
+
+```php
+namespace Psr\EventDispatcher;
+
+/**
+ * Mapper from an event to the listeners that are applicable to that event.
+ */
+interface ListenerProviderInterface
+{
+    /**
+     * @param EventInterface $event
+     *   An event for which to return the relevant listeners.
+     * @return iterable[callable]
+     *   An iterable (array, iterator, or generator) of callables.  Each
+     *   callable MUST be type-compatible with $event.
+     */
+    public function getListenersForEvent(EventInterface $event) : iterable;
+}
+```
+
+### Message Interfaces
+
+```php
+namespace Psr\EventDispatcher;
+
+
+/**
+ * This is a marker interface used to identify message events.
+ */
+interface MessageInterface extends EventInterface
+{
+}
+```
+
+```php
+namespace Psr\EventDispatcher;
+
+/**
+ * Defines a notifier for message events.
+ */
+interface MessageNotifierInterface
+{
+    /**
+     * Notify listeners of a message event.
+     *
+     * This method MAY act asynchronously.  Callers SHOULD NOT
+     * assume that any action has been taken when this method
+     * returns.
+     *
+     * @param MessageInterface $event
+     *   The event to notify listeners of.
+     */
+    public function notify(MessageInterface $event) : void;
+}
+```
+
+### Task Interfaces
+
+namespace Psr\EventDispatcher;
+
+```php
+/**
+ * This is a marker interface used to identify task events.
+ */
+interface TaskInterface extends EventInterface
+{
+}
+```
+
+```php
+namespace Psr\EventDispatcher;
+
+/**
+ * A Task event whose processing my be interrupted when a listener has completed processing this event.
+ *
+ * A Processor implementation MUST check to determine if a Task
+ * is marked as stopped after each listener is called.  If it is then it should
+ * return immediately without calling any further Listeners.
+ */
+interface StoppableTaskInterface extends TaskInterface
+{
+    /**
+     * Is propagation stopped?
+     *
+     * This will typically only be used by the Processor to determine if the
+     * previous listener halted propagation.
+     *
+     * @return bool
+     *   True if the Task is complete and no further listeners should be called.
+     *   False to continue calling listeners.
+     */
+    public function isPropagationStopped() : bool;
+}
+```
+
+```php
+/**
+ * Defines a processor for task events.
+ */
+interface TaskProcessorInterface
+{
+    /**
+     * Dispatches a Task to all registered listeners.
+     *
+     * @param TaskInterface $event
+     *  The task to process.
+     *
+     * @return TaskInterface
+     *  The task that was passed, now modified by callers.
+     */
+    public function process(TaskInterface $event) : TaskInterface;
+}
+```
