@@ -863,8 +863,8 @@ and/or `__set()` "magic" methods to resolve non-literal properties at run-time.
 The `@property-read` and `@property-write` variants MAY be used to indicate "magic"
 properties that can only be read or written.
 
-The `@property` tags MAY ONLY be used in a "PHPDoc" associated with a *class*
-or *trait*.
+The `@property` tags MAY ONLY be used in a "PHPDoc" associated with a `class`
+or `trait`.
 
 #### Example
 
