@@ -77,23 +77,23 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Draft      |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
-[psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[psr1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
-[psr2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
-[psr3]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
-[psr4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-meta.md
+[psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-000.md
+[psr1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-001-basic-coding-standard.md
+[psr2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-002-coding-style-guide.md
+[psr3]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-003-logger-interface.md
+[psr4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-004-autoloader-meta.md
 [psr5]: https://github.com/phpDocumentor/fig-standards/tree/master/proposed/phpdoc.md
-[psr6]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-6-cache.md
-[psr7]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message.md
+[psr6]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-006-cache.md
+[psr7]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-007-http-message.md
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/
 [psr9]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
 [psr10]: https://github.com/php-fig/fig-standards/blob/master/proposed/security-reporting-process.md
-[psr11]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md
+[psr11]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-011-container.md
 [psr12]: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
-[psr13]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-13-links.md
+[psr13]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-013-links.md
 [psr14]: https://github.com/php-fig/fig-standards/blob/master/proposed/event-dispatcher.md
-[psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md
-[psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
-[psr17]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-17-http-factory.md
+[psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-015-request-handlers.md
+[psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-016-simple-cache.md
+[psr17]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-017-http-factory.md
 [psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client/
 [psr19]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md

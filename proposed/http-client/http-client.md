@@ -39,7 +39,7 @@ If a Client chooses to alter either the HTTP request or HTTP response, it MUST e
 object remains internally consistent.  For example, if a Client chooses to decompress the message
 body then it MUST also remove the `Content-Encoding` header and adjust the `Content-Length` header.
 
-Note that as a result, since [PSR-7 objects are immutable](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message-meta.md#why-value-objects),
+Note that as a result, since [PSR-7 objects are immutable](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-007-http-message-meta.md#why-value-objects),
 the Calling Library MUST NOT assume that the object passed to `ClientInterface::sendRequest()` will be the same PHP object
 that is actually sent. For example, the Request object that is returned by an exception MAY be a different object than
 the one passed to `sendRequest()`, so comparison by reference (===) is not possible.
