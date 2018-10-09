@@ -117,6 +117,79 @@ Any new types and keywords added to future PHP versions MUST be in lower case.
 Short form of type keywords MUST be used i.e. `bool` instead of `boolean`,
 `int` instead of `integer` etc.
 
+### 2.6 Language Constructs
+
+Language contstructs (http://php.net/manual/en/reserved.keywords.php) where parentheses are optional, such as `echo`, `include`, and `require`, SHOULD NOT use parentheses.  Use of parentheses (or lack thereof) for language constructs SHOULD be consistent across the entire code base, and MUST be consistent across all specific language constructs.
+
+The following is an example of a file where language constructs do not use parentheses, i.e., an example of what to emulate:
+
+~~~php
+<?php
+include "file.php";
+
+echo "Hello World";
+
+require_once "another_file.php";
+
+if ($die_message) {
+    // parentheses required to pass a status argument
+    die($die_message);
+} elseif ($expr2) {
+    die;
+}
+~~~
+
+The following is an example of a file where language constructs use parentheses consistently, i.e., an example of what is best if parentheses are going to be used:
+
+~~~php
+<?php
+include("file.php");
+
+echo("Hello World");
+
+require_once("another_file.php");
+
+if ($die_message) {
+    die($die_message);
+} elseif ($expr2) {
+    die();
+}
+~~~
+
+The following is an example of a file where language constructs use parentheses inconsistently but consistently for the same language construct, i.e., an example of what is acceptable when it may not always be understood whether a keyword is a function or language construct.
+
+~~~php
+<?php
+include "file.php";
+
+echo("Hello World");
+
+require_once "another_file.php";
+
+echo("Hello Yourself");
+
+if ($die_message) {
+    die($die_message);
+} elseif ($expr2) {
+    die();
+}
+~~~
+
+The following is an example of a file where language constructs use parentheses inconsistently i.e., an example of what MUST be avoided:
+
+<?php
+include "file.php";
+
+echo("Hello World");
+
+include("another_file.php");
+
+echo "Hello Yourself";
+
+~~~
+
+
+
 ## 3. Declare Statements, Namespace, and Import Statements
 
 The header of a PHP file may consist of a number of different blocks. If present,
@@ -1009,6 +1082,9 @@ $instance = new class extends \Foo implements
 {
     // Class content
 };
+
+
+
 ~~~
 
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
