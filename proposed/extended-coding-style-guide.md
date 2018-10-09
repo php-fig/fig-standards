@@ -852,6 +852,9 @@ one space; multiple spaces MAY be used for readabiliy purpose. This includes all
 [string concatenation][], [type][] operators, trait operators (`insteadof` and `as`),
 and the single pipe operator (e.g. `ExceptionType1 | ExceptionType2 $e`).
 
+There MUST NOT be any whitespace between the increment/decrement operators and the variable 
+being incremented/decremented.
+
 Other operators are left undefined.
 
 For example:
