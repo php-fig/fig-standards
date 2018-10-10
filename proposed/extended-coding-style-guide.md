@@ -887,6 +887,10 @@ comma, and there MUST be one space after each comma.
 Closure arguments with default values MUST go at the end of the argument
 list.
 
+If a return type is present, it MUST follow the same rules as with normal
+functions and methods; if the `use` keyword is present, the colon MUST follow
+the `use` list closing parentheses with no spaces between the two characters.
+
 A closure declaration looks like the following. Note the placement of
 parentheses, commas, spaces, and braces:
 
