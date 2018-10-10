@@ -904,6 +904,10 @@ $closureWithArgs = function ($arg1, $arg2) {
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
     // body
 };
+
+$closureWithArgsVarsAndReturn = function ($arg1, $arg2) use ($var1, $var2): bool {
+    // body
+};
 ~~~
 
 Argument lists and variable lists MAY be split across multiple lines, where
