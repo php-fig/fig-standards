@@ -1260,7 +1260,7 @@ use this information to help you with auto-completion:
 
 ```php
 /** @var \Sqlite3 $sqlite */
-foreach($connections as $sqlite) {
+foreach ($connections as $sqlite) {
     // there should be no docblock here
     $sqlite->open('/my/database/path');
     <...>

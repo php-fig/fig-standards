@@ -120,7 +120,7 @@ interpreted as described in [RFC 2119][RFC2119].
 
   ```php
   /** @var \Sqlite3 $sqlite */
-  foreach($connections as $sqlite) {
+  foreach ($connections as $sqlite) {
       // there should be no docblock here
       $sqlite->open('/my/database/path');
       <...>
