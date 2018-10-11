@@ -221,7 +221,8 @@ interpreted as described in [RFC 2119][RFC2119].
   > /**
   >  * This is a class DocBlock
   >  */
-  > class MyClass {
+  > class MyClass 
+  > {
   > }
   > ```
   >
@@ -232,7 +233,8 @@ interpreted as described in [RFC 2119][RFC2119].
   > /**
   >  * This is a class DocBlock
   >  */
-  > class MyClass {
+  > class MyClass 
+  > {
   > }
   > ```
 
@@ -692,7 +694,7 @@ The following keywords are recognized by this PSR:
     **Example 2:**
     ```php
     /**
-     * @param bool $hi when true 'Hello world' is echo-ed.
+     * @param bool $quiet when true 'Hello world' is echo-ed.
      *
      * @return void
      */
