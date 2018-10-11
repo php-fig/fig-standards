@@ -221,7 +221,7 @@ interpreted as described in [RFC 2119][RFC2119].
   > /**
   >  * This is a class DocBlock
   >  */
-  > class MyClass 
+  > class MyClass
   > {
   > }
   > ```
@@ -233,7 +233,7 @@ interpreted as described in [RFC 2119][RFC2119].
   > /**
   >  * This is a class DocBlock
   >  */
-  > class MyClass 
+  > class MyClass
   > {
   > }
   > ```
@@ -393,7 +393,7 @@ In order to provide a method by which to provide nuance to the tags defined in
 this standard, but without expanding the base set, a tag specialization MAY be
 provided after the tag name by adding a colon followed by a string that provides
 a more nuanced description of the tag. The list of supported tag specializations
-is not maintained in the [Tag Catalog PSR][TAG_PSR], as it may change over time. 
+is not maintained in the [Tag Catalog PSR][TAG_PSR], as it may change over time.
 The [Tag Catalog PSR][TAG_PSR] meta document may contain a series of recommendations
 on a per-tag name basis, but projects are free to choose their own tag specializations if applicable.
 

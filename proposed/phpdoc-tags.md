@@ -881,7 +881,7 @@ class User
      * @var string
      */
     public $first_name;
-    
+
     /**
      * @var string
      */
