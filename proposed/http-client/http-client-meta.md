@@ -82,6 +82,21 @@ and second by catching potential exceptions.
 To make the specification more predictable, it was decided that HTTP clients never will throw
 exceptions for 4xx and 5xx responses.
 
+#### Why "sendRequest"?
+
+The method signature `ClientInterface::sendRequest(RequestInterface $request): ResponseInterface`
+might sound a bit verbose at first. An obvious improvement would be to just
+call the method `send`.
+
+The reason behind this verbosity is how existing HTTP client libraries are implemented.
+Most of them already have a method called `send` with an arbitrary signature.
+To make adoption easier we decided to choose a more verbose name.
+Besides the backward compatibility argument, future HTTP client implementations
+will also have the ability to implement an arbitrary API using the name `send`
+and still implement this standard. For example a simplified method signature like
+`send(string $method, string $url, array $headers, string $body): ResponseInterface`
+can be a common use case.
+
 ### Background
 
 The HTTP client PSR has been inspired and created by the [php-http team](https://github.com/orgs/php-http/people).
