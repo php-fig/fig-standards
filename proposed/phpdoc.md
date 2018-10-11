@@ -714,7 +714,7 @@ The following keywords are recognized by this PSR:
     ```
 
 12. `callable`: the element to which this type applies is a pointer to a function call. This may be any type of callable
-    as defined in the PHP manual about [pseudo-types][PHP_PSEUDO] or the section on [callable][PHP_CALLABLE].
+    as per the [definition of PHP][PHP_CALLABLE].
 
 13. `false` or `true`: the element to which this type applies will have the value `TRUE` or `FALSE`. No other value will
     be returned from this element.
