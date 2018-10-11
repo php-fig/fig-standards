@@ -562,7 +562,7 @@ A Type has the following [ABNF][RFC5234] definition:
     array-expression = "(" type-expression ")"
     class-name       = ["\"] label *("\" label)
     label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
-    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "mixed" / "null" / "object" /
+    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "iterable" / "mixed" / "null" / "object" /
     keyword          = "resource" / "self" / "static" / "string" / "true" / "void" / "$this"
 
 ### Details
