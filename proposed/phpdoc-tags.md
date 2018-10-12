@@ -542,12 +542,19 @@ the developers of this software.
 
 or inline:
 
+    {@internal [description]}
+
+Contrary to other inline tags, the inline version of this tag may also contain
+other inline tags (see example below).
+
+Implementations SHOULD support two closing braces for the inline version,
+due to [historical definition of the inline tag][INLINE_OLD] originally being:
+
     {@internal [description]}}
 
-The inline version of this tag may, contrary to other inline tags, contain
-text but also other inline tags. To increase readability and ease parsing
-the tag should be terminated with a double closing brace, instead of a single
-one.
+They MAY notify users that the two braces grammar is deprecated in favor
+of using just one closing brace, since parsers/IDEs are now better at
+recognizing matching pairs of open/close braces.
 
 #### Description
 
@@ -582,7 +589,7 @@ function count()
 /**
  * Counts the number of Foo.
  *
- * {@internal Silently adds one extra Foo to compensate for lack of Foo }}
+ * {@internal Silently adds one extra Foo (see {@link http://example.com})}
  *
  * @return int Indicates the number of items.
  */
@@ -1348,4 +1355,5 @@ class Foo
 [SEMVER2]:      http://www.semver.org
 [PHP_SUBSTR]:   https://php.net/manual/function.substr.php
 [SPDX]:         https://www.spdx.org/licenses
+[INLINE_OLD]:   https://manual.phpdoc.org/HTMLframesConverter/default/phpDocumentor/tutorial_tags.inlineinternal.pkg.html
 [PHPDOC_PSR]:   https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
