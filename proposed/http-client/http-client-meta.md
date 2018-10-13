@@ -94,7 +94,7 @@ they have specifically said they want to break the specification. That is an iss
 the application developer should handle. Third party libraries MUST NOT assume that
 a HTTP client breaks the specification.
 
-### Background
+## Background
 
 The HTTP client PSR has been inspired and created by the [php-http team](https://github.com/orgs/php-http/people).
 Back in 2015, they created HTTPlug as a common interface for HTTP clients. They wanted an
