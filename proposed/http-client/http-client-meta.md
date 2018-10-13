@@ -82,6 +82,18 @@ and second by catching potential exceptions.
 To make the specification more predictable, it was decided that HTTP clients never will throw
 exceptions for 4xx and 5xx responses.
 
+## Middleware and wrapping a client
+
+The specification does not put any limitations on middleware or classes that want 
+to wrap/decorate an HTTP client. If the decorating class also implements `ClientInterface`
+then it must also follow the specification. 
+
+It is temping to allow configuration or add middleware to an HTTP client so it could i.e.
+follow redirects or throw exceptions. If that is a decision from an application developer, 
+they have specifically said they want to break the specification. That is an issue (or feature)
+the application developer should handle. No third party library should assume that
+a HTTP client breaks the specification.
+
 ### Background
 
 The HTTP client PSR has been inspired and created by the [php-http team](https://github.com/orgs/php-http/people).
