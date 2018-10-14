@@ -14,7 +14,7 @@ implementations. This will make libraries more reusable as it reduces the number
 dependencies and lowers the likelihood of version conflicts.
 
 A second goal is that HTTP clients can be replaced as per the
-[Liskov substitutions principle][Liskov]. This means that all clients MUST behave in the
+[Liskov substitution principle][Liskov]. This means that all clients MUST behave in the
 same way when sending a request.
 
 ## Definitions
