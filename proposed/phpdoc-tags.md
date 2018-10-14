@@ -830,15 +830,15 @@ function count(array $items)
 ```
 
 The following example demonstrates the use of an "Inline PHPDoc" to document
-an option array with two elements: 'required' and 'label'.
+an option array with two elements, representing 'required' and 'label'.
 
 ```php
 /**
  * Initializes this class with the given options.
  *
  * @param array $options {
- *     @var bool   $required Whether this element is required
- *     @var string $label    The display name for this element
+ *     @var bool   Whether this element is required
+ *     @var string The display name for this element
  * }
  */
 public function __construct(array $options = array())
