@@ -60,7 +60,7 @@ would have a few drawbacks:
 #### Naming rationale
 
 The main interface behaviour is defined by the method `sendRequest(RequestInterface $request): ResponseInterface`.  
-While the shorter method name `send()` has been proposed, this was already used by existing and very common HTTP clients like Guzzle.  As such, if they are to adopt this standard, they would need to break backwards compatibility in order to be compatible. By defining `sendRequest()` instead, we ensure they can adopt without any immediate BC breaks.
+While the shorter method name `send()` has been proposed, this was already used by existing and very common HTTP clients like Guzzle.  As such, if they are to adopt this standard, they may need to break backwards compatibility in order to implement the specification. By defining `sendRequest()` instead, we ensure they can adopt without any immediate BC breaks.
 
 ### Exception Model
 
