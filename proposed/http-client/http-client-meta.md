@@ -91,7 +91,7 @@ then it must also follow the specification.
 It is temping to allow configuration or add middleware to an HTTP client so it could i.e.
 follow redirects or throw exceptions. If that is a decision from an application developer, 
 they have specifically said they want to break the specification. That is an issue (or feature)
-the application developer should handle. No third party library should assume that
+the application developer should handle. Third party libraries MUST NOT assume that
 a HTTP client breaks the specification.
 
 ### Background
