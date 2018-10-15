@@ -46,7 +46,7 @@ the one passed to `sendRequest()`, so comparison by reference (===) is not possi
 
 A Client MUST:
 
-* Reassemble a multi-step HTTP 1xx response itself so that what is returned to the Calling Library is an valid HTTP response
+* Reassemble a multi-step HTTP 1xx response itself so that what is returned to the Calling Library is a valid HTTP response
 of status code 200 or higher.
 
 ## Error handling
@@ -57,7 +57,7 @@ status codes in the 400 and 500 range MUST NOT cause an exception and MUST be re
 A Client MUST throw an instance of `Psr\Http\Client\ClientExceptionInterface` if and only if it is unable to send
 the HTTP request at all or if the HTTP response could not be parsed into a PSR-7 response object.
 
-If a request cannot be sent because the request message is not well-formed HTTP request or is missing some critical
+If a request cannot be sent because the request message is not a well-formed HTTP request or is missing some critical
 piece of information (such as a Host or Method), the Client MUST throw an instance of `Psr\Http\Client\RequestExceptionInterface`.
 
 If the request cannot be sent due to a network failure of any kind, including a timeout, the Client MUST throw an
