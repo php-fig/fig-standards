@@ -57,6 +57,11 @@ would have a few drawbacks:
 * All clients must support the defined configuration.
 * If no configuration is passed to the client, the behavior is unpredictable.
 
+#### Naming rationale
+
+The main interface behaviour is defined by the method `sendRequest(RequestInterface $request): ResponseInterface`.  
+While the shorter method name `send()` has been proposed, this was already used by existing and very common HTTP clients like Guzzle. As such, if they are to adopt this standard, they may need to break backwards compatibility in order to implement the specification. By defining `sendRequest()` instead, we ensure they can adopt without any immediate BC breaks.
+
 ### Exception Model
 
 The domain exceptions `NetworkExceptionInterface` and `RequestExceptionInterface` define
