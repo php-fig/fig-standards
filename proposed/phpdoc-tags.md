@@ -23,7 +23,7 @@ PSR-19: PHPDoc tags
   - [5.7.  @global](#57-global)
   - [5.8.  @internal](#58-internal)
   - [5.9.  @license](#59-license)
-  - [5.10. @link ](#510-link)
+  - [5.10. @link](#510-link)
   - [5.11. @method](#511-method)
   - [5.12. @package](#512-package)
   - [5.13. @param](#513-param)
