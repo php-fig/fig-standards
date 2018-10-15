@@ -551,16 +551,16 @@ class AuthorizationMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (! $authorizationMap->needsAuthorization($request)) {
+        if (! $this->authorizationMap->needsAuthorization($request)) {
             return $handler->handle($request);
         }
 
-        if (! $authorizationMap->isAuthorized($request)) {
-            return $authorizationMap->prepareUnauthorizedResponse();
+        if (! $this->authorizationMap->isAuthorized($request)) {
+            return $this->authorizationMap->prepareUnauthorizedResponse();
         }
 
         $response = $handler->handle($request);
-        return $authorizationMap->signResponse($response, $request);
+        return $this->authorizationMap->signResponse($response, $request);
     }
 }
 ```
