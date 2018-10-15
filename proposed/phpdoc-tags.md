@@ -547,7 +547,7 @@ or inline:
 Contrary to other inline tags, the inline version of this tag may also contain
 other inline tags (see example below).
 
-Implementations SHOULD support two closing braces for the inline version,
+Implementations MAY support two closing braces for the inline version,
 due to [historical definition of the inline tag][INLINE_OLD] originally being:
 
     {@internal [description]}}
