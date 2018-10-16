@@ -560,10 +560,8 @@ A Type has the following [ABNF][RFC5234] definition:
 
     type-expression  = type *("|" type)
     type             = class-name / keyword / array
-    array            = (type / array-expression) "[]" / generic
+    array            = (type / array-expression) "[]"
     array-expression = "(" type-expression ")"
-    generic          = collection-type "<" [type-expression "," *SP] type-expression ">"
-    collection-type  = class-name / "array"
     class-name       = ["\"] label *("\" label)
     label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
     keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "mixed" / "null" / "object" /
@@ -597,37 +595,6 @@ following options:
 3. specified as containing multiple types: the Type definition informs the reader of the type of each array value.
    Each value can be of any of the given types.
    Example: `@return (int|string)[]`
-
-4. specified using the Generics notation: see the next chapter "Collections" for a description on this notation.
-
-#### Collections
-
-The value represented by "Type" can also be a [Collection][COLLECTION], a class that contains a list of keys with
-values. Collections can be denoted using a format derived from Generics in Java, as such aptly named Generics-style
-notation.
-
-With Generics-style notation, it is REQUIRED to specify a class name or the array keyword, followed by the type of
-the values enclosed with angular brackets.
-
-Example: to indicate that this element returns an object of class ArrayObject that only contains a series of strings:
-
-    @return \ArrayObject<string>
-
-The type of the values in a Collection MAY be another array and even another Collection:
-
-    @return \ArrayObject<\ArrayObject<int>>
-
-A Collection MAY optionally define the type of the keys of said Collection by adding an additional type definition
-between the angular brackets before the identifier denoting the values' type. These two should be separated by a comma.
-
-Example: to declare an ArrayObject collection containing a list of strings with integer keys:
-
-    @return \ArrayObject<int, string>
-
-The type of a key or value MAY consist of several different types. This can be represented by separating each
-individual type with a vertical bar sign between the angular brackets.
-
-    @return \ArrayObject<string|bool>
 
 ### Valid Class Name
 
@@ -798,5 +765,4 @@ The following keywords are recognized by this PSR:
 [DEFACTO]:      http://www.phpdoc.org/docs/latest/index.html
 [PHPDOC.ORG]:   http://www.phpdoc.org/
 [FLUENT]:       https://en.wikipedia.org/wiki/Fluent_interface
-[COLLECTION]:   https://en.wikipedia.org/wiki/Collection_(abstract_data_type)
 [TAG_PSR]:      TBD
