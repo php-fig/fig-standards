@@ -61,7 +61,7 @@ Cons:
 
 ## 6. Votes
 
-* **Entrance Vote**: TBD
+* [Entrance Vote](https://groups.google.com/forum/#!topic/php-fig/5Yd0XGd349Q)
 * **Acceptance Vote**: TBD
 
 ## 7. Relevant Links
