@@ -558,7 +558,7 @@ class MyMagicClass
 
 A Type has the following [ABNF][RFC5234] definition:
 
-    type-expression  = type *("|" type)
+    type-expression  = type *("|" type) *("&" type)
     type             = class-name / keyword / array
     array            = (type / array-expression) "[]" / generic
     array-expression = "(" type-expression ")"
@@ -573,8 +573,9 @@ A Type has the following [ABNF][RFC5234] definition:
 
 When a "Type" is used, the user will expect a value, or set of values, as detailed below.
 
-When the "Type" consists of multiple types, then these MUST be separated with the vertical bar sign (|). Any
-interpreter supporting this specification MUST recognize this and split the "Type" before evaluating.
+When the "Type" consists of multiple types, then these MUST be separated with either
+the vertical bar sign (|) for union type or the ampersand (&) for intersection type.
+Any interpreter supporting this specification MUST recognize this and split the "Type" before evaluating.
 
 For example: `@return int|null`
 
