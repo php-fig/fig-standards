@@ -209,7 +209,7 @@ class My_ActionController extends Framework_ActionController
 In the example above the My_ActionController MUST NOT inherit the subpackage
 _Controllers_.
 
-### 4.3.2. Function or Method
+### 4.3.2. Function Or Method
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a function or method in a class or interface MUST inherit the following tags:
