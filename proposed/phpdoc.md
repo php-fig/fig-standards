@@ -577,7 +577,11 @@ When the "Type" consists of multiple types, then these MUST be separated with ei
 the vertical bar sign (|) for union type or the ampersand (&) for intersection type.
 Any interpreter supporting this specification MUST recognize this and split the "Type" before evaluating.
 
-For example: `@return int|null`
+Union type example:
+>`@return int|null`
+
+Intersection type example:
+>`@var \MyClass&\PHPUnit\Framework\MockObject\MockObject $myMockObject`
 
 #### Arrays
 
