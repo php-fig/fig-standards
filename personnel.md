@@ -51,7 +51,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [PEAR]                            | Chuck Burgess ([@ashnazg])            |
 | [Phalcon]                         | Nikolaos Dimopoulos ([@phalconphp])   |
 | [Phergie]                         | Joe Ferguson ([@joepferguson])        |
-| [Phing]                           | Michiel Rook ([@michieltcs])          |
+| [Phing]                           | Siad Ardroumli          |
 | [phpBB]                           | Marc Alexander ([@marc1706])          |
 | [phpDocumentor]                   | Mike van Riel ([@mvriel])             |
 | [PHPixie]                         | Roman Tsiupa ([@dracony_gimp])        |
