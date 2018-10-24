@@ -9,7 +9,7 @@ PSR-19: PHPDoc tags
 - [4. Inheritance](#4-inheritance)
   - [4.1. Making inheritance explicit using the @inheritDoc tag](#41-making-inheritance-explicit-using-the-inheritdoc-tag)
   - [4.2. Using the {@inheritDoc} inline tag to augment a Description](#42-using-the-inheritdoc-inline-tag-to-augment-a-description)
-  - [4.3. Element-specific inherited parts]
+  - [4.3. Element-specific inherited parts](#43-element-specific-inherited-parts)
     - [4.3.1. Class Or Interface](#431-class-or-interface)
     - [4.3.2. Function Or Method](#432-function-or-method)
     - [4.3.3. Constant Or Property](#433-constant-or-property)
@@ -168,7 +168,9 @@ In the example above it is indicated that the Description of this PHPDoc is a
 combination of the Description of the super-element, indicated by the
 `{@inheritDoc}` inline tag, and the subsequent body text.
 
-### 4.3. Class Or Interface
+## 4.3. Element-specific inherited parts
+
+### 4.3.1. Class Or Interface
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a class or interface MUST inherit the following tags:
@@ -207,7 +209,7 @@ class My_ActionController extends Framework_ActionController
 In the example above the My_ActionController MUST NOT inherit the subpackage
 _Controllers_.
 
-### 4.4. Method
+### 4.3.2. Function Or Method
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a function or method in a class or interface MUST inherit the following tags:
@@ -216,7 +218,7 @@ root, a function or method in a class or interface MUST inherit the following ta
 * [@return](#515-return)
 * [@throws](#520-throws)
 
-### 4.5. Constant Or Property
+### 4.3.3. Constant Or Property
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a constant or property in a class MUST inherit the following tags:
