@@ -245,7 +245,7 @@ definition:
 
     PHPDoc             = [summary] [description] [tags]
     inline-phpdoc      = "{" *SP PHPDoc *SP "}"
-    summary            = *CHAR ("." 1*CRLF / 2*CRLF)
+    summary            = *CHAR (2*CRLF)
     description        = 1*(CHAR / inline-tag) 1*CRLF ; any amount of characters
                                                      ; with inline tags inside
     tags               = *(tag 1*CRLF)
@@ -266,10 +266,8 @@ A Summary MUST contain an abstract of the "Structural Element" defining the
 purpose. It is RECOMMENDED for Summaries to span a single line or at most two,
 but not more than that.
 
-A Summary MUST end with either
-
-* a full stop (.) followed by a line break
-* or two sequential line breaks.
+A Summary MUST end with two sequential line breaks, unless it is the only content
+in the PHPDoc.
 
 If a Description is provided, then it MUST be preceded by a Summary. Otherwise
 the Description will be considered the Summary, until the end of the Summary
