@@ -801,8 +801,7 @@ The @param tag is used to document a single parameter of a function or method.
 With the @param tag it is possible to document the type and function of a
 single parameter of a function or method. When provided it MUST contain a
 "Type" to indicate what is expected; the description on the other hand is
-OPTIONAL yet RECOMMENDED. For complex structures such as option arrays it is
-RECOMMENDED to use an "Inline PHPDoc" to describe the option array.
+OPTIONAL yet RECOMMENDED.
 
 The @param tag MAY have a multi-line description and does not need explicit
 delimiting.
@@ -824,24 +823,6 @@ limited to "Structural Elements" of type method or function.
  * @return int Returns the number of elements.
  */
 function count(array $items)
-{
-    <...>
-}
-```
-
-The following example demonstrates the use of an "Inline PHPDoc" to document
-an option array with two elements, representing 'required' and 'label'.
-
-```php
-/**
- * Initializes this class with the given options.
- *
- * @param array $options {
- *     @var bool   Whether this foo is required
- *     @var string The display name for this foo
- * }
- */
-public function __construct(array $options = array())
 {
     <...>
 }
