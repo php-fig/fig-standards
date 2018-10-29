@@ -140,7 +140,7 @@ standard into a formal specification.
 
 ## Proposed implementations
 
-Those are the two implementation provided by the working group to pass the review period:
+Below are the two implementations provided by the working group to pass the review period:
 
  * HTTPlug has prepared a 2.0 to make sure it is supporting the new PSR. 
    They are just waiting for the PSR to be released: https://github.com/php-http/httplug/tree/2.x
