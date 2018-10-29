@@ -131,3 +131,18 @@ standard into a formal specification.
 * Matthew Weier O'Phinney (Zend)
 * Mark Sagi-Kazar (Guzzle)
 * Joel Wurtz (HTTPlug)
+
+## Votes
+
+* [Entrance vote](https://groups.google.com/d/topic/php-fig/MJGYRXfUJGk/discussion)
+* [Review Period Initiation](https://groups.google.com/d/topic/php-fig/dV9zIaOooZ4/discussion)
+* [Acceptance](https://groups.google.com/d/topic/php-fig/rScdiW38nLM/discussion)
+
+## Proposed implementations
+
+Below are the two implementations provided by the working group to pass the review period:
+
+ * HTTPlug has prepared a 2.0 to make sure it is supporting the new PSR. 
+   They are just waiting for the PSR to be released: https://github.com/php-http/httplug/tree/2.x
+ * Buzz has been adapting to every version of the PSR and has their 0.17.3 release with the latest 
+   version of psr/http-client: https://github.com/kriswallsmith/Buzz
