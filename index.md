@@ -21,6 +21,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 15  | [HTTP Handlers][psr15]         | Woody Gilk                     | _N/A_                   | Matthew Weier O'Phinney |
 | 16  | [Simple Cache][psr16]          | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier |
 | 17  | [HTTP Factories][psr17]        | Woody Gilk                     | _N/A_                   | Matthew Weier O'Phinney |
+| 18  | [HTTP Client][psr18]           | Tobias Nyholm                  | _N/A_                   | Sara Golemon |
 
 ### Review
 
@@ -73,7 +74,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     | Accepted   |
 | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Accepted   |
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Accepted   |
-| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Review     |
+| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Accepted   |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Draft      |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
@@ -95,5 +96,5 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md
 [psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
 [psr17]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-17-http-factory.md
-[psr18]: https://github.com/php-fig/fig-standards/tree/master/proposed/http-client/
+[psr18]: https://github.com/php-fig/fig-standards/tree/master/accepted/PSR-18-http-client.md
 [psr19]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md

@@ -131,3 +131,9 @@ standard into a formal specification.
 * Matthew Weier O'Phinney (Zend)
 * Mark Sagi-Kazar (Guzzle)
 * Joel Wurtz (HTTPlug)
+
+## Votes
+
+* [Entrance vote](https://groups.google.com/d/topic/php-fig/MJGYRXfUJGk/discussion)
+* [Review Period Initiation](https://groups.google.com/d/topic/php-fig/dV9zIaOooZ4/discussion)
+* [Acceptance](https://groups.google.com/d/topic/php-fig/rScdiW38nLM/discussion)
