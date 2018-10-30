@@ -27,7 +27,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
-| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
+| -   | -                                    | -                              |
 
 ### Draft
 
