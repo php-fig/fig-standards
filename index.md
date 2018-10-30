@@ -83,7 +83,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 [psr3]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
 [psr4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-meta.md
-[psr5]: https://github.com/phpDocumentor/fig-standards/tree/master/proposed/phpdoc.md
+[psr5]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
 [psr6]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-6-cache.md
 [psr7]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message.md
 [psr8]: https://github.com/php-fig/fig-standards/blob/master/proposed/psr-8-hug/
@@ -96,5 +96,5 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr15]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md
 [psr16]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
 [psr17]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-17-http-factory.md
-[psr18]: https://github.com/php-fig/fig-standards/tree/master/accepted/PSR-18-http-client.md
+[psr18]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-18-http-client.md
 [psr19]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
