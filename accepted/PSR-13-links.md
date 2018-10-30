@@ -35,7 +35,7 @@ are not well-standardized or universal, this specification does not seek to stan
 
 For the purposes of this specification, the following definitions apply.
 
-*    **Implementing Object** -An object that implements one of the interfaces defined by this
+*    **Implementing Object** - An object that implements one of the interfaces defined by this
 specification.
 
 *    **Serializer** - A library or other system that takes one or more Link objects and produces
@@ -45,7 +45,7 @@ a serialized representation of it in some defined format.
 
 All links MAY include zero or more additional attributes beyond the URI and relationship.
 There is no formal registry of the values that are allowed here, and validity of values
-is dependent on context and often on a particular serialization format.  Commonly supported
+is dependent on context and often on a particular serialization format. Commonly supported
 values include 'hreflang', 'title', and 'type'.
 
 Serializers MAY omit attributes on a link object if required to do so by the serialization
@@ -61,7 +61,7 @@ value provided and ignore all subsequent values.
 
 If an attribute value is boolean `true`, serializers MAY use abbreviated forms if appropriate
 and supported by a serialization format. For example, HTML permits attributes to
-have no value when the attribute's presence has a boolean meaning.  This rule applies
+have no value when the attribute's presence has a boolean meaning. This rule applies
 if and only if the attribute is boolean `true`, not for any other "truthy" value
 in PHP such as integer 1.
 
@@ -87,14 +87,14 @@ http://microformats.org/wiki/existing-rel-values
 
 A relationship that is not defined in one of the above registries or a similar
 public registry is considered "private", that is, specific to a particular
-application or use case.  Such relationships MUST use an absolute URI.
+application or use case. Such relationships MUST use an absolute URI.
 
 ## 1.4 Link Templates
 
 [RFC 6570](https://tools.ietf.org/html/rfc6570) defines a format for URI templates, that is,
 a pattern for a URI that is expected to be filled in with values provided by a client
-tool.  Some hypermedia formats support templated links while others do not, and may
-have a special way to denote that a link is a template.  A Serializer for a format
+tool. Some hypermedia formats support templated links while others do not, and may
+have a special way to denote that a link is a template. A Serializer for a format
 that does not support URI Templates MUST ignore any templated Links it encounters.
 
 ## 1.5 Evolvable providers
@@ -105,21 +105,21 @@ derived at runtime from some other data source. For that reason, modifiable prov
 are a secondary interface that may optionally be implemented.
 
 Additionally, some Link Provider objects, such as PSR-7 Response objects, are
-by design immutable.  That means methods to add links to them in-place would be
+by design immutable. That means methods to add links to them in-place would be
 incompatible. Therefore, the `EvolvableLinkProviderInterface`'s single method
 requires that a new object be returned, identical to the original but with
-an additional link object included.
+an additional Link object included.
 
 ## 1.6 Evolvable link objects
 
 Link objects are in most cases value objects. As such, allowing them to evolve
 in the same fashion as PSR-7 value objects is a useful option. For that reason,
 an additional EvolvableLinkInterface is included that provides methods to
-produce new object instances with a single change.  The same model is used by PSR-7
+produce new object instances with a single change. The same model is used by PSR-7
 and, thanks to PHP's copy-on-write behavior, is still CPU and memory efficient.
 
-There is no evolvable method for templated, however, as the templated value of a
-link is based exclusively on the href value.  It MUST NOT be set independently, but
+There is no evolvable method for templated values, however, as the templated value of a
+link is based exclusively on the href value. It MUST NOT be set independently, but
 derived from whether or not the href value is an RFC 6570 link template.
 
 ## 2. Package
@@ -202,7 +202,7 @@ interface EvolvableLinkInterface extends LinkInterface
      * Returns an instance with the specified href.
      *
      * @param string $href
-     *   The href value to include.  It must be one of:
+     *   The href value to include. It must be one of:
      *     - An absolute URI, as defined by RFC 5988.
      *     - A relative URI, as defined by RFC 5988. The base of the relative link
      *       is assumed to be known based on context by the client.
