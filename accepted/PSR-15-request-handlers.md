@@ -6,7 +6,7 @@ This document describes common interfaces for HTTP server request handlers
 that use HTTP messages as described by [PSR-7][psr7] or subsequent
 replacement PSRs.
 
-HTTP request handlers are a fundamental part of any web application. Server side
+HTTP request handlers are a fundamental part of any web application. Server-side
 code receives a request message, processes it, and produces a response message.
 HTTP middleware is a way to move common request and response processing away from
 the application layer.
@@ -65,7 +65,7 @@ specific HTTP message implementation.
 
 ### 1.4 Handling Exceptions
 
-It is RECOMMENDED that any application using middleware include a component
+It is RECOMMENDED that any application using middleware includes a component
 that catches exceptions and converts them into responses. This middleware SHOULD
 be the first component executed and wrap all further processing to ensure that
 a response is always generated.
