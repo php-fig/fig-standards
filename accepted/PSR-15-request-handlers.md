@@ -83,7 +83,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Handles a server request and produces a response
+ * Handles a server request and produces a response.
  *
  * An HTTP request handler process an HTTP request in order to produce an
  * HTTP response.
@@ -91,7 +91,7 @@ use Psr\Http\Message\ServerRequestInterface;
 interface RequestHandlerInterface
 {
     /**
-     * Handles a request and produces a response
+     * Handles a request and produces a response.
      *
      * May call other collaborating code to generate the response.
      */
@@ -110,7 +110,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Participant in processing a server request and response
+ * Participant in processing a server request and response.
  *
  * An HTTP middleware component participates in processing an HTTP message:
  * by acting on the request, generating the response, or forwarding the
@@ -119,7 +119,7 @@ use Psr\Http\Message\ServerRequestInterface;
 interface MiddlewareInterface
 {
     /**
-     * Process an incoming server request
+     * Process an incoming server request.
      *
      * Processes an incoming server request in order to produce a response.
      * If unable to produce the response itself, it may delegate to the provided
