@@ -91,7 +91,7 @@ interface ClientInterface
 }
 ```
 
-### ExceptionInterface
+### ClientExceptionInterface
 
 ```php
 namespace Psr\Http\Client;
