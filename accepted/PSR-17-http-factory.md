@@ -5,7 +5,7 @@ This document describes a common standard for factories that create [PSR-7][psr7
 compliant HTTP objects.
 
 PSR-7 did not include a recommendation on how to create HTTP objects, which leads
-to difficulty when needing to create new HTTP objects within components that are
+to difficulties when needing to create new HTTP objects within components that are
 not tied to a specific implementation of PSR-7.
 
 The interfaces outlined in this document describe methods by which PSR-7 objects
@@ -198,7 +198,7 @@ interface UploadedFileFactoryInterface
 
 ### 2.6 UriFactoryInterface
 
-Has the ability to creates URIs for client and server requests.
+Has the ability to create URIs for client and server requests.
 
 ```php
 namespace Psr\Http\Message;
