@@ -26,7 +26,7 @@ framework, or another dedicated cache library.
 
 PSR-6 solves this problem already, but in a rather formal and verbose way for
 what the most simple use cases need. This simpler approach aims to build a
-standardized streamlined interface for common cases.  It is independent of
+standardized streamlined interface for common cases. It is independent of
 PSR-6 but has been designed to make compatibility with PSR-6 as straightforward
 as possible.
 
@@ -70,8 +70,8 @@ by an integer representing time in seconds, or a DateInterval object.
 cached item. Implementing libraries MUST support keys consisting of the
 characters `A-Z`, `a-z`, `0-9`, `_`, and `.` in any order in UTF-8 encoding and a
 length of up to 64 characters. Implementing libraries MAY support additional
-characters and encodings or longer lengths, but must support at least that
-minimum.  Libraries are responsible for their own escaping of key strings
+characters and encodings or longer lengths, but MUST support at least that
+minimum. Libraries are responsible for their own escaping of key strings
 as appropriate, but MUST be able to return the original unmodified key string.
 The following characters are reserved for future extensions and MUST NOT be
 supported by implementing libraries: `{}()/\@:`
@@ -85,9 +85,9 @@ assumptions.
 ## 1.3 Cache
 
 Implementations MAY provide a mechanism for a user to specify a default TTL
-if one is not specified for a specific cache item.  If no user-specified default
+if one is not specified for a specific cache item. If no user-specified default
 is provided implementations MUST default to the maximum legal value allowed by
-the underlying implementation.  If the underlying implementation does not
+the underlying implementation. If the underlying implementation does not
 support TTL, the user-specified TTL MUST be silently ignored.
 
 ## 1.4 Data
@@ -97,18 +97,18 @@ Implementing libraries MUST support all serializable PHP data types, including:
 *    **Strings** - Character strings of arbitrary size in any PHP-compatible encoding.
 *    **Integers** - All integers of any size supported by PHP, up to 64-bit signed.
 *    **Floats** - All signed floating point values.
-*    **Boolean** - True and False.
+*    **Booleans** - True and False.
 *    **Null** - The null value (although it will not be distinguishable from a
 cache miss when reading it back out).
 *    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
-*    **Object** - Any object that supports lossless serialization and
+*    **Objects** - Any object that supports lossless serialization and
 deserialization such that $o == unserialize(serialize($o)). Objects MAY
 leverage PHP's Serializable interface, `__sleep()` or `__wakeup()` magic methods,
 or similar language functionality if appropriate.
 
 All data passed into the Implementing Library MUST be returned exactly as
 passed. That includes the variable type. That is, it is an error to return
-(string) 5 if (int) 5 was the value saved.  Implementing Libraries MAY use PHP's
+(string) 5 if (int) 5 was the value saved. Implementing Libraries MAY use PHP's
 serialize()/unserialize() functions internally but are not required to do so.
 Compatibility with them is simply used as a baseline for acceptable object values.
 
@@ -122,13 +122,13 @@ libraries MUST respond with a cache miss rather than corrupted data.
 The cache interface defines the most basic operations on a collection of cache-entries, which
 entails basic reading, writing and deleting individual cache items.
 
-In addition it has methods for dealing with multiple sets of cache entries such as writing, reading or
+In addition, it has methods for dealing with multiple sets of cache entries such as writing, reading or
 deleting multiple cache entries at a time. This is useful when you have lots of cache reads/writes
 to perform, and lets you perform your operations in a single call to the cache server cutting down latency
 times dramatically.
 
 An instance of CacheInterface corresponds to a single collection of cache items with a single key namespace,
-and is equivalent to a "Pool" in PSR-6.  Different CacheInterface instances MAY be backed by the same
+and is equivalent to a "Pool" in PSR-6. Different CacheInterface instances MAY be backed by the same
 datastore, but MUST be logically independent.
 
 ~~~php
@@ -155,7 +155,7 @@ interface CacheInterface
      * Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
      *
      * @param string                 $key   The key of the item to store.
-     * @param mixed                  $value The value of the item to store, must be serializable.
+     * @param mixed                  $value The value of the item to store. Must be serializable.
      * @param null|int|\DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
      *                                      the driver supports TTL then the library may set a default value
      *                                      for it or let the driver take care of that.
@@ -235,7 +235,7 @@ interface CacheInterface
      * NOTE: It is recommended that has() is only to be used for cache warming type purposes
      * and not to be used within your live applications operations for get/set, as this method
      * is subject to a race condition where your has() will return true and immediately after,
-     * another script can remove it making the state of your app out of date.
+     * another script can remove it, making the state of your app out of date.
      *
      * @param string $key The cache item key.
      *
@@ -274,8 +274,8 @@ namespace Psr\SimpleCache;
 /**
  * Exception interface for invalid cache arguments.
  *
- * When an invalid argument is passed it must throw an exception which implements
- * this interface
+ * When an invalid argument is passed, it must throw an exception which implements
+ * this interface.
  */
 interface InvalidArgumentException extends CacheException
 {
