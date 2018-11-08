@@ -230,7 +230,7 @@ root, a constant or property in a class MUST inherit the following tags:
 Unless specifically mentioned in the description each tag MAY occur zero or more
 times in each "DocBlock".
 
-### 5.1. @api
+### 5.1. @api [WG++]
 
 The @api tag is used to declare "Structural Elements" as being suitable for
 consumption by third parties.
@@ -267,7 +267,7 @@ function showVersion()
 }
 ```
 
-### 5.2. @author
+### 5.2. @author [WG++]
 
 The @author tag is used to document the author of any "Structural Element".
 
@@ -327,7 +327,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 5.4. @copyright
+### 5.4. @copyright [WG++]
 
 The @copyright tag is used to document the copyright information of any
 "Structural element".
@@ -1107,7 +1107,7 @@ function count($items)
 }
 ```
 
-### 5.20. @todo
+### 5.20. @todo [WG++]
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -1356,3 +1356,6 @@ class Foo
 [SPDX]:         https://www.spdx.org/licenses
 [INLINE_OLD]:   https://manual.phpdoc.org/HTMLframesConverter/default/phpDocumentor/tutorial_tags.inlineinternal.pkg.html
 [PHPDOC_PSR]:   https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
+
+
+[WG++] denotes "section approved by Working Group"
