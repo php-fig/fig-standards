@@ -1067,7 +1067,7 @@ DocBlock.
 ### 5.19. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
-specific type of exception.
+specific type of Throwable (exception or error).
 
 #### Syntax
 
@@ -1078,8 +1078,7 @@ specific type of exception.
 The @throws tag MAY be used to indicate that "Structural Elements" throw a
 specific type of error.
 
-The type provided with this tag MUST represent an object of the class Exception
-or any subclass thereof.
+The type provided with this tag MUST represent an object that is a subtype of Throwable.
 
 This tag is used to present in your documentation which error COULD occur and
 under which circumstances. It is RECOMMENDED to provide a description that
