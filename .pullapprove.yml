@@ -10,9 +10,9 @@ groups:
       - secretaries
     conditions:
     - "'proposed/psr-8*' in files"
-    - "'proposed/*' not in files"
     - "'Internal: Bylaw or Admin Change' in labels"
     - "'New PSR' in labels"
+    - "true" # fallback for everything else
   security:
     reviews:
       request: 0
