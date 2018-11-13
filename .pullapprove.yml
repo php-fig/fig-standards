@@ -3,6 +3,7 @@ version: 3
 groups:
   secretaries:
     reviews:
+      request: 0
       required: 1
     reviewers:
       teams:
@@ -14,6 +15,7 @@ groups:
     - "'New PSR' in labels"
   security:
     reviews:
+      request: 0
       required: 1
     reviewers:
       teams:
@@ -22,6 +24,7 @@ groups:
     - "'proposed/security* in files'"
   phpdoc:
     reviews:
+      request: 0
       required: 1
     reviewers:
       teams:
@@ -30,6 +33,7 @@ groups:
     - "'proposed/phpdoc*' in files"
   http-factory:
     reviews:
+      request: 0
       required: 1
     reviewers:
       teams:
@@ -38,6 +42,7 @@ groups:
     - "'proposed/http-factory/*' in files"
   cs-extended:
     reviews:
+      request: 0
       required: 1
     reviewers:
       teams:
@@ -46,6 +51,7 @@ groups:
     - "'proposed/extended-coding-style-guide*' in files"
   event-dispatcher:
     reviews:
+      request: 0
       required: 1
     reviewers:
       teams:
@@ -54,6 +60,7 @@ groups:
     - "'proposed/event-dispatcher*' in files"
   http-client:
     reviews:
+      request: 0
       required: 1
     reviewers:
       teams:
