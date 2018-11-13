@@ -36,6 +36,8 @@ repositories and to the github organisation.
 
 ## Guidelines for merging
 
+TESTING PULLAPPROVE
+
 * Never force push to any branch on a repository in the php-fig organisation
 * All changes must go through pull requests, a commit should never be pushed
 directly (excluding inital commits on new interface/util repositories) to master
