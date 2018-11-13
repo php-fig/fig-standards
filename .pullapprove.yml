@@ -21,7 +21,7 @@ groups:
       teams:
       - psr-9-10
     conditions:
-    - "'proposed/security* in files'"
+    - "'proposed/security*' in files"
   phpdoc:
     reviews:
       request: 0
