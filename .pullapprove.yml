@@ -9,7 +9,7 @@ groups:
       teams:
       - secretaries
     conditions:
-    - "'proposed/psr-8*' in files or 'Internal: Bylaw or Admin Change' in labels or 'New PSR' in labels"
+    - "'proposed/*' not in files or 'proposed/psr-8*' in files or 'Internal: Bylaw or Admin Change' in labels or 'New PSR' in labels"
   security:
     reviews:
       request: 0
