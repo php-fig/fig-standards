@@ -70,9 +70,9 @@ parts if that part is absent:
 * [Summary]([PHPDOC_PSR]#51-summary)
 * [Description]([PHPDOC_PSR]#52-description) and
 * A specific subset of [Tags]([PHPDOC_PSR]#53-tags):
-  * [@version](#525-version)
+  * [@version](#519-version)
   * [@author](#52-author)
-  * [@copyright](#54-copyright)
+  * [@copyright](#53-copyright)
 
 The PHPDoc for each type of "Structural Element" MUST also inherit a
 specialized subset of tags depending on which "Structural Element" is
@@ -171,23 +171,23 @@ combination of the Description of the super-element, indicated by the
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a class or interface MUST inherit the following tags:
 
-* [@package](#512-package)
+* [@package](#59-package)
 
 ### 4.3.2. Function Or Method
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a function or method in a class or interface MUST inherit the following tags:
 
-* [@param](#513-param)
-* [@return](#515-return)
-* [@throws](#520-throws)
+* [@param](#510-param)
+* [@return](#512-return)
+* [@throws](#515-throws)
 
 ### 4.3.3. Constant Or Property
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a constant or property in a class MUST inherit the following tags:
 
-* [@var](#522-type)
+* [@var](#518-type)
 
 ## 5. Tags
 
