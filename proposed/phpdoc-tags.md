@@ -19,23 +19,22 @@ PSR-19: PHPDoc tags
   - [5.3.  @copyright](#53-copyright)
   - [5.4.  @deprecated](#54-deprecated)
   - [5.5.  @example](#55-example)
-  - [5.6.  @global](#56-global)
-  - [5.7.  @internal](#57-internal)
-  - [5.8.  @license](#58-license)
-  - [5.9.  @link](#59-link)
-  - [5.10. @method](#510-method)
-  - [5.11. @package](#511-package)
-  - [5.12. @param](#512-param)
-  - [5.13. @property](#513-property)
-  - [5.14. @return](#514-return)
-  - [5.15. @see](#515-see)
-  - [5.16. @since](#516-since)
-  - [5.17. @subpackage [deprecated]](#517-subpackage-deprecated)
-  - [5.18. @throws](#518-throws)
-  - [5.19. @todo](#519-todo)
-  - [5.20. @uses](#520-uses)
-  - [5.21. @var](#521-var)
-  - [5.22. @version](#522-version)
+  - [5.6.  @internal](#56-internal)
+  - [5.7.  @license](#57-license)
+  - [5.8.  @link](#58-link)
+  - [5.9.  @method](#59-method)
+  - [5.10. @package](#510-package)
+  - [5.11. @param](#511-param)
+  - [5.12. @property](#512-property)
+  - [5.13. @return](#513-return)
+  - [5.14. @see](#514-see)
+  - [5.15. @since](#515-since)
+  - [5.16. @subpackage [deprecated]](#516-subpackage-deprecated)
+  - [5.17. @throws](#517-throws)
+  - [5.18. @todo](#518-todo)
+  - [5.19. @uses](#519-uses)
+  - [5.20. @var](#520-var)
+  - [5.21. @version](#521-version)
 
 ## 1. Introduction
 
@@ -452,48 +451,7 @@ function count()
 }
 ```
 
-### 5.6. @global
-
-TODO: The definition of this item should be discussed and whether it may or
-may not be superseded in part or in whole by the @var tag.
-
-The @global tag is used to denote a global variable or its usage.
-
-#### Syntax
-
-    @global ["Type"] [name]
-    @global ["Type"] [description]
-
-#### Description
-
-Since there is no standard way to declare global variables, a @global tag MAY
-be used in a DocBlock preceding a global variable's definition. To support
-previous usages of @global, there is an alternate syntax that applies to
-DocBlocks preceding a function, used to document usage of global
-variables. In other words, there are two usages of @global: definition and
-usage.
-
-##### Syntax for the Global's Definition
-
-Only one @global tag MAY be allowed per global variable DocBlock. A global
-variable DocBlock MUST be followed by the global variable's definition before
-any other element or DocBlock occurs.
-
-The name MUST be the exact name of the global variable as it is declared in
-the source.
-
-##### Syntax for the Global's Usage
-
-The function/method @global syntax MAY be used to document usage of global
-variables in a function, and MUST NOT have a $ starting the third word. The
-"Type" will be ignored if a match is made between the declared global
-variable and a variable documented in the project.
-
-#### Examples
-
-(TODO: Examples for this tag should be added)
-
-### 5.7. @internal
+### 5.6. @internal
 
 The @internal tag is used to denote that the associated "Structural Element" is
 a structure internal to this application or library. It may also be used inside
@@ -563,7 +521,7 @@ function count()
 }
 ```
 
-### 5.8. @license
+### 5.7. @license
 
 The @license tag is used to indicate which license is applicable for the
 associated 'Structural Elements'.
@@ -603,7 +561,7 @@ license.
  */
 ```
 
-### 5.9. @link
+### 5.8. @link
 
 The @link tag indicates a custom relation between the associated
 "Structural Element" and a website, which is identified by an absolute URI.
@@ -653,7 +611,7 @@ function count()
 }
 ```
 
-### 5.10. @method
+### 5.9. @method
 
 The @method allows a class to know which 'magic' methods are callable.
 
@@ -703,7 +661,7 @@ class Child extends Parent
 }
 ```
 
-### 5.11. @package
+### 5.10. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -752,7 +710,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 5.12. @param
+### 5.11. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -792,7 +750,7 @@ function count(array $items)
 }
 ```
 
-### 5.13. @property
+### 5.12. @property
 
 The `@property` tag is used to declare which "magic" properties are supported.
 
@@ -841,7 +799,7 @@ class User
 }
 ```
 
-### 5.14. @return
+### 5.13. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -890,7 +848,7 @@ function getLabel()
 }
 ```
 
-### 5.15. @see
+### 5.14. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -932,7 +890,7 @@ function count()
 }
 ```
 
-### 5.16. @since
+### 5.15. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -982,7 +940,7 @@ class Foo
 }
 ```
 
-### 5.17. @subpackage [deprecated]
+### 5.16. @subpackage [deprecated]
 
 The @subpackage tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -1016,7 +974,7 @@ DocBlock.
  */
 ```
 
-### 5.18. @throws
+### 5.17. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -1059,7 +1017,7 @@ function count($items)
 }
 ```
 
-### 5.19. @todo [WG++]
+### 5.18. @todo [WG++]
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -1091,7 +1049,7 @@ function count()
 }
 ```
 
-### 5.20. @uses
+### 5.19. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1144,7 +1102,7 @@ function executeMyView()
 }
 ```
 
-### 5.21. @var
+### 5.20. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1248,7 +1206,7 @@ class Foo
 }
 ```
 
-### 5.22. @version
+### 5.21. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
