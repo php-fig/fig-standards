@@ -16,27 +16,23 @@ PSR-19: PHPDoc tags
 - [5. Tags](#5-tags)
   - [5.1.  @api](#51-api)
   - [5.2.  @author](#52-author)
-  - [5.3.  @category [deprecated]](#53-category-deprecated)
-  - [5.4.  @copyright](#54-copyright)
-  - [5.5.  @deprecated](#55-deprecated)
-  - [5.6.  @example](#56-example)
-  - [5.7.  @global](#57-global)
-  - [5.8.  @internal](#58-internal)
-  - [5.9.  @license](#59-license)
-  - [5.10. @link](#510-link)
-  - [5.11. @method](#511-method)
-  - [5.12. @package](#512-package)
-  - [5.13. @param](#513-param)
-  - [5.14. @property](#514-property)
-  - [5.15. @return](#515-return)
-  - [5.16. @see](#516-see)
-  - [5.17. @since](#517-since)
-  - [5.18. @subpackage [deprecated]](#518-subpackage-deprecated)
-  - [5.19. @throws](#519-throws)
-  - [5.20. @todo](#520-todo)
-  - [5.21. @uses](#521-uses)
-  - [5.22. @var](#522-var)
-  - [5.23. @version](#523-version)
+  - [5.3.  @copyright](#53-copyright)
+  - [5.4.  @deprecated](#54-deprecated)
+  - [5.5.  @example](#55-example)
+  - [5.6.  @internal](#56-internal)
+  - [5.7.  @link](#57-link)
+  - [5.8.  @method](#58-method)
+  - [5.9.  @package](#59-package)
+  - [5.10. @param](#510-param)
+  - [5.11. @property](#511-property)
+  - [5.12. @return](#512-return)
+  - [5.13. @see](#513-see)
+  - [5.14. @since](#514-since)
+  - [5.15. @throws](#515-throws)
+  - [5.16. @todo](#516-todo)
+  - [5.17. @uses](#517-uses)
+  - [5.18. @var](#518-var)
+  - [5.19. @version](#519-version)
 
 ## 1. Introduction
 
@@ -74,9 +70,9 @@ parts if that part is absent:
 * [Summary]([PHPDOC_PSR]#51-summary)
 * [Description]([PHPDOC_PSR]#52-description) and
 * A specific subset of [Tags]([PHPDOC_PSR]#53-tags):
-  * [@version](#525-version)
+  * [@version](#519-version)
   * [@author](#52-author)
-  * [@copyright](#54-copyright)
+  * [@copyright](#53-copyright)
 
 The PHPDoc for each type of "Structural Element" MUST also inherit a
 specialized subset of tags depending on which "Structural Element" is
@@ -175,55 +171,23 @@ combination of the Description of the super-element, indicated by the
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a class or interface MUST inherit the following tags:
 
-* [@package](#512-package)
-
-A class or interface SHOULD inherit the following deprecated tags if supplied:
-
-* [@subpackage](#519-subpackage-deprecated)
-
-The @subpackage MUST NOT be inherited if the @package name of the
-super-class (or interface) is not the same as the @package of the child class
-(or interface).
-
-Example:
-
-```php
-/**
- * @package    Framework
- * @subpackage Controllers
- */
-class Framework_ActionController
-{
-    <...>
-}
-
-/**
- * @package My
- */
-class My_ActionController extends Framework_ActionController
-{
-    <...>
-}
-```
-
-In the example above the My_ActionController MUST NOT inherit the subpackage
-_Controllers_.
+* [@package](#59-package)
 
 ### 4.3.2. Function Or Method
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a function or method in a class or interface MUST inherit the following tags:
 
-* [@param](#513-param)
-* [@return](#515-return)
-* [@throws](#520-throws)
+* [@param](#510-param)
+* [@return](#512-return)
+* [@throws](#515-throws)
 
 ### 4.3.3. Constant Or Property
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a constant or property in a class MUST inherit the following tags:
 
-* [@var](#522-type)
+* [@var](#518-type)
 
 ## 5. Tags
 
@@ -292,42 +256,7 @@ adhere to the syntax defined in RFC 2822.
  */
 ```
 
-### 5.3. @category [deprecated]
-
-The @category tag is used to organize groups of packages together but is
-deprecated in favour of occupying the top-level with the @package tag.
-As such, usage of this tag is NOT RECOMMENDED.
-
-#### Syntax
-
-    @category [description]
-
-#### Description
-
-The @category tag was meant in the original de-facto Standard to group several
-@packages into one category. These categories could then be used to aid
-in the generation of API documentation.
-
-This was necessary since the @package tag as defined in the original Standard did
-not contain more then one hierarchy level; since this has changed this tag SHOULD
-NOT be used.
-
-Please see the documentation for `@package` for details of its usage.
-
-This tag MUST NOT occur more than once in a "DocBlock".
-
-#### Examples
-
-```php
-/**
- * File-Level DocBlock
- *
- * @category MyCategory
- * @package  MyPackage
- */
-```
-
-### 5.4. @copyright [WG++]
+### 5.3. @copyright [WG++]
 
 The @copyright tag is used to document the copyright information of any
 "Structural element".
@@ -354,40 +283,20 @@ covered by this copyright and the organization involved.
  */
 ```
 
-### 5.5. @deprecated
+### 5.4. @deprecated
 
 The @deprecated tag is used to indicate which 'Structural elements' are
 deprecated and are to be removed in a future version.
 
 #### Syntax
 
-    @deprecated [<"Semantic Version">][:<"Semantic Version">] [<description>]
+    @deprecated [<"Semantic Version">] [<description>]
 
 #### Description
 
 The @deprecated tag declares that the associated 'Structural elements' will
 be removed in a future version as it has become obsolete or its usage is
 otherwise not recommended.
-
-This tag MAY specify up to two version numbers in the sense of a version number
-range:
-
-The first version number, referred to as the 'starting version', denotes the
-version in which the associated element has been deprecated.
-
-The second version number, referred to as the 'ending version', denotes the
-version in which the associated element is scheduled for removal.
-
-If an 'ending version' has been specified, the associated 'Structural elements'
-MAY no longer exist in the 'ending version' and MAY be removed without further
-notice in that version or a later version, but MUST exist in all prior versions.
-
-It is RECOMMENDED to specify both a 'starting version' and an 'ending version'.
-In this case, the two version numbers MUST be separated by a colon (`:`) without
-white-space in between.
-
-The 'starting version' MAY be omitted. In this case, the 'ending version' MUST
-be preceded by a colon.
 
 This tag MAY provide an additional description stating why the associated
 element is deprecated.
@@ -401,12 +310,7 @@ If the associated element is superseded by another it is RECOMMENDED to add a
 /**
  * @deprecated
  *
- * @deprecated 1.0.0:2.0.0
- * @see \New\Recommended::method()
- *
  * @deprecated 1.0.0
- *
- * @deprecated :2.0.0
  *
  * @deprecated No longer used by internal code and not recommended.
  *
@@ -414,7 +318,7 @@ If the associated element is superseded by another it is RECOMMENDED to add a
  */
 ```
 
-### 5.6. @example
+### 5.5. @example
 
 The @example tag is used to link to an external source code file which contains
 an example of use for the current "Structural element". An inline variant exists
@@ -488,48 +392,7 @@ function count()
 }
 ```
 
-### 5.7. @global
-
-TODO: The definition of this item should be discussed and whether it may or
-may not be superseded in part or in whole by the @var tag.
-
-The @global tag is used to denote a global variable or its usage.
-
-#### Syntax
-
-    @global ["Type"] [name]
-    @global ["Type"] [description]
-
-#### Description
-
-Since there is no standard way to declare global variables, a @global tag MAY
-be used in a DocBlock preceding a global variable's definition. To support
-previous usages of @global, there is an alternate syntax that applies to
-DocBlocks preceding a function, used to document usage of global
-variables. In other words, there are two usages of @global: definition and
-usage.
-
-##### Syntax for the Global's Definition
-
-Only one @global tag MAY be allowed per global variable DocBlock. A global
-variable DocBlock MUST be followed by the global variable's definition before
-any other element or DocBlock occurs.
-
-The name MUST be the exact name of the global variable as it is declared in
-the source.
-
-##### Syntax for the Global's Usage
-
-The function/method @global syntax MAY be used to document usage of global
-variables in a function, and MUST NOT have a $ starting the third word. The
-"Type" will be ignored if a match is made between the declared global
-variable and a variable documented in the project.
-
-#### Examples
-
-(TODO: Examples for this tag should be added)
-
-### 5.8. @internal
+### 5.6. @internal
 
 The @internal tag is used to denote that the associated "Structural Element" is
 a structure internal to this application or library. It may also be used inside
@@ -599,47 +462,7 @@ function count()
 }
 ```
 
-### 5.9. @license
-
-The @license tag is used to indicate which license is applicable for the
-associated 'Structural Elements'.
-
-#### Syntax
-
-    @license [<SPDX identifier>|URI] [name]
-
-#### Description
-
-The @license tag provides licensing information to the user, which is applicable
-to 'Structural Elements' and their child elements.
-
-The first parameter MUST be either a 'SPDX identifier', as defined by the
-[SPDX Open Source License Registry][SPDX], or a URL to a document containing
-the full license text.
-
-The second parameter MAY be the official name of the applicable license.
-
-It is RECOMMENDED to only specify an 'SPDX identifier' and to apply @license
-tags to file-level 'PHPDoc' only, since multiple varying licenses within a
-single file may cause confusion with regard to which license applies at which
-time.
-
-In case multiple licenses apply, there MUST be one @license tag per applicable
-license.
-
-#### Examples
-
-```php
-/**
- * @license MIT
- *
- * @license GPL-2.0-or-later
- *
- * @license http://www.spdx.org/licenses/MIT MIT License
- */
-```
-
-### 5.10. @link
+### 5.7. @link
 
 The @link tag indicates a custom relation between the associated
 "Structural Element" and a website, which is identified by an absolute URI.
@@ -689,7 +512,7 @@ function count()
 }
 ```
 
-### 5.11. @method
+### 5.8. @method
 
 The @method allows a class to know which 'magic' methods are callable.
 
@@ -739,7 +562,7 @@ class Child extends Parent
 }
 ```
 
-### 5.12. @package
+### 5.9. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -762,21 +585,9 @@ Each level in the logical hierarchy MUST separated with a backslash (`\`) to
 be familiar to Namespaces. A hierarchy MAY be of endless depth but it is
 RECOMMENDED to keep the depth at less or equal than six levels.
 
-Please note that the @package applies to different "Structural Elements"
-depending where it is defined.
-
-1. If the @package is defined in the *file-level* DocBlock then it only applies
-   to the following elements in the applicable file:
-    * global functions
-    * global constants
-    * global variables
-    * requires and includes
-
-2. If the @package is defined in a *namespace-level* or *class-level* DocBlock
-   then the package applies to that namespace, class or interface and their
-   contained elements.
-   This means that a function which is contained in a namespace with the
-   @package tag assumes that package.
+The package applies to that namespace, class or interface and their contained
+elements. This means that a function which is contained in a namespace with the
+@package tag assumes that package.
 
 This tag MUST NOT occur more than once in a "DocBlock".
 
@@ -788,7 +599,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 5.13. @param
+### 5.10. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -828,7 +639,7 @@ function count(array $items)
 }
 ```
 
-### 5.14. @property
+### 5.11. @property
 
 The `@property` tag is used to declare which "magic" properties are supported.
 
@@ -877,7 +688,7 @@ class User
 }
 ```
 
-### 5.15. @return
+### 5.12. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -926,7 +737,7 @@ function getLabel()
 }
 ```
 
-### 5.16. @see
+### 5.13. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -968,7 +779,7 @@ function count()
 }
 ```
 
-### 5.17. @since
+### 5.14. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -1018,41 +829,7 @@ class Foo
 }
 ```
 
-### 5.18. @subpackage [deprecated]
-
-The @subpackage tag is used to categorize "Structural Elements" into logical
-subdivisions.
-
-#### Syntax
-
-    @subpackage [name]
-
-#### Description
-
-The @subpackage tag MAY be used as a counterpart or supplement to Namespaces.
-Namespaces provide a functional subdivision of "Structural Elements" where
-the @subpackage tag can provide a *logical* subdivision in which way the
-elements can be grouped with a different hierarchy.
-
-If, across the board, both logical and functional subdivisions are equal it is
-NOT RECOMMENDED to use the @subpackage tag, to prevent maintenance overhead.
-
-The @subpackage tag MUST only be used in a specific series of DocBlocks, as is
-described in the documentation for the @package tag.
-
-This tag MUST accompany a @package tag and MUST NOT occur more than once per
-DocBlock.
-
-#### Examples
-
-```php
-/**
- * @package PSR
- * @subpackage Documentation\API
- */
-```
-
-### 5.19. @throws
+### 5.15. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -1095,7 +872,7 @@ function count($items)
 }
 ```
 
-### 5.20. @todo [WG++]
+### 5.16. @todo [WG++]
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -1127,7 +904,7 @@ function count()
 }
 ```
 
-### 5.21. @uses
+### 5.17. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1180,7 +957,7 @@ function executeMyView()
 }
 ```
 
-### 5.22. @var
+### 5.18. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1284,7 +1061,7 @@ class Foo
 }
 ```
 
-### 5.23. @version
+### 5.19. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.

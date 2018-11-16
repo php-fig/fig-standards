@@ -14,8 +14,7 @@ PSR-5: PHPDoc
     - [5.3.1. Tag Name](#531-tag-name)
     - [5.3.2. Tag Specialization](#532-tag-specialization)
     - [5.3.3. Tag Signature](#533-tag-signature)
-  - [5.4. Inline PHPDoc](#54-inline-phpdoc)
-  - [5.5. Examples](#55-examples)
+  - [5.4. Examples](#54-examples)
 - [Appendix A. Types](#appendix-a-types)
   - [ABNF](#abnf)
   - [Details](#details)
@@ -59,7 +58,6 @@ interpreted as described in [RFC 2119][RFC2119].
 * "Structural Element" is a collection of Programming Constructs which MAY be
   preceded by a DocBlock. The collection contains the following constructs:
 
-  * file
   * require(_once)
   * include(_once)
   * class
@@ -157,9 +155,6 @@ interpreted as described in [RFC 2119][RFC2119].
 * "Tag" is a single piece of meta information regarding a "Structural Element"
   or a component thereof.
 
-* "Inline PHPDoc" is a "PHPDoc" that is related to a "Tag" instead of a
-  "Structural element". It replaces the description part of the "Tag".
-
 * "Type" is the determination of what type of data is associated with an element.
   This is commonly used when determining the exact values of arguments, constants,
   properties and more.
@@ -202,49 +197,12 @@ interpreted as described in [RFC 2119][RFC2119].
 
 * A DocBlock MUST directly precede a "Structural Element"
 
-  > An exception to this principle is the File-level DocBlock which MUST be
-  > placed at the top of a PHP source code file as the first DocBlock in a
-  > file.
-  >
-  > To prevent ambiguity when a Structural Element comes directly after a
-  > File-level DocBlock, that element MUST have its own DocBlock in
-  > addition to the File-level DocBlock.
-  >
-  > Example of a valid File-level DocBlock:
-  >
-  > ```
-  > <?php
-  > /**
-  >  * This is a file-level DocBlock
-  >  */
-  >
-  > /**
-  >  * This is a class DocBlock
-  >  */
-  > class MyClass
-  > {
-  > }
-  > ```
-  >
-  > Example of an invalid File-level DocBlock
-  >
-  > ```
-  > <?php
-  > /**
-  >  * This is a class DocBlock
-  >  */
-  > class MyClass
-  > {
-  > }
-  > ```
-
 ## 5. The PHPDoc Format
 
 The PHPDoc format has the following [ABNF][RFC5234]
 definition:
 
     PHPDoc             = [summary] [description] [tags]
-    inline-phpdoc      = "{" *SP PHPDoc *SP "}"
     summary            = *CHAR (2*CRLF)
     description        = 1*(CHAR / inline-tag) 1*CRLF ; any amount of characters
                                                      ; with inline tags inside
@@ -253,7 +211,7 @@ definition:
     tag                = "@" tag-name [":" tag-specialization] [tag-details]
     tag-name           = (ALPHA / "\") *(ALPHA / DIGIT / "\" / "-" / "_")
     tag-specialization = 1*(ALPHA / DIGIT / "-")
-    tag-details        = *SP (SP tag-description / tag-signature / inline-phpdoc)
+    tag-details        = *SP (SP tag-description / tag-signature )
     tag-description    = 1*(CHAR / CRLF)
     tag-signature      = "(" *tag-argument ")"
     tag-argument       = *SP 1*CHAR [","] *SP
@@ -302,7 +260,7 @@ Common uses for the Description are (amongst others):
 Tags provide a way for authors to supply concise meta-data regarding the
 succeeding "Structural Element". Each tag starts on a new line, followed
 by an at-sign (@) and a tag-name, followed by white-space and meta-data
-(including a description) or Inline PHPDoc.
+(including a description).
 
 If meta-data is provided, it MAY span multiple lines and COULD follow a
 strict format, and as such provide parameters, as dictated by the type of tag.
@@ -421,49 +379,7 @@ The contents of a signature are to be determined by the tag type (as described
 in the tag-name) and fall beyond the scope of this specification. However, a
 tag-signature MUST NOT be followed by a description or other form of meta-data.
 
-### 5.4. Inline PHPDoc
-
-Specific Tags MAY have an "Inline PHPDoc" section at the end of the "Tag"
-definition. An "Inline PHPDoc" is a "PHPDoc" element enclosed in braces and is
-only present at the end of a "Tag" sequence, unless specified otherwise in a
-"Tag" definition. The "Inline PHPDoc" element MUST replace any description that
-COULD have been provided.
-
-An example is the `@method` tag. This tag can be augmented using an
-"Inline PHPDoc" to provide additional information regarding the parameters,
-return value or any other tag supported by functions and methods.
-
-An example of this is:
-
-```php
-/**
- * @method int MyMagicMethod(string $argument1) {
- *     This is the summary for MyMagicMethod.
- *
- *     @param string $argument1 Description for argument 1.
- *
- *     @return int
- * }
- */
-class MyMagicClass
-{
-    ...
-}
-```
-
-This example shows how the `@method` tag for the Magic Method
-`MyMagicMethod` has a complete PHPDoc definition associated with it. In this
-definition, all constraints, constructs and tags that apply to a normal usage of
-PHPDoc also apply.
-
-The meaning of an "Inline PHPDoc" element differs based on the context in which
-it is provided. In the example above the "Inline PHPDoc" provides a regular
-PHPDoc definition as would precede a method.
-
-To prevent confusion regarding the function of "Inline PHPDoc" elements, their usage
-MUST be restricted to tags and locations that are documented.
-
-### 5.5. Examples
+### 5.4. Examples
 
 The following examples serve to illustrate the basic use of DocBlocks; it is
 advised to read through the list of tags in the [Tag Catalog PSR][TAG_PSR].
@@ -530,24 +446,6 @@ A DocBlock may also span a single line:
 ```php
 /** @var \ArrayObject $array */
 public $array = null;
-```
-
-Some tags may even feature an "Inline PHPDoc":
-
-```php
-/**
- * @method int MyMagicMethod(string $argument1) {
- *     This is the summary for MyMagicMethod.
- *
- *     @param string $argument1 Description for argument 1.
- *
- *     @return int
- * }
- */
-class MyMagicClass
-{
-    ...
-}
 ```
 
 ## Appendix A. Types
