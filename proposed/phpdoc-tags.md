@@ -20,20 +20,19 @@ PSR-19: PHPDoc tags
   - [5.4.  @deprecated](#54-deprecated)
   - [5.5.  @example](#55-example)
   - [5.6.  @internal](#56-internal)
-  - [5.7.  @license](#57-license)
-  - [5.8.  @link](#58-link)
-  - [5.9.  @method](#59-method)
-  - [5.10. @package](#510-package)
-  - [5.11. @param](#511-param)
-  - [5.12. @property](#512-property)
-  - [5.13. @return](#513-return)
-  - [5.14. @see](#514-see)
-  - [5.15. @since](#515-since)
-  - [5.16. @throws](#516-throws)
-  - [5.17. @todo](#517-todo)
-  - [5.18. @uses](#518-uses)
-  - [5.19. @var](#519-var)
-  - [5.20. @version](#520-version)
+  - [5.7.  @link](#57-link)
+  - [5.8.  @method](#58-method)
+  - [5.9.  @package](#59-package)
+  - [5.10. @param](#510-param)
+  - [5.11. @property](#511-property)
+  - [5.12. @return](#512-return)
+  - [5.13. @see](#513-see)
+  - [5.14. @since](#514-since)
+  - [5.15. @throws](#515-throws)
+  - [5.16. @todo](#516-todo)
+  - [5.17. @uses](#517-uses)
+  - [5.18. @var](#518-var)
+  - [5.19. @version](#519-version)
 
 ## 1. Introduction
 
@@ -488,47 +487,7 @@ function count()
 }
 ```
 
-### 5.7. @license
-
-The @license tag is used to indicate which license is applicable for the
-associated 'Structural Elements'.
-
-#### Syntax
-
-    @license [<SPDX identifier>|URI] [name]
-
-#### Description
-
-The @license tag provides licensing information to the user, which is applicable
-to 'Structural Elements' and their child elements.
-
-The first parameter MUST be either a 'SPDX identifier', as defined by the
-[SPDX Open Source License Registry][SPDX], or a URL to a document containing
-the full license text.
-
-The second parameter MAY be the official name of the applicable license.
-
-It is RECOMMENDED to only specify an 'SPDX identifier' and to apply @license
-tags to file-level 'PHPDoc' only, since multiple varying licenses within a
-single file may cause confusion with regard to which license applies at which
-time.
-
-In case multiple licenses apply, there MUST be one @license tag per applicable
-license.
-
-#### Examples
-
-```php
-/**
- * @license MIT
- *
- * @license GPL-2.0-or-later
- *
- * @license http://www.spdx.org/licenses/MIT MIT License
- */
-```
-
-### 5.8. @link
+### 5.7. @link
 
 The @link tag indicates a custom relation between the associated
 "Structural Element" and a website, which is identified by an absolute URI.
@@ -578,7 +537,7 @@ function count()
 }
 ```
 
-### 5.9. @method
+### 5.8. @method
 
 The @method allows a class to know which 'magic' methods are callable.
 
@@ -628,7 +587,7 @@ class Child extends Parent
 }
 ```
 
-### 5.10. @package
+### 5.9. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -677,7 +636,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 5.11. @param
+### 5.10. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -717,7 +676,7 @@ function count(array $items)
 }
 ```
 
-### 5.12. @property
+### 5.11. @property
 
 The `@property` tag is used to declare which "magic" properties are supported.
 
@@ -766,7 +725,7 @@ class User
 }
 ```
 
-### 5.13. @return
+### 5.12. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -815,7 +774,7 @@ function getLabel()
 }
 ```
 
-### 5.14. @see
+### 5.13. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -857,7 +816,7 @@ function count()
 }
 ```
 
-### 5.15. @since
+### 5.14. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -907,7 +866,7 @@ class Foo
 }
 ```
 
-### 5.16. @throws
+### 5.15. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -950,7 +909,7 @@ function count($items)
 }
 ```
 
-### 5.17. @todo [WG++]
+### 5.16. @todo [WG++]
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -982,7 +941,7 @@ function count()
 }
 ```
 
-### 5.18. @uses
+### 5.17. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1035,7 +994,7 @@ function executeMyView()
 }
 ```
 
-### 5.19. @var
+### 5.18. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1139,7 +1098,7 @@ class Foo
 }
 ```
 
-### 5.20. @version
+### 5.19. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
