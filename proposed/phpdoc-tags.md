@@ -18,21 +18,20 @@ PSR-19: PHPDoc tags
   - [5.2.  @author](#52-author)
   - [5.3.  @copyright](#53-copyright)
   - [5.4.  @deprecated](#54-deprecated)
-  - [5.5.  @example](#55-example)
-  - [5.6.  @internal](#56-internal)
-  - [5.7.  @link](#57-link)
-  - [5.8.  @method](#58-method)
-  - [5.9.  @package](#59-package)
-  - [5.10. @param](#510-param)
-  - [5.11. @property](#511-property)
-  - [5.12. @return](#512-return)
-  - [5.13. @see](#513-see)
-  - [5.14. @since](#514-since)
-  - [5.15. @throws](#515-throws)
-  - [5.16. @todo](#516-todo)
-  - [5.17. @uses](#517-uses)
-  - [5.18. @var](#518-var)
-  - [5.19. @version](#519-version)
+  - [5.5.  @internal](#55-internal)
+  - [5.6.  @link](#56-link)
+  - [5.7.  @method](#57-method)
+  - [5.8.  @package](#58-package)
+  - [5.9.  @param](#59-param)
+  - [5.10. @property](#510-property)
+  - [5.11. @return](#511-return)
+  - [5.12. @see](#512-see)
+  - [5.13. @since](#513-since)
+  - [5.14. @throws](#514-throws)
+  - [5.15. @todo](#515-todo)
+  - [5.16. @uses](#516-uses)
+  - [5.17. @var](#517-var)
+  - [5.18. @version](#518-version)
 
 ## 1. Introduction
 
@@ -70,9 +69,9 @@ parts if that part is absent:
 * [Summary]([PHPDOC_PSR]#51-summary)
 * [Description]([PHPDOC_PSR]#52-description) and
 * A specific subset of [Tags]([PHPDOC_PSR]#53-tags):
-  * [@version](#519-version)
   * [@author](#52-author)
   * [@copyright](#53-copyright)
+  * [@version](#518-version)
 
 The PHPDoc for each type of "Structural Element" MUST also inherit a
 specialized subset of tags depending on which "Structural Element" is
@@ -171,33 +170,33 @@ combination of the Description of the super-element, indicated by the
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a class or interface MUST inherit the following tags:
 
-* [@package](#59-package)
+* [@package](#58-package)
 
 ### 4.3.2. Function Or Method
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a function or method in a class or interface MUST inherit the following tags:
 
-* [@param](#510-param)
-* [@return](#512-return)
-* [@throws](#515-throws)
+* [@param](#59-param)
+* [@return](#511-return)
+* [@throws](#514-throws)
 
 ### 4.3.3. Constant Or Property
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a constant or property in a class MUST inherit the following tags:
 
-* [@var](#518-type)
+* [@var](#517-type)
 
 ## 5. Tags
 
 Unless specifically mentioned in the description each tag MAY occur zero or more
 times in each "DocBlock".
 
-### 5.1. @api [WG++]
+### 5.1. @api
 
-The @api tag is used to declare "Structural Elements" as being suitable for
-consumption by third parties.
+The @api tag is used to highlight "Structural Elements" as being part of the
+primary public API of a package.
 
 #### Syntax
 
@@ -205,33 +204,42 @@ consumption by third parties.
 
 #### Description
 
-The @api tag represents those "Structural Elements" with a public visibility
-which are intended to be the public API components for a library or framework.
-Other "Structural Elements" with a public visibility serve to support the
-internal structure and are not recommended to be used by the consumer.
+The `@api` tag MAY be applied to public "Structural Elements" to highlight
+them in generated documentation, pointing the consumer to the primary public
+API components of a library or framework.
 
-The exact meaning of "Structural Elements" tagged with @api MAY differ per
-project. It is however RECOMMENDED that all tagged "Structural Elements" SHOULD
-NOT change after publication unless the new version is tagged as breaking
-Backwards Compatibility.
+Other "Structural Elements" with a public visibility MAY be listed less
+prominently in generated documentation.
+
+See also the [`@internal`](#55-internal), which MAY be used to hide internal
+API components from generated documentation.
 
 #### Examples
 
 ```php
-/**
- * This method will not change until a major release.
- *
- * @api
- *
- * @return void
- */
-function showVersion()
+class UserService
 {
-   <...>
+    /**
+     * This method is public-API. 
+     *
+     * @api
+     */
+    public function getUser()
+    {
+        <...>
+    }
+
+    /**
+     * This method is "package scope", not public-API
+     */
+    public function callMefromAnotherClass()
+    {
+        <...>
+    }
 }
 ```
 
-### 5.2. @author [WG++]
+### 5.2. @author
 
 The @author tag is used to document the author of any "Structural Element".
 
@@ -256,7 +264,7 @@ adhere to the syntax defined in RFC 2822.
  */
 ```
 
-### 5.3. @copyright [WG++]
+### 5.3. @copyright
 
 The @copyright tag is used to document the copyright information of any
 "Structural element".
@@ -318,81 +326,7 @@ If the associated element is superseded by another it is RECOMMENDED to add a
  */
 ```
 
-### 5.5. @example
-
-The @example tag is used to link to an external source code file which contains
-an example of use for the current "Structural element". An inline variant exists
-with which code from an example file can be shown inline with the Description.
-
-#### Syntax
-
-    @example [URI] [<description>]
-
-or inline:
-
-    {@example [URI] [:<start>..<end>]}
-
-#### Description
-
-The example tag refers to a file containing example code demonstrating the
-purpose and use of the current "Structural element". Multiple example tags may
-be used per "Structural element" in case several scenarios are described.
-
-The URI provided with the example tag is resolved according to the following
-rules:
-
-1. If a URI is proceeded by a scheme or root folder specifier such as `phar://`,
-   `http://`, `/` or `C:\` then it is considered to be an absolute path.
-2. If the URI is deemed relative and a location for the example files has been
-   provided then the path relative to the given location is resolved.
-3. If the previous path was not readable or the user has not provided a path
-   then the application should try to search for a folder 'examples' in the
-   same folder as the source file featuring the example tag. If found then an
-   attempt to resolve the path by combining the relative path given in the
-   example tag and the found folder should be made.
-4. If the application was unable to resolve a path given the previous rules then
-   it should check if a readable folder 'examples' is found in the root folder
-   of the project containing the source file of the "Structural Element".
-
-   > The root folder of a project is the highest folder common to all files
-   > that are being processed by a consuming application.
-
-If a consumer intends to display the contents of the example file then it is
-RECOMMENDED to use a syntax highlighting solution to improve user experience.
-
-The rules as described above also apply to the inline tags. The inline tag
-has 2 additional parameters with which to limit which lines of code
-are shown in the Description. Due to this, consuming applications MUST
-show the example code in case an inline example tag is used.
-
-The start and end argument may be omitted but the ellipsis should remain in
-case either is used to give a clear visual indication. The same rules as
-specified with the [substr][PHP_SUBSTR] function of PHP are in effect with
-regards to the start and end limit.
-
-> A consuming application MAY choose to support the limit format as used in the
-> previous standard but it is deprecated per this PSR.
-> The previous syntax was: {@example [URI] [<start>] [<end>]} and did not support
-> the same rules as the substr function.
-
-#### Examples
-
-```php
-/**
- * Counts the number of items.
- * {@example http://example.com/foo-inline.https:2..8}
- *
- * @example http://example.com/foo.phps
- *
- * @return int Indicates the number of items.
- */
-function count()
-{
-    <...>
-}
-```
-
-### 5.6. @internal
+### 5.5. @internal
 
 The @internal tag is used to denote that the associated "Structural Element" is
 a structure internal to this application or library. It may also be used inside
@@ -401,29 +335,26 @@ the developers of this software.
 
 #### Syntax
 
-    @internal
+    @internal [description]
 
 or inline:
 
     {@internal [description]}
 
 Contrary to other inline tags, the inline version of this tag may also contain
-other inline tags (see example below).
-
-Implementations MAY support two closing braces for the inline version,
-due to [historical definition of the inline tag][INLINE_OLD] originally being:
-
-    {@internal [description]}}
-
-They MAY notify users that the two braces grammar is deprecated in favor
-of using just one closing brace, since parsers/IDEs are now better at
-recognizing matching pairs of open/close braces.
+other inline tags (see second example below).
 
 #### Description
 
-The @internal tag can be used as counterpart of the @api tag, indicating that
-the associated "Structural Element" is used purely for the internal workings of
-this piece of software.
+The `@internal` tag indicates that the associated "Structural Element" is intended
+only for use within the application, library or package to which it belongs.
+
+Authors MAY use this tag to indicate that an element with public visibility should
+be regarded as exempt from the API - for example:
+  * Library authors MAY regard breaking changes to internal elements as being exempt
+    from semantic versioning.
+  * Static analysis tools MAY indicate the use of internal elements from another
+    library/package with a warning or notice.
 
 When generating documentation from PHPDoc comments it is RECOMMENDED to hide the
 associated element unless the user has explicitly indicated that internal elements
@@ -448,11 +379,17 @@ function count()
 {
     <...>
 }
+```
 
+Include a note in the Description that only Developer Docs would show.
+
+```php
 /**
  * Counts the number of Foo.
  *
- * {@internal Silently adds one extra Foo (see {@link http://example.com})}
+ * This method gets a count of the Foo.
+ * {@internal Developers should note that it silently 
+ *            adds one extra Foo (see {@link http://example.com}).}
  *
  * @return int Indicates the number of items.
  */
@@ -462,7 +399,7 @@ function count()
 }
 ```
 
-### 5.7. @link
+### 5.6. @link
 
 The @link tag indicates a custom relation between the associated
 "Structural Element" and a website, which is identified by an absolute URI.
@@ -473,7 +410,7 @@ The @link tag indicates a custom relation between the associated
 
 or inline
 
-    @link [URI] [description]
+    {@link [URI] [description]}
 
 #### Description
 
@@ -512,7 +449,7 @@ function count()
 }
 ```
 
-### 5.8. @method
+### 5.7. @method
 
 The @method allows a class to know which 'magic' methods are callable.
 
@@ -537,7 +474,7 @@ return value by including those types in the signature.
 When the intended method does not have a return value then the return type MAY
 be omitted; in which case 'void' is implied.
 
-@method tags MUST NOT be used in a PHPDoc that is not associated with a
+@method tags can ONLY be used in a PHPDoc that is associated with a
 *class* or *interface*.
 
 #### Examples
@@ -552,9 +489,9 @@ class Parent
 }
 
 /**
+ * @method setInteger(int $integer)
  * @method string getString()
- * @method void setInteger(int $integer)
- * @method setString(int $integer)
+ * @method void setString(int $integer)
  */
 class Child extends Parent
 {
@@ -562,7 +499,7 @@ class Child extends Parent
 }
 ```
 
-### 5.9. @package
+### 5.8. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -599,7 +536,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 5.10. @param
+### 5.9. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -611,8 +548,9 @@ The @param tag is used to document a single parameter of a function or method.
 
 With the @param tag it is possible to document the type and function of a
 single parameter of a function or method. When provided it MUST contain a
-"Type" to indicate what is expected; the description on the other hand is
-OPTIONAL yet RECOMMENDED.
+"Type" to indicate what is expected. The "name" is required only when some
+@param tags are omitted due to all useful info already being visible in the
+code signature itself. The description is OPTIONAL yet RECOMMENDED.
 
 The @param tag MAY have a multi-line description and does not need explicit
 delimiting.
@@ -639,7 +577,7 @@ function count(array $items)
 }
 ```
 
-### 5.11. @property
+### 5.10. @property
 
 The `@property` tag is used to declare which "magic" properties are supported.
 
@@ -655,8 +593,8 @@ and/or `__set()` "magic" methods to resolve non-literal properties at run-time.
 The `@property-read` and `@property-write` variants MAY be used to indicate "magic"
 properties that can only be read or written.
 
-The `@property` tags MAY ONLY be used in a "PHPDoc" associated with a `class`
-or `trait`.
+The `@property` tags can ONLY be used in a PHPDoc that is associated with a
+*class* or *trait*.
 
 #### Example
 
@@ -688,7 +626,7 @@ class User
 }
 ```
 
-### 5.12. @return
+### 5.11. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -737,7 +675,7 @@ function getLabel()
 }
 ```
 
-### 5.13. @see
+### 5.12. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -779,7 +717,7 @@ function count()
 }
 ```
 
-### 5.14. @since
+### 5.13. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -829,7 +767,7 @@ class Foo
 }
 ```
 
-### 5.15. @throws
+### 5.14. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -872,7 +810,7 @@ function count($items)
 }
 ```
 
-### 5.16. @todo [WG++]
+### 5.15. @todo
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -904,7 +842,7 @@ function count()
 }
 ```
 
-### 5.17. @uses
+### 5.16. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -957,7 +895,7 @@ function executeMyView()
 }
 ```
 
-### 5.18. @var
+### 5.17. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1061,7 +999,7 @@ class Foo
 }
 ```
 
-### 5.19. @version
+### 5.18. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
@@ -1119,8 +1057,4 @@ class Foo
 [SEMVER2]:      http://www.semver.org
 [PHP_SUBSTR]:   https://php.net/manual/function.substr.php
 [SPDX]:         https://www.spdx.org/licenses
-[INLINE_OLD]:   https://manual.phpdoc.org/HTMLframesConverter/default/phpDocumentor/tutorial_tags.inlineinternal.pkg.html
 [PHPDOC_PSR]:   https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
-
-
-[WG++] denotes "section approved by Working Group"
