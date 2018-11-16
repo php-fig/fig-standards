@@ -548,8 +548,9 @@ The @param tag is used to document a single parameter of a function or method.
 
 With the @param tag it is possible to document the type and function of a
 single parameter of a function or method. When provided it MUST contain a
-"Type" to indicate what is expected; the description on the other hand is
-OPTIONAL yet RECOMMENDED.
+"Type" to indicate what is expected. The "name" is required only when some
+@param tags are omitted due to all useful info already being visible in the
+code signature itself. The description is OPTIONAL yet RECOMMENDED.
 
 The @param tag MAY have a multi-line description and does not need explicit
 delimiting.
