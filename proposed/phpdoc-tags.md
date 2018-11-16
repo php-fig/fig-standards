@@ -785,8 +785,8 @@ This information can be used to generate a set of API Documentation where the
 consumer is informed which application version is necessary for a specific
 element.
 
-The @since tag SHOULD NOT be used to show the current version of an element, the
-@version tag MAY be used for that purpose.
+The @since tag SHOULD NOT be used to show the current version of an element...
+the @version tag SHOULD be used for that purpose.
 
 #### Examples
 
