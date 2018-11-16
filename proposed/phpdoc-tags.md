@@ -16,27 +16,26 @@ PSR-19: PHPDoc tags
 - [5. Tags](#5-tags)
   - [5.1.  @api](#51-api)
   - [5.2.  @author](#52-author)
-  - [5.3.  @category [deprecated]](#53-category-deprecated)
-  - [5.4.  @copyright](#54-copyright)
-  - [5.5.  @deprecated](#55-deprecated)
-  - [5.6.  @example](#56-example)
-  - [5.7.  @global](#57-global)
-  - [5.8.  @internal](#58-internal)
-  - [5.9.  @license](#59-license)
-  - [5.10. @link](#510-link)
-  - [5.11. @method](#511-method)
-  - [5.12. @package](#512-package)
-  - [5.13. @param](#513-param)
-  - [5.14. @property](#514-property)
-  - [5.15. @return](#515-return)
-  - [5.16. @see](#516-see)
-  - [5.17. @since](#517-since)
-  - [5.18. @subpackage [deprecated]](#518-subpackage-deprecated)
-  - [5.19. @throws](#519-throws)
-  - [5.20. @todo](#520-todo)
-  - [5.21. @uses](#521-uses)
-  - [5.22. @var](#522-var)
-  - [5.23. @version](#523-version)
+  - [5.3.  @copyright](#53-copyright)
+  - [5.4.  @deprecated](#54-deprecated)
+  - [5.5.  @example](#55-example)
+  - [5.6.  @global](#56-global)
+  - [5.7.  @internal](#57-internal)
+  - [5.8.  @license](#58-license)
+  - [5.9.  @link](#59-link)
+  - [5.10. @method](#510-method)
+  - [5.11. @package](#511-package)
+  - [5.12. @param](#512-param)
+  - [5.13. @property](#513-property)
+  - [5.14. @return](#514-return)
+  - [5.15. @see](#515-see)
+  - [5.16. @since](#516-since)
+  - [5.17. @subpackage [deprecated]](#517-subpackage-deprecated)
+  - [5.18. @throws](#518-throws)
+  - [5.19. @todo](#519-todo)
+  - [5.20. @uses](#520-uses)
+  - [5.21. @var](#521-var)
+  - [5.22. @version](#522-version)
 
 ## 1. Introduction
 
@@ -292,42 +291,7 @@ adhere to the syntax defined in RFC 2822.
  */
 ```
 
-### 5.3. @category [deprecated]
-
-The @category tag is used to organize groups of packages together but is
-deprecated in favour of occupying the top-level with the @package tag.
-As such, usage of this tag is NOT RECOMMENDED.
-
-#### Syntax
-
-    @category [description]
-
-#### Description
-
-The @category tag was meant in the original de-facto Standard to group several
-@packages into one category. These categories could then be used to aid
-in the generation of API documentation.
-
-This was necessary since the @package tag as defined in the original Standard did
-not contain more then one hierarchy level; since this has changed this tag SHOULD
-NOT be used.
-
-Please see the documentation for `@package` for details of its usage.
-
-This tag MUST NOT occur more than once in a "DocBlock".
-
-#### Examples
-
-```php
-/**
- * File-Level DocBlock
- *
- * @category MyCategory
- * @package  MyPackage
- */
-```
-
-### 5.4. @copyright [WG++]
+### 5.3. @copyright [WG++]
 
 The @copyright tag is used to document the copyright information of any
 "Structural element".
@@ -354,7 +318,7 @@ covered by this copyright and the organization involved.
  */
 ```
 
-### 5.5. @deprecated
+### 5.4. @deprecated
 
 The @deprecated tag is used to indicate which 'Structural elements' are
 deprecated and are to be removed in a future version.
@@ -414,7 +378,7 @@ If the associated element is superseded by another it is RECOMMENDED to add a
  */
 ```
 
-### 5.6. @example
+### 5.5. @example
 
 The @example tag is used to link to an external source code file which contains
 an example of use for the current "Structural element". An inline variant exists
@@ -488,7 +452,7 @@ function count()
 }
 ```
 
-### 5.7. @global
+### 5.6. @global
 
 TODO: The definition of this item should be discussed and whether it may or
 may not be superseded in part or in whole by the @var tag.
@@ -529,7 +493,7 @@ variable and a variable documented in the project.
 
 (TODO: Examples for this tag should be added)
 
-### 5.8. @internal
+### 5.7. @internal
 
 The @internal tag is used to denote that the associated "Structural Element" is
 a structure internal to this application or library. It may also be used inside
@@ -599,7 +563,7 @@ function count()
 }
 ```
 
-### 5.9. @license
+### 5.8. @license
 
 The @license tag is used to indicate which license is applicable for the
 associated 'Structural Elements'.
@@ -639,7 +603,7 @@ license.
  */
 ```
 
-### 5.10. @link
+### 5.9. @link
 
 The @link tag indicates a custom relation between the associated
 "Structural Element" and a website, which is identified by an absolute URI.
@@ -689,7 +653,7 @@ function count()
 }
 ```
 
-### 5.11. @method
+### 5.10. @method
 
 The @method allows a class to know which 'magic' methods are callable.
 
@@ -739,7 +703,7 @@ class Child extends Parent
 }
 ```
 
-### 5.12. @package
+### 5.11. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -788,7 +752,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 5.13. @param
+### 5.12. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -828,7 +792,7 @@ function count(array $items)
 }
 ```
 
-### 5.14. @property
+### 5.13. @property
 
 The `@property` tag is used to declare which "magic" properties are supported.
 
@@ -877,7 +841,7 @@ class User
 }
 ```
 
-### 5.15. @return
+### 5.14. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -926,7 +890,7 @@ function getLabel()
 }
 ```
 
-### 5.16. @see
+### 5.15. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -968,7 +932,7 @@ function count()
 }
 ```
 
-### 5.17. @since
+### 5.16. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -1018,7 +982,7 @@ class Foo
 }
 ```
 
-### 5.18. @subpackage [deprecated]
+### 5.17. @subpackage [deprecated]
 
 The @subpackage tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -1052,7 +1016,7 @@ DocBlock.
  */
 ```
 
-### 5.19. @throws
+### 5.18. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -1095,7 +1059,7 @@ function count($items)
 }
 ```
 
-### 5.20. @todo [WG++]
+### 5.19. @todo [WG++]
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -1127,7 +1091,7 @@ function count()
 }
 ```
 
-### 5.21. @uses
+### 5.20. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1180,7 +1144,7 @@ function executeMyView()
 }
 ```
 
-### 5.22. @var
+### 5.21. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1284,7 +1248,7 @@ class Foo
 }
 ```
 
-### 5.23. @version
+### 5.22. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
