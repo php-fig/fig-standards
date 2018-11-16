@@ -120,7 +120,7 @@ interpreted as described in [RFC 2119][RFC2119].
 
   ```php
   /** @var \Sqlite3 $sqlite */
-  foreach($connections as $sqlite) {
+  foreach ($connections as $sqlite) {
       // there should be no docblock here
       $sqlite->open('/my/database/path');
       <...>
@@ -221,7 +221,7 @@ interpreted as described in [RFC 2119][RFC2119].
   > /**
   >  * This is a class DocBlock
   >  */
-  > class MyClass 
+  > class MyClass
   > {
   > }
   > ```
@@ -233,7 +233,7 @@ interpreted as described in [RFC 2119][RFC2119].
   > /**
   >  * This is a class DocBlock
   >  */
-  > class MyClass 
+  > class MyClass
   > {
   > }
   > ```
@@ -393,7 +393,7 @@ In order to provide a method by which to provide nuance to the tags defined in
 this standard, but without expanding the base set, a tag specialization MAY be
 provided after the tag name by adding a colon followed by a string that provides
 a more nuanced description of the tag. The list of supported tag specializations
-is not maintained in the [Tag Catalog PSR][TAG_PSR], as it may change over time. 
+is not maintained in the [Tag Catalog PSR][TAG_PSR], as it may change over time.
 The [Tag Catalog PSR][TAG_PSR] meta document may contain a series of recommendations
 on a per-tag name basis, but projects are free to choose their own tag specializations if applicable.
 
@@ -562,7 +562,7 @@ A Type has the following [ABNF][RFC5234] definition:
     array-expression = "(" type-expression ")"
     class-name       = ["\"] label *("\" label)
     label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
-    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "mixed" / "null" / "object" /
+    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "iterable" / "mixed" / "null" / "object" /
     keyword          = "resource" / "self" / "static" / "string" / "true" / "void" / "$this"
 
 ### Details
@@ -635,12 +635,14 @@ The following keywords are recognized by this PSR:
 
 6.  `array`: the element to which this type applies is an array of values.
 
-7.  `resource`: the element to which this type applies is a resource per the [definition of PHP][PHP_RESOURCE].
+7.  `iterable`: the element to which this type applies is an array or Traversable object per the [definition of PHP][PHP_ITERABLE].
 
-8.  `mixed`: the element to which this type applies can be of any type as specified here. It is not known at compile
+8.  `resource`: the element to which this type applies is a resource per the [definition of PHP][PHP_RESOURCE].
+
+9.  `mixed`: the element to which this type applies can be of any type as specified here. It is not known at compile
     time which type will be used.
 
-9.  `void`: this type is commonly only used when defining the return type of a method or function, indicating
+10. `void`: this type is commonly only used when defining the return type of a method or function, indicating
     "nothing is returned", and thus the user should not rely on any returned value.
 
     **Example 1:**
@@ -675,7 +677,7 @@ The following keywords are recognized by this PSR:
     In this example, the function contains a return statement without a given value. Because there is no actual value
     specified, this also qualifies as type `void`.
 
-10. `null`: the element to which this type applies is a `NULL` value or, in technical terms, does not exist.
+11. `null`: the element to which this type applies is a `NULL` value or, in technical terms, does not exist.
 
     A big difference compared to `void` is that this type is used in any situation where the described element may at
     any given time contain an explicit `NULL` value.
@@ -711,13 +713,13 @@ The following keywords are recognized by this PSR:
     }
     ```
 
-11. `callable`: the element to which this type applies is a pointer to a function call. This may be any type of callable
-    as defined in the PHP manual about [pseudo-types][PHP_PSEUDO] or the section on [callable][PHP_CALLABLE].
+12. `callable`: the element to which this type applies is a pointer to a function call. This may be any type of callable
+    as per the [definition of PHP][PHP_CALLABLE].
 
-12. `false` or `true`: the element to which this type applies will have the value `TRUE` or `FALSE`. No other value will
+13. `false` or `true`: the element to which this type applies will have the value `TRUE` or `FALSE`. No other value will
     be returned from this element.
 
-13. `self`: the element to which this type applies is of the same class in which the documented element is originally
+14. `self`: the element to which this type applies is of the same class in which the documented element is originally
     contained.
 
     **Example:**
@@ -742,13 +744,13 @@ The following keywords are recognized by this PSR:
     > of child classes with each representation of the class. This would make it obvious for the user which classes are
     > acceptable as type.
 
-14. `static`: the element to which this type applies is of the same class in which the documented element is contained,
+15. `static`: the element to which this type applies is of the same class in which the documented element is contained,
     or, when encountered in a subclass, is of type of that subclass instead of the original class.
 
     This keyword behaves the same way as the [keyword for late static binding][PHP_OOP5LSB] (not the static method,
     property, nor variable modifier) as defined by PHP.
 
-15. `$this`: the element to which this type applies is the same exact instance as the current class in the given
+16. `$this`: the element to which this type applies is the same exact instance as the current class in the given
     context. As such, this type is a stricter version of `static`, because the returned instance must not only be
     of the same class but also the same instance.
 
@@ -757,6 +759,7 @@ The following keywords are recognized by this PSR:
 [RFC2119]:      https://tools.ietf.org/html/rfc2119
 [RFC5234]:      https://tools.ietf.org/html/rfc5234
 [PHP_RESOURCE]: https://php.net/manual/language.types.resource.php
+[PHP_ITERABLE]: https://php.net/manual/language.types.iterable.php
 [PHP_PSEUDO]:   https://php.net/manual/language.pseudo-types.php
 [PHP_CALLABLE]: https://php.net/manual/language.types.callable.php
 [PHP_OOP5LSB]:  https://php.net/manual/language.oop5.late-static-bindings.php

@@ -801,8 +801,7 @@ The @param tag is used to document a single parameter of a function or method.
 With the @param tag it is possible to document the type and function of a
 single parameter of a function or method. When provided it MUST contain a
 "Type" to indicate what is expected; the description on the other hand is
-OPTIONAL yet RECOMMENDED. For complex structures such as option arrays it is
-RECOMMENDED to use an "Inline PHPDoc" to describe the option array.
+OPTIONAL yet RECOMMENDED.
 
 The @param tag MAY have a multi-line description and does not need explicit
 delimiting.
@@ -829,63 +828,52 @@ function count(array $items)
 }
 ```
 
-The following example demonstrates the use of an "Inline PHPDoc" to document
-an option array with two elements: 'required' and 'label'.
-
-```php
-/**
- * Initializes this class with the given options.
- *
- * @param array $options {
- *     @var bool   $required Whether this element is required
- *     @var string $label    The display name for this element
- * }
- */
-public function __construct(array $options = array())
-{
-    <...>
-}
-```
-
 ### 5.14. @property
 
-The @property tag allows a class to know which 'magic' properties are present.
+The `@property` tag is used to declare which "magic" properties are supported.
 
 #### Syntax
 
-    @property ["Type"] [name] [<description>]
+    @property[<-read|-write>] ["Type"] [name] [<description>]
 
 #### Description
 
-The @property tag is used in the situation where a class contains the
-`__get()` and `__set()` magic methods and allows for specific names.
+The `@property` tag is used when a `class` (or `trait`) implements the `__get()`
+and/or `__set()` "magic" methods to resolve non-literal properties at run-time.
 
-An example of this is a child class whose parent has a `__get()`. The child
-knows which properties need to be present but relies on the parent class to use the
-`__get()` method to provide it.
-In this situation, the child class would have a @property tag for each magic
-property.
+The `@property-read` and `@property-write` variants MAY be used to indicate "magic"
+properties that can only be read or written.
 
-@property tags MUST NOT be used in a "PHPDoc" that is not associated with
-a *class* or *interface*.
+The `@property` tags MAY ONLY be used in a "PHPDoc" associated with a `class`
+or `trait`.
 
-#### Examples
+#### Example
+
+In the following example, a class `User` implements the magic `__get()` method, in
+order to implement a "magic", read-only `$full_name` property:
 
 ```php
-class Parent
-{
-    public function __get()
-    {
-        <...>
-    }
-}
-
 /**
- * @property string $myProperty
+ * @property-read string $full_name
  */
-class Child extends Parent
+class User
 {
-    <...>
+    /**
+     * @var string
+     */
+    public $first_name;
+
+    /**
+     * @var string
+     */
+    public $last_name;
+
+    public function __get($name)
+    {
+        if ($name === "full_name") {
+            return "{$this->first_name} {$this->last_name}";
+        }
+    }
 }
 ```
 
@@ -1253,7 +1241,7 @@ use this information to help you with auto-completion:
 
 ```php
 /** @var \Sqlite3 $sqlite */
-foreach($connections as $sqlite) {
+foreach ($connections as $sqlite) {
     // there should be no docblock here
     $sqlite->open('/my/database/path');
     <...>
