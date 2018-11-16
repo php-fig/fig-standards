@@ -410,7 +410,7 @@ The @link tag indicates a custom relation between the associated
 
 or inline
 
-    @link [URI] [description]
+    {@link [URI] [description]}
 
 #### Description
 
