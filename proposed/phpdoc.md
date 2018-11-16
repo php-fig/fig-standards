@@ -59,7 +59,6 @@ interpreted as described in [RFC 2119][RFC2119].
 * "Structural Element" is a collection of Programming Constructs which MAY be
   preceded by a DocBlock. The collection contains the following constructs:
 
-  * file
   * require(_once)
   * include(_once)
   * class
@@ -201,42 +200,6 @@ interpreted as described in [RFC 2119][RFC2119].
   two is called a "DocBlock".
 
 * A DocBlock MUST directly precede a "Structural Element"
-
-  > An exception to this principle is the File-level DocBlock which MUST be
-  > placed at the top of a PHP source code file as the first DocBlock in a
-  > file.
-  >
-  > To prevent ambiguity when a Structural Element comes directly after a
-  > File-level DocBlock, that element MUST have its own DocBlock in
-  > addition to the File-level DocBlock.
-  >
-  > Example of a valid File-level DocBlock:
-  >
-  > ```
-  > <?php
-  > /**
-  >  * This is a file-level DocBlock
-  >  */
-  >
-  > /**
-  >  * This is a class DocBlock
-  >  */
-  > class MyClass
-  > {
-  > }
-  > ```
-  >
-  > Example of an invalid File-level DocBlock
-  >
-  > ```
-  > <?php
-  > /**
-  >  * This is a class DocBlock
-  >  */
-  > class MyClass
-  > {
-  > }
-  > ```
 
 ## 5. The PHPDoc Format
 

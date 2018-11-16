@@ -610,21 +610,9 @@ Each level in the logical hierarchy MUST separated with a backslash (`\`) to
 be familiar to Namespaces. A hierarchy MAY be of endless depth but it is
 RECOMMENDED to keep the depth at less or equal than six levels.
 
-Please note that the @package applies to different "Structural Elements"
-depending where it is defined.
-
-1. If the @package is defined in the *file-level* DocBlock then it only applies
-   to the following elements in the applicable file:
-    * global functions
-    * global constants
-    * global variables
-    * requires and includes
-
-2. If the @package is defined in a *namespace-level* or *class-level* DocBlock
-   then the package applies to that namespace, class or interface and their
-   contained elements.
-   This means that a function which is contained in a namespace with the
-   @package tag assumes that package.
+The package applies to that namespace, class or interface and their contained
+elements. This means that a function which is contained in a namespace with the
+@package tag assumes that package.
 
 This tag MUST NOT occur more than once in a "DocBlock".
 
