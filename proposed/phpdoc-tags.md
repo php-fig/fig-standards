@@ -692,9 +692,7 @@ element (also called the "FQSEN").
 A URI MUST be complete and well-formed as specified in [RFC 2396][RFC2396].
 
 The @see tag SHOULD have a description to provide additional information
-regarding the relationship between the element and its target. Additionally, the
-@see tag MAY have a tag specialization to add further definition to this
-relationship.
+regarding the relationship between the element and its target.
 
 #### Examples
 
