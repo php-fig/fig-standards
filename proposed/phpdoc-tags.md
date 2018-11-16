@@ -196,8 +196,8 @@ times in each "DocBlock".
 
 ### 5.1. @api [WG++]
 
-The @api tag is used to declare "Structural Elements" as being suitable for
-consumption by third parties.
+The @api tag is used to highlight "Structural Elements" as being part of the
+primary public API of a package.
 
 #### Syntax
 
@@ -205,29 +205,38 @@ consumption by third parties.
 
 #### Description
 
-The @api tag represents those "Structural Elements" with a public visibility
-which are intended to be the public API components for a library or framework.
-Other "Structural Elements" with a public visibility serve to support the
-internal structure and are not recommended to be used by the consumer.
+The `@api` tag MAY be applied to public "Structural Elements" to highlight
+them in generated documentation, pointing the consumer to the primary public
+API components of a library or framework.
 
-The exact meaning of "Structural Elements" tagged with @api MAY differ per
-project. It is however RECOMMENDED that all tagged "Structural Elements" SHOULD
-NOT change after publication unless the new version is tagged as breaking
-Backwards Compatibility.
+Other "Structural Elements" with a public visibility MAY be listed less
+prominently in generated documentation.
+
+See also the [`@internal`](#56-internal), which MAY be used to hide internal
+API components from generated documentation.
 
 #### Examples
 
 ```php
-/**
- * This method will not change until a major release.
- *
- * @api
- *
- * @return void
- */
-function showVersion()
+class UserService
 {
-   <...>
+    /**
+     * This method is public-API. 
+     *
+     * @api
+     */
+    public function getUser()
+    {
+        <...>
+    }
+
+    /**
+     * This method is "package scope", not public-API
+     */
+    public function callMefromAnotherClass()
+    {
+        <...>
+    }
 }
 ```
 
