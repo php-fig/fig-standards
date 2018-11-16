@@ -895,28 +895,24 @@ Indicates whether the current "Structural Element" consumes the
 
 #### Syntax
 
-    @uses [file | "FQSEN"] [<description>]
+    @uses ["FQSEN"] [<description>]
 
 #### Description
 
-The `@uses` tag describes whether any part of the associated "Structural Element"
-uses, or consumes, another "Structural Element" or a file that is situated in
+The `@uses` tag describes whether any part of the associated "Structural
+Element" uses, or consumes, another "Structural Element" that is situated in
 the current project.
 
 When defining a reference to another "Structural Element" you can refer to a
 specific element by appending a double colon and providing the name of that
 element (also called the "FQSEN").
 
-Files that are contained in this project can be referred to by this tag. This
-can be used, for example, to indicate a relationship between a Controller and
-a template file (as View).
-
 This tag MUST NOT be used to indicate relations to elements outside of the
 system, so URLs are not usable. To indicate relations with outside elements the
 @see tag can be used.
 
 Applications consuming this tag, such as generators, are RECOMMENDED to provide
-a `@used-by` tag on the destination element. This can be used to provide a
+a `@usedby` tag on the destination element. This can be used to provide a
 bi-directional experience and allow for static analysis.
 
 #### Examples
@@ -931,6 +927,7 @@ function initializeXml()
 }
 ```
 
+<<<<<<< HEAD
 ```php
 /**
  * @uses MyView.php
