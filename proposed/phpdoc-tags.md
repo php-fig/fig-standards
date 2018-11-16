@@ -29,12 +29,11 @@ PSR-19: PHPDoc tags
   - [5.13. @return](#513-return)
   - [5.14. @see](#514-see)
   - [5.15. @since](#515-since)
-  - [5.16. @subpackage [deprecated]](#516-subpackage-deprecated)
-  - [5.17. @throws](#517-throws)
-  - [5.18. @todo](#518-todo)
-  - [5.19. @uses](#519-uses)
-  - [5.20. @var](#520-var)
-  - [5.21. @version](#521-version)
+  - [5.16. @throws](#516-throws)
+  - [5.17. @todo](#517-todo)
+  - [5.18. @uses](#518-uses)
+  - [5.19. @var](#519-var)
+  - [5.20. @version](#520-version)
 
 ## 1. Introduction
 
@@ -174,38 +173,6 @@ In addition to the inherited descriptions and tags as defined in this chapter's
 root, a class or interface MUST inherit the following tags:
 
 * [@package](#512-package)
-
-A class or interface SHOULD inherit the following deprecated tags if supplied:
-
-* [@subpackage](#519-subpackage-deprecated)
-
-The @subpackage MUST NOT be inherited if the @package name of the
-super-class (or interface) is not the same as the @package of the child class
-(or interface).
-
-Example:
-
-```php
-/**
- * @package    Framework
- * @subpackage Controllers
- */
-class Framework_ActionController
-{
-    <...>
-}
-
-/**
- * @package My
- */
-class My_ActionController extends Framework_ActionController
-{
-    <...>
-}
-```
-
-In the example above the My_ActionController MUST NOT inherit the subpackage
-_Controllers_.
 
 ### 4.3.2. Function Or Method
 
@@ -940,41 +907,7 @@ class Foo
 }
 ```
 
-### 5.16. @subpackage [deprecated]
-
-The @subpackage tag is used to categorize "Structural Elements" into logical
-subdivisions.
-
-#### Syntax
-
-    @subpackage [name]
-
-#### Description
-
-The @subpackage tag MAY be used as a counterpart or supplement to Namespaces.
-Namespaces provide a functional subdivision of "Structural Elements" where
-the @subpackage tag can provide a *logical* subdivision in which way the
-elements can be grouped with a different hierarchy.
-
-If, across the board, both logical and functional subdivisions are equal it is
-NOT RECOMMENDED to use the @subpackage tag, to prevent maintenance overhead.
-
-The @subpackage tag MUST only be used in a specific series of DocBlocks, as is
-described in the documentation for the @package tag.
-
-This tag MUST accompany a @package tag and MUST NOT occur more than once per
-DocBlock.
-
-#### Examples
-
-```php
-/**
- * @package PSR
- * @subpackage Documentation\API
- */
-```
-
-### 5.17. @throws
+### 5.16. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -1017,7 +950,7 @@ function count($items)
 }
 ```
 
-### 5.18. @todo [WG++]
+### 5.17. @todo [WG++]
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -1049,7 +982,7 @@ function count()
 }
 ```
 
-### 5.19. @uses
+### 5.18. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -1102,7 +1035,7 @@ function executeMyView()
 }
 ```
 
-### 5.20. @var
+### 5.19. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1206,7 +1139,7 @@ class Foo
 }
 ```
 
-### 5.21. @version
+### 5.20. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
