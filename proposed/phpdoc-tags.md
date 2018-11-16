@@ -960,7 +960,7 @@ Each Constant or Property definition or Variable where the type is ambiguous
 or unknown SHOULD be preceded by a DocBlock containing the @var tag. Any
 other variable MAY be preceded with a DocBlock containing the @var tag.
 
-The @var tag MUST contain the name of the element it documents. An exception
+The @var tag SHOULD contain the name of the element it documents. An exception
 to this is when property declarations only refer to a single property. In this
 case the name of the property MAY be omitted.
 
@@ -983,7 +983,9 @@ Or:
 ```php
 class Foo
 {
-  /** @var string|null Should contain a description */
+  /**
+   * @var string|null Should contain a description
+   */
   protected $description = null;
 
   public function setDescription($description)
@@ -998,7 +1000,7 @@ Another example is to document the variable in a foreach explicitly; many IDEs
 use this information to help you with auto-completion:
 
 ```php
-/** @var \Sqlite3 $sqlite */
+/* @var \Sqlite3 $sqlite */
 foreach ($connections as $sqlite) {
     // there should be no docblock here
     $sqlite->open('/my/database/path');
