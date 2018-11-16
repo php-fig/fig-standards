@@ -410,14 +410,14 @@ the developers of this software.
 
 #### Syntax
 
-    @internal
+    @internal [description]
 
 or inline:
 
     {@internal [description]}
 
 Contrary to other inline tags, the inline version of this tag may also contain
-other inline tags (see example below).
+other inline tags (see second example below).
 
 Implementations MAY support two closing braces for the inline version,
 due to [historical definition of the inline tag][INLINE_OLD] originally being:
@@ -430,9 +430,15 @@ recognizing matching pairs of open/close braces.
 
 #### Description
 
-The @internal tag can be used as counterpart of the @api tag, indicating that
-the associated "Structural Element" is used purely for the internal workings of
-this piece of software.
+The `@internal` tag indicates that the associated "Structural Element" is intended
+only for use within the application, library or package to which it belongs.
+
+Authors MAY use this tag to indicate that an element with public visibility should
+be regarded as exempt from the API - for example:
+  * Library authors MAY regard breaking changes to internal elements as being exempt
+    from semantic versioning.
+  * Static analysis tools MAY indicate the use of internal elements from another
+    library/package with a warning or notice.
 
 When generating documentation from PHPDoc comments it is RECOMMENDED to hide the
 associated element unless the user has explicitly indicated that internal elements
@@ -457,11 +463,17 @@ function count()
 {
     <...>
 }
+```
 
+Include a note in the Description that only Developer Docs would show.
+
+```php
 /**
  * Counts the number of Foo.
  *
- * {@internal Silently adds one extra Foo (see {@link http://example.com})}
+ * This method gets a count of the Foo.
+ * {@internal Developers should note that it silently 
+ *            adds one extra Foo (see {@link http://example.com}).}
  *
  * @return int Indicates the number of items.
  */
