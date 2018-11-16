@@ -474,7 +474,7 @@ return value by including those types in the signature.
 When the intended method does not have a return value then the return type MAY
 be omitted; in which case 'void' is implied.
 
-@method tags MUST NOT be used in a PHPDoc that is not associated with a
+@method tags can ONLY be used in a PHPDoc that is associated with a
 *class* or *interface*.
 
 #### Examples
@@ -489,9 +489,9 @@ class Parent
 }
 
 /**
+ * @method setInteger(int $integer)
  * @method string getString()
- * @method void setInteger(int $integer)
- * @method setString(int $integer)
+ * @method void setString(int $integer)
  */
 class Child extends Parent
 {
