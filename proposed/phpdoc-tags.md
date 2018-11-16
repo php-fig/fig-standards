@@ -419,15 +419,6 @@ or inline:
 Contrary to other inline tags, the inline version of this tag may also contain
 other inline tags (see second example below).
 
-Implementations MAY support two closing braces for the inline version,
-due to [historical definition of the inline tag][INLINE_OLD] originally being:
-
-    {@internal [description]}}
-
-They MAY notify users that the two braces grammar is deprecated in favor
-of using just one closing brace, since parsers/IDEs are now better at
-recognizing matching pairs of open/close braces.
-
 #### Description
 
 The `@internal` tag indicates that the associated "Structural Element" is intended
@@ -1140,7 +1131,6 @@ class Foo
 [SEMVER2]:      http://www.semver.org
 [PHP_SUBSTR]:   https://php.net/manual/function.substr.php
 [SPDX]:         https://www.spdx.org/licenses
-[INLINE_OLD]:   https://manual.phpdoc.org/HTMLframesConverter/default/phpDocumentor/tutorial_tags.inlineinternal.pkg.html
 [PHPDOC_PSR]:   https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
 
 
