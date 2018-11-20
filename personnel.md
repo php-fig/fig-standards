@@ -67,7 +67,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Stash]                           | Robert Hafner ([@tedivm])             |
 | [Stormpath PHP SDK]               | Brian Retterer ([@bretterer])         |
 | [SugarCRM]                        | Andreas Sandberg ([@yellowandy])      |
-| [Symfony]                         | Fabien Potencier ([@fabpot])          |
 | [Flow] and [Neos]                 | Karsten Dambekalns ([@kdambekalns])   |
 | [Wikibase] and [Semantic Media]   | Jeroen De Dauw ([@JeroenDeDauw])      |
 | [Yii framework]                   | Alexander Makarov ([@sam_dark])       |
@@ -214,7 +213,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Stash]: http://www.tedivm.com/stash
 [Stormpath PHP SDK]: http://www.stormpath.com
 [SugarCRM]: http://developers.sugarcrm.com/wordpress
-[Symfony]: http://www.symfony.com
 [The League of Extraordinary Packages]: http://thephpleague.com
 [Wikibase]: http://www.wikiba.se
 [Yii framework]: http://www.yiiframework.com
