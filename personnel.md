@@ -180,7 +180,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Doctrine]: http://www.doctrine-project.org
 [Drupal]: http://drupal.org
 [eZ Publish]: http://ez.no
-[Flow]: http://flow.typo3.org
+[Flow]: https://flow.neos.io/
 [Guzzle]: http://guzzlephp.org
 [Horde]: http://www.horde.org
 [IBM i Toolkit]: https://github.com/zendtech/IbmiToolkit
@@ -190,7 +190,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Laravel]: http://laravel.com
 [Lithium]: http://li3.me
 [Magento]: http://magento.com
-[Neos]: http://neos.io
+[Neos]: https://neos.io
 [PEAR]: http://pear.php.net
 [Phalcon]: http://www.phalconphp.com
 [Phergie]: https://www.phergie.org
