@@ -304,7 +304,7 @@ deprecated and are to be removed in a future version.
 
 The @deprecated tag declares that the associated 'Structural elements' will
 be removed in a future version as it has become obsolete or its usage is
-otherwise not recommended.
+otherwise not recommended, effective from the "Semantic Version" if provided.
 
 This tag MAY provide an additional description stating why the associated
 element is deprecated.
