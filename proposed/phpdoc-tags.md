@@ -897,9 +897,9 @@ Each Constant or Property definition or Variable where the type is ambiguous
 or unknown SHOULD be preceded by a DocBlock containing the @var tag. Any
 other variable MAY be preceded with a DocBlock containing the @var tag.
 
-The @var tag SHOULD contain the name of the element it documents. An exception
-to this is when property declarations only refer to a single property. In this
-case the name of the property MAY be omitted.
+The @var tag MUST contain the name of the element it documents, unless this
+property declaration only refers to a single property. In this case the name of
+the property MAY be omitted.
 
 `element_name` is used when compound statements are used to define a series of Constants
 or Properties. Such a compound statement can only have one DocBlock while several
@@ -937,7 +937,7 @@ Another example is to document the variable in a foreach explicitly; many IDEs
 use this information to help you with auto-completion:
 
 ```php
-/* @var \Sqlite3 $sqlite */
+/** @var \Sqlite3 $sqlite */
 foreach ($connections as $sqlite) {
     // there should be no docblock here
     $sqlite->open('/my/database/path');
@@ -945,7 +945,20 @@ foreach ($connections as $sqlite) {
 }
 ```
 
-Even compound statements may be documented:
+Even compound statements may be documented... these two property blocks are
+equivalent:
+
+```php
+class Foo
+{
+  /**
+   * @var string $name Should contain a description
+   * @var string $description Should contain a description
+   */
+  protected $name, $description;
+
+}
+```
 
 ```php
 class Foo
