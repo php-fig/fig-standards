@@ -76,10 +76,19 @@ interpreted as described in [RFC 2119][RFC2119].
   Example:
 
   ```php
+  /**
+   * This is a counter.
+   * @var int $int
+   */
+  $int = 0;
+
   /** @var int $int This is a counter. */
   $int = 0;
 
-  // there should be no docblock here
+  /* comment block... this is not a docblock */
+  $int++;
+
+  // single line comment... this is not a docblock
   $int++;
   ```
 
