@@ -118,6 +118,7 @@ interpreted as described in [RFC 2119][RFC2119].
   }
   ```
 
+<<<<<<< HEAD
   It is NOT RECOMMENDED to use compound definitions for Constants or Properties, since the
   handling of DocBlocks in these situations can lead to unexpected results. If compound statement is
   used each element SHOULD have a preceding DocBlock.
@@ -142,18 +143,6 @@ interpreted as described in [RFC 2119][RFC2119].
   An example of use that falls beyond the scope of this Standard is to document
   the variable in a foreach explicitly; several IDEs use this information to
   assist their auto-completion functionality.
-
-  This Standard does not cover this specific instance, as a `foreach` statement
-  is considered to be a "Control Flow" statement rather than a "Structural Element".
-
-  ```php
-  /** @var \Sqlite3 $sqlite */
-  foreach ($connections as $sqlite) {
-      // there should be no docblock here
-      $sqlite->open('/my/database/path');
-      <...>
-  }
-  ```
 
 * "DocComment" is a special type of comment which MUST
 
