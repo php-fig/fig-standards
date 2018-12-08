@@ -58,8 +58,8 @@ interpreted as described in [RFC 2119][RFC2119].
 * "Structural Element" is a collection of Programming Constructs which MAY be
   preceded by a DocBlock. The collection contains the following constructs:
 
-  * require(_once)
-  * include(_once)
+  * require(\_once)
+  * include(\_once)
   * class
   * interface
   * trait
