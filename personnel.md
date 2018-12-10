@@ -67,7 +67,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Stash]                           | Robert Hafner ([@tedivm])             |
 | [Stormpath PHP SDK]               | Brian Retterer ([@bretterer])         |
 | [SugarCRM]                        | Andreas Sandberg ([@yellowandy])      |
-| [Symfony]                         | Fabien Potencier ([@fabpot])          |
 | [Flow] and [Neos]                 | Karsten Dambekalns ([@kdambekalns])   |
 | [Wikibase] and [Semantic Media]   | Jeroen De Dauw ([@JeroenDeDauw])      |
 | [Yii framework]                   | Alexander Makarov ([@sam_dark])       |
@@ -110,7 +109,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [The League of Extraordinary Packages]    | Graham Hoefer ([@greydnls])           |
 | [Propel]                                  | William Durand ([@couac])             |
 | [sabre/dav]                               | Evert Pot ([@evertp])                 |
-
+| [Symfony]                                 | Fabien Potencier ([@fabpot])          |	
 
 [@adamculp]: https://twitter.com/adamculp
 [@AlessandroLai]: https://twitter.com/AlessandroLai
