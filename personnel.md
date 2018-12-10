@@ -109,7 +109,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [The League of Extraordinary Packages]    | Graham Hoefer ([@greydnls])           |
 | [Propel]                                  | William Durand ([@couac])             |
 | [sabre/dav]                               | Evert Pot ([@evertp])                 |
-
+| [Symfony]                                 | Fabien Potencier ([@fabpot])          |	
 
 [@adamculp]: https://twitter.com/adamculp
 [@AlessandroLai]: https://twitter.com/AlessandroLai
@@ -213,6 +213,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Stash]: http://www.tedivm.com/stash
 [Stormpath PHP SDK]: http://www.stormpath.com
 [SugarCRM]: http://developers.sugarcrm.com/wordpress
+[Symfony]: http://www.symfony.com	
 [The League of Extraordinary Packages]: http://thephpleague.com
 [Wikibase]: http://www.wikiba.se
 [Yii framework]: http://www.yiiframework.com
