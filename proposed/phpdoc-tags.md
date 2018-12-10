@@ -644,9 +644,10 @@ RECOMMENDED in case of complicated return structures, such as associative arrays
 The @return tag MAY have a multi-line description and does not need explicit
 delimiting.
 
-It is RECOMMENDED to use this tag with every function and method. The @return
-tag MAY be omitted by functions and methods without a `return` value, in which
-case an interpreter MUST interpret this as if `@return void` is provided.
+It is RECOMMENDED to use this tag with every function and method.
+If no `@return` type is given, and no return type declaration is provided in
+the code signature, an interpreter MUST interpret this as if `@return mixed`
+is provided.
 
 This tag MUST NOT occur more than once in a "DocBlock" and is limited to the
 "DocBlock" of a "Structural Element" of a method or function.
