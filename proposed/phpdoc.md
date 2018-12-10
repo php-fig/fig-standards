@@ -118,7 +118,6 @@ interpreted as described in [RFC 2119][RFC2119].
   }
   ```
 
-<<<<<<< HEAD
   It is NOT RECOMMENDED to use compound definitions for Constants or Properties, since the
   handling of DocBlocks in these situations can lead to unexpected results. If compound statement is
   used each element SHOULD have a preceding DocBlock.
