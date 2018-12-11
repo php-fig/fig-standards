@@ -16,6 +16,6 @@ Naming conventions for code released by PHP FIG
    requirement. Specification changes via further PSRs should only lead to a new
    tag of the `psr/<package>` package, and an equal version bump of the
    implementation being required.
-8. Special lighweight utility packages MAY be produced alongside PSRs and
+8. Special lightweight utility packages MAY be produced alongside PSRs and
    interfaces and be maintained and updated after the PSR has been accepted. These
    MUST be under the vendor namespace `Fig`.
