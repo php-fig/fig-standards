@@ -38,13 +38,13 @@ Event objects MAY be mutable should the use case call for listeners providing in
 
 Implementers MUST assume that the same object will be passed to all listeners.
 
-It is RECOMMENDED, but NOT REQUIRED, that Task objects support lossless serialization and deserialization.  That is, `$event == unserialize(serialize($event))` SHOULD hold true.  Objects MAY leverage PHP’s Serializable interface, `__sleep()` or `__wakeup()` magic methods, or similar language functionality if appropriate.
+It is RECOMMENDED, but NOT REQUIRED, that Event objects support lossless serialization and deserialization.  That is, `$event == unserialize(serialize($event))` SHOULD hold true.  Objects MAY leverage PHP’s Serializable interface, `__sleep()` or `__wakeup()` magic methods, or similar language functionality if appropriate.
 
 ## Stoppable Events
 
 A **Stoppable Event** is a special case of Event that contains additional ways to prevent further Listeners from being called.  It is indicated by implementing the `StoppableEventInterface`.
 
-An Event that implements `StoppableEventInterface` MUST return `true` from `isPropagationStopped()` when whatever task it represents has been completed.  It is up to the implementer of the class to determine when that is.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which sets an internal flag that `isPropagationStopped()` will use to return `true` once the response has been set.
+An Event that implements `StoppableEventInterface` MUST return `true` from `isPropagationStopped()` when whatever Event it represents has been completed.  It is up to the implementer of the class to determine when that is.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which sets an internal flag that `isPropagationStopped()` will use to return `true` once the response has been set.
 
 ## Listeners
 
@@ -59,16 +59,6 @@ A Listener MAY enqueue information from the Event for later processing by a seco
 ## Dispatcher
 
 A Dispatcher is a service object implementing `EventDispatcherInterface`.  It is responsible for invoking listeners provided by a Listener Provider on an Event.
-
-Examples of use cases include:
-
-* Passing an object to a series of Listeners to allow it to be modified before it is saved to a persistence system.
-* Passing a collection to a series of Listeners to allow them to register values with it so that the Emitter may act on all of the collected information.
-* Passing a collection to a series of Listeners to allow them to modify the collection in some way before the Emitter takes action.
-* Passing some contextual information to a series of Listeners so that all of them may "vote" on what action to take, with the Emitter deciding based on the aggregate information provided.
-* Passing an object to a series of listeners and allowing one of them to set a value and then prevent further listeners from running.
-
-Tasks passed to a Processor SHOULD have some sort of mutator methods on them to allow Listeners to modify the object.  The nature of those methods is up to each implementation to determine.
 
 A Dispatcher
 
