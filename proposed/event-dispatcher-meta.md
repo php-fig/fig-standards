@@ -104,6 +104,18 @@ It is even possible, and potentially advisable, to allow libraries to include th
 
 While combining the Dispatcher and Provider into a single object is a valid and permissible degenerate case, it is NOT RECOMMENDED as it reduces the flexibility of system integrators.  Instead, the provider should be composed as a dependent object.
 
+### 4.5 Return values
+
+Per the spec, a Dispatcher MUST return the event it was passed to the Emitter.  That is done to provide a more ergonomic experience for users.  That is, it allows short-hands similar to the following:
+
+```php
+$event = $dispatcher->dispatch(new SomeEvent('some context'));
+
+$items = $dispatcher->dispatch(new ItemCollector())->getItems();
+```
+
+The `EventDispatcher::dispatch()` interface, however, has no return type specified.  That is primarily for backward compatibility with existing implementations to make it easier for them to adopt the new interface.  Additionally, as Events can be any arbitrary object the return type could only have been `object`, which would provide only minimal (albeit non-zero) value, as that type declaration would not provide IDEs with any useful information nor would it effectively enforce that the same Event is returned.  The method return was thus left syntactically untyped.  However, returning the same Event object from `dispatch()` is still a requirement and failure to do so is a violation of the specification.
+
 ## 5. People
 
 The Event Manager Working Group consisted of:
