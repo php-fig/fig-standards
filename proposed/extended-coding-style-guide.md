@@ -135,7 +135,7 @@ not relevant may be omitted.
 
 When a file contains a mix of HTML and PHP, any of the above sections may still
 be used. If so, they MUST be present at the top of the file, even if the
-remainder of the code consists a closing PHP tag and then a mixture of HTML and
+remainder of the code consists of a closing PHP tag and then a mixture of HTML and
 PHP.
 
 When the opening `<?php` tag is on the first line of the file, it MUST be on its
