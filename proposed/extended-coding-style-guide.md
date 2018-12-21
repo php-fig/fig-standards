@@ -23,7 +23,7 @@ but the sharing of those rules.
 [PSR-2][] was accepted in 2012 and since then a number of changes have been made to PHP
 which has implications for coding style guidelines. Whilst [PSR-2] is very comprehensive
 of PHP functionality that existed at the time of writing, new functionality is very
-open to interpretation. This PSR therefore seeks to clarify the content of PSR-2 in
+open to interpretation. This PSR, therefore, seeks to clarify the content of PSR-2 in
 a more modern context with new functionality available, and make the errata to PSR-2
 binding.
 
