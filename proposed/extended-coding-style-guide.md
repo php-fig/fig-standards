@@ -629,7 +629,7 @@ The general style rules for control structures are as follows:
 - The closing brace MUST be on the next line after the body
 
 The body of each structure MUST be enclosed by braces. This standardizes how
-the structures look, and reduces the likelihood of introducing errors as new
+the structures look and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
 ### 5.1 `if`, `elseif`, `else`
