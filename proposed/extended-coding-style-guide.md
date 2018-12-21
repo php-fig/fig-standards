@@ -348,7 +348,7 @@ class ClassName
 }
 ~~~
 
-Otherwise it MUST have a blank line after the `use` import statement.
+Otherwise, it MUST have a blank line after the `use` import statement.
 
 ~~~php
 <?php
