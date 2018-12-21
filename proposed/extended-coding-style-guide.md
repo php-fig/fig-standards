@@ -313,7 +313,7 @@ class ClassName
 ~~~
 
 Each individual Trait that is imported into a class MUST be included
-one-per-line, and each inclusion MUST have its own `use` import statement.
+one-per-line and each inclusion MUST have its own `use` import statement.
 
 ~~~php
 <?php
