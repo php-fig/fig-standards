@@ -21,9 +21,9 @@ all those projects. Thus, the benefit of this guide is not in the rules themselv
 but the sharing of those rules.
 
 [PSR-2][] was accepted in 2012 and since then a number of changes have been made to PHP
-which have implications for coding style guidelines. Whilst [PSR-2] is very comprehensive
+which has implications for coding style guidelines. Whilst [PSR-2] is very comprehensive
 of PHP functionality that existed at the time of writing, new functionality is very
-open to interpretation. This PSR therefore seeks to clarify the content of PSR-2 in
+open to interpretation. This PSR, therefore, seeks to clarify the content of PSR-2 in
 a more modern context with new functionality available, and make the errata to PSR-2
 binding.
 
@@ -43,12 +43,12 @@ declare(strict_types=1);
 
 namespace Vendor\Package;
 
-use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
-use Vendor\Package\SomeNamespace\ClassD as D;
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\SomeNamespace\ClassD as D;
 
-use function Vendor\Package\{functionA, functionB, functionC};
+use function Vendor\Package\{functionA, functionB, functionC};
 
-use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
+use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
 
 class Foo extends Bar implements FooInterface
 {
@@ -135,7 +135,7 @@ not relevant may be omitted.
 
 When a file contains a mix of HTML and PHP, any of the above sections may still
 be used. If so, they MUST be present at the top of the file, even if the
-remainder of the code consists a closing PHP tag and then a mixture of HTML and
+remainder of the code consists of a closing PHP tag and then a mixture of HTML and
 PHP.
 
 When the opening `<?php` tag is on the first line of the file, it MUST be on its
@@ -158,14 +158,14 @@ declare(strict_types=1);
 
 namespace Vendor\Package;
 
-use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
-use Vendor\Package\SomeNamespace\ClassD as D;
-use Vendor\Package\AnotherNamespace\ClassE as E;
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\SomeNamespace\ClassD as D;
+use Vendor\Package\AnotherNamespace\ClassE as E;
 
-use function Vendor\Package\{functionA, functionB, functionC};
+use function Vendor\Package\{functionA, functionB, functionC};
 use function Another\Vendor\functionD;
 
-use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
+use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
 use const Another\Vendor\CONSTANT_D;
 
 /**
@@ -313,7 +313,7 @@ class ClassName
 ~~~
 
 Each individual Trait that is imported into a class MUST be included
-one-per-line, and each inclusion MUST have its own `use` import statement.
+one-per-line and each inclusion MUST have its own `use` import statement.
 
 ~~~php
 <?php
@@ -348,7 +348,7 @@ class ClassName
 }
 ~~~
 
-Otherwise it MUST have a blank line after the `use` import statement.
+Otherwise, it MUST have a blank line after the `use` import statement.
 
 ~~~php
 <?php
@@ -527,7 +527,7 @@ class ReturnTypeVariations
 }
 ~~~
 
-In nullable type declarations there MUST NOT be a space between the question mark
+In nullable type declarations, there MUST NOT be a space between the question mark
 and the type.
 
 ~~~php
@@ -629,7 +629,7 @@ The general style rules for control structures are as follows:
 - The closing brace MUST be on the next line after the body
 
 The body of each structure MUST be enclosed by braces. This standardizes how
-the structures look, and reduces the likelihood of introducing errors as new
+the structures look and reduces the likelihood of introducing errors as new
 lines get added to the body.
 
 ### 5.1 `if`, `elseif`, `else`
