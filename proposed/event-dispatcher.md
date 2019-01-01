@@ -211,9 +211,9 @@ interface MessageNotifierInterface
 
 ### Task Interfaces
 
+```php
 namespace Psr\EventDispatcher;
 
-```php
 /**
  * This is a marker interface used to identify task events.
  */
