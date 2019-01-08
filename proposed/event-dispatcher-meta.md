@@ -49,8 +49,7 @@ Although in concept one-way notification can be done asynchronously (including d
 
 * Indicating that some change in system configuration or some user action has occurred and allowing other systems to react in ways that do not affect program flow (such as sending an email or logging the action).
 * Passing an object to a series of Listeners to allow it to be modified before it is saved to a persistence system.
-* Passing a collection to a series of Listeners to allow them to register values with it so that the Emitter may act on all of the collected information.
-* Passing a collection to a series of Listeners to allow them to modify the collection in some way before the Emitter takes action.
+* Passing a collection to a series of Listeners to allow them to register values with it or modify existing values so that the Emitter may act on all of the collected information.
 * Passing some contextual information to a series of Listeners so that all of them may "vote" on what action to take, with the Emitter deciding based on the aggregate information provided.
 * Passing an object to a series of listeners and allowing any listener to terminate the process early before other listeners have completed.
 
@@ -68,7 +67,7 @@ However, Stoppable Events (the alternative chain case) also needed to have a cha
 * Returning a sentinel value from the listener (`true` or `false`) to indicate that propagation should terminate.
 * Evolving the Event to be stopped (`withPropagationStopped()`)
 
-Of those alternatives, therefore, the first would mandate a mutable Event in at least some cases.  The second would mandate a mutable Event as the return value was already in use.  And the third seemed unnecessarily ceremonial and pedantic as it would entail additional syntax requirements for developers with little added value.
+Each of these alternatives have drawbacks. The first means that, at least for the purposes of indicating propagation status, events must be mutable. The second requires that listeners return a value, at least when they intend to halt event propagation; this could have ramifications with existing libraries, and potential issues in terms of documentation. The third requires that listeners return the event or mutated event in all cases, and would require dispatchers to test to ensure that the returned value is of the same type as the value passed to the listener; it effectively puts an onus both on consumers and implementers, and thus raising more potential integration issues.
 
 Additionally, a desired feature was the ability to derive whether or not to stop propagation based on some values collected from the listeners.  (For example, to stop when one of them has provided a certain value, or after at least three of them have indicated a "reject this request" flag, or similar.)  While technically possible to implement as an evolvable object, such behavior is intrinsically stateful so would be highly cumbersome for both implementers and users.
 
