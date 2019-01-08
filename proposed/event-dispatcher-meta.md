@@ -37,7 +37,7 @@ The Working Group identified four possible workflows for event passing, based on
 * Collection.  ("Give me all your things, that I may do something with that list.")
 * Alternative chain.  ("Here's a thing; the first one of you that can handle it do so, then stop.")
 
-On further review, it was determined that:
+On further review, the Working Goup determined that:
 
 * Collection was a special case of Object enhancement (the collection being the object that is enhanced)
 * Alternative chain is similarly a special case of Object enhancement, as the signature is identical and the dispatch workflow is nearly identical, albeit with an extra check included.
@@ -52,7 +52,7 @@ Although in concept one-way notification can be done asynchronously (including d
 * Passing a collection to a series of Listeners to allow them to register values with it so that the Emitter may act on all of the collected information.
 * Passing a collection to a series of Listeners to allow them to modify the collection in some way before the Emitter takes action.
 * Passing some contextual information to a series of Listeners so that all of them may "vote" on what action to take, with the Emitter deciding based on the aggregate information provided.
-* Passing an object to a series of listeners and allowing one of them to set a value and then prevent further listeners from running.
+* Passing an object to a series of listeners and allowing any listener to terminate the process early before other listeners have completed.
 
 ### 4.3 Immutable events
 
@@ -68,9 +68,11 @@ However, Stoppable Events (the alternative chain case) also needed to have a cha
 * Returning a sentinel value from the listener (`true` or `false`) to indicate that propagation should terminate.
 * Evolving the Event to be stopped (`withPropagationStopped()`)
 
-Of those, the first would mandate a mutable Event in at least some cases.  The second would mandate a mutable Event as the return value was already in use.  And the third seemed unnecessarily ceremonial and pedantic.
+Of those alternatives, therefore, the first would mandate a mutable Event in at least some cases.  The second would mandate a mutable Event as the return value was already in use.  And the third seemed unnecessarily ceremonial and pedantic as it would entail additional syntax requirements for developers with little added value.
 
-Having listeners return evolvable events also posed a challenge.  That pattern is not used by any known implementations in PHP or elsewhere.  It also relies on the listener to remember to return the Event (extra work for the listener author) and to not return some other, new object that might not be fully compatible with later listeners (such as a subclass or superclass of the Event).
+Additionally, a desired feature was the ability to derive whether or not to stop propagation based on some values collected from the listeners.  (For example, to stop when one of them has provided a certain value, or after at least three of them have indicated a "reject this request" flag, or similar.)  While technically possible to implement as an evolvable object, such behavior is intrinsically stateful so would be highly cumbersome for both implementers and users.
+
+Having listeners return evolvable events also posed a challenge.  That pattern is not used by any known implementations in PHP or elsewhere.  It also relies on the listener to remember to return the Event (additional work for the listener author) and to not return some other, new object that might not be fully compatible with later listeners (such as a subclass or superclass of the Event).
 
 Immutable events also rely on the event definer to respect the admonition to be immutable.  Events are, by nature, very loosely designed and the potential for implementers to ignore that part of the spec, even inadvertently, is high.
 
@@ -81,20 +83,20 @@ That left two possible options:
 
 Given those options the Working Group felt mutable events were the safer alternative.
 
-That said, there is no requirement that an Event be mutable.  Implementers should provide mutator methods on an Event object if and only if it is necessary and appropriate to the use case at hand.
+That said, *there is no requirement that an Event be mutable*.  Implementers should provide mutator methods on an Event object *if and only if it is necessary* and appropriate to the use case at hand.
 
 ### 4.4 Listener registration
 
 Experimentation during development of the specification determined that there were a wide range of viable, legitimate means by which a Dispatcher could be informed of a listener.  A listener:
 
 * could be registered explicitly;
-* it could be the registered explicitly based on reflection of its signature;
-* it could be registered with a numeric priority order;
-* it could be registered using a before/after mechanism to control ordering more precisely;
-* it could be registered from a service container;
-* it could use a pre-compile step to generate code;
-* it could be based on method names on objects in the event itself;
-* it could be limited to certain situations or contexts based on arbitrarily complex logic (only for certain users, only on certain days, only if certain system settings are present, etc).
+* could be the registered explicitly based on reflection of its signature;
+* could be registered with a numeric priority order;
+* could be registered using a before/after mechanism to control ordering more precisely;
+* could be registered from a service container;
+* could use a pre-compile step to generate code;
+* could be based on method names on objects in the event itself;
+* could be limited to certain situations or contexts based on arbitrarily complex logic (only for certain users, only on certain days, only if certain system settings are present, etc).
 
 These and other mechanisms all exist in the wild today in PHP, all are valid use cases worth supporting, and few if any can be conveniently represented as a special case of another.  That is, standardizing one way, or even a small set of ways, to inform the system of a listener turned out to be impractical if not impossible without cutting off many use cases that should be supported.
 
@@ -102,7 +104,7 @@ The Working Group therefore chose to encapsulate the registration of listeners b
 
 It is even possible, and potentially advisable, to allow libraries to include their own Providers that get aggregated into a common provider that aggregates their listeners to return to the Dispatcher.  That is one possible way to handle arbitrary listener registration within an arbitrary framework, although the Working Group is clear that is not the only option.
 
-While combining the Dispatcher and Provider into a single object is a valid and permissible degenerate case, it is NOT RECOMMENDED as it reduces the flexibility of system integrators.  Instead, the provider should be composed as a dependent object.
+While combining the Dispatcher and Provider into a single object is a valid and permissible degenerate case, it is NOT RECOMMENDED as it reduces the flexibility of system integrators.  Instead, the provider SHOULD be composed as a dependent object.
 
 ### 4.5 Return values
 
