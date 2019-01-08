@@ -921,7 +921,7 @@ The @var tag MUST contain the name of the element it documents. An exception
 to this is when property declarations only refer to a single property. In this
 case the name of the property MAY be omitted.
 
-This is used when compound statements are used to define a series of Constants
+`element_name` is used when compound statements are used to define a series of Constants
 or Properties. Such a compound statement can only have one DocBlock while several
 items are represented.
 
