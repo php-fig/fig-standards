@@ -69,7 +69,7 @@ A Dispatcher
 
 If passed a Stoppable Event, a Dispatcher
 
-* MUST call `isPropagationStopped()` on the Event after each Listener has been called.  If that method returns `true` it MUST return the Event to the Emitter immediately and MUST NOT call any further Listeners.
+* MUST call `isPropagationStopped()` on the Event before each Listener has been called.  If that method returns `true` it MUST return the Event to the Emitter immediately and MUST NOT call any further Listeners.  That is, if an Event is passed to the Dispatcher that always returns `true` from `isPropagationStopped()`, zero listeners will be called.
 
 ### Error handling
 
