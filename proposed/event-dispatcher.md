@@ -56,6 +56,8 @@ A Listener MAY delegate actions to other code.  That includes a Listener being a
 
 A Listener MAY enqueue information from the Event for later processing by a secondary process, using cron, a queue server, or similar techniques.  It MAY serialize the Event object itself to do so, however, care should be taken that not all Event objects may be safely serializable.
 
+A secondary process MUST assume that any changes it makes to an Event object will NOT propagate to other Listeners.  Additionally, the `isPropagationStopped()` method will not be called in this case and thus the Event is effectively unstoppable.
+
 ## Dispatcher
 
 A Dispatcher is a service object implementing `EventDispatcherInterface`.  It is responsible for invoking listeners provided by a Listener Provider on an Event.
