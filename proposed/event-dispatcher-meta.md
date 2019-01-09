@@ -80,7 +80,37 @@ That left two possible options:
 * Allow events to be mutable.
 * Require, but be unable to enforce, immutable objects with a high-ceremony interface, more work for listener authors, and a higher potential for breakage that may not be detectable at compile time.
 
-Given those options the Working Group felt mutable events were the safer alternative.
+By "high-ceremony", we imply that verbose syntax and/or implementations would be required.  In the former case, listener authors would need to (a) create a new instance with the propagation flag toggled, and (b) return the new instance so that the dispatcher could examine it:
+
+```php
+function (SomeEvent $event) : SomeEvent
+{
+    // do some work
+    return $event->withPropagationStopped();
+}
+```
+
+In the latter case, dispatcher implementations, checks on the return value would be required:
+
+```php
+foreach ($provider->getListenersForEvent($event) as $listener) {
+    $returnedEvent = $listener($event);
+    
+    if (! $returnedEvent instanceof $event) {
+        // This is an exceptional case!
+    }
+
+    if ($returnedEvent instanceof StoppableEventInterface
+        && $returnedEvent->isPropagationStopped()
+    ) {
+        break;
+    }
+}
+```
+
+In both situations, we would be introducing more potential edge cases, with little benefit, and few language-level mechanisms to guide developers to correct implementation.
+
+Given these options the Working Group felt mutable events were the safer alternative.
 
 That said, *there is no requirement that an Event be mutable*.  Implementers should provide mutator methods on an Event object *if and only if it is necessary* and appropriate to the use case at hand.
 
