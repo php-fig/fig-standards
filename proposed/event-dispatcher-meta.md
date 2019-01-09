@@ -105,7 +105,21 @@ It is even possible, and potentially advisable, to allow libraries to include th
 
 While combining the Dispatcher and Provider into a single object is a valid and permissible degenerate case, it is NOT RECOMMENDED as it reduces the flexibility of system integrators.  Instead, the provider SHOULD be composed as a dependent object.
 
-### 4.5 Return values
+### 4.5 Deferred listeners
+
+The specification requires that the callables returned by a Provider MUST all be invoked (unless propagation is explicitly stopped) before the Dispatcher returns.  However, the specification also explicitly states that Listeners may enqueue events for later processing rather than taking immediate action.  It is also entirely permissible for a Provider to accept registration of a callable, but then wrap it in another callable before returning it to the Dispatcher.  (In that case, the wrapper is the Listener from the Dispatcher's point of view.)  That allows all of the following behaviors to be legal:
+
+* Providers return callable listeners that were provided to them.
+* Providers return callables that create an entry in a queue that will react to the event with another callable at some later point in time.
+* Listeners may themselves create an entry in a queue that will react to the event at some later point in time.
+* Listeners or Providers may trigger an asynchronous task, if running in an environment with support for asynchronous behavior (assuming that the result of the asynchronous task is not needed by the Emitter.)
+* Providers may perform such delay or wrapping on Listeners selectively based on arbitrary logic.
+
+The net result is that Providers and Listeners are responsible for determining when it is safe to defer a response to an Event until some later time.  In that case, the Provider or Listener is explicitly opting out of being able to pass meaningful data back to the Emitter, but the Working Group determined that they were in the best position to know if it was safe to do so.
+
+While technically a side effect of the design, it is essentially the same approach used by Laravel (as of Laravel 5) and has been proven in the wild.
+
+### 4.6 Return values
 
 Per the spec, a Dispatcher MUST return the event it was passed to the Emitter.  That is done to provide a more ergonomic experience for users.  That is, it allows short-hands similar to the following:
 
