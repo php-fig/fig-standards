@@ -98,6 +98,23 @@ foreach ($provider->getListenersForEvent($event) as $listener) {
     
     if (! $returnedEvent instanceof $event) {
         // This is an exceptional case!
+        // 
+        // We now have an event of a different type, or perhaps nothing was
+        // returned by the listener. An event of a different type might mean:
+        // 
+        // - we need to trigger the new event
+        // - we have an event mismatch, and should raise an exception
+        // - we should attempt to trigger the remaining listeners anyway
+        // 
+        // In the case of nothing being returned, this could mean any of:
+        // 
+        // - we should continue triggering, using the original event
+        // - we should stop triggering, and treat this as a request to
+        //   stop propagation
+        // - we should raise an exception, because the listener did not
+        //   return what was expected
+        //
+        // In short, this becomes very hard to specify, or enforce.
     }
 
     if ($returnedEvent instanceof StoppableEventInterface
