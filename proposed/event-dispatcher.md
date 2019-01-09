@@ -54,9 +54,7 @@ A Listener MUST have a `void` return, and SHOULD type hint that return explicitl
 
 A Listener MAY delegate actions to other code.  That includes a Listener being a thin wrapper around retrieving an object from a service container that contains the actual business logic to run, or other similar forms of indirection.  In that case the callable containing the actual business logic SHOULD conform to the same rules as if it were called directly as a Listener.
 
-A Listener MAY enqueue information from the Event for later processing by a secondary process, using cron, a queue server, or similar techniques.  It MAY serialize the Event object itself to do so, however, care should be taken that not all Event objects may be safely serializable.
-
-A secondary process MUST assume that any changes it makes to an Event object will NOT propagate to other Listeners.  Additionally, the `isPropagationStopped()` method will not be called in this case and thus the Event is effectively unstoppable.
+A Listener MAY enqueue information from the Event for later processing by a secondary process, using cron, a queue server, or similar techniques.  It MAY serialize the Event object itself to do so, however, care should be taken that not all Event objects may be safely serializable. A secondary process MUST assume that any changes it makes to an Event object will NOT propagate to other Listeners.  Additionally, the `isPropagationStopped()` method will not be called in this case and thus the Event is effectively unstoppable.
 
 ## Dispatcher
 
