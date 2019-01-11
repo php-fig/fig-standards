@@ -268,6 +268,28 @@ the time this proposal was developed allowed a string URI when creating a
 `UriInterface` implementation they provided. As such, accepting a string is
 expedient and follows existing semantics.
 
+### 5.7 Why are Streams created with the read/write pointer at the beginning?
+
+The primary use case of `StreamFactoryInterface::createStream()` and
+`StreamFactoryInterface::createStreamFromFile()` is to create streams for the
+body of a `ResponseInterface` instance to be emitted as an HTTP response.
+
+An emitter can make no assumptions about streams (or their internal resource
+handles) being repeatable, and therefore can't simply `rewind()` the stream.
+
+Even in the case where a stream returns `true` for `isSeekable()`, rewinding
+the stream could have unacceptable performance implications. Similarly, the
+`__toString()` method results in unacceptable memory overhead for large streams.
+
+Consequently, to efficiently emit the body stream of a `ResponseInterface`
+instance as body of an HTTP response, we must be able to make an assumption
+about the stream pointer being positioned at the beginning of the stream.
+
+As for `StreamFactoryInterface::createStreamFromResource()`, the caller is
+responsible for the creation of the PHP resource to use as the basis for the
+stream, and therefore also assumes responsibility for the read/write pointer
+state of the resource and resulting stream.
+
 ## 6. People
 
 This PSR was produced by a FIG Working Group with the following members:
