@@ -570,7 +570,7 @@ The following keywords are recognized by this PSR:
      */
     function outputHello($quiet)
     {
-        if ($quiet} {
+        if ($quiet) {
             return;
         }
         echo 'Hello world';
