@@ -328,3 +328,23 @@ _**Note:** Order descending chronologically._
 - [shadowhand Dependency Inversion and PSR-7 Bodies](http://shadowhand.me/dependency-inversion-and-psr-7-bodies/)
 - [PHP-FIG mailing list thread discussing factories](https://groups.google.com/d/msg/php-fig/G5pgQfQ9fpA/UWeM1gm1CwAJ)
 - [PHP-FIG mailing list thread feedback on proposal](https://groups.google.com/d/msg/php-fig/piRtB2Z-AZs/8UIwY1RtDgAJ)
+
+## 9. Errata
+
+This recommendation initially omitted the following requirements.
+
+### 9.1 `StreamFactoryInterface::createStream()`
+
+The state of the created temporary resource was unspecified - per section 5.7, the
+requirement was added to position the temporary resource at the beginning of the stream.
+
+### 9.2 `StreamFactoryInterface::createStreamFromFile()`
+
+The state of the created temporary resource was unspecified - per section 5.7, the
+requirement was added to position the temporary resource at the beginning of the stream.
+
+### 9.3 `StreamFactoryInterface::createStreamFromResource()`
+
+The requirements did not specify whether this method might affect the state of the given
+resource - per section 5.7, the requirement was added to clarify that this method MUST NOT
+modify the position of the given resource.

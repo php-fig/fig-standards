@@ -119,7 +119,7 @@ interface StreamFactoryInterface
      * The stream SHOULD be created with a temporary resource.
      * 
      * The stream MUST be created with the current position of the file read/write
-     * pointer at the beginning of the stream.
+     * pointer at the beginning of the stream. (Errata 9.1)
      *
      * @param string $content String content with which to populate the stream.
      */
@@ -134,7 +134,7 @@ interface StreamFactoryInterface
      * The `$filename` MAY be any string supported by `fopen()`.
      *
      * The stream MUST be created with the current position of the file read/write
-     * pointer at the beginning of the stream.
+     * pointer at the beginning of the stream. (Errata 9.2)
      *
      * @param string $filename The filename or stream URI to use as basis of stream.
      * @param string $mode The mode with which to open the underlying filename/stream.
@@ -149,7 +149,7 @@ interface StreamFactoryInterface
      *
      * The stream MUST be readable and may be writable.
      *
-     * The current read/write position of the given PHP resource MUST NOT be modified.
+     * The current read/write position of the given PHP resource MUST NOT be modified. (Errata 9.3)
      *
      * @param resource $resource The PHP resource to use as the basis for the stream.
      */
