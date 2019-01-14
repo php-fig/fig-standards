@@ -32,7 +32,7 @@ Some examples:
 
 Events are objects that act as the unit of communication between an Emitter and appropriate Listeners.
 
-All Events are identified primarily by their PHP type: i.e., their class and any interfaces they implement.  Events SHOULD NOT have any other identifier, such as an arbitrary string ID.
+The class name of the Event object SHOULD be the primary identifier of the Event to differentiate it from other Events.  Additionally, implementers SHOULD include an event's parent classes or interfaces as identifying the Event when determining the appropriate way to handle it.
 
 Event objects MAY be mutable should the use case call for listeners providing information back to the Emitter.  However, if no such bidirectional communication is needed then it is RECOMMENDED that the event be defined as immutable; i.e., defined such that it lacks mutator methods.
 
