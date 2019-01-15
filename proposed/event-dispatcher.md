@@ -58,7 +58,7 @@ A Listener MAY enqueue information from the Event for later processing by a seco
 
 ## Dispatcher
 
-A Dispatcher is a service object implementing `EventDispatcherInterface`.  It is responsible for invoking listeners supplied by a Listener Provider for the Event dispatched.
+A Dispatcher is a service object implementing `EventDispatcherInterface`.  It is responsible for retrieving Listeners from a Listener Provider for the Event dispatched, and invoking each Listener with that Event.
 
 A Dispatcher:
 
