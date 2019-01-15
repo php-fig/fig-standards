@@ -38,7 +38,7 @@ Event objects MAY be mutable should the use case call for listeners providing in
 
 Implementers MUST assume that the same object will be passed to all Listeners.
 
-It is RECOMMENDED, but NOT REQUIRED, that Event objects support lossless serialization and deserialization.  That is, `$event == unserialize(serialize($event))` SHOULD hold true.  Objects MAY leverage PHP’s `Serializable` interface, `__sleep()` or `__wakeup()` magic methods, or similar language functionality if appropriate.
+It is RECOMMENDED, but NOT REQUIRED, that Event objects support lossless serialization and deserialization; `$event == unserialize(serialize($event))` SHOULD hold true.  Objects MAY leverage PHP’s `Serializable` interface, `__sleep()` or `__wakeup()` magic methods, or similar language functionality if appropriate.
 
 ## Stoppable Events
 
