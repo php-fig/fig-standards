@@ -11,75 +11,77 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Goal
 
-Having common interfaces for dispatching and handling events, allows developers to create libraries that can interact with many frameworks and other libraries in a common fashion.
+Having common interfaces for dispatching and handling events allows developers to create libraries that can interact with many frameworks and other libraries in a common fashion.
 
 Some examples:
 
 * A security framework that will prevent saving/accessing data when a user doesn't have permission.
 * A common full page caching system.
-* Libraries that extent other specific libraries, regardless of what framework they are both integrated into.
+* Libraries that extend other libraries, regardless of what framework they are both integrated into.
 * A logging package to track all actions taken within the application
 
 ## Definitions
 
 * **Event** - An Event is a message produced by an *Emitter*.  It may be any arbitrary PHP object.
 * **Listener** - A Listener is any PHP callable that expects to be passed an Event.  Zero or more Listeners may be passed the same Event.  A Listener MAY enqueue some other asynchronous behavior if it so chooses.
-* **Emitter** - An Emitter is any arbitrary code that wishes to send an Event.  This is also known as the "calling code".  It is not represented by any particular data structure but refers to the use case.
+* **Emitter** - An Emitter is any arbitrary code that wishes to dispatch an Event.  This is also known as the "calling code".  It is not represented by any particular data structure but refers to the use case.
 * **Dispatcher** - A Dispatcher is a service object that is given an Event object by an Emitter.  The Dispatcher is responsible for ensuring that the Event is passed to all relevant Listeners, but MUST defer determining the responsible listeners to a Listener Provider.
 * **Listener Provider** - A Listener Provider is responsible for determining what Listeners are relevant for a given Event, but MUST NOT call the Listeners itself.  A Listener Provider may specify zero or more relevant Listeners.
 
 ## Events
 
-Events are objects that act as the unit of communication between an Emitter and appropriate listeners.
+Events are objects that act as the unit of communication between an Emitter and appropriate Listeners.
 
-All Events are identified primarily by their PHP type, that is, their class and any interfaces they implement.  Events SHOULD NOT have any other identifier, such as an arbitrary string ID.
+All Events are identified primarily by their PHP type: i.e., their class and any interfaces they implement.  Events SHOULD NOT have any other identifier, such as an arbitrary string ID.
 
-Event objects MAY be mutable should the use case call for listeners providing information back to the Emitter.  However, if no such bidirectional communication is needed then it is RECOMMENDED that the event be defined as immutable, that is, that it lacks mutator methods.
+Event objects MAY be mutable should the use case call for listeners providing information back to the Emitter.  However, if no such bidirectional communication is needed then it is RECOMMENDED that the event be defined as immutable; i.e., defined such that it lacks mutator methods.
 
-Implementers MUST assume that the same object will be passed to all listeners.
+Implementers MUST assume that the same object will be passed to all Listeners.
 
-It is RECOMMENDED, but NOT REQUIRED, that Event objects support lossless serialization and deserialization.  That is, `$event == unserialize(serialize($event))` SHOULD hold true.  Objects MAY leverage PHP’s Serializable interface, `__sleep()` or `__wakeup()` magic methods, or similar language functionality if appropriate.
+It is RECOMMENDED, but NOT REQUIRED, that Event objects support lossless serialization and deserialization; `$event == unserialize(serialize($event))` SHOULD hold true.  Objects MAY leverage PHP’s `Serializable` interface, `__sleep()` or `__wakeup()` magic methods, or similar language functionality if appropriate.
 
 ## Stoppable Events
 
 A **Stoppable Event** is a special case of Event that contains additional ways to prevent further Listeners from being called.  It is indicated by implementing the `StoppableEventInterface`.
 
-An Event that implements `StoppableEventInterface` MUST return `true` from `isPropagationStopped()` when whatever Event it represents has been completed.  It is up to the implementer of the class to determine when that is.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which sets an internal flag that `isPropagationStopped()` will use to return `true` once the response has been set.
+An Event that implements `StoppableEventInterface` MUST return `true` from `isPropagationStopped()` when whatever Event it represents has been completed.  It is up to the implementer of the class to determine when that is.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which causes `isPropagationStopped()` to return `true`.
 
 ## Listeners
 
-A Listener may be any PHP callable.  A Listener MUST have one and only one parameter, which is the Event to which it responds.  Listeners SHOULD type hint that parameter as specifically as is relevant for their use case; that is, a Listener MAY type hint against an interface to indicate it is compatible with any Event type that implements that interface.
+A Listener may be any PHP callable.  A Listener MUST have one and only one parameter, which is the Event to which it responds.  Listeners SHOULD type hint that parameter as specifically as is relevant for their use case; that is, a Listener MAY type hint against an interface to indicate it is compatible with any Event type that implements that interface, or to a specific implementation of that interface.
 
-A Listener MUST have a `void` return, and SHOULD type hint that return explicitly.
+A Listener SHOULD have a `void` return, and SHOULD type hint that return explicitly.  A Dispatcher MUST ignore return values from Listeners.
 
-A Listener MAY delegate actions to other code.  That includes a Listener being a thin wrapper around retrieving an object from a service container that contains the actual business logic to run, or other similar forms of indirection.  In that case the callable containing the actual business logic SHOULD conform to the same rules as if it were called directly as a Listener.
+A Listener MAY delegate actions to other code.  That includes a Listener being a thin wrapper around retrieving an object from a service container that contains the actual business logic to run, or other similar forms of indirection.  In that case, the callable containing the actual business logic SHOULD conform to the same rules as if it were called directly as a Listener.
 
-A Listener MAY enqueue information from the Event for later processing by a secondary process, using cron, a queue server, or similar techniques.  It MAY serialize the Event object itself to do so, however, care should be taken that not all Event objects may be safely serializable. A secondary process MUST assume that any changes it makes to an Event object will NOT propagate to other Listeners.  Additionally, the `isPropagationStopped()` method will not be called in this case and thus the Event is effectively unstoppable.
+A Listener MAY enqueue information from the Event for later processing by a secondary process, using cron, a queue server, or similar techniques.  It MAY serialize the Event object itself to do so; however, care should be taken that not all Event objects may be safely serializable. A secondary process MUST assume that any changes it makes to an Event object will NOT propagate to other Listeners.
 
 ## Dispatcher
 
-A Dispatcher is a service object implementing `EventDispatcherInterface`.  It is responsible for invoking listeners provided by a Listener Provider on an Event.
+A Dispatcher is a service object implementing `EventDispatcherInterface`.  It is responsible for retrieving Listeners from a Listener Provider for the Event dispatched, and invoking each Listener with that Event.
 
-A Dispatcher
+A Dispatcher:
 
 * MUST call Listeners synchronously in the order they are returned from a ListenerProvider.
 * MUST return the same Event object it was passed after it is done invoking Listeners.
 * MUST NOT return to the Emitter until all Listeners have executed.
-* As an exception to the previous point, if the Event is a [Promise object](https://promisesaplus.com/) then the Dispatcher MAY return that Promise before all Listeners have executed.  However, the Promise MUST NOT be treated as fulfilled until all Listeners have executed.
+* As an exception to the previous point, if the Event is a [Promise object][] then the Dispatcher MAY return that Promise before all Listeners have executed.  However, the Promise MUST NOT be treated as fulfilled until all Listeners have executed.
 
 If passed a Stoppable Event, a Dispatcher
 
-* MUST call `isPropagationStopped()` on the Event before each Listener has been called.  If that method returns `true` it MUST return the Event to the Emitter immediately and MUST NOT call any further Listeners.  That is, if an Event is passed to the Dispatcher that always returns `true` from `isPropagationStopped()`, zero listeners will be called.
+* MUST call `isPropagationStopped()` on the Event before each Listener has been called.  If that method returns `true` it MUST return the Event to the Emitter immediately and MUST NOT call any further Listeners.  This implies that if an Event is passed to the Dispatcher that always returns `true` from `isPropagationStopped()`, zero listeners will be called.
+
+[Promise object]: https://promisesaplus.com/
 
 ### Error handling
 
-An Exception or Error thrown by a Listener MUST block the execution of any further Listeners.  An Error or Exception thrown by a Listener MUST be allowed to propagate back up to the caller.
+An Exception or Error thrown by a Listener MUST block the execution of any further Listeners.  An Error or Exception thrown by a Listener MUST be allowed to propagate back up to the Emitter.
 
 A Dispatcher MAY catch a thrown object to log it, allow additional action to be taken, etc., but then MUST rethrow the original throwable.
 
 ## Listener Provider
 
-A Listener Provider is a service object responsible for determining what Listeners are relevant to and should be call for a given Event.  It may determine both what Listeners are relevant and the order in which to return them by whatever means it chooses.  That MAY include
+A Listener Provider is a service object responsible for determining what Listeners are relevant to and should be called for a given Event.  It may determine both what Listeners are relevant and the order in which to return them by whatever means it chooses.  That MAY include:
 
 * Allowing for some form of registration mechanism so that implementers may assign a Listener to an Event in a fixed order.
 * Deriving a list of applicable Listeners through reflection based on the type and implemented interfaces of the Event.
@@ -88,11 +90,11 @@ A Listener Provider is a service object responsible for determining what Listene
 * Extracting some information from an object referenced by the Event, such as an Entity, and calling pre-defined lifecycle methods on that object.
 * Delegating its responsibility to one or more other Listener Providers using some arbitrary logic.
 
-Or some combination of those, or some other mechanism as desired.
+Any combination of the above, or other mechanisms, MAY be used as desired.
 
-All Listeners returned by a Listener Provider MUST be type-compatible with the Event.  That is, calling `$listener($event)` MUST NOT produce a `TypeError`.
+All Listeners returned by a Listener Provider MUST be type-compatible with the Event; calling `$listener($event)` MUST NOT produce a `TypeError`.
 
-Listener Providers MUST treat parent types identically to the Event's own type when determining listener applicability.  That is, in the following case:
+Listener Providers MUST treat parent types identically to the Event's own type when determining listener applicability.  In the following case:
 
 ```php
 class A {}
