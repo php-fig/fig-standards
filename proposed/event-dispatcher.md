@@ -50,7 +50,7 @@ An Event that implements `StoppableEventInterface` MUST return `true` from `isPr
 
 A Listener may be any PHP callable.  A Listener MUST have one and only one parameter, which is the Event to which it responds.  Listeners SHOULD type hint that parameter as specifically as is relevant for their use case; that is, a Listener MAY type hint against an interface to indicate it is compatible with any Event type that implements that interface, or to a specific implementation of that interface.
 
-A Listener SHOULD have a `void` return, and SHOULD type hint that return explicitly.
+A Listener SHOULD have a `void` return, and SHOULD type hint that return explicitly.  A Dispatcher MUST ignore return values from Listeners.
 
 A Listener MAY delegate actions to other code.  That includes a Listener being a thin wrapper around retrieving an object from a service container that contains the actual business logic to run, or other similar forms of indirection.  In that case, the callable containing the actual business logic SHOULD conform to the same rules as if it were called directly as a Listener.
 
