@@ -32,7 +32,7 @@ Some examples:
 
 Events are objects that act as the unit of communication between an Emitter and appropriate Listeners.
 
-The class name of the Event object SHOULD be the primary identifier of the Event to differentiate it from other Events.  Additionally, implementers SHOULD include an Event's parent classes or interfaces as identifying the Event when determining the appropriate way to handle it.
+The class name of the Event object SHOULD be the primary identifier of the Event to differentiate it from other Events.  Additionally, implementers MUST include an Event's parent classes or interfaces as identifying the Event when determining the appropriate way to handle it.
 
 Event objects MAY be mutable should the use case call for Listeners providing information back to the Emitter.  However, if no such bidirectional communication is needed then it is RECOMMENDED that the Event be defined as immutable; i.e., defined such that it lacks mutator methods.
 
