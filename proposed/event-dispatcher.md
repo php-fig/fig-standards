@@ -103,7 +103,7 @@ class B extends A {}
 
 $b = new B();
 
-function listener(A $event) {}
+function listener(A $event): void {};
 ```
 
 A Listener Provider MUST treat `listener()` as an applicable listener for `$b`, as it is type compatible, unless some other criteria prevents it from doing so.
