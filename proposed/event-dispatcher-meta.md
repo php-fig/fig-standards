@@ -188,14 +188,14 @@ The Event Manager Working Group consisted of:
 
 ### 5.2 Sponsor
 
-Cees-Jan Kiewiet
+* Cees-Jan Kiewiet
 
-### Working Group Members
+### 5.3 Working Group Members
 
-Benjamin Mack
-Elizabeth Smith
-Ryan Weaver
-Matthew Weier O'Phinney
+* Benjamin Mack
+* Elizabeth Smith
+* Ryan Weaver
+* Matthew Weier O'Phinney
 
 ## 6. Votes
 
