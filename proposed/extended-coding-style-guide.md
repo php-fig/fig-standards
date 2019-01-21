@@ -1019,6 +1019,14 @@ $instance = new class extends \Foo implements
 };
 ~~~
 
+## 9. Type Casting
+
+There MUST NOT be any spaces inside the type casting parentheses:
+
+~~~php
+$intValue = (int) $input;
+~~~
+
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
 [keywords]: http://php.net/manual/en/reserved.keywords.php

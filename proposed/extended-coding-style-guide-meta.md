@@ -159,6 +159,7 @@ specification for a full understanding of its contents.
 * Add finally block - Section 5.6
 * Operators - Section 6
 * Anonymous classes - Section 8
+* Type casting - Section 9
 
 ## 5.2. Clarifications and Errata
 * Adjust 'methods' to 'methods and functions' in a number of instances - Throughout
