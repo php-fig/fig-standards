@@ -1021,7 +1021,7 @@ $instance = new class extends \Foo implements
 
 ## 9. Type Casting
 
-There MUST be no spaces inside type casting parentheses:
+There MUST NOT be any spaces inside the type casting parentheses:
 
 ~~~php
 $intValue = (int) $input;
