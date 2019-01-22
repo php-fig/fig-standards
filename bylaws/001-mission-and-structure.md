@@ -28,6 +28,14 @@ If, in the judgement of the PHP FIG, a Project Representative is acting inapprop
 
 A Project Representative may also simultaneously serve as a Core Committee member, PSR Editor or Working Group member but not as a Secretary.
 
+## Conduct
+
+All individuals involved with FIG either in an official capacity (Secretary, Core Committee, Project Representative, Editor, or Working Group member) or informally (such as participating in discussions) are expected to conduct themselves in a professional manner at all times.  All individuals are expected to behave in a manner consistent with the Code Manifesto.  Failure to do so will be considered grounds for expulsion.
+
+In the case of an individual holding a formal position, a Recall or Expulsion Vote may be called to remove the individual in question.  In the case of any other individual, any two Secretaries may issue a formal warning to the individual in question or issue a temporary or permanent ban from all FIG-related communication channels, as appropriate to the situation.
+
+The Editor and Sponsor of a Working Group may jointly remove any member of the Working Group for failure to abide by the Code Manifesto at any time.
+
 ## The Core Committee
 
 The Core Committee is a twelve (12) member board of individuals recognized for their technical skill and expertise. The Core Committee is responsible for final decisions regarding what specifications FIG will consider and those that are approved. The Core Committee is responsible for ensuring a high level of quality and consistency amongst all published specifications, and that all relevant perspectives and use cases are given due consideration.
