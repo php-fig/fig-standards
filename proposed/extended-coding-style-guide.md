@@ -546,6 +546,15 @@ class ReturnTypeVariations
 }
 ~~~
 
+Variadic argument three dots MUST NOT have space before argument name:
+
+```php
+public function process(string $algorithm, ...$parts)
+{
+    // processing
+}
+```
+
 ### 4.6 `abstract`, `final`, and `static`
 
 When present, the `abstract` and `final` declarations MUST precede the
