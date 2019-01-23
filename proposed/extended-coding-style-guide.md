@@ -396,6 +396,8 @@ Property names MUST NOT be prefixed with a single underscore to indicate
 protected or private visibility. That is, an underscore prefix explicitly has
 no meaning.
 
+When present, type declaration MUST precede property name.
+
 A property declaration looks like the following.
 
 ~~~php
@@ -406,6 +408,7 @@ namespace Vendor\Package;
 class ClassName
 {
     public $foo = null;
+    public static int $bar = 0;
 }
 ~~~
 
