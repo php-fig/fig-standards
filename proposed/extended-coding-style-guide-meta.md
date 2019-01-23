@@ -160,7 +160,7 @@ specification for a full understanding of its contents.
 * Operators - Section 6
 * Anonymous classes - Section 8
 * Type casting - Section 9
-* Variadic argument three dots MUST NOT have spaces before variable - Section 4.5
+* Variadic and reference argument operators - Section 4.5
 
 ## 5.2. Clarifications and Errata
 * Adjust 'methods' to 'methods and functions' in a number of instances - Throughout

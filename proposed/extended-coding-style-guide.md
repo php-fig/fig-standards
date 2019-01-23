@@ -539,17 +539,30 @@ namespace Vendor\Package;
 
 class ReturnTypeVariations
 {
-    public function functionName(?string $arg1, ?int $arg2): ?string
+    public function functionName(?string $arg1, ?int &$arg2): ?string
     {
         return 'foo';
     }
 }
 ~~~
 
+When using the reference operator `&` before an argument, there MUST NOT be
+a space after it, like in the previous example.
+
 Variadic argument three dots MUST NOT have space before argument name:
 
 ```php
 public function process(string $algorithm, ...$parts)
+{
+    // processing
+}
+```
+
+When combining both the reference operator and the variadics three dots, there
+MUST NOT be any space between the two of them:
+
+```php
+public function process(string $algorithm, &...$parts)
 {
     // processing
 }
