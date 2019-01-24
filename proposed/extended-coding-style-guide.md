@@ -396,7 +396,7 @@ Property names MUST NOT be prefixed with a single underscore to indicate
 protected or private visibility. That is, an underscore prefix explicitly has
 no meaning.
 
-When present, type declaration MUST immediately precede property name.
+There MUST be a space between type declaration and property name.
 
 A property declaration looks like the following.
 
