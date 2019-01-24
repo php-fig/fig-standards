@@ -549,7 +549,7 @@ class ReturnTypeVariations
 When using the reference operator `&` before an argument, there MUST NOT be
 a space after it, like in the previous example.
 
-Variadic argument three dots MUST NOT have space before argument name:
+There MUST NOT be a space between the variadic three dots and the argument name:
 
 ```php
 public function process(string $algorithm, ...$parts)
@@ -558,7 +558,7 @@ public function process(string $algorithm, ...$parts)
 }
 ```
 
-When combining both the reference operator and the variadics three dots, there
+When combining both the reference operator and the variadic three dots, there
 MUST NOT be any space between the two of them:
 
 ```php
