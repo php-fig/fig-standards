@@ -154,15 +154,17 @@ specification for a full understanding of its contents.
 * Use statement blocks - Section 3
 * Declare statement/Strict types declaration usage - Section 3
 * Parentheses are always required for class instantiation - Section 4
+* Typed properties - Section 4.3
 * Return type declarations - Section 4.5
+* Variadic and reference argument operators - Section 4.5
 * Type hints - Section 4.5
 * Add finally block - Section 5.6
 * Operators - Section 6
 * Anonymous classes - Section 8
 * Type casting - Section 9
-* Variadic and reference argument operators - Section 4.5
 
 ## 5.2. Clarifications and Errata
+
 * Adjust 'methods' to 'methods and functions' in a number of instances - Throughout
 * Adjust references to classes and interfaces to also include traits - Throughout
 * StudlyCaps meaning clarified as PascalCase - Section 2.1
@@ -178,15 +180,18 @@ specification for a full understanding of its contents.
 * Korvin Szanto
 
 ## 6.2. Sponsor:
+
 * Chris Tankersley
 
 ## 6.3. Working Group Members:
+
 * Alessandro Lai
 * Alexander Makarov
 * Michael Cullum
 * Robert Deutz
 
 ## 6.4. Special Thanks
+
 * Michael Cullum for drafting the original specification
 * Alexandar Makarov for coordinating the draft during PHP-FIG 2.0
 * Cees-Jan Kiewiet for moral support
