@@ -71,6 +71,8 @@ If passed a Stoppable Event, a Dispatcher
 
 * MUST call `isPropagationStopped()` on the Event before each Listener has been called.  If that method returns `true` it MUST return the Event to the Emitter immediately and MUST NOT call any further Listeners.  This implies that if an Event is passed to the Dispatcher that always returns `true` from `isPropagationStopped()`, zero listeners will be called.
 
+A Dispatcher SHOULD assume that any Listener returned to it from a a Listener Provider is type-safe.  That is, the Dispatcher SHOULD assume that calling `$listener($event)` will not produce a `TypeError`.
+
 [Promise object]: https://promisesaplus.com/
 
 ### Error handling
@@ -91,8 +93,6 @@ A Listener Provider is a service object responsible for determining what Listene
 * Delegating its responsibility to one or more other Listener Providers using some arbitrary logic.
 
 Any combination of the above, or other mechanisms, MAY be used as desired.
-
-All Listeners returned by a Listener Provider MUST be type-compatible with the Event; calling `$listener($event)` MUST NOT produce a `TypeError`.
 
 Listener Providers MUST treat parent types identically to the Event's own type when determining listener applicability.  In the following case:
 
