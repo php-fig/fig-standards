@@ -51,6 +51,8 @@ interface RequestFactoryInterface
 }
 ```
 
+The created instance MUST return an empty body-stream in read and write mode.
+
 ### 2.2 ResponseFactoryInterface
 
 Has the ability to create responses.
@@ -73,6 +75,8 @@ interface ResponseFactoryInterface
     public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface;
 }
 ```
+
+The created instance MUST return an empty body-stream in read and write mode.
 
 ### 2.3 ServerRequestFactoryInterface
 
@@ -101,6 +105,8 @@ interface ServerRequestFactoryInterface
     public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface;
 }
 ```
+
+The created instance MUST return an empty body-stream in read and write mode.
 
 ### 2.4 StreamFactoryInterface
 

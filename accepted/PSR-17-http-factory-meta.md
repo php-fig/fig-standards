@@ -290,6 +290,12 @@ responsible for the creation of the PHP resource to use as the basis for the
 stream, and therefore also assumes responsibility for the read/write pointer
 state of the resource and resulting stream.
 
+And finally, the instances created by the `RequestFactoryInterface()`,
+`ResponseFactoryInterface()` and `ServerRequestFactoryInterface` factories
+must generate instances that return an empty body-stream in read and write
+mode, so that client-code can start writing to the body stream without
+manually needing to initialize anything else.
+
 ## 6. People
 
 This PSR was produced by a FIG Working Group with the following members:
