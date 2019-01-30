@@ -32,8 +32,6 @@ Some examples:
 
 Events are objects that act as the unit of communication between an Emitter and appropriate Listeners.
 
-The class name of the Event object SHOULD be the primary identifier of the Event to differentiate it from other Events.  Additionally, implementers MUST include an Event's parent classes or interfaces as identifying the Event when determining the appropriate way to handle it.
-
 Event objects MAY be mutable should the use case call for Listeners providing information back to the Emitter.  However, if no such bidirectional communication is needed then it is RECOMMENDED that the Event be defined as immutable; i.e., defined such that it lacks mutator methods.
 
 Implementers MUST assume that the same object will be passed to all Listeners.
@@ -71,6 +69,8 @@ If passed a Stoppable Event, a Dispatcher
 
 * MUST call `isPropagationStopped()` on the Event before each Listener has been called.  If that method returns `true` it MUST return the Event to the Emitter immediately and MUST NOT call any further Listeners.  This implies that if an Event is passed to the Dispatcher that always returns `true` from `isPropagationStopped()`, zero listeners will be called.
 
+A Dispatcher SHOULD assume that any Listener returned to it from a Listener Provider is type-safe.  That is, the Dispatcher SHOULD assume that calling `$listener($event)` will not produce a `TypeError`.
+
 [Promise object]: https://promisesaplus.com/
 
 ### Error handling
@@ -92,7 +92,7 @@ A Listener Provider is a service object responsible for determining what Listene
 
 Any combination of the above, or other mechanisms, MAY be used as desired.
 
-All Listeners returned by a Listener Provider MUST be type-compatible with the Event; calling `$listener($event)` MUST NOT produce a `TypeError`.
+Listener Providers SHOULD use the class name of an Event to differentiate one event from another.  They MAY also consider any other information on the event as appropriate.
 
 Listener Providers MUST treat parent types identically to the Event's own type when determining listener applicability.  In the following case:
 
