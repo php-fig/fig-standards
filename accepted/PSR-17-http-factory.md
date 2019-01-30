@@ -51,7 +51,7 @@ interface RequestFactoryInterface
 }
 ```
 
-The created instance MUST return an empty body-stream in read and write mode.
+The created instance MUST return an empty `StreamInterface` instance in read and write mode.
 
 ### 2.2 ResponseFactoryInterface
 
@@ -76,7 +76,7 @@ interface ResponseFactoryInterface
 }
 ```
 
-The created instance MUST return an empty body-stream in read and write mode.
+The created instance MUST return an empty `StreamInterface` instance in read and write mode.
 
 ### 2.3 ServerRequestFactoryInterface
 
@@ -106,7 +106,7 @@ interface ServerRequestFactoryInterface
 }
 ```
 
-The created instance MUST return an empty body-stream in read and write mode.
+The created instance MUST return an empty `StreamInterface` instance in read and write mode.
 
 ### 2.4 StreamFactoryInterface
 

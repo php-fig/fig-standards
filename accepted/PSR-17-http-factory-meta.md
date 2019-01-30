@@ -292,9 +292,9 @@ state of the resource and resulting stream.
 
 And finally, the instances created by the `RequestFactoryInterface()`,
 `ResponseFactoryInterface()` and `ServerRequestFactoryInterface` factories
-must generate instances that return an empty body-stream in read and write
-mode, so that client-code can start writing to the body stream without
-manually needing to initialize anything else.
+must generate instances that return an empty `StreamInterface` instance in
+read and write mode, so that client-code can start writing to the body stream,
+without manually needing to initialize anything else.
 
 ## 6. People
 
