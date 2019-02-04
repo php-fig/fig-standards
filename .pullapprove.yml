@@ -3,7 +3,7 @@ version: 3
 groups:
   secretaries:
     reviews:
-      request: 0
+      request: 10
       required: 1
     reviewers:
       teams:
@@ -12,9 +12,12 @@ groups:
     - "'proposed/*' not in files or 'proposed/psr-8*' in files or 'Internal: Bylaw or Admin Change' in labels or 'New PSR' in labels"
   security:
     reviews:
-      request: 0
+      request: 1
       required: 1
+      request_order: given
     reviewers:
+      users:
+      - michaelcullum
       teams:
       - psr-9-10
     conditions:
@@ -28,18 +31,9 @@ groups:
       - psr-5
     conditions:
     - "'proposed/phpdoc*' in files"
-  http-factory:
-    reviews:
-      request: 0
-      required: 1
-    reviewers:
-      teams:
-      - psr-17
-    conditions:
-    - "'proposed/http-factory/*' in files"
   cs-extended:
     reviews:
-      request: 0
+      request: 10
       required: 1
     reviewers:
       teams:
@@ -48,19 +42,10 @@ groups:
     - "'proposed/extended-coding-style-guide*' in files"
   event-dispatcher:
     reviews:
-      request: 0
+      request: 10
       required: 1
     reviewers:
       teams:
       - psr-14
     conditions:
     - "'proposed/event-dispatcher*' in files"
-  http-client:
-    reviews:
-      request: 0
-      required: 1
-    reviewers:
-      teams:
-      - psr-18
-    conditions:
-    - "'proposed/http-client/*' in files"
