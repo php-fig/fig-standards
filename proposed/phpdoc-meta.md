@@ -83,7 +83,7 @@ Cons:
 
  * Alexey Gopachenko - [PhpStorm](https://www.jetbrains.com/phpstorm)
  * Matthew Brown - [Psalm](https://github.com/vimeo/psalm)
- * Ondrej Mirtes - [PHPStan](https://github.com/phpstan/phpstan)
+ * Jan Tvrdík - [PHPStan](https://github.com/phpstan/phpstan)
  * Jaap van Otterdijk - [phpDocumentor](https://github.com/phpDocumentor/phpDocumentor2)
 
 ## 6. Votes
