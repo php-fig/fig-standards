@@ -85,7 +85,7 @@ interface GroupHuggable extends Huggable
    * provided. The order of the collection is not significant, and this object
    * MAY hug each of the objects in any order provided that all are hugged.
    *
-   * @param $huggables
+   * @param Huggable[] $huggables
    *   An array or iterator of objects implementing the Huggable interface.
    */
   public function groupHug($huggables);
