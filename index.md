@@ -27,14 +27,13 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
-| N/A | N/A                                  | N/A                            |
+| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 
 ### Draft
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
 | 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  |
-| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
 | 14  | [Event Manager][psr14]               | Larry Garfield                 |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  |
 
@@ -68,7 +67,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 9   | [Security Advisories][psr9]          | Michael Hess                   | Abandoned  |
 | 10  | [Security Reporting Process][psr10]  | Michael Hess                   | Abandoned  |
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Accepted   |
-| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Draft      |
+| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Review     |
 | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Accepted   |
 | 14  | [Event Manager][psr14]               | Larry Garfield                 | Draft      |
 | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     | Accepted   |
