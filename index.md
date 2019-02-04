@@ -28,13 +28,13 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
+| 14  | [Event Manager][psr14]               | Larry Garfield                 |
 
 ### Draft
 
 | Num | Title                                | Editor(s)                      |
 |:---:|--------------------------------------|--------------------------------|
 | 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  |
-| 14  | [Event Manager][psr14]               | Larry Garfield                 |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  |
 
 ### Abandoned
@@ -69,7 +69,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier | Accepted   |
 | 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  | Review     |
 | 13  | [Hypermedia Links][psr13]            | Larry Garfield                 | Accepted   |
-| 14  | [Event Manager][psr14]               | Larry Garfield                 | Draft      |
+| 14  | [Event Manager][psr14]               | Larry Garfield                 | Review     |
 | 15  | [HTTP Handlers][psr15]               | Woody Gilk                     | Accepted   |
 | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 | Accepted   |
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Accepted   |
