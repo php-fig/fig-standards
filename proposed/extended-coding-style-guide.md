@@ -871,7 +871,7 @@ try {
 
 ## 6. Operators
 
-All binary and ternary (but not unary) operators MUST be preceded and followed by at least
+All binary and ternary operators MUST be preceded and followed by at least
 one space; multiple spaces MAY be used for readability purpose. This includes all [arithmetic][],
 [comparison][], [assignment][], [bitwise][], [logical][] (excluding `!` which is unary),
 [string concatenation][], [type][] operators, trait operators (`insteadof` and `as`),
