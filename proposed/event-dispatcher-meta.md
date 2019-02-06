@@ -136,7 +136,7 @@ That said, *there is no requirement that an Event be mutable*.  Implementers sho
 Experimentation during development of the specification determined that there were a wide range of viable, legitimate means by which a Dispatcher could be informed of a Listener.  A Listener:
 
 * could be registered explicitly;
-* could be the registered explicitly based on reflection of its signature;
+* could be registered explicitly based on reflection of its signature;
 * could be registered with a numeric priority order;
 * could be registered using a before/after mechanism to control ordering more precisely;
 * could be registered from a service container;
