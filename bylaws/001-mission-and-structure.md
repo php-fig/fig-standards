@@ -30,7 +30,7 @@ A Project Representative may also simultaneously serve as a Core Committee membe
 
 ## Conduct
 
-All individuals involved with FIG either in an official capacity (Secretary, Core Committee, Project Representative, Editor, or Working Group member) or informally (such as participating in discussions) are expected to conduct themselves in a professional manner at all times. All individuals are expected to behave in a manner consistent with the slightly modified [Code Manifesto](000-code-manifest.md).
+All individuals involved with FIG either in an official capacity (Secretary, Core Committee, Project Representative, Editor, or Working Group member) or informally (such as participating in discussions) are expected to conduct themselves in a professional manner at all times. All individuals are expected to behave in a manner consistent with the slightly modified [Code Manifesto](000-code-manifest.md) when interacting with other FIG members or engaging in activity that is directly or indirectly related to FIG.
 
 In the case of an individual holding a formal position, bad behavior may result in a Recall or Expulsion Vote to remove the individual in question. In the case of any individual, any two Secretaries may issue a formal warning to the individual in question or issue a temporary or permanent ban from all FIG-related communication channels, as appropriate to the situation.
 
