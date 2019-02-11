@@ -42,7 +42,7 @@ It is RECOMMENDED, but NOT REQUIRED, that Event objects support lossless seriali
 
 A **Stoppable Event** is a special case of Event that contains additional ways to prevent further Listeners from being called.  It is indicated by implementing the `StoppableEventInterface`.
 
-An Event that implements `StoppableEventInterface` MUST return `true` from `isPropagationStopped()` when whatever Event it represents has been completed.  It is up to the implementer of the class to determine when that is.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object MAY have a `setResponse(ResponseInterface $res)` method for a Listener to call, which causes `isPropagationStopped()` to return `true`.
+An Event that implements `StoppableEventInterface` MUST return `true` from `isPropagationStopped()` when whatever Event it represents has been completed.  It is up to the implementer of the class to determine when that is.  For example, an Event that is asking for a PSR-7 `RequestInterface` object to be matched with a corresponding `ResponseInterface` object could have a `setResponse(ResponseInterface $res)` method for a Listener to call, which causes `isPropagationStopped()` to return `true`.
 
 ## Listeners
 
