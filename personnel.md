@@ -17,10 +17,10 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Beau Simensen ([@beausimensen])       | 2016-12-24 - 2019-04-30 |
-| Larry Garfield ([@Crell])             | 2016-12-24 - 2019-04-30 |
-| Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2019-04-30 |
-| Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-04-30 |
+| Beau Simensen ([@beausimensen])       | 2016-12-24 - 2019-05-31 |
+| Larry Garfield ([@Crell])             | 2016-12-24 - 2019-05-31 |
+| Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2019-05-31 |
+| Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-05-31 |
 | Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2020-08-31 |
 | Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2020-08-31 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2020-08-31 |
