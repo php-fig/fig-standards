@@ -268,11 +268,18 @@ the time this proposal was developed allowed a string URI when creating a
 `UriInterface` implementation they provided. As such, accepting a string is
 expedient and follows existing semantics.
 
-### 5.7 Why are Streams created with the read/write pointer at the beginning?
+### 5.7 Why are Streams created with the specified read/write pointer positions?
 
-The primary use case of `StreamFactoryInterface::createStream()` and
-`StreamFactoryInterface::createStreamFromFile()` is to create streams for the
-body of a `ResponseInterface` instance to be emitted as an HTTP response.
+The `StreamFactoryInterface::createStreamFromFile()` method implementation
+typically maps directly to an `fopen()` call and, in terms of the read/write
+pointer position, should behave consistently with `fopen()` with regards to
+the `$mode` argument, as covered by the
+[PHP manual page](http://php.net/manual/en/function.fopen.php).
+
+The primary use case for `StreamFactoryInterface::createStream()` is to
+create streams for the body of a `ResponseInterface` instance to be emitted
+as an HTTP response. It can also be used to create an empty stream, which
+can subsequently be written to.
 
 An emitter can make no assumptions about streams (or their internal resource
 handles) being repeatable, and therefore can't simply `rewind()` the stream.
@@ -347,7 +354,7 @@ requirement was added to position the temporary resource at the beginning of the
 ### 9.2 `StreamFactoryInterface::createStreamFromFile()`
 
 The state of the created temporary resource was unspecified - per section 5.7, the
-requirement was added to position the temporary resource at the beginning of the stream.
+requirement was added to position the resource consistently with `fopen()`.
 
 ### 9.3 `StreamFactoryInterface::createStreamFromResource()`
 

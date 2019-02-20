@@ -140,7 +140,8 @@ interface StreamFactoryInterface
      * The `$filename` MAY be any string supported by `fopen()`.
      *
      * The stream MUST be created with the current position of the file read/write
-     * pointer at the beginning of the stream. (Errata 9.2)
+     * pointer positioned consistently with that of `fopen()` with regards to
+     * the `$mode` flag. (Errata 9.2)
      *
      * @param string $filename The filename or stream URI to use as basis of stream.
      * @param string $mode The mode with which to open the underlying filename/stream.
