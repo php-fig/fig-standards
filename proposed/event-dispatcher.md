@@ -63,7 +63,6 @@ A Dispatcher:
 * MUST call Listeners synchronously in the order they are returned from a ListenerProvider.
 * MUST return the same Event object it was passed after it is done invoking Listeners.
 * MUST NOT return to the Emitter until all Listeners have executed.
-* As an exception to the previous point, if the Event is a [Promise object][] then the Dispatcher MAY return that Promise before all Listeners have executed.  However, the Promise MUST NOT be treated as fulfilled until all Listeners have executed.
 
 If passed a Stoppable Event, a Dispatcher
 
