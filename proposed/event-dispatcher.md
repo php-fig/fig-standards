@@ -50,7 +50,7 @@ A Listener may be any PHP callable.  A Listener MUST have one and only one param
 
 A Listener SHOULD have a `void` return, and SHOULD type hint that return explicitly.  A Dispatcher MUST ignore return values from Listeners.
 
-A Listener MAY delegate actions to other code. That includes a Listener being a thin wrapper around running the actual business logic.
+A Listener MAY delegate actions to other code. That includes a Listener being a thin wrapper around an object that runs the actual business logic.
 
 A Listener MAY enqueue information from the Event for later processing by a secondary process, using cron, a queue server, or similar techniques.  It MAY serialize the Event object itself to do so; however, care should be taken that not all Event objects may be safely serializable. A secondary process MUST assume that any changes it makes to an Event object will NOT propagate to other Listeners.
 
