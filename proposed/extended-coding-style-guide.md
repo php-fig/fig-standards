@@ -792,8 +792,7 @@ do {
 
 Expressions in parentheses MAY be split across multiple lines, where each
 subsequent line is indented at least once. When doing so, the first condition
-MUST be on the next line. The closing parenthesis and opening brace MUST be
-placed together on their own line. Boolean operators between conditions MUST
+MUST be on the next line. Boolean operators between conditions MUST
 always be at the beginning or at the end of the line, not a mix of both.
 
 ~~~php
