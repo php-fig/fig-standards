@@ -199,9 +199,9 @@ The Event Manager Working Group consisted of:
 
 ## 6. Votes
 
-* [Entrance vote][]
-
-[Entrance vote]: https://groups.google.com/d/topic/php-fig/6kQFX-lhuk4/discussion
+* [Entrance vote](https://groups.google.com/d/topic/php-fig/6kQFX-lhuk4/discussion)
+* [Review Period Initiation](https://groups.google.com/d/topic/php-fig/sR4oEQC3Gz8/discussion)
+* [Acceptance](https://groups.google.com/d/topic/php-fig/o4ZSu7vJi2w/discussion)
 
 ## 7. Relevant Links
 
