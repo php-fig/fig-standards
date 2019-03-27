@@ -74,7 +74,7 @@ A Dispatcher SHOULD assume that any Listener returned to it from a Listener Prov
 
 ### Error handling
 
-An Exception or Error thrown by a Listener MUST block the execution of any further Listeners.  An Error or Exception thrown by a Listener MUST be allowed to propagate back up to the Emitter.
+An Exception or Error thrown by a Listener MUST block the execution of any further Listeners.  An Exception or Error thrown by a Listener MUST be allowed to propagate back up to the Emitter.
 
 A Dispatcher MAY catch a thrown object to log it, allow additional action to be taken, etc., but then MUST rethrow the original throwable.
 
