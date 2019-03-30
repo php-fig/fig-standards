@@ -366,7 +366,7 @@ class ClassName
 ~~~
 
 When using the `insteadof` and `as` operators they must be used as follows taking
-note of indentation, spacing and new lines.
+note of indentation, spacing, and new lines.
 
 ~~~php
 <?php
@@ -420,7 +420,7 @@ Method names MUST NOT be prefixed with a single underscore to indicate
 protected or private visibility. That is, an underscore prefix explicitly has
 no meaning.
 
-Method and function names MUST NOT be declared with a space after the method name. The
+Method and function names MUST NOT be declared with space after the method name. The
 opening brace MUST go on its own line, and the closing brace MUST go on the
 next line following the body. There MUST NOT be a space after the opening
 parenthesis, and there MUST NOT be a space before the closing parenthesis.
@@ -896,7 +896,7 @@ if ($a === $b) {
 
 ## 7. Closures
 
-Closures MUST be declared with a space after the `function` keyword, and a
+Closures MUST be declared with space after the `function` keyword, and a
 space before and after the `use` keyword.
 
 The opening brace MUST go on the same line, and the closing brace MUST go on
