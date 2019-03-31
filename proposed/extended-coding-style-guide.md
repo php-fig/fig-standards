@@ -876,7 +876,7 @@ Style rules for operators are grouped by arity (the number of operands they take
 When space is permitted around an operator, multiple spaces MAY be
 used for readability purposes.
 
-Any operators not described here are left undefined.
+All operators not described here are left undefined.
 
 ### 6.1. Unary operators
 
@@ -908,6 +908,13 @@ preceded and followed by at least one space around both the `?`
 and `:` characters:
 ~~~php
 $variable = $foo ? 'foo' : 'bar';
+~~~
+
+When the middle operand of the conditional operator is omitted, the operator
+MUST be written as `?:` and MUST follow the same style rules as a binary
+[comparison][] operator:
+~~~php
+$variable = $foo ?: 'bar';
 ~~~
 
 ## 7. Closures
