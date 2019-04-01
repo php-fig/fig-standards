@@ -236,7 +236,7 @@ The term "class" refers to all classes, interfaces, and traits.
 Any closing brace MUST NOT be followed by any comment or statement on the
 same line.
 
-When instantiating a new class, parenthesis MUST always be present even when
+When instantiating a new class, parentheses MUST always be present even when
 there are no arguments passed to the constructor.
 
 ~~~php
@@ -312,7 +312,7 @@ class ClassName
 }
 ~~~
 
-Each individual Trait that is imported into a class MUST be included
+Each individual trait that is imported into a class MUST be included
 one-per-line and each inclusion MUST have its own `use` import statement.
 
 ~~~php
@@ -398,7 +398,7 @@ no meaning.
 
 There MUST be a space between type declaration and property name.
 
-A property declaration looks like the following.
+A property declaration looks like the following:
 
 ~~~php
 <?php
@@ -454,7 +454,7 @@ function fooBarBaz($arg1, &$arg2, $arg3 = [])
 }
 ~~~
 
-### 4.5 Method and function Arguments
+### 4.5 Method and Function Arguments
 
 In the argument list, there MUST NOT be a space before each comma, and there
 MUST be one space after each comma.
@@ -501,9 +501,9 @@ class ClassName
 }
 ~~~
 
-When you have a return type declaration present there MUST be one space after
+When you have a return type declaration present, there MUST be one space after
 the colon followed by the type declaration. The colon and declaration MUST be
-on the same line as the argument list closing parentheses with no spaces between
+on the same line as the argument list closing parenthesis with no spaces between
 the two characters.
 
 ~~~php
@@ -552,7 +552,8 @@ class ReturnTypeVariations
 When using the reference operator `&` before an argument, there MUST NOT be
 a space after it, like in the previous example.
 
-There MUST NOT be a space between the variadic three dots and the argument name:
+There MUST NOT be a space between the variadic three dot operator and the argument
+name:
 
 ```php
 public function process(string $algorithm, ...$parts)
@@ -561,8 +562,8 @@ public function process(string $algorithm, ...$parts)
 }
 ```
 
-When combining both the reference operator and the variadic three dots, there
-MUST NOT be any space between the two of them:
+When combining both the reference operator and the variadic three dot operator,
+there MUST NOT be any space between the two of them:
 
 ```php
 public function process(string $algorithm, &...$parts)
