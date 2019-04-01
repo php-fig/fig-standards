@@ -203,8 +203,8 @@ use Vendor\Package\SomeNamespace\{
 ~~~
 
 When wishing to declare strict types in files containing markup outside PHP
-opening and closing tags MUST, on the first line, include an opening PHP tag,
-the strict types declaration and closing tag.
+opening and closing tags, the declaration MUST be on the first line of the file
+and include an opening PHP tag, the strict types declaration and closing tag.
 
 For example:
 ~~~php
