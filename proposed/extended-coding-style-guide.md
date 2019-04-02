@@ -897,7 +897,7 @@ if ($a === $b) {
 
 ## 7. Closures
 
-Closures MUST be declared with space after the `function` keyword, and a
+Closures MUST be declared with a space after the `function` keyword, and a
 space before and after the `use` keyword.
 
 The opening brace MUST go on the same line, and the closing brace MUST go on
