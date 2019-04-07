@@ -911,8 +911,7 @@ $variable = $foo ? 'foo' : 'bar';
 ~~~
 
 When the middle operand of the conditional operator is omitted, the operator
-MUST be written as `?:` and MUST follow the same style rules as a binary
-[comparison][] operator:
+MUST follow the same style rules as other binary [comparison][] operators:
 ~~~php
 $variable = $foo ?: 'bar';
 ~~~
