@@ -653,6 +653,7 @@ The general style rules for control structures are as follows:
 - There MUST be one space between the closing parenthesis and the opening
   brace
 - The structure body MUST be indented once
+- The body MUST be on the next line after the opening brace
 - The closing brace MUST be on the next line after the body
 
 The body of each structure MUST be enclosed by braces. This standardizes how
