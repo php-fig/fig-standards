@@ -575,11 +575,11 @@ public function process(string $algorithm, &...$parts)
 
 ### 4.6 `abstract`, `final`, and `static`
 
-When present, the `abstract` and `final` declarations MUST precede the
-visibility declaration.
+When present, optional keywords (`abstract` or `final` and `static`) MUST precede the visibility declaration.
 
-When present, the `static` declaration MUST come after the visibility
-declaration.
+When present, `static` directly precedes visibility.
+
+When `static` is NOT present, `abstract` or `final` directly precedes visibility. If `static` IS present, `abstract` or `final` directly precedes `static`.
 
 ~~~php
 <?php
@@ -588,11 +588,11 @@ namespace Vendor\Package;
 
 abstract class ClassName
 {
-    protected static $foo;
+    static protected $foo;
 
     abstract protected function zim();
 
-    final public static function bar()
+    final static public function bar()
     {
         // method body
     }
