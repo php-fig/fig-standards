@@ -63,7 +63,7 @@ class Foo extends Bar implements FooInterface
         }
     }
 
-    final public static function bar()
+    final static public function bar()
     {
         // method body
     }
