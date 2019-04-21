@@ -18,6 +18,7 @@ PSR-19: PHPDoc tags
   - [5.2.  @author](#52-author)
   - [5.3.  @copyright](#53-copyright)
   - [5.4.  @deprecated](#54-deprecated)
+  - [5.x.  @deterministic](#5x-deterministic)
   - [5.5.  @internal](#55-internal)
   - [5.6.  @link](#56-link)
   - [5.7.  @method](#57-method)
@@ -325,6 +326,42 @@ If the associated element is superseded by another it is RECOMMENDED to add a
  * @deprecated 1.0.0 No longer used by internal code and not recommended.
  */
 ```
+
+### 5.x. @deterministic
+
+The @deterministic tag is used to indicate that a method or function will 
+always return the same value when called.
+
+#### Syntax
+
+    @deterministic
+
+#### Description
+
+A @deterministic method or function tells that the return will be always the
+same if the scope of two or more calls are the same.
+
+It also helps IDE to identify needless double-call consuming less resources
+when applicable.
+
+#### Examples
+
+``php
+/**
+ * @deterministic
+ */
+public static function getInstance(): self { ... }
+
+public static function scope() {
+    Class::getInstance()->doSomething();
+    Class::getInstance()->doSomethingElse(); 
+    
+    // Could be replaced by:
+    $classInstance = Class::getInstance();
+    $classInstance->doSomething();
+    $classInstance->doSomethingElse();
+}
+````
 
 ### 5.5. @internal
 
