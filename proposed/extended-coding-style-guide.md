@@ -653,7 +653,9 @@ The general style rules for control structures are as follows:
 - There MUST be one space between the closing parenthesis and the opening
   brace
 - The structure body MUST be indented once
-- The closing brace MUST be on the next line after the body
+- The closing brace MUST be on the next line after the body. In case of
+  an `if-elseif-else` or `try-catch-finally` structure having two or more
+  blocks this rule only applies to the last block
 
 The body of each structure MUST be enclosed by braces. This standardizes how
 the structures look and reduces the likelihood of introducing errors as new
@@ -669,9 +671,9 @@ closing brace from the earlier body.
 <?php
 
 if ($expr1) {
-    // if body
+    // if body; blank line MAY follow
 } elseif ($expr2) {
-    // elseif body
+    // elseif body; blank line MAY follow
 } else {
     // else body;
 }
@@ -860,11 +862,11 @@ parentheses, spaces, and braces.
 <?php
 
 try {
-    // try body
+    // try body; blank line MAY follow
 } catch (FirstThrowableType $e) {
-    // catch body
+    // catch body; blank line MAY follow
 } catch (OtherThrowableType $e) {
-    // catch body
+    // catch body; blank line MAY follow
 } finally {
     // finally body
 }
