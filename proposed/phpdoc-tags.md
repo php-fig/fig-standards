@@ -637,7 +637,7 @@ The @return tag is used to document the return value of functions or methods.
 #### Description
 
 With the @return tag it is possible to document the return type of a
-function or method. When provided, it MUST contain a "Type" (See Appendix A)
+function or method. When provided, it MUST contain a "Type"
 to indicate what is returned; the description on the other hand is OPTIONAL yet
 RECOMMENDED in case of complicated return structures, such as associative arrays.
 
