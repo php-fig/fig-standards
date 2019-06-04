@@ -263,7 +263,7 @@ Using `__invoke` is less transparent than using a named method. It also makes
 it easier to call the request handler when it is assigned to a class variable,
 without using `call_user_func` or other less common syntax.
 
-_See "discussion of FrameInterface" in [relevant links](#9-relevant-links) for
+_See [PHP-FIG discussion of FrameInterface][] for
  additional information._
 
 ### 6.2 Middleware Design
@@ -323,8 +323,7 @@ Attempting to define client middleware would be premature at this point. Any fut
 proposal that is focused on client side request processing should have the opportunity
 to define a standard that is specific to the nature of asynchronous middleware.
 
-_See "client vs server side middleware" in [relevant links](#9-relevant-links) for
-additional information._
+_See [PHP-FIG discussion about client vs server side middleware][] for additional information._
 
 #### What is the role of the request handler?
 
@@ -627,11 +626,16 @@ The working group would also like to acknowledge the contributions of:
 
 _**Note:** Order descending chronologically._
 
-* [PHP-FIG mailing list thread](https://groups.google.com/d/msg/php-fig/vTtGxdIuBX8/NXKieN9vDQAJ)
-* [The PHP League middleware proposal](https://groups.google.com/d/msg/thephpleague/jyztj-Nz_rw/I4lHVFigAAAJ)
-* [PHP-FIG discussion of FrameInterface](https://groups.google.com/d/msg/php-fig/V12AAcT_SxE/aRXmNnIVCwAJ)
-* [PHP-FIG discussion about client vs server side middleware](https://groups.google.com/d/msg/php-fig/vBk0BRgDe2s/GTaT0yKNBgAJ)
+* [PHP-FIG mailing list thread][]
+* [The PHP League middleware proposal][]
+* [PHP-FIG discussion of FrameInterface][]
+* [PHP-FIG discussion about client vs server side middleware][]
 
 ## 10. Errata
 
 ...
+
+[PHP-FIG mailing list thread]: https://groups.google.com/d/msg/php-fig/vTtGxdIuBX8/NXKieN9vDQAJ
+[The PHP League middleware proposal]: https://groups.google.com/d/msg/thephpleague/jyztj-Nz_rw/I4lHVFigAAAJ
+[PHP-FIG discussion of FrameInterface]: https://groups.google.com/d/msg/php-fig/V12AAcT_SxE/aRXmNnIVCwAJ
+[PHP-FIG discussion about client vs server side middleware]: https://groups.google.com/d/topic/php-fig/vBk0BRgDe2s/discussion
