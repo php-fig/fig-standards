@@ -38,10 +38,10 @@ repositories and to the github organisation.
 
 * Never force push to any branch on a repository in the php-fig organisation
 * All changes must go through pull requests, a commit should never be pushed
-directly (excluding inital commits on new interface/util repositories) to master
+directly (excluding initial commits on new interface/util repositories) to master
 * All pull requests relating to a draft PSR must be approved (with a formal +1
 comment) or merged by the PSR Editor, except in the review phase when the coordinator
-should seek commment from the editor, but merging is at the coordinator's discretion
+should seek comment from the editor, but merging is at the coordinator's discretion
 * You must never merge a pull request that affects any file in the repository
 other than those you are on a working group for; you should request a secretary
 or member of that working group (mention @php-fig/psr-x) do so
