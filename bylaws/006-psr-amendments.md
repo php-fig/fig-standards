@@ -47,7 +47,7 @@ When more PSR's are added to the "dependency list" the same example would look l
 > - Namespaces and classes MUST follow an autoloading PSR: [ [PSR-0], [PSR-4] ].
 
 New PSR's can be added to the "dependency list", but old PSR's can never be removed as this would break
-backwards compatability.
+backwards compatibility.
 
 ## 3. Acceptable Amendments
 
