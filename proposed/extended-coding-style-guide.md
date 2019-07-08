@@ -83,7 +83,7 @@ each word is capitalized including the very first letter.
 
 All PHP files MUST use the Unix LF (linefeed) line ending only.
 
-All PHP files MUST end with a non-blank line, terminated with a single LF.
+All PHP files MUST be terminated with a single LF.
 
 The closing `?>` tag MUST be omitted from files containing only PHP.
 
