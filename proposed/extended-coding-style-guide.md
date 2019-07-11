@@ -863,7 +863,7 @@ try {
     // try body
 } catch (FirstThrowableType $e) {
     // catch body
-} catch (OtherThrowableType $e) {
+} catch (OtherThrowableType | AnotherThrowableType $e) {
     // catch body
 } finally {
     // finally body
@@ -872,27 +872,49 @@ try {
 
 ## 6. Operators
 
-All binary and ternary operators MUST be preceded and followed by at least
-one space; multiple spaces MAY be used for readability purpose. This includes all [arithmetic][],
-[comparison][], [assignment][], [bitwise][], [logical][] (excluding `!` which is unary),
-[string concatenation][], [type][] operators, trait operators (`insteadof` and `as`),
-and the single pipe operator (e.g. `ExceptionType1 | ExceptionType2 $e`).
+Style rules for operators are grouped by arity (the number of operands they take).
 
-There MUST NOT be any whitespace between the increment/decrement operators and the variable 
-being incremented/decremented.
+When space is permitted around an operator, multiple spaces MAY be
+used for readability purposes.
 
-Other operators are left undefined.
+All operators not described here are left undefined.
 
-For example:
+### 6.1. Unary operators
 
+The increment/decrement operators MUST NOT have any space between
+the operator and operand.
+
+Type casting operators MUST NOT have any space within the parentheses:
 ~~~php
-<?php
+$intValue = (int) $input;
+~~~
 
+### 6.2. Binary operators
+
+All binary [arithmetic][], [comparison][], [assignment][], [bitwise][],
+[logical][], [string][], and [type][] operators MUST be preceded and
+followed by at least one space:
+~~~php
 if ($a === $b) {
     $foo = $bar ?? $a ?? $b;
 } elseif ($a > $b) {
-    $variable = $foo ? 'foo' : 'bar';
+    $foo = $a + $b * $c;
 }
+~~~
+
+### 6.3. Ternary operators
+
+The conditional operator, also known simply as the ternary operator, MUST be
+preceded and followed by at least one space around both the `?`
+and `:` characters:
+~~~php
+$variable = $foo ? 'foo' : 'bar';
+~~~
+
+When the middle operand of the conditional operator is omitted, the operator
+MUST follow the same style rules as other binary [comparison][] operators:
+~~~php
+$variable = $foo ?: 'bar';
 ~~~
 
 ## 7. Closures
@@ -1045,22 +1067,14 @@ $instance = new class extends \Foo implements
 };
 ~~~
 
-## 9. Type Casting
-
-There MUST NOT be any spaces inside the type casting parentheses:
-
-~~~php
-$intValue = (int) $input;
-~~~
-
 [PSR-1]: http://www.php-fig.org/psr/psr-1/
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
 [keywords]: http://php.net/manual/en/reserved.keywords.php
-[types]: https://secure.php.net/manual/en/reserved.other-reserved-words.php
+[types]: http://php.net/manual/en/reserved.other-reserved-words.php
 [arithmetic]: http://php.net/manual/en/language.operators.arithmetic.php
 [assignment]: http://php.net/manual/en/language.operators.assignment.php
 [comparison]: http://php.net/manual/en/language.operators.comparison.php
 [bitwise]: http://php.net/manual/en/language.operators.bitwise.php
 [logical]: http://php.net/manual/en/language.operators.logical.php
-[string concatenation]: http://php.net/manual/en/language.operators.string.php
+[string]: http://php.net/manual/en/language.operators.string.php
 [type]: http://php.net/manual/en/language.operators.type.php
