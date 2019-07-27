@@ -678,7 +678,7 @@ if ($expr1) {
 }
 ~~~
 
-The keyword `elseif` SHOULD be used instead of `else if` so that all control
+The keyword `elseif` MUST be used instead of `else if` so that all control
 keywords look like single words.
 
 Expressions in parentheses MAY be split across multiple lines, where each
