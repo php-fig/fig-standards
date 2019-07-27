@@ -191,7 +191,7 @@ use Vendor\Package\SomeNamespace\{
 };
 ~~~
 
-And the following would not be allowed:
+And the following is not allowed:
 ~~~php
 <?php
 
