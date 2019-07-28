@@ -272,7 +272,7 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 }
 ~~~
 
-Lists of `implements` and, in the case of interfaces, `extends` MAY be split
+Lists of `extends` and, in the case of interfaces, `implements` MAY be split
 across multiple lines, where each subsequent line is indented once. When doing
 so, the first item in the list MUST be on the next line, and there MUST be only
 one interface per line.
