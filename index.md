@@ -11,7 +11,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | Num | Title                          | Editor                         |  Coordinator            | Sponsor                 |
 |:---:|--------------------------------|--------------------------------|-------------------------|-------------------------|
 | 1   | [Basic Coding Standard][psr1]  | Paul M. Jones                  | _N/A_                   | _N/A_                   |
-| 2   | [Coding Style Guide][psr2]     | Paul M. Jones                  | _N/A_                   | _N/A_                   |
 | 3   | [Logger Interface][psr3]       | Jordi Boggiano                 | _N/A_                   | _N/A_                   |
 | 4   | [Autoloading Standard][psr4]   | Paul M. Jones                  | Phil Sturgeon           | Larry Garfield          |
 | 6   | [Caching Interface][psr6]      | Larry Garfield                 | Paul Dragoonis          | Robert Hafner           |
@@ -45,6 +44,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | Num | Title                          | Editor                  |
 |:---:|--------------------------------|-------------------------|
 | 0   | [Autoloading Standard][psr0]   | Matthew Weier O'Phinney |
+| 2   | [Coding Style Guide][psr2]     | Paul M. Jones           |
 
 ## Numerical Index
 
