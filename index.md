@@ -17,7 +17,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 6   | [Caching Interface][psr6]      | Larry Garfield                 | Paul Dragoonis          | Robert Hafner           |
 | 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney        | Beau Simensen           | Paul M. Jones           |
 | 11  | [Container Interface][psr11]   | Matthieu Napoli, David Négrier | Matthew Weier O'Phinney | Korvin Szanto           |
-| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto            | Alexandar Makarov       |  Chris Tankersley       | 
+| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto            | Alexander Makarov       |  Chris Tankersley       | 
 | 13  | [Hypermedia Links][psr13]      | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander          |
 | 14  | [Event Dispatcher][psr14]      | Larry Garfield                 | _N/A_                   | Cees-Jan Kiewiet        |
 | 15  | [HTTP Handlers][psr15]         | Woody Gilk                     | _N/A_                   | Matthew Weier O'Phinney |
