@@ -201,6 +201,7 @@ specification for a full understanding of its contents.
 # 7. Votes
 
 * **Entrance Vote:** https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/php-fig/P9atZLOcUBM/_jwkvlYKEAAJ
+* **Approval Vote:** https://groups.google.com/forum/#!topic/php-fig/1uaeSMaDGbk
 
 # 8. Relevant Links
 
