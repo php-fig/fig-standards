@@ -99,7 +99,7 @@ Implementing libraries MUST support all serializable PHP data types, including:
 *    **Null** - The actual null value.
 *    **Arrays** - Indexed, associative and multidimensional arrays of arbitrary depth.
 *    **Object** - Any object that supports lossless serialization and
-deserialization such that $o == unserialize(serialize($o)). Objects MAY
+deserialization such that `$o == unserialize(serialize($o))`. Objects MAY
 leverage PHP's Serializable interface, `__sleep()` or `__wakeup()` magic methods,
 or similar language functionality if appropriate.
 
