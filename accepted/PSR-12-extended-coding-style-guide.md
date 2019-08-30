@@ -884,6 +884,10 @@ All operators not described here are left undefined.
 
 The increment/decrement operators MUST NOT have any space between
 the operator and operand.
+~~~php
+$i++;
+++$j;
+~~~
 
 Type casting operators MUST NOT have any space within the parentheses:
 ~~~php
