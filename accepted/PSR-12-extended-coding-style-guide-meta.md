@@ -53,7 +53,7 @@ also include clarifications on the text of PSR-2, as described in the PSR-2 Erra
 
 ## 3.2. Non-Goals
 
-It is not the intention of this PSR to add entirely new coding style guidelines PSR-12 will
+It is not the intention of this PSR to add entirely new coding style guidelines PSR-12. will
 also not change anything stipulated in PSR-1 and PSR-2.
 
 # 4. Approaches

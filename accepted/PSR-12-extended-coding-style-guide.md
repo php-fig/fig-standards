@@ -193,7 +193,7 @@ use Vendor\Package\SomeNamespace\{
 };
 ~~~
 
-And the following would *not* be allowed:
+And the following MUST NOT be allowed:
 
 ~~~php
 <?php
@@ -302,8 +302,7 @@ class ClassName extends ParentClass implements
 ### 4.2 Using traits
 
 The `use` keyword used inside the classes to implement traits MUST be
-declared on the next line after the first opening brace of the item 
-implementing it.
+declared on the next line after the opening brace.
 
 ~~~php
 <?php
@@ -559,7 +558,7 @@ When using the reference operator `&` before an argument, there MUST NOT be
 a space after it, like in the previous examples.
 
 There MUST NOT be a space between the variadic three dot operator and the argument
-name, like in the examples above:
+name:
 
 ```php
 public function process(string $algorithm, ...$parts)
@@ -569,7 +568,7 @@ public function process(string $algorithm, ...$parts)
 ```
 
 When combining both the reference operator and the variadic three dot operator,
-there MUST NOT be any space between the two of them, like in the examples above:
+there MUST NOT be any space between the two of them:
 
 ```php
 public function process(string $algorithm, &...$parts)
