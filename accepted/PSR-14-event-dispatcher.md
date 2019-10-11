@@ -123,7 +123,6 @@ class EventInterface
 {
 
 }
-
 ```
 
 ```php
@@ -137,13 +136,13 @@ interface EventDispatcherInterface
     /**
      * Provide all relevant listeners with an event to process.
      *
-     * @param object $event
+     * @param EventInterface $event
      *   The object to process.
      *
-     * @return object
+     * @return EventInterface
      *   The Event that was passed, now modified by listeners.
      */
-    public function dispatch(object $event);
+    public function dispatch(EventInterface $event);
 }
 ```
 
@@ -156,13 +155,13 @@ namespace Psr\EventDispatcher;
 interface ListenerProviderInterface
 {
     /**
-     * @param object $event
+     * @param EventInterface $event
      *   An event for which to return the relevant listeners.
      * @return iterable[callable]
      *   An iterable (array, iterator, or generator) of callables.  Each
      *   callable MUST be type-compatible with $event.
      */
-    public function getListenersForEvent(object $event) : iterable;
+    public function getListenersForEvent(EventInterface $event) : iterable;
 }
 ```
 
