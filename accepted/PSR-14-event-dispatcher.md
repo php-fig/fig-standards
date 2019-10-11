@@ -117,6 +117,19 @@ A Dispatcher SHOULD compose a Listener Provider to determine relevant listeners.
 namespace Psr\EventDispatcher;
 
 /**
+ * Defines a event.
+ */
+class EventInterface
+{
+
+}
+
+```
+
+```php
+namespace Psr\EventDispatcher;
+
+/**
  * Defines a dispatcher for events.
  */
 interface EventDispatcherInterface
