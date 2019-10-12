@@ -255,7 +255,10 @@ $uri = new Uri('http://api.example.com');
 $baseRequest = new Request(
     $uri, 
     null, 
-    ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json']
+    [
+        'Authorization' => 'Bearer ' . $token,
+        'Accept' => 'application/json',
+    ]
 );
 
 $request = $baseRequest->withUri($uri->withPath('/user'))->withMethod('GET');
