@@ -255,10 +255,7 @@ $uri = new Uri('http://api.example.com');
 $baseRequest = new Request(
     $uri, 
     null, 
-    [
-        'Authorization' => 'Bearer ' . $token,
-        'Accept'        => 'application/json',
-    ]
+    ['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json']
 );
 
 $request = $baseRequest->withUri($uri->withPath('/user'))->withMethod('GET');
@@ -393,8 +390,8 @@ headers:
 
 ~~~php
 // where Stream is a concrete StreamInterface:
-$stream   = new Stream($filename);
-$finfo    = new finfo(FILEINFO_MIME);
+$stream = new Stream($filename);
+$finfo = new finfo(FILEINFO_MIME);
 $response = $response
     ->withHeader('Content-Type', $finfo->file($filename))
     ->withHeader('Content-Length', (string) filesize($filename))
