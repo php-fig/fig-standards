@@ -262,7 +262,7 @@ $baseRequest = new Request(
 );
 
 $request = $baseRequest->withUri($uri->withPath('/user'))->withMethod('GET');
-$response = $client->send($request);
+$response = $client->sendRequest($request);
 
 // get user id from $response
 
@@ -272,11 +272,11 @@ $request = $baseRequest
     ->withMethod('POST')
     ->withHeader('Content-Type', 'application/json')
     ->withBody($body);
-$response = $client->send($request);
+$response = $client->sendRequest($request);
 
 // No need to overwrite headers or body!
 $request = $baseRequest->withUri($uri->withPath('/tasks'))->withMethod('GET');
-$response = $client->send($request);
+$response = $client->sendRequest($request);
 ~~~
 
 On the server-side, developers will need to:
