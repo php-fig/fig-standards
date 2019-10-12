@@ -393,8 +393,8 @@ headers:
 
 ~~~php
 // where Stream is a concrete StreamInterface:
-$stream = new Stream($filename);
-$finfo  = new finfo(FILEINFO_MIME);
+$stream   = new Stream($filename);
+$finfo    = new finfo(FILEINFO_MIME);
 $response = $response
     ->withHeader('Content-Type', $finfo->file($filename))
     ->withHeader('Content-Length', (string) filesize($filename))
