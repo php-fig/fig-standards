@@ -209,7 +209,7 @@ purposes of requests, the proposal must accommodate each.
 
 `RequestInterface` thus has methods relating to the request-target. By default,
 it will use the composed URI to present an origin-form request-target, and, in
-the absence of a URI instance, return the string "/".  Another method,
+the absence of a URI instance, return the string "/". Another method,
 `withRequestTarget()`, allows specifying an instance with a specific
 request-target, allowing users to create requests that use one of the other
 valid request-target forms.
@@ -252,26 +252,27 @@ request or reset request state for each message the client sends:
 
 ~~~php
 $uri = new Uri('http://api.example.com');
-$baseRequest = new Request($uri, null, [
-    'Authorization' => 'Bearer ' . $token,
-    'Accept'        => 'application/json',
-]);;
+$baseRequest = new Request(
+    $uri, 
+    null, 
+    [
+        'Authorization' => 'Bearer ' . $token,
+        'Accept'        => 'application/json',
+    ]
+);
 
 $request = $baseRequest->withUri($uri->withPath('/user'))->withMethod('GET');
 $response = $client->send($request);
 
 // get user id from $response
 
-$body = new StringStream(json_encode(['tasks' => [
-    'Code',
-    'Coffee',
-]]));;
+$body = new StringStream(json_encode(['tasks' => ['Code', 'Coffee']]));
 $request = $baseRequest
     ->withUri($uri->withPath('/tasks/user/' . $userId))
     ->withMethod('POST')
     ->withHeader('Content-Type', 'application/json')
     ->withBody($body);
-$response = $client->send($request)
+$response = $client->send($request);
 
 // No need to overwrite headers or body!
 $request = $baseRequest->withUri($uri->withPath('/tasks'))->withMethod('GET');
@@ -392,8 +393,8 @@ headers:
 
 ~~~php
 // where Stream is a concrete StreamInterface:
-$stream   = new Stream($filename);
-$finfo    = new finfo(FILEINFO_MIME);
+$stream = new Stream($filename);
+$finfo  = new finfo(FILEINFO_MIME);
 $response = $response
     ->withHeader('Content-Type', $finfo->file($filename))
     ->withHeader('Content-Length', (string) filesize($filename))
