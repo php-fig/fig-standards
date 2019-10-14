@@ -121,7 +121,7 @@ $message = $message
     ->withAddedHeader('foo', 'baz');
 
 $header = $message->getHeaderLine('foo');
-// $header contains: 'bar, baz'
+// $header contains: 'bar,baz'
 
 $header = $message->getHeader('foo');
 // ['bar', 'baz']
