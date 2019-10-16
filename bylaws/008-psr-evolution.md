@@ -2,12 +2,12 @@
 
 ## Scope and objectives
 
-A PSR is often comprised of text and code, more specifically interfaces; those interfaces are pieces of code that are released and tagged in a specific moment in time, but the PHP language and ecosystem doesn't stand still, it evolves over time.
+A PSR is often comprised of text and code, more specifically interfaces. Those interfaces are pieces of code that are released and tagged at a specific moment in time, but the PHP language doesn't stand still... it evolves over time.
 
-This means that those interfaces needs to withstand those evolutions, and sometimes they need to be updated, to leverage new language features that could help better enforce the behaviors exposed in the PSR itself.
-At the same time, a PSR cannot be changed after its release if not with erratas, to avoid that a package that declared compatibility would be de-facto not compatible anymore.    
+This means that those interfaces need to withstand that evolution, and sometimes they need to be updated, to leverage new language features that could help better enforce the behaviors exposed in the PSR itself.
+At the same time, a PSR cannot be changed after its release (only erratas allowed), to protect a package that declared compatibility from becoming de-facto not compatible anymore.
 
-This document defines a guideline to be followed in updating PSR interfaces, in a way that is not breaking in regard to behavior for end users, and with an appropriate upgrade path for the packages.
+This document defines a process to be followed in updating PSR interfaces, in a way that is not breaking in regard to behavior for end users, and with an appropriate upgrade path for the packages.
 
 ## New releases
 
@@ -19,7 +19,7 @@ A new minor release of a PHP-FIG package containing interfaces for a PSR MUST fo
  * the PHP version constraint of the PHP-FIG package MUST NOT be altered to use newer language features that would create cross-compatibility issues.
  
 A new major release of a PHP-FIG package containing interfaces for a PSR MUST follow the same rules, with this exception:
- * the new major version of the package MAY contain breaking changes if the implementing packages have a reasonable upgrading path, like the possibility of releasing a cross-compatible implementation with the previous releases.
+ * the new major version of the package MAY contain breaking changes if the implementing packages have a reasonable upgrade path, like the possibility of releasing a cross-compatible implementation with the previous releases;
  * the new major version of the package MAY refer to a new, superseding PSR.
 
 ### Workflow
@@ -28,11 +28,11 @@ Since releasing new versions of the interfaces MUST NOT alter the PSR in its beh
 
 ### Practical example
 
-A common case for an upgrade in the interfaces is to add parameters and return types, since they are a new language feature introduced by PHP 7, and many PSR interfaces predates that release. In the next paragraph, we'll try to use PSR-3 as an example to show how a PSR interface should be updated.
+A common case for an upgrade in the interfaces is to add types for parameters and returns, since they are new language features introduced by PHP 7, and many PSR interfaces predate that release. We'll use a method from PSR-3 as an example of how a PSR interface could be updated.
 
 #### PSR-3: the interface
 
-PSR-3 is released with the [`psr/log` package](https://packagist.org/packages/psr/log) and it contains the `LoggerInterface`, which has this method:
+PSR-3 is released with the [`psr/log` package](https://packagist.org/packages/psr/log) and contains the `LoggerInterface`, which has this method:
 ```php
 /**
  * Logs with an arbitrary level.
@@ -49,9 +49,9 @@ This method could be updated with a new minor release that adds the argument typ
 ```php
 public function log($level, string $message, array $context = []);
 ```
-This change would be technically a breaking change but, thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `prs/log` `composer.json`, we could tag this change as a minor release, and have all the implementors be automatically cross-compatible, provided that they declare `"psr/log": "^1.0"` (or equivalent) as a constraint, which they should.
+This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `prs/log` `composer.json`, we could tag this change as a minor release, and have all the implementors be automatically cross-compatible, provided that they declare `"psr/log": "^1.0"` (or equivalent) as a constraint, which they should.
 
-After this intermediate step, it would be possible to release a new major, that would add the return type:
+After this intermediate step, it would be possible to release a new major version, that would add the return type:
 ```php
 public function log($level, string $message, array $context = []): void;
 ```
