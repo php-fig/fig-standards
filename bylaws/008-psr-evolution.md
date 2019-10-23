@@ -28,46 +28,42 @@ Since releasing new versions of the interfaces MUST NOT alter the PSR in its beh
 
 ### Practical example
 
-A common case for an upgrade in the interfaces is to add types for parameters and returns, since they are new language features introduced by PHP 7, and many PSR interfaces predate that release. We'll use a method from PSR-3 as an example of how a PSR interface could be updated.
+A common case for an upgrade in the interfaces is to add types for parameters and returns, since they are new language features introduced by PHP 7, and many PSR interfaces predate that release. We'll use a method from PSR-11 as an example of how a PSR interface could be updated.
 
-#### PSR-3: the interface
+#### PSR-11: the interface
 
-PSR-3 is released with the [`psr/log` package](https://packagist.org/packages/psr/log) and contains the `LoggerInterface`, which has this method:
+PSR-11 is released with the [`psr/container` package](https://packagist.org/packages/psr/container) and it holds the `ContainerInterface`, which has this method:
 ```php
-/**
- * Logs with an arbitrary level.
- *
- * @param mixed  $level
- * @param string $message
- * @param array  $context
- *
- * @return void
- */
-public function log($level, $message, array $context = array());
+    /**
+     * @param string $id Identifier of the entry to look for.
+     *
+     * @return bool
+     */
+    public function has($id);
 ```
-This method could be updated with a new minor release that adds the argument type for `$message`:
+This method could be updated with a new minor release that adds the argument type for `$id`:
 ```php
-public function log($level, string $message, array $context = []);
+public function has(string $id);
 ```
-This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `prs/log` `composer.json`, we could tag this change as a minor release, and have all the implementors be automatically cross-compatible, provided that they declare `"psr/log": "^1.0"` (or equivalent) as a constraint, which they should.
+This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `prs/container` `composer.json`, we could tag this change as a minor release, and have all the implementors be automatically cross-compatible, provided that they declare `"psr/container": "^1.0"` (or equivalent) as a constraint, which they should.
 
 After this intermediate step, it would be possible to release a new major version, that would add the return type:
 ```php
-public function log($level, string $message, array $context = []): void;
+public function has(string $id): bool;
 ```
-This must be released as a new major version of `psr/log` (2.0); any package that would implement this would be able to declare `"psr/log": "^1.2 || ^2.0"`, since backward compatibility to the first release would be impossible, due to the sum of covariance and contravariance rules.
+This must be released as a new major version of `psr/container` (2.0); any package that would implement this would be able to declare `"psr/container": "^1.1 || ^2.0"`, since backward compatibility to the first release would be impossible, due to the sum of covariance and contravariance rules.
 
-#### PSR-3: the implementation
+#### PSR-11: the implementation
 
-On the other side, the implementing packages would be able to do a release cycle in the opposite fashion. Using Monolog as an example, the first release looks like this:
+On the other side, the implementing packages would be able to do a release cycle in the opposite fashion. The first release looks like this:
 ```php
-public function log($level, $message, array $context = array());
+public function has($id);
 ```
-The second release (which at the time of this writing is already tagged as 2.0) adds the return type, maintaining compatibility with the original interface:
+The second release would adds the return type, maintaining compatibility with the original interface:
 ```php
-public function log($level, $message, array $context = []): void;
+public function has($id): bool;
 ```
-A possible third release could be tagged in the future, adding the argument type too:
+A third release would be tagged then, adding the argument type too:
 ```php
-public function log($level, string $message, array $context = []): void;
+public function has(string $id): bool;
 ```
