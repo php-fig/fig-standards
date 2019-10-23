@@ -45,7 +45,7 @@ This method could be updated with a new minor release that adds the argument typ
 ```php
 public function has(string $id);
 ```
-This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `prs/container` `composer.json`, we could tag this change as a minor release, and have all the implementors be automatically cross-compatible, provided that they declare `"psr/container": "^1.0"` (or equivalent) as a constraint, which they should.
+This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `psr/container` `composer.json`, we could tag this change as a minor release, and have all the implementors be automatically cross-compatible, provided that they declare `"psr/container": "^1.0"` (or equivalent) as a constraint, which they should.
 
 After this intermediate step, it would be possible to release a new major version, that would add the return type:
 ```php
