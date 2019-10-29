@@ -5,6 +5,7 @@
 A PSR is often comprised of text and code, more specifically interfaces. Those interfaces are pieces of code that are released and tagged at a specific moment in time, but the PHP language doesn't stand still... it evolves over time.
 
 This means that those interfaces need to withstand that evolution, and sometimes they need to be updated, to leverage new language features that could help better enforce the behaviors exposed in the PSR itself.
+
 At the same time, a PSR cannot be changed after its release (only erratas allowed), to protect a package that declared compatibility from becoming de-facto not compatible anymore.
 
 This document defines a process to be followed in updating PSR interfaces, in a way that is not breaking in regard to behavior for end users, and with an appropriate upgrade path for the packages.
