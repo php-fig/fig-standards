@@ -34,6 +34,7 @@ A common case for an upgrade in the interfaces is to add types for parameters an
 #### PSR-11: the interface
 
 PSR-11 is released with the [`psr/container` package](https://packagist.org/packages/psr/container) and it holds the `ContainerInterface`, which has this method:
+
 ```php
     /**
      * @param string $id Identifier of the entry to look for.
