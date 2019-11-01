@@ -16,22 +16,23 @@ PSR-19: PHPDoc tags
 - [5. Tags](#5-tags)
   - [5.1.  @api](#51-api)
   - [5.2.  @author](#52-author)
-  - [5.3.  @copyright](#53-copyright)
-  - [5.4.  @deprecated](#54-deprecated)
-  - [5.5.  @internal](#55-internal)
-  - [5.6.  @link](#56-link)
-  - [5.7.  @method](#57-method)
-  - [5.8.  @package](#58-package)
-  - [5.9.  @param](#59-param)
-  - [5.10. @property](#510-property)
-  - [5.11. @return](#511-return)
-  - [5.12. @see](#512-see)
-  - [5.13. @since](#513-since)
-  - [5.14. @throws](#514-throws)
-  - [5.15. @todo](#515-todo)
-  - [5.16. @uses](#516-uses)
-  - [5.17. @var](#517-var)
-  - [5.18. @version](#518-version)
+  - [5.3.  @copyleft](#53-copyleft)
+  - [5.4.  @copyright](#54-copyright)
+  - [5.5.  @deprecated](#55-deprecated)
+  - [5.6.  @internal](#56-internal)
+  - [5.7.  @link](#57-link)
+  - [5.8.  @method](#58-method)
+  - [5.9.  @package](#59-package)
+  - [5.10.  @param](#510-param)
+  - [5.11. @property](#511-property)
+  - [5.12. @return](#512-return)
+  - [5.13. @see](#513-see)
+  - [5.14. @since](#514-since)
+  - [5.15. @throws](#515-throws)
+  - [5.16. @todo](#516-todo)
+  - [5.17. @uses](#517-uses)
+  - [5.18. @var](#518-var)
+  - [5.19. @version](#519-version)
 
 ## 1. Introduction
 
@@ -264,7 +265,21 @@ adhere to the syntax defined in RFC 2822.
  */
 ```
 
-### 5.3. @copyright
+### 5.3. @copyleft
+
+The @copyleft tag is a near-synonym for the [@copyright tag](#54-copyright). 
+It is used to document the license information of any "Structural element", 
+where the license describes reciprocal licensing terms. 
+
+#### Syntax
+
+    @copyleft <description>
+
+#### Description
+
+See the [@copyright tag](#54-copyright) for the formal description and example usage.
+
+### 5.4. @copyright
 
 The @copyright tag is used to document the copyright information of any
 "Structural element".
@@ -291,7 +306,7 @@ covered by this copyright and the organization involved.
  */
 ```
 
-### 5.4. @deprecated
+### 5.5. @deprecated
 
 The @deprecated tag is used to indicate which 'Structural elements' are
 deprecated and are to be removed in a future version.
@@ -326,7 +341,7 @@ If the associated element is superseded by another it is RECOMMENDED to add a
  */
 ```
 
-### 5.5. @internal
+### 5.6. @internal
 
 The @internal tag is used to denote that the associated "Structural Element" is
 a structure internal to this application or library. It may also be used inside
@@ -399,7 +414,7 @@ function count()
 }
 ```
 
-### 5.6. @link
+### 5.7. @link
 
 The @link tag indicates a custom relation between the associated
 "Structural Element" and a website, which is identified by an absolute URI.
@@ -449,7 +464,7 @@ function count()
 }
 ```
 
-### 5.7. @method
+### 5.8. @method
 
 The @method allows a class to know which 'magic' methods are callable.
 
@@ -499,7 +514,7 @@ class Child extends Parent
 }
 ```
 
-### 5.8. @package
+### 5.9. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -536,7 +551,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 5.9. @param
+### 5.10. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -577,7 +592,7 @@ function count(array $items)
 }
 ```
 
-### 5.10. @property
+### 5.11. @property
 
 The `@property` tag is used to declare which "magic" properties are supported.
 
@@ -626,7 +641,7 @@ class User
 }
 ```
 
-### 5.11. @return
+### 5.12. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -675,7 +690,7 @@ function getLabel()
 }
 ```
 
-### 5.12. @see
+### 5.13. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -717,7 +732,7 @@ function count()
 }
 ```
 
-### 5.13. @since
+### 5.14. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -767,7 +782,7 @@ class Foo
 }
 ```
 
-### 5.14. @throws
+### 5.15. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -810,7 +825,7 @@ function count($items)
 }
 ```
 
-### 5.15. @todo
+### 5.16. @todo
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -842,7 +857,7 @@ function count()
 }
 ```
 
-### 5.16. @uses
+### 5.17. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -895,7 +910,7 @@ function executeMyView()
 }
 ```
 
-### 5.17. @var
+### 5.18. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -999,7 +1014,7 @@ class Foo
 }
 ```
 
-### 5.18. @version
+### 5.19. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
