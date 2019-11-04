@@ -52,7 +52,8 @@ public function has(string $id);
 
 This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `psr/container` `composer.json`, we could tag this change as a minor release, and have all the implementors be automatically cross-compatible, provided that they declare `"psr/container": "^1.0"` (or equivalent) as a constraint.
 
-After this intermediate step, it would be possible to release a new major version, that would add the return type:
+After this intermediate step, it would be possible to release a new major version, adding a return type hint:
+
 ```php
 public function has(string $id): bool;
 ```
