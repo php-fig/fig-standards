@@ -65,7 +65,9 @@ On the other side, the implementing packages would be able to do a release cycle
 ```php
 public function has($id);
 ```
-The second release would adds the return type, maintaining compatibility with the original interface:
+
+The second release would add the return type, maintaining compatibility with the original interface:
+
 ```php
 public function has($id): bool;
 ```
