@@ -69,7 +69,9 @@ The second release would adds the return type, maintaining compatibility with th
 ```php
 public function has($id): bool;
 ```
-A third release would be tagged then, adding the argument type too:
+
+A third release would also add the argument type hint:
+
 ```php
 public function has(string $id): bool;
 ```
