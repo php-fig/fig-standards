@@ -43,7 +43,9 @@ PSR-11 is released with the [`psr/container` package](https://packagist.org/pack
      */
     public function has($id);
 ```
+
 This method could be updated with a new minor release that adds the argument type for `$id`:
+
 ```php
 public function has(string $id);
 ```
