@@ -22,6 +22,8 @@ A new minor release of a PHP-FIG package containing interfaces for a PSR MUST fo
 A new major release of a PHP-FIG package containing interfaces for a PSR MUST follow the same rules, with this exception:
  * the new major version of the package MAY contain breaking changes if the implementing packages have a reasonable upgrade path, like the possibility of releasing a cross-compatible implementation with the previous releases;
  * the new major version of the package MAY refer to a new, superseding PSR.
+ 
+Note that if the upgrade path causes the consumers to maintain multiple versions of their libraries side-by-side, only to support multiple versions of the same PSR, the upgrade path is to be considered too steep.
 
 ### Workflow
 
