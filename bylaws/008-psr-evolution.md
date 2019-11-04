@@ -57,6 +57,7 @@ After this intermediate step, it would be possible to release a new major versio
 ```php
 public function has(string $id): bool;
 ```
+
 This must be released as a new major version of `psr/container` (2.0); any package that would implement this would be able to declare `"psr/container": "^1.1 || ^2.0"`, since backward compatibility to the first release would be impossible, due to the sum of covariance and contravariance rules.
 
 #### PSR-11: the implementation
