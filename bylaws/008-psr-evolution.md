@@ -2,7 +2,7 @@
 
 ## Scope and objectives
 
-A PSR is often comprised of text and code, more specifically interfaces. Those interfaces are pieces of code that are released and tagged at a specific moment in time, but the PHP language doesn't stand still... it evolves over time.
+A PSR is often comprised of text and code, generally interfaces. Those interfaces are pieces of code that are released and tagged at a specific moment in time. However, the PHP language doesn't stand still; it evolves over time.
 
 This means that those interfaces need to withstand that evolution, and sometimes they need to be updated, to leverage new language features that could help better enforce the behaviors exposed in the PSR itself.
 
