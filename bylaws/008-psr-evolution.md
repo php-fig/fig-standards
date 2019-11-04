@@ -62,6 +62,7 @@ This must be released as a new major version of `psr/container` (2.0); any packa
 #### PSR-11: the implementation
 
 On the other side, the implementing packages would be able to do a release cycle in the opposite fashion. The first release looks like this:
+
 ```php
 public function has($id);
 ```
