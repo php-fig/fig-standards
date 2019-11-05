@@ -35,7 +35,18 @@ Note that if the upgrade path causes the consumers to maintain multiple versions
 
 ### Workflow
 
-Since releasing new versions of the interfaces MUST NOT alter the PSR in its behavior, those releases can be voted in with the same process as errata changes. The new releases MUST be declared and embedded in the PSR document, with eventual indications on the upgrade path in the meta document.
+Since releasing new versions of the interfaces MUST NOT alter the PSR in its behavior, those releases can be voted in with the same process as errata changes. The new releases MUST be declared and embedded with a brief explanation and a link in the PSR document, like in the following example:
+
+> \`\`\`php
+interface ContainerInterface
+{
+> // code snippet here
+}
+\`\`\`
+>
+> Since [psr/container version 1.1](#), the above interface has been updated to add argument type hints.
+
+The meta document MUST be amended with eventual indications on the upgrade path for the consumers.
 
 ### Practical example
 
