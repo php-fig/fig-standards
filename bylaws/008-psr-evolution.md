@@ -10,13 +10,10 @@ At the same time, a PSR cannot be changed after its release (at which point only
 
 This document defines a process to be followed in updating PSR interfaces, in a way that is not breaking in regard to behavior for end users, and with an appropriate upgrade path for the consumers.
 
-## Terminology
+## Definitions
 
-Here are listed some words that are used in this document, with a brief explanation of their meaning in this context:
-
- * consumer: libraries and projects that implement and/or consume the code released as part of the PSR in question;
- * cross-compatibility: the ability for a consumer to support more than one code version of the PSR with a single release of their own;
- *  
+ * **Consumer** - libraries and projects that implement and/or consume the code released as part of the PSR in question;
+ * **Cross-compatibility** - the ability for a consumer to support more than one code version of the PSR with a single release of their own;
 
 ## New releases
 
@@ -46,7 +43,9 @@ interface ContainerInterface
 >
 > Since [psr/container version 1.1](#), the above interface has been updated to add argument type hints.
 
-The meta document MUST be amended with eventual indications on the upgrade path for the consumers.
+In the example above, the last line is indicative of what should be added to the specification.
+
+The meta document MUST be amended with information detailing the consumer upgrade path.
 
 ### Practical example
 
