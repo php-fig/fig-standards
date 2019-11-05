@@ -8,7 +8,15 @@ This means that those interfaces need to both provide a stable contract, as well
 
 At the same time, a PSR cannot be changed after its release (at which point only erratas are allowed), to protect a package that declared compatibility from becoming de-facto not compatible anymore.
 
-This document defines a process to be followed in updating PSR interfaces, in a way that is not breaking in regard to behavior for end users, and with an appropriate upgrade path for the packages.
+This document defines a process to be followed in updating PSR interfaces, in a way that is not breaking in regard to behavior for end users, and with an appropriate upgrade path for the consumers.
+
+## Terminology
+
+Here are listed some words that are used in this document, with a brief explanation of their meaning in this context:
+
+ * consumer: libraries and projects that implement and/or consume the code released as part of the PSR in question;
+ * cross-compatibility: the ability for a consumer to support more than one code version of the PSR with a single release of their own;
+ *  
 
 ## New releases
 
@@ -52,7 +60,7 @@ This method could be updated with a new minor release that adds the argument typ
 public function has(string $id);
 ```
 
-This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `psr/container` `composer.json`, we could tag this change as a minor release, and have all the implementors be automatically cross-compatible, provided that they declare `"psr/container": "^1.0"` (or equivalent) as a constraint.
+This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `psr/container` `composer.json`, we could tag this change as a minor release, and have all the consumers be automatically cross-compatible, provided that they declare `"psr/container": "^1.0"` (or equivalent) as a constraint.
 
 After this intermediate step, it would be possible to release a new major version, adding a return type hint:
 
@@ -64,7 +72,7 @@ This must be released as a new major version of `psr/container` (2.0); any packa
 
 #### PSR-11: the implementation
 
-On the other side, the implementing packages would be able to do a release cycle in the opposite fashion. The first release looks like this:
+On the other side, the consumers would be able to do a release cycle in the opposite fashion. The first release looks like this:
 
 ```php
 public function has($id);
