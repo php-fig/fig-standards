@@ -12,8 +12,8 @@ This document defines a process to be followed in updating PSR interfaces, in a 
 
 ## Definitions
 
- * **Consumer** - libraries and projects that implement and/or consume the code released as part of the PSR in question;
- * **Cross-compatibility** - the ability for a consumer to support more than one code version of the PSR with a single release of their own;
+ * **Consumer** - libraries and projects that implement and/or consume the code released as part of the PSR in question.
+ * **Cross-compatibility** - the ability for a consumer to support more than one code version of the PSR with a single release of their own.
 
 ## New releases
 
