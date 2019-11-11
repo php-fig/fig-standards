@@ -21,7 +21,7 @@ A new minor release of a PHP-FIG package containing interfaces for a PSR MUST fo
  * the new release MUST follow [Semantic Versioning](https://semver.org/) rules;
  * the PSR behavior MUST NOT be altered;
  * packages that implement the interfaces or consume them MUST NOT suffer breaking changes;
- * the PHP version constraint of the PHP-FIG package MAY be altered to require newer language features that would aid cross-compatibility;
+ * the PHP version constraint of the PHP-FIG package MAY be increased to leverage newer language features, especially those that would aid cross-compatibility of consumers with the old and the new versions;
  * the PHP version constraint of the PHP-FIG package MUST NOT be altered to use newer language features that would create cross-compatibility issues.
  
 A new major release of a PHP-FIG package containing interfaces for a PSR MUST follow the same rules, with this exception:
