@@ -12,23 +12,24 @@ This document defines a process to be followed in updating PSR interfaces, in a 
 
 ## Definitions
 
- * **Consumer** - libraries and projects that implement and/or consume the code released as part of the PSR in question.
- * **Cross-compatibility** - the ability for a consumer to support more than one code version of the PSR with a single release of their own.
+ * **Consumer** - libraries and projects that consume one or more interfaces from the code released as part of the PSR in question.
+ * **Implementer** - libraries and projects that implement one or more interfaces from code released as part of the PSR in question.
+ * **Cross-compatibility** - the ability for a consumer or an implementer to support more than one code version of the PSR with a single release of their own.
 
 ## New releases
 
 A new minor release of a PHP-FIG package containing interfaces for a PSR MUST follow these rules:
  * the new release MUST follow [Semantic Versioning](https://semver.org/) rules;
  * the PSR behavior MUST NOT be altered;
- * packages that implement the interfaces or consume them MUST NOT suffer breaking changes;
- * the PHP version constraint of the PHP-FIG package MAY be increased to leverage newer language features, especially those that would aid cross-compatibility of consumers with the old and the new versions;
+ * consumers or implementers of those interfaces MUST NOT suffer breaking changes;
+ * the PHP version constraint of the PHP-FIG package MAY be increased to leverage newer language features, especially those that would aid cross-compatibility of consumers and implementers with the old and the new versions;
  * the PHP version constraint of the PHP-FIG package MUST NOT be altered to use newer language features that would create cross-compatibility issues.
  
 A new major release of a PHP-FIG package containing interfaces for a PSR MUST follow the same rules, with this exception:
  * the new major version of the package MAY contain breaking changes if the implementing packages have a reasonable upgrade path, like the possibility of releasing a cross-compatible implementation with the previous releases;
  * the new major version of the package MAY refer to a new, superseding PSR.
  
-Note that if the upgrade path causes the consumers to maintain multiple versions of their libraries side-by-side, only to support multiple versions of the same PSR, the upgrade path is to be considered too steep.
+Note that if the upgrade path causes the consumers or implementers to maintain multiple versions of their libraries side-by-side, only to support multiple versions of the same PSR, the upgrade path is to be considered too steep.
 
 ### Workflow
 
@@ -45,7 +46,7 @@ interface ContainerInterface
 
 In the example above, the last line is indicative of what should be added to the specification.
 
-The meta document MUST be amended with information detailing the consumer upgrade path.
+The meta document MUST be amended with information detailing the consumer and/or implementer upgrade path.
 
 ### Practical example
 
@@ -70,7 +71,7 @@ This method could be updated with a new minor release that adds the argument typ
 public function has(string $id);
 ```
 
-This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `psr/container` `composer.json`, we could tag this change as a minor release, and have all the consumers be automatically cross-compatible, provided that they declare `"psr/container": "^1.0"` (or equivalent) as a constraint.
+This change would technically be a breaking change, but thanks to the [limited contravariance possible in PHP 7.2](https://wiki.php.net/rfc/parameter-no-type-variance), we can avoid that. This means that just by requiring `"php": "^7.2"` in the `psr/container` `composer.json`, we could tag this change as a minor release, and have all the consumers and implementers be automatically cross-compatible, provided that they declare `"psr/container": "^1.0"` (or equivalent) as a constraint.
 
 After this intermediate step, it would be possible to release a new major version, adding a return type hint:
 
@@ -82,7 +83,7 @@ This must be released as a new major version of `psr/container` (2.0); any packa
 
 #### PSR-11: the implementation
 
-On the other side, the consumers would be able to do a release cycle in the opposite fashion. The first release looks like this:
+On the other side, the implementers would be able to do a release cycle in the opposite fashion. The first release looks like this:
 
 ```php
 public function has($id);
