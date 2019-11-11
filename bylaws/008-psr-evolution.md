@@ -6,7 +6,7 @@ A PSR is often comprised of text and code, generally interfaces. Those interface
 
 This means that those interfaces need to both provide a stable contract, as well as evolve to leverage new language features that could help better enforce the behaviors exposed in the PSR itself.
 
-At the same time, a PSR cannot be changed after its release (at which point only erratas are allowed), to protect a package that declared compatibility from becoming de-facto not compatible anymore.
+At the same time, a PSR cannot be changed after its release (at which point only erratas are allowed), to protect a package that declared compatibility from becoming de facto incompatible.
 
 This document defines a process to be followed in updating PSR interfaces, in a way that is not breaking in regard to behavior for end users, and with an appropriate upgrade path for the consumers.
 
