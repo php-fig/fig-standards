@@ -4,7 +4,7 @@
 
 A PSR is often comprised of text and code, generally interfaces. Those interfaces are pieces of code that are released and tagged at a specific moment in time. However, the PHP language doesn't stand still; it evolves over time.
 
-This means that those interfaces need to both provide a stable contract, as well as evolve to leverage new language features that could help better enforce the behaviors exposed in the PSR itself.
+This means that those interfaces need to both provide a stable contract, as well as evolve to leverage new language features that could help better enforce the behaviors described in the PSR itself.
 
 At the same time, a PSR cannot be changed after its release (at which point only erratas are allowed), to protect a package that declared compatibility from becoming de facto incompatible.
 
