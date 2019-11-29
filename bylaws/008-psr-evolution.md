@@ -42,7 +42,7 @@ interface ContainerInterface
 }
 \`\`\`
 >
-> Since [psr/container version 1.1](#), the above interface has been updated to add argument type hints.
+> Since [psr/container version 1.1](https://packagist.org/packages/psr/container#1.1.0), the above interface has been updated to add argument type hints.
 
 In the example above, the last line is indicative of what should be added to the specification.
 
