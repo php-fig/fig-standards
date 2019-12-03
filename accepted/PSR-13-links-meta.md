@@ -81,3 +81,22 @@ domain object that is producing them.
 
 * [What's in a link?](http://evertpot.com/whats-in-a-link/) by Evert Pot
 * [FIG Link Working Group List](https://groups.google.com/forum/#!forum/php-fig-link)
+
+## 7. Errata
+
+### Type additions
+
+The 1.1 release of the `psr/link` package includes scalar parameter types.  The 2.0 release of the package includes return types.  This structure leverages PHP 7.2 covariance support to allow for a gradual upgrade process.
+
+Implementers MAY add return types to their own packages at their discretion, provided that:
+
+* the return types match those in the 2.0 package.
+* the implementation specifies a minimum PHP version of 7.2.0 or later.
+
+Implementers MAY add parameter types to their own packages in a new major release, either at the same time as adding return types or in a subsequent release, provided that:
+
+* the parameter types match those in the 1.1 package.
+* the implementation specifies a minimum PHP version of 7.2.0.
+* the implementation depends on `"psr/link": "^1.1 || ^2.0"` so as to exclude the untyped 1.0 version.
+
+Implementers are encouraged but not required to transition their packages toward the 2.0 version of the packahge at their earliest convenience.
