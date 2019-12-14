@@ -11,7 +11,7 @@ replacement PSRs.
 _Note: All references to "request handlers" and "middleware" are specific to
 **server request** processing._
 
-[psr7]: http://www.php-fig.org/psr/psr-7/
+[psr7]: https://www.php-fig.org/psr/psr-7/
 
 ## 2. Why Bother?
 
