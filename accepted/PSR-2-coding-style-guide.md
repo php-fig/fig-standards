@@ -3,7 +3,7 @@
 > **Deprecated** - As of 2019-08-10 PSR-2 has been marked as deprecated. [PSR-12] is now recommended
 as an alternative.
 
-[PSR-12]: http://www.php-fig.org/psr/psr-12/
+[PSR-12]: https://www.php-fig.org/psr/psr-12/
 
 This guide extends and expands on [PSR-1], the basic coding standard.
 

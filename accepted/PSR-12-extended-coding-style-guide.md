@@ -1073,8 +1073,8 @@ $instance = new class extends \Foo implements
 };
 ~~~
 
-[PSR-1]: http://www.php-fig.org/psr/psr-1/
-[PSR-2]: http://www.php-fig.org/psr/psr-2/
+[PSR-1]: https://www.php-fig.org/psr/psr-1/
+[PSR-2]: https://www.php-fig.org/psr/psr-2/
 [keywords]: http://php.net/manual/en/reserved.keywords.php
 [types]: http://php.net/manual/en/reserved.other-reserved-words.php
 [arithmetic]: http://php.net/manual/en/language.operators.arithmetic.php
