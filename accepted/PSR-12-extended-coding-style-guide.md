@@ -375,9 +375,12 @@ note of indentation, spacing, and new lines.
 
 class Talker
 {
-    use A, B, C {
-        B::smallTalk insteadof A;
-        A::bigTalk insteadof C;
+    use A;
+    use B {
+        A::smallTalk insteadof B;
+    }
+    use C {
+        B::bigTalk insteadof C;
         C::mediumTalk as FooBar;
     }
 }
