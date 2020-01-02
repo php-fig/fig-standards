@@ -70,7 +70,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Flow] and [Neos]                 | Karsten Dambekalns ([@kdambekalns])   |
 | [Wikibase] and [Semantic Media]   | Jeroen De Dauw ([@JeroenDeDauw])      |
 | [Yii framework]                   | Alexander Makarov ([@sam_dark])       |
-| [Zend Framework]                  | Matthew Weier O'Phinney ([@mwop])     |
+| [Laminas Project]                 | Matthew Weier O'Phinney ([@mwop])     |
 | [Zikula]                          | Shefik Macauley ([@shefik_info])      |
 
 
@@ -222,5 +222,5 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [The League of Extraordinary Packages]: http://thephpleague.com
 [Wikibase]: http://www.wikiba.se
 [Yii framework]: http://www.yiiframework.com
-[Zend Framework]: http://framework.zend.com
+[Laminas Project]: https://getlaminas.org
 [Zikula]: https://github.com/zikula
