@@ -191,6 +191,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Icicle]: https://icicle.io
 [Jackalope]: http://jackalope.github.com
 [Joomla]: http://www.joomla.org
+[Laminas Project]: https://getlaminas.org
 [Laravel]: http://laravel.com
 [Lithium]: http://li3.me
 [Magento]: http://magento.com
@@ -222,5 +223,4 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [The League of Extraordinary Packages]: http://thephpleague.com
 [Wikibase]: http://www.wikiba.se
 [Yii framework]: http://www.yiiframework.com
-[Laminas Project]: https://getlaminas.org
 [Zikula]: https://github.com/zikula
