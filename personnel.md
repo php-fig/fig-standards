@@ -46,6 +46,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Icicle]                          | Aaron Piotrowski ([@trowski2002])     |
 | [Jackalope]                       | Lukas Kahwe Smith ([@lsmith])         |
 | [Joomla]                          | Robert Deutz ([@rdeutz])              |
+| [Laminas Project]                 | Matthew Weier O'Phinney ([@mwop])     |
 | [Lithium]                         | Nate Abele ([@nateabele])             |
 | [Magento]                         | Anton Kril ([@AntonKril])             |
 | [PEAR]                            | Chuck Burgess ([@ashnazg])            |
@@ -70,7 +71,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Flow] and [Neos]                 | Karsten Dambekalns ([@kdambekalns])   |
 | [Wikibase] and [Semantic Media]   | Jeroen De Dauw ([@JeroenDeDauw])      |
 | [Yii framework]                   | Alexander Makarov ([@sam_dark])       |
-| [Laminas Project]                 | Matthew Weier O'Phinney ([@mwop])     |
 | [Zikula]                          | Shefik Macauley ([@shefik_info])      |
 
 
