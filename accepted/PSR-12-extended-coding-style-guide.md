@@ -232,7 +232,7 @@ declare(ticks=1) {
 
 ## 4. Classes, Properties, and Methods
 
-The term "class" refers to all classes, interfaces, and traits.
+The term "class" refers to all classes, anonymous classes, interfaces, and traits.
 
 Any closing brace MUST NOT be followed by any comment or statement on the
 same line.
@@ -1050,7 +1050,7 @@ in the above section.
 ~~~php
 <?php
 
-$instance = new class {};
+$instance = new class() {};
 ~~~
 
 The opening brace MAY be on the same line as the `class` keyword so long as
@@ -1062,12 +1062,12 @@ interface.
 <?php
 
 // Brace on the same line
-$instance = new class extends \Foo implements \HandleableInterface {
+$instance = new class() extends \Foo implements \HandleableInterface {
     // Class content
 };
 
 // Brace on the next line
-$instance = new class extends \Foo implements
+$instance = new class() extends \Foo implements
     \ArrayAccess,
     \Countable,
     \Serializable
