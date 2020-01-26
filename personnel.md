@@ -6,9 +6,9 @@
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-31 |
 | Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2020-08-31 |
 | Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
+| Buster Neece ([@SlvrEagle23])         | 2020-01-25 - 2022-01-31 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -22,13 +22,13 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2021-05-30 |
 | Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2020-08-31 |
 | Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2020-08-31 |
-| Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2020-01-31 |
-| Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2020-01-31 |
-| Stefano Torresi ([@storresi])         | 2016-12-24 - 2020-01-31 |
-| Michael Cullum ([@michaelcullumuk])   | 2018-01-28 - 2020-01-31 |
+| Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2022-01-31 |
+| Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2022-01-31 |
 | Chuck Burgess ([@ashnazg])            | 2018-08-26 - 2020-08-31 |
 | Woody Gilk ([@shadowhand])            | 2019-05-26 - 2021-05-30 |
 | Matteo Beccati ([@mbeccati])          | 2019-05-26 - 2021-05-30 |
+| Enrico Zimuel ([@ezimuel])            | 2020-01-25 - 2022-01-31 |
+| Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
 
 
 ### Member Projects
@@ -87,6 +87,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
 | Mark Railton ([@railto])              | 2018-01-28 - 2018-06-05 |
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
+| Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-25 |
 
 
 ### Former Core Committee Members
@@ -97,6 +98,8 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Gary Hockin ([@GeeH])                 | 2016-12-24 - 2018-04-04 |
 | Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2019-05-26 |
 | Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-05-26 |
+| Stefano Torresi ([@storresi])         | 2016-12-24 - 2020-01-25 |
+| Michael Cullum ([@michaelcullumuk])   | 2018-01-28 - 2020-01-25 |
 
 
 ### Former Member Projects
@@ -132,7 +135,9 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@drumshaman]: https://twitter.com/drumshaman
 [@dzuelke]: https://twitter.com/dzuelke
 [@evertp]: https://twitter.com/evertp
+[@ezimuel]: https://twitter.com/ezimuel
 [@fabpot]: https://twitter.com/fabpot
+[@garakkio]: https://twitter.com/garakkio
 [@GeeH]: https://twitter.com/GeeH
 [@goetas_asmir]: https://twitter.com/goetas_asmir
 [@greydnls]: https://twitter.com/greydnls
@@ -165,6 +170,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@seldaek]: https://twitter.com/seldaek
 [@shadowhand]: https://twitter.com/shadowhand
 [@shefik_info]: https://twitter.com/shefik_info
+[@SlvrEagle23]: https://twitter.com/SlvrEagle23
 [@storresi]: https://twitter.com/storresi
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
