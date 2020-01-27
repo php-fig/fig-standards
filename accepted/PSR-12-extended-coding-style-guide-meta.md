@@ -212,5 +212,4 @@ _**Note:** Order descending chronologically._
 
 # 9. Errata and clarifications
 
- * The code example for anonymous classes has ben fixed (see [#1206](https://github.com/php-fig/fig-standards/pull/1206)) because it was wrong; omitting parentheses after the `class` keyword should not be allowed, since it would be in contrast with what is prescribed for normal classes.
-
+ * The code example for anonymous classes was fixed (see [#1206](https://github.com/php-fig/fig-standards/pull/1206)) because it contradicted the actual rule: omitting parentheses after the `class` keyword when creating a new instance is not allowed, as prescribed for normal classes.
