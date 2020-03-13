@@ -51,7 +51,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Magento]                         | Anton Kril ([@AntonKril])             |
 | [PEAR]                            | Chuck Burgess ([@ashnazg])            |
 | [Phalcon]                         | Nikolaos Dimopoulos ([@phalconphp])   |
-| [Phergie]                         | Joe Ferguson ([@joepferguson])        |
 | [Phing]                           | Siad Ardroumli          |
 | [phpBB]                           | Marc Alexander ([@marc1706])          |
 | [phpDocumentor]                   | Mike van Riel ([@mvriel])             |
@@ -113,6 +112,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Guzzle]                                  | Jeremy Lindblom ([@jeremeamia])       |
 | [Laravel]                                 | Taylor Otwell ([@taylorotwell])       |
 | [The League of Extraordinary Packages]    | Graham Hoefer ([@greydnls])           |
+| [Phergie]                                 | Joe Ferguson ([@joepferguson])        |
 | [Propel]                                  | William Durand ([@couac])             |
 | [sabre/dav]                               | Evert Pot ([@evertp])                 |
 | [Symfony]                                 | Fabien Potencier ([@fabpot])          |	
