@@ -1,7 +1,7 @@
 Example Implementations of PSR-4
 ================================
 
-The following examples illustrate PSR-4 compliant code:
+The following are examples illustrate PSR-4 compliant code:
 
 Closure Example
 ---------------
