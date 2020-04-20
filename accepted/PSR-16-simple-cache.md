@@ -168,6 +168,25 @@ interface CacheInterface
     public function set($key, $value, $ttl = null);
 
     /**
+     * Fetches a value from the cache, if does not exists, persists data of callback result in the cache,
+     * uniquely referenced by a key with an optional expiration TTL time.
+     *
+     * @param string                 $key      The key of the item to store.
+     * @param callable               $callback Callback would return value of the item to store. Must be serializable.
+     * @param null|int|\DateInterval $ttl      Optional. The TTL value of this item. If no value is sent and
+     *                                         the driver supports TTL then the library may set a default value
+     *                                         for it or let the driver take care of that.
+     *
+     * @return mixed The value of the item.
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     *   MUST be thrown if the $key string is not a legal value.
+     * @throws \Psr\SimpleCache\CacheException
+     *   MUST be thrown if an error occurred during persist.
+     */
+    public function getOrSet($key, callable $callback, $ttl = null);
+
+    /**
      * Delete an item from the cache by its unique key.
      *
      * @param string $key The unique cache key of the item to delete.
