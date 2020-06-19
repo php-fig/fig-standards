@@ -378,3 +378,29 @@ Are listed here all people that contributed in the discussions or votes (on cont
 1. <a name="link_base_exception_usefulness"></a>[Discussion about the usefulness of the base exception](https://groups.google.com/forum/#!topic/php-fig/_vdn5nLuPBI)
 1. <a name="link_not_found_behaviour"></a>[Discussion about the `NotFoundExceptionInterface`](https://groups.google.com/forum/#!topic/php-fig/I1a2Xzv9wN8)
 1. <a name="link_get_optional_parameters"></a>Discussion about get optional parameters [in container-interop](https://github.com/container-interop/container-interop/issues/6) and on the [PHP-FIG mailing list](https://groups.google.com/forum/#!topic/php-fig/zY6FAG4-oz8)
+
+## 11. Errata
+
+## Type additions
+
+The 1.1 release of the `psr/container` package includes scalar parameter types. The
+2.0 release of the package includes return types. This structure leverages PHP
+7.2 covariance support to allow for a gradual upgrade process.
+
+Implementers MAY add return types to their own packages at their discretion,
+provided that:
+
+- the return types match those in the 2.0 package.
+- the implementation specifies a minimum PHP version of 7.2.0 or later.
+
+Implementers MAY add parameter types to their own packages in a new major
+release, either at the same time as adding return types or in a subsequent
+release, provided that:
+
+- the parameter types match those in the 1.1 package.
+- the implementation specifies a minimum PHP version of 7.2.0.
+- the implementation depends on `"psr/container": "^1.1 || ^2.0"` so as to exclude
+  the untyped 1.0 version.
+
+Implementers are encouraged but not required to transition their packages toward
+the 2.0 version of the package at their earliest convenience.
