@@ -31,6 +31,10 @@ A Readiness Vote is called by the Editor of a proposed PSR in Draft Phase. Only 
 
 An Approval Vote is called by the Sponsor of a proposed PSR in the Review Phase. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
 
+## Errata Vote
+
+An Errata Vote is called by the Editor of an approved PSR. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+
 ## Deprecation Vote
 
 A Deprecation Vote is called by any Core Committee Member. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
