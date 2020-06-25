@@ -33,7 +33,7 @@ An Approval Vote is called by the Sponsor of a proposed PSR in the Review Phase.
 
 ## Errata Vote
 
-An Errata Vote is called by the Editor of an approved PSR. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+An Errata Vote is called by the Editor of an approved PSR, or a Secretary if the Editor is no longer available. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
 
 ## Deprecation Vote
 
