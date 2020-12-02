@@ -17,7 +17,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Beau Simensen ([@beausimensen])       | 2016-12-24 - 2020-08-31 |
+| Vacant                                |                         |
 | Larry Garfield ([@Crell])             | 2016-12-24 - 2021-05-30 |
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2021-05-30 |
 | Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2020-08-31 |
@@ -94,6 +94,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
+| Beau Simensen ([@beausimensen])       | 2016-12-24 - 2020-08-31 |
 | Graham Hoefer ([@greydnls])           | 2016-12-24 - 2018-01-31 |
 | Gary Hockin ([@GeeH])                 | 2016-12-24 - 2018-04-04 |
 | Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2019-05-26 |
