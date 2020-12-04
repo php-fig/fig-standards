@@ -17,19 +17,18 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Vacant                                |                         |
 | Larry Garfield ([@Crell])             | 2016-12-24 - 2021-05-30 |
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2021-05-30 |
-| Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2020-08-31 |
-| Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2020-08-31 |
+| Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2022-08-31 |
 | Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2022-01-31 |
 | Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2022-01-31 |
-| Chuck Burgess ([@ashnazg])            | 2018-08-26 - 2020-08-31 |
+| Chuck Burgess ([@ashnazg])            | 2018-08-26 - 2022-08-31 |
 | Woody Gilk ([@shadowhand])            | 2019-05-26 - 2021-05-30 |
 | Matteo Beccati ([@mbeccati])          | 2019-05-26 - 2021-05-30 |
 | Enrico Zimuel ([@ezimuel])            | 2020-01-25 - 2022-01-31 |
 | Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
-
+| Ben Edmunds ([@benedmunds])           | 2020-08-31 - 2022-08-31 |
+| _Vacant_                              |                         |
 
 ### Member Projects
 
@@ -94,12 +93,13 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Beau Simensen ([@beausimensen])       | 2016-12-24 - 2020-08-31 |
 | Graham Hoefer ([@greydnls])           | 2016-12-24 - 2018-01-31 |
 | Gary Hockin ([@GeeH])                 | 2016-12-24 - 2018-04-04 |
 | Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2019-05-26 |
 | Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-05-26 |
 | Stefano Torresi ([@storresi])         | 2016-12-24 - 2020-01-25 |
+| Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2020-08-31 |
+| Beau Simensen ([@beausimensen])       | 2016-12-24 - 2020-08-31 |
 | Michael Cullum ([@michaelcullumuk])   | 2018-01-28 - 2020-01-25 |
 
 
@@ -124,6 +124,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@ambassadorawsum]: https://twitter.com/ambassadorawsum
 [@andrerom]: https://twitter.com/andrerom
 [@AntonKril]: https://twitter.com/AntonKril
+[@benedmunds]: https://twitter.com/benedmunds
 [@bennimack]: https://twitter.com/bennimack
 [@ashnazg]: https://twitter.com/ashnazg
 [@beausimensen]: https://twitter.com/beausimensen
