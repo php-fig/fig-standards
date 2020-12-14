@@ -334,3 +334,22 @@ if (! (
     ));
 }
 ```
+
+### 8.2 Type additions
+
+The 2.0 release of the `psr/cache` package includes scalar parameter types.  The 3.0 release of the package includes return types.  This structure leverages PHP 7.2 covariance support to allow for a gradual upgrade process, but requires PHP 8.0 for type compatibility.
+
+The 2.0 version also corrects the Errata 8.1 above by providing a correct type hint for the `CacheItemInterface::expiresAt()` method's `$expiration` parameter.  That results in a slight change in the error thrown on invalid input; as it is still a fatal disallowed case, FIG has deemed it an acceptably small BC break in order to leverage correct native typing.
+
+Implementers MAY add return types to their own packages at their discretion, provided that:
+
+* the return types match those in the 3.0 package.
+* the implementation specifies a minimum PHP version of 8.0.0 or later.
+
+Implementers MAY add parameter types to their own packages in a new major release, either at the same time as adding return types or in a subsequent release, provided that:
+
+* the parameter types match those in the 2.0 package.
+* the implementation specifies a minimum PHP version of 8.0.0 or later.
+* the implementation depends on `"psr/link": "^1.1 || ^2.0"` so as to exclude the untyped 1.0 version.
+
+Implementers are encouraged but not required to transition their packages toward the 3.0 version of the package at their earliest convenience.

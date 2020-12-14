@@ -438,3 +438,6 @@ interface InvalidArgumentException extends CacheException
 {
 }
 ~~~
+
+Since [psr/cache version 2.0](https://packagist.org/packages/psr/cache#2.0.0), the above interfaces have been updated to add argument type hints.
+Since [psr/cache version 3.0](https://packagist.org/packages/psr/cache#3.0.0), the above interfaces have been updated to add return type hints.  References to `array|\Traversable` have been replaced with `iterable`.
