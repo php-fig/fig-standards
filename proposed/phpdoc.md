@@ -109,6 +109,27 @@ interpreted as described in [RFC 2119][RFC2119].
   }
   ```
 
+  It is NOT RECOMMENDED to use compound definitions for Constants or Properties, since the
+  handling of DocBlocks in these situations can lead to unexpected results. If compound statement is
+  used each element SHOULD have a preceding DocBlock.
+
+  Example:
+
+  ```php
+    class Foo
+    {
+      protected
+        /**
+         * @var string Should contain a description
+         */
+        $name,
+        /**
+         * @var string Should contain a description
+         */
+        $description;
+    }
+  ```
+
   An example of use that falls beyond the scope of this Standard is to document
   the variable in a foreach explicitly; several IDEs use this information to
   assist their auto-completion functionality.
