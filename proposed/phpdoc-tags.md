@@ -212,7 +212,7 @@ Other "Structural Elements" with a public visibility MAY be listed less
 prominently in generated documentation.
 
 See also the [`@internal`](#55-internal), which MAY be used to hide internal
-API components from generated documentation.
+"Structural Elements" from generated documentation.
 
 #### Examples
 
