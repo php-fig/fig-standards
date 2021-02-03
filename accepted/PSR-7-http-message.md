@@ -494,7 +494,7 @@ array (
     'my-form' => array (
         'name' => array (
             'details' => array (
-                'avatar' => array (
+                'avatars' => array (
                     0 => 'my-avatar.png',
                     1 => 'my-avatar2.png',
                     2 => 'my-avatar3.png',
@@ -503,7 +503,7 @@ array (
         ),
         'type' => array (
             'details' => array (
-                'avatar' => array (
+                'avatars' => array (
                     0 => 'image/png',
                     1 => 'image/png',
                     2 => 'image/png',
@@ -512,7 +512,7 @@ array (
         ),
         'tmp_name' => array (
             'details' => array (
-                'avatar' => array (
+                'avatars' => array (
                     0 => 'phpmFLrzD',
                     1 => 'phpV2pBil',
                     2 => 'php8RUG8v',
@@ -521,7 +521,7 @@ array (
         ),
         'error' => array (
             'details' => array (
-                'avatar' => array (
+                'avatars' => array (
                     0 => 0,
                     1 => 0,
                     2 => 0,
@@ -530,7 +530,7 @@ array (
         ),
         'size' => array (
             'details' => array (
-                'avatar' => array (
+                'avatars' => array (
                     0 => 90996,
                     1 => 90996,
                     3 => 90996,
