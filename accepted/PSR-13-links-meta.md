@@ -84,7 +84,7 @@ domain object that is producing them.
 
 ## 7. Errata
 
-### Type additions
+### 7.1 Type additions
 
 The 1.1 release of the `psr/link` package includes scalar parameter types.  The 2.0 release of the package includes return types.  This structure leverages PHP 7.2 covariance support to allow for a gradual upgrade process, but requires PHP 8.0 for type compatibility.
 
@@ -100,3 +100,13 @@ Implementers MAY add parameter types to their own packages in a new major releas
 * the implementation depends on `"psr/link": "^1.1 || ^2.0"` so as to exclude the untyped 1.0 version.
 
 Implementers are encouraged but not required to transition their packages toward the 2.0 version of the package at their earliest convenience.
+
+### 7.2 Attribute type handling
+
+The original specification contained an inconsistency regarding array values for attributes.  The text of the specification states in section 1.2 that attribute values (as passed to `EvolvableLinkInterface::withAttribute()`) could be of multiple types, some of which allowed for special handling (such as booleans or arrays).  However, the docblock for that method specified that the `$value` parameter had to be a string, which was incorrect.
+
+To address this issue, the interface has been corrected in later releases to allow `$value` to be of type `string|\Stringable|int|float|bool|array`.  Implementers SHOULD treat a `Stringable` object the same as a `string` parameter.  Implementers MAY serialize `int`, `float`, or `bool` in alternate, type-aware ways for a particular serialization format as appropriate.  Other object types or resources remain disallowed.
+
+Multiple calls to `withAttribute()` with the same `$name` MUST override previously provided values, as the spec already states.  To provide multiple values to a particular attribute, pass an `array` with the desired values.
+
+All other guidelines and requirements in section 1.2 remain valid.
