@@ -3,7 +3,7 @@
 ## 1. Summary
 
 The purpose of using the ClockInterface would allow mocking time in many situations where
-you cant easily install PHP extenions or use hacks like re-declaring the time() funciton
+you can't easily install PHP extensions or use hacks like re-declaring the time() function
 in other namespaces.
 
 ## 2. Why Bother?
@@ -78,4 +78,3 @@ Since this document stems from the work of a lot of people in previous years, we
 
  * 
 _**Note:** Order descending chronologically._
-
