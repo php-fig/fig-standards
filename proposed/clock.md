@@ -73,6 +73,13 @@ interface ClockInterface
      * @return float The current time as a float with microsecond resolution
      */
      public function microtime():float
+     
+    /**
+     * Retreieves the current time zone
+     *
+     * @return \DateTimeZone The current timezone as a DateTimeZone object
+     */
+     public function timezone():\DateTimeZone
 
 }
 ~~~
