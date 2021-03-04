@@ -50,28 +50,28 @@ interface ClockInterface
      *
      * @return int The current time as a unix timestamp
      */
-    public function timestamp():int;
+    public function timestamp(): int;
     
     /**
      * Reads the current time as a DateTimeImmutable Object
      *
      * @return \DateTimeImmutable The current time as a DateTimeImmutable Object
      */
-    public function now():\DateTimeImmutable;
+    public function now(): \DateTimeImmutable;
 
     /**
      * Reads the current time as with microsecond resolution
      *
      * @return float The current time as a float with microsecond resolution
      */
-     public function microtime():float
+     public function microtime(): float;
      
     /**
      * Retreieves the current time zone
      *
      * @return \DateTimeZone The current timezone as a DateTimeZone object
      */
-     public function timezone():\DateTimeZone;
+     public function timezone(): \DateTimeZone;
 
 }
 ~~~
