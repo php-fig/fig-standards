@@ -1,8 +1,7 @@
 Common Interface for Accessing the Clock
 ========================================
 
-This document describes a simple yet extensible interface for a cache item and
-a cache driver.
+This document describes a simple interface for reading the system clock.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
