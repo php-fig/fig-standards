@@ -71,7 +71,7 @@ interface ClockInterface
      *
      * @return \DateTimeZone The current timezone as a DateTimeZone object
      */
-     public function timezone():\DateTimeZone
+     public function timezone():\DateTimeZone;
 
 }
 ~~~
