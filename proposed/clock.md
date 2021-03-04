@@ -36,7 +36,8 @@ Jan 1, 1970 00:00:00 UTC.
 ## 2.1 ClockInterface
 
 The clock interface defines the most basic operations to read the current time and date from the clock. 
-It MUST return the current time as a DateTimeImmutable, DateTime, timestamp integer or timestamp float.
+It MUST return the current time as a DateTimeImmutable, DateTime, timestamp integer and timestamp float, 
+and MUST return the current time zone.
 
 ~~~php
 <?php
