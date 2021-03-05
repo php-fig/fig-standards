@@ -104,6 +104,14 @@ interface ContainerInterface
 }
 ~~~
 
+
+Since [psr/container version 1.1](https://packagist.org/packages/psr/container#1.1.0),
+the above interface has been updated to add argument type hints.
+
+Since [psr/container version 2.0](https://packagist.org/packages/psr/container#2.0.0),
+the above interface has been updated to add return type hints (but only to the
+`has()` method).
+
 <a name="container-exception"></a>
 ### 3.2. `Psr\Container\ContainerExceptionInterface`
 
