@@ -30,13 +30,31 @@ impossible in some situations.
 * **Timestamp** - The current time as an integer number of seconds since
 Jan 1, 1970 00:00:00 UTC.
 
+### 1.3 Usage
+
+There are some common usage patterns, which are outlined below:
+
+**Get the current timestamp**
+
+This should be done by using the `getTimestamp()` method on the returned `\DateTimeImmutable` like so:
+```php
+$timestamp = $clock->now()->getTimestamp();
+```
+
+**Timezone**
+
+Each implmenetation of the `ClockInterface` is free to return the time in the 
+timezone of that library authors choice. This could include but not be limited 
+to return the current PHP timezone (as DateTimeImmutable consructor currently
+does), return a timezone set a the creation of the ClockInterface implementation
+instance, or always returning a fixed timzone (eg UTC).
+
 # 2. Interfaces
 
 ## 2.1 ClockInterface
 
 The clock interface defines the most basic operations to read the current time and date from the clock. 
-It MUST return the current time as a DateTimeImmutable, timestamp integer and timestamp float, 
-and MUST return the current time zone.
+It MUST return the current time as a DateTimeImmutable.
 
 ~~~php
 <?php
@@ -46,32 +64,9 @@ namespace Psr\Clock;
 interface ClockInterface
 {
     /**
-     * Reads the current time as a unix timestamp
-     *
-     * @return int The current time as a unix timestamp
-     */
-    public function timestamp(): int;
-    
-    /**
-     * Reads the current time as a DateTimeImmutable Object
-     *
-     * @return \DateTimeImmutable The current time as a DateTimeImmutable Object
+     * Returns the current time as a DateTimeImmutable Object
      */
     public function now(): \DateTimeImmutable;
-
-    /**
-     * Reads the current time as with microsecond resolution
-     *
-     * @return float The current time as a float with microsecond resolution
-     */
-     public function microtime(): float;
-     
-    /**
-     * Retreieves the current time zone
-     *
-     * @return \DateTimeZone The current timezone as a DateTimeZone object
-     */
-     public function timezone(): \DateTimeZone;
 
 }
 ~~~
