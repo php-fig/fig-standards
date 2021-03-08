@@ -2,9 +2,10 @@
 
 ## 1. Summary
 
-The purpose of using the ClockInterface would allow mocking time in many situations where
-you can't easily install PHP extensions or use hacks like re-declaring the time() function
-in other namespaces.
+The purpose of using the ClockInterface is to provide a standard way to access the system 
+time, that would allow interopability when testing code that relies on the current time 
+rather than relying installing PHP extensions or use hacks like re-declaring the time() 
+function in other namespaces. 
 
 ## 2. Why Bother?
 
@@ -33,17 +34,85 @@ calling `time()` or `date()`.
 
 ### 3.2 Non-Goals
 
-* This PSR does not provide a recommendation on how and when to use the concepts described in this document, so it is
-  not a coding standard.
-* This PSR does not provide a reccomendation on how to handle timezones when retrieving the current time.
+* This PSR does not provide a recommendation on how and when to use the concepts
+  described in this document, so it is not a coding standard.
+* This PSR does not provide a reccomendation on how to handle timezones when 
+  retrieving the current time. This is left up to the implementation.
 
 ## 4. Approaches
 
 ### 4.1 Chosen Approach
 
-We have decided to formalize the existing practices, use by several other packages out in the wild. Some of the popular
-packages providing this functionality are: lcobucci/clock, kreait/clock, ergebnis/clock, and mangoweb/clock. Some 
-providing interfaces, some relying on overloading a class to mock the current time.
+We have decided to formalize the existing practices, use by several other packages
+out in the wild. Some of the popular packages providing this functionality are: 
+lcobucci/clock, kreait/clock, ergebnis/clock, and mangoweb/clock. Some providing
+interfaces, and some relying on overloading (extending) the Clock class to mock the
+current time.
+
+
+### 4.2 Example Implemntations
+
+```php
+final class TimeZoneAwareClock implements \Psr\Clock\ClockInterface
+{
+    private DateTimeZone $timeZone;
+
+    public function __construct(DateTimeZone $timeZone)
+    {
+        $this->timeZone = $timeZone;
+    }
+
+    public function now(): \DateTimeImmutable
+    {
+        return new DateTimeImmutable('now', $this->timeZone);
+    }
+}
+
+//
+
+final class SystemClock implements \Psr\Clock\ClockInterface
+{
+
+    public function now(): \DateTimeImmutable
+    {
+        return new \DateTimeImmutable();
+    }
+}
+
+//
+
+final class UTCClock implements \Psr\Clock\ClockInterface
+{
+    private TimeZoneAwareClock $inner;
+
+    public function __construct()
+    {
+        $this->inner = new TimeZoneAwareClock(new DateTimeZone('UTC'));
+    }
+
+    public function now(): \DateTimeImmutable
+    {
+        return $this->inner->now();
+    }
+}
+
+//
+
+final class FrozenClock implements \Psr\Clock\ClockInterface
+{
+    private DateTimeImmutable $now;
+    
+    public function __construct(DateTimeImmutable $now)
+    {
+        $this->now = $now;
+    }
+
+    public function now(): \DateTimeImmutable
+    {
+        return $this->now;
+    }
+}
+```
 
 ## 5. People
 
@@ -64,13 +133,13 @@ providing interfaces, some relying on overloading a class to mock the current ti
 * 
 
 ## 7. Relevant Links
-
-* https://github.com/lcobucci/clock/blob/2.1.x/src/Clock.php
-* https://github.com/kreait/clock-php/blob/main/src/Clock.php
 * https://github.com/ergebnis/clock/blob/main/src/Clock.php
-* https://github.com/mangoweb-backend/clock/blob/master/src/Clock.php
 * https://github.com/icecave/chrono/blob/master/src/Clock/ClockInterface.php
 * https://github.com/Kdyby/DateTimeProvider/blob/master/src/DateTimeProviderInterface.php
+* https://github.com/kreait/clock-php/blob/main/src/Clock.php
+* https://github.com/lcobucci/clock/blob/2.1.x/src/Clock.php
+* https://github.com/mangoweb-backend/clock/blob/master/src/Clock.php
+* https://martinfowler.com/bliki/ClockWrapper.html
 
 ## 8. Past contributors
 
