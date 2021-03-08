@@ -9,7 +9,7 @@ in other namespaces.
 ## 2. Why Bother?
 
 There are currently a few libraries that do provide the functionality on packagist, however 
-there is no interopability between these different libraries, as they ship with thier own 
+there is no interopability between these different libraries, as they ship with their own 
 clock interfaces. Symphony has a TimeMock library which uses namespace hacks to override the 
 `time()`, `date()`, `microtime()`, etc functions, however this does not solve mocking calls to 
 `new \DateTime()`
