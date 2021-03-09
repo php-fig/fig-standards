@@ -122,11 +122,12 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
 
 ### 5.2 Sponsor
 
- * 
+ * Chuck Burgess
 
 ### 5.3 Working group members
 
- * 
+ * 	Jérôme Gamez
+ * 	Andreas Heigl
 
 ## 6. Votes
 
