@@ -131,6 +131,7 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
  * Jérôme Gamez
  * Andreas Heigl
  * Andreas Möller
+ * Luís Cobucci
 
 ## 6. Votes
 
