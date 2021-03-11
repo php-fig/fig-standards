@@ -36,7 +36,7 @@ calling `time()` or `date()`.
 
 * This PSR does not provide a recommendation on how and when to use the concepts
   described in this document, so it is not a coding standard.
-* This PSR does not provide a reccomendation on how to handle timezones when 
+* This PSR does not provide a recommendation on how to handle timezones when 
   retrieving the current time. This is left up to the implementation.
 
 ## 4. Approaches
