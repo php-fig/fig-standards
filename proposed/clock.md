@@ -43,7 +43,7 @@ $timestamp = $clock->now()->getTimestamp();
 
 **Timezone**
 
-Each implmenetation of the `ClockInterface` is free to return the time in the 
+Each implementation of the `ClockInterface` is free to return the time in the 
 timezone of that library authors choice. This could include but not be limited 
 to return the current PHP timezone (as DateTimeImmutable consructor currently
 does), return a timezone set a the creation of the ClockInterface implementation
