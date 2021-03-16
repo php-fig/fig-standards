@@ -1,4 +1,4 @@
-# PHPDoc Meta Document
+# Clock Meta Document
 
 ## 1. Summary
 
