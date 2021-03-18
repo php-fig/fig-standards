@@ -47,7 +47,7 @@ Each implementation of the `ClockInterface` is free to return the time in the
 timezone of that library authors choice. This could include but not be limited 
 to return the current PHP timezone (as the `DateTimeImmutable` constructor currently
 does), return a timezone set at the creation of the `ClockInterface` implementation
-instance, or always returning a fixed timzone (eg UTC).
+instance, or always returning a fixed timezone (e.g. UTC).
 
 # 2. Interfaces
 
