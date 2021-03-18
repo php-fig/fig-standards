@@ -50,7 +50,7 @@ interfaces, and some relying on overloading (extending) the Clock class to mock 
 current time.
 
 
-### 4.2 Example Implemntations
+### 4.2 Example Implementations
 
 ```php
 final class TimeZoneAwareClock implements \Psr\Clock\ClockInterface
