@@ -100,7 +100,7 @@ final class UTCClock implements \Psr\Clock\ClockInterface
 
 final class FrozenClock implements \Psr\Clock\ClockInterface
 {
-    private DateTimeImmutable $now;
+    private \DateTimeImmutable $now;
     
     public function __construct(\DateTimeImmutable $now)
     {
