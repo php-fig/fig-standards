@@ -57,7 +57,7 @@ final class TimeZoneAwareClock implements \Psr\Clock\ClockInterface
 {
     private \DateTimeZone $timeZone;
 
-    public function __construct(DateTimeZone $timeZone)
+    public function __construct(\DateTimeZone $timeZone)
     {
         $this->timeZone = $timeZone;
     }
