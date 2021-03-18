@@ -43,7 +43,7 @@ calling `time()` or `date()`.
 
 ### 4.1 Chosen Approach
 
-We have decided to formalize the existing practices, use by several other packages
+We have decided to formalize the existing practices, used by several other packages
 out in the wild. Some of the popular packages providing this functionality are: 
 `lcobucci/clock`, `kreait/clock`, `ergebnis/clock`, and `mangoweb/clock`. Some providing
 interfaces, and some relying on overloading (extending) the Clock class to mock the
