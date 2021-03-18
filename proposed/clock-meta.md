@@ -102,7 +102,7 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
 {
     private DateTimeImmutable $now;
     
-    public function __construct(DateTimeImmutable $now)
+    public function __construct(\DateTimeImmutable $now)
     {
         $this->now = $now;
     }
