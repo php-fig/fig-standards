@@ -87,7 +87,7 @@ final class UTCClock implements \Psr\Clock\ClockInterface
 
     public function __construct()
     {
-        $this->inner = new TimeZoneAwareClock(new DateTimeZone('UTC'));
+        $this->inner = new TimeZoneAwareClock(new \DateTimeZone('UTC'));
     }
 
     public function now(): \DateTimeImmutable
