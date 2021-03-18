@@ -55,7 +55,7 @@ current time.
 ```php
 final class TimeZoneAwareClock implements \Psr\Clock\ClockInterface
 {
-    private DateTimeZone $timeZone;
+    private \DateTimeZone $timeZone;
 
     public function __construct(DateTimeZone $timeZone)
     {
