@@ -2,7 +2,7 @@
 
 ## 1. Summary
 
-The purpose of using the ClockInterface is to provide a standard way to access the system 
+The purpose of using the `ClockInterface` is to provide a standard way to access the system 
 time, that would allow interopability when testing code that relies on the current time 
 rather than relying installing PHP extensions or use hacks like re-declaring the `time()`
 function in other namespaces. 
