@@ -64,7 +64,7 @@ final class TimeZoneAwareClock implements \Psr\Clock\ClockInterface
 
     public function now(): \DateTimeImmutable
     {
-        return new DateTimeImmutable('now', $this->timeZone);
+        return new \DateTimeImmutable('now', $this->timeZone);
     }
 }
 
