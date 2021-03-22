@@ -135,7 +135,7 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
 
 ## 6. Votes
 
-* 
+* [Entrance Vote](https://groups.google.com/g/php-fig/c/hIKqd0an-GI)
 
 ## 7. Relevant Links
 
