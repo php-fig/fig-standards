@@ -11,7 +11,7 @@ function in other namespaces.
 
 There are currently a few libraries that provide this functionality, however 
 there is no interopability between these different libraries, as they ship with their own 
-clock interfaces. Symfony provides a package callsed `symfony/phpunit-bridge` that has a
+clock interfaces. Symfony provides a package called `symfony/phpunit-bridge` that has a
 `Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time & date 
 functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It does
 not fully mock time when called from other libraries that rely on the system time. 
