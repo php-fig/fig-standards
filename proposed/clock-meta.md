@@ -12,7 +12,7 @@ function in other namespaces.
 There are currently a few libraries that do provide this functionality on packagist, however 
 there is no interopability between these different libraries, as they ship with their own 
 clock interfaces. Symfony has a TimeMock library which uses namespace hacks to override the 
-`time()`, `date()`, `microtime()`, etc functions, however this does not solve mocking calls to 
+`time()`, `date()`, `microtime()`, etc. functions, however this does not solve mocking calls to 
 `new \DateTime()`
 
 Pros:
