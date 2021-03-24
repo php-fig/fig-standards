@@ -18,7 +18,7 @@ interfaces/functionality first.
 ## 1.1 Introduction
 
 Creating a standard way of accessing the clock, would allow interopability
-during testing, when testing behavior that has timing based side affects.
+during testing, when testing behavior that has timing based side effects.
 Common ways to get the current time include calling `\time()` or 
 `new DateTimeImmutable('now')`. However, this makes mocking the current time
 impossible in some situations.
