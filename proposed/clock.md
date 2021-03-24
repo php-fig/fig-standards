@@ -20,7 +20,7 @@ interfaces/functionality first.
 Creating a standard way of accessing the clock, would allow interopability
 during testing, when testing behavior that has timing based side affects.
 Common ways to get the current time include calling `\time()` or 
-`new DateTimeImmutable('now')` however this makes mocking the current time
+`new DateTimeImmutable('now')`. However, this makes mocking the current time
 impossible in some situations.
 
 ## 1.2 Definitions
