@@ -35,7 +35,7 @@ calling `time()` or `date()`.
 ### 3.2 Non-Goals
 
 * This PSR does not provide a recommendation on how and when to use the concepts
-  described in this document, so it is not a coding standard.
+  described in this document, so it is not a coding standard;
 * This PSR does not provide a recommendation on how to handle timezones when 
   retrieving the current time. This is left up to the implementation.
 
