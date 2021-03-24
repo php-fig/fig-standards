@@ -41,14 +41,6 @@ This should be done by using the `getTimestamp()` method on the returned `\DateT
 $timestamp = $clock->now()->getTimestamp();
 ```
 
-**Timezone**
-
-Each implementation of the `ClockInterface` is free to return the time in the 
-timezone of that library author's choice. This could include but not be limited 
-to return the current PHP timezone (as the `DateTimeImmutable` constructor currently
-does), return a timezone set at the creation of the `ClockInterface` implementation
-instance, or always returning a fixed timezone (e.g. UTC).
-
 # 2. Interfaces
 
 ## 2.1 ClockInterface
