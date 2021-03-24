@@ -9,7 +9,7 @@ function in other namespaces.
 
 ## 2. Why Bother?
 
-There are currently a few libraries that do provide this functionality on packagist, however 
+There are currently a few libraries that provide this functionality, however 
 there is no interopability between these different libraries, as they ship with their own 
 clock interfaces. Symfony provides a package callsed `symfony/phpunit-bridge` that has a
 `Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time & date 
