@@ -53,26 +53,8 @@ current time.
 ### 4.2 Example Implementations
 
 ```php
-final class TimeZoneAwareClock implements \Psr\Clock\ClockInterface
-{
-    private \DateTimeZone $timeZone;
-
-    public function __construct(\DateTimeZone $timeZone)
-    {
-        $this->timeZone = $timeZone;
-    }
-
-    public function now(): \DateTimeImmutable
-    {
-        return new \DateTimeImmutable('now', $this->timeZone);
-    }
-}
-
-//
-
 final class SystemClock implements \Psr\Clock\ClockInterface
 {
-
     public function now(): \DateTimeImmutable
     {
         return new \DateTimeImmutable();
@@ -83,16 +65,16 @@ final class SystemClock implements \Psr\Clock\ClockInterface
 
 final class UTCClock implements \Psr\Clock\ClockInterface
 {
-    private TimeZoneAwareClock $inner;
+    private \DateTimeZone $utcTimeZone;
 
     public function __construct()
     {
-        $this->inner = new TimeZoneAwareClock(new \DateTimeZone('UTC'));
+        $this->utcTimeZone = new \DateTimeZone('UTC');
     }
 
     public function now(): \DateTimeImmutable
     {
-        return $this->inner->now();
+        return new \DateTimeImmutable('now', $this->utcTimeZone);
     }
 }
 
@@ -101,7 +83,7 @@ final class UTCClock implements \Psr\Clock\ClockInterface
 final class FrozenClock implements \Psr\Clock\ClockInterface
 {
     private \DateTimeImmutable $now;
-    
+
     public function __construct(\DateTimeImmutable $now)
     {
         $this->now = $now;
@@ -109,9 +91,15 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
 
     public function now(): \DateTimeImmutable
     {
-        return $this->now;
+        return clone $this->now;
+    }
+
+    public function advance(DateInterval $interval): void
+    {
+        $this->now = $this->now->add($interval);
     }
 }
+
 ```
 
 ## 5. People
