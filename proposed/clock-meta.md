@@ -11,9 +11,12 @@ function in other namespaces.
 
 There are currently a few libraries that do provide this functionality on packagist, however 
 there is no interopability between these different libraries, as they ship with their own 
-clock interfaces. Symfony has a TimeMock library which uses namespace hacks to override the 
-`time()`, `date()`, `microtime()`, etc. functions, however this does not solve mocking calls to 
-`new \DateTime()`.
+clock interfaces. Symfony provides a package callsed `symfony/phpunit-bridge` that has a
+`Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time & date 
+functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It does
+not fully mock time when called from other libraries that rely on the system time. 
+`Cake\Chronos\Chronos` does provide mocking, hwoever it is set via a global (static class 
+property), and this has its own pitfalls as it provides no isolation.
 
 Pros:
 
