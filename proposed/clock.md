@@ -54,7 +54,7 @@ instance, or always returning a fixed timezone (e.g. UTC).
 ## 2.1 ClockInterface
 
 The clock interface defines the most basic operations to read the current time and date from the clock. 
-It MUST return the current time as a DateTimeImmutable.
+It MUST return the time as a `DateTimeImmutable`.
 
 ~~~php
 <?php
