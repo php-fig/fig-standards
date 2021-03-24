@@ -149,7 +149,7 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
 
 ## 8. Past contributors
 
-Since this document stems from the work of a lot of people in previous years, we should recognize their effort:
+This document stems from the work of many people in previous years, we recognize their effort:
 
  * 
 _**Note:** Order descending chronologically._
