@@ -17,7 +17,7 @@ clock interfaces. Symfony has a TimeMock library which uses namespace hacks to o
 
 Pros:
 
-* Consistent interface to get the current time
+* Consistent interface to get the current time;
 * Easy to mock the wall clock time for repeatablility.
 
 Cons:
