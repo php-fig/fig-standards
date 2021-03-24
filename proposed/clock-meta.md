@@ -15,7 +15,7 @@ clock interfaces. Symfony provides a package callsed `symfony/phpunit-bridge` th
 `Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time & date 
 functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It does
 not fully mock time when called from other libraries that rely on the system time. 
-`Cake\Chronos\Chronos` does provide mocking, hwoever it is set via a global (static class 
+`Cake\Chronos\Chronos` does provide mocking, however it is set via a global (static class 
 property), and this has its own pitfalls as it provides no isolation.
 
 Pros:
