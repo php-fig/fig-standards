@@ -29,7 +29,7 @@ calling `time()` or `date()`.
 
 ### 3.1 Goals
 
-* Provide a simple and mockable way to read the current time
+* Provide a simple and mockable way to read the current time;
 * Allow interoperability between libraries when reading the clock
 
 ### 3.2 Non-Goals
