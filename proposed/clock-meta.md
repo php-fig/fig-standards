@@ -114,12 +114,12 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
 
 ### 5.3 Working group members
 
- * Andreas Heigl
- * Andreas Möller
- * Ben Edmunds
- * Jérôme Gamez
  * Luís Cobucci
  * Pol Dellaiera
+ * Ben Edmunds
+ * Jérôme Gamez
+ * Andreas Heigl
+ * Andreas Möller
 
 ## 6. Votes
 
