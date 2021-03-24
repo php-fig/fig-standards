@@ -30,7 +30,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 |:---:|--------------------------------------|--------------------------------|
 | 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  |
-| 20  | [PHPDoc tags][psr20]                 | Chris Seufert                  |
+| 20  | [Clock][psr20]                       | Chris Seufert                  |
 
 ### Abandoned
 
@@ -71,7 +71,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Accepted   |
 | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Accepted   |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Draft      |
-| 20  | [PHPDoc tags][psr20]                 | Chris Seufert                  | Draft      |
+| 20  | [Clock][psr20]                       | Chris Seufert                  | Draft      |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
 [psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
