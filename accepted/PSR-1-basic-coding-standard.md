@@ -97,14 +97,14 @@ if (! function_exists('bar')) {
 }
 ~~~
 
-## 3. Namespace and Class Names
+## 3. Namespace, Class Names and Enums
 
-Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
+Namespaces, classes and enums MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
 
-This means each class is in a file by itself, and is in a namespace of at
+This means each class/enum is in a file by itself, and is in a namespace of at
 least one level: a top-level vendor name.
 
-Class names MUST be declared in `StudlyCaps`.
+Class names and enums MUST be declared in `StudlyCaps`.
 
 Code written for PHP 5.3 and after MUST use formal namespaces.
 
