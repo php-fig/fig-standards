@@ -255,7 +255,7 @@ $uri = new Uri('http://api.example.com');
 $baseRequest = new Request($uri, null, [
     'Authorization' => 'Bearer ' . $token,
     'Accept'        => 'application/json',
-]);;
+]);
 
 $request = $baseRequest->withUri($uri->withPath('/user'))->withMethod('GET');
 $response = $client->send($request);
@@ -265,7 +265,7 @@ $response = $client->send($request);
 $body = new StringStream(json_encode(['tasks' => [
     'Code',
     'Coffee',
-]]));;
+]]));
 $request = $baseRequest
     ->withUri($uri->withPath('/tasks/user/' . $userId))
     ->withMethod('POST')
