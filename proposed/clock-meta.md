@@ -66,7 +66,7 @@ Time by now is defined by interaction of electromagnetic radiation with the exci
 
 This means that for the sake of this PSR the timezone is irrelevant as it is an implementation detail of the code implementing the interface. 
 
-As there is no way to assert a certain timezone in the returnd `DateTimeImmutable` it is up to the implementation to make sure that the timezone is handled according to the Business-Logic. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable`-object with a known timezone (implicit contract) or by making sure that the Business-logic handles the timezone explicitly. This an be done by calling `setTimezone` or by using `getTimestamp` which will automatically return the UTC based Unix-Timestamp.
+It is up to the implementation to make sure that the timezone is handled according to the business logic of the application. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable` object with a known timezone (implicit contract) or by explicitly changing the timezone to be correct for the application. This an be done by calling `setTimezone()` to create a new `DateTimeImmutable` object with the given timezone. 
 
 These are though actions that are not part of the contract which this interface defines.
 
