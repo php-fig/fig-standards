@@ -81,25 +81,6 @@ final class SystemClock implements \Psr\Clock\ClockInterface
     }
 }
 
-//
-
-final class UTCClock implements \Psr\Clock\ClockInterface
-{
-    private \DateTimeZone $utcTimeZone;
-
-    public function __construct()
-    {
-        $this->utcTimeZone = new \DateTimeZone('UTC');
-    }
-
-    public function now(): \DateTimeImmutable
-    {
-        return new \DateTimeImmutable('now', $this->utcTimeZone);
-    }
-}
-
-//
-
 final class FrozenClock implements \Psr\Clock\ClockInterface
 {
     private \DateTimeImmutable $now;
