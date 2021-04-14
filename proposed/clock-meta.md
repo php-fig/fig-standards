@@ -64,7 +64,7 @@ These implementations all provide a `now()` method which returns a `DateTimeImmu
 
 Time by now is defined by interaction of electromagnetic radiation with the excited states of certain atoms where the SI defines one second as the duration of 9192631770 cycles of radiation corresponding to the transition between two energy levels of the ground state of the caesium-133 atom at 0K. This means that retrieving the current time will always return the same time, no matter where it is observed. While the timezone defines *where* the time was observed it does not modify the actual "slice" of time.
 
-This means that for the sake of this PSR the timezone is irrelevant as it is an implementation detail of the code implementing the interface. 
+This means that for the sake of this PSR the timezone is considered an implementation detail of the interface. 
 
 It is up to the implementation to make sure that the timezone is handled according to the business logic of the application. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable` object with a known timezone (implicit contract) or by explicitly changing the timezone to be correct for the application. This an be done by calling `setTimezone()` to create a new `DateTimeImmutable` object with the given timezone. 
 
