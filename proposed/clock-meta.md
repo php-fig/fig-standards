@@ -2,21 +2,19 @@
 
 ## 1. Summary
 
-The purpose of using the `ClockInterface` is to provide a standard way to access the system 
-time, that would allow interopability when testing code that relies on the current time 
-rather than relying on installing PHP extensions or use hacks like re-declaring the `time()`
-function in other namespaces. 
+Getting the current time in applications is a rather straight forward thing given the languages native `time()` function (or one of it's similar functionlaities like `utime()` or `new DateTimeImmutable()` etc.)
+
+Due to the nature of time as constantly progressing it becomes a nuisance to use these functions if you need predictable results like for testing.
+
+This `ClockInterface` aims to provide a standard way to consume time, that allows interopability not only when consuming the "real" time but also when predictable results need to be available. This allows to skip using PHP Extensions for testing or using hacks like re-declaring the `time()` function in other namespaces. 
 
 ## 2. Why Bother?
 
-There are currently a few libraries that provide this functionality, however 
-there is no interopability between these different libraries, as they ship with their own 
-clock interfaces. Symfony provides a package called `symfony/phpunit-bridge` that has a
-`Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time & date 
-functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It does
-not fully mock time when called from other libraries that rely on the system time. 
-`Cake\Chronos\Chronos` does provide mocking, however it is set via a global (static class 
-property), and this has its own pitfalls as it provides no isolation.
+There are currently a few libraries that provide this functionality, however there is no interopability between these different libraries, as they ship with their own clock interfaces. 
+
+Symfony provides a package called `symfony/phpunit-bridge` that has a
+`Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time & date functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It does not fully mock time when called from other libraries that rely on the system time. 
+`Cake\Chronos\Chronos` does provide mocking, however it is set via a global (static class property), and this has its own pitfalls as it provides no isolation.
 
 Pros:
 
@@ -46,11 +44,30 @@ calling `time()` or `date()`.
 
 ### 4.1 Chosen Approach
 
-We have decided to formalize the existing practices, used by several other packages
-out in the wild. Some of the popular packages providing this functionality are: 
-`lcobucci/clock`, `kreait/clock`, `ergebnis/clock`, and `mangoweb/clock`. Some providing
+We have decided to formalize the existing practices, used by several other packages out in the wild. Some of the popular packages providing this functionality are: 
+
+* [`lcobucci/clock`](https://packagist.org/packages/lcobucci/clock)
+* [`kreait/clock`](https://packagist.org/packages/kreait/clock)
+* [`ergebnis/clock`](https://packagist.org/packages/ergebnis/clock)
+* [`mangoweb/clock`](https://packagist.org/packages/mangoweb/clock)
+
+(This list is not exhaustive!)
+
+Some providing
 interfaces, and some relying on overloading (extending) the Clock class to mock the
 current time.
+
+These implementations all provide a `now`-method which returns a `DateTimeImmutable`-object. As the `DateTimeImmutable`-object allows to retieve the Unix-Timestamp by calling `getTimestamp()` or `format('u.U')` this interface does not define any special methods to retieve a Unix-Timestamp or any other form of time-information apart from retrieving the `DateTimeImmutable`-object. 
+
+### 4.2 Timezones
+
+Time by now is defined by interaction of electromagnetic radiation with the excited states of certain atoms where the SI defines one second as the duration of 9192631770 cycles of radiation corresponding to the transition between two energy levels of the ground state of the caesium-133 atom at 0K. This means that retrieving the current time will always return the same time, no matter where it is observed. While the timezone defines *where* the time was observed it does not modify the actual "slice" of time.
+
+This means that for the sake of this PSR the timezone is irrelevant as it is an implementation detail of the code implementing the interface. 
+
+As there is no way to assert a certain timezone in the returnd `DateTimeImmutable` it is up to the implementation to make sure that the timezone is handled according to the Business-Logic. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable`-object with a known timezone (implicit contract) or by making sure that the Business-logic handles the timezone explicitly. This an be done by calling `setTimezone` or by using `getTimestamp` which will automatically return the UTC based Unix-Timestamp.
+
+These are though actions that are not part of the contract which this interface defines.
 
 
 ### 4.2 Example Implementations
