@@ -58,7 +58,7 @@ Some providing
 interfaces, and some relying on overloading (extending) the Clock class to mock the
 current time.
 
-These implementations all provide a `now`-method which returns a `DateTimeImmutable`-object. As the `DateTimeImmutable`-object allows to retieve the Unix-Timestamp by calling `getTimestamp()` or `format('u.U')` this interface does not define any special methods to retieve a Unix-Timestamp or any other form of time-information apart from retrieving the `DateTimeImmutable`-object. 
+These implementations all provide a `now()` method which returns a `DateTimeImmutable` object. As the `DateTimeImmutable` object allows retrieving the Unix timestamp, by calling `getTimestamp()` or `format('u.U')`, this interface does not define any special methods to retrieve a Unix timestamp or any other time information that is not available from a `DateTimeImmutable` object. 
 
 ### 4.2 Timezones
 
