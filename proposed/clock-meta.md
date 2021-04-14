@@ -94,11 +94,6 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
     {
         return clone $this->now;
     }
-
-    public function advance(DateInterval $interval): void
-    {
-        $this->now = $this->now->add($interval);
-    }
 }
 
 ```
