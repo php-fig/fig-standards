@@ -39,7 +39,7 @@ calling `time()` or `date()`.
   described in this document, so it is not a coding standard;
 * This PSR does not provide a recommendation on how to handle timezones when 
   retrieving the current time. This is left up to the implementation.
-* This PSR does not handle any Scheduler specific tasks like `sleep` or `wait` as those – even though they take a time or an interval as parameter – are not related to retrieving the current time. Handling such tasks is left to the respective implementations or a different PSR.
+* This PSR does not handle any scheduling methods like `sleep()` or `wait()` because such methods are not related to retrieving the current time.
 
 ## 4. Approaches
 
