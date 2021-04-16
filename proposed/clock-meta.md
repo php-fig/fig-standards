@@ -6,7 +6,7 @@ Getting the current time in applications is a rather straight forward thing give
 
 Due to the nature of time as constantly progressing it becomes a nuisance to use these functions if you need predictable results like for testing.
 
-This `ClockInterface` aims to provide a standard way to consume time, that allows interopability not only when consuming the "real" time but also when predictable results need to be available. This allows to skip using PHP Extensions for testing or using hacks like re-declaring the `time()` function in other namespaces. 
+This `ClockInterface` aims to provide a standard way to consume time, that allows interoperability not only when consuming the "real" time but also when predictable results need to be available. This allows the avoidance of using PHP Extensions for testing or using hacks like re-declaring the `time()` function in other namespaces. 
 
 ## 2. Why Bother?
 
