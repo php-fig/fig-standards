@@ -54,7 +54,6 @@ We have decided to formalize the existing practices, used by several other packa
 
 (This list is not exhaustive!)
 
-Some providing
 interfaces, and some relying on overloading (extending) the Clock class to mock the
 current time.
 
