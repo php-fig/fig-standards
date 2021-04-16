@@ -2,7 +2,7 @@
 
 ## 1. Summary
 
-Getting the current time in applications is a rather straight forward thing given the languages native `time()` function (or one of it's similar functionlaities like `utime()` or `new DateTimeImmutable()` etc.)
+Getting the current time in applications is a rather straight forward thing given the languages native `time()` function (or one of it's similar functionalities like `utime()` or `new DateTimeImmutable()` etc.)
 
 Due to the nature of time as constantly progressing it becomes a nuisance to use these functions if you need predictable results like for testing.
 
