@@ -6,7 +6,7 @@
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2020-08-31 |
+| Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2022-08-31 |
 | Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
 | Buster Neece ([@SlvrEagle23])         | 2020-01-25 - 2022-01-31 |
 
