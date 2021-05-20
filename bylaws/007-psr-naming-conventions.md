@@ -4,7 +4,7 @@ Naming conventions for code released by PHP FIG
 1. Interfaces MUST be suffixed by `Interface`: e.g. `Psr\Foo\BarInterface`.
 2. Abstract classes MUST be prefixed by `Abstract`: e.g. `Psr\Foo\AbstractBar`.
 3. Traits MUST be suffixed by `Trait`: e.g. `Psr\Foo\BarTrait`.
-4. PSR-1, 2 and 4 MUST be followed.
+4. PSR-1, 4, and 12 MUST be followed.
 5. The vendor namespace MUST be `Psr`.
 6. There MUST be a package/second-level namespace in relation with the PSR that
    covers the code.
