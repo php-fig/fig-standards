@@ -2,7 +2,7 @@
 
 ## 1. Summary
 
-Getting the current time in applications is a rather straightforward thing given the language's native `time()` function (or one of its similar functionalities like `microtime()` or `new DateTimeImmutable()` etc.)
+Getting the current time in applications is typically achieved using the `time()` or `microtime` functions, or by using a `new \DateTimeImmutable()` class.
 
 Due to the nature of time as constantly progressing it becomes a nuisance to use these functions if you need predictable results, for example when testing.
 
