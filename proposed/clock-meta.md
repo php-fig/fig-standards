@@ -4,7 +4,7 @@
 
 Getting the current time in applications is typically achieved using the `time()` or `microtime` functions, or by using a `new \DateTimeImmutable()` class.
 
-Due to the nature of time as constantly progressing it becomes a nuisance to use these functions if you need predictable results, for example when testing.
+Due to the nature of time progression these methods cannot be used when predictable results are needed, such as during testing.
 
 This `ClockInterface` aims to provide a standard way to consume time that allows interoperability not only when consuming the "real" time but also when predictable results need to be available. This avoids the need to use PHP extensions for testing or redeclare the `time()` function in a local namespace. 
 
