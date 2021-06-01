@@ -67,7 +67,7 @@ This means that for the sake of this PSR the timezone is considered an implement
 
 It is up to the implementation to make sure that the timezone is handled according to the business logic of the application. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable` object with a known timezone (implicit contract) or by explicitly changing the timezone to be correct for the application. This can be done by calling `setTimezone()` to create a new `DateTimeImmutable` object with the given timezone. 
 
-These are though actions that are not part of the contract which this interface defines.
+These actions are not defined in this interface.
 
 
 ### 4.2 Example Implementations
