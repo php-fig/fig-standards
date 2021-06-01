@@ -14,7 +14,7 @@ There are currently a few libraries that provide this functionality, however the
 
 Symfony provides a package called `symfony/phpunit-bridge` that has a `Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time and date functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It also does not fully mock time when called from other libraries that rely on the system time.
 
-`Cake\Chronos\Chronos` does provide mocking via a static `setTestNow()` method, but this has its own pitfalls as it provides no isolation and must be called again to stop mocking.
+`Carbon\Carbon` – and being forked from that also `Cake\Chronos\Chronos` – do provide mocking via a static `setTestNow()` method, but this has its own pitfalls as it provides no isolation and must be called again to stop mocking.
 
 Pros:
 
@@ -54,7 +54,7 @@ We have decided to formalize the existing practices, used by several other packa
 
 (This list is not exhaustive!)
 
-interfaces, and some relying on overloading (extending) the Clock class to mock the
+Some of these providing interfaces, and some relying on overloading (extending) the Clock class to mock the
 current time.
 
 These implementations all provide a `now()` method which returns a `DateTimeImmutable` object. As the `DateTimeImmutable` object allows retrieving the Unix timestamp, by calling `getTimestamp()` or `format('u.U')`, this interface does not define any special methods to retrieve a Unix timestamp or any other time information that is not available from a `DateTimeImmutable` object. 
@@ -65,7 +65,7 @@ Time by now is defined by interaction of electromagnetic radiation with the exci
 
 This means that for the sake of this PSR the timezone is considered an implementation detail of the interface. 
 
-It is up to the implementation to make sure that the timezone is handled according to the business logic of the application. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable` object with a known timezone (implicit contract) or by explicitly changing the timezone to be correct for the application. This an be done by calling `setTimezone()` to create a new `DateTimeImmutable` object with the given timezone. 
+It is up to the implementation to make sure that the timezone is handled according to the business logic of the application. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable` object with a known timezone (implicit contract) or by explicitly changing the timezone to be correct for the application. This can be done by calling `setTimezone()` to create a new `DateTimeImmutable` object with the given timezone. 
 
 These are though actions that are not part of the contract which this interface defines.
 
