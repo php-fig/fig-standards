@@ -45,7 +45,7 @@ calling `time()` or `date()`.
 
 ### 4.1 Chosen Approach
 
-We have decided to formalize the existing practices, used by several other packages out in the wild. Some of the popular packages providing this functionality are: 
+We have decided to formalize the existing practices used by several other packages. Some popular packages providing this functionality are: 
 
 * [`lcobucci/clock`](https://packagist.org/packages/lcobucci/clock)
 * [`kreait/clock`](https://packagist.org/packages/kreait/clock)
