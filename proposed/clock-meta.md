@@ -14,7 +14,7 @@ There are currently a few libraries that provide this functionality, however the
 
 Symfony provides a package called `symfony/phpunit-bridge` that has a `Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time and date functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It also does not fully mock time when called from other libraries that rely on the system time.
 
-`Carbon\Carbon` – and being forked from that also `Cake\Chronos\Chronos` – do provide mocking via a static `setTestNow()` method, but this has its own pitfalls as it provides no isolation and must be called again to stop mocking.
+`Carbon\Carbon`, and its fork `Cake\Chronos\Chronos`, do provide mocking via a static `setTestNow()` method, but this provides no isolation and must be called again to stop mocking.
 
 Pros:
 
