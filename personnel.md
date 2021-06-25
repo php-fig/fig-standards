@@ -7,8 +7,8 @@
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2022-08-31 |
-| Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
 | Buster Neece ([@SlvrEagle23])         | 2020-01-25 - 2022-01-31 |
+| Vincent de Lau ([@vdelau])            | 2021-06-25 - 2023-05-30 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -17,18 +17,18 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Larry Garfield ([@Crell])             | 2016-12-24 - 2021-05-30 |
-| Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2021-05-30 |
+| Larry Garfield ([@Crell])             | 2016-12-24 - 2023-05-30 |
+| Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2023-05-30 |
 | Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2022-08-31 |
 | Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2022-01-31 |
 | Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2022-01-31 |
 | Chuck Burgess ([@ashnazg])            | 2018-08-26 - 2022-08-31 |
-| Woody Gilk ([@shadowhand])            | 2019-05-26 - 2021-05-30 |
-| Matteo Beccati ([@mbeccati])          | 2019-05-26 - 2021-05-30 |
+| Woody Gilk ([@shadowhand])            | 2019-05-26 - 2021-08-31 |
 | Enrico Zimuel ([@ezimuel])            | 2020-01-25 - 2022-01-31 |
 | Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
 | Ben Edmunds ([@benedmunds])           | 2020-08-31 - 2022-08-31 |
-| _Vacant_                              |                         |
+| Michelle Sanver ([@michellesanver])   | 2021-06-25 - 2023-05-30 |
+| Alessandro Chitolina ([@alekitto])    | 2021-06-25 - 2023-05-30 |
 
 ### Member Projects
 
