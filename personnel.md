@@ -23,7 +23,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2022-01-31 |
 | Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2022-01-31 |
 | Chuck Burgess ([@ashnazg])            | 2018-08-26 - 2022-08-31 |
-| Woody Gilk ([@shadowhand])            | 2019-05-26 - 2021-08-31 |
+| Woody Gilk ([@shadowhand])            | 2019-05-26 - 2022-08-31 |
 | Enrico Zimuel ([@ezimuel])            | 2020-01-25 - 2022-01-31 |
 | Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
 | Ben Edmunds ([@benedmunds])           | 2020-08-31 - 2022-08-31 |
@@ -87,6 +87,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Mark Railton ([@railto])              | 2018-01-28 - 2018-06-05 |
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
 | Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-25 |
+| Matteo Beccati ([@mbeccati])          | 2019-05-26 - 2021-05-30 |
 
 
 ### Former Core Committee Members
