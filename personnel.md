@@ -118,9 +118,10 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Phergie]                                 | Joe Ferguson ([@joepferguson])        |
 | [Propel]                                  | William Durand ([@couac])             |
 | [sabre/dav]                               | Evert Pot ([@evertp])                 |
-| [Symfony]                                 | Fabien Potencier ([@fabpot])          |	
+| [Symfony]                                 | Fabien Potencier ([@fabpot])          |
 
 [@adamculp]: https://twitter.com/adamculp
+[@alekitto]: https://twitter.com/alekitto
 [@AlessandroLai]: https://twitter.com/AlessandroLai
 [@ambassadorawsum]: https://twitter.com/ambassadorawsum
 [@andrerom]: https://twitter.com/andrerom
@@ -160,6 +161,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@marc1706]: https://twitter.com/marc1706
 [@mbeccati]: https://twitter.com/mbeccati
 [@michaelcullumuk]: https://twitter.com/michaelcullumuk
+[@michellesanver]: https://twitter.com/michellesanver
 [@michieltcs]: https://twitter.com/michieltcs
 [@mvriel]: https://twitter.com/mvriel
 [@mwop]: https://twitter.com/mwop
@@ -180,6 +182,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
 [@trowski2002]: https://twitter.com/trowski2002
+[@vdelau]: https://twitter.com/vdelau
 [@WyriHaximus]: https://twitter.com/WyriHaximus
 [@xtaz07]: https://twitter.com/xtaz07
 [@yellowandy]: https://twitter.com/yellowandy
