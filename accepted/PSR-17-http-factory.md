@@ -51,6 +51,8 @@ interface RequestFactoryInterface
 }
 ```
 
+The created instance MUST return an empty `StreamInterface` instance in read and write mode.
+
 ### 2.2 ResponseFactoryInterface
 
 Has the ability to create responses.
@@ -73,6 +75,8 @@ interface ResponseFactoryInterface
     public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface;
 }
 ```
+
+The created instance MUST return an empty `StreamInterface` instance in read and write mode.
 
 ### 2.3 ServerRequestFactoryInterface
 
@@ -102,6 +106,8 @@ interface ServerRequestFactoryInterface
 }
 ```
 
+The created instance MUST return an empty `StreamInterface` instance in read and write mode.
+
 ### 2.4 StreamFactoryInterface
 
 Has the ability to create streams for requests and responses.
@@ -117,6 +123,9 @@ interface StreamFactoryInterface
      * Create a new stream from a string.
      *
      * The stream SHOULD be created with a temporary resource.
+     * 
+     * The stream MUST be created with the current position of the file read/write
+     * pointer at the beginning of the stream. (Errata 9.1)
      *
      * @param string $content String content with which to populate the stream.
      */
@@ -130,6 +139,10 @@ interface StreamFactoryInterface
      *
      * The `$filename` MAY be any string supported by `fopen()`.
      *
+     * The stream MUST be created with the current position of the file read/write
+     * pointer positioned consistently with that of `fopen()` with regards to
+     * the `$mode` flag. (Errata 9.2)
+     *
      * @param string $filename The filename or stream URI to use as basis of stream.
      * @param string $mode The mode with which to open the underlying filename/stream.
      *
@@ -142,6 +155,8 @@ interface StreamFactoryInterface
      * Create a new stream from an existing resource.
      *
      * The stream MUST be readable and may be writable.
+     *
+     * The current read/write position of the given PHP resource MUST NOT be modified. (Errata 9.3)
      *
      * @param resource $resource The PHP resource to use as the basis for the stream.
      */

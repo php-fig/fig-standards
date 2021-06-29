@@ -268,6 +268,41 @@ the time this proposal was developed allowed a string URI when creating a
 `UriInterface` implementation they provided. As such, accepting a string is
 expedient and follows existing semantics.
 
+### 5.7 Why are Streams created with the specified read/write pointer positions?
+
+The `StreamFactoryInterface::createStreamFromFile()` method implementation
+typically maps directly to an `fopen()` call and, in terms of the read/write
+pointer position, should behave consistently with `fopen()` with regards to
+the `$mode` argument, as covered by the
+[PHP manual page](http://php.net/manual/en/function.fopen.php).
+
+The primary use case for `StreamFactoryInterface::createStream()` is to
+create streams for the body of a `ResponseInterface` instance to be emitted
+as an HTTP response. It can also be used to create an empty stream, which
+can subsequently be written to.
+
+An emitter can make no assumptions about streams (or their internal resource
+handles) being repeatable, and therefore can't simply `rewind()` the stream.
+
+Even in the case where a stream returns `true` for `isSeekable()`, rewinding
+the stream could have unacceptable performance implications. Similarly, the
+`__toString()` method results in unacceptable memory overhead for large streams.
+
+Consequently, to efficiently emit the body stream of a `ResponseInterface`
+instance as body of an HTTP response, we must be able to make an assumption
+about the stream pointer being positioned at the beginning of the stream.
+
+As for `StreamFactoryInterface::createStreamFromResource()`, the caller is
+responsible for the creation of the PHP resource to use as the basis for the
+stream, and therefore also assumes responsibility for the read/write pointer
+state of the resource and resulting stream.
+
+And finally, the instances created by the `RequestFactoryInterface`,
+`ResponseFactoryInterface` and `ServerRequestFactoryInterface` factories
+must generate instances that return an empty `StreamInterface` instance in
+read and write mode, so that client-code can start writing to the body stream,
+without manually needing to initialize anything else.
+
 ## 6. People
 
 This PSR was produced by a FIG Working Group with the following members:
@@ -306,3 +341,23 @@ _**Note:** Order descending chronologically._
 - [shadowhand Dependency Inversion and PSR-7 Bodies](http://shadowhand.me/dependency-inversion-and-psr-7-bodies/)
 - [PHP-FIG mailing list thread discussing factories](https://groups.google.com/d/msg/php-fig/G5pgQfQ9fpA/UWeM1gm1CwAJ)
 - [PHP-FIG mailing list thread feedback on proposal](https://groups.google.com/d/msg/php-fig/piRtB2Z-AZs/8UIwY1RtDgAJ)
+
+## 9. Errata
+
+This recommendation initially omitted the following requirements.
+
+### 9.1 `StreamFactoryInterface::createStream()`
+
+The state of the created temporary resource was unspecified - per section 5.7, the
+requirement was added to position the temporary resource at the beginning of the stream.
+
+### 9.2 `StreamFactoryInterface::createStreamFromFile()`
+
+The state of the created temporary resource was unspecified - per section 5.7, the
+requirement was added to position the resource consistently with `fopen()`.
+
+### 9.3 `StreamFactoryInterface::createStreamFromResource()`
+
+The requirements did not specify whether this method might affect the state of the given
+resource - per section 5.7, the requirement was added to clarify that this method MUST NOT
+modify the position of the given resource.
