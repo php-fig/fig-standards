@@ -26,7 +26,7 @@ spl_autoload_register(function ($class) {
     $prefix = 'Foo\\Bar\\';
 
     // base directory for the namespace prefix
-    $base_dir = __DIR__ . '/src/';
+    $base_dir = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR;
 
     // does the class use the namespace prefix?
     $len = strlen($prefix);
@@ -41,7 +41,7 @@ spl_autoload_register(function ($class) {
     // replace the namespace prefix with the base directory, replace namespace
     // separators with directory separators in the relative class name, append
     // with .php
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+    $file = $base_dir . str_replace('\\', DIRECTORY_SEPARATOR, $relative_class) . '.php';
 
     // if the file exists, require it
     if (file_exists($file)) {
@@ -141,10 +141,10 @@ class Psr4AutoloaderClass
         $prefix = trim($prefix, '\\') . '\\';
 
         // normalize the base directory with a trailing separator
-        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
+        $base_dir = realpath($base_dir) . DIRECTORY_SEPARATOR;
 
         // initialize the namespace prefix array
-        if (isset($this->prefixes[$prefix]) === false) {
+        if (! isset($this->prefixes[$prefix])) {
             $this->prefixes[$prefix] = array();
         }
 
@@ -166,11 +166,11 @@ class Psr4AutoloaderClass
     public function loadClass($class)
     {
         // the current namespace prefix
-        $prefix = $class;
+        $prefix = $class = ltrim($class, '\\');
 
         // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
-        while (false !== $pos = strrpos($prefix, '\\')) {
+        while ($pos = strrpos($prefix, '\\')) {
 
             // retain the trailing namespace separator in the prefix
             $prefix = substr($class, 0, $pos + 1);
@@ -204,24 +204,23 @@ class Psr4AutoloaderClass
     protected function loadMappedFile($prefix, $relative_class)
     {
         // are there any base directories for this namespace prefix?
-        if (isset($this->prefixes[$prefix]) === false) {
+        if (! isset($this->prefixes[$prefix])) {
             return false;
         }
-
+        
+        // replace namespace separators with directory separators
+        // in the relative class name, append with '.php'
+        $file = str_replace('\\', DIRECTORY_SEPARATOR, $relative_class) . '.php';
+        
         // look through base directories for this namespace prefix
         foreach ($this->prefixes[$prefix] as $base_dir) {
-
-            // replace the namespace prefix with the base directory,
-            // replace namespace separators with directory separators
-            // in the relative class name, append with .php
-            $file = $base_dir
-                  . str_replace('\\', '/', $relative_class)
-                  . '.php';
+            // replace the namespace prefix with the base directory
+            $path = $base_dir . $file;
 
             // if the mapped file exists, require it
-            if ($this->requireFile($file)) {
+            if ($this->requireFile($path)) {
                 // yes, we're done
-                return $file;
+                return $path;
             }
         }
 
