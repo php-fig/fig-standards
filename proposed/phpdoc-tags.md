@@ -583,7 +583,7 @@ The `@property` tag is used to declare which "magic" properties are supported.
 
 #### Syntax
 
-    @property[<-read|-write>] ["Type"] [name] [<description>]
+    @property[<-read|-write>] ["Type"] $[name] [<description>]
 
 #### Description
 
