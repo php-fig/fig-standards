@@ -542,7 +542,7 @@ The @param tag is used to document a single parameter of a function or method.
 
 #### Syntax
 
-    @param ["Type"] [name] [<description>]
+    @param ["Type"] $[name] [<description>]
 
 #### Description
 
