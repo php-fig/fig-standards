@@ -2,21 +2,19 @@
 
 ## 1. Summary
 
-The purpose of using the `ClockInterface` is to provide a standard way to access the system 
-time, that would allow interopability when testing code that relies on the current time 
-rather than relying on installing PHP extensions or use hacks like re-declaring the `time()`
-function in other namespaces. 
+Getting the current time in applications is typically achieved using the `time()` or `microtime` functions, or by using a `new \DateTimeImmutable()` class.
+
+Due to the nature of time progression these methods cannot be used when predictable results are needed, such as during testing.
+
+This `ClockInterface` aims to provide a standard way to consume time that allows interoperability not only when consuming the "real" time but also when predictable results need to be available. This avoids the need to use PHP extensions for testing or redeclare the `time()` function in a local namespace. 
 
 ## 2. Why Bother?
 
-There are currently a few libraries that provide this functionality, however 
-there is no interopability between these different libraries, as they ship with their own 
-clock interfaces. Symfony provides a package called `symfony/phpunit-bridge` that has a
-`Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time & date 
-functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It does
-not fully mock time when called from other libraries that rely on the system time. 
-`Cake\Chronos\Chronos` does provide mocking, however it is set via a global (static class 
-property), and this has its own pitfalls as it provides no isolation.
+There are currently a few libraries that provide this functionality, however there is no interopability between these different libraries, as they ship with their own clock interfaces. 
+
+Symfony provides a package called `symfony/phpunit-bridge` that has a `Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time and date functions, however this does not solve mocking calls to `new \DateTimeImmutable()`. It also does not fully mock time when called from other libraries that rely on the system time.
+
+`Carbon\Carbon`, and its fork `Cake\Chronos\Chronos`, do provide mocking via a static `setTestNow()` method, but this provides no isolation and must be called again to stop mocking.
 
 Pros:
 
@@ -41,16 +39,35 @@ calling `time()` or `date()`.
   described in this document, so it is not a coding standard;
 * This PSR does not provide a recommendation on how to handle timezones when 
   retrieving the current time. This is left up to the implementation.
+* This PSR does not handle any scheduling methods like `sleep()` or `wait()` because such methods are not related to retrieving the current time.
 
 ## 4. Approaches
 
 ### 4.1 Chosen Approach
 
-We have decided to formalize the existing practices, used by several other packages
-out in the wild. Some of the popular packages providing this functionality are: 
-`lcobucci/clock`, `kreait/clock`, `ergebnis/clock`, and `mangoweb/clock`. Some providing
-interfaces, and some relying on overloading (extending) the Clock class to mock the
+We have decided to formalize the existing practices used by several other packages. Some popular packages providing this functionality are: 
+
+* [`lcobucci/clock`](https://packagist.org/packages/lcobucci/clock)
+* [`kreait/clock`](https://packagist.org/packages/kreait/clock)
+* [`ergebnis/clock`](https://packagist.org/packages/ergebnis/clock)
+* [`mangoweb/clock`](https://packagist.org/packages/mangoweb/clock)
+
+(This list is not exhaustive!)
+
+Some of these provide interfaces and some rely on extending a clock class to mock the
 current time.
+
+These implementations all provide a `now()` method which returns a `DateTimeImmutable` object. As the `DateTimeImmutable` object allows retrieving the Unix timestamp, by calling `getTimestamp()` or `format('u.U')`, this interface does not define any special methods to retrieve a Unix timestamp or any other time information that is not available from a `DateTimeImmutable` object. 
+
+### 4.2 Timezones
+
+Time by now is defined by interaction of electromagnetic radiation with the excited states of certain atoms where the SI defines one second as the duration of 9192631770 cycles of radiation corresponding to the transition between two energy levels of the ground state of the caesium-133 atom at 0K. This means that retrieving the current time will always return the same time, no matter where it is observed. While the timezone defines *where* the time was observed it does not modify the actual "slice" of time.
+
+This means that for the sake of this PSR the timezone is considered an implementation detail of the interface. 
+
+It is up to the implementation to make sure that the timezone is handled according to the business logic of the application. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable` object with a known timezone (implicit contract) or by explicitly changing the timezone to be correct for the application. This can be done by calling `setTimezone()` to create a new `DateTimeImmutable` object with the given timezone. 
+
+These actions are not defined in this interface.
 
 
 ### 4.2 Example Implementations
@@ -64,25 +81,6 @@ final class SystemClock implements \Psr\Clock\ClockInterface
     }
 }
 
-//
-
-final class UTCClock implements \Psr\Clock\ClockInterface
-{
-    private \DateTimeZone $utcTimeZone;
-
-    public function __construct()
-    {
-        $this->utcTimeZone = new \DateTimeZone('UTC');
-    }
-
-    public function now(): \DateTimeImmutable
-    {
-        return new \DateTimeImmutable('now', $this->utcTimeZone);
-    }
-}
-
-//
-
 final class FrozenClock implements \Psr\Clock\ClockInterface
 {
     private \DateTimeImmutable $now;
@@ -95,11 +93,6 @@ final class FrozenClock implements \Psr\Clock\ClockInterface
     public function now(): \DateTimeImmutable
     {
         return clone $this->now;
-    }
-
-    public function advance(DateInterval $interval): void
-    {
-        $this->now = $this->now->add($interval);
     }
 }
 
