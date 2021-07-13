@@ -209,3 +209,7 @@ _**Note:** Order descending chronologically._
 
 * [Inspiration Mailing List Thread](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/php-fig/wh9avopSR9k)
 * [Initial Mailing List PSR Proposal Thread](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/php-fig/MkFacLdfGso)
+
+# 9. Errata and clarifications
+
+ * The code example for anonymous classes was fixed (see [#1206](https://github.com/php-fig/fig-standards/pull/1206)) because it contradicted the actual rule: omitting parentheses after the `class` keyword when creating a new instance is not allowed, as prescribed for normal classes.
