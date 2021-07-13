@@ -482,7 +482,7 @@ A Type has the following [ABNF][RFC5234] definition:
     class-name       = ["\"] label *("\" label)
     label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
     keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "iterable" / "mixed" / "null" / "object" /
-    keyword          = "resource" / "self" / "static" / "string" / "true" / "void" / "$this"
+    keyword          = "resource" / "self" / "static" / "string" / "true" / "void" / "$this" / "never"
 
 ### Details
 
@@ -679,6 +679,9 @@ The following keywords are recognized by this PSR:
     of the same class but also the same instance.
 
     This type is often used as return value for methods implementing the [Fluent Interface][FLUENT] design pattern.
+
+17. `never`: denotes that element isn't going to return anything and always throws exception or terminates
+    the program abnormally (such as by calling the library function `exit`).
 
 [RFC2119]:      https://tools.ietf.org/html/rfc2119
 [RFC5234]:      https://tools.ietf.org/html/rfc5234
