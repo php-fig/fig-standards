@@ -26,7 +26,7 @@ The intent of this design is twofold.  One, the message is then readily availabl
 
 ## 5. Errata
 
-### 7.1 Type additions
+### 5.1 Type additions
 
 The 2.0 release of the `psr/log` package includes scalar parameter types.  The 3.0 release of the package includes return types.  This structure leverages PHP 7.2 covariance support to allow for a gradual upgrade process, but requires PHP 8.0 for type compatibility.
 
