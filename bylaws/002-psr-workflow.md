@@ -1,5 +1,7 @@
 # PSR Workflow
 
+A PHP Standard Recommendation (PSR) defines an interop standard that establishes a "contract" between providers and consumers.  The goal of any PSR is to encourage or facilitate cross-project collaboration and standardization.
+
 ## Pre-Draft
 
 The goal of the Pre-Draft stage is to determine whether a majority of the PHP FIG is interested in publishing a PSR for a proposed concept.

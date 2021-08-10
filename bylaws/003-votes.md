@@ -43,6 +43,10 @@ A Deprecation Vote is called by any Core Committee Member. Only Core Committee m
 
 An Abandonment Vote is called by any Secretary or Core Committee Member. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
 
+## Decision Vote
+
+A Decision Vote is called by any Secretary or Core Committee Member.  Decision Votes are not yes-or-no questions but selecting between two or more mutually-exclusive courses of action.  A Decision Vote will be conducted using Single Transferable Vote with a single-winner.  Quorum is 50%.
+
 ## Membership Vote
 
 A Membership Vote is called by any Project Representative and consists of a separate concurrent vote by the Core Committee and Project Representatives.

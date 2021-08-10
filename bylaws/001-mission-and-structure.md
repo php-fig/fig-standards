@@ -1,6 +1,6 @@
 # Mission Statement
 
-The PHP Framework Interoperability Group (The PHP FIG) aims to advance the PHP ecosystem and promote good standards by bringing together projects and people to collaborate. It develops and publicises standards, informed by real-world experience as well as research and experimentation by itself and others, to form PHP Standard Recommendations (PSRs).
+The PHP Framework Interoperability Group (The PHP FIG) aims to advance the PHP ecosystem and promote good standards by bringing together projects and people to collaborate. It develops and publicises standards, informed by real-world experience as well as research and experimentation by itself and others, to form PHP Standard Recommendations (PSRs) and PHP Evolving Recommendations (PERs).
 
 # Structure
 
