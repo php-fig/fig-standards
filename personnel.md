@@ -34,6 +34,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Project                           | Representative                        |
 |-----------------------------------|---------------------------------------|
+| [AzuraCast]                       | Felix Bachmann ([@Vaalyn])            |
 | [CakePHP]                         | Larry Masters ([@PhpNut])             |
 | [Composer]                        | Jordi Boggiano ([@seldaek])           |
 | [concrete5]                       | Korvin Szanto ([@korvinszanto])       |
@@ -182,6 +183,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
 [@trowski2002]: https://twitter.com/trowski2002
+[@Vaalyn]: https://twitter.com/vaalyndev
 [@vdelau]: https://twitter.com/vdelau
 [@WyriHaximus]: https://twitter.com/WyriHaximus
 [@xtaz07]: https://twitter.com/xtaz07
@@ -191,6 +193,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Agavi]: http://www.agavi.org
 [Assetic]: https://github.com/kriswallsmith/assetic
 [Aura]: http://auraphp.github.com
+[AzuraCast]: https://www.azuracast.com/
 [CakePHP]: http://cakephp.org
 [Composer]: http://getcomposer.org
 [concrete5]: http://www.concrete5.org
