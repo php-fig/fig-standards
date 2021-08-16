@@ -1,6 +1,4 @@
-# PSR Workflow
-
-A PHP Standard Recommendation (PSR) defines an interop standard that establishes a "contract" between providers and consumers.  The goal of any PSR is to encourage or facilitate cross-project collaboration and standardization.
+# PHP Standard Recommendation (PSR) Workflow
 
 ## Pre-Draft
 
@@ -8,11 +6,7 @@ The goal of the Pre-Draft stage is to determine whether a majority of the PHP FI
 
 Interested parties may discuss a possible proposal, including possible implementations, by whatever means they feel is appropriate. That includes informal discussion on official FIG discussion mediums of whether or not the idea has merit and is within the scope of the PHP FIG's goals.
 
-Once those parties have determined to move forward, they must form a Working Group. A Working Group consists of, at minimum:
-
-* One Editor
-* One Core Committee member who will act as Sponsor
-* At least three other individuals. These may include Project Representatives, Secretaries or Core Committee members as well as members of the general community.
+Once those parties have determined to move forward, they must form a Full Working Group.
 
 The proposal is not required to be fully developed at this point, although that is permitted. At minimum, it must include a statement of the problem to be solved and basic information on the general approach to be taken. Further revision and expansion is expected during the Draft Phase.
 
@@ -26,9 +20,7 @@ The Working Group may continue to work on the proposal during the complete votin
 
 The goal of the Draft stage is to discuss and polish a PSR proposal up to the point that it can be considered for review by the FIG Core Committee.
 
-In Draft stage, members of the Working Group may make any changes they see fit via pull requests, comments on GitHub, Mailing List threads, IRC and similar tools. Change here is not limited by any strict rules, and fundamental rewrites are possible if supported by the Editor. Alternative approaches may be proposed and discussed at any time. If the Editor and Sponsor are convinced that an alternative proposal is superior to the original proposal, then the alternative may replace the original. Working Group members are expected to remain engaged throughout the Draft Phase. Discussions are public and anyone, regardless of FIG affiliation, is welcome to offer constructive input. During this phase, the Editor has final authority on changes made to the proposed specification.
-
-The Secretaries will ensure that the Working Group is provided with necessary resources to work on the specification, such as a dedicated GitHub repository, mailing list, forum section, and similar such tools.
+In Draft stage, members of the Working Group may make any changes they see fit via pull requests, comments on GitHub, Mailing List threads, chat, and similar tools. Change here is not limited by any strict rules, and fundamental rewrites are possible if supported by the Editor. Alternative approaches may be proposed and discussed at any time. If the Editor and Sponsor are convinced that an alternative proposal is superior to the original proposal, then the alternative may replace the original. Working Group members are expected to remain engaged throughout the Draft Phase. Discussions are public and anyone, regardless of FIG affiliation, is welcome to offer constructive input. During this phase, the Editor has final authority on changes made to the proposed specification.
 
 All knowledge gained during Draft stage, such as possible alternative approaches, their implications, pros and cons etc. as well as the reasons for choosing the proposed approach must be summarized in the meta document. The purpose of this rule is to prevent circular discussions or alternative proposals from reappearing once they have been decided upon.
 
@@ -48,7 +40,7 @@ Once four weeks have passed and two viable trial implementations can be demonstr
 
 ## Accepted
 
-If the Acceptance Vote passes, then the proposal officially becomes an accepted PSR. At this time the Working Group is automatically dissolved, however the Editor's input (or a nominated individual communicated to the secretaries) may be called upon in the future should typos, changes or Errata on the specification be raised.
+If the Acceptance Vote passes, then the proposal officially becomes an accepted PSR. At this time the Working Group is automatically dissolved.  The Editor of the PSR automatically becomes the Maintainer of the specification should typos, changes or Errata on the specification be raised.  The Editor is also automatically the Maintainer of any artifacts the Working Group has produced, such as utility libraries.
 
 ## Erratas
 
@@ -58,17 +50,15 @@ Errata clarifications may only be added to the meta document, not to the spec it
 
 ## Deprecated
 
-A Deprecated PSR is one that has been approved, but is no longer considered relevant or recommended. Typically this is due to the PSR being superseded by a new version, but that is not required.
+A Deprecated PSR is one that has been approved, but is no longer considered relevant or recommended. Typically, this is due to the PSR being superseded by a new version, but that is not required.
 
 A PSR may be Deprecated explicitly as part of the Acceptance Vote for another PSR. Alternatively, it may be marked Deprecated by a Deprecation Vote.
 
 ## Abandoned
 
-An Abandoned PSR is one that is not actively being worked upon. A PSR will can be marked as Abandoned by Secretaries when it is without an Editor for 60 days or a Sponsor for 60 days. After a period of 6 months without significant activity in a Working Group, the Secretaries may also change a PSR to be "Abandoned". A PSR can also be triggered to move to "Abandoned" upon an Abandonment vote of the Core Committee which may be requested by the Working Group by petitioning a Core Committee member or Secretary.
+An Abandoned PSR is one that is not actively being worked upon.  Should the Working Group for the PSR be dissolved, the PSR is automatically marked as Abandoned.
 
-At this time the Working Group is automatically dissolved.
-
-Once a PSR is in "Abandoned" stage it may only once again be moved to Draft after a fresh Entrance vote by the Core Committee following the same procedure as if it was a pre-draft, except it may retain its previously assigned number. If the aims of the PSR differ from the original entrance vote, it is up to the discretion of the Core Committee whether or not it should be considered a fresh PSR or a restart of activity on the Abandoned PSR.
+Once a PSR is in "Abandoned" stage it may only once again be moved to Draft after a fresh Entrance vote by the Core Committee following the same procedure as if it was a pre-draft, except it may retain its previously assigned number. If the aims of the PSR differ from the original entrance vote, it is up to the discretion of the Core Committee whether it should be considered a fresh PSR or a restart of activity on the Abandoned PSR.
 
 ## Project Referendum
 
