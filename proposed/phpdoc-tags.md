@@ -18,20 +18,21 @@ PSR-19: PHPDoc tags
   - [5.2.  @author](#52-author)
   - [5.3.  @copyright](#53-copyright)
   - [5.4.  @deprecated](#54-deprecated)
-  - [5.5.  @internal](#55-internal)
-  - [5.6.  @link](#56-link)
-  - [5.7.  @method](#57-method)
-  - [5.8.  @package](#58-package)
-  - [5.9.  @param](#59-param)
-  - [5.10. @property](#510-property)
-  - [5.11. @return](#511-return)
-  - [5.12. @see](#512-see)
-  - [5.13. @since](#513-since)
-  - [5.14. @throws](#514-throws)
-  - [5.15. @todo](#515-todo)
-  - [5.16. @uses](#516-uses)
-  - [5.17. @var](#517-var)
-  - [5.18. @version](#518-version)
+  - [5.5.  @generated](#55-generated)
+  - [5.6.  @internal](#56-internal)
+  - [5.7.  @link](#57-link)
+  - [5.8.  @method](#58-method)
+  - [5.9.  @package](#59-package)
+  - [5.10.  @param](#510-param)
+  - [5.11. @property](#511-property)
+  - [5.12. @return](#512-return)
+  - [5.13. @see](#513-see)
+  - [5.14. @since](#514-since)
+  - [5.15. @throws](#515-throws)
+  - [5.16. @todo](#516-todo)
+  - [5.17. @uses](#517-uses)
+  - [5.18. @var](#518-var)
+  - [5.19. @version](#519-version)
 
 ## 1. Introduction
 
@@ -71,7 +72,7 @@ parts if that part is absent:
 * A specific subset of [Tags]([PHPDOC_PSR]#53-tags):
   * [@author](#52-author)
   * [@copyright](#53-copyright)
-  * [@version](#518-version)
+  * [@version](#519-version)
 
 The PHPDoc for each type of "Structural Element" MUST also inherit a
 specialized subset of tags depending on which "Structural Element" is
@@ -170,23 +171,23 @@ combination of the Description of the super-element, indicated by the
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a class or interface MUST inherit the following tags:
 
-* [@package](#58-package)
+* [@package](#59-package)
 
 ### 4.3.2. Function Or Method
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a function or method in a class or interface MUST inherit the following tags:
 
-* [@param](#59-param)
-* [@return](#511-return)
-* [@throws](#514-throws)
+* [@param](#510-param)
+* [@return](#512-return)
+* [@throws](#515-throws)
 
 ### 4.3.3. Constant Or Property
 
 In addition to the inherited descriptions and tags as defined in this chapter's
 root, a constant or property in a class MUST inherit the following tags:
 
-* [@var](#517-type)
+* [@var](#518-type)
 
 ## 5. Tags
 
@@ -211,7 +212,7 @@ API components of a library or framework.
 Other "Structural Elements" with a public visibility MAY be listed less
 prominently in generated documentation.
 
-See also the [`@internal`](#55-internal), which MAY be used to hide internal
+See also the [`@internal`](#56-internal), which MAY be used to hide internal
 "Structural Elements" from generated documentation.
 
 #### Examples
@@ -326,7 +327,58 @@ If the associated element is superseded by another it is RECOMMENDED to add a
  */
 ```
 
-### 5.5. @internal
+### 5.5. @generated
+
+The @generated tag indicates that the code has been generated using an
+automation script.
+
+#### Syntax
+
+    @generated [description]
+
+#### Description
+
+The `@generated` is used to denote a class or a function that has been
+generated using an automation script. This tag should be used to warn
+to do not change the code, since the change will be overwritten by the
+automation script.
+
+#### Examples
+
+Mark a class that has been generated using a PHP script.
+
+```php
+/**
+ * Index a document in Elasticsearch
+ * 
+ * @generated class generated using bin/script.php, please DO NOT EDIT!
+ * 
+ * @version 7.14.0 Elasticsearch
+ */
+class Index
+{
+    <...>
+}
+```
+
+Mark a function that has been generated using a PHP script.
+
+```php
+
+/**
+ * @generated function generated using bin/script.php, please DO NOT EDIT!
+ * 
+ * @params array $params parameters for the index API endpoint
+ * 
+ * @return array response from Elasticsearch
+ */
+function index(array $params): array
+{
+    <...>
+}
+```
+
+### 5.6. @internal
 
 The @internal tag is used to denote that the associated "Structural Element" is
 a structure internal to this application or library. It may also be used inside
@@ -399,7 +451,7 @@ function count()
 }
 ```
 
-### 5.6. @link
+### 5.7. @link
 
 The @link tag indicates a custom relation between the associated
 "Structural Element" and a website, which is identified by an absolute URI.
@@ -449,7 +501,7 @@ function count()
 }
 ```
 
-### 5.7. @method
+### 5.8. @method
 
 The @method allows a class to know which 'magic' methods are callable.
 
@@ -499,7 +551,7 @@ class Child extends Parent
 }
 ```
 
-### 5.8. @package
+### 5.9. @package
 
 The @package tag is used to categorize "Structural Elements" into logical
 subdivisions.
@@ -536,7 +588,7 @@ This tag MUST NOT occur more than once in a "DocBlock".
  */
 ```
 
-### 5.9. @param
+### 5.10. @param
 
 The @param tag is used to document a single parameter of a function or method.
 
@@ -577,7 +629,7 @@ function count(array $items)
 }
 ```
 
-### 5.10. @property
+### 5.11. @property
 
 The `@property` tag is used to declare which "magic" properties are supported.
 
@@ -626,7 +678,7 @@ class User
 }
 ```
 
-### 5.11. @return
+### 5.12. @return
 
 The @return tag is used to document the return value of functions or methods.
 
@@ -675,7 +727,7 @@ function getLabel()
 }
 ```
 
-### 5.12. @see
+### 5.13. @see
 
 The @see tag indicates a reference from the associated "Structural Elements" to
 a website or other "Structural Elements".
@@ -717,7 +769,7 @@ function count()
 }
 ```
 
-### 5.13. @since
+### 5.14. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -767,7 +819,7 @@ class Foo
 }
 ```
 
-### 5.14. @throws
+### 5.15. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -810,7 +862,7 @@ function count($items)
 }
 ```
 
-### 5.15. @todo
+### 5.16. @todo
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -842,7 +894,7 @@ function count()
 }
 ```
 
-### 5.16. @uses
+### 5.17. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -895,7 +947,7 @@ function executeMyView()
 }
 ```
 
-### 5.17. @var
+### 5.18. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -999,7 +1051,7 @@ class Foo
 }
 ```
 
-### 5.18. @version
+### 5.19. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
