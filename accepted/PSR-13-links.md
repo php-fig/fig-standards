@@ -11,14 +11,14 @@ of the process of deciding what those links should be.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119.html).
 
 ### References
 
-- [RFC 2119](http://tools.ietf.org/html/rfc2119)
-- [RFC 4287](https://tools.ietf.org/html/rfc4287)
-- [RFC 5988](https://tools.ietf.org/html/rfc5988)
-- [RFC 6570](https://tools.ietf.org/html/rfc6570)
+- [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119.html)
+- [RFC 4287](https://www.rfc-editor.org/rfc/rfc4287.html)
+- [RFC 5988](https://www.rfc-editor.org/rfc/rfc5988.html)
+- [RFC 6570](https://www.rfc-editor.org/rfc/rfc6570.html)
 - [IANA Link Relations Registry](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
 - [Microformats Relations List](http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions)
 
@@ -91,7 +91,7 @@ application or use case. Such relationships MUST use an absolute URI.
 
 ## 1.4 Link Templates
 
-[RFC 6570](https://tools.ietf.org/html/rfc6570) defines a format for URI templates, that is,
+[RFC 6570](https://www.rfc-editor.org/rfc/rfc6570.html) defines a format for URI templates, that is,
 a pattern for a URI that is expected to be filled in with values provided by a client
 tool. Some hypermedia formats support templated links while others do not, and may
 have a special way to denote that a link is a template. A Serializer for a format

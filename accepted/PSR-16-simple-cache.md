@@ -12,7 +12,7 @@ The final implementations MAY decorate the objects with more
 functionality than the one proposed but they MUST implement the indicated
 interfaces/functionality first.
 
-[RFC 2119]: http://tools.ietf.org/html/rfc2119
+[RFC 2119]: https://www.rfc-editor.org/rfc/rfc2119.html
 
 # 1. Specification
 

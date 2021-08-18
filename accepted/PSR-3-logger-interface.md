@@ -18,7 +18,7 @@ The word `implementor` in this document is to be interpreted as someone
 implementing the `LoggerInterface` in a log-related library or framework.
 Users of loggers are referred to as `user`.
 
-[RFC 2119]: http://tools.ietf.org/html/rfc2119
+[RFC 2119]: https://www.rfc-editor.org/rfc/rfc2119.html
 
 ## 1. Specification
 
@@ -35,7 +35,7 @@ Users of loggers are referred to as `user`.
   if the implementation does not know about the level. Users SHOULD NOT use a
   custom level without knowing for sure the current implementation supports it.
 
-[RFC 5424]: http://tools.ietf.org/html/rfc5424
+[RFC 5424]: https://www.rfc-editor.org/rfc/rfc5424.html
 
 ### 1.2 Message
 
