@@ -22,7 +22,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 interpreted as described in [RFC 2119][rfc2119].
 
 [psr7]: https://www.php-fig.org/psr/psr-7/
-[rfc2119]: http://www.rfc-editor.org/rfc/rfc2119.html
+[rfc2119]: https://www.rfc-editor.org/rfc/rfc2119.html
 
 ### References
 

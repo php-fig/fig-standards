@@ -3,9 +3,9 @@
 ## 1. Summary
 
 The purpose of this proposal is to provide a set of common interfaces for HTTP
-messages as described in [RFC 7230](http://www.rfc-editor.org/rfc/rfc7230.html) and
-[RFC 7231](http://www.rfc-editor.org/rfc/rfc7231.html), and URIs as described in
-[RFC 3986](http://www.rfc-editor.org/rfc/rfc3986.html) (in the context of HTTP messages).
+messages as described in [RFC 7230](https://www.rfc-editor.org/rfc/rfc7230.html) and
+[RFC 7231](https://www.rfc-editor.org/rfc/rfc7231.html), and URIs as described in
+[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986.html) (in the context of HTTP messages).
 
 - RFC 7230: http://www.www.rfc-editor.org/rfc/rfc7230.html
 - RFC 7231: http://www.www.rfc-editor.org/rfc/rfc7231.html

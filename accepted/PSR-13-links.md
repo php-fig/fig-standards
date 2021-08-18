@@ -11,11 +11,11 @@ of the process of deciding what those links should be.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://www.rfc-editor.org/rfc/rfc2119.html).
+interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119.html).
 
 ### References
 
-- [RFC 2119](http://www.rfc-editor.org/rfc/rfc2119.html)
+- [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119.html)
 - [RFC 4287](https://www.rfc-editor.org/rfc/rfc4287.html)
 - [RFC 5988](https://www.rfc-editor.org/rfc/rfc5988.html)
 - [RFC 6570](https://www.rfc-editor.org/rfc/rfc6570.html)
