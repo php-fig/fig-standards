@@ -14,7 +14,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
 
-[RFC 2119]: http://tools.ietf.org/html/rfc2119
+[RFC 2119]: http://www.rfc-editor.org/rfc/rfc2119.html
 
 ## Goal
 
@@ -89,7 +89,7 @@ In addition the following tags are added:
 * remediationType (workaround, mitigation, vendor fix, none available, will not fix)
 * remediationLink (URL to give additional information for remediation)
 
-[1] https://tools.ietf.org/html/rfc4287
+[1] https://www.rfc-editor.org/rfc/rfc4287.html
 [2] http://www.icasi.org/cvrf-1.1
 [3] http://www.icasi.org/cvrf-1.1-dictionary
 [4] security-disclosure-publication.xsd

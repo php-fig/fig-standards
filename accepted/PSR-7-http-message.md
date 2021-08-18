@@ -1,9 +1,9 @@
 # HTTP message interfaces
 
 This document describes common interfaces for representing HTTP messages as
-described in [RFC 7230](http://tools.ietf.org/html/rfc7230) and
-[RFC 7231](http://tools.ietf.org/html/rfc7231), and URIs for use with HTTP
-messages as described in [RFC 3986](http://tools.ietf.org/html/rfc3986).
+described in [RFC 7230](http://www.rfc-editor.org/rfc/rfc7230.html) and
+[RFC 7231](http://www.rfc-editor.org/rfc/rfc7231.html), and URIs for use with HTTP
+messages as described in [RFC 3986](http://www.rfc-editor.org/rfc/rfc3986.html).
 
 HTTP messages are the foundation of web development. Web browsers and HTTP
 clients such as cURL create HTTP request messages that are sent to a web server,
@@ -48,14 +48,14 @@ and the elements composing them.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+interpreted as described in [RFC 2119](http://www.rfc-editor.org/rfc/rfc2119.html).
 
 ### References
 
-- [RFC 2119](http://tools.ietf.org/html/rfc2119)
-- [RFC 3986](http://tools.ietf.org/html/rfc3986)
-- [RFC 7230](http://tools.ietf.org/html/rfc7230)
-- [RFC 7231](http://tools.ietf.org/html/rfc7231)
+- [RFC 2119](http://www.rfc-editor.org/rfc/rfc2119.html)
+- [RFC 3986](http://www.rfc-editor.org/rfc/rfc3986.html)
+- [RFC 7230](http://www.rfc-editor.org/rfc/rfc7230.html)
+- [RFC 7231](http://www.rfc-editor.org/rfc/rfc7231.html)
 
 ## 1. Specification
 
@@ -871,7 +871,7 @@ interface RequestInterface extends MessageInterface
      * immutability of the message, and MUST return an instance that has the
      * changed request target.
      *
-     * @see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
+     * @see http://www.rfc-editor.org/rfc/rfc7230.html#section-5.3 (for the various
      *     request-target forms allowed in request messages)
      * @param mixed $requestTarget
      * @return static
@@ -907,7 +907,7 @@ interface RequestInterface extends MessageInterface
      *
      * This method MUST return a UriInterface instance.
      *
-     * @see http://tools.ietf.org/html/rfc3986#section-4.3
+     * @see http://www.rfc-editor.org/rfc/rfc3986.html#section-4.3
      * @return UriInterface Returns a UriInterface instance
      *     representing the URI of the request.
      */
@@ -938,7 +938,7 @@ interface RequestInterface extends MessageInterface
      * immutability of the message, and MUST return an instance that has the
      * new UriInterface instance.
      *
-     * @see http://tools.ietf.org/html/rfc3986#section-4.3
+     * @see http://www.rfc-editor.org/rfc/rfc3986.html#section-4.3
      * @param UriInterface $uri New request URI to use.
      * @param bool $preserveHost Preserve the original state of the Host header.
      * @return static
@@ -1256,7 +1256,7 @@ interface ResponseInterface extends MessageInterface
      * immutability of the message, and MUST return an instance that has the
      * updated status and reason phrase.
      *
-     * @see http://tools.ietf.org/html/rfc7231#section-6
+     * @see http://www.rfc-editor.org/rfc/rfc7231.html#section-6
      * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
      * @param int $code The 3-digit integer result code to set.
      * @param string $reasonPhrase The reason phrase to use with the
@@ -1276,7 +1276,7 @@ interface ResponseInterface extends MessageInterface
      * listed in the IANA HTTP Status Code Registry) for the response's
      * status code.
      *
-     * @see http://tools.ietf.org/html/rfc7231#section-6
+     * @see http://www.rfc-editor.org/rfc/rfc7231.html#section-6
      * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
      * @return string Reason phrase; must return an empty string if none present.
      */
@@ -1470,7 +1470,7 @@ namespace Psr\Http\Message;
  * For server-side requests, the scheme will typically be discoverable in the
  * server parameters.
  *
- * @see http://tools.ietf.org/html/rfc3986 (the URI specification)
+ * @see http://www.rfc-editor.org/rfc/rfc3986.html (the URI specification)
  */
 interface UriInterface
 {
@@ -1485,7 +1485,7 @@ interface UriInterface
      * The trailing ":" character is not part of the scheme and MUST NOT be
      * added.
      *
-     * @see https://tools.ietf.org/html/rfc3986#section-3.1
+     * @see https://www.rfc-editor.org/rfc/rfc3986.html#section-3.1
      * @return string The URI scheme.
      */
     public function getScheme();
@@ -1505,7 +1505,7 @@ interface UriInterface
      * If the port component is not set or is the standard port for the current
      * scheme, it SHOULD NOT be included.
      *
-     * @see https://tools.ietf.org/html/rfc3986#section-3.2
+     * @see https://www.rfc-editor.org/rfc/rfc3986.html#section-3.2
      * @return string The URI authority, in "[user-info@]host[:port]" format.
      */
     public function getAuthority();
@@ -1535,7 +1535,7 @@ interface UriInterface
      * The value returned MUST be normalized to lowercase, per RFC 3986
      * Section 3.2.2.
      *
-     * @see http://tools.ietf.org/html/rfc3986#section-3.2.2
+     * @see http://www.rfc-editor.org/rfc/rfc3986.html#section-3.2.2
      * @return string The URI host.
      */
     public function getHost();
@@ -1578,8 +1578,8 @@ interface UriInterface
      * delimiter between path segments, that value MUST be passed in encoded
      * form (e.g., "%2F") to the instance.
      *
-     * @see https://tools.ietf.org/html/rfc3986#section-2
-     * @see https://tools.ietf.org/html/rfc3986#section-3.3
+     * @see https://www.rfc-editor.org/rfc/rfc3986.html#section-2
+     * @see https://www.rfc-editor.org/rfc/rfc3986.html#section-3.3
      * @return string The URI path.
      */
     public function getPath();
@@ -1600,8 +1600,8 @@ interface UriInterface
      * include an ampersand ("&") not intended as a delimiter between values,
      * that value MUST be passed in encoded form (e.g., "%26") to the instance.
      *
-     * @see https://tools.ietf.org/html/rfc3986#section-2
-     * @see https://tools.ietf.org/html/rfc3986#section-3.4
+     * @see https://www.rfc-editor.org/rfc/rfc3986.html#section-2
+     * @see https://www.rfc-editor.org/rfc/rfc3986.html#section-3.4
      * @return string The URI query string.
      */
     public function getQuery();
@@ -1618,8 +1618,8 @@ interface UriInterface
      * any characters. To determine what characters to encode, please refer to
      * RFC 3986, Sections 2 and 3.5.
      *
-     * @see https://tools.ietf.org/html/rfc3986#section-2
-     * @see https://tools.ietf.org/html/rfc3986#section-3.5
+     * @see https://www.rfc-editor.org/rfc/rfc3986.html#section-2
+     * @see https://www.rfc-editor.org/rfc/rfc3986.html#section-3.5
      * @return string The URI fragment.
      */
     public function getFragment();
@@ -1768,7 +1768,7 @@ interface UriInterface
      * - If a query is present, it MUST be prefixed by "?".
      * - If a fragment is present, it MUST be prefixed by "#".
      *
-     * @see http://tools.ietf.org/html/rfc3986#section-4.1
+     * @see http://www.rfc-editor.org/rfc/rfc3986.html#section-4.1
      * @return string
      */
     public function __toString();

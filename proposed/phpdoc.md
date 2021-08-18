@@ -680,8 +680,8 @@ The following keywords are recognized by this PSR:
 
     This type is often used as return value for methods implementing the [Fluent Interface][FLUENT] design pattern.
 
-[RFC2119]:      https://tools.ietf.org/html/rfc2119
-[RFC5234]:      https://tools.ietf.org/html/rfc5234
+[RFC2119]:      https://www.rfc-editor.org/rfc/rfc2119.html
+[RFC5234]:      https://www.rfc-editor.org/rfc/rfc5234.html
 [PHP_RESOURCE]: https://php.net/manual/language.types.resource.php
 [PHP_ITERABLE]: https://php.net/manual/language.types.iterable.php
 [PHP_PSEUDO]:   https://php.net/manual/language.pseudo-types.php

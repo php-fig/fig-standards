@@ -13,7 +13,7 @@ The word `implementor` in this document is to be interpreted as someone
 implementing the `ContainerInterface` in a dependency injection-related library or framework.
 Users of dependency injection containers (DIC) are referred to as `user`.
 
-[RFC 2119]: http://tools.ietf.org/html/rfc2119
+[RFC 2119]: http://www.rfc-editor.org/rfc/rfc2119.html
 
 ## 1. Specification
 

@@ -1052,8 +1052,8 @@ class Foo
 ```
 
 
-[RFC2119]:      https://tools.ietf.org/html/rfc2119
-[RFC2396]:      https://tools.ietf.org/html/rfc2396
+[RFC2119]:      https://www.rfc-editor.org/rfc/rfc2119.html
+[RFC2396]:      https://www.rfc-editor.org/rfc/rfc2396.html
 [SEMVER2]:      http://www.semver.org
 [PHP_SUBSTR]:   https://php.net/manual/function.substr.php
 [SPDX]:         https://www.spdx.org/licenses
