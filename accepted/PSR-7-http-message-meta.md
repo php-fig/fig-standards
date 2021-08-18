@@ -7,9 +7,9 @@ messages as described in [RFC 7230](https://www.rfc-editor.org/rfc/rfc7230.html)
 [RFC 7231](https://www.rfc-editor.org/rfc/rfc7231.html), and URIs as described in
 [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986.html) (in the context of HTTP messages).
 
-- RFC 7230: http://www.ietf.org/rfc/rfc7230.txt
-- RFC 7231: http://www.ietf.org/rfc/rfc7231.txt
-- RFC 3986: http://www.ietf.org/rfc/rfc3986.txt
+- RFC 7230: https://www.ietf.org/rfc/rfc7230.txt
+- RFC 7231: https://www.ietf.org/rfc/rfc7231.txt
+- RFC 3986: https://www.ietf.org/rfc/rfc3986.txt
 
 All HTTP messages consist of the HTTP protocol version being used, headers, and
 a message body. A _Request_ builds on the message to include the HTTP method
@@ -449,7 +449,7 @@ server-side requests and client-side responses.
 
 The `RequestInterface` and `ResponseInterface` have essentially 1:1
 correlations with the request and response messages described in
-[RFC 7230](http://www.ietf.org/rfc/rfc7230.txt). They provide interfaces for
+[RFC 7230](https://www.ietf.org/rfc/rfc7230.txt). They provide interfaces for
 implementing value objects that correspond to the specific HTTP message types
 they model.
 
