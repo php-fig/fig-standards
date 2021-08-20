@@ -340,7 +340,7 @@ automation script.
 
 The `@generated` is used to denote a class or a function that has been
 generated using an automation script. This tag should be used to warn
-to do not change the code, since the change will be overwritten by the
+to not change the code, since the change will be overwritten by the
 automation script.
 
 #### Examples
