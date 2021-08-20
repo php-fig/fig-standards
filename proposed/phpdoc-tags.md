@@ -23,7 +23,7 @@ PSR-19: PHPDoc tags
   - [5.7.  @link](#57-link)
   - [5.8.  @method](#58-method)
   - [5.9.  @package](#59-package)
-  - [5.10.  @param](#510-param)
+  - [5.10. @param](#510-param)
   - [5.11. @property](#511-property)
   - [5.12. @return](#512-return)
   - [5.13. @see](#513-see)
