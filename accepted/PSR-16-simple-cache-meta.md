@@ -72,22 +72,22 @@ For being an early reviewer
 ## 8. Errata
 ### 8.1 Type additions
 
-The 1.1 and 1.2 releases of the `psr/simple-cache` package includs scalar parameter types and increases the minimum PHP version to 7.2 and 8.0 respectively.  This is considered a backwards compatible change as PHP 7.2 introduces covariance for parameters.  Any implementation of 1.0 is compatible with 1.1 and 1.2.
+The 2.0 release of the `psr/simple-cache` package includs scalar parameter types and increases the minimum PHP version to 8.0 respectively.  This is considered a backwards compatible change for implementations as PHP 7.2 introduces covariance for parameters.  Any implementation of 1.0 is compatible with 2.0. For consumers, however, this reduces the types that they may pass (as previously any `string` parameter could accept a `Stringable`) and as such requires the increment of the major version.
 
-The 2.0 release includes return types.  Return types break backwards compatibility as PHP does not support return type covariance.  Implementations of 2.0 remain compatible with clients designed for 1.0.
+The 3.0 release includes return types.  Return types break backwards compatibility as PHP does not support return type covariance.
 
 Implementers MAY add return types to their own packages at their discretion, provided that:
 
-* the return types match those in the 2.0 package.
+* the return types match those in the 3.0 package.
 * the implementation specifies a minimum PHP version of 8.0.0 or later
-* the implementation depends on `"psr/simple-cache": "^1.2 || ^2"` so as to exclude the untyped 1.0 version.
+* the implementation depends on `"psr/simple-cache": "^2 || ^3"` so as to exclude the untyped 1.0 version.
 
 Implementers MAY add parameter types to their own package in a new minor release, either at the same time as adding return types or in a subsequent release, provided that:
 
-* the parameter types match or widen those in the 1.2 package
-* the implementation specifies a minimum PHP version of 7.2.0 (8.0 if using mixed or union types) or later.
-* the implementation depends on `"psr/simple-cache": "^1.1 || ^2"` so as to exclude the untyped 1.0 version. (`"psr/simple-cache": "^1.2 || ^2"` if using mixed or union types)
+* the parameter types match or widen those in the 2.0 package
+* the implementation specifies a minimum PHP version of 8.0 if using mixed or union types or later.
+* the implementation depends on `"psr/simple-cache": "^2 || ^3"` so as to exclude the untyped 1.0 version.
 
-Implementers are encouraged, but not required to transition their packages toward the 2.0 version of the package at their earliest convenience.
+Implementers are encouraged, but not required to transition their packages toward the 3.0 version of the package at their earliest convenience.
 
-Consumers are encouraged to update their requirement to `"psr/simple-cache": "^1 || ^2"` at their earliest convenience.
+Consumers are encouraged to ensure they are sending the correct types and to update their requirement to `"psr/simple-cache": "^1 || ^2 || ^3"` at their earliest convenience.
