@@ -41,7 +41,7 @@ A Readiness Vote is called by the Editor of a proposed PSR in Draft Phase. Only 
 
 ## Acceptance Vote
 
-An Approval Vote is called by the Sponsor of a proposed PSR in the Review Phase. It follows Approval Vote procedures.
+An Acceptance Vote is called by the Sponsor of a proposed PSR in the Review Phase. It follows Approval Vote procedures.
 
 ## Errata Vote
 

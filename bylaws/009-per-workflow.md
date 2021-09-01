@@ -2,7 +2,7 @@
 
 ## Formation
 
-The goal of the Pre-Draft stage is to determine whether a majority of the PHP FIG is interested in establishing a PER Working Group for a proposed concept.
+The goal of the Formation stage is to determine whether a majority of the PHP FIG is interested in establishing a PER Working Group for a proposed concept.
 
 Interested parties may discuss a possible proposal, including possible implementations, by whatever means they feel is appropriate. That includes informal discussion on official FIG discussion mediums of whether or not the idea has merit and is within the scope of the PHP FIG's goals.
 

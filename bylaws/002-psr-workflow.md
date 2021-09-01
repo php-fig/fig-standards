@@ -44,7 +44,7 @@ If the Acceptance Vote passes, then the proposal officially becomes an accepted 
 
 ## Erratas
 
-If an incongruence or the need for clarifications arise after the PSR acceptance, it is still possible to amend the document with an errata. The editor of the PSR has the power to handle those situations, but any meaningful change has to go through an Errata vote before merging. Typos and any other edits that do not change the meaning of the text do not fall in this category, and can be merged by the Secretaries at will.
+If an incongruence or the need for clarifications arise after the PSR acceptance, it is still possible to amend the document with an errata. The Maintainer of the PSR has the power to handle those situations, but any meaningful change has to go through an Errata vote before merging. Typos and any other edits that do not change the meaning of the text do not fall in this category, and can be merged by the Secretaries at will.
 
 Errata clarifications may only be added to the meta document, not to the spec itself, as items in their own section.  The spec itself may only be minimally edited to point readers toward a relevant errata if appropriate.
 

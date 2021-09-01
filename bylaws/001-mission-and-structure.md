@@ -93,7 +93,7 @@ Multiple other Core Committee members may also be on the working group if they w
 
 A Limited Working Group consists of an Editor and at least two other individuals.  No Sponsor is required.  Any individual may be the Editor or member of a Limited Working Group, with the exception that the Editor may not also be a Secretary.
 
-### Working Group management
+### Working Group Management
 
 Working Groups are created by an Entrance Vote of the Core Committee.  The Entrance Vote includes the appointment of an Editor and, if applicable, the Sponsor.
 
@@ -109,7 +109,7 @@ The Secretaries will ensure that the Working Group is provided with necessary re
 
 ## Maintainers
 
-The Core Committee is ultimately responsible for all artifacts produced by the PHP FIG.  However, in the case of artifacts that are intended to change over time the Core Committee may delegate that responsibility to a Maintainer for one or more related artifacts.
+The Core Committee is ultimately responsible for all artifacts produced by the PHP FIG.  However, in the case of artifacts that are intended to change over time, the Core Committee may delegate that responsibility to a Maintainer for one or more related artifacts.
 
 Evolving artifacts follow Semantic Versioning.  If it is unclear if a given change would qualify as a bugfix vs a minor release, the Maintainer will assume minor release.
 
@@ -119,7 +119,7 @@ Evolving artifacts follow Semantic Versioning.  If it is unclear if a given chan
 
 The Editor of a Working Group is automatically the Maintainer of that Working Group's effort and output.
 
-The Maintainer of a given artifact is appointed by the Core Committee by Approval Vote.  Once a given artifact is created, the Maintainer may step down and name a replacement Maintainer at any time ith Implicit Approval.  If necessary, a Decision vote to appoint a new Maintainer may be held following a suitable nomination period.
+The Maintainer of a given artifact is appointed by the Core Committee by Approval Vote.  Once a given artifact is created, the Maintainer may step down and name a replacement Maintainer at any time with Implicit Approval.  If necessary, a Decision vote to appoint a new Maintainer may be held following a suitable nomination period.
 
 The Secretaries will ensure that the Maintainer has the necessary access and resources to develop the artifact, such as access to a GitHub repository, mailing list, chat room, or similar such tools.
 
