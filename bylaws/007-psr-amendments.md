@@ -80,4 +80,4 @@ Examples:
 3. Problems with GitHub Markdown
 
 [workflow bylaw]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
-[votes bylaw]: https://github.com/php-fig/fig-standards/blob/master/bylaws/003-votes.md
+[votes bylaw]: https://github.com/php-fig/fig-standards/blob/master/bylaws/004-votes.md
