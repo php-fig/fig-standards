@@ -23,8 +23,8 @@ Pros:
 
 Cons:
 
-* Extra overhead and developer effort to get the current time, not as simple as
-calling `time()` or `date()`.
+* Extra overhead and developer effort to get the current time;
+* Not as simple as calling `time()` or `date()`.
 
 ## 3. Scope
 
