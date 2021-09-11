@@ -2,11 +2,11 @@
 
 ## 1. Summary
 
-Getting the current time in applications is typically achieved using the `time()` or `microtime` functions, or by using a `new \DateTimeImmutable()` class.
+Getting the current time in applications is typically achieved using the `\time()` or `\microtime` functions, or by using a `new \DateTimeImmutable()` class.
 
 Due to the nature of time progression, these methods cannot be used when predictable results are needed, such as during testing.
 
-This `ClockInterface` aims to provide a standard way to consume time that allows interoperability, not only when consuming the "real" time, but also when predictable results need to be available. This avoids the need to use PHP extensions for testing or redeclaring the `time()` function in a local namespace.
+This `ClockInterface` aims to provide a standard way to consume time that allows interoperability, not only when consuming the "real" time, but also when predictable results need to be available. This avoids the need to use PHP extensions for testing or redeclaring the `\time()` function in a local namespace.
 
 ## 2. Why Bother?
 
@@ -24,7 +24,7 @@ Pros:
 Cons:
 
 * Extra overhead and developer effort to get the current time;
-* Not as simple as calling `time()` or `date()`.
+* Not as simple as calling `\time()` or `\date()`.
 
 ## 3. Scope
 
@@ -54,7 +54,7 @@ We have decided to formalize the existing practices used by several other packag
 
 Some of these provide interfaces and some rely on extending a clock class to mock the current time.
 
-These implementations all provide a `now()` method which returns a `DateTimeImmutable` object. As the `DateTimeImmutable` object allows retrieving the Unix timestamp, by calling `getTimestamp()` or `format('u.U')`, this interface does not define any special methods to retrieve a Unix timestamp or any other time information that is not available from a `DateTimeImmutable` object.
+These implementations all provide a `now()` method which returns a `\DateTimeImmutable` object. As the `\DateTimeImmutable` object allows retrieving the Unix timestamp, by calling `getTimestamp()` or `format('u.U')`, this interface does not define any special methods to retrieve a Unix timestamp or any other time information that is not available from a `\DateTimeImmutable` object.
 
 ### 4.2 Timezones
 
@@ -62,7 +62,7 @@ Time by now is defined by interaction of electromagnetic radiation with the exci
 
 This means that, for the sake of this PSR, the timezone is considered an implementation detail of the interface.
 
-It is up to the implementation to make sure that the timezone is handled according to the business logic of the application. That is either by making sure that a call to `now()` will only return a `DateTimeImmutable` object with a known timezone (implicit contract) or by explicitly changing the timezone to be correct for the application. This can be done by calling `setTimezone()` to create a new `DateTimeImmutable` object with the given timezone.
+It is up to the implementation to make sure that the timezone is handled according to the business logic of the application. That is either by making sure that a call to `now()` will only return a `\DateTimeImmutable` object with a known timezone (implicit contract) or by explicitly changing the timezone to be correct for the application. This can be done by calling `setTimezone()` to create a new `\DateTimeImmutable` object with the given timezone.
 
 These actions are not defined in this interface.
 
