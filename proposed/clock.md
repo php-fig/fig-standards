@@ -8,7 +8,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 interpreted as described in [RFC 2119][].
 
 The final implementations MAY decorate the objects with more
-functionality than the one proposed but they MUST implement the indicated
+functionality than the one proposed, but they MUST implement the indicated
 interfaces/functionality first.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
@@ -17,8 +17,8 @@ interfaces/functionality first.
 
 ## 1.1 Introduction
 
-Creating a standard way of accessing the clock would allow interopability
-during testing, when testing behavior that has timing based side effects.
+Creating a standard way of accessing the clock would allow interoperability
+during testing, when testing behavior that has timing-based side effects.
 Common ways to get the current time include calling `\time()` or 
 `new DateTimeImmutable('now')`. However, this makes mocking the current time
 impossible in some situations.
