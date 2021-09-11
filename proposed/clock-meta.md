@@ -35,10 +35,8 @@ calling `time()` or `date()`.
 
 ### 3.2 Non-Goals
 
-* This PSR does not provide a recommendation on how and when to use the concepts
-  described in this document, so it is not a coding standard;
-* This PSR does not provide a recommendation on how to handle timezones when 
-  retrieving the current time. This is left up to the implementation.
+* This PSR does not provide a recommendation on how and when to use the concepts described in this document, so it is not a coding standard;
+* This PSR does not provide a recommendation on how to handle timezones when retrieving the current time. This is left up to the implementation.
 * This PSR does not handle any scheduling methods like `sleep()` or `wait()` because such methods are not related to retrieving the current time.
 
 ## 4. Approaches
@@ -54,8 +52,7 @@ We have decided to formalize the existing practices used by several other packag
 
 (This list is not exhaustive!)
 
-Some of these provide interfaces and some rely on extending a clock class to mock the
-current time.
+Some of these provide interfaces and some rely on extending a clock class to mock the current time.
 
 These implementations all provide a `now()` method which returns a `DateTimeImmutable` object. As the `DateTimeImmutable` object allows retrieving the Unix timestamp, by calling `getTimestamp()` or `format('u.U')`, this interface does not define any special methods to retrieve a Unix timestamp or any other time information that is not available from a `DateTimeImmutable` object.
 
