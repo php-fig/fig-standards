@@ -32,11 +32,9 @@ Jan 1, 1970 00:00:00 UTC.
 
 ### 1.3 Usage
 
-There are some common usage patterns, which are outlined below:
-
 **Get the current timestamp**
 
-This should be done by using the `getTimestamp()` method on the returned `\DateTimeImmutable` like so:
+This should be done by using the `getTimestamp()` method on the returned `\DateTimeImmutable`:
 ```php
 $timestamp = $clock->now()->getTimestamp();
 ```
