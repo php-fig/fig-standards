@@ -17,7 +17,7 @@ interfaces/functionality first.
 
 ## 1.1 Introduction
 
-Creating a standard way of accessing the clock, would allow interopability
+Creating a standard way of accessing the clock would allow interopability
 during testing, when testing behavior that has timing based side effects.
 Common ways to get the current time include calling `\time()` or 
 `new DateTimeImmutable('now')`. However, this makes mocking the current time
@@ -45,7 +45,7 @@ $timestamp = $clock->now()->getTimestamp();
 
 ## 2.1 ClockInterface
 
-The clock interface defines the most basic operations to read the current time and date from the clock. 
+The clock interface defines the most basic operation to read the current time and date from the clock. 
 It MUST return the time as a `DateTimeImmutable`.
 
 ~~~php
