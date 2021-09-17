@@ -72,9 +72,9 @@ For being an early reviewer
 ## 8. Errata
 ### 8.1 Type additions
 
-The 2.0 release of the `psr/simple-cache` package includs scalar parameter types and increases the minimum PHP version to 8.0 respectively.  This is considered a backwards compatible change for implementing libraries as PHP 7.2 introduces covariance for parameters.  Any implementation of 1.0 is compatible with 2.0. For calling libraries, however, this reduces the types that they may pass (as previously any parameter that could be cast to string could be accepted) and as such requires incrementing the major version.
+The 2.0 release of the `psr/simple-cache` package includes scalar parameter types and increases the minimum PHP version to 8.0.  This is considered a backwards compatible change for implementing libraries as PHP 7.2 introduces covariance for parameters.  Any implementation of 1.0 is compatible with 2.0. For calling libraries, however, this reduces the types that they may pass (as previously any parameter that could be cast to string could be accepted) and as such requires incrementing the major version.
 
-The 3.0 release includes return types.  Return types break backwards compatibility for implementing libraries as PHP does not support return type covariance.
+The 3.0 release includes return types.  Return types break backwards compatibility for implementing libraries as PHP does not support return type widening.
 
 Implementing libraries **MAY** add return types to their own packages at their discretion, provided that:
 
