@@ -19,29 +19,47 @@ Rounding of quorums and majorities would occur such that:
 * A vote requiring a 50% majority with 10 or 11 votes cast would require 6 or more to be in favour to pass
 * A vote requiring a 50% majority with 12 or 13 votes cast would require 7 or more to be in favour to pass
 
+## Vote Types
+
+Most votes are held by the Core Committee, and fall into one of two categories: Approval or Decision.  Unless otherwise specified, any member of the Core Committee or a Secretary may call an Approval or Decision Vote.
+
+### Approval Vote
+
+An Approval Vote is a yes-or-no question, in which case the status quo (voting "no") produces a stable outcome. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+
+### Decision Vote
+
+A Decision Vote is used to select between two or more mutually-exclusive courses of action, in which case the status quo is not stable (e.g., a vacancy is being filled).  Only Core Committee members may vote.  A Decision Vote will be conducted using Single Transferable Vote with a single-winner.  Quorum is 50%.
+
 ## Entrance Vote
 
-An Entrance Vote is called by the Sponsor of a proposed PSR. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+An Entrance Vote is called by the Sponsor of a proposed PSR.  It follows Approval Vote procedures.
 
 ## Readiness Vote
 
 A Readiness Vote is called by the Editor of a proposed PSR in Draft Phase. Only members of the PSR's Working Group (including the Editor and Sponsor) may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
 
-## Approval Vote
+## Acceptance Vote
 
-An Approval Vote is called by the Sponsor of a proposed PSR in the Review Phase. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+An Acceptance Vote is called by the Sponsor of a proposed PSR in the Review Phase. It follows Approval Vote procedures.
 
 ## Errata Vote
 
-An Errata Vote is called by the Editor of an approved PSR, or a Secretary if the Editor is no longer available. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+An Errata Vote is called by the Editor of an approved PSR, or a Secretary if the Editor is no longer available. It follows Approval Vote procedures.
 
 ## Deprecation Vote
 
-A Deprecation Vote is called by any Core Committee Member. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+A Deprecation Vote is called by any Core Committee Member. It follows Approval Vote procedures.
 
 ## Abandonment Vote
 
-An Abandonment Vote is called by any Secretary or Core Committee Member. Only Core Committee members may vote, either For (+1), Against (-1), or Abstain (+0). Quorum is 50%. A 2/3 majority is required for passage.
+An Abandonment Vote is called by any Secretary or Core Committee Member. It follows Approval Vote procedures.
+
+## Implicit Approval
+
+At times, routine Working Group activity is subject to the approval of the Core Committee but in most cases is not sufficiently controversial to warrant a full vote.  In such cases, an individual may declare an Intent to take an action.  If no member of the Core Committee objects within seven days, the action is implicitly approved.
+
+Any member of the Core Committee may request during that seven-day period that the change be put to a vote.  If any member does so, the action is put to an Approval Vote or Decision Vote (as appropriate to the situation) to determine if it is accepted or not.
 
 ## Membership Vote
 
@@ -61,7 +79,7 @@ For the Core Committee vote, Core Committee members may vote, either For (+1), A
 
 For the Project Representative vote, Project Representatives may vote, either For (+1), Against (-1), or Abstain (+0). There is no quorum. A 50% majority is required for passage.
 
-Both the Core Committee and Project Representative votes must pass for the Expulsion Vote to be approved. If an individual is serving as both a Project Representative and Core Committee member, they are ineligible to vote in the Project Representative vote. The Project Representative that is the subject, or of whoms project is the subject, of the Expulsion Vote is not eligible to vote.
+Both the Core Committee and Project Representative votes must pass for the Expulsion Vote to be approved. If an individual is serving as both a Project Representative and Core Committee member, they are ineligible to vote in the Project Representative vote. The Project Representative that is the subject, or whose project is the subject, of the Expulsion Vote is not eligible to vote.
 
 ## Recall Vote
 

@@ -1,6 +1,6 @@
 # Mission Statement
 
-The PHP Framework Interoperability Group (The PHP FIG) aims to advance the PHP ecosystem and promote good standards by bringing together projects and people to collaborate. It develops and publicises standards, informed by real-world experience as well as research and experimentation by itself and others, to form PHP Standard Recommendations (PSRs).
+The PHP Framework Interoperability Group (The PHP FIG) aims to advance the PHP ecosystem and promote good standards by bringing together projects and people to collaborate. It develops and publicises standards, informed by real-world experience as well as research and experimentation by itself and others, to form PHP Standard Recommendations (PSRs), PHP Evolving Recommendations (PERs), and Auxiliary Resources (ARs).
 
 # Structure
 
@@ -71,16 +71,62 @@ Also, whilst not full members themselves, they have the ability to start any vot
 
 ## Working Groups
 
-Working Groups are principally responsible for the development of the content of a PSR. Members of a Working Group are expected to be actively engaged in the development of a PSR and in discussions relating to it.
+The majority of the PHP FIG's work is carried out by Working Groups, under the guidance and support of the Core Committee.  Members of a Working Group are expected to be actively engaged in the Working Group's efforts.
 
-Members of the general public may apply to join the Working Group at any time, subject to the approval of the Editor or Sponsor if, in their judgment, the applicant's experience and perspective would be particularly valuable to the development of the specification. Project Representatives or a proxy they specify may apply to join the Working Group at any time, unless objected to by the Editor or Sponsor if, in their judgement, the applicant has little value to offer the process and/or would be disruptive to the smooth functioning of the Working Group.
+Every Working Group has a single Editor, who is responsible for the smooth operation of the Working Group's mission and has final authority on the group's output.  Editors are appointed by the Core Committee.  Editors are responsible for managing the development of the Working Group's efforts; for representing the Working Group in discussions with the rest of the PHP FIG; for coordinating other contributors; and for working with other members of the Working Group and Core Committee as appropriate to see an effort through the appropriate process.  Any individual may be an Editor, provided they are not also a Secretary. If the Editor of a proposal is missing for more than 45 days without notice then the Core Committee may agree upon a new Editor. The Editor is the final authority on the output of a Working Group's efforts, unless otherwise noted.
 
-A Working Group member may be removed at any time by the Editor and Sponsor if, in their judgement, the individual has become inactive for more than 30 days or if the individual is disruptive to the smooth functioning of the Working Group.
+Members of the general public may apply to join the Working Group at any time, subject to the approval of the Editor, in their judgment, the applicant's experience and perspective would be particularly valuable to the development of the Working Group's efforts. A Working Group member may be removed at any time by the Editor if, in their judgment, the individual has become inactive for more than 30 days or if the individual is disruptive to the smooth functioning of the Working Group.
 
-### Editor
+Project Representatives or a proxy they specify may apply to join the Working Group at any time, unless objected to by the Editor if, in their judgment, the applicant has little value to offer the process and/or would be disruptive to the smooth functioning of the Working Group.
 
-The Editor of a PSR is an individual who is actively involved in managing and tracking a PSR as it is written. The Editor is responsible for managing the development of a PSR; for representing the PSR in discussions with the rest of the PHP FIG; for coordinating other contributors; and for working with the Sponsor to see the PSR through the review process. Any individual may be an Editor, provided they are not also a Secretary. If the Editor of a proposal is missing for more than 45 days without notice then the Sponsor and Core Committee may agree upon a new Editor. The Editor is the final authority on the content of a PSR while it is in Draft.
+An individual may be the Editor for more than one Working Group simultaneously.
 
-### Sponsor
+### Full Working Group
 
-A PSR must be sponsored by a member of the Core Committee. That individual is the Sponsor. The Sponsor may not also be the Editor. One person may be the sponsor on multiple PSRs and they provide a level of oversight on the PSR's drafting on behalf of the Core Committee, and representation of the PSR Working Group to the Core Committee. Multiple other Core Committee members may also be on the working group if they wish.
+A Full Working Group consists of an Editor, a Sponsor, and at least three other individuals.  A Sponsor must be a member of the Core Committee.  In a Full Working Group, the Editor and Sponsor share membership management responsibilities.
+
+An individual may be the Sponsor of more than one Working Group simultaneously.
+
+Multiple other Core Committee members may also be on the working group if they wish.
+
+### Limited Working Group
+
+A Limited Working Group consists of an Editor and at least two other individuals.  No Sponsor is required.  Any individual may be the Editor or member of a Limited Working Group, with the exception that the Editor may not also be a Secretary.
+
+### Working Group Management
+
+Working Groups are created by an Entrance Vote of the Core Committee.  The Entrance Vote includes the appointment of an Editor and, if applicable, the Sponsor.
+
+The Editor and, if applicable, the Sponsor may at any time notify the Core Committee that a given Working Group's task is complete.  At that point the Working Group is dissolved, by Implicit Approval.  If necessary, a Decision Vote to appoint a new Editor may be held.
+
+The Editor or Sponsor of a Working Group may step down at any time by informing the Core Committee via the mailing list.  If the departing individual specifies an intended replacement from the Working Group membership, that individual will assume the vacant role immediately, by Implicit Approval.  If necessary, a Decision Vote to appoint a new Editor or Sponsor may be held following a suitable nomination period.
+
+Should a Working Group be missing an Editor for 60 days; be missing a Sponsor for 60 days; have insufficient active members for 60 days; or show no signs of activity for six months, then the Core Committee may hold a Decision Vote to name a new Editor or Sponsor, following a suitable nomination process.  One of the options in that Decision Vote must be to dissolve the Working Group.  If no suitable candidates for Editor or Sponsor may be found, then the Working Group is automatically dissolved.
+
+If a Working Group is dissolved, a new Working Group covering the same scope may be formed at a later date through a new Entrance Vote.
+
+The Secretaries will ensure that the Working Group is provided with necessary resources to support their efforts, such as a dedicated GitHub repository, mailing list, chat room, or similar such tools.
+
+## Maintainers
+
+The Core Committee is ultimately responsible for all artifacts produced by the PHP FIG.  However, in the case of artifacts that are intended to change over time, the Core Committee may delegate that responsibility to a Maintainer for one or more related artifacts.
+
+Evolving artifacts follow Semantic Versioning.  If it is unclear if a given change would qualify as a bugfix vs a minor release, the Maintainer will assume minor release.
+
+* For changes that would qualify as bugfix releases, the Maintainer may issue a new release of the artifact at any time.
+* For changes that would qualify as minor releases, the Maintainer must notify the Core Committee via a post to the mailing list of an Intent to Merge a given change.  The Intent to Merge is subject to Implicit Approval with an Approval Vote if necessary.
+* For changes that would qualify as major releases, the release is subject to a mandatory Approval Vote from the Core Committee.
+
+The Editor of a Working Group is automatically the Maintainer of that Working Group's effort and output.
+
+The Maintainer of a given artifact is appointed by the Core Committee by Approval Vote.  Once a given artifact is created, the Maintainer may step down and name a replacement Maintainer at any time with Implicit Approval.  If necessary, a Decision vote to appoint a new Maintainer may be held following a suitable nomination period.
+
+The Secretaries will ensure that the Maintainer has the necessary access and resources to develop the artifact, such as access to a GitHub repository, mailing list, chat room, or similar such tools.
+
+## Artifacts
+
+The PHP FIG produces three primary forms of output artifact that are subject to established workflow processes.  This list is not exhaustive of the activity or publication that the PHP FIG may engage in.
+
+* A PHP Standard Recommendation (PSR) defines an interoperability standard that establishes a "contract" between providers and consumers.  The goal of any PSR is to encourage or facilitate cross-project collaboration and standardization.  PSRs are developed to a particular end-state and, once approved, are considered frozen in time to provide a stable and reliable target for implementers, with certain exceptions as specified in the PSR Amendments and PSR Evolution bylaws.  PSRs are developed by a Working Group.
+* A PHP Evolving Recommendation (PER) is a formal definition of best practices, references, guidelines, universal tooling, or tools to support the same.  They may evolve over time as the PHP language and ecosystem evolves.  PERs are developed by a Working Group.
+* Auxiliary Resources (ARs) are additional tools, code libraries, or examples that relate to or support a PSR or PER.  Examples include common partial implementations of a PSR or PER, "no-op" implementations, or testing utilities for PSR or PER implementations.  All ARs must directly relate to one or more PSRs or PERs.  An AR is developed by a Maintainer.
