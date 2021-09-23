@@ -48,7 +48,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Joomla]                          | Robert Deutz ([@rdeutz])              |
 | [Laminas Project]                 | Matthew Weier O'Phinney ([@mwop])     |
 | [Lithium]                         | Nate Abele ([@nateabele])             |
-| [Magento]                         | Anton Kril ([@AntonKril])             |
+| [Magento]                         | Igor Miniailo ([@iminyaylo])          |
 | [PEAR]                            | Chuck Burgess ([@ashnazg])            |
 | [Phalcon]                         | Nikolaos Dimopoulos ([@phalconphp])   |
 | [Phing]                           | Siad Ardroumli          |
@@ -126,7 +126,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@AlessandroLai]: https://twitter.com/AlessandroLai
 [@ambassadorawsum]: https://twitter.com/ambassadorawsum
 [@andrerom]: https://twitter.com/andrerom
-[@AntonKril]: https://twitter.com/AntonKril
 [@benedmunds]: https://twitter.com/benedmunds
 [@bennimack]: https://twitter.com/bennimack
 [@ashnazg]: https://twitter.com/ashnazg
@@ -157,6 +156,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@korvinszanto]: https://twitter.com/korvinszanto
 [@kriswallsmith]: https://twitter.com/kriswallsmith
 [@iansltx]: https://twitter.com/iansltx
+[@iminyaylo]: https://twitter.com/iminyaylo
 [@leofeyer]: https://twitter.com/leofeyer
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
