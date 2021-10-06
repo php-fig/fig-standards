@@ -70,7 +70,11 @@ For being an early reviewer
 [1]: https://docs.google.com/spreadsheet/ccc?key=0Ak2JdGialLildEM2UjlOdnA4ekg3R1Bfeng5eGlZc1E#gid=0
 
 ## 8. Errata
-### 8.1 Type additions
+### 8.1 Throwable
+
+The 2.0 release of the `psr/simple-cache` package updates `Psr\SimpleCache\CacheException` to extend `\Throwable`.  This is considered a backwards compatible change for implementing libraries as of PHP 7.4.
+
+### 8.2 Type additions
 
 The 2.0 release of the `psr/simple-cache` package includes scalar parameter types and increases the minimum PHP version to 8.0.  This is considered a backwards compatible change for implementing libraries as PHP 7.2 introduces covariance for parameters.  Any implementation of 1.0 is compatible with 2.0. For calling libraries, however, this reduces the types that they may pass (as previously any parameter that could be cast to string could be accepted) and as such requires incrementing the major version.
 
