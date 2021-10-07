@@ -70,6 +70,7 @@ For being an early reviewer
 [1]: https://docs.google.com/spreadsheet/ccc?key=0Ak2JdGialLildEM2UjlOdnA4ekg3R1Bfeng5eGlZc1E#gid=0
 
 ## 8. Errata
+
 ### 8.1 Throwable
 
 The 2.0 release of the `psr/simple-cache` package updates `Psr\SimpleCache\CacheException` to extend `\Throwable`.  This is considered a backwards compatible change for implementing libraries as of PHP 7.4.
