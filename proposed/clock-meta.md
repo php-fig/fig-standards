@@ -137,3 +137,11 @@ This document stems from the work of many people in previous years, we recognize
 
  * 
 _**Note:** Order descending chronologically._
+
+## 9. FAQ
+
+### Why not simply convert all times to UTC?
+
+Timezones change! Regularily! And unforseeably! So when you are converting a DateTime in the future to UTC you are using the offset that is known today to convert from the local time to UTC. When that offset changes between now and the datetime then you have no chance to adapt to that. 
+An Example: in  summer 2016 you scheduled an event in turkey for 14:00 on the 25th of December 2016. With the information known in summer 2016 you would calculate that that is 12:00 UTC. What you couldn't imagine is, that the Government decided later that year to stay on daylight saving time and not go back to standard time for the winter. So when the time comes you would show up at 12:00 UTC. With the then relevant timezone information that would be 15:00 local time. But your appointment was at 14:00 local time. Would you have *not* converted to UTC you would have stored `14:00 Asia/Istanbul` and you would have been on time.
+**Note:** While this might only seem relevant for future datetimes it illustrates that transposiing between timezones can cause much more confusion than just keeping and using the existing timezone information. 
