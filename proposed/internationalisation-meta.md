@@ -2,17 +2,23 @@
 
 ## 1. Summary
 
+Developers of components that are unattached to specific frameworks often find themselves in need of displaying a message to the user of the web application.  However, being as they are not a component of a specific framework - their options for making these messages localisable is limited.  In many cases, developers will make no attempt to pass these messages through a localisation layer.
 
-
-## 2. Why Bother?
+To resolve this issue and encourage the localization of libraries, a standard method for translating and transforming messages is necessary.
 
 ## 3. Scope
 
 ### 3.1. Goals
 
+* Provide a method by which an unattached component may display a message in a language other than the one in which the component was written in.
+
 ### 3.2. Non-Goals
 
+* This PSR does not provide a standard for adding translations of existing messages to a data store (as a language pack may).
+
 ## 4. Approaches
+
+To solve this, we currently aim to create an interface that an framework-unaffiliated component can rely on for transforming a message key of some sort with context into a translated and formatted string
 
 ## 5. People
 
@@ -29,3 +35,5 @@
 * Ben Ramsey
 
 ## 6. Votes
+
+* Entrance Vote (TBD)
