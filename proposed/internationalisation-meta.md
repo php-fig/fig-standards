@@ -1,8 +1,8 @@
-# Internationalism Meta Document
+# Internationalization Meta Document
 
 ## 1. Summary
 
-Developers of components that are unattached to specific frameworks often find themselves in need of displaying a message to the user of the web application.  However, being as they are not a component of a specific framework - their options for making these messages localisable is limited.  In many cases, developers will make no attempt to pass these messages through a localisation layer.
+Developers of components that are not coupled to any specific framework often find themselves in need of displaying a message to the user of the web application. However, being as they are not a component of a specific framework - their options for making these messages localisable is limited. In many cases, developers will make no attempt to pass these messages through a localization layer.
 
 To resolve this issue and encourage the localization of libraries, a standard method for translating and transforming messages is necessary.
 
@@ -10,7 +10,7 @@ To resolve this issue and encourage the localization of libraries, a standard me
 
 ### 3.1. Goals
 
-* Provide a method by which an unattached component may display a message in a language other than the one in which the component was written in.
+* Provide a method for an indepedent component to display a message in a language other than the one in which the component was written in.
 
 ### 3.2. Non-Goals
 
@@ -18,7 +18,7 @@ To resolve this issue and encourage the localization of libraries, a standard me
 
 ## 4. Approaches
 
-To solve this, we currently aim to create an interface that an framework-unaffiliated component can rely on for transforming a message key of some sort with context into a translated and formatted string
+To solve this, we currently aim to create an interface that an framework-independent component can rely on for transforming a message key and context into a translated and formatted string.
 
 ## 5. People
 
