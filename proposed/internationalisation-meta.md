@@ -10,7 +10,7 @@ To resolve this issue and encourage the localization of libraries, a standard me
 
 ### 3.1. Goals
 
-* Provide a method for an indepedent component to display a message in a language other than the one in which the component was written in.
+* Provide a method for an independent component to display a message in a language other than the one in which the component was written in.
 
 ### 3.2. Non-Goals
 
