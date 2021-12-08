@@ -16,6 +16,7 @@ To resolve this issue and encourage the localization of libraries, a standard me
 
 * This PSR does not provide a standard for the storage and management of translatable items and their translations. That is, this PSR is about denoting that a message is translateable - not providing the specific translations for it.
 * This PSR does not provide a mechanism for collecting translatable items from a component's source code.
+* This PSR only addresses text present in PHP code.  It is not concerned with the translation of user content stored in a database or similar data store.
 
 ## 4. Approaches
 
