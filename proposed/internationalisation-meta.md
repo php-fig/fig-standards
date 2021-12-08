@@ -10,15 +10,16 @@ To resolve this issue and encourage the localization of libraries, a standard me
 
 ### 3.1. Goals
 
-* Provide a method for an independent component to display a message in a language other than the one in which the component was written in.
+* Provide a method for an independent component to display a message in a language other than the one in which the component was written.
 
 ### 3.2. Non-Goals
 
-* This PSR does not provide a standard for adding translations of existing messages to a data store (as a language pack may).
+* This PSR does not provide a standard for the storage and management of translatable items and their translations.
+* This PSR does not provide a mechanism for collecting translatable items from a component's source code
 
 ## 4. Approaches
 
-To solve this, we currently aim to create an interface that an framework-independent component can rely on for transforming a message key and context into a translated and formatted string.
+To solve this, we currently aim to create an interface that a framework-independent component can rely on for transforming a message key and context into a translated and formatted string.
 
 ## 5. People
 
