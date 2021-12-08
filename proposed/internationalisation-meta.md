@@ -2,7 +2,7 @@
 
 ## 1. Summary
 
-Developers of components that are not coupled to any specific framework often find themselves in need of displaying a message to the user of the web application. However, being as they are not a component of a specific framework - their options for making these messages localisable is limited. In many cases, developers will make no attempt to pass these messages through a localization layer.
+Developers of components that are not coupled to any specific framework often find themselves in need of displaying a message to the user of the web application. However, being as they are not a component of a specific framework - their options for making these messages localizable is limited. In many cases, developers will make no attempt to pass these messages through a localization layer.
 
 To resolve this issue and encourage the localization of libraries, a standard method for translating and transforming messages is necessary.
 
