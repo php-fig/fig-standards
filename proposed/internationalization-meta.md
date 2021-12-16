@@ -38,4 +38,4 @@ To solve this, we currently aim to create an interface that a framework-independ
 
 ## 6. Votes
 
-* Entrance Vote (TBD)
+* [Entrance Vote](https://groups.google.com/g/php-fig/c/AgzdtXS_iU0)
