@@ -142,10 +142,27 @@ _**Note:** Order descending chronologically._
 
 ### Why not simply convert all times to UTC?
 
-As timezones are based on political definitions. Therefore they change: regularily and unforseeably. And sometimes even
-for past times. So when you are converting a DateTime to UTC you are using the offset that is known today 
-to convert from the local time to UTC. When that offset changes due to political decisions then you have no chance to 
-adapt to that. 
+`now()` should be considered to be the equivalent of checking your wallclock at home or your wristwatch. 
+It usually gives you the current point in time at your current location. And from that point you can 
+then – if you need to – transpose to other timezones. That makes life much easier than setting your
+wallclock to UTC and having to transpose every time you want to communicate with someone.
+
+As this interface is a generic interface it can not impose a certain usecase and therefore needs to 
+be as open as possible. That means to allow people to use any DateTimeImmutable object possible.
+And that also means to make sure users understand the consequence of that. Which is that it is 
+the users requirement to make sure the returned DateTimeImmutable object conforms to their requirements.
+
+Much as you would tell someone calling you on the phone your local time when they ask you for the time. 
+And if they have some special requirements they need to make sure that they handle the information
+you gave them properly.
+
+Besides that it has shown that transposing times is usually error prone and should be avoided at 
+all cost and only done if absolutely necessary. 
+
+That is due to timezones being based on political definitions. Therefore they change: regularily and unforseeably.
+And sometimes even for past times. So when you are converting a DateTime to UTC you are using the 
+offset that is known today to convert from the local time to UTC. When that offset changes due
+to political decisions then you have no chance to adapt to that. 
 
 An Example: In  summer 2016 you scheduled an event in turkey for 14:00 on the 25th of December 2016. 
 With the information known in summer 2016 you would calculate that that is 12:00 UTC. What you couldn't imagine is, 
@@ -161,12 +178,6 @@ and using the existing timezone information. And as there have been requests to 
 concern your current conversion from local time to UTC. So to avoid confusion is to avoid transposing between timezones
 as much as possible and save it to the last possible moment.
 
-`now()` should be considered to be the equivalent of checking your wallclock at home or your wristwatch. It usually 
-gives you the current point in time at your current location. And from that point you can then – if you 
-need to – transpose to other timezones. That makes life much easier than setting your wallclock to UTC and 
-having to transpose every time you want to communicate with someone. 
 
-As this interface is a generic interface it can not impose a certain usecase and therefore needs to be as open
-as possible. That means to allow people to use any DateTimeImmutable object possible. And that also means to 
-make sure users understand the consequence of that. Which is that it is the users requirement to make sure the 
-returned DateTimeImmutable object conforms to their requirements. 
+
+
