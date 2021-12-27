@@ -31,6 +31,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  |
 | 20  | [Clock][psr20]                       | Chris Seufert                  |
+| 21  | [Internationalization][psr21]        | Navarr Barnier                 |
 
 ### Abandoned
 
@@ -72,6 +73,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Accepted   |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Draft      |
 | 20  | [Clock][psr20]                       | Chris Seufert                  | Draft      |
+| 21  | [Internationalization][psr21]        | Navarr Barnier                 | Draft      |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
 [psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
@@ -95,3 +97,4 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr18]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-18-http-client.md
 [psr19]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
 [psr20]: https://github.com/php-fig/fig-standards/blob/master/proposed/clock.md
+[psr21]: https://github.com/php-fig/fig-standards/blob/master/proposed/internationalization.md
