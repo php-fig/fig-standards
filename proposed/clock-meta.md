@@ -140,44 +140,34 @@ _**Note:** Order descending chronologically._
 
 ## 9. FAQ
 
-### Why not simply convert all times to UTC?
+### Why not simply use UTC?
 
-`now()` should be considered to be the equivalent of checking your wallclock at home or your wristwatch. 
-It usually gives you the current point in time at your current location. And from that point you can 
-then – if you need to – transpose to other timezones. That makes life much easier than setting your
-wallclock to UTC and having to transpose every time you want to communicate with someone.
+There are different reasons why this interface does not enforce a specific timezone.
 
-As this interface is a generic interface it can not impose a certain usecase and therefore needs to 
-be as open as possible. That means to allow people to use any DateTimeImmutable object possible.
-And that also means to make sure users understand the consequence of that. Which is that it is 
-the users requirement to make sure the returned DateTimeImmutable object conforms to their requirements.
+For one thing there is a purely technical reason. The interface provides an explicit contract. Part of this 
+contract is the value that is returned by the `now`-function. The only thing that currently can explicitly 
+be enforced on the language level is, that the returned value is of type `DateTimeImmutable`. There 
+currently is no way to enforce that this object has a certain timezone as its value. So from a language 
+level perspective there is no way to explicitly enforce a certain timezone in the returned object.
 
-Much as you would tell someone calling you on the phone your local time when they ask you for the time. 
-And if they have some special requirements they need to make sure that they handle the information
-you gave them properly.
+On the other hand there is also a logical reason. The explicit contract should be usable in all situations
+where one needs a way to retrieve the current time. And on the contract level we should not make an 
+assumption about what the caller might need. So would the contract define that only UTC is returned, then 
+use-cases that do require something else will have to explicitly work around that or find other ways of 
+handling the problem the contract tries to solve as the contract does not fit the needs. This is different 
+from the issue of i.e. immutability which can also not be enforced on the language level but which is
+necessary to adhere to other calls on the contract. IN the case of the `clock`-interface there will be no 
+other calls.
 
-Besides that it has shown that transposing times is usually error prone and should be avoided at 
-all cost and only done if absolutely necessary. 
+And most important of all, the explicit contract provided by this interface does not reduce a users
+possibilities to use an implicit contract within their application, that defines that the interface 
+will only return `DateTimeImmutable`s with a specific timezone set. And whether that is `UTC` or reduce
+`Antarctica/Troll` is completely up to the user. 
 
-That is due to timezones being based on political definitions. Therefore they change: regularily and unforseeably.
-And sometimes even for past times. So when you are converting a DateTime to UTC you are using the 
-offset that is known today to convert from the local time to UTC. When that offset changes due
-to political decisions then you have no chance to adapt to that. 
+The explicit contract that is defined by the interface does not limit a user in what they are doing. It 
+tries to solve the problem of getting the current time in a reliable way. Which view on the current time 
+that is, is not part of the explicit contract.
 
-An Example: In  summer 2016 you scheduled an event in turkey for 14:00 on the 25th of December 2016. 
-With the information known in summer 2016 you would calculate that that is 12:00 UTC. What you couldn't imagine is, 
-that the Government decided later that year to stay on daylight saving time and not go back to standard time for the 
-winter. So when the time comes you would show up at 12:00 UTC. With the then relevant timezone information that would 
-be 15:00 local time. But your appointment was at 14:00 local time. Would you have *not* converted to UTC you would 
-have stored `14:00 Asia/Istanbul` and you would have been on time. 
-
-**Note:** While this might only seem relevant for
-future datetimes it illustrates that transposing between timezones can cause much more confusion than just keeping 
-and using the existing timezone information. And as there have been requests to the timezone database maintainers like
-"We changed from offset x to offset y 2 weeks ago" or "we will change from offset x to offset y tomorrow" that can also
-concern your current conversion from local time to UTC. So to avoid confusion is to avoid transposing between timezones
-as much as possible and save it to the last possible moment.
-
-
-
+So all in all: This interface tries to be as open as possible while at the same time being as 
+strict as necessary.
 
