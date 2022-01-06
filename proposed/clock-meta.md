@@ -154,7 +154,7 @@ On the other hand, there is also a logical reason. The explicit contract should 
 where one needs a way to retrieve the current time. And on the contract level we should not make an 
 assumption about what the caller might need. So would the contract define that only UTC is returned, then 
 use-cases that do require something else will have to explicitly work around that or find other ways of 
-handling the problem the contract tries to solve as the contract does not fit the needs. This is different 
+handling the problem, the contract tries to solve as the contract does not fit the needs. This is different 
 from the issue of i.e. immutability which can also not be enforced on the language level but which is
 necessary to adhere to other calls on the contract. IN the case of the `clock`-interface there will be no 
 other calls.
