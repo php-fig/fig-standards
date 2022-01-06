@@ -150,7 +150,7 @@ be enforced on the language level is, that the returned value is of type `DateTi
 currently is no way to enforce that this object has a certain timezone as its value. So from a language 
 level perspective there is no way to explicitly enforce a certain timezone in the returned object.
 
-On the other hand there is also a logical reason. The explicit contract should be usable in all situations
+On the other hand, there is also a logical reason. The explicit contract should be usable in all situations
 where one needs a way to retrieve the current time. And on the contract level we should not make an 
 assumption about what the caller might need. So would the contract define that only UTC is returned, then 
 use-cases that do require something else will have to explicitly work around that or find other ways of 
