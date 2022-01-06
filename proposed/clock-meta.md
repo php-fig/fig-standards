@@ -168,6 +168,6 @@ The explicit contract that is defined by the interface does not limit a user in 
 tries to solve the problem of getting the current time in a reliable way. Which view on the current time 
 that is, is not part of the explicit contract.
 
-So all in all: This interface tries to be as open as possible while at the same time being as 
+So, all in all: This interface tries to be as open as possible while at the same time being as 
 strict as necessary.
 
