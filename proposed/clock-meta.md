@@ -159,7 +159,7 @@ from the issue of i.e., immutability which can also not be enforced on the langu
 necessary to adhere to other calls on the contract. IN the case of the `clock`-interface there will be no 
 other calls.
 
-And most important of all, the explicit contract provided by this interface does not reduce a users
+And most important of all, the explicit contract provided by this interface does not reduce a user’s
 possibilities to use an implicit contract within their application, that defines that the interface 
 will only return `DateTimeImmutable`s with a specific timezone set. And whether that is `UTC` or reduce
 `Antarctica/Troll` is completely up to the user. 
