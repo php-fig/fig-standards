@@ -37,7 +37,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [AzuraCast]                       | Felix Bachmann ([@VaalynDev])         |
 | [CakePHP]                         | Larry Masters ([@PhpNut])             |
 | [Composer]                        | Jordi Boggiano ([@seldaek])           |
-| [concrete5]                       | Korvin Szanto ([@korvinszanto])       |
+| [Concrete CMS]                    | Korvin Szanto ([@korvinszanto])       |
 | [Contao Open Source CMS]          | Leo Feyer ([@leofeyer])               |
 | [eZ Publish]                      | Andre Romcke ([@andrerom])            |
 | [Horde]                           | Jan Schneider ([@yunosh])             |
@@ -196,7 +196,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [AzuraCast]: https://www.azuracast.com/
 [CakePHP]: http://cakephp.org
 [Composer]: http://getcomposer.org
-[concrete5]: http://www.concrete5.org
+[Concrete CMS]: http://www.concretecms.org
 [Contao Open Source CMS]: https://contao.org
 [Doctrine]: http://www.doctrine-project.org
 [Drupal]: http://drupal.org
