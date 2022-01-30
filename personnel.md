@@ -7,8 +7,8 @@
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2022-08-31 |
-| Buster Neece ([@SlvrEagle23])         | 2020-01-25 - 2022-01-31 |
 | Vincent de Lau ([@vdelau])            | 2021-06-25 - 2023-05-30 |
+| Steve Winter ([@SteveWinterNZ])       | 2022-01-30 - 2024-01-28 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -20,15 +20,15 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Larry Garfield ([@Crell])             | 2016-12-24 - 2023-05-30 |
 | Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2023-05-30 |
 | Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2022-08-31 |
-| Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2022-01-31 |
-| Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2022-01-31 |
+| Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2024-01-28 |
+| Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2024-01-28 |
 | Chuck Burgess ([@ashnazg])            | 2018-08-26 - 2022-08-31 |
 | Woody Gilk ([@shadowhand])            | 2019-05-26 - 2022-08-31 |
-| Enrico Zimuel ([@ezimuel])            | 2020-01-25 - 2022-01-31 |
-| Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
+| Enrico Zimuel ([@ezimuel])            | 2020-01-25 - 2024-01-28 |
 | Ben Edmunds ([@benedmunds])           | 2020-08-31 - 2022-08-31 |
 | Michelle Sanver ([@michellesanver])   | 2021-06-25 - 2023-05-30 |
 | Alessandro Chitolina ([@alekitto])    | 2021-06-25 - 2023-05-30 |
+| Ken Guest ([@kenguest])               | 2022-01-30 - 2024-01-28 |
 
 ### Member Projects
 
@@ -88,7 +88,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
 | Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-25 |
 | Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
-
+| Buster Neece ([@SlvrEagle23])         | 2020-01-25 - 2022-01-31 |
 
 ### Former Core Committee Members
 
@@ -103,6 +103,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Beau Simensen ([@beausimensen])       | 2016-12-24 - 2020-08-31 |
 | Michael Cullum ([@michaelcullumuk])   | 2018-01-28 - 2020-01-25 |
 | Matteo Beccati ([@mbeccati])          | 2019-05-26 - 2021-05-30 |
+| Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
 
 ### Former Member Projects
 
@@ -157,6 +158,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@kriswallsmith]: https://twitter.com/kriswallsmith
 [@iansltx]: https://twitter.com/iansltx
 [@iminyaylo]: https://twitter.com/iminyaylo
+[@kenguest]: https://twitter.com/kenguest
 [@leofeyer]: https://twitter.com/leofeyer
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
@@ -234,6 +236,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Slim]: http://www.slimframework.com
 [Solar]: http://solarphp.com
 [Stash]: http://www.tedivm.com/stash
+[SteveWinterNZ]: http://www.tedivm.com/SteveWinterNZ
 [Stormpath PHP SDK]: http://www.stormpath.com
 [SugarCRM]: http://developers.sugarcrm.com/wordpress
 [Symfony]: http://www.symfony.com
