@@ -181,6 +181,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@shadowhand]: https://twitter.com/shadowhand
 [@shefik_info]: https://twitter.com/shefik_info
 [@SlvrEagle23]: https://twitter.com/SlvrEagle23
+[@SteveWinterNZ]: http://www.tedivm.com/SteveWinterNZ
 [@storresi]: https://twitter.com/storresi
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
@@ -236,7 +237,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Slim]: http://www.slimframework.com
 [Solar]: http://solarphp.com
 [Stash]: http://www.tedivm.com/stash
-[SteveWinterNZ]: http://www.tedivm.com/SteveWinterNZ
 [Stormpath PHP SDK]: http://www.stormpath.com
 [SugarCRM]: http://developers.sugarcrm.com/wordpress
 [Symfony]: http://www.symfony.com
