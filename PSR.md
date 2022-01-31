@@ -44,20 +44,20 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 ### Deprecated
 
-| Num | Title                                |
-|:---:|--------------------------------------|
-| 0   | [Autoloading Standard][psr0]         |
-| 2   | [Coding Style Guide][psr2]           |
+| Num | Title                                |     |
+|:---:|--------------------------------------|-----|
+| 0   | [Autoloading Standard][psr0]         |     |
+| 2   | [Coding Style Guide][psr2]           |     |
 
 ## Numerical Index
 
-| Num | Title                                | Editor(s)                      | Status     |
+| Num | Title                                | Editor(s) / Maintainers        | Status     |
 |:---:|--------------------------------------|--------------------------------|------------|
-| 0   | [Autoloading Standard][psr0]         | Matthew Weier O'Phinney        | Deprecated |
-| 1   | [Basic Coding Standard][psr1]        | Paul M. Jones                  | Accepted   |
-| 2   | [Coding Style Guide][psr2]           | Paul M. Jones                  | Deprecated |
+| 0   | [Autoloading Standard][psr0]         |                                | Deprecated |
+| 1   | [Basic Coding Standard][psr1]        | _vacant_                       | Accepted   |
+| 2   | [Coding Style Guide][psr2]           |                                | Deprecated |
 | 3   | [Logger Interface][psr3]             | Jordi Boggiano                 | Accepted   |
-| 4   | [Autoloading Standard][psr4]         | Paul M. Jones                  | Accepted   |
+| 4   | [Autoloading Standard][psr4]         | _vacant_                       | Accepted   |
 | 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  | Draft      |
 | 6   | [Caching Interface][psr6]            | Larry Garfield                 | Accepted   |
 | 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        | Accepted   |
