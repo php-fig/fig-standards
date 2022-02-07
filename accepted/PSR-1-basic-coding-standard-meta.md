@@ -1,4 +1,4 @@
-# PSR-0 Meta Document
+# PSR-1 Meta Document
 
 ## 1. Summary
 
