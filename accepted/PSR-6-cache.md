@@ -64,7 +64,7 @@ characters and encodings or longer lengths, but must support at least that
 minimum.  Libraries are responsible for their own escaping of key strings
 as appropriate, but MUST be able to return the original unmodified key string.
 The following characters are reserved for future extensions and MUST NOT be
-supported by implementing libraries: `{}()/\@:`
+supported by implementing libraries: `{}()/\@`
 
 *    **Hit** - A cache hit occurs when a Calling Library requests an Item by key
 and a matching value is found for that key, and that value has not expired, and
