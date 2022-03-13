@@ -35,13 +35,13 @@ Note that if the upgrade path causes the consumers or implementers to maintain m
 
 Since releasing new versions of the interfaces MUST NOT alter the PSR in its behavior, those releases can be voted in with the same process as errata changes. The new releases MUST be declared and embedded with a brief explanation and a link in the PSR document, like in the following example:
 
-> \`\`\`php
+```php
 interface ContainerInterface
 {
-> // code snippet here
+    // code snippet here
 }
-\`\`\`
->
+```
+
 > Since [psr/container version 1.1](https://packagist.org/packages/psr/container#1.1.0), the above interface has been updated to add argument type hints.
 
 In the example above, the last line is indicative of what should be added to the specification.
