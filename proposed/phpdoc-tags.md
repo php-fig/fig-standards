@@ -30,7 +30,7 @@ PSR-19: PHPDoc tags
   - [5.14. @since](#514-since)
   - [5.15. @throws](#515-throws)
   - [5.16. @todo](#516-todo)
-  - [5.17. @uses](#517-uses)
+  - [5.17. @uses and @used-by](#517-uses-and-used-by)
   - [5.18. @var](#518-var)
   - [5.19. @version](#519-version)
 
@@ -894,7 +894,7 @@ function count()
 }
 ```
 
-### 5.17. @uses
+### 5.17. @uses and @used-by
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -902,10 +902,11 @@ Indicates whether the current "Structural Element" consumes the
 #### Syntax
 
     @uses [file | "FQSEN"] [<description>]
+    @used-by [file | "FQSEN"] [<description>]
 
 #### Description
 
-The `@uses` tag describes whether any part of the associated "Structural Element"
+The @uses tag describes whether any part of the associated "Structural Element"
 uses, or consumes, another "Structural Element" or a file that is situated in
 the current project.
 
@@ -914,15 +915,15 @@ specific element by appending a double colon and providing the name of that
 element (also called the "FQSEN").
 
 Files that are contained in this project can be referred to by this tag. This
-can be used, for example, to indicate a relationship between a Controller and
-a template file (as View).
+can be used, for example, to indicate a relationship between a `Controller` and
+a template file (as `View`).
 
 This tag MUST NOT be used to indicate relations to elements outside of the
 system, so URLs are not usable. To indicate relations with outside elements the
 @see tag can be used.
 
 Applications consuming this tag, such as generators, are RECOMMENDED to provide
-a `@used-by` tag on the destination element. This can be used to provide a
+a @used-by tag on the destination element. This can be used to provide a
 bi-directional experience and allow for static analysis.
 
 #### Examples
@@ -933,17 +934,35 @@ bi-directional experience and allow for static analysis.
  */
 function initializeXml()
 {
-    <...>
+    return new \SimpleXMLElement('root');
 }
 ```
 
 ```php
 /**
- * @uses MyView.php
+ * @uses myView.php
  */
 function executeMyView()
 {
+    include __DIR__ . '/myView.php';
+}
+```
+
+```php
+/**
+ * @used-by bar()
+ */
+function foo()
+{
     <...>
+}
+
+/**
+ * @uses foo()
+ */
+function bar()
+{
+    foo();
 }
 ```
 
