@@ -507,21 +507,23 @@ The @method allows a class to know which 'magic' methods are callable.
 
 #### Syntax
 
-    @method [return type] [name]([type] [parameter], [...]) [description]
+    @method [static] [name]([type] [parameter], [...])[: return type] [description]
 
 #### Description
 
-The @method tag is used in situation where a class contains the `__call()` magic
-method and defines some definite uses.
+The @method tag is used in situation where a class contains the `__call()` or 
+`__callStatic()` magic method and defines some definite uses.
 
-An example of this is a child class whose parent has a `__call()` to have dynamic
-getters or setters for predefined properties. The child knows which getters and
-setters need to be present but relies on the parent class to use the `__call()`
-method to provide it. In this situation, the child class would have a @method
-tag for each magic setter or getter method.
+An example of this is a child class whose parent has a `__call()` or
+`__callStatic` to have dynamic getters or setters for predefined properties.
+The child knows which getters and setters need to be present but relies on the
+parent class to use the `__call()` or `__callStatic()` method to provide it.
+In this situation, the child class would have a @method tag for each magic
+setter or getter method.
 
 The @method tag allows the author to communicate the type of the arguments and
-return value by including those types in the signature.
+return value by including those types in the signature. The structure of the
+@method tag matches the current PHP method syntax.
 
 When the intended method does not have a return value then the return type MAY
 be omitted; in which case 'void' is implied.
@@ -541,9 +543,11 @@ class Parent
 }
 
 /**
- * @method setInteger(int $integer)
- * @method string getString()
- * @method void setString(int $integer)
+ * @method getString(): string
+ * @method setInteger(int $integer): void
+ * @method setString(int $integer)
+ * @method static setStaticString(int $integer)
+ * @method static setStaticStringFluid(int $integer): static
  */
 class Child extends Parent
 {
