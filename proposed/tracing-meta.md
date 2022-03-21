@@ -25,7 +25,6 @@ This standard aims to create an intentionally minimalist set of interfaces that 
 ## 3 Approaches
 
 To fulfil the requirement of most APM tools, this PSR will be modeled loosely on the OpenTelemetry (Trace).
-This will involve 
 We aim to allow the majority of APM tools to use the PSR interfaces without any backwards incompatible changes.
 
 
