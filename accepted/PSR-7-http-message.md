@@ -75,6 +75,8 @@ referring to these interfaces.
 
 ### 1.2 HTTP Headers
 
+[cf. [errata](PSR-7-http-message-meta#71-validation-of-header-names-and-values)]
+
 #### Case-insensitive header field names
 
 HTTP messages include case-insensitive header field names. Headers are retrieved
