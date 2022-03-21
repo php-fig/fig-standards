@@ -38,7 +38,7 @@ We aim to allow the majority of APM tools to use the PSR interfaces without any 
 
 ### Working Group Members
 * Alex Bouma
-* Ben.e
+* Ben Edmunds
 * Brett McBride
 * Timo Michna
 
