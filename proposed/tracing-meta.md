@@ -24,9 +24,11 @@ This standard aims to create an intentionally minimalist set of interfaces that 
 
 ## 3 Approaches
 
-To fulfil the requirement of most APM tools, this PSR will be modeled loosely on the OpenTelemetry (Trace).
+To fulfil the requirement of most APM tools, this PSR will be loosely modeled on the [OpenTelemetry Tracing Specification][OTelTrace] and [Tracing API][OtelTraceApi].\
 We aim to allow the majority of APM tools to use the PSR interfaces without any backwards incompatible changes.
 
+[OtelTrace]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#tracing-signal
+[OtelTraceApi]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md
 
 ## 4. People
 
