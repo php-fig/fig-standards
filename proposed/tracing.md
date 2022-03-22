@@ -1,4 +1,4 @@
-# Common Interfaces and Functionality for Interoperability of Tracing for Application Performance Monitoring (APM)
+# Application Tracing
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMEND", "MAY", and "OPTIONAL" in this document are to
