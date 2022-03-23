@@ -5,7 +5,7 @@
 Application performance monitoring (APM) tools are becoming increasingly popular, however, the lack of formal interfaces is holding back the ecosystem.
 Whilst developers are inherently free to use whichever tools suit their use-cases, this is not the case for framework and library creators/maintainers.
 
-This standard aims to create an intentionally minimalist set of interfaces that can be used to provide tracing signals to 3rd party library's in a unified manner.
+This standard aims to create an intentionally minimalist set of interfaces that can be used to provide tracing signals to 3rd party libraries in a unified manner.
 
 ## 3. Scope
 
@@ -25,7 +25,7 @@ This standard aims to create an intentionally minimalist set of interfaces that 
 ## 3 Approaches
 
 To fulfil the requirement of most APM tools, this PSR will be loosely modeled on the [OpenTelemetry Tracing Specification][OTelTrace] and [Tracing API][OtelTraceApi].\
-We aim to allow the majority of APM tools to use the PSR interfaces a minimum backwards incompatible changes as to encourage adoption.
+We aim to allow the majority of APM tools to use the PSR interfaces with minimum backwards incompatible changes to encourage adoption.
 
 [OtelTrace]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#tracing-signal
 [OtelTraceApi]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md
