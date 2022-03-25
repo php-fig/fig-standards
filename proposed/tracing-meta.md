@@ -19,12 +19,11 @@ The following definitions apply for this document:
 ## 2. Why Bother?
 
 The [OpenTelemetry][] team are in the process of releasing a set of SDK's that would allow frameworks and libraries to send signals to providers in a uniformed manner.
-However, there is a perceived expectation of a 1-way flow of responsibility, where Frameworks and Libraries are expected to accept Jagger traces[^1].
+However, there is a perceived expectation of a 1-way flow of responsibility, where Frameworks and Libraries are expected to accept Jagger-formatted traces.
 
 This PSR provides a bridge between Frameworks and Libraries who want to provide tracing signals, and Providers, without the requirement to make large scale changes to their infrastructure, etc.  
 By taking transmission mechanisms [out of scope](#31-non-goals) for this PSR, we drastically increase the simple adoptability of tracing for all parties involved
 
-[^2.1]: Seeking confirmation
 [OpenTelemetry]: https://opentelemetry.io/
 
 ## 3. Scope
