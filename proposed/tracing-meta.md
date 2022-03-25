@@ -22,12 +22,9 @@ By taking transmission mechanisms [out of scope](#31-non-goals) for this PSR, we
 ### 3.1 Goals
 
 * To provide a set of interfaces for library and framework developers to add tracing signals to their codebase.  
-  This would in turn allow other libraries (Eg: [Clockwork], [Laravel-Debugbar]) to receive the same signals for further processing or analysis.
+  This would in turn allow other libraries to receive the same signals for further processing or analysis.
 * To allow traces collected by various providers to be reused by other providers.
 * This PSR may provide a minimal `TraceProvider`, etc. for other providers to extend, should they choose.
-
-[Clockwork]: https://underground.works/clockwork/
-[Laravel-Debugbar]: https://github.com/barryvdh/laravel-debugbar
 
 ### 3.1 Non-goals
 
