@@ -7,15 +7,6 @@ Whilst developers are inherently free to use whichever tools suit their use-case
 
 This standard aims to create an intentionally minimalist set of interfaces that can be used to provide tracing signals to 3rd party libraries in a unified manner.
 
-### 1.1 Definitions
-
-The following definitions apply for this document:
-* Framework - An application framework (or micro-framework) that runs a developers code.  
-  Eg. Laravel, Symphony, CakePHP, Slim
-* Library - Any library that developers may include that adds additional functionality  
-  Eg. Image Manipulation, HTTP Clients, 3rd Party SDK's 
-* Provider - An organization that offers APM as a service. Typically via a composer package
-
 ## 2. Why Bother?
 
 The [OpenTelemetry][] team are in the process of releasing a set of SDK's that would allow frameworks and libraries to send signals to providers in a uniformed manner.
