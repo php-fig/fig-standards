@@ -8,12 +8,24 @@ Whilst developers are inherently free to use whichever tools suit their use-case
 This standard aims to create an intentionally minimalist set of interfaces that can be used to provide tracing signals to 3rd party libraries in a unified manner.
 
 ### 1.1 Definitions
+
 The following definitions apply for this document:
 * Framework - An application framework (or micro-framework) that runs a developers code.  
   Eg. Laravel, Symphony, CakePHP, Slim
 * Library - Any library that developers may include that adds additional functionality  
   Eg. Image Manipulation, HTTP Clients, 3rd Party SDK's 
 * Provider - An organization that offers APM as a service. Typically via a composer package
+
+## 2. Why Bother?
+
+The [OpenTelemetry][] team are in the process of releasing a set of SDK's that would allow frameworks and libraries to send signals to providers in a uniformed manner.
+However, there is a perceived expectation of a 1-way flow of responsibility, where Frameworks and Libraries are expected to accept Jagger traces[^1].
+
+This PSR provides a bridge between Frameworks and Libraries who want to provide tracing signals, and Providers, without the requirement to make large scale changes to their infrastructure, etc.  
+By taking transmission mechanisms [out of scope](#31-non-goals) for this PSR, we drastically increase the simple adoptability of tracing for all parties involved
+
+[^2.1]: Seeking confirmation
+[OpenTelemetry]: https://opentelemetry.io/
 
 ## 3. Scope
 
