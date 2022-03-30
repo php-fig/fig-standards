@@ -656,12 +656,12 @@ Some special characters within the name or value of an HTTP header might affect
 the parsing of the serialized message in a way that the contents of unrelated
 headers are changed. This misparsing can open up an application to security
 vulnerabilities. A common type of vulnerability is CRLF injection, allowing
-an attacker to inject additional headers or end the list of headers early.
+an attacker to inject additional headers or to end the list of headers early.
 
 For this reason classes implementing the `MessageInterface` SHOULD strictly
 validate the header names and contents according to the most recent HTTP
-specification ([RFC 7230#3.2][1] at the time of writing). Incorrect values
-SHOULD be rejected and no attempt SHOULD be made to automatically correct
+specification ([RFC 7230#3.2][1] at the time of writing). The implementation
+SHOULD reject invalid values and SHOULD NOT make any attempt to automatically correct
 the provided values.
 
 A minimally viable validator is expected to reject header names containing the
@@ -683,7 +683,7 @@ following characters:
 - `\n` (0x0A)
 
 If compatibility with older systems is desired then the sequence `\r\n` (0x0D0A)
-within a header value may be accepted, if and only if it is preceded by either
+within a header value may be accepted if and only if it is preceded by either
 SPACE (0x20) or `\t` (0x09).
 
 Further characters or sequences in header values should be rejected according
