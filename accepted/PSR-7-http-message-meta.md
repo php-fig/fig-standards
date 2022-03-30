@@ -661,8 +661,8 @@ an attacker to inject additional headers or to end the list of headers early.
 For this reason classes implementing the `MessageInterface` SHOULD strictly
 validate the header names and contents according to the most recent HTTP
 specification ([RFC 7230#3.2][1] at the time of writing). The implementation
-SHOULD reject invalid values and SHOULD NOT make any attempt to automatically correct
-the provided values.
+SHOULD reject invalid values and SHOULD NOT make any attempt to automatically
+correct the provided values.
 
 A minimally viable validator is expected to reject header names containing the
 following characters:
