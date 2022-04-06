@@ -683,8 +683,8 @@ following characters:
 - `\n` (0x0A)
 
 If compatibility with older systems is desired then the sequence `\r\n` (0x0D0A)
-within a header value may be accepted if and only if it is preceded by either
-SPACE (0x20) or `\t` (0x09).
+within a header value MAY be accepted if and only if it is immediately preceded by either
+SPACE (0x20) or `\t` (0x09). The full sequence SHOULD then internally be normalized to a single SPACE (0x20).
 
 Further characters or sequences in header values should be rejected according
 to the HTTP specification.
