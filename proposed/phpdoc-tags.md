@@ -594,7 +594,7 @@ The @param tag is used to document a single parameter of a function or method.
 
 #### Syntax
 
-    @param ["Type"] [name] [<description>]
+    @param ["Type"] $[name] [<description>]
 
 #### Description
 
@@ -635,7 +635,7 @@ The `@property` tag is used to declare which "magic" properties are supported.
 
 #### Syntax
 
-    @property[<-read|-write>] ["Type"] [name] [<description>]
+    @property[<-read|-write>] ["Type"] $[name] [<description>]
 
 #### Description
 
