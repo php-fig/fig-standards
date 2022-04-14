@@ -507,7 +507,7 @@ The @method allows a class to know which 'magic' methods are callable.
 
 #### Syntax
 
-    @method [static] [name]([type] [parameter], [...])[: return type] [description]
+    @method [static] [name]([type] [parameter], [...])[[: return type [| return type]...] [description]
 
 #### Description
 
@@ -548,6 +548,7 @@ class Parent
  * @method setString(int $integer)
  * @method static setStaticString(int $integer)
  * @method static setStaticStringFluid(int $integer): static
+ * @method static getChild(): Child | false This method will return a Child instance or false if no children
  */
 class Child extends Parent
 {
