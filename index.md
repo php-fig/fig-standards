@@ -32,6 +32,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  |
 | 20  | [Clock][psr20]                       | Chris Seufert                  |
 | 21  | [Internationalization][psr21]        | Navarr Barnier                 |
+| 22  | [Application Tracing][psr22]         | Adam Allport                   |
 
 ### Abandoned
 
@@ -74,6 +75,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Draft      |
 | 20  | [Clock][psr20]                       | Chris Seufert                  | Draft      |
 | 21  | [Internationalization][psr21]        | Navarr Barnier                 | Draft      |
+| 22  | [Application Tracing][psr22]         | Adam Allport                   | Draft      |
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-workflow.md
 [psr0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
@@ -98,3 +100,4 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr19]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
 [psr20]: https://github.com/php-fig/fig-standards/blob/master/proposed/clock.md
 [psr21]: https://github.com/php-fig/fig-standards/blob/master/proposed/internationalization.md
+[psr22]: https://github.com/php-fig/fig-standards/blob/master/proposed/tracing.md
