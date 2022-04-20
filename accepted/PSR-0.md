@@ -51,7 +51,7 @@ Example Implementation
 Below is an example function to simply demonstrate how the above
 proposed standards are autoloaded.
 
-~~~php
+```php
 <?php
 
 function autoload($className)
@@ -69,7 +69,7 @@ function autoload($className)
     require $fileName;
 }
 spl_autoload_register('autoload');
-~~~
+```
 
 SplClassLoader Implementation
 -----------------------------

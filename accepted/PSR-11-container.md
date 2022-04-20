@@ -68,7 +68,7 @@ Projects requiring an implementation should require `psr/container-implementatio
 <a name="container-interface"></a>
 ### 3.1. `Psr\Container\ContainerInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Container;
 
@@ -102,7 +102,7 @@ interface ContainerInterface
      */
     public function has($id);
 }
-~~~
+```
 
 
 Since [psr/container version 1.1](https://packagist.org/packages/psr/container#1.1.0),
@@ -115,7 +115,7 @@ the above interface has been updated to add return type hints (but only to the
 <a name="container-exception"></a>
 ### 3.2. `Psr\Container\ContainerExceptionInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Container;
 
@@ -125,12 +125,12 @@ namespace Psr\Container;
 interface ContainerExceptionInterface
 {
 }
-~~~
+```
 
 <a name="not-found-exception"></a>
 ### 3.3. `Psr\Container\NotFoundExceptionInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Container;
 
@@ -140,4 +140,4 @@ namespace Psr\Container;
 interface NotFoundExceptionInterface extends ContainerExceptionInterface
 {
 }
-~~~
+```

@@ -60,7 +60,7 @@ interpreted as described in [RFC 2119].
 
 This example encompasses some of the rules below as a quick overview:
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -86,7 +86,7 @@ class Foo extends Bar implements FooInterface
         // method body
     }
 }
-~~~
+```
 
 ## 2. General
 
@@ -149,7 +149,7 @@ There MUST be one blank line after the `use` block.
 
 For example:
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -159,7 +159,7 @@ use OtherVendor\OtherPackage\BazClass;
 
 // ... additional PHP code ...
 
-~~~
+```
 
 ## 4. Classes, Properties, and Methods
 
@@ -173,7 +173,7 @@ the class name.
 The opening brace for the class MUST go on its own line; the closing brace
 for the class MUST go on the next line after the body.
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -185,13 +185,13 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
     // constants, properties, methods
 }
-~~~
+```
 
 Lists of `implements` MAY be split across multiple lines, where each
 subsequent line is indented once. When doing so, the first item in the list
 MUST be on the next line, and there MUST be only one interface per line.
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -206,7 +206,7 @@ class ClassName extends ParentClass implements
 {
     // constants, properties, methods
 }
-~~~
+```
 
 ### 4.2. Properties
 
@@ -221,7 +221,7 @@ protected or private visibility.
 
 A property declaration looks like the following.
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -229,7 +229,7 @@ class ClassName
 {
     public $foo = null;
 }
-~~~
+```
 
 ### 4.3. Methods
 
@@ -246,7 +246,7 @@ parenthesis, and there MUST NOT be a space before the closing parenthesis.
 A method declaration looks like the following. Note the placement of
 parentheses, commas, spaces, and braces:
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -257,7 +257,7 @@ class ClassName
         // method body
     }
 }
-~~~
+```
 
 ### 4.4. Method Arguments
 
@@ -267,7 +267,7 @@ MUST be one space after each comma.
 Method arguments with default values MUST go at the end of the argument
 list.
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -278,7 +278,7 @@ class ClassName
         // method body
     }
 }
-~~~
+```
 
 Argument lists MAY be split across multiple lines, where each subsequent line
 is indented once. When doing so, the first item in the list MUST be on the
@@ -288,7 +288,7 @@ When the argument list is split across multiple lines, the closing parenthesis
 and opening brace MUST be placed together on their own line with one space
 between them.
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -302,7 +302,7 @@ class ClassName
         // method body
     }
 }
-~~~
+```
 
 ### 4.5. `abstract`, `final`, and `static`
 
@@ -312,7 +312,7 @@ visibility declaration.
 When present, the `static` declaration MUST come after the visibility
 declaration.
 
-~~~php
+```php
 <?php
 namespace Vendor\Package;
 
@@ -327,7 +327,7 @@ abstract class ClassName
         // method body
     }
 }
-~~~
+```
 
 ### 4.6. Method and Function Calls
 
@@ -337,25 +337,25 @@ after the opening parenthesis, and there MUST NOT be a space before the
 closing parenthesis. In the argument list, there MUST NOT be a space before
 each comma, and there MUST be one space after each comma.
 
-~~~php
+```php
 <?php
 bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
-~~~
+```
 
 Argument lists MAY be split across multiple lines, where each subsequent line
 is indented once. When doing so, the first item in the list MUST be on the
 next line, and there MUST be only one argument per line.
 
-~~~php
+```php
 <?php
 $foo->bar(
     $longArgument,
     $longerArgument,
     $muchLongerArgument
 );
-~~~
+```
 
 ## 5. Control Structures
 
@@ -379,7 +379,7 @@ An `if` structure looks like the following. Note the placement of parentheses,
 spaces, and braces; and that `else` and `elseif` are on the same line as the
 closing brace from the earlier body.
 
-~~~php
+```php
 <?php
 if ($expr1) {
     // if body
@@ -388,7 +388,7 @@ if ($expr1) {
 } else {
     // else body;
 }
-~~~
+```
 
 The keyword `elseif` SHOULD be used instead of `else if` so that all control
 keywords look like single words.
@@ -401,7 +401,7 @@ from `switch`, and the `break` keyword (or other terminating keyword) MUST be
 indented at the same level as the `case` body. There MUST be a comment such as
 `// no break` when fall-through is intentional in a non-empty `case` body.
 
-~~~php
+```php
 <?php
 switch ($expr) {
     case 0:
@@ -419,60 +419,60 @@ switch ($expr) {
         echo 'Default case';
         break;
 }
-~~~
+```
 
 ### 5.3. `while`, `do while`
 
 A `while` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
-~~~php
+```php
 <?php
 while ($expr) {
     // structure body
 }
-~~~
+```
 
 Similarly, a `do while` statement looks like the following. Note the placement
 of parentheses, spaces, and braces.
 
-~~~php
+```php
 <?php
 do {
     // structure body;
 } while ($expr);
-~~~
+```
 
 ### 5.4. `for`
 
 A `for` statement looks like the following. Note the placement of parentheses,
 spaces, and braces.
 
-~~~php
+```php
 <?php
 for ($i = 0; $i < 10; $i++) {
     // for body
 }
-~~~
+```
 
 ### 5.5. `foreach`
 
 A `foreach` statement looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
-~~~php
+```php
 <?php
 foreach ($iterable as $key => $value) {
     // foreach body
 }
-~~~
+```
 
 ### 5.6. `try`, `catch`
 
 A `try catch` block looks like the following. Note the placement of
 parentheses, spaces, and braces.
 
-~~~php
+```php
 <?php
 try {
     // try body
@@ -481,7 +481,7 @@ try {
 } catch (OtherExceptionType $e) {
     // catch body
 }
-~~~
+```
 
 ## 6. Closures
 
@@ -504,7 +504,7 @@ list.
 A closure declaration looks like the following. Note the placement of
 parentheses, commas, spaces, and braces:
 
-~~~php
+```php
 <?php
 $closureWithArgs = function ($arg1, $arg2) {
     // body
@@ -513,7 +513,7 @@ $closureWithArgs = function ($arg1, $arg2) {
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
     // body
 };
-~~~
+```
 
 Argument lists and variable lists MAY be split across multiple lines, where
 each subsequent line is indented once. When doing so, the first item in the
@@ -527,7 +527,7 @@ together on their own line with one space between them.
 The following are examples of closures with and without argument lists and
 variable lists split across multiple lines.
 
-~~~php
+```php
 <?php
 $longArgs_noVars = function (
     $longArgument,
@@ -572,12 +572,12 @@ $shortArgs_longVars = function ($arg) use (
 ) {
     // body
 };
-~~~
+```
 
 Note that the formatting rules also apply when the closure is used directly
 in a function or method call as an argument.
 
-~~~php
+```php
 <?php
 $foo->bar(
     $arg1,
@@ -586,7 +586,7 @@ $foo->bar(
     },
     $arg3
 );
-~~~
+```
 
 ## 7. Conclusion
 

@@ -48,7 +48,7 @@ $timestamp = $clock->now()->getTimestamp();
 The clock interface defines the most basic operation to read the current time and date from the clock. 
 It MUST return the time as a `DateTimeImmutable`.
 
-~~~php
+```php
 <?php
 
 namespace Psr\Clock;
@@ -61,4 +61,4 @@ interface ClockInterface
     public function now(): \DateTimeImmutable;
 
 }
-~~~
+```

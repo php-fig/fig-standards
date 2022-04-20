@@ -17,12 +17,12 @@ making a request to an HTTP API, or handling an incoming request.
 
 Every HTTP request message has a specific form:
 
-~~~http
+```http
 POST /path HTTP/1.1
 Host: example.com
 
 foo=bar&baz=bat
-~~~
+```
 
 The first line of a request is the "request line", and contains, in order, the
 HTTP request method, the request target (usually either an absolute URI or a
@@ -31,12 +31,12 @@ or more HTTP headers, an empty line, and the message body.
 
 HTTP response messages have a similar structure:
 
-~~~http
+```http
 HTTP/1.1 200 OK
 Content-Type: text/plain
 
 This is the response body
-~~~
+```
 
 The first line is the "status line", and contains, in order, the HTTP protocol
 version, the HTTP status code, and a "reason phrase," a human-readable
@@ -83,7 +83,7 @@ manner. For example, retrieving the `foo` header will return the same result as
 retrieving the `FoO` header. Similarly, setting the `Foo` header will overwrite
 any previously set `foo` header value.
 
-~~~php
+```php
 $message = $message->withHeader('foo', 'bar');
 
 echo $message->getHeaderLine('foo');
@@ -95,7 +95,7 @@ echo $message->getHeaderLine('FOO');
 $message = $message->withHeader('fOO', 'baz');
 echo $message->getHeaderLine('foo');
 // Outputs: baz
-~~~
+```
 
 Despite that headers may be retrieved case-insensitively, the original case
 MUST be preserved by the implementation, in particular when retrieved with
@@ -115,7 +115,7 @@ header values of a case-insensitive header by name concatenated with a comma.
 Use `getHeader()` to retrieve an array of all the header values for a
 particular case-insensitive header by name.
 
-~~~php
+```php
 $message = $message
     ->withHeader('foo', 'bar')
     ->withAddedHeader('foo', 'baz');
@@ -125,7 +125,7 @@ $header = $message->getHeaderLine('foo');
 
 $header = $message->getHeader('foo');
 // ['bar', 'baz']
-~~~
+```
 
 Note: Not all header values can be concatenated using a comma (e.g.,
 `Set-Cookie`). When working with such headers, consumers of
@@ -251,18 +251,18 @@ Calling this method does not affect the URI, as it is returned from `getUri()`.
 
 For example, a user may want to make an asterisk-form request to a server:
 
-~~~php
+```php
 $request = $request
     ->withMethod('OPTIONS')
     ->withRequestTarget('*')
     ->withUri(new Uri('https://example.org/'));
-~~~
+```
 
 This example may ultimately result in an HTTP request that looks like this:
 
-~~~http
+```http
 OPTIONS * HTTP/1.1
-~~~
+```
 
 But the HTTP client will be able to use the effective URL (from `getUri()`),
 to determine the protocol, hostname and TCP port.
@@ -329,7 +329,7 @@ of file inputs. As an example, if you have a form that submits an array of files
 — e.g., the input name "files", submitting `files[0]` and `files[1]` — PHP will
 represent this as:
 
-~~~php
+```php
 array(
     'files' => array(
         'name' => array(
@@ -343,11 +343,11 @@ array(
         /* etc. */
     ),
 )
-~~~
+```
 
 instead of the expected:
 
-~~~php
+```php
 array(
     'files' => array(
         0 => array(
@@ -362,7 +362,7 @@ array(
         ),
     ),
 )
-~~~
+```
 
 The result is that consumers need to know this language implementation detail,
 and write code for gathering the data for a given upload.
@@ -397,13 +397,13 @@ were submitted.
 
 In the simplest example, this might be a single named form element submitted as:
 
-~~~html
+```html
 <input type="file" name="avatar" />
-~~~
+```
 
 In this case, the structure in `$_FILES` would look like:
 
-~~~php
+```php
 array(
     'avatar' => array(
         'tmp_name' => 'phpUxcOty',
@@ -413,25 +413,25 @@ array(
         'error' => 0,
     ),
 )
-~~~
+```
 
 The normalized form returned by `getUploadedFiles()` would be:
 
-~~~php
+```php
 array(
     'avatar' => /* UploadedFileInterface instance */
 )
-~~~
+```
 
 In the case of an input using array notation for the name:
 
-~~~html
+```html
 <input type="file" name="my-form[details][avatar]" />
-~~~
+```
 
 `$_FILES` ends up looking like this:
 
-~~~php
+```php
 array (
     'my-form' => array (
         'name' => array (
@@ -461,11 +461,11 @@ array (
         ),
     ),
 )
-~~~
+```
 
 And the corresponding tree returned by `getUploadedFiles()` should be:
 
-~~~php
+```php
 array(
     'my-form' => array(
         'details' => array(
@@ -473,14 +473,14 @@ array(
         ),
     ),
 )
-~~~
+```
 
 In some cases, you may specify an array of files:
 
-~~~html
+```html
 Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
 Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
-~~~
+```
 
 (As an example, JavaScript controls might spawn additional file upload inputs to
 allow uploading multiple files at once.)
@@ -489,7 +489,7 @@ In such a case, the specification implementation must aggregate all information
 related to the file at the given index. The reason is because `$_FILES` deviates
 from its normal structure in such cases:
 
-~~~php
+```php
 array (
     'my-form' => array (
         'name' => array (
@@ -539,12 +539,12 @@ array (
         ),
     ),
 )
-~~~
+```
 
 The above `$_FILES` array would correspond to the following structure as
 returned by `getUploadedFiles()`:
 
-~~~php
+```php
 array(
     'my-form' => array(
         'details' => array(
@@ -556,13 +556,13 @@ array(
         ),
     ),
 )
-~~~
+```
 
 Consumers would access index `1` of the nested array using:
 
-~~~php
+```php
 $request->getUploadedFiles()['my-form']['details']['avatars'][1];
-~~~
+```
 
 Because the uploaded files data is derivative (derived from `$_FILES` or the
 request body), a mutator method, `withUploadedFiles()`, is also present in the
@@ -570,7 +570,7 @@ interface, allowing delegation of the normalization to another process.
 
 In the case of the original examples, consumption resembles the following:
 
-~~~php
+```php
 $file0 = $request->getUploadedFiles()['files'][0];
 $file1 = $request->getUploadedFiles()['files'][1];
 
@@ -581,7 +581,7 @@ printf(
 );
 
 // "Received the files file0.txt and file1.html"
-~~~
+```
 
 This proposal also recognizes that implementations may operate in non-SAPI
 environments. As such, `UploadedFileInterface` provides methods for ensuring
@@ -598,7 +598,7 @@ operations will work regardless of environment. In particular:
 
 As examples:
 
-~~~
+```
 // Move a file to an upload directory
 $filename = sprintf(
     '%s.%s',
@@ -613,7 +613,7 @@ $file0->moveTo(DATA_DIR . '/' . $filename);
 // StreamWrapper.
 $stream = new Psr7StreamWrapper($file1->getStream());
 stream_copy_to_stream($stream, $s3wrapper);
-~~~
+```
 
 ## 2. Package
 
@@ -624,7 +624,7 @@ The interfaces and classes described are provided as part of the
 
 ### 3.1 `Psr\Http\Message\MessageInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Http\Message;
 
@@ -812,11 +812,11 @@ interface MessageInterface
      */
     public function withBody(StreamInterface $body);
 }
-~~~
+```
 
 ### 3.2 `Psr\Http\Message\RequestInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Http\Message;
 
@@ -945,11 +945,11 @@ interface RequestInterface extends MessageInterface
      */
     public function withUri(UriInterface $uri, $preserveHost = false);
 }
-~~~
+```
 
 #### 3.2.1 `Psr\Http\Message\ServerRequestInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Http\Message;
 
@@ -1210,11 +1210,11 @@ interface ServerRequestInterface extends RequestInterface
      */
     public function withoutAttribute($name);
 }
-~~~
+```
 
 ### 3.3 `Psr\Http\Message\ResponseInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Http\Message;
 
@@ -1282,11 +1282,11 @@ interface ResponseInterface extends MessageInterface
      */
     public function getReasonPhrase();
 }
-~~~
+```
 
 ### 3.4 `Psr\Http\Message\StreamInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Http\Message;
 
@@ -1444,11 +1444,11 @@ interface StreamInterface
      */
     public function getMetadata($key = null);
 }
-~~~
+```
 
 ### 3.5 `Psr\Http\Message\UriInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Http\Message;
 
@@ -1773,11 +1773,11 @@ interface UriInterface
      */
     public function __toString();
 }
-~~~
+```
 
 ### 3.6 `Psr\Http\Message\UploadedFileInterface`
 
-~~~php
+```php
 <?php
 namespace Psr\Http\Message;
 
@@ -1900,4 +1900,4 @@ interface UploadedFileInterface
      */
     public function getClientMediaType();
 }
-~~~
+```
