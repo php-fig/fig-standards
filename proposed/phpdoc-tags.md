@@ -67,9 +67,9 @@ implemented, extended or overridden.
 The PHPDoc for every type of "Structural Element" MUST inherit the following
 parts if that part is absent:
 
-* [Summary]([PHPDOC_PSR_SUMMARY])
-* [Description]([PHPDOC_PSR_DESCRIPTION]) and
-* A specific subset of [Tags]([PHPDOC_PSR_TAGS]):
+* [Summary][PHPDOC_PSR_SUMMARY]
+* [Description][PHPDOC_PSR_DESCRIPTION] and
+* A specific subset of [Tags][PHPDOC_PSR_TAGS]:
   * [@author](#52-author)
   * [@copyright](#53-copyright)
   * [@version](#519-version)
