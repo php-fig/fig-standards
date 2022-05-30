@@ -35,7 +35,9 @@ Some examples may implement the Interface or providing a bridge:
  - Laminas View
  - Latte (Nette Framework)
  - Smarty
+ - Sulu CMS
  - Twig (Symfony Framework)
+ - Typo3
 
 ## Definitions
 
@@ -60,7 +62,7 @@ are so typed by mixed.
 A template renderer is a service object implementing the `TemplateRendererInterface`. It MUST be responsible to render a 
 supported template by a OPTIONAL context. It MUST return the rendered content of the template as a string.
 If a template was not found by the template renderer, an Exception implementing the `TemplateNotFoundExceptionInterface`
-MUST be thrown.
+MUST be thrown. The template renderer SHALL NOT in any case output/print/stream something directly to php output.
 
 ## Usage
 
