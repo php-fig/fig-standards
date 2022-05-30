@@ -39,7 +39,7 @@ Some examples may implement the Interface or providing a bridge:
 
 ## Definitions
 
-* **Template** - A string representation of a template .
+* **Template** - A string representation of a template.
 * **Context** - A array of context data given into to the rendered template.
 * **TemplateRenderer** - A service rendering which will render the template with the given context and return the rendered content.
 
