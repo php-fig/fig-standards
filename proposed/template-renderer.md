@@ -55,7 +55,7 @@ template is not limited by specific characters by definition but a template rend
 
 A context is MUST be an array of the available variables given to the template renderer. The array keys represent the
 available variables and MUST be typed as string. The array values represent the variables value and can be anything and
-are so typed by mixed. The context SHALL NOT be an object to support also basic implementation of a template renderer.
+are so typed by mixed. The context SHOULD NOT be an object to support also basic implementation of a template renderer.
 
 ### TemplateRenderer
 
@@ -63,6 +63,8 @@ A template renderer is a service object implementing the `TemplateRendererInterf
 supported template by a OPTIONAL context. It MUST return the rendered content of the template as a string.
 If a template was not found by the template renderer, an Exception implementing the `TemplateNotFoundExceptionInterface`
 MUST be thrown. The template renderer SHALL NOT in any case output/print/stream something directly to php output.
+A implementor of a template renderer is allowed to support as context also an object, but a user is REQUIRED whennusing
+The `TemplateRendererInterface` to give the context as array to support also simple template renderers.
 
 ## Usage
 
