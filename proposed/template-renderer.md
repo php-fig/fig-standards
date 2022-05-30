@@ -55,7 +55,7 @@ template is not limited by specific characters by definition but a template rend
 
 A context is MUST be an array of the available variables given to the template renderer. The array keys represent the
 available variables and MUST be typed as string. The array values represent the variables value and can be anything and
-are so typed by mixed.
+are so typed by mixed. The context SHALL NOT be an object to support also basic implementation of a template renderer.
 
 ### TemplateRenderer
 
