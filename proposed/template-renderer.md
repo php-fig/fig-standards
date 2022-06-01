@@ -200,7 +200,9 @@ interface TemplateRendererInterface {
 
 namespace Psr\TemplateRenderer;
 
-interface TemplateNotFoundExceptionInterface
+use Throwable;
+
+interface TemplateNotFoundExceptionInterface extends Throwable
 {
     public function getTemplate(): string;
 }
