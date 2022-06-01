@@ -4,7 +4,7 @@ Common Interface for Rendering Templates
 This document describes a common interface for template renderers.
 
 The goal set by `TemplateRendererInterface` is to standardize how frameworks, libraries and CMSs
-render their template so that projects are more free to use the template renderer they prefer.
+render their templates so that projects are more free to use the template renderer they prefer.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -14,7 +14,7 @@ The word `implementor` in this document is to be interpreted as someone
 implementing the `TemplateRendererInterface` in a [template engine][] library.
 Users of template renderer are referred to as `user`.
 The word `enduser` in this document is to be interpreted as someone using
-a library, framework, cms created by a `user`.
+a library, framework, CMS created by a `user`.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
@@ -42,8 +42,8 @@ Some examples may implement the Interface or providing a bridge:
 ## Definitions
 
 * **Template** - A string representation of a template.
-* **Context** - A array of context data given into to the rendered template.
-* **TemplateRenderer** - A service rendering which will render the template with the given context and return the rendered content.
+* **Context** - An array of context data given to the rendered template.
+* **TemplateRenderer** - A renderer which will render the template with the given context and return the rendered content as string.
 
 ### Template
 
@@ -53,18 +53,16 @@ template is not limited by specific characters by definition but a template rend
 
 ### Context
 
-A context is MUST be an array of the available variables given to the template renderer. The array keys represent the
-available variables and MUST be typed as string. The array values represent the variables value and can be anything and
-are so typed by mixed. The context SHOULD NOT be an object to support also basic implementation of a template renderer.
+A context MUST be an array of the available variables given to the template renderer. The array keys represent the
+variable names and MUST be strings. The array values represent the variable values and can be anything and
+.
 
 ### TemplateRenderer
 
-A template renderer is a service object implementing the `TemplateRendererInterface`. It MUST be responsible to render a 
-supported template by a OPTIONAL context. It MUST return the rendered content of the template as a string.
-If a template was not found by the template renderer, an Exception implementing the `TemplateNotFoundExceptionInterface`
-MUST be thrown. The template renderer SHALL NOT in any case output/print/stream something directly to php output.
-A implementor of a template renderer is allowed to support as context also an object, but a user is REQUIRED whennusing
-The `TemplateRendererInterface` to give the context as array to support also simple template renderers.
+A template renderer is a service implementing the `TemplateRendererInterface`. It MUST be responsible of rendering a 
+supported template given an OPTIONAL context. It MUST return the rendered content of the template as a string.
+If the template was not found by the template renderer, an Exception implementing the `TemplateNotFoundExceptionInterface`
+MUST be thrown. The template renderer SHALL NOT output/print/stream directly.
 
 ## Usage
 
