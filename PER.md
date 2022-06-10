@@ -21,4 +21,5 @@ As also described in the [Mission and Structure Bylaw][structure], the Editor of
 
 
 [workflow]: https://github.com/php-fig/fig-standards/blob/master/bylaws/003-per-workflow.md
+[structure]: https://github.com/php-fig/fig-standards/blob/master/bylaws/001-mission-and-structure.md
 [per-coding-style]: https://github.com/php-fig/per-coding-style/releases/latest
