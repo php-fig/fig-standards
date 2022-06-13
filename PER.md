@@ -1,6 +1,6 @@
 # PHP Evolving Recommendations
 
-A PHP Evolving Recommendations is a meta document accompanied by one or more artifacts that are set to evolve over time with multiple releases.
+A PHP Evolving Recommendation is a meta document accompanied by one or more artifacts that are set to evolve over time with multiple releases.
 Following the [PER Workflow Bylaw][workflow], when a PER has the first release, it will be listed here.
 
 As also described in the [Mission and Structure Bylaw][structure], the Editor of a working group working on a PER is essentially the lead contributor and writer, and they are supported by at least two voting members; the Sponsor, if present, is a Core Committee member that assists the Editor in keeping the evolution process on track.
