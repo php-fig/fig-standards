@@ -929,7 +929,7 @@ $variable = $foo ?: 'bar';
 ## 7. Closures
 
 Closures MUST be declared with a space after the `function` keyword, and a
-space before and after the `use` keyword.
+space before and after the `use` keyword. This includes the use of the `shortform notation`.
 
 The opening brace MUST go on the same line, and the closing brace MUST go on
 the next line following the body.
@@ -957,6 +957,10 @@ parentheses, commas, spaces, and braces:
 $closureWithArgs = function ($arg1, $arg2) {
     // body
 };
+
+$shortClosureWithoutArgs = fn () => /* body */;
+
+$shortClosureWithArgs = fn ($arg1, $arg2) => /* body */;
 
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
     // body
