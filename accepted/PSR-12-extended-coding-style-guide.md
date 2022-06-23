@@ -1054,24 +1054,27 @@ in the above section.
 ~~~php
 <?php
 
-$instance = new class {};
+$instance = new class () {};
 ~~~
 
 The opening brace MAY be on the same line as the `class` keyword so long as
 the list of `implements` interfaces does not wrap. If the list of interfaces
 wraps, the brace MUST be placed on the line immediately following the last
-interface.
+interface. 
+
+This also includes the use of parentheses due to directly instantiating the 
+declared class.
 
 ~~~php
 <?php
 
 // Brace on the same line
-$instance = new class extends \Foo implements \HandleableInterface {
+$instance = new class () extends \Foo implements \HandleableInterface {
     // Class content
 };
 
 // Brace on the next line
-$instance = new class extends \Foo implements
+$instance = new class () extends \Foo implements
     \ArrayAccess,
     \Countable,
     \Serializable
