@@ -12,9 +12,9 @@ This `ClockInterface` aims to provide a standard way to consume time that allows
 
 There are currently a few libraries that provide this functionality. However, there is no interoperability between these different libraries, as they ship with their own clock interfaces.
 
-Symfony provides a package called `symfony/phpunit-bridge` that has a `Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time and date functions. However, this does not solve mocking calls to `new \DateTimeImmutable()`. It also does not fully mock time when called from other libraries that rely on the system time.
+Symfony provides a package called `symfony/phpunit-bridge` that has a `\Symfony\Bridge\PhpUnit\ClockMock` class, which allows mocking PHP's built-in time and date functions. However, this does not solve mocking calls to `new \DateTimeImmutable()`. It also does not fully mock time when called from other libraries that rely on the system time.
 
-`Carbon\Carbon`, and its fork `Cake\Chronos\Chronos`, do provide mocking via a static `setTestNow()` method, but this provides no isolation and must be called again to stop mocking.
+`\Carbon\Carbon`, and its fork `\Cake\Chronos\Chronos`, do provide mocking via a static `setTestNow()` method, but this provides no isolation and must be called again to stop mocking.
 
 Pros:
 
