@@ -141,30 +141,24 @@ _**Note:** Order descending chronologically._
 
 There are different reasons why this interface does not enforce a specific timezone.
 
-For one thing there is a purely technical reason. The interface provides an explicit contract. Part of this 
-contract is the value that is returned by the `now`-function. The only thing that currently can explicitly 
-be enforced on the language level is, that the returned value is of type `DateTimeImmutable`. There 
-currently is no way to enforce that this object has a certain timezone as its value. So from a language 
-level perspective there is no way to explicitly enforce a certain timezone in the returned object.
+A purely technical reason is that the interface itself provides an explicit contract. Part of this contract
+is the value returned by the `now()` method. At the language level, the only thing we can enforce is that
+the returned value is of type `\DateTimeImmutable`. There is no way to enforce a certain timezone at the
+language level.
 
-On the other hand, there is also a logical reason. The explicit contract should be usable in all situations
-where one needs a way to retrieve the current time. And on the contract level we should not make an 
-assumption about what the caller might need. So would the contract define that only UTC is returned, then 
-use-cases that do require something else will have to explicitly work around that or find other ways of 
-handling the problem, the contract tries to solve as the contract does not fit the needs. This is different 
-from the issue of i.e., immutability which can also not be enforced on the language level but which is
-necessary to adhere to other calls on the contract. IN the case of the `clock`-interface there will be no 
-other calls.
+A logical reason is that the explicit contract should be usable in all situations where one needs a way to
+retrieve the current time. We should not make an assumption at the contract level about what the caller
+needs. If the contract did define that only `UTC` is returned, then use cases that require something else
+will have to explicitly work around the returned `UTC` timezone. This is different from issues such as
+immutability, which also cannot be enforced on the language level, but which is still necessary to
+adhere to other calls on the contract.  For this `ClockInterface`, there will be no other calls.
 
-And most important of all, the explicit contract provided by this interface does not reduce a user’s
-possibilities to use an implicit contract within their application, that defines that the interface 
-will only return `DateTimeImmutable`s with a specific timezone set. And whether that is `UTC` or reduce
-`Antarctica/Troll` is completely up to the user. 
+Most importantly, the explicit contract provided by this interface does not prevent a user from using
+an implicit contract alongside logic to return a `\DateTimeImmutable` with a specific timezone. Whether
+that is `UTC` or `Antarctica/Troll`, it is the user who is in control of this.
 
-The explicit contract that is defined by the interface does not limit a user in what they are doing. It 
-tries to solve the problem of getting the current time in a reliable way. Which view on the current time 
-that is, is not part of the explicit contract.
+The explicit contract defined by the interface does not limit a user in what they are doing. It tries to
+solve the problem of getting the current time in a reliable way. Whatever view on the current time that is,
+it is not part of the explicit contract.
 
-So, all in all: This interface tries to be as open as possible while at the same time being as 
-strict as necessary.
-
+Thus, this interface tries to be as open as possible, while at the same time, being as strict as necessary.
