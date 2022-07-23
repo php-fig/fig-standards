@@ -149,7 +149,7 @@ language level.
 A _logical_ reason is that the explicit contract should be usable in all situations where one needs a way to
 retrieve the current time. We should not make an assumption at the _contract_ level about what the caller
 needs. If the contract did define that only `UTC` is returned, then use cases that require something else
-would have to explicitly work around the returned `UTC` timezone. This is different from issues such as
+would have to explicitly work around the returned `UTC` timezone. This is different from an issue like
 immutability, which also cannot be enforced on the language level, but which is still necessary to adhere
 to other calls on the contract.  For this `ClockInterface`, there will be no other calls.
 
