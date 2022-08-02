@@ -15,7 +15,8 @@ Closure Example
  * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
  * from /path/to/project/src/Baz/Qux.php:
  *
- *      new \Foo\Bar\Baz\Qux;
+ *      <?php
+ *      new \Foo\Bar\Baz\Qux();
  *
  * @param string $class The fully-qualified class name.
  * @return void
@@ -83,7 +84,7 @@ namespace Example;
  *
  *      <?php
  *      // instantiate the loader
- *      $loader = new \Example\Psr4AutoloaderClass;
+ *      $loader = new \Example\Psr4AutoloaderClass();
  *
  *      // register the autoloader
  *      $loader->register();
@@ -96,13 +97,13 @@ namespace Example;
  * \Foo\Bar\Qux\Quux class from /path/to/packages/foo-bar/src/Qux/Quux.php:
  *
  *      <?php
- *      new \Foo\Bar\Qux\Quux;
+ *      new \Foo\Bar\Qux\Quux();
  *
  * The following line would cause the autoloader to attempt to load the
  * \Foo\Bar\Qux\QuuxTest class from /path/to/packages/foo-bar/tests/Qux/QuuxTest.php:
  *
  *      <?php
- *      new \Foo\Bar\Qux\QuuxTest;
+ *      new \Foo\Bar\Qux\QuuxTest();
  */
 class Psr4AutoloaderClass
 {
@@ -117,11 +118,14 @@ class Psr4AutoloaderClass
     /**
      * Register loader with SPL autoloader stack.
      *
+     * @param bool $prepend If true, prepend the autoloader to the stack
+     * instead of appending it.
      * @return void
      */
-    public function register()
+    public function register($prepend = false)
     {
-        spl_autoload_register(array($this, 'loadClass'));
+        spl_autoload_extensions('.php');
+        spl_autoload_register(array($this, 'loadClass'), false, $prepend);
     }
 
     /**
@@ -141,7 +145,7 @@ class Psr4AutoloaderClass
         $prefix = trim($prefix, '\\') . '\\';
 
         // normalize the base directory with a trailing separator
-        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
+        $base_dir = rtrim($base_dir, '\/') . '/';
 
         // initialize the namespace prefix array
         if (isset($this->prefixes[$prefix]) === false) {
@@ -160,8 +164,8 @@ class Psr4AutoloaderClass
      * Loads the class file for a given class name.
      *
      * @param string $class The fully-qualified class name.
-     * @return mixed The mapped file name on success, or boolean false on
-     * failure.
+     * @return string|false The mapped file name on success, or boolean false
+     * on failure.
      */
     public function loadClass($class)
     {
@@ -180,7 +184,7 @@ class Psr4AutoloaderClass
 
             // try to load a mapped file for the prefix and relative class
             $mapped_file = $this->loadMappedFile($prefix, $relative_class);
-            if ($mapped_file) {
+            if ($mapped_file !== false) {
                 return $mapped_file;
             }
 
@@ -198,8 +202,8 @@ class Psr4AutoloaderClass
      *
      * @param string $prefix The namespace prefix.
      * @param string $relative_class The relative class name.
-     * @return mixed Boolean false if no mapped file can be loaded, or the
-     * name of the mapped file that was loaded.
+     * @return string|false Boolean false if no mapped file can be loaded, or
+     * the name of the mapped file that was loaded.
      */
     protected function loadMappedFile($prefix, $relative_class)
     {
@@ -208,15 +212,15 @@ class Psr4AutoloaderClass
             return false;
         }
 
+        // replace namespace separators with directory separators
+        // in the relative class name, append with '.php'
+        $filename = str_replace('\\', '/', $relative_class) . '.php';
+
         // look through base directories for this namespace prefix
         foreach ($this->prefixes[$prefix] as $base_dir) {
 
-            // replace the namespace prefix with the base directory,
-            // replace namespace separators with directory separators
-            // in the relative class name, append with .php
-            $file = $base_dir
-                  . str_replace('\\', '/', $relative_class)
-                  . '.php';
+            // replace the namespace prefix with the base directory
+            $file = $base_dir . $filename;
 
             // if the mapped file exists, require it
             if ($this->requireFile($file)) {
