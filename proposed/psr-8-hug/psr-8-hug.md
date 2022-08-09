@@ -42,7 +42,7 @@ to support and affirm multiple objects at once.
 
 ### HuggableInterface
 
-~~~php
+```php
 namespace Psr\Hug;
 
 /**
@@ -65,9 +65,9 @@ interface Huggable
      */
     public function hug(Huggable $h);
 }
-~~~
+```
 
-~~~php
+```php
 namespace Psr\Hug;
 
 /**
@@ -90,4 +90,4 @@ interface GroupHuggable extends Huggable
    */
   public function groupHug($huggables);
 }
-~~~
+```

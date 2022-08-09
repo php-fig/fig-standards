@@ -59,7 +59,7 @@ reading from or writing to a file, and so on.
 The following is an example of a file with both declarations and side effects;
 i.e, an example of what to avoid:
 
-~~~php
+```php
 <?php
 // side effect: change ini settings
 ini_set('error_reporting', E_ALL);
@@ -75,12 +75,12 @@ function foo()
 {
     // function body
 }
-~~~
+```
 
 The following example is of a file that contains declarations without side
 effects; i.e., an example of what to emulate:
 
-~~~php
+```php
 <?php
 // declaration
 function foo()
@@ -95,7 +95,7 @@ if (! function_exists('bar')) {
         // function body
     }
 }
-~~~
+```
 
 ## 3. Namespace and Class Names
 
@@ -110,7 +110,7 @@ Code written for PHP 5.3 and after MUST use formal namespaces.
 
 For example:
 
-~~~php
+```php
 <?php
 // PHP 5.3 and later:
 namespace Vendor\Model;
@@ -118,18 +118,18 @@ namespace Vendor\Model;
 class Foo
 {
 }
-~~~
+```
 
 Code written for 5.2.x and before SHOULD use the pseudo-namespacing convention
 of `Vendor_` prefixes on class names.
 
-~~~php
+```php
 <?php
 // PHP 5.2.x and earlier:
 class Vendor_Model_Foo
 {
 }
-~~~
+```
 
 ## 4. Class Constants, Properties, and Methods
 
@@ -140,7 +140,7 @@ The term "class" refers to all classes, interfaces, and traits.
 Class constants MUST be declared in all upper case with underscore separators.
 For example:
 
-~~~php
+```php
 <?php
 namespace Vendor\Model;
 
@@ -149,7 +149,7 @@ class Foo
     const VERSION = '1.0';
     const DATE_APPROVED = '2012-06-01';
 }
-~~~
+```
 
 ### 4.2. Properties
 
