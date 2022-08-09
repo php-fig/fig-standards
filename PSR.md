@@ -8,31 +8,31 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 ### Accepted
 
-| Num | Title                          | Editor                         |  Coordinator            | Sponsor                 |
-|:---:|--------------------------------|--------------------------------|-------------------------|-------------------------|
-| 1   | [Basic Coding Standard][psr1]  | Paul M. Jones                  | _N/A_                   | _N/A_                   |
-| 3   | [Logger Interface][psr3]       | Jordi Boggiano                 | _N/A_                   | _N/A_                   |
-| 4   | [Autoloading Standard][psr4]   | Paul M. Jones                  | Phil Sturgeon           | Larry Garfield          |
-| 6   | [Caching Interface][psr6]      | Larry Garfield                 | Paul Dragoonis          | Robert Hafner           |
-| 7   | [HTTP Message Interface][psr7] | Matthew Weier O'Phinney        | Beau Simensen           | Paul M. Jones           |
-| 11  | [Container Interface][psr11]   | Matthieu Napoli, David Négrier | Matthew Weier O'Phinney | Korvin Szanto           |
-| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto            | Alexander Makarov       |  Chris Tankersley       | 
-| 13  | [Hypermedia Links][psr13]      | Larry Garfield                 | Matthew Weier O'Phinney | Marc Alexander          |
-| 14  | [Event Dispatcher][psr14]      | Larry Garfield                 | _N/A_                   | Cees-Jan Kiewiet        |
-| 15  | [HTTP Handlers][psr15]         | Woody Gilk                     | _N/A_                   | Matthew Weier O'Phinney |
-| 16  | [Simple Cache][psr16]          | Paul Dragoonis                 | Jordi Boggiano          | Fabien Potencier        |
-| 17  | [HTTP Factories][psr17]        | Woody Gilk                     | _N/A_                   | Matthew Weier O'Phinney |
-| 18  | [HTTP Client][psr18]           | Tobias Nyholm                  | _N/A_                   | Sara Golemon            |
+| Num | Title                                | Maintainer                     |
+|:---:|--------------------------------------|--------------------------------|
+| 1   | [Basic Coding Standard][psr1]        | _vacant_                       |
+| 3   | [Logger Interface][psr3]             | Jordi Boggiano                 |
+| 4   | [Autoloading Standard][psr4]         | _vacant_                       |
+| 6   | [Caching Interface][psr6]            | Larry Garfield                 |
+| 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        |
+| 11  | [Container Interface][psr11]         | Matthieu Napoli, David Négrier |
+| 12  | [Extended Coding Style Guide][psr12] | Korvin Szanto                  |
+| 13  | [Hypermedia Links][psr13]            | Larry Garfield                 |
+| 14  | [Event Dispatcher][psr14]            | Larry Garfield                 |
+| 15  | [HTTP Handlers][psr15]               | Woody Gilk                     |
+| 16  | [Simple Cache][psr16]                | Paul Dragoonis                 |
+| 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
+| 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
 
 ### Draft
 
-| Num | Title                                | Editor(s)                      |
-|:---:|--------------------------------------|--------------------------------|
-| 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  |
-| 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  |
-| 20  | [Clock][psr20]                       | Chris Seufert                  |
-| 21  | [Internationalization][psr21]        | Navarr Barnier                 |
-| 22  | [Application Tracing][psr22]         | Adam Allport                   |
+| Num | Title                                | Editor(s)                      | Sponsor                        |
+|:---:|--------------------------------------|--------------------------------|--------------------------------|
+| 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  | Michael Cullum                 |
+| 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Michael Cullum                 |
+| 20  | [Clock][psr20]                       | Chris Seufert                  | Chuck Burgess                  |
+| 21  | [Internationalization][psr21]        | Navarr Barnier                 | Larry Garfield                 |
+| 22  | [Application Tracing][psr22]         | Adam Allport                   | Alessandro Chitolina           |
 
 ### Abandoned
 
@@ -44,20 +44,20 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 
 ### Deprecated
 
-| Num | Title                          | Editor                  |
-|:---:|--------------------------------|-------------------------|
-| 0   | [Autoloading Standard][psr0]   | Matthew Weier O'Phinney |
-| 2   | [Coding Style Guide][psr2]     | Paul M. Jones           |
+| Num | Title                                |     |
+|:---:|--------------------------------------|-----|
+| 0   | [Autoloading Standard][psr0]         |     |
+| 2   | [Coding Style Guide][psr2]           |     |
 
 ## Numerical Index
 
-| Num | Title                                | Editor(s)                      | Status     |
+| Num | Title                                | Editor(s) / Maintainers        | Status     |
 |:---:|--------------------------------------|--------------------------------|------------|
-| 0   | [Autoloading Standard][psr0]         | Matthew Weier O'Phinney        | Deprecated |
-| 1   | [Basic Coding Standard][psr1]        | Paul M. Jones                  | Accepted   |
-| 2   | [Coding Style Guide][psr2]           | Paul M. Jones                  | Deprecated |
+| 0   | [Autoloading Standard][psr0]         |                                | Deprecated |
+| 1   | [Basic Coding Standard][psr1]        | _vacant_                       | Accepted   |
+| 2   | [Coding Style Guide][psr2]           |                                | Deprecated |
 | 3   | [Logger Interface][psr3]             | Jordi Boggiano                 | Accepted   |
-| 4   | [Autoloading Standard][psr4]         | Paul M. Jones                  | Accepted   |
+| 4   | [Autoloading Standard][psr4]         | _vacant_                       | Accepted   |
 | 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  | Draft      |
 | 6   | [Caching Interface][psr6]            | Larry Garfield                 | Accepted   |
 | 7   | [HTTP Message Interface][psr7]       | Matthew Weier O'Phinney        | Accepted   |
