@@ -205,7 +205,7 @@ interpreted as described in [RFC 2119][RFC2119].
       FQSEN    = fqnn / fqcn / constant / method / property  / function
       fqnn     = "\" [name] *("\" [name])
       fqcn     = fqnn "\" name
-      constant = (fqnn "\" / fqcn "::") name
+      constant = ((fqnn "\") / (fqcn "::")) name
       method   = fqcn "::" name "()"
       property = fqcn "::$" name
       function = fqnn "\" name "()"
@@ -223,17 +223,18 @@ interpreted as described in [RFC 2119][RFC2119].
 The PHPDoc format has the following [ABNF][RFC5234]
 definition:
 
-    PHPDoc             = [summary] [description] [tags]
-    summary            = *CHAR (2*CRLF)
-    description        = 1*(CHAR / inline-tag) 1*CRLF ; any amount of characters
+    PHPDoc             = [summary [description]] [tags]
+    eol                = [CR] LF ; to compatible with PSR-12
+    summary            = 1*CHAR 2*eol
+    description        = 1*(CHAR / inline-tag) 1*eol ; any amount of characters
                                                      ; with inline tags inside
-    tags               = *(tag 1*CRLF)
+    tags               = *(tag 1*eol)
     inline-tag         = "{" tag "}"
     tag                = "@" tag-name [":" tag-specialization] [tag-details]
     tag-name           = (ALPHA / "\") *(ALPHA / DIGIT / "\" / "-" / "_")
     tag-specialization = 1*(ALPHA / DIGIT / "-")
-    tag-details        = *SP (SP tag-description / tag-signature )
-    tag-description    = 1*(CHAR / CRLF)
+    tag-details        = (1*SP tag-description) / tag-signature
+    tag-description    = (CHAR / inline-tag) *(CHAR / inline-tag / eol)
     tag-signature      = "(" *tag-argument ")"
     tag-argument       = *SP 1*CHAR [","] *SP
 
@@ -481,8 +482,8 @@ A Type has the following [ABNF][RFC5234] definition:
     array-expression = "(" type-expression ")"
     class-name       = ["\"] label *("\" label)
     label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
-    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "iterable" / "mixed" / "null" / "object" /
-    keyword          = "resource" / "self" / "static" / "string" / "true" / "void" / "$this" / "never"
+    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "iterable" / "mixed" / "never"
+    keyword          =/ "null" / "object" / "resource" / "self" / "static" / "string" / "true" / "void" / "$this"
 
 ### Details
 
