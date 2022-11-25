@@ -23,6 +23,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 16  | [Simple Cache][psr16]                | Paul Dragoonis                 |
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     |
 | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  |
+| 20  | [Clock][psr20]                       | Chris Seufert                  |
 
 ### Draft
 
@@ -30,7 +31,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 |:---:|--------------------------------------|--------------------------------|--------------------------------|
 | 5   | [PHPDoc Standard][psr5]              | Chuck Burgess                  | Michael Cullum                 |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Michael Cullum                 |
-| 20  | [Clock][psr20]                       | Chris Seufert                  | Chuck Burgess                  |
 | 21  | [Internationalization][psr21]        | Navarr Barnier                 | Larry Garfield                 |
 | 22  | [Application Tracing][psr22]         | Adam Allport                   | Alessandro Chitolina           |
 
@@ -73,7 +73,7 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 | 17  | [HTTP Factories][psr17]              | Woody Gilk                     | Accepted   |
 | 18  | [HTTP Client][psr18]                 | Tobias Nyholm                  | Accepted   |
 | 19  | [PHPDoc tags][psr19]                 | Chuck Burgess                  | Draft      |
-| 20  | [Clock][psr20]                       | Chris Seufert                  | Draft      |
+| 20  | [Clock][psr20]                       | Chris Seufert                  | Accepted   |
 | 21  | [Internationalization][psr21]        | Navarr Barnier                 | Draft      |
 | 22  | [Application Tracing][psr22]         | Adam Allport                   | Draft      |
 
@@ -98,6 +98,6 @@ As also described in the [PSR Workflow Bylaw][workflow]. The Editor, or editors,
 [psr17]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-17-http-factory.md
 [psr18]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-18-http-client.md
 [psr19]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
-[psr20]: https://github.com/php-fig/fig-standards/blob/master/proposed/clock.md
+[psr20]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-20-clock.md
 [psr21]: https://github.com/php-fig/fig-standards/blob/master/proposed/internationalization.md
 [psr22]: https://github.com/php-fig/fig-standards/blob/master/proposed/tracing.md
