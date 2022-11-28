@@ -4,7 +4,7 @@ Licensing Policies
 ## 1. Copyright Ownership
 
 1. Anytime the copyright owner of code, documentation or otherwise is listed it
-   must be shown as "PHP Framework Interop Group and its contributors."
+   must be shown as "PHP Framework Interoperability Group and its contributors."
 
 ## 2. Code
 
