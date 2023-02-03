@@ -1,5 +1,4 @@
-HTTP Server Request Handlers
-============================
+# HTTP Server Request Handlers
 
 This document describes common interfaces for HTTP server request handlers
 ("request handlers") and HTTP server middleware components ("middleware")
@@ -24,7 +23,7 @@ interpreted as described in [RFC 2119][rfc2119].
 [psr7]: https://www.php-fig.org/psr/psr-7/
 [rfc2119]: http://tools.ietf.org/html/rfc2119
 
-### References
+## References
 
 - [PSR-7][psr7]
 - [RFC 2119][rfc2119]

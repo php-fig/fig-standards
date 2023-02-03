@@ -1,5 +1,4 @@
-Event Dispatcher
-================
+# Event Dispatcher
 
 Event Dispatching is a common and well-tested mechanism to allow developers to inject logic into an application easily and consistently.
 

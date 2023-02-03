@@ -1,8 +1,6 @@
-Security Disclosure Meta Document
-=================================
+# Security Disclosure Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 There are two aspects with dealing with security issues: One is the process
 by which security issues are reported and fixed in projects, the other
@@ -14,8 +12,7 @@ that when security vulnerabilities are found that researchers have an easy
 channel to the projects in question allowing them to disclose the issue to a
 controlled group of people.
 
-2. Why Bother?
---------------
+## 2. Why Bother?
 
 As of right now, there isn't a common standard for most parts of this process.
 That is there isn't a standard where researchers can find out about the
@@ -24,21 +21,19 @@ no standard that explains to researchers what they can expect to happen if
 they report a vulnerability. More importantly there is no standard on which
 projects can base the security reporting process that best fits them.
 
-3. Scope
---------
+## 3. Scope
 
-## 3.1 Goals
+### 3.1 Goals
 
 * A defined process for how vulnerabilities are reported, the process by which
   these get fixed and finally disclosed to the public
 
-## 3.2 Non-Goals
+### 3.2 Non-Goals
 
 * Methods for reducing security vulnerabilities
 * Publication of security issues and fixes (see PSR-10)
 
-4. Approaches
--------------
+## 4. Approaches
 
 Currently the most viable approach seems to be defining a base line workflow
 for how security vulnerabilities go from discovery to fixing to public
@@ -65,8 +60,7 @@ processes in various PHP and non-PHP projects:
 A summary of the differences and similarities can be found here:
 https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40StsJ
 
-5. People
----------
+## 5. People
 
 ### 5.1 Editor
 
@@ -85,8 +79,6 @@ https://groups.google.com/d/msg/php-fig-psr-9-discussion/puGV_X0bj_M/Jr_IAS40Sts
 
 * Lukas Kahwe Smith
 
-6. Votes
---------
+## 6. Votes
 
-7. Relevant Links
------------------
+## 7. Relevant Links

@@ -1,5 +1,4 @@
-PHP Framework Interoperability Group
-====================================
+# PHP Framework Interoperability Group
 
 The idea behind the group is for project representatives to talk about the
 commonalities between our projects and find ways we can work together. Our main
@@ -7,8 +6,7 @@ audience is each other, but we’re very aware that the rest of the PHP communit
 is watching. If other folks want to adopt what we’re doing they are welcome to
 do so, but that is not the aim.
 
-Proposing a Standard Recommendation
-------------------------------------
+## Proposing a Standard Recommendation
 
 To propose a PHP Standard Recommendation (PSR):
 
@@ -21,8 +19,7 @@ To propose a PHP Standard Recommendation (PSR):
 
 [mailing list]: http://groups.google.com/group/php-fig/
 
-GitHub usage
-------------
+## GitHub usage
 
 All discussion regarding a PSR happens on the [mailing list][]. Issues filed
 in GitHub are rarely monitored, and PRs are likely to be missed unless a message
@@ -32,8 +29,7 @@ conducted on the mailing list, not through PR comments for the same reason.
 Please do not simply file an issue or PR and walk-away.  The most likely outcome
 is that it will never get seen or addressed.
 
-Requesting Membership
----------------------
+## Requesting Membership
 
 You **do not** need to be a voting member to participate in discussion on
 the [mailing list][].
@@ -50,16 +46,14 @@ To become a voting member, you must send an email to the [mailing list][].
 Do not combine separate membership requests in a single thread; one request
 per thread, please.
 
-Language & Translations
------------------------
+## Language & Translations
 
 All PSRs are written in British English or American English (Different specifications
 may vary, but it is consistent within the same specification). The PHP FIG does not
 offer official translations into other languages but other external entities are free
 to translate the specifications in accordance with the license.
 
-Voting Members
---------------
+## Voting Members
 
 The current list of voting members is available on the [project website][].
 

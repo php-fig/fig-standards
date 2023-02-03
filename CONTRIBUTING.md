@@ -9,7 +9,7 @@ discussion and formation stages involve everyone.
 
 See the [PHP-FIG FAQ](https://www.php-fig.org/faqs/) for more information.
 
-# Licensing
+## Licensing
 
 By contributing code you agree to license your contribution under the MIT
 license.
@@ -18,7 +18,7 @@ By contributing documentation, examples, or any other non-code assets you agree
 to license your contribution under the CC BY 3.0 license. Attribution shall be
 given according to the current bylaws of this group.
 
-# Merge & Access Policy
+## Merge & Access Policy
 
 All Editors, Coordinators and Sponsors of specifications in draft & review stage
 have access to push to this (php-fig/fig-standards) repository; subject to
@@ -34,7 +34,7 @@ pushed to.
 Secretaries have, and are the only ones to have, full administrative access to all
 repositories and to the github organisation.
 
-## Guidelines for merging
+### Guidelines for merging
 
 * Never force push to any branch on a repository in the php-fig organisation
 * All changes must go through pull requests, a commit should never be pushed
@@ -63,7 +63,7 @@ Should you have any questions please contact the secretaries on info [at] php-fi
 [dot] org. Failure to comply with guidelines will result in revokation of merge
 access. Merge access is a privilege and not a right.
 
-# Tagging
+## Tagging
 
 Tagging on utility and interface repository should be done regularly, ideally after
 every merge, or every batch of merges after PSR approval.

@@ -1,5 +1,4 @@
-Common Interface for Accessing the Clock
-========================================
+# Common Interface for Accessing the Clock
 
 This document describes a simple interface for reading the system clock.
 
@@ -13,9 +12,9 @@ interfaces/functionality first.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-# 1. Specification
+## 1. Specification
 
-## 1.1 Introduction
+### 1.1 Introduction
 
 Creating a standard way of accessing the clock would allow interoperability
 during testing, when testing behavior that has timing-based side effects.
@@ -23,7 +22,7 @@ Common ways to get the current time include calling `\time()` or
 `new \DateTimeImmutable('now')`. However, this makes mocking the current time
 impossible in some situations.
 
-## 1.2 Definitions
+### 1.2 Definitions
 
 * **Clock** - The clock is able to read the current time and date.
 
@@ -39,9 +38,9 @@ This should be done by using the `getTimestamp()` method on the returned `\DateT
 $timestamp = $clock->now()->getTimestamp();
 ```
 
-# 2. Interfaces
+## 2. Interfaces
 
-## 2.1 ClockInterface
+### 2.1 ClockInterface
 
 The clock interface defines the most basic operations to read the current time and date from the clock. 
 It MUST return the time as a `\DateTimeImmutable`.

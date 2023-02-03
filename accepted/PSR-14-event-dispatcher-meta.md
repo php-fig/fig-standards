@@ -1,5 +1,4 @@
-Event Dispatcher Meta Document
-==============================
+# Event Dispatcher Meta Document
 
 ## 1. Summary
 

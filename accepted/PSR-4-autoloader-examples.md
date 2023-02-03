@@ -1,10 +1,8 @@
-Example Implementations of PSR-4
-================================
+# Example Implementations of PSR-4
 
 The following examples illustrate PSR-4 compliant code:
 
-Closure Example
----------------
+## Closure Example
 
 ```php
 <?php
@@ -50,8 +48,7 @@ spl_autoload_register(function ($class) {
 });
 ```
 
-Class Example
--------------
+## Class Example
 
 The following is an example class implementation to handle multiple
 namespaces:

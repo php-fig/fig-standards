@@ -1,5 +1,4 @@
-HTTP Factories
-==============
+# HTTP Factories
 
 This document describes a common standard for factories that create [PSR-7][psr7]
 compliant HTTP objects.
