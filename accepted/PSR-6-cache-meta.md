@@ -350,6 +350,6 @@ Implementers MAY add parameter types to their own packages in a new major releas
 
 * the parameter types match those in the 2.0 package.
 * the implementation specifies a minimum PHP version of 8.0.0 or later.
-* the implementation depends on `"psr/link": "^1.1 || ^2.0"` so as to exclude the untyped 1.0 version.
+* the implementation depends on `"psr/cache": "^2.0 || ^3.0"` so as to exclude the untyped 1.0 version.
 
 Implementers are encouraged but not required to transition their packages toward the 3.0 version of the package at their earliest convenience.
