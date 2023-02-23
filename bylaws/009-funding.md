@@ -38,22 +38,9 @@ At least once a year, any exceeding funds will be forwarded to the [PHP Foundati
 
 ### Approved expenses
 
-This section will enumerate any approved expense.
+This section will contain a chronological list of approved budgeting decisions, either recurring or not.
 
-#### Domain, site, email
-
-The main recurring expense will be:
- * the domains (`php-fig.com` and `php-fig.org`)
- * the email account (`info@php-fig.org`)
-
-Currently, those are and will be bought using NameCheap as a registrar.
-If paying for multiple years at once allows for a discount, and if enough funding is available, this should be done with an upper limit of five years in the future.
-
-### Chronological list of budgetary decisions
-
-This section will contain a chronological list of budgeting decisions, either recurring or not.
-
-| Since | Expense | Approximate amount to be spent |
-|-------|---------|--------------------------------|
-| TBA   | Domains | 2 x ~15 USD / year             |
-| TBA   | Email   | ~15 USD / year                 |
+| Approved since | Expense                                       | Approved amount and frequency  |
+|----------------|-----------------------------------------------|--------------------------------|
+| TBA            | Two Domains (`php-fig.com` and `php-fig.org`) | Up to 15 USD / year per domain |
+| TBA            | Email account (`info@php-fig.org`)            | Up to 15 USD / year            |
