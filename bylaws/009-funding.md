@@ -11,7 +11,7 @@ This document defines the roles, rules and processes that must be followed insid
 For handling money and fiscal matters, the PHP-FIG will use [OpenCollective](https://opencollective.com/) as a fiscal host.
 All three Secretaries, but only the Secretaries, will have full administrative access to PHP-FIG's OpenCollective account.  They do not have discretionary authority, however, except as stated explicitly in this bylaw.
 
-All monetary contributions will flow through it, so that any tax matter will be handled automatically, and every financial decision will be published and publicly available through their budgetary tools.
+All monetary contributions will flow through OpenCollective, so that any tax matter will be handled automatically, and every financial decision will be published and publicly available through OpenCollective's budgetary tools.
 
 ## Raising money
 
@@ -40,7 +40,7 @@ At least once a year, any exceeding funds will be forwarded to the [PHP Foundati
 
 This section will contain a chronological list of approved budgeting decisions, either recurring or not.
 
-| Approved since | Expense                                       | Approved amount and frequency  |
-|----------------|-----------------------------------------------|--------------------------------|
-| TBA            | Two Domains (`php-fig.com` and `php-fig.org`) | Up to 15 USD / year per domain |
-| TBA            | Email account (`info@php-fig.org`)            | Up to 15 USD / year            |
+| Approved since | Expense                                       | Provider  | Approved amount and frequency  |
+|----------------|-----------------------------------------------|-----------|--------------------------------|
+| TBA            | Two Domains (`php-fig.com` and `php-fig.org`) | Namecheap | Up to 15 USD / year per domain |
+| TBA            | Email account (`info@php-fig.org`)            | Namecheap | Up to 15 USD / year            |
