@@ -26,7 +26,10 @@ The TideLift account will pay out any dividend to the OpenCollective account.
 
 ## Spending money
 
-Any payment has to be budgeted and described in this document. Any payment has to be justified and aligned with the mission of the PHP-FIG, which is to push forward the evolution of the PHP community, through the definition of common standard and tools, and by helping PHP Open Source maintainers which follow the same goals.
+Funds donated to the PHP-FIG are to be used for non-personnel operating expenses.  PHP-FIG does not pay individual contributors to PHP-FIG standards or working groups.
+All operating or capital expenses must be approved by an Approval Vote of the Core Committee.  The expense must include whether it is one time or recurring and at which frequency.  All expenses must be justified by their contribution to the mission of PHP-FIG.
+
+Expenses approved by the Core Committee will be listed below.
 
 ### Overfunding, and giving back to the community
 
