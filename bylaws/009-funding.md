@@ -44,7 +44,8 @@ At least once a year, any surplus funds will be forwarded to the [PHP Foundation
 ### Approved expenses
 
 This section will contain a chronological list of approved budgeting decisions, either recurring or not.
-Changes to this section only will not trigger a Bylaw Change Vote, but only an Approval Vote by the Core Committee, as explained in the "Spending Money" section.
+
+As an exception to Votes Bylaw, changes to this section only will not trigger a Bylaw Change Vote, but only an Approval Vote by the Core Committee, as explained in the "Spending Money" section.
 
 | Approved since | Expense                                       | Provider  | Approved amount and frequency  |
 |----------------|-----------------------------------------------|-----------|--------------------------------|
