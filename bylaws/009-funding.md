@@ -38,8 +38,8 @@ Expenses approved by the Core Committee will be listed below.
 
 ### Overfunding, and giving back to the community
 
-PHP-FIG is allowed to store in its OpenCollective account enough funds to sustain itself for three years in the future, according to the current approved budget.
-At least once a year, any exceeding funds will be forwarded to the [PHP Foundation](https://opencollective.com/phpfoundation), as a way to give back to the community, and further increase its growth.
+PHP-FIG will maintain financial reserves to account for three years of the currently approved budget.
+At least once a year, any surplus funds will be forwarded to the [PHP Foundation](https://opencollective.com/phpfoundation) as a way to further support the PHP ecosystem.
 
 ### Approved expenses
 
