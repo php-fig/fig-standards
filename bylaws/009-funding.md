@@ -13,16 +13,21 @@ All three Secretaries, but only the Secretaries, will have full administrative a
 
 All monetary contributions will flow through OpenCollective, so that any tax matter will be handled automatically, and every financial decision will be published and publicly available through OpenCollective's budgetary tools.
 
-## Raising money
+# Raising money
+
+PHP-FIG accepts donations through multiple channels.  Only the Secretaries may actively solicit donations from any party.  No other PHP-FIG member may do so.
 
 ### Through OpenCollective
 
-Contributions will be accepted through OpenCollective; PHP-FIG members will refrain from suggesting or requiring contributions from other members or the community at large if the monetary needs of the PHP-FIG are already met (see "Spending money" section).
+Direct contributions will be accepted through OpenCollective.
 
 ### Through TideLift
 
-As the main way of raising money, PHP-FIG will use [TideLift](https://tidelift.com/).
-The TideLift account will pay out any dividend to the OpenCollective account.
+Contributions will be accepted through [TideLift](https://tidelift.com/).  They will pay out to the OpenCollective account.
+
+### Through Thanks.dev
+
+Contributions will be accepted through [Thanks.dev](https://thanks.dev).  They will pay out to the OpenCollective account.
 
 ## Spending money
 
@@ -39,6 +44,7 @@ At least once a year, any exceeding funds will be forwarded to the [PHP Foundati
 ### Approved expenses
 
 This section will contain a chronological list of approved budgeting decisions, either recurring or not.
+Changes to this section only will not trigger a Bylaw Change Vote, but only an Approval Vote by the Core Committee, as explained in the "Spending Money" section.
 
 | Approved since | Expense                                       | Provider  | Approved amount and frequency  |
 |----------------|-----------------------------------------------|-----------|--------------------------------|
