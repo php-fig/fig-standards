@@ -9,7 +9,7 @@ This document defines the roles, rules and processes that must be followed insid
 ## Fiscal hosting
 
 For handling money and fiscal matters, the PHP-FIG will use [OpenCollective](https://opencollective.com/) as a fiscal host.
-As for any other tool pertaining to the PHP-FIG, secretary will be the only ones to have full administrative access to PHP-FIG's OpenCollective account, but they will not have any decision power over it, and they are instead bounded by this document.
+All three Secretaries, but only the Secretaries, will have full administrative access to PHP-FIG's OpenCollective account.  They do not have discretionary authority, however, except as stated explicitly in this bylaw.
 
 All monetary contributions will flow through it, so that any tax matter will be handled automatically, and every financial decision will be published and publicly available through their budgetary tools.
 
