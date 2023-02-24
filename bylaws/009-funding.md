@@ -4,7 +4,7 @@
 
 PHP-FIG is, as it often happens in Open Source communities, an organization composed by volunteers only; this doesn't exclude the fact that the organization itself may have some costs to sustain itself, for example maintaining tools such as a site and an email account. For such and similar reasons, we need a way to raise and govern money inside our organization.
 
-This document defines the roles, rules and processes that must be followed inside the PHP-FIG in all matters regarding money, to guarantee fairness, transparency and impartiality. This document intentionally describes the only allowed processes and ways to raise, administer and spend money, so that any change to such processes or any variation in budget allocation requires a bylaw change vote. 
+This document defines the roles, rules and processes that must be followed inside the PHP-FIG in all matters regarding money, to guarantee fairness, transparency and impartiality. This document intentionally describes the only allowed processes and ways to raise, administer and spend money, so that any change to such processes requires a bylaw change vote. 
 
 ## Fiscal hosting
 
