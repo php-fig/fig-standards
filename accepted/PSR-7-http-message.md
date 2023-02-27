@@ -1903,3 +1903,6 @@ interface UploadedFileInterface
     public function getClientMediaType();
 }
 ```
+
+Since [psr/http-message version 1.1](https://packagist.org/packages/psr/http-message#1.1.0), the above interfaces have been updated to add argument type hints.
+Since [psr/http-message version 2.0](https://packagist.org/packages/psr/http-message#2.0.0), the above interfaces have been updated to add return type hints.
