@@ -15,7 +15,7 @@ All three Secretaries, but only the Secretaries, MUST have full administrative a
 
 All monetary contributions MUST flow through Open Collective, so that any tax considerations will be handled automatically, and every financial decision MUST be published and publicly available here and through Open Collective's budgetary tools.
 
-# Raising money
+## Raising money
 
 PHP-FIG SHALL NOT solicit donations from any party, especially from private individuals. The only allowed funding sources MUST be listed below.
 
