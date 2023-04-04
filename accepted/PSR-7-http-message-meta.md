@@ -690,4 +690,23 @@ be normalized to a single SPACE (0x20).
 Further characters or sequences in header values should be rejected according
 to the HTTP specification.
 
+### 7.2 Type Additions
+
+The 1.1 release of the `psr/http-message` package includes scalar parameter types.
+The 2.0 release of the package includes return types.
+This structure leverages PHP 7.2 covariance support to allow for a gradual upgrade process, but requires PHP 8.0 for type compatibility.
+
+Implementers MAY add return types to their own packages at their discretion, provided that:
+
+* the return types match those in the 2.0 package.
+* the implementation specifies a minimum PHP version of 8.0.0 or later.
+
+Implementers MAY add parameter types to their own packages in a new major release, either at the same time as adding return types or in a subsequent release, provided that:
+
+* the parameter types match those in the 1.1 package.
+* the implementation specifies a minimum PHP version of 8.0.0 or later.
+* the implementation depends on `"psr/http-message": "^1.1 || ^2.0"` so as to exclude the untyped 1.0 version.
+
+Implementers are encouraged but not required to transition their packages toward the 2.0 version of the package at their earliest convenience.
+
 [1]: https://datatracker.ietf.org/doc/html/rfc7230#section-3.2
