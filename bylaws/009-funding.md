@@ -45,7 +45,7 @@ At least once a year, any surplus funds MUST be forwarded to the [PHP Foundation
 
 This section will contain a chronological list of approved budgeting decisions, either recurring or not.
 
-As an exception to Votes Bylaw, changes to this section only SHOULD NOT trigger a Bylaw Change Vote, but only an Approval Vote by the Core Committee, as explained in the "Spending Money" section.
+As an exception to [Votes Bylaw][], changes to this section only SHOULD NOT trigger a Bylaw Change Vote, but only an Approval Vote by the Core Committee, as explained in the "Spending Money" section.
 
 | Approved since | Expense                                       | Provider  | Approved amount and frequency  |
 |----------------|-----------------------------------------------|-----------|--------------------------------|
@@ -53,3 +53,4 @@ As an exception to Votes Bylaw, changes to this section only SHOULD NOT trigger 
 | TBA            | Email account (`info@php-fig.org`)            | Namecheap | Up to 15 USD / year            |
 
 [RFC 2119]: https://tools.ietf.org/html/rfc2119
+[Votes Bylaw]: https://www.php-fig.org/bylaws/voting-protocol/
