@@ -31,8 +31,8 @@ Contributions will be accepted through [TideLift](https://tidelift.com/). All th
 
 ## Spending money
 
-Funds donated to the PHP-FIG MUST NOT be used for non-personnel operating expenses.  PHP-FIG SHALL NOT pay individual contributors to PHP-FIG standards or working groups.
-All operating or capital expenses MUST be approved by an Approval Vote of the Core Committee.  The expense MUST include whether it is one time or recurring and at which frequency.  All expenses MUST be justified by their contribution to the mission of PHP-FIG.
+Funds donated to the PHP-FIG MUST be used solely for non-personnel, operating expenses.  PHP-FIG SHALL NOT pay individual contributors to PHP-FIG standards or working groups.
+All expenses MUST be approved by an Approval Vote of the Core Committee.  The expense MUST include whether it is one time or recurring and at which frequency.  All expenses MUST be justified by their contribution to the mission of PHP-FIG.
 
 Expenses approved by the Core Committee MUST be listed below, and reported in the Open Collective budget.
 
