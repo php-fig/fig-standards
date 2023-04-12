@@ -2,7 +2,7 @@
 
 ## Scope and objectives
 
-PHP-FIG is, as it often happens in Open Source communities, an organization composed by volunteers only; this doesn't exclude the fact that the organization itself may have some costs to sustain itself, for example maintaining tools such as a site and an email account. For such and similar reasons, we need a way to raise and govern money inside our organization.
+PHP-FIG is, as it often happens in Open Source communities, an organization composed by volunteers only; this doesn't exclude the fact that the organization itself may have some costs to sustain itself, for example maintaining tools such as a site and an email account. For such and similar reasons, we need a way to raise and govern money inside our organization. At the same time, we will avoid soliciting and collecting donations from private individuals, while instead trying to obtain funding from commercial companies and similar entities that, due to their profit which stems from the usage of Open Source Software, should contribute to the costs of the Open Source community at large. 
 
 This document defines the roles, rules and processes that must be followed inside the PHP-FIG in all matters regarding money, to guarantee fairness, transparency and impartiality. This document intentionally describes the only allowed processes and ways to raise, administer and spend money, so that any change to such processes requires a bylaw change vote. 
 
@@ -13,17 +13,17 @@ The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SH
 For handling money and fiscal matters, the PHP-FIG MUST use [Open Collective](https://opencollective.com/) as a platform and [Open Source Collective](https://opencollective.com/opensource) as a fiscal host.
 All three Secretaries, but only the Secretaries, MUST have full administrative access to PHP-FIG's OpenCollective account. They SHALL NOT use those permissions in a discretionary manner, except as stated explicitly in this bylaw.
 
-All monetary contributions MUST flow through Open Collective, so that any tax considerations will be handled automatically, and every financial decision MUST be published and publicly available here and through Open Collective's budgetary tools.
+All funds MUST be collected into the Open Collective PHP-FIG account, so that any tax considerations will be handled automatically by the fiscal host, and every financial decision MUST be published and publicly available here and through Open Collective's budgetary tools.
 
 ## Raising money
 
-PHP-FIG SHALL NOT solicit donations from any party, especially from private individuals. The only allowed funding sources MUST be listed below.
+PHP-FIG SHALL NOT solicit donations from any party, especially from private individuals; all exceptions to this rule MUST be listed below.
 
 ### Through OpenCollective
 
-Direct contributions MUST NOT be accepted through OpenCollective; the collective home page MUST be set up in a way that:
+Direct contributions MUST NOT be accepted through Open Collective, to avoid private/personal donations; the collective home page MUST be set up in a way that:
  * all contribution sections and features are hidden and/or disabled, if possible;
- * explicit wording will be visible reminding visitors of the PHP-FIG stance in the matter.
+ * explicit wording will be visible reminding visitors of the PHP-FIG stance in the matter (see "Scope and objectives").
 
 ### Through TideLift
 
