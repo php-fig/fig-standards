@@ -27,7 +27,7 @@ Direct contributions MUST NOT be accepted through Open Collective, to avoid priv
 
 ### Through TideLift
 
-Contributions will be accepted through [TideLift](https://tidelift.com/). All three Secretaries, but only the Secretaries, MUST have full administrative access to PHP-FIG's TideLift account, which MUST be configured to pay out to the Open Collective account. 
+Contributions SHALL be accepted through [TideLift](https://tidelift.com/). All three Secretaries, but only the Secretaries, MUST have full administrative access to PHP-FIG's TideLift account, which MUST be configured to pay out to the Open Collective account. 
 
 ## Spending money
 
