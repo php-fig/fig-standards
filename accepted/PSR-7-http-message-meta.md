@@ -250,7 +250,7 @@ For HTTP clients, they allow consumers to build a base request with data such
 as the base URI and required headers, without needing to build a brand new
 request or reset request state for each message the client sends:
 
-~~~php
+```php
 $uri = new Uri('http://api.example.com');
 $baseRequest = new Request($uri, null, [
     'Authorization' => 'Bearer ' . $token,
@@ -276,7 +276,7 @@ $response = $client->sendRequest($request)
 // No need to overwrite headers or body!
 $request = $baseRequest->withUri($uri->withPath('/tasks'))->withMethod('GET');
 $response = $client->sendRequest($request);
-~~~
+```
 
 On the server-side, developers will need to:
 
@@ -299,17 +299,17 @@ changes necessary in consuming true value objects are:
 
 As an example, in Zend Framework 2, instead of the following:
 
-~~~php
+```php
 function (MvcEvent $e)
 {
     $response = $e->getResponse();
     $response->setHeaderLine('x-foo', 'bar');
 }
-~~~
+```
 
 one would now write:
 
-~~~php
+```php
 function (MvcEvent $e)
 {
     $response = $e->getResponse();
@@ -317,7 +317,7 @@ function (MvcEvent $e)
         $response->withHeader('x-foo', 'bar')
     );
 }
-~~~
+```
 
 The above combines assignment and notification in a single call.
 
@@ -375,11 +375,11 @@ like `isReadable()`, `isWritable()`, etc. This approach is used by Python,
 In some cases, you may want to return a file from the filesystem. The typical
 way to do this in PHP is one of the following:
 
-~~~php
+```php
 readfile($filename);
 
 stream_copy_to_stream(fopen($filename, 'r'), fopen('php://output', 'w'));
-~~~
+```
 
 Note that the above omits sending appropriate `Content-Type` and
 `Content-Length` headers; the developer would need to emit these prior to
@@ -390,7 +390,7 @@ implementation that accepts a filename and/or stream resource, and to provide
 this to the response instance. A complete example, including setting appropriate
 headers:
 
-~~~php
+```php
 // where Stream is a concrete StreamInterface:
 $stream   = new Stream($filename);
 $finfo    = new finfo(FILEINFO_MIME);
@@ -398,7 +398,7 @@ $response = $response
     ->withHeader('Content-Type', $finfo->file($filename))
     ->withHeader('Content-Length', (string) filesize($filename))
     ->withBody($stream);
-~~~
+```
 
 Emitting this response will send the file to the client.
 
@@ -413,7 +413,7 @@ example](https://github.com/phly/psr7examples#direct-output). Wrap any code
 emitting output directly in a callback, pass that to an appropriate
 `StreamInterface` implementation, and provide it to the message body:
 
-~~~php
+```php
 $output = new CallbackStream(function () use ($request) {
     printf("The requested URI was: %s<br>\n", $request->getUri());
     return '';
@@ -421,7 +421,7 @@ $output = new CallbackStream(function () use ($request) {
 return (new Response())
     ->withHeader('Content-Type', 'text/html')
     ->withBody($output);
-~~~
+```
 
 #### What if I want to use an iterator for content?
 
@@ -496,11 +496,11 @@ to be an array, with the following rationale:
 The main argument is that if the body parameters are an array, developers have
 predictable access to values:
 
-~~~php
+```php
 $foo = isset($request->getBodyParams()['foo'])
     ? $request->getBodyParams()['foo']
     : null;
-~~~
+```
 
 The argument for using "parsed body" was made by examining the domain. A message
 body can contain literally anything. While traditional web applications use
@@ -519,7 +519,7 @@ parsing the body. These might include:
 
 The end result is that a developer now has to look in multiple locations:
 
-~~~php
+```php
 $data = $request->getBodyParams();
 if (isset($data['__parsed__']) && is_object($data['__parsed__'])) {
     $data = $data['__parsed__'];
@@ -530,20 +530,20 @@ $data = $request->getBodyParams();
 if ($request->hasAttribute('__body__')) {
     $data = $request->getAttribute('__body__');
 }
-~~~
+```
 
 The solution presented is to use the terminology "ParsedBody", which implies
 that the values are the results of parsing the message body. This also means
 that the return value _will_ be ambiguous; however, because this is an attribute
 of the domain, this is also expected. As such, usage will become:
 
-~~~php
+```php
 $data = $request->getParsedBody();
 if (! $data instanceof \stdClass) {
     // raise an exception!
 }
 // otherwise, we have what we expected
-~~~
+```
 
 This approach removes the limitations of forcing an array, at the expense of
 ambiguity of return value. Considering that the other suggested solutions —
@@ -647,3 +647,66 @@ used to populate the headers of an HTTP message.
 * Anton Serdyuk
 * Phil Sturgeon
 * Chris Wilkinson
+
+## 7. Errata
+
+### 7.1 Validation of Header Names and Values
+
+Some special characters within the name or value of an HTTP header might affect
+the parsing of the serialized message in a way that the contents of unrelated
+headers are changed. This misparsing can open up an application to security
+vulnerabilities. A common type of vulnerability is CRLF injection, allowing
+an attacker to inject additional headers or to end the list of headers early.
+
+For this reason classes implementing the `MessageInterface` SHOULD strictly
+validate the header names and contents according to the most recent HTTP
+specification ([RFC 7230#3.2][1] at the time of writing). The implementation
+SHOULD reject invalid values and SHOULD NOT make any attempt to automatically
+correct the provided values.
+
+A minimally viable validator is expected to reject header names containing the
+following characters:
+
+- NUL (0x00)
+- `\r` (0x0D)
+- `\n` (0x0A)
+- Any character less than or equal to 0x20.
+
+Further characters or sequences in header names should be rejected according
+to the HTTP specification.
+
+A minimally viable validator is expected to reject header values containing the
+following characters:
+
+- NUL (0x00)
+- `\r` (0x0D)
+- `\n` (0x0A)
+
+If compatibility with older systems is desired then the sequence `\r\n` (0x0D0A)
+within a header value MAY be accepted if and only if it is immediately followed
+by either SPACE (0x20) or `\t` (0x09). The full sequence SHOULD then internally
+be normalized to a single SPACE (0x20).
+
+Further characters or sequences in header values should be rejected according
+to the HTTP specification.
+
+### 7.2 Type Additions
+
+The 1.1 release of the `psr/http-message` package includes scalar parameter types.
+The 2.0 release of the package includes return types.
+This structure leverages PHP 7.2 covariance support to allow for a gradual upgrade process, but requires PHP 8.0 for type compatibility.
+
+Implementers MAY add return types to their own packages at their discretion, provided that:
+
+* the return types match those in the 2.0 package.
+* the implementation specifies a minimum PHP version of 7.2.0 or later.
+
+Implementers MAY add parameter types to their own packages in a new major release, either at the same time as adding return types or in a subsequent release, provided that:
+
+* the parameter types match those in the 1.1 package.
+* the implementation specifies a minimum PHP version of 7.2.0 or later.
+* the implementation depends on `"psr/http-message": "^1.1 || ^2.0"` so as to exclude the untyped 1.0 version.
+
+Implementers are encouraged but not required to transition their packages toward the 2.0 version of the package at their earliest convenience.
+
+[1]: https://datatracker.ietf.org/doc/html/rfc7230#section-3.2

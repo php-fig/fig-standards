@@ -67,9 +67,9 @@ implemented, extended or overridden.
 The PHPDoc for every type of "Structural Element" MUST inherit the following
 parts if that part is absent:
 
-* [Summary]([PHPDOC_PSR]#51-summary)
-* [Description]([PHPDOC_PSR]#52-description) and
-* A specific subset of [Tags]([PHPDOC_PSR]#53-tags):
+* [Summary][PHPDOC_PSR_SUMMARY]
+* [Description][PHPDOC_PSR_DESCRIPTION] and
+* A specific subset of [Tags][PHPDOC_PSR_TAGS]:
   * [@author](#52-author)
   * [@copyright](#53-copyright)
   * [@version](#519-version)
@@ -594,7 +594,7 @@ The @param tag is used to document a single parameter of a function or method.
 
 #### Syntax
 
-    @param ["Type"] [name] [<description>]
+    @param ["Type"] $[name] [<description>]
 
 #### Description
 
@@ -635,7 +635,7 @@ The `@property` tag is used to declare which "magic" properties are supported.
 
 #### Syntax
 
-    @property[<-read|-write>] ["Type"] [name] [<description>]
+    @property[<-read|-write>] ["Type"] $[name] [<description>]
 
 #### Description
 
@@ -1104,9 +1104,12 @@ class Foo
 ```
 
 
-[RFC2119]:      https://tools.ietf.org/html/rfc2119
-[RFC2396]:      https://tools.ietf.org/html/rfc2396
-[SEMVER2]:      http://www.semver.org
-[PHP_SUBSTR]:   https://php.net/manual/function.substr.php
-[SPDX]:         https://www.spdx.org/licenses
-[PHPDOC_PSR]:   https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
+[RFC2119]:                https://tools.ietf.org/html/rfc2119
+[RFC2396]:                https://tools.ietf.org/html/rfc2396
+[SEMVER2]:                http://www.semver.org
+[PHP_SUBSTR]:             https://php.net/manual/function.substr.php
+[SPDX]:                   https://www.spdx.org/licenses
+[PHPDOC_PSR]:             https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
+[PHPDOC_PSR_SUMMARY]:     https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md#51-summary
+[PHPDOC_PSR_DESCRIPTION]: https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md#52-description
+[PHPDOC_PSR_TAGS]:        https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md#53-tags

@@ -14,10 +14,10 @@ interfaces and functionality first.
 
 * **Framework** - An application framework (or micro-framework) that runs a developers code.  
   Eg. Laravel, Symphony, CakePHP, Slim
-* **Library** - Any library that developers may include that adds additional functionality.
+* **Library** - Any library that developers may include that adds additional functionality.  
   Eg. Image Manipulation, HTTP Clients, 3rd Party SDKs
-* **Provider** - An organization that offers APM (Application Performance Monitoring) as a service. Typically, via a
-  composer package
+* **Provider** - An organization that offers APM (Application Performance Monitoring) as a service.
+  Typically, via a composer package
 
 ## 2. Interfaces
 

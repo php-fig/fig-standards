@@ -6,7 +6,7 @@
 
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
-| Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2022-08-31 |
+| Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2024-08-31 |
 | Vincent de Lau ([@vdelau])            | 2021-06-25 - 2023-05-30 |
 | Steve Winter ([@SteveWinterNZ])       | 2022-01-30 - 2024-01-28 |
 
@@ -15,26 +15,26 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 ### Core Committee Members
 
-| Name                                  | Term                    |
-|---------------------------------------|-------------------------|
-| Larry Garfield ([@Crell])             | 2016-12-24 - 2023-05-30 |
-| Matthew Weier O'Phinney ([@mwop])     | 2016-12-24 - 2023-05-30 |
-| Cees-Jan Kiewiet ([@WyriHaximus])     | 2016-12-24 - 2022-08-31 |
-| Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2024-01-28 |
-| Korvin Szanto ([@korvinszanto])       | 2016-12-24 - 2024-01-28 |
-| Chuck Burgess ([@ashnazg])            | 2018-08-26 - 2022-08-31 |
-| Woody Gilk ([@shadowhand])            | 2019-05-26 - 2022-08-31 |
-| Enrico Zimuel ([@ezimuel])            | 2020-01-25 - 2024-01-28 |
-| Ben Edmunds ([@benedmunds])           | 2020-08-31 - 2022-08-31 |
-| Michelle Sanver ([@michellesanver])   | 2021-06-25 - 2023-05-30 |
-| Alessandro Chitolina ([@alekitto])    | 2021-06-25 - 2023-05-30 |
-| Ken Guest ([@kenguest])               | 2022-01-30 - 2024-01-28 |
+| Name                                | Term                    |
+|-------------------------------------|-------------------------|
+| Larry Garfield ([@Crell])           | 2016-12-24 - 2023-05-30 |
+| Matthew Weier O'Phinney ([@mwop])   | 2016-12-24 - 2023-05-30 |
+| Cees-Jan Kiewiet ([@WyriHaximus])   | 2016-12-24 - 2024-08-31 |
+| Chris Tankersley ([@dragonmantank]) | 2016-12-24 - 2024-01-28 |
+| Korvin Szanto ([@korvinszanto])     | 2016-12-24 - 2024-01-28 |
+| Chuck Burgess ([@ashnazg])          | 2018-08-26 - 2024-08-31 |
+| Enrico Zimuel ([@ezimuel])          | 2020-01-25 - 2024-01-28 |
+| Michelle Sanver ([@michellesanver]) | 2021-06-25 - 2023-05-30 |
+| Alessandro Chitolina ([@alekitto])  | 2021-06-25 - 2023-05-30 |
+| Ken Guest ([@kenguest])             | 2022-01-30 - 2024-01-28 |
+| Jaap van Otterdijk ([@jaapio])      | 2022-08-28 - 2024-08-28 |
+| Navarr Barnier ([@navarr])          | 2022-08-28 - 2024-08-28 |
 
 ### Member Projects
 
 | Project                           | Representative                        |
 |-----------------------------------|---------------------------------------|
-| [AzuraCast]                       | Felix Bachmann ([@VaalynDev])         |
+| [AzuraCast]                       | Buster Neece ([@BusterNeece])         |
 | [CakePHP]                         | Larry Masters ([@PhpNut])             |
 | [Composer]                        | Jordi Boggiano ([@seldaek])           |
 | [Concrete CMS]                    | Korvin Szanto ([@korvinszanto])       |
@@ -88,7 +88,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
 | Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-25 |
 | Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
-| Buster Neece ([@SlvrEagle23])         | 2020-01-25 - 2022-01-31 |
+| Buster Neece ([@BusterNeece])         | 2020-01-25 - 2022-01-31 |
 
 ### Former Core Committee Members
 
@@ -104,6 +104,8 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Michael Cullum ([@michaelcullumuk])   | 2018-01-28 - 2020-01-25 |
 | Matteo Beccati ([@mbeccati])          | 2019-05-26 - 2021-05-30 |
 | Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
+| Ben Edmunds ([@benedmunds])           | 2020-08-31 - 2022-08-31 |
+| Woody Gilk ([@shadowhand])            | 2019-05-26 - 2022-08-31 |
 
 ### Former Member Projects
 
@@ -133,6 +135,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@beausimensen]: https://twitter.com/beausimensen
 [@bernhard_rusch]: https://twitter.com/bernhard_rusch
 [@bretterer]: https://twitter.com/bretterer
+[@BusterNeece]: https://twitter.com/BusterNeece
 [@couac]: https://twitter.com/couac
 [@Crell]: https://twitter.com/Crell
 [@dead_lugosi]: https://twitter.com/dead_lugosi
@@ -180,18 +183,18 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@seldaek]: https://twitter.com/seldaek
 [@shadowhand]: https://twitter.com/shadowhand
 [@shefik_info]: https://twitter.com/shefik_info
-[@SlvrEagle23]: https://twitter.com/SlvrEagle23
 [@SteveWinterNZ]: http://www.tedivm.com/SteveWinterNZ
 [@storresi]: https://twitter.com/storresi
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
 [@trowski2002]: https://twitter.com/trowski2002
-[@VaalynDev]: https://twitter.com/vaalyndev
 [@vdelau]: https://twitter.com/vdelau
 [@WyriHaximus]: https://twitter.com/WyriHaximus
 [@xtaz07]: https://twitter.com/xtaz07
 [@yellowandy]: https://twitter.com/yellowandy
 [@yunosh]: https://twitter.com/yunosh
+[@jaapio]: https://twitter.com/jaapio
+[@navarr]: https://twitter.com/navarr
 
 [Agavi]: http://www.agavi.org
 [Assetic]: https://github.com/kriswallsmith/assetic

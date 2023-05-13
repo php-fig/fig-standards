@@ -23,7 +23,7 @@ functions are able to span multiple lines.
 
 The following examples are perfectly valid in PSR-2:
 
-~~~php
+```php
 <?php
 somefunction($foo, $bar, [
   // ...
@@ -32,9 +32,16 @@ somefunction($foo, $bar, [
 $app->get('/hello/{name}', function ($name) use ($app) {
     return 'Hello '.$app->escape($name);
 });
-~~~
+```
 
 ### 3.2 - Extending Multiple Interfaces (10/17/2013)
 
 When extending multiple interfaces, the list of `extends` should be treated the same as a list
 of `implements`, as declared in Section 4.1.
+
+## 4. People
+
+### 4.1 Editor
+
+* Paul M. Jones
+

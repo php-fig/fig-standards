@@ -131,7 +131,7 @@ The interfaces and classes described are provided as part of the
 
 ### 3.1 `Psr\Link\LinkInterface`
 
-~~~php
+```php
 <?php
 
 namespace Psr\Link;
@@ -184,11 +184,11 @@ interface LinkInterface
      */
     public function getAttributes();
 }
-~~~
+```
 
 ### 3.2 `Psr\Link\EvolvableLinkInterface`
 
-~~~php
+```php
 <?php
 
 namespace Psr\Link;
@@ -267,11 +267,11 @@ interface EvolvableLinkInterface extends LinkInterface
      */
     public function withoutAttribute($attribute);
 }
-~~~
+```
 
 #### 3.2 `Psr\Link\LinkProviderInterface`
 
-~~~php
+```php
 <?php
 
 namespace Psr\Link;
@@ -301,11 +301,11 @@ interface LinkProviderInterface
      */
     public function getLinksByRel($rel);
 }
-~~~
+```
 
 #### 3.3 `Psr\Link\EvolvableLinkProviderInterface`
 
-~~~php
+```php
 <?php
 
 namespace Psr\Link;
@@ -341,7 +341,7 @@ interface EvolvableLinkProviderInterface extends LinkProviderInterface
      */
     public function withoutLink(LinkInterface $link);
 }
-~~~
+```
 
 Since [psr/link version 1.1](https://packagist.org/packages/psr/link#1.1.0), the above interfaces have been updated to add argument type hints.
 Since [psr/link version 2.0](https://packagist.org/packages/psr/link#2.0.0), the above interfaces have been updated to add return type hints.  References to `array|\Traversable` have been replaced with `iterable`.

@@ -5,7 +5,7 @@ Following the rules of the [workflow bylaw], once a PSR has been "Accepted" the 
 cannot change, backwards compatibility must remain at 100%, and any confusion that arises from
 original wording can be clarified through errata.
 
-The rules for errata are covered in the [workflow bylaw], and only allow non-backwards compatible
+The rules for errata are covered in the [workflow bylaw], and only allow backwards compatible
 clarification to be added to the meta document. Sometimes, modifications will be necessary in PSR
 document itself, and this document outlines those cases.
 

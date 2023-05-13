@@ -6,7 +6,7 @@ The following examples illustrate PSR-4 compliant code:
 Closure Example
 ---------------
 
-~~~php
+```php
 <?php
 /**
  * An example of a project-specific implementation.
@@ -48,7 +48,7 @@ spl_autoload_register(function ($class) {
         require $file;
     }
 });
-~~~
+```
 
 Class Example
 -------------
@@ -56,7 +56,7 @@ Class Example
 The following is an example class implementation to handle multiple
 namespaces:
 
-~~~php
+```php
 <?php
 namespace Example;
 
@@ -244,13 +244,13 @@ class Psr4AutoloaderClass
         return false;
     }
 }
-~~~
+```
 
 ### Unit Tests
 
 The following example is one way of unit testing the above class loader:
 
-~~~php
+```php
 <?php
 namespace Example\Tests;
 
@@ -347,4 +347,4 @@ class Psr4AutoloaderClassTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expect, $actual);
     }
 }
-~~~
+```
