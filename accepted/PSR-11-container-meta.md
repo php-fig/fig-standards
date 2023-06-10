@@ -109,11 +109,11 @@ In the `BadExample` you should not inject the container because:
 - it is not directly clear from your code that the `BadExample` class will need
   the "db" service. Dependencies are hidden.
 
-Very often, the `ContainerInterface` will be used by other packages. As a end-user
+Very often, the `ContainerInterface` will be used by other packages. As an end-user
 PHP developer using a framework, it is unlikely you will ever need to use containers
 or type-hint on the `ContainerInterface` directly.
 
-Whether using the Container PSR into your code is considered a good practice or not boils down to
+Whether using the Container PSR in your code is considered a good practice or not boils down to
 knowing if the objects you are retrieving are **dependencies** of the object referencing
 the container or not. Here are a few more examples:
 
@@ -226,7 +226,7 @@ As a result, the `ContainerInterface` contains two methods:
 
 While `ContainerInterface` only defines one mandatory parameter in `get()`, it is not incompatible with
 existing containers that have additional optional parameters. PHP allows an implementation to offer more parameters
-as long as they are optional, because the implementation *does* satisfy the interface.
+as long as they are optional because the implementation *does* satisfy the interface.
 
 Difference with container-interop: [The container-interop spec](https://github.com/container-interop/container-interop/blob/master/docs/ContainerInterface.md) stated that:
 
@@ -269,7 +269,7 @@ However, if the exception is thrown by some code out of the container's scope (f
 
 The usefulness of the base exception interface was questioned: it is not an exception one would typically catch [[8]](#link_base_exception_usefulness).
 
-However, most PHP-FIG members considered it to be a best practice. Base exception interface are implemented in previous PSRs and several member projects. The base exception interface was therefore kept.
+However, most PHP-FIG members considered it to be a best practice. Base exception interface is implemented in previous PSRs and several member projects. The base exception interface was therefore kept.
 
 #### 7.3.2 Not found exception
 
