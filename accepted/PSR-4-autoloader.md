@@ -70,6 +70,6 @@ For example implementations of autoloaders conforming to the specification,
 please see the [examples file][]. Example implementations MUST NOT be regarded
 as part of the specification and MAY change at any time.
 
-[autoloading]: http://php.net/autoload
+[autoloading]: https://php.net/manual/en/language.oop5.autoload.php
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [examples file]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
