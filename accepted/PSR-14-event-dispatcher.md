@@ -70,8 +70,6 @@ If passed a Stoppable Event, a Dispatcher
 
 A Dispatcher SHOULD assume that any Listener returned to it from a Listener Provider is type-safe.  That is, the Dispatcher SHOULD assume that calling `$listener($event)` will not produce a `TypeError`.
 
-[Promise object]: https://promisesaplus.com/
-
 ### Error handling
 
 An Exception or Error thrown by a Listener MUST block the execution of any further Listeners.  An Exception or Error thrown by a Listener MUST be allowed to propagate back up to the Emitter.
