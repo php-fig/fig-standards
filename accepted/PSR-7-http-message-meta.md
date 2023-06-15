@@ -717,8 +717,8 @@ Some characters are reserved in the user info part of the authority section.
 According to (RFC3986 2.2 and 3.2.1)[https://www.rfc-editor.org/rfc/rfc3986], the reserved characters are `"/" / "?" / "#" / "[" / "]" / "@"`.
 Additionally, `:` must be encoded when in the username because it is used to separate username and password.
 
-`UriInterface::withUserInfo` MUST NOT double encode reserved characters.
+`UriInterface::withUserInfo()` MUST NOT double encode reserved characters.
 
-`UriInterface::getUserInfo` MUST encode the reserved characters according to RFC3986 when returning the authority.
+`UriInterface::getUserInfo()` MUST encode the reserved characters according to RFC3986 when returning the authority.
 If there is a password, the `:` between username and password MUST NOT be encoded.
 
