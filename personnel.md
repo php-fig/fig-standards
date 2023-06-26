@@ -7,8 +7,8 @@
 | Name                                  | Term                    |
 |---------------------------------------|-------------------------|
 | Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2024-08-31 |
-| Vincent de Lau ([@vdelau])            | 2021-06-25 - 2023-05-30 |
 | Steve Winter ([@SteveWinterNZ])       | 2022-01-30 - 2024-01-28 |
+| Mark Niebergall ([@mbniebergall])    | 2023-05-25 - 2025-05-30 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -17,18 +17,19 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Name                                | Term                    |
 |-------------------------------------|-------------------------|
-| Larry Garfield ([@Crell])           | 2016-12-24 - 2023-05-30 |
-| Matthew Weier O'Phinney ([@mwop])   | 2016-12-24 - 2023-05-30 |
+| Larry Garfield ([@Crell])           | 2016-12-24 - 2025-05-30 |
+| Matthew Weier O'Phinney ([@mwop])   | 2016-12-24 - 2025-05-30 |
 | Cees-Jan Kiewiet ([@WyriHaximus])   | 2016-12-24 - 2024-08-31 |
 | Chris Tankersley ([@dragonmantank]) | 2016-12-24 - 2024-01-28 |
 | Korvin Szanto ([@korvinszanto])     | 2016-12-24 - 2024-01-28 |
 | Chuck Burgess ([@ashnazg])          | 2018-08-26 - 2024-08-31 |
 | Enrico Zimuel ([@ezimuel])          | 2020-01-25 - 2024-01-28 |
 | Michelle Sanver ([@michellesanver]) | 2021-06-25 - 2023-05-30 |
-| Alessandro Chitolina ([@alekitto])  | 2021-06-25 - 2023-05-30 |
+| Alessandro Chitolina ([@alekitto])  | 2021-06-25 - 2025-05-30 |
 | Ken Guest ([@kenguest])             | 2022-01-30 - 2024-01-28 |
 | Jaap van Otterdijk ([@jaapio])      | 2022-08-28 - 2024-08-28 |
 | Navarr Barnier ([@navarr])          | 2022-08-28 - 2024-08-28 |
+| Vincent de Lau ([@vdelau])          | 2023-05-25 - 2025-05-30 |
 
 ### Member Projects
 
@@ -89,6 +90,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-25 |
 | Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
 | Buster Neece ([@BusterNeece])         | 2020-01-25 - 2022-01-31 |
+| Vincent de Lau ([@vdelau])            | 2021-06-25 - 2023-05-25 |
 
 ### Former Core Committee Members
 
@@ -166,6 +168,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
 [@mbeccati]: https://twitter.com/mbeccati
+[@mbniebergall]: https://twitter.com/mbniebergall
 [@michaelcullumuk]: https://twitter.com/michaelcullumuk
 [@michellesanver]: https://twitter.com/michellesanver
 [@michieltcs]: https://twitter.com/michieltcs
