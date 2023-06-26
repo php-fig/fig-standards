@@ -24,7 +24,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Korvin Szanto ([@korvinszanto])     | 2016-12-24 - 2024-01-28 |
 | Chuck Burgess ([@ashnazg])          | 2018-08-26 - 2024-08-31 |
 | Enrico Zimuel ([@ezimuel])          | 2020-01-25 - 2024-01-28 |
-| Michelle Sanver ([@michellesanver]) | 2021-06-25 - 2023-05-30 |
 | Alessandro Chitolina ([@alekitto])  | 2021-06-25 - 2025-05-30 |
 | Ken Guest ([@kenguest])             | 2022-01-30 - 2024-01-28 |
 | Jaap van Otterdijk ([@jaapio])      | 2022-08-28 - 2024-08-28 |
@@ -108,6 +107,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
 | Ben Edmunds ([@benedmunds])           | 2020-08-31 - 2022-08-31 |
 | Woody Gilk ([@shadowhand])            | 2019-05-26 - 2022-08-31 |
+| Michelle Sanver ([@michellesanver])   | 2021-06-25 - 2023-05-25 |
 
 ### Former Member Projects
 
