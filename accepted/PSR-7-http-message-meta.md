@@ -710,3 +710,15 @@ Implementers MAY add parameter types to their own packages in a new major releas
 Implementers are encouraged but not required to transition their packages toward the 2.0 version of the package at their earliest convenience.
 
 [1]: https://datatracker.ietf.org/doc/html/rfc7230#section-3.2
+
+### 7.3 Escaping User Info
+
+Some characters are reserved in the user info part of the authority section.
+According to (RFC3986 2.2 and 3.2.1)[https://www.rfc-editor.org/rfc/rfc3986], the reserved characters are `"/" / "?" / "#" / "[" / "]" / "@"`.
+Additionally, `:` must be encoded when in the username because it is used to separate username and password.
+
+`UriInterface::withUserInfo()` MUST NOT double encode reserved characters.
+
+`UriInterface::getUserInfo()` MUST encode the reserved characters according to RFC3986 when returning the authority.
+If there is a password, the `:` between username and password MUST NOT be encoded.
+
