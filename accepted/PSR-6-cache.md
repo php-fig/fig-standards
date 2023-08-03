@@ -2,7 +2,7 @@
 
 Caching is a common way to improve the performance of any project, making
 caching libraries one of the most common features of many frameworks and
-libraries. This has lead to a situation where many libraries roll their own
+libraries. This has lead to a situation where many libraries build their own
 caching libraries, with various levels of functionality. These differences are
 causing developers to have to learn multiple systems which may or may not
 provide the functionality they need. In addition, the developers of caching
