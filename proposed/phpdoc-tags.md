@@ -27,12 +27,13 @@ PSR-19: PHPDoc tags
   - [5.11. @property](#511-property)
   - [5.12. @return](#512-return)
   - [5.13. @see](#513-see)
-  - [5.14. @since](#514-since)
-  - [5.15. @throws](#515-throws)
-  - [5.16. @todo](#516-todo)
-  - [5.17. @uses](#517-uses)
-  - [5.18. @var](#518-var)
-  - [5.19. @version](#519-version)
+  - [5.14. @selfdoc](#514-selfdoc)
+  - [5.15. @since](#515-since)
+  - [5.16. @throws](#516-throws)
+  - [5.17. @todo](#517-todo)
+  - [5.18. @uses](#518-uses)
+  - [5.19. @var](#519-var)
+  - [5.20. @version](#520-version)
 
 ## 1. Introduction
 
@@ -769,7 +770,36 @@ function count()
 }
 ```
 
-### 5.14. @since
+### 5.14. @selfdoc
+
+The @selfdoc tag denotes self documented "Structural Elements".
+
+#### Syntax
+
+    @selfdoc
+
+#### Description
+
+The @selfdoc tag can be used to indicate that the documentation for the associated
+"Structural Element" was omitted intentionally as its signature provides all required
+information.
+
+#### Examples
+
+The below function is documented through PHP typehints and its name clearly states
+what it does.
+
+```php
+/**
+ * @selfdoc
+ */
+function count(array $items): int
+{
+    <...>
+}
+```
+
+### 5.15. @since
 
 The @since tag is used to denote _when_ an element was introduced or modified,
 using some description of "versioning" to that element.
@@ -819,7 +849,7 @@ class Foo
 }
 ```
 
-### 5.15. @throws
+### 5.16. @throws
 
 The @throws tag is used to indicate whether "Structural Elements" throw a
 specific type of Throwable (exception or error).
@@ -862,7 +892,7 @@ function count($items)
 }
 ```
 
-### 5.16. @todo
+### 5.17. @todo
 
 The @todo tag is used to indicate whether any development activities should
 still be executed on associated "Structural Elements".
@@ -894,7 +924,7 @@ function count()
 }
 ```
 
-### 5.17. @uses
+### 5.18. @uses
 
 Indicates whether the current "Structural Element" consumes the
 "Structural Element", or project file, that is provided as target.
@@ -947,7 +977,7 @@ function executeMyView()
 }
 ```
 
-### 5.18. @var
+### 5.19. @var
 
 You may use the @var tag to document the "Type" of the following
 "Structural Elements":
@@ -1051,7 +1081,7 @@ class Foo
 }
 ```
 
-### 5.19. @version
+### 5.20. @version
 
 The @version tag is used to denote some description of "versioning" to an
 element.
