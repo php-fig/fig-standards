@@ -41,6 +41,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Contao Open Source CMS]          | Leo Feyer ([@leofeyer])               |
 | [eZ Publish]                      | Andre Romcke ([@andrerom])            |
 | [Horde]                           | Jan Schneider ([@yunosh])             |
+| [Hyperf]                          | Leo Cavalcante ([@leocavalcante])     |
 | [IBM i Toolkit]                   | Adam Culp ([@adamculp])               |
 | [Icicle]                          | Aaron Piotrowski ([@trowski2002])     |
 | [Jackalope]                       | Lukas Kahwe Smith ([@lsmith])         |
@@ -164,6 +165,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@iansltx]: https://twitter.com/iansltx
 [@iminyaylo]: https://twitter.com/iminyaylo
 [@kenguest]: https://twitter.com/kenguest
+[@leocavalcante]: https://twitter.com/leocavalcante
 [@leofeyer]: https://twitter.com/leofeyer
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
@@ -213,6 +215,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Flow]: https://flow.neos.io/
 [Guzzle]: http://guzzlephp.org
 [Horde]: http://www.horde.org
+[Hyperf]: https://hyperf.io
 [IBM i Toolkit]: https://github.com/zendtech/IbmiToolkit
 [Icicle]: https://icicle.io
 [Jackalope]: http://jackalope.github.com
