@@ -11,6 +11,7 @@ The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SH
 ## Fiscal hosting
 
 For handling money and fiscal matters, the PHP-FIG MUST use [Open Collective](https://opencollective.com/) as a platform and [Open Source Collective](https://opencollective.com/opensource) as a fiscal host.
+
 All three Secretaries, but only the Secretaries, MUST have full administrative access to PHP-FIG's OpenCollective account. They SHALL NOT use those permissions in a discretionary manner, except as stated explicitly in this bylaw.
 
 All funds MUST be collected into the Open Collective PHP-FIG account, so that any tax considerations will be handled automatically by the fiscal host, and every financial decision MUST be published and publicly available at the bottom of this document in the appropriate table and through Open Collective's budgetary tools.
