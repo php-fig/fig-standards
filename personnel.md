@@ -34,7 +34,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Project                           | Representative                        |
 |-----------------------------------|---------------------------------------|
-| [AMPHP]                           | Aaron Piotrowski ([@trowski2002])     |
+| [AMPHP]                           | Aaron Piotrowski ([@_trowski])     |
 | [AzuraCast]                       | Buster Neece ([@BusterNeece])         |
 | [CakePHP]                         | Larry Masters ([@PhpNut])             |
 | [Composer]                        | Jordi Boggiano ([@seldaek])           |
@@ -192,7 +192,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@storresi]: https://twitter.com/storresi
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
-[@trowski2002]: https://twitter.com/trowski2002
+[@_trowski]: https://twitter.com/_trowski
 [@vdelau]: https://twitter.com/vdelau
 [@WyriHaximus]: https://twitter.com/WyriHaximus
 [@xtaz07]: https://twitter.com/xtaz07
