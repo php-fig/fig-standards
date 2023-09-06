@@ -34,6 +34,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 | Project                           | Representative                        |
 |-----------------------------------|---------------------------------------|
+| [AMPHP]                           | Aaron Piotrowski ([@_trowski])     |
 | [AzuraCast]                       | Buster Neece ([@BusterNeece])         |
 | [CakePHP]                         | Larry Masters ([@PhpNut])             |
 | [Composer]                        | Jordi Boggiano ([@seldaek])           |
@@ -43,7 +44,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Horde]                           | Jan Schneider ([@yunosh])             |
 | [Hyperf]                          | Leo Cavalcante ([@leocavalcante])     |
 | [IBM i Toolkit]                   | Adam Culp ([@adamculp])               |
-| [Icicle]                          | Aaron Piotrowski ([@trowski2002])     |
 | [Jackalope]                       | Lukas Kahwe Smith ([@lsmith])         |
 | [Joomla]                          | Robert Deutz ([@rdeutz])              |
 | [Laminas Project]                 | Matthew Weier O'Phinney ([@mwop])     |
@@ -192,7 +192,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@storresi]: https://twitter.com/storresi
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
-[@trowski2002]: https://twitter.com/trowski2002
+[@_trowski]: https://twitter.com/_trowski
 [@vdelau]: https://twitter.com/vdelau
 [@WyriHaximus]: https://twitter.com/WyriHaximus
 [@xtaz07]: https://twitter.com/xtaz07
@@ -202,6 +202,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@navarr]: https://twitter.com/navarr
 
 [Agavi]: http://www.agavi.org
+[AMPHP]: https://amphp.org/
 [Assetic]: https://github.com/kriswallsmith/assetic
 [Aura]: http://auraphp.github.com
 [AzuraCast]: https://www.azuracast.com/
@@ -217,7 +218,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Horde]: http://www.horde.org
 [Hyperf]: https://hyperf.io
 [IBM i Toolkit]: https://github.com/zendtech/IbmiToolkit
-[Icicle]: https://icicle.io
 [Jackalope]: http://jackalope.github.com
 [Joomla]: http://www.joomla.org
 [Laminas Project]: https://getlaminas.org
