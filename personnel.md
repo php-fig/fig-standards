@@ -193,7 +193,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
 [@_trowski]: https://twitter.com/_trowski
-[@vdelau]: https://twitter.com/vdelau
+[@vdelau]: https://github.com/vdelau
 [@WyriHaximus]: https://twitter.com/WyriHaximus
 [@xtaz07]: https://twitter.com/xtaz07
 [@yellowandy]: https://twitter.com/yellowandy
