@@ -4,31 +4,31 @@
 
 ### Secretaries
 
-| Name                                  | Term                    |
-|---------------------------------------|-------------------------|
-| Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2024-08-31 |
-| Steve Winter ([@SteveWinterNZ])       | 2022-01-30 - 2024-01-28 |
-| Mark Niebergall ([@mbniebergall])    | 2023-05-25 - 2025-05-30 |
+| Name                                              | Term                    |
+|---------------------------------------------------|-------------------------|
+| Alessandro Lai ([@AlessandroLai@phpc.social])     | 2017-11-12 - 2024-08-31 |
+| Steve Winter ([@SteveWinterNZ])                   | 2022-01-30 - 2024-01-28 |
+| Mark Niebergall ([@mbniebergall])                 | 2023-05-25 - 2025-05-30 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
 
 ### Core Committee Members
 
-| Name                                | Term                    |
-|-------------------------------------|-------------------------|
-| Larry Garfield ([@Crell])           | 2016-12-24 - 2025-05-30 |
-| Matthew Weier O'Phinney ([@mwop])   | 2016-12-24 - 2025-05-30 |
-| Cees-Jan Kiewiet ([@WyriHaximus])   | 2016-12-24 - 2024-08-31 |
-| Chris Tankersley ([@dragonmantank]) | 2016-12-24 - 2024-01-28 |
-| Korvin Szanto ([@korvinszanto])     | 2016-12-24 - 2024-01-28 |
-| Chuck Burgess ([@ashnazg])          | 2018-08-26 - 2024-08-31 |
-| Enrico Zimuel ([@ezimuel])          | 2020-01-25 - 2024-01-28 |
-| Alessandro Chitolina ([@alekitto])  | 2021-06-25 - 2025-05-30 |
-| Ken Guest ([@kenguest])             | 2022-01-30 - 2024-01-28 |
-| Jaap van Otterdijk ([@jaapio])      | 2022-08-28 - 2024-08-28 |
-| Navarr Barnier ([@navarr])          | 2022-08-28 - 2024-08-28 |
-| Vincent de Lau ([@vdelau])          | 2023-05-25 - 2025-05-30 |
+| Name                                              | Term                    |
+|---------------------------------------------------|-------------------------|
+| Larry Garfield ([@Crell@phpc.social])             | 2016-12-24 - 2025-05-30 |
+| Matthew Weier O'Phinney ([@mwop])                 | 2016-12-24 - 2025-05-30 |
+| Cees-Jan Kiewiet ([@WyriHaximus])                 | 2016-12-24 - 2024-08-31 |
+| Chris Tankersley ([@dragonmantank])               | 2016-12-24 - 2024-01-28 |
+| Korvin Szanto ([@korvinszanto])                   | 2016-12-24 - 2024-01-28 |
+| Chuck Burgess ([@ashnazg])                        | 2018-08-26 - 2024-08-31 |
+| Enrico Zimuel ([@ezimuel])                        | 2020-01-25 - 2024-01-28 |
+| Alessandro Chitolina ([@alekitto])                | 2021-06-25 - 2025-05-30 |
+| Ken Guest ([@kenguest])                           | 2022-01-30 - 2024-01-28 |
+| Jaap van Otterdijk ([@jaapio])                    | 2022-08-28 - 2024-08-28 |
+| Navarr Barnier ([@navarr])                        | 2022-08-28 - 2024-08-28 |
+| Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2025-05-30 |
 
 ### Member Projects
 
@@ -129,7 +129,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 [@adamculp]: https://twitter.com/adamculp
 [@alekitto]: https://twitter.com/alekitto
-[@AlessandroLai]: https://twitter.com/AlessandroLai
+[@AlessandroLai@phpc.social]: https://phpc.social/@AlessandroLai
 [@ambassadorawsum]: https://twitter.com/ambassadorawsum
 [@andrerom]: https://twitter.com/andrerom
 [@benedmunds]: https://twitter.com/benedmunds
@@ -140,7 +140,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@bretterer]: https://twitter.com/bretterer
 [@BusterNeece]: https://twitter.com/BusterNeece
 [@couac]: https://twitter.com/couac
-[@Crell]: https://twitter.com/Crell
+[@Crell@phpc.social]: https://phpc.social/@Crell
 [@dead_lugosi]: https://twitter.com/dead_lugosi
 [@dr4goonis]: https://twitter.com/dr4goonis
 [@dracony_gimp]: https://twitter.com/dracony_gimp
