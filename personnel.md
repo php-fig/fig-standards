@@ -19,10 +19,10 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 |---------------------------------------------------|-------------------------|
 | Larry Garfield ([@Crell@phpc.social])             | 2016-12-24 - 2025-05-30 |
 | Matthew Weier O'Phinney ([@mwop])                 | 2016-12-24 - 2025-05-30 |
-| Cees-Jan Kiewiet ([@WyriHaximus])                 | 2016-12-24 - 2024-08-31 |
+| Cees-Jan Kiewiet ([@wyri@haxim.us])               | 2016-12-24 - 2024-08-31 |
 | Chris Tankersley ([@dragonmantank])               | 2016-12-24 - 2024-01-28 |
 | Korvin Szanto ([@korvinszanto])                   | 2016-12-24 - 2024-01-28 |
-| Chuck Burgess ([@ashnazg])                        | 2018-08-26 - 2024-08-31 |
+| Chuck Burgess ([@ashnazg@phpc.social])            | 2018-08-26 - 2024-08-31 |
 | Enrico Zimuel ([@ezimuel])                        | 2020-01-25 - 2024-01-28 |
 | Alessandro Chitolina ([@alekitto@phpc.social])    | 2021-06-25 - 2025-05-30 |
 | Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2024-01-28 |
@@ -134,7 +134,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@andrerom]: https://twitter.com/andrerom
 [@benedmunds]: https://twitter.com/benedmunds
 [@bennimack]: https://twitter.com/bennimack
-[@ashnazg]: https://twitter.com/ashnazg
+[@ashnazg@phpc.social]: https://phpc.social/@ashnazg
 [@beausimensen]: https://twitter.com/beausimensen
 [@bernhard_rusch]: https://twitter.com/bernhard_rusch
 [@bretterer]: https://twitter.com/bretterer
@@ -194,7 +194,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@tedivm]: https://twitter.com/tedivm
 [@_trowski]: https://twitter.com/_trowski
 [@vdelau]: https://github.com/vdelau
-[@WyriHaximus]: https://twitter.com/WyriHaximus
+[@wyri@haxim.us]: https://toot-toot.wyrihaxim.us/@wyri
 [@xtaz07]: https://twitter.com/xtaz07
 [@yellowandy]: https://twitter.com/yellowandy
 [@yunosh]: https://twitter.com/yunosh
