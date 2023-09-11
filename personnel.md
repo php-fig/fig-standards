@@ -132,10 +132,10 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@AlessandroLai@phpc.social]: https://phpc.social/@AlessandroLai
 [@ambassadorawsum]: https://twitter.com/ambassadorawsum
 [@andrerom]: https://twitter.com/andrerom
-[@benedmunds]: https://twitter.com/benedmunds
-[@bennimack]: https://twitter.com/bennimack
 [@ashnazg@phpc.social]: https://phpc.social/@ashnazg
 [@beausimensen]: https://twitter.com/beausimensen
+[@benedmunds]: https://twitter.com/benedmunds
+[@bennimack]: https://twitter.com/bennimack
 [@bernhard_rusch]: https://twitter.com/bernhard_rusch
 [@bretterer]: https://twitter.com/bretterer
 [@BusterNeece@phpc.social]: https://phpc.social/@BusterNeece
@@ -155,16 +155,17 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@goetas_asmir]: https://twitter.com/goetas_asmir
 [@greydnls]: https://twitter.com/greydnls
 [@guilhermeblanco]: https://twitter.com/guilhermeblanco
+[@iansltx]: https://twitter.com/iansltx
 [@ieatkillerbees]: https://twitter.com/ieatkillerbees
+[@iminyaylo]: https://twitter.com/iminyaylo
+[@jaapio]: https://twitter.com/jaapio
 [@jeremeamia]: https://twitter.com/jeremeamia
 [@JeroenDeDauw]: https://twitter.com/JeroenDeDauw
 [@joepferguson]: https://twitter.com/joepferguson
 [@kdambekalns]: https://twitter.com/kdambekalns
+[@kenguest@phpc.social]: https://phpc.social/@kenguest
 [@korvinszanto]: https://twitter.com/korvinszanto
 [@kriswallsmith]: https://twitter.com/kriswallsmith
-[@iansltx]: https://twitter.com/iansltx
-[@iminyaylo]: https://twitter.com/iminyaylo
-[@kenguest@phpc.social]: https://phpc.social/@kenguest
 [@leocavalcante]: https://twitter.com/leocavalcante
 [@leofeyer]: https://twitter.com/leofeyer
 [@lsmith]: https://twitter.com/lsmith
@@ -177,6 +178,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@mvriel]: https://twitter.com/mvriel
 [@mwop]: https://twitter.com/mwop
 [@nateabele]: https://twitter.com/nateabele
+[@navarr]: https://twitter.com/navarr
 [@phalconphp]: https://twitter.com/phalconphp
 [@PhpNut]: https://twitter.com/PhpNut
 [@pmjones]: https://twitter.com/pmjones
@@ -198,8 +200,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@xtaz07]: https://twitter.com/xtaz07
 [@yellowandy]: https://twitter.com/yellowandy
 [@yunosh]: https://twitter.com/yunosh
-[@jaapio]: https://twitter.com/jaapio
-[@navarr]: https://twitter.com/navarr
 
 [Agavi]: http://www.agavi.org
 [AMPHP]: https://amphp.org/
@@ -249,8 +249,8 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Stormpath PHP SDK]: http://www.stormpath.com
 [SugarCRM]: http://developers.sugarcrm.com/wordpress
 [Symfony]: http://www.symfony.com
-[TYPO3]: https://typo3.org
 [The League of Extraordinary Packages]: http://thephpleague.com
+[TYPO3]: https://typo3.org
 [Wikibase]: http://www.wikiba.se
 [Yii framework]: http://www.yiiframework.com
 [Zikula]: https://github.com/zikula
