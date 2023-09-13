@@ -26,7 +26,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Enrico Zimuel ([@ezimuel])                        | 2020-01-25 - 2024-01-28 |
 | Alessandro Chitolina ([@alekitto@phpc.social])    | 2021-06-25 - 2025-05-30 |
 | Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2024-01-28 |
-| Jaap van Otterdijk ([@jaapio])                    | 2022-08-28 - 2024-08-28 |
+| Jaap van Otterdijk ([@jaapio@phpc.social])                    | 2022-08-28 - 2024-08-28 |
 | Navarr Barnier ([@navarr])                        | 2022-08-28 - 2024-08-28 |
 | Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2025-05-30 |
 
@@ -158,7 +158,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@iansltx]: https://twitter.com/iansltx
 [@ieatkillerbees]: https://twitter.com/ieatkillerbees
 [@iminyaylo]: https://twitter.com/iminyaylo
-[@jaapio]: https://twitter.com/jaapio
+[@jaapio@phpc.social]: https://phpc.social/@jaapio
 [@jeremeamia]: https://twitter.com/jeremeamia
 [@JeroenDeDauw]: https://twitter.com/JeroenDeDauw
 [@joepferguson]: https://twitter.com/joepferguson
