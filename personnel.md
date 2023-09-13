@@ -4,74 +4,74 @@
 
 ### Secretaries
 
-| Name                                  | Term                    |
-|---------------------------------------|-------------------------|
-| Alessandro Lai ([@AlessandroLai])     | 2017-11-12 - 2024-08-31 |
-| Steve Winter ([@SteveWinterNZ])       | 2022-01-30 - 2024-01-28 |
-| Mark Niebergall ([@mbniebergall])    | 2023-05-25 - 2025-05-30 |
+| Name                                              | Term                    |
+|---------------------------------------------------|-------------------------|
+| Alessandro Lai ([@AlessandroLai@phpc.social])     | 2017-11-12 - 2024-08-31 |
+| Steve Winter ([@SteveWinterNZ])                   | 2022-01-30 - 2024-01-28 |
+| Mark Niebergall ([@mbniebergall@phpc.social])     | 2023-05-25 - 2025-05-30 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
 
 ### Core Committee Members
 
-| Name                                | Term                    |
-|-------------------------------------|-------------------------|
-| Larry Garfield ([@Crell])           | 2016-12-24 - 2025-05-30 |
-| Matthew Weier O'Phinney ([@mwop])   | 2016-12-24 - 2025-05-30 |
-| Cees-Jan Kiewiet ([@WyriHaximus])   | 2016-12-24 - 2024-08-31 |
-| Chris Tankersley ([@dragonmantank]) | 2016-12-24 - 2024-01-28 |
-| Korvin Szanto ([@korvinszanto])     | 2016-12-24 - 2024-01-28 |
-| Chuck Burgess ([@ashnazg])          | 2018-08-26 - 2024-08-31 |
-| Enrico Zimuel ([@ezimuel])          | 2020-01-25 - 2024-01-28 |
-| Alessandro Chitolina ([@alekitto])  | 2021-06-25 - 2025-05-30 |
-| Ken Guest ([@kenguest])             | 2022-01-30 - 2024-01-28 |
-| Jaap van Otterdijk ([@jaapio])      | 2022-08-28 - 2024-08-28 |
-| Navarr Barnier ([@navarr])          | 2022-08-28 - 2024-08-28 |
-| Vincent de Lau ([@vdelau])          | 2023-05-25 - 2025-05-30 |
+| Name                                              | Term                    |
+|---------------------------------------------------|-------------------------|
+| Larry Garfield ([@Crell@phpc.social])             | 2016-12-24 - 2025-05-30 |
+| Matthew Weier O'Phinney ([@mwop])                 | 2016-12-24 - 2025-05-30 |
+| Cees-Jan Kiewiet ([@wyri@haxim.us])               | 2016-12-24 - 2024-08-31 |
+| Chris Tankersley ([@dragonmantank])               | 2016-12-24 - 2024-01-28 |
+| Korvin Szanto ([@korvinszanto])                   | 2016-12-24 - 2024-01-28 |
+| Chuck Burgess ([@ashnazg@phpc.social])            | 2018-08-26 - 2024-08-31 |
+| Enrico Zimuel ([@ezimuel])                        | 2020-01-25 - 2024-01-28 |
+| Alessandro Chitolina ([@alekitto@phpc.social])    | 2021-06-25 - 2025-05-30 |
+| Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2024-01-28 |
+| Jaap van Otterdijk ([@jaapio@phpc.social])        | 2022-08-28 - 2024-08-28 |
+| Navarr Barnier ([@navarr])                        | 2022-08-28 - 2024-08-28 |
+| Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2025-05-30 |
 
 ### Member Projects
 
-| Project                           | Representative                        |
-|-----------------------------------|---------------------------------------|
-| [AMPHP]                           | Aaron Piotrowski ([@_trowski])     |
-| [AzuraCast]                       | Buster Neece ([@BusterNeece])         |
-| [CakePHP]                         | Larry Masters ([@PhpNut])             |
-| [Composer]                        | Jordi Boggiano ([@seldaek])           |
-| [Concrete CMS]                    | Korvin Szanto ([@korvinszanto])       |
-| [Contao Open Source CMS]          | Leo Feyer ([@leofeyer])               |
-| [eZ Publish]                      | Andre Romcke ([@andrerom])            |
-| [Horde]                           | Jan Schneider ([@yunosh])             |
-| [Hyperf]                          | Leo Cavalcante ([@leocavalcante])     |
-| [IBM i Toolkit]                   | Adam Culp ([@adamculp])               |
-| [Jackalope]                       | Lukas Kahwe Smith ([@lsmith])         |
-| [Joomla]                          | Robert Deutz ([@rdeutz])              |
-| [Laminas Project]                 | Matthew Weier O'Phinney ([@mwop])     |
-| [Lithium]                         | Nate Abele ([@nateabele])             |
-| [Magento]                         | Igor Miniailo ([@iminyaylo])          |
-| [PEAR]                            | Chuck Burgess ([@ashnazg])            |
-| [Phalcon]                         | Nikolaos Dimopoulos ([@phalconphp])   |
-| [Phing]                           | Siad Ardroumli          |
-| [phpBB]                           | Marc Alexander ([@marc1706])          |
-| [phpDocumentor]                   | Mike van Riel ([@mvriel])             |
-| [PHPixie]                         | Roman Tsiupa ([@dracony_gimp])        |
-| [Pimcore]                         | Bernhard Rusch ([@bernhard_rusch])    |
-| [PPI Framework]                   | Paul Dragoonis ([@dr4goonis])         |
-| [PrestaShop]                      | Rémi Gaillard ([@xtaz07])             |
-| [PyroCMS]                         | Ryan Thompson ([@RyanThePyro])        |
-| [ReactPHP]                        | Cees-Jan Kiewiet ([@WyriHaximus])     |
-| [Revive Adserver]                 | Matteo Beccati ([@mbeccati])          |
-| [Sculpin]                         | Chris Tankersley ([@dragonmantank])   |
-| [Slim]                            | Jason Coward ([@drumshaman])          |
-| [SilverStripe]                    | Damian Mooyman                        |
-| [Stash]                           | Robert Hafner ([@tedivm])             |
-| [Stormpath PHP SDK]               | Brian Retterer ([@bretterer])         |
-| [SugarCRM]                        | Andreas Sandberg ([@yellowandy])      |
-| [TYPO3]                           | Benni Mack ([@bennimack])             |
-| [Flow] and [Neos]                 | Karsten Dambekalns ([@kdambekalns])   |
-| [Wikibase] and [Semantic Media]   | Jeroen De Dauw ([@JeroenDeDauw])      |
-| [Yii framework]                   | Alexander Makarov ([@sam_dark])       |
-| [Zikula]                          | Shefik Macauley ([@shefik_info])      |
+| Project                         | Representative                            |
+|---------------------------------|-------------------------------------------|
+| [AMPHP]                         | Aaron Piotrowski ([@_trowski])            |
+| [AzuraCast]                     | Buster Neece ([@BusterNeece@phpc.social]) |
+| [CakePHP]                       | Larry Masters ([@PhpNut])                 |
+| [Composer]                      | Jordi Boggiano ([@seldaek])               |
+| [Concrete CMS]                  | Korvin Szanto ([@korvinszanto])           |
+| [Contao Open Source CMS]        | Leo Feyer ([@leofeyer])                   |
+| [eZ Publish]                    | Andre Romcke ([@andrerom])                |
+| [Horde]                         | Jan Schneider ([@yunosh])                 |
+| [Hyperf]                        | Leo Cavalcante ([@leocavalcante])         |
+| [IBM i Toolkit]                 | Adam Culp ([@adamculp])                   |
+| [Jackalope]                     | Lukas Kahwe Smith ([@lsmith])             |
+| [Joomla]                        | Robert Deutz ([@rdeutz])                  |
+| [Laminas Project]               | Matthew Weier O'Phinney ([@mwop])         |
+| [Lithium]                       | Nate Abele ([@nateabele])                 |
+| [Magento]                       | Igor Miniailo ([@iminyaylo])              |
+| [PEAR]                          | Chuck Burgess ([@ashnazg])                |
+| [Phalcon]                       | Nikolaos Dimopoulos ([@phalconphp])       |
+| [Phing]                         | Siad Ardroumli                            |
+| [phpBB]                         | Marc Alexander ([@marc1706])              |
+| [phpDocumentor]                 | Mike van Riel ([@mvriel])                 |
+| [PHPixie]                       | Roman Tsiupa ([@dracony_gimp])            |
+| [Pimcore]                       | Bernhard Rusch ([@bernhard_rusch])        |
+| [PPI Framework]                 | Paul Dragoonis ([@dr4goonis])             |
+| [PrestaShop]                    | Rémi Gaillard ([@xtaz07])                 |
+| [PyroCMS]                       | Ryan Thompson ([@RyanThePyro])            |
+| [ReactPHP]                      | Cees-Jan Kiewiet ([@WyriHaximus])         |
+| [Revive Adserver]               | Matteo Beccati ([@mbeccati])              |
+| [Sculpin]                       | Chris Tankersley ([@dragonmantank])       |
+| [Slim]                          | Jason Coward ([@drumshaman])              |
+| [SilverStripe]                  | Damian Mooyman                            |
+| [Stash]                         | Robert Hafner ([@tedivm])                 |
+| [Stormpath PHP SDK]             | Brian Retterer ([@bretterer])             |
+| [SugarCRM]                      | Andreas Sandberg ([@yellowandy])          |
+| [TYPO3]                         | Benni Mack ([@bennimack])                 |
+| [Flow] and [Neos]               | Karsten Dambekalns ([@kdambekalns])       |
+| [Wikibase] and [Semantic Media] | Jeroen De Dauw ([@JeroenDeDauw])          |
+| [Yii framework]                 | Alexander Makarov ([@sam_dark])           |
+| [Zikula]                        | Shefik Macauley ([@shefik_info])          |
 
 
 ## Past
@@ -128,19 +128,19 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Drupal]                                  | *vacant*                              |
 
 [@adamculp]: https://twitter.com/adamculp
-[@alekitto]: https://twitter.com/alekitto
-[@AlessandroLai]: https://twitter.com/AlessandroLai
+[@alekitto@phpc.social]: https://phpc.social/@alekitto
+[@AlessandroLai@phpc.social]: https://phpc.social/@AlessandroLai
 [@ambassadorawsum]: https://twitter.com/ambassadorawsum
 [@andrerom]: https://twitter.com/andrerom
+[@ashnazg@phpc.social]: https://phpc.social/@ashnazg
+[@beausimensen]: https://twitter.com/beausimensen
 [@benedmunds]: https://twitter.com/benedmunds
 [@bennimack]: https://twitter.com/bennimack
-[@ashnazg]: https://twitter.com/ashnazg
-[@beausimensen]: https://twitter.com/beausimensen
 [@bernhard_rusch]: https://twitter.com/bernhard_rusch
 [@bretterer]: https://twitter.com/bretterer
-[@BusterNeece]: https://twitter.com/BusterNeece
+[@BusterNeece@phpc.social]: https://phpc.social/@BusterNeece
 [@couac]: https://twitter.com/couac
-[@Crell]: https://twitter.com/Crell
+[@Crell@phpc.social]: https://phpc.social/@Crell
 [@dead_lugosi]: https://twitter.com/dead_lugosi
 [@dr4goonis]: https://twitter.com/dr4goonis
 [@dracony_gimp]: https://twitter.com/dracony_gimp
@@ -155,28 +155,30 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@goetas_asmir]: https://twitter.com/goetas_asmir
 [@greydnls]: https://twitter.com/greydnls
 [@guilhermeblanco]: https://twitter.com/guilhermeblanco
+[@iansltx]: https://twitter.com/iansltx
 [@ieatkillerbees]: https://twitter.com/ieatkillerbees
+[@iminyaylo]: https://twitter.com/iminyaylo
+[@jaapio@phpc.social]: https://phpc.social/@jaapio
 [@jeremeamia]: https://twitter.com/jeremeamia
 [@JeroenDeDauw]: https://twitter.com/JeroenDeDauw
 [@joepferguson]: https://twitter.com/joepferguson
 [@kdambekalns]: https://twitter.com/kdambekalns
+[@kenguest@phpc.social]: https://phpc.social/@kenguest
 [@korvinszanto]: https://twitter.com/korvinszanto
 [@kriswallsmith]: https://twitter.com/kriswallsmith
-[@iansltx]: https://twitter.com/iansltx
-[@iminyaylo]: https://twitter.com/iminyaylo
-[@kenguest]: https://twitter.com/kenguest
 [@leocavalcante]: https://twitter.com/leocavalcante
 [@leofeyer]: https://twitter.com/leofeyer
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
 [@mbeccati]: https://twitter.com/mbeccati
-[@mbniebergall]: https://twitter.com/mbniebergall
+[@mbniebergall@phpc.social]: https://phpc.social/@mbniebergall
 [@michaelcullumuk]: https://twitter.com/michaelcullumuk
 [@michellesanver]: https://twitter.com/michellesanver
 [@michieltcs]: https://twitter.com/michieltcs
 [@mvriel]: https://twitter.com/mvriel
 [@mwop]: https://twitter.com/mwop
 [@nateabele]: https://twitter.com/nateabele
+[@navarr]: https://twitter.com/navarr
 [@phalconphp]: https://twitter.com/phalconphp
 [@PhpNut]: https://twitter.com/PhpNut
 [@pmjones]: https://twitter.com/pmjones
@@ -193,13 +195,11 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@taylorotwell]: https://twitter.com/taylorotwell
 [@tedivm]: https://twitter.com/tedivm
 [@_trowski]: https://twitter.com/_trowski
-[@vdelau]: https://twitter.com/vdelau
-[@WyriHaximus]: https://twitter.com/WyriHaximus
+[@vdelau]: https://github.com/vdelau
+[@wyri@haxim.us]: https://toot-toot.wyrihaxim.us/@wyri
 [@xtaz07]: https://twitter.com/xtaz07
 [@yellowandy]: https://twitter.com/yellowandy
 [@yunosh]: https://twitter.com/yunosh
-[@jaapio]: https://twitter.com/jaapio
-[@navarr]: https://twitter.com/navarr
 
 [Agavi]: http://www.agavi.org
 [AMPHP]: https://amphp.org/
@@ -249,8 +249,8 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [Stormpath PHP SDK]: http://www.stormpath.com
 [SugarCRM]: http://developers.sugarcrm.com/wordpress
 [Symfony]: http://www.symfony.com
-[TYPO3]: https://typo3.org
 [The League of Extraordinary Packages]: http://thephpleague.com
+[TYPO3]: https://typo3.org
 [Wikibase]: http://www.wikiba.se
 [Yii framework]: http://www.yiiframework.com
 [Zikula]: https://github.com/zikula
