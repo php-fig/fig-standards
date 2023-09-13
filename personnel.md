@@ -8,7 +8,7 @@
 |---------------------------------------------------|-------------------------|
 | Alessandro Lai ([@AlessandroLai@phpc.social])     | 2017-11-12 - 2024-08-31 |
 | Steve Winter ([@SteveWinterNZ])                   | 2022-01-30 - 2024-01-28 |
-| Mark Niebergall ([@mbniebergall])                 | 2023-05-25 - 2025-05-30 |
+| Mark Niebergall ([@mbniebergall@phpc.social])     | 2023-05-25 - 2025-05-30 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -26,7 +26,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Enrico Zimuel ([@ezimuel])                        | 2020-01-25 - 2024-01-28 |
 | Alessandro Chitolina ([@alekitto@phpc.social])    | 2021-06-25 - 2025-05-30 |
 | Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2024-01-28 |
-| Jaap van Otterdijk ([@jaapio@phpc.social])                    | 2022-08-28 - 2024-08-28 |
+| Jaap van Otterdijk ([@jaapio@phpc.social])        | 2022-08-28 - 2024-08-28 |
 | Navarr Barnier ([@navarr])                        | 2022-08-28 - 2024-08-28 |
 | Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2025-05-30 |
 
@@ -171,7 +171,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
 [@mbeccati]: https://twitter.com/mbeccati
-[@mbniebergall]: https://twitter.com/mbniebergall
+[@mbniebergall@phpc.social]: https://phpc.social/@mbniebergall
 [@michaelcullumuk]: https://twitter.com/michaelcullumuk
 [@michellesanver]: https://twitter.com/michellesanver
 [@michieltcs]: https://twitter.com/michieltcs
