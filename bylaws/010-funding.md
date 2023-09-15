@@ -50,8 +50,8 @@ As an exception to [Votes Bylaw][], changes to this section only SHOULD NOT trig
 
 | Approved since | Expense                                       | Provider  | Approved amount and frequency  |
 |----------------|-----------------------------------------------|-----------|--------------------------------|
-| TBA            | Two Domains (`php-fig.com` and `php-fig.org`) | Namecheap | Up to 15 USD / year per domain |
-| TBA            | Email account (`info@php-fig.org`)            | Namecheap | Up to 15 USD / year            |
+| 2023-09-14     | Two Domains (`php-fig.com` and `php-fig.org`) | Namecheap | Up to 15 USD / year per domain |
+| 2023-09-14     | Email account (`info@php-fig.org`)            | Namecheap | Up to 15 USD / year            |
 
 [RFC 2119]: https://tools.ietf.org/html/rfc2119
 [Votes Bylaw]: https://www.php-fig.org/bylaws/voting-protocol/
