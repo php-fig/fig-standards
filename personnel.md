@@ -40,7 +40,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Composer]                      | Jordi Boggiano ([@seldaek])               |
 | [Concrete CMS]                  | Korvin Szanto ([@korvinszanto])           |
 | [Contao Open Source CMS]        | Leo Feyer ([@leofeyer])                   |
-| [eZ Publish]                    | Andre Romcke ([@andrerom])                |
 | [Horde]                         | Jan Schneider ([@yunosh])                 |
 | [Hyperf]                        | Leo Cavalcante ([@leocavalcante])         |
 | [IBM i Toolkit]                 | Adam Culp ([@adamculp])                   |
@@ -65,7 +64,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Slim]                          | Jason Coward ([@drumshaman])              |
 | [SilverStripe]                  | Damian Mooyman                            |
 | [Stash]                         | Robert Hafner ([@tedivm])                 |
-| [Stormpath PHP SDK]             | Brian Retterer ([@bretterer])             |
 | [SugarCRM]                      | Andreas Sandberg ([@yellowandy])          |
 | [TYPO3]                         | Benni Mack ([@bennimack])                 |
 | [Flow] and [Neos]               | Karsten Dambekalns ([@kdambekalns])       |
@@ -112,20 +110,22 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 ### Former Member Projects
 
-| Project                                   | Representative                        |
-|-------------------------------------------|---------------------------------------|
-| [Aura] and [Solar]                        | Paul M. Jones ([@pmjones])            |
-| [Assetic]                                 | Kris Wallsmith ([@kriswallsmith])     |
-| [Agavi]                                   | David Zülke ([@dzuelke])              |
-| [Doctrine]                                | Guilherme Blanco ([@guilhermeblanco]) |
-| [Guzzle]                                  | Jeremy Lindblom ([@jeremeamia])       |
-| [Laravel]                                 | Taylor Otwell ([@taylorotwell])       |
-| [The League of Extraordinary Packages]    | Graham Hoefer ([@greydnls])           |
-| [Phergie]                                 | Joe Ferguson ([@joepferguson])        |
-| [Propel]                                  | William Durand ([@couac])             |
-| [sabre/dav]                               | Evert Pot ([@evertp])                 |
-| [Symfony]                                 | Fabien Potencier ([@fabpot])          |
-| [Drupal]                                  | *vacant*                              |
+| Project                                | Representative                        |
+|----------------------------------------|---------------------------------------|
+| [Aura] and [Solar]                     | Paul M. Jones ([@pmjones])            |
+| [Assetic]                              | Kris Wallsmith ([@kriswallsmith])     |
+| [Agavi]                                | David Zülke ([@dzuelke])              |
+| [Doctrine]                             | Guilherme Blanco ([@guilhermeblanco]) |
+| [eZ Publish]                           | Andre Romcke ([@andrerom])            |
+| [Guzzle]                               | Jeremy Lindblom ([@jeremeamia])       |
+| [Laravel]                              | Taylor Otwell ([@taylorotwell])       |
+| [The League of Extraordinary Packages] | Graham Hoefer ([@greydnls])           |
+| [Phergie]                              | Joe Ferguson ([@joepferguson])        |
+| [Propel]                               | William Durand ([@couac])             |
+| [sabre/dav]                            | Evert Pot ([@evertp])                 |
+| [Stormpath PHP SDK]                    | Brian Retterer ([@bretterer])         |
+| [Symfony]                              | Fabien Potencier ([@fabpot])          |
+| [Drupal]                               | *vacant*                              |
 
 [@adamculp]: https://twitter.com/adamculp
 [@alekitto@phpc.social]: https://phpc.social/@alekitto
