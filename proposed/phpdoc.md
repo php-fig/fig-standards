@@ -120,7 +120,7 @@ interpreted as described in [RFC 2119][RFC2119].
     {
       protected
         /**
-         * @var string Should contain a description
+         * @var string Should contain a name
          */
         $name,
         /**
