@@ -28,7 +28,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Navarr Barnier ([@navarr])                        | 2022-08-28 - 2024-08-28 |
 | Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2025-05-30 |
 | Steve McDougall                                   | 2024-02-25 - 2026-02-22 |
-| Matteo Beccati ([@mbeccati])                      | 2024-02-25 - 2026-02-22 |
+| Matteo Beccati ([@mbeccati@phpc.social])          | 2024-02-25 - 2026-02-22 |
 
 ### Member Projects
 
@@ -59,7 +59,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [PrestaShop]                    | Rémi Gaillard ([@xtaz07])                 |
 | [PyroCMS]                       | Ryan Thompson ([@RyanThePyro])            |
 | [ReactPHP]                      | Cees-Jan Kiewiet ([@WyriHaximus])         |
-| [Revive Adserver]               | Matteo Beccati ([@mbeccati])              |
+| [Revive Adserver]               | Matteo Beccati ([@mbeccati@phpc.social])  |
 | [Sculpin]                       | Chris Tankersley ([@dragonmantank])       |
 | [Slim]                          | Jason Coward ([@drumshaman])              |
 | [SilverStripe]                  | Damian Mooyman                            |
@@ -93,23 +93,23 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 ### Former Core Committee Members
 
-| Name                                  | Term                    |
-|---------------------------------------|-------------------------|
-| Graham Hoefer ([@greydnls])           | 2016-12-24 - 2018-01-31 |
-| Gary Hockin ([@GeeH])                 | 2016-12-24 - 2018-04-04 |
-| Lukas Kahwe Smith ([@lsmith])         | 2016-12-24 - 2019-05-26 |
-| Sara Golemon ([@SaraMG])              | 2016-12-24 - 2019-05-26 |
-| Stefano Torresi ([@storresi])         | 2016-12-24 - 2020-01-25 |
-| Samantha Quiñones ([@ieatkillerbees]) | 2016-12-24 - 2020-08-31 |
-| Beau Simensen ([@beausimensen])       | 2016-12-24 - 2020-08-31 |
-| Michael Cullum ([@michaelcullumuk])   | 2018-01-28 - 2020-01-25 |
-| Matteo Beccati ([@mbeccati])          | 2019-05-26 - 2021-05-30 |
-| Massimiliano Arione ([@garakkio])     | 2020-01-25 - 2022-01-31 |
-| Ben Edmunds ([@benedmunds])           | 2020-08-31 - 2022-08-31 |
-| Woody Gilk ([@shadowhand])            | 2019-05-26 - 2022-08-31 |
-| Michelle Sanver ([@michellesanver])   | 2021-06-25 - 2023-05-25 |
-| Chris Tankersley ([@dragonmantank])   | 2016-12-24 - 2026-02-22 |
-| Enrico Zimuel ([@ezimuel])            | 2020-01-25 - 2026-02-22 |
+| Name                                     | Term                    |
+|------------------------------------------|-------------------------|
+| Graham Hoefer ([@greydnls])              | 2016-12-24 - 2018-01-31 |
+| Gary Hockin ([@GeeH])                    | 2016-12-24 - 2018-04-04 |
+| Lukas Kahwe Smith ([@lsmith])            | 2016-12-24 - 2019-05-26 |
+| Sara Golemon ([@SaraMG])                 | 2016-12-24 - 2019-05-26 |
+| Stefano Torresi ([@storresi])            | 2016-12-24 - 2020-01-25 |
+| Samantha Quiñones ([@ieatkillerbees])    | 2016-12-24 - 2020-08-31 |
+| Beau Simensen ([@beausimensen])          | 2016-12-24 - 2020-08-31 |
+| Michael Cullum ([@michaelcullumuk])      | 2018-01-28 - 2020-01-25 |
+| Matteo Beccati ([@mbeccati@phpc.social]) | 2019-05-26 - 2021-05-30 |
+| Massimiliano Arione ([@garakkio])        | 2020-01-25 - 2022-01-31 |
+| Ben Edmunds ([@benedmunds])              | 2020-08-31 - 2022-08-31 |
+| Woody Gilk ([@shadowhand])               | 2019-05-26 - 2022-08-31 |
+| Michelle Sanver ([@michellesanver])      | 2021-06-25 - 2023-05-25 |
+| Chris Tankersley ([@dragonmantank])      | 2016-12-24 - 2026-02-22 |
+| Enrico Zimuel ([@ezimuel])               | 2020-01-25 - 2026-02-22 |
 
 ### Former Member Projects
 
@@ -173,7 +173,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@leofeyer]: https://twitter.com/leofeyer
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
-[@mbeccati]: https://twitter.com/mbeccati
+[@mbeccati@phpc.social]: https://phpc.social/@mbeccati
 [@mbniebergall@phpc.social]: https://phpc.social/@mbniebergall
 [@michaelcullumuk]: https://twitter.com/michaelcullumuk
 [@michellesanver]: https://twitter.com/michellesanver
