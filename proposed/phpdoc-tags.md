@@ -604,9 +604,6 @@ single parameter of a function or method. When provided it MUST contain a
 @param tags are omitted due to all useful info already being visible in the
 code signature itself. The description is OPTIONAL yet RECOMMENDED.
 
-The @param tag MAY have a multi-line description and does not need explicit
-delimiting.
-
 It is RECOMMENDED when documenting to use this tag with every function and
 method.
 
@@ -693,16 +690,10 @@ function or method. When provided, it MUST contain a "Type"
 to indicate what is returned; the description on the other hand is OPTIONAL yet
 RECOMMENDED in case of complicated return structures, such as associative arrays.
 
-The @return tag MAY have a multi-line description and does not need explicit
-delimiting.
-
-It is RECOMMENDED to use this tag with every function and method. An exception to
-this recommendation, as defined by the Coding Standard of any individual project,
-MAY be:
-
-   **functions and methods without a `return` value**: the @return tag MAY be
-   omitted here, in which case an interpreter MUST interpret this as if
-   `@return void` is provided.
+It is RECOMMENDED to use this tag with every function and method.
+If no `@return` type is given, and no return type declaration is provided in
+the code signature, an interpreter MUST interpret this as if `@return mixed`
+is provided.
 
 This tag MUST NOT occur more than once in a "DocBlock" and is limited to the
 "DocBlock" of a "Structural Element" of a method or function.
@@ -748,9 +739,7 @@ element (also called the "FQSEN").
 A URI MUST be complete and well-formed as specified in [RFC 2396][RFC2396].
 
 The @see tag SHOULD have a description to provide additional information
-regarding the relationship between the element and its target. Additionally, the
-@see tag MAY have a tag specialization to add further definition to this
-relationship.
+regarding the relationship between the element and its target.
 
 #### Examples
 
@@ -789,8 +778,8 @@ This information can be used to generate a set of API Documentation where the
 consumer is informed which application version is necessary for a specific
 element.
 
-The @since tag SHOULD NOT be used to show the current version of an element, the
-@version tag MAY be used for that purpose.
+The @since tag SHOULD NOT be used to show the current version of an element...
+the @version tag SHOULD be used for that purpose.
 
 #### Examples
 
@@ -901,28 +890,24 @@ Indicates whether the current "Structural Element" consumes the
 
 #### Syntax
 
-    @uses [file | "FQSEN"] [<description>]
+    @uses ["FQSEN"] [<description>]
 
 #### Description
 
-The `@uses` tag describes whether any part of the associated "Structural Element"
-uses, or consumes, another "Structural Element" or a file that is situated in
+The `@uses` tag describes whether any part of the associated "Structural
+Element" uses, or consumes, another "Structural Element" that is situated in
 the current project.
 
 When defining a reference to another "Structural Element" you can refer to a
 specific element by appending a double colon and providing the name of that
 element (also called the "FQSEN").
 
-Files that are contained in this project can be referred to by this tag. This
-can be used, for example, to indicate a relationship between a Controller and
-a template file (as View).
-
 This tag MUST NOT be used to indicate relations to elements outside of the
 system, so URLs are not usable. To indicate relations with outside elements the
 @see tag can be used.
 
 Applications consuming this tag, such as generators, are RECOMMENDED to provide
-a `@used-by` tag on the destination element. This can be used to provide a
+a `@usedby` tag on the destination element. This can be used to provide a
 bi-directional experience and allow for static analysis.
 
 #### Examples
@@ -969,9 +954,9 @@ Each Constant or Property definition or Variable where the type is ambiguous
 or unknown SHOULD be preceded by a DocBlock containing the @var tag. Any
 other variable MAY be preceded with a DocBlock containing the @var tag.
 
-The @var tag MUST contain the name of the element it documents. An exception
-to this is when property declarations only refer to a single property. In this
-case the name of the property MAY be omitted.
+The @var tag MUST contain the name of the element it documents, unless this
+property declaration only refers to a single property. In this case the name of
+the property MAY be omitted.
 
 `element_name` is used when compound statements are used to define a series of Constants
 or Properties. Such a compound statement can only have one DocBlock while several
@@ -992,7 +977,9 @@ Or:
 ```php
 class Foo
 {
-  /** @var string|null Should contain a description */
+  /**
+   * @var string|null Should contain a description
+   */
   protected $description = null;
 
   public function setDescription($description)
@@ -1015,7 +1002,20 @@ foreach ($connections as $sqlite) {
 }
 ```
 
-Even compound statements may be documented:
+Even compound statements may be documented... these two property blocks are
+equivalent:
+
+```php
+class Foo
+{
+  /**
+   * @var string $name Should contain a description
+   * @var string $description Should contain a description
+   */
+  protected $name, $description;
+
+}
+```
 
 ```php
 class Foo

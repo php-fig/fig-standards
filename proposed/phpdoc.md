@@ -58,8 +58,8 @@ interpreted as described in [RFC 2119][RFC2119].
 * "Structural Element" is a collection of Programming Constructs which MAY be
   preceded by a DocBlock. The collection contains the following constructs:
 
-  * require(_once)
-  * include(_once)
+  * require(\_once)
+  * include(\_once)
   * class
   * interface
   * trait
@@ -76,10 +76,19 @@ interpreted as described in [RFC 2119][RFC2119].
   Example:
 
   ```php
+  /**
+   * This is a counter.
+   * @var int $int
+   */
+  $int = 0;
+
   /** @var int $int This is a counter. */
   $int = 0;
 
-  // there should be no docblock here
+  /* comment block... this is not a docblock */
+  $int++;
+
+  // single line comment... this is not a docblock
   $int++;
   ```
 
@@ -133,18 +142,6 @@ interpreted as described in [RFC 2119][RFC2119].
   An example of use that falls beyond the scope of this Standard is to document
   the variable in a foreach explicitly; several IDEs use this information to
   assist their auto-completion functionality.
-
-  This Standard does not cover this specific instance, as a `foreach` statement
-  is considered to be a "Control Flow" statement rather than a "Structural Element".
-
-  ```php
-  /** @var \Sqlite3 $sqlite */
-  foreach ($connections as $sqlite) {
-      // there should be no docblock here
-      $sqlite->open('/my/database/path');
-      <...>
-  }
-  ```
 
 * "DocComment" is a special type of comment which MUST
 
