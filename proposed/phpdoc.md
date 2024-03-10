@@ -364,9 +364,10 @@ A Type has the following [ABNF][RFC5234] definition:
 
 When a "Type" is used, the user will expect a value, or set of values, as detailed below.
 
-When the "Type" consists of multiple types, then these MUST be separated with either
-the vertical bar sign (|) for union type or the ampersand (&) for intersection type.
-Any interpreter supporting this specification MUST recognize this and split the "Type" before evaluating.
+When the "Type" consists of multiple types, then these MUST be separated with
+either the vertical bar (|) for union type or the ampersand (&) for intersection
+type.  Any interpreter supporting this specification MUST recognize this and
+split the "Type" before evaluating.
 
 Union type example:
 >`@return int|null`
@@ -376,50 +377,45 @@ Intersection type example:
 
 #### Arrays
 
-The value represented by "Type" can be an array. The type MUST be defined following the format of one of the
-following options:
+The value represented by "Type" can be an array. The type MUST be defined
+following one of the following options:
 
-1. unspecified: no definition of the contents of the represented array is given.
+1. unspecified: no definition of the contents of the array is given.
    Example: `@return array`
 
-2. specified containing a single type: the Type definition informs the reader of the type of each array value. Only one
-   type is then expected for each value in a given array.
-
+2. specified as a specific type: each member of the array is the same one type.
    Example: `@return int[]`
 
-   Please note that _mixed_ is also a single type and with this keyword it is possible to indicate that each array
-   value contains any possible type.
+   Note that `mixed` is also a single type and thus can explicitly indicate that
+   each member is any possible type.
 
-3. specified as containing multiple types: the Type definition informs the reader of the type of each array value.
-   Each value can be of any of the given types.
+3. specified as containing multiple explicit types:  each member can be of any
+   of the given types.
    Example: `@return (int|string)[]`
 
 ### Valid Class Name
 
-A valid class name is seen based on the context where this type is mentioned. Thus
-this may be either a Fully Qualified Class Name (FQCN) or a local name if present in a
+A valid class name is based on the context where this type is mentioned. This
+may be a Fully Qualified Class Name (FQCN) or a local name if present in a
 namespace.
 
 The element to which this type applies is either an instance of this class
-or an instance of a class that is a (sub-)child to the given class.
+or an instance of a class that is a sub/child to the given class.
 
-> Due to the above nature, it is RECOMMENDED for applications that
-> collect and shape this information to show a list of child classes
-> with each representation of the class. This would make it obvious
-> for the user which classes are acceptable as type.
+> It is RECOMMENDED for applications that collect and shape this information to
+> show a list of child classes with each representation of the class. This makes
+> it more obvious for the user which classes are acceptable as this type.
 
 ### Keyword
 
-A keyword defines the purpose of this type. Not every element is determined by a class but still worthy of
-classification to assist the developer in understanding the code covered by the DocBlock.
+A keyword defines the purpose of this type. Not every element is determined by a
+class, but it is still worthy of classification to assist the developer in
+understanding the code covered by the DocBlock.
 
-**Note:**
-> Most of these keywords are allowed as class names in PHP and can be hard to distinguish from real classes. As
-> such, the keywords MUST be lowercase, as most class names start with an uppercase first character, and you SHOULD NOT
-> use classes with these names in your code.
-
-> There are more reasons to not name classes with the names of these keywords, but that falls beyond the scope of this
-> specification.
+> Some of these keywords are allowed as class names in PHP and can be difficult
+> to distinguish from real classes. As such, the keywords MUST be lowercase, as
+> most class names start with an uppercase first character... it is RECOMMENDED
+> that you not use classes with these names in your code.
 
 The following keywords are recognized by this PSR:
 
