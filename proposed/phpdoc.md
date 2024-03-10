@@ -12,8 +12,6 @@ PSR-5: PHPDoc
   - [5.2. Description](#52-description)
   - [5.3. Tags](#53-tags)
     - [5.3.1. Tag Name](#531-tag-name)
-    - [5.3.2. Tag Specialization](#532-tag-specialization)
-    - [5.3.3. Tag Signature](#533-tag-signature)
   - [5.4. Examples](#54-examples)
 - [Appendix A. Types](#appendix-a-types)
   - [ABNF](#abnf)
@@ -216,9 +214,8 @@ definition:
     tag                = "@" tag-name [":" tag-specialization] [tag-details]
     tag-name           = (ALPHA / "\") *(ALPHA / DIGIT / "\" / "-" / "_")
     tag-specialization = 1*(ALPHA / DIGIT / "-")
-    tag-details        = (1*SP tag-description) / tag-signature
+    tag-details        = (1*SP tag-description)
     tag-description    = (CHAR / inline-tag) *(CHAR / inline-tag / eol)
-    tag-signature      = "(" *tag-argument ")"
     tag-argument       = *SP 1*CHAR [","] *SP
 
 Examples of use are included in chapter 5.4.
@@ -293,96 +290,13 @@ Thus, the following tags are semantically identical:
      * @var string
      *    This is a description.
      */
+```
 
-A variation of this is where, instead of a description, a tag signature is used;
-in most cases the tag will in fact be an "Annotation". The tag signature is
-able to provide the annotation with parameters regarding its operation.
-
-If a tag signature is present, then there MUST NOT be a description present in
-the same tag.
-
-The meta-data supplied by tags could result in a change of actual runtime
-behavior of the succeeding "Structural Element", in which case the term
-"Annotation" is commonly used instead of "Tag".
+This definition does NOT apply to _Annotation_ tags, which are not in scope.
 
 #### 5.3.1. Tag Name
 
-Tag names indicate what type of information is represented by this tag, or in
-case of annotations, which behaviour must be injected into the succeeding
-"Structural Element".
-
-In support of annotations, it is allowable to introduce a set of tags designed
-specifically for an individual application or subset of applications (and thus
-not covered by this specification).
-
-These tags, or annotations, MUST provide a namespace by either
-
-* prefixing the tag name with a PHP-style namespace, or by
-* prefixing the tag name with a single vendor-name followed by a hyphen.
-
-Example of a tag name prefixed with a php-style namespace (the prefixing slash
-is OPTIONAL):
-
-```php
-@\Doctrine\Orm\Mapping\Entity()
-```
-
-> *Note*: The PHPDoc Standard DOES NOT make assumptions on the meaning of a tag
-> unless specified in this document or subsequent additions or extensions.
->
-> This means that you CAN use namespace aliases as long as a prefixing namespace
-> element is provided. Thus the following is legal as well:
->
->     @Mapping\Entity()
->
-> Your own library or application may check for namespace aliases and make a
-> FQCN from this; this has no impact on this standard.
-
-> *Important*: Tools using the PHPDoc Standard MAY interpret namespaces that are
-> registered with that application and apply custom behaviour.
-
-Example of a tag name prefixed with a vendor name and hyphen:
-
-```php
-@phpdoc-event transformer.transform.pre
-```
-
-Tag names that are not prefixed with a vendor or namespace MUST be described in
-the [Tag Catalog PSR][TAG_PSR] and/or any official addendum.
-
-#### 5.3.2. Tag Specialization
-
-In order to provide a method by which to provide nuance to the tags defined in
-this standard, but without expanding the base set, a tag specialization MAY be
-provided after the tag name by adding a colon followed by a string that provides
-a more nuanced description of the tag. The list of supported tag specializations
-is not maintained in the [Tag Catalog PSR][TAG_PSR], as it may change over time.
-The [Tag Catalog PSR][TAG_PSR] meta document may contain a series of recommendations
-on a per-tag name basis, but projects are free to choose their own tag specializations if applicable.
-
-*Important*: Tools using the PHPDoc Standard MAY interpret tag specializations
-that are registered with/understood by that application and apply custom
-behaviour, but are only expected to implement the preceding tag name as defined
-in the [Tag Catalog PSR][TAG_PSR].
-
-For example:
-
-> `@see:unit-test \Mapping\EntityTest::testGetId`
->
-> The above tag consists of a name ('see') and tag specialization ('unit-test'),
-> and thus defines a relation to the unit test for the proceeding method.
-
-#### 5.3.3. Tag Signature
-
-Tag signatures are commonly used for annotations to supply additional meta-data
-specific to the current tag.
-
-The supplied meta-data can influence the behavior of the owning annotation and
-as such influence the behavior of the succeeding "Structural Element".
-
-The contents of a signature are to be determined by the tag type (as described
-in the tag-name) and fall beyond the scope of this specification. However, a
-tag-signature MUST NOT be followed by a description or other form of meta-data.
+Tag names indicate what type of information is represented by this tag.
 
 ### 5.4. Examples
 
