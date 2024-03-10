@@ -117,10 +117,6 @@ interpreted as described in [RFC 2119][RFC2119].
     }
   ```
 
-  An example of use that falls beyond the scope of this Standard is to document
-  the variable in a foreach explicitly; several IDEs use this information to
-  assist their auto-completion functionality.
-
 * "DocComment" is a special type of comment which MUST
 
   - start with the character sequence `/**` followed by a whitespace character
