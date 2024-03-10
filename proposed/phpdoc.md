@@ -37,27 +37,22 @@ interpreted as described in [RFC 2119][RFC2119].
   > It is important to note that a PHPDoc and a DocBlock are two separate
   > entities. The DocBlock is the combination of a DocComment, which is a type
   > of comment, and a PHPDoc entity. It is the PHPDoc entity that contains the
-  > syntax as described in this specification (such as the description and tags).
+  > syntax as described in this specification (such as the Description and tags).
 
-* "Structural Element" is a collection of Programming Constructs which MAY be
+* "Structural Element" is a collection of programming constructs which MAY be
   preceded by a DocBlock. The collection contains the following constructs:
 
-  * require(\_once)
-  * include(\_once)
-  * class
-  * interface
-  * trait
-  * function (including methods)
-  * property
-  * constant
-  * variables, both local and global scope.
+  * `require` / `include` (and their `\_once` variants)
+  * `class` / `interface` / `trait`
+  * `function` (both standalone functions and class methods)
+  * variables (local and global scope) and class properties
+  * constants (global constants via `define` and class constants)
 
-  It is RECOMMENDED to precede a "Structural Element" with a DocBlock where it is
-  defined and not with each usage. It is common practice to have the DocBlock
-  precede a Structural Element but it MAY also be separated by an undetermined
-  number of empty lines.
+  It is RECOMMENDED to precede a "Structural Element" with a DocBlock where it
+  is defined. It is common practice to have the DocBlock precede a Structural
+  Element but it MAY also be separated by any number of empty lines.
 
-  Example:
+  Examples:
 
   ```php
   /**
@@ -76,11 +71,9 @@ interpreted as described in [RFC 2119][RFC2119].
   $int++;
   ```
 
-  or
-
   ```php
   /**
-   * This class acts as an example on where to position a DocBlock.
+   * This class shows an example on where to position a DocBlock.
    */
   class Foo
   {
@@ -102,9 +95,10 @@ interpreted as described in [RFC 2119][RFC2119].
   }
   ```
 
-  It is NOT RECOMMENDED to use compound definitions for Constants or Properties, since the
-  handling of DocBlocks in these situations can lead to unexpected results. If compound statement is
-  used each element SHOULD have a preceding DocBlock.
+  It is NOT RECOMMENDED to use compound definitions for constants or properties,
+  since the handling of DocBlocks in these situations can lead to unexpected
+  results. If a compound statement is used, each element SHOULD have a preceding
+  DocBlock.
 
   Example:
 
@@ -133,9 +127,8 @@ interpreted as described in [RFC 2119][RFC2119].
   - end with `*/` and
   - have zero or more lines in between.
 
-  In the case where a DocComment spans multiple lines, every line MUST start with
-  an asterisk (`*`) that SHOULD be aligned with the first asterisk of the
-  opening clause.
+  When a DocComment spans multiple lines, every line MUST start with an asterisk
+  (`*`) that SHOULD be aligned with the first asterisk of the opening clause.
 
   Single line example:
 
@@ -154,19 +147,18 @@ interpreted as described in [RFC 2119][RFC2119].
 * "DocBlock" is a "DocComment" containing a single "PHPDoc" structure and
   represents the basic in-source representation.
 
-* "Tag" is a single piece of meta information regarding a "Structural Element"
-  or a component thereof.
+* "Tag" is a single piece of meta information regarding a "Structural Element".
 
 * "Type" is the determination of what type of data is associated with an element.
-  This is commonly used when determining the exact values of arguments, constants,
-  properties and more.
+  This is used to determine the exact data type (primitive, class, object) of
+  arguments, properties, constants, etc.
 
   See Appendix A for more detailed information about types.
 
 * "FQSEN" is an abbreviation for Fully Qualified Structural Element Name. This
   notation expands on the Fully Qualified Class Name and adds a notation to
-  identify class/interface/trait members and re-apply the principles of the FQCN
-  to Interfaces, Traits, Functions and global Constants.
+  identify class / interface / trait members and re-apply the principles of the
+  FQCN to Interfaces, Traits, Functions and global Constants.
 
   The following notations can be used per type of "Structural Element":
 
@@ -180,8 +172,7 @@ interpreted as described in [RFC 2119][RFC2119].
   - *Property*:       `\My\Space\MyClass::$my_property`
   - *Class Constant*: `\My\Space\MyClass::MY_CONSTANT`
 
-  A FQSEN has the following [ABNF][RFC5234]
-  definition:
+  A FQSEN has the following [ABNF][RFC5234] definition:
 
       FQSEN    = fqnn / fqcn / constant / method / property  / function
       fqnn     = "\" [name] *("\" [name])
@@ -197,12 +188,11 @@ interpreted as described in [RFC 2119][RFC2119].
 * A PHPDoc MUST always be contained in a "DocComment"; the combination of these
   two is called a "DocBlock".
 
-* A DocBlock MUST directly precede a "Structural Element"
+* A DocBlock MUST directly precede a "Structural Element".
 
 ## 5. The PHPDoc Format
 
-The PHPDoc format has the following [ABNF][RFC5234]
-definition:
+The PHPDoc format has the following [ABNF][RFC5234] definition:
 
     PHPDoc             = [summary [description]] [tags]
     eol                = [CR] LF ; to compatible with PSR-12
@@ -223,21 +213,18 @@ Examples of use are included in chapter 5.4.
 ### 5.1. Summary
 
 A Summary MUST contain an abstract of the "Structural Element" defining the
-purpose. It is RECOMMENDED for Summaries to span a single line or at most two,
-but not more than that.
+purpose. It is RECOMMENDED for Summaries to span a single line or two, but not
+more than that.
 
-A Summary MUST end with two sequential line breaks, unless it is the only content
-in the PHPDoc.
+A Summary MUST end with two sequential line breaks, unless it is the only
+content in the PHPDoc.
 
 If a Description is provided, then it MUST be preceded by a Summary. Otherwise
-the Description will be considered the Summary, until the end of the Summary
-is reached.
+the Description risks being mistaken as the Summary.
 
-Because a Summary is comparable to a chapter title, it is beneficial to use as
-little formatting as possible. As such, contrary to the Description (see next
-chapter), no recommendation is done to support a mark-up language. It is
-explicitly left up to the implementing application whether it wants to support
-this or not.
+Because a Summary is comparable to a chapter title, it is RECOMMENDED to use as
+little formatting as possible. Contrary to the Description, no recommendation is
+made to support a mark-up language.
 
 ### 5.2. Description
 
