@@ -449,10 +449,9 @@ The following keywords are recognized by this PSR:
 
 11. `null`: the element to which this type applies is a `NULL` value or, in technical terms, does not exist.
 
-    A big difference compared to `void` is that this type is used in any situation where the described element may at
+    Compared to `void`, this type is used in any situation where the described element may at
     any given time contain an explicit `NULL` value.
 
-    **Example 1:**
     ```php
     /**
      * @return null
@@ -464,10 +463,6 @@ The following keywords are recognized by this PSR:
     }
     ```
 
-    This type is commonly used in conjunction with another type to indicate that it is possible that nothing is
-    returned.
-
-    **Example 2:**
     ```php
     /**
      * @param bool $create_new When true returns a new stdClass.
@@ -486,7 +481,7 @@ The following keywords are recognized by this PSR:
 12. `callable`: the element to which this type applies is a pointer to a function call. This may be any type of callable
     as per the [definition of PHP][PHP_CALLABLE].
 
-13. `false` or `true`: the element to which this type applies will have the value `TRUE` or `FALSE`. No other value will
+13. `false` or `true`: the element to which this type applies will have the exact value `TRUE` or `FALSE`. No other value will
     be returned from this element.
 
 14. `self`: the element to which this type applies is of the same class in which the documented element is originally
