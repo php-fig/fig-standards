@@ -77,7 +77,7 @@ interpreted as described in [RFC 2119][RFC2119].
    */
   class Foo
   {
-      /** @var string|null $title contains a title for the Foo */
+      /** @var ?string $title contains a title for the Foo */
       protected $title = null;
 
       /**
@@ -337,7 +337,7 @@ function test($parameter1, $parameter2)
 A DocBlock may also span a single line:
 
 ```php
-/** @var \ArrayObject $array */
+/** @var \ArrayObject $array An array of things. */
 public $array = null;
 ```
 
