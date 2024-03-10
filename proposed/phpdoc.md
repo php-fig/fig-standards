@@ -437,7 +437,6 @@ The following keywords are recognized by this PSR:
 10. `void`: this type is commonly only used when defining the return type of a method or function, indicating
     "nothing is returned", and thus the user should not rely on any returned value.
 
-    **Example 1:**
     ```php
     /**
      * @return void
@@ -447,27 +446,6 @@ The following keywords are recognized by this PSR:
         echo 'Hello world';
     }
     ```
-
-    In the example above, no return statement is specified and thus the return value is not determined.
-
-    **Example 2:**
-    ```php
-    /**
-     * @param bool $quiet when true 'Hello world' is echo-ed.
-     *
-     * @return void
-     */
-    function outputHello($quiet)
-    {
-        if ($quiet) {
-            return;
-        }
-        echo 'Hello world';
-    }
-    ```
-
-    In this example, the function contains a return statement without a given value. Because there is no actual value
-    specified, this also qualifies as type `void`.
 
 11. `null`: the element to which this type applies is a `NULL` value or, in technical terms, does not exist.
 
