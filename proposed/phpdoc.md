@@ -1,5 +1,4 @@
-PSR-5: PHPDoc
-=============
+# PSR-5: PHPDoc
 
 ## Table Of Contents
 

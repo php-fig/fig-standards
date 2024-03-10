@@ -1,5 +1,4 @@
-Common Interface for Caching Libraries
-======================================
+# Common Interface for Caching Libraries
 
 This document describes a simple yet extensible interface for a cache item and
 a cache driver.
@@ -14,9 +13,9 @@ interfaces/functionality first.
 
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
-# 1. Specification
+## 1. Specification
 
-## 1.1 Introduction
+### 1.1 Introduction
 
 Caching is a common way to improve the performance of any project, making
 caching libraries one of the most common features of many frameworks and
@@ -30,7 +29,7 @@ standardized streamlined interface for common cases. It is independent of
 PSR-6 but has been designed to make compatibility with PSR-6 as straightforward
 as possible.
 
-## 1.2 Definitions
+### 1.2 Definitions
 
 Definitions for Calling Library, Implementing Library, TTL, Expiration and Key
 are copied from PSR-6 as the same assumptions are true.
@@ -82,7 +81,7 @@ supported by implementing libraries: `{}()/\@:`
 if one stored `null` is not possible. This is the main deviation from PSR-6's
 assumptions.
 
-## 1.3 Cache
+### 1.3 Cache
 
 Implementations MAY provide a mechanism for a user to specify a default TTL
 if one is not specified for a specific cache item. If no user-specified default
@@ -90,7 +89,7 @@ is provided implementations MUST default to the maximum legal value allowed by
 the underlying implementation. If the underlying implementation does not
 support TTL, the user-specified TTL MUST be silently ignored.
 
-## 1.4 Data
+### 1.4 Data
 
 Implementing libraries MUST support all serializable PHP data types, including:
 
@@ -115,9 +114,9 @@ Compatibility with them is simply used as a baseline for acceptable object value
 If it is not possible to return the exact saved value for any reason, implementing
 libraries MUST respond with a cache miss rather than corrupted data.
 
-# 2. Interfaces
+## 2. Interfaces
 
-## 2.1 CacheInterface
+### 2.1 CacheInterface
 
 The cache interface defines the most basic operations on a collection of cache-entries, which
 entails basic reading, writing and deleting individual cache items.
@@ -248,7 +247,7 @@ interface CacheInterface
 }
 ```
 
-## 2.2 CacheException
+### 2.2 CacheException
 
 ```php
 
@@ -264,7 +263,7 @@ interface CacheException
 }
 ```
 
-## 2.3 InvalidArgumentException
+### 2.3 InvalidArgumentException
 
 ```php
 <?php

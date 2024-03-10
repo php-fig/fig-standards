@@ -1,5 +1,4 @@
-Autoloading Standard
-====================
+# Autoloading Standard
 
 > **Deprecated** - As of 2014-10-21 PSR-0 has been marked as deprecated. [PSR-4] is now recommended
 as an alternative.
@@ -9,8 +8,7 @@ as an alternative.
 The following describes the mandatory requirements that must be adhered
 to for autoloader interoperability.
 
-Mandatory
----------
+## Mandatory
 
 * A fully-qualified namespace and class must have the following
   structure `\<Vendor Name>\(<Namespace>\)*<Class Name>`
@@ -26,16 +24,14 @@ Mandatory
 * Alphabetic characters in vendor names, namespaces, and class names may
   be of any combination of lower case and upper case.
 
-Examples
---------
+## Examples
 
 * `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
 * `\Symfony\Core\Request` => `/path/to/project/lib/vendor/Symfony/Core/Request.php`
 * `\Zend\Acl` => `/path/to/project/lib/vendor/Zend/Acl.php`
 * `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
 
-Underscores in Namespaces and Class Names
------------------------------------------
+## Underscores in Namespaces and Class Names
 
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
@@ -45,8 +41,7 @@ painless autoloader interoperability. You can test that you are
 following these standards by utilizing this sample SplClassLoader
 implementation which is able to load PHP 5.3 classes.
 
-Example Implementation
-----------------------
+## Example Implementation
 
 Below is an example function to simply demonstrate how the above
 proposed standards are autoloaded.
@@ -71,8 +66,7 @@ function autoload($className)
 spl_autoload_register('autoload');
 ```
 
-SplClassLoader Implementation
------------------------------
+## SplClassLoader Implementation
 
 The following gist is a sample SplClassLoader implementation that can
 load your classes if you follow the autoloader interoperability
