@@ -228,21 +228,18 @@ made to support a mark-up language.
 
 ### 5.2. Description
 
-The Description is OPTIONAL but SHOULD be included when the
-"Structural Element", which this DocBlock precedes, contains more operations, or
-more complex operations, than can be described in the Summary alone.
+The Description is OPTIONAL but SHOULD be included when the "Structural Element"
+contains more complexity than can be described by the Summary alone.
 
 Any application parsing the Description is RECOMMENDED to support the
-Markdown mark-up language for this field so that it is possible for the author
-to provide formatting and a clear way of representing code examples.
+Markdown mark-up language, to make it possible for the author to provide
+formatting and a clear way of representing code examples.
 
-Common uses for the Description are (amongst others):
-
-* To provide more detail than the Summary on what this method does.
-* To specify of what child elements an input or output array, or object, is
-  composed.
-* To provide a set of common use cases or scenarios in which the
-  "Structural Element" may be applied.
+Common uses for the Description:
+* To provide more detail on what this method does than the Summary can do
+* To specify of what child elements an array / object is composed
+* To provide a set of common use cases or scenarios in which the "Structural
+  Element" may be applied
 
 ### 5.3. Tags
 
