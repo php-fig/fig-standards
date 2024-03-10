@@ -243,30 +243,25 @@ Common uses for the Description:
 
 ### 5.3. Tags
 
-Tags provide a way for authors to supply concise meta-data regarding the
-succeeding "Structural Element". Each tag starts on a new line, followed
-by an at-sign (@) and a tag-name, followed by white-space and meta-data
-(including a description).
+Tags supply concise metadata for a "Structural Element". Each tag starts on a
+new line, followed by an at-sign (`@`) and a tag-name, followed by whitespace and
+metadata (including a description).
 
-If meta-data is provided, it MAY span multiple lines and COULD follow a
-strict format, and as such provide parameters, as dictated by the type of tag.
-The type of the tag can be derived from its name.
-
-For example:
+If metadata is provided, it MAY span multiple lines and COULD follow a strict
+format, as dictated by the specific tag.
 
 > `@param string $argument1 This is a parameter.`
 >
-> The above tag consists of a name ('param') and meta-data
-> ('string $argument1 This is a parameter.') where the meta-data is split into a
-> "Type" ('string'), variable name ('$argument') and description
-> ('This is a parameter.').
+> The above tag consists of a _name_ (`param`) and metadata
+> ('string $argument1 This is a parameter.'), where the metadata is split into a
+> _type_ (`string`), variable name (`$argument1`),  and description (`This is a
+> parameter.`).
 
-The description of a tag MUST support Markdown as a formatting language. Due to
-the nature of Markdown, it is legal to start the description of the tag on the
-same or the subsequent line and interpret it in the same way.
+The description MUST support Markdown as a formatting language.  The
+description of the tag MAY start on the same line or next line.  The following
+tags are semantically identical:
 
-Thus, the following tags are semantically identical:
-
+```php
     /**
      * @var string This is a description.
      * @var string This is a
@@ -294,7 +289,7 @@ A complete example could look like this:
  * This is a Summary.
  *
  * This is a Description. It may span multiple lines
- * or contain 'code' examples using the _Markdown_ markup
+ * or contain `code` examples using the _Markdown_ markup
  * language.
  *
  * @see Markdown
@@ -312,7 +307,7 @@ function test($parameter1, $e)
 }
 ```
 
-It is also allowed to omit the Description:
+The Description MAY be omitted:
 
 ```php
 /**
@@ -332,8 +327,7 @@ function test($parameter1, $parameter2)
 }
 ```
 
-Or even omit the tags section as well (though it is not encouraged,
-as you are missing information on the parameters and return value):
+Tags MAY also be omitted:
 
 ```php
 /**
