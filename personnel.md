@@ -23,11 +23,11 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Korvin Szanto ([@korvinszanto])                   | 2016-12-24 - 2026-02-22 |
 | Chuck Burgess ([@ashnazg@phpc.social])            | 2018-08-26 - 2024-08-31 |
 | Alessandro Chitolina ([@alekitto@phpc.social])    | 2021-06-25 - 2025-05-30 |
-| Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2024-01-28 |
+| Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2026-02-28 |
 | Jaap van Otterdijk ([@jaapio@phpc.social])        | 2022-08-28 - 2024-08-28 |
 | Navarr Barnier ([@navarr])                        | 2022-08-28 - 2024-08-28 |
 | Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2025-05-30 |
-| Steve McDougall                                   | 2024-02-25 - 2026-02-22 |
+| Steve McDougall ([@JustSteveKing])                | 2024-02-25 - 2026-02-22 |
 | Matteo Beccati ([@mbeccati@phpc.social])          | 2024-02-25 - 2026-02-22 |
 
 ### Member Projects
@@ -108,8 +108,8 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Ben Edmunds ([@benedmunds])              | 2020-08-31 - 2022-08-31 |
 | Woody Gilk ([@shadowhand])               | 2019-05-26 - 2022-08-31 |
 | Michelle Sanver ([@michellesanver])      | 2021-06-25 - 2023-05-25 |
-| Chris Tankersley ([@dragonmantank])      | 2016-12-24 - 2026-02-22 |
-| Enrico Zimuel ([@ezimuel])               | 2020-01-25 - 2026-02-22 |
+| Chris Tankersley ([@dragonmantank])      | 2016-12-24 - 2024-02-25 |
+| Enrico Zimuel ([@ezimuel])               | 2020-01-25 - 2024-02-25 |
 
 ### Former Member Projects
 
@@ -165,6 +165,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@jeremeamia]: https://twitter.com/jeremeamia
 [@JeroenDeDauw]: https://twitter.com/JeroenDeDauw
 [@joepferguson]: https://twitter.com/joepferguson
+[@JustSteveKing]: https://twitter.com/JustSteveKing
 [@kdambekalns]: https://twitter.com/kdambekalns
 [@kenguest@phpc.social]: https://phpc.social/@kenguest
 [@korvinszanto]: https://twitter.com/korvinszanto
