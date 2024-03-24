@@ -690,10 +690,10 @@ function or method. When provided, it MUST contain a "Type"
 to indicate what is returned; the description on the other hand is OPTIONAL yet
 RECOMMENDED in case of complicated return structures, such as associative arrays.
 
-It is RECOMMENDED to use this tag with every function and method.
-If no `@return` type is given, and no return type declaration is provided in
-the code signature, an interpreter MUST interpret this as if `@return mixed`
-is provided.
+It is RECOMMENDED to use this tag with every function or method where PHP native
+types are insufficient.  If no `@return` type is given, and no return type
+declaration is provided in the code signature, an interpreter MUST interpret
+this as if `@return mixed` is provided.
 
 This tag MUST NOT occur more than once in a "DocBlock" and is limited to the
 "DocBlock" of a "Structural Element" of a method or function.

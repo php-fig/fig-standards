@@ -2,31 +2,22 @@
 
 ## 1. Summary
 
-The purpose of documentation using PHPDoc is to provide a comprehensive but flexible way to describe a software system
-at the smallest possible level of detail. This type of documentation aids contributors and consumers of your source
-code to, for example, understand what type of information needs to be passed to specific methods, or how to be able to
-consume a class of the project that a consumer want to use.
-
-By documenting specific elements inside the source code, the documentation for that part of the source code will be less
-susceptible to becoming out of date.
-
 PHPDoc as a notation was first presented in 2000 by Ulf Wendel, is heavily inspired by JavaDoc,
 and is currently in use by a significant percentage of public PHP projects in the field.
 
 ## 2. Why Bother?
 
-PHPDocumentor has spearheaded and facilitated the growth of the PHPDoc notation, but with the growing number of other
-tools that use the PHPDoc notation, it is becoming increasingly important to have an official and formal standard
-instead of the de-facto status that is currently provided.
+PHPDocumentor has facilitated the growth of the PHPDoc notation, but with the growing number of other
+tools that use the PHPDoc notation, it is becoming increasingly important to have a formal standard
+instead of its de-facto status.
 
 Pros:
 
 * Developers (consumers) have a common reference to refer to when confronted with PHPDoc.
 * Projects and their Developers (contributors) have an authoritative reference which they can consult.
 * IDE vendors can standardize the way they use PHPDoc to aid in concerns such as auto-completion and navigation.
-* Projects using the PHPDoc data to complement their functionality, such as Documentation generators or applications
-  using annotations, will have a common language with their consumers.
-* Missing functionality can be described and implemented by aforementioned stakeholders.
+* Projects using the PHPDoc data to complement their functionality, such as Documentation generators or static
+  analysis tools, will have a common language with their consumers.
 
 Cons:
 
@@ -77,14 +68,12 @@ Cons:
 
 ### 5.2 Sponsor
 
- * Michael Cullum - [PHP-FIG](https://www.php-fig.org/)
+ * Ken Guest - [PHP-FIG](https://www.php-fig.org/)
 
-### 5.3 Working group members
+### 5.3 Working Group members
 
- * Alexey Gopachenko - [PhpStorm](https://www.jetbrains.com/phpstorm)
- * Matthew Brown - [Psalm](https://github.com/vimeo/psalm)
- * Jan Tvrdík - [PHPStan](https://github.com/phpstan/phpstan)
  * Jaap van Otterdijk - [phpDocumentor](https://github.com/phpDocumentor/phpDocumentor2)
+ * Alexander Makarov - [Yii](https://github.com/yiisoft/yii2)
 
 ## 6. Votes
 
