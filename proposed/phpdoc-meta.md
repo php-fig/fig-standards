@@ -68,14 +68,12 @@ Cons:
 
 ### 5.2 Sponsor
 
- * Michael Cullum - [PHP-FIG](https://www.php-fig.org/)
+ * Ken Guest - [PHP-FIG](https://www.php-fig.org/)
 
-### 5.3 Working group members
+### 5.3 Working Group members
 
- * Alexey Gopachenko - [PhpStorm](https://www.jetbrains.com/phpstorm)
- * Matthew Brown - [Psalm](https://github.com/vimeo/psalm)
- * Jan Tvrdík - [PHPStan](https://github.com/phpstan/phpstan)
  * Jaap van Otterdijk - [phpDocumentor](https://github.com/phpDocumentor/phpDocumentor2)
+ * Alexander Makarov - [Yii](https://github.com/yiisoft/yii2)
 
 ## 6. Votes
 
