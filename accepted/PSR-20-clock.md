@@ -30,7 +30,7 @@ impossible in some situations.
 * **Timestamp** - The current time as an integer number of seconds since
 Jan 1, 1970 00:00:00 UTC.
 
-### 1.3 Usage
+## 1.3 Usage
 
 **Get the current timestamp**
 
