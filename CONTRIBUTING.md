@@ -32,7 +32,7 @@ The master branch of all repositories are protected and therefore cannot be forc
 pushed to.
 
 Secretaries have, and are the only ones to have, full administrative access to all
-repositories and to the github organisation.
+repositories and to the GitHub organisation.
 
 ## Guidelines for merging
 
@@ -56,7 +56,7 @@ they cannot close a pull request or issue affecting other PSRs
 must be approved by a secretary; who is required to give suitable notice and seek
 comment from the working group team, but it is not required that they approve
 * Tags on utility and interface repositories should be created and PGP signed by
-Secretaries, who should publish their PGP public keys and register them on github
+Secretaries, who should publish their PGP public keys and register them on GitHub
 
 These guidelines are subject to exceptions and changes at secretaries discretion.
 Should you have any questions please contact the secretaries on info [at] php-fig

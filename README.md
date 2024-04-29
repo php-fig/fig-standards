@@ -13,9 +13,9 @@ Proposing a Standard Recommendation
 To propose a PHP Standard Recommendation (PSR):
 
 - fork this repo, create a branch, checkout that branch, add the PSR in
-  `proposed/`, push the branch to Github, and send a pull request; or,
+  `proposed/`, push the branch to GitHub, and send a pull request; or,
 
-- create a ticket to start a discussion on Github; or,
+- create a ticket to start a discussion on GitHub; or,
 
 - start a conversation on the [mailing list][].
 
