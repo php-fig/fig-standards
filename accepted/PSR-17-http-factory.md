@@ -188,13 +188,16 @@ interface UploadedFileFactoryInterface
      */
     public function createUploadedFile(
         StreamInterface $stream,
-        int $size = null,
+        ?int $size = null,
         int $error = \UPLOAD_ERR_OK,
-        string $clientFilename = null,
-        string $clientMediaType = null
+        ?string $clientFilename = null,
+        ?string $clientMediaType = null
     ): UploadedFileInterface;
 }
 ```
+
+Since [psr/http-factory version 1.1](https://packagist.org/packages/psr/http-factory#1.1.0),
+the above interface has been updated to add explicit nullable types.
 
 ### 2.6 UriFactoryInterface
 

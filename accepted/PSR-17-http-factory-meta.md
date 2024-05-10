@@ -306,3 +306,17 @@ _**Note:** Order descending chronologically._
 - [shadowhand Dependency Inversion and PSR-7 Bodies](http://shadowhand.me/dependency-inversion-and-psr-7-bodies/)
 - [PHP-FIG mailing list thread discussing factories](https://groups.google.com/d/msg/php-fig/G5pgQfQ9fpA/UWeM1gm1CwAJ)
 - [PHP-FIG mailing list thread feedback on proposal](https://groups.google.com/d/msg/php-fig/piRtB2Z-AZs/8UIwY1RtDgAJ)
+
+## 9. Errata
+
+### 9.1 Use of explicit nullable type
+
+Prior to PHP 8.4, it was allowed to declare a type accepting `null` by omitting
+the nullable part of the type if the default value of the property or parameter
+was set to null. This implicit type declaration is now deprecated and all
+types should be declared explicitly.
+
+This change also requires the minimum PHP version required by this PSR to
+be updated to 7.1, as nullable types were introduced in this version. Apart
+from this change, no breaking change is introduced by this update and the
+behavior of the interfaces remains the same.
