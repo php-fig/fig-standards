@@ -43,7 +43,7 @@ Projects MAY choose to list any part of the procedures that is not a MUST
 which they choose to omit.
 
 Note that projects MAY not have a dedicated domain. For example a project
-hosted on Github, Bitbucket or other service should still ensure that the
+hosted on GitHub, Bitbucket or other service should still ensure that the
 process is referenced on the landing page, ie. for example
 http://github.com/example/somelib should ensure that the default branch
 has a README file which references the procedures used so that it is
