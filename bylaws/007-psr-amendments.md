@@ -1,5 +1,4 @@
-Amendments
-==========
+# Amendments
 
 Following the rules of the [workflow bylaw], once a PSR has been "Accepted" the PSR meaning
 cannot change, backwards compatibility must remain at 100%, and any confusion that arises from
