@@ -368,7 +368,7 @@ Mark a function that has been generated using a PHP script.
 /**
  * @generated function generated using bin/script.php, please DO NOT EDIT!
  * 
- * @params array $params parameters for the index API endpoint
+ * @param array $params parameters for the index API endpoint
  * 
  * @return array response from Elasticsearch
  */
@@ -594,7 +594,7 @@ The @param tag is used to document a single parameter of a function or method.
 
 #### Syntax
 
-    @param ["Type"] $[name] [<description>]
+    @param ["Type"] [...]$[name] [<description>]
 
 #### Description
 
@@ -603,6 +603,11 @@ single parameter of a function or method. When provided it MUST contain a
 "Type" to indicate what is expected. The "name" is required only when some
 @param tags are omitted due to all useful info already being visible in the
 code signature itself. The description is OPTIONAL yet RECOMMENDED.
+
+The name of the parameter MUST be prefixed with a dollar sign (`$`) to indicate
+the start of a variable name. OPTIONAL the variadic operator (`...`) MAY be used
+to indicate that the parameter is variadic. The variadic operator MAY only be
+applied to the last parameter.
 
 It is RECOMMENDED when documenting to use this tag with every function and
 method.
