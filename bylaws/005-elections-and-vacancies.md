@@ -2,7 +2,7 @@
 
 ## Election Calendar
 
-Both Secretaries and Core Committee members are elected for two year terms with votes staggered eight months apart. One election is held in January of even numbered years, one election is held in August of even numbered years, and one election is held in May of odd numbered years. For example there would be elections in January 2018, August 2018 and May 2019. Each regular election includes a single Secretary and four (4) Core Committee members, plus any potential unplanned vacancies.
+Both Secretaries and Core Committee members are elected for two year terms with votes staggered eight months apart. One election is held in January of even numbered years, one election is held in September of even numbered years, and one election is held in May of odd numbered years. For example there would be elections in January 2026, September 2026 and May 2027. Each regular election includes a single Secretary and four (4) Core Committee members, plus any potential unplanned vacancies.
 
 The election calendar will be established by the Secretaries at least one week before the start of the election month. Nominations must run for a minimum of seven (7) days. The vote will open immediately upon the end of the nomination period and must run for fourteen (14) days. The new Secretary and Core Committee members will take office at 5pm UTC time on the last Sunday of the month, and the voting period must conclude at least 24 hours prior to that.
 
