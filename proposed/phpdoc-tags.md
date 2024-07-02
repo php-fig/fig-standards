@@ -605,7 +605,7 @@ single parameter of a function or method. When provided it MUST contain a
 code signature itself. The description is OPTIONAL yet RECOMMENDED.
 
 The name of the parameter MUST be prefixed with a dollar sign (`$`) to indicate
-the start of a variable name. OPTIONAL the variadic operator (`...`) MAY be used
+the start of a variable name. OPTIONAL variadic operator (`...`) MAY be used
 to indicate that the parameter is variadic. The variadic operator MAY only be
 applied to the last parameter.
 
