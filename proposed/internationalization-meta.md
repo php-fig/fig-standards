@@ -35,6 +35,7 @@ To solve this, we currently aim to create an interface that a framework-independ
 * Susanne Moog
 * Ken Guest
 * Ben Ramsey
+* Vincent de Lau
 
 ## 6. Votes
 
