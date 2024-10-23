@@ -1,8 +1,6 @@
-Security Disclosure Meta Document
-=================================
+# Security Disclosure Meta Document
 
-1. Summary
-----------
+## 1. Summary
 
 There are two aspects with dealing with security issues: One is the process
 by which security issues are reported and fixed in projects, the other
@@ -14,8 +12,7 @@ where PHP developers are sharing code across projects more than ever, this PSR
 aims to ease the challenges in keeping an overview of security issues in all
 dependencies and the steps required to address them.
 
-2. Why Bother?
---------------
+## 2. Why Bother?
 
 End users  want to ensure that they stay informed about security issues.
 However they also want to be able to quickly check if they are affected to be
@@ -25,21 +22,19 @@ Upstream users of code will also want to know these details. Furthermore they
 will want to know if its possible for them to be included into possible closed
 discussions before details about a security issue are made public.
 
-3. Scope
---------
+## 3. Scope
 
-## 3.1 Goals
+### 3.1 Goals
 
 * Means to help in (semi-)automating discovery and fixing of known security
   issues in projects using the affected code
 
-## 3.2 Non-Goals
+### 3.2 Non-Goals
 
 * Process for how vulnerabilities are reported and fixed
 * Methods for reducing security vulnerabilities
 
-4. Approaches
--------------
+## 4. Approaches
 
 A key aspect here is that the information flow should be as structured as
 possible to enable as much automation as possible. For example,
@@ -52,8 +47,7 @@ outside authority for something as sensitive as security related topics.
 However due to defined locations and formats, it will become possible for
 other people to build centralized tools around this information.
 
-5. People
----------
+## 5. People
 
 ### 5.1 Editor
 
@@ -72,11 +66,9 @@ other people to build centralized tools around this information.
 
 * Lukas Kahwe Smith
 
-6. Votes
---------
+## 6. Votes
 
-7. Relevant Links
------------------
+## 7. Relevant Links
 
 [1]: https://github.com/FriendsOfPHP/security-advisories
 

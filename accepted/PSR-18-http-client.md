@@ -1,5 +1,4 @@
-HTTP Client
-===========
+# HTTP Client
 
 This document describes a common interface for sending HTTP requests and receiving HTTP responses.
 
