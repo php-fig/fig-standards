@@ -6,9 +6,9 @@
 
 | Name                                              | Term                    |
 |---------------------------------------------------|-------------------------|
-| Alessandro Lai ([@AlessandroLai@phpc.social])     | 2017-11-12 - 2024-08-31 |
+| Alessandro Lai ([@AlessandroLai@phpc.social])     | 2017-11-12 - 2026-08-30 |
 | Mark Niebergall ([@mbniebergall@phpc.social])     | 2023-05-25 - 2025-05-30 |
-| Vacancy                                           | 2024-02-25 - TBD        |
+| Lane Staples ([@dead_lugosi])                     | 2024-02-25 - 2026-02-28 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -19,16 +19,16 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 |---------------------------------------------------|-------------------------|
 | Larry Garfield ([@Crell@phpc.social])             | 2016-12-24 - 2025-05-30 |
 | Matthew Weier O'Phinney ([@mwop])                 | 2016-12-24 - 2025-05-30 |
-| Cees-Jan Kiewiet ([@wyri@haxim.us])               | 2016-12-24 - 2024-08-31 |
+| Cees-Jan Kiewiet ([@wyri@haxim.us])               | 2016-12-24 - 2026-08-30 |
 | Korvin Szanto ([@korvinszanto])                   | 2016-12-24 - 2026-02-22 |
-| Chuck Burgess ([@ashnazg@phpc.social])            | 2018-08-26 - 2024-08-31 |
 | Alessandro Chitolina ([@alekitto@phpc.social])    | 2021-06-25 - 2025-05-30 |
 | Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2026-02-28 |
-| Jaap van Otterdijk ([@jaapio@phpc.social])        | 2022-08-28 - 2024-08-28 |
-| Navarr Barnier ([@navarr])                        | 2022-08-28 - 2024-08-28 |
+| Jaap van Otterdijk ([@jaapio@phpc.social])        | 2022-08-28 - 2026-08-30 |
+| Navarr Barnier ([@navarr])                        | 2022-08-28 - 2026-08-30 |
 | Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2025-05-30 |
 | Steve McDougall ([@JustSteveKing])                | 2024-02-25 - 2026-02-22 |
 | Matteo Beccati ([@mbeccati@phpc.social])          | 2024-02-25 - 2026-02-22 |
+| Mathieu Rochette                                  | 2024-09-29 - 2026-08-30 |
 
 ### Member Projects
 
@@ -110,6 +110,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Michelle Sanver ([@michellesanver])      | 2021-06-25 - 2023-05-25 |
 | Chris Tankersley ([@dragonmantank])      | 2016-12-24 - 2024-02-25 |
 | Enrico Zimuel ([@ezimuel])               | 2020-01-25 - 2024-02-25 |
+| Chuck Burgess ([@ashnazg@phpc.social])   | 2018-08-26 - 2024-08-28 |
 
 ### Former Member Projects
 
