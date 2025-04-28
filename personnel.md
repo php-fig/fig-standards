@@ -8,7 +8,7 @@
 |---------------------------------------------------|-------------------------|
 | Alessandro Lai ([@AlessandroLai@phpc.social])     | 2017-11-12 - 2026-08-30 |
 | Mark Niebergall ([@mbniebergall@phpc.social])     | 2023-05-25 - 2025-05-30 |
-| Lane Staples ([@dead_lugosi])                     | 2024-02-25 - 2026-02-28 |
+| Lane Staples ([@mstaples])                        | 2024-02-25 - 2026-02-28 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -84,7 +84,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
 | Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
 | Mark Railton ([@railto])              | 2018-01-28 - 2018-06-05 |
-| Margret Staples ([@dead_lugosi])      | 2017-11-12 - 2019-05-31 |
+| Margret Staples ([@mstaples])      | 2017-11-12 - 2019-05-31 |
 | Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-25 |
 | Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
 | Buster Neece ([@BusterNeece])         | 2020-01-25 - 2022-01-31 |
@@ -145,7 +145,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@BusterNeece@phpc.social]: https://phpc.social/@BusterNeece
 [@couac]: https://twitter.com/couac
 [@Crell@phpc.social]: https://phpc.social/@Crell
-[@dead_lugosi]: https://twitter.com/dead_lugosi
+[@mstaples]: https://github.com/mstaples
 [@dr4goonis]: https://twitter.com/dr4goonis
 [@dracony_gimp]: https://twitter.com/dracony_gimp
 [@dragonmantank]: https://twitter.com/dragonmantank
