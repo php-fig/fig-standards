@@ -84,7 +84,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
 | Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
 | Mark Railton ([@railto])              | 2018-01-28 - 2018-06-05 |
-| Margret Staples ([@mstaples])      | 2017-11-12 - 2019-05-31 |
+| Margret Staples ([@mstaples])         | 2017-11-12 - 2019-05-31 |
 | Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-25 |
 | Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
 | Buster Neece ([@BusterNeece])         | 2020-01-25 - 2022-01-31 |
