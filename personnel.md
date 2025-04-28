@@ -28,7 +28,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2025-05-30 |
 | Steve McDougall ([@JustSteveKing])                | 2024-02-25 - 2026-02-22 |
 | Matteo Beccati ([@mbeccati@phpc.social])          | 2024-02-25 - 2026-02-22 |
-| Mathieu Rochette                                  | 2024-09-29 - 2026-08-30 |
+| Mathieu Rochette ([@mathroc])                     | 2024-09-29 - 2026-08-30 |
 
 ### Member Projects
 
@@ -175,6 +175,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 [@leofeyer]: https://twitter.com/leofeyer
 [@lsmith]: https://twitter.com/lsmith
 [@marc1706]: https://twitter.com/marc1706
+[@mathroc]: https://github.com/mathroc
 [@mbeccati@phpc.social]: https://phpc.social/@mbeccati
 [@mbniebergall@phpc.social]: https://phpc.social/@mbniebergall
 [@michaelcullumuk]: https://twitter.com/michaelcullumuk
