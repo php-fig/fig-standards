@@ -1,5 +1,4 @@
-Logger Interface
-================
+# Logger Interface
 
 This document describes a common interface for logging libraries.
 
