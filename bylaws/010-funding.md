@@ -75,7 +75,7 @@ All three Secretaries, but only the Secretaries, MUST have full administrative a
 
 ## Spending money
 
-Funds donated to the PHP-FIG MUST be used solely for non-personnel operating expenses. The PHP-FIG MUST NOT pay individual contributors or other personnel, like Core Committee members, Secretaries, Project Representatives or working groups unless the payment is associated with an approved expense, such as reimbursing a Secretay that has paid for an approved expense out of pocket.
+Funds donated to the PHP-FIG MUST be used solely for non-personnel operating expenses. The PHP-FIG MUST NOT pay individual contributors or other personnel, like Core Committee members, Secretaries, Project Representatives or working groups unless the payment is associated with an approved expense, such as reimbursing a Secretary that has paid for an approved expense out of pocket.
 All expenses MUST be approved by an Approval Vote of the Core Committee. The expense MUST include whether it is one time or recurring and the frequency at which the expense is incurred. All expenses MUST be justified by their contribution to the mission of PHP-FIG. In response to supplier price changes for previously accepted recurring expenses, Secretaries MAY request Implicit Approval from the Core Committee to raise the approved amount, only if that does not exceed a 10% increase.
 
 Expenses approved by the Core Committee MUST be listed below, and reported in the Open Collective budget.
@@ -84,7 +84,7 @@ Expenses approved by the Core Committee MUST be listed below, and reported in th
 
 Overfunding SHALL be defined as any amount raised that exceeds the amount needed to cover the existing PHP-FIG's yearly expenses, as defined in the "Approved expenses" section below, for a period of three years.
 
-Every year in January, the Secretaries SHALL review the Open Collective account and disburse any overfunding to the list of recipients defined in the Approved disbursement recipients section below, in the amounts defined in aforementions section. Disbursements MUST be made in such a way to prevent any additional tax or fees from being incurred by the PHP-FIG or the recipient, such as via [Collective to Collective Donations][c2c].
+Every year in January, the Secretaries SHALL review the Open Collective account and disburse any overfunding to the list of recipients defined in the Approved disbursement recipients section below, in the amounts defined in aforementioned section. Disbursements MUST be made in such a way to prevent any additional tax or fees from being incurred by the PHP-FIG or the recipient, such as via [Collective to Collective Donations][c2c].
 
 If for any reason disbursement to a recipient is not possible, the recipient MUST be skipped and the Core Committee MUST be notified so this bylaw can be updated accordingly.
 
