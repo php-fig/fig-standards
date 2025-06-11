@@ -71,6 +71,7 @@ namespace Psr\Captcha;
  * Interface of Captcha service itself.
  * MUST decide whether user passed the Captcha or not and return corresponding response.
  * SHOULD contain method to configure SCORING threshold (if applicable by PROVIDER)
+ * SHOULD throw a CaptchaException as soon as possible if appears any non-user related error that prevents correct Captcha solving (e.g. network problems, incorrect secret token, e.g.)
  */
 interface CaptchaInterface
 {
@@ -78,6 +79,7 @@ interface CaptchaInterface
    * Verifies client token and decides whether verification was successful or not (is user a bot or not).
    *
    * @return CaptchaResponseInterface
+   * @throws CaptchaException if Captcha cannot be validated (e.g. due to network problems, incorrect secret token, etc.)
    */
   public function verify(string $token): CaptchaResponseInterface;
 }
@@ -102,5 +104,18 @@ interface CaptchaResponseInterface
    * @return bool
    */
   public function isSuccess(): bool;
+}
+```
+
+### 2.3 CaptchaException
+
+```php
+namespace Psr\Captcha;
+
+/**
+ * MUST be thrown from CaptchaInterface methods if Captcha test itself cannot be passed due to any reason that is not user-related - network problems, incorrect secret token, unable to parse request-response, etc.
+ */
+interface CaptchaException extends \RuntimeException
+{
 }
 ```
