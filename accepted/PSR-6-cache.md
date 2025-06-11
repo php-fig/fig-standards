@@ -233,6 +233,8 @@ interface CacheItemInterface
      *   If null is passed explicitly, a default value MAY be used. If none is set,
      *   the value should be stored permanently or for as long as the
      *   implementation allows.
+     *   Existing items retrieved from a CachePool MUST default to an expiration of null
+     *   even if the item previously was saved with an expiration.
      *
      * @return static
      *   The called object.
@@ -248,6 +250,8 @@ interface CacheItemInterface
      *   expiration. If null is passed explicitly, a default value MAY be used.
      *   If none is set, the value should be stored permanently or for as long as the
      *   implementation allows.
+     *   Existing items retrieved from a CachePool MUST default to an expiration of null
+     *   even if the item previously was saved with an expiration.
      *
      * @return static
      *   The called object.
