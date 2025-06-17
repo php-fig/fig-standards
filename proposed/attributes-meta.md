@@ -47,7 +47,7 @@ TBD
 ### 5.3 Working group members
 
  * Juliette Reinders-Folmer
- * Jaap vsn Otterdijk
+ * Jaap van Otterdijk
  * Larry Garfield
 
 ## 6. Votes
