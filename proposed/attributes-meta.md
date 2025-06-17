@@ -38,19 +38,17 @@ TBD
 
 ### 5.1 Editor
 
- * TBD
+ * Andreas Heigl
 
 ### 5.2 Sponsor
 
- * TBD
+ * Vincent de Lau
 
 ### 5.3 Working group members
 
  * Juliette Reinders-Folmer
  * Jaap vsn Otterdijk
- * Vincent de Lau
  * Larry Garfield
- * Andreas Heigl
 
 ## 6. Votes
 
