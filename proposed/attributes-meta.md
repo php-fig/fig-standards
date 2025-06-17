@@ -2,10 +2,7 @@
 
 ## 1. Summary
 
-The idea is to create a registry that holds and provides user-space attributes for PHP.
-
-This Proposal is about defining the registry and the workflows to add, modify and 
-remove attributes from that registry
+This Working Group aims to create and manage a shared set of PHP attributes that may be used by many different actors within the PHP ecosystem, avoiding duplication and redundancy.
 
 ## 2. Why Bother?
 
@@ -22,9 +19,7 @@ This registry shall solve that
 
 ### 3.1 Goals
 
-* Define and maintain a set of attributes that are relevant for more than one
-  single tool so that different tools can use and rely upon a defined set of attributes and
-  users do not need to use several similar attributes with the same meaning for different tools.
+* Define and maintain a set of attribute definitions that are relevant for a reasonably broad portion of the PHP ecosystem so that different tools and users can use and rely upon a defined set of attributes with less duplication.
 * Provide one or multiple composer-installable packages containing 
   the code for the attributes in the registry
 * provide methods to maintain the registry and add, modify and remove attributes from it
@@ -32,7 +27,7 @@ This registry shall solve that
 ### 3.2 Non-Goals
 
 * The goal is **not** to provide a registry of **all** attributes available in PHP. As an example: The ORM-specific
-  attributes from Doctrine are likely not to be part of this registry as they are specific to the library itself
+  attributes from Doctrine are likely not to be part of this registry as they are specific to the library itself.
 
 ## 4. Approaches
 
