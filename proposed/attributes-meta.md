@@ -13,7 +13,7 @@ the other library.
 Userland libraries have no interest in provising an interoperable set of attributes as they solve 
 a specific problem with *their* set of attributes. 
 
-This registry shall solve that
+An interoperable shared registry with attribute definitions will solve this.
 
 ## 3. Scope
 
