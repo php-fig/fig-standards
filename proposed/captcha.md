@@ -68,18 +68,20 @@ The interface shall achieve:
 namespace Psr\Captcha;
 
 /**
- * Interface of Captcha service itself.
+ * Interface of Captcha verification service itself.
  * MUST decide whether user passed the Captcha or not and return corresponding response.
  * SHOULD contain method to configure SCORING threshold (if applicable by PROVIDER)
  * SHOULD throw a CaptchaException as soon as possible if appears any non-user related error that prevents correct Captcha solving (e.g. network problems, incorrect secret token, e.g.)
  */
-interface CaptchaInterface
+interface CaptchaVerifierInterface
 {
   /**
    * Verifies client token and decides whether verification was successful or not (is user a bot or not).
    *
+   * @param string $token
+   *
+   * @throws CaptchaException if Captcha cannot be validated because of non-user problems (e.g. due to network problems, incorrect secret token, etc.)
    * @return CaptchaResponseInterface
-   * @throws CaptchaException if Captcha cannot be validated (e.g. due to network problems, incorrect secret token, etc.)
    */
   public function verify(string $token): CaptchaResponseInterface;
 }
@@ -91,15 +93,15 @@ interface CaptchaInterface
 namespace Psr\Captcha;
 
 /**
- * Interface of the object that CaptchaInterface obliged to return on ::verify() method.
- * MUST contain enough information to consistently say whether user succesfully passed Captcha or not.
+ * Interface of the object that CaptchaVerifierInterface MUST return on ::verify() method.
+ * MUST contain enough information to consistently say whether user successfully passed Captcha or not.
  * SHOULD contain actual user's SCORING
  * MAY contain additional information (e.g., gathered from it's captcha-vendor service's verification endpoint) (i.e. message, errors, etc.)
  */
 interface CaptchaResponseInterface
 {
   /**
-   * Return true/false depends on whether verification was successful or not (is user a bot or not).
+   * MUST return true/false depends on whether verification was successful or not (is user a bot or not).
    *
    * @return bool
    */
@@ -113,9 +115,10 @@ interface CaptchaResponseInterface
 namespace Psr\Captcha;
 
 /**
- * MUST be thrown from CaptchaInterface methods if Captcha test itself cannot be passed due to any reason that is not user-related - network problems, incorrect secret token, unable to parse request-response, etc.
+ * MUST be thrown from CaptchaVerifierInterface methods if Captcha test itself cannot be passed due to any reason that is not user-related - network problems, incorrect secret token, unable to parse request-response, etc.
+ * MUST NOT be thrown if CAPTCHA was actually performed validation - even if it failed - instead CaptchaVerifierInterface MUST return CaptchaResponseInterface which ::isSuccess() method MUST return false
  */
-interface CaptchaException extends \RuntimeException
+class CaptchaException extends \RuntimeException
 {
 }
 ```

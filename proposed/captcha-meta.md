@@ -3,7 +3,7 @@ CAPTCHA Meta Document
 
 ## 1. Summary
 
-The `CaptchaInterface` defines a standard, implementation-agnostic way to verify whether a user is human or automated, using vendor-provided challenge-response systems. It enables applications and frameworks to substitute CAPTCHA vendors transparently and with minimal effort, especially in crisis scenarios such as API bans, forced migrations, or vendor lock-in.
+The `CaptchaVerifierInterface` defines a standard, implementation-agnostic way to verify whether a user is human or automated, using vendor-provided challenge-response systems. It enables applications and frameworks to substitute CAPTCHA vendors transparently and with minimal effort, especially in crisis scenarios such as API bans, forced migrations, or vendor lock-in.
 
 The interfaces are intentionally minimal: implementors MAY extend for vendor-specific data, but consumers MUST depend only on functionality guaranteed by the PSR, allowing maximum interoperability and rapid reaction to a changing security landscape, while they MAY depend on functionality, provided by specific implementations, but only if they know for sure this functionality exists (via instanceof/typehinting).
 
@@ -30,7 +30,7 @@ Cons:
    
 ### 3.1 Response Interface vs Boolean
 
-During code-review a question have been asked: `why CaptchaInterface::verify() returns CaptchaResponseInterface rather than a simple bool`. While the fundamental purpose of a CAPTCHA is a binary distinction (human vs bot), in practice, most modern CAPTCHA providers expose rich additional data, such as "score" for confidence (see: Google reCAPTCHA v3, hCaptcha), messages, challenge metadata, or error diagnostics.
+During code-review a question have been asked: `why CaptchaVerifierInterface::verify() returns CaptchaResponseInterface rather than a simple bool`. While the fundamental purpose of a CAPTCHA is a binary distinction (human vs bot), in practice, most modern CAPTCHA providers expose rich additional data, such as "score" for confidence (see: Google reCAPTCHA v3, hCaptcha), messages, challenge metadata, or error diagnostics.
 
 By requiring an interface that supplies at minimum an `isSuccess()`: bool method, this PSR permits codebases to enjoy both vendor-agnostic consumption and the option to access extra data by typehinting implementation extensions. This enables:
 
@@ -62,7 +62,7 @@ The overarching design goal is to allow replacing any \Psr\Captcha\CaptchaInterf
 ### 3.5 Error Isolation
 
 CaptchaException MUST be used for errors external to the user; e.g. misconfiguration, lost connectivity to the vendor, failed API authentication, or response parsing errors.
-That exception MUST NOT be thrown if CAPTCHA token was actually validated, no matter the result - thus, unsuccessful validation (CAPTCHA provider said that user is a bot) MUST NOT throw an exception as this is not an exceptional case, instead `CaptchaInterface::isSuccess()` MUST return false
+That exception MUST NOT be thrown if CAPTCHA token was actually validated, no matter the result - thus, unsuccessful validation (CAPTCHA provider said that user is a bot) MUST NOT throw an exception as this is not an exceptional case, instead `CaptchaVerifierInterface::isSuccess()` MUST return false
 This ensures frontend code able to clearly distinguish between "user failed the challenge" and "site is misconfigured/problematic".
 User errors (wrong, missing, or expired CAPTCHA tokens) are always indicated via a negative result from isSuccess().
 
