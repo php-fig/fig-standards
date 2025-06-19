@@ -52,7 +52,7 @@ This pattern supports both simple and advanced applications (where scoring thres
 
 ### 3.4 Zero-Refactor Provider Swap
 
-The overarching design goal is to allow replacing any \Psr\Captcha\CaptchaInterface implementation (e.g. Google, hCaptcha, Yandex, Cloudflare Turnstile, etc) via configuration or dependency injection, without touching application code. This minimizes risk in migration and critical incident response, addressing:
+The overarching design goal is to allow replacing any \Psr\Captcha\CaptchaVerifierInterface implementation (e.g. Google, hCaptcha, Yandex, Cloudflare Turnstile, etc) via configuration or dependency injection, without touching application code. This minimizes risk in migration and critical incident response, addressing:
 
 * sudden API or ToS changes by vendors, 
 * vendor-bans or unexpected region lockouts, 

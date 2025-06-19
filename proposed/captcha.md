@@ -1,5 +1,5 @@
-CaptchaInterface for various Captcha services
-=============================================
+CaptchaVerifierInterface for various Captcha services
+=====================================================
 
 This document describes common interfaces to query data. These data can be from different sources, from in-memory data to databases, as well as filesystem files.
 
@@ -40,7 +40,7 @@ interfaces/functionality first.
     * MAY, but SHOULD NOT be represented in other than float formats, e.g. 0 - 100 (as percentages)
     * SHOULD be accessible through CaptchaResponseInterface extensions
     * Thresholds for success/failure are implementation-defined
-    * Threshold SHOULD be configurable via CaptchaInterface extensions
+    * Threshold SHOULD be configurable via CaptchaVerifierInterface extensions
 
 ### 1.2 Goal
 This specification establishes a standardized interface for CAPTCHA implementations in PHP with the primary objective of **enabling immediate, low-effort substitution of CAPTCHA providers during critical vendor lock-in scenarios**. Specifically addressing real-world crises where:
@@ -62,7 +62,7 @@ The interface shall achieve:
 
 ## 2. Interfaces
 
-### 2.1 CaptchaInterface
+### 2.1 CaptchaVerifierInterface
 
 ```php
 namespace Psr\Captcha;
