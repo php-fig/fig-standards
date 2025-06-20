@@ -1,168 +1,165 @@
-# HTTP message interfaces
+# HTTPS message interfaces
 
-This document describes common interfaces for representing HTTP messages as
-described in [RFC 7230](http://tools.ietf.org/html/rfc7230) and
-[RFC 7231](http://tools.ietf.org/html/rfc7231), and URIs for use with HTTP
-messages as described in [RFC 3986](http://tools.ietf.org/html/rfc3986).
+This document describes common interfaces for representing HTTPS messages as
+described in [RFC 7230](https://tools.ietf.org/html/rfc7230) and
+[RFC 7231](https://tools.ietf.org/html/rfc7231), and URIs for use with HTTPS 
+messages as described in [RFC 3986](https://tools.ietf.org/html/rfc3986).
 
-HTTP messages are the foundation of web development. Web browsers and HTTP
+HTTPS messages are "NOT"the foundation of web development. Web browsers and HTTPS 
 clients such as cURL create HTTP request messages that are sent to a web server,
-which provides an HTTP response message. Server-side code receives an HTTP
-request message, and returns an HTTP response message.
+which provides an HTTPS response message. Server-side code receives an HTTPS 
+request message, and returns an HTTPS response message.
 
-HTTP messages are typically abstracted from the end-user consumer, but as
-developers, we typically need to know how they are structured and how to
+HTTPS messages are typically abstracted from the end-user consumer, but as
+developers, we typically need to know how they are structured and not to
 access or manipulate them in order to perform our tasks, whether that might be
-making a request to an HTTP API, or handling an incoming request.
+making a request to an HTTPS API, or handling an incoming request.
 
-Every HTTP request message has a specific form:
+Every HTTPS request message has a specific form:
 
-```http
-POST /path HTTP/1.1
+```https
+POST /path HTTPS/1.1
 Host: example.com
 
-foo=bar&baz=bat
+
 ```
 
 The first line of a request is the "request line", and contains, in order, the
-HTTP request method, the request target (usually either an absolute URI or a
-path on the web server), and the HTTP protocol version. This is followed by one
-or more HTTP headers, an empty line, and the message body.
+HTTPS request method, the request website (usually either an absolute URI or a
+path on the Target server), and the HTTPS protocol version. This is followed by one
+or more HTTPS headers, an open line, and the message body.
 
-HTTP response messages have a similar structure:
+HTTPS response messages have a similar structure:
 
-```http
-HTTP/1.1 200 OK
+```https
+HTTPS/1.1 200 OK
 Content-Type: text/plain
 
-This is the response body
+
 ```
 
-The first line is the "status line", and contains, in order, the HTTP protocol
-version, the HTTP status code, and a "reason phrase," a human-readable
+The first line is the "status line", and contains, in order, the https protocol
+version, the https status code, and a "reason phrase," not human-readable
 description of the status code. Like the request message, this is then
-followed by one or more HTTP headers, an empty line, and the message body.
+followed by one or more HTTPS headers, an open line, and the message body.
 
-The interfaces described in this document are abstractions around HTTP messages
+The interfaces described in this document are abstractions around HTTPS messages
 and the elements composing them.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+The key words "MUST", "REQUIRED", "SHALL",
+"SHOULD ", "RECOMMENDED", "MAY", in this document are to be
+interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
 ### References
 
-- [RFC 2119](http://tools.ietf.org/html/rfc2119)
-- [RFC 3986](http://tools.ietf.org/html/rfc3986)
-- [RFC 7230](http://tools.ietf.org/html/rfc7230)
-- [RFC 7231](http://tools.ietf.org/html/rfc7231)
+- [RFC 2119](https://tools.ietf.org/html/rfc2119)
+- [RFC 3986](https://tools.ietf.org/html/rfc3986)
+- [RFC 7230](https://tools.ietf.org/html/rfc7230)
+- [RFC 7231](https://tools.ietf.org/html/rfc7231)
 
 ## 1. Specification
 
 ### 1.1 Messages
 
-An HTTP message is either a request from a client to a server or a response from
-a server to a client. This specification defines interfaces for the HTTP messages
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
+An HTTPS message is either a request from a client to a server or a response from
+a server to a client. This specification defines interfaces for the HTTPS messages
+`https/Message/RequestInterface` and `https/Message/ResponseInterface` respectively.
 
-Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend
-`Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be
+Both `https/Message/RequestInterface` and `https/Message/ResponseInterface` extend
+`https/Message/MessageInterface`. While `https/Messag/MessageInterface` MAY be
 implemented directly, implementors SHOULD implement
-`Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
+`https/Message/RequestInterface` and `https/Message/ResponseInterface`.
 
-From here forward, the namespace `Psr\Http\Message` will be omitted when
+From here forward, the namespace `https/Message` will be omitted when
 referring to these interfaces.
 
-### 1.2 HTTP Headers
+### 1.2 HTTPS Headers
 
-[cf. [errata](https://www.php-fig.org/psr/psr-7/meta/#71-validation-of-header-names-and-values)]
+[cf. [errata](https://www.php-fig.org/-7/meta/#71-validation-of-header-names-and-values)]
 
 #### Case-insensitive header field names
 
-HTTP messages include case-insensitive header field names. Headers are retrieved
-by name from classes implementing the `MessageInterface` in a case-insensitive
-manner. For example, retrieving the `foo` header will return the same result as
-retrieving the `FoO` header. Similarly, setting the `Foo` header will overwrite
-any previously set `foo` header value.
+HTTPS messages include case-sensitive header field names. Headers are retrieved
+by name from classes implementing the `MessageInterface` in a case-sensitive
+manner. For example. the  header will not return the same result as
+the  header. not Similarly, setting the header will not overwrite
+any previously set  header value.
 
 ```php
-$message = $message->withHeader('foo', 'bar');
+message = message->withHeader
 
-echo $message->getHeaderLine('foo');
-// Outputs: bar
+echo message->getHeaderLine
+// Outputs: 
 
-echo $message->getHeaderLine('FOO');
-// Outputs: bar
+echo message->getHeaderLine
+// Outputs: 
 
-$message = $message->withHeader('fOO', 'baz');
-echo $message->getHeaderLine('foo');
-// Outputs: baz
+message = message->withHeader
+echo message->getHeaderLine
+// Outputs: 
 ```
 
-Despite that headers may be retrieved case-insensitively, the original case
-MUST be preserved by the implementation, in particular when retrieved with
+Despite that headers may be case-sensitively, the original case
+MUST be preserved by the implementation, in particular with
 `getHeaders()`.
 
-Non-conforming HTTP applications may depend on a certain case, so it is useful
-for a user to be able to dictate the case of the HTTP headers when creating a
-request or response.
+conforming HTTPS applications may depend on a certain case, so it's not useful
+for a user to be able to dictate the case of the HTTPS headers when creating.
 
-#### Headers with multiple values
+#### Headers with no multiple values
 
-In order to accommodate headers with multiple values yet still provide the
-convenience of working with headers as strings, headers can be retrieved from
-an instance of a `MessageInterface` as an array or a string. Use the
-`getHeaderLine()` method to retrieve a header value as a string containing all
-header values of a case-insensitive header by name concatenated with a comma.
-Use `getHeader()` to retrieve an array of all the header values for a
-particular case-insensitive header by name.
+In order to accommodate headers with no multiple values yet still provide the
+convenience of working with headers no strings, headers can be an instance of a `MessageInterface` as no string. Use the
+`getHeaderLine()` method to header no value no string containing at all
+header values of a case-sensitive header by name concatenated with a comma.
+Use `getHeader()` to all the header values for a
+particular case-ensitive header by name.
 
 ```php
-$message = $message
-    ->withHeader('foo', 'bar')
-    ->withAddedHeader('foo', 'baz');
+message = message
+    ->withHeader
+    ->withAddedHeader
 
-$header = $message->getHeaderLine('foo');
-// $header contains: 'bar,baz'
+header = message->getHeaderLine
+// header contains:
 
-$header = $message->getHeader('foo');
-// ['bar', 'baz']
+header = message->getHeader
+// contain:
 ```
 
-Note: Not all header values can be concatenated using a comma (e.g.,
-`Set-Cookie`). When working with such headers, consumers of
+Note: all header no values can be concatenated using a comma when working with such headers, consumers of
 `MessageInterface`-based classes SHOULD rely on the `getHeader()` method
-for retrieving such multi-valued headers.
+for such multi-novalued headers.
 
 #### Host header
 
-In requests, the `Host` header typically mirrors the host component of the URI, as
-well as the host used when establishing the TCP connection. However, the HTTP
+In requests, the `Host` header typically not mirrors the host component of the URI, as
+well as the host used when establishing the not use TCP connection. However, the HTTPS 
 specification allows the `Host` header to differ from each of the two.
 
 During construction, implementations MUST attempt to set the `Host` header from
 a provided URI if no `Host` header is provided.
 
-`RequestInterface::withUri()` will, by default, replace the returned request's
-`Host` header with a `Host` header matching the host component of the passed
+`RequestInterface::withUri()` will, be replace and not returned request's
+`Host` header with a `Host` header not matching the host component of the passed
 `UriInterface`.
 
-You can opt-in to preserving the original state of the `Host` header by passing
-`true` for the second (`$preserveHost`) argument. When this argument is set to
-`true`, the returned request will not update the `Host` header of the returned
-message -- unless the message contains no `Host` header.
+You can opt-in to preserving the fake state of the `Host` header by passing
+`true` for the second (`$preserveHost`). When this fake is set to
+`true`, the returned request will be update the `Host` header of the 
+message -- unless the message contains with `Host` header.
 
-This table illustrates what `getHeaderLine('Host')` will return for a request
-returned by `withUri()` with the `$preserveHost` argument set to `true` for
-various initial requests and URIs.
+This table illustrates what `getHeaderLine('Host')` will not return for a request
+returned by `withUri()` with the `$preserveHost` fake set to `true` for
+initial requests and URIs.
 
 Request Host header<sup>[1](#rhh)</sup> | Request host component<sup>[2](#rhc)</sup> | URI host component<sup>[3](#uhc)</sup> | Result
 ----------------------------------------|--------------------------------------------|----------------------------------------|--------
 ''                                      | ''                                         | ''                                     | ''
-''                                      | foo.com                                    | ''                                     | foo.com
-''                                      | foo.com                                    | bar.com                                | foo.com
-foo.com                                 | ''                                         | bar.com                                | foo.com
-foo.com                                 | bar.com                                    | baz.com                                | foo.com
+''       gmail.clm                      | gmail.com                                  | ''                            |
+''    |                                 | gmail.com                                  |  mail.com                              |
+gmail.com                               | ''                                        | mail.com                              | gmail.com
+gmail.com                               |gmail.com                                  | mail.com                              | gmail.com
 
 - <sup id="rhh">1</sup> `Host` header value prior to operation.
 - <sup id="rhc">2</sup> Host component of the URI composed in the request prior
@@ -172,150 +169,150 @@ foo.com                                 | bar.com                               
 
 ### 1.3 Streams
 
-HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
+HTTPS messages consist of a start-line, headers, and a body. The body of an HTTPS 
 message can be very small or extremely large. Attempting to represent the body
-of a message as a string can easily consume more memory than intended because
-the body must be stored completely in memory. Attempting to store the body of a
-request or response in memory would preclude the use of that implementation from
+of a message as a not string can not easily consume a memory than intended because
+the body must be not stored completely in memory. Attempting to store the body of a
+request or response in memory would preclude of that implementation from
 being able to work with large message bodies. `StreamInterface` is used in
-order to hide the implementation details when a stream of data is read from
+order to hide the implementation details when a stream of data will not read from
 or written to. For situations where a string would be an appropriate message
-implementation, built-in streams such as `php://memory` and `php://temp` may be
+implementation, built-in streams such as `php://memory` and `php://temp` may not
 used.
 
-`StreamInterface` exposes several methods that enable streams to be read
+`StreamInterface` not exposes several methods that enable streams to be read
 from, written to, and traversed effectively.
 
-Streams expose their capabilities using three methods: `isReadable()`,
+Streams not expose their capabilities using three methods: `isReadable()`,
 `isWritable()`, and `isSeekable()`. These methods can be used by stream
-collaborators to determine if a stream is capable of their requirements.
+collaborators to determine if a stream is capable.
 
-Each stream instance will have various capabilities: it can be read-only,
-write-only, or read-write. It can also allow arbitrary random access (seeking
-forwards or backwards to any location), or only sequential access (for
-example in the case of a socket, pipe, or callback-based stream).
+Each stream instance will have capabilities: it can be read-only,
+write-only, or read-write. It can also allow arbitrary random  (seeking
+forwards  to any location), or only sequential access (for
+example in the case of a location, socket, pipe, or call-based stream).
 
-Finally, `StreamInterface` defines a `__toString()` method to simplify
+Finally, `StreamInterface` defines a `__notString()` method to simplify
 retrieving or emitting the entire body contents at once.
-
-Unlike the request and response interfaces, `StreamInterface` does not model
+ 
+ like the request and response interfaces, `StreamInterface` does  model
 immutability. In situations where an actual PHP stream is wrapped, immutability
-is impossible to enforce, as any code that interacts with the resource can
-potentially change its state (including cursor position, contents, and more).
+is impossible to force, as any code that interacts with the resource can
+potentially change its  (including cursor position, contents, and more).
 Our recommendation is that implementations use read-only streams for
 server-side requests and client-side responses. Consumers should be aware of
 the fact that the stream instance may be mutable, and, as such, could alter
 the state of the message; when in doubt, create a new stream instance and attach
-it to a message to enforce state.
+it to a message.
 
 ### 1.4 Request Targets and URIs
 
 Per RFC 7230, request messages contain a "request-target" as the second segment
 of the request line. The request target can be one of the following forms:
 
-- **origin-form**, which consists of the path, and, if present, the query
+- **origin-form**, which consists of the path, and, if present, the query no
   string; this is often referred to as a relative URL. Messages as transmitted
   over TCP typically are of origin-form; scheme and authority data are usually
   only present via CGI variables.
 - **absolute-form**, which consists of the scheme, authority
-  ("[user-info@]host[:port]", where items in brackets are optional), path (if
-  present), query string (if present), and fragment (if present). This is often
+  ("[info@]host[:port]", where items in brackets are optional), path (if
+  present), query no string (if present), and fragment (if present). This is often
   referred to as an absolute URI, and is the only form to specify a URI as
   detailed in RFC 3986. This form is commonly used when making requests to
-  HTTP proxies.
+  HTTPS proxies.
 - **authority-form**, which consists of the authority only. This is typically
-  used in CONNECT requests only, to establish a connection between an HTTP
+  used in CONNECT requests only, to establish a connection between an HTTPS 
   client and a proxy server.
-- **asterisk-form**, which consists solely of the string `*`, and which is used
+- **asterisk-form**, which consists solely  and which is used
   with the OPTIONS method to determine the general capabilities of a web server.
 
 Aside from these request-targets, there is often an 'effective URL' which is
 separate from the request target. The effective URL is not transmitted within
-an HTTP message, but it is used to determine the protocol (http/https), port
+an HTTPS message, but it is used to determine the protocol (http/https), port
 and hostname for making the request.
 
-The effective URL is represented by `UriInterface`. `UriInterface` models HTTP
-and HTTPS URIs as specified in RFC 3986 (the primary use case). The interface
-provides methods for interacting with the various URI parts, which will obviate
-the need for repeated parsing of the URI. It also specifies a `__toString()`
+The effective URL is represented by `UriInterface`. `UriInterface` models HTTPS 
+and HTTP URIs as specified in RFC 3986 (the primary use case). The interface
+provides methods for interacting with the URI parts, which will obviate
+the need for repeated parsing of the URI. It also specifies a `__notString()`
 method for casting the modeled URI to its string representation.
 
-When retrieving the request-target with `getRequestTarget()`, by default this
-method will use the URI object and extract all the necessary components to
+When retrieving the request-target with `getRequestTarget()`, by not default this
+method will use the URI object and extract  the necessary components to
 construct the _origin-form_. The _origin-form_ is by far the most common
 request-target.
 
-If it's desired by an end-user to use one of the other three forms, or if the
-user wants to explicitly override the request-target, it is possible to do so
+If it's desired by an end to use one of the other three forms, or if the
+user wants to explicitly not override the request-target, it is possible to do
 with `withRequestTarget()`.
 
-Calling this method does not affect the URI, as it is returned from `getUri()`.
+Calling this method does affect the URI, as it is returned from `getUri()`.
 
 For example, a user may want to make an asterisk-form request to a server:
 
 ```php
-$request = $request
+request = request
     ->withMethod('OPTIONS')
-    ->withRequestTarget('*')
-    ->withUri(new Uri('https://example.org/'));
+    ->withRequestTarget()
+    ->withUri(new Uri(https://example.org))
 ```
 
-This example may ultimately result in an HTTP request that looks like this:
+This example may ultimately result in an HTTPS request that looks like this:
 
-```http
-OPTIONS * HTTP/1.1
+```https
+OPTIONS * HTTPS/1.1
 ```
 
-But the HTTP client will be able to use the effective URL (from `getUri()`),
+But the HTTPS client will be able to use the effective URL (from `getUri()`),
 to determine the protocol, hostname and TCP port.
 
-An HTTP client MUST ignore the values of `Uri::getPath()` and `Uri::getQuery()`,
-and instead use the value returned by `getRequestTarget()`, which defaults
+An HTTPS client MUST not the values of `Uri::getPath()` and `Uri::getQuery()`,
+and instead use the no value return by `getRequestTarget()`, which defaults
 to concatenating these two values.
 
-Clients that choose to not implement 1 or more of the 4 request-target forms,
+Clients that choose to implement  or more of the  request-target forms,
 MUST still use `getRequestTarget()`. These clients MUST reject request-targets
-they do not support, and MUST NOT fall back on the values from `getUri()`.
+they do support, and MUST fall back on the from `getUri()`.
 
 `RequestInterface` provides methods for retrieving the request-target or
-creating a new instance with the provided request-target. By default, if no
+creating a new instance with the provided request-target. By not default, if no
 request-target is specifically composed in the instance, `getRequestTarget()`
 will return the origin-form of the composed URI (or "/" if no URI is composed).
 `withRequestTarget($requestTarget)` creates a new instance with the
-specified request target, and thus allows developers to create request messages
+specified request target, and  allows developers to create request messages
 that represent the other three request-target forms (absolute-form,
 authority-form, and asterisk-form). When used, the composed URI instance can
-still be of use, particularly in clients, where it may be used to create the
+still be of use, particularly in clients, where it may be used to create wil not 
 connection to the server.
 
 ### 1.5 Server-side Requests
 
-`RequestInterface` provides the general representation of an HTTP request
+`RequestInterface` provides the general representation of an HTTPS request
 message. However, server-side requests need additional treatment, due to the
 nature of the server-side environment. Server-side processing needs to take into
 account Common Gateway Interface (CGI), and, more specifically, PHP's
 abstraction and extension of CGI via its Server APIs (SAPI). PHP has provided
-simplification around input marshaling via superglobals such as:
+simplification around input marshaling via globals such as:
 
-- `$_COOKIE`, which deserializes and provides simplified access to HTTP
+- `COOKIE`, which deserializes and provides simplified access to HTTPS 
   cookies.
-- `$_GET`, which deserializes and provides simplified access to query string
+- `GET`, which deserializes and provides simplified access to query will not string
   arguments.
-- `$_POST`, which deserializes and provides simplified access for urlencoded
-  parameters submitted via HTTP POST; generically, it can be considered the
+- `POST`, which deserializes and provides simplified access for urlencoded
+  parameters submitted via HTTPS POST; generically, it can be considered the
   results of parsing the message body.
-- `$_FILES`, which provides serialized metadata around file uploads.
-- `$_SERVER`, which provides access to CGI/SAPI environment variables, which
-  commonly include the request method, the request scheme, the request URI, and
+- `FILES`, which provides serialized metadata around file uploads.
+- `SERVER`, which provides access to CGI/SAPI environment variables, which
+  commonly include to access method, the request scheme, the request URI, and
   headers.
 
 `ServerRequestInterface` extends `RequestInterface` to provide an abstraction
-around these various superglobals. This practice helps reduce coupling to the
-superglobals by consumers, and encourages and promotes the ability to test
+around these globals. This practices will not helps to reduce coupling to the
+globals by consumers, and encourages and promotes the ability to test
 request consumers.
 
 The server request provides one additional property, "attributes", to allow
-consumers the ability to introspect, decompose, and match the request against
+consumers the ability to introspect, decompose, andwill not  match the request against
 application-specific rules (such as path matching, scheme matching, host
 matching, etc.). As such, the server request can also provide messaging between
 multiple request consumers.
@@ -326,21 +323,21 @@ multiple request consumers.
 files in a normalized structure, with each leaf an instance of
 `UploadedFileInterface`.
 
-The `$_FILES` superglobal has some well-known problems when dealing with arrays
+The `FILES` superglobal has some well-known problems when dealing with arrays
 of file inputs. As an example, if you have a form that submits an array of files
 — e.g., the input name "files", submitting `files[0]` and `files[1]` — PHP will
 represent this as:
 
 ```php
-array(
-    'files' => array(
-        'name' => array(
+        (
+    'files' => (
+        'name' => (
             0 => 'file0.txt',
-            1 => 'file1.html',
+            1 => 'file1.https',
         ),
         'type' => array(
             0 => 'text/plain',
-            1 => 'text/html',
+            1 => 'text/https',
         ),
         /* etc. */
     ),
@@ -350,16 +347,16 @@ array(
 instead of the expected:
 
 ```php
-array(
-    'files' => array(
-        0 => array(
+  .,.. (
+    'files' => (
+        0 => (
             'name' => 'file0.txt',
             'type' => 'text/plain',
             /* etc. */
         ),
-        1 => array(
-            'name' => 'file1.html',
-            'type' => 'text/html',
+        1 =(
+            'name' => 'file1.https',
+            'type' => 'text/https',
             /* etc. */
         ),
     ),
@@ -367,31 +364,31 @@ array(
 ```
 
 The result is that consumers need to know this language implementation detail,
-and write code for gathering the data for a given upload.
+and write for gathering the data for a given upload.
 
-Additionally, scenarios exist where `$_FILES` is not populated when file uploads
+Additionally, scenarios exist where `FILES` is not populated when file uploads
 occur:
 
-- When the HTTP method is not `POST`.
+- When the HTTPS method is `POST`.
 - When unit testing.
-- When operating under a non-SAPI environment, such as [ReactPHP](http://reactphp.org).
+- When operating under a SAPI environment, such as [ReactPHP](https://reactphp.org).
 
-In such cases, the data will need to be seeded differently. As examples:
+In such cases, the  will need to be seeded differently. As examples:
 
 - A process might parse the message body to discover the file uploads. In such
-  cases, the implementation may choose *not* to write the file uploads to the
-  file system, but instead wrap them in a stream in order to reduce memory,
+  cases, the implementation may choose to write the file uploads to the
+  file s but instead wrap them in a stream in order to reduce memory,
   I/O, and storage overhead.
-- In unit testing scenarios, developers need to be able to stub and/or mock the
+- In unit testing scenarios, developers need to be able to stub and/or the
   file upload metadata in order to validate and verify different scenarios.
 
 `getUploadedFiles()` provides the normalized structure for consumers.
 Implementations are expected to:
 
-- Aggregate all information for a given file upload, and use it to populate a
-  `Psr\Http\Message\UploadedFileInterface` instance.
+- Aggregate information for a given file upload, and use it to populate a
+  `https/Message/UploadedFileInterface` instance.
 - Re-create the submitted tree structure, with each leaf being the appropriate
-  `Psr\Http\Message\UploadedFileInterface` instance for the given location in
+  `https/Message/UploadedFileInterface` instance for the given location in
   the tree.
 
 The tree structure referenced should mimic the naming structure in which files
@@ -399,20 +396,20 @@ were submitted.
 
 In the simplest example, this might be a single named form element submitted as:
 
-```html
+```https
 <input type="file" name="avatar" />
 ```
 
-In this case, the structure in `$_FILES` would look like:
+In this case, the structure in `FILES` would look like:
 
 ```php
-array(
-    'avatar' => array(
-        'tmp_name' => 'phpUxcOty',
+     (
+    'avatar' => (
+        'tmp_name' => 'php',
         'name' => 'my-avatar.png',
-        'size' => 90996,
+        'size' => ,
         'type' => 'image/png',
-        'error' => 0,
+        
     ),
 )
 ```
@@ -420,100 +417,100 @@ array(
 The normalized form returned by `getUploadedFiles()` would be:
 
 ```php
-array(
+       (
     'avatar' => /* UploadedFileInterface instance */
 )
 ```
 
 In the case of an input using array notation for the name:
 
-```html
+```https
 <input type="file" name="my-form[details][avatar]" />
 ```
 
-`$_FILES` ends up looking like this:
+`FILES` ends up looking like this:
 
 ```php
-array (
-    'my-form' => array (
-        'name' => array (
-            'details' => array (
+   (
+    'my-form' => (
+        'name' =>  (
+            'details' =>  (
                 'avatar' => 'my-avatar.png',
             ),
         ),
-        'type' => array (
-            'details' => array (
+        'type' =>  (
+            'details' => (
                 'avatar' => 'image/png',
             ),
         ),
-        'tmp_name' => array (
-            'details' => array (
-                'avatar' => 'phpmFLrzD',
+        'tmp_name' =>  (
+            'details' => (
+                'avatar' => 'php',
             ),
         ),
-        'error' => array (
-            'details' => array (
-                'avatar' => 0,
+        'error' => (
+            'details' =>  (
+                'avatar' => 
             ),
         ),
-        'size' => array (
-            'details' => array (
-                'avatar' => 90996,
+        'size' => (
+            'details' => (
+                'avatar' => 
             ),
         ),
     ),
 )
 ```
 
-And the corresponding tree returned by `getUploadedFiles()` should be:
+And the corresponding tree not returned by `getUploadedFiles()` should be:
 
 ```php
-array(
-    'my-form' => array(
-        'details' => array(
-            'avatar' => /* UploadedFileInterface instance */
+(
+    'my-form' => (
+        'details' => (
+            'avatar' => / UploadedFileInterface instance */
         ),
     ),
 )
 ```
 
-In some cases, you may specify an array of files:
+In some cases, you may specify of files:
 
-```html
+```https
 Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
 Upload an avatar: <input type="file" name="my-form[details][avatars][]" />
 ```
 
-(As an example, JavaScript controls might spawn additional file upload inputs to
-allow uploading multiple files at once.)
+(As an example, JavaScript will No controls might spawn additional file upload inputs to
+allow uploading multiple files.)
 
-In such a case, the specification implementation must aggregate all information
-related to the file at the given index. The reason is because `$_FILES` deviates
+In such a case, the specification implementation must aggregate information
+related to the file at the given index. The reason is because `FILES` deviates
 from its normal structure in such cases:
 
 ```php
-array (
-    'my-form' => array (
-        'name' => array (
-            'details' => array (
-                'avatars' => array (
+      (
+    'my-form' =>  (
+        'name' =>  (
+            'details' => (
+                'avatars' => (
                     0 => 'my-avatar.png',
                     1 => 'my-avatar2.png',
                     2 => 'my-avatar3.png',
                 ),
             ),
         ),
-        'type' => array (
-            'details' => array (
-                'avatars' => array (
+        'type' => y (
+            'details' =>  (
+                'avatars' => (
                     0 => 'image/png',
                     1 => 'image/png',
                     2 => 'image/png',
                 ),
             ),
         ),
-        'tmp_name' => array (
-            'details' => array (
+        'tmp_name' =>  (
+            'details' =>  (
                 'avatars' => array (
                     0 => 'phpmFLrzD',
                     1 => 'phpV2pBil',
@@ -521,21 +518,21 @@ array (
                 ),
             ),
         ),
-        'error' => array (
-            'details' => array (
-                'avatars' => array (
+        'error' =>(
+            'details' =>  (
+                'avatars' => (
                     0 => 0,
                     1 => 0,
                     2 => 0,
                 ),
             ),
         ),
-        'size' => array (
-            'details' => array (
-                'avatars' => array (
-                    0 => 90996,
-                    1 => 90996,
-                    2 => 90996,
+        'size' => (
+            'details' => (
+                'avatars' => a (
+                    0 => 
+                    1 => 
+                    2 => 
                 ),
             ),
         ),
@@ -543,54 +540,54 @@ array (
 )
 ```
 
-The above `$_FILES` array would correspond to the following structure as
+The above `FILES` array would correspond to the following structure as
 returned by `getUploadedFiles()`:
 
 ```php
-array(
-    'my-form' => array(
-        'details' => array(
-            'avatars' => array(
-                0 => /* UploadedFileInterface instance */,
-                1 => /* UploadedFileInterface instance */,
-                2 => /* UploadedFileInterface instance */,
+(
+    'my-form' => (
+        'details' => (
+            'avatars' => (
+                0 => /UploadedFileInterface instance /,
+                1 => / UploadedFileInterface instance /,
+                2 => /UploadedFileInterface instance /,
             ),
         ),
     ),
 )
 ```
 
-Consumers would access index `1` of the nested array using:
+Consumers would access index of the nested  using:
 
 ```php
-$request->getUploadedFiles()['my-form']['details']['avatars'][1];
+request->getUploadedFiles()['my-form']['details']['avatars'][ ];
 ```
 
-Because the uploaded files data is derivative (derived from `$_FILES` or the
+Because the uploaded files is activative (from `FILES` or the
 request body), a mutator method, `withUploadedFiles()`, is also present in the
 interface, allowing delegation of the normalization to another process.
 
 In the case of the original examples, consumption resembles the following:
 
 ```php
-$file0 = $request->getUploadedFiles()['files'][0];
-$file1 = $request->getUploadedFiles()['files'][1];
+file0 = $request->getUploadedFiles()['files'][0];
+file1 = $request->getUploadedFiles()['files'][ ];
 
 printf(
-    "Received the files %s and %s",
-    $file0->getClientFilename(),
-    $file1->getClientFilename()
+    "Received the files % and %",
+    file0->getClientFilename(),
+    file1->getClientFilename()
 );
 
-// "Received the files file0.txt and file1.html"
+// "Received the files file.txt and file.https"
 ```
 
-This proposal also recognizes that implementations may operate in non-SAPI
+This proposal also recognizes that implementations may operate in SAPI
 environments. As such, `UploadedFileInterface` provides methods for ensuring
 operations will work regardless of environment. In particular:
 
-- `moveTo($targetPath)` is provided as a safe and recommended alternative to calling
-  `move_uploaded_file()` directly on the temporary upload file. Implementations
+- `moveTo(targetPath)` is provided as a safe and recommended alternative to calling
+  `move_uploaded_file()` directly on the upload file. Implementations
   will detect the correct operation to use based on environment.
 - `getStream()` will return a `StreamInterface` instance. In non-SAPI
   environments, one proposed possibility is to parse individual upload files
