@@ -82,7 +82,7 @@ Expenses approved by the Core Committee MUST be listed below, and reported in th
 
 ### Overfunding and disbursement
 
-Overfunding SHALL be defined as any amount raised that exceeds the amount needed to cover the existing PHP-FIG's yearly expenses, as defined in the "Approved expenses" section below, for a period of three years.
+Overfunding SHALL be defined as any amount raised that exceeds the amount needed to cover the existing PHP-FIG's yearly expenses, as defined in the "Approved expenses" section below, for a period of three years with a 10% cost increase year over year.  (For example, if the approved budget is $10, the maximum amount before funds are considered overfunding would be $10 + ($10 + $10 × 10% = $11) + ($11 + $11 × 10% = $12.10) = $33.10)
 
 Every year in January, the Secretaries SHALL review the Open Collective account and disburse any overfunding to the list of recipients defined in the Approved disbursement recipients section below, in the amounts defined in aforementioned section. Disbursements MUST be made in such a way to prevent any additional tax or fees from being incurred by the PHP-FIG or the recipient, such as via [Collective to Collective Donations][c2c].
 
