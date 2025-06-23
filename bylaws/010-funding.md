@@ -45,34 +45,6 @@ Contributions SHALL be accepted via [Open Collective](https://opencollective.com
     4. The total amount of money remaining in the account;
     5. The itemized transactions, including the date, amount, and description
 
-### Via print-on-demand swag
-
-Secretaries MAY, at their own discretion but with regard to the following rules, create and sell print-on-demand swag, such as shirts, mugs, stickers, and any other items that the secretaries deem appropriate. By providing this option, the PHP-FIG allows individuals to contribute financially and advertise the PHP-FIG at the same time, while also receiving a tangible item in return.
-
-When selecting print-on-demand providers, the provider:
-
-- MUST be able to pay out to the PHP-FIG Open Collective account. This might require coordination with the fiscal host.
-- SHOULD ship to as many people around the world as possible.
-- SHOULD be sustainably and ethically sourced and produced.
-- SHOULD provide a level of quality that meets or exceeds the expectation for the price.
-- SHOULD provide sizes and shapes that are inclusive of as many body types as possible.
-
-When creating a new product design, the Secretaries MUST notify the mailing list with an attached image of the design. This notification serves as both an opportunity for the core committee to vote to remove the design, and as a way to inform the community about the new product. When reusing an existing design in a new form factor, such as a new shirt color underneath an existing design, or putting an existing shirt design on a mug, the Secretaries MAY skip this notification step at their own discretion.
-
-Product designs:
-
-- MUST only use intellectual property that is owned by the PHP-FIG, or for which the PHP-FIG has been granted a clear license to use.
-- MUST not be offensive, discriminatory, inflamatory, or otherwise inappropriate.
-- MUST not be used to promote any specific person, company, or product, except for the PHP-FIG itself, and as allowed by this document.
-- MAY include member project logos so long as all available member project logos are included in similar scale and position, and the logos are used in a way that does not imply endorsement by the PHP-FIG, and a licence has been explicitly granted by the member project to use their logo in this way.
-
-At any time, any member of the Core Committee MAY call an approval vote to remove a design or product whether actively sold or not, or to reinstate a previously removed design or product.
-
-- If an approval vote passes, another approval vote SHALL NOT be called for the same design or product for a period of 30 days. 
-- If an approval vote passes causing a design or product to be reinstated, the Secretaries SHALL have the final say in whether the design or product will be sold.
-
-All three Secretaries, but only the Secretaries, MUST have full administrative access to PHP-FIG's print-on-demand providers.
-
 ## Spending money
 
 Funds donated to the PHP-FIG MUST be used solely for non-personnel operating expenses. The PHP-FIG MUST NOT pay individual contributors or other personnel, like Core Committee members, Secretaries, Project Representatives or working groups unless the payment is associated with an approved expense, such as reimbursing a Secretary that has paid for an approved expense out of pocket.
