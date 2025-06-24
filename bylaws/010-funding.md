@@ -34,8 +34,8 @@ Contributions SHALL be accepted via [Open Collective](https://opencollective.com
 
 - The description MUST include the following:
     1. A link back to this document on the PHP-FIG website.
-    2. A statement that we'd prefer contributions from companies that benefit
-    monetarily from the PHP-FIG recommendations, rather than from private individuals.
+    2. A statement that we'd prefer contributions from companies rather than from private individuals.
+    3. A statement that remarks how donations do not give any rights nor provides any corresponding service
     3. Links to other preferred options for individuals to contribute as listed in this document, if any such exist.
     4. A list of overfunding recipients as listed in this document, if any such exist.
 - The following information MUST be configured to show:
@@ -82,7 +82,7 @@ As an exception to Votes Bylaw, changes to this section only SHOULD NOT trigger 
 
 | Approved since | Expense                                       | Provider  | Approved amount and frequency  |
 |----------------|-----------------------------------------------|-----------|--------------------------------|
-| 2023-09-14     | Two Domains (`php-fig.com` and `php-fig.org`) | Namecheap | $30 USD / year |
+| 2023-09-14     | Two Domains (`php-fig.com` and `php-fig.org`) | Namecheap | $33 USD / year |
 | 2023-09-14     | Email account (`info@php-fig.org`)            | Namecheap | $15 USD / year            |
 
 [RFC 2119]: https://tools.ietf.org/html/rfc2119
