@@ -35,9 +35,9 @@ Contributions SHALL be accepted via [Open Collective](https://opencollective.com
 - The description MUST include the following:
     1. A link back to this document on the PHP-FIG website.
     2. A statement that we'd prefer contributions from companies rather than from private individuals.
-    3. A statement that remarks how donations do not give any rights nor provides any corresponding service
-    3. Links to other preferred options for individuals to contribute as listed in this document, if any such exist.
-    4. A list of overfunding recipients as listed in this document, if any such exist.
+    3. A statement that donations do not give any rights nor provide any corresponding service.
+    4. Links to other preferred options for individuals to contribute as listed in this document, if any such exist.
+    5. A list of overfunding recipients as listed in this document, if any such exist.
 - The following information MUST be configured to show:
     1. Contributors and the amounts they contributed;
     2. The total amount of money raised;
