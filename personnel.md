@@ -18,7 +18,6 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Name                                              | Term                    |
 |---------------------------------------------------|-------------------------|
 | Larry Garfield ([@Crell@phpc.social])             | 2016-12-24 - 2027-05-30 |
-| Chris Tankersley ([@dragonmantank])               | 2025-05-31 - 2027-05-30 |
 | Cees-Jan Kiewiet ([@wyri@haxim.us])               | 2016-12-24 - 2026-08-30 |
 | Korvin Szanto ([@korvinszanto])                   | 2016-12-24 - 2026-02-22 |
 | Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2026-02-28 |
@@ -28,6 +27,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | Steve McDougall ([@JustSteveKing])                | 2024-02-25 - 2026-02-22 |
 | Matteo Beccati ([@mbeccati@phpc.social])          | 2024-02-25 - 2026-02-22 |
 | Mathieu Rochette ([@mathroc])                     | 2024-09-29 - 2026-08-30 |
+| Chris Tankersley ([@dragonmantank])               | 2025-05-31 - 2027-05-30 |
 
 ### Member Projects
 
