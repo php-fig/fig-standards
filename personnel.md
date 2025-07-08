@@ -57,7 +57,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [PPI Framework]                 | Paul Dragoonis ([@dr4goonis])             |
 | [PrestaShop]                    | Rémi Gaillard ([@xtaz07])                 |
 | [PyroCMS]                       | Ryan Thompson ([@RyanThePyro])            |
-| [ReactPHP]                      | Cees-Jan Kiewiet ([@WyriHaximus])         |
+| [ReactPHP]                      | Cees-Jan Kiewiet ([@wyri@haxim.us])       |
 | [Revive Adserver]               | Matteo Beccati ([@mbeccati@phpc.social])  |
 | [Sculpin]                       | Chris Tankersley ([@dragonmantank])       |
 | [Slim]                          | Jason Coward ([@drumshaman])              |
