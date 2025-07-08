@@ -47,7 +47,7 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 | [Laminas Project]               | Matthew Weier O'Phinney ([@mwop])         |
 | [Lithium]                       | Nate Abele ([@nateabele])                 |
 | [Magento]                       | Igor Miniailo ([@iminyaylo])              |
-| [PEAR]                          | Chuck Burgess ([@ashnazg])                |
+| [PEAR]                          | Chuck Burgess ([@ashnazg@phpc.social])    |
 | [Phalcon]                       | Nikolaos Dimopoulos ([@phalconphp])       |
 | [Phing]                         | Siad Ardroumli                            |
 | [phpBB]                         | Marc Alexander ([@marc1706])              |
