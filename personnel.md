@@ -75,20 +75,20 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 
 ### Former Secretaries
 
-| Name                                  | Term                    |
-|---------------------------------------|-------------------------|
-| Gary Hockin ([@GeeH])                 | 2016-01-31 - 2016-01-31 |
-| Joe Ferguson ([@joepferguson])        | 2016-01-31 - 2016-06-29 |
-| Samantha Quiñones ([@ieatkillerbees]) | 2016-02-28 - 2016-12-24 |
-| Amanda Folson ([@ambassadorawsum])    | 2016-08-28 - 2017-11-12 |
-| Michael Cullum ([@michaelcullumuk])   | 2016-01-31 - 2018-01-31 |
-| Mark Railton ([@railto])              | 2018-01-28 - 2018-06-05 |
-| Margret Staples ([@mstaples])         | 2017-11-12 - 2019-05-31 |
-| Ian Littman ([@iansltx])              | 2018-08-26 - 2020-01-25 |
-| Asmir Mustafic ([@goetas_asmir])      | 2019-05-26 - 2021-05-30 |
-| Buster Neece ([@BusterNeece])         | 2020-01-25 - 2022-01-31 |
-| Vincent de Lau ([@vdelau])            | 2021-06-25 - 2023-05-25 |
-| Steve Winter ([@SteveWinterNZ])       | 2022-01-30 - 2024-02-25 |
+| Name                                      | Term                    |
+|-------------------------------------------|-------------------------|
+| Gary Hockin ([@GeeH])                     | 2016-01-31 - 2016-01-31 |
+| Joe Ferguson ([@joepferguson])            | 2016-01-31 - 2016-06-29 |
+| Samantha Quiñones ([@ieatkillerbees])     | 2016-02-28 - 2016-12-24 |
+| Amanda Folson ([@ambassadorawsum])        | 2016-08-28 - 2017-11-12 |
+| Michael Cullum ([@michaelcullumuk])       | 2016-01-31 - 2018-01-31 |
+| Mark Railton ([@railto])                  | 2018-01-28 - 2018-06-05 |
+| Margret Staples ([@mstaples])             | 2017-11-12 - 2019-05-31 |
+| Ian Littman ([@iansltx])                  | 2018-08-26 - 2020-01-25 |
+| Asmir Mustafic ([@goetas_asmir])          | 2019-05-26 - 2021-05-30 |
+| Buster Neece ([@BusterNeece@phpc.social]) | 2020-01-25 - 2022-01-31 |
+| Vincent de Lau ([@vdelau])                | 2021-06-25 - 2023-05-25 |
+| Steve Winter ([@SteveWinterNZ])           | 2022-01-30 - 2024-02-25 |
 
 ### Former Core Committee Members
 
