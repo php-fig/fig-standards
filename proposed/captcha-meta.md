@@ -70,8 +70,11 @@ User errors (wrong, missing, or expired CAPTCHA tokens) are always indicated via
    
 ### 4.1 Editor(s)
 
-* [Ilya Saligzhanov](https://github.com/LeTraceurSnork)
+### 4.2 Working Group members
 
-### 4.2 Sponsor(s)
+* [Ilya Saligzhanov](https://github.com/LeTraceurSnork)
+* [Alexander Makarov](https://github.com/samdark)
+
+### 4.3 Sponsor(s)
 
 * _Vacant_
