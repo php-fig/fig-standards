@@ -67,7 +67,9 @@ Exceptions are for implementation/configuration/usage errors — not for negativ
 
 ### 3.5. Swappability & DI
 
-Core purpose — to allow hot-swapping validator engines and compositions via DI or configuration, zero code refactor.
+Core purpose — to make validation logic universally pluggable and reusable, in both applications and stand-alone
+libraries, with no forced dependency on any particular framework or DI mechanism, and with zero need for code changes
+when switching validator implementations.
 
 ### 3.6. Scope
 

@@ -7,10 +7,6 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
 
-The final implementations MAY decorate the objects with more
-functionality than the one proposed but they MUST implement the indicated
-interfaces/functionality first.
-
 [RFC 2119]: http://tools.ietf.org/html/rfc2119
 
 ## 1. Specification
@@ -138,7 +134,7 @@ namespace Psr\Validator;
  * Thrown ONLY if validator is misconfigured or cannot process request.
  * MUST NOT be thrown if $value was actually tested, no matter the result.
  */
-class ValidatorException extends \InvalidArgumentException
+interface ValidatorException
 {
 }
 ```
