@@ -15,11 +15,6 @@ PSR-5: PHPDoc
     - [5.3.1. Tag Specialization](#531-tag-specialization) 
     - [5.3.2. Tag Name](#532-tag-name)
   - [5.4. Examples](#54-examples)
-- [Appendix A. Types](#appendix-a-types)
-  - [ABNF](#abnf)
-  - [Details](#details)
-  - [Valid Class Name](#valid-class-name)
-  - [Keyword](#keyword)
 
 ## 1. Introduction
 
@@ -45,10 +40,11 @@ interpreted as described in [RFC 2119][RFC2119].
   preceded by a DocBlock. The collection contains the following constructs:
 
   * `require` / `include` (and their `\_once` variants)
-  * `class` / `interface` / `trait`
+  * `class` / `interface` / `trait` / `enum`
   * `function` (both standalone functions and class methods)
   * variables (local and global scope) and class properties
   * constants (global constants via `define` and class constants)
+  * cases 
 
   It is RECOMMENDED to precede a "Structural Element" with a DocBlock where it
   is defined. It is common practice to have the DocBlock precede a Structural
@@ -146,40 +142,6 @@ interpreted as described in [RFC 2119][RFC2119].
   represents the basic in-source representation.
 
 * "Tag" is a single piece of meta information regarding a "Structural Element".
-
-* "Type" is the determination of what type of data is associated with an element.
-  This is used to determine the exact data type (primitive, class, object) of
-  arguments, properties, constants, etc.
-
-  See Appendix A for more detailed information about types.
-
-* "FQSEN" is an abbreviation for Fully Qualified Structural Element Name. This
-  notation expands on the Fully Qualified Class Name and adds a notation to
-  identify class / interface / trait members and re-apply the principles of the
-  FQCN to Interfaces, Traits, Functions and global Constants.
-
-  The following notations can be used per type of "Structural Element":
-
-  - *Namespace*:      `\My\Space`
-  - *Function*:       `\My\Space\myFunction()`
-  - *Constant*:       `\My\Space\MY_CONSTANT`
-  - *Class*:          `\My\Space\MyClass`
-  - *Interface*:      `\My\Space\MyInterface`
-  - *Trait*:          `\My\Space\MyTrait`
-  - *Method*:         `\My\Space\MyClass::myMethod()`
-  - *Property*:       `\My\Space\MyClass::$my_property`
-  - *Class Constant*: `\My\Space\MyClass::MY_CONSTANT`
-
-  A FQSEN has the following [ABNF][RFC5234] definition:
-
-      FQSEN    = fqnn / fqcn / constant / method / property  / function
-      fqnn     = "\" [name] *("\" [name])
-      fqcn     = fqnn "\" name
-      constant = ((fqnn "\") / (fqcn "::")) name
-      method   = fqcn "::" name "()"
-      property = fqcn "::$" name
-      function = fqnn "\" name "()"
-      name     = (ALPHA / "_") *(ALPHA / DIGIT / "_")
 
 ## 4. Basic Principles
 
@@ -384,189 +346,6 @@ A DocBlock may also span a single line:
 public $array = null;
 ```
 
-## Appendix A. Types
-
-### ABNF
-
-A Type has the following [ABNF][RFC5234] definition:
-
-    type-expression  = type *("|" type) *("&" type)
-    type             = class-name / keyword / array
-    array            = (type / array-expression) "[]"
-    array-expression = "(" type-expression ")"
-    class-name       = ["\"] label *("\" label)
-    label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
-    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "iterable" / "mixed" / "never"
-    keyword          =/ "null" / "object" / "resource" / "self" / "static" / "string" / "true" / "void" / "$this"
-
-### Details
-
-When a "Type" is used, the user will expect a value, or set of values, as detailed below.
-
-When the "Type" consists of multiple types, then these MUST be separated with
-either the vertical bar (|) for union type or the ampersand (&) for intersection
-type.  Any interpreter supporting this specification MUST recognize this and
-split the "Type" before evaluating.
-
-Union type example:
->`@return int|null`
-
-Intersection type example:
->`@var \MyClass&\PHPUnit\Framework\MockObject\MockObject $myMockObject`
-
-#### Arrays
-
-The value represented by "Type" can be an array. The type MUST be defined
-following one of the following options:
-
-1. unspecified: no definition of the contents of the array is given.
-   Example: `@return array`
-
-2. specified as a specific type: each member of the array is the same one type.
-   Example: `@return int[]`
-
-   Note that `mixed` is also a single type and thus can explicitly indicate that
-   each member is any possible type.
-
-3. specified as containing multiple explicit types:  each member can be of any
-   of the given types.
-   Example: `@return (int|string)[]`
-
-### Valid Class Name
-
-A valid class name is based on the context where this type is mentioned. This
-may be a Fully Qualified Class Name (FQCN) or a local name if present in a
-namespace.
-
-The element to which this type applies is either an instance of this class
-or an instance of a class that is a sub/child to the given class.
-
-> It is RECOMMENDED for applications that collect and shape this information to
-> show a list of child classes with each representation of the class. This makes
-> it more obvious for the user which classes are acceptable as this type.
-
-### Keyword
-
-A keyword defines the purpose of this type. Not every element is determined by a
-class, but it is still worthy of classification to assist the developer in
-understanding the code covered by the DocBlock.
-
-> Some of these keywords are allowed as class names in PHP and can be difficult
-> to distinguish from real classes. As such, the keywords MUST be lowercase, as
-> most class names start with an uppercase first character... it is RECOMMENDED
-> that you not use classes with these names in your code.
-
-The following keywords are recognized by this PSR:
-
-1.  `bool`: the element to which this type applies only has state `TRUE` or `FALSE`.
-
-2.  `int`: the element to which this type applies is a whole number or integer.
-
-3.  `float`: the element to which this type applies is a continuous, or real, number.
-
-4.  `string`: the element to which this type applies is a string of binary characters.
-
-5.  `object`: the element to which this type applies is the instance of an undetermined class.
-
-6.  `array`: the element to which this type applies is an array of values.
-
-7.  `iterable`: the element to which this type applies is an array or Traversable object per the [definition of PHP][PHP_ITERABLE].
-
-8.  `resource`: the element to which this type applies is a resource per the [definition of PHP][PHP_RESOURCE].
-
-9.  `mixed`: the element to which this type applies can be of any type as specified here. It is not known at compile
-    time which type will be used.
-
-10. `void`: this type is commonly only used when defining the return type of a method or function, indicating
-    "nothing is returned", and thus the user should not rely on any returned value.
-
-    ```php
-    /**
-     * @return void
-     */
-    function outputHello()
-    {
-        echo 'Hello world';
-    }
-    ```
-
-11. `null`: the element to which this type applies is a `NULL` value or, in technical terms, does not exist.
-
-    Compared to `void`, this type is used in any situation where the described element may at
-    any given time contain an explicit `NULL` value.
-
-    ```php
-    /**
-     * @return null
-     */
-    function foo()
-    {
-        echo 'Hello world';
-        return null;
-    }
-    ```
-
-    ```php
-    /**
-     * @param bool $create_new When true returns a new stdClass.
-     *
-     * @return stdClass|null
-     */
-    function foo($create_new)
-    {
-        if ($create_new) {
-            return new stdClass();
-        }
-        return null;
-    }
-    ```
-
-12. `callable`: the element to which this type applies is a pointer to a function call. This may be any type of callable
-    as per the [definition of PHP][PHP_CALLABLE].
-
-13. `false` or `true`: the element to which this type applies will have the exact value `TRUE` or `FALSE`. No other value will
-    be returned from this element.
-
-14. `self`: the element to which this type applies is of the same class in which the documented element is originally
-    contained.
-
-    **Example:**
-
-    > Method *c* is contained in class *A*. The DocBlock states that its return value is of type `self`. As such, method
-    > *c* returns an instance of class *A*.
-
-    This may lead to confusing situations when inheritance is involved.
-
-    **Example (previous example situation still applies):**
-
-    > Class *B* extends class *A* and does not redefine method *c*. As such, it is possible to invoke method *c* from
-    > class *B*.
-
-    In this situation, ambiguity may arise as `self` could be interpreted as either class *A* or *B*. In these cases,
-    `self` MUST be interpreted as being an instance of the class where the DocBlock containing the `self` type is
-    written.
-
-    In the examples above, `self` MUST always refer to class *A*, since it is defined with method *c* in class *A*.
-
-    > Due to the above nature, it is RECOMMENDED for applications that collect and shape this information to show a list
-    > of child classes with each representation of the class. This would make it obvious for the user which classes are
-    > acceptable as type.
-
-15. `static`: the element to which this type applies is of the same class in which the documented element is contained,
-    or, when encountered in a subclass, is of type of that subclass instead of the original class.
-
-    This keyword behaves the same way as the [keyword for late static binding][PHP_OOP5LSB] (not the static method,
-    property, nor variable modifier) as defined by PHP.
-
-16. `$this`: the element to which this type applies is the same exact instance as the current class in the given
-    context. As such, this type is a stricter version of `static`, because the returned instance must not only be
-    of the same class but also the same instance.
-
-    This type is often used as return value for methods implementing the [Fluent Interface][FLUENT] design pattern.
-
-17. `never`: denotes that element isn't going to return anything and always throws exception or terminates
-    the program abnormally (such as by calling the library function `exit`).
-
 [RFC2119]:      https://tools.ietf.org/html/rfc2119
 [RFC5234]:      https://tools.ietf.org/html/rfc5234
 [PHP_RESOURCE]: https://php.net/manual/language.types.resource.php
@@ -576,5 +355,4 @@ The following keywords are recognized by this PSR:
 [PHP_OOP5LSB]:  https://php.net/manual/language.oop5.late-static-bindings.php
 [DEFACTO]:      http://www.phpdoc.org/docs/latest/index.html
 [PHPDOC.ORG]:   http://www.phpdoc.org/
-[FLUENT]:       https://en.wikipedia.org/wiki/Fluent_interface
 [TAG_PSR]:      TBD
