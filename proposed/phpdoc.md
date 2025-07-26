@@ -10,6 +10,7 @@ PSR-5: PHPDoc
 - [5. The PHPDoc Format](#5-the-phpdoc-format)
   - [5.1. Summary](#51-summary)
   - [5.2. Description](#52-description)
+    - [5.2.1 Inline tags](#521-inline-tags)
   - [5.3. Tags](#53-tags)
     - [5.3.1. Tag Name](#531-tag-name)
   - [5.4. Examples](#54-examples)
@@ -237,6 +238,33 @@ Common uses for the Description:
 * To provide a set of common use cases or scenarios in which the "Structural
   Element" may be applied
 
+#### 5.2.1 Inline tags
+
+A description MAY contain inline tags. Inline tags MUST follow the specification of
+tags with the same syntax. An inline tag MUST start with `{@` and MUST with `}`
+
+```php
+  /** 
+   * Summary.
+   * 
+   * This is a description with an inline tag {@tag rest of the tag format}
+   */
+```
+
+Inline tags are only covering regular tags and SHALL NOT cover _Annotation_ tags.
+
+As inline tags are always closed with a `}` developers cannot use this char in a 
+description. To overcome this issue parsers MUST support escape char `{` followed
+by `}` to be interpreted as a single `}` 
+
+```php
+   /**
+    * Summary.
+    *
+    * This is a description with an inline tag {@tag show case {} escape of ending char}
+    */
+```
+
 ### 5.3. Tags
 
 Tags supply concise metadata for a "Structural Element". Each tag starts on a
@@ -253,8 +281,8 @@ format, as dictated by the specific tag.
 > _type_ (`string`), variable name (`$argument1`),  and description (`This is a
 > parameter.`).
 
-The description MUST support Markdown as a formatting language.  The
-description of the tag MAY start on the same line or next line.  The following
+The description MUST support Markdown as a formatting language. The
+description of the tag MAY start on the same line or next line. The following
 tags are semantically identical:
 
 ```php
