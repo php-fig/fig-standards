@@ -12,7 +12,8 @@ PSR-5: PHPDoc
   - [5.2. Description](#52-description)
     - [5.2.1 Inline tags](#521-inline-tags)
   - [5.3. Tags](#53-tags)
-    - [5.3.1. Tag Name](#531-tag-name)
+    - [5.3.1. Tag Specialization](#531-tag-specialization) 
+    - [5.3.2. Tag Name](#532-tag-name)
   - [5.4. Examples](#54-examples)
 - [Appendix A. Types](#appendix-a-types)
   - [ABNF](#abnf)
@@ -198,9 +199,9 @@ The PHPDoc format has the following [ABNF][RFC5234] definition:
                                                      ; with inline tags inside
     tags               = *(tag 1*eol)
     inline-tag         = "{" tag "}"
-    tag                = "@" tag-name [":" tag-specialization] [tag-details]
+    tag                = "@"[tag-specialization "-"] tag-name [tag-details]
     tag-name           = (ALPHA / "\") *(ALPHA / DIGIT / "\" / "-" / "_")
-    tag-specialization = 1*(ALPHA / DIGIT / "-")
+    tag-specialization = 1*(ALPHA / DIGIT)
     tag-details        = (1*SP tag-description)
     tag-description    = (CHAR / inline-tag) *(CHAR / inline-tag / eol)
     tag-argument       = *SP 1*CHAR [","] *SP
@@ -297,7 +298,21 @@ tags are semantically identical:
 
 This definition does NOT apply to _Annotation_ tags, which are not in scope.
 
-#### 5.3.1. Tag Name
+#### 5.3.1 Tag Specialization
+
+Tag specialization give a scope to the tag. It is RECOMMENDED to follow the
+list of tags in the tag [Tag Catalog PSR][TAG_PSR]. But the metadata of specialized
+tags MAY differ from the list.
+
+```php
+  /**
+   * @vendor-tag This is a description
+   */
+```
+
+Parsers MAY ignore specialized tags when they are in a supported format.
+
+#### 5.3.2. Tag Name
 
 Tag names indicate what type of information is represented by this tag.
 
