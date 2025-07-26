@@ -64,7 +64,7 @@ Cons:
 
 ### 5.1 Editor
 
- * Chuck Burgess - [PEAR](https://pear.php.net)
+ * Jaap van Otterdijk - [phpDocumentor](https://github.com/phpDocumentor/phpDocumentor2)
 
 ### 5.2 Sponsor
 
@@ -72,8 +72,8 @@ Cons:
 
 ### 5.3 Working Group members
 
- * Jaap van Otterdijk - [phpDocumentor](https://github.com/phpDocumentor/phpDocumentor2)
  * Alexander Makarov - [Yii](https://github.com/yiisoft/yii2)
+ * TBA
 
 ## 6. Votes
 
@@ -88,6 +88,7 @@ Most of the relevant links are mentioned in the PSR itself as support for indivi
 
 Since this document stems from the work of a lot of people in previous years, we should recognize their effort:
 
+ * Chuck Burgess (previous Editor)
  * Mike van Riel (previous Editor)
  * Phil Sturgeon (previous sponsor)
  * Donald Gilbert (previous sponsor)
