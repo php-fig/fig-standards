@@ -14,7 +14,8 @@ PSR-5: PHPDoc
   - [5.3. Tags](#53-tags)
     - [5.3.1. Tag Specialization](#531-tag-specialization) 
     - [5.3.2. Tag Name](#532-tag-name)
-  - [5.4. Examples](#54-examples)
+  - [5.4 whitespace handling](#54-whitespace-handling)
+  - [5.5. Examples](#55-examples)
 
 ## 1. Introduction
 
@@ -278,7 +279,22 @@ Parsers MAY ignore specialized tags when they are in a supported format.
 
 Tag names indicate what type of information is represented by this tag.
 
-### 5.4. Examples
+### 5.4. Whitespace Handling
+
+Whitespace handling for parsing DocBlocks MUST follow these rules:
+
+- Leading and trailing whitespace characters (spaces, tabs) on each line MUST be ignored.
+- Lines in descriptions or tag metadata MAY contain multiple whitespace characters between words, but the number of spaces MUST NOT affect interpretation.
+  For example: `@param string $var` is semantically equivalent to `@param     string         $var`
+
+- A description MAY contain empty lines. These are preserved as part of the Markdown block and MUST NOT be interpreted as ending the description.
+- A description ends when:
+    - The DocBlock ends, or
+    - A new tag starts (i.e., a line beginning with @)
+
+In tag metadata, whitespace (space or tab) MAY delimit metadata components (e.g., type, variable name, description), but excessive whitespace MUST NOT change the meaning.
+
+### 5.5. Examples
 
 The following examples serve to illustrate the basic use of DocBlocks; it is
 advised to read through the list of tags in the [Tag Catalog PSR][TAG_PSR].
