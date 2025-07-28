@@ -19,7 +19,7 @@ PSR-5: PHPDoc
 
 ## 1. Introduction
 
-The purpose of the PSR is to provide a formal definition of the PHPDoc standard.
+This PSR defines a formal specification for the PHPDoc standard.
 
 ## 2. Conventions Used In This Document
 
@@ -49,7 +49,7 @@ interpreted as described in [RFC 2119][RFC2119].
 
   It is RECOMMENDED to precede a "Structural Element" with a DocBlock where it
   is defined. It is common practice to have the DocBlock precede a Structural
-  Element but it MAY also be separated by any number of empty lines.
+  Element, but it MAY also be separated by any number of empty lines.
 
   Examples:
 
@@ -116,7 +116,7 @@ interpreted as described in [RFC 2119][RFC2119].
     }
   ```
 
-* "DocComment" is a special type of comment which MUST
+* "DocComment" is a special type of comment that MUST
 
   - start with the character sequence `/**` followed by a whitespace character
   - end with `*/` and
@@ -156,7 +156,7 @@ interpreted as described in [RFC 2119][RFC2119].
 The PHPDoc format has the following [ABNF][RFC5234] definition:
 
     PHPDoc             = [summary [description]] [tags]
-    eol                = [CR] LF ; to compatible with PSR-12
+    eol                = [CR] LF ; to be compatible with PSR-12
     summary            = 1*CHAR 2*eol
     description        = 1*(CHAR / inline-tag) 1*eol ; any amount of characters
                                                      ; with inline tags inside
@@ -173,7 +173,7 @@ Examples of use are included in chapter 5.4.
 
 ### 5.1. Summary
 
-A Summary MUST contain an abstract of the "Structural Element" defining the
+A Summary MUST provide an abstract of the "Structural Element" defining the
 purpose. It is RECOMMENDED for Summaries to span a single line or two, but not
 more than that.
 
@@ -183,9 +183,8 @@ content in the PHPDoc.
 If a Description is provided, then it MUST be preceded by a Summary. Otherwise
 the Description risks being mistaken as the Summary.
 
-Because a Summary is comparable to a chapter title, it is RECOMMENDED to use as
-little formatting as possible. Contrary to the Description, no recommendation is
-made to support a mark-up language.
+Because a Summary is comparable to a chapter title, it is NOT RECOMMENDED to use formatting.
+Contrary to the Description, no recommendation is made to support Markdown.
 
 ### 5.2. Description
 
@@ -193,7 +192,7 @@ The Description is OPTIONAL but SHOULD be included when the "Structural Element"
 contains more complexity than can be described by the Summary alone.
 
 Any application parsing the Description is RECOMMENDED to support the
-Markdown mark-up language, to make it possible for the author to provide
+Markdown language, to make it possible for the author to provide
 formatting and a clear way of representing code examples.
 
 Common uses for the Description:
@@ -215,11 +214,10 @@ tags with the same syntax. An inline tag MUST start with `{@` and MUST with `}`
    */
 ```
 
-Inline tags are only covering regular tags and SHALL NOT cover _Annotation_ tags.
+Inline tags MAY only represent regular tags and SHALL NOT represent _Annotation_ tags.
 
 As inline tags are always closed with a `}` developers cannot use this char in a 
-description. To overcome this issue parsers MUST support escape char `{` followed
-by `}` to be interpreted as a single `}` 
+description. To overcome this issue parsers MUST support escape sequence of `{` followed by `}` MUST be interpreted as a literal closing brace.
 
 ```php
    /**
@@ -231,9 +229,8 @@ by `}` to be interpreted as a single `}`
 
 ### 5.3. Tags
 
-Tags supply concise metadata for a "Structural Element". Each tag starts on a
-new line, followed by an at-sign (`@`) and a tag-name, followed by whitespace and
-metadata (including a description).
+Tags supply concise metadata for a "Structural Element". Each tag MUST start on a
+new line, followed by an at-sign (`@`) and a tag-name, then optional whitespace and metadata.
 
 If metadata is provided, it MAY span multiple lines and COULD follow a strict
 format, as dictated by the specific tag.
@@ -263,7 +260,7 @@ This definition does NOT apply to _Annotation_ tags, which are not in scope.
 
 #### 5.3.1 Tag Specialization
 
-Tag specialization give a scope to the tag. It is RECOMMENDED to follow the
+Tag specialization defines a scope for the tag. It is RECOMMENDED to follow the
 list of tags in the tag [Tag Catalog PSR][TAG_PSR]. But the metadata of specialized
 tags MAY differ from the list.
 
@@ -284,7 +281,7 @@ Tag names indicate what type of information is represented by this tag.
 Whitespace handling for parsing DocBlocks MUST follow these rules:
 
 - Leading and trailing whitespace characters (spaces, tabs) on each line MUST be ignored.
-- Lines in descriptions or tag metadata MAY contain multiple whitespace characters between words, but the number of spaces MUST NOT affect interpretation.
+- Lines in descriptions or tag metadata MAY contain multiple whitespace characters between words, but varying amounts of whitespace MUST NOT alter the meaning.
   For example: `@param string $var` is semantically equivalent to `@param     string         $var`
 
 - A description MAY contain empty lines. These are preserved as part of the Markdown block and MUST NOT be interpreted as ending the description.
