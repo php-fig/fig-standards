@@ -204,7 +204,7 @@ Common uses for the Description:
 #### 5.2.1 Inline tags
 
 A description MAY contain inline tags. Inline tags MUST follow the specification of
-tags with the same syntax. An inline tag MUST start with `{@` and MUST with `}`
+tags with the same syntax. An inline tag MUST start with `{@` and MUST end with `}`
 
 ```php
   /** 
