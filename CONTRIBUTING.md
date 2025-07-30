@@ -20,13 +20,12 @@ given according to the current bylaws of this group.
 
 # Merge & Access Policy
 
-All Editors, Coordinators and Sponsors of specifications in draft & review stage
+All Editors, Sponsors and WG members of specifications in draft & review stage
 have access to push to this (php-fig/fig-standards) repository; subject to
 secretary discretion
 
-All Editors, Coordinators and Sponsors of specifications have push access to utility
-and interface repositories and retrain this even after acceptance; subject to secretary
-discretion.
+All Editors and Sponsors of specifications have push access to utility and interface
+repositories and retain this even after acceptance; subject to secretary discretion.
 
 The master branch of all repositories are protected and therefore cannot be forced
 pushed to.
@@ -43,7 +42,7 @@ directly (excluding initial commits on new interface/util repositories) to maste
 comment) or merged by the PSR Editor, except in the review phase when the coordinator
 should seek comment from the editor, but merging is at the coordinator's discretion
 * You must never merge a pull request that affects any file in the repository
-other than those you are on a working group for; you should request a secretary
+other than those you are on a working group for; you should request a secretary 
 or member of that working group (mention @php-fig/psr-x) do so
 * You should never merge your own pull request
 * A change should never be merged to an accepted PSR without approval from
@@ -65,8 +64,8 @@ access. Merge access is a privilege and not a right.
 
 # Tagging
 
-Tagging on utility and interface repository should be done regularly, ideally after
-every merge, or every batch of merges after PSR approval.
+Tagging on utility and interface repository should be done regularly, ideally 
+on PSR approval and after every subsequent merge (or batch of merges).
 
 Versioning should follow semantic versioning and primarily just be simple patch
 fix increments (following semantic versioning). The first 1.0.0 tag should be
