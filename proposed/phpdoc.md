@@ -10,7 +10,8 @@ PSR-5: PHPDoc
 - [5. The PHPDoc Format](#5-the-phpdoc-format)
   - [5.1. Summary](#51-summary)
   - [5.2. Description](#52-description)
-    - [5.2.1 Inline tags](#521-inline-tags)
+    - [5.2.1 Markdown format](#521-markdown-format)
+    - [5.2.2 Inline tags](#522-inline-tags)
   - [5.3. Tags](#53-tags)
     - [5.3.1. Tag Specialization](#531-tag-specialization) 
     - [5.3.2. Tag Name](#532-tag-name)
@@ -189,17 +190,40 @@ Contrary to the Description, no recommendation is made to support Markdown.
 The Description is OPTIONAL but SHOULD be included when the "Structural Element"
 contains more complexity than can be described by the Summary alone.
 
-Any application parsing the Description is RECOMMENDED to support the
-Markdown language, to make it possible for the author to provide
-formatting and a clear way of representing code examples.
-
 Common uses for the Description:
 * To provide more detail on what this method does than the Summary can do
 * To specify of what child elements an array / object is composed
 * To provide a set of common use cases or scenarios in which the "Structural
   Element" may be applied
 
-#### 5.2.1 Inline tags
+#### 5.2.1 Markdown format
+
+Applications parsing the Description are RECOMMENDED to support the CommonMark flavor of 
+the Markdown language. This enables authors to apply formatting and clearly represent
+code examples.
+
+Each Description MUST be treated as a separate Markdown document. Consequently, Markdown 
+constructs that rely on shared context—such as reference-style links—are scoped to the
+individual Description. Use of such constructs is NOT RECOMMENDED to ensure consistent 
+rendering across tools.
+
+The use of raw HTML in Descriptions is NOT RECOMMENDED, as it could break rendering in some
+applications. When HTML is used, each DocBlock MUST include both the opening and closing
+tags for all HTML elements to ensure proper parsing.
+
+The following example shows an invalid DocBlock due to an unclosed HTML tag:
+
+```php
+  /** 
+   * Summary.
+   *
+   * This *description* contains
+   * <ul>
+   *   <li>Unclosed list</li>
+   */
+```
+
+#### 5.2.2 Inline tags
 
 A description MAY contain inline tags. Inline tags MUST follow the specification of
 tags with the same syntax. An inline tag MUST start with `{@` and MUST end with `}`
