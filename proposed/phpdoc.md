@@ -41,7 +41,7 @@ interpreted as described in [RFC 2119][RFC2119].
   preceded by a DocBlock. The collection contains the following constructs:
 
   * `require` / `include` (and their `\_once` variants)
-  * `class` / `interface` / `trait` / `enum`
+  * `classlike` constructs. Including `class`, `interface`, `trait`, `enum` and others later added.
   * `function` (both standalone functions and class methods)
   * variables (local and global scope) and class properties
   * constants (global constants via `define` and class constants)
@@ -156,7 +156,7 @@ interpreted as described in [RFC 2119][RFC2119].
 The PHPDoc format has the following [ABNF][RFC5234] definition:
 
     PHPDoc             = [summary [description]] [tags]
-    eol                = [CR] LF ; to be compatible with PSR-12
+    eol                = [CR] LF ; to be compatible with [CS-PER]
     summary            = 1*CHAR 2*eol
     description        = 1*(CHAR / inline-tag) 1*eol ; any amount of characters
                                                      ; with inline tags inside
@@ -173,9 +173,7 @@ Examples of use are included in chapter 5.4.
 
 ### 5.1. Summary
 
-A Summary MUST provide an abstract of the "Structural Element" defining the
-purpose. It is RECOMMENDED for Summaries to span a single line or two, but not
-more than that.
+A Summary MUST be a concise abstract of the Structural Element\u2019s purpose. It is RECOMMENDED to keep the Summary to a single line, though two lines MAY be used if needed.
 
 A Summary MUST end with two sequential line breaks, unless it is the only
 content in the PHPDoc.
