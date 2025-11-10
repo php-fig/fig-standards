@@ -64,9 +64,15 @@ namespace Psr\Ai;
 
 interface ClientInterface
 {
-    public function complete(MessageInterface $message): ResponseInterface;
+    /**
+     * @param MessageInterface|array<MessageInterface> $message
+     */
+    public function complete(MessageInterface|array $message): ResponseInterface;
 
-    public function stream(MessageInterface $message): StreamInterface;
+    /**
+     * @param MessageInterface|array<MessageInterface> $message
+     */
+    public function stream(MessageInterface|array $message): StreamInterface;
 
     public function invokeTool(ToolInterface $tool, array $arguments): mixed;
 }
