@@ -89,7 +89,7 @@ A relationship that is not defined in one of the above registries or a similar
 public registry is considered "private", that is, specific to a particular
 application or use case. Such relationships MUST use an absolute URI.
 
-## 1.4 Link Templates
+### 1.4 Link Templates
 
 [RFC 6570](https://tools.ietf.org/html/rfc6570) defines a format for URI templates, that is,
 a pattern for a URI that is expected to be filled in with values provided by a client
@@ -97,7 +97,7 @@ tool. Some hypermedia formats support templated links while others do not, and m
 have a special way to denote that a link is a template. A Serializer for a format
 that does not support URI Templates MUST ignore any templated Links it encounters.
 
-## 1.5 Evolvable providers
+### 1.5 Evolvable providers
 
 In some cases, a Link Provider may need the ability to have additional links
 added to it. In others, a link provider is necessarily read-only, with links
@@ -110,7 +110,7 @@ incompatible. Therefore, the `EvolvableLinkProviderInterface`'s single method
 requires that a new object be returned, identical to the original but with
 an additional Link object included.
 
-## 1.6 Evolvable link objects
+### 1.6 Evolvable link objects
 
 Link objects are in most cases value objects. As such, allowing them to evolve
 in the same fashion as PSR-7 value objects is a useful option. For that reason,
