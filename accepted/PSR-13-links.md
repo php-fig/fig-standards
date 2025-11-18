@@ -269,7 +269,7 @@ interface EvolvableLinkInterface extends LinkInterface
 }
 ```
 
-#### 3.2 `Psr\Link\LinkProviderInterface`
+#### 3.3 `Psr\Link\LinkProviderInterface`
 
 ```php
 <?php
@@ -303,7 +303,7 @@ interface LinkProviderInterface
 }
 ```
 
-#### 3.3 `Psr\Link\EvolvableLinkProviderInterface`
+#### 3.4 `Psr\Link\EvolvableLinkProviderInterface`
 
 ```php
 <?php
