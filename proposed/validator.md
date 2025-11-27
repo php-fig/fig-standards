@@ -120,9 +120,9 @@ interface ViolationInterface
     /**
      * Error message (human-readable, MAY be locale-dependent).
      *
-     * @return string
+     * @return string|\Stringable
      */
-    public function getMessage(): string;
+    public function getMessage(): string|\Stringable;
 }
 ```
 
