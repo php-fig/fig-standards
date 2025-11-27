@@ -40,7 +40,7 @@ This pattern avoids having to deeply couple code to a specific validator ecosyst
 To satisfy both lightweight and complex needs, two interfaces are provided:
 
 - `SimpleValidatorInterface` — exposes only `isValid(mixed $value): bool`. Suitable for basic needs (is it a valid phone? email? int in range?...) and maximizing performance. 
-- `ExtendedValidatorInterface` — exposes `validate(mixed $value): ValidatorResponseInterface`, for structured results (validation status, errors, error codes/messages/etc.).
+- `ExtendedValidatorInterface` — exposes `validate(mixed $value, array $context = []): ValidatorResponseInterface`, for structured results (validation status, errors, error codes/messages/etc.).
 This separation enables applications to pick the level of detail they need. Many use cases will use only the simple interface.
 
 ### 3.2. ValidatorResponseInterface

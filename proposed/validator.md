@@ -63,12 +63,13 @@ interface ExtendedValidatorInterface
      * SHOULD throw ValidatorException if the Validator itself could not tell if the value passes or not (e.g. Validator misconfigured)
      *
      * @param mixed $value
+     * @param array $context
      *
      * @throws ValidatorException
      *
      * @return ValidatorResponseInterface
      */
-    public function validate(mixed $value): ValidatorResponseInterface;
+    public function validate(mixed $value, array $context = []): ValidatorResponseInterface;
 }
 ```
 
