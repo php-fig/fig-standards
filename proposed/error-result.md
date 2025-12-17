@@ -104,7 +104,7 @@ interface ResultInterface
      * Returns the success value
      *
      * @return TValue
-     * @throws \RuntimeException If result is a failure.
+     * @throws \BadMethodCallException If result is a failure.
      */
     public function getValue(): mixed;
 
