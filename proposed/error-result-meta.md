@@ -27,7 +27,7 @@ This actually enables libraries to return predictabe, structured outcomes withou
 - Libraries can share error semantics
 - Avoids exception overhead for expected failures
 - Distinguishes between technical errors and business rule violations
-- _PHPStan/PHPCS can verify error handling_
+- _PHPStan/PHPCS/Psalm can verify error handling_
 
 ## 3. Scope
 
