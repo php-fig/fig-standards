@@ -29,6 +29,10 @@ interface ErrorInterface extends \Throwable
 {
     /**
      * Returns a machine-readable error code.
+     *
+     * This code is a stable identifier intended for programmatic use
+     * (like UUIDs, HTTP status codes, enum-like values, localization, PDO/SQLSTATE), and is not related
+     * to Throwable::getCode().
      */
     public function getCode(): string;
 
