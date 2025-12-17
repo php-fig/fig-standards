@@ -11,7 +11,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 - **Result**: The outcome of an operation that may succeed or fail.
 - **Success Result**: A result containing a succesful value.
 - **Failure Result**: A result containing error information.
-- **Error**: Structured information abot why an operation failed.
+- **Error**: Structured information about why an operation failed.
 
 ## 3. Interfaces
 
