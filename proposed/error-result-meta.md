@@ -14,6 +14,8 @@ Note: Error messages follow PSR-3 placeholder semantics. This enables deferred f
 
 Note #2: `ResultFactoryInterface` is OPTIONAL. Libraries and apps MAY use direct construction or static named constructors (like Result::success()), if they control the implementation. The factory interface exists only to enable interoperable creation when implementations are abstracted.
 
+Note #3: This PSR implements the well-established Either monad (from functional programming), commonly used in Haskell, Scala, Rust, and Kotlin. The interface provides map(fmap), mapError(leftMap), then(flatMap/bind), and fold(either)—all standard Either operations.
+
 ## 2. Why Bother?
 
 ### Current Problems
