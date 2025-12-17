@@ -219,14 +219,3 @@ $result = $validator->validate($input)
     ->then(fn($entity) => $notifier->notifyCreated($entity))
     ->mapError(fn($error) => new PublicError($error->getMessage()));
 ```
-
-## 5. Error Classification
-
-Implementations MAY extend error types:
-
-- `ValidationError` (business rule violations)
-- `NotFoundError` (missing resources)
-- `ConflictError` (state conflicts)
-- `AuthenticationError` (auth failures)
-- `AuthorizationError` (permission issues)
-- `InfrastructureError` (system failures)
