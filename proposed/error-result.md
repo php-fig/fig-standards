@@ -120,6 +120,11 @@ interface ResultInterface
      *
      * Called only if the result is successful.
      * Failures are propagated unchanged.
+     * 
+     * @template TNew
+     * @param callable(TValue): TNew $transform
+     *        A callable that receives the success value and returns a new value.
+     * @return ResultInterface<TNew, TError>
      */
     public function map(callable $transform): ResultInterface;
 
@@ -128,6 +133,11 @@ interface ResultInterface
      *
      * Called only if the result is a failure.
      * Success values are propagated unchanged.
+     *
+     * @template TNewError of ErrorInterface
+     * @param callable(TError): TNewError $transform
+     *        A callable that receives the error and returns a new error.
+     * @return ResultInterface<TValue, TNewError>
      */
     public function mapError(callable $transform): ResultInterface;
 
@@ -136,6 +146,11 @@ interface ResultInterface
      *
      * Called only if the result is successful.
      * The returned Result is flattened (no nesting).
+     *
+     * @template TNew
+     * @param callable(TValue): ResultInterface<TNew, TError> $operation
+     *        A callable that receives the success value and returns a Result.
+     * @return ResultInterface<TNew, TError>
      */
     public function then(callable $operation): ResultInterface;
 
@@ -144,6 +159,11 @@ interface ResultInterface
      *
      * Exactly one callback is called.
      * This terminates the Result pipeline.
+     *
+     * @template TReturn
+     * @param callable(TValue): TReturn $onSuccess
+     * @param callable(TError): TReturn $onFailure
+     * @return TReturn
      */
     public function fold(callable $onSuccess, callable $onFailure): mixed;
 
@@ -151,6 +171,10 @@ interface ResultInterface
      * Returns the success value or a default if failed.
      *
      * Does not expose the error.
+     *
+     * @param TValue $default
+     *        The value to return if the result is a failure.
+     * @return TValue
      */
     public function getValueOr(mixed $default): mixed;
 }
