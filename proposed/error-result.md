@@ -70,6 +70,11 @@ use Psr\Error\ErrorInterface;
 /**
  * Represents the result of an operation.
  *
+ * Execution rules:
+ * - If the result is a failure, `map()` and `then()` MUST NOT call their callbacks.
+ * - If the result is a success, `mapError()` MUST NOT call its callback.
+ * - `then()` MUST NOT wrap results; it must flatten them.
+ *
  * @template TValue
  * @template TError of ErrorInterface
  */
@@ -101,47 +106,41 @@ interface ResultInterface
     public function getError(): ?ErrorInterface;
 
     /**
-     * Transforms the success value.
+     * Applies a transformation to the success value.
      *
-     * @template TNew
-     * @param callable(TValue): TNew $transform
-     * @return ResultInterface<TNew, TError>
+     * Called only if the result is successful.
+     * Failures are propagated unchanged.
      */
     public function map(callable $transform): ResultInterface;
 
     /**
-     * Transforms the error.
+     * Applies a transformation to the error.
      *
-     * @template TNewError of ErrorInterface
-     * @param callable(TError): TNewError $transform
-     * @return ResultInterface<TValue, TNewError>
+     * Called only if the result is a failure.
+     * Success values are propagated unchanged.
      */
     public function mapError(callable $transform): ResultInterface;
 
     /**
-     * Chains operations.
+     * Chains another operation that returns a Result.
      *
-     * @template TNew
-     * @param callable(TValue): ResultInterface<TNew, TError> $operation
-     * @return ResultInterface<TNew, TError>
+     * Called only if the result is successful.
+     * The returned Result is flattened (no nesting).
      */
     public function then(callable $operation): ResultInterface;
 
     /**
-     * Handle both success and failure cases.
+     * Resolves the result into a single value.
      *
-     * @template TReturn
-     * @param callable(TValue): TReturn $onSuccess
-     * @param callable(TError): TReturn $onFailure
-     * @return TReturn
+     * Exactly one callback is called.
+     * This terminates the Result pipeline.
      */
     public function fold(callable $onSuccess, callable $onFailure): mixed;
 
     /**
-     * Returns the value if successful, otherwise default.
+     * Returns the success value or a default if failed.
      *
-     * @param TValue $default
-     * @return TValue
+     * Does not expose the error.
      */
     public function getValueOr(mixed $default): mixed;
 }
