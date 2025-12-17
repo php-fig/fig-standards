@@ -4,7 +4,7 @@
 
 This PSR proposes standard interfaces for representing operation results and errors in a type-safe, composable manner. It defines:
 
-- A `ResultInterface` representing the outcome of an operation (success or failure)
+- A `ResultInterface` representing the outcome of an operation (success or failure and the actual result value)
 - An `ErrorInterface` representing detailed error information
 - Standard patterns for chaining, transforming, and inspecting results
 
