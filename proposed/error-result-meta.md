@@ -78,6 +78,16 @@ Implementations MAY extend error types:
 - `AuthorizationError` (permission issues)
 - `InfrastructureError` (system failures)
 
-## 7. People
+- ## 7. Typing and Generics
 
-- **Proposer**: Yousha Aleayoub - [blog](https://yousha.blog.ir)
+Since PHP does not currently support generics at the language level:
+
+- This PSR uses phpdoc-based generics (@template) to express the relationship between success values and error values, following established practice in the PHP ecosystem.
+- Implementations are expected to enforce the invariant that a Result contains either a success value or an error, but never both.
+- Consumers SHOULD rely on `isSuccess()` / `isFailure()` (or equivalent terminal operations such as `fold()`) before accessing the contained value.
+- This PSR does not require nor encourage implementors to create separate result classes for each possible value or error type.
+
+## 8. People
+
+- **Proposer:** Yousha Aleayoub - [blog](https://yousha.blog.ir)
+- **Group:** https://groups.google.com/g/php-fig/c/OpEuvGERM5A
