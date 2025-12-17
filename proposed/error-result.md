@@ -215,7 +215,14 @@ $email = $userRepository->findById($id)
 
 ```php
 $result = $validator->validate($input)
-    ->then(fn($validated) => $repository->save($validated))
-    ->then(fn($entity) => $notifier->notifyCreated($entity))
-    ->mapError(fn($error) => new PublicError($error->getMessage()));
+    ->then(fn($v) => $repository->save($v))
+    ->then(fn($e) => $notifier->notifyCreated($e))
+    ->mapError(fn($err) => new PublicError($err->getMessage()));
+
+// At the end...
+if ($result->isSuccess()) {
+    $finalEntity = $result->getValue(); // From notifier.
+} else {
+    $publicError = $result->getError(); // Already transformed to PublicError.
+}
 ```
