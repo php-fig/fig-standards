@@ -12,6 +12,8 @@ This actually enables libraries to return predictabe, structured outcomes withou
 
 Note: Error messages follow PSR-3 placeholder semantics. This enables deferred formatting, localization, and structured validation output without imposing a formatter or translator.
 
+Note #2: `ResultFactoryInterface` is OPTIONAL. Libraries and apps MAY use direct construction or static named constructors (like Result::success()), if they control the implementation. The factory interface exists only to enable interoperable creation when implementations are abstracted.
+
 ## 2. Why Bother?
 
 ### Current Problems
