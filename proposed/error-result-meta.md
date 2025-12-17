@@ -80,7 +80,7 @@ Implementations MAY extend error types:
 - `AuthorizationError` (permission issues)
 - `InfrastructureError` (system failures)
 
-- ## 7. Typing and Generics
+## 7. Typing and Generics
 
 Since PHP does not currently support generics at the language level:
 
@@ -89,7 +89,14 @@ Since PHP does not currently support generics at the language level:
 - Consumers SHOULD rely on `isSuccess()` / `isFailure()` (or equivalent terminal operations such as `fold()`) before accessing the contained value.
 - This PSR does not require nor encourage implementors to create separate result classes for each possible value or error type.
 
-## 8. People
+## 8. Namespaces
 
+- `ErrorInterface` is defined in the `Psr\Error` namespace to allow error objects to be reused independently of `ResultInterface`.
+- Errors in this PSR are plain value objects that may be created, transformed, transported, logged, or rendered without necessarily being wrapped in a `Result`.
+- `ResultInterface` composes an error but does not own the error abstraction. Keeping these concerns in separate namespaces avoids coupling error representation to a single control-flow mechanism and preserves flexibility for future use-cases.
+
+## 9. People
+
+- **PHP-FIG team**
 - **Proposer:** Yousha Aleayoub - [blog](https://yousha.blog.ir)
-- **Group:** https://groups.google.com/g/php-fig/c/OpEuvGERM5A
+- **Discussion Group:** https://groups.google.com/g/php-fig/c/OpEuvGERM5A
