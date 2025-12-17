@@ -67,6 +67,17 @@ For gradual adoption, libraries MAY:
 1. Add new methods returning `ResultInterface` alongside old methods
 2. Provide adapters from exceptions to results
 
-## 6. People
+## 6. Error Classification
+
+Implementations MAY extend error types:
+
+- `ValidationError` (business rule violations)
+- `NotFoundError` (missing resources)
+- `ConflictError` (state conflicts)
+- `AuthenticationError` (auth failures)
+- `AuthorizationError` (permission issues)
+- `InfrastructureError` (system failures)
+
+## 7. People
 
 - **Proposer**: Yousha Aleayoub - [blog](https://yousha.blog.ir)
