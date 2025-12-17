@@ -33,12 +33,18 @@ interface ErrorInterface extends \Throwable
     public function getCode(): string;
 
     /**
-     * Returns human-readable error message.
+     * Returns a human-readable error message.
+     *
+     * The message MAY contain placeholders in the form `{placeholder}`.
+     * Context values MAY be provided to replace placeholders for display,
+     * logging, or translation purposes.
+     *
+     * Message formatting and translation are the responsibility of the consumer.
      */
     public function getMessage(): string;
 
     /**
-     * Returns additional error context.
+     * Returns structured context data for the error.
      *
      * @return array<string, mixed>
      */
