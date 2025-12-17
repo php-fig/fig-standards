@@ -60,6 +60,13 @@ This actually enables libraries to return predictabe, structured outcomes withou
 - Maintains PHP's pragmatic balance between OOP and functional patterns
 - Can be extended for async/await patterns when Fibers mature
 
-## 5. People
+## 5. Backward Compatibility
+
+For gradual adoption, libraries MAY:
+
+1. Add new methods returning `ResultInterface` alongside old methods
+2. Provide adapters from exceptions to results
+
+## 6. People
 
 - **Proposer**: Yousha Aleayoub - [blog](https://yousha.blog.ir)
