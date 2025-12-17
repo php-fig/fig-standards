@@ -10,6 +10,8 @@ This PSR proposes standard interfaces for representing operation results and err
 
 This actually enables libraries to return predictabe, structured outcomes without exceptions while maintaining interoperability.
 
+Note: Error messages follow PSR-3 placeholder semantics. This enables deferred formatting, localization, and structured validation output without imposing a formatter or translator.
+
 ## 2. Why Bother?
 
 ### Current Problems
