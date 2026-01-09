@@ -103,7 +103,7 @@ Users of loggers are referred to as `user`.
   an exception nor raise any php error, warning or notice.
 
 - If an `Exception` object is passed in the context data, it MUST be in the
-  `'exception'` key. Logging exceptions is a common pattern and this allows
+  `'exception'` key. Logging exceptions is a common pattern, and this allows
   implementors to extract a stack trace from the exception when the log
   backend supports it. Implementors MUST still verify that the `'exception'`
   key is actually an `Exception` before using it as such, as it MAY contain
