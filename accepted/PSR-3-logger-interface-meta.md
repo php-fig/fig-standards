@@ -42,3 +42,13 @@ Implementers MAY add parameter types to their own packages in a new major releas
 * the implementation depends on `"psr/log": "^2.0 || ^3.0"` so as to exclude the untyped 1.0 version.
 
 Implementers are encouraged but not required to transition their packages toward the 3.0 version of the package at their earliest convenience.
+
+### 5.2 Throwable vs. Exception
+
+At the time PSR-3 was written, PHP only had the `Exception` type and the more general `Throwable` interface did not yet exist.
+
+In modern PHP versions, `Throwable` is the common base interface for both `Exception` and `Error`.
+
+Wherever this specification refers to an `Exception` being passed in the `exception` context key, it SHOULD be interpreted as allowing any `Throwable` instance.
+
+Implementations MUST still verify that the value in the `exception` context key is actually a `Throwable` before using it as such.
