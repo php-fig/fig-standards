@@ -8,7 +8,7 @@
 |---------------------------------------------------|-------------------------|
 | Alessandro Lai ([@AlessandroLai@phpc.social])     | 2017-11-12 - 2026-08-30 |
 | Mark Niebergall ([@mbniebergall@phpc.social])     | 2023-05-25 - 2027-05-30 |
-| Lane Staples ([@mstaples])                        | 2024-02-25 - 2026-02-28 |
+| Lane Staples ([@mstaples])                        | 2024-02-25 - 2028-01-29 |
 
 Feel free to contact the secretaries at info AT php-fig.org. For more information on the secretaries' role, see the [bylaws](https://www.php-fig.org/bylaws/mission-and-structure/#secretaries).
 
@@ -19,13 +19,13 @@ Feel free to contact the secretaries at info AT php-fig.org. For more informatio
 |---------------------------------------------------|-------------------------|
 | Larry Garfield ([@Crell@phpc.social])             | 2016-12-24 - 2027-05-30 |
 | Cees-Jan Kiewiet ([@wyri@haxim.us])               | 2016-12-24 - 2026-08-30 |
-| Korvin Szanto ([@korvinszanto])                   | 2016-12-24 - 2026-02-22 |
-| Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2026-02-28 |
+| Korvin Szanto ([@korvinszanto])                   | 2016-12-24 - 2028-01-29 |
+| Ken Guest ([@kenguest@phpc.social])               | 2022-01-30 - 2028-01-29 |
 | Jaap van Otterdijk ([@jaapio@phpc.social])        | 2022-08-28 - 2026-08-30 |
 | Navarr Barnier ([@navarr])                        | 2022-08-28 - 2026-08-30 |
 | Vincent de Lau ([@vdelau])                        | 2023-05-25 - 2027-05-30 |
-| Steve McDougall ([@JustSteveKing])                | 2024-02-25 - 2026-02-22 |
-| Matteo Beccati ([@mbeccati@phpc.social])          | 2024-02-25 - 2026-02-22 |
+| Steve McDougall ([@JustSteveKing])                | 2024-02-25 - 2028-01-29 |
+| Matteo Beccati ([@mbeccati@phpc.social])          | 2024-02-25 - 2028-01-29 |
 | Mathieu Rochette ([@mathroc])                     | 2024-09-29 - 2026-08-30 |
 | Chris Tankersley ([@dragonmantank])               | 2025-05-31 - 2027-05-30 |
 
