@@ -10,18 +10,17 @@ PSR-5: PHPDoc
 - [5. The PHPDoc Format](#5-the-phpdoc-format)
   - [5.1. Summary](#51-summary)
   - [5.2. Description](#52-description)
+    - [5.2.1 Markdown format](#521-markdown-format)
+    - [5.2.2 Inline tags](#522-inline-tags)
   - [5.3. Tags](#53-tags)
-    - [5.3.1. Tag Name](#531-tag-name)
-  - [5.4. Examples](#54-examples)
-- [Appendix A. Types](#appendix-a-types)
-  - [ABNF](#abnf)
-  - [Details](#details)
-  - [Valid Class Name](#valid-class-name)
-  - [Keyword](#keyword)
+    - [5.3.1. Tag Specialization](#531-tag-specialization) 
+    - [5.3.2. Tag Name](#532-tag-name)
+  - [5.4 whitespace handling](#54-whitespace-handling)
+  - [5.5. Examples](#55-examples)
 
 ## 1. Introduction
 
-The purpose of the PSR is to provide a formal definition of the PHPDoc standard.
+This PSR defines a formal specification for the PHPDoc standard.
 
 ## 2. Conventions Used In This Document
 
@@ -43,14 +42,15 @@ interpreted as described in [RFC 2119][RFC2119].
   preceded by a DocBlock. The collection contains the following constructs:
 
   * `require` / `include` (and their `\_once` variants)
-  * `class` / `interface` / `trait`
+  * `classlike` constructs. Including `class`, `interface`, `trait`, `enum` and others later added.
   * `function` (both standalone functions and class methods)
   * variables (local and global scope) and class properties
   * constants (global constants via `define` and class constants)
+  * cases 
 
   It is RECOMMENDED to precede a "Structural Element" with a DocBlock where it
   is defined. It is common practice to have the DocBlock precede a Structural
-  Element but it MAY also be separated by any number of empty lines.
+  Element, but it MAY also be separated by any number of empty lines.
 
   Examples:
 
@@ -117,7 +117,7 @@ interpreted as described in [RFC 2119][RFC2119].
     }
   ```
 
-* "DocComment" is a special type of comment which MUST
+* "DocComment" is a special type of comment that MUST
 
   - start with the character sequence `/**` followed by a whitespace character
   - end with `*/` and
@@ -145,40 +145,6 @@ interpreted as described in [RFC 2119][RFC2119].
 
 * "Tag" is a single piece of meta information regarding a "Structural Element".
 
-* "Type" is the determination of what type of data is associated with an element.
-  This is used to determine the exact data type (primitive, class, object) of
-  arguments, properties, constants, etc.
-
-  See Appendix A for more detailed information about types.
-
-* "FQSEN" is an abbreviation for Fully Qualified Structural Element Name. This
-  notation expands on the Fully Qualified Class Name and adds a notation to
-  identify class / interface / trait members and re-apply the principles of the
-  FQCN to Interfaces, Traits, Functions and global Constants.
-
-  The following notations can be used per type of "Structural Element":
-
-  - *Namespace*:      `\My\Space`
-  - *Function*:       `\My\Space\myFunction()`
-  - *Constant*:       `\My\Space\MY_CONSTANT`
-  - *Class*:          `\My\Space\MyClass`
-  - *Interface*:      `\My\Space\MyInterface`
-  - *Trait*:          `\My\Space\MyTrait`
-  - *Method*:         `\My\Space\MyClass::myMethod()`
-  - *Property*:       `\My\Space\MyClass::$my_property`
-  - *Class Constant*: `\My\Space\MyClass::MY_CONSTANT`
-
-  A FQSEN has the following [ABNF][RFC5234] definition:
-
-      FQSEN    = fqnn / fqcn / constant / method / property  / function
-      fqnn     = "\" [name] *("\" [name])
-      fqcn     = fqnn "\" name
-      constant = ((fqnn "\") / (fqcn "::")) name
-      method   = fqcn "::" name "()"
-      property = fqcn "::$" name
-      function = fqnn "\" name "()"
-      name     = (ALPHA / "_") *(ALPHA / DIGIT / "_")
-
 ## 4. Basic Principles
 
 * A PHPDoc MUST always be contained in a "DocComment"; the combination of these
@@ -191,15 +157,15 @@ interpreted as described in [RFC 2119][RFC2119].
 The PHPDoc format has the following [ABNF][RFC5234] definition:
 
     PHPDoc             = [summary [description]] [tags]
-    eol                = [CR] LF ; to compatible with PSR-12
+    eol                = [CR] LF ; to be compatible with [CS-PER]
     summary            = 1*CHAR 2*eol
     description        = 1*(CHAR / inline-tag) 1*eol ; any amount of characters
                                                      ; with inline tags inside
     tags               = *(tag 1*eol)
     inline-tag         = "{" tag "}"
-    tag                = "@" tag-name [":" tag-specialization] [tag-details]
+    tag                = "@"[tag-specialization "-"] tag-name [tag-details]
     tag-name           = (ALPHA / "\") *(ALPHA / DIGIT / "\" / "-" / "_")
-    tag-specialization = 1*(ALPHA / DIGIT / "-")
+    tag-specialization = 1*(ALPHA / DIGIT)
     tag-details        = (1*SP tag-description)
     tag-description    = (CHAR / inline-tag) *(CHAR / inline-tag / eol)
     tag-argument       = *SP 1*CHAR [","] *SP
@@ -208,9 +174,7 @@ Examples of use are included in chapter 5.4.
 
 ### 5.1. Summary
 
-A Summary MUST contain an abstract of the "Structural Element" defining the
-purpose. It is RECOMMENDED for Summaries to span a single line or two, but not
-more than that.
+A Summary MUST be a concise abstract of the Structural Element\u2019s purpose. It is RECOMMENDED to keep the Summary to a single line, though two lines MAY be used if needed.
 
 A Summary MUST end with two sequential line breaks, unless it is the only
 content in the PHPDoc.
@@ -218,18 +182,13 @@ content in the PHPDoc.
 If a Description is provided, then it MUST be preceded by a Summary. Otherwise
 the Description risks being mistaken as the Summary.
 
-Because a Summary is comparable to a chapter title, it is RECOMMENDED to use as
-little formatting as possible. Contrary to the Description, no recommendation is
-made to support a mark-up language.
+Because a Summary is comparable to a chapter title, it is NOT RECOMMENDED to use formatting.
+Contrary to the Description, no recommendation is made to support Markdown.
 
 ### 5.2. Description
 
 The Description is OPTIONAL but SHOULD be included when the "Structural Element"
 contains more complexity than can be described by the Summary alone.
-
-Any application parsing the Description is RECOMMENDED to support the
-Markdown mark-up language, to make it possible for the author to provide
-formatting and a clear way of representing code examples.
 
 Common uses for the Description:
 * To provide more detail on what this method does than the Summary can do
@@ -237,11 +196,63 @@ Common uses for the Description:
 * To provide a set of common use cases or scenarios in which the "Structural
   Element" may be applied
 
+#### 5.2.1 Markdown format
+
+Applications parsing the Description are RECOMMENDED to support the CommonMark flavor of 
+the Markdown language. This enables authors to apply formatting and clearly represent
+code examples.
+
+Each Description MUST be treated as a separate Markdown document. Consequently, Markdown 
+constructs that rely on shared context—such as reference-style links—are scoped to the
+individual Description. Use of such constructs is NOT RECOMMENDED to ensure consistent 
+rendering across tools.
+
+The use of raw HTML in Descriptions is NOT RECOMMENDED, as it could break rendering in some
+applications. When HTML is used, each DocBlock MUST include both the opening and closing
+tags for all HTML elements to ensure proper parsing.
+
+The following example shows an invalid DocBlock due to an unclosed HTML tag:
+
+```php
+  /** 
+   * Summary.
+   *
+   * This *description* contains
+   * <ul>
+   *   <li>Unclosed list</li>
+   */
+```
+
+#### 5.2.2 Inline tags
+
+A description MAY contain inline tags. Inline tags MUST follow the specification of
+tags with the same syntax. An inline tag MUST start with `{@` and MUST end with `}`
+
+```php
+  /** 
+   * Summary.
+   * 
+   * This is a description with an inline tag {@tag rest of the tag format}
+   */
+```
+
+Inline tags MAY only represent regular tags and SHALL NOT represent _Annotation_ tags.
+
+As inline tags are always closed with a `}` developers cannot use this char in a 
+description. To overcome this issue parsers MUST support escape sequence of `{` followed by `}` MUST be interpreted as a literal closing brace.
+
+```php
+   /**
+    * Summary.
+    *
+    * This is a description with an inline tag {@tag show case {} escape of ending char}
+    */
+```
+
 ### 5.3. Tags
 
-Tags supply concise metadata for a "Structural Element". Each tag starts on a
-new line, followed by an at-sign (`@`) and a tag-name, followed by whitespace and
-metadata (including a description).
+Tags supply concise metadata for a "Structural Element". Each tag MUST start on a
+new line, followed by an at-sign (`@`) and a tag-name, then optional whitespace and metadata.
 
 If metadata is provided, it MAY span multiple lines and COULD follow a strict
 format, as dictated by the specific tag.
@@ -253,8 +264,8 @@ format, as dictated by the specific tag.
 > _type_ (`string`), variable name (`$argument1`),  and description (`This is a
 > parameter.`).
 
-The description MUST support Markdown as a formatting language.  The
-description of the tag MAY start on the same line or next line.  The following
+The description MUST support Markdown as a formatting language. The
+description of the tag MAY start on the same line or next line. The following
 tags are semantically identical:
 
 ```php
@@ -269,11 +280,40 @@ tags are semantically identical:
 
 This definition does NOT apply to _Annotation_ tags, which are not in scope.
 
-#### 5.3.1. Tag Name
+#### 5.3.1 Tag Specialization
+
+Tag specialization defines a scope for the tag. It is RECOMMENDED to follow the
+list of tags in the tag [Tag Catalog PSR][TAG_PSR]. But the metadata of specialized
+tags MAY differ from the list.
+
+```php
+  /**
+   * @vendor-tag This is a description
+   */
+```
+
+Parsers MAY ignore specialized tags when they are in a supported format.
+
+#### 5.3.2. Tag Name
 
 Tag names indicate what type of information is represented by this tag.
 
-### 5.4. Examples
+### 5.4. Whitespace Handling
+
+Whitespace handling for parsing DocBlocks MUST follow these rules:
+
+- Leading and trailing whitespace characters (spaces, tabs) on each line MUST be ignored.
+- Lines in descriptions or tag metadata MAY contain multiple whitespace characters between words, but varying amounts of whitespace MUST NOT alter the meaning.
+  For example: `@param string $var` is semantically equivalent to `@param     string         $var`
+
+- A description MAY contain empty lines. These are preserved as part of the Markdown block and MUST NOT be interpreted as ending the description.
+- A description ends when:
+    - The DocBlock ends, or
+    - A new tag starts (i.e., a line beginning with @)
+
+In tag metadata, whitespace (space or tab) MAY delimit metadata components (e.g., type, variable name, description), but excessive whitespace MUST NOT change the meaning.
+
+### 5.5. Examples
 
 The following examples serve to illustrate the basic use of DocBlocks; it is
 advised to read through the list of tags in the [Tag Catalog PSR][TAG_PSR].
@@ -341,189 +381,6 @@ A DocBlock may also span a single line:
 public $array = null;
 ```
 
-## Appendix A. Types
-
-### ABNF
-
-A Type has the following [ABNF][RFC5234] definition:
-
-    type-expression  = type *("|" type) *("&" type)
-    type             = class-name / keyword / array
-    array            = (type / array-expression) "[]"
-    array-expression = "(" type-expression ")"
-    class-name       = ["\"] label *("\" label)
-    label            = (ALPHA / %x7F-FF) *(ALPHA / DIGIT / %x7F-FF)
-    keyword          = "array" / "bool" / "callable" / "false" / "float" / "int" / "iterable" / "mixed" / "never"
-    keyword          =/ "null" / "object" / "resource" / "self" / "static" / "string" / "true" / "void" / "$this"
-
-### Details
-
-When a "Type" is used, the user will expect a value, or set of values, as detailed below.
-
-When the "Type" consists of multiple types, then these MUST be separated with
-either the vertical bar (|) for union type or the ampersand (&) for intersection
-type.  Any interpreter supporting this specification MUST recognize this and
-split the "Type" before evaluating.
-
-Union type example:
->`@return int|null`
-
-Intersection type example:
->`@var \MyClass&\PHPUnit\Framework\MockObject\MockObject $myMockObject`
-
-#### Arrays
-
-The value represented by "Type" can be an array. The type MUST be defined
-following one of the following options:
-
-1. unspecified: no definition of the contents of the array is given.
-   Example: `@return array`
-
-2. specified as a specific type: each member of the array is the same one type.
-   Example: `@return int[]`
-
-   Note that `mixed` is also a single type and thus can explicitly indicate that
-   each member is any possible type.
-
-3. specified as containing multiple explicit types:  each member can be of any
-   of the given types.
-   Example: `@return (int|string)[]`
-
-### Valid Class Name
-
-A valid class name is based on the context where this type is mentioned. This
-may be a Fully Qualified Class Name (FQCN) or a local name if present in a
-namespace.
-
-The element to which this type applies is either an instance of this class
-or an instance of a class that is a sub/child to the given class.
-
-> It is RECOMMENDED for applications that collect and shape this information to
-> show a list of child classes with each representation of the class. This makes
-> it more obvious for the user which classes are acceptable as this type.
-
-### Keyword
-
-A keyword defines the purpose of this type. Not every element is determined by a
-class, but it is still worthy of classification to assist the developer in
-understanding the code covered by the DocBlock.
-
-> Some of these keywords are allowed as class names in PHP and can be difficult
-> to distinguish from real classes. As such, the keywords MUST be lowercase, as
-> most class names start with an uppercase first character... it is RECOMMENDED
-> that you not use classes with these names in your code.
-
-The following keywords are recognized by this PSR:
-
-1.  `bool`: the element to which this type applies only has state `TRUE` or `FALSE`.
-
-2.  `int`: the element to which this type applies is a whole number or integer.
-
-3.  `float`: the element to which this type applies is a continuous, or real, number.
-
-4.  `string`: the element to which this type applies is a string of binary characters.
-
-5.  `object`: the element to which this type applies is the instance of an undetermined class.
-
-6.  `array`: the element to which this type applies is an array of values.
-
-7.  `iterable`: the element to which this type applies is an array or Traversable object per the [definition of PHP][PHP_ITERABLE].
-
-8.  `resource`: the element to which this type applies is a resource per the [definition of PHP][PHP_RESOURCE].
-
-9.  `mixed`: the element to which this type applies can be of any type as specified here. It is not known at compile
-    time which type will be used.
-
-10. `void`: this type is commonly only used when defining the return type of a method or function, indicating
-    "nothing is returned", and thus the user should not rely on any returned value.
-
-    ```php
-    /**
-     * @return void
-     */
-    function outputHello()
-    {
-        echo 'Hello world';
-    }
-    ```
-
-11. `null`: the element to which this type applies is a `NULL` value or, in technical terms, does not exist.
-
-    Compared to `void`, this type is used in any situation where the described element may at
-    any given time contain an explicit `NULL` value.
-
-    ```php
-    /**
-     * @return null
-     */
-    function foo()
-    {
-        echo 'Hello world';
-        return null;
-    }
-    ```
-
-    ```php
-    /**
-     * @param bool $create_new When true returns a new stdClass.
-     *
-     * @return stdClass|null
-     */
-    function foo($create_new)
-    {
-        if ($create_new) {
-            return new stdClass();
-        }
-        return null;
-    }
-    ```
-
-12. `callable`: the element to which this type applies is a pointer to a function call. This may be any type of callable
-    as per the [definition of PHP][PHP_CALLABLE].
-
-13. `false` or `true`: the element to which this type applies will have the exact value `TRUE` or `FALSE`. No other value will
-    be returned from this element.
-
-14. `self`: the element to which this type applies is of the same class in which the documented element is originally
-    contained.
-
-    **Example:**
-
-    > Method *c* is contained in class *A*. The DocBlock states that its return value is of type `self`. As such, method
-    > *c* returns an instance of class *A*.
-
-    This may lead to confusing situations when inheritance is involved.
-
-    **Example (previous example situation still applies):**
-
-    > Class *B* extends class *A* and does not redefine method *c*. As such, it is possible to invoke method *c* from
-    > class *B*.
-
-    In this situation, ambiguity may arise as `self` could be interpreted as either class *A* or *B*. In these cases,
-    `self` MUST be interpreted as being an instance of the class where the DocBlock containing the `self` type is
-    written.
-
-    In the examples above, `self` MUST always refer to class *A*, since it is defined with method *c* in class *A*.
-
-    > Due to the above nature, it is RECOMMENDED for applications that collect and shape this information to show a list
-    > of child classes with each representation of the class. This would make it obvious for the user which classes are
-    > acceptable as type.
-
-15. `static`: the element to which this type applies is of the same class in which the documented element is contained,
-    or, when encountered in a subclass, is of type of that subclass instead of the original class.
-
-    This keyword behaves the same way as the [keyword for late static binding][PHP_OOP5LSB] (not the static method,
-    property, nor variable modifier) as defined by PHP.
-
-16. `$this`: the element to which this type applies is the same exact instance as the current class in the given
-    context. As such, this type is a stricter version of `static`, because the returned instance must not only be
-    of the same class but also the same instance.
-
-    This type is often used as return value for methods implementing the [Fluent Interface][FLUENT] design pattern.
-
-17. `never`: denotes that element isn't going to return anything and always throws exception or terminates
-    the program abnormally (such as by calling the library function `exit`).
-
 [RFC2119]:      https://tools.ietf.org/html/rfc2119
 [RFC5234]:      https://tools.ietf.org/html/rfc5234
 [PHP_RESOURCE]: https://php.net/manual/language.types.resource.php
@@ -533,5 +390,4 @@ The following keywords are recognized by this PSR:
 [PHP_OOP5LSB]:  https://php.net/manual/language.oop5.late-static-bindings.php
 [DEFACTO]:      http://www.phpdoc.org/docs/latest/index.html
 [PHPDOC.ORG]:   http://www.phpdoc.org/
-[FLUENT]:       https://en.wikipedia.org/wiki/Fluent_interface
 [TAG_PSR]:      TBD
