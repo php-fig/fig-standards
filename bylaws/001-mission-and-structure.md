@@ -44,7 +44,7 @@ Whilst there are a number of defined functions below but they should also perfor
 
 All FIG Secretaries are expected to remain impartial and professional when acting in an official capacity as Secretary and should also remain aware that even when not acting in an official capacity, their actions reflect back on the PHP FIG and the FIG must not be brought into disrepute.
 
-In order to ensure impartiality, Secretaries may not concurrently serve as a Project Representative, Core Committee Member, or Editor of a PSR. They may, however, be a member of a Working Group. Secretaries must also publicly declare all conflicts of interest for example if they are participating in a working group or are a core team member of a Member Project.
+In order to ensure impartiality, Secretaries may not concurrently serve as a Project Representative, Core Committee Member, or Editor of any working group. They may, however, be a member of a Working Group. Secretaries must also publicly declare all conflicts of interest for example if they are participating in a working group or are a core team member of a Member Project.
 
 ### Defined functions
 
